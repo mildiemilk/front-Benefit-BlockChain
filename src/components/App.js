@@ -5,10 +5,15 @@ import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import Async from 'react-code-splitting'
 
 import Header from './Header'
+import SettingProfile from './Auth/SettingProfile/SettingProfile'
 import Postbox from './PostBox/PostBox'
+import simpleRQ from './SimpleRQ'
+import dashboard from './Dashboard'
 import Login from './Auth/Login'
+import Signup from './Auth/Signup'
 
 import 'semantic-ui-css/semantic.min.css'
+import '../styles/main.scss'
 
 const App = ({ isAuthenticated }) => (
   <div>

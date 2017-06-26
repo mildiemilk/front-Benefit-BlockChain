@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
+
 export default class Menus extends Component {
   state = { activeItem: 'home' }
 

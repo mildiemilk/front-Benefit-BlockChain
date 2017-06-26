@@ -9,6 +9,8 @@ import SettingProfile from './Auth/SettingProfile/SettingProfile'
 import Postbox from './PostBox/PostBox'
 import simpleRQ from './SimpleRQ'
 import dashboard from './Dashboard'
+import login from './Auth/Login'
+import signup from './Auth/Signup'
 
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'

@@ -7,6 +7,8 @@ import Async from 'react-code-splitting'
 import Header from './Header'
 import SettingProfile from './Auth/SettingProfile/SettingProfile'
 import Postbox from './PostBox/PostBox'
+import simpleRQ from './SimpleRQ'
+import dashboard from './Dashboard'
 
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
@@ -16,6 +18,8 @@ const App = ({ user }) => (
     <Header />
     <Route path="/postbox" component={Postbox} />
     <Route path="/setting-profile" component={SettingProfile} />
+    <Route path="/simpleRQ" component={simpleRQ} />
+    <Route path="/dashboard" component={dashboard} />
   </div>
 )
 

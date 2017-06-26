@@ -17,8 +17,8 @@ const NextButton= styled.button`
     width: 9.5%;
     height: auto;
     border-radius: 20px;
-	background-color: #f7555f;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+	  background-color: #f7555f;
+	  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
     margin-top:1%;
     text-align:center;

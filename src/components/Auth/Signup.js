@@ -5,13 +5,13 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { companyFill } from '../../actions'
 import { Button, Checkbox, Form, Grid, Image } from 'semantic-ui-react'
-import logo from '../../image/logo.jpg'
-import city from '../../image/cityscape2.png'
-import userIcon from '../../image/icons8-user.png'
-import passwordIcon from '../../image/icons8-password.png'
+import logo from '../image/logo.jpg'
+import city from '../image/cityscape2.png'
+import userIcon from '../image/icons8-user.png'
+import passwordIcon from '../image/icons8-password.png'
 import '../../styles/signup.scss'
 
-class SingUp extends Component {
+class SignUp extends Component {
   constructor() {
     super()
     this.state = {

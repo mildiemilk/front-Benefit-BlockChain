@@ -23,8 +23,8 @@ const App = ({ user }) => (
     <Route path="/setting-profile" component={SettingProfile} />
     <Route path="/dashboard/simpleRQ" component={simpleRQ} />
     <Route path="/dashboard" component={dashboard} />
-    <Route path="/login" component={login} />
-    <Route path="/signup" component={signup} />
+    <Route path="/login" component={Login} />
+    <Route path="/signup" component={Signup} />
     </Switch>
   </div>
 )

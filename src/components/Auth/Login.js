@@ -5,16 +5,23 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { companyFill } from '../../actions'
 import { Button, Checkbox, Form, Grid, Image, Input } from 'semantic-ui-react'
-import iconUser from '../../image/icons8-user.png'
-import gift from '../../image/gigift.jpg'
-import logo from '../../image/logo.jpg'
+import iconUser from '../image/icons8-user.png'
+import gift from '../image/gigift.jpg'
+import logo from '../image/logo.jpg'
+import { authenticate } from '../../api/auth'
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
       nameInput: '',
+      email: '',
+      password: '',
     }
+  }
+
+  static propTypes = {
+    authenticate: PropTypes.func.isRequired,
   }
 
   onInputChange(e) {
@@ -25,6 +32,15 @@ class Login extends Component {
     console.log('hello')
     window.location.href = '/signup'
   }
+
+  loginHandler = e => {
+    console.log(this.state)
+    const { email, password } = this.state
+    this.props.authenticate(email, password)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   render() {
     return (
       <div>
@@ -55,15 +71,19 @@ class Login extends Component {
                 />
                 <Form>
                   <Form.Field>
-                    <Input
+                    <Form.Input
                       style={{ background: 'iconUser', width: '315px' }}
                       placeholder="อีเมลของคุณ"
+                      name="email"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
                   <Form.Field>
-                    <Input
+                    <Form.Input
                       style={{ background: 'iconUser', width: '315px' }}
                       placeholder="พาสเวิร์ด"
+                      name="password"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
                 </Form>
@@ -79,6 +99,7 @@ class Login extends Component {
                     backgroundColor: '#3A7BD5',
                     color: 'white',
                   }}
+                  onClick={() => this.loginHandler()}
                 >
                   ลงชื่อเข้าใช้
                 </Button>
@@ -114,4 +135,7 @@ Login.propTypes = {}
 const mapStateToProps = state => ({
   user: state.user,
 })
-export default connect(mapStateToProps, {})(Login)
+const mapDispatchToProps = dispatch => ({
+  authenticate: (email, password) => dispatch(authenticate(email, password)),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

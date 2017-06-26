@@ -6,18 +6,32 @@ import Async from 'react-code-splitting'
 
 import Header from './Header'
 import Postbox from './PostBox/PostBox'
+import Login from './Auth/Login'
 
 import 'semantic-ui-css/semantic.min.css'
 
-const App = ({ user }) => (
+const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-    <Route path="/postbox" component={Postbox} />
+    {isAuthenticated
+      ? <Switch>
+          <Route path="/postbox" component={Postbox} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      : <Switch>
+          <Route path="/login" component={Login} />
+          <Redirect to={{ pathname: '/login' }} />
+        </Switch>}
   </div>
 )
 
 App.propTypes = {
-  user: PropTypes.shape({}).isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 }
 
-export default withRouter(connect(state => ({ user: state.user }))(App))
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.token != null,
+})
+
+const Container = connect(mapStateToProps)(App)
+export default withRouter(Container)

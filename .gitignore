@@ -1,3 +1,15 @@
-node_modules
-dist
 .DS_Store
+
+.module-cache
+*.log*
+_nogit
+*.report.dom.html
+/dll
+.vscode
+
+static
+build
+dist
+
+node_modules
+npm-debug.log

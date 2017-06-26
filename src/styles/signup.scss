@@ -1,0 +1,31 @@
+.box{
+    margin: 55px 0px 0px 0px;
+    text-align:center;
+}
+
+.boxForm{
+    box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08); 
+    margin-left: 165px;
+    margin-top: 41px;
+    width: 943px;
+}
+
+.header{
+    margin: 0px 0px 30px 25px;
+    padding-top: 63px;
+}
+
+.boxCenter{
+    background-image:url("./cityscape2.png");
+    width:943px;
+    height:385px;
+    text-align:center;
+}
+
+.formUser{
+    width: 325px;
+    background-image:url("./icons8-user.png");
+    background-size:32px,32px;
+    background-repeat:no-repeat;
+    padding-left:35px;  
+}

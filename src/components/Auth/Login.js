@@ -5,9 +5,11 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { companyFill } from '../../actions'
 import { Button, Checkbox, Form, Grid, Image, Input } from 'semantic-ui-react'
-import iconUser from '../../image/icons8-user.png'
+import userIcon from '../../image/icons8-user.png'
 import gift from '../../image/gigift.jpg'
 import logo from '../../image/logo.jpg'
+import '../../styles/loginstyle.scss'
+import passwordIcon from '../../image/icons8-password.png'
 
 class Login extends Component {
   constructor() {
@@ -28,49 +30,49 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <img src={logo} style={{ marginTop: '135px', marginLeft: '420px' }} />
-        <div
-          style={{
-            margin: '50px 250px 172px 200px',
-            boxShadow: '0 1px 7px 2px rgba(0, 0, 0, 0.08)',
-          }}
-        >
+        <Grid centered columns={3}>
+          <Grid.Column>
+            <img src={logo} className="logostyle" />
+          </Grid.Column>
+        </Grid>
+        <div className="inbox">
           <Grid>
             <Grid.Column width={9}>
-              <img
-                src={gift}
-                style={{ marginTop: '135px', marginLeft: '30px' }}
-              />
+              <img src={gift} className="gift" />
             </Grid.Column>
             <Grid.Column width={7}>
               <div style={{ marginRight: '15px' }}>
                 <h2 style={{ marginTop: '65px' }}>เข้าสู่ระบบ</h2>
                 <p>เข้าด้วย E-mail ของคุณหรือ Username</p>
-                <hr
-                  style={{
-                    margin: '2em 0em 2em 0em',
-                    borderColor: 'blue',
-                    width: '315px',
-                  }}
-                />
-                <Form>
+                <hr className="line1" />
+                <Form style={{ paddingLeft: '0px' }}>
                   <Form.Field>
-                    <Input
-                      style={{ background: 'iconUser', width: '315px' }}
+                    <input
+                      style={{
+                        width: '320px',
+                        backgroundImage: `url(${userIcon})`,
+                        backgroundSize: '32px,32px',
+                        backgroundRepeat: 'no-repeat',
+                        paddingLeft: '35px',
+                      }}
                       placeholder="อีเมลของคุณ"
                     />
                   </Form.Field>
                   <Form.Field>
-                    <Input
-                      style={{ background: 'iconUser', width: '315px' }}
+                    <input
+                      style={{
+                        width: '320px',
+                        backgroundImage: `url(${passwordIcon})`,
+                        backgroundSize: '32px,32px',
+                        backgroundRepeat: 'no-repeat',
+                        paddingLeft: '35px',
+                      }}
                       placeholder="พาสเวิร์ด"
                     />
                   </Form.Field>
                 </Form>
                 <br />
-                <a style={{ float: 'right', marginRight: '25px' }}>
-                  ลืมพาสเวิร์ด?
-                </a>
+                <a className="link">ลืมพาสเวิร์ด?</a>
                 <Button
                   style={{
                     marginTop: '20px',
@@ -82,10 +84,8 @@ class Login extends Component {
                 >
                   ลงชื่อเข้าใช้
                 </Button>
-                <hr style={{ margin: '2em 0em 2em 0em', width: '315px' }} />
-                <p style={{ textAlign: 'center', marginRight: '15px' }}>
-                  ยังไม่เคยสมัคร?
-                </p>
+                <hr className="line2" />
+                <p className="question">ยังไม่เคยสมัคร?</p>
                 <Button
                   style={{
                     marginTop: '3px',

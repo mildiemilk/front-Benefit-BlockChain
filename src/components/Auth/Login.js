@@ -10,12 +10,14 @@ import gift from '../../image/gigift.jpg'
 import logo from '../../image/logo.jpg'
 import '../../styles/loginstyle.scss'
 import passwordIcon from '../../image/icons8-password.png'
+import { authenticate } from '../../api/auth'
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-      nameInput: '',
+      email: '',
+      password: '',
     }
   }
 
@@ -24,9 +26,18 @@ class Login extends Component {
   }
 
   signUpHandler() {
-    console.log('hello')
     window.location.href = '/signup'
   }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { email, password } = this.state
+    this.props.authenticate(email, password)
+    console.log(this.state)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   render() {
     return (
       <div>
@@ -45,9 +56,12 @@ class Login extends Component {
                 <h2 style={{ marginTop: '65px' }}>เข้าสู่ระบบ</h2>
                 <p>เข้าด้วย E-mail ของคุณหรือ Username</p>
                 <hr className="line1" />
-                <Form style={{ paddingLeft: '0px' }}>
+                <Form
+                  style={{ paddingLeft: '0px' }}
+                  onSubmit={this.handleSubmit}
+                >
                   <Form.Field>
-                    <input
+                    <Form.Input
                       style={{
                         width: '320px',
                         backgroundImage: `url(${userIcon})`,
@@ -59,7 +73,7 @@ class Login extends Component {
                     />
                   </Form.Field>
                   <Form.Field>
-                    <input
+                    <Form.Input
                       style={{
                         width: '320px',
                         backgroundImage: `url(${passwordIcon})`,
@@ -81,6 +95,7 @@ class Login extends Component {
                     backgroundColor: '#3A7BD5',
                     color: 'white',
                   }}
+                  type="submit"
                 >
                   ลงชื่อเข้าใช้
                 </Button>
@@ -114,4 +129,9 @@ Login.propTypes = {}
 const mapStateToProps = state => ({
   user: state.user,
 })
-export default connect(mapStateToProps, {})(Login)
+
+const mapDispatchToProps = dispatch => ({
+  authenticate: (email, password) => dispatch(authenticate(email, password)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

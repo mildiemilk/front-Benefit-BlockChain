@@ -2,6 +2,7 @@ import { APIRequest } from '.'
 
 const LOGIN_URI = '/api/login'
 const LOGOUT_URI = 'api/logout'
+const SIGN_UP = 'api/s'
 
 export function authenticate(email, password) {
   return dispatch => {

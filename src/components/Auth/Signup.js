@@ -80,7 +80,7 @@ class SignUp extends Component {
                     color: 'white',
                   }}
                 >
-                  สมัครมสาชิก
+                  สมัครสมาชิก
                 </Button>
               </Grid.Column>
             </Grid>
@@ -91,9 +91,9 @@ class SignUp extends Component {
   }
 }
 
-SingUp.propTypes = {}
+SignUp.propTypes = {}
 
 const mapStateToProps = state => ({
   user: state.user,
 })
-export default connect(mapStateToProps, {})(SingUp)
+export default connect(mapStateToProps, {})(SignUp)

@@ -70,6 +70,8 @@ class Login extends Component {
                         paddingLeft: '35px',
                       }}
                       placeholder="อีเมลของคุณ"
+                      name="email"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -82,23 +84,26 @@ class Login extends Component {
                         paddingLeft: '35px',
                       }}
                       placeholder="พาสเวิร์ด"
+                      name="password"
+                      type="password"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
+                  <Button
+                    style={{
+                      marginTop: '20px',
+                      textAlign: 'center',
+                      width: '315px',
+                      backgroundColor: '#3A7BD5',
+                      color: 'white',
+                    }}
+                    type="submit"
+                  >
+                    ลงชื่อเข้าใช้
+                  </Button>
                 </Form>
                 <br />
                 <a className="link">ลืมพาสเวิร์ด?</a>
-                <Button
-                  style={{
-                    marginTop: '20px',
-                    textAlign: 'center',
-                    width: '315px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
-                  }}
-                  type="submit"
-                >
-                  ลงชื่อเข้าใช้
-                </Button>
                 <hr className="line2" />
                 <p className="question">ยังไม่เคยสมัคร?</p>
                 <Button
@@ -124,14 +129,15 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {}
-
-const mapStateToProps = state => ({
-  user: state.user,
-})
+Login.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+}
 
 const mapDispatchToProps = dispatch => ({
   authenticate: (email, password) => dispatch(authenticate(email, password)),
 })
 
+const mapStateToProps = state => ({
+  user: state.user,
+})
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -53,14 +53,12 @@ export const Probox2 = styled.div`
   position: relative;
   top: 20px;
 `
-export const PostContent = styled.h1`
-  width: 279px;
-  height: 49px;
-  font-family: Prompt;
+export const PostContent = styled.p`
+  
   font-size: 32px;
   font-weight: 500;
-  text-align: left;
   color: #505050;
+  margin:0%;
 `
 
 export const PostreText = styled.text`

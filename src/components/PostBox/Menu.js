@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
+
+
+
 export default class Menus extends Component {
   state = { activeItem: 'home' }
 
@@ -12,6 +15,8 @@ export default class Menus extends Component {
     e.preventDefault()
     window.location.href = '/test'
   }
+
+  
 
   render() {
     const { activeItem } = this.state

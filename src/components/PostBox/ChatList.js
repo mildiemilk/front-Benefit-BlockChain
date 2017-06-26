@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
 import { Card, Feed, Rating, Divider, Header } from 'semantic-ui-react'
+import './style.scss';
+import styled from 'react-sc';
 
+
+const CardLink= styled(Card.Content)`
+  &&&{
+    &:active {
+    background: red;
+  }
+  }
+`
 export default class ChatList extends Component {
   render() {
     return (
       <Card.Group style={{ width: '285px' }}>
         <Card>
-          <Card.Content extra>
+          <CardLink extra>
             <Feed>
-              <Feed.Event href="#card-example-link-card">
+              <Feed.Event href="#card-example-link-card222">
                 <Feed.Label image="../../../postbox/group-22.png" />
                 <Feed.Content>
                   <Feed.Summary>
@@ -23,7 +33,8 @@ export default class ChatList extends Component {
                 </Feed.Content>
               </Feed.Event>
             </Feed>
-          </Card.Content>
+          </CardLink>
+          
 
           <Card.Content extra>
             <Feed>

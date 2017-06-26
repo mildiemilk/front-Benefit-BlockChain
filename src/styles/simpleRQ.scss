@@ -1,0 +1,81 @@
+#simpleRQ {
+    width: 1440px;
+    height: 952px;
+    background-color: #fafafa;
+    margin-top: 72;
+}
+
+#containerWithBg {
+    height: 952px;
+    background-image: url('../components/image/cityscape2.png');
+    background-position: 50% 95%;
+    background-repeat: no-repeat;
+    background-size: 1120px 284px;
+}
+
+#topic {
+    padding-top: 32px;
+}
+
+#cardSimpleRQ {
+    height: 506px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
+    padding-left: 63px;
+    padding-right: 65px;
+    padding-top: 31px;
+    padding-bottom: 31px;
+}
+
+#headCardRQ {
+    padding-bottom: 31px;
+}
+
+#uploadButton {
+    width: 163px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #3a7bd5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+}
+
+#daySelect {
+    width: 104px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #dddddd;
+    min-width: 0px;
+    margin-right: 15px;
+}
+
+#monthSelect {
+    width: 133px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #dddddd;
+    min-width: 0px;
+    margin-right: 15px;
+}
+
+#yearSelect {
+    width: 104px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #dddddd;
+    min-width: 0px;
+    margin-right: 15px;
+}
+
+#postButton {
+    width: 163px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f7555f;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+}

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { companyFill } from '../../actions'
+import { companyFill } from '../../../actions'
 import { Button, Form, Grid,Segment,Image,Dropdown, Menu,Container} from 'semantic-ui-react'
-import { Text,Box,Border,Head,Detail1,Oval,Detail2,Detail3,Next} from '../Styled'
+import { Text,Box,Border,Head,Detail1,Oval,Detail2,Detail3,Next} from './Styled'
 import styled from 'react-sc'
 
 const SegmentWithHeight= styled(Segment)`

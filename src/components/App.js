@@ -5,20 +5,17 @@ import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import Async from 'react-code-splitting'
 
 import Header from './Header'
-import SettingProfile from './Auth/SettingProfile'
+import SettingProfile from './Auth/SettingProfile/SettingProfile'
+import Postbox from './PostBox/PostBox'
 
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
-const App = ({  }) => (
+const App = ({ user }) => (
   <div>
     <Header />
-
-    <Switch>
-      <Route path="/setting-profile" component={SettingProfile} />
-    
-    </Switch>
-
+    <Route path="/postbox" component={Postbox} />
+    <Route path="/setting-profile" component={SettingProfile} />
   </div>
 )
 

@@ -16,10 +16,14 @@ import '../styles/main.scss'
 const App = ({ user }) => (
   <div>
     <Header />
+    <Switch>
     <Route path="/postbox" component={Postbox} />
     <Route path="/setting-profile" component={SettingProfile} />
-    <Route path="/simpleRQ" component={simpleRQ} />
+    <Route path="/dashboard/simpleRQ" component={simpleRQ} />
     <Route path="/dashboard" component={dashboard} />
+    <Route path="/login" component={login} />
+    <Route path="/signup" component={signup} />
+    </Switch>
   </div>
 )
 

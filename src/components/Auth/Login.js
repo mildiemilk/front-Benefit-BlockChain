@@ -22,6 +22,10 @@ class Login extends Component {
     }
   }
 
+  static propTypes = {
+    authenticate: PropTypes.func.isRequired,
+  }
+
   onInputChange(e) {
     this.setState({ nameInput: e.target.value })
   }
@@ -104,6 +108,21 @@ class Login extends Component {
                   </Button>
                 </Form>
                 <br />
+                <a style={{ float: 'right', marginRight: '25px' }}>
+                  ลืมพาสเวิร์ด?
+                </a>
+                <Button
+                  style={{
+                    marginTop: '20px',
+                    textAlign: 'center',
+                    width: '315px',
+                    backgroundColor: '#3A7BD5',
+                    color: 'white',
+                  }}
+                  onClick={() => this.loginHandler()}
+                >
+                  ลงชื่อเข้าใช้
+                </Button>
                 <a className="link">ลืมพาสเวิร์ด?</a>
                 <hr className="line2" />
                 <p className="question">ยังไม่เคยสมัคร?</p>
@@ -137,8 +156,8 @@ Login.propTypes = {
 const mapDispatchToProps = dispatch => ({
   authenticate: (email, password) => dispatch(authenticate(email, password)),
 })
-
 const mapStateToProps = state => ({
   user: state.user,
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

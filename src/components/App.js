@@ -15,10 +15,11 @@ import test from './test'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
-const App = ({ user }) =>
+const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-    <Switch>
+    {isAuthenticated
+      ? <Switch>
       <Route path="/postbox" component={Postbox} />
       <Route path="/setting-profile" component={SettingProfile} />
       <Route path="/dashboard/simpleRQ" component={simpleRQ} />
@@ -26,9 +27,21 @@ const App = ({ user }) =>
       <Route path="/login" component={Login} />
       <Route path="/Signup" component={Signup} />
       <Route path="/test" component={test} />
-    </Switch>
+        </Switch>
+      : <Switch>
+          <Route path="/login" component={Login} />
+          <Redirect to={{ pathname: '/login' }} />
+        </Switch>}
   </div>
+)
 
-App.propTypes = {}
+App.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+}
 
-export default withRouter(connect(state => ({}))(App))
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.token != null,
+})
+
+const Container = connect(mapStateToProps)(App)
+export default withRouter(Container)

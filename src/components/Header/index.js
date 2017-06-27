@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Segment, Image} from 'semantic-ui-react'
+import { Menu, Segment, Image } from 'semantic-ui-react'
 import styled from 'react-sc'
 
 import logo from './logo_white.png'
@@ -12,15 +12,17 @@ const MenuWithoutMargin = styled(Menu)`
 `
 
 const Header = () => (
-  <MenuWithoutMargin style={{border:'none',backgroundColor: '#3a7bd5', height:'72'}}  >
-    <Menu.Item  onClick={this.handleItemClick}>
+  <MenuWithoutMargin
+    style={{ border: 'none', backgroundColor: '#3a7bd5', height: '72' }}
+  >
+    <Menu.Item onClick={this.handleItemClick}>
       <div>
-        <Image src={logo} size='small' />
+        <Image src={logo} size="small" />
       </div>
     </Menu.Item>
-    <Menu.Item name='signup' position='right' onClick={this.handleItemClick}>
+    <Menu.Item name="signup" position="right" onClick={this.handleItemClick}>
       <div>
-        <span>บริษัทโจร500จำกัด  </span>
+        <span>บริษัทโจร500จำกัด </span>
         <Image src={avatarn} avatar />
       </div>
     </Menu.Item>

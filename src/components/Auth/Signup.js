@@ -10,18 +10,30 @@ import city from '../image/cityscape2.png'
 import userIcon from '../image/icons8-user.png'
 import passwordIcon from '../image/icons8-password.png'
 import '../../styles/signup.scss'
+import { register } from '../../api/auth'
 
 class SignUp extends Component {
   constructor() {
     super()
     this.state = {
-      nameInput: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     }
   }
 
   onInputChange(e) {
     this.setState({ nameInput: e.target.value })
   }
+
+  handleSubmit = e => {
+    console.log('hello')
+    e.preventDefault()
+    const { email, password, confirmPassword } = this.state
+    this.props.register(email, password, confirmPassword)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
     return (
@@ -40,9 +52,9 @@ class SignUp extends Component {
           <div className="boxCenter">
             <Grid centered columns={3}>
               <Grid.Column>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                   <Form.Field>
-                    <input
+                    <Form.Input
                       style={{
                         width: '325px',
                         backgroundImage: `url(${userIcon})`,
@@ -51,10 +63,12 @@ class SignUp extends Component {
                         paddingLeft: '35px',
                       }}
                       placeholder="อีเมลของคุณ"
+                      name="email"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
                   <Form.Field>
-                    <input
+                    <Form.Input
                       style={{
                         width: '325px',
                         backgroundImage: `url(${passwordIcon})`,
@@ -63,10 +77,13 @@ class SignUp extends Component {
                         paddingLeft: '35px',
                       }}
                       placeholder="พาสเวิร์ด"
+                      name="password"
+                      type="password"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
                   <Form.Field>
-                    <input
+                    <Form.Input
                       style={{
                         width: '325px',
                         backgroundImage: `url(${passwordIcon})`,
@@ -75,21 +92,26 @@ class SignUp extends Component {
                         paddingLeft: '35px',
                       }}
                       placeholder="ยืนยันพาสเวิร์ด"
+                      name="confirmPassword"
+                      type="password"
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
+
+                  <Button
+                    style={{
+                      marginTop: '50px',
+                      marginBottom: '129px',
+                      textAlign: 'center',
+                      width: '329px',
+                      backgroundColor: '#3A7BD5',
+                      color: 'white',
+                    }}
+                    type="submit"
+                  >
+                    สมัครมสาชิก
+                  </Button>
                 </Form>
-                <Button
-                  style={{
-                    marginTop: '50px',
-                    marginBottom: '129px',
-                    textAlign: 'center',
-                    width: '329px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
-                  }}
-                >
-                  สมัครสมาชิก
-                </Button>
               </Grid.Column>
             </Grid>
           </div>
@@ -99,9 +121,17 @@ class SignUp extends Component {
   }
 }
 
-SignUp.propTypes = {}
+SignUp.propTypes = {
+  register: PropTypes.func.isRequired,
+}
+
+const mapDispatchToProps = dispatch => ({
+  register: (email, password, confirmPassword) =>
+    dispatch(register(email, password, confirmPassword)),
+})
 
 const mapStateToProps = state => ({
   user: state.user,
 })
-export default connect(mapStateToProps, {})(SignUp)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

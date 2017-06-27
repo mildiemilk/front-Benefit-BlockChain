@@ -1,8 +1,9 @@
 import { APIRequest } from '.'
+import { authenticateSuccess } from '../reducers/auth'
 
 const LOGIN_URI = '/api/login'
 const LOGOUT_URI = 'api/logout'
-const SIGN_UP = 'api/s'
+const REGISTER_URI = 'api/register'
 
 export function authenticate(email, password) {
   return dispatch => {
@@ -15,6 +16,23 @@ export function authenticate(email, password) {
     APIRequest(options, false)
       .then(res => {
         localStorage.setItem('token', res.data.token)
+        dispatch(authenticateSuccess(res.data))
+      })
+      .catch(err => console.log(err.response))
+  }
+}
+
+export function register(email, confirmPassword, password) {
+  return dispatch => {
+    const options = {
+      method: 'post',
+      url: REGISTER_URI,
+      data: { email, password, confirmPassword },
+    }
+
+    APIRequest(options, false)
+      .then(res => {
+        console.log(response)
       })
       .catch(err => console.log(err.response))
   }

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { Card, Feed, Rating, Divider, Header } from 'semantic-ui-react'
-import styled from 'react-sc';
+import styled from 'react-sc'
 
-
-const CardLink= styled(Card.Content)`
+const CardLink = styled(Card.Content)`
   &&&{
     &:active {
     background: red;
@@ -33,7 +32,6 @@ export default class ChatList extends Component {
               </Feed.Event>
             </Feed>
           </CardLink>
-          
 
           <Card.Content extra>
             <Feed>

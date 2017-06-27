@@ -32,7 +32,7 @@ export default class PostBox extends Component {
           <Grid.Row>
             <PostContent>จัดแผนสิทธิประโยชน์</PostContent>
             <Divider inverted />
-            <Space><PostStepBox><Steps/></PostStepBox></Space>
+            <Space><PostStepBox><Steps /></PostStepBox></Space>
           </Grid.Row>
           <RecPostBox>
             <Grid.Row>

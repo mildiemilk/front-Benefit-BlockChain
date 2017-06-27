@@ -1,12 +1,12 @@
 const defaultProfile = {
-    nameInput: '',
-    address:'',
-    HR:'',
-    tel:'',
-    typeOfB:'',
-    numberOfEmployees:'',
-    broker:'',
-    insurer:'',
+  nameInput: '',
+  address: '',
+  HR: '',
+  tel: '',
+  typeOfB: '',
+  numberOfEmployees: '',
+  broker: '',
+  insurer: '',
 }
 
 const profile = (state = defaultProfile, action) => {

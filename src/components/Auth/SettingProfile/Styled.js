@@ -1,8 +1,6 @@
 import styled from 'react-sc'
 import { Link } from 'react-router-dom'
 
-
-
 export const Text = styled.span`
   vertical-align: middle;
   padding: 6px 10px;

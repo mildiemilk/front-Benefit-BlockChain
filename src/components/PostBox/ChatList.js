@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Feed, Rating, Divider, Header } from 'semantic-ui-react'
-import './style.scss';
 import styled from 'react-sc';
 
 

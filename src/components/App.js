@@ -11,7 +11,7 @@ import simpleRQ from './SimpleRQ'
 import dashboard from './Dashboard'
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
-
+import test from './test'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
@@ -24,7 +24,8 @@ const App = ({ user }) =>
       <Route path="/dashboard/simpleRQ" component={simpleRQ} />
       <Route path="/dashboard" component={dashboard} />
       <Route path="/login" component={Login} />
-      <Route path="/" component={Signup} />
+      <Route path="/Signup" component={Signup} />
+      <Route path="/test" component={test} />
     </Switch>
   </div>
 

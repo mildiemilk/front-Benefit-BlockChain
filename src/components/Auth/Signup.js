@@ -29,6 +29,14 @@ class SignUp extends Component {
         <img src={logo} />
         <div className="boxForm">
           <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
+          <div className="row">
+            <div className="columns small-6">
+              x
+            </div>
+            <div className="columns small-6">
+              x
+            </div>
+          </div>
           <div className="boxCenter">
             <Grid centered columns={3}>
               <Grid.Column>

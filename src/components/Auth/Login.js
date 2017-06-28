@@ -37,7 +37,6 @@ class Login extends Component {
     e.preventDefault()
     const { email, password } = this.state
     this.props.authenticate(email, password)
-    console.log(this.state)
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })

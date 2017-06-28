@@ -22,9 +22,12 @@ const App = ({ isAuthenticated }) => (
       ? <Switch>
           <Route path="/postbox" component={Postbox} />
           <Route path="/login" component={Login} />
+          <Route path="/simplerequirement" component={simpleRQ} />
+          <Route path="/settingprofile" component={SettingProfile} />
         </Switch>
       : <Switch>
           <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
           <Redirect to={{ pathname: '/login' }} />
         </Switch>}
   </div>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import test from './test'
 import {
   Card,
   Image,
@@ -16,6 +17,12 @@ import {
 } from 'semantic-ui-react'
 
 export default class ChatBox extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { editorState: EditorState.createEmpty() }
+    this.onChange = editorState => this.setState({ editorState })
+  }
+
   render() {
     return (
       <Comment.Group style={{ marginLeft: '5%' }}>
@@ -57,7 +64,7 @@ export default class ChatBox extends Component {
         </Comment>
         <div style={{ marginTop: '30%' }}>
           <Form reply>
-            <Form.TextArea />
+            <test />
             <Button
               style={{
                 width: '210px',

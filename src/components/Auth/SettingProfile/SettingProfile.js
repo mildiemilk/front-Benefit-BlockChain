@@ -49,29 +49,29 @@ const NextButton = styled.button`
 const BusinessTypes = [
   {
     text: 'ประเภท 1',
-    value: '1',
+    value: 'Type 1',
   },
   {
     text: 'ประเภท 2',
-    value: '2',
+    value: 'Type 2',
   },
   {
     text: 'ประเภท 3',
-    value: '3',
+    value: 'Type 3',
   },
 ]
 const NumberOfEmployees = [
   {
     text: '1-50',
-    value: '1',
+    value: '1-50',
   },
   {
     text: '51-100',
-    value: '2',
+    value: '51-100',
   },
   {
     text: '101-150',
-    value: '3',
+    value: '101-150',
   },
 ]
 
@@ -83,8 +83,8 @@ class SettingProfile extends Component {
       location: '',
       HR: '',
       tel: '',
-      typeOfBusiness: '1',
-      numberOfEmployees: '1',
+      typeOfBusiness: '',
+      numberOfEmployees: '',
       companyBroker: '',
       companyInsurer: '',
     }
@@ -98,8 +98,6 @@ class SettingProfile extends Component {
       location: { value: location },
       HR: { value: HR },
       tel: { value: tel },
-      // typeOfBusiness:{value: typeOfBusiness},
-      // numberOfEmployees:{value: numberOfEmployees},
       companyBroker: { value: companyBroker },
       companyInsurer: { value: companyInsurer },
     } = e.target
@@ -109,25 +107,18 @@ class SettingProfile extends Component {
       location: location,
       HR: HR,
       tel: tel,
-      // typeOfBusiness:typeOfBusiness,
-      // numberOfEmployees:numberOfEmployees,
       companyBroker: companyBroker,
       companyInsurer: companyInsurer,
     })
-    const { typeOfBusiness, numberOfEmployees } = this.state
-    this.props.createProfile({
-      companyName,
-      location,
-      typeOfBusiness,
-      numberOfEmployees,
-      tel,
-      companyBroker,
-      companyInsurer,
-    })
+
+    this.props.createProfile(this.state)
+  }
+  onInputChange(value, stateName) {
+    this.setState({ [stateName]: value })
   }
 
   render() {
-    console.log(this.props.profile)
+    console.log(this.state)
     return (
       <div style={{ background: '#F1F1F1', paddingTop: '5%' }}>
 
@@ -202,6 +193,8 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="ประเภทธุรกิจ"
+                    onChange={(t, data) =>
+                      this.onInputChange(data.value, 'typeOfBusiness')}
                     name="typeOfBusiness"
                     fluid
                     selection
@@ -212,6 +205,8 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="จำนวนพนักงาน"
+                    onChange={(n, data) =>
+                      this.onInputChange(data.value, 'numberOfEmployees')}
                     name="numberOfEmployees"
                     fluid
                     selection
@@ -250,9 +245,7 @@ class SettingProfile extends Component {
   }
 }
 
-SettingProfile.propTypes = {
-  // onSubmit: PropTypes.func.isRequired,
-}
+SettingProfile.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
@@ -261,4 +254,5 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   profile: state.profile,
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)

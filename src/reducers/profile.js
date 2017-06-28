@@ -12,7 +12,7 @@ const defaultProfile = {
   companyInsurer: '',
 }
 /*
- companyName: localStorage.getItem('profile').companyName,
+  companyName: localStorage.getItem('profile').companyName,
   location: localStorage.getItem('profile').location,
   HR: localStorage.getItem('profile').hr,
   tel: localStorage.getItem('profile').tel,

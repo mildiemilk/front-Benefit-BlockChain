@@ -19,6 +19,7 @@ class SignUp extends Component {
       email: '',
       password: '',
       confirmPassword: '',
+      role: 'HR',
     }
   }
 
@@ -27,10 +28,9 @@ class SignUp extends Component {
   }
 
   handleSubmit = e => {
-    console.log('hello')
     e.preventDefault()
-    const { email, password, confirmPassword } = this.state
-    this.props.register(email, password, confirmPassword)
+    const { email, password, confirmPassword, role } = this.state
+    this.props.register(email, password, confirmPassword, role)
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -41,9 +41,10 @@ class SignUp extends Component {
         <img src={logo} />
         <div className="boxForm">
           <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
+          <div className="row" />
           <div className="boxCenter">
-            <Grid centered columns={3}>
-              <Grid.Column>
+            <div className="row">
+              <div className="large-4 large-offset-4 columns">
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Field>
                     <Form.Input
@@ -104,8 +105,8 @@ class SignUp extends Component {
                     สมัครมสาชิก
                   </Button>
                 </Form>
-              </Grid.Column>
-            </Grid>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -118,12 +119,8 @@ SignUp.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => ({
-  register: (email, password, confirmPassword) =>
-    dispatch(register(email, password, confirmPassword)),
+  register: (email, password, confirmPassword, role) =>
+    dispatch(register(email, password, confirmPassword, role)),
 })
 
-const mapStateToProps = state => ({
-  user: state.user,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(null, mapDispatchToProps)(SignUp)

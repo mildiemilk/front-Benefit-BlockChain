@@ -49,29 +49,29 @@ const NextButton = styled.button`
 const BusinessTypes = [
   {
     text: 'ประเภท 1',
-    value: '1',
+    value: 'Type 1',
   },
   {
     text: 'ประเภท 2',
-    value: '2',
+    value: 'Type 2',
   },
   {
     text: 'ประเภท 3',
-    value: '3',
+    value: 'Type 3',
   },
 ]
 const NumberOfEmployees = [
   {
     text: '1-50',
-    value: '1',
+    value: '1-50',
   },
   {
     text: '51-100',
-    value: '2',
+    value: '51-100',
   },
   {
     text: '101-150',
-    value: '3',
+    value: '101-150',
   },
 ]
 
@@ -98,8 +98,6 @@ class SettingProfile extends Component {
       address: { value: address },
       HR: { value: HR },
       tel: { value: tel },
-      // typeOfB:{value: typeOfB},
-      // numberOfEmployees:{value: numberOfEmployees},
       broker: { value: broker },
       insurer: { value: insurer },
     } = e.target
@@ -109,13 +107,14 @@ class SettingProfile extends Component {
       address: address,
       HR: HR,
       tel: tel,
-      // typeOfB:typeOfB,
-      // numberOfEmployees:numberOfEmployees,
       broker: broker,
       insurer: insurer,
     })
 
     companyFill(this.state)
+  }
+  onInputChange(value,stateName) {
+    this.setState({[stateName]:value})
   }
 
   render() {
@@ -194,6 +193,7 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="ประเภทธุรกิจ"
+                    onChange={(t, data) => this.onInputChange(data.value,'typeOfB')}
                     name="typeOfB"
                     fluid
                     selection
@@ -204,6 +204,7 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="จำนวนพนักงาน"
+                    onChange={(n, data) => this.onInputChange(data.value,'numberOfEmployees')}
                     name="numberOfEmployees"
                     fluid
                     selection

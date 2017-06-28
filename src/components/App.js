@@ -18,7 +18,8 @@ import '../styles/main.scss'
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-    {isAuthenticated
+     <Route path="/setting-profile" component={SettingProfile} />
+    {/*{isAuthenticated
       ? <Switch>
       <Route path="/postbox" component={Postbox} />
       <Route path="/setting-profile" component={SettingProfile} />
@@ -31,7 +32,7 @@ const App = ({ isAuthenticated }) => (
       : <Switch>
           <Route path="/login" component={Login} />
           <Redirect to={{ pathname: '/login' }} />
-        </Switch>}
+        </Switch>}*/}
   </div>
 )
 

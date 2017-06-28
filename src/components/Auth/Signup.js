@@ -41,9 +41,10 @@ class SignUp extends Component {
         <img src={logo} />
         <div className="boxForm">
           <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
+          <div className="row" />
           <div className="boxCenter">
-            <Grid centered columns={3}>
-              <Grid.Column>
+            <div className="row">
+              <div className="large-4 large-offset-4 columns">
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Field>
                     <Form.Input
@@ -104,8 +105,8 @@ class SignUp extends Component {
                     สมัครมสาชิก
                   </Button>
                 </Form>
-              </Grid.Column>
-            </Grid>
+              </div>
+            </div>
           </div>
         </div>
       </div>

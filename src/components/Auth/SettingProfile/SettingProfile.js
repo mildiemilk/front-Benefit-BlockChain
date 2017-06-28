@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { companyFill } from '../../../actions'
+import { createProfile } from '../../../api/profileCompany'
 import {
   Button,
   Form,
@@ -79,14 +79,14 @@ class SettingProfile extends Component {
   constructor() {
     super()
     this.state = {
-      nameInput: '',
-      address: '',
+      companyName: '',
+      location: '',
       HR: '',
       tel: '',
-      typeOfB: '',
-      numberOfEmployees: '',
-      broker: '',
-      insurer: '',
+      typeOfBusiness: '1',
+      numberOfEmployees: '1',
+      companyBroker: '',
+      companyInsurer: '',
     }
   }
 
@@ -94,32 +94,40 @@ class SettingProfile extends Component {
     e.preventDefault()
     const { companyFill } = this.props
     const {
-      nameInput: { value: nameInput },
-      address: { value: address },
+      companyName: { value: companyName },
+      location: { value: location },
       HR: { value: HR },
       tel: { value: tel },
-      // typeOfB:{value: typeOfB},
+      // typeOfBusiness:{value: typeOfBusiness},
       // numberOfEmployees:{value: numberOfEmployees},
-      broker: { value: broker },
-      insurer: { value: insurer },
+      companyBroker: { value: companyBroker },
+      companyInsurer: { value: companyInsurer },
     } = e.target
 
     this.setState({
-      nameInput: nameInput,
-      address: address,
+      companyName: companyName,
+      location: location,
       HR: HR,
       tel: tel,
-      // typeOfB:typeOfB,
+      // typeOfBusiness:typeOfBusiness,
       // numberOfEmployees:numberOfEmployees,
-      broker: broker,
-      insurer: insurer,
+      companyBroker: companyBroker,
+      companyInsurer: companyInsurer,
     })
-
-    companyFill(this.state)
+    const { typeOfBusiness, numberOfEmployees } = this.state
+    this.props.createProfile({
+      companyName,
+      location,
+      typeOfBusiness,
+      numberOfEmployees,
+      tel,
+      companyBroker,
+      companyInsurer,
+    })
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props.profile)
     return (
       <div style={{ background: '#F1F1F1', paddingTop: '5%' }}>
 
@@ -156,7 +164,7 @@ class SettingProfile extends Component {
                     ชื่อบริษัท
                   </Detail3>
                   <Box
-                    name="nameInput"
+                    name="companyName"
                     size="big"
                     placeholder="ชื่อบริษัท"
                     defaultValue={this.props.profile.companyName}
@@ -166,7 +174,7 @@ class SettingProfile extends Component {
                     ที่อยู่บริษัท
                   </Detail3>
                   <Box
-                    name="address"
+                    name="location"
                     size="big"
                     placeholder="ที่อยู่บริษัท"
                     defaultValue={this.props.profile.companyName}
@@ -194,7 +202,7 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="ประเภทธุรกิจ"
-                    name="typeOfB"
+                    name="typeOfBusiness"
                     fluid
                     selection
                     options={BusinessTypes}
@@ -210,19 +218,19 @@ class SettingProfile extends Component {
                     options={NumberOfEmployees}
                   />
                   <Detail3>
-                    Broker ที่ใช้ในปัจจุบัน
+                    companyBroker ที่ใช้ในปัจจุบัน
                   </Detail3>
                   <Box
-                    name="broker"
+                    name="companyBroker"
                     size="big"
-                    placeholder="Broker ที่ใช้ในปัจจุบัน"
+                    placeholder="companyBroker ที่ใช้ในปัจจุบัน"
                     defaultValue={this.props.profile.companyName}
                   />
                   <Detail3>
                     บริษัทประกันที่ใช้ในปัจจุบัน
                   </Detail3>
                   <Box
-                    name="insurer"
+                    name="companyInsurer"
                     size="big"
                     placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
                     defaultValue={this.props.profile.companyName}
@@ -246,7 +254,11 @@ SettingProfile.propTypes = {
   // onSubmit: PropTypes.func.isRequired,
 }
 
+const mapDispatchToProps = dispatch => ({
+  createProfile: data => dispatch(createProfile(data)),
+})
+
 const mapStateToProps = state => ({
   profile: state.profile,
 })
-export default connect(mapStateToProps, { companyFill })(SettingProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)

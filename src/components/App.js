@@ -11,14 +11,16 @@ import simpleRQ from './SimpleRQ'
 import dashboard from './Dashboard'
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
-import test from './test'
+
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
+
 
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
      <Route path="/setting-profile" component={SettingProfile} />
+     
     {/*{isAuthenticated
       ? <Switch>
       <Route path="/postbox" component={Postbox} />
@@ -27,7 +29,6 @@ const App = ({ isAuthenticated }) => (
       <Route path="/dashboard" component={dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/Signup" component={Signup} />
-      <Route path="/test" component={test} />
         </Switch>
       : <Switch>
           <Route path="/login" component={Login} />

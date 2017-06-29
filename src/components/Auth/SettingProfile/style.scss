@@ -1,0 +1,64 @@
+.thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%)
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+img{
+    width: 100%;
+}
+.preview{
+    text-align: center;
+    margin-top: 15%;
+   
+}
+.previewInput{
+    margin-bottom: 5%;
+    padding-left: 8%;
+}
+
+// @mixin flexbox-layout($align-items, $justify-content) {
+//     @include display(flex);
+//   align-items: $align-items;
+//   justify-content: $justify-content;
+// }
+
+// .fileContainer {
+//   overflow: hidden;
+//   position: relative;
+//   width: 100%;
+//   cursor: pointer;
+//   @include flexbox-layout(center, flex-start);
+// }
+
+// .fileContainer [type=file] {
+//   cursor: inherit;
+//   display: block;
+//   filter: alpha(opacity=0);
+//   min-height: 100%;
+//   min-width: 100%;
+//   opacity: 0;
+//   position: absolute;
+//   right: 0;
+//   text-align: right;
+//   top: 0;
+// }
+

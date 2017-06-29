@@ -12,6 +12,7 @@ import passwordIcon from '../image/icons8-password.png'
 import '../../styles/signup.scss'
 import { register } from '../../api/auth'
 
+
 class SignUp extends Component {
   constructor() {
     super()

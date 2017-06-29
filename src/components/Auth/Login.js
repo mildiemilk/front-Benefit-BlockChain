@@ -38,7 +38,6 @@ class Login extends Component {
     e.preventDefault()
     const { email, password } = this.state
     this.props.authenticate(email, password)
-    console.log(this.state)
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -46,17 +45,17 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Grid centered columns={3}>
-          <Grid.Column>
+        <div className="row">
+          <div className="large-10 large-offset-4 columns">
             <img src={logo} className="logostyle" />
-          </Grid.Column>
-        </Grid>
+          </div>
+        </div>
         <div className="inbox">
-          <Grid>
-            <Grid.Column width={9}>
+          <div className="row">
+            <div className="large-5 columns">
               <img src={gift} className="gift" />
-            </Grid.Column>
-            <Grid.Column width={7}>
+            </div>
+            <div className="large-5 columns">
               <div style={{ marginRight: '15px' }}>
                 <h2 style={{ marginTop: '65px' }}>เข้าสู่ระบบ</h2>
                 <p>เข้าด้วย E-mail ของคุณหรือ Username</p>
@@ -68,7 +67,7 @@ class Login extends Component {
                   <Form.Field>
                     <Form.Input
                       style={{
-                        width: '320px',
+                        width: '315px',
                         backgroundImage: `url(${userIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
@@ -82,7 +81,7 @@ class Login extends Component {
                   <Form.Field>
                     <Form.Input
                       style={{
-                        width: '320px',
+                        width: '315px',
                         backgroundImage: `url(${passwordIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
@@ -108,21 +107,6 @@ class Login extends Component {
                   </Button>
                 </Form>
                 <br />
-                <a style={{ float: 'right', marginRight: '25px' }}>
-                  ลืมพาสเวิร์ด?
-                </a>
-                <Button
-                  style={{
-                    marginTop: '20px',
-                    textAlign: 'center',
-                    width: '315px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
-                  }}
-                  onClick={() => this.loginHandler()}
-                >
-                  ลงชื่อเข้าใช้
-                </Button>
                 <a className="link">ลืมพาสเวิร์ด?</a>
                 <hr className="line2" />
                 <p className="question">ยังไม่เคยสมัคร?</p>
@@ -134,6 +118,7 @@ class Login extends Component {
                     fontSize: '11.4px',
                     backgroundColor: '#F7555F',
                     color: 'white',
+                    marginBottom: '85px',
                   }}
                   type="button"
                   onClick={() => this.signUpHandler()}
@@ -141,8 +126,8 @@ class Login extends Component {
                   สร้างบัญชีใหม่
                 </Button>
               </div>
-            </Grid.Column>
-          </Grid>
+            </div>
+          </div>
         </div>
       </div>
     )

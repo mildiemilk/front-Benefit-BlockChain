@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import * as simpleRQOption from './simpleRQOption'
-import { fillSimpleRQ } from '../../actions'
 import {
   Grid,
   Container,
@@ -20,6 +19,7 @@ import {
   Modal,
   Image,
 } from 'semantic-ui-react'
+import { fillSimpleRQ } from '../../api/simpleRequirement'
 
 import ModalSimpleRQ from './ModalSimpleRQ'
 import styled from 'react-sc'
@@ -37,72 +37,46 @@ class simpleRQ extends Component {
   constructor() {
     super()
     this.state = {
-      employeeNum: '',
-      typeInsurance: '',
+      numberOfEmployee: '',
+      typeOfInsurance: '',
       fileInsurance: '',
-      expireInsurance: {
-        day: '',
-        month: '',
-        year: '',
-      },
-      optionInsurance: {
-        OPD: false,
-        IPD: false,
-        dental: false,
-        life: false,
-        other: false,
-        otherText: '',
-      },
+      day: '',
+      month: '',
+      year: '',
+      IPD: false,
+      OPD: false,
+      dental: false,
+      life: false,
+      other: false,
+      otherDes: '',
     }
+  }
+
+  handlePost = e => {
+    e.preventDefault()
+    const {
+      numberOfEmployee,
+      typeOfInsurance,
+      OPD,
+      IPD,
+      dental,
+      life,
+      other,
+      otherDes,
+    } = this.state
+    this.props.fillSimpleRQ(
+      numberOfEmployee,
+      typeOfInsurance,
+      IPD,
+      OPD,
+      dental,
+      life,
+      other,
+      otherDes,
+    )
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  handleChangeExpire = (e, { name, value }) => {
-    let expireInsurance = { ...this.state.expireInsurance }
-    switch (name) {
-      case 'day':
-        expireInsurance.day = value
-        break
-      case 'month':
-        expireInsurance.month = value
-        break
-      case 'year':
-        expireInsurance.year = value
-        break
-    }
-    this.setState({ expireInsurance })
-  }
-  handleCheck = (e, { label, checked }) => {
-    let optionInsurance = { ...this.state.optionInsurance }
-    switch (label) {
-      case 'OPD':
-        optionInsurance.OPD = checked
-        break
-      case 'IPD':
-        optionInsurance.IPD = checked
-        break
-      case 'Dental':
-        optionInsurance.dental = checked
-        break
-      case 'Life':
-        optionInsurance.life = checked
-        break
-      case 'Other':
-        optionInsurance.other = checked
-        break
-    }
-    this.setState({ optionInsurance })
-  }
-  handleInputOther = (e, { value }) => {
-    let optionInsurance = { ...this.state.optionInsurance }
-    optionInsurance.otherText = value
-    if (this.state.optionInsurance.other) this.setState({ optionInsurance })
-  }
-
-  handlePost = () => {
-    console.log('click')
-    fillSimpleRQ(this.state)
-  }
 
   render() {
     console.log(this.state)
@@ -125,7 +99,7 @@ class simpleRQ extends Component {
                 <Grid.Column width={11}>
                   <Select
                     fluid
-                    name="employeeNum"
+                    name="numberOfEmployee"
                     defaultValue={this.state.employeeNum}
                     placeholder="จำนวนพนักงาน"
                     options={simpleRQOption.employeeOption}
@@ -140,7 +114,7 @@ class simpleRQ extends Component {
                 <Grid.Column width={11}>
                   <Input
                     fluid
-                    name="typeInsurance"
+                    name="typeOfInsurance"
                     defaultValue={this.state.typeInsurance}
                     placeholder="รูปแบบประกันที่ต้องการ"
                     onChange={this.handleChange}
@@ -165,21 +139,21 @@ class simpleRQ extends Component {
                     name="day"
                     placeholder="วัน"
                     options={simpleRQOption.dayOption}
-                    onChange={this.handleChangeExpire}
+                    onChange={this.handleChange}
                   />
                   <Select
                     id="monthSelect"
                     name="month"
                     placeholder="เดือน"
                     options={simpleRQOption.monthOption}
-                    onChange={this.handleChangeExpire}
+                    onChange={this.handleChange}
                   />
                   <Select
                     id="yearSelect"
                     name="year"
                     placeholder="ปี"
                     options={simpleRQOption.yearOption}
-                    onChange={this.handleChangeExpire}
+                    onChange={this.handleChange}
                   />
                 </Grid.Column>
               </Grid.Row>
@@ -193,46 +167,47 @@ class simpleRQ extends Component {
                       <Form.Field
                         width={6}
                         control={Checkbox}
-                        defaultChecked={this.state.optionInsurance.IPD}
+                        defaultChecked={this.state.IPD}
                         label="IPD"
-                        onChange={this.handleCheck}
+                        onChange={this.handleChange}
                       />
                       <Form.Field
                         control={Checkbox}
-                        defaultChecked={this.state.optionInsurance.OPD}
+                        defaultChecked={this.state.OPD}
                         label="OPD"
-                        onChange={this.handleCheck}
+                        onChange={this.handleChange}
                       />
                     </Form.Group>
                     <Form.Group inline>
                       <Form.Field
                         width={6}
                         control={Checkbox}
-                        defaultChecked={this.state.optionInsurance.dental}
+                        defaultChecked={this.state.dental}
                         label="Dental"
-                        onChange={this.handleCheck}
+                        onChange={this.handleChange}
                       />
                       <Form.Field
                         control={Checkbox}
-                        defaultChecked={this.state.optionInsurance.life}
+                        defaultChecked={this.state.life}
                         label="Life"
-                        onChange={this.handleCheck}
+                        onChange={this.handleChange}
                       />
                     </Form.Group>
                     <Form.Group inline>
                       <Form.Field
                         width={2}
                         control={Checkbox}
-                        defaultChecked={this.state.optionInsurance.other}
+                        defaultChecked={this.state.other}
                         label="Other"
-                        onChange={this.handleCheck}
+                        onChange={this.handleChange}
                       />
                       <Form.Field
                         width={14}
+                        name="otherDes"
                         control={Input}
                         placeholder="โปรดระบุ"
-                        defaultValue={this.state.optionInsurance.otherText}
-                        onChange={this.handleInputOther}
+                        defaultValue={this.state.otherDes}
+                        onChange={this.handleChange}
                       />
                     </Form.Group>
                   </Form>
@@ -247,7 +222,37 @@ class simpleRQ extends Component {
   }
 }
 
+simpleRQ.propTypes = {
+  fillSimpleRQ: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = state => ({
   data: state.simpleRQ,
 })
-export default connect(mapStateToProps, { fillSimpleRQ })(simpleRQ)
+
+const mapDispatchToProps = dispatch => ({
+  fillSimpleRQ: (
+    numberOfEmployee,
+    typeOfInsurance,
+    IPD,
+    OPD,
+    dental,
+    life,
+    other,
+    otherDes,
+  ) =>
+    dispatch(
+      fillSimpleRQ(
+        numberOfEmployee,
+        typeOfInsurance,
+        IPD,
+        OPD,
+        dental,
+        life,
+        other,
+        otherDes,
+      ),
+    ),
+})
+
+export default connect(null, mapDispatchToProps)(simpleRQ)

@@ -18,7 +18,7 @@ export default class Menus extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu style={{ width: '245px' }} pointing vertical>
+      <Menu style={{ width: '100%' }} pointing vertical>
         <Menu.Item
           icon="home"
           name="Dashboard"

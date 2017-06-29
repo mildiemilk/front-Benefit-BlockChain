@@ -5,6 +5,16 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { PostreText } from './Styled'
 import { Card, Image, Checkbox } from 'semantic-ui-react'
+import styled from 'react-sc'
+
+const CardHeader = styled(Card)`
+  &&&{
+    margin: 0 0 0 0;
+    padding-top: 0.2%;
+    font-size: 20px;
+    box-shadow: 0 0 0 0;
+  }
+`
 
 export default class Postre extends Component {
   render() {
@@ -18,9 +28,9 @@ export default class Postre extends Component {
                 size="mini"
                 src="../../../postbox/group-25.png"
               />
-              <Card.Header>
+              <CardHeader>
                 บริษัท เอบีซี จำกัด
-              </Card.Header>
+              </CardHeader>
               <Card.Meta>
                 11 มิถุนายน เวลา 11.04 น.
               </Card.Meta>
@@ -48,10 +58,14 @@ export default class Postre extends Component {
                 <br />
                 <br />
                 <strong><PostreText>แผนประกันที่ต้องการ :</PostreText></strong>
-                <PostreText><Checkbox label="OPD" /></PostreText>
-                <PostreText><Checkbox label="IPD" /></PostreText>
-                <PostreText><Checkbox label="Dental" /></PostreText>
-                <PostreText><Checkbox label="Life" /></PostreText>
+                <PostreText><Checkbox label="OPD" defaultChecked /></PostreText>
+                <PostreText><Checkbox label="IPD" defaultChecked /></PostreText>
+                <PostreText>
+                  <Checkbox label="Dental" defaultChecked />
+                </PostreText>
+                <PostreText>
+                  <Checkbox label="Life" defaultChecked />
+                </PostreText>
               </Card.Description>
             </Card.Content>
           </Card>

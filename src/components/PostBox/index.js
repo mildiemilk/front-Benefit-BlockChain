@@ -19,29 +19,29 @@ import Chatlist from './ChatList'
 import Chatbox from './ChatBox'
 import Steps from './Step'
 import Postre from './Postre'
-import Menus from './Menu'
 
 export default class PostBox extends Component {
   render() {
     return (
-      <Grid celled>
-        <Grid.Column width={3}>
-          <Menus />
-        </Grid.Column>
-        <Grid.Column width={13} style={{ backgroundColor: '#fafafa' }}>
-          <Grid.Row>
+      <div>
+        <div className="row">
+          <div className="row">
             <PostContent>จัดแผนสิทธิประโยชน์</PostContent>
             <Divider inverted />
             <Space><PostStepBox><Steps /></PostStepBox></Space>
-          </Grid.Row>
+          </div>
           <RecPostBox>
-            <Grid.Row>
-              <PostBoxFront>
-                <br /><br /><br />กระดานสนทนา
-              </PostBoxFront>
-              <Space><Postre /></Space>
-            </Grid.Row>
-            <Grid.Row>
+            <div className="row">
+
+              <div className="large-10 large-offset-1 columns">
+                <PostBoxFront>
+                  <br /><br /><br />กระดานสนทนา
+                </PostBoxFront>
+                <Space><Postre /></Space>
+              </div>
+            </div>
+            <div className="row">
+
               <Space>
                 <Reg3>
                   <div>
@@ -87,20 +87,16 @@ export default class PostBox extends Component {
                   </div>
                 </Reg3>
               </Space>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid>
-                <Grid.Column width={4}>
-                  <Chatlist />
-                </Grid.Column>
-                <Grid.Column width={12}>
-                  <Reg8><Probox2><Chatbox /></Probox2></Reg8>
-                </Grid.Column>
-              </Grid>
-            </Grid.Row>
+            </div>
+            <div className="row">
+              <div className="large-3 columns"> <Chatlist /> </div>
+              <div className="large-9 columns">
+                {' '}<Reg8><Probox2><Chatbox /></Probox2></Reg8>{' '}
+              </div>
+            </div>
           </RecPostBox>
-        </Grid.Column>
-      </Grid>
+        </div>
+      </div>
     )
   }
 }

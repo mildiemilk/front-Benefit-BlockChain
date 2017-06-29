@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { companyFill } from '../../../actions'
+import { companyFill } from '../../actions'
 import {
   Button,
   Form,
@@ -44,7 +44,7 @@ const NextButton = styled.button`
     margin-right:26%;
     margin-left:auto;
     padding: 0.5%;
-  
+
 `
 const BusinessTypes = [
   {

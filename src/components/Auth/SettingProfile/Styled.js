@@ -16,6 +16,7 @@ export const Box = styled.input`
 	height: auto;
   &::-webkit-input-placeholder {
         color: #323028;
+        opacity: 0.15;
     }
 `
 export const Border = styled.div`
@@ -57,4 +58,6 @@ export const Oval = styled.button`
   display: block;
   text-align:center;
   padding: 4%;
+  margin-top: 4%;
+  
 `

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import auth from './auth'
+import profileCompany from './profileCompany'
 
 export function APIRequest(options, authenticate = true) {
   const headers = options.headers ? options.headers : {}
@@ -23,4 +24,5 @@ export function APIRequest(options, authenticate = true) {
 export default {
   auth,
   APIRequest,
+  profileCompany,
 }

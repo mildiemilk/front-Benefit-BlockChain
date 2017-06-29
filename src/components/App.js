@@ -15,25 +15,22 @@ import Signup from './Auth/Signup'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
-
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-     <Route path="/setting-profile" component={SettingProfile} />
-     
-    {/*{isAuthenticated
+    {isAuthenticated
       ? <Switch>
-      <Route path="/postbox" component={Postbox} />
-      <Route path="/setting-profile" component={SettingProfile} />
-      <Route path="/dashboard/simpleRQ" component={simpleRQ} />
-      <Route path="/dashboard" component={dashboard} />
-      <Route path="/login" component={Login} />
-      <Route path="/Signup" component={Signup} />
+          <Route path="/postbox" component={Postbox} />
+          <Route path="/login" component={Login} />
+          <Route path="/simplerequirement" component={simpleRQ} />
+          <Route path="/settingprofile" component={SettingProfile} />
         </Switch>
       : <Switch>
+        <Route path="/settingprofile" component={SettingProfile} />
           <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
           <Redirect to={{ pathname: '/login' }} />
-        </Switch>}*/}
+        </Switch>}
   </div>
 )
 

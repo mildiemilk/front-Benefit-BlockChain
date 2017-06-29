@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { companyFill } from '../../../actions'
+import { createProfile } from '../../../api/profileCompany'
 import {
   Button,
   Form,
@@ -87,14 +87,14 @@ class SettingProfile extends Component {
   constructor() {
     super()
     this.state = {
-      nameInput: '',
-      address: '',
+      companyName: '',
+      location: '',
       HR: '',
       tel: '',
-      typeOfB: '',
+      typeOfBusiness: '',
       numberOfEmployees: '',
-      broker: '',
-      insurer: '',
+      companyBroker: '',
+      companyInsurer: '',
       file: '',
       imagePreviewUrl: ''
     }
@@ -123,24 +123,24 @@ class SettingProfile extends Component {
     e.preventDefault()
     const { companyFill } = this.props
     const {
-      nameInput: { value: nameInput },
-      address: { value: address },
+      companyName: { value: companyName },
+      location: { value: location },
       HR: { value: HR },
       tel: { value: tel },
-      broker: { value: broker },
-      insurer: { value: insurer },
+      companyBroker: { value: companyBroker },
+      companyInsurer: { value: companyInsurer },
     } = e.target
 
     this.setState({
-      nameInput: nameInput,
-      address: address,
+      companyName: companyName,
+      location: location,
       HR: HR,
       tel: tel,
-      broker: broker,
-      insurer: insurer,
+      companyBroker: companyBroker,
+      companyInsurer: companyInsurer,
     })
 
-    companyFill(this.state)
+    this.props.createProfile(this.state)
   }
   onInputChange(value,stateName) {
     this.setState({[stateName]:value})
@@ -164,7 +164,8 @@ class SettingProfile extends Component {
       //     <img id='Image' className="portrait" src={imagePreviewUrl} />
       //   </div>)}
       // else{
-        $imagePreview = (<img id='Image' className="thumbnail" src={imagePreviewUrl} />);
+        
+        $imagePreview = (<div className="thumbnail"  ><img id='Image'  src={imagePreviewUrl} /></div>);
       // }
     } else {
       $imagePreview = (<div className='preview'>Please select an Image for Preview</div>);
@@ -183,28 +184,14 @@ class SettingProfile extends Component {
                   <Detail1>
                     อัพโหลดโลโก้
                   </Detail1>
-                  <div  
+                  <div
                    >{$imagePreview}</div>
-                   
-                  <form onSubmit={(e)=>this._handleSubmit(e)}>
-                  
-                    <input className="previewInput"
+                    
+                    <Oval><input className="previewInput"
                       type="file" 
-                      onChange={(e)=>this._handleImageChange(e)} />
-                   
-                    <Oval type="submit" 
-                      onClick={(e)=>this._handleSubmit(e)}>อัพโหลดรูปภาพ</Oval>
-                  </form>
-            {/*<label className="fileContainer">
-                  <div className="uploadfile">
-                    <i className="fa fa-upload" aria-hidden="true"></i>
-                  </div>
-                  <span className="label">{this.state.filename}</span>
-                  <input type="file"
-                    accept="application/pdf, image/*"
-                    onChange={event => this._handleImageChange(event)}
-                  />
-                </label>*/}
+                      onChange={(e)=>this._handleImageChange(e)} />อัพโหลดรูปภาพ</Oval>
+                
+           
                 </SegmentWithHeight>
           </div>
                 <form onSubmit={this.handleSubmit}>
@@ -217,7 +204,7 @@ class SettingProfile extends Component {
                           ชื่อบริษัท
                         </Detail3>
                         <Box
-                          name="nameInput"
+                          name="companyName"
                           size="big"
                           placeholder="ชื่อบริษัท"
                           required
@@ -226,7 +213,7 @@ class SettingProfile extends Component {
                           ที่อยู่บริษัท
                         </Detail3>
                         <Box
-                          name="address"
+                          name="location"
                           size="big"
                           placeholder="ที่อยู่บริษัท"
                           
@@ -254,8 +241,8 @@ class SettingProfile extends Component {
                         </Detail3>
                         <Dropdown
                           placeholder="ประเภทธุรกิจ"
-                          onChange={(t, data) => this.onInputChange(data.value,'typeOfB')}
-                          name="typeOfB"
+                          onChange={(t, data) => this.onInputChange(data.value,'typeOfBusiness')}
+                          name="typeOfBusiness"
                           fluid
                           selection
                           options={BusinessTypes}
@@ -275,7 +262,7 @@ class SettingProfile extends Component {
                           Broker ที่ใช้ในปัจจุบัน
                         </Detail3>
                         <Box
-                          name="broker"
+                          name="companyBroker"
                           size="big"
                           placeholder="Broker ที่ใช้ในปัจจุบัน"
                         
@@ -284,7 +271,7 @@ class SettingProfile extends Component {
                           บริษัทประกันที่ใช้ในปัจจุบัน
                         </Detail3>
                         <Box
-                          name="insurer"
+                          name="companyInsurer"
                           size="big"
                           placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
                         />
@@ -305,10 +292,15 @@ class SettingProfile extends Component {
 SettingProfile.propTypes = {
 }
 
+const mapDispatchToProps = dispatch => ({
+  createProfile: data => dispatch(createProfile(data)),
+})
+
 const mapStateToProps = state => ({
   profile: state.profile,
 })
-export default connect(mapStateToProps, { companyFill })(SettingProfile)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)
 
 
 

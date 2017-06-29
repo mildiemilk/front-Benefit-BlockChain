@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import Async from 'react-code-splitting'
 
+import SidebarLeft from './sidebar'
 import Header from './Header'
-import SettingProfile from './Auth/SettingProfile/SettingProfile'
-import Postbox from './PostBox/PostBox'
+import SettingProfile from './SettingProfile/SettingProfile'
+import Postbox from './PostBox'
 import simpleRQ from './SimpleRQ'
 import dashboard from './Dashboard'
 import Login from './Auth/Login'
@@ -15,9 +16,12 @@ import Signup from './Auth/Signup'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
+import ViewAllPlan from './ViewAllPlan'
+
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
+    {/*<SidebarLeft />*/}
     {isAuthenticated
       ? <Switch>
           <Route path="/postbox" component={Postbox} />
@@ -26,10 +30,10 @@ const App = ({ isAuthenticated }) => (
           <Route path="/settingprofile" component={SettingProfile} />
         </Switch>
       : <Switch>
-        <Route path="/settingprofile" component={SettingProfile} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Redirect to={{ pathname: '/login' }} />
+           <Route path="/settingprofile" component={SettingProfile} />
+          {/*<Redirect to={{ pathname: '/login' }} />*/}
         </Switch>}
   </div>
 )

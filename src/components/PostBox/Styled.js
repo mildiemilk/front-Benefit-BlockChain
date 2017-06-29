@@ -54,7 +54,7 @@ export const Probox2 = styled.div`
   top: 20px;
 `
 export const PostContent = styled.p`
-  
+
   font-size: 32px;
   font-weight: 500;
   color: #505050;
@@ -70,6 +70,7 @@ export const PostreText = styled.text`
   letter-spacing: 0.3px;
   text-align: left;
   color: #323028;
+  margin-left: 2%;
 `
 
 export const PostStepBox = styled.div`

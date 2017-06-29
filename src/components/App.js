@@ -12,6 +12,9 @@ import simpleRQ from './SimpleRQ'
 import Dashboard from './Dashboard'
 import Login from './Auth/Login'
 import IPD from './Submitplan/IPD/IPD'
+import OPD from './Submitplan/OPD/OPD'
+import Life from './Submitplan/Life/life'
+import Dental from './Submitplan/Dental/dental'
 import Signup from './Auth/Signup'
 
 import 'semantic-ui-css/semantic.min.css'
@@ -31,9 +34,15 @@ const App = ({ isAuthenticated }) => (
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/settingprofile" component={SettingProfile} />
           <Route path="/ipd" component={IPD} />
+          <Route path="/OPD" component={OPD} />
+          <Route path="/Dental" component={Dental} />
+          <Route path="/Life" component={Life} />
         </Switch>
       : <Switch>
           <Route path="/ipd" component={IPD} />
+          <Route path="/OPD" component={OPD} />
+          <Route path="/Dental" component={Dental} />
+          <Route path="/Life" component={Life} />
           <Route path="/login" component={Login} />
           <Route path="/postbox" component={Postbox} />
           <Route path="/signup" component={Signup} />

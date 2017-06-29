@@ -70,7 +70,7 @@ class IPD extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</p>
+            <p className="headLogo">ขั้นตอนที่ 3 : กรอกรายละเอียดแพลน</p>
           </div>
           <div className="row">
             <div className="large-3 columns">

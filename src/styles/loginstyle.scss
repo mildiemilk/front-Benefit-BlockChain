@@ -1,35 +1,38 @@
 .logostyle {
-    margin-top: 135px;
+    margin-top: 12%;
+    max-width: 40%;
 }
 .inbox{
-    margin: 50px 250px 190px 200px;
+    margin: 7% 18% 18% 17%;
     box-shadow:0 1px 7px 2px rgba(0, 0, 0, 0.08);
+    padding-right: 1%;
+    padding-left: 1%;
 }
 
 .gift{
-    margin-top: 135px;
-    margin-left: 35px;
+    margin-top: 45%;
+    margin-left: 3%;
 }
 
-.line1{
-    margin: 2em 0em 2em 0em;
+.line0{
+    margin: 5% 0 5%  0;
     border-color:blue;
     width: 315px;
 }
 
 .line2{
-    margin: 2em 0em 2em 0em;
+    margin: 5% 0 5%  0;
     width: 315px;
 }
 
 
 .link{
     float: right;
-    margin-right:25px;
+    margin-right:10%;
 }
 
 .loginButton{
-    margin-top: 20px;
+    margin-top: 10%;
     text-align: center;
     width: 315px;
     background-color: #3A7BD5;
@@ -37,7 +40,7 @@
 }
 
 .signupButton{
-    margin-top: 3px;
+    margin-top: 5%;
     text-align: center;
     width: 315px;
     font-size: 11.4px;

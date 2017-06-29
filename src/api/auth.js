@@ -22,12 +22,12 @@ export function authenticate(email, password) {
   }
 }
 
-export function register(email, confirmPassword, password) {
+export function register(email, confirmPassword, password, role) {
   return dispatch => {
     const options = {
       method: 'post',
       url: REGISTER_URI,
-      data: { email, password, confirmPassword },
+      data: { email, password, confirmPassword, role },
     }
 
     APIRequest(options, false)

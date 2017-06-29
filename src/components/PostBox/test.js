@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Editor, EditorState} from 'draft-js';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Editor, EditorState } from 'draft-js'
 
 class test extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-    this.onChange = (editorState) => this.setState({editorState});
+    super(props)
+    this.state = { editorState: EditorState.createEmpty() }
+    this.onChange = editorState => this.setState({ editorState })
   }
   render() {
     return (
-        <Editor editorState={this.state.editorState} onChange={this.onChange} />
-    );
+      <Editor editorState={this.state.editorState} onChange={this.onChange} />
+    )
   }
 }
 
-export default test;
+export default test

@@ -19,6 +19,7 @@ class SignUp extends Component {
       email: '',
       password: '',
       confirmPassword: '',
+      role: 'HR',
     }
   }
 
@@ -27,10 +28,9 @@ class SignUp extends Component {
   }
 
   handleSubmit = e => {
-    console.log('hello')
     e.preventDefault()
-    const { email, password, confirmPassword } = this.state
-    this.props.register(email, password, confirmPassword)
+    const { email, password, confirmPassword, role } = this.state
+    this.props.register(email, password, confirmPassword, role)
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -119,12 +119,8 @@ SignUp.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => ({
-  register: (email, password, confirmPassword) =>
-    dispatch(register(email, password, confirmPassword)),
+  register: (email, password, confirmPassword, role) =>
+    dispatch(register(email, password, confirmPassword, role)),
 })
 
-const mapStateToProps = state => ({
-  user: state.user,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default connect(null, mapDispatchToProps)(SignUp)

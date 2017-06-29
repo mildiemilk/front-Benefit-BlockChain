@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { companyFill } from '../../../actions'
+import { createProfile } from '../../../api/profileCompany'
 import {
   Button,
   Form,
@@ -79,14 +79,14 @@ class SettingProfile extends Component {
   constructor() {
     super()
     this.state = {
-      nameInput: '',
-      address: '',
+      companyName: '',
+      location: '',
       HR: '',
       tel: '',
-      typeOfB: '',
+      typeOfBusiness: '',
       numberOfEmployees: '',
-      broker: '',
-      insurer: '',
+      companyBroker: '',
+      companyInsurer: '',
     }
   }
 
@@ -94,27 +94,27 @@ class SettingProfile extends Component {
     e.preventDefault()
     const { companyFill } = this.props
     const {
-      nameInput: { value: nameInput },
-      address: { value: address },
+      companyName: { value: companyName },
+      location: { value: location },
       HR: { value: HR },
       tel: { value: tel },
-      broker: { value: broker },
-      insurer: { value: insurer },
+      companyBroker: { value: companyBroker },
+      companyInsurer: { value: companyInsurer },
     } = e.target
 
     this.setState({
-      nameInput: nameInput,
-      address: address,
+      companyName: companyName,
+      location: location,
       HR: HR,
       tel: tel,
-      broker: broker,
-      insurer: insurer,
+      companyBroker: companyBroker,
+      companyInsurer: companyInsurer,
     })
 
-    companyFill(this.state)
+    this.props.createProfile(this.state)
   }
-  onInputChange(value,stateName) {
-    this.setState({[stateName]:value})
+  onInputChange(value, stateName) {
+    this.setState({ [stateName]: value })
   }
 
   render() {
@@ -155,7 +155,7 @@ class SettingProfile extends Component {
                     ชื่อบริษัท
                   </Detail3>
                   <Box
-                    name="nameInput"
+                    name="companyName"
                     size="big"
                     placeholder="ชื่อบริษัท"
                     defaultValue={this.props.profile.companyName}
@@ -165,7 +165,7 @@ class SettingProfile extends Component {
                     ที่อยู่บริษัท
                   </Detail3>
                   <Box
-                    name="address"
+                    name="location"
                     size="big"
                     placeholder="ที่อยู่บริษัท"
                     defaultValue={this.props.profile.companyName}
@@ -193,8 +193,9 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="ประเภทธุรกิจ"
-                    onChange={(t, data) => this.onInputChange(data.value,'typeOfB')}
-                    name="typeOfB"
+                    onChange={(t, data) =>
+                      this.onInputChange(data.value, 'typeOfBusiness')}
+                    name="typeOfBusiness"
                     fluid
                     selection
                     options={BusinessTypes}
@@ -204,26 +205,27 @@ class SettingProfile extends Component {
                   </Detail3>
                   <Dropdown
                     placeholder="จำนวนพนักงาน"
-                    onChange={(n, data) => this.onInputChange(data.value,'numberOfEmployees')}
+                    onChange={(n, data) =>
+                      this.onInputChange(data.value, 'numberOfEmployees')}
                     name="numberOfEmployees"
                     fluid
                     selection
                     options={NumberOfEmployees}
                   />
                   <Detail3>
-                    Broker ที่ใช้ในปัจจุบัน
+                    companyBroker ที่ใช้ในปัจจุบัน
                   </Detail3>
                   <Box
-                    name="broker"
+                    name="companyBroker"
                     size="big"
-                    placeholder="Broker ที่ใช้ในปัจจุบัน"
+                    placeholder="companyBroker ที่ใช้ในปัจจุบัน"
                     defaultValue={this.props.profile.companyName}
                   />
                   <Detail3>
                     บริษัทประกันที่ใช้ในปัจจุบัน
                   </Detail3>
                   <Box
-                    name="insurer"
+                    name="companyInsurer"
                     size="big"
                     placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
                     defaultValue={this.props.profile.companyName}
@@ -243,11 +245,14 @@ class SettingProfile extends Component {
   }
 }
 
-SettingProfile.propTypes = {
-  // onSubmit: PropTypes.func.isRequired,
-}
+SettingProfile.propTypes = {}
+
+const mapDispatchToProps = dispatch => ({
+  createProfile: data => dispatch(createProfile(data)),
+})
 
 const mapStateToProps = state => ({
   profile: state.profile,
 })
-export default connect(mapStateToProps, { companyFill })(SettingProfile)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)

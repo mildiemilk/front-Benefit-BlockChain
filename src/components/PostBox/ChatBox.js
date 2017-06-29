@@ -17,11 +17,6 @@ import {
 } from 'semantic-ui-react'
 
 export default class ChatBox extends Component {
-   constructor(props) {
-    super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-    this.onChange = (editorState) => this.setState({editorState});
-  }
 
   render() {
     return (
@@ -64,7 +59,7 @@ export default class ChatBox extends Component {
         </Comment>
         <div style={{ marginTop: '30%' }}>
           <Form reply>
-            <test/>
+             <Form.TextArea />
             <Button
               style={{
                 width: '210px',

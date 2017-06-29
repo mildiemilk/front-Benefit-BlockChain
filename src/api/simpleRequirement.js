@@ -1,7 +1,7 @@
 import { APIRequest } from '.'
 import { authenticateSuccess } from '../reducers/auth'
 
-const SIMPLERQ_URI = 'api/simpleRequirement'
+const SIMPLERQ_URI = 'admin/simpleRequirement'
 export function fillSimpleRQ(
   numberOfEmployee,
   typeOfInsurance,

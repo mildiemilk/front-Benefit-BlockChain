@@ -1,4 +1,3 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -7,8 +6,8 @@ import Async from 'react-code-splitting'
 
 import SidebarLeft from './sidebar'
 import Header from './Header'
-import SettingProfile from './Auth/SettingProfile/SettingProfile'
-import Postbox from './PostBox/PostBox'
+import SettingProfile from './SettingProfile/SettingProfile'
+import Postbox from './PostBox'
 import simpleRQ from './SimpleRQ'
 import dashboard from './Dashboard'
 import Login from './Auth/Login'
@@ -17,10 +16,12 @@ import Signup from './Auth/Signup'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
+import ViewAllPlan from './ViewAllPlan'
+
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-    <SidebarLeft />
+    {/*<SidebarLeft />*/}
     {isAuthenticated
       ? <Switch>
           <Route path="/postbox" component={Postbox} />
@@ -31,7 +32,8 @@ const App = ({ isAuthenticated }) => (
       : <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Redirect to={{ pathname: '/login' }} />
+           <Route path="/settingprofile" component={SettingProfile} />
+          {/*<Redirect to={{ pathname: '/login' }} />*/}
         </Switch>}
   </div>
 )
@@ -46,4 +48,3 @@ const mapStateToProps = state => ({
 
 const Container = connect(mapStateToProps)(App)
 export default withRouter(Container)
->>>>>>> 37bd68263ffdb86bf72fa1d826334ce2740df4c0

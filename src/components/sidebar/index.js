@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Icon, Item} from 'semantic-ui-react'
+import { Menu, Icon, Item } from 'semantic-ui-react'
 
 export default class SidebarLeft extends Component {
   state = { activeItem: 'home' }
@@ -38,35 +38,47 @@ export default class SidebarLeft extends Component {
     const { activeItem } = this.state
 
     return (
-      <div  style={{width:'230px', height:'950px'}}>
-        <Item.Group style={{ fontSize:'110%', width: '200px', height:'50px',paddingTop:'10px',margin:'33px',cursor:'pointer'}} relaxed>
-          <Item  onClick={this.handleItemClick1}   >
-            <Icon  name='home' size='large' />
-            <Item.Content verticalAlign='middle'>Dashboard</Item.Content>
+      <div style={{ width: '230px', height: '950px' }}>
+        <Item.Group
+          style={{
+            fontSize: '110%',
+            width: '200px',
+            height: '50px',
+            paddingTop: '10px',
+            margin: '33px',
+            cursor: 'pointer',
+          }}
+          relaxed
+        >
+          <Item onClick={this.handleItemClick1}>
+            <Icon name="home" size="large" />
+            <Item.Content verticalAlign="middle">Dashboard</Item.Content>
           </Item>
-          <Item onClick={this.handleItemClick2} >
-             <Icon  name='book' size='large'/>
-            <Item.Content verticalAlign='middle'>แผนของคุณ</Item.Content>
+          <Item onClick={this.handleItemClick2}>
+            <Icon name="book" size="large" />
+            <Item.Content verticalAlign="middle">แผนของคุณ</Item.Content>
           </Item>
-          <Item onClick={this.handleItemClick3} >
-            <Icon  name='group' size='large' />
-            <Item.Content  verticalAlign='middle'>อัพเดทจำนวนพนักงาน </Item.Content>
+          <Item onClick={this.handleItemClick3}>
+            <Icon name="group" size="large" />
+            <Item.Content verticalAlign="middle">
+              อัพเดทจำนวนพนักงาน{' '}
+            </Item.Content>
           </Item>
-          <Item onClick={this.handleItemClick4} >
-            <Icon  name='newspaper' size='large'/>
-            <Item.Content  verticalAlign='middle'>รายการเคลม</Item.Content>
+          <Item onClick={this.handleItemClick4}>
+            <Icon name="newspaper" size="large" />
+            <Item.Content verticalAlign="middle">รายการเคลม</Item.Content>
           </Item>
-          <Item onClick={this.handleItemClick5} >
-            <Icon  name='checked calendar' size='large'/>
-            <Item.Content  verticalAlign='middle'>เตือนความจำ</Item.Content>
+          <Item onClick={this.handleItemClick5}>
+            <Icon name="checked calendar" size="large" />
+            <Item.Content verticalAlign="middle">เตือนความจำ</Item.Content>
           </Item>
-          <Item onClick={this.handleItemClick6} >
-            <Icon  name='user' size='large'/>
-            <Item.Content  verticalAlign='middle'>โปรไฟล์ของคุณ</Item.Content>
+          <Item onClick={this.handleItemClick6}>
+            <Icon name="user" size="large" />
+            <Item.Content verticalAlign="middle">โปรไฟล์ของคุณ</Item.Content>
           </Item>
-          <Item onClick={this.handleItemClick7} >
-            <Icon  name='setting' size='large'/>
-            <Item.Content  verticalAlign='middle'>ตั้งค่า</Item.Content>
+          <Item onClick={this.handleItemClick7}>
+            <Icon name="setting" size="large" />
+            <Item.Content verticalAlign="middle">ตั้งค่า</Item.Content>
           </Item>
         </Item.Group>
       </div>

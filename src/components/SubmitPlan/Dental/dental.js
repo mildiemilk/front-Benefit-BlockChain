@@ -56,25 +56,25 @@ class Dental extends Component {
           <div className="row">
             <div className="large-3 columns">
               <Link className="x-tab" to="/IPD">
-                <img src={bed} className="imageMenu" />
+                <img src={bed} />
                 <span className="text-menu">IPD</span>
               </Link>
             </div>
             <div className="large-3 columns">
               <Link className="x-tab" to="/OPD">
-                <img src={stethoscope} className="imageMenu" />
+                <img src={stethoscope} />
                 <span className="text-menu">OPD</span>
               </Link>
             </div>
             <div className="large-3 columns">
               <Link className="x-tab" to="/dental">
-                <img src={tooth} className="imageMenu" />
+                <img src={tooth} />
                 <span className="text-menu-active">Dental</span>
               </Link>
             </div>
             <div className="large-3 columns">
               <Link className="x-tab" to="/life">
-                <img src={heart} className="imageMenu" />
+                <img src={heart} />
                 <span className="text-menu">Life</span>
               </Link>
             </div>
@@ -93,23 +93,25 @@ class Dental extends Component {
                 />
                 <p> บาท/ปี</p>
               </Form.Group>
-              <Button
-                style={{
-                  marginTop: '3%',
-                  textAlign: 'center',
-                  width: '164px',
-                  height: '40px',
-                  backgroundColor: '#3A7BD5',
-                  color: 'white',
-                  float: 'right',
-                  borderRadius: '20px',
-                  marginRight: '5%',
-                  marginBottom: '3%',
-                }}
-                type="submit"
-              >
-                บันทึก
-              </Button>
+              <div className="row">
+                <Button
+                  style={{
+                    marginTop: '3%',
+                    textAlign: 'center',
+                    width: '164px',
+                    height: '40px',
+                    backgroundColor: '#3A7BD5',
+                    color: 'white',
+                    float: 'right',
+                    borderRadius: '20px',
+                    marginRight: '5%',
+                    marginBottom: '3%',
+                  }}
+                  type="submit"
+                >
+                  บันทึก
+                </Button>
+              </div>
             </Form>
           </div>
         </div>

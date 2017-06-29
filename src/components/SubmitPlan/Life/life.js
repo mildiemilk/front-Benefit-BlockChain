@@ -85,7 +85,6 @@ class Life extends Component {
               </Link>
             </div>
           </div>
-
           <div className="paragraph">
             <p className="head">ประกันชีวิต (Life)</p>
             <br />
@@ -144,23 +143,25 @@ class Life extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-              <Button
-                style={{
-                  marginTop: '3%',
-                  textAlign: 'center',
-                  width: '164px',
-                  height: '40px',
-                  backgroundColor: '#3A7BD5',
-                  color: 'white',
-                  float: 'right',
-                  borderRadius: '20px',
-                  marginRight: '5%',
-                  marginBottom: '3%',
-                }}
-                type="submit"
-              >
-                บันทึก
-              </Button>
+              <div className="row">
+                <Button
+                  style={{
+                    marginTop: '3%',
+                    textAlign: 'center',
+                    width: '164px',
+                    height: '40px',
+                    backgroundColor: '#3A7BD5',
+                    color: 'white',
+                    float: 'right',
+                    borderRadius: '20px',
+                    marginRight: '5%',
+                    marginBottom: '3%',
+                  }}
+                  type="submit"
+                >
+                  บันทึก
+                </Button>
+              </div>
             </Form>
           </div>
         </div>

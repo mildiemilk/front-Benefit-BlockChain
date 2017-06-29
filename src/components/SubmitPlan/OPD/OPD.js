@@ -156,7 +156,7 @@ class OPD extends Component {
                 </Form.Group>
                 <br />
                 <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-                {this.state.showCoPlay ? <CoPlay /> : null}
+                {this.state.showCoPlay ? <CoPlay /> : ''}
                 <br />
                 <Button
                   style={{

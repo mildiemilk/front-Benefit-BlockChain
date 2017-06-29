@@ -22,7 +22,7 @@ const Header = () => (
     </Menu.Item>
     <Menu.Item name="signup" position="right" onClick={this.handleItemClick}>
       <div>
-        <span>บริษัทโจร500จำกัด </span>
+        <span style={{ fontFamily: 'Kanit' }}>บริษัทโจร500จำกัด </span>
         <Image src={avatarn} avatar />
       </div>
     </Menu.Item>

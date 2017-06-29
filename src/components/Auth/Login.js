@@ -8,7 +8,7 @@ import { companyFill } from '../../actions'
 import { Button, Checkbox, Form, Grid, Image, Input } from 'semantic-ui-react'
 import userIcon from '../image/icons8-user.png'
 import gift from '../image/gigift.jpg'
-import logo from '../image/logo.jpg'
+import logo from '../image/logo.png'
 import '../../styles/loginstyle.scss'
 import passwordIcon from '../image/icons8-password.png'
 import { authenticate } from '../../api/auth'
@@ -47,7 +47,9 @@ class Login extends Component {
       <div>
         <div className="row">
           <div className="large-10 large-offset-4 columns">
-            <img src={logo} className="logostyle" />
+            <div className="logostyle">
+              <img src={logo} />
+            </div>
           </div>
         </div>
         <div className="inbox">
@@ -56,10 +58,10 @@ class Login extends Component {
               <img src={gift} className="gift" />
             </div>
             <div className="large-5 columns">
-              <div style={{ marginRight: '15px' }}>
-                <h2 style={{ marginTop: '65px' }}>เข้าสู่ระบบ</h2>
+              <div>
+                <h2 style={{ marginTop: '23%' }}>เข้าสู่ระบบ</h2>
                 <p>เข้าด้วย E-mail ของคุณหรือ Username</p>
-                <hr className="line1" />
+                <hr className="line0" />
                 <Form
                   style={{ paddingLeft: '0px' }}
                   onSubmit={this.handleSubmit}
@@ -71,7 +73,7 @@ class Login extends Component {
                         backgroundImage: `url(${userIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
-                        paddingLeft: '35px',
+                        paddingLeft: '13%',
                       }}
                       placeholder="อีเมลของคุณ"
                       name="email"
@@ -85,7 +87,7 @@ class Login extends Component {
                         backgroundImage: `url(${passwordIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
-                        paddingLeft: '35px',
+                        paddingLeft: '13%',
                       }}
                       placeholder="พาสเวิร์ด"
                       name="password"
@@ -112,13 +114,13 @@ class Login extends Component {
                 <p className="question">ยังไม่เคยสมัคร?</p>
                 <Button
                   style={{
-                    marginTop: '3px',
+                    marginTop: '3%',
                     textAlign: 'center',
                     width: '315px',
                     fontSize: '11.4px',
                     backgroundColor: '#F7555F',
                     color: 'white',
-                    marginBottom: '85px',
+                    marginBottom: '10%',
                   }}
                   type="button"
                   onClick={() => this.signUpHandler()}

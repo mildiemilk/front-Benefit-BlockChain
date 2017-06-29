@@ -14,7 +14,10 @@ export const Box = styled.input`
   padding: 2%;
   width: 100%;
 	height: auto;
-  
+  &::-webkit-input-placeholder {
+        color: #323028;
+        opacity: 0.15;
+    }
 `
 export const Border = styled.div`
   padding-top:5px;
@@ -22,7 +25,7 @@ export const Border = styled.div`
 `
 
 export const Head = styled.h2`
-  padding-bottom: 5px;
+  padding-bottom: 24px;
 `
 export const Detail1 = styled.p`
   padding-bottom: 2px;
@@ -38,19 +41,23 @@ export const Detail2 = styled.p`
   font-weight:bold;
 `
 export const Detail3 = styled.p`
-  margin: 2px;
+  margin: 4px 0px;
+  
    
 `
 
 export const Oval = styled.button`
-  width: 70%;
+  width: 60%;
   height: auto;
   border-radius: 20px;
+  border: none;
   background-color: #3a7bd5;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   color: white;
-  margin-top:7%;
-  margin-left:15%;
+  margin: auto;
+  display: block;
   text-align:center;
-  padding: 5%;
+  padding: 4%;
+  margin-top: 4%;
+  
 `

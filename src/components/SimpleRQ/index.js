@@ -17,8 +17,21 @@ import {
   Form,
   Checkbox,
   Modal,
+  Image,
 } from 'semantic-ui-react'
 import { fillSimpleRQ } from '../../api/simpleRequirement'
+
+import ModalSimpleRQ from './ModalSimpleRQ'
+import styled from 'react-sc'
+
+const CardHeader = styled(Card)`
+    &&&{
+      margin: 0 0 0 0;
+      padding-top: 0.2%;
+      font-size: 20px;
+      box-shadow: 0 0 0 0;
+    }
+  `
 
 class simpleRQ extends Component {
   constructor() {
@@ -71,17 +84,17 @@ class simpleRQ extends Component {
     return (
       <div id="simpleRQ">
         <Container id="containerWithBg">
-          <h1 id="topic"> จัดแผนสิทธิประโยชน์ </h1>
+          <p id="topic"> จัดแผนสิทธิประโยชน์ </p>
           <Divider />
           <Step.Group size="mini" ordered items={simpleRQOption.steps} />
           <Card fluid id="cardSimpleRQ">
-            <Card.Header>
-              <h1 id="headCardRQ"> แผนประกันที่ต้องการ </h1>
-            </Card.Header>
+            <CardHeader>
+              <p id="headCardRQ"> แผนประกันที่ต้องการ </p>
+            </CardHeader>
             <Grid>
               <Grid.Row>
                 <Grid.Column width={5}>
-                  <h3> จำนวนพนักงาน </h3>
+                  <p> จำนวนพนักงาน </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
                   <Select
@@ -96,7 +109,7 @@ class simpleRQ extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={5}>
-                  <h3> รูปแบบประกันที่ต้องการ </h3>
+                  <p> รูปแบบประกันที่ต้องการ </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
                   <Input
@@ -110,7 +123,7 @@ class simpleRQ extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={5}>
-                  <h3> อัพโหลดแผนประกันที่ใช้ในปัจจุบัน </h3>
+                  <p> อัพโหลดแผนประกันที่ใช้ในปัจจุบัน </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
                   <Button id="uploadButton">อัพโหลดไฟล์</Button>
@@ -118,7 +131,7 @@ class simpleRQ extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={5}>
-                  <h3> วันหมดอายุของกรมธรรม์ </h3>
+                  <p> วันหมดอายุของกรมธรรม์ </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
                   <Select
@@ -146,7 +159,7 @@ class simpleRQ extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={5}>
-                  <h3> สิทธิประโยชน์ที่ต้องการ </h3>
+                  <p> สิทธิประโยชน์ที่ต้องการ </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
                   <Form>
@@ -202,9 +215,7 @@ class simpleRQ extends Component {
               </Grid.Row>
             </Grid>
           </Card>
-          <Button floated="right" id="postButton" onClick={this.handlePost}>
-            โพสท์
-          </Button>
+          <ModalSimpleRQ data={this.state} />
         </Container>
       </div>
     )

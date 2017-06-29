@@ -14,12 +14,7 @@ export default class Steps extends Component {
   render() {
     return (
       <div>
-        <Step.Group
-          style={{ borderLeftRadius: '20px' }}
-          size="mini"
-          ordered
-          items={steps}
-        />
+        <Step.Group size="mini" ordered items={steps} />
       </div>
     )
   }

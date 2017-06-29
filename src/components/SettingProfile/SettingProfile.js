@@ -46,13 +46,13 @@ const NextButton = styled.button`
     display: block;
     text-align:center;
     padding: 5%;
-  
+
 `
 const UploadImage = styled.div`
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-  
+
 `
 const BusinessTypes = [
   {
@@ -89,32 +89,32 @@ class SettingProfile extends Component {
     this.state = {
       companyName: '',
       location: '',
-      HR: '',
+      hrDetail: '',
       tel: '',
       typeOfBusiness: '',
       numberOfEmployees: '',
       companyBroker: '',
       companyInsurer: '',
       file: '',
-      imagePreviewUrl: ''
+      imagePreviewUrl: '',
     }
   }
- _handleSubmit(e) {
-    e.preventDefault();
+  _handleSubmit(e) {
+    e.preventDefault()
     // TODO: do something with -> this.state.file
-    console.log('handle uploading-', this.state.file);
+    console.log('handle uploading-', this.state.file)
   }
   _handleImageChange(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    let reader = new FileReader();
-    let file = e.target.files[0];
+    let reader = new FileReader()
+    let file = e.target.files[0]
 
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result
-      });
+        imagePreviewUrl: reader.result,
+      })
     }
 
     reader.readAsDataURL(file)
@@ -125,7 +125,7 @@ class SettingProfile extends Component {
     const {
       companyName: { value: companyName },
       location: { value: location },
-      HR: { value: HR },
+      hrDetail: { value: hrDetail },
       tel: { value: tel },
       companyBroker: { value: companyBroker },
       companyInsurer: { value: companyInsurer },
@@ -134,41 +134,57 @@ class SettingProfile extends Component {
     this.setState({
       companyName: companyName,
       location: location,
-      HR: HR,
+      hrDetail: hrDetail,
       tel: tel,
       companyBroker: companyBroker,
       companyInsurer: companyInsurer,
     })
 
-    this.props.createProfile(this.state)
+    const { typeOfBusiness, numberOfEmployees } = this.state
+    this.props.createProfile({
+      companyName,
+      location,
+      hrDetail,
+      tel,
+      typeOfBusiness,
+      numberOfEmployees,
+      companyBroker,
+      companyInsurer,
+    })
   }
-  onInputChange(value,stateName) {
-    this.setState({[stateName]:value})
+  onInputChange(value, stateName) {
+    this.setState({ [stateName]: value })
   }
-  
+
   render() {
-    const {profile} =this.props;
+    const { profile } = this.state
     // console.log(this.state)
     console.log('profile: ')
-    console.log(profile)
-    let {imagePreviewUrl} = this.state;
-    let $imagePreview = null;
+    console.log(this.state)
+    let { imagePreviewUrl } = this.state
+    let $imagePreview = null
     // let elmnt = document.getElementById("Image")
     // let width = elmnt.clientWidth;
     // let height = elmnt.clientHeight;
     // console.log('pic'+height);
     if (imagePreviewUrl) {
       // if(height===40){
-      //   $imagePreview = 
+      //   $imagePreview =
       //   (<div className="thumbnail">
       //     <img id='Image' className="portrait" src={imagePreviewUrl} />
       //   </div>)}
       // else{
-        
-        $imagePreview = (<div className="thumbnail"  ><img id='Image'  src={imagePreviewUrl} /></div>);
+
+      $imagePreview = (
+        <div className="thumbnail">
+          <img id="Image" src={imagePreviewUrl} />
+        </div>
+      )
       // }
     } else {
-      $imagePreview = (<div className='preview'>Please select an Image for Preview</div>);
+      $imagePreview = (
+        <div className="preview">Please select an Image for Preview</div>
+      )
     }
     return (
       <div style={{ background: '#F1F1F1', paddingTop: '5%' }}>
@@ -177,120 +193,108 @@ class SettingProfile extends Component {
             <Head>กรุณาตั้งค่าโปรไฟล์</Head>
           </div>
         </div>
-      
+
         <div className="row">
           <div className="large-4 large-offset-1 columns">
-                <SegmentWithHeight>
-                  <Detail1>
-                    อัพโหลดโลโก้
-                  </Detail1>
-                  <div
-                   >{$imagePreview}</div>
-                    
-                    <Oval><input className="previewInput"
-                      type="file" 
-                      onChange={(e)=>this._handleImageChange(e)} />อัพโหลดรูปภาพ</Oval>
-                
-           
-                </SegmentWithHeight>
+            <SegmentWithHeight>
+              <Detail1>
+                อัพโหลดโลโก้
+              </Detail1>
+              <div>{$imagePreview}</div>
+
+              <Oval>
+                <input
+                  className="previewInput"
+                  type="file"
+                  onChange={e => this._handleImageChange(e)}
+                />
+                อัพโหลดรูปภาพ
+              </Oval>
+
+            </SegmentWithHeight>
           </div>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="large-6 columns">
-                      <Segment raised>
-                        <Detail2>
-                          ข้อมูลบริษัท
-                        </Detail2>
-                        <Detail3>
-                          ชื่อบริษัท
-                        </Detail3>
-                        <Box
-                          name="companyName"
-                          size="big"
-                          placeholder="ชื่อบริษัท"
-                          required
-                        />
-                        <Detail3>
-                          ที่อยู่บริษัท
-                        </Detail3>
-                        <Box
-                          name="location"
-                          size="big"
-                          placeholder="ที่อยู่บริษัท"
-                          
-                        />
-                        <Detail3>
-                          บุคคลติดต่อหลัก
-                        </Detail3>
-                        <Box
-                          name="HR"
-                          size="big"
-                          placeholder="บุคคลติดต่อหลัก"
-                  
-                        />
-                        <Detail3>
-                          เบอร์โทร
-                        </Detail3>
-                        <Box
-                          name="tel"
-                          size="big"
-                          placeholder="เบอร์โทร"
-                    
-                        />
-                        <Detail3>
-                          ประเภทธุรกิจ
-                        </Detail3>
-                        <Dropdown
-                          placeholder="ประเภทธุรกิจ"
-                          onChange={(t, data) => this.onInputChange(data.value,'typeOfBusiness')}
-                          name="typeOfBusiness"
-                          fluid
-                          selection
-                          options={BusinessTypes}
-                        />
-                        <Detail3>
-                          จำนวนพนักงาน
-                        </Detail3>
-                        <Dropdown
-                          placeholder="จำนวนพนักงาน"
-                          onChange={(n, data) => this.onInputChange(data.value,'numberOfEmployees')}
-                          name="numberOfEmployees"
-                          fluid
-                          selection
-                          options={NumberOfEmployees}
-                        />
-                        <Detail3>
-                          Broker ที่ใช้ในปัจจุบัน
-                        </Detail3>
-                        <Box
-                          name="companyBroker"
-                          size="big"
-                          placeholder="Broker ที่ใช้ในปัจจุบัน"
-                        
-                        />
-                        <Detail3>
-                          บริษัทประกันที่ใช้ในปัจจุบัน
-                        </Detail3>
-                        <Box
-                          name="companyInsurer"
-                          size="big"
-                          placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
-                        />
-                      </Segment>
-                    </div>
-                    <div className="row">
-                      <div className="large-2 large-offset-9 columns">
-                        <NextButton type="submit"> ต่อไป </NextButton>
-                      </div>
-                    </div>
-                </form>
-      </div>
+          <form onSubmit={this.handleSubmit}>
+            <div className="large-6 columns">
+              <Segment raised>
+                <Detail2>
+                  ข้อมูลบริษัท
+                </Detail2>
+                <Detail3>
+                  ชื่อบริษัท
+                </Detail3>
+                <Box
+                  name="companyName"
+                  size="big"
+                  placeholder="ชื่อบริษัท"
+                  required
+                />
+                <Detail3>
+                  ที่อยู่บริษัท
+                </Detail3>
+                <Box name="location" size="big" placeholder="ที่อยู่บริษัท" />
+                <Detail3>
+                  บุคคลติดต่อหลัก
+                </Detail3>
+                <Box name="hrDetail" size="big" placeholder="บุคคลติดต่อหลัก" />
+                <Detail3>
+                  เบอร์โทร
+                </Detail3>
+                <Box name="tel" size="big" placeholder="เบอร์โทร" />
+                <Detail3>
+                  ประเภทธุรกิจ
+                </Detail3>
+                <Dropdown
+                  placeholder="ประเภทธุรกิจ"
+                  onChange={(t, data) =>
+                    this.onInputChange(data.value, 'typeOfBusiness')}
+                  name="typeOfBusiness"
+                  fluid
+                  selection
+                  options={BusinessTypes}
+                />
+                <Detail3>
+                  จำนวนพนักงาน
+                </Detail3>
+                <Dropdown
+                  placeholder="จำนวนพนักงาน"
+                  onChange={(n, data) =>
+                    this.onInputChange(data.value, 'numberOfEmployees')}
+                  name="numberOfEmployees"
+                  fluid
+                  selection
+                  options={NumberOfEmployees}
+                />
+                <Detail3>
+                  Broker ที่ใช้ในปัจจุบัน
+                </Detail3>
+                <Box
+                  name="companyBroker"
+                  size="big"
+                  placeholder="Broker ที่ใช้ในปัจจุบัน"
+                />
+                <Detail3>
+                  บริษัทประกันที่ใช้ในปัจจุบัน
+                </Detail3>
+                <Box
+                  name="companyInsurer"
+                  size="big"
+                  placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
+                />
+              </Segment>
+            </div>
+            <div className="row">
+              <div className="large-2 large-offset-9 columns">
+                <NextButton type="submit"> ต่อไป </NextButton>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
 }
 
-SettingProfile.propTypes = {
-}
+SettingProfile.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
@@ -301,9 +305,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)
-
-
-
-
-         
-  

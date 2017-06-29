@@ -1,5 +1,5 @@
 import { APIRequest } from '.'
-import { createProfileSuccess } from '../reducers/profile'
+import { createProfileSuccess, createProfileFailure } from '../reducers/profile'
 
 const PROFILE_URI = '/admin/registerCompany'
 
@@ -15,8 +15,12 @@ export function createProfile(profile) {
       .then(res => {
         localStorage.setItem('profile', res.data.profile)
         dispatch(createProfileSuccess(res.data))
+        window.location.href = '/dashboard'
       })
-      .catch(err => console.log(err.response))
+      .catch(err => {
+        dispatch(createProfileFailure(err.response.data))
+        console.log(err.response)
+      })
   }
 }
 

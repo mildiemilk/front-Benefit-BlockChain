@@ -20,7 +20,9 @@ import CoPlay from './CoPlay'
 class IPD3 extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      permit: false,
+    }
   }
 
   static propTypes = {}
@@ -29,8 +31,13 @@ class IPD3 extends Component {
     this.setState({ nameInput: e.target.value })
   }
 
-  signUpHandler() {
-    window.location.href = '/signup'
+  handleToggle = () => {
+    if (this.state.permit) {
+      document.getElementById('fillChoice3').value = ''
+      this.setState({ permit: false })
+    } else {
+      this.setState({ permit: true })
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -38,127 +45,191 @@ class IPD3 extends Component {
   render() {
     return (
       <div>
-        <p>1. ค่าห้อง ค่าอาหาร และค่าบริการ</p>
-        <div className="paragraph">
-          <Form.Group inline>
-            <Form.Input
-              label="1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา (สูงสุดต่อวัน)"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p> บาท</p>
-          </Form.Group>
-          <Form.Group inline>
-            <Form.Input
-              label="1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก (สูงสุดต่อวัน)"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท</p>
-          </Form.Group>
-        </div>
-        <Form.Group inline>
-          <Form.Input
-            label="2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน"
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
-          <p className="selectText"> บาท</p>
-        </Form.Group>
-        <Form.Group inline>
-          <Form.Input
-            label="3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ"
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
-          <p className="selectText"> บาท</p>
-        </Form.Group>
-        <p className="selectText">4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
-        <div className="paragraph">
-          <p>
-            4.1  ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิตและส่วนประกอบของโลหิตค่าตรวจทางห้อง
-          </p>
-          <p className="paragraph1">
-            ปฏิบัติการอุปกรณ์ทางการแพทย์ ค่าห้องผ่าตัดและอุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด
-          </p>
-          <Form.Group inline style={{ marginLeft: '3%' }}>
-            <Form.Input
-              label="กิจกรรมบำบัด ค่าแพทย์วิสัญญี/พยาบาลวิสัญญี คุ้มครองสูงสุด"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท/ครั้ง</p>
-          </Form.Group>
-          <Form.Group inline>
-            <Form.Input
-              label="4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็ก"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท/ครั้ง</p>
-          </Form.Group>
-          <Form.Group inline>
-            <Form.Input
-              label="4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการผ่าตัด"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท/ครั้ง</p>
-          </Form.Group>
-          <Form.Group inline>
-            <Form.Input
-              label="4.4 ค่าบริการรถพยาบาล"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท/ครั้ง</p>
-          </Form.Group>
-          <Form.Group inline>
-            <Form.Input
-              label="4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24 ช.ม.หลังเกิดอุบัติเหตุ"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท/ครั้ง</p>
-          </Form.Group>
-          <p>
-            4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภายหลังจากการออกจากโรงพยาบาลรวมถึงค่า
-          </p>
-          <p className="paragraph1">
+        <div className="row">
+          <div className="large-9 columns">
+            <p>ระบุรูปแบบที่ต้องการ</p>
+            <p>1. ค่าห้อง ค่าอาหาร และค่าบริการ</p>
+            <div className="paragraph">
+              <p>
+                1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา (สูงสุดต่อวัน)
+              </p>
+              <p>
+                1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก (สูงสุดต่อวัน)
+              </p>
+            </div>
+            <br />
+            <p>2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน</p>
+            <span>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ</span>
             {' '}
-            รักษาพยาบาลแบบผู้ป่วยนอก และค่ากายภาพบำบัดที่ต่อเนื่องจากผู้ป่วยใน (สูงสุดไม่เกิน 30 วัน)
-          </p>
-          <Form.Group inline style={{ marginLeft: '3%' }}>
-            <Form.Input
-              label=" คุ้มครองสูงสุด"
-              placeholder="จำนวนเงิน"
-              name=""
-              onChange={this.handleChange}
-            />
-            <p className="selectText"> บาท/ครั้ง</p>
-          </Form.Group>
+            <Checkbox toggle onClick={this.handleToggle} />
+            <br />
+            <br />
+            <p>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
+            <div className="paragraph">
+              <p>
+                4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิตและส่วนประกอบ
+              </p>
+              <div className="paragraph1">
+                <p>
+                  ของโลหิตค่าตรวจทางห้องปฎิบัติการอุปกรณ์ทางการแพทย์ ค่าห้อง
+                </p>
+                <p>
+                  ผ่าตัดและอุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/กิจกรรมบำบัด
+                </p>
+                <p>ค่าแพทย์วิสัญญี/พยาบาลวัสัญญี คุ้มครองสูงสุดต่อครั้ง </p>
+              </div>
+              <br />
+              <p>4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง</p>
+              <p>
+                4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการผ่าตัดต่อครั้ง
+              </p>
+              <p>4.4 ค่าบริการรถพยาบาลต่อครั้ง</p>
+              <p>
+                4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24 ช.ม.หลังเกิดอุบัติเหตุต่อครั้ง
+              </p>
+              <p>
+                4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภายหลังจากการออก
+              </p>
+              <div className="paragraph1">
+                <p>จากโรงพยาบาลต่อเนื่องภายหลังจากการออก</p>
+                <p>
+                  กายภาพบำบัดที่ต่อเนื่องจากผู้ป่วย(สูงสุดไม่เกิน 30 วัน)คุ้มครอง
+                </p>
+                <p>สูงสุดต่อครั้ง</p>
+              </div>
+              <br />
+              <p>
+                5. ค่ารักษากรณี ปลูกถ่ายไขกระดูก,เปลี่ยนถ่ายอวัยวะ, การฟอกไต(ไม่รวมค่า
+              </p>
+              <div className="paragraph1">
+                <p>ใช้จ่ายของผู้บริจาคอวัยวะ) (ปีล่ะไม่เกิน)</p>
+              </div>
+            </div>
+          </div>
+          <div className="large-3 columns">
+            <Form>
+              <Form.Group
+                inline
+                style={{ marginTop: '35%', marginBottom: '5%' }}
+              >
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              {}
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                {this.state.permit
+                  ? <Form.Input
+                      style={{ height: '30px', width: '100px' }}
+                      placeholder="จำนวนเงิน"
+                      name=""
+                      onChange={this.handleChange}
+                      id="fillChoice3"
+                    />
+                  : <Form.Input
+                      style={{ height: '30px', width: '100px' }}
+                      placeholder="จำนวนเงิน"
+                      name=""
+                      onChange={this.handleChange}
+                      readOnly
+                      id="fillChoice3"
+                    />}
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginTop: '25%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group
+                inline
+                style={{ marginTop: '59%', marginBottom: '5%' }}
+              >
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group
+                inline
+                style={{ marginTop: '55%', marginBottom: '5%' }}
+              >
+                <Form.Input
+                  style={{ height: '30px', width: '100px' }}
+                  placeholder="จำนวนเงิน"
+                  name=""
+                  onChange={this.handleChange}
+                />
+                <p> บาท</p>
+              </Form.Group>
+            </Form>
+          </div>
         </div>
-        <p>
-          5. ค่ารักษากรณี ปลูกถ่ายไขกระดูก, เปลี่ยนถ่ายอวัยวะ, การฟอกไต (ไม่รวมค่าใช้จ่ายของผู้บริจาคอวัยวะ)
-        </p>
-        <Form.Group inline style={{ marginLeft: '3%' }}>
-          <Form.Input
-            label="(ปีละไม่เกิน)**"
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
-          <p className="selectText"> บาท/ครั้ง</p>
-        </Form.Group>
       </div>
     )
   }

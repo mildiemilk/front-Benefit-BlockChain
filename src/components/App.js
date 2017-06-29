@@ -16,6 +16,7 @@ import OPD from './Submitplan/OPD/OPD'
 import Life from './Submitplan/Life/life'
 import Dental from './Submitplan/Dental/dental'
 import Signup from './Auth/Signup'
+// import welcomePage from './welcome'
 
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
@@ -47,7 +48,7 @@ const App = ({ isAuthenticated }) => (
           <Route path="/postbox" component={Postbox} />
           <Route path="/signup" component={Signup} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/settingprofile" component={SettingProfile} />
+          {/*<Route path="/welcomePage" component={welcomePage} />*/}
           <Redirect to={{ pathname: '/login' }} />
         </Switch>}
   </div>

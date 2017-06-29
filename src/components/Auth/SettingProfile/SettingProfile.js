@@ -44,7 +44,7 @@ const NextButton = styled.button`
     margin-right:26%;
     margin-left:auto;
     padding: 0.5%;
-  
+
 `
 const BusinessTypes = [
   {
@@ -81,7 +81,7 @@ class SettingProfile extends Component {
     this.state = {
       companyName: '',
       location: '',
-      HR: '',
+      hrDetail: '',
       tel: '',
       typeOfBusiness: '',
       numberOfEmployees: '',
@@ -96,7 +96,7 @@ class SettingProfile extends Component {
     const {
       companyName: { value: companyName },
       location: { value: location },
-      HR: { value: HR },
+      hrDetail: { value: hrDetail },
       tel: { value: tel },
       companyBroker: { value: companyBroker },
       companyInsurer: { value: companyInsurer },
@@ -105,7 +105,7 @@ class SettingProfile extends Component {
     this.setState({
       companyName: companyName,
       location: location,
-      HR: HR,
+      hrDetail: hrDetail,
       tel: tel,
       companyBroker: companyBroker,
       companyInsurer: companyInsurer,
@@ -174,7 +174,7 @@ class SettingProfile extends Component {
                     บุคคลติดต่อหลัก
                   </Detail3>
                   <Box
-                    name="HR"
+                    name="hrDetail"
                     size="big"
                     placeholder="บุคคลติดต่อหลัก"
                     defaultValue={this.props.profile.companyName}

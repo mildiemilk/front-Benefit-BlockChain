@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import Async from 'react-code-splitting'
 
+
 import Header from './Header'
+import SidebarLeft from './sidebar'
 import SettingProfile from './Auth/SettingProfile/SettingProfile'
 import Postbox from './PostBox/PostBox'
 import simpleRQ from './SimpleRQ'
@@ -18,6 +20,7 @@ import '../styles/main.scss'
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
+    <SidebarLeft />
      <Route path="/setting-profile" component={SettingProfile} />
     {/*{isAuthenticated
       ? <Switch>

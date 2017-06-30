@@ -43,14 +43,13 @@ const ButtonNew = styled.button`
     height: 40px;
     border-radius: 20px;
     background-color: #f7555f;
-    margin-left: 30%;
     font-size: 120%;
     border-color: #f7555f;
     border-style: solid;
     color: #ffffff;
     position: absolute;
-    top: 43%;
-    left: 45%;
+    margin-top: 1.5%;
+    margin-left: 50%;
 `
 
 export default class PostBox extends Component {

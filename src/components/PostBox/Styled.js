@@ -15,7 +15,8 @@ export const Space = styled.div`
 export const Reg3 = styled.div`
   width: 100%;
   height: 80px;
-  border-radius: 0px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   background-color: #3a7bd5;
   box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.07);
 `

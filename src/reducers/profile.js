@@ -10,6 +10,8 @@ const defaultProfile = {
   numberOfEmployees: '',
   companyBroker: '',
   companyInsurer: '',
+  message: null,
+  error: false,
 }
 /*
   companyName: localStorage.getItem('profile').companyName,
@@ -55,6 +57,12 @@ export default function profileReducer(state = defaultProfile, action) {
         numberOfEmployees: action.data.numberOfEmployees,
         companyBroker: action.data.companyBroker,
         companyInsurer: action.data.companyInsurer,
+      })
+    case PROFILECOMPANY_REQUEST_FAILURE:
+      console.log(action.data.message)
+      return Object.assign({}, state, {
+        message: action.data.message,
+        error: false,
       })
     default:
       return state

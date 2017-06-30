@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
 
-import auth from './auth'
+import { authReducer, signupReducer } from './auth'
 import profile from './profile'
 
 const rootReducer = combineReducers({
-  auth,
+  authReducer,
+  signupReducer,
   profile,
 })
 

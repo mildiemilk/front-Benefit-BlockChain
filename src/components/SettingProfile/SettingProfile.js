@@ -45,6 +45,11 @@ const NextButton = styled.button`
     margin-top: 20%;
     display: block;
     text-align:center;
+<<<<<<< HEAD
+    margin-right:26%;
+    margin-left:auto;
+    padding: 0.5%;
+=======
     padding: 5%;
 
 `
@@ -53,6 +58,7 @@ const UploadImage = styled.div`
     overflow: hidden;
     border-radius: 50%;
 
+>>>>>>> a811fc6b98c4eea4532e48d2729cc7dfcdd8d3fe
 `
 const BusinessTypes = [
   {

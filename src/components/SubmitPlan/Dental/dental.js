@@ -20,6 +20,7 @@ import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-tooth.jpg'
 import heart from '../../image/icons-8-like1.jpg'
+import erase from '../../image/icons-8-erase.png'
 
 class Dental extends Component {
   constructor() {
@@ -51,7 +52,11 @@ class Dental extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน </p>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <div className="box-in-head-box">
+              <img src={erase} className="image-erase" />
+              <span className="headLogo">Reset</span>
+            </div>
           </div>
           <div className="row">
             <div className="large-3 columns">
@@ -67,7 +72,7 @@ class Dental extends Component {
               </Link>
             </div>
             <div className="large-3 columns">
-              <Link className="x-tab" to="/dental">
+              <Link className="x-tab-active" to="/dental">
                 <img src={tooth} />
                 <span className="text-menu-active">Dental</span>
               </Link>
@@ -80,7 +85,12 @@ class Dental extends Component {
             </div>
           </div>
           <div className="paragraph">
-            <p className="head">ค่ารักษาทันตกรรม (Dental)</p>
+            <br />
+            <p className="head">
+              <u>
+                ค่ารักษาทันตกรรม (Dental)
+              </u>
+            </p>
             <br />
             <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
             <Form>

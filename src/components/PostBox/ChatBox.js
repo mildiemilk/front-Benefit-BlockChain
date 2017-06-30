@@ -18,7 +18,7 @@ import {
 export default class ChatBox extends Component {
   render() {
     return (
-      <Comment.Group style={{ marginLeft: '5%' }}>
+      <Comment.Group style={{ marginLeft: '5%', paddingTop: '5%' }}>
         <Comment>
           <Card style={{ width: '700px' }}>
             <Comment.Content>

@@ -20,11 +20,14 @@ import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like.jpg'
+import erase from '../../image/icons-8-erase.png'
 
 class Life extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      value: '',
+    }
   }
 
   static propTypes = {}
@@ -42,11 +45,13 @@ class Life extends Component {
 
   handleRadio = (e, { value }) => {
     this.setState({ value })
-    if (this.state.value === 'secondChoice') {
-      document.getElementById('secondChoiceMoney').value = ''
-      document.getElementById('secondChoiceMoneyLimit').value = ''
+    if (this.state.value === 'secondLifeChoice') {
+      document.getElementById('lifeChoiceTwo').value = ''
+    } else if (this.state.value === 'firstLifeChoice') {
+      document.getElementById('lifeChoiceOne').value = ''
     } else {
-      document.getElementById('firstChoiceMoney').value = ''
+      document.getElementById('lifeChoiceThreeFirst').value = ''
+      document.getElementById('lifeChoiceThreeTwo').value = ''
     }
   }
 
@@ -57,14 +62,20 @@ class Life extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</p>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <div className="box-in-head-box">
+              <img src={erase} className="image-erase" />
+              <span className="headLogo">Reset</span>
+            </div>
           </div>
           <div className="row">
             <div className="large-3 columns">
-              <Link className="x-tab" to="/IPD">
-                <img src={bed} className="imageMenu" />
-                <span className="text-menu">IPD</span>
-              </Link>
+              <div>
+                <Link className="x-tab" to="/IPD">
+                  <img src={bed} className="imageMenu" />
+                  <span className="text-menu">IPD</span>
+                </Link>
+              </div>
             </div>
             <div className="large-3 columns">
               <Link className="x-tab" to="/OPD">
@@ -79,14 +90,19 @@ class Life extends Component {
               </Link>
             </div>
             <div className="large-3 columns">
-              <Link className="x-tab" to="/life">
+              <Link className="x-tab-active" to="/life">
                 <img src={heart} className="imageMenu" />
                 <span className="text-menu-active">Life</span>
               </Link>
             </div>
           </div>
           <div className="paragraph">
-            <p className="head">ประกันชีวิต (Life)</p>
+            <br />
+            <p className="head">
+              <u>
+                ประกันชีวิต (Life)
+              </u>
+            </p>
             <br />
             <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
             <Form>
@@ -100,11 +116,20 @@ class Life extends Component {
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
-                <Form.Input
-                  placeholder="จำนวนบาท"
-                  name=""
-                  onChange={this.handleChange}
-                />
+                {this.state.value === 'firstLifeChoice'
+                  ? <Form.Input
+                      placeholder="จำนวนบาท"
+                      name="lifeChoiceOne"
+                      id="lifeChoiceOne"
+                      onChange={this.handleChange}
+                    />
+                  : <Form.Input
+                      placeholder="จำนวนบาท"
+                      name="lifeChoiceOne"
+                      id="lifeChoiceOne"
+                      onChange={this.handleChange}
+                      readOnly
+                    />}
                 <p> บาท</p>
               </Form.Group>
               <Form.Group inline>
@@ -112,35 +137,74 @@ class Life extends Component {
                   <Radio
                     label="คูณอัตราเงินเดือน"
                     name="lifeGroup"
-                    value="firstChoice"
+                    value="secondLifeChoice"
                     checked={this.state.value === 'secondLifeChoice'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
-                <Form.Select
-                  placeholder="เท่า"
-                  options={1}
-                  onChange={this.handleChange}
-                />
+                {this.state.value === 'secondLifeChoice'
+                  ? <Form.Select
+                      placeholder="เท่า"
+                      name="lifeChoiceTwo"
+                      id="lifeChoiceTwo"
+                      options={1}
+                      onChange={this.handleChange}
+                    />
+                  : <Form.Select
+                      placeholder="เท่า"
+                      name="lifeChoicTwo"
+                      id="lifeChoiceTwo"
+                      options={1}
+                      onChange={this.handleChange}
+                      disabled
+                    />}
                 <p> เท่า</p>
               </Form.Group>
               <Form.Group inline>
-                <Form.Field
-                  control={Radio}
-                  label="คูณอัตราเงินเดือน"
-                  onChange={this.handleChange}
-                />
-                <Form.Select
-                  placeholder="เท่า"
-                  options={1}
-                  onChange={this.handleChange}
-                />
-                <Form.Input
-                  label="เท่า แต่ไม่เกิน"
-                  placeholder="จำนวนบาท"
-                  name=""
-                  onChange={this.handleChange}
-                />
+                <Form.Field>
+                  <Radio
+                    label="คูณอัตราเงินเดือน"
+                    name="lifeGroup"
+                    value="thirdLifeChoice"
+                    checked={this.state.value === 'thirdtLifeChoice'}
+                    onChange={this.handleRadio}
+                  />
+                </Form.Field>
+                {this.state.value === 'thirdLifeChoice'
+                  ? <div style={{ display: 'inherit' }}>
+                      <Form.Select
+                        placeholder="เท่า"
+                        options={1}
+                        name="lifeChoiceThreeFirst"
+                        id="lifeChoiceThreeFirst"
+                        onChange={this.handleChange}
+                      />
+                      <Form.Input
+                        label="เท่า แต่ไม่เกิน"
+                        placeholder="จำนวนบาท"
+                        name="lifeChoiceThreeTwo"
+                        id="lifeChoiceThreeTwo"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  : <div style={{ display: 'inherit' }}>
+                      <Form.Select
+                        placeholder="เท่า"
+                        options={1}
+                        onChange={this.handleChange}
+                        name="lifeChoiceThreeFirst"
+                        id="lifeChoiceThreeFirst"
+                        disabled
+                      />
+                      <Form.Input
+                        label="เท่า แต่ไม่เกิน"
+                        placeholder="จำนวนบาท"
+                        name="lifeChoiceThreeTwo"
+                        id="lifeChoiceThreeTwo"
+                        onChange={this.handleChange}
+                        readOnly
+                      />
+                    </div>}
                 <p> บาท</p>
               </Form.Group>
               <div className="row">

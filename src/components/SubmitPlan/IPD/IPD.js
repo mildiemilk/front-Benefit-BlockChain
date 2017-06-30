@@ -25,6 +25,7 @@ import bed from '../../image/icons-8-single-bed.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like1.jpg'
+import erase from '../../image/icons-8-erase.png'
 
 class IPD extends Component {
   constructor() {
@@ -70,11 +71,13 @@ class IPD extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</p>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <img src={erase} className="image-erase" />
+            <span className="headLogo">Reset</span>
           </div>
           <div className="row">
             <div className="large-3 columns">
-              <Link className="x-tab" to="/IPD">
+              <Link className="x-tab-active" to="/IPD">
                 <img src={bed} className="imageMenu" />
                 <span className="text-menu-active">IPD</span>
               </Link>
@@ -100,8 +103,10 @@ class IPD extends Component {
           </div>
           <div className="paragraph">
             <br />
-            <p className="head" style={{ marginTop: '5%' }}>
-              ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
+            <p className="head">
+              <u>
+                ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
+              </u>
             </p>
             <br />
             <p className="head">เลือกแผนที่ต้องการ </p>

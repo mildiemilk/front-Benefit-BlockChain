@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Item } from 'semantic-ui-react'
+import './style.scss'
 
 export default class SidebarLeft extends Component {
   state = { activeItem: 'home' }
@@ -38,7 +39,7 @@ export default class SidebarLeft extends Component {
     const { activeItem } = this.state
 
     return (
-      <div style={{ width: '230px', height: '950px' }}>
+      <aside className="sidebar">
         <Item.Group
           style={{
             fontSize: '110%',
@@ -81,7 +82,7 @@ export default class SidebarLeft extends Component {
             <Item.Content verticalAlign="middle">ตั้งค่า</Item.Content>
           </Item>
         </Item.Group>
-      </div>
+      </aside>
     )
   }
 }

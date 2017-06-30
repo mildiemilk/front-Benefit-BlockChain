@@ -2,7 +2,6 @@ import styled from 'react-sc'
 import { Link } from 'react-router-dom'
 
 export const PostBoxFront = styled.div`
-  font-family: Kanit;
   font-size: 32px;
   font-weight: 500;
   letter-spacing: 0.4px;
@@ -14,34 +13,48 @@ export const Space = styled.div`
 `
 
 export const Reg3 = styled.div`
-  width: 1000px;
+  width: 100%;
   height: 80px;
-  border-radius: 8px;
+  border-radius: 0px;
   background-color: #3a7bd5;
   box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.07);
 `
 
-export const Open4 = styled.h1`
-  font-family: Kanit;
-  font-size: 16px;
-  letter-spacing: 0.2px;
-  text-align: left;
-  position: relative;
-  top: 28px;
-  left: 16px;
-  color: #ffffff;
+export const Open4 = styled.span`
+  color: #ffffff !important;
+  margin-left: 2%;
+  margin-top: 2%;
+  position: absolute;
 `
 
-export const Date1 = styled.h1`
-  font-family: Kanit;
-  font-size: 16px;
+export const Time = styled.span`
   letter-spacing: 0.2px;
-  text-align: left;
-  position: relative;
-  top: -16px;
-  left: 196px;
-  color: #ffffff;
+  color: white;
+  position: absolute;
+  margin-left: 15%;
+  margin-top: 2%;
 `
+
+export const ChatBoxName = styled.span`
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  position: absolute;
+  margin-left: 24.5%;
+  margin-top: 1%;
+`
+
+export const RatingStyle = styled.div`
+
+`
+
+export const ChatBoxImg = styled.img`
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 1%;
+`
+
 export const Reg5 = styled.div`
   width: 320px;
   height: 80px;
@@ -81,23 +94,15 @@ export const PostStepBox = styled.div`
 `
 
 export const Reg8 = styled.div`
-  width: 725px;
   height: 645px;
-  border-radius: 8px;
+  width: 100%;
+  border-radius: 0px;
   background-color: #f5f5f5;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 `
-export const Broke = styled.h1`
-  position: relative;
-  top: -60px;
-  left: 280px;
-  color: #ffffff;
-`
 
-export const SelectBroke = styled.h1`
-  position: relative;
-  top: -100px;
-  left: 480px;
+export const SelectBroke = styled.div`
+  margin-left: 50px;
   color: #ffffff;
 `
 
@@ -107,4 +112,8 @@ export const RecPostBox = styled.div`
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
+`
+
+export const contentWarpper = styled.div`
+  margin-left: 230px;
 `

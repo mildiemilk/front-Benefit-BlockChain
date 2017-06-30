@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import Async from 'react-code-splitting'
-
 import SidebarLeft from './sidebar'
 import Header from './Header'
 import SettingProfile from './SettingProfile/SettingProfile'

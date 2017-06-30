@@ -100,7 +100,7 @@ class IPD extends Component {
           </div>
           <div className="paragraph">
             <br />
-            <p className="head" style={{ marginTop: '5%' }}>
+            <p className="head">
               ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
             </p>
             <br />

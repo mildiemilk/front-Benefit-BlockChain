@@ -62,12 +62,20 @@ class Coplay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            <Form.Input
-              placeholder="เปอร์เซน"
-              name="percente"
-              id="percente"
-              onChange={this.handleChange}
-            />
+            {this.state.value === 'Quota Share'
+              ? <Form.Input
+                  placeholder="เปอร์เซน"
+                  name="percente"
+                  id="percente"
+                  onChange={this.handleChange}
+                />
+              : <Form.Input
+                  placeholder="เปอร์เซน"
+                  name="percente"
+                  id="percente"
+                  readOnly
+                  onChange={this.handleChange}
+                />}
             <p className="selectText"> %</p>
           </Form.Group>
           <Form.Group inline>
@@ -80,12 +88,20 @@ class Coplay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            <Form.Input
-              placeholder="จำนวนเงิน"
-              name="money"
-              id="money"
-              onChange={this.handleChange}
-            />
+            {this.state.value === 'Deductable'
+              ? <Form.Input
+                  placeholder="จำนวนเงิน"
+                  name="money"
+                  id="money"
+                  onChange={this.handleChange}
+                />
+              : <Form.Input
+                  placeholder="จำนวนเงิน"
+                  name="money"
+                  id="money"
+                  onChange={this.handleChange}
+                  readOnly
+                />}
             <p className="selectText"> บาท</p>
           </Form.Group>
           <Form.Group inline>
@@ -98,29 +114,60 @@ class Coplay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            <Form.Input
-              style={{ width: '80px' }}
-              placeholder="เปอร์เซ็น"
-              name="mixPercente"
-              id="mixPercente"
-              onChange={this.handleChange}
-            />
-            <Form.Input
-              style={{ width: '90px' }}
-              label=" %ไม่เกิน"
-              placeholder="จำนวนเงิน"
-              name="limitPercente"
-              id="limitPercente"
-              onChange={this.handleChange}
-            />
-            <Form.Input
-              style={{ width: '40px' }}
-              label=" ต่อ"
-              placeholder="ปี"
-              name="year"
-              id="year"
-              onChange={this.handleChange}
-            />
+            {this.state.value === 'Quota Share + Deductable'
+              ? <div style={{ display: 'inherit' }}>
+                  <Form.Input
+                    style={{ width: '80px' }}
+                    placeholder="เปอร์เซ็น"
+                    name="mixPercente"
+                    id="mixPercente"
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input
+                    style={{ width: '90px' }}
+                    label=" %ไม่เกิน"
+                    placeholder="จำนวนเงิน"
+                    name="limitPercente"
+                    id="limitPercente"
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input
+                    style={{ width: '40px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="year"
+                    id="year"
+                    onChange={this.handleChange}
+                  />
+                </div>
+              : <div style={{ display: 'inherit' }}>
+                  <Form.Input
+                    style={{ width: '80px' }}
+                    placeholder="เปอร์เซ็น"
+                    name="mixPercente"
+                    id="mixPercente"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                  <Form.Input
+                    style={{ width: '90px' }}
+                    label=" %ไม่เกิน"
+                    placeholder="จำนวนเงิน"
+                    name="limitPercente"
+                    id="limitPercente"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                  <Form.Input
+                    style={{ width: '40px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="year"
+                    id="year"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                </div>}
           </Form.Group>
         </div>
       </div>

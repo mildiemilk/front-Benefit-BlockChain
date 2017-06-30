@@ -121,12 +121,20 @@ class OPD extends Component {
                       onChange={this.handleRadio}
                     />
                   </Form.Field>
-                  <Form.Input
-                    placeholder="จำนวนเงิน"
-                    name="firstChoiceMoney"
-                    id="firstChoiceMoney"
-                    onChange={this.handleChange}
-                  />
+                  {this.state.value === 'firstChoice'
+                    ? <Form.Input
+                        placeholder="จำนวนเงิน"
+                        name="firstChoiceMoney"
+                        id="firstChoiceMoney"
+                        onChange={this.handleChange}
+                      />
+                    : <Form.Input
+                        placeholder="จำนวนเงิน"
+                        name="firstChoiceMoney"
+                        id="firstChoiceMoney"
+                        onChange={this.handleChange}
+                        readOnly
+                      />}
                   <p className="selectText"> บาท/ปี</p>
                 </Form.Group>
                 <Form.Group inline>
@@ -139,19 +147,40 @@ class OPD extends Component {
                       onChange={this.handleRadio}
                     />
                   </Form.Field>
-                  <Form.Input
-                    placeholder="จำนวนเงิน"
-                    name="secondChoiceMoney"
-                    id="secondChoiceMoney"
-                    onChange={this.handleChange}
-                  />
-                  <Form.Input
-                    label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                    placeholder="จำนวนเงิน"
-                    name="secondChoiceMoneyLimit"
-                    id="secondChoiceMoneyLimit"
-                    onChange={this.handleChange}
-                  />
+                  {this.state.value === 'secondChoice'
+                    ? <div style={{ display: 'inherit' }}>
+                        <Form.Input
+                          placeholder="จำนวนเงิน"
+                          name="secondChoiceMoney"
+                          id="secondChoiceMoney"
+                          onChange={this.handleChange}
+                          readOnly
+                        />
+                        <Form.Input
+                          label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                          placeholder="จำนวนเงิน"
+                          name="secondChoiceMoneyLimit"
+                          id="secondChoiceMoneyLimit"
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                    : <div style={{ display: 'inherit' }}>
+                        <Form.Input
+                          placeholder="จำนวนเงิน"
+                          name="secondChoiceMoney"
+                          id="secondChoiceMoney"
+                          onChange={this.handleChange}
+                          readOnly
+                        />
+                        <Form.Input
+                          label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                          placeholder="จำนวนเงิน"
+                          name="secondChoiceMoneyLimit"
+                          id="secondChoiceMoneyLimit"
+                          onChange={this.handleChange}
+                          readOnly
+                        />
+                      </div>}
                   <p className="selectText"> บาท/ปี</p>
                 </Form.Group>
                 <br />

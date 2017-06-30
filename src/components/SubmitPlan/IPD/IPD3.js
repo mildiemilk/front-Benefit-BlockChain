@@ -138,7 +138,6 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-              {}
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 {this.state.permit
                   ? <Form.Input

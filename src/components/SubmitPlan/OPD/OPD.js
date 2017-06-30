@@ -21,6 +21,7 @@ import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like1.jpg'
+import erase from '../../image/icons-8-erase.png'
 
 class OPD extends Component {
   constructor() {
@@ -73,7 +74,11 @@ class OPD extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</p>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <div className="box-in-head-box">
+              <img src={erase} className="image-erase" />
+              <span className="headLogo">Reset</span>
+            </div>
           </div>
           <div className="row">
             <div className="large-3 columns">
@@ -83,7 +88,7 @@ class OPD extends Component {
               </Link>
             </div>
             <div className="large-3 columns">
-              <Link className="x-tab" to="/OPD">
+              <Link className="x-tab-active" to="/OPD">
                 <img src={stethoscope} className="imageMenu" />
                 <span className="text-menu-active">OPD</span>
               </Link>
@@ -105,7 +110,9 @@ class OPD extends Component {
           <div className="paragraph">
             <br />
             <p className="head">
-              ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
+              <u>
+                ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
+              </u>
             </p>
             <br />
             <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>

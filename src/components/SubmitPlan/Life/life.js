@@ -20,6 +20,7 @@ import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like.jpg'
+import erase from '../../image/icons-8-erase.png'
 
 class Life extends Component {
   constructor() {
@@ -61,14 +62,20 @@ class Life extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</p>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <div className="box-in-head-box">
+              <img src={erase} className="image-erase" />
+              <span className="headLogo">Reset</span>
+            </div>
           </div>
           <div className="row">
             <div className="large-3 columns">
-              <Link className="x-tab" to="/IPD">
-                <img src={bed} className="imageMenu" />
-                <span className="text-menu">IPD</span>
-              </Link>
+              <div>
+                <Link className="x-tab" to="/IPD">
+                  <img src={bed} className="imageMenu" />
+                  <span className="text-menu">IPD</span>
+                </Link>
+              </div>
             </div>
             <div className="large-3 columns">
               <Link className="x-tab" to="/OPD">
@@ -83,14 +90,19 @@ class Life extends Component {
               </Link>
             </div>
             <div className="large-3 columns">
-              <Link className="x-tab" to="/life">
+              <Link className="x-tab-active" to="/life">
                 <img src={heart} className="imageMenu" />
                 <span className="text-menu-active">Life</span>
               </Link>
             </div>
           </div>
           <div className="paragraph">
-            <p className="head">ประกันชีวิต (Life)</p>
+            <br />
+            <p className="head">
+              <u>
+                ประกันชีวิต (Life)
+              </u>
+            </p>
             <br />
             <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
             <Form>

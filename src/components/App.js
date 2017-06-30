@@ -16,6 +16,7 @@ import OPD from './SubmitPlan/OPD/OPD'
 import Life from './SubmitPlan/Life/life'
 import Dental from './SubmitPlan/Dental/dental'
 import Signup from './Auth/Signup'
+import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/FormSubmitPlan'
 // import welcomePage from './welcome'
 
 import 'semantic-ui-css/semantic.min.css'
@@ -40,6 +41,7 @@ const App = ({ isAuthenticated }) => (
           <Route path="/Life" component={Life} />
         </Switch>
       : <Switch>
+          <Route path="/formsubmitplan" component={FormSubmitPlan} />
           <Route path="/IPD" component={IPD} />
           <Route path="/OPD" component={OPD} />
           <Route path="/Dental" component={Dental} />

@@ -72,148 +72,110 @@ class OPD extends Component {
   render() {
     return (
       <div>
-        <div className="fillBox">
-          <div className="headBox">
-            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
-            <div className="box-in-head-box">
-              <img src={erase} className="image-erase" />
-              <span className="headLogo">Reset</span>
-            </div>
-          </div>
-          <div className="row">
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/IPD">
-                <img src={bed} className="imageMenu" />
-                <span className="text-menu">IPD</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab-active" to="/OPD">
-                <img src={stethoscope} className="imageMenu" />
-                <span className="text-menu-active">OPD</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/dental">
-                <img src={tooth} className="imageMenu" />
-                <span className="text-menu">Dental</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/life">
-                <img src={heart} className="imageMenu" />
-                <span className="text-menu">Life</span>
-              </Link>
-            </div>
-          </div>
-
-          <div className="paragraph">
-            <br />
-            <p className="head">
-              <u>
-                ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
-              </u>
-            </p>
-            <br />
-            <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
-            <div className="row">
-              <Form>
-                <Form.Group inline>
-                  <Form.Field>
-                    <Radio
-                      label="จำนวนเงิน"
-                      name="OPDGroup"
-                      value="firstChoice"
-                      checked={this.state.value === 'firstChoice'}
-                      onChange={this.handleRadio}
+        <br />
+        <p className="head">
+          <u>
+            ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
+          </u>
+        </p>
+        <br />
+        <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
+        <div className="row">
+          <Form>
+            <Form.Group inline>
+              <Form.Field>
+                <Radio
+                  label="จำนวนเงิน"
+                  name="OPDGroup"
+                  value="firstChoice"
+                  checked={this.state.value === 'firstChoice'}
+                  onChange={this.handleRadio}
+                />
+              </Form.Field>
+              {this.state.value === 'firstChoice'
+                ? <Form.Input
+                    placeholder="จำนวนเงิน"
+                    name="firstChoiceMoney"
+                    id="firstChoiceMoney"
+                    onChange={this.handleChange}
+                  />
+                : <Form.Input
+                    placeholder="จำนวนเงิน"
+                    name="firstChoiceMoney"
+                    id="firstChoiceMoney"
+                    onChange={this.handleChange}
+                    readOnly
+                  />}
+              <p className="selectText"> บาท/ปี</p>
+            </Form.Group>
+            <Form.Group inline>
+              <Form.Field>
+                <Radio
+                  label="จำนวนเงิน"
+                  name="OPDGroup"
+                  value="secondChoice"
+                  checked={this.state.value === 'secondChoice'}
+                  onChange={this.handleRadio}
+                />
+              </Form.Field>
+              {this.state.value === 'secondChoice'
+                ? <div style={{ display: 'inherit' }}>
+                    <Form.Input
+                      placeholder="จำนวนเงิน"
+                      name="secondChoiceMoney"
+                      id="secondChoiceMoney"
+                      onChange={this.handleChange}
+                      readOnly
                     />
-                  </Form.Field>
-                  {this.state.value === 'firstChoice'
-                    ? <Form.Input
-                        placeholder="จำนวนเงิน"
-                        name="firstChoiceMoney"
-                        id="firstChoiceMoney"
-                        onChange={this.handleChange}
-                      />
-                    : <Form.Input
-                        placeholder="จำนวนเงิน"
-                        name="firstChoiceMoney"
-                        id="firstChoiceMoney"
-                        onChange={this.handleChange}
-                        readOnly
-                      />}
-                  <p className="selectText"> บาท/ปี</p>
-                </Form.Group>
-                <Form.Group inline>
-                  <Form.Field>
-                    <Radio
-                      label="จำนวนเงิน"
-                      name="OPDGroup"
-                      value="secondChoice"
-                      checked={this.state.value === 'secondChoice'}
-                      onChange={this.handleRadio}
+                    <Form.Input
+                      label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                      placeholder="จำนวนเงิน"
+                      name="secondChoiceMoneyLimit"
+                      id="secondChoiceMoneyLimit"
+                      onChange={this.handleChange}
                     />
-                  </Form.Field>
-                  {this.state.value === 'secondChoice'
-                    ? <div style={{ display: 'inherit' }}>
-                        <Form.Input
-                          placeholder="จำนวนเงิน"
-                          name="secondChoiceMoney"
-                          id="secondChoiceMoney"
-                          onChange={this.handleChange}
-                          readOnly
-                        />
-                        <Form.Input
-                          label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                          placeholder="จำนวนเงิน"
-                          name="secondChoiceMoneyLimit"
-                          id="secondChoiceMoneyLimit"
-                          onChange={this.handleChange}
-                        />
-                      </div>
-                    : <div style={{ display: 'inherit' }}>
-                        <Form.Input
-                          placeholder="จำนวนเงิน"
-                          name="secondChoiceMoney"
-                          id="secondChoiceMoney"
-                          onChange={this.handleChange}
-                          readOnly
-                        />
-                        <Form.Input
-                          label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                          placeholder="จำนวนเงิน"
-                          name="secondChoiceMoneyLimit"
-                          id="secondChoiceMoneyLimit"
-                          onChange={this.handleChange}
-                          readOnly
-                        />
-                      </div>}
-                  <p className="selectText"> บาท/ปี</p>
-                </Form.Group>
-                <br />
-                <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-                {this.state.showCoPlay ? <CoPlay /> : ''}
-                <br />
-                <Button
-                  style={{
-                    marginTop: '20px',
-                    textAlign: 'center',
-                    width: '164px',
-                    height: '40px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
-                    float: 'right',
-                    borderRadius: '20px',
-                    marginRight: '32px',
-                    marginBottom: '3%',
-                  }}
-                  type="submit"
-                >
-                  บันทึก
-                </Button>
-              </Form>
-            </div>
-          </div>
+                  </div>
+                : <div style={{ display: 'inherit' }}>
+                    <Form.Input
+                      placeholder="จำนวนเงิน"
+                      name="secondChoiceMoney"
+                      id="secondChoiceMoney"
+                      onChange={this.handleChange}
+                      readOnly
+                    />
+                    <Form.Input
+                      label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                      placeholder="จำนวนเงิน"
+                      name="secondChoiceMoneyLimit"
+                      id="secondChoiceMoneyLimit"
+                      onChange={this.handleChange}
+                      readOnly
+                    />
+                  </div>}
+              <p className="selectText"> บาท/ปี</p>
+            </Form.Group>
+            <br />
+            <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
+            {this.state.showCoPlay ? <CoPlay /> : ''}
+            <br />
+            <Button
+              style={{
+                marginTop: '20px',
+                textAlign: 'center',
+                width: '164px',
+                height: '40px',
+                backgroundColor: '#3A7BD5',
+                color: 'white',
+                float: 'right',
+                borderRadius: '20px',
+                marginRight: '32px',
+                marginBottom: '3%',
+              }}
+              type="submit"
+            >
+              บันทึก
+            </Button>
+          </Form>
         </div>
       </div>
     )

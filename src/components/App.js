@@ -16,6 +16,8 @@ import Life from './SubmitPlan/Life/life'
 import Dental from './SubmitPlan/Dental/dental'
 import Signup from './Auth/Signup'
 import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/FormSubmitPlan'
+import SubmitPlan from './SubmitPlan'
+import MenuPlan from './SubmitPlan/MenuPlan/MenuPlan'
 // import welcomePage from './welcome'
 
 import 'semantic-ui-css/semantic.min.css'
@@ -41,13 +43,14 @@ const App = ({ isAuthenticated }) => (
         </Switch>
       : <Switch>
           <Route path="/postbox" component={Postbox} />
+          <Route path="/submitplan" component={SubmitPlan} />
           <Route path="/formsubmitplan" component={FormSubmitPlan} />
+          <Route path="/menuplan" component={MenuPlan} />
           <Route path="/IPD" component={IPD} />
           <Route path="/OPD" component={OPD} />
           <Route path="/Dental" component={Dental} />
           <Route path="/Life" component={Life} />
           <Route path="/login" component={Login} />
-          <Route path="/postbox" component={Postbox} />
           <Route path="/signup" component={Signup} />
           <Route path="/dashboard" component={Dashboard} />
           {/*<Route path="/welcomePage" component={welcomePage} />*/}

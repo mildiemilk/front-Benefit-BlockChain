@@ -69,115 +69,80 @@ class IPD extends Component {
   render() {
     return (
       <div>
-        <div className="fillBox">
-          <div className="headBox">
-            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
-            <img src={erase} className="image-erase" />
-            <span className="headLogo">Reset</span>
-          </div>
-          <div className="row">
-            <div className="large-3 columns">
-              <Link className="x-tab-active" to="/IPD">
-                <img src={bed} className="imageMenu" />
-                <span className="text-menu-active">IPD</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/OPD">
-                <img src={stethoscope} className="imageMenu" />
-                <span className="text-menu">OPD</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/dental">
-                <img src={tooth} className="imageMenu" />
-                <span className="text-menu">Dental</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/life">
-                <img src={heart} className="imageMenu" />
-                <span className="text-menu">Life</span>
-              </Link>
-            </div>
-          </div>
-          <div className="paragraph">
+        <br />
+        <p className="head">
+          <u>
+            ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
+          </u>
+        </p>
+        <br />
+        <p className="head">เลือกแผนที่ต้องการ </p>
+        <div className="row">
+          <Form>
+            <Form.Group inline>
+              <div className="large-4 columns">
+                <Form.Field>
+                  <Radio
+                    label="Lumsum"
+                    name="IPDGroup"
+                    value="Lumsum"
+                    checked={this.state.value === 'Lumsum'}
+                    onChange={this.handleRadio}
+                  />
+                </Form.Field>
+              </div>
+              <div className="large-4 columns">
+                <Form.Field>
+                  <Radio
+                    label="R&B Lumsum"
+                    name="IPDGroup"
+                    value="R&B Lumsum"
+                    checked={this.state.value === 'R&B Lumsum'}
+                    onChange={this.handleRadio}
+                  />
+                </Form.Field>
+              </div>
+              <div className="large-4 columns">
+                <Form.Field>
+                  <Radio
+                    label="R&B Schedule"
+                    name="IPDGroup"
+                    value="R&B Schedule"
+                    checked={this.state.value === 'R&B Schedule'}
+                    onChange={this.handleRadio}
+                  />
+                </Form.Field>
+              </div>
+            </Form.Group>
+          </Form>
+          <br />
+          <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
+          <Form>
+            {this.state.value === 'Lumsum' ? <IPD1 /> : null}
+            {this.state.value === 'R&B Lumsum' ? <IPD2 /> : null}
+            {this.state.value === 'R&B Schedule' ? <IPD3 /> : null}
             <br />
-            <p className="head">
-              <u>
-                ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
-              </u>
-            </p>
+            <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
+            {this.state.showCoPlay ? <CoPlay /> : null}
             <br />
-            <p className="head">เลือกแผนที่ต้องการ </p>
-            <div className="row">
-              <Form>
-                <Form.Group inline>
-                  <div className="large-4 columns">
-                    <Form.Field>
-                      <Radio
-                        label="Lumsum"
-                        name="IPDGroup"
-                        value="Lumsum"
-                        checked={this.state.value === 'Lumsum'}
-                        onChange={this.handleRadio}
-                      />
-                    </Form.Field>
-                  </div>
-                  <div className="large-4 columns">
-                    <Form.Field>
-                      <Radio
-                        label="R&B Lumsum"
-                        name="IPDGroup"
-                        value="R&B Lumsum"
-                        checked={this.state.value === 'R&B Lumsum'}
-                        onChange={this.handleRadio}
-                      />
-                    </Form.Field>
-                  </div>
-                  <div className="large-4 columns">
-                    <Form.Field>
-                      <Radio
-                        label="R&B Schedule"
-                        name="IPDGroup"
-                        value="R&B Schedule"
-                        checked={this.state.value === 'R&B Schedule'}
-                        onChange={this.handleRadio}
-                      />
-                    </Form.Field>
-                  </div>
-                </Form.Group>
-              </Form>
-              <br />
-              <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
-              <Form>
-                {this.state.value === 'Lumsum' ? <IPD1 /> : null}
-                {this.state.value === 'R&B Lumsum' ? <IPD2 /> : null}
-                {this.state.value === 'R&B Schedule' ? <IPD3 /> : null}
-                <br />
-                <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-                {this.state.showCoPlay ? <CoPlay /> : null}
-                <br />
-                <Button
-                  style={{
-                    marginTop: '3%',
-                    textAlign: 'center',
-                    width: '164px',
-                    height: '40px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
-                    float: 'right',
-                    borderRadius: '20px',
-                    marginRight: '5%',
-                    marginBottom: '3%',
-                  }}
-                  type="submit"
-                >
-                  บันทึก
-                </Button>
-              </Form>
-            </div>
-          </div>
+            <Button
+              style={{
+                marginTop: '3%',
+                textAlign: 'center',
+                width: '164px',
+                height: '40px',
+                backgroundColor: '#3A7BD5',
+                color: 'white',
+                float: 'right',
+                borderRadius: '20px',
+                marginRight: '5%',
+                marginBottom: '3%',
+              }}
+              type="submit"
+            >
+              บันทึก
+            </Button>
+          </Form>
         </div>
       </div>
     )

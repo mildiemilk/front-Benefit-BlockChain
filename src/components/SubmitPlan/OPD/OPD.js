@@ -32,6 +32,11 @@ class OPD extends Component {
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
+      opdCoPlayQuota: null,
+      opdCoPlayDeductable: null,
+      opdCoPlayMixPercentage: null,
+      opdCoPlayMixNotExceed: null,
+      opdCoPlayMixopdCoPlayMixYear: null,
     }
   }
 
@@ -41,11 +46,9 @@ class OPD extends Component {
     this.setState({ nameInput: e.target.value })
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
+  handleClick = e => {
+    console.log('hello')
+    console.log()
   }
 
   handleToggle = () => {
@@ -72,6 +75,7 @@ class OPD extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
+    console.log(this.state.opdCoPlayQuota)
     return (
       <div>
         <br />
@@ -160,7 +164,9 @@ class OPD extends Component {
             </Form.Group>
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.opdCoPlay ? <CoPlay /> : ''}
+            {this.state.opdCoPlay
+              ? <CoPlay handleChange={this.handleChange} />
+              : ''}
             <br />
             <Button
               style={{
@@ -176,6 +182,7 @@ class OPD extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
+              onClick={this.handleClick}
             >
               บันทึก
             </Button>

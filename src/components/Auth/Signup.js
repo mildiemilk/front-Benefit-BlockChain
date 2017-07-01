@@ -12,7 +12,6 @@ import passwordIcon from '../image/icons8-password.png'
 import '../../styles/signup.scss'
 import { register } from '../../api/auth'
 
-
 class SignUp extends Component {
   constructor() {
     super()
@@ -39,7 +38,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="box">
-        <img src={logo} />
+        <img src={logo} style={{ maxWidth: '30%' }} />
         <div className="boxForm">
           <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
           <div className="row" />
@@ -54,7 +53,7 @@ class SignUp extends Component {
                         backgroundImage: `url(${userIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
-                        paddingLeft: '35px',
+                        paddingLeft: '13%',
                       }}
                       placeholder="อีเมลของคุณ"
                       name="email"
@@ -68,7 +67,7 @@ class SignUp extends Component {
                         backgroundImage: `url(${passwordIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
-                        paddingLeft: '35px',
+                        paddingLeft: '13%',
                       }}
                       placeholder="พาสเวิร์ด"
                       name="password"
@@ -83,7 +82,7 @@ class SignUp extends Component {
                         backgroundImage: `url(${passwordIcon})`,
                         backgroundSize: '32px,32px',
                         backgroundRepeat: 'no-repeat',
-                        paddingLeft: '35px',
+                        paddingLeft: '13%',
                       }}
                       placeholder="ยืนยันพาสเวิร์ด"
                       name="confirmPassword"
@@ -103,7 +102,7 @@ class SignUp extends Component {
                     }}
                     type="submit"
                   >
-                    สมัครมสาชิก
+                    สมัครสมาชิก
                   </Button>
                 </Form>
               </div>

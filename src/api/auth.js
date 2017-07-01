@@ -1,5 +1,9 @@
 import { APIRequest } from '.'
-import { authenticateSuccess } from '../reducers/auth'
+import {
+  authenticateSuccess,
+  signupFailure,
+  authenticateFailure,
+} from '../reducers/auth'
 
 const LOGIN_URI = '/api/login'
 const LOGOUT_URI = 'api/logout'
@@ -17,8 +21,12 @@ export function authenticate(email, password) {
       .then(res => {
         localStorage.setItem('token', res.data.token)
         dispatch(authenticateSuccess(res.data))
+        window.location.href = '/settingprofile'
       })
-      .catch(err => console.log(err.response))
+      .catch(err => {
+        dispatch(authenticateFailure(err.response.data))
+        console.log(err.response)
+      })
   }
 }
 
@@ -29,12 +37,14 @@ export function register(email, confirmPassword, password, role) {
       url: REGISTER_URI,
       data: { email, password, confirmPassword, role },
     }
-
     APIRequest(options, false)
       .then(res => {
-        console.log(response)
+        window.location.href = '/login'
       })
-      .catch(err => console.log(err.response))
+      .catch(err => {
+        dispatch(signupFailure(err.response.data))
+        console.log(err.response)
+      })
   }
 }
 

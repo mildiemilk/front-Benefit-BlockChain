@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import '../../styles/dashboard.scss'
 import {
   Grid,
   Image,
@@ -12,6 +13,8 @@ import {
   Icon,
 } from 'semantic-ui-react'
 
+import backgroundpig from '../image/cityscape2.png'
+import Checkboxpic  from './group.png'
 import artboard1 from '../image/dashboard/artboard-1.png'
 import artboard2 from '../image/dashboard/artboard-2.png'
 import artboard3 from '../image/dashboard/artboard-3.png'
@@ -26,40 +29,50 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="dashboard">
         <Segment.Group>
-          <Segment>
-            <Icon name="warning sign" size="big" />
+          <Segment className="navTop" >
+            <Icon name="warning sign" size="big" inverted />
             ดำเนินขั้นตอนต่อไปนี้เพื่อใช้งาน BenefiTable
           </Segment>
-          <Segment.Group horizontal>
-            <Segment>
-              <Link to={{ pathname: '/simpleRq' }}>
-                <Checkbox radio label="1.แผนประกันภัย" readOnly />
-              </Link>
-            </Segment>
-            <Segment>
-              <Checkbox radio label="2.จัดแผนสิทธิประโยชน์" readOnly />
-            </Segment>
-            <Segment>
-              <Checkbox radio label="3.อัพเดตข้อมูลพนักงาน" readOnly />
-            </Segment>
-          </Segment.Group>
         </Segment.Group>
+        <div className="menu1">
+          <span className="menu">
+            <Link to={{ pathname: '/simplerequirement' }}>
+              <Image style={{padding:'10px'}} src={Checkboxpic} avatar size='mini' />
+               1. แผนประกันภัย
+            </Link>
+          </span>
+          <span className="menu">
+            <Image  style={{padding:'10px'}} src={Checkboxpic} avatar size='mini' />
+              2. จัดแผนสิทธิประโยชน์
+          </span>
+          <span className="menu">
+            <Image  style={{padding:'10px'}} src={Checkboxpic} avatar size='mini' />
+            3. อัพเดตข้อมูลพนักงาน
+          </span>
+          <span className="menu">
+            <Image  style={{padding:'10px'}} src={Checkboxpic} avatar size='mini' />
+            4. สรุปจำนวนพนักงาน
+          </span>
+        </div>
 
-        <h1> ยินดีต้อนรับเข้าสู่ BenefiTable </h1>
-        <Divider />
+        <span className="header">
+         ยินดีต้อนรับเข้าสู่ BenefiTable
+         <hr className="groove"></hr>
+       </span>
+       <divider/>
 
-        <Grid>
+
+        <Grid className='dash' >
           <Grid.Column width={3} />
           <Grid.Column width={10}>
-            <Grid>
+            <Grid >
               <Grid.Row columns={3}>
                 <Grid.Column>
                   <Image
+                    className="block"
                     centered
-                    width="201.3px"
-                    height="201.2px"
                     src={artboard1}
                     shape="circular"
                   />
@@ -67,9 +80,8 @@ class Dashboard extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Image
+                    className="block"
                     centered
-                    width="201.3px"
-                    height="201.2px"
                     src={artboard3}
                     shape="circular"
                   />
@@ -77,9 +89,7 @@ class Dashboard extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Image
-                    centered
-                    width="201.3px"
-                    height="201.2px"
+                    className="block"
                     src={artboard2}
                     shape="circular"
                   />
@@ -89,9 +99,7 @@ class Dashboard extends Component {
               <Grid.Row columns={3}>
                 <Grid.Column>
                   <Image
-                    centered
-                    width="201.3px"
-                    height="201.2px"
+                    className="block"
                     src={artboard4}
                     shape="circular"
                   />
@@ -99,9 +107,7 @@ class Dashboard extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Image
-                    centered
-                    width="201.3px"
-                    height="201.2px"
+                    className="block"
                     src={artboard5}
                     shape="circular"
                   />
@@ -109,9 +115,7 @@ class Dashboard extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Image
-                    centered
-                    width="201.3px"
-                    height="201.2px"
+                    className="block"
                     src={artboard6}
                     shape="circular"
                   />
@@ -119,9 +123,12 @@ class Dashboard extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
+
           </Grid.Column>
           <Grid.Column width={3} />
+          <img src={backgroundpig} className="bg"/>
         </Grid>
+
       </Container>
     )
   }

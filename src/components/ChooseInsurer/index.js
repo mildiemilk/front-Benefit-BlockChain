@@ -14,6 +14,7 @@ import {
 } from './styled'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
+import Sidebar from '../Sidebar'
 import {Detail} from './styled'
 class InsurerSelect extends Component{
 
@@ -28,6 +29,7 @@ class InsurerSelect extends Component{
      
         return(
             <div className='ChooseInsurer'>
+                
                 <NavInsure step={this.state.step}/>
                 <div className='row'>
                     <Detail className='large-12 column'>

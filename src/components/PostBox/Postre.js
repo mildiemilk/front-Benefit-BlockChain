@@ -16,7 +16,7 @@ const CardHeader = styled(Card)`
   }
 `
 
-export default class Postre extends Component {
+class Postre extends Component {
   render() {
     return (
       <div>
@@ -41,14 +41,14 @@ export default class Postre extends Component {
                   <PostreText>จำนวนพนักงานที่ต้องการแผนประกัน :</PostreText>
                 </strong>
                 {' '}
-                <PostreText>1300</PostreText>
+                <PostreText>{this.props.data.numberOfEmployee}</PostreText>
                 {' '}
                 <br />
                 <br />
                 <strong>
                   <PostreText>รูปแบบประกันที่ต้องการ :</PostreText>
                 </strong>
-                <PostreText> Fixed Plan </PostreText>
+                <PostreText>{this.props.data.typeOfInsurance}</PostreText>
                 <br />
                 <br />
                 <strong>
@@ -57,14 +57,30 @@ export default class Postre extends Component {
                 <PostreText> Insurance_Plan_2016.pdf</PostreText>
                 <br />
                 <br />
+                <strong>
+                  <PostreText>วันมหดอายุกรมทัน :</PostreText>
+                </strong>
+                {' '}
+                <PostreText>{this.props.data.day}</PostreText>
+                {'/'}
+                <PostreText>{this.props.data.month}</PostreText>
+                {'/'}
+                <PostreText>{this.props.data.year}</PostreText>
+                <br />
+                <br />
                 <strong><PostreText>แผนประกันที่ต้องการ :</PostreText></strong>
-                <PostreText><Checkbox label="OPD" defaultChecked /></PostreText>
-                <PostreText><Checkbox label="IPD" defaultChecked /></PostreText>
+
                 <PostreText>
-                  <Checkbox label="Dental" defaultChecked />
+                  <Checkbox label="OPD" checked={this.props.data.OPD} />
                 </PostreText>
                 <PostreText>
-                  <Checkbox label="Life" defaultChecked />
+                  <Checkbox label="IPD" checked={this.props.data.IPD} />
+                </PostreText>
+                <PostreText>
+                  <Checkbox label="Dental" checked={this.props.data.dental} />
+                </PostreText>
+                <PostreText>
+                  <Checkbox label="Life" checked={this.props.data.life} />
                 </PostreText>
               </Card.Description>
             </Card.Content>
@@ -74,3 +90,9 @@ export default class Postre extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  data: state.fillsimpleReducer,
+})
+
+export default connect(mapStateToProps, null)(Postre)

@@ -14,6 +14,9 @@ export function fillSimpleRQ(
   life,
   other,
   otherDes,
+  day,
+  month,
+  year,
 ) {
   return dispatch => {
     const options = {
@@ -28,6 +31,9 @@ export function fillSimpleRQ(
         life,
         other,
         otherDes,
+        day,
+        month,
+        year,
       },
     }
 

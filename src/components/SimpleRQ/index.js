@@ -80,6 +80,9 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
+      day,
+      month,
+      year,
     } = this.state
     this.props.fillSimpleRQ(
       numberOfEmployee,
@@ -90,6 +93,9 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
+      day,
+      month,
+      year,
     )
   }
 
@@ -122,7 +128,7 @@ class simpleRQ extends Component {
                   <Select
                     fluid
                     name="numberOfEmployee"
-                    defaultValue={this.state.employeeNum}
+                    defaultValue={this.state.numberOfEmployee}
                     placeholder="จำนวนพนักงาน"
                     options={simpleRQOption.employeeOption}
                     onChange={this.handleChange}
@@ -134,10 +140,10 @@ class simpleRQ extends Component {
                   <p> รูปแบบประกันที่ต้องการ </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
-                  <Box
+                  <Input
                     fluid
                     name="typeOfInsurance"
-                    defaultValue={this.state.typeInsurance}
+                    defaultValue={this.state.typeOfInsurance}
                     placeholder="รูปแบบประกันที่ต้องการ"
                     onChange={this.handleChange}
                   />
@@ -277,6 +283,9 @@ const mapDispatchToProps = dispatch => ({
     life,
     other,
     otherDes,
+    day,
+    month,
+    year,
   ) =>
     dispatch(
       fillSimpleRQ(
@@ -288,6 +297,9 @@ const mapDispatchToProps = dispatch => ({
         life,
         other,
         otherDes,
+        day,
+        month,
+        year,
       ),
     ),
 })

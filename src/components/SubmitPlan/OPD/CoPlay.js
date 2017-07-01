@@ -78,7 +78,7 @@ class CoPlay extends Component {
                   placeholder="เปอร์เซน"
                   name="opdCoPlayQuota"
                   id="opdCoPlayQuota"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
               : <Form.Input
@@ -86,7 +86,7 @@ class CoPlay extends Component {
                   name="opdCoPlayQuota"
                   id="opdCoPlayQuota"
                   readOnly
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                 />}
             <p className="selectText"> %</p>
           </Form.Group>
@@ -105,14 +105,14 @@ class CoPlay extends Component {
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayDeductable"
                   id="opdCoPlayDeductable"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
               : <Form.Input
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayDeductable"
                   id="opdCoPlayDeductable"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   readOnly
                 />}
             <p className="selectText"> บาท</p>
@@ -134,7 +134,7 @@ class CoPlay extends Component {
                     placeholder="เปอร์เซ็น"
                     name="opdCoPlayMixPercentage"
                     id="opdCoPlayMixPercentage"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     required
                   />
                   <Form.Input
@@ -143,7 +143,7 @@ class CoPlay extends Component {
                     placeholder="จำนวนเงิน"
                     name="opdCoPlayMixNotExceed"
                     id="opdCoPlayMixNotExceed"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     required
                   />
                   <Form.Input
@@ -152,7 +152,7 @@ class CoPlay extends Component {
                     placeholder="ปี"
                     name="opdCoPlayMixYear"
                     id="opdCoPlayMixYear"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     required
                   />
                 </div>
@@ -162,7 +162,7 @@ class CoPlay extends Component {
                     placeholder="เปอร์เซ็น"
                     name="opdCoPlayMixPercentage"
                     id="opdCoPlayMixPercentage"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     readOnly
                   />
                   <Form.Input
@@ -171,7 +171,7 @@ class CoPlay extends Component {
                     placeholder="จำนวนเงิน"
                     name="opdCoPlayMixNotExceed"
                     id="opdCoPlayMixNotExceed"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     readOnly
                   />
                   <Form.Input
@@ -180,7 +180,7 @@ class CoPlay extends Component {
                     placeholder="ปี"
                     name="opdCoPlayMixYear"
                     id="opdCoPlayMixYear"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                     readOnly
                   />
                 </div>}

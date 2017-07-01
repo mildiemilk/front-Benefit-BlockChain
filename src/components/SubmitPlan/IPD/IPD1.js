@@ -81,14 +81,14 @@ class IPD1 extends Component {
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                 required
               />
             : <Form.Input
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                 readOnly
               />}
           <p> บาท/ปี</p>
@@ -109,7 +109,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumPerTime"
                   id="ipdLumsumPerTime"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <Form.Input
@@ -117,7 +117,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
               </div>
@@ -126,7 +126,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumPerTime"
                   id="ipdLumsumPerTime"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   readOnly
                 />
                 <Form.Input
@@ -134,7 +134,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   readOnly
                 />
               </div>}

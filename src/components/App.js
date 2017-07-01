@@ -6,12 +6,13 @@ import Async from 'react-code-splitting'
 
 import SidebarLeft from './sidebar'
 import Header from './Header'
-import SettingProfile from './SettingProfile/SettingProfile'
+import SettingProfile from './SettingProfile'
 import Postbox from './PostBox'
 import simpleRQ from './SimpleRQ'
 import dashboard from './Dashboard'
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
+import ChooseInsurer from './ChooseInsurer'
 
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
@@ -30,9 +31,12 @@ const App = ({ isAuthenticated }) => (
           <Route path="/settingprofile" component={SettingProfile} />
         </Switch>
       : <Switch>
+        <Route path="/chooseinsurer" component={ChooseInsurer} />
+        <Route path="/simplerequirement" component={simpleRQ} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-           <Route path="/settingprofile" component={SettingProfile} />
+           <Route path="/settingprofile" compornent={SettingProfile} />
+           
           {/*<Redirect to={{ pathname: '/login' }} />*/}
         </Switch>}
   </div>

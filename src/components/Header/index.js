@@ -8,6 +8,7 @@ import avatarn from './avatarn.JPG'
 const MenuWithoutMargin = styled(Menu)`
   &&&{
     margin: 0px;
+    position: relative;
   }
 `
 

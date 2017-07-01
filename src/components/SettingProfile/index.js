@@ -26,7 +26,7 @@ import {
   Next,
 } from './Styled'
 import styled from 'react-sc'
-import './style.scss'
+
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
@@ -46,12 +46,6 @@ const NextButton = styled.button`
     display: block;
     text-align:center;
     padding: 5%;
-  
-`
-const UploadImage = styled.div`
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
   
 `
 const BusinessTypes = [
@@ -145,7 +139,7 @@ class SettingProfile extends Component {
   onInputChange(value,stateName) {
     this.setState({[stateName]:value})
   }
-  
+
   render() {
     const {profile} =this.props;
     // console.log(this.state)
@@ -171,7 +165,7 @@ class SettingProfile extends Component {
       $imagePreview = (<div className='preview'>Please select an Image for Preview</div>);
     }
     return (
-      <div style={{ background: '#F1F1F1', paddingTop: '5%' }}>
+      <div className="setting-profile" style={{ background: '#F1F1F1', paddingTop: '5%' }}>
         <div className="row">
           <div className="large-10 large-offset-1 columns">
             <Head>กรุณาตั้งค่าโปรไฟล์</Head>

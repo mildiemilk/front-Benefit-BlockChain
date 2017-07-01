@@ -41,9 +41,7 @@ export const Detail2 = styled.p`
   font-weight:bold;
 `
 export const Detail3 = styled.p`
-  margin: 4px 0px;
-  
-   
+  margin: 4px 0px; 
 `
 
 export const Oval = styled.button`

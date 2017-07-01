@@ -1,6 +1,8 @@
 @import './simpleRQ';
 @import './vendor/foundation/_setting.scss';
-
+@import './settingStyle.scss';
+@import './Navinsure.scss';
+@import './ChooseInsurer.scss';
 
 @font-face {
     font-family: 'kanit';
@@ -14,5 +16,4 @@ body {
     h2 {
     font-family: 'Kanit';
     }
-
 }

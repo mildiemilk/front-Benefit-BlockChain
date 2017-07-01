@@ -104,8 +104,7 @@ export const Reg8 = styled.div`
 `
 
 export const RecPostBox = styled.div`
-  width: 1060px;
-  height: 1120px;
+
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);

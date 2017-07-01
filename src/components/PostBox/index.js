@@ -62,15 +62,10 @@ class PostBox extends Component {
       // <contentWarpper>
       (
         <div
-          style={{background: '#fff', padding: '30px' }}
+          style={{padding: '30px' }}
         >
           <NavInsure step={this.state.step} />
           <div className="row">
-            <div className="row">
-              <PostContent>จัดแผนประกัน</PostContent>
-              <Divider inverted />
-              <Space><PostStepBox><Steps /></PostStepBox></Space>
-            </div>
             <RecPostBox>
               <div className="row">
                 <div className="large-10 large-offset-1 columns">

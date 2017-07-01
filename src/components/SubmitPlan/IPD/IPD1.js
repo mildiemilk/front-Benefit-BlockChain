@@ -19,8 +19,8 @@ import '../../../styles/SubmitPlan.scss'
 import CoPlay from './CoPlay'
 
 class IPD1 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       showCoPlay: false,
       value: '',
@@ -35,13 +35,6 @@ class IPD1 extends Component {
 
   onInputChange(e) {
     this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
   }
 
   handleToggle = () => {
@@ -65,10 +58,12 @@ class IPD1 extends Component {
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState()
+  }
 
   render() {
-    console.log(this.state.ipdLumsumPerTime)
     return (
       <div>
         <Form.Group inline>

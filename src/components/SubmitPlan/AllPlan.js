@@ -40,6 +40,7 @@ class AllPlan extends Component {
       box: 'fillBox1',
       results: '',
       plan: 'IPD',
+      verifyState: true,
     }
     const value = ''
     const results = ''
@@ -66,6 +67,10 @@ class AllPlan extends Component {
     }
   }
 
+  handleVerifyState = () => {
+    this.setState({ verifyState: false })
+  }
+
   handleRadio = (e, { value }) => {
     this.setState({ value })
   }
@@ -73,8 +78,8 @@ class AllPlan extends Component {
   handleClick = value => {
     this.setState({ plan: value })
   }
-
   render() {
+    console.log(this.state.verifyState)
     return (
       <div>
         <div className="headBox">
@@ -154,7 +159,9 @@ class AllPlan extends Component {
               </div>}
         </div>
         <div className="paragraph">
-          {this.state.plan === 'IPD' ? <IPD /> : null}
+          {this.state.plan === 'IPD'
+            ? <IPD handleVerifyState={this.handleVerifyState} />
+            : null}
           {this.state.plan === 'OPD' ? <OPD /> : null}
           {this.state.plan === 'Dental' ? <Dental /> : null}
           {this.state.plan === 'Life' ? <Life /> : null}

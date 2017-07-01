@@ -140,7 +140,7 @@ class Life extends Component {
                 label="คูณอัตราเงินเดือน"
                 name="lifeGroup"
                 value="thirdLifeChoice"
-                checked={this.state.value === 'thirdtLifeChoice'}
+                checked={this.state.value === 'thirdLifeChoice'}
                 onChange={this.handleRadio}
               />
             </Form.Field>
@@ -148,11 +148,10 @@ class Life extends Component {
               ? <div style={{ display: 'inherit' }}>
                   <Form.Select
                     placeholder="เท่า"
-                    options={1}
+                    options={options}
                     name="lifeTimeOfSalary"
                     id="lifeTimeOfSalary"
                     onChange={this.handleChange}
-                    required
                   />
                   <Form.Input
                     label="เท่า แต่ไม่เกิน"

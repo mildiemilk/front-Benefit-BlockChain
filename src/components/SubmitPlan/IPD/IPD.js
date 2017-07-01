@@ -118,7 +118,9 @@ class IPD extends Component {
           <br />
           <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
           <Form>
-            {this.state.ipdType === 'Lumsum' ? <IPD1 /> : null}
+            {this.state.ipdType === 'Lumsum'
+              ? <IPD1 handleVerifyState={this.props.handleVerifyState} />
+              : null}
             {this.state.ipdType === 'R&B Lumsum' ? <IPD2 /> : null}
             {this.state.ipdType === 'R&B Schedule' ? <IPD3 /> : null}
             <br />

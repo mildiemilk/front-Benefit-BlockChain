@@ -28,8 +28,11 @@ import Chatbox from './ChatBox'
 import Steps from './Step'
 import Postre from './Postre'
 import styled from 'react-sc'
-import ModalPostBox from './ModalPostBox'
+import ModalPostbox from './ModalPostBox'
 import NavInsure from '../NavInsure'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { postBox } from '../../api/postBox'
 const RatingNew = styled(Rating)`
   &&&{
     position: absolute;
@@ -38,38 +41,36 @@ const RatingNew = styled(Rating)`
   }
 `
 
-const ButtonNew = styled.button`
-    width: 174px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #f7555f;
-    font-size: 120%;
-    border-color: #f7555f;
-    border-style: solid;
-    color: #ffffff;
-    position: absolute;
-    margin-top: 1.5%;
-    margin-left: 50%;
-`
-
-export default class PostBox extends Component {
-  constructor(props) {
-      super(props)
-      this.state = {
-          step: 2,
-      }
+class PostBox extends Component {
+  constructor() {
+    super()
+    this.state = {
+      step: 2,
+      passwordToConfirm: '',
+    }
   }
+
+  handlePost = e => {
+    e.preventDefault()
+    const { passwordToConfirm } = this.state
+    this.props.postBox(passwordToConfirm)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
-    
     return (
       // <contentWarpper>
       (
         <div
           style={{background: '#fff', padding: '30px' }}
         >
-          <NavInsure step={this.state.step}/>
+          <NavInsure step={this.state.step} />
           <div className="row">
-            
+            <div className="row">
+              <PostContent>จัดแผนประกัน</PostContent>
+              <Divider inverted />
+              <Space><PostStepBox><Steps /></PostStepBox></Space>
+            </div>
             <RecPostBox>
               <div className="row">
                 <div className="large-10 large-offset-1 columns">
@@ -93,9 +94,10 @@ export default class PostBox extends Component {
                         size="mini"
                         disabled
                       />
-                      <ButtonNew>
-                        เลือก Broker
-                      </ButtonNew>
+                      <ModalPostbox
+                        handlePost={this.handlePost}
+                        handleChange={this.handleChange}
+                      />
                     </Reg3>
                   </Space>
                 </div>
@@ -121,3 +123,15 @@ export default class PostBox extends Component {
     )
   }
 }
+
+PostBox.propTypes = {
+  postBox: PropTypes.func.isRequired,
+}
+
+const mapDispatchToProps = dispatch => ({
+  postBox: passwordToConfirm => dispatch(postBox(passwordToConfirm)),
+})
+
+const mapStateToProps = state => ({})
+
+export default connect(null, mapDispatchToProps)(PostBox)

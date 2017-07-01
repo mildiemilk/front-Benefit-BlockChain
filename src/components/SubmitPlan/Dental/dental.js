@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { editPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -25,27 +26,17 @@ import erase from '../../image/icons-8-erase.png'
 class Dental extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      dentalPerYear: null,
+    }
   }
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  signUpHandler() {
-    window.location.href = '/signup'
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleClick = () =>
+    this.props.editPlan(this.state, this.props.plan.planId, 'dental')
 
   render() {
     return (
@@ -63,8 +54,10 @@ class Dental extends Component {
             <Form.Input
               label="ใช้บริการได้ไม่เกิน"
               placeholder="จำนวนเงิน"
-              options={1}
+              name="dentalPerYear"
+              id="dentalPerYear"
               onChange={this.handleChange}
+              required
             />
             <p> บาท/ปี</p>
           </Form.Group>
@@ -83,6 +76,7 @@ class Dental extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
+              onClick={this.handleClick}
             >
               บันทึก
             </Button>
@@ -95,7 +89,12 @@ class Dental extends Component {
 
 Dental.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
+})
+const mapStateToProps = state => ({
+  plan: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dental)

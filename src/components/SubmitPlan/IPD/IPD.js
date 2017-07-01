@@ -31,11 +31,32 @@ class IPD extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
+      ipdCoPlay: false,
       showForm: 1,
       ipdType: '',
-      box: 'fillBox1',
-      results: '',
+      ipdLumsumPerYear: null,
+      ipdLumsumPerTime: null,
+      ipdLumsumTimeNotExceedPerYear: null,
+      rbLumsumRoomPerNight: null,
+      rbLumsumNigthNotExceedPerYear: null,
+      rbLumsumPayNotExceedPerNight: null,
+      rbLumsumPayNotExceedPerYear: null,
+      rbSchedulePatient: null,
+      rbScheduleIntensiveCarePatient: null,
+      rbScheduleDoctor: null,
+      rbScheduleSurgery: null,
+      rbScheduleService: null,
+      rbScheduleSmallSurgery: null,
+      rbScheduleAdviser: null,
+      rbScheduleAmbulance: null,
+      rbScheduleAccident: null,
+      rbScheduleTreatment: null,
+      rbScheduleTransplant: null,
+      ipdCoPlayQuota: null,
+      ipdCoPlayDeductable: null,
+      ipdCoPlayMixPercentage: null,
+      ipdCoPlayMixNotExceed: null,
+      ipdCoPlayMixipdCoPlayMixYear: null,
     }
     const ipdType = ''
     const results = ''
@@ -55,16 +76,18 @@ class IPD extends Component {
   }
 
   handleToggle = () => {
-    if (this.state.showCoPlay) {
-      this.setState({ showCoPlay: false })
+    if (this.state.ipdCoPlay) {
+      this.setState({ ipdCoPlay: false })
     } else {
-      this.setState({ showCoPlay: true })
+      this.setState({ ipdCoPlay: true })
     }
   }
 
   handleRadio = (e, { ipdType }) => {
     this.setState({ ipdType })
   }
+
+  handleChangeToNUll = name => this.setState({ [name]: null })
 
   render() {
     return (
@@ -118,12 +141,33 @@ class IPD extends Component {
           <br />
           <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
           <Form>
-            {this.state.ipdType === 'Lumsum' ? <IPD1 /> : null}
-            {this.state.ipdType === 'R&B Lumsum' ? <IPD2 /> : null}
-            {this.state.ipdType === 'R&B Schedule' ? <IPD3 /> : null}
+            {this.state.ipdType === 'Lumsum'
+              ? <IPD1
+                  handleVerifyState={this.props.handleVerifyState}
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
+              : null}
+            {this.state.ipdType === 'R&B Lumsum'
+              ? <IPD2
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
+              : null}
+            {this.state.ipdType === 'R&B Schedule'
+              ? <IPD3
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
+              : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.showCoPlay ? <CoPlay /> : null}
+            {this.state.ipdCoPlay
+              ? <CoPlay
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
+              : null}
             <br />
             <Button
               style={{

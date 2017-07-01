@@ -20,7 +20,7 @@ import {
   Image,
 } from 'semantic-ui-react'
 import { fillSimpleRQ } from '../../api/simpleRequirement'
-import{UploadButton,Box} from './styled'
+import { UploadButton, Box } from './styled'
 import ModalSimpleRQ from './ModalSimpleRQ'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
@@ -49,28 +49,28 @@ class simpleRQ extends Component {
       dental: false,
       life: false,
       other: false,
-      otherDes: '', 
+      otherDes: '',
       file: '',
-      filePreviewUrl: ''
-      
+      filePreviewUrl: '',
     }
   }
   _handleImageChange(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    let reader = new FileReader();
-    let file = e.target.files[0];
+    let reader = new FileReader()
+    let file = e.target.files[0]
 
     reader.onloadend = () => {
       this.setState({
         file: file,
-        filePreviewUrl: reader.result
-      });
+        filePreviewUrl: reader.result,
+      })
     }
 
     reader.readAsDataURL(file)
   }
   handlePost = e => {
+    console.log('aaaaaaaaaaaaaa')
     e.preventDefault()
     const {
       numberOfEmployee,
@@ -81,6 +81,9 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
+      day,
+      month,
+      year,
     } = this.state
     this.props.fillSimpleRQ(
       numberOfEmployee,
@@ -91,20 +94,21 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
+      day,
+      month,
+      year,
     )
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  
- 
+  handleCheck = (e, { name, checked }) => this.setState({ [name]: checked })
 
   render() {
- 
     // console.log(this.props.data)
-    let {filePreviewUrl} = this.state;
-    let $filePreview = null;
+    let { filePreviewUrl } = this.state
+    let $filePreview = null
     if (filePreviewUrl) {
-      $filePreview = (<span>{this.state.file.name}&nbsp;</span>);
+      $filePreview = <span>{this.state.file.name}&nbsp;</span>
     }
 
     console.log(this.state)
@@ -125,7 +129,7 @@ class simpleRQ extends Component {
                   <Select
                     fluid
                     name="numberOfEmployee"
-                    defaultValue={this.state.employeeNum}
+                    defaultValue={this.state.numberOfEmployee}
                     placeholder="จำนวนพนักงาน"
                     options={simpleRQOption.employeeOption}
                     onChange={this.handleChange}
@@ -137,10 +141,10 @@ class simpleRQ extends Component {
                   <p> รูปแบบประกันที่ต้องการ </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
-                  <Box
+                  <Input
                     fluid
                     name="typeOfInsurance"
-                    defaultValue={this.state.typeInsurance}
+                    defaultValue={this.state.typeOfInsurance}
                     placeholder="รูปแบบประกันที่ต้องการ"
                     onChange={this.handleChange}
                   />
@@ -151,10 +155,17 @@ class simpleRQ extends Component {
                   <p> อัพโหลดแผนประกันที่ใช้ในปัจจุบัน </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
-                  <div>{$filePreview}
-                  <UploadButton><input style={{opacity:'0',position:'absolute'}}
-                      type="file" 
-                      onChange={(e)=>this._handleImageChange(e)} />อัพโหลดไฟล์</UploadButton></div>
+                  <div>
+                    {$filePreview}
+                    <UploadButton>
+                      <input
+                        style={{ opacity: '0', position: 'absolute' }}
+                        type="file"
+                        onChange={e => this._handleImageChange(e)}
+                      />
+                      อัพโหลดไฟล์
+                    </UploadButton>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
@@ -197,13 +208,15 @@ class simpleRQ extends Component {
                         control={Checkbox}
                         defaultChecked={this.state.IPD}
                         label="IPD"
-                        onChange={this.handleChange}
+                        name="IPD"
+                        onChange={this.handleCheck}
                       />
                       <Form.Field
                         control={Checkbox}
                         defaultChecked={this.state.OPD}
                         label="OPD"
-                        onChange={this.handleChange}
+                        name="OPD"
+                        onChange={this.handleCheck}
                       />
                     </Form.Group>
                     <Form.Group inline>
@@ -212,13 +225,15 @@ class simpleRQ extends Component {
                         control={Checkbox}
                         defaultChecked={this.state.dental}
                         label="Dental"
-                        onChange={this.handleChange}
+                        name="dental"
+                        onChange={this.handleCheck}
                       />
                       <Form.Field
                         control={Checkbox}
                         defaultChecked={this.state.life}
                         label="Life"
-                        onChange={this.handleChange}
+                        name="life"
+                        onChange={this.handleCheck}
                       />
                     </Form.Group>
                     <Form.Group inline>
@@ -227,7 +242,8 @@ class simpleRQ extends Component {
                         control={Checkbox}
                         defaultChecked={this.state.other}
                         label="Other"
-                        onChange={this.handleChange}
+                        name="other"
+                        onChange={this.handleCheck}
                       />
                       <Form.Field
                         width={14}
@@ -243,8 +259,8 @@ class simpleRQ extends Component {
               </Grid.Row>
             </Grid>
           </Card>
-          <ModalSimpleRQ data={this.state} />
-  
+          <ModalSimpleRQ data={this.state} handlePost={this.handlePost} />
+       
       </div>
     )
   }
@@ -268,6 +284,9 @@ const mapDispatchToProps = dispatch => ({
     life,
     other,
     otherDes,
+    day,
+    month,
+    year,
   ) =>
     dispatch(
       fillSimpleRQ(
@@ -279,6 +298,9 @@ const mapDispatchToProps = dispatch => ({
         life,
         other,
         otherDes,
+        day,
+        month,
+        year,
       ),
     ),
 })

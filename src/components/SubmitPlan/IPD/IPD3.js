@@ -22,6 +22,17 @@ class IPD3 extends Component {
     super()
     this.state = {
       permit: false,
+      rbSchedulePatient: null,
+      rbScheduleIntensiveCarePatient: null,
+      rbScheduleDoctor: null,
+      rbScheduleSurgery: null,
+      rbScheduleService: null,
+      rbScheduleSmallSurgery: null,
+      rbScheduleAdviser: null,
+      rbScheduleAmbulance: null,
+      rbScheduleAccident: null,
+      rbScheduleTreatment: null,
+      rbScheduleTransplant: null,
     }
   }
 
@@ -33,7 +44,7 @@ class IPD3 extends Component {
 
   handleToggle = () => {
     if (this.state.permit) {
-      document.getElementById('fillChoice3').value = ''
+      document.getElementById('rbScheduleSurgery').value = null
       this.setState({ permit: false })
     } else {
       this.setState({ permit: true })
@@ -115,8 +126,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbSchedulePatient"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -124,8 +136,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleIntensiveCarePatient"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -133,8 +146,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleDoctor"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -143,17 +157,18 @@ class IPD3 extends Component {
                   ? <Form.Input
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name=""
-                      onChange={this.handleChange}
-                      id="fillChoice3"
+                      name="rbScheduleSurgery"
+                      onChange={this.props.handleChange}
+                      id="rbScheduleSurgery"
+                      required
                     />
                   : <Form.Input
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name=""
-                      onChange={this.handleChange}
+                      name="rbScheduleSurgery"
+                      onChange={this.props.handleChange}
                       readOnly
-                      id="fillChoice3"
+                      id="rbScheduleSurgery"
                     />}
                 <p> บาท</p>
               </Form.Group>
@@ -161,8 +176,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleService"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -173,8 +189,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleSmallSurgery"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -182,8 +199,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleAdviser"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -191,8 +209,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleAmbulance"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -200,8 +219,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleAccident"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -209,8 +229,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleTreatment"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -221,8 +242,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
-                  onChange={this.handleChange}
+                  name="rbScheduleTransplant"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>

@@ -1,7 +1,10 @@
 import { APIRequest } from '.'
-import { authenticateSuccess } from '../reducers/auth'
+import {
+  fillsimpleRqSuccess,
+  fillsimpleRqFailure,
+} from '../reducers/simpleRequirement'
 
-const SIMPLERQ_URI = 'admin/simpleRequirement'
+const SIMPLERQ_URI = '/admin/simpleRequirement'
 export function fillSimpleRQ(
   numberOfEmployee,
   typeOfInsurance,
@@ -11,6 +14,9 @@ export function fillSimpleRQ(
   life,
   other,
   otherDes,
+  day,
+  month,
+  year,
 ) {
   return dispatch => {
     const options = {
@@ -25,13 +31,21 @@ export function fillSimpleRQ(
         life,
         other,
         otherDes,
+        day,
+        month,
+        year,
       },
     }
 
     APIRequest(options, true)
       .then(res => {
-        console.log(response)
+        console.log(res)
+        dispatch(fillsimpleRqSuccess(res.data))
+        window.location.href = '/postbox'
       })
-      .catch(err => console.log(err.response))
+      .catch(err => {
+        dispatch(fillsimpleRqFailure(err.response.data))
+        console.log(err.response)
+      })
   }
 }

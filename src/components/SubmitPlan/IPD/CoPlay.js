@@ -21,8 +21,13 @@ class Coplay extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
+      ipdCoPlay: false,
       value: '',
+      ipdCoPlayQuota: null,
+      ipdCoPlayDeductable: null,
+      ipdCoPlayMixPercentage: null,
+      ipdCoPlayMixNotExceed: null,
+      ipdCoPlayMixipdCoPlayMixYear: null,
     }
     const value = ''
   }
@@ -38,13 +43,18 @@ class Coplay extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'Quota Share') {
-      document.getElementById('percente').value = ''
+      document.getElementById('ipdCoPlayQuota').value = ''
+      this.props.handleChangeToNUll('ipdCoPlayQuota')
     } else if (this.state.value === 'Deductable') {
-      document.getElementById('money').value = ''
+      document.getElementById('ipdCoPlayDeductable').value = ''
+      this.props.handleChangeToNUll('ipdCoPlayDeductable')
     } else {
-      document.getElementById('mixPercente').value = ''
-      document.getElementById('limitPercente').value = ''
-      document.getElementById('year').value = ''
+      document.getElementById('ipdCoPlayMixPercentage').value = ''
+      this.props.handleChangeToNUll('ipdCoPlayMixPercentage')
+      document.getElementById('ipdCoPlayMixNotExceed').value = ''
+      this.props.handleChangeToNUll('ipdCoPlayMixNotExceed')
+      document.getElementById('ipdCoPlayMixYear').value = ''
+      this.props.handleChangeToNUll('ipdCoPlayMixYear')
     }
   }
 
@@ -65,16 +75,17 @@ class Coplay extends Component {
             {this.state.value === 'Quota Share'
               ? <Form.Input
                   placeholder="เปอร์เซน"
-                  name="percente"
-                  id="percente"
-                  onChange={this.handleChange}
+                  name="ipdCoPlayQuota"
+                  id="ipdCoPlayQuota"
+                  onChange={this.props.handleChange}
+                  required
                 />
               : <Form.Input
                   placeholder="เปอร์เซน"
-                  name="percente"
-                  id="percente"
+                  name="ipdCoPlayQuota"
+                  id="ipdCoPlayQuota"
                   readOnly
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                 />}
             <p className="selectText"> %</p>
           </Form.Group>
@@ -91,15 +102,16 @@ class Coplay extends Component {
             {this.state.value === 'Deductable'
               ? <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="money"
-                  id="money"
-                  onChange={this.handleChange}
+                  name="ipdCoPlayDeductable"
+                  id="ipdCoPlayDeductable"
+                  onChange={this.props.handleChange}
+                  required
                 />
               : <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="money"
-                  id="money"
-                  onChange={this.handleChange}
+                  name="ipdCoPlayDeductable"
+                  id="ipdCoPlayDeductable"
+                  onChange={this.props.handleChange}
                   readOnly
                 />}
             <p className="selectText"> บาท</p>
@@ -119,52 +131,55 @@ class Coplay extends Component {
                   <Form.Input
                     style={{ width: '80px' }}
                     placeholder="เปอร์เซ็น"
-                    name="mixPercente"
-                    id="mixPercente"
-                    onChange={this.handleChange}
+                    name="ipdCoPlayMixPercentage"
+                    id="ipdCoPlayMixPercentage"
+                    onChange={this.props.handleChange}
+                    required
                   />
                   <Form.Input
                     style={{ width: '90px' }}
                     label=" %ไม่เกิน"
                     placeholder="จำนวนเงิน"
-                    name="limitPercente"
-                    id="limitPercente"
-                    onChange={this.handleChange}
+                    name="ipdCoPlayMixNotExceed"
+                    id="ipdCoPlayMixNotExceed"
+                    onChange={this.props.handleChange}
+                    required
                   />
                   <Form.Input
                     style={{ width: '40px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="year"
-                    id="year"
-                    onChange={this.handleChange}
+                    name="ipdCoPlayMixYear"
+                    id="ipdCoPlayMixYear"
+                    onChange={this.props.handleChange}
+                    required
                   />
                 </div>
               : <div style={{ display: 'inherit' }}>
                   <Form.Input
                     style={{ width: '80px' }}
                     placeholder="เปอร์เซ็น"
-                    name="mixPercente"
-                    id="mixPercente"
-                    onChange={this.handleChange}
+                    name="ipdCoPlayMixPercentage"
+                    id="ipdCoPlayMixPercentage"
+                    onChange={this.props.handleChange}
                     readOnly
                   />
                   <Form.Input
                     style={{ width: '90px' }}
                     label=" %ไม่เกิน"
                     placeholder="จำนวนเงิน"
-                    name="limitPercente"
-                    id="limitPercente"
-                    onChange={this.handleChange}
+                    name="ipdCoPlayMixNotExceed"
+                    id="ipdCoPlayMixNotExceed"
+                    onChange={this.props.handleChange}
                     readOnly
                   />
                   <Form.Input
                     style={{ width: '40px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="year"
-                    id="year"
-                    onChange={this.handleChange}
+                    name="ipdCoPlayMixYear"
+                    id="ipdCoPlayMixYear"
+                    onChange={this.props.handleChange}
                     readOnly
                   />
                 </div>}

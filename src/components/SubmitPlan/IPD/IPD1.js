@@ -19,14 +19,14 @@ import '../../../styles/SubmitPlan.scss'
 import CoPlay from './CoPlay'
 
 class IPD1 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       showCoPlay: false,
       value: '',
-      ipdLumsumPerYear: '',
-      ipdLumsumPerTime: '',
-      ipdLumsumTimeNotExceedPerYear: '',
+      ipdLumsumPerYear: null,
+      ipdLumsumPerTime: null,
+      ipdLumsumTimeNotExceedPerYear: null,
     }
     const value = ''
   }
@@ -35,13 +35,6 @@ class IPD1 extends Component {
 
   onInputChange(e) {
     this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
   }
 
   handleToggle = () => {
@@ -55,14 +48,20 @@ class IPD1 extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
-      document.getElementById(' ipdLumsumPerTime').value = ''
+      document.getElementById('ipdLumsumPerTime').value = ''
+      this.props.handleChangeToNUll('ipdLumsumPerTime')
       document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
+      this.props.handleChangeToNUll('ipdLumsumTimeNotExceedPerYear')
     } else {
       document.getElementById('ipdLumsumPerYear').value = ''
+      this.props.handleChangeToNUll('ipdLumsumPerYear')
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState()
+  }
 
   render() {
     return (
@@ -82,13 +81,14 @@ class IPD1 extends Component {
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
+                required
               />
             : <Form.Input
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                 readOnly
               />}
           <p> บาท/ปี</p>
@@ -107,24 +107,26 @@ class IPD1 extends Component {
             ? <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name=" ipdLumsumPerTime"
-                  id=" ipdLumsumPerTime"
-                  onChange={this.handleChange}
+                  name="ipdLumsumPerTime"
+                  id="ipdLumsumPerTime"
+                  onChange={this.props.handleChange}
+                  required
                 />
                 <Form.Input
                   label="บาท/ครั้ง  ครั้งละไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
+                  required
                 />
               </div>
             : <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name=" ipdLumsumPerTime"
-                  id=" ipdLumsumPerTime"
-                  onChange={this.handleChange}
+                  name="ipdLumsumPerTime"
+                  id="ipdLumsumPerTime"
+                  onChange={this.props.handleChange}
                   readOnly
                 />
                 <Form.Input
@@ -132,7 +134,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   readOnly
                 />
               </div>}

@@ -27,7 +27,6 @@ import {
 } from './Styled'
 import styled from 'react-sc'
 
-
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
@@ -182,7 +181,10 @@ class SettingProfile extends Component {
       )
     }
     return (
-      <div className="setting-profile" style={{ background: '#F1F1F1', paddingTop: '5%' }}>
+      <div
+        className="setting-profile"
+        style={{ background: '#F1F1F1', paddingTop: '5%' }}
+      >
         <div className="row">
           <div className="large-10 large-offset-1 columns">
             <Head>กรุณาตั้งค่าโปรไฟล์</Head>

@@ -16,6 +16,7 @@ class InsurerSelect extends Component{
             step: 4,
         }
     }
+  
 
     render(){
      
@@ -41,5 +42,4 @@ class InsurerSelect extends Component{
         )
     }
 }
-
-export default InsurerSelect;
+export default InsurerSelect

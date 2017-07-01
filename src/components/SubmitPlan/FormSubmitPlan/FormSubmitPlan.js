@@ -18,6 +18,8 @@ import {
 import '../../../styles/SubmitPlan.scss'
 import erase from '../../image/icons-8-erase.png'
 
+const moneyOptions = [{ text: '100', value: 100 }, { text: '200', value: 200 }]
+
 class FormSubmitPlan extends Component {
   constructor() {
     super()
@@ -75,7 +77,7 @@ class FormSubmitPlan extends Component {
                 <Form.Group widths="equal">
                   <Form.Select
                     placeholder="เท่า"
-                    options={1}
+                    options={moneyOptions}
                     name="lifeChoiceThreeFirst"
                     id="lifeChoiceThreeFirst"
                     onChange={this.handleChange}

@@ -15,6 +15,7 @@ import {
   Segment,
   Dropdown,
   Popup,
+  Icon,
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
 import erase from '../../image/icons-8-erase.png'
@@ -46,21 +47,39 @@ class FormSubmitPlan extends Component {
         <p className="menu-header">จัดแผนประกันภัย</p>
         <span className="menu-text">ดูแพลนทั้งหมด</span>
         <div className="menu-bar">
-          <p>รายการแพลน</p>
-        </div>
-        <div className="menu-add-plan">
-          <p>สร้างแพลนใหม่</p>
-        </div>
-        <div className="menu-select-plan">
-          <p>Plan1</p>
-          <p>แก้ไขครั้งล่าสุดโดย</p>
+          <span>รายการแพลน</span>
           <Popup
-            trigger={<Button icon>Click me</Button>}
+            trigger={
+              <div style={{ float: 'right' }}>
+                <span>ชื่อ</span>
+                <Icon name="caret down" size="small" />
+              </div>
+            }
             content="Hide the popup on any scroll event"
             on="click"
             hideOnScroll
             position="bottom center"
           />
+        </div>
+        <div className="menu-add-plan">
+          <p>สร้างแพลนใหม่</p>
+        </div>
+        <div className="menu-select-plan">
+          <span>Plan1</span>
+          <Popup
+            trigger={
+              <Icon
+                style={{ float: 'right' }}
+                name="ellipsis vertical"
+                size="large"
+              />
+            }
+            content="Hide the popup on any scroll event"
+            on="click"
+            hideOnScroll
+            position="bottom center"
+          />
+          <p>แก้ไขครั้งล่าสุดโดย</p>
         </div>
       </div>
     )

@@ -16,7 +16,7 @@ import {
   Dropdown,
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
-import CoPlay from './CoPlay'
+import Coplay from './CoPlay'
 import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
@@ -156,7 +156,7 @@ class OPD extends Component {
             </Form.Group>
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.showCoPlay ? <CoPlay /> : ''}
+            {this.state.showCoPlay ? <Coplay /> : ''}
             <br />
             <Button
               style={{

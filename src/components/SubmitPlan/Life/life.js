@@ -22,6 +22,8 @@ import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like.jpg'
 import erase from '../../image/icons-8-erase.png'
 
+const options = [{ text: '1', value: 1 }]
+
 class Life extends Component {
   constructor() {
     super()
@@ -110,7 +112,7 @@ class Life extends Component {
                   placeholder="เท่า"
                   name="lifeChoiceTwo"
                   id="lifeChoiceTwo"
-                  options={1}
+                  options={options}
                   onChange={this.handleChange}
                 />
               : <Form.Select

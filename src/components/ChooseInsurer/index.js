@@ -8,7 +8,7 @@ import { Step, Divider } from 'semantic-ui-react'
 import { Head, Step1 } from './styled'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
-import Sidebar from '../Sidebar'
+import Sidebar from '../sidebar'
 import { Detail } from './styled'
 class InsurerSelect extends Component {
   constructor(props) {

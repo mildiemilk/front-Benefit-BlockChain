@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { editPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -37,17 +38,6 @@ class Life extends Component {
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondLifeChoice') {
@@ -66,7 +56,17 @@ class Life extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
+  handleClick = () => {
+    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
+    this.props.editPlan(
+      { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
+      this.props.plan.planId,
+      'life',
+    )
+  }
+
   render() {
+    console.log(this.props.plan)
     return (
       <div>
         <br />
@@ -91,15 +91,15 @@ class Life extends Component {
             {this.state.value === 'firstLifeChoice'
               ? <Form.Input
                   placeholder="จำนวนบาท"
-                  name=" lifePerYear"
-                  id=" lifePerYear"
+                  name="lifePerYear"
+                  id="lifePerYear"
                   onChange={this.handleChange}
                   required
                 />
               : <Form.Input
                   placeholder="จำนวนบาท"
-                  name=" lifePerYear"
-                  id=" lifePerYear"
+                  name="lifePerYear"
+                  id="lifePerYear"
                   onChange={this.handleChange}
                   readOnly
                 />}
@@ -198,6 +198,7 @@ class Life extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
+              onClick={this.handleClick}
             >
               บันทึก
             </Button>
@@ -210,7 +211,12 @@ class Life extends Component {
 
 Life.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
+})
+const mapStateToProps = state => ({
+  plan: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Life)

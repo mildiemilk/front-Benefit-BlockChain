@@ -106,6 +106,7 @@ export const Reg8 = styled.div`
 export const RecPostBox = styled.div`
 
   border-radius: 5px;
+  margin-top: 2%;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
 `
@@ -141,7 +142,7 @@ export const ButtonNew = styled.button`
     color: #ffffff;
     position: absolute;
     margin-top: 1.5%;
-    margin-left: 50%;
+    margin-left: 43%;
 `
 
 export const CancleButton = styled.button`

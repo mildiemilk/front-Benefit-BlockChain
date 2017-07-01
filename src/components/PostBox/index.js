@@ -61,9 +61,7 @@ class PostBox extends Component {
     return (
       // <contentWarpper>
       (
-        <div
-          style={{padding: '30px' }}
-        >
+        <div>
           <NavInsure step={this.state.step} />
           <div className="row">
             <RecPostBox>

@@ -57,12 +57,13 @@ export default function profileReducer(state = defaultProfile, action) {
         numberOfEmployees: action.data.numberOfEmployees,
         companyBroker: action.data.companyBroker,
         companyInsurer: action.data.companyInsurer,
+        message: action.data.message,
       })
     case PROFILECOMPANY_REQUEST_FAILURE:
       console.log(action.data.message)
       return Object.assign({}, state, {
         message: action.data.message,
-        error: false,
+        error: true,
       })
     default:
       return state

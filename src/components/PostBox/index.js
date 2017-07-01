@@ -29,7 +29,7 @@ import Steps from './Step'
 import Postre from './Postre'
 import styled from 'react-sc'
 import ModalPostBox from './ModalPostBox'
-
+import NavInsure from '../NavInsure'
 const RatingNew = styled(Rating)`
   &&&{
     position: absolute;
@@ -39,6 +39,12 @@ const RatingNew = styled(Rating)`
 `
 
 export default class PostBox extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      step: 2,
+    }
+  }
   render() {
     return (
       // <contentWarpper>
@@ -46,6 +52,7 @@ export default class PostBox extends Component {
         <div
           style={{ marginLeft: '230px', background: '#fff', padding: '30px' }}
         >
+          <NavInsure step={this.state.step} />
           <div className="row">
             <div className="row">
               <PostContent>จัดแผนประกัน</PostContent>

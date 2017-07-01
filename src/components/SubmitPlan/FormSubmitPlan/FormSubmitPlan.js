@@ -18,10 +18,15 @@ import {
 import '../../../styles/SubmitPlan.scss'
 import erase from '../../image/icons-8-erase.png'
 
+const moneyOptions = [{ text: '100', value: 100 }, { text: '200', value: 200 }]
+
 class FormSubmitPlan extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      planName: '',
+      employeeOfPlan: '',
+    }
   }
 
   static propTypes = {}
@@ -37,6 +42,11 @@ class FormSubmitPlan extends Component {
     console.log(this.state)
   }
 
+  handleClick = () => {
+    document.getElementById('planName').value = ''
+    document.getElementById('employeeOfPlan').options = {}
+  }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
@@ -48,7 +58,11 @@ class FormSubmitPlan extends Component {
               ขั้นตอนที่ 1 : Choose High Level Plan{' '}
             </span>
             <div className="box-in-head-box">
-              <img src={erase} className="image-erase" />
+              <img
+                src={erase}
+                className="image-erase"
+                onClick={() => this.handleClick()}
+              />
               <span className="headLogo">Reset</span>
             </div>
           </div>
@@ -65,19 +79,20 @@ class FormSubmitPlan extends Component {
                 <Form.Group widths="equal">
                   <Form.Input
                     placeholder="ชื่อแพลน"
-                    name="secondChoiceMoney"
-                    id="secondChoiceMoney"
+                    name="planName"
+                    id="planName"
                     onChange={this.handleChange}
                     style={{ marginTop: '7%' }}
+                    required
                   />
                   <br />
                 </Form.Group>
                 <Form.Group widths="equal">
                   <Form.Select
                     placeholder="เท่า"
-                    options={1}
-                    name="lifeChoiceThreeFirst"
-                    id="lifeChoiceThreeFirst"
+                    options={moneyOptions}
+                    name="employeeOfPlan"
+                    id="employeeOfPlan"
                     onChange={this.handleChange}
                   />
                   <br />

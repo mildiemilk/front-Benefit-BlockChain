@@ -39,3 +39,26 @@ export const PostButton = styled(Button)`
   }
 
 `
+export const UploadButton = styled.button`
+  
+    width: 262px;
+    height: 40px;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #3a7bd5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    text-align: center;
+  
+
+`
+export const Box = styled.input`
+	border-radius: 3px;
+	border: solid 1px #dddddd;
+  padding: 2%;
+  width: 100%;
+	height: auto;
+  &::-webkit-input-placeholder {
+        color: #323028;
+        opacity: 0.35;
+    }
+`

@@ -26,7 +26,6 @@ import {
   Next,
 } from './Styled'
 import styled from 'react-sc'
-import './style.scss'
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
@@ -45,20 +44,9 @@ const NextButton = styled.button`
     margin-top: 20%;
     display: block;
     text-align:center;
-<<<<<<< HEAD
     margin-right:26%;
     margin-left:auto;
     padding: 0.5%;
-=======
-    padding: 5%;
-
-`
-const UploadImage = styled.div`
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-
->>>>>>> a811fc6b98c4eea4532e48d2729cc7dfcdd8d3fe
 `
 const BusinessTypes = [
   {
@@ -193,7 +181,10 @@ class SettingProfile extends Component {
       )
     }
     return (
-      <div style={{ background: '#F1F1F1', paddingTop: '5%' }}>
+      <div
+        className="setting-profile"
+        style={{ background: '#F1F1F1', paddingTop: '5%' }}
+      >
         <div className="row">
           <div className="large-10 large-offset-1 columns">
             <Head>กรุณาตั้งค่าโปรไฟล์</Head>

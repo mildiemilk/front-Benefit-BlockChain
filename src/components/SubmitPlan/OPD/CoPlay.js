@@ -17,17 +17,18 @@ import {
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
 
-class Coplay extends Component {
+class CoPlay extends Component {
   constructor() {
     super()
     this.state = {
-      ipdCoPlay: false,
+      showCoPlay: false,
       value: '',
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixipdCoPlayMixYear: null,
+      opdCoPlay: null,
+      opdCoPlayQuota: null,
+      opdCoPlayDeductable: null,
+      opdCoPlayMixPercentage: null,
+      opdCoPlayMixNotExceed: null,
+      opdCoPlayMixopdCoPlayMixYear: null,
     }
     const value = ''
   }
@@ -43,18 +44,18 @@ class Coplay extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'Quota Share') {
-      document.getElementById('ipdCoPlayQuota').value = ''
-      this.setState({ ipdCoPlayQuota: null })
+      document.getElementById('opdCoPlayQuota').value = ''
+      this.setState({ opdCoPlayQuota: null })
     } else if (this.state.value === 'Deductable') {
-      document.getElementById('ipdCoPlayDeductable').value = ''
-      this.setState({ ipdCoPlayDeductable: null })
+      document.getElementById('opdCoPlayDeductable').value = ''
+      this.setState({ opdCoPlayDeductable: null })
     } else {
-      document.getElementById('ipdCoPlayMixPercentage').value = ''
-      this.setState({ ipdCoPlayMixPercentage: null })
-      document.getElementById('ipdCoPlayMixNotExceed').value = ''
-      this.setState({ ipdCoPlayMixNotExceed: null })
-      document.getElementById('ipdCoPlayMixYear').value = ''
-      this.setState({ ipdCoPlayMixYear: null })
+      document.getElementById('opdCoPlayMixPercentage').value = ''
+      this.setState({ opdCoPlayMixPercentage: null })
+      document.getElementById('opdCoPlayMixNotExceed').value = ''
+      this.setState({ opdCoPlayMixNotExceed: null })
+      document.getElementById('opdCoPlayMixYear').value = ''
+      this.setState({ opdCoPlayMixYear: null })
     }
   }
 
@@ -75,15 +76,15 @@ class Coplay extends Component {
             {this.state.value === 'Quota Share'
               ? <Form.Input
                   placeholder="เปอร์เซน"
-                  name="ipdCoPlayQuota"
-                  id="ipdCoPlayQuota"
+                  name="opdCoPlayQuota"
+                  id="opdCoPlayQuota"
                   onChange={this.handleChange}
                   required
                 />
               : <Form.Input
                   placeholder="เปอร์เซน"
-                  name="ipdCoPlayQuota"
-                  id="ipdCoPlayQuota"
+                  name="opdCoPlayQuota"
+                  id="opdCoPlayQuota"
                   readOnly
                   onChange={this.handleChange}
                 />}
@@ -102,15 +103,15 @@ class Coplay extends Component {
             {this.state.value === 'Deductable'
               ? <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="ipdCoPlayDeductable"
-                  id="ipdCoPlayDeductable"
+                  name="opdCoPlayDeductable"
+                  id="opdCoPlayDeductable"
                   onChange={this.handleChange}
                   required
                 />
               : <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="ipdCoPlayDeductable"
-                  id="ipdCoPlayDeductable"
+                  name="opdCoPlayDeductable"
+                  id="opdCoPlayDeductable"
                   onChange={this.handleChange}
                   readOnly
                 />}
@@ -131,8 +132,8 @@ class Coplay extends Component {
                   <Form.Input
                     style={{ width: '80px' }}
                     placeholder="เปอร์เซ็น"
-                    name="ipdCoPlayMixPercentage"
-                    id="ipdCoPlayMixPercentage"
+                    name="opdCoPlayMixPercentage"
+                    id="opdCoPlayMixPercentage"
                     onChange={this.handleChange}
                     required
                   />
@@ -140,8 +141,8 @@ class Coplay extends Component {
                     style={{ width: '90px' }}
                     label=" %ไม่เกิน"
                     placeholder="จำนวนเงิน"
-                    name="ipdCoPlayMixNotExceed"
-                    id="ipdCoPlayMixNotExceed"
+                    name="opdCoPlayMixNotExceed"
+                    id="opdCoPlayMixNotExceed"
                     onChange={this.handleChange}
                     required
                   />
@@ -149,8 +150,8 @@ class Coplay extends Component {
                     style={{ width: '40px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="ipdCoPlayMixYear"
-                    id="ipdCoPlayMixYear"
+                    name="opdCoPlayMixYear"
+                    id="opdCoPlayMixYear"
                     onChange={this.handleChange}
                     required
                   />
@@ -159,8 +160,8 @@ class Coplay extends Component {
                   <Form.Input
                     style={{ width: '80px' }}
                     placeholder="เปอร์เซ็น"
-                    name="ipdCoPlayMixPercentage"
-                    id="ipdCoPlayMixPercentage"
+                    name="opdCoPlayMixPercentage"
+                    id="opdCoPlayMixPercentage"
                     onChange={this.handleChange}
                     readOnly
                   />
@@ -168,8 +169,8 @@ class Coplay extends Component {
                     style={{ width: '90px' }}
                     label=" %ไม่เกิน"
                     placeholder="จำนวนเงิน"
-                    name="ipdCoPlayMixNotExceed"
-                    id="ipdCoPlayMixNotExceed"
+                    name="opdCoPlayMixNotExceed"
+                    id="opdCoPlayMixNotExceed"
                     onChange={this.handleChange}
                     readOnly
                   />
@@ -177,8 +178,8 @@ class Coplay extends Component {
                     style={{ width: '40px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="ipdCoPlayMixYear"
-                    id="ipdCoPlayMixYear"
+                    name="opdCoPlayMixYear"
+                    id="opdCoPlayMixYear"
                     onChange={this.handleChange}
                     readOnly
                   />
@@ -190,9 +191,9 @@ class Coplay extends Component {
   }
 }
 
-Coplay.propTypes = {}
+CoPlay.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({})
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Coplay)
+export default connect(mapStateToProps, mapDispatchToProps)(CoPlay)

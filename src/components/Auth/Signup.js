@@ -102,7 +102,7 @@ class SignUp extends Component {
                     }}
                     type="submit"
                   >
-                    สมัครมสาชิก
+                    สมัครสมาชิก
                   </Button>
                 </Form>
               </div>

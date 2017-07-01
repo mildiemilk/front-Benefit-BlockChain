@@ -23,7 +23,10 @@ import '../../styles/SubmitPlan.scss'
 class SubmitPlan extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      planName: '',
+      employeeOfPlan: '',
+    }
   }
 
   static propTypes = {}

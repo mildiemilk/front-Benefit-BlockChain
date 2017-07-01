@@ -33,18 +33,18 @@ class IPD extends Component {
     this.state = {
       showCoPlay: false,
       showForm: 1,
-      value: '',
+      ipdType: '',
       box: 'fillBox1',
       results: '',
     }
-    const value = ''
+    const ipdType = ''
     const results = ''
   }
 
   static propTypes = {}
 
   onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
+    this.setState({ nameInput: e.target.ipdType })
   }
 
   handleSubmit = e => {
@@ -62,8 +62,8 @@ class IPD extends Component {
     }
   }
 
-  handleRadio = (e, { value }) => {
-    this.setState({ value })
+  handleRadio = (e, { ipdType }) => {
+    this.setState({ ipdType })
   }
 
   render() {
@@ -85,8 +85,8 @@ class IPD extends Component {
                   <Radio
                     label="Lumsum"
                     name="IPDGroup"
-                    value="Lumsum"
-                    checked={this.state.value === 'Lumsum'}
+                    ipdType="Lumsum"
+                    checked={this.state.ipdType === 'Lumsum'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
@@ -96,8 +96,8 @@ class IPD extends Component {
                   <Radio
                     label="R&B Lumsum"
                     name="IPDGroup"
-                    value="R&B Lumsum"
-                    checked={this.state.value === 'R&B Lumsum'}
+                    ipdType="R&B Lumsum"
+                    checked={this.state.ipdType === 'R&B Lumsum'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
@@ -107,8 +107,8 @@ class IPD extends Component {
                   <Radio
                     label="R&B Schedule"
                     name="IPDGroup"
-                    value="R&B Schedule"
-                    checked={this.state.value === 'R&B Schedule'}
+                    ipdType="R&B Schedule"
+                    checked={this.state.ipdType === 'R&B Schedule'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
@@ -118,9 +118,9 @@ class IPD extends Component {
           <br />
           <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
           <Form>
-            {this.state.value === 'Lumsum' ? <IPD1 /> : null}
-            {this.state.value === 'R&B Lumsum' ? <IPD2 /> : null}
-            {this.state.value === 'R&B Schedule' ? <IPD3 /> : null}
+            {this.state.ipdType === 'Lumsum' ? <IPD1 /> : null}
+            {this.state.ipdType === 'R&B Lumsum' ? <IPD2 /> : null}
+            {this.state.ipdType === 'R&B Schedule' ? <IPD3 /> : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
             {this.state.showCoPlay ? <CoPlay /> : null}

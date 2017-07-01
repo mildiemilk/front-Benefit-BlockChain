@@ -23,7 +23,10 @@ const moneyOptions = [{ text: '100', value: 100 }, { text: '200', value: 200 }]
 class FormSubmitPlan extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      planName: '',
+      employeeOfPlan: '',
+    }
   }
 
   static propTypes = {}
@@ -67,10 +70,11 @@ class FormSubmitPlan extends Component {
                 <Form.Group widths="equal">
                   <Form.Input
                     placeholder="ชื่อแพลน"
-                    name="secondChoiceMoney"
-                    id="secondChoiceMoney"
+                    name="planName"
+                    id="planName"
                     onChange={this.handleChange}
                     style={{ marginTop: '7%' }}
+                    required
                   />
                   <br />
                 </Form.Group>
@@ -78,8 +82,8 @@ class FormSubmitPlan extends Component {
                   <Form.Select
                     placeholder="เท่า"
                     options={moneyOptions}
-                    name="lifeChoiceThreeFirst"
-                    id="lifeChoiceThreeFirst"
+                    name="employeeOfPlan"
+                    id="employeeOfPlan"
                     onChange={this.handleChange}
                   />
                   <br />

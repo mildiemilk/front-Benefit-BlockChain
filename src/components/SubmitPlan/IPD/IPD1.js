@@ -24,9 +24,9 @@ class IPD1 extends Component {
     this.state = {
       showCoPlay: false,
       value: '',
-      firstChoiceMoney: '',
-      secondChoiceMoney: '',
-      secondChoiceMoneyLimit: '',
+      ipdLumsumPerYear: '',
+      ipdLumsumPerTime: '',
+      ipdLumsumTimeNotExceedPerYear: '',
     }
     const value = ''
   }
@@ -55,10 +55,10 @@ class IPD1 extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
-      document.getElementById('secondChoiceMoney').value = ''
-      document.getElementById('secondChoiceMoneyLimit').value = ''
+      document.getElementById(' ipdLumsumPerTime').value = ''
+      document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
     } else {
-      document.getElementById('firstChoiceMoney').value = ''
+      document.getElementById('ipdLumsumPerYear').value = ''
     }
   }
 
@@ -80,14 +80,14 @@ class IPD1 extends Component {
           {this.state.value === 'firstChoice'
             ? <Form.Input
                 placeholder="จำนวนเงิน"
-                name="firstChoiceMoney"
-                id="firstChoiceMoney"
+                name="ipdLumsumPerYear"
+                id="ipdLumsumPerYear"
                 onChange={this.handleChange}
               />
             : <Form.Input
                 placeholder="จำนวนเงิน"
-                name="firstChoiceMoney"
-                id="firstChoiceMoney"
+                name="ipdLumsumPerYear"
+                id="ipdLumsumPerYear"
                 onChange={this.handleChange}
                 readOnly
               />}
@@ -107,31 +107,31 @@ class IPD1 extends Component {
             ? <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="secondChoiceMoney"
-                  id="secondChoiceMoney"
+                  name=" ipdLumsumPerTime"
+                  id=" ipdLumsumPerTime"
                   onChange={this.handleChange}
                 />
                 <Form.Input
                   label="บาท/ครั้ง  ครั้งละไม่เกิน"
                   placeholder="จำนวนเงิน"
-                  name="secondChoiceMoneyLimit"
-                  id="secondChoiceMoneyLimit"
+                  name="ipdLumsumTimeNotExceedPerYear"
+                  id="ipdLumsumTimeNotExceedPerYear"
                   onChange={this.handleChange}
                 />
               </div>
             : <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="secondChoiceMoney"
-                  id="secondChoiceMoney"
+                  name=" ipdLumsumPerTime"
+                  id=" ipdLumsumPerTime"
                   onChange={this.handleChange}
                   readOnly
                 />
                 <Form.Input
                   label="บาท/ครั้ง  ครั้งละไม่เกิน"
                   placeholder="จำนวนเงิน"
-                  name="secondChoiceMoneyLimit"
-                  id="secondChoiceMoneyLimit"
+                  name="ipdLumsumTimeNotExceedPerYear"
+                  id="ipdLumsumTimeNotExceedPerYear"
                   onChange={this.handleChange}
                   readOnly
                 />

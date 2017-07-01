@@ -77,6 +77,7 @@ class simpleRQ extends Component {
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleCheck = (e, { name, checked }) => this.setState({ [name]: checked })
 
   render() {
     console.log(this.state)
@@ -169,13 +170,15 @@ class simpleRQ extends Component {
                         control={Checkbox}
                         defaultChecked={this.state.IPD}
                         label="IPD"
-                        onChange={this.handleChange}
+                        name="IPD"
+                        onChange={this.handleCheck}
                       />
                       <Form.Field
                         control={Checkbox}
                         defaultChecked={this.state.OPD}
                         label="OPD"
-                        onChange={this.handleChange}
+                        name="OPD"
+                        onChange={this.handleCheck}
                       />
                     </Form.Group>
                     <Form.Group inline>
@@ -184,13 +187,15 @@ class simpleRQ extends Component {
                         control={Checkbox}
                         defaultChecked={this.state.dental}
                         label="Dental"
-                        onChange={this.handleChange}
+                        name="dental"
+                        onChange={this.handleCheck}
                       />
                       <Form.Field
                         control={Checkbox}
                         defaultChecked={this.state.life}
                         label="Life"
-                        onChange={this.handleChange}
+                        name="life"
+                        onChange={this.handleCheck}
                       />
                     </Form.Group>
                     <Form.Group inline>
@@ -199,7 +204,8 @@ class simpleRQ extends Component {
                         control={Checkbox}
                         defaultChecked={this.state.other}
                         label="Other"
-                        onChange={this.handleChange}
+                        name="other"
+                        onChange={this.handleCheck}
                       />
                       <Form.Field
                         width={14}
@@ -215,7 +221,7 @@ class simpleRQ extends Component {
               </Grid.Row>
             </Grid>
           </Card>
-          <ModalSimpleRQ data={this.state} />
+          <ModalSimpleRQ data={this.state} handlePost={this.handlePost} />
         </Container>
       </div>
     )

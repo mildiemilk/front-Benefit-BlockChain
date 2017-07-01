@@ -34,7 +34,7 @@ class Dashboard extends Component {
           </Segment>
           <Segment.Group horizontal>
             <Segment>
-              <Link to={{ pathname: '/simpleRq' }}>
+              <Link to={{ pathname: '/dashboard/simplerequirement' }}>
                 <Checkbox radio label="1.แผนประกันภัย" readOnly />
               </Link>
             </Segment>

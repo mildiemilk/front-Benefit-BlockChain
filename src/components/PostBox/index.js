@@ -28,8 +28,11 @@ import Chatbox from './ChatBox'
 import Steps from './Step'
 import Postre from './Postre'
 import styled from 'react-sc'
-import ModalPostBox from './ModalPostBox'
+import ModalPostbox from './ModalPostBox'
 import NavInsure from '../NavInsure'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { postBox } from '../../api/postBox'
 const RatingNew = styled(Rating)`
   &&&{
     position: absolute;
@@ -38,13 +41,22 @@ const RatingNew = styled(Rating)`
   }
 `
 
-export default class PostBox extends Component {
-  constructor(props) {
-    super(props)
+class PostBox extends Component {
+  constructor() {
+    super()
     this.state = {
       step: 2,
+      passwordToConfirm: '',
     }
   }
+
+  handlePost = e => {
+    e.preventDefault()
+    const { passwordToConfirm } = this.state
+    this.props.postBox(passwordToConfirm)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
       // <contentWarpper>
@@ -82,7 +94,10 @@ export default class PostBox extends Component {
                         size="mini"
                         disabled
                       />
-                      <ModalPostBox />
+                      <ModalPostbox
+                        handlePost={this.handlePost}
+                        handleChange={this.handleChange}
+                      />
                     </Reg3>
                   </Space>
                 </div>
@@ -108,3 +123,15 @@ export default class PostBox extends Component {
     )
   }
 }
+
+PostBox.propTypes = {
+  postBox: PropTypes.func.isRequired,
+}
+
+const mapDispatchToProps = dispatch => ({
+  postBox: passwordToConfirm => dispatch(postBox(passwordToConfirm)),
+})
+
+const mapStateToProps = state => ({})
+
+export default connect(null, mapDispatchToProps)(PostBox)

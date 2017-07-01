@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import MenuPlan from './MenuPlan/Menuplan'
+import MenuPlan from './MenuPlan/MenuPlan'
 import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
 import AllPlan from './AllPlan'
 import {

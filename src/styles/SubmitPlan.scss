@@ -1,5 +1,5 @@
 .fillBox{
-  width: 725.8px;
+  width: 685.8px;
   height: 100%;
   position: relative;
   border-radius: 5px;
@@ -8,6 +8,14 @@
 
 }
 
+.big-box{
+  width: 1000px;
+  height: 100%;
+  position: relative;
+  background-color: #ffffff;
+  padding-top: 5%;
+  padding-left: 2.5%
+}
 
 .submit{
     width: 163px;
@@ -193,7 +201,7 @@
 }
 
 .menu-box{
-  margin-left: 25%;
+  margin-left: 0%;
 }
 
 .menu-text{

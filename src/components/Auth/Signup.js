@@ -38,7 +38,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="box">
-        <img src={logo} style={{ maxWidth: '40%' }} />
+        <img src={logo} style={{ maxWidth: '30%' }} />
         <div className="boxForm">
           <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
           <div className="row" />
@@ -102,7 +102,7 @@ class SignUp extends Component {
                     }}
                     type="submit"
                   >
-                    สมัครมสาชิก
+                    สมัครสมาชิก
                   </Button>
                 </Form>
               </div>

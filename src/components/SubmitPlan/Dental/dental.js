@@ -20,6 +20,7 @@ import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-tooth.jpg'
 import heart from '../../image/icons-8-like1.jpg'
+import erase from '../../image/icons-8-erase.png'
 
 class Dental extends Component {
   constructor() {
@@ -49,70 +50,44 @@ class Dental extends Component {
   render() {
     return (
       <div>
-        <div className="fillBox">
-          <div className="headBox">
-            <p className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน </p>
-          </div>
+        <br />
+        <p className="head">
+          <u>
+            ค่ารักษาทันตกรรม (Dental)
+          </u>
+        </p>
+        <br />
+        <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
+        <Form>
+          <Form.Group inline>
+            <Form.Input
+              label="ใช้บริการได้ไม่เกิน"
+              placeholder="จำนวนเงิน"
+              options={1}
+              onChange={this.handleChange}
+            />
+            <p> บาท/ปี</p>
+          </Form.Group>
           <div className="row">
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/IPD">
-                <img src={bed} className="imageMenu" />
-                <span className="text-menu">IPD</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/OPD">
-                <img src={stethoscope} className="imageMenu" />
-                <span className="text-menu">OPD</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/dental">
-                <img src={tooth} className="imageMenu" />
-                <span className="text-menu-active">Dental</span>
-              </Link>
-            </div>
-            <div className="large-3 columns">
-              <Link className="x-tab" to="/life">
-                <img src={heart} className="imageMenu" />
-                <span className="text-menu">Life</span>
-              </Link>
-            </div>
+            <Button
+              style={{
+                marginTop: '3%',
+                textAlign: 'center',
+                width: '164px',
+                height: '40px',
+                backgroundColor: '#3A7BD5',
+                color: 'white',
+                float: 'right',
+                borderRadius: '20px',
+                marginRight: '5%',
+                marginBottom: '3%',
+              }}
+              type="submit"
+            >
+              บันทึก
+            </Button>
           </div>
-          <div className="paragraph">
-            <p className="head">ค่ารักษาทันตกรรม (Dental)</p>
-            <br />
-            <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
-            <Form>
-              <Form.Group inline>
-                <Form.Input
-                  label="ใช้บริการได้ไม่เกิน"
-                  placeholder="จำนวนเงิน"
-                  options={1}
-                  onChange={this.handleChange}
-                />
-                <p> บาท/ปี</p>
-              </Form.Group>
-              <Button
-                style={{
-                  marginTop: '3%',
-                  textAlign: 'center',
-                  width: '164px',
-                  height: '40px',
-                  backgroundColor: '#3A7BD5',
-                  color: 'white',
-                  float: 'right',
-                  borderRadius: '20px',
-                  marginRight: '5%',
-                  marginBottom: '3%',
-                }}
-                type="submit"
-              >
-                บันทึก
-              </Button>
-            </Form>
-          </div>
-        </div>
+        </Form>
       </div>
     )
   }

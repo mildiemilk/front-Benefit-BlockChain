@@ -9,10 +9,11 @@ const CardLink = styled(Card.Content)`
   }
   }
 `
+
 export default class ChatList extends Component {
   render() {
     return (
-      <Card.Group style={{ width: '285px' }}>
+      <Card.Group style={{ borderRadius: '0px' }}>
         <Card>
           <CardLink extra>
             <Feed>

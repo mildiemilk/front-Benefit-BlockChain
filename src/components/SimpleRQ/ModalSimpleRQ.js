@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Header, Image, Modal, Checkbox } from 'semantic-ui-react'
-import { ModalHeader, ModalContent, EditButton, PostButton } from './Styled'
+import { ModalHeader, ModalContent, EditButton, PostButton } from './styled'
 import PropTypes from 'prop-types'
 
 const ModalModalExample = props => (

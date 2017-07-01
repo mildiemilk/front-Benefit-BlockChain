@@ -46,10 +46,11 @@ class IPD2 extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
-      document.getElementById('secondChoiceMoney').value = ''
-      document.getElementById('secondChoiceMoneyLimit').value = ''
+      document.getElementById('secondChoiceMoneyFirst').value = ''
+      document.getElementById('secondChoiceMoneySecond').value = ''
     } else {
-      document.getElementById('firstChoiceMoney').value = ''
+      document.getElementById('firstChoiceMoneyFirst').value = ''
+      document.getElementById('firstChoiceMoneySecond').value = ''
     }
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -67,17 +68,39 @@ class IPD2 extends Component {
               onChange={this.handleRadio}
             />
           </Form.Field>
-          <Form.Input
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            label="บาท/คืน ไม่เกินปีล่ะ"
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
+          {this.state.value === 'firstChoice'
+            ? <div style={{ display: 'inherit' }}>
+                <Form.Input
+                  placeholder="จำนวนเงิน"
+                  name="firstChoiceMoneyFirst"
+                  id="firstChoiceMoneyFirst"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label="บาท/คืน ไม่เกินปีล่ะ"
+                  placeholder="จำนวนเงิน"
+                  name="firstChoiceMoneySecond"
+                  id="firstChoiceMoneySecond"
+                  onChange={this.handleChange}
+                />
+              </div>
+            : <div style={{ display: 'inherit' }}>
+                <Form.Input
+                  placeholder="จำนวนเงิน"
+                  name="firstChoiceMoneyFirst"
+                  id="firstChoiceMoneyFirst"
+                  onChange={this.handleChange}
+                  readOnly
+                />
+                <Form.Input
+                  label="บาท/คืน ไม่เกินปีล่ะ"
+                  placeholder="จำนวนเงิน"
+                  name="firstChoiceMoneySecond"
+                  id="firstChoiceMoneySecond"
+                  onChange={this.handleChange}
+                  readOnly
+                />
+              </div>}
           <p> คืน</p>
         </Form.Group>
         <Form.Group inline>
@@ -90,20 +113,38 @@ class IPD2 extends Component {
               onChange={this.handleRadio}
             />
           </Form.Field>
-          <Form.Input
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
+          {this.state.value === 'secondChoice'
+            ? <Form.Input
+                placeholder="จำนวนเงิน"
+                name="secondChoiceMoneyFirst"
+                id="secondChoiceMoneyFirst"
+                onChange={this.handleChange}
+              />
+            : <Form.Input
+                placeholder="จำนวนเงิน"
+                name="secondChoiceMoneyFirst"
+                id="secondChoiceMoneyFirst"
+                onChange={this.handleChange}
+                readOnly
+              />}
           <p> บาท/คืน ไม่เกินปีล่ะ</p>
         </Form.Group>
         <Form.Group inline style={{ marginLeft: '25px' }}>
-          <Form.Input
-            label="และจ่ายไม่เกิน"
-            placeholder="จำนวนเงิน"
-            name=""
-            onChange={this.handleChange}
-          />
+          {this.state.value === 'secondChoice'
+            ? <Form.Input
+                label="และจ่ายไม่เกิน"
+                placeholder="จำนวนเงิน"
+                name="secondChoiceMoneySecond"
+                id="secondChoiceMoneySecond"
+                onChange={this.handleChange}
+              />
+            : <Form.Input
+                label="และจ่ายไม่เกิน"
+                placeholder="จำนวนเงิน"
+                name="secondChoiceMoneySecond"
+                id="secondChoiceMoneySecond"
+                onChange={this.handleChange}
+              />}
           <p> คืน</p>
         </Form.Group>
 

@@ -20,9 +20,10 @@ import {
   Image,
 } from 'semantic-ui-react'
 import { fillSimpleRQ } from '../../api/simpleRequirement'
-
+import { UploadButton, Box } from './styled'
 import ModalSimpleRQ from './ModalSimpleRQ'
 import styled from 'react-sc'
+import NavInsure from '../NavInsure'
 
 const CardHeader = styled(Card)`
     &&&{
@@ -37,9 +38,9 @@ class simpleRQ extends Component {
   constructor() {
     super()
     this.state = {
+      step: 1,
       numberOfEmployee: '',
       typeOfInsurance: '',
-      fileInsurance: '',
       day: '',
       month: '',
       year: '',
@@ -49,9 +50,25 @@ class simpleRQ extends Component {
       life: false,
       other: false,
       otherDes: '',
+      file: '',
+      filePreviewUrl: '',
     }
   }
+  _handleImageChange(e) {
+    e.preventDefault()
 
+    let reader = new FileReader()
+    let file = e.target.files[0]
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        filePreviewUrl: reader.result,
+      })
+    }
+
+    reader.readAsDataURL(file)
+  }
   handlePost = e => {
     e.preventDefault()
     const {
@@ -80,14 +97,18 @@ class simpleRQ extends Component {
   handleCheck = (e, { name, checked }) => this.setState({ [name]: checked })
 
   render() {
+    // console.log(this.props.data)
+    let { filePreviewUrl } = this.state
+    let $filePreview = null
+    if (filePreviewUrl) {
+      $filePreview = <span>{this.state.file.name}&nbsp;</span>
+    }
+
     console.log(this.state)
-    console.log(this.props.data)
     return (
       <div id="simpleRQ">
         <Container id="containerWithBg">
-          <p id="topic"> จัดแผนสิทธิประโยชน์ </p>
-          <Divider />
-          <Step.Group size="mini" ordered items={simpleRQOption.steps} />
+          <NavInsure step={this.state.step} />
           <Card fluid id="cardSimpleRQ">
             <CardHeader>
               <p id="headCardRQ"> แผนประกันที่ต้องการ </p>
@@ -113,7 +134,7 @@ class simpleRQ extends Component {
                   <p> รูปแบบประกันที่ต้องการ </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
-                  <Input
+                  <Box
                     fluid
                     name="typeOfInsurance"
                     defaultValue={this.state.typeInsurance}
@@ -127,7 +148,17 @@ class simpleRQ extends Component {
                   <p> อัพโหลดแผนประกันที่ใช้ในปัจจุบัน </p>
                 </Grid.Column>
                 <Grid.Column width={11}>
-                  <Button id="uploadButton">อัพโหลดไฟล์</Button>
+                  <div>
+                    {$filePreview}
+                    <UploadButton>
+                      <input
+                        style={{ opacity: '0', position: 'absolute' }}
+                        type="file"
+                        onChange={e => this._handleImageChange(e)}
+                      />
+                      อัพโหลดไฟล์
+                    </UploadButton>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>

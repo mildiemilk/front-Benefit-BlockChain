@@ -17,7 +17,7 @@ import {
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
 
-class Coplay extends Component {
+class CoPlay extends Component {
   constructor() {
     super()
     this.state = {
@@ -128,9 +128,9 @@ class Coplay extends Component {
   }
 }
 
-Coplay.propTypes = {}
+CoPlay.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({})
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Coplay)
+export default connect(mapStateToProps, mapDispatchToProps)(CoPlay)

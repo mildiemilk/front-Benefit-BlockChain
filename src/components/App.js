@@ -30,6 +30,7 @@ import ViewAllPlan from './ViewAllPlan'
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
+    <SidebarLeft />
     {isAuthenticated
       ? <Switch>
           <Route path="/postbox" component={Postbox} />
@@ -37,6 +38,7 @@ const App = ({ isAuthenticated }) => (
           <Route path="/dashboard/simplerequirement" component={simpleRQ} />
           <Route path="/signup" component={Signup} />
           <Route path="/dashboard" component={Dashboard} />
+          <Route path="/submitplan" component={SubmitPlan} />
           <Route path="/settingprofile" component={SettingProfile} />
           <Route path="/ipd" component={IPD} />
           <Route path="/confirm_identity" component={confirm_identity} />
@@ -47,11 +49,7 @@ const App = ({ isAuthenticated }) => (
           <Route path="/postbox" component={Postbox} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/dashboard/simplerequirement" component={simpleRQ} />
-          <Route path="/ipd" component={IPD} />
-          <Route path="/IPD" component={IPD} />
-          <Route path="/OPD" component={OPD} />
-          <Route path="/Dental" component={Dental} />
-          <Route path="/Life" component={Life} />
+          <Route path="/submitplan" component={SubmitPlan} />
           <Route path="/chooseinsurer" component={ChooseInsurer} />
           <Route path="/simplerequirement" component={simpleRQ} />
           <Route path="/login" component={Login} />

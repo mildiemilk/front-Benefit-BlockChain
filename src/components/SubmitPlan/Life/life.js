@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { editPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -29,37 +30,43 @@ class Life extends Component {
     super()
     this.state = {
       value: '',
+      lifePerYear: null,
+      lifeTimeOfSalary: null,
+      lifeNotExceed: null,
     }
   }
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondLifeChoice') {
-      document.getElementById('lifeChoiceTwo').value = ''
+      document.getElementById('lifeTimeOfSalary').value = ''
+      this.setState({ lifeTimeOfSalary: null })
     } else if (this.state.value === 'firstLifeChoice') {
-      document.getElementById('lifeChoiceOne').value = ''
+      document.getElementById('lifePerYear').value = ''
+      this.setState({ lifePerYear: null })
     } else {
-      document.getElementById('lifeChoiceThreeFirst').value = ''
-      document.getElementById('lifeChoiceThreeTwo').value = ''
+      document.getElementById('lifeTimeOfSalary').value = ''
+      this.setState({ lifeTimeOfSalary: null })
+      document.getElementById('lifeNotExceed').value = ''
+      this.setState({ lifeNotExceed: null })
     }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
+  handleClick = () => {
+    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
+    this.props.editPlan(
+      { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
+      this.props.plan.planId,
+      'life',
+    )
+  }
+
   render() {
+    console.log(this.props.plan)
     return (
       <div>
         <br />
@@ -84,14 +91,15 @@ class Life extends Component {
             {this.state.value === 'firstLifeChoice'
               ? <Form.Input
                   placeholder="จำนวนบาท"
-                  name="lifeChoiceOne"
-                  id="lifeChoiceOne"
+                  name="lifePerYear"
+                  id="lifePerYear"
                   onChange={this.handleChange}
+                  required
                 />
               : <Form.Input
                   placeholder="จำนวนบาท"
-                  name="lifeChoiceOne"
-                  id="lifeChoiceOne"
+                  name="lifePerYear"
+                  id="lifePerYear"
                   onChange={this.handleChange}
                   readOnly
                 />}
@@ -110,15 +118,16 @@ class Life extends Component {
             {this.state.value === 'secondLifeChoice'
               ? <Form.Select
                   placeholder="เท่า"
-                  name="lifeChoiceTwo"
-                  id="lifeChoiceTwo"
+                  name="lifeTimeOfSalary"
+                  id="lifeTimeOfSalary"
                   options={options}
                   onChange={this.handleChange}
+                  required
                 />
               : <Form.Select
                   placeholder="เท่า"
-                  name="lifeChoicTwo"
-                  id="lifeChoiceTwo"
+                  name="lifeTimeOfSalary"
+                  id="lifeTimeOfSalary"
                   options={1}
                   onChange={this.handleChange}
                   disabled
@@ -131,7 +140,7 @@ class Life extends Component {
                 label="คูณอัตราเงินเดือน"
                 name="lifeGroup"
                 value="thirdLifeChoice"
-                checked={this.state.value === 'thirdtLifeChoice'}
+                checked={this.state.value === 'thirdLifeChoice'}
                 onChange={this.handleRadio}
               />
             </Form.Field>
@@ -139,17 +148,18 @@ class Life extends Component {
               ? <div style={{ display: 'inherit' }}>
                   <Form.Select
                     placeholder="เท่า"
-                    options={1}
-                    name="lifeChoiceThreeFirst"
-                    id="lifeChoiceThreeFirst"
+                    options={options}
+                    name="lifeTimeOfSalary"
+                    id="lifeTimeOfSalary"
                     onChange={this.handleChange}
                   />
                   <Form.Input
                     label="เท่า แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
-                    name="lifeChoiceThreeTwo"
-                    id="lifeChoiceThreeTwo"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
                     onChange={this.handleChange}
+                    required
                   />
                 </div>
               : <div style={{ display: 'inherit' }}>
@@ -157,15 +167,15 @@ class Life extends Component {
                     placeholder="เท่า"
                     options={1}
                     onChange={this.handleChange}
-                    name="lifeChoiceThreeFirst"
-                    id="lifeChoiceThreeFirst"
+                    name="lifeTimeOfSalary"
+                    id="lifeTimeOfSalary"
                     disabled
                   />
                   <Form.Input
                     label="เท่า แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
-                    name="lifeChoiceThreeTwo"
-                    id="lifeChoiceThreeTwo"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
                     onChange={this.handleChange}
                     readOnly
                   />
@@ -187,6 +197,7 @@ class Life extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
+              onClick={this.handleClick}
             >
               บันทึก
             </Button>
@@ -199,7 +210,12 @@ class Life extends Component {
 
 Life.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
+})
+const mapStateToProps = state => ({
+  plan: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Life)

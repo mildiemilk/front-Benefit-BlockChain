@@ -23,6 +23,12 @@ class CoPlay extends Component {
     this.state = {
       showCoPlay: false,
       value: '',
+      opdCoPlay: null,
+      opdCoPlayQuota: null,
+      opdCoPlayDeductable: null,
+      opdCoPlayMixPercentage: null,
+      opdCoPlayMixNotExceed: null,
+      opdCoPlayMixopdCoPlayMixYear: null,
     }
     const value = ''
   }
@@ -38,13 +44,18 @@ class CoPlay extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'Quota Share') {
-      document.getElementById('percente').value = ''
+      document.getElementById('opdCoPlayQuota').value = ''
+      this.setState({ opdCoPlayQuota: null })
     } else if (this.state.value === 'Deductable') {
-      document.getElementById('money').value = ''
+      document.getElementById('opdCoPlayDeductable').value = ''
+      this.setState({ opdCoPlayDeductable: null })
     } else {
-      document.getElementById('mixPercente').value = ''
-      document.getElementById('limitPercente').value = ''
-      document.getElementById('year').value = ''
+      document.getElementById('opdCoPlayMixPercentage').value = ''
+      this.setState({ opdCoPlayMixPercentage: null })
+      document.getElementById('opdCoPlayMixNotExceed').value = ''
+      this.setState({ opdCoPlayMixNotExceed: null })
+      document.getElementById('opdCoPlayMixYear').value = ''
+      this.setState({ opdCoPlayMixYear: null })
     }
   }
 
@@ -62,12 +73,21 @@ class CoPlay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            <Form.Input
-              placeholder="เปอร์เซน"
-              name="percente"
-              id="percente"
-              onChange={this.handleChange}
-            />
+            {this.state.value === 'Quota Share'
+              ? <Form.Input
+                  placeholder="เปอร์เซน"
+                  name="opdCoPlayQuota"
+                  id="opdCoPlayQuota"
+                  onChange={this.handleChange}
+                  required
+                />
+              : <Form.Input
+                  placeholder="เปอร์เซน"
+                  name="opdCoPlayQuota"
+                  id="opdCoPlayQuota"
+                  readOnly
+                  onChange={this.handleChange}
+                />}
             <p className="selectText"> %</p>
           </Form.Group>
           <Form.Group inline>
@@ -80,12 +100,21 @@ class CoPlay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            <Form.Input
-              placeholder="จำนวนเงิน"
-              name="money"
-              id="money"
-              onChange={this.handleChange}
-            />
+            {this.state.value === 'Deductable'
+              ? <Form.Input
+                  placeholder="จำนวนเงิน"
+                  name="opdCoPlayDeductable"
+                  id="opdCoPlayDeductable"
+                  onChange={this.handleChange}
+                  required
+                />
+              : <Form.Input
+                  placeholder="จำนวนเงิน"
+                  name="opdCoPlayDeductable"
+                  id="opdCoPlayDeductable"
+                  onChange={this.handleChange}
+                  readOnly
+                />}
             <p className="selectText"> บาท</p>
           </Form.Group>
           <Form.Group inline>
@@ -98,29 +127,63 @@ class CoPlay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            <Form.Input
-              style={{ width: '80px' }}
-              placeholder="เปอร์เซ็น"
-              name="mixPercente"
-              id="mixPercente"
-              onChange={this.handleChange}
-            />
-            <Form.Input
-              style={{ width: '90px' }}
-              label=" %ไม่เกิน"
-              placeholder="จำนวนเงิน"
-              name="limitPercente"
-              id="limitPercente"
-              onChange={this.handleChange}
-            />
-            <Form.Input
-              style={{ width: '40px' }}
-              label=" ต่อ"
-              placeholder="ปี"
-              name="year"
-              id="year"
-              onChange={this.handleChange}
-            />
+            {this.state.value === 'Quota Share + Deductable'
+              ? <div style={{ display: 'inherit' }}>
+                  <Form.Input
+                    style={{ width: '80px' }}
+                    placeholder="เปอร์เซ็น"
+                    name="opdCoPlayMixPercentage"
+                    id="opdCoPlayMixPercentage"
+                    onChange={this.handleChange}
+                    required
+                  />
+                  <Form.Input
+                    style={{ width: '90px' }}
+                    label=" %ไม่เกิน"
+                    placeholder="จำนวนเงิน"
+                    name="opdCoPlayMixNotExceed"
+                    id="opdCoPlayMixNotExceed"
+                    onChange={this.handleChange}
+                    required
+                  />
+                  <Form.Input
+                    style={{ width: '40px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPlayMixYear"
+                    id="opdCoPlayMixYear"
+                    onChange={this.handleChange}
+                    required
+                  />
+                </div>
+              : <div style={{ display: 'inherit' }}>
+                  <Form.Input
+                    style={{ width: '80px' }}
+                    placeholder="เปอร์เซ็น"
+                    name="opdCoPlayMixPercentage"
+                    id="opdCoPlayMixPercentage"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                  <Form.Input
+                    style={{ width: '90px' }}
+                    label=" %ไม่เกิน"
+                    placeholder="จำนวนเงิน"
+                    name="opdCoPlayMixNotExceed"
+                    id="opdCoPlayMixNotExceed"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                  <Form.Input
+                    style={{ width: '40px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPlayMixYear"
+                    id="opdCoPlayMixYear"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                </div>}
           </Form.Group>
         </div>
       </div>

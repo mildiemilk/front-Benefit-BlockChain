@@ -22,6 +22,10 @@ class IPD2 extends Component {
     super()
     this.state = {
       value: '',
+      rbLumsumRoomPerNight: null,
+      rbLumsumNigthNotExceedPerYear: null,
+      rbLumsumPayNotExceedPerNight: null,
+      rbLumsumPayNotExceedPerYear: null,
     }
     const value = ''
   }
@@ -46,11 +50,15 @@ class IPD2 extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
-      document.getElementById('secondChoiceMoneyFirst').value = ''
-      document.getElementById('secondChoiceMoneySecond').value = ''
+      document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
+      this.setState({ rbLumsumPayNotExceedPerNight: null })
+      document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
+      this.setState({ rbLumsumPayNotExceedPerYear: null })
     } else {
-      document.getElementById('firstChoiceMoneyFirst').value = ''
-      document.getElementById('firstChoiceMoneySecond').value = ''
+      document.getElementById('rbLumsumRoomPerNight').value = ''
+      this.setState({ rbLumsumRoomPerNight: null })
+      document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
+      this.setState({ rbLumsumNigthNotExceedPerYear: null })
     }
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -72,31 +80,33 @@ class IPD2 extends Component {
             ? <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="firstChoiceMoneyFirst"
-                  id="firstChoiceMoneyFirst"
+                  name="rbLumsumRoomPerNight"
+                  id="rbLumsumRoomPerNight"
                   onChange={this.handleChange}
+                  required
                 />
                 <Form.Input
                   label="บาท/คืน ไม่เกินปีล่ะ"
                   placeholder="จำนวนเงิน"
-                  name="firstChoiceMoneySecond"
-                  id="firstChoiceMoneySecond"
+                  name="rbLumsumNigthNotExceedPerYear"
+                  id="rbLumsumNigthNotExceedPerYear"
                   onChange={this.handleChange}
+                  required
                 />
               </div>
             : <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name="firstChoiceMoneyFirst"
-                  id="firstChoiceMoneyFirst"
+                  name="rbLumsumRoomPerNight"
+                  id="rbLumsumRoomPerNight"
                   onChange={this.handleChange}
                   readOnly
                 />
                 <Form.Input
                   label="บาท/คืน ไม่เกินปีล่ะ"
                   placeholder="จำนวนเงิน"
-                  name="firstChoiceMoneySecond"
-                  id="firstChoiceMoneySecond"
+                  name="rbLumsumNigthNotExceedPerYear"
+                  id="rbLumsumNigthNotExceedPerYear"
                   onChange={this.handleChange}
                   readOnly
                 />
@@ -116,14 +126,15 @@ class IPD2 extends Component {
           {this.state.value === 'secondChoice'
             ? <Form.Input
                 placeholder="จำนวนเงิน"
-                name="secondChoiceMoneyFirst"
-                id="secondChoiceMoneyFirst"
+                name="rbLumsumPayNotExceedPerNight"
+                id="rbLumsumPayNotExceedPerNight"
                 onChange={this.handleChange}
+                required
               />
             : <Form.Input
                 placeholder="จำนวนเงิน"
-                name="secondChoiceMoneyFirst"
-                id="secondChoiceMoneyFirst"
+                name="rbLumsumPayNotExceedPerNight"
+                id="rbLumsumPayNotExceedPerNight"
                 onChange={this.handleChange}
                 readOnly
               />}
@@ -134,15 +145,16 @@ class IPD2 extends Component {
             ? <Form.Input
                 label="และจ่ายไม่เกิน"
                 placeholder="จำนวนเงิน"
-                name="secondChoiceMoneySecond"
-                id="secondChoiceMoneySecond"
+                name="rbLumsumPayNotExceedPerYear"
+                id="rbLumsumPayNotExceedPerYear"
                 onChange={this.handleChange}
+                required
               />
             : <Form.Input
                 label="และจ่ายไม่เกิน"
                 placeholder="จำนวนเงิน"
-                name="secondChoiceMoneySecond"
-                id="secondChoiceMoneySecond"
+                name=" rbLumsumPayNotExceedPerYear"
+                id=" rbLumsumPayNotExceedPerYear"
                 onChange={this.handleChange}
               />}
           <p> คืน</p>

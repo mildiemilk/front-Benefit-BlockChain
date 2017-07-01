@@ -1,33 +1,62 @@
 import React from 'react'
-import { Button, Header, Image, Modal, Checkbox } from 'semantic-ui-react'
-import { ModalHeader, ModalContent, EditButton, PostButton } from './Styled'
+import { Button, Header, Image, Modal, Checkbox, Form } from 'semantic-ui-react'
+import {
+  ModalHeader,
+  ModalContent,
+  EditButton,
+  PostButton,
+  ButtonNew,
+  CancleButton,
+  ConfirmButton,
+} from './Styled'
 import PropTypes from 'prop-types'
+import styled from 'react-sc'
+import passwordIcon from '../image/icons8-password.png'
 
 const ModalModalExample = ({ data }) => (
   <Modal
-    style={{ width: '50%', height: '50%' }}
+    style={{ width: '450px', height: '208px' }}
     trigger={
-      <Button floated="right" id="postButton" onClick={this.handlePost}>
-        {' '}โพสต์
-      </Button>
+      <ButtonNew onClick={this.handlePost}>
+        {' '}เลือก Broker
+      </ButtonNew>
     }
   >
     <Modal.Content>
-      <ModalHeader> ยืนยันการโพสต์ <br /> </ModalHeader>
+      <ModalHeader>
+        {' '}
+        กรุณาใส่พาสเวิร์ดของคุณอีกครั้ง เพื่อ
+        {' '}
+        <br />
+        {' '}
+        ยืนยันการเลือกโบรกเกอร์
+        {' '}
+        <br />
+        {' '}
+      </ModalHeader>
       <ModalContent>
-        จำนวนพนักงาน: 1300 <br /><br />
-        รูปแบบประกันที่ต้องการ: Fixed Plan <br /><br />
-        อัพโหลดแผนประกันที่ใช้ในปัจจุบัน: Insurance_Plan_2016.pdf <br /><br />
-        วันหมดอายุของกรมธรรม์: 21 สิงหาคม 2560 <br /><br />
-        แผนประกันที่ต้องการ
-        <Checkbox label="OPD" defaultChecked />
-        <Checkbox label="IPD" defaultChecked />
-        <Checkbox label="Dental" defaultChecked />
-        <Checkbox label="Life" defaultChecked />
-        <br />{' '}
+        <Form>
+          <Form.Field>
+            <Form.Input
+              style={{
+                width: '324px',
+                height: '40px',
+                backgroundImage: `url(${passwordIcon})`,
+                backgroundSize: '32px,32px',
+                backgroundRepeat: 'no-repeat',
+                paddingLeft: '9%',
+              }}
+              placeholder="พาสเวิร์ด"
+              name="password"
+              type="password"
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+        </Form>
+        <br /> หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้ <br />
       </ModalContent>
-      <EditButton content="แก้ไข" />
-      <PostButton content="โพสต์" />
+      <CancleButton> ยกเลิก </CancleButton>
+      <ConfirmButton> ยืนยัน </ConfirmButton>
     </Modal.Content>
   </Modal>
 )

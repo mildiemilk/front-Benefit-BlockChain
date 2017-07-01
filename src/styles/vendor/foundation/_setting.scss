@@ -1,7 +1,6 @@
 @import '~foundation-sites/scss/foundation';
 
-$grid-row-width: 1140px;
+$grid-row-width: 100%;
 $grid-column-gutter: 16px;
-
 
 @include foundation-grid;

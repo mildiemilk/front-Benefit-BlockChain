@@ -29,31 +29,41 @@ import Sidebar from './Sidebar'
 
 const App = ({ isAuthenticated }) => (
   <div>
-    <Sidebar/>
     <Header />
-    {isAuthenticated
-      ? <Switch>
-          <Route path="/postbox" component={Postbox} />
-          <Route path="/login" component={Login} />
-          <Route path="/simplerequirement" component={simpleRQ} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/settingprofile" component={SettingProfile} />
-          <Route path="/IPD" component={IPD} />
-          <Route path="/OPD" component={OPD} />
-          <Route path="/Dental" component={Dental} />
-          <Route path="/Life" component={Life} />
-        </Switch>
-      : <Switch>
-         <Route path="/postbox" component={Postbox} />
-        <Route path="/chooseinsurer" component={ChooseInsurer} />
-        <Route path="/simplerequirement" component={simpleRQ} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-           <Route path="/settingprofile" compornent={SettingProfile} />
-           
-          {/*<Redirect to={{ pathname: '/login' }} />*/}
-        </Switch>}
+    <div className="row">
+      <div className="large-2 columns">
+        <Sidebar />
+      </div>
+      <div className="large-10 columns">
+        <div className="row" style={{marginTop: 75}}>
+          <div className="large-10 large-offset-1 columns">
+          {isAuthenticated
+          ? <Switch>
+              <Route path="/postbox" component={Postbox} />
+              <Route path="/login" component={Login} />
+              <Route path="/simplerequirement" component={simpleRQ} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/settingprofile" component={SettingProfile} />
+              <Route path="/IPD" component={IPD} />
+              <Route path="/OPD" component={OPD} />
+              <Route path="/Dental" component={Dental} />
+              <Route path="/Life" component={Life} />
+            </Switch>
+          : <Switch>
+            <Route path="/postbox" component={Postbox} />
+            <Route path="/chooseinsurer" component={ChooseInsurer} />
+            <Route path="/simplerequirement" component={simpleRQ} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/settingprofile" component={SettingProfile} />
+              
+              {/*<Redirect to={{ pathname: '/login' }} />*/}
+            </Switch>}
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 )
 

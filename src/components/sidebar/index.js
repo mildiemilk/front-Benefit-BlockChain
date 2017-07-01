@@ -43,8 +43,6 @@ export default class SidebarLeft extends Component {
         <Item.Group
           style={{
             fontSize: '110%',
-            width: '200px',
-            height: '50px',
             paddingTop: '10px',
             margin: '33px',
             cursor: 'pointer',

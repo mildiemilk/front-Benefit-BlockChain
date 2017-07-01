@@ -65,7 +65,7 @@ export default class PostBox extends Component {
       // <contentWarpper>
       (
         <div
-          style={{ marginLeft: '230px', background: '#fff', padding: '30px' }}
+          style={{background: '#fff', padding: '30px' }}
         >
           <NavInsure step={this.state.step}/>
           <div className="row">

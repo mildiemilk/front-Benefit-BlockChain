@@ -110,7 +110,7 @@ class simpleRQ extends Component {
     console.log(this.state)
     return (
       <div id="simpleRQ">
-        <Container id="containerWithBg">
+     
           <NavInsure step={this.state.step}/>
           <Card fluid id="cardSimpleRQ">
             <CardHeader>
@@ -244,7 +244,7 @@ class simpleRQ extends Component {
             </Grid>
           </Card>
           <ModalSimpleRQ data={this.state} />
-        </Container>
+  
       </div>
     )
   }

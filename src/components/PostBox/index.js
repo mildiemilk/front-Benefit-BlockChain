@@ -38,20 +38,6 @@ const RatingNew = styled(Rating)`
   }
 `
 
-const ButtonNew = styled.button`
-    width: 174px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #f7555f;
-    font-size: 120%;
-    border-color: #f7555f;
-    border-style: solid;
-    color: #ffffff;
-    position: absolute;
-    margin-top: 1.5%;
-    margin-left: 50%;
-`
-
 export default class PostBox extends Component {
   render() {
     return (
@@ -62,7 +48,7 @@ export default class PostBox extends Component {
         >
           <div className="row">
             <div className="row">
-              <PostContent>จัดแผนสิทธิประโยชน์</PostContent>
+              <PostContent>จัดแผนประกัน</PostContent>
               <Divider inverted />
               <Space><PostStepBox><Steps /></PostStepBox></Space>
             </div>
@@ -89,9 +75,7 @@ export default class PostBox extends Component {
                         size="mini"
                         disabled
                       />
-                      <ButtonNew>
-                        เลือก Broker
-                      </ButtonNew>
+                      <ModalPostBox />
                     </Reg3>
                   </Space>
                 </div>

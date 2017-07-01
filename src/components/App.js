@@ -26,6 +26,7 @@ import ViewAllPlan from './ViewAllPlan'
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
+    <SidebarLeft />
     {isAuthenticated
       ? <Switch>
           <Route path="/postbox" component={Postbox} />

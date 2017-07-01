@@ -25,7 +25,9 @@ import erase from '../../image/icons-8-erase.png'
 class Dental extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      dentalPerYear: null,
+    }
   }
 
   static propTypes = {}
@@ -63,8 +65,10 @@ class Dental extends Component {
             <Form.Input
               label="ใช้บริการได้ไม่เกิน"
               placeholder="จำนวนเงิน"
-              options={1}
+              name="dentalPerYear"
+              id="dentalPerYear"
               onChange={this.handleChange}
+              required
             />
             <p> บาท/ปี</p>
           </Form.Group>

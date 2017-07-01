@@ -16,7 +16,7 @@ import {
   Dropdown,
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
-import Coplay from './CoPlay'
+import CoPlay from './CoPlay'
 import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
@@ -27,8 +27,11 @@ class OPD extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
+      opdCoPlay: false,
       value: '',
+      opdPerYear: null,
+      opdPerTime: null,
+      opdTimeNotExceedPerYear: null,
     }
   }
 
@@ -36,10 +39,6 @@ class OPD extends Component {
 
   onInputChange(e) {
     this.setState({ nameInput: e.target.value })
-  }
-
-  signUpHandler() {
-    window.location.href = '/signup'
   }
 
   handleSubmit = e => {
@@ -50,20 +49,23 @@ class OPD extends Component {
   }
 
   handleToggle = () => {
-    if (this.state.showCoPlay) {
-      this.setState({ showCoPlay: false })
+    if (this.state.opdCoPlay) {
+      this.setState({ opdCoPlay: false })
     } else {
-      this.setState({ showCoPlay: true })
+      this.setState({ opdCoPlay: true })
     }
   }
 
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
-      document.getElementById('secondChoiceMoney').value = ''
-      document.getElementById('secondChoiceMoneyLimit').value = ''
+      document.getElementById('opdPerTime').value = ''
+      this.setState({ opdPerTime: null })
+      document.getElementById('opdTimeNotExceedPerYear').value = ''
+      this.setState({ opdTimeNotExceedPerYear: null })
     } else {
-      document.getElementById('firstChoiceMoney').value = ''
+      document.getElementById('opdPerYear').value = ''
+      this.setState({ opdPerYear: null })
     }
   }
 
@@ -95,14 +97,15 @@ class OPD extends Component {
               {this.state.value === 'firstChoice'
                 ? <Form.Input
                     placeholder="จำนวนเงิน"
-                    name="firstChoiceMoney"
-                    id="firstChoiceMoney"
+                    name="opdPerYear"
+                    id="opdPerYear"
                     onChange={this.handleChange}
+                    required
                   />
                 : <Form.Input
                     placeholder="จำนวนเงิน"
-                    name="firstChoiceMoney"
-                    id="firstChoiceMoney"
+                    name="opdPerYear"
+                    id="opdPerYear"
                     onChange={this.handleChange}
                     readOnly
                   />}
@@ -122,32 +125,33 @@ class OPD extends Component {
                 ? <div style={{ display: 'inherit' }}>
                     <Form.Input
                       placeholder="จำนวนเงิน"
-                      name="secondChoiceMoney"
-                      id="secondChoiceMoney"
+                      name="opdPerTime"
+                      id="opdPerTime"
                       onChange={this.handleChange}
-                      readOnly
+                      required
                     />
                     <Form.Input
                       label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
-                      name="secondChoiceMoneyLimit"
-                      id="secondChoiceMoneyLimit"
+                      name="opdTimeNotExceedPerYear"
+                      id="opdTimeNotExceedPerYear"
                       onChange={this.handleChange}
+                      required
                     />
                   </div>
                 : <div style={{ display: 'inherit' }}>
                     <Form.Input
                       placeholder="จำนวนเงิน"
-                      name="secondChoiceMoney"
-                      id="secondChoiceMoney"
+                      name="opdPerTime"
+                      id="opdPerTime"
                       onChange={this.handleChange}
                       readOnly
                     />
                     <Form.Input
                       label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
-                      name="secondChoiceMoneyLimit"
-                      id="secondChoiceMoneyLimit"
+                      name="opdTimeNotExceedPerYear"
+                      id="opdTimeNotExceedPerYear"
                       onChange={this.handleChange}
                       readOnly
                     />
@@ -156,7 +160,7 @@ class OPD extends Component {
             </Form.Group>
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.showCoPlay ? <Coplay /> : ''}
+            {this.state.opdCoPlay ? <CoPlay /> : ''}
             <br />
             <Button
               style={{

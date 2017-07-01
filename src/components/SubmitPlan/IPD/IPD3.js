@@ -22,6 +22,17 @@ class IPD3 extends Component {
     super()
     this.state = {
       permit: false,
+      rbSchedulePatient: null,
+      rbScheduleIntensiveCarePatient: null,
+      rbScheduleDoctor: null,
+      rbScheduleSurgery: null,
+      rbScheduleService: null,
+      rbScheduleSmallSurgery: null,
+      rbScheduleAdviser: null,
+      rbScheduleAmbulance: null,
+      rbScheduleAccident: null,
+      rbScheduleTreatment: null,
+      rbScheduleTransplant: null,
     }
   }
 
@@ -33,7 +44,7 @@ class IPD3 extends Component {
 
   handleToggle = () => {
     if (this.state.permit) {
-      document.getElementById('fillChoice3').value = ''
+      document.getElementById('rbScheduleSurgery').value = null
       this.setState({ permit: false })
     } else {
       this.setState({ permit: true })
@@ -115,8 +126,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbSchedulePatient"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -124,8 +136,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleIntensiveCarePatient"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -133,8 +146,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleDoctor"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -143,17 +157,18 @@ class IPD3 extends Component {
                   ? <Form.Input
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name=""
+                      name="rbScheduleSurgery"
                       onChange={this.handleChange}
-                      id="fillChoice3"
+                      id="rbScheduleSurgery"
+                      required
                     />
                   : <Form.Input
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name=""
+                      name="rbScheduleSurgery"
                       onChange={this.handleChange}
                       readOnly
-                      id="fillChoice3"
+                      id="rbScheduleSurgery"
                     />}
                 <p> บาท</p>
               </Form.Group>
@@ -161,8 +176,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleService"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -173,8 +189,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleSmallSurgery"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -182,8 +199,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleAdviser"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -191,8 +209,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleAmbulance"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -200,8 +219,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleAccident"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -209,8 +229,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleTreatment"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -221,8 +242,9 @@ class IPD3 extends Component {
                 <Form.Input
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
-                  name=""
+                  name="rbScheduleTransplant"
                   onChange={this.handleChange}
+                  required
                 />
                 <p> บาท</p>
               </Form.Group>

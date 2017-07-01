@@ -24,9 +24,9 @@ class IPD1 extends Component {
     this.state = {
       showCoPlay: false,
       value: '',
-      ipdLumsumPerYear: '',
-      ipdLumsumPerTime: '',
-      ipdLumsumTimeNotExceedPerYear: '',
+      ipdLumsumPerYear: null,
+      ipdLumsumPerTime: null,
+      ipdLumsumTimeNotExceedPerYear: null,
     }
     const value = ''
   }
@@ -55,16 +55,20 @@ class IPD1 extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
-      document.getElementById(' ipdLumsumPerTime').value = ''
+      document.getElementById('ipdLumsumPerTime').value = ''
+      this.setState({ ipdLumsumPerTime: null })
       document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
+      this.setState({ ipdLumsumTimeNotExceedPerYear: null })
     } else {
       document.getElementById('ipdLumsumPerYear').value = ''
+      this.setState({ ipdLumsumPerYear: null })
     }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
+    console.log(this.state.ipdLumsumPerTime)
     return (
       <div>
         <Form.Group inline>
@@ -83,6 +87,7 @@ class IPD1 extends Component {
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
                 onChange={this.handleChange}
+                required
               />
             : <Form.Input
                 placeholder="จำนวนเงิน"
@@ -107,9 +112,10 @@ class IPD1 extends Component {
             ? <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name=" ipdLumsumPerTime"
-                  id=" ipdLumsumPerTime"
+                  name="ipdLumsumPerTime"
+                  id="ipdLumsumPerTime"
                   onChange={this.handleChange}
+                  required
                 />
                 <Form.Input
                   label="บาท/ครั้ง  ครั้งละไม่เกิน"
@@ -117,13 +123,14 @@ class IPD1 extends Component {
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
                   onChange={this.handleChange}
+                  required
                 />
               </div>
             : <div style={{ display: 'inherit' }}>
                 <Form.Input
                   placeholder="จำนวนเงิน"
-                  name=" ipdLumsumPerTime"
-                  id=" ipdLumsumPerTime"
+                  name="ipdLumsumPerTime"
+                  id="ipdLumsumPerTime"
                   onChange={this.handleChange}
                   readOnly
                 />

@@ -29,6 +29,9 @@ class Life extends Component {
     super()
     this.state = {
       value: '',
+      lifePerYear: null,
+      lifeTimeOfSalary: null,
+      lifeNotExceed: null,
     }
   }
 
@@ -48,12 +51,16 @@ class Life extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondLifeChoice') {
-      document.getElementById('lifeChoiceTwo').value = ''
+      document.getElementById('lifeTimeOfSalary').value = ''
+      this.setState({ lifeTimeOfSalary: null })
     } else if (this.state.value === 'firstLifeChoice') {
-      document.getElementById('lifeChoiceOne').value = ''
+      document.getElementById('lifePerYear').value = ''
+      this.setState({ lifePerYear: null })
     } else {
-      document.getElementById('lifeChoiceThreeFirst').value = ''
-      document.getElementById('lifeChoiceThreeTwo').value = ''
+      document.getElementById('lifeTimeOfSalary').value = ''
+      this.setState({ lifeTimeOfSalary: null })
+      document.getElementById('lifeNotExceed').value = ''
+      this.setState({ lifeNotExceed: null })
     }
   }
 
@@ -84,14 +91,15 @@ class Life extends Component {
             {this.state.value === 'firstLifeChoice'
               ? <Form.Input
                   placeholder="จำนวนบาท"
-                  name="lifeChoiceOne"
-                  id="lifeChoiceOne"
+                  name=" lifePerYear"
+                  id=" lifePerYear"
                   onChange={this.handleChange}
+                  required
                 />
               : <Form.Input
                   placeholder="จำนวนบาท"
-                  name="lifeChoiceOne"
-                  id="lifeChoiceOne"
+                  name=" lifePerYear"
+                  id=" lifePerYear"
                   onChange={this.handleChange}
                   readOnly
                 />}
@@ -110,15 +118,16 @@ class Life extends Component {
             {this.state.value === 'secondLifeChoice'
               ? <Form.Select
                   placeholder="เท่า"
-                  name="lifeChoiceTwo"
-                  id="lifeChoiceTwo"
+                  name="lifeTimeOfSalary"
+                  id="lifeTimeOfSalary"
                   options={options}
                   onChange={this.handleChange}
+                  required
                 />
               : <Form.Select
                   placeholder="เท่า"
-                  name="lifeChoicTwo"
-                  id="lifeChoiceTwo"
+                  name="lifeTimeOfSalary"
+                  id="lifeTimeOfSalary"
                   options={1}
                   onChange={this.handleChange}
                   disabled
@@ -140,16 +149,18 @@ class Life extends Component {
                   <Form.Select
                     placeholder="เท่า"
                     options={1}
-                    name="lifeChoiceThreeFirst"
-                    id="lifeChoiceThreeFirst"
+                    name="lifeTimeOfSalary"
+                    id="lifeTimeOfSalary"
                     onChange={this.handleChange}
+                    required
                   />
                   <Form.Input
                     label="เท่า แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
-                    name="lifeChoiceThreeTwo"
-                    id="lifeChoiceThreeTwo"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
                     onChange={this.handleChange}
+                    required
                   />
                 </div>
               : <div style={{ display: 'inherit' }}>
@@ -157,15 +168,15 @@ class Life extends Component {
                     placeholder="เท่า"
                     options={1}
                     onChange={this.handleChange}
-                    name="lifeChoiceThreeFirst"
-                    id="lifeChoiceThreeFirst"
+                    name="lifeTimeOfSalary"
+                    id="lifeTimeOfSalary"
                     disabled
                   />
                   <Form.Input
                     label="เท่า แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
-                    name="lifeChoiceThreeTwo"
-                    id="lifeChoiceThreeTwo"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
                     onChange={this.handleChange}
                     readOnly
                   />

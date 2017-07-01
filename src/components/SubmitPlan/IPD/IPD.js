@@ -31,7 +31,7 @@ class IPD extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
+      ipdCoPlay: false,
       showForm: 1,
       ipdType: '',
       box: 'fillBox1',
@@ -55,10 +55,10 @@ class IPD extends Component {
   }
 
   handleToggle = () => {
-    if (this.state.showCoPlay) {
-      this.setState({ showCoPlay: false })
+    if (this.state.ipdCoPlay) {
+      this.setState({ ipdCoPlay: false })
     } else {
-      this.setState({ showCoPlay: true })
+      this.setState({ ipdCoPlay: true })
     }
   }
 
@@ -123,7 +123,7 @@ class IPD extends Component {
             {this.state.ipdType === 'R&B Schedule' ? <IPD3 /> : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.showCoPlay ? <CoPlay /> : null}
+            {this.state.ipdCoPlay ? <CoPlay /> : null}
             <br />
             <Button
               style={{

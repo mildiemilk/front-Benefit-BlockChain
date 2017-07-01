@@ -42,6 +42,11 @@ class FormSubmitPlan extends Component {
     console.log(this.state)
   }
 
+  handleClick = () => {
+    document.getElementById('planName').value = ''
+    document.getElementById('employeeOfPlan').options = {}
+  }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
@@ -53,7 +58,11 @@ class FormSubmitPlan extends Component {
               ขั้นตอนที่ 1 : Choose High Level Plan{' '}
             </span>
             <div className="box-in-head-box">
-              <img src={erase} className="image-erase" />
+              <img
+                src={erase}
+                className="image-erase"
+                onClick={() => this.handleClick()}
+              />
               <span className="headLogo">Reset</span>
             </div>
           </div>

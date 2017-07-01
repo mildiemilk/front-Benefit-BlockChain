@@ -49,12 +49,12 @@ class IPD1 extends Component {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
       document.getElementById('ipdLumsumPerTime').value = ''
-      this.setState({ ipdLumsumPerTime: null })
+      this.props.handleChangeToNUll('ipdLumsumPerTime')
       document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
-      this.setState({ ipdLumsumTimeNotExceedPerYear: null })
+      this.props.handleChangeToNUll('ipdLumsumTimeNotExceedPerYear')
     } else {
       document.getElementById('ipdLumsumPerYear').value = ''
-      this.setState({ ipdLumsumPerYear: null })
+      this.props.handleChangeToNUll('ipdLumsumPerYear')
     }
   }
 

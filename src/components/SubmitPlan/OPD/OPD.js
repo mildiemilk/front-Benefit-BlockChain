@@ -72,10 +72,11 @@ class OPD extends Component {
     }
   }
 
+  handleChangeToNUll = name => this.setState({ [name]: null })
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
-    console.log(this.state.opdCoPlayQuota)
+    console.log(this.state.opdCoPlayDeductable)
     return (
       <div>
         <br />
@@ -165,7 +166,10 @@ class OPD extends Component {
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
             {this.state.opdCoPlay
-              ? <CoPlay handleChange={this.handleChange} />
+              ? <CoPlay
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
               : ''}
             <br />
             <Button

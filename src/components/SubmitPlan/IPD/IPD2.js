@@ -51,14 +51,14 @@ class IPD2 extends Component {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
       document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
-      this.setState({ rbLumsumPayNotExceedPerNight: null })
+      this.props.handleChangeToNUll('rbLumsumPayNotExceedPerNight')
       document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
-      this.setState({ rbLumsumPayNotExceedPerYear: null })
+      this.props.handleChangeToNUll('rbLumsumPayNotExceedPerYear')
     } else {
       document.getElementById('rbLumsumRoomPerNight').value = ''
-      this.setState({ rbLumsumRoomPerNight: null })
+      this.props.handleChangeToNUll('rbLumsumRoomPerNight')
       document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
-      this.setState({ rbLumsumNigthNotExceedPerYear: null })
+      this.props.handleChangeToNUll('rbLumsumNigthNotExceedPerYear')
     }
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })

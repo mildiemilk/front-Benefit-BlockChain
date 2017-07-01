@@ -87,6 +87,8 @@ class IPD extends Component {
     this.setState({ ipdType })
   }
 
+  handleChangeToNUll = name => this.setState({ [name]: null })
+
   render() {
     return (
       <div>
@@ -143,18 +145,28 @@ class IPD extends Component {
               ? <IPD1
                   handleVerifyState={this.props.handleVerifyState}
                   handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
                 />
               : null}
             {this.state.ipdType === 'R&B Lumsum'
-              ? <IPD2 handleChange={this.handleChange} />
+              ? <IPD2
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
               : null}
             {this.state.ipdType === 'R&B Schedule'
-              ? <IPD3 handleChange={this.handleChange} />
+              ? <IPD3
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
               : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
             {this.state.ipdCoPlay
-              ? <CoPlay handleChange={this.handleChange} />
+              ? <CoPlay
+                  handleChange={this.handleChange}
+                  handleChangeToNUll={this.handleChangeToNUll}
+                />
               : null}
             <br />
             <Button

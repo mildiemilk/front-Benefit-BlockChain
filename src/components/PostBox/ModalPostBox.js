@@ -61,7 +61,6 @@ const ModalPostbox = props => (
         {props.data.error
           ? <span style={{ color: 'red' }}> <br />{props.data.message}</span>
           : <span />}
-
         <br /> หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้ <br />
       </ModalContent>
       <CancleButton> ยกเลิก </CancleButton>

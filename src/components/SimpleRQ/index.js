@@ -70,7 +70,6 @@ class simpleRQ extends Component {
     reader.readAsDataURL(file)
   }
   handlePost = e => {
-    console.log('aaaaaaaaaaaaaa')
     e.preventDefault()
     const {
       numberOfEmployee,

@@ -96,12 +96,12 @@ export default function planReducer(state = defaultPlan, action) {
         message: action.data.message,
         error: true,
       })
-    case CREATEPLAN_REQUEST_SUCCESS:
+    case EDITPLAN_REQUEST_SUCCESS:
       console.log(action.data)
       return Object.assign({}, state, {
         error: false,
       })
-    case CREATEPLAN_REQUEST_FAILURE:
+    case EDITPLAN_REQUEST_FAILURE:
       console.log(action.data.message)
       return Object.assign({}, state, {
         message: action.data.message,

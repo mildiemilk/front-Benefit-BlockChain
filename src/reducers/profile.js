@@ -58,6 +58,7 @@ export default function profileReducer(state = defaultProfile, action) {
         companyBroker: action.data.companyBroker,
         companyInsurer: action.data.companyInsurer,
         message: action.data.message,
+        error: false,
       })
     case PROFILECOMPANY_REQUEST_FAILURE:
       console.log(action.data.message)

@@ -1,26 +1,31 @@
 import React, { Component } from 'react'
 import { Icon, Table, Rating, Header, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
-
-const TableCell = styled(Table)`
-  &&&{
-    border-left: 0px solid;
-  }
-`
+import '../../styles/ViewPlanTable.scss'
 
 export default class ViewPlanBox extends Component {
   constructor() {
     super()
     this.list = [
       {
-        name: 'PlanA',
+        name: 'Management 1',
         updataBy: 'HR',
         date: '2 sep 1995',
       },
       {
-        name: 'PlanB',
+        name: 'Management 2',
         updataBy: 'HR',
         date: '26 sep 1995',
+      },
+      {
+        name: 'Management 3',
+        updataBy: 'HR',
+        date: '9 dec 1995',
+      },
+      {
+        name: 'Management 4',
+        updataBy: 'HR',
+        date: '20 dec 1995',
       },
     ]
   }
@@ -29,19 +34,19 @@ export default class ViewPlanBox extends Component {
     const output = []
     for (var i = 0; i < list.length; i++) {
       output.push(
-        <Table.Row>
-          <Table.Cell>
-            <Header textAlign="center"><Checkbox /></Header>
-          </Table.Cell>
-          <Table.Cell singleLine> {list[i].name} </Table.Cell>
-          <Table.Cell> {list[i].updataBy} </Table.Cell>
-          <Table.Cell> {list[i].date} </Table.Cell>
-          <Table.Cell textAlign="center">
+        <tr>
+          <td>
+            <Checkbox />
+          </td>
+          <td singleLine> {list[i].name} </td>
+          <td> {list[i].updataBy} </td>
+          <td> {list[i].date} </td>
+          <td>
             <Icon disabled name="edit" size="large" />
             <Icon disabled name="paste" size="large" />
-            <Icon disabled name="times rectangle outline" size="large" />
-          </Table.Cell>
-        </Table.Row>,
+            <Icon disabled name="trash" size="large" />
+          </td>
+        </tr>,
       )
     }
     return output
@@ -49,12 +54,9 @@ export default class ViewPlanBox extends Component {
 
   render() {
     return (
-      <Table striped>
-
-        <Table.Body>
-          {this.renderList(this.list)}
-        </Table.Body>
-      </Table>
+      <table>
+        {this.renderList(this.list)}
+      </table>
     )
   }
 }

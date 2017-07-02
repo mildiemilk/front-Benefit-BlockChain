@@ -68,13 +68,6 @@ export const Probox2 = styled.div`
   position: relative;
   top: 20px;
 `
-export const PostContent = styled.p`
-
-  font-size: 32px;
-  font-weight: 500;
-  color: #505050;
-  margin:0%;
-`
 
 export const PostreText = styled.text`
   width: 169px;
@@ -104,10 +97,11 @@ export const Reg8 = styled.div`
 `
 
 export const RecPostBox = styled.div`
-
   border-radius: 5px;
+  margin-top: 2%;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
+  margin-top: 3%;
 `
 
 export const contentWarpper = styled.div`
@@ -141,7 +135,7 @@ export const ButtonNew = styled.button`
     color: #ffffff;
     position: absolute;
     margin-top: 1.5%;
-    margin-left: 50%;
+    margin-left: 43%;
 `
 
 export const CancleButton = styled.button`

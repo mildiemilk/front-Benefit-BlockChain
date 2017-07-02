@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { editPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -36,19 +37,39 @@ class OPD extends Component {
       opdCoPlayDeductable: null,
       opdCoPlayMixPercentage: null,
       opdCoPlayMixNotExceed: null,
-      opdCoPlayMixopdCoPlayMixYear: null,
+      opdCoPlayMixYear: null,
     }
   }
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
   handleClick = e => {
-    console.log('hello')
-    console.log()
+    const {
+      opdCoPlay,
+      opdPerYear,
+      opdPerTime,
+      opdTimeNotExceedPerYear,
+      opdCoPlayQuota,
+      opdCoPlayDeductable,
+      opdCoPlayMixPercentage,
+      opdCoPlayMixNotExceed,
+      opdCoPlayMixYear,
+    } = this.state
+    this.props.editPlan(
+      {
+        opdCoPlay,
+        opdPerYear,
+        opdPerTime,
+        opdTimeNotExceedPerYear,
+        opdCoPlayQuota,
+        opdCoPlayDeductable,
+        opdCoPlayMixPercentage,
+        opdCoPlayMixNotExceed,
+        opdCoPlayMixYear,
+      },
+      this.props.plan.planId,
+      'opd',
+    )
   }
 
   handleToggle = () => {
@@ -72,7 +93,7 @@ class OPD extends Component {
     }
   }
 
-  handleChangeToNUll = name => this.setState({ [name]: null })
+  handleChangeToNull = name => this.setState({ [name]: null })
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
@@ -168,7 +189,7 @@ class OPD extends Component {
             {this.state.opdCoPlay
               ? <CoPlay
                   handleChange={this.handleChange}
-                  handleChangeToNUll={this.handleChangeToNUll}
+                  handleChangeToNull={this.handleChangeToNull}
                 />
               : ''}
             <br />
@@ -199,7 +220,12 @@ class OPD extends Component {
 
 OPD.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
+})
+const mapStateToProps = state => ({
+  plan: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(OPD)

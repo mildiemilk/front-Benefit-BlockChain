@@ -28,7 +28,7 @@ class CoPlay extends Component {
       opdCoPlayDeductable: null,
       opdCoPlayMixPercentage: null,
       opdCoPlayMixNotExceed: null,
-      opdCoPlayMixopdCoPlayMixYear: null,
+      opdCoPlayMixYear: null,
     }
     const value = ''
   }
@@ -45,17 +45,17 @@ class CoPlay extends Component {
     this.setState({ value })
     if (this.state.value === 'Quota Share') {
       document.getElementById('opdCoPlayQuota').value = ''
-      this.props.handleChangeToNUll('opdCoPlayQuota')
+      this.props.handleChangeToNull('opdCoPlayQuota')
     } else if (this.state.value === 'Deductable') {
       document.getElementById('opdCoPlayDeductable').value = ''
-      this.props.handleChangeToNUll('opdCoPlayDeductable')
+      this.props.handleChangeToNull('opdCoPlayDeductable')
     } else {
       document.getElementById('opdCoPlayMixPercentage').value = ''
-      this.props.handleChangeToNUll('opdCoPlayMixPercentage')
+      this.props.handleChangeToNull('opdCoPlayMixPercentage')
       document.getElementById('opdCoPlayMixNotExceed').value = ''
-      this.props.handleChangeToNUll('opdCoPlayMixNotExceed')
+      this.props.handleChangeToNull('opdCoPlayMixNotExceed')
       document.getElementById('opdCoPlayMixYear').value = ''
-      this.props.handleChangeToNUll('opdCoPlayMixYear')
+      this.props.handleChangeToNull('opdCoPlayMixYear')
     }
   }
 

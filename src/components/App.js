@@ -21,7 +21,7 @@ import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/FormSubmitPlan'
 import SubmitPlan from './SubmitPlan'
 import MenuPlan from './SubmitPlan/MenuPlan/MenuPlan'
 import welcomePage from './welcome'
-import Sidebar from './Sidebar'
+import Sidebar from './sidebar'
 
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
@@ -37,40 +37,51 @@ const App = ({ isAuthenticated }) => (
         <Sidebar />
       </div>
       <div className="large-10 columns">
-        <div className="row" style={{marginTop: 75}}>
+        <div className="row" style={{ marginTop: 75 }}>
           <div className="large-10 large-offset-1 columns">
-          {isAuthenticated
-      ? <Switch>
-          <Route path="/postbox" component={Postbox} />
-          <Route path="/login" component={Login} />
-          <Route path="/dashboard/simplerequirement" component={simpleRQ} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/submitplan" component={SubmitPlan} />
-          <Route path="/settingprofile" component={SettingProfile} />
-          <Route path="/ipd" component={IPD} />
-          <Route path="/confirm_identity" component={confirm_identity} />
-          <Route path="/view" component={ViewAllPlan} />
-          <Route path="/chooseinsurer" component={ChooseInsurer} />
-        </Switch>
-      : <Switch>
-          <Route path="/view" component={ViewAllPlan} />
-          <Route path="/settingprofile" component={SettingProfile} />
-          <Route path="/welcome" component={welcomePage} />
-          <Route path="/postbox" component={Postbox} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/dashboard/simplerequirement" component={simpleRQ} />
-          <Route path="/submitplan" component={SubmitPlan} />
-          <Route path="/chooseinsurer" component={ChooseInsurer} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/confirm_identity" component={confirm_identity} />
-          <Redirect to={{ pathname: '/login' }} />
-        </Switch>}
-              
-        
+            {isAuthenticated
+              ? <Switch>
+                  <Route path="/postbox" component={Postbox} />
+                  <Route path="/login" component={Login} />
+                  <Route
+                    path="/dashboard/simplerequirement"
+                    component={simpleRQ}
+                  />
+                  <Route path="/signup" component={Signup} />
+                  <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/submitplan" component={SubmitPlan} />
+                  <Route path="/settingprofile" component={SettingProfile} />
+                  <Route path="/ipd" component={IPD} />
+                  <Route
+                    path="/confirm_identity"
+                    component={confirm_identity}
+                  />
+                  <Route path="/view" component={ViewAllPlan} />
+                  <Route path="/chooseinsurer" component={ChooseInsurer} />
+                </Switch>
+              : <Switch>
+                  <Route path="/view" component={ViewAllPlan} />
+                  <Route path="/settingprofile" component={SettingProfile} />
+                  <Route path="/welcome" component={welcomePage} />
+                  <Route path="/postbox" component={Postbox} />
+                  <Route path="/dashboard" component={Dashboard} />
+                  <Route
+                    path="/dashboard/simplerequirement"
+                    component={simpleRQ}
+                  />
+                  <Route path="/submitplan" component={SubmitPlan} />
+                  <Route path="/chooseinsurer" component={ChooseInsurer} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/signup" component={Signup} />
+                  <Route
+                    path="/confirm_identity"
+                    component={confirm_identity}
+                  />
+                  <Redirect to={{ pathname: '/login' }} />
+                </Switch>}
+
+          </div>
         </div>
-      </div>
       </div>
     </div>
 

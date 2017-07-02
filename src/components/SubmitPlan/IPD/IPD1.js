@@ -33,10 +33,6 @@ class IPD1 extends Component {
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
   handleToggle = () => {
     if (this.state.showCoPlay) {
       this.setState({ showCoPlay: false })
@@ -49,12 +45,12 @@ class IPD1 extends Component {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
       document.getElementById('ipdLumsumPerTime').value = ''
-      this.props.handleChangeToNUll('ipdLumsumPerTime')
+      this.props.handleChangeToNull('ipdLumsumPerTime')
       document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
-      this.props.handleChangeToNUll('ipdLumsumTimeNotExceedPerYear')
+      this.props.handleChangeToNull('ipdLumsumTimeNotExceedPerYear')
     } else {
       document.getElementById('ipdLumsumPerYear').value = ''
-      this.props.handleChangeToNUll('ipdLumsumPerYear')
+      this.props.handleChangeToNull('ipdLumsumPerYear')
     }
   }
 

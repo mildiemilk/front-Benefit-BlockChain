@@ -55,7 +55,7 @@ class InsurerSelect extends Component{
                    <Next>ต่อไป</Next>
                 </div>
             </div>
-        )
-    }
+    )
+  }
 }
 export default InsurerSelect

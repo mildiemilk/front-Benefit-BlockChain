@@ -43,6 +43,7 @@ const App = ({ isAuthenticated }) => (
           <Route path="/confirm_identity" component={confirm_identity} />
         </Switch>
       : <Switch>
+          <Route path="/view" component={ViewAllPlan} />
           <Route path="/settingprofile" component={SettingProfile} />
           <Route path="/welcome" component={welcomePage} />
           <Route path="/postbox" component={Postbox} />

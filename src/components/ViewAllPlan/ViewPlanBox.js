@@ -39,6 +39,7 @@ export default class ViewPlanBox extends Component {
             </Table.Cell>
           </Table.Row>
           <Table.Row>
+
             <Table.Cell>
               <Header textAlign="center"> <Checkbox /> </Header>
             </Table.Cell>

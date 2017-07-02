@@ -140,7 +140,8 @@ class simpleRQ extends Component {
                 <p> รูปแบบประกันที่ต้องการ </p>
               </Grid.Column>
               <Grid.Column width={11}>
-                <InputBox
+                <Input
+                  fluid
                   name="typeOfInsurance"
                   defaultValue={this.state.typeOfInsurance}
                   placeholder="รูปแบบประกันที่ต้องการ"

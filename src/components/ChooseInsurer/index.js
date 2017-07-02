@@ -7,7 +7,8 @@ import { createProfile } from '../../api/profileCompany'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../Sidebar'
-import {Detail,Head} from './styled'
+import {Detail,Head,Side,SideIn,Card,HeadIn,Submit,SubmitInsure,Next} from './styled'
+import CardInsure from './CardInsure'
 class InsurerSelect extends Component{
 
     constructor(props) {
@@ -17,7 +18,6 @@ class InsurerSelect extends Component{
         }
     }
   
-
     render(){
      
         return(
@@ -26,17 +26,33 @@ class InsurerSelect extends Component{
                 <div className='row'>
                     <Detail className='large-12 columns'>
                         <div className='row'>
-                            <div className='large-10 columns'>
+                            <Side className='large-10 columns'>
                                 <Head>เลือกบริษัทประกันภัยที่ต้องการ</Head>
-                            </div>
+                            </Side>
                         </div>
                         <div className='row'>
-                            <div className='large-10  columns'>
-
-                            </div>
+                            <SideIn >
+                                <HeadIn className='row'>
+                                    <span>เลือกบริษัทประกันภัยที่ต้องการ 0/5</span>
+                                    <SubmitInsure>บันทึก</SubmitInsure>
+                                </HeadIn>
+                                <div className='row'>
+                                    <CardInsure/>
+                                    <CardInsure/>
+                                    <CardInsure/>
+                                </div>
+                            </SideIn>
+                            <SideIn>
+                                <p>ตั้งระยะเวลาการเสนอราคาของประกัน</p>
+                                <p className='insure'>บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;</p>
+                                <input className='date' type="date" name="bday"/><br></br>
+                                <span>เวลา&nbsp;</span><input placeholder='นาฬิกา'/><span>&nbsp;นาฬิกา&nbsp;</span><input placeholder='นาที'/><span>&nbsp;นาที</span><br/>
+                                 <Submit>บันทึก</Submit>
+                                 
+                            </SideIn>
                         </div>
                     </Detail>
-                   
+                   <Next>ต่อไป</Next>
                 </div>
             </div>
         )

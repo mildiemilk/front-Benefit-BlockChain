@@ -32,17 +32,6 @@ class FormSubmitPlan extends Component {
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleReset = () => {
     document.getElementById('planName').value = ''
     document.getElementById('employeeOfPlan').options = {}

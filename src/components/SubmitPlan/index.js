@@ -29,19 +29,6 @@ class SubmitPlan extends Component {
     }
   }
 
-  static propTypes = {}
-
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {

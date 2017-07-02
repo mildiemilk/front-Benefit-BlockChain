@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { getAllPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -16,6 +17,7 @@ import {
   Dropdown,
   Popup,
   Icon,
+  List,
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
 import erase from '../../image/icons-8-erase.png'
@@ -23,25 +25,58 @@ import erase from '../../image/icons-8-erase.png'
 class FormSubmitPlan extends Component {
   constructor() {
     super()
-    this.state = {}
-  }
-
-  static propTypes = {}
-
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
+  renderList = list => {
+    const output = []
+    for (var i = 0; i < list.length; i++) {
+      output.push(
+        <div className="menu-select-plan">
+          <span>{list[i].planName}</span>
+          <Popup
+            trigger={
+              <Icon
+                style={{ float: 'right' }}
+                name="ellipsis vertical"
+                size="large"
+              />
+            }
+            content={
+              <List divided relaxed>
+                <List.Item>
+                  <List.Content>
+                    <p><Icon name="edit" />แก้ไขแพลน</p>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    <p><Icon name="copy" />คัดลอกแพลน</p>
+                  </List.Content>
+                </List.Item>
+                <List.Item>
+                  <List.Content>
+                    <p><Icon name="trash outline" />ลบแพลน</p>
+                  </List.Content>
+                </List.Item>
+              </List>
+            }
+            on="click"
+            hideOnScroll
+            position="bottom center"
+          />
+          <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
+        </div>,
+      )
+    }
+    return output
+  }
+
   render() {
+    {
+      this.props.getAllPlan()
+    }
     return (
       <div className="menu-box">
         <p className="menu-header">จัดแผนประกันภัย</p>
@@ -62,25 +97,9 @@ class FormSubmitPlan extends Component {
           />
         </div>
         <div className="menu-add-plan">
-          <p>สร้างแพลนใหม่</p>
+          <p><Icon name="add circle" size="big" />สร้างแพลนใหม่</p>
         </div>
-        <div className="menu-select-plan">
-          <span>Plan1</span>
-          <Popup
-            trigger={
-              <Icon
-                style={{ float: 'right' }}
-                name="ellipsis vertical"
-                size="large"
-              />
-            }
-            content="Hide the popup on any scroll event"
-            on="click"
-            hideOnScroll
-            position="bottom center"
-          />
-          <p>แก้ไขครั้งล่าสุดโดย</p>
-        </div>
+        {this.renderList(this.props.planList)}
       </div>
     )
   }
@@ -88,7 +107,12 @@ class FormSubmitPlan extends Component {
 
 FormSubmitPlan.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormSubmitPlan)

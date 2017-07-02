@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 
 const ModalModalExample = props => (
   <Modal
-    style={{ width: '38%', height: '40%', marginLeft: '-300px' }}
+    style={{ width: '38%', height: '40%', marginLeft: '-280px' }}
     trigger={
       <PostMainButton id="postButton">
         {' '}โพสต์

@@ -63,11 +63,12 @@ const App = ({ isAuthenticated }) => (
                   <Route path="/settingprofile" component={SettingProfile} />
                   <Route path="/welcome" component={welcomePage} />
                   <Route path="/postbox" component={Postbox} />
-                  <Route path="/dashboard" component={Dashboard} />
                   <Route
                     path="/dashboard/simplerequirement"
                     component={simpleRQ}
                   />
+                  <Route path="/dashboard" component={Dashboard} />
+
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/login" component={Login} />

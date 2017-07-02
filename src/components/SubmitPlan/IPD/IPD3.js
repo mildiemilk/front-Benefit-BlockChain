@@ -120,6 +120,7 @@ class IPD3 extends Component {
                 style={{ marginTop: '35%', marginBottom: '5%' }}
               >
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbSchedulePatient"
@@ -130,6 +131,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleIntensiveCarePatient"
@@ -140,6 +142,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleDoctor"
@@ -151,6 +154,7 @@ class IPD3 extends Component {
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 {this.state.permit
                   ? <Form.Input
+                      type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
                       name="rbScheduleSurgery"
@@ -159,6 +163,7 @@ class IPD3 extends Component {
                       required
                     />
                   : <Form.Input
+                      type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
                       name="rbScheduleSurgery"
@@ -170,6 +175,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginTop: '25%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleService"
@@ -183,6 +189,7 @@ class IPD3 extends Component {
                 style={{ marginTop: '59%', marginBottom: '5%' }}
               >
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleSmallSurgery"
@@ -193,6 +200,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAdviser"
@@ -203,6 +211,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAmbulance"
@@ -213,6 +222,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAccident"
@@ -223,6 +233,7 @@ class IPD3 extends Component {
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTreatment"
@@ -236,6 +247,7 @@ class IPD3 extends Component {
                 style={{ marginTop: '55%', marginBottom: '5%' }}
               >
                 <Form.Input
+                  type="number"
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTransplant"

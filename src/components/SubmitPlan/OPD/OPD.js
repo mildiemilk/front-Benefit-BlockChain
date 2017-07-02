@@ -122,6 +122,7 @@ class OPD extends Component {
               </Form.Field>
               {this.state.value === 'firstChoice'
                 ? <Form.Input
+                    type="number"
                     placeholder="จำนวนเงิน"
                     name="opdPerYear"
                     id="opdPerYear"
@@ -129,6 +130,7 @@ class OPD extends Component {
                     required
                   />
                 : <Form.Input
+                    type="number"
                     placeholder="จำนวนเงิน"
                     name="opdPerYear"
                     id="opdPerYear"
@@ -150,6 +152,7 @@ class OPD extends Component {
               {this.state.value === 'secondChoice'
                 ? <div style={{ display: 'inherit' }}>
                     <Form.Input
+                      type="number"
                       placeholder="จำนวนเงิน"
                       name="opdPerTime"
                       id="opdPerTime"
@@ -157,6 +160,7 @@ class OPD extends Component {
                       required
                     />
                     <Form.Input
+                      type="number"
                       label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"
@@ -167,6 +171,7 @@ class OPD extends Component {
                   </div>
                 : <div style={{ display: 'inherit' }}>
                     <Form.Input
+                      type="number"
                       placeholder="จำนวนเงิน"
                       name="opdPerTime"
                       id="opdPerTime"
@@ -174,6 +179,7 @@ class OPD extends Component {
                       readOnly
                     />
                     <Form.Input
+                      type="number"
                       label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"

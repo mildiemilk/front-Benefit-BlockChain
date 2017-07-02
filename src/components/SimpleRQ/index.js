@@ -20,7 +20,7 @@ import {
   Image,
 } from 'semantic-ui-react'
 import { fillSimpleRQ } from '../../api/simpleRequirement'
-import { UploadButton, Box } from './styled'
+import { UploadButton, InputBox } from './styled'
 import ModalSimpleRQ from './ModalSimpleRQ'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
@@ -140,8 +140,7 @@ class simpleRQ extends Component {
                 <p> รูปแบบประกันที่ต้องการ </p>
               </Grid.Column>
               <Grid.Column width={11}>
-                <Input
-                  fluid
+                <InputBox
                   name="typeOfInsurance"
                   defaultValue={this.state.typeOfInsurance}
                   placeholder="รูปแบบประกันที่ต้องการ"

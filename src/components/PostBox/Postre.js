@@ -58,7 +58,7 @@ class Postre extends Component {
                 <br />
                 <br />
                 <strong>
-                  <PostreText>วันมหดอายุกรมทัน :</PostreText>
+                  <PostreText>วันหมดอายุกรมทัน :</PostreText>
                 </strong>
                 {' '}
                 <PostreText>{this.props.data.day}</PostreText>

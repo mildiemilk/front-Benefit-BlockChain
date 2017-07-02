@@ -20,7 +20,7 @@ import {
   Image,
 } from 'semantic-ui-react'
 import { fillSimpleRQ } from '../../api/simpleRequirement'
-import { UploadButton, Box } from './styled'
+import { UploadButton, InputBox } from './styled'
 import ModalSimpleRQ from './ModalSimpleRQ'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
@@ -70,7 +70,6 @@ class simpleRQ extends Component {
     reader.readAsDataURL(file)
   }
   handlePost = e => {
-    console.log('aaaaaaaaaaaaaa')
     e.preventDefault()
     const {
       numberOfEmployee,

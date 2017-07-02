@@ -44,6 +44,21 @@ class SubmitPlan extends Component {
               <div className="fillBox">
                 <AllPlan />
               </div>
+              <Button
+                style={{
+                  marginLeft: '70%',
+                  marginTop: '5%',
+                  marginBottom: '5%',
+                  width: '164px',
+                  height: '40px',
+                  borderRadius: '20px',
+                  color: '#ffffff',
+                  backgroundColor: '#f7555f',
+                }}
+                onClick={this.onClickhandler}
+              >
+                {' '}ต่อไป
+              </Button>
             </div>
           </div>
         </div>

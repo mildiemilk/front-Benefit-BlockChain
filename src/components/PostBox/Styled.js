@@ -112,7 +112,7 @@ export const ModalHeader = styled.p`
   font-size: 18px;
   letter-spacing: 0.4px;
   text-align: center;
-  color: #656d7d;
+  color: #000000;
 `
 
 export const ModalContent = styled.p`
@@ -158,5 +158,5 @@ export const ConfirmButton = styled.button`
     border-color: #386cb2;
     border-style: solid;
     color: #ffffff;
-    margin-left: 5px;
+    margin-left: 1%;
 `

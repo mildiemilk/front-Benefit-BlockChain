@@ -4,6 +4,7 @@ import { authReducer, signupReducer } from './auth'
 import fillsimpleReducer from './simpleRequirement'
 import profile from './profile'
 import plan from './submitPlan'
+import postBoxReducer from './postBox'
 
 const rootReducer = combineReducers({
   authReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   profile,
   fillsimpleReducer,
   plan,
+  postBoxReducer,
 })
 
 export default rootReducer

@@ -19,6 +19,7 @@ export default function postBoxReducer(state = defaultpostBoxReducer, action) {
     case SELECTBROKER_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         message: action.data.message,
+        error: false,
       })
     case SELECTBROKER_REQUEST_FAILURE:
       return Object.assign({}, state, {

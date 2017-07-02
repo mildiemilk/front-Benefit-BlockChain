@@ -20,10 +20,11 @@ import {
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import passwordIcon from '../image/icons8-password.png'
+import { connect } from 'react-redux'
 
 const ModalPostbox = props => (
   <Modal
-    style={{ width: '450px', height: '208px' }}
+    style={{ width: '450px', height: '248px', marginLeft: '-250px' }}
     trigger={
       <ButtonNew>
         {' '}เลือก Broker
@@ -45,19 +46,26 @@ const ModalPostbox = props => (
       <ModalContent>
         <Input
           style={{
-            width: '324px',
+            width: '280px',
             height: '40px',
-            backgroundImage: `url(${passwordIcon})`,
-            backgroundSize: '32px,32px',
-            backgroundRepeat: 'no-repeat',
-            paddingLeft: '9%',
+            marginLeft: '10%',
           }}
+          icon="lock"
+          iconPosition="left"
           placeholder="พาสเวิร์ด"
           name="passwordToConfirm"
           type="password"
           onChange={props.handleChange}
         />
-        <br /> หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้ <br />
+
+        {props.data.error
+          ? <span style={{ color: 'red' }}> <br />{props.data.message}</span>
+          : <span />}
+
+        <p style={{ paddingTop: '4%' }}>
+          หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้
+        </p>
+
       </ModalContent>
       <CancleButton> ยกเลิก </CancleButton>
       <ConfirmButton onClick={props.handlePost}> ยืนยัน </ConfirmButton>
@@ -70,4 +78,8 @@ ModalPostbox.propTypes = {
   handleChange: PropTypes.func.isRequired,
 }
 
-export default ModalPostbox
+const mapStateToProps = state => ({
+  data: state.postBoxReducer,
+})
+
+export default connect(mapStateToProps, null)(ModalPostbox)

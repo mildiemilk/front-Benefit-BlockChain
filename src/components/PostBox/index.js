@@ -30,6 +30,8 @@ import Postre from './Postre'
 import styled from 'react-sc'
 import ModalPostBox from './ModalPostBox'
 import NavInsure from '../NavInsure'
+import { postBox } from '../../api/postBox'
+import { connect } from 'react-redux'
 
 const RatingNew = styled(Rating)`
   &&&{
@@ -39,13 +41,21 @@ const RatingNew = styled(Rating)`
   }
 `
 
-export default class PostBox extends Component {
-  constructor(props) {
-    super(props)
+class PostBox extends Component {
+  constructor() {
+    super()
     this.state = {
       step: 2,
+      passwordToConfirm: '',
     }
   }
+  handlePost = e => {
+    e.preventDefault()
+    const { passwordToConfirm } = this.state
+    this.props.postBox(passwordToConfirm)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
       <div>
@@ -74,7 +84,10 @@ export default class PostBox extends Component {
                       size="mini"
                       disabled
                     />
-                    <ModalPostBox />
+                    <ModalPostBox
+                      handlePost={this.handlePost}
+                      handleChange={this.handleChange}
+                    />
                   </Reg3>
                 </Space>
               </div>
@@ -98,3 +111,9 @@ export default class PostBox extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  postBox: passwordToConfirm => dispatch(postBox(passwordToConfirm)),
+})
+
+export default connect(null, mapDispatchToProps)(PostBox)

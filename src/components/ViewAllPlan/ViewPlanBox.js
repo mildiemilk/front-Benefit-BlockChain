@@ -2,13 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Table, Rating, Header, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
-import { getAllPlan } from '../../api/setPlan'
-
-const TableCell = styled(Table)`
-  &&&{
-    border-left: 0px solid;
-  }
-`
+import '../../styles/ViewPlanTable.scss'
 
 class ViewPlanBox extends Component {
   constructor() {
@@ -19,19 +13,19 @@ class ViewPlanBox extends Component {
     const output = []
     for (var i = 0; i < list.length; i++) {
       output.push(
-        <Table.Row>
-          <Table.Cell>
-            <Header textAlign="center"><Checkbox /></Header>
-          </Table.Cell>
-          <Table.Cell singleLine> {list[i].planId} </Table.Cell>
-          <Table.Cell> {list[i].updateBy} </Table.Cell>
-          <Table.Cell> {list[i].updatedAt} </Table.Cell>
-          <Table.Cell textAlign="center">
+        <tr>
+          <td>
+            <Checkbox />
+          </td>
+          <td singleLine> {list[i].name} </td>
+          <td> {list[i].updataBy} </td>
+          <td> {list[i].date} </td>
+          <td>
             <Icon disabled name="edit" size="large" />
             <Icon disabled name="paste" size="large" />
-            <Icon disabled name="times rectangle outline" size="large" />
-          </Table.Cell>
-        </Table.Row>,
+            <Icon disabled name="trash" size="large" />
+          </td>
+        </tr>,
       )
     }
     return output
@@ -42,11 +36,9 @@ class ViewPlanBox extends Component {
       this.props.getAllPlan()
     }
     return (
-      <Table striped>
-        <Table.Body>
-          {this.renderList(this.props.planList)}
-        </Table.Body>
-      </Table>
+      <table>
+        {this.renderList(this.props.planList)}
+      </table>
     )
   }
 }

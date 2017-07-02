@@ -143,7 +143,6 @@ class IPD extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <br />
@@ -209,10 +208,7 @@ class IPD extends Component {
                 />
               : null}
             {this.state.ipdType === 'R&B Schedule'
-              ? <IPD3
-                  handleChange={this.handleChange}
-                  handleChangeToNull={this.handleChangeToNull}
-                />
+              ? <IPD3 handleChange={this.handleChange} />
               : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />

@@ -43,6 +43,7 @@ class Login extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
+    console.log(this.props.data.error)
     return (
       <div>
         <div className="row">
@@ -95,6 +96,9 @@ class Login extends Component {
                       onChange={this.handleChange}
                     />
                   </Form.Field>
+                  {this.props.data.error
+                    ? <p style={{ color: 'red' }}> {this.props.data.message}</p>
+                    : <p />}
                   <Button
                     style={{
                       marginTop: '20px',
@@ -144,7 +148,7 @@ const mapDispatchToProps = dispatch => ({
   authenticate: (email, password) => dispatch(authenticate(email, password)),
 })
 const mapStateToProps = state => ({
-  user: state.user,
+  data: state.authReducer,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

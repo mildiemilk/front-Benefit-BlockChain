@@ -1,5 +1,6 @@
 import React from 'react'
 import { SearchView, SearchButton } from './Styled'
+import { Input } from 'semantic-ui-react'
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -22,15 +23,14 @@ class SearchBox extends React.Component {
 
   render() {
     return (
-      <div>
-        <SearchView
-          input
-          type="text"
+      <div className="SearchViewPlan">
+        <Input
+          style={{ paddingTop: '9%' }}
+          action="ไป"
           placeholder="ค้นหา"
-          value={this.state.keyword}
+          defaultValue={this.state.keyword}
           onChange={event => this.handleInputChange(event)}
         />
-        <SearchButton> ไป </SearchButton>
       </div>
     )
   }

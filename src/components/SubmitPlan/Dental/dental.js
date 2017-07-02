@@ -52,6 +52,8 @@ class Dental extends Component {
         <Form>
           <Form.Group inline>
             <Form.Input
+              t
+              ype="number"
               label="ใช้บริการได้ไม่เกิน"
               placeholder="จำนวนเงิน"
               name="dentalPerYear"

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { editPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -56,24 +57,13 @@ class IPD extends Component {
       ipdCoPlayDeductable: null,
       ipdCoPlayMixPercentage: null,
       ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixipdCoPlayMixYear: null,
+      ipdCoPlayMixYear: null,
     }
     const ipdType = ''
     const results = ''
   }
 
   static propTypes = {}
-
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.ipdType })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
 
   handleToggle = () => {
     if (this.state.ipdCoPlay) {
@@ -87,9 +77,73 @@ class IPD extends Component {
     this.setState({ ipdType })
   }
 
-  handleChangeToNUll = name => this.setState({ [name]: null })
+  handleChangeToNull = name => this.setState({ [name]: null })
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleClick = () => {
+    const {
+      ipdCoPlay,
+      ipdType,
+      ipdLumsumPerYear,
+      ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear,
+      rbLumsumRoomPerNight,
+      rbLumsumNigthNotExceedPerYear,
+      rbLumsumPayNotExceedPerNight,
+      rbLumsumPayNotExceedPerYear,
+      rbSchedulePatient,
+      rbScheduleIntensiveCarePatient,
+      rbScheduleDoctor,
+      rbScheduleSurgery,
+      rbScheduleService,
+      rbScheduleSmallSurgery,
+      rbScheduleAdviser,
+      rbScheduleAmbulance,
+      rbScheduleAccident,
+      rbScheduleTreatment,
+      rbScheduleTransplant,
+      ipdCoPlayQuota,
+      ipdCoPlayDeductable,
+      ipdCoPlayMixPercentage,
+      ipdCoPlayMixNotExceed,
+      ipdCoPlayMixYear,
+    } = this.state
+    this.props.editPlan(
+      {
+        ipdCoPlay,
+        ipdType,
+        ipdLumsumPerYear,
+        ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient,
+        rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor,
+        rbScheduleSurgery,
+        rbScheduleService,
+        rbScheduleSmallSurgery,
+        rbScheduleAdviser,
+        rbScheduleAmbulance,
+        rbScheduleAccident,
+        rbScheduleTreatment,
+        rbScheduleTransplant,
+        ipdCoPlayQuota,
+        ipdCoPlayDeductable,
+        ipdCoPlayMixPercentage,
+        ipdCoPlayMixNotExceed,
+        ipdCoPlayMixYear,
+      },
+      this.props.plan.planId,
+      'ipd',
+    )
+  }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <br />
@@ -145,19 +199,19 @@ class IPD extends Component {
               ? <IPD1
                   handleVerifyState={this.props.handleVerifyState}
                   handleChange={this.handleChange}
-                  handleChangeToNUll={this.handleChangeToNUll}
+                  handleChangeToNull={this.handleChangeToNull}
                 />
               : null}
             {this.state.ipdType === 'R&B Lumsum'
               ? <IPD2
                   handleChange={this.handleChange}
-                  handleChangeToNUll={this.handleChangeToNUll}
+                  handleChangeToNull={this.handleChangeToNull}
                 />
               : null}
             {this.state.ipdType === 'R&B Schedule'
               ? <IPD3
                   handleChange={this.handleChange}
-                  handleChangeToNUll={this.handleChangeToNUll}
+                  handleChangeToNull={this.handleChangeToNull}
                 />
               : null}
             <br />
@@ -165,7 +219,7 @@ class IPD extends Component {
             {this.state.ipdCoPlay
               ? <CoPlay
                   handleChange={this.handleChange}
-                  handleChangeToNUll={this.handleChangeToNUll}
+                  handleChangeToNull={this.handleChangeToNull}
                 />
               : null}
             <br />
@@ -183,6 +237,7 @@ class IPD extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
+              onClick={this.handleClick}
             >
               บันทึก
             </Button>
@@ -195,7 +250,12 @@ class IPD extends Component {
 
 IPD.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
+})
+const mapStateToProps = state => ({
+  plan: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(IPD)

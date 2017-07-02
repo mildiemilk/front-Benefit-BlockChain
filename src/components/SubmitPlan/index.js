@@ -35,10 +35,6 @@ class SubmitPlan extends Component {
     this.setState({ nameInput: e.target.value })
   }
 
-  signUpHandler() {
-    window.location.href = '/signup'
-  }
-
   handleSubmit = e => {
     e.preventDefault()
     const { email, password } = this.state
@@ -51,14 +47,16 @@ class SubmitPlan extends Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="large-4 columns">
-            <MenuPlan />
-          </div>
-          <div className="large-8 columns">
-            <FormSubmitPlan />
-            <div className="fillBox">
-              <AllPlan />
+        <div className="big-box">
+          <div className="row">
+            <div className="large-3 columns">
+              <MenuPlan />
+            </div>
+            <div className="large-9 columns">
+              <FormSubmitPlan />
+              <div className="fillBox">
+                <AllPlan />
+              </div>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Step } from 'semantic-ui-react'
 export const Head = styled.p`
   margin-bottom: 0px;
   padding-top:24px;
-  font-size: 32px;
+  font-size: 30px;
 `
 export const Grid = styled.div`
   padding-top:20px;

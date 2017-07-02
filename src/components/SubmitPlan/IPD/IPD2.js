@@ -32,33 +32,18 @@ class IPD2 extends Component {
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  signUpHandler() {
-    window.location.href = '/signup'
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
       document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
-      this.props.handleChangeToNUll('rbLumsumPayNotExceedPerNight')
+      this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight')
       document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
-      this.props.handleChangeToNUll('rbLumsumPayNotExceedPerYear')
+      this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear')
     } else {
       document.getElementById('rbLumsumRoomPerNight').value = ''
-      this.props.handleChangeToNUll('rbLumsumRoomPerNight')
+      this.props.handleChangeToNull('rbLumsumRoomPerNight')
       document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
-      this.props.handleChangeToNUll('rbLumsumNigthNotExceedPerYear')
+      this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear')
     }
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })

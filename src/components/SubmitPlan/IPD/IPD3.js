@@ -38,10 +38,6 @@ class IPD3 extends Component {
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
   handleToggle = () => {
     if (this.state.permit) {
       document.getElementById('rbScheduleSurgery').value = null

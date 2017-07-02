@@ -42,6 +42,10 @@ class SubmitPlan extends Component {
     console.log(this.state)
   }
 
+  onClickhandler() {
+    window.location.href = '/chooseinsurer'
+  }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
@@ -57,6 +61,21 @@ class SubmitPlan extends Component {
               <div className="fillBox">
                 <AllPlan />
               </div>
+              <Button
+                style={{
+                  marginLeft: '70%',
+                  marginTop: '5%',
+                  marginBottom: '5%',
+                  width: '164px',
+                  height: '40px',
+                  borderRadius: '20px',
+                  color: '#ffffff',
+                  backgroundColor: '#f7555f',
+                }}
+                onClick={this.onClickhandler}
+              >
+                {' '}ต่อไป
+              </Button>
             </div>
           </div>
         </div>

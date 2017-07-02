@@ -31,7 +31,6 @@ import ViewAllPlan from './ViewAllPlan'
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-
     <div className="row">
       <div className="large-2 columns">
         <Sidebar />
@@ -79,7 +78,6 @@ const App = ({ isAuthenticated }) => (
                   />
                   <Redirect to={{ pathname: '/login' }} />
                 </Switch>}
-
           </div>
         </div>
       </div>

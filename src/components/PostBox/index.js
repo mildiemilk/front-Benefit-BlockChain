@@ -30,6 +30,7 @@ import Postre from './Postre'
 import styled from 'react-sc'
 import ModalPostBox from './ModalPostBox'
 import NavInsure from '../NavInsure'
+
 const RatingNew = styled(Rating)`
   &&&{
     position: absolute;
@@ -47,7 +48,7 @@ export default class PostBox extends Component {
   }
   render() {
     return (
-      <div style={{ marginLeft: '230px', background: '#fff', padding: '30px' }}>
+      <div>
         <NavInsure step={this.state.step} />
         <div className="row">
           <RecPostBox>

@@ -46,5 +46,8 @@
     .ui.steps .step.active:after{
         background-color:#3a7bd5;
     }
+    .ui.ordered.steps .step:before{
+        font-size: 15px !important;
+    }
    
 }

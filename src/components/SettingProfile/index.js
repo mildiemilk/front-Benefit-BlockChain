@@ -47,7 +47,7 @@ const NextButton = styled.button`
     margin-right:26%;
     margin-left:auto;
     padding: 0.5%;
-`
+    `
 const BusinessTypes = [
   {
     text: 'ประเภท 1',

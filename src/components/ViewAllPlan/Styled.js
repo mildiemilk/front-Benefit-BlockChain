@@ -24,13 +24,12 @@ export const BackHome = styled.p`
 `
 
 export const RecViewAllPlan = styled.div`
-  width: 1060px;
-  height: 1120px;
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   margin-top: 3%;
   padding-top: 3%;
+  padding-bottom: 5%;
 `
 
 export const SearchView = styled.input`

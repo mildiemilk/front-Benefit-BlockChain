@@ -16,7 +16,7 @@ const SearchNew = styled(Search)`
 export default class ViewAllPlan extends Component {
   render() {
     return (
-      <div style={{ marginLeft: '230px', background: '#fff', padding: '30px' }}>
+      <div>
         <div className="row">
           <PostContent> จัดแผนประกัน </PostContent>
           <Divider inverted />
@@ -25,7 +25,7 @@ export default class ViewAllPlan extends Component {
               <ViewHeader> แพลนทั้งหมด </ViewHeader>
               <BackHome>&lt; กลับหน้าหลัก </BackHome>
             </div>
-            <div className="large-3 large-offset-4 columns">
+            <div className="large-4 large-offset-3 columns">
               <SearchBox />
               <Input action="ไป" placeholder="ค้นหา" />
 

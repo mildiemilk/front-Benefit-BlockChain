@@ -70,6 +70,7 @@ class simpleRQ extends Component {
     reader.readAsDataURL(file)
   }
   handlePost = e => {
+    console.log('aaaaaaaaaaaaaa')
     e.preventDefault()
     const {
       numberOfEmployee,
@@ -80,6 +81,9 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
+      day,
+      month,
+      year,
     } = this.state
     this.props.fillSimpleRQ(
       numberOfEmployee,
@@ -90,6 +94,9 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
+      day,
+      month,
+      year,
     )
   }
 
@@ -107,153 +114,153 @@ class simpleRQ extends Component {
     console.log(this.state)
     return (
       <div id="simpleRQ">
-        <Container id="containerWithBg">
-          <NavInsure step={this.state.step} />
-          <Card fluid id="cardSimpleRQ">
-            <CardHeader>
-              <p id="headCardRQ"> แผนประกันที่ต้องการ </p>
-            </CardHeader>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column width={5}>
-                  <p> จำนวนพนักงาน </p>
-                </Grid.Column>
-                <Grid.Column width={11}>
-                  <Select
-                    fluid
-                    name="numberOfEmployee"
-                    defaultValue={this.state.employeeNum}
-                    placeholder="จำนวนพนักงาน"
-                    options={simpleRQOption.employeeOption}
-                    onChange={this.handleChange}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={5}>
-                  <p> รูปแบบประกันที่ต้องการ </p>
-                </Grid.Column>
-                <Grid.Column width={11}>
-                  <Box
-                    fluid
-                    name="typeOfInsurance"
-                    defaultValue={this.state.typeInsurance}
-                    placeholder="รูปแบบประกันที่ต้องการ"
-                    onChange={this.handleChange}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={5}>
-                  <p> อัพโหลดแผนประกันที่ใช้ในปัจจุบัน </p>
-                </Grid.Column>
-                <Grid.Column width={11}>
-                  <div>
-                    {$filePreview}
-                    <UploadButton>
-                      <input
-                        style={{ opacity: '0', position: 'absolute' }}
-                        type="file"
-                        onChange={e => this._handleImageChange(e)}
-                      />
-                      อัพโหลดไฟล์
-                    </UploadButton>
-                  </div>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={5}>
-                  <p> วันหมดอายุของกรมธรรม์ </p>
-                </Grid.Column>
-                <Grid.Column width={11}>
-                  <Select
-                    id="daySelect"
-                    name="day"
-                    placeholder="วัน"
-                    options={simpleRQOption.dayOption}
-                    onChange={this.handleChange}
-                  />
-                  <Select
-                    id="monthSelect"
-                    name="month"
-                    placeholder="เดือน"
-                    options={simpleRQOption.monthOption}
-                    onChange={this.handleChange}
-                  />
-                  <Select
-                    id="yearSelect"
-                    name="year"
-                    placeholder="ปี"
-                    options={simpleRQOption.yearOption}
-                    onChange={this.handleChange}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={5}>
-                  <p> สิทธิประโยชน์ที่ต้องการ </p>
-                </Grid.Column>
-                <Grid.Column width={11}>
-                  <Form>
-                    <Form.Group inline>
-                      <Form.Field
-                        width={6}
-                        control={Checkbox}
-                        defaultChecked={this.state.IPD}
-                        label="IPD"
-                        name="IPD"
-                        onChange={this.handleCheck}
-                      />
-                      <Form.Field
-                        control={Checkbox}
-                        defaultChecked={this.state.OPD}
-                        label="OPD"
-                        name="OPD"
-                        onChange={this.handleCheck}
-                      />
-                    </Form.Group>
-                    <Form.Group inline>
-                      <Form.Field
-                        width={6}
-                        control={Checkbox}
-                        defaultChecked={this.state.dental}
-                        label="Dental"
-                        name="dental"
-                        onChange={this.handleCheck}
-                      />
-                      <Form.Field
-                        control={Checkbox}
-                        defaultChecked={this.state.life}
-                        label="Life"
-                        name="life"
-                        onChange={this.handleCheck}
-                      />
-                    </Form.Group>
-                    <Form.Group inline>
-                      <Form.Field
-                        width={2}
-                        control={Checkbox}
-                        defaultChecked={this.state.other}
-                        label="Other"
-                        name="other"
-                        onChange={this.handleCheck}
-                      />
-                      <Form.Field
-                        width={14}
-                        name="otherDes"
-                        control={Input}
-                        placeholder="โปรดระบุ"
-                        defaultValue={this.state.otherDes}
-                        onChange={this.handleChange}
-                      />
-                    </Form.Group>
-                  </Form>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Card>
-          <ModalSimpleRQ data={this.state} handlePost={this.handlePost} />
-        </Container>
+
+        <NavInsure step={this.state.step} />
+        <Card fluid id="cardSimpleRQ">
+          <CardHeader>
+            <p id="headCardRQ"> แผนประกันที่ต้องการ </p>
+          </CardHeader>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <p> จำนวนพนักงาน </p>
+              </Grid.Column>
+              <Grid.Column width={11}>
+                <Select
+                  fluid
+                  name="numberOfEmployee"
+                  defaultValue={this.state.numberOfEmployee}
+                  placeholder="จำนวนพนักงาน"
+                  options={simpleRQOption.employeeOption}
+                  onChange={this.handleChange}
+                />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <p> รูปแบบประกันที่ต้องการ </p>
+              </Grid.Column>
+              <Grid.Column width={11}>
+                <Input
+                  fluid
+                  name="typeOfInsurance"
+                  defaultValue={this.state.typeOfInsurance}
+                  placeholder="รูปแบบประกันที่ต้องการ"
+                  onChange={this.handleChange}
+                />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <p> อัพโหลดแผนประกันที่ใช้ในปัจจุบัน </p>
+              </Grid.Column>
+              <Grid.Column width={11}>
+                <div>
+                  {$filePreview}
+                  <UploadButton>
+                    <input
+                      style={{ opacity: '0', position: 'absolute' }}
+                      type="file"
+                      onChange={e => this._handleImageChange(e)}
+                    />
+                    อัพโหลดไฟล์
+                  </UploadButton>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <p> วันหมดอายุของกรมธรรม์ </p>
+              </Grid.Column>
+              <Grid.Column width={11}>
+                <Select
+                  id="daySelect"
+                  name="day"
+                  placeholder="วัน"
+                  options={simpleRQOption.dayOption}
+                  onChange={this.handleChange}
+                />
+                <Select
+                  id="monthSelect"
+                  name="month"
+                  placeholder="เดือน"
+                  options={simpleRQOption.monthOption}
+                  onChange={this.handleChange}
+                />
+                <Select
+                  id="yearSelect"
+                  name="year"
+                  placeholder="ปี"
+                  options={simpleRQOption.yearOption}
+                  onChange={this.handleChange}
+                />
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <p> สิทธิประโยชน์ที่ต้องการ </p>
+              </Grid.Column>
+              <Grid.Column width={11}>
+                <Form>
+                  <Form.Group inline>
+                    <Form.Field
+                      width={6}
+                      control={Checkbox}
+                      defaultChecked={this.state.IPD}
+                      label="IPD"
+                      name="IPD"
+                      onChange={this.handleCheck}
+                    />
+                    <Form.Field
+                      control={Checkbox}
+                      defaultChecked={this.state.OPD}
+                      label="OPD"
+                      name="OPD"
+                      onChange={this.handleCheck}
+                    />
+                  </Form.Group>
+                  <Form.Group inline>
+                    <Form.Field
+                      width={6}
+                      control={Checkbox}
+                      defaultChecked={this.state.dental}
+                      label="Dental"
+                      name="dental"
+                      onChange={this.handleCheck}
+                    />
+                    <Form.Field
+                      control={Checkbox}
+                      defaultChecked={this.state.life}
+                      label="Life"
+                      name="life"
+                      onChange={this.handleCheck}
+                    />
+                  </Form.Group>
+                  <Form.Group inline>
+                    <Form.Field
+                      width={2}
+                      control={Checkbox}
+                      defaultChecked={this.state.other}
+                      label="Other"
+                      name="other"
+                      onChange={this.handleCheck}
+                    />
+                    <Form.Field
+                      width={14}
+                      name="otherDes"
+                      control={Input}
+                      placeholder="โปรดระบุ"
+                      defaultValue={this.state.otherDes}
+                      onChange={this.handleChange}
+                    />
+                  </Form.Group>
+                </Form>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Card>
+        <ModalSimpleRQ data={this.state} handlePost={this.handlePost} />
+
       </div>
     )
   }
@@ -277,6 +284,9 @@ const mapDispatchToProps = dispatch => ({
     life,
     other,
     otherDes,
+    day,
+    month,
+    year,
   ) =>
     dispatch(
       fillSimpleRQ(
@@ -288,6 +298,9 @@ const mapDispatchToProps = dispatch => ({
         life,
         other,
         otherDes,
+        day,
+        month,
+        year,
       ),
     ),
 })

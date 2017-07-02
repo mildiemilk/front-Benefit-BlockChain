@@ -14,7 +14,16 @@ const MenuWithoutMargin = styled(Menu)`
 `
 
 const Header = () => (
-  <div style={{ border: 'none', backgroundColor: '#3a7bd5', height: '75' }}>
+  <div
+    style={{
+      position: 'fixed',
+      border: 'none',
+      backgroundColor: '#3a7bd5',
+      height: '75',
+      width: '100%',
+      zIndex: '999',
+    }}
+  >
     <Menu.Item style={{ position: 'absolute', left: '29px', top: '17px' }}>
       <div>
         <Image src={logo} size="small" />

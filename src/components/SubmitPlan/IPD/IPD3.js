@@ -127,7 +127,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbSchedulePatient"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -137,7 +137,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleIntensiveCarePatient"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -147,7 +147,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleDoctor"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -158,7 +158,7 @@ class IPD3 extends Component {
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
                       name="rbScheduleSurgery"
-                      onChange={this.handleChange}
+                      onChange={this.props.handleChange}
                       id="rbScheduleSurgery"
                       required
                     />
@@ -166,7 +166,7 @@ class IPD3 extends Component {
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
                       name="rbScheduleSurgery"
-                      onChange={this.handleChange}
+                      onChange={this.props.handleChange}
                       readOnly
                       id="rbScheduleSurgery"
                     />}
@@ -177,7 +177,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleService"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -190,7 +190,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleSmallSurgery"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -200,7 +200,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAdviser"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -210,7 +210,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAmbulance"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -220,7 +220,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAccident"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -230,7 +230,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTreatment"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
@@ -243,7 +243,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTransplant"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>

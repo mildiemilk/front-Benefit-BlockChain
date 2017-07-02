@@ -1,4 +1,4 @@
-const defaultProfile = {
+const defaultfillsimpleReducer = {
   numberOfEmployee: '',
   typeOfInsurance: '',
   IPD: '',
@@ -7,6 +7,9 @@ const defaultProfile = {
   life: '',
   other: '',
   otherDes: '',
+  day: '',
+  month: '',
+  year: '',
   message: null,
   error: false,
 }
@@ -22,7 +25,10 @@ export function fillsimpleRqFailure(data) {
   return { type: FILLSIMPLERQ_REQUEST_FAILURE, data }
 }
 
-export default function fillsimpleReducer(state = defaultProfile, action) {
+export default function fillsimpleReducer(
+  state = defaultfillsimpleReducer,
+  action,
+) {
   switch (action.type) {
     case FILLSIMPLERQ_REQUEST_SUCCESS:
       return Object.assign({}, state, {
@@ -34,9 +40,13 @@ export default function fillsimpleReducer(state = defaultProfile, action) {
         life: action.data.life,
         other: action.data.other,
         otherDes: action.data.otherDes,
+        day: action.data.day,
+        month: action.data.month,
+        year: action.data.year,
         message: action.data.message,
       })
     case FILLSIMPLERQ_REQUEST_FAILURE:
+      console.log('bbbbbbbbbbbb')
       console.log(action.data.message)
       return Object.assign({}, state, {
         message: action.data.message,

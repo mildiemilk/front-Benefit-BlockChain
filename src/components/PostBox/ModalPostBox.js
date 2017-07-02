@@ -1,5 +1,13 @@
 import React from 'react'
-import { Button, Header, Image, Modal, Checkbox, Form } from 'semantic-ui-react'
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Checkbox,
+  Form,
+  Input,
+} from 'semantic-ui-react'
 import {
   ModalHeader,
   ModalContent,
@@ -13,11 +21,11 @@ import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import passwordIcon from '../image/icons8-password.png'
 
-const ModalModalExample = ({ data }) => (
+const ModalPostbox = props => (
   <Modal
     style={{ width: '450px', height: '208px' }}
     trigger={
-      <ButtonNew onClick={this.handlePost}>
+      <ButtonNew>
         {' '}เลือก Broker
       </ButtonNew>
     }
@@ -35,34 +43,31 @@ const ModalModalExample = ({ data }) => (
         {' '}
       </ModalHeader>
       <ModalContent>
-        <Form>
-          <Form.Field>
-            <Form.Input
-              style={{
-                width: '324px',
-                height: '40px',
-                backgroundImage: `url(${passwordIcon})`,
-                backgroundSize: '32px,32px',
-                backgroundRepeat: 'no-repeat',
-                paddingLeft: '9%',
-              }}
-              placeholder="พาสเวิร์ด"
-              name="password"
-              type="password"
-              onChange={this.handleChange}
-            />
-          </Form.Field>
-        </Form>
+        <Input
+          style={{
+            width: '324px',
+            height: '40px',
+            backgroundImage: `url(${passwordIcon})`,
+            backgroundSize: '32px,32px',
+            backgroundRepeat: 'no-repeat',
+            paddingLeft: '9%',
+          }}
+          placeholder="พาสเวิร์ด"
+          name="passwordToConfirm"
+          type="password"
+          onChange={props.handleChange}
+        />
         <br /> หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้ <br />
       </ModalContent>
       <CancleButton> ยกเลิก </CancleButton>
-      <ConfirmButton> ยืนยัน </ConfirmButton>
+      <ConfirmButton onClick={props.handlePost}> ยืนยัน </ConfirmButton>
     </Modal.Content>
   </Modal>
 )
 
-ModalModalExample.propTypes = {
-  data: PropTypes.object.isRequired,
+ModalPostbox.propTypes = {
+  handlePost: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 }
 
-export default ModalModalExample
+export default ModalPostbox

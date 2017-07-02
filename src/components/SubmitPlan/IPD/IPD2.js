@@ -51,14 +51,14 @@ class IPD2 extends Component {
     this.setState({ value })
     if (this.state.value === 'secondChoice') {
       document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
-      this.setState({ rbLumsumPayNotExceedPerNight: null })
+      this.props.handleChangeToNUll('rbLumsumPayNotExceedPerNight')
       document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
-      this.setState({ rbLumsumPayNotExceedPerYear: null })
+      this.props.handleChangeToNUll('rbLumsumPayNotExceedPerYear')
     } else {
       document.getElementById('rbLumsumRoomPerNight').value = ''
-      this.setState({ rbLumsumRoomPerNight: null })
+      this.props.handleChangeToNUll('rbLumsumRoomPerNight')
       document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
-      this.setState({ rbLumsumNigthNotExceedPerYear: null })
+      this.props.handleChangeToNUll('rbLumsumNigthNotExceedPerYear')
     }
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -82,7 +82,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
                 <Form.Input
@@ -90,7 +90,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumNigthNotExceedPerYear"
                   id="rbLumsumNigthNotExceedPerYear"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   required
                 />
               </div>
@@ -99,7 +99,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   readOnly
                 />
                 <Form.Input
@@ -107,7 +107,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumNigthNotExceedPerYear"
                   id="rbLumsumNigthNotExceedPerYear"
-                  onChange={this.handleChange}
+                  onChange={this.props.handleChange}
                   readOnly
                 />
               </div>}
@@ -128,14 +128,14 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerNight"
                 id="rbLumsumPayNotExceedPerNight"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                 required
               />
             : <Form.Input
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerNight"
                 id="rbLumsumPayNotExceedPerNight"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                 readOnly
               />}
           <p> บาท/คืน ไม่เกินปีล่ะ</p>
@@ -147,7 +147,7 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerYear"
                 id="rbLumsumPayNotExceedPerYear"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                 required
               />
             : <Form.Input
@@ -155,7 +155,7 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name=" rbLumsumPayNotExceedPerYear"
                 id=" rbLumsumPayNotExceedPerYear"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
               />}
           <p> คืน</p>
         </Form.Group>

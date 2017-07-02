@@ -75,6 +75,7 @@ class CoPlay extends Component {
             </Form.Field>
             {this.state.value === 'Quota Share'
               ? <Form.Input
+                  type="number"
                   placeholder="เปอร์เซน"
                   name="opdCoPlayQuota"
                   id="opdCoPlayQuota"
@@ -82,6 +83,7 @@ class CoPlay extends Component {
                   required
                 />
               : <Form.Input
+                  type="number"
                   placeholder="เปอร์เซน"
                   name="opdCoPlayQuota"
                   id="opdCoPlayQuota"
@@ -102,6 +104,7 @@ class CoPlay extends Component {
             </Form.Field>
             {this.state.value === 'Deductable'
               ? <Form.Input
+                  type="number"
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayDeductable"
                   id="opdCoPlayDeductable"
@@ -109,6 +112,7 @@ class CoPlay extends Component {
                   required
                 />
               : <Form.Input
+                  type="number"
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayDeductable"
                   id="opdCoPlayDeductable"
@@ -130,6 +134,7 @@ class CoPlay extends Component {
             {this.state.value === 'Quota Share + Deductable'
               ? <div style={{ display: 'inherit' }}>
                   <Form.Input
+                    type="number"
                     style={{ width: '80px' }}
                     placeholder="เปอร์เซ็น"
                     name="opdCoPlayMixPercentage"
@@ -138,6 +143,7 @@ class CoPlay extends Component {
                     required
                   />
                   <Form.Input
+                    type="number"
                     style={{ width: '90px' }}
                     label=" %ไม่เกิน"
                     placeholder="จำนวนเงิน"
@@ -147,6 +153,7 @@ class CoPlay extends Component {
                     required
                   />
                   <Form.Input
+                    type="number"
                     style={{ width: '40px' }}
                     label=" ต่อ"
                     placeholder="ปี"
@@ -158,6 +165,7 @@ class CoPlay extends Component {
                 </div>
               : <div style={{ display: 'inherit' }}>
                   <Form.Input
+                    type="number"
                     style={{ width: '80px' }}
                     placeholder="เปอร์เซ็น"
                     name="opdCoPlayMixPercentage"
@@ -166,6 +174,7 @@ class CoPlay extends Component {
                     readOnly
                   />
                   <Form.Input
+                    type="number"
                     style={{ width: '90px' }}
                     label=" %ไม่เกิน"
                     placeholder="จำนวนเงิน"
@@ -175,6 +184,7 @@ class CoPlay extends Component {
                     readOnly
                   />
                   <Form.Input
+                    type="number"
                     style={{ width: '40px' }}
                     label=" ต่อ"
                     placeholder="ปี"

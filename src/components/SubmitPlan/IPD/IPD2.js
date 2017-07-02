@@ -64,6 +64,7 @@ class IPD2 extends Component {
           {this.state.value === 'firstChoice'
             ? <div style={{ display: 'inherit' }}>
                 <Form.Input
+                  type="number"
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
@@ -71,6 +72,7 @@ class IPD2 extends Component {
                   required
                 />
                 <Form.Input
+                  type="number"
                   label="บาท/คืน ไม่เกินปีล่ะ"
                   placeholder="จำนวนเงิน"
                   name="rbLumsumNigthNotExceedPerYear"
@@ -81,6 +83,7 @@ class IPD2 extends Component {
               </div>
             : <div style={{ display: 'inherit' }}>
                 <Form.Input
+                  type="number"
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
@@ -88,6 +91,7 @@ class IPD2 extends Component {
                   readOnly
                 />
                 <Form.Input
+                  type="number"
                   label="บาท/คืน ไม่เกินปีล่ะ"
                   placeholder="จำนวนเงิน"
                   name="rbLumsumNigthNotExceedPerYear"
@@ -110,6 +114,7 @@ class IPD2 extends Component {
           </Form.Field>
           {this.state.value === 'secondChoice'
             ? <Form.Input
+                type="number"
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerNight"
                 id="rbLumsumPayNotExceedPerNight"
@@ -117,6 +122,7 @@ class IPD2 extends Component {
                 required
               />
             : <Form.Input
+                type="number"
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerNight"
                 id="rbLumsumPayNotExceedPerNight"
@@ -128,6 +134,7 @@ class IPD2 extends Component {
         <Form.Group inline style={{ marginLeft: '25px' }}>
           {this.state.value === 'secondChoice'
             ? <Form.Input
+                type="number"
                 label="และจ่ายไม่เกิน"
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerYear"
@@ -136,6 +143,7 @@ class IPD2 extends Component {
                 required
               />
             : <Form.Input
+                type="number"
                 label="และจ่ายไม่เกิน"
                 placeholder="จำนวนเงิน"
                 name=" rbLumsumPayNotExceedPerYear"

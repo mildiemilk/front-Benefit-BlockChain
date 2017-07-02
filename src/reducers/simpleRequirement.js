@@ -44,6 +44,7 @@ export default function fillsimpleReducer(
         month: action.data.month,
         year: action.data.year,
         message: action.data.message,
+        error: false,
       })
     case FILLSIMPLERQ_REQUEST_FAILURE:
       console.log('bbbbbbbbbbbb')

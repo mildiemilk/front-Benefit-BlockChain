@@ -20,6 +20,7 @@ import {
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import passwordIcon from '../image/icons8-password.png'
+import { connect } from 'react-redux'
 
 const ModalPostbox = props => (
   <Modal
@@ -33,7 +34,7 @@ const ModalPostbox = props => (
     <Modal.Content>
       <ModalHeader>
         {' '}
-        กรุณาใส่พาสเวิร์ดของคุณอีกครั้ง เพื่อ
+        กรุณาใส่พาสเวิร์ดของคุณอีกครั้งเพื่อ
         {' '}
         <br />
         {' '}
@@ -57,6 +58,10 @@ const ModalPostbox = props => (
           type="password"
           onChange={props.handleChange}
         />
+        {props.data.error
+          ? <span style={{ color: 'red' }}> <br />{props.data.message}</span>
+          : <span />}
+
         <br /> หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้ <br />
       </ModalContent>
       <CancleButton> ยกเลิก </CancleButton>
@@ -70,4 +75,8 @@ ModalPostbox.propTypes = {
   handleChange: PropTypes.func.isRequired,
 }
 
-export default ModalPostbox
+const mapStateToProps = state => ({
+  data: state.postBoxReducer,
+})
+
+export default connect(mapStateToProps, null)(ModalPostbox)

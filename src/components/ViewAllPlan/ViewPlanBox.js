@@ -1,33 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Icon, Table, Rating, Header, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
-import '../../styles/ViewPlanTable.scss'
+import { getAllPlan } from '../../api/setPlan'
+import SearchBox from './SearchBox'
 
-export default class ViewPlanBox extends Component {
+class ViewPlanBox extends Component {
   constructor() {
     super()
-    this.list = [
-      {
-        name: 'Management 1',
-        updataBy: 'HR',
-        date: '2 sep 1995',
-      },
-      {
-        name: 'Management 2',
-        updataBy: 'HR',
-        date: '26 sep 1995',
-      },
-      {
-        name: 'Management 3',
-        updataBy: 'HR',
-        date: '9 dec 1995',
-      },
-      {
-        name: 'Management 4',
-        updataBy: 'HR',
-        date: '20 dec 1995',
-      },
-    ]
   }
 
   renderList = list => {
@@ -53,10 +33,23 @@ export default class ViewPlanBox extends Component {
   }
 
   render() {
+    {
+      this.props.getAllPlan()
+    }
     return (
       <table>
-        {this.renderList(this.list)}
+        {this.renderList(this.props.items)}
       </table>
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox)

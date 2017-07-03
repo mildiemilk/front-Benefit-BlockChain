@@ -8,6 +8,7 @@ export const Detail = styled.div`
     padding: 10%;
     padding-top: 25px;
     height: 761px;
+    
 `
 
 export const Head = styled.p`
@@ -68,7 +69,7 @@ export const Submitupload = styled.button`
   	border-radius: 20px;
   	background-color: #3a7bd5;
     padding: 1%;
-    color: white;  
+    color: white;
     float:center;
     border-color: white;
 `

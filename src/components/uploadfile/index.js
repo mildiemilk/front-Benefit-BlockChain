@@ -112,8 +112,7 @@ class Uploadfile extends Component{
                           <Icon link name='close' />
                           <Progress percent={60} size='tiny' color='blue' />
                         </Grid.Column>
-                      </Grid.Row>
-                      <Divider />
+                      </Grid.Row>                  
                     </Grid>
                   </Inner2>
                 </Grid.Column>

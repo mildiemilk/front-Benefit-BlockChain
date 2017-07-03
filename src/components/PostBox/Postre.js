@@ -82,6 +82,13 @@ class Postre extends Component {
                 <PostreText>
                   <Checkbox label="Life" checked={this.props.data.life} />
                 </PostreText>
+                <PostreText>
+                  <Checkbox
+                    label="อื่นๆ: &nbsp;"
+                    checked={this.props.data.other}
+                  />
+                  {this.props.data.otherDes}
+                </PostreText>
               </Card.Description>
             </Card.Content>
           </Card>

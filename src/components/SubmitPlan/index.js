@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import MenuPlan from './MenuPlan/MenuPlan'
 import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
 import AllPlan from './AllPlan'
+import NavInsure from '../NavInsure'
 import {
   Button,
   Checkbox,
@@ -24,6 +25,7 @@ class SubmitPlan extends Component {
   constructor() {
     super()
     this.state = {
+      step: 3,
       planName: '',
       employeeOfPlan: '',
     }
@@ -34,6 +36,7 @@ class SubmitPlan extends Component {
   render() {
     return (
       <div>
+        <NavInsure step={this.state.step} />
         <div className="big-box">
           <div className="row">
             <div className="large-3 columns">

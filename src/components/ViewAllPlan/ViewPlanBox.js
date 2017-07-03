@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Icon, Table, Rating, Header, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
 import { getAllPlan } from '../../api/setPlan'
+import SearchBox from './SearchBox'
 
 class ViewPlanBox extends Component {
   constructor() {
@@ -37,7 +38,7 @@ class ViewPlanBox extends Component {
     }
     return (
       <table>
-        {this.renderList(this.props.planList)}
+        {this.renderList(this.props.items)}
       </table>
     )
   }

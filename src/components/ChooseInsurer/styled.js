@@ -17,7 +17,7 @@ export const Head = styled.p`
 export const Side = styled.div`
     margin: 2% 1%;
     font-size: 15px;
-  
+
 `
 export const SideIn = styled.div`
     border-radius: 8px;
@@ -30,7 +30,7 @@ export const HeadIn = styled.div`
     padding-left: 1% ;
 `
 export const Card = styled.div`
-    width: 138px;
+    width: 130px;
 	height: 145px;
 	border-radius: 8px;
 	background-color: #f5f5f5;

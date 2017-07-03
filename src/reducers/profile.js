@@ -49,14 +49,14 @@ export default function profileReducer(state = defaultProfile, action) {
   switch (action.type) {
     case PROFILECOMPANY_REQUEST_SUCCESS:
       return Object.assign({}, state, {
-        companyName: action.data.companyName,
-        location: action.data.location,
+        companyName: action.data.profile.companyName,
+        location: action.data.profile.location,
         // HR: action.data.HR,
-        tel: action.data.tel,
-        typeOfBusiness: action.data.typeOfBusiness,
-        numberOfEmployees: action.data.numberOfEmployees,
-        companyBroker: action.data.companyBroker,
-        companyInsurer: action.data.companyInsurer,
+        tel: action.data.profile.tel,
+        typeOfBusiness: action.data.profile.typeOfBusiness,
+        numberOfEmployees: action.data.profile.numberOfEmployees,
+        companyBroker: action.data.profile.companyBroker,
+        companyInsurer: action.data.profile.companyInsurer,
         message: action.data.message,
         error: false,
       })

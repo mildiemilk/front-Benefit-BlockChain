@@ -34,18 +34,16 @@ const SegmentWithHeight = styled(Segment)`
   }
 `
 const NextButton = styled.button`
-    width: 100%;
-    height: auto;
+    width: 174px;
+    height: 40px;
     border: none;
     border-radius: 20px;
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
-    margin-top: 20%;
+    margin-bottom: 15%;
     display: block;
     text-align:center;
-    margin-right:26%;
-    margin-left:auto;
     padding: 0.5%;
     `
 const BusinessTypes = [
@@ -277,6 +275,11 @@ class SettingProfile extends Component {
                   size="big"
                   placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
                 />
+                {this.props.profile.error
+                  ? <span style={{ color: 'red' }}>
+                      {' '}<br />{this.props.profile.message}
+                    </span>
+                  : <span />}
               </Segment>
             </div>
             <div className="row">

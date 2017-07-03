@@ -7,8 +7,8 @@ import { createProfile } from '../../api/profileCompany'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
-import uploadicon from './icons-8-upload.png'
-import csvpic from './icons-8-csv.png'
+import uploadicon from '../image/icons-8-upload.png'
+import csvpic from '../image/icons-8-csv.png'
 import {Detail,Head,Head2,Inner,Inner2,INInner,
         subInner,Submit,Submitupload,Inboxtext} from './styled'
 import {
@@ -112,7 +112,7 @@ class Uploadfile extends Component{
                           <Icon link name='close' />
                           <Progress percent={60} size='tiny' color='blue' />
                         </Grid.Column>
-                      </Grid.Row>                  
+                      </Grid.Row>
                     </Grid>
                   </Inner2>
                 </Grid.Column>

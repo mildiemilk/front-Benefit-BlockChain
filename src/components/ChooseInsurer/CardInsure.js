@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Check } from './styled'
+import { Card, Check, Cardlast } from './styled'
 class CardInsure extends React.Component {
   render() {
     return (
@@ -19,9 +19,9 @@ class CardInsure extends React.Component {
         <Card className="large-2 columns">
           <Check type="checkbox" name="selector" />
         </Card>
-        <Card className="large-2 columns">
+        <Cardlast className="large-2 columns">
           <Check type="checkbox" name="selector" />
-        </Card>
+        </Cardlast>
       </div>
     )
   }

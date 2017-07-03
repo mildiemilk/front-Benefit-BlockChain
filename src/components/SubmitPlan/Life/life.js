@@ -65,8 +65,25 @@ class Life extends Component {
     )
   }
 
+  handleResetdata = () => {
+    document.getElementById('lifeTimeOfSalary').value = ''
+    this.setState({ lifeTimeOfSalary: null })
+    document.getElementById('lifePerYear').value = ''
+    this.setState({ lifePerYear: null })
+    document.getElementById('lifeNotExceed').value = ''
+    this.setState({ lifeNotExceed: null })
+    this.setState({ value: '' })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'Life' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
   render() {
-    console.log(this.props.plan)
+    console.log(this.state.lifePerYear)
     return (
       <div>
         <br />
@@ -122,6 +139,7 @@ class Life extends Component {
                   placeholder="เท่า"
                   name="lifeTimeOfSalary"
                   id="lifeTimeOfSalary"
+                  value={this.state.lifeTimeOfSalary}
                   options={options}
                   onChange={this.handleChange}
                   required
@@ -153,6 +171,7 @@ class Life extends Component {
                     options={options}
                     name="lifeTimeOfSalary"
                     id="lifeTimeOfSalary"
+                    value={this.state.lifeTimeOfSalary}
                     onChange={this.handleChange}
                   />
                   <Form.Input

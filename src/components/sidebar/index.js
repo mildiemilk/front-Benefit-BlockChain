@@ -40,15 +40,7 @@ export default class SidebarLeft extends Component {
 
     return (
       <aside className="sidebar">
-        <Item.Group
-          style={{
-            fontSize: '110%',
-            paddingTop: '10px',
-            margin: '33px',
-            cursor: 'pointer',
-          }}
-          relaxed
-        >
+        <Item.Group  className="sidebarstyle" relaxed >
           <Item onClick={this.handleItemClick1}>
             <Icon name="home" size="large" />
             <Item.Content verticalAlign="middle">Dashboard</Item.Content>

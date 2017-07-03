@@ -30,7 +30,7 @@ import Life from './Life/life'
 import OPD from './OPD/OPD'
 import Dental from './Dental/dental'
 
-class AllPlan extends Component {
+class AllsetPlan extends Component {
   constructor() {
     super()
     this.state = {
@@ -39,8 +39,9 @@ class AllPlan extends Component {
       value: '',
       box: 'fillBox1',
       results: '',
-      plan: 'IPD',
+      setPlan: 'IPD',
       verifyState: true,
+      reset: false,
     }
     const value = ''
     const results = ''
@@ -65,21 +66,35 @@ class AllPlan extends Component {
   }
 
   handleClick = value => {
-    this.setState({ plan: value })
+    this.setState({ setPlan: value })
   }
+
+  handleReset = () => {
+    this.setState({ reset: true })
+  }
+
+  handleNewReset = () => {
+    this.setState({ reset: false })
+  }
+  handleChangeToNull = name => this.setState({ [name]: null })
+
   render() {
-    console.log(this.state.verifyState)
+    console.log(this.state.reset)
     return (
       <div>
         <div className="headBox">
           <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
           <div className="box-in-head-box">
-            <img src={erase} className="image-erase" />
+            <img
+              src={erase}
+              className="image-erase"
+              onClick={() => this.handleReset()}
+            />
             <span className="headLogo">Reset</span>
           </div>
         </div>
         <div className="row">
-          {this.state.plan === 'IPD'
+          {this.state.setPlan === 'IPD'
             ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
@@ -95,7 +110,7 @@ class AllPlan extends Component {
                   <span className="text-menu">IPD</span>
                 </div>
               </div>}
-          {this.state.plan === 'OPD'
+          {this.state.setPlan === 'OPD'
             ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
@@ -111,7 +126,7 @@ class AllPlan extends Component {
                   <span className="text-menu">OPD</span>
                 </div>
               </div>}
-          {this.state.plan === 'Dental'
+          {this.state.setPlan === 'Dental'
             ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
@@ -130,7 +145,7 @@ class AllPlan extends Component {
                   <span className="text-menu">Dental</span>
                 </div>
               </div>}
-          {this.state.plan === 'Life'
+          {this.state.setPlan === 'Life'
             ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
@@ -148,21 +163,44 @@ class AllPlan extends Component {
               </div>}
         </div>
         <div className="paragraph">
-          {this.state.plan === 'IPD'
-            ? <IPD handleVerifyState={this.handleVerifyState} />
+          {this.state.setPlan === 'IPD'
+            ? <IPD
+                handleVerifyState={this.handleVerifyState}
+                handleNewReset={this.handleNewReset}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+              />
             : null}
-          {this.state.plan === 'OPD' ? <OPD /> : null}
-          {this.state.plan === 'Dental' ? <Dental /> : null}
-          {this.state.plan === 'Life' ? <Life /> : null}
+          {this.state.setPlan === 'OPD'
+            ? <OPD
+                handleNewReset={this.handleNewReset}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+              />
+            : null}
+          {this.state.setPlan === 'Dental'
+            ? <Dental
+                handleNewReset={this.handleNewReset}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+              />
+            : null}
+          {this.state.setPlan === 'Life'
+            ? <Life
+                handleNewReset={this.handleNewReset}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+              />
+            : null}
         </div>
       </div>
     )
   }
 }
 
-AllPlan.propTypes = {}
+AllsetPlan.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({})
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllPlan)
+export default connect(mapStateToProps, mapDispatchToProps)(AllsetPlan)

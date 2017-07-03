@@ -22,7 +22,6 @@ class IPD1 extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
       value: '',
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
@@ -50,6 +49,23 @@ class IPD1 extends Component {
     } else {
       document.getElementById('ipdLumsumPerYear').value = ''
       this.props.handleChangeToNull('ipdLumsumPerYear')
+    }
+  }
+
+  handleResetdata = () => {
+    document.getElementById('ipdLumsumPerTime').value = ''
+    this.props.handleChangeToNull('ipdLumsumPerTime')
+    document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
+    this.props.handleChangeToNull('ipdLumsumTimeNotExceedPerYear')
+    document.getElementById('ipdLumsumPerYear').value = ''
+    this.props.handleChangeToNull('ipdLumsumPerYear')
+    this.setState({ value: '' })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
     }
   }
 

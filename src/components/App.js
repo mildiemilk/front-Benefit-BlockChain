@@ -1,7 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
+import { browserHistory } from 'react-router'
+import {
+  Route,
+  Redirect,
+  withRouter,
+  Switch,
+  HashRouter,
+  BrowserRouter,
+  Router,
+} from 'react-router-dom'
 import Async from 'react-code-splitting'
 import SidebarLeft from './sidebar'
 import Header from './Header'
@@ -22,6 +31,9 @@ import SubmitPlan from './SubmitPlan'
 import MenuPlan from './SubmitPlan/MenuPlan/MenuPlan'
 import welcomePage from './welcome'
 import Sidebar from './sidebar'
+import Sendrequest from './sendrequest'
+import MainLayout from './MainLayout'
+import EmptyLayout from './EmptyLayout'
 import Uploadfile from './uploadfile'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
@@ -68,7 +80,7 @@ const App = ({ isAuthenticated }) => (
                     component={simpleRQ}
                   />
                   <Route path="/dashboard" component={Dashboard} />
-
+                  <Route path="/sendrequest" component={Sendrequest} />
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/login" component={Login} />

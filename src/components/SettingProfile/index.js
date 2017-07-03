@@ -30,7 +30,7 @@ import styled from 'react-sc'
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 642.2px;
+    min-height: 621.2px;
   }
 `
 const NextButton = styled.button`
@@ -41,6 +41,7 @@ const NextButton = styled.button`
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
+    margin-top: 15%;
     margin-bottom: 15%;
     display: block;
     text-align:center;
@@ -179,10 +180,7 @@ class SettingProfile extends Component {
       )
     }
     return (
-      <div
-        className="setting-profile"
-        style={{ background: '#F1F1F1', paddingTop: '5%' }}
-      >
+      <div className="setting-profile">
         <div className="row">
           <div className="large-10 large-offset-1 columns">
             <Head>กรุณาตั้งค่าโปรไฟล์</Head>

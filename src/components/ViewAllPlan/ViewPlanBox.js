@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Table, Rating, Header, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
-import '../../styles/ViewPlanTable.scss'
 
 export default class ViewPlanBox extends Component {
   constructor() {

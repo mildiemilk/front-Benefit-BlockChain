@@ -4,17 +4,23 @@ import ViewPlanBox from './ViewPlanBox'
 import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
 import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './Styled'
 import styled from 'react-sc'
-
 import SearchBox from './SearchBox'
-import '../../styles/ViewPlanTable.scss'
+import NavInsure from '../NavInsure'
 
 export default class ViewAllPlan extends Component {
+  constructor() {
+    super()
+    this.state = {
+      step: 3,
+      passwordToConfirm: '',
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className="ViewAllPlan">
+        <NavInsure step={this.state.step} />
         <div className="row">
-          <PostContent> จัดแผนประกัน </PostContent>
-          <Divider inverted />
           <RecViewAllPlan>
             <div style={{ marginTop: '2%' }} className="row">
               <div className="large-3 large-offset-1 columns">

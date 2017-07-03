@@ -30,6 +30,10 @@ class SubmitPlan extends Component {
       employeeOfPlan: '',
     }
   }
+  onClickhandler = e => {
+    e.preventDefault()
+    window.location.href = '/chooseinsurer'
+  }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 

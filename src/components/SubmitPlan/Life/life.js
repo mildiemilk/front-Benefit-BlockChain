@@ -65,8 +65,24 @@ class Life extends Component {
     )
   }
 
+  handleResetdata = () => {
+    document.getElementById('lifeTimeOfSalary').value = ''
+    this.setState({ lifeTimeOfSalary: null })
+    document.getElementById('lifePerYear').value = ''
+    this.setState({ lifePerYear: null })
+    document.getElementById('lifeNotExceed').value = ''
+    this.setState({ lifeNotExceed: null })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'Life' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
   render() {
-    console.log(this.props.plan)
+    console.log(this.state.lifePerYear)
     return (
       <div>
         <br />

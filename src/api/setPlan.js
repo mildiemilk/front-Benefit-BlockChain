@@ -45,6 +45,39 @@ export function editPlan(editData, planId, editType) {
   }
 }
 
+export function deletePlan(planId) {
+  return dispatch => {
+    const options = {
+      method: 'DELETE',
+      url: 'deletePlan/' + planId,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
+  }
+}
+
+export function copyPlan(planId) {
+  return dispatch => {
+    const options = {
+      method: 'POST',
+      url: 'copyPlan/' + planId,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
+  }
+}
 export function getAllPlan() {
   return dispatch => {
     const options = {

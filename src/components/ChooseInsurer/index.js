@@ -75,3 +75,17 @@ class InsurerSelect extends Component {
   }
 }
 export default InsurerSelect
+
+{
+  /*<p>ตั้งระยะเวลาการเสนอราคาของประกัน</p>
+                                <p className='insure'>บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;</p>
+                                <input className='date' type="date" name="bday"/>
+                                <span>&nbsp;เวลา&nbsp;</span>
+                                {/*<div className="ui calendar" id="example3">
+                                    <div className="ui input left icon">
+                                    <i className="time icon"></i>
+                                    <input type="text" placeholder="Time"/>
+                                </div> 
+                                </div>*/
+}
+//  <Submit>บันทึก</Submit>*/}

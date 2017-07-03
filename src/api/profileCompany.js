@@ -15,7 +15,7 @@ export function createProfile(profile) {
       .then(res => {
         localStorage.setItem('profile', res.data.profile)
         dispatch(createProfileSuccess(res.data))
-        window.location.href = '/dashboard'
+        window.location.href = '/confirm_identity'
       })
       .catch(err => {
         dispatch(createProfileFailure(err.response.data))

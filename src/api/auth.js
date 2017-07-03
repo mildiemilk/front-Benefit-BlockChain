@@ -21,7 +21,13 @@ export function authenticate(email, password) {
       .then(res => {
         localStorage.setItem('token', res.data.token)
         dispatch(authenticateSuccess(res.data))
-        window.location.href = '/settingprofile'
+        if (res.data.Havecompany != null && res.data.Approve === true) {
+          window.location.href = '/dashboard'
+        } else if (res.data.Havecompany != null && res.data.Approve === false) {
+          window.location.href = '/confirm_identity'
+        } else {
+          window.location.href = '/settingprofile'
+        }
       })
       .catch(err => {
         dispatch(authenticateFailure(err.response.data))

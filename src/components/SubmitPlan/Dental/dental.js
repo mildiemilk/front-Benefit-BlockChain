@@ -24,8 +24,8 @@ import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
 
 class Dental extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       dentalPerYear: null,
     }
@@ -37,6 +37,18 @@ class Dental extends Component {
 
   handleClick = () =>
     this.props.editPlan(this.state, this.props.plan.planId, 'dental')
+
+  handleResetdata = () => {
+    document.getElementById('dentalPerYear').value = ''
+    this.setState({ dentalPerYear: null })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'Dental' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   render() {
     return (
@@ -52,8 +64,7 @@ class Dental extends Component {
         <Form>
           <Form.Group inline>
             <Form.Input
-              t
-              ype="number"
+              type="number"
               label="ใช้บริการได้ไม่เกิน"
               placeholder="จำนวนเงิน"
               name="dentalPerYear"
@@ -89,7 +100,10 @@ class Dental extends Component {
   }
 }
 
-Dental.propTypes = {}
+Dental.propTypes = {
+  dentalPerYear: PropTypes.number,
+  onFormChange: PropTypes.func,
+}
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>

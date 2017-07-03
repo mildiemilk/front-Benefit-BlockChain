@@ -41,6 +41,7 @@ const NextButton = styled.button`
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
+    margin-top: 15%;
     margin-bottom: 15%;
     display: block;
     text-align:center;

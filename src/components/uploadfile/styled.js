@@ -8,7 +8,7 @@ export const Detail = styled.div`
     padding: 10%;
     padding-top: 25px;
     height: 761px;
-    
+
 `
 
 export const Head = styled.p`
@@ -35,17 +35,16 @@ export const Inboxtext = styled.p`
 
 `
 export const Inner = styled.div`
-    border-style: groove;
     border-radius: 8px;
     width: 100%;
     height: 340px;
     position:relative;
     padding:3%;
-
+    border: solid 1px rgba(151, 151, 151, 0.66);
 `
 export const Inner2 = styled.div`
     position:relative;
-    border-style: groove;
+    border: solid 1px rgba(151, 151, 151, 0.66);
     border-radius: 8px;
     width: 100%;
     height: 263px;
@@ -53,8 +52,8 @@ export const Inner2 = styled.div`
 
 `
 export const INInner = styled.div`
-    border-style: dashed;
-    border-color: #d8d8d8;
+    
+    border: dashed 1px rgba(151, 151, 151, 0.66);
     border-radius: 8px;
     position:relative;
     padding:5%;

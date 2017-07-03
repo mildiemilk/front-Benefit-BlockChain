@@ -83,7 +83,6 @@ const App = ({ isAuthenticated }) => (
         </div>
       </div>
     </div>
-
   </div>
 )
 

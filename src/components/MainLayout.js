@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import { withRouter } from 'react-router'
 import Header from './Header'
-import Sidebar from './Sidebar'
+import Sidebar from './sidebar'
 class MainLayout extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,

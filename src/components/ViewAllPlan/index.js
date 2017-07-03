@@ -10,10 +10,46 @@ import NavInsure from '../NavInsure'
 export default class ViewAllPlan extends Component {
   constructor() {
     super()
+    this.list = [
+      {
+        name: 'Management1',
+        updataBy: 'HR',
+        date: '9 June 1995',
+      },
+      {
+        name: 'Management2',
+        updataBy: 'HR',
+        date: '16 June 1995',
+      },
+      {
+        name: 'Plan 3',
+        updataBy: 'HR',
+        date: '18 June 1995',
+      },
+      {
+        name: 'แผน 4',
+        updataBy: 'ฝ่ายบุคคล',
+        date: '20 มิถุนายน 1995',
+      },
+    ]
+
     this.state = {
       step: 3,
       passwordToConfirm: '',
+      SearchTerm: '',
     }
+  }
+
+  handleSearchBoxChange(keyword) {
+    this.setState({ SearchTerm: keyword })
+  }
+
+  filterPlan(list) {
+    return list.filter(
+      plan =>
+        plan.name.toLowerCase().indexOf(this.state.SearchTerm.toLowerCase()) >=
+        0,
+    )
   }
 
   render() {
@@ -29,7 +65,9 @@ export default class ViewAllPlan extends Component {
               </div>
 
               <div className="large-4 large-offset-2 columns">
-                <SearchBox />
+                <SearchBox
+                  callback={keyword => this.handleSearchBoxChange(keyword)}
+                />
               </div>
             </div>
 
@@ -44,7 +82,7 @@ export default class ViewAllPlan extends Component {
                     <th> Action </th>
                   </tr>
                 </table>
-                <ViewPlanBox />
+                <ViewPlanBox items={this.filterPlan(this.list)} />
               </div>
             </div>
           </RecViewAllPlan>

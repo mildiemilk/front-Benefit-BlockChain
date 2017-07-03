@@ -31,6 +31,7 @@ import SubmitPlan from './SubmitPlan'
 import MenuPlan from './SubmitPlan/MenuPlan/MenuPlan'
 import welcomePage from './welcome'
 import Sidebar from './sidebar'
+import Sendrequest from './sendrequest'
 import MainLayout from './MainLayout'
 import EmptyLayout from './EmptyLayout'
 import Uploadfile from './uploadfile'
@@ -79,7 +80,7 @@ const App = ({ isAuthenticated }) => (
                     component={simpleRQ}
                   />
                   <Route path="/dashboard" component={Dashboard} />
-
+                  <Route path="/sendrequest" component={Sendrequest} />
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/login" component={Login} />

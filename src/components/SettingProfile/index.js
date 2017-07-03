@@ -30,7 +30,7 @@ import styled from 'react-sc'
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 642.2px;
+    min-height: 621.2px;
   }
 `
 const NextButton = styled.button`
@@ -181,7 +181,6 @@ class SettingProfile extends Component {
     return (
       <div
         className="setting-profile"
-        style={{ background: '#F1F1F1', paddingTop: '5%' }}
       >
         <div className="row">
           <div className="large-10 large-offset-1 columns">

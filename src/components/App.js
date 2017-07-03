@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
+import { browserHistory } from 'react-router';
+import { Route, Redirect, withRouter, Switch,HashRouter,BrowserRouter,Router} from 'react-router-dom'
 import Async from 'react-code-splitting'
 import SidebarLeft from './sidebar'
 import Header from './Header'
@@ -21,8 +22,9 @@ import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/FormSubmitPlan'
 import SubmitPlan from './SubmitPlan'
 import MenuPlan from './SubmitPlan/MenuPlan/MenuPlan'
 import welcomePage from './welcome'
-import Sidebar from './sidebar'
-
+import Sidebar from './Sidebar'
+import MainLayout from './MainLayout';
+import EmptyLayout from './EmptyLayout';
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
@@ -83,6 +85,9 @@ const App = ({ isAuthenticated }) => (
         </div>
       </div>
     </div>
+    
+   
+
   </div>
 )
 

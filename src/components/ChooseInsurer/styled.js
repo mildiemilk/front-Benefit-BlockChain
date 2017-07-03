@@ -17,12 +17,11 @@ export const Head = styled.p`
 export const Side = styled.div`
     margin: 2% 1%;
     font-size: 15px;
-
 `
 export const SideIn = styled.div`
     border-radius: 8px;
 	border: solid 1px rgba(151, 151, 151, 0.66);
-    padding:1%;
+    padding:3%;
     margin: 1% 0%;
 `
 export const HeadIn = styled.div`
@@ -34,8 +33,17 @@ export const Card = styled.div`
 	height: 145px;
 	border-radius: 8px;
 	background-color: #f5f5f5;
-	border: solid 1px #008000;
+	border: solid 1px rgba(151, 151, 151, 0.39);
     margin:1%;
+`
+export const Cardlast = styled.div`
+    width: 130px;
+	height: 145px;
+	border-radius: 8px;
+	background-color: #f5f5f5;
+	border: solid 1px rgba(151, 151, 151, 0.39);
+    margin:1%;
+    float:left !important;
 `
 export const Submit = styled.button`
     width: 164px;
@@ -57,6 +65,7 @@ export const SubmitInsure = styled.button`
     display:inline-block;
     float:right;
     border-color: white;
+    margin-right:2.5%;
 `
 export const Next = styled.button`
     width: 164px;

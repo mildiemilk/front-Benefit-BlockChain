@@ -31,7 +31,6 @@ import ViewAllPlan from './ViewAllPlan'
 const App = ({ isAuthenticated }) => (
   <div>
     <Header />
-
     <div className="row">
       <div className="large-2 columns">
         <Sidebar />
@@ -64,11 +63,12 @@ const App = ({ isAuthenticated }) => (
                   <Route path="/settingprofile" component={SettingProfile} />
                   <Route path="/welcome" component={welcomePage} />
                   <Route path="/postbox" component={Postbox} />
-                  <Route path="/dashboard" component={Dashboard} />
                   <Route
                     path="/dashboard/simplerequirement"
                     component={simpleRQ}
                   />
+                  <Route path="/dashboard" component={Dashboard} />
+
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/login" component={Login} />
@@ -80,7 +80,6 @@ const App = ({ isAuthenticated }) => (
                   <Route path="/uploadfile" component={Uploadfile} />
                   <Redirect to={{ pathname: '/login' }} />
                 </Switch>}
-
           </div>
         </div>
       </div>

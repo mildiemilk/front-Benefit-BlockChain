@@ -54,3 +54,8 @@ export const SearchButton = styled.button`
   background-color: var(--white-two);
   border: solid 1px #dddddd;
 `
+
+export const HeaderView = styled.div`
+  padding-top: 2%;
+  padding-left: 4%;
+`

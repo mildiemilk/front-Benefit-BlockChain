@@ -19,8 +19,8 @@ import '../../../styles/SubmitPlan.scss'
 import CoPlay from './CoPlay'
 
 class IPD1 extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       showCoPlay: false,
       value: '',
@@ -28,7 +28,6 @@ class IPD1 extends Component {
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
     }
-    const value = ''
   }
 
   static propTypes = {}
@@ -74,6 +73,7 @@ class IPD1 extends Component {
           </Form.Field>
           {this.state.value === 'firstChoice'
             ? <Form.Input
+                type="number"
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
@@ -81,6 +81,7 @@ class IPD1 extends Component {
                 required
               />
             : <Form.Input
+                type="number"
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
@@ -102,6 +103,7 @@ class IPD1 extends Component {
           {this.state.value === 'secondChoice'
             ? <div style={{ display: 'inherit' }}>
                 <Form.Input
+                  type="number"
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumPerTime"
                   id="ipdLumsumPerTime"
@@ -109,6 +111,7 @@ class IPD1 extends Component {
                   required
                 />
                 <Form.Input
+                  type="number"
                   label="บาท/ครั้ง  ครั้งละไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
@@ -119,6 +122,7 @@ class IPD1 extends Component {
               </div>
             : <div style={{ display: 'inherit' }}>
                 <Form.Input
+                  type="number"
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumPerTime"
                   id="ipdLumsumPerTime"
@@ -126,6 +130,7 @@ class IPD1 extends Component {
                   readOnly
                 />
                 <Form.Input
+                  type="number"
                   label="บาท/ครั้ง  ครั้งละไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"

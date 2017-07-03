@@ -48,17 +48,6 @@ class AllPlan extends Component {
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
-    console.log(this.state)
-  }
-
   handleToggle = () => {
     if (this.state.showCoPlay) {
       this.setState({ showCoPlay: false })

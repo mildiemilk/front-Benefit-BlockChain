@@ -1,8 +1,13 @@
 import { APIRequest } from '.'
-import { createPlanSuccess } from '../reducers/submitPlan'
+import {
+  createPlanSuccess,
+  editPlanSuccess,
+  getAllPlanSuccess,
+} from '../reducers/submitPlan'
 
 const CREATE_PLAN_URI = '/api/createPlan'
 const EDIT_PLAN_URI = 'api/editPlan'
+const GET_ALL_PLAN_URI = '/api/getAllPlan'
 
 export function createPlan(profilePlan) {
   return dispatch => {
@@ -33,6 +38,23 @@ export function editPlan(editData, planId, editType) {
     APIRequest(options, true)
       .then(res => {
         dispatch(editPlanSuccess(res.data))
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
+  }
+}
+
+export function getAllPlan() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_ALL_PLAN_URI,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getAllPlanSuccess(res.data))
       })
       .catch(err => {
         console.log(err.response)

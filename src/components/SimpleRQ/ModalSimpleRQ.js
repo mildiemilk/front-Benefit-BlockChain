@@ -1,15 +1,21 @@
 import React from 'react'
 import { Button, Header, Image, Modal, Checkbox } from 'semantic-ui-react'
-import { ModalHeader, ModalContent, EditButton, PostButton } from './styled'
+import {
+  ModalHeader,
+  ModalContent,
+  EditButton,
+  PostButton,
+  PostMainButton,
+} from './styled'
 import PropTypes from 'prop-types'
 
 const ModalModalExample = props => (
   <Modal
-    style={{ width: '50%', height: '50%' }}
+    style={{ width: '38%', height: '40%', marginLeft: '-280px' }}
     trigger={
-      <Button floated="right" id="postButton">
+      <PostMainButton id="postButton">
         {' '}โพสต์
-      </Button>
+      </PostMainButton>
     }
   >
     <Modal.Content>
@@ -29,18 +35,40 @@ const ModalModalExample = props => (
           {' '}
           <br />
           <br />
-          แผนประกันที่ต้องการ:
         </div>
-        <Checkbox label="OPD" checked={props.data.OPD} />
-        <Checkbox label="IPD" checked={props.data.IPD} />
-        <Checkbox label="Dental" checked={props.data.dental} />
-        <Checkbox label="Life" checked={props.data.life} />
-        <Checkbox label="อื่นๆ" checked={props.data.other} />
+        แผนประกันที่ต้องการ:
+        <Checkbox
+          style={{ paddingLeft: '2%' }}
+          label="OPD"
+          checked={props.data.OPD}
+        />
+        <Checkbox
+          style={{ paddingLeft: '2%' }}
+          label="IPD"
+          checked={props.data.IPD}
+        />
+        <Checkbox
+          style={{ paddingLeft: '2%' }}
+          label="Dental"
+          checked={props.data.dental}
+        />
+        <Checkbox
+          style={{ paddingLeft: '2%' }}
+          label="Life"
+          checked={props.data.life}
+        />
+        <Checkbox
+          style={{ paddingLeft: '2%' }}
+          label="อื่นๆ"
+          checked={props.data.other}
+        />
         : {props.data.otherDes}
         <br />{' '}
       </ModalContent>
-      <EditButton content="แก้ไข" />
-      <PostButton content="โพสต์" onClick={props.handlePost} />
+      <div style={{ marginLeft: '10%' }}>
+        <EditButton> แก้ไข </EditButton>
+        <PostButton onClick={props.handlePost}> โพสต์ </PostButton>
+      </div>
     </Modal.Content>
   </Modal>
 )

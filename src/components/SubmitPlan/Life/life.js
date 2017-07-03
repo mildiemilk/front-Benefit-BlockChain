@@ -90,6 +90,7 @@ class Life extends Component {
             </Form.Field>
             {this.state.value === 'firstLifeChoice'
               ? <Form.Input
+                  type="number"
                   placeholder="จำนวนบาท"
                   name="lifePerYear"
                   id="lifePerYear"
@@ -97,6 +98,7 @@ class Life extends Component {
                   required
                 />
               : <Form.Input
+                  type="number"
                   placeholder="จำนวนบาท"
                   name="lifePerYear"
                   id="lifePerYear"
@@ -154,6 +156,7 @@ class Life extends Component {
                     onChange={this.handleChange}
                   />
                   <Form.Input
+                    type="number"
                     label="เท่า แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
                     name="lifeNotExceed"
@@ -172,6 +175,7 @@ class Life extends Component {
                     disabled
                   />
                   <Form.Input
+                    type="number"
                     label="เท่า แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
                     name="lifeNotExceed"

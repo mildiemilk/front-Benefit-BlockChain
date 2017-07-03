@@ -72,6 +72,7 @@ class Life extends Component {
     this.setState({ lifePerYear: null })
     document.getElementById('lifeNotExceed').value = ''
     this.setState({ lifeNotExceed: null })
+    this.setState({ value: '' })
     this.props.handleNewReset()
   }
 
@@ -138,6 +139,7 @@ class Life extends Component {
                   placeholder="เท่า"
                   name="lifeTimeOfSalary"
                   id="lifeTimeOfSalary"
+                  value={this.state.lifeTimeOfSalary}
                   options={options}
                   onChange={this.handleChange}
                   required
@@ -169,6 +171,7 @@ class Life extends Component {
                     options={options}
                     name="lifeTimeOfSalary"
                     id="lifeTimeOfSalary"
+                    value={this.state.lifeTimeOfSalary}
                     onChange={this.handleChange}
                   />
                   <Form.Input

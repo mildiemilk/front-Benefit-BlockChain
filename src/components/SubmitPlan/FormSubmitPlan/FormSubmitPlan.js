@@ -33,8 +33,8 @@ class FormSubmitPlan extends Component {
   static propTypes = {}
 
   handleReset = () => {
-    document.getElementById('planName').value = ''
-    document.getElementById('employeeOfPlan').options = {}
+    this.setState({ planName: '' })
+    this.setState({ employeeOfPlan: '' })
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -72,7 +72,7 @@ class FormSubmitPlan extends Component {
                   <Form.Input
                     placeholder="ชื่อแพลน"
                     name="planName"
-                    id="planName"
+                    value={this.state.planName}
                     onChange={this.handleChange}
                     style={{ marginTop: '7%' }}
                     required
@@ -83,6 +83,7 @@ class FormSubmitPlan extends Component {
                   <Form.Select
                     placeholder="เท่า"
                     options={moneyOptions}
+                    value={this.state.employeeOfPlan}
                     name="employeeOfPlan"
                     id="employeeOfPlan"
                     onChange={this.handleChange}

@@ -142,6 +142,17 @@ class IPD extends Component {
     )
   }
 
+  handleResetdata = () => {
+    this.setState({ ipdType: '' })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
   render() {
     return (
       <div>
@@ -199,16 +210,28 @@ class IPD extends Component {
                   handleVerifyState={this.props.handleVerifyState}
                   handleChange={this.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
+                  handleNewReset={this.props.handleNewReset}
+                  reset={this.props.reset}
+                  setPlan={this.props.setPlan}
                 />
               : null}
             {this.state.ipdType === 'R&B Lumsum'
               ? <IPD2
                   handleChange={this.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
+                  handleNewReset={this.props.handleNewReset}
+                  reset={this.props.reset}
+                  setPlan={this.props.setPlan}
                 />
               : null}
             {this.state.ipdType === 'R&B Schedule'
-              ? <IPD3 handleChange={this.handleChange} />
+              ? <IPD3
+                  handleChange={this.handleChange}
+                  handleNewReset={this.props.handleNewReset}
+                  handleChangeToNull={this.handleChangeToNull}
+                  reset={this.props.reset}
+                  setPlan={this.props.setPlan}
+                />
               : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
@@ -216,6 +239,9 @@ class IPD extends Component {
               ? <CoPlay
                   handleChange={this.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
+                  handleNewReset={this.props.handleNewReset}
+                  reset={this.props.reset}
+                  setPlan={this.props.setPlan}
                 />
               : null}
             <br />

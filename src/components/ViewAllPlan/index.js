@@ -18,7 +18,7 @@ export default class ViewAllPlan extends Component {
 
   render() {
     return (
-      <div className="ViewAllPlan">
+      <div className="ViewPlanTable">
         <NavInsure step={this.state.step} />
         <div className="row">
           <RecViewAllPlan>

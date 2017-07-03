@@ -22,7 +22,7 @@ import SubmitPlan from './SubmitPlan'
 import MenuPlan from './SubmitPlan/MenuPlan/MenuPlan'
 import welcomePage from './welcome'
 import Sidebar from './sidebar'
-
+import Uploadfile from './uploadfile'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
@@ -77,6 +77,7 @@ const App = ({ isAuthenticated }) => (
                     path="/confirm_identity"
                     component={confirm_identity}
                   />
+                  <Route path="/uploadfile" component={Uploadfile} />
                   <Redirect to={{ pathname: '/login' }} />
                 </Switch>}
 

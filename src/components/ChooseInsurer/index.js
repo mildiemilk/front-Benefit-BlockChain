@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { createProfile } from '../../api/profileCompany'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
-import Sidebar from '../Sidebar'
+import Sidebar from '../sidebar'
 import {Detail,Head,Side,SideIn,Card,HeadIn,Submit,SubmitInsure,Next} from './styled'
 import CardInsure from './CardInsure'
 class InsurerSelect extends Component{
@@ -17,9 +17,9 @@ class InsurerSelect extends Component{
             step: 4,
         }
     }
-  
+
     render(){
-     
+
         return(
             <div className='ChooseInsurer'>
                 <NavInsure step={this.state.step}/>
@@ -48,7 +48,7 @@ class InsurerSelect extends Component{
                                 <input className='date' type="date" name="bday"/><br></br>
                                 <span>เวลา&nbsp;</span><input placeholder='นาฬิกา'/><span>&nbsp;นาฬิกา&nbsp;</span><input placeholder='นาที'/><span>&nbsp;นาที</span><br/>
                                  <Submit>บันทึก</Submit>
-                                 
+
                             </SideIn>
                         </div>
                     </Detail>

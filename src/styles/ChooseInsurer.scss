@@ -2,7 +2,16 @@
     .insure{
         display:inline-block;
     }
-    .date{
-        // display: inline-block;
-    }   
+    .react-datepicker__input-container{
+        border-radius: 3px;
+        background-color: #ffffff;
+        border: solid 1px #dddddd;
+    }
+   input{
+        border-radius: 3px;
+        border: solid 1px #dddddd;
+    }
+    .react-datepicker__tether-element .react-datepicker__header{
+        background-color: #3a7bd5;
+    }
 }

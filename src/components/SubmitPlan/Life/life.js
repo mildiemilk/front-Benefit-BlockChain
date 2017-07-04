@@ -60,7 +60,7 @@ class Life extends Component {
     const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
-      this.props.plan.planId,
+      this.props.planList[this.props.nowPlan].planId,
       'life',
     )
   }
@@ -83,7 +83,7 @@ class Life extends Component {
   }
 
   render() {
-    console.log(this.state.lifePerYear)
+    console.log(this.props.planList)
     return (
       <div>
         <br />
@@ -238,7 +238,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  plan: state.plan,
+  planList: state.plan,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Life)

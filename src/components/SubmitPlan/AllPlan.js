@@ -43,8 +43,6 @@ class AllsetPlan extends Component {
       verifyState: true,
       reset: false,
     }
-    const value = ''
-    const results = ''
   }
 
   static propTypes = {}
@@ -79,7 +77,6 @@ class AllsetPlan extends Component {
   handleChangeToNull = name => this.setState({ [name]: null })
 
   render() {
-    console.log(this.state.reset)
     return (
       <div>
         <div className="headBox">
@@ -169,6 +166,7 @@ class AllsetPlan extends Component {
                 handleNewReset={this.handleNewReset}
                 reset={this.state.reset}
                 setPlan={this.state.setPlan}
+                nowPlan={this.props.nowPlan}
               />
             : null}
           {this.state.setPlan === 'OPD'
@@ -176,6 +174,7 @@ class AllsetPlan extends Component {
                 handleNewReset={this.handleNewReset}
                 reset={this.state.reset}
                 setPlan={this.state.setPlan}
+                nowPlan={this.props.nowPlan}
               />
             : null}
           {this.state.setPlan === 'Dental'
@@ -183,6 +182,7 @@ class AllsetPlan extends Component {
                 handleNewReset={this.handleNewReset}
                 reset={this.state.reset}
                 setPlan={this.state.setPlan}
+                nowPlan={this.props.nowPlan}
               />
             : null}
           {this.state.setPlan === 'Life'
@@ -190,6 +190,7 @@ class AllsetPlan extends Component {
                 handleNewReset={this.handleNewReset}
                 reset={this.state.reset}
                 setPlan={this.state.setPlan}
+                nowPlan={this.props.nowPlan}
               />
             : null}
         </div>

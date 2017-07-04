@@ -34,15 +34,19 @@ const SegmentWithHeight = styled(Segment)`
   }
 `
 const NextButton = styled.button`
-    width: 174px;
+    width: 100%;
     height: 40px;
     border: none;
     border-radius: 20px;
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
+<<<<<<< HEAD
+    margin: 15% 0%;
+=======
     margin-top: 15%;
     margin-bottom: 15%;
+>>>>>>> 169be5baaac9083673d3e8f4d6887edebafe9a82
     display: block;
     text-align:center;
     padding: 0.5%;

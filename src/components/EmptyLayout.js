@@ -5,9 +5,7 @@ class EmptyLayout extends Component {
     console.log('EmptyLayout')
     return (
       <div>
-
-        {this.props.children}
-
+        {this.props.children}             
       </div>
     )
   }

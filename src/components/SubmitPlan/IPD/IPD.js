@@ -137,7 +137,7 @@ class IPD extends Component {
         ipdCoPlayMixNotExceed,
         ipdCoPlayMixYear,
       },
-      this.props.plan.planId,
+      this.props.planList[this.props.nowPlan].planId,
       'ipd',
     )
   }
@@ -277,7 +277,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  plan: state.plan,
+  planList: state.plan,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(IPD)

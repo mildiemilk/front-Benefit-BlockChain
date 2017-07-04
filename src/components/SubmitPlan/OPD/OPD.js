@@ -67,7 +67,7 @@ class OPD extends Component {
         opdCoPlayMixNotExceed,
         opdCoPlayMixYear,
       },
-      this.props.plan.planId,
+      this.props.planList[this.props.nowPlan].planId,
       'opd',
     )
   }
@@ -114,7 +114,6 @@ class OPD extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
-    console.log(this.state.opdCoPlayDeductable)
     return (
       <div>
         <br />
@@ -251,7 +250,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  plan: state.plan,
+  planList: state.plan,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OPD)

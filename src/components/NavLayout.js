@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 class EmptyLayout extends Component {
    
   render() {
-       console.log('EmptyLayout');
+       console.log('NavLayout');
     return (
       <div>
-        {this.props.children}             
+        <Header/>          
       </div>
     );
   }

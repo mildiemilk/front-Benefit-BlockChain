@@ -4,19 +4,18 @@ import { withRouter } from 'react-router';
 import Header from './Header';
 import Sidebar from './Sidebar';
 class MainLayout extends Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
+//   static propTypes = {
+//     match: PropTypes.object.isRequired,
+//     location: PropTypes.object.isRequired,
+//     history: PropTypes.object.isRequired
+//   };
+
+
 
   render() {
-
-
-
+    console.log('Main');
     return (
-        <div>
-            <Header/>
+        
             <div className="row">
                 <div className="large-2 columns">
                     <Sidebar />
@@ -29,7 +28,7 @@ class MainLayout extends Component {
                     </div>
                 </div>
             </div>
-        </div>
+     
     );
   }
 }

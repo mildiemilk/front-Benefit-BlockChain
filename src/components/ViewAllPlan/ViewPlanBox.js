@@ -18,9 +18,9 @@ class ViewPlanBox extends Component {
           <td>
             <Checkbox />
           </td>
-          <td singleLine> {list[i].name} </td>
-          <td> {list[i].updataBy} </td>
-          <td> {list[i].date} </td>
+          <td singleLine> {list[i].planName} </td>
+          <td> {list[i].updateBy} </td>
+          <td> {list[i].updatedAt} </td>
           <td>
             <Icon disabled name="edit" size="large" />
             <Icon disabled name="paste" size="large" />

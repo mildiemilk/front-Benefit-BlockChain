@@ -49,7 +49,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        <div className="inbox">
+        <div className="inbox-login">
           <div className="row">
             <div className="large-5 columns">
               <img src={gift} className="gift" />

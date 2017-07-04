@@ -8,6 +8,8 @@ import {
 const CREATE_PLAN_URI = '/api/createPlan'
 const EDIT_PLAN_URI = 'api/editPlan'
 const GET_ALL_PLAN_URI = '/api/getAllPlan'
+const COPY_PLAN_URI = '/api/copyPlan'
+const DELETE_PLAN_URI = '/api/deletePlan'
 
 export function createPlan(profilePlan) {
   return dispatch => {
@@ -48,8 +50,8 @@ export function editPlan(editData, planId, editType) {
 export function deletePlan(planId) {
   return dispatch => {
     const options = {
-      method: 'DELETE',
-      url: 'deletePlan/' + planId,
+      method: 'delete',
+      url: DELETE_PLAN_URI + '/' + planId,
     }
 
     APIRequest(options, true)
@@ -65,8 +67,8 @@ export function deletePlan(planId) {
 export function copyPlan(planId) {
   return dispatch => {
     const options = {
-      method: 'POST',
-      url: 'copyPlan/' + planId,
+      method: 'post',
+      url: COPY_PLAN_URI + '/' + planId,
     }
 
     APIRequest(options, true)

@@ -35,8 +35,14 @@ class Dental extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  handleClick = () =>
-    this.props.editPlan(this.state, this.props.plan.planId, 'dental')
+  handleClick = () => {
+    console.log(this.props.nowPlan)
+    this.props.editPlan(
+      this.state,
+      this.props.planList[this.props.nowPlan].planId,
+      'dental',
+    )
+  }
 
   handleResetdata = () => {
     document.getElementById('dentalPerYear').value = ''
@@ -70,6 +76,9 @@ class Dental extends Component {
               name="dentalPerYear"
               id="dentalPerYear"
               onChange={this.handleChange}
+              defaultValue={
+                this.props.planList[this.props.nowPlan].dentalPerYear
+              }
               required
             />
             <p> บาท/ปี</p>
@@ -110,7 +119,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  plan: state.plan,
+  planList: state.plan,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dental)

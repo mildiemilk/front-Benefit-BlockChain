@@ -29,15 +29,15 @@ export const HeadIn = styled.div`
     padding-left: 1% ;
 `
 export const Card = styled.div`
-    width: 130px;
+  width: 14%;
 	height: 145px;
 	border-radius: 8px;
 	background-color: #f5f5f5;
 	border: solid 1px rgba(151, 151, 151, 0.39);
-    margin:1%;
+  margin:1%;
 `
 export const Cardlast = styled.div`
-    width: 130px;
+    width: 14%;
 	height: 145px;
 	border-radius: 8px;
 	background-color: #f5f5f5;

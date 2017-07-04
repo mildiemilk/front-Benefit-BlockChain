@@ -93,6 +93,23 @@ class OPD extends Component {
     }
   }
 
+  handleResetdata = () => {
+    document.getElementById('opdPerTime').value = ''
+    this.setState({ opdPerTime: null })
+    document.getElementById('opdTimeNotExceedPerYear').value = ''
+    this.setState({ opdTimeNotExceedPerYear: null })
+    document.getElementById('opdPerYear').value = ''
+    this.setState({ opdPerYear: null })
+    this.setState({ value: '' })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'OPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
   handleChangeToNull = name => this.setState({ [name]: null })
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -196,6 +213,9 @@ class OPD extends Component {
               ? <CoPlay
                   handleChange={this.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
+                  handleNewReset={this.props.handleNewReset}
+                  reset={this.props.state.reset}
+                  setPlan={this.props.state.setPlan}
                 />
               : ''}
             <br />

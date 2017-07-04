@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Button,
   Header,
@@ -22,56 +22,88 @@ import styled from 'react-sc'
 import passwordIcon from '../image/icons8-password.png'
 import { connect } from 'react-redux'
 
-const ModalPostbox = props => (
-  <Modal
-    style={{ width: '450px', height: '248px', marginLeft: '-250px' }}
-    trigger={
-      <ButtonNew>
-        {' '}เลือก Broker
-      </ButtonNew>
-    }
-  >
-    <Modal.Content>
-      <ModalHeader>
-        {' '}
-        กรุณาใส่พาสเวิร์ดของคุณอีกครั้งเพื่อ
-        {' '}
-        <br />
-        {' '}
-        ยืนยันการเลือกโบรกเกอร์
-        {' '}
-        <br />
-        {' '}
-      </ModalHeader>
-      <ModalContent>
-        <Input
-          style={{
-            width: '280px',
-            height: '40px',
-            marginLeft: '10%',
-          }}
-          icon="lock"
-          iconPosition="left"
-          placeholder="พาสเวิร์ด"
-          name="passwordToConfirm"
-          type="password"
-          onChange={props.handleChange}
-        />
+const ModalContents = styled(Modal.Content)`
+  &&&{
+    max-width: 500px;
+    margin: 0 auto;
+    padding-left: 4%;
+  }
+`
 
-        {props.data.error
-          ? <span style={{ color: 'red' }}> <br />{props.data.message}</span>
-          : <span />}
+const Modals = styled(Modal)`
+  &&&{
+    background: transparent;
+    margin-top: -120px;
+  }
+`
 
-        <p style={{ paddingTop: '4%' }}>
-          หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้
-        </p>
+const Inputs = styled(Input)`
+  &&&{
+    font-family: Kanit;
+  }
+`
 
-      </ModalContent>
-      <CancleButton> ยกเลิก </CancleButton>
-      <ConfirmButton onClick={props.handlePost}> ยืนยัน </ConfirmButton>
-    </Modal.Content>
-  </Modal>
-)
+class ModalPostbox extends Component {
+  render() {
+    return (
+      <Modals
+        trigger={
+          <ButtonNew>
+            {' '}เลือก Broker
+          </ButtonNew>
+        }
+      >
+
+        <ModalContents>
+          <ModalHeader>
+            {' '}
+            กรุณาใส่พาสเวิร์ดของคุณอีกครั้งเพื่อ
+            {' '}
+            <br />
+            {' '}
+            ยืนยันการเลือกโบรกเกอร์
+            {' '}
+            <br />
+            {' '}
+          </ModalHeader>
+          <ModalContent>
+            <Inputs
+              style={{
+                width: '280px',
+                height: '40px',
+                marginLeft: '12%',
+              }}
+              icon="lock"
+              iconPosition="left"
+              placeholder="รหัสผ่าน"
+              name="passwordToConfirm"
+              type="password"
+              onChange={this.props.handleChange}
+            />
+
+            {this.props.data.error
+              ? <span style={{ color: 'red' }}>
+                  {' '}<br />{this.props.data.message}
+                </span>
+              : <span />}
+
+            <p style={{ paddingTop: '4%' }}>
+              หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้
+            </p>
+
+          </ModalContent>
+          <div style={{ marginLeft: '2%' }}>
+            <CancleButton> ยกเลิก </CancleButton>
+            <ConfirmButton onClick={this.props.handlePost}>
+              {' '}ยืนยัน{' '}
+            </ConfirmButton>
+          </div>
+        </ModalContents>
+
+      </Modals>
+    )
+  }
+}
 
 ModalPostbox.propTypes = {
   handlePost: PropTypes.func.isRequired,

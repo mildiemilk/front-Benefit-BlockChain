@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Check,Cardlast } from './styled'
+import { Card, Check, Cardlast } from './styled'
 class CardInsure extends React.Component {
   render() {
     return (

@@ -59,6 +59,27 @@ class CoPlay extends Component {
     }
   }
 
+  handleResetdata = () => {
+    document.getElementById('opdCoPlayQuota').value = ''
+    this.props.handleChangeToNull('opdCoPlayQuota')
+    document.getElementById('opdCoPlayDeductable').value = ''
+    this.props.handleChangeToNull('opdCoPlayDeductable')
+    document.getElementById('opdCoPlayMixPercentage').value = ''
+    this.props.handleChangeToNull('opdCoPlayMixPercentage')
+    document.getElementById('opdCoPlayMixNotExceed').value = ''
+    this.props.handleChangeToNull('opdCoPlayMixNotExceed')
+    document.getElementById('opdCoPlayMixYear').value = ''
+    this.props.handleChangeToNull('opdCoPlayMixYear')
+    this.setState({ value: '' })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'OPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
   render() {
     return (
       <div>

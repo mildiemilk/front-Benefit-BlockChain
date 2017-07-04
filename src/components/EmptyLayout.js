@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class EmptyLayout extends Component {
-   
   render() {
-       console.log('EmptyLayout');
+    console.log('EmptyLayout')
     return (
       <div>
         {this.props.children}             
       </div>
-    );
+    )
   }
 }
-export default EmptyLayout;
+export default EmptyLayout

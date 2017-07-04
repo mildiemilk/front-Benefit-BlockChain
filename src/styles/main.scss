@@ -3,8 +3,9 @@
 @import './settingStyle.scss';
 @import './Navinsure.scss';
 @import './ChooseInsurer.scss';
-@import './ViewPlanTable.scss';
+@import './ViewAllPlan.scss';
 @import './sidebar.scss';
+
 
 @font-face {
     font-family: 'kanit';
@@ -20,3 +21,11 @@ body {
     }
     background: #F1F1F1;
 }
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

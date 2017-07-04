@@ -8,17 +8,32 @@ import {
   PostMainButton,
 } from './styled'
 import PropTypes from 'prop-types'
+import styled from 'react-sc'
+
+const ModalContents = styled(Modal.Content)`
+  &&&{
+    max-width: 500px;
+    margin: 0 auto;
+    padding-left: 4%;
+  }
+`
+
+const Modals = styled(Modal)`
+  &&&{
+    background: transparent;
+    margin-top: -120px;
+  }
+`
 
 const ModalModalExample = props => (
-  <Modal
-    style={{ width: '38%', height: '40%', marginLeft: '-280px' }}
+  <Modals
     trigger={
       <PostMainButton id="postButton">
         {' '}โพสต์
       </PostMainButton>
     }
   >
-    <Modal.Content>
+    <ModalContents>
       <ModalHeader> ยืนยันการโพสต์ <br /> </ModalHeader>
       <ModalContent>
         <div>
@@ -39,26 +54,42 @@ const ModalModalExample = props => (
         แผนประกันที่ต้องการ:
         <Checkbox
           style={{ paddingLeft: '2%' }}
-          label="OPD"
+          label="ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (OPD)"
           checked={props.data.OPD}
         />
+        {' '}
+        <br />
+        {' '}
+        <br />
         <Checkbox
-          style={{ paddingLeft: '2%' }}
-          label="IPD"
+          style={{ paddingLeft: '30%' }}
+          label="ค่ารักษาพยาบาลกรณีผู้ป่วยใน (IPD)"
           checked={props.data.IPD}
         />
+        {' '}
+        <br />
+        {' '}
+        <br />
         <Checkbox
-          style={{ paddingLeft: '2%' }}
-          label="Dental"
+          style={{ paddingLeft: '30%' }}
+          label="ค่ารักษาทันตกรรม (Dental)"
           checked={props.data.dental}
         />
+        {' '}
+        <br />
+        {' '}
+        <br />
         <Checkbox
-          style={{ paddingLeft: '2%' }}
-          label="Life"
+          style={{ paddingLeft: '30%' }}
+          label="ประกันชีวิต (Life)"
           checked={props.data.life}
         />
+        {' '}
+        <br />
+        {' '}
+        <br />
         <Checkbox
-          style={{ paddingLeft: '2%' }}
+          style={{ paddingLeft: '30%' }}
           label="อื่นๆ"
           checked={props.data.other}
         />
@@ -69,8 +100,8 @@ const ModalModalExample = props => (
         <EditButton> แก้ไข </EditButton>
         <PostButton onClick={props.handlePost}> โพสต์ </PostButton>
       </div>
-    </Modal.Content>
-  </Modal>
+    </ModalContents>
+  </Modals>
 )
 
 ModalModalExample.propTypes = {

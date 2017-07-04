@@ -30,8 +30,13 @@ class SubmitPlan extends Component {
       employeeOfPlan: '',
     }
   }
+  onClickhandler = e => {
+    e.preventDefault()
+    window.location.href = '/chooseinsurer'
+  }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleToggle = () => {}
 
   render() {
     return (
@@ -43,6 +48,11 @@ class SubmitPlan extends Component {
               <MenuPlan />
             </div>
             <div className="large-9 columns">
+              <div style={{ marginLeft: '70%', marginTop: '9%' }}>
+                <span>อนุญาติให้โบรกเกอร์</span>
+                <Checkbox toggle onClick={this.handleToggle} />
+                <p>สามารถแก้ไขแพลนได้</p>
+              </div>
               <FormSubmitPlan />
               <div className="fillBox">
                 <AllPlan />

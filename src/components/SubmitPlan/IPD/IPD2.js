@@ -46,6 +46,26 @@ class IPD2 extends Component {
       this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear')
     }
   }
+
+  handleResetdata = () => {
+    document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
+    this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight')
+    document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
+    this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear')
+    document.getElementById('rbLumsumRoomPerNight').value = ''
+    this.props.handleChangeToNull('rbLumsumRoomPerNight')
+    document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
+    this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear')
+    this.setState({ value: '' })
+    this.props.handleNewReset()
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {

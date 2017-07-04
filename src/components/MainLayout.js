@@ -5,7 +5,6 @@ import { withRouter } from 'react-router'
 import Sidebar from './sidebar'
 class MainLayout extends Component {
   render() {
-    console.log('Main');
     return (
             <div className="row">
                 <div className="large-2 columns">

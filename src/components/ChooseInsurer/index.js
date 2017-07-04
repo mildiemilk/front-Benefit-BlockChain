@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { createProfile } from '../../api/profileCompany'
+import { setTimeOut } from '../../api/chooseInsurer'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
@@ -26,25 +26,54 @@ import {
   Next,
 } from './styled'
 import CardInsure from './CardInsure'
+const momentNow = moment();
 class InsurerSelect extends Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {
       step: 4,
       num: 0,
+      date: '',
+      time: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-}
-    handleChange(date) {
-        this.setState({
-            startDate: date
-        });
+  }
+  handleTimeOut = () => {
+    console.log('ddsfwe');
+    const { date, time } = this.state;
+    console.log(this.state);
+    this.props.setTimeOut(date, time);
+  }
+
+  handleDate = (date) => {
+    this.setState({
+      date: date
+    });
+  }
+  handleTime = (time) => {
+    this.setState({
+      time: time
+    });
+  }
+  handleCheck = (e) => {
+    if (this.state.num < 5) {
+      if (e.target.checked)
+        this.setState({ num: this.state.num + 1 })
+      else
+        this.setState({ num: this.state.num - 1 })
     }
-   onChange(value) {
-    console.log(value && value.format(format));
+    else if (this.state.num === 5) {
+      if (!e.target.checked) {
+        this.setState({ num: this.state.num - 1 })
+      }
+      e.target.checked = false;
     }
+    else {
+      e.target.checked = false;
+    }
+  }
   render() {
+    console.log(this.state.date)
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -59,12 +88,12 @@ class InsurerSelect extends Component {
               <SideIn>
                 <HeadIn className="row">
                   <span>เลือกบริษัทประกันภัยที่ต้องการ {this.state.num}/5</span>
-                  <SubmitInsure>บันทึก</SubmitInsure>
+                  <SubmitInsure >บันทึก</SubmitInsure>
                 </HeadIn>
                 <div className="row">
-                  <CardInsure />
-                  <CardInsure />
-                  <CardInsure />
+                  <CardInsure handleCheck={this.handleCheck} />
+                  <CardInsure handleCheck={this.handleCheck} />
+                  <CardInsure handleCheck={this.handleCheck} />
                 </div>
               </SideIn>
               <SideIn>
@@ -73,14 +102,14 @@ class InsurerSelect extends Component {
                   บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
                 </p>
                 <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.handleChange}
-                    minDate={moment()}
+                  selected={this.state.date}
+                  onChange={this.handleDate}
+                  minDate={moment()}
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
-                  <TimePicker defaultValue={moment()} showSecond={false} />
+                <TimePicker defaultValue={moment()} onChange={this.handleTime} showSecond={false} />
                 <br />
-                <Submit>บันทึก</Submit>
+                <Submit onClick={this.handleTimeOut} >บันทึก</Submit>
 
               </SideIn>
             </div>
@@ -91,18 +120,14 @@ class InsurerSelect extends Component {
     )
   }
 }
-export default InsurerSelect
+// export default InsurerSelect
 
-{
-  /*<p>ตั้งระยะเวลาการเสนอราคาของประกัน</p>
-                                <p className='insure'>บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;</p>
-                                <input className='date' type="date" name="bday"/>
-                                <span>&nbsp;เวลา&nbsp;</span>
-                                {/*<div className="ui calendar" id="example3">
-                                    <div className="ui input left icon">
-                                    <i className="time icon"></i>
-                                    <input type="text" placeholder="Time"/>
-                                </div> 
-                                </div>*/
-}
-//  <Submit>บันทึก</Submit>*/}
+const mapDispatchToProps = dispatch => ({
+  setTimeOut: (date, time ) => dispatch(setTimeOut({date, time})),
+})
+
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect)

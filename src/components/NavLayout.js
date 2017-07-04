@@ -3,11 +3,12 @@ import Header from './Header';
 class EmptyLayout extends Component {
 
     render() {
-        console.log('NavLayout');
         return (
             <div>
                 <Header />
-                {this.props.children}   
+                <div>
+                    {this.props.children}
+                </div>
             </div>
         );
     }

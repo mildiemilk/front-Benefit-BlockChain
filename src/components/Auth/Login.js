@@ -26,10 +26,6 @@ class Login extends Component {
     authenticate: PropTypes.func.isRequired,
   }
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
   signUpHandler() {
     window.location.href = '/signup'
   }

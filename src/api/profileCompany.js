@@ -1,7 +1,12 @@
 import { APIRequest } from '.'
-import { createProfileSuccess, createProfileFailure } from '../reducers/profile'
+import {
+  createProfileSuccess,
+  createProfileFailure,
+  getCompanyNameSuccess,
+} from '../reducers/profile'
 
 const PROFILE_URI = '/admin/registerCompany'
+const COMPANYNAME_URI = '/admin/getCompanyName'
 
 export function createProfile(profile) {
   return dispatch => {
@@ -21,6 +26,22 @@ export function createProfile(profile) {
         dispatch(createProfileFailure(err.response.data))
         console.log(err.response)
       })
+  }
+}
+
+export function getCompanyName() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: COMPANYNAME_URI,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        localStorage.setItem('companyname', res.data.companyName)
+        dispatch(getCompanyNameSuccess(res.data.companyName))
+      })
+      .catch(err => {})
   }
 }
 

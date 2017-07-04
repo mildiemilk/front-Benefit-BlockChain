@@ -44,14 +44,30 @@ const Inputs = styled(Input)`
 `
 
 class ModalPostbox extends Component {
+  constructor() {
+    super()
+    this.state = { modalOpen: false }
+  }
+
+  handleClose = e =>
+    this.setState({
+      modalOpen: false,
+    })
+
+  handleOpen = e =>
+    this.setState({
+      modalOpen: true,
+    })
   render() {
     return (
       <Modals
         trigger={
-          <ButtonNew>
+          <ButtonNew onClick={this.handleOpen}>
             {' '}เลือก Broker
           </ButtonNew>
         }
+        open={this.state.modalOpen}
+        onClose={this.handleClose}
       >
 
         <ModalContents>
@@ -83,7 +99,10 @@ class ModalPostbox extends Component {
 
             {this.props.data.error
               ? <span style={{ color: 'red' }}>
-                  {' '}<br />{this.props.data.message}
+                  <br />
+                  <div style={{ marginLeft: '15%', marginTop: '2%' }}>
+                    {this.props.data.message}
+                  </div>
                 </span>
               : <span />}
 
@@ -93,7 +112,7 @@ class ModalPostbox extends Component {
 
           </ModalContent>
           <div style={{ marginLeft: '2%' }}>
-            <CancleButton> ยกเลิก </CancleButton>
+            <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
             <ConfirmButton onClick={this.props.handlePost}>
               {' '}ยืนยัน{' '}
             </ConfirmButton>

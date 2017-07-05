@@ -5,6 +5,7 @@ import fillsimpleReducer from './simpleRequirement'
 import profile from './profile'
 import plan from './submitPlan'
 import postBoxReducer from './postBox'
+import { setTimeOut, chooseInsurerReducer } from './chooseInsurer'
 
 const rootReducer = combineReducers({
   authReducer,
@@ -13,6 +14,8 @@ const rootReducer = combineReducers({
   fillsimpleReducer,
   plan,
   postBoxReducer,
+  chooseInsurerReducer,
+  setTimeOut,
 })
 
 export default rootReducer

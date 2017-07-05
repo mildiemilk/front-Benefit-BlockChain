@@ -2,7 +2,9 @@ import { APIRequest } from '.'
 import {
   chooseInsurerSuccess,
   chooseInsurerFailure,
-} from '../reducers/ chooseInsurerFailure'
+  setTimeOutsFailure,
+  setTimeOutSuccess,
+} from '../reducers/chooseInsurer'
 
 const CHOOSEINSURER_URI = '/api/chooseInsurer'
 export function chooseInsurer(
@@ -34,5 +36,13 @@ export function chooseInsurer(
         dispatch(chooseInsurerFailure(err.response.data))
         console.log(err.response)
       })
+  }
+}
+
+export function setTimeOut(timeout) {
+  console.log(timeout.date)
+
+  return dispatch => {
+    dispatch(setTimeOutSuccess(timeout.date))
   }
 }

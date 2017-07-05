@@ -30,7 +30,7 @@ import styled from 'react-sc'
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 621.2px;
+    min-height: 683.42px;
   }
 `
 const NextButton = styled.button`
@@ -41,12 +41,7 @@ const NextButton = styled.button`
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
-<<<<<<< HEAD
     margin: 15% 0%;
-=======
-    margin-top: 15%;
-    margin-bottom: 15%;
->>>>>>> 169be5baaac9083673d3e8f4d6887edebafe9a82
     display: block;
     text-align:center;
     padding: 0.5%;
@@ -165,7 +160,7 @@ class SettingProfile extends Component {
     // let height = elmnt.clientHeight;
     // console.log('pic'+height);
     if (imagePreviewUrl) {
-      // if(height===40){
+      // if(height>width){
       //   $imagePreview =
       //   (<div className="thumbnail">
       //     <img id='Image' className="portrait" src={imagePreviewUrl} />

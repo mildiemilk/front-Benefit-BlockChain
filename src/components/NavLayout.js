@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import Header from './Header';
+import React, { Component } from 'react'
+import Header from './Header'
 class EmptyLayout extends Component {
-
-    render() {
-        console.log('NavLayout');
-        return (
-            <div>
-                <Header />
-                {this.props.children}   
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Header />
+        <div>
+          {this.props.children}
+        </div>
+      </div>
+    )
+  }
 }
-export default EmptyLayout;
+export default EmptyLayout

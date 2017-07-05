@@ -16,7 +16,7 @@ class Bidding extends Component {
       cb,
     }
 
-    return <Countdown options={OPTIONS} />
+    return <Countdown style options={OPTIONS} />
   }
 }
 

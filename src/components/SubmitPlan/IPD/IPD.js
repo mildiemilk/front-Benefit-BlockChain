@@ -59,8 +59,6 @@ class IPD extends Component {
       ipdCoPlayMixNotExceed: null,
       ipdCoPlayMixYear: null,
     }
-    const ipdType = ''
-    const results = ''
   }
 
   static propTypes = {}

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Switch, Route } from 'react-router';
+import { Switch, Route } from 'react-router'
 import { BrowserRouter, Redirect } from 'react-router-dom'
 import Async from 'react-code-splitting'
 import Header from './Header'
@@ -26,120 +26,118 @@ import Sendrequest from './sendrequest'
 import MainLayout from './MainLayout'
 import EmptyLayout from './EmptyLayout'
 import Uploadfile from './uploadfile'
-import NavLayout from './NavLayout';
+import NavLayout from './NavLayout'
+import Bidding from './Bidding'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-const history = createBrowserHistory();
+const history = createBrowserHistory()
 import ViewAllPlan from './ViewAllPlan'
 
 const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
-        <EmptyLayout>
-          { isAuthenticated
-            ? <NavLayout>
-                <Switch>
-                  <Route
-                    path="/confirm_identity"
-                    component={confirm_identity}
-                  />
-                  <Route path="/welcome" component={welcomePage} />
-                  <Route path="/settingprofile" component={SettingProfile} />
-                  <MainLayout>
-                    <Switch>
-                      <Route path="/postbox" component={Postbox} />
-                      <Route
-                        path="/dashboard/simplerequirement"
-                        component={simpleRQ}
-                      />
-                      <Route path="/dashboard" component={Dashboard} />
-                      <Route path="/submitplan" component={SubmitPlan} />
-                      <Route path="/ipd" component={IPD} />
-
-                      <Route path="/view" component={ViewAllPlan} />
-                      <Route path="/chooseinsurer" component={ChooseInsurer} />
-                      <Route component={EmptyLayout} />
-                    </Switch>
-                  </MainLayout>
-                </Switch>
-              </NavLayout>
-            :<Switch>
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
+      <EmptyLayout>
+        {isAuthenticated
+          ? <NavLayout>
+              <Switch>
+                <Route path="/confirm_identity" component={confirm_identity} />
+                <Route path="/welcome" component={welcomePage} />
+                <Route path="/settingprofile" component={SettingProfile} />
+                <MainLayout>
+                  <Switch>
+                    <Route path="/postbox" component={Postbox} />
+                    <Route
+                      path="/dashboard/simplerequirement"
+                      component={simpleRQ}
+                    />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/submitplan" component={SubmitPlan} />
+                    <Route path="/ipd" component={IPD} />
+                    <Route path="/uploadfile" component={Uploadfile} />
+                    <Route path="/view" component={ViewAllPlan} />
+                    <Route path="/chooseinsurer" component={ChooseInsurer} />
+                    <Route component={EmptyLayout} />
+                  </Switch>
+                </MainLayout>
+              </Switch>
+            </NavLayout>
+          : <Switch>
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="/bidding" component={Bidding} />
             </Switch>}
-        </EmptyLayout>
-      </div>
+      </EmptyLayout>
+    </div>
   </BrowserRouter>
 )
 
 App.propTypes = {
-      isAuthenticated: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
-      isAuthenticated: state.authReducer.token != null,
+  isAuthenticated: state.authReducer.token != null,
 })
 
 const Container = connect(mapStateToProps)(App)
 export default Container
 
+// < div >
+// <Header />
+// <div className="row">
+//   <div className="large-2 columns">
+//     <Sidebar />
+//   </div>
+//   <div className="large-10 columns">
+//     <div className="row" style={{ marginTop: 75 }}>
+//       <div className="large-10 large-offset-1 columns">
+//         {isAuthenticated
+//           ? <Switch>
+//             <Route path="/postbox" component={Postbox} />
+//             <Route path="/login" component={Login} />
+//             <Route
+//               path="/dashboard/simplerequirement"
+//               component={simpleRQ}
+//             />
+//             <Route path="/signup" component={Signup} />
+//             <Route path="/dashboard" component={Dashboard} />
+//             <Route path="/submitplan" component={SubmitPlan} />
+//             <Route path="/settingprofile" component={SettingProfile} />
+//             <Route path="/ipd" component={IPD} />
+//             <Route
+//               path="/confirm_identity"
+//               component={confirm_identity}
+//             />
+//             <Route path="/view" component={ViewAllPlan} />
+//             <Route path="/chooseinsurer" component={ChooseInsurer} />
+//           </Switch>
+//           : <Switch>
+//             <Route path="/view" component={ViewAllPlan} />
+//             <Route path="/settingprofile" component={SettingProfile} />
+//             <Route path="/welcome" component={welcomePage} />
+//             <Route path="/postbox" component={Postbox} />
+//             <Route
+//               path="/dashboard/simplerequirement"
+//               component={simpleRQ}
+//             />
+//             <Route path="/dashboard" component={Dashboard} />
+//             <Route path="/sendrequest" component={Sendrequest} />
+//             <Route path="/submitplan" component={SubmitPlan} />
+//             <Route path="/chooseinsurer" component={ChooseInsurer} />
+//             <Route path="/login" component={Login} />
+//             <Route path="/signup" component={Signup} />
+//             <Route
+//               path="/confirm_identity"
+//               component={confirm_identity}
+//             />
+//             <Route path="/uploadfile" component={Uploadfile} />
+//             <Redirect to={{ pathname: '/login' }} />
+//           </Switch>}
+//       </div>
+//     </div>
+//   </div>
+// </div>
 
-  // < div >
-  // <Header />
-  // <div className="row">
-  //   <div className="large-2 columns">
-  //     <Sidebar />
-  //   </div>
-  //   <div className="large-10 columns">
-  //     <div className="row" style={{ marginTop: 75 }}>
-  //       <div className="large-10 large-offset-1 columns">
-  //         {isAuthenticated
-  //           ? <Switch>
-  //             <Route path="/postbox" component={Postbox} />
-  //             <Route path="/login" component={Login} />
-  //             <Route
-  //               path="/dashboard/simplerequirement"
-  //               component={simpleRQ}
-  //             />
-  //             <Route path="/signup" component={Signup} />
-  //             <Route path="/dashboard" component={Dashboard} />
-  //             <Route path="/submitplan" component={SubmitPlan} />
-  //             <Route path="/settingprofile" component={SettingProfile} />
-  //             <Route path="/ipd" component={IPD} />
-  //             <Route
-  //               path="/confirm_identity"
-  //               component={confirm_identity}
-  //             />
-  //             <Route path="/view" component={ViewAllPlan} />
-  //             <Route path="/chooseinsurer" component={ChooseInsurer} />
-  //           </Switch>
-  //           : <Switch>
-  //             <Route path="/view" component={ViewAllPlan} />
-  //             <Route path="/settingprofile" component={SettingProfile} />
-  //             <Route path="/welcome" component={welcomePage} />
-  //             <Route path="/postbox" component={Postbox} />
-  //             <Route
-  //               path="/dashboard/simplerequirement"
-  //               component={simpleRQ}
-  //             />
-  //             <Route path="/dashboard" component={Dashboard} />
-  //             <Route path="/sendrequest" component={Sendrequest} />
-  //             <Route path="/submitplan" component={SubmitPlan} />
-  //             <Route path="/chooseinsurer" component={ChooseInsurer} />
-  //             <Route path="/login" component={Login} />
-  //             <Route path="/signup" component={Signup} />
-  //             <Route
-  //               path="/confirm_identity"
-  //               component={confirm_identity}
-  //             />
-  //             <Route path="/uploadfile" component={Uploadfile} />
-  //             <Redirect to={{ pathname: '/login' }} />
-  //           </Switch>}
-  //       </div>
-  //     </div>
-  //   </div>
-  // </div>
-
-  // </div >
+// </div >

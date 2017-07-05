@@ -1,4 +1,6 @@
 import styled from 'react-sc'
+import { Image } from 'semantic-ui-react'
+import Dropzone from 'react-dropzone'
 
 export const Detail = styled.div`
     border-radius: 5px;
@@ -42,17 +44,17 @@ export const Inner = styled.div`
     padding:3%;
     border: solid 1px rgba(151, 151, 151, 0.66);
 `
-export const Inner2 = styled.div`
+export const UploadBox = styled.div`
     position:relative;
     border: solid 1px rgba(151, 151, 151, 0.66);
     border-radius: 8px;
     width: 100%;
-    height: 263px;
+    height: 250px;
     padding: 0px 20px 40px 20px;
+    overflow-y: scroll;
 
 `
 export const INInner = styled.div`
-    
     border: dashed 1px rgba(151, 151, 151, 0.66);
     border-radius: 8px;
     position:relative;
@@ -81,4 +83,30 @@ export const Submit = styled.button`
     color: white;
     margin: 1% 80%;
     border-color: white;
+`
+
+export const inputStyle = styled.input`
+    opacity: 0;
+    position: absolute;
+`
+
+export const Imagestyle = styled(Image)`
+  &&&{
+    position:relative;
+    left:10px;
+    display: block;
+    margin: auto;
+    width: 74px;
+    height: 63px;
+  }
+`
+export const DropzoneStyle = styled(Dropzone)`
+  &&&{
+    border: dashed 1px rgba(151, 151, 151, 0.66);
+    border-radius: 8px;
+    position:relative;
+    padding:5%;
+    padding-top: 15%;
+    height: 268px;
+  }
 `

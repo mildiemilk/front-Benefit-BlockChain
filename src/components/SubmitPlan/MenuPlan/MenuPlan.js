@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { getAllPlan } from '../../../api/setPlan'
+import { getAllPlan, copyPlan, deletePlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -27,7 +27,20 @@ class FormSubmitPlan extends Component {
     super()
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleEdit = e => {
+    this.props.handlePlan(e.target.id)
+  }
+
+  handleCopy = e => {
+    this.props.handlePlan(e.target.id)
+    this.props.copyPlan(this.props.planList[e.target.id].planId)
+  }
+
+  handleDelete = e => {
+    this.props.handlePlan(-1)
+    console.log(this.props.planList[e.target.id].planId)
+    this.props.deletePlan(this.props.planList[e.target.id].planId)
+  }
 
   renderList = list => {
     const output = []
@@ -47,17 +60,23 @@ class FormSubmitPlan extends Component {
               <List divided relaxed>
                 <List.Item>
                   <List.Content>
-                    <p><Icon name="edit" />แก้ไขแพลน</p>
+                    <p id={i} onClick={this.handleEdit}>
+                      <Icon name="edit" />แก้ไขแพลน
+                    </p>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content>
-                    <p><Icon name="copy" />คัดลอกแพลน</p>
+                    <p id={i} onClick={this.handleCopy}>
+                      <Icon name="copy" />คัดลอกแพลน
+                    </p>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content>
-                    <p><Icon name="trash outline" />ลบแพลน</p>
+                    <p id={i} onClick={this.handleDelete}>
+                      <Icon name="trash outline" />ลบแพลน
+                    </p>
                   </List.Content>
                 </List.Item>
               </List>
@@ -97,7 +116,9 @@ class FormSubmitPlan extends Component {
           />
         </div>
         <div className="menu-add-plan">
-          <p><Icon name="add circle" size="big" />สร้างแพลนใหม่</p>
+          <p onClick={() => this.props.handlePlan(-1)}>
+            <Icon name="add circle" size="big" />สร้างแพลนใหม่
+          </p>
         </div>
         {this.renderList(this.props.planList)}
       </div>
@@ -109,6 +130,8 @@ FormSubmitPlan.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
+  deletePlan: planId => dispatch(deletePlan(planId)),
+  copyPlan: planId => dispatch(copyPlan(planId)),
 })
 
 const mapStateToProps = state => ({

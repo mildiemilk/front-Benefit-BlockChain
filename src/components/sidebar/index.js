@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Item } from 'semantic-ui-react'
-import './style.scss'
 
-export default class SidebarLeft extends Component {
+
+export default class Sidebar extends Component {
   state = { activeItem: 'home' }
 
   //handleItemClicklogin = (e, { name }) => this.setState({ activeItem: login })

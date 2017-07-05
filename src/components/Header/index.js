@@ -4,7 +4,8 @@ import styled from 'react-sc'
 import logo from './logo_white.png'
 import avatarn from './avatarn.JPG'
 import { connect } from 'react-redux'
-import { HeadNav ,LogoPosition ,SpanStyle} from './styled'
+import { HeadNav, LogoPosition, SpanStyle } from './styled'
+import { getCompanyName } from '../../api/profileCompany'
 
 const ImageCss = styled(Image)`
   &&&{
@@ -13,13 +14,18 @@ const ImageCss = styled(Image)`
    top: 20px;
   }
 `
-
 class Header extends Component {
   constructor() {
     super()
     this.state = {}
   }
+
+  componentDidMount() {
+    this.props.getCompanyName()
+  }
+
   render() {
+    console.log(this.props.data, 'the data retieved')
     return (
       <HeadNav>
         <LogoPosition>
@@ -32,7 +38,7 @@ class Header extends Component {
             <SpanStyle>
               {this.props.data.companyName}
             </SpanStyle>
-            <ImageCss src={avatarn} avatar  size="mini" />
+            <ImageCss src={avatarn} avatar size="mini" />
           </div>
         </Menu.Item>
       </HeadNav>
@@ -40,8 +46,12 @@ class Header extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  getCompanyName: data => dispatch(getCompanyName()),
+})
+
 const mapStateToProps = state => ({
   data: state.profile,
 })
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

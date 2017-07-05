@@ -9,7 +9,8 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import csvpic from '../image/icons-8-csv.png'
 import {Detail,Head,Head2, subInner,Submit,BoxIndiv1,
-        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn} from './styled'
+        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn,Time} from './styled'
+import moment from 'moment'
 import {
   Grid,
   Image,
@@ -49,7 +50,8 @@ class Sendrequest extends Component{
               </BoxIndiv2>
               <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
               <BoxIndiv3>
-
+                บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ <Time>{moment(this.props.timeout.date).locale('th').format('DD MMMM YYYY')}</Time>
+                &nbsp; ภายในเวลา <Time>{moment(this.props.timeout.time).format('LT')}</Time>
               </BoxIndiv3>
               <Head2>อัพโหลดไฟล์</Head2>
               <BoxIndiv4>
@@ -62,4 +64,12 @@ class Sendrequest extends Component{
       )
     }
 }
-export default Sendrequest
+const mapDispatchToProps = dispatch => ({
+  
+})
+
+const mapStateToProps = state => ({
+  timeout: state.setTimeOut
+})
+
+export default connect(mapStateToProps, null)(Sendrequest)

@@ -54,7 +54,7 @@ export default class ViewAllPlan extends Component {
 
   render() {
     return (
-      <div className="ViewPlanTable">
+      <div className="ViewAllPlan">
         <NavInsure step={this.state.step} />
         <div className="row">
           <RecViewAllPlan>
@@ -64,11 +64,12 @@ export default class ViewAllPlan extends Component {
                 <BackHome>&lt; กลับหน้าหลัก </BackHome>
               </div>
 
-              <div className="large-4 large-offset-2 columns">
+              <div className="large-2 large-offset-4 columns">
                 <SearchBox
                   callback={keyword => this.handleSearchBoxChange(keyword)}
                 />
               </div>
+              <div className="large-2 columns" />
             </div>
 
             <div style={{ marginTop: '4%' }} className="row">

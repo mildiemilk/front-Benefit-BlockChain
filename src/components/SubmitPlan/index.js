@@ -8,6 +8,7 @@ import MenuPlan from './MenuPlan/MenuPlan'
 import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
 import AllPlan from './AllPlan'
 import NavInsure from '../NavInsure'
+import { getAllPlan } from '../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -28,6 +29,7 @@ class SubmitPlan extends Component {
       step: 3,
       planName: '',
       employeeOfPlan: '',
+      planId: -1,
     }
   }
   onClickhandler = e => {
@@ -37,7 +39,9 @@ class SubmitPlan extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleToggle = () => {}
-
+  handlePlan = val => {
+    this.setState({ planId: val })
+  }
   render() {
     return (
       <div>
@@ -45,7 +49,7 @@ class SubmitPlan extends Component {
         <div className="big-box">
           <div className="row">
             <div className="large-3 columns">
-              <MenuPlan />
+              <MenuPlan handlePlan={this.handlePlan} />
             </div>
             <div className="large-9 columns">
               <div style={{ marginLeft: '70%', marginTop: '9%' }}>
@@ -53,10 +57,15 @@ class SubmitPlan extends Component {
                 <Checkbox toggle onClick={this.handleToggle} />
                 <p>สามารถแก้ไขแพลนได้</p>
               </div>
-              <FormSubmitPlan />
+
+              <FormSubmitPlan
+                nowPlan={this.state.planId}
+                handlePlan={this.handlePlan}
+              />
               <div className="fillBox">
-                <AllPlan />
+                <AllPlan nowPlan={this.state.planId} />
               </div>
+
               <Button
                 style={{
                   marginLeft: '70%',
@@ -82,7 +91,12 @@ class SubmitPlan extends Component {
 
 SubmitPlan.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitPlan)

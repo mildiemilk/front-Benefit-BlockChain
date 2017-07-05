@@ -9,7 +9,7 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import csvpic from '../image/icons-8-csv.png'
 import {Detail,Head,Head2, subInner,Submit,BoxIndiv1,
-        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn,Time} from './styled'
+        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn,Time,Edit} from './styled'
 import moment from 'moment'
 import {
   Grid,
@@ -48,7 +48,7 @@ class Sendrequest extends Component{
               <BoxIndiv2>
 
               </BoxIndiv2>
-              <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
+              <Head2 style={{display:'inline-block'}}>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2> <Edit><Icon name='write' /> แก้ไข</Edit>
               <BoxIndiv3>
                 บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ <Time>{moment(this.props.timeout.date).locale('th').format('DD MMMM YYYY')}</Time>
                 &nbsp; ภายในเวลา <Time>{moment(this.props.timeout.time).format('LT')}</Time>

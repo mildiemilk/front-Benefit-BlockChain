@@ -57,6 +57,8 @@ export const BoxIndiv3 = styled.div`
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     padding:3%;
     height: 210px;
+    width: 851.03px;
+    display: inline-block;
 `
 export const BoxIndiv4 = styled.div`
     border-radius: 8px;
@@ -69,6 +71,15 @@ export const BoxIndiv4 = styled.div`
 
 export const Time = styled.div`
     color: #3a7bd5;
+    display: inline-block;
+`
+
+export const Edit  = styled.div`
+    color: #9b9b9b;
+    display: inline-block;
+    float: right;
+    padding-top: 2%;
+
 `
 export const PlanBox = styled.div`
   width: 100%;

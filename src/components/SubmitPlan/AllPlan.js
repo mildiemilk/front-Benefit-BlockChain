@@ -79,120 +79,131 @@ class AllsetPlan extends Component {
   render() {
     return (
       <div>
-        <div className="headBox">
-          <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
-          <div className="box-in-head-box">
-            <img
-              src={erase}
-              className="image-erase"
-              onClick={() => this.handleReset()}
-            />
-            <span className="headLogo">Reset</span>
+        <div className="fillBox">
+          <div className="headBox">
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <div className="box-in-head-box">
+              <img
+                src={erase}
+                className="image-erase"
+                onClick={() => this.handleReset()}
+              />
+              <span className="headLogo">Reset</span>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          {this.state.setPlan === 'IPD'
-            ? <div className="large-3 columns">
-                <div
-                  className="x-tab-active"
-                  onClick={() => this.handleClick('IPD')}
-                >
-                  <img src={bedActive} className="imageMenu" />
-                  <span className="text-menu-active">IPD</span>
+          <div className="row">
+            {this.state.setPlan === 'IPD'
+              ? <div className="large-3 columns">
+                  <div
+                    className="x-tab-active"
+                    onClick={() => this.handleClick('IPD')}
+                  >
+                    <img src={bedActive} className="imageMenu" />
+                    <span className="text-menu-active">IPD</span>
+                  </div>
                 </div>
-              </div>
-            : <div className="large-3 columns">
-                <div className="x-tab" onClick={() => this.handleClick('IPD')}>
-                  <img src={bed} className="imageMenu" />
-                  <span className="text-menu">IPD</span>
+              : <div className="large-3 columns">
+                  <div
+                    className="x-tab"
+                    onClick={() => this.handleClick('IPD')}
+                  >
+                    <img src={bed} className="imageMenu" />
+                    <span className="text-menu">IPD</span>
+                  </div>
+                </div>}
+            {this.state.setPlan === 'OPD'
+              ? <div className="large-3 columns">
+                  <div
+                    className="x-tab-active"
+                    onClick={() => this.handleClick('OPD')}
+                  >
+                    <img src={stethoscopeActive} className="imageMenu" />
+                    <span className="text-menu-active">OPD</span>
+                  </div>
                 </div>
-              </div>}
-          {this.state.setPlan === 'OPD'
-            ? <div className="large-3 columns">
-                <div
-                  className="x-tab-active"
-                  onClick={() => this.handleClick('OPD')}
-                >
-                  <img src={stethoscopeActive} className="imageMenu" />
-                  <span className="text-menu-active">OPD</span>
+              : <div className="large-3 columns">
+                  <div
+                    className="x-tab"
+                    onClick={() => this.handleClick('OPD')}
+                  >
+                    <img src={stethoscope} className="imageMenu" />
+                    <span className="text-menu">OPD</span>
+                  </div>
+                </div>}
+            {this.state.setPlan === 'Dental'
+              ? <div className="large-3 columns">
+                  <div
+                    className="x-tab-active"
+                    onClick={() => this.handleClick('Dental')}
+                  >
+                    <img src={toothActive} className="imageMenu" />
+                    <span className="text-menu-active">Dental</span>
+                  </div>
                 </div>
-              </div>
-            : <div className="large-3 columns">
-                <div className="x-tab" onClick={() => this.handleClick('OPD')}>
-                  <img src={stethoscope} className="imageMenu" />
-                  <span className="text-menu">OPD</span>
+              : <div className="large-3 columns">
+                  <div
+                    className="x-tab"
+                    onClick={() => this.handleClick('Dental')}
+                  >
+                    <img src={tooth} className="imageMenu" />
+                    <span className="text-menu">Dental</span>
+                  </div>
+                </div>}
+            {this.state.setPlan === 'Life'
+              ? <div className="large-3 columns">
+                  <div
+                    className="x-tab-active"
+                    onClick={() => this.handleClick('Life')}
+                  >
+                    <img src={heartActive} className="imageMenu" />
+                    <span className="text-menu-active">Life</span>
+                  </div>
                 </div>
-              </div>}
-          {this.state.setPlan === 'Dental'
-            ? <div className="large-3 columns">
-                <div
-                  className="x-tab-active"
-                  onClick={() => this.handleClick('Dental')}
-                >
-                  <img src={toothActive} className="imageMenu" />
-                  <span className="text-menu-active">Dental</span>
-                </div>
-              </div>
-            : <div className="large-3 columns">
-                <div
-                  className="x-tab"
-                  onClick={() => this.handleClick('Dental')}
-                >
-                  <img src={tooth} className="imageMenu" />
-                  <span className="text-menu">Dental</span>
-                </div>
-              </div>}
-          {this.state.setPlan === 'Life'
-            ? <div className="large-3 columns">
-                <div
-                  className="x-tab-active"
-                  onClick={() => this.handleClick('Life')}
-                >
-                  <img src={heartActive} className="imageMenu" />
-                  <span className="text-menu-active">Life</span>
-                </div>
-              </div>
-            : <div className="large-3 columns">
-                <div className="x-tab" onClick={() => this.handleClick('Life')}>
-                  <img src={heart} className="imageMenu" />
-                  <span className="text-menu">Life</span>
-                </div>
-              </div>}
-        </div>
-        <div className="paragraph">
-          {this.state.setPlan === 'IPD'
-            ? <IPD
-                handleVerifyState={this.handleVerifyState}
-                handleNewReset={this.handleNewReset}
-                reset={this.state.reset}
-                setPlan={this.state.setPlan}
-                nowPlan={this.props.nowPlan}
-              />
-            : null}
-          {this.state.setPlan === 'OPD'
-            ? <OPD
-                handleNewReset={this.handleNewReset}
-                reset={this.state.reset}
-                setPlan={this.state.setPlan}
-                nowPlan={this.props.nowPlan}
-              />
-            : null}
-          {this.state.setPlan === 'Dental'
-            ? <Dental
-                handleNewReset={this.handleNewReset}
-                reset={this.state.reset}
-                setPlan={this.state.setPlan}
-                nowPlan={this.props.nowPlan}
-              />
-            : null}
-          {this.state.setPlan === 'Life'
-            ? <Life
-                handleNewReset={this.handleNewReset}
-                reset={this.state.reset}
-                setPlan={this.state.setPlan}
-                nowPlan={this.props.nowPlan}
-              />
-            : null}
+              : <div className="large-3 columns">
+                  <div
+                    className="x-tab"
+                    onClick={() => this.handleClick('Life')}
+                  >
+                    <img src={heart} className="imageMenu" />
+                    <span className="text-menu">Life</span>
+                  </div>
+                </div>}
+          </div>
+          <div className="paragraph">
+            {this.state.setPlan === 'IPD'
+              ? <IPD
+                  handleVerifyState={this.handleVerifyState}
+                  handleNewReset={this.handleNewReset}
+                  reset={this.state.reset}
+                  setPlan={this.state.setPlan}
+                  nowPlan={this.props.nowPlan}
+                />
+              : null}
+            {this.state.setPlan === 'OPD'
+              ? <OPD
+                  handleNewReset={this.handleNewReset}
+                  reset={this.state.reset}
+                  setPlan={this.state.setPlan}
+                  nowPlan={this.props.nowPlan}
+                />
+              : null}
+            {this.state.setPlan === 'Dental'
+              ? <Dental
+                  handleNewReset={this.handleNewReset}
+                  reset={this.state.reset}
+                  setPlan={this.state.setPlan}
+                  nowPlan={this.props.nowPlan}
+                />
+              : null}
+            {this.state.setPlan === 'Life'
+              ? <Life
+                  handleNewReset={this.handleNewReset}
+                  reset={this.state.reset}
+                  setPlan={this.state.setPlan}
+                  nowPlan={this.props.nowPlan}
+                />
+              : null}
+          </div>
         </div>
       </div>
     )

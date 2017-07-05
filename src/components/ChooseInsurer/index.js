@@ -29,8 +29,8 @@ import CardInsure from './CardInsure'
 
 class InsurerSelect extends Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       step: 4,
       num: 0,

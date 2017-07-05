@@ -9,7 +9,8 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import csvpic from '../image/icons-8-csv.png'
 import {Detail,Head,Head2, subInner,Submit,BoxIndiv1,
-        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn} from './styled'
+        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn,Time} from './styled'
+import moment from 'moment'
 import {
   Grid,
   Image,
@@ -20,7 +21,6 @@ import {
   Icon,
   Progress,
 } from 'semantic-ui-react'
-import moment from 'moment';
 
 class Sendrequest extends Component{
 
@@ -32,7 +32,6 @@ class Sendrequest extends Component{
     }
 
     render(){
-      console.log(this.props.timeOut);
       return(
         <div className='ChooseInsurer'>
           <NavInsure step={this.state.step}/>
@@ -50,11 +49,9 @@ class Sendrequest extends Component{
 
               </BoxIndiv2>
               <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
-                
               <BoxIndiv3>
-                บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ <Time>{moment(this.props.timeOut.date).locale('th').format('DD MMMM YYYY')}</Time>
-                &nbsp; ภายในเวลา <Time>{moment(this.props.timeOut.time).format('LT')}</Time>
-                
+                บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ <Time>{moment(this.props.timeout.date).locale('th').format('DD MMMM YYYY')}</Time>
+                &nbsp; ภายในเวลา <Time>{moment(this.props.timeout.time).format('LT')}</Time>
               </BoxIndiv3>
               <Head2>อัพโหลดไฟล์</Head2>
               <BoxIndiv4>
@@ -67,8 +64,12 @@ class Sendrequest extends Component{
       )
     }
 }
-const mapStateToProps = state => ({
-    timeOut: state.setTimeOut,
+const mapDispatchToProps = dispatch => ({
+  
 })
-export default connect(mapStateToProps, null)(Sendrequest)
 
+const mapStateToProps = state => ({
+  timeout: state.setTimeOut
+})
+
+export default connect(mapStateToProps, null)(Sendrequest)

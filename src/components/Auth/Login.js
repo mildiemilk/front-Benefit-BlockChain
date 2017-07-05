@@ -95,6 +95,7 @@ class Login extends Component {
                   {this.props.data.error
                     ? <p style={{ color: 'red' }}> {this.props.data.message}</p>
                     : <p />}
+                  <a className="link">ลืมพาสเวิร์ด?</a>
                   <Button
                     style={{
                       marginTop: '20px',
@@ -108,8 +109,6 @@ class Login extends Component {
                     ลงชื่อเข้าใช้
                   </Button>
                 </Form>
-                <br />
-                <a className="link">ลืมพาสเวิร์ด?</a>
                 <hr className="line2" />
                 <p className="question">ยังไม่เคยสมัคร?</p>
                 <Button

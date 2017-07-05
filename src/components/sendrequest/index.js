@@ -52,8 +52,8 @@ class Sendrequest extends Component{
               <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
                 
               <BoxIndiv3>
-                บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ <Time>{moment(this.props.timeOut.date.date).locale('th').format('DD MMMM YYYY')}</Time>
-                ภายในเวลา <Time>{moment(this.props.timeOut.date.time).format('LT')}</Time>
+                บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ <Time>{moment(this.props.timeOut.date).locale('th').format('DD MMMM YYYY')}</Time>
+                &nbsp; ภายในเวลา <Time>{moment(this.props.timeOut.time).format('LT')}</Time>
                 
               </BoxIndiv3>
               <Head2>อัพโหลดไฟล์</Head2>

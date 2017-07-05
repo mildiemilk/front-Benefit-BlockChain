@@ -40,9 +40,9 @@ export function chooseInsurer(
   }
 }
 
-export function setTimeOut(date,time){
-  
-      dispatch(setTimeOutSuccess({date,time}))
-  
+export function setTimeOut(timeout){
+    console.log(timeout.date)
+   
+   return dispatch => { dispatch(setTimeOutSuccess(timeout.date)) }
 }
 

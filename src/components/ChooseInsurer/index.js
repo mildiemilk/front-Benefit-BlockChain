@@ -26,7 +26,7 @@ import {
   Next,
 } from './styled'
 import CardInsure from './CardInsure'
-const momentNow = moment();
+
 class InsurerSelect extends Component {
 
   constructor(props) {
@@ -42,7 +42,7 @@ class InsurerSelect extends Component {
     console.log('ddsfwe');
     const { date, time } = this.state;
     console.log(this.state);
-    this.props.setTimeOut(date, time);
+    this.props.setTimeOut({date, time});
   }
 
   handleDate = (date) => {
@@ -56,24 +56,16 @@ class InsurerSelect extends Component {
     });
   }
   handleCheck = (e) => {
-    if (this.state.num < 5) {
+   
       if (e.target.checked)
         this.setState({ num: this.state.num + 1 })
       else
         this.setState({ num: this.state.num - 1 })
-    }
-    else if (this.state.num === 5) {
-      if (!e.target.checked) {
-        this.setState({ num: this.state.num - 1 })
-      }
-      e.target.checked = false;
-    }
-    else {
-      e.target.checked = false;
-    }
+  
   }
   render() {
     console.log(this.state.date)
+    console.log(this.state.time)
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -87,7 +79,7 @@ class InsurerSelect extends Component {
             <div className="row">
               <SideIn>
                 <HeadIn className="row">
-                  <span>เลือกบริษัทประกันภัยที่ต้องการ {this.state.num}/5</span>
+                  <span> เลือกทั้งหมด {this.state.num} บริษัท</span>
                   <SubmitInsure >บันทึก</SubmitInsure>
                 </HeadIn>
                 <div className="row">
@@ -123,7 +115,7 @@ class InsurerSelect extends Component {
 // export default InsurerSelect
 
 const mapDispatchToProps = dispatch => ({
-  setTimeOut: (date, time ) => dispatch(setTimeOut({date, time})),
+  setTimeOut: (date, time) => dispatch(setTimeOut({date, time})),
 })
 
 const mapStateToProps = state => ({

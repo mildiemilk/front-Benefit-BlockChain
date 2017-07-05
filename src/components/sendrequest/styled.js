@@ -66,3 +66,7 @@ export const BoxIndiv4 = styled.div`
     padding:3%;
     height: 180px;
 `
+
+export const Time = styled.div`
+    color: #3a7bd5;
+`

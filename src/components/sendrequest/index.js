@@ -8,8 +8,20 @@ import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import csvpic from '../image/icons-8-csv.png'
-import {Detail,Head,Head2, subInner,Submit,BoxIndiv1,
-        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn} from './styled'
+import ModalPlanBox from './ModalPlanBox/'
+import {
+  Detail,
+  Head,
+  Head2,
+  subInner,
+  Submit,
+  BoxIndiv1,
+  BoxIndiv2,
+  BoxIndiv3,
+  BoxIndiv4,
+  SideIn,
+  PlanBox,
+} from './styled'
 import {
   Grid,
   Image,
@@ -19,47 +31,69 @@ import {
   Segment,
   Icon,
   Progress,
+  Popup,
+  List,
 } from 'semantic-ui-react'
 
-class Sendrequest extends Component{
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            step: 6,
-        }
+class Sendrequest extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      step: 6,
+      isOpen: false,
+      modalOpen: false,
     }
+  }
 
-    render(){
-      return(
-        <div className='ChooseInsurer'>
-          <NavInsure step={this.state.step}/>
-          <div className='row'>
-            <Detail className='large-12 columns'>
-              <div className="row" >
-                <Head>ส่งคำขอและรอการเสนอราคา</Head>
-              </div>
-              <Head2>กรุณาตรวจสอบข้อมูลของคุณ</Head2>
-              <BoxIndiv1>
+  handleOpen = () => {
+    this.setState({ isOpen: true })
+  }
 
-              </BoxIndiv1>
-              <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
-              <BoxIndiv2>
+  handleClose = () => {
+    this.setState({ isOpen: false })
+  }
 
-              </BoxIndiv2>
-              <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
-              <BoxIndiv3>
+  handleModal = () => {
+    this.setState({ isOpen: false })
+    this.setState({ modalOpen: true })
+  }
 
-              </BoxIndiv3>
-              <Head2>อัพโหลดไฟล์</Head2>
-              <BoxIndiv4>
+  handleOpenModal = e =>
+    this.setState({
+      modalOpen: true,
+    })
 
-              </BoxIndiv4>
-            </Detail>
-            <Submit>ส่งคำขอ</Submit>
-          </div>
+  handleCloseModal = e =>
+    this.setState({
+      modalOpen: false,
+    })
+
+  render() {
+    console.log(this.state.isOpen)
+    console.log(this.state.modalOpen)
+    return (
+      <div className="ChooseInsurer">
+        <NavInsure step={this.state.step} />
+        <div className="row">
+          <Detail className="large-12 columns">
+            <div className="row">
+              <Head>ส่งคำขอและรอการเสนอราคา</Head>
+            </div>
+            <Head2>กรุณาตรวจสอบข้อมูลของคุณ</Head2>
+            <BoxIndiv1 />
+            <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
+            <BoxIndiv2>
+              <ModalPlanBox />
+            </BoxIndiv2>
+            <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
+            <BoxIndiv3 />
+            <Head2>อัพโหลดไฟล์</Head2>
+            <BoxIndiv4 />
+          </Detail>
+          <Submit>ส่งคำขอ</Submit>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 }
 export default Sendrequest

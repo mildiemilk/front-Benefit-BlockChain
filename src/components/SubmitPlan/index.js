@@ -42,7 +42,6 @@ class SubmitPlan extends Component {
   handlePlan = val => {
     this.setState({ planId: val })
   }
-
   render() {
     return (
       <div>
@@ -58,6 +57,7 @@ class SubmitPlan extends Component {
                 <Checkbox toggle onClick={this.handleToggle} />
                 <p>สามารถแก้ไขแพลนได้</p>
               </div>
+
               <FormSubmitPlan
                 nowPlan={this.state.planId}
                 handlePlan={this.handlePlan}
@@ -65,6 +65,7 @@ class SubmitPlan extends Component {
               <div className="fillBox">
                 <AllPlan nowPlan={this.state.planId} />
               </div>
+
               <Button
                 style={{
                   marginLeft: '70%',

@@ -7,13 +7,13 @@ import { setTimeOut } from '../../api/chooseInsurer'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
-import TimePicker from 'rc-time-picker';
-import 'rc-time-picker/assets/index.css';
-const format = 'h:mm a';
-const now = moment().hour(0).minute(0);
-import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import TimePicker from 'rc-time-picker'
+import 'rc-time-picker/assets/index.css'
+const format = 'h:mm a'
+const now = moment().hour(0).minute(0)
+import 'react-datepicker/dist/react-datepicker.css'
 import {
   Detail,
   Head,
@@ -28,7 +28,6 @@ import {
 import CardInsure from './CardInsure'
 
 class InsurerSelect extends Component {
-
   constructor() {
     super()
     this.state = {
@@ -36,32 +35,28 @@ class InsurerSelect extends Component {
       num: 0,
       date: '',
       time: '',
-    };
+    }
   }
   handleTimeOut = () => {
-    console.log('ddsfwe');
-    const { date, time } = this.state;
-    console.log(this.state);
-    this.props.setTimeOut({date, time});
+    console.log('ddsfwe')
+    const { date, time } = this.state
+    console.log(this.state)
+    this.props.setTimeOut({ date, time })
   }
 
-  handleDate = (date) => {
+  handleDate = date => {
     this.setState({
-      date: date
-    });
+      date: date,
+    })
   }
-  handleTime = (time) => {
+  handleTime = time => {
     this.setState({
-      time: time
-    });
+      time: time,
+    })
   }
-  handleCheck = (e) => {
-   
-      if (e.target.checked)
-        this.setState({ num: this.state.num + 1 })
-      else
-        this.setState({ num: this.state.num - 1 })
-  
+  handleCheck = e => {
+    if (e.target.checked) this.setState({ num: this.state.num + 1 })
+    else this.setState({ num: this.state.num - 1 })
   }
   render() {
     console.log(this.state.date)
@@ -80,7 +75,7 @@ class InsurerSelect extends Component {
               <SideIn>
                 <HeadIn className="row">
                   <span> เลือกทั้งหมด {this.state.num} บริษัท</span>
-                  <SubmitInsure >บันทึก</SubmitInsure>
+                  <SubmitInsure>บันทึก</SubmitInsure>
                 </HeadIn>
                 <div className="row">
                   <CardInsure handleCheck={this.handleCheck} />
@@ -99,9 +94,13 @@ class InsurerSelect extends Component {
                   minDate={moment()}
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
-                <TimePicker defaultValue={moment()} onChange={this.handleTime} showSecond={false} />
+                <TimePicker
+                  defaultValue={moment()}
+                  onChange={this.handleTime}
+                  showSecond={false}
+                />
                 <br />
-                <Submit onClick={this.handleTimeOut} >บันทึก</Submit>
+                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
 
               </SideIn>
             </div>
@@ -115,11 +114,9 @@ class InsurerSelect extends Component {
 // export default InsurerSelect
 
 const mapDispatchToProps = dispatch => ({
-  setTimeOut: (date, time) => dispatch(setTimeOut({date, time})),
+  setTimeOut: (date, time) => dispatch(setTimeOut({ date, time })),
 })
 
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect)

@@ -2,7 +2,7 @@ const defaultchooseInsurer = {
   message: null,
   error: false,
 }
-const defaultTimeOut = { 
+const defaultTimeOut = {
   time: null,
   date: null,
 }
@@ -19,7 +19,7 @@ export function chooseInsurerSuccess(data) {
 export function chooseInsurerFailure(data) {
   return { type: CHOOSEINSURER_REQUEST_FAILURE, data }
 }
-export function setTimeOutSuccess(data){
+export function setTimeOutSuccess(data) {
   return { type: SETTIMEOUT_REQUEST_SUCCESS, data }
 }
 export function setTimeOutsFailure(data) {
@@ -42,7 +42,7 @@ export function chooseInsurerReducer(state = defaultchooseInsurer, action) {
   }
 }
 
-export  function setTimeOut(state = defaultTimeOut, action) {
+export function setTimeOut(state = defaultTimeOut, action) {
   switch (action.type) {
     case SETTIMEOUT_REQUEST_SUCCESS:
       return Object.assign({}, state, {

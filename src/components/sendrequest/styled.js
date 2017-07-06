@@ -58,6 +58,8 @@ export const BoxIndiv3 = styled.div`
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     padding:3%;
     height: 210px;
+    width: 851.03px;
+    display: inline-block;
 `
 export const BoxIndiv4 = styled.div`
     border-radius: 8px;
@@ -78,4 +80,18 @@ export const PostreText = styled.text`
   text-align: left;
   color: #323028;
   margin-left: 2%;
+`
+
+export const Time = styled.div`
+    color: #3a7bd5;
+    display: inline-block;
+`
+
+export const PlanBox = styled.div`
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  background-color: #eaeaea;
+  border: solid 1px rgba(151, 151, 151, 0.39);
+  padding: 8% 8%;
 `

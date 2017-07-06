@@ -1,18 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
-import {
-  Route,
-  Redirect,
-  withRouter,
-  Switch,
-  HashRouter,
-  BrowserRouter,
-  Router,
-} from 'react-router-dom'
+import { Switch, Route } from 'react-router'
+import { BrowserRouter, Redirect } from 'react-router-dom'
 import Async from 'react-code-splitting'
-import SidebarLeft from './sidebar'
 import Header from './Header'
 import SettingProfile from './SettingProfile'
 import Postbox from './PostBox'
@@ -35,71 +26,54 @@ import Sendrequest from './sendrequest'
 import MainLayout from './MainLayout'
 import EmptyLayout from './EmptyLayout'
 import Uploadfile from './uploadfile'
+import NavLayout from './NavLayout'
+import Bidding from './Bidding'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
-
+import createBrowserHistory from 'history/createBrowserHistory'
 import ViewAllPlan from './ViewAllPlan'
 import ComparePlan from './ComparePlan'
 
-const App = ({ isAuthenticated }) => (
-  <div>
-    <Header />
-    <div className="row">
-      <div className="large-2 columns">
-        <Sidebar />
-      </div>
-      <div className="large-10 columns">
-        <div className="row" style={{ marginTop: 75 }}>
-          <div className="large-10 large-offset-1 columns">
-            {isAuthenticated
-              ? <Switch>
-                  <Route path="/postbox" component={Postbox} />
-                  <Route path="/login" component={Login} />
-                  <Route
-                    path="/dashboard/simplerequirement"
-                    component={simpleRQ}
-                  />
-                  <Route path="/signup" component={Signup} />
-                  <Route path="/dashboard" component={Dashboard} />
-                  <Route path="/submitplan" component={SubmitPlan} />
-                  <Route path="/settingprofile" component={SettingProfile} />
-                  <Route path="/ipd" component={IPD} />
-                  <Route
-                    path="/confirm_identity"
-                    component={confirm_identity}
-                  />
-                  <Route path="/view" component={ViewAllPlan} />
-                  <Route path="/chooseinsurer" component={ChooseInsurer} />
-                </Switch>
-              : <Switch>
-                  <Route path="/view" component={ViewAllPlan} />
-                  <Route path="/compareplan" component={ComparePlan} />
-                  <Route path="/settingprofile" component={SettingProfile} />
-                  <Route path="/welcome" component={welcomePage} />
-                  <Route path="/postbox" component={Postbox} />
-                  <Route
-                    path="/dashboard/simplerequirement"
-                    component={simpleRQ}
-                  />
-                  <Route path="/dashboard" component={Dashboard} />
-                  <Route path="/sendrequest" component={Sendrequest} />
-                  <Route path="/submitplan" component={SubmitPlan} />
-                  <Route path="/chooseinsurer" component={ChooseInsurer} />
-                  <Route path="/login" component={Login} />
-                  <Route path="/signup" component={Signup} />
-                  <Route
-                    path="/confirm_identity"
-                    component={confirm_identity}
-                  />
-                  <Route path="/uploadfile" component={Uploadfile} />
-                  <Redirect to={{ pathname: '/login' }} />
-                </Switch>}
-          </div>
-        </div>
-      </div>
-    </div>
+const history = createBrowserHistory()
 
-  </div>
+const App = ({ isAuthenticated }) => (
+  <BrowserRouter>
+    <div>
+      <EmptyLayout>
+        {true
+          ? <NavLayout>
+              <Switch>
+                <Route path="/confirm_identity" component={confirm_identity} />
+                <Route path="/welcome" component={welcomePage} />
+                <Route path="/settingprofile" component={SettingProfile} />
+                <MainLayout>
+                  <Switch>
+                    <Route path="/postbox" component={Postbox} />
+                    <Route
+                      path="/dashboard/simplerequirement"
+                      component={simpleRQ}
+                    />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/compareplan" component={ComparePlan} />
+                    <Route path="/submitplan" component={SubmitPlan} />
+                    <Route path="/ipd" component={IPD} />
+                    <Route path="/sendrequest" component={Sendrequest} />
+                    <Route path="/view" component={ViewAllPlan} />
+                    <Route path="/bidding" component={Bidding} />
+                    <Route path="/chooseinsurer" component={ChooseInsurer} />
+                    <Route component={EmptyLayout} />
+                  </Switch>
+                </MainLayout>
+              </Switch>
+            </NavLayout>
+          : <Switch>
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Redirect to={{ pathname: '/login' }} />
+            </Switch>}
+      </EmptyLayout>
+    </div>
+  </BrowserRouter>
 )
 
 App.propTypes = {
@@ -111,4 +85,4 @@ const mapStateToProps = state => ({
 })
 
 const Container = connect(mapStateToProps)(App)
-export default withRouter(Container)
+export default Container

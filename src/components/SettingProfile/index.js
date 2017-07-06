@@ -30,19 +30,18 @@ import styled from 'react-sc'
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 621.2px;
+    min-height: 683.42px;
   }
 `
 const NextButton = styled.button`
-    width: 174px;
+    width: 100%;
     height: 40px;
     border: none;
     border-radius: 20px;
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin: 15% 0%;
     display: block;
     text-align:center;
     padding: 0.5%;
@@ -161,7 +160,7 @@ class SettingProfile extends Component {
     // let height = elmnt.clientHeight;
     // console.log('pic'+height);
     if (imagePreviewUrl) {
-      // if(height===40){
+      // if(height>width){
       //   $imagePreview =
       //   (<div className="thumbnail">
       //     <img id='Image' className="portrait" src={imagePreviewUrl} />
@@ -232,7 +231,12 @@ class SettingProfile extends Component {
                 <Detail3>
                   เบอร์โทร
                 </Detail3>
-                <Box name="tel" size="big" placeholder="เบอร์โทร" />
+                <Box
+                  name="tel"
+                  size="big"
+                  placeholder="เบอร์โทร"
+                  type="number"
+                />
                 <Detail3>
                   ประเภทธุรกิจ
                 </Detail3>

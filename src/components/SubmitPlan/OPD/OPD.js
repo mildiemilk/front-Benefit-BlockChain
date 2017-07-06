@@ -23,6 +23,7 @@ import stethoscope from '../../image/icons-8-stethoscope.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
+import OpdModal from './OpdModal'
 
 class OPD extends Component {
   constructor() {
@@ -67,9 +68,10 @@ class OPD extends Component {
         opdCoPlayMixNotExceed,
         opdCoPlayMixYear,
       },
-      this.props.plan.planId,
+      this.props.planList[this.props.nowPlan].planId,
       'opd',
     )
+    this.props.handleRecordVerifyState('opdRecord')
   }
 
   handleToggle = () => {
@@ -102,19 +104,24 @@ class OPD extends Component {
     this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
+    this.prop.shandleAfterReset()
+    this.props.handleVerifyState('opdRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'OPD' && this.props.reset === true) {
       this.handleResetdata()
+      this.props.handleAfterReset()
     }
   }
 
   handleChangeToNull = name => this.setState({ [name]: null })
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState('opdRecord')
+  }
 
   render() {
-    console.log(this.state.opdCoPlayDeductable)
     return (
       <div>
         <br />
@@ -126,7 +133,7 @@ class OPD extends Component {
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
         <div className="row">
-          <Form>
+          <Form onSubmit={this.handleClick}>
             <Form.Group inline>
               <Form.Field>
                 <Radio
@@ -233,11 +240,16 @@ class OPD extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
-              onClick={this.handleClick}
             >
               บันทึก
             </Button>
           </Form>
+          <OpdModal
+            openModal={this.props.openModal}
+            handleCloseModal={this.props.handleCloseModal}
+            handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
+          />
         </div>
       </div>
     )
@@ -251,7 +263,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  plan: state.plan,
+  planList: state.plan,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OPD)

@@ -3,6 +3,8 @@ import {
   fillsimpleRqSuccess,
   fillsimpleRqFailure,
 } from '../reducers/simpleRequirement'
+import { withRouter } from 'react-router'
+import Postbox from '../components/PostBox'
 
 const SIMPLERQ_URI = '/admin/simpleRequirement'
 export function fillSimpleRQ(

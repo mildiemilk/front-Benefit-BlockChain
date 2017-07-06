@@ -1,5 +1,5 @@
 .fillBox{
-  width: 685.8px;
+  width: 680px;
   height: 100%;
   position: relative;
   border-radius: 5px;
@@ -128,6 +128,15 @@
   color: #3a7bd5;
 }
 
+.text-menu-record{
+  font-family: Kanit;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #27a97d;
+}
+
 .text-menu{
   font-family: Kanit;
   font-size: 18px;
@@ -240,4 +249,21 @@
   background-color: #ffffff;
   background-color: var(--white-two);
   border: solid 1px #c1c1c1;
+}
+
+.header-modal{
+  font-family: Kanit;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #000000;
+}
+
+.text-modal{
+  font-family: Kanit;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
 }

@@ -5,7 +5,7 @@ export const Detail = styled.div`
     background-color: #ffffff;
     box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
     margin-top:3%;
-    padding: 3%;
+    padding: 1% 3%;
 `
 
 export const Head = styled.p`

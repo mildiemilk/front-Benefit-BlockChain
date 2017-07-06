@@ -7,6 +7,7 @@ import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
+import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
 import {
   Detail,
@@ -19,7 +20,10 @@ import {
   BoxIndiv3,
   BoxIndiv4,
   SideIn,
+  Time,
+  Edit,
 } from './styled'
+import moment from 'moment'
 import {
   Grid,
   Image,
@@ -39,7 +43,6 @@ class Sendrequest extends Component {
       step: 6,
     }
   }
-
   render() {
     return (
       <div className="ChooseInsurer">
@@ -53,8 +56,23 @@ class Sendrequest extends Component {
             <PostSimpleRQ />
             <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
             <BoxIndiv2 />
-            <Head2>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2>
-            <BoxIndiv3 />
+            <Head2 style={{ display: 'inline-block' }}>
+              รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
+            </Head2>
+            {' '}
+            <ModalInsurer />
+            <BoxIndiv3>
+              บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
+              {' '}
+              <Time>
+                {moment(this.props.timeout.date)
+                  .locale('th')
+                  .format('DD MMMM YYYY')}
+              </Time>
+              &nbsp; ภายในเวลา
+              {' '}
+              <Time>{moment(this.props.timeout.time).format('LT')}</Time>
+            </BoxIndiv3>
             <Head2>อัพโหลดไฟล์</Head2>
             <BoxIndiv4 />
           </Detail>
@@ -64,4 +82,10 @@ class Sendrequest extends Component {
     )
   }
 }
-export default Sendrequest
+const mapDispatchToProps = dispatch => ({})
+
+const mapStateToProps = state => ({
+  timeout: state.setTimeOut,
+})
+
+export default connect(mapStateToProps, null)(Sendrequest)

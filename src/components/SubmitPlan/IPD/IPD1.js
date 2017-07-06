@@ -71,7 +71,6 @@ class IPD1 extends Component {
 
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value })
-    this.props.handleVerifyState()
   }
 
   render() {

@@ -7,6 +7,7 @@ import {
   Checkbox,
   Form,
   Input,
+  Icon,
 } from 'semantic-ui-react'
 import {
   ModalHeader,
@@ -14,10 +15,10 @@ import {
   ButtonNew,
   CancleButton,
   ConfirmButton,
+  Edit,
 } from './Styled'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
-import passwordIcon from '../image/icons8-password.png'
 import { connect } from 'react-redux'
 
 const ModalContents = styled(Modal.Content)`
@@ -41,7 +42,7 @@ const Inputs = styled(Input)`
   }
 `
 
-class ModalPostbox extends Component {
+class ModalInsurer extends Component {
   constructor() {
     super()
     this.state = { modalOpen: false }
@@ -60,9 +61,9 @@ class ModalPostbox extends Component {
     return (
       <Modals
         trigger={
-          <ButtonNew onClick={this.handleOpen}>
-            {' '}เลือก Broker
-          </ButtonNew>
+          <Edit onClick={this.handleOpen}>
+            <Icon name="write" />แก้ไข
+          </Edit>
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
@@ -81,32 +82,8 @@ class ModalPostbox extends Component {
             {' '}
           </ModalHeader>
           <ModalContent>
-            <Inputs
-              style={{
-                width: '280px',
-                height: '40px',
-                marginLeft: '12%',
-              }}
-              icon="lock"
-              iconPosition="left"
-              placeholder="รหัสผ่าน"
-              name="passwordToConfirm"
-              type="password"
-              onChange={this.props.handleChange}
-            />
 
-            {this.props.data.error
-              ? <span style={{ color: 'red' }}>
-                  <br />
-                  <div style={{ marginLeft: '15%', marginTop: '2%' }}>
-                    {this.props.data.message}
-                  </div>
-                </span>
-              : <span />}
-
-            <p style={{ paddingTop: '4%' }}>
-              หากเลือกโบรกเกอร์ไปแล้ว จะไม่สามารถเปลี่ยนแปลงโบรกเกอร์ได้
-            </p>
+            dfdgfkdfgjh
 
           </ModalContent>
           <div style={{ marginLeft: '2%' }}>
@@ -122,13 +99,11 @@ class ModalPostbox extends Component {
   }
 }
 
-ModalPostbox.propTypes = {
+ModalInsurer.propTypes = {
   handlePost: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-  data: state.postBoxReducer,
-})
+const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, null)(ModalPostbox)
+export default connect(mapStateToProps, null)(ModalInsurer)

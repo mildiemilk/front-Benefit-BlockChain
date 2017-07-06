@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { createPlan } from '../../../api/setPlan'
+import { createPlan, editPlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -39,7 +39,19 @@ class FormSubmitPlan extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  handleClick = () => this.props.createPlan(this.state)
+  handleClick = () => {
+    console.log(this.props.planList)
+    if (this.props.nowPlan === -1) {
+      this.props.createPlan(this.state)
+      this.props.handlePlan(this.props.planList.length)
+    } else {
+      this.props.editPlan(
+        this.state,
+        this.props.planList[this.props.nowPlan].planId,
+        'profilePlan',
+      )
+    }
+  }
 
   render() {
     return (
@@ -121,7 +133,11 @@ FormSubmitPlan.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   createPlan: data => dispatch(createPlan(data)),
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
 })
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormSubmitPlan)

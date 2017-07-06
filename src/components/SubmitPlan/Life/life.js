@@ -54,13 +54,17 @@ class Life extends Component {
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState('lifeRecord')
+  }
 
   handleClick = () => {
+    this.props.handleRecordVerifyState('lifeRecord')
     const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
-      this.props.plan.planId,
+      this.props.planList[this.props.nowPlan].planId,
       'life',
     )
   }
@@ -74,16 +78,17 @@ class Life extends Component {
     this.setState({ lifeNotExceed: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
+    this.props.handleVerifyState('lifeRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'Life' && this.props.reset === true) {
       this.handleResetdata()
+      this.props.handleAfterReset()
     }
   }
 
   render() {
-    console.log(this.state.lifePerYear)
     return (
       <div>
         <br />
@@ -94,7 +99,7 @@ class Life extends Component {
         </p>
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
-        <Form>
+        <Form onSubmit={this.handleClick}>
           <Form.Group inline>
             <Form.Field>
               <Radio
@@ -220,7 +225,6 @@ class Life extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
-              onClick={this.handleClick}
             >
               บันทึก
             </Button>
@@ -238,7 +242,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  plan: state.plan,
+  planList: state.plan,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Life)

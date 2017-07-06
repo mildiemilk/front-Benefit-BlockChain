@@ -17,10 +17,10 @@ import AllPlan from '../../SubmitPlan/AllPlan'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    width: 700px;
+    width: 800px;
     position: relative;
     margin: 0 auto;
-    padding-left: 4%;
+    padding-left: 6.4%;
     padding-right: 4%;
   }
 `

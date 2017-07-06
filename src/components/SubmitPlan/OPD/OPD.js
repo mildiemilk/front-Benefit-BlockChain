@@ -221,8 +221,8 @@ class OPD extends Component {
                   handleChange={this.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
-                  reset={this.props.state.reset}
-                  setPlan={this.props.state.setPlan}
+                  reset={this.props.reset}
+                  setPlan={this.props.setPlan}
                 />
               : ''}
             <br />

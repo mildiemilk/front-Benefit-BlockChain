@@ -11,6 +11,7 @@ class ViewPlanBox extends Component {
   }
 
   renderList = list => {
+    console.log(list)
     const output = []
     for (var i = 0; i < list.length; i++) {
       output.push(

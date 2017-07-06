@@ -1,10 +1,6 @@
-const defaultchooseInsurer = {
-  message: null,
-  error: false,
-}
+const defaultInsurer = []
 const defaultTimeOut = {
-  time: null,
-  date: null,
+  timeout: null,
 }
 
 const CHOOSEINSURER_REQUEST_SUCCESS = 'CHOOSEINSURER_REQUEST_SUCCESS'
@@ -19,24 +15,21 @@ export function chooseInsurerSuccess(data) {
 export function chooseInsurerFailure(data) {
   return { type: CHOOSEINSURER_REQUEST_FAILURE, data }
 }
+
 export function setTimeOutSuccess(data) {
   return { type: SETTIMEOUT_REQUEST_SUCCESS, data }
 }
-export function setTimeOutsFailure(data) {
+
+export function setTimeOutFailure(data) {
   return { type: SETTIMEOUT_REQUEST_FAILURE, data }
 }
-export function chooseInsurerReducer(state = defaultchooseInsurer, action) {
+
+export function chooseInsurerReducer(state = defaultInsurer, action) {
   switch (action.type) {
     case CHOOSEINSURER_REQUEST_SUCCESS:
-      return Object.assign({}, state, {
-        message: action.data.message,
-        error: false,
-      })
+      return action.data
     case CHOOSEINSURER_REQUEST_FAILURE:
-      return Object.assign({}, state, {
-        message: action.data.message,
-        error: true,
-      })
+      return Object.assign({}, state, {})
     default:
       return state
   }
@@ -46,14 +39,10 @@ export function setTimeOut(state = defaultTimeOut, action) {
   switch (action.type) {
     case SETTIMEOUT_REQUEST_SUCCESS:
       return Object.assign({}, state, {
-        date: action.data.date,
-        time: action.data.time,
+        timeout: action.data,
       })
     case SETTIMEOUT_REQUEST_FAILURE:
-      return Object.assign({}, state, {
-        message: action.data.message,
-        error: true,
-      })
+      return Object.assign({}, state, {})
     default:
       return state
   }

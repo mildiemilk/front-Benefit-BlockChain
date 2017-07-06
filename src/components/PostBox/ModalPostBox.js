@@ -11,8 +11,6 @@ import {
 import {
   ModalHeader,
   ModalContent,
-  EditButton,
-  PostButton,
   ButtonNew,
   CancleButton,
   ConfirmButton,

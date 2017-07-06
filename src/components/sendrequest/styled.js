@@ -74,13 +74,7 @@ export const Time = styled.div`
     display: inline-block;
 `
 
-export const Edit  = styled.div`
-    color: #9b9b9b;
-    display: inline-block;
-    float: right;
-    padding-top: 2%;
 
-`
 export const PlanBox = styled.div`
   width: 100%;
   height: 60px;

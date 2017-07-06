@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Countdown from 'react-count-down'
 import { Divider } from 'semantic-ui-react'
-import { Head, Box } from './styled'
+import { Text, TextIn } from './styled'
 import NavBidding from './NavBidding'
+import Box from './Box'
+
 class Bidding extends Component {
   constructor() {
     super()
@@ -17,28 +19,41 @@ class Bidding extends Component {
       prefix: 'until my birthday!',
       cb,
     }
-    // console.log(options);
     return (
       <div className="Bidding">
         <NavBidding/>
-        <div className='row'>
-          <div className='large-3 columns'>
-              <span>ชื่อบริษัทประกัน</span>
+        <div className='BidContent'>
+          <div className='HeadBidContent'>
+            <div className='row'>
+              <div className='large-3 columns'>
+                  <Text>ชื่อบริษัทประกัน</Text>
+              </div>
+              <div className='large-6 columns'>
+                  <div className='row'>
+                      <div className='large-4 columns'>
+                        <TextIn>เลขที่ใบเสนอราคา</TextIn>
+                      </div>
+                      <div className='large-2 columns'>
+                        <TextIn>ครั้งที่เสนอราคา</TextIn>
+                      </div>
+                      <div className='large-2 columns'>
+                        <TextIn>วันที่</TextIn>
+                      </div>
+                      <div className='large-4 columns'>
+                        <TextIn>ราคาประมูล</TextIn>
+                      </div>
+                  </div> 
+              </div>
+              <div className='large-1 columns'>
+                  <Text>ดูแผนประกัน</Text>
+              </div>
+              <div className='large-2 columns'>
+                  <Text>สถานะ</Text>
+              </div>
+            </div>
           </div>
-          <div className='large-6 columns'>
-              <span>เลขที่ใบเสนอราคา</span> <span>ครั้งที่เสนอราคา</span>
-          </div>
-          <div className='large-1 columns'>
-              <span>ดูแผนประกัน</span>
-          </div>
-          <div className='large-2 columns'>
-              <span>สถานะ</span>
-          </div>
+          <Box/> 
         </div>
-        <div className='row'>
-          <Box>
-          </Box>
-         </div> 
         <Countdown style options={OPTIONS} />
       </div>
 

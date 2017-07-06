@@ -18,7 +18,7 @@ class Bidding extends Component {
     }
 
     return (
-      <div className="Bidding">
+      <div className="NavBid">
         <div className="row">
           <div className="large-12 columns">
             <Head> การเสนอราคาประมูล </Head>
@@ -28,17 +28,17 @@ class Bidding extends Component {
         <div className='row'>
             <div className='large-4 columns'>
                 <Nav>
-                rdgdg
+                จำนวนบริษัทประกัน
                 </Nav>
             </div>
             <div className='large-4 columns'>
                 <Nav>
-                dfgdg
+                ราคาต่ำสุดในการประมูล
                 </Nav>
             </div>
             <div className='large-4 columns'>
                 <Nav>
-                dfggd
+                ระยะเวลาที่เหลือในการประมูล
                 </Nav>
             </div>
         </div>

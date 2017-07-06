@@ -22,6 +22,7 @@ import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-tooth.jpg'
 import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
+import DentalModal from './DentalModal'
 
 class Dental extends Component {
   constructor(props) {
@@ -33,15 +34,18 @@ class Dental extends Component {
 
   static propTypes = {}
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState()
+  }
 
   handleClick = () => {
-    console.log(this.props.nowPlan)
     this.props.editPlan(
       this.state,
       this.props.planList[this.props.nowPlan].planId,
       'dental',
     )
+    this.props.handleRecordVerifyState()
   }
 
   handleResetdata = () => {
@@ -67,7 +71,7 @@ class Dental extends Component {
         </p>
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
-        <Form>
+        <Form onSubmit={this.handleClick}>
           <Form.Group inline>
             <Form.Input
               type="number"
@@ -76,9 +80,9 @@ class Dental extends Component {
               name="dentalPerYear"
               id="dentalPerYear"
               onChange={this.handleChange}
-              defaultValue={
+              /*defaultValue={
                 this.props.planList[this.props.nowPlan].dentalPerYear
-              }
+              }*/
               required
             />
             <p> บาท/ปี</p>
@@ -98,12 +102,17 @@ class Dental extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
-              onClick={this.handleClick}
             >
               บันทึก
             </Button>
           </div>
         </Form>
+        <DentalModal
+          openModal={this.props.openModal}
+          handleCloseModal={this.props.handleCloseModal}
+          handleClick={this.handleClick}
+          handleNextPlan={this.props.handleNextPlan}
+        />
       </div>
     )
   }

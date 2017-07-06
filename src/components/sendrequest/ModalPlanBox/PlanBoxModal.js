@@ -17,9 +17,20 @@ import AllPlan from '../../SubmitPlan/AllPlan'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    max-width: 650px;
+    width: 700px;
+    position: relative;
     margin: 0 auto;
     padding-left: 4%;
+    padding-right: 4%;
+  }
+`
+const ModalHeaders = styled(Modal.Header)`
+  &&&{
+    width: 800px;
+    position: relative;
+    margin: 0 auto;
+    padding-left: 4%;
+    padding-right: 4%;
   }
 `
 
@@ -49,7 +60,6 @@ class PlanBoxModal extends Component {
   }
 
   render() {
-    console.log(this.props.modalOpen)
     return (
       <Modals
         trigger={<div />}
@@ -58,15 +68,15 @@ class PlanBoxModal extends Component {
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
       >
-        <Modal.Header>
+        <ModalHeaders>
           <p style={{ textAlign: 'center' }}>ดูแพลน</p>
-        </Modal.Header>
-        <Modal.Content>
+        </ModalHeaders>
+        <ModalContents>
           <FormSubmitPlan />
-        </Modal.Content>
-        <Modal.Content>
+        </ModalContents>
+        <ModalContents>
           <AllPlan />
-        </Modal.Content>
+        </ModalContents>
       </Modals>
     )
   }

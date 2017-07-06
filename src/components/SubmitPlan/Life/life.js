@@ -54,9 +54,13 @@ class Life extends Component {
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState()
+  }
 
   handleClick = () => {
+    this.props.handleRecordVerifyState()
     const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },

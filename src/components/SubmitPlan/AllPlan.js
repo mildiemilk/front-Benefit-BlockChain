@@ -41,7 +41,9 @@ class AllsetPlan extends Component {
       results: '',
       setPlan: 'IPD',
       verifyState: true,
+      openModal: false,
       reset: false,
+      nextPlan: '',
     }
   }
 
@@ -55,8 +57,20 @@ class AllsetPlan extends Component {
     }
   }
 
+  handleOpenModal = () => {
+    this.setState({ openModal: true })
+  }
+
+  handleCloseModal = () => {
+    this.setState({ openModal: false })
+  }
+
   handleVerifyState = () => {
     this.setState({ verifyState: false })
+  }
+
+  handleRecordVerifyState = () => {
+    this.setState({ verifyState: true })
   }
 
   handleRadio = (e, { value }) => {
@@ -64,7 +78,16 @@ class AllsetPlan extends Component {
   }
 
   handleClick = value => {
-    this.setState({ setPlan: value })
+    if (this.state.verifyState === false) {
+      this.handleOpenModal()
+      this.setState({ nextPlan: value })
+    } else {
+      this.setState({ setPlan: value })
+    }
+  }
+
+  handleNextPlan = () => {
+    this.setState({ setPlan: this.state.nextPlan })
   }
 
   handleReset = () => {
@@ -173,7 +196,11 @@ class AllsetPlan extends Component {
             {this.state.setPlan === 'IPD'
               ? <IPD
                   handleVerifyState={this.handleVerifyState}
+                  handleCloseModal={this.handleCloseModal}
+                  handleRecordVerifyState={this.handleRecordVerifyState}
+                  handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
+                  openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}
@@ -181,7 +208,12 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'OPD'
               ? <OPD
+                  handleVerifyState={this.handleVerifyState}
+                  handleCloseModal={this.handleCloseModal}
+                  handleRecordVerifyState={this.handleRecordVerifyState}
+                  handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
+                  openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}
@@ -189,7 +221,12 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Dental'
               ? <Dental
+                  handleVerifyState={this.handleVerifyState}
+                  handleCloseModal={this.handleCloseModal}
+                  handleRecordVerifyState={this.handleRecordVerifyState}
+                  handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
+                  openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}
@@ -197,7 +234,12 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Life'
               ? <Life
+                  handleVerifyState={this.handleVerifyState}
+                  handleCloseModal={this.handleCloseModal}
+                  handleRecordVerifyState={this.handleRecordVerifyState}
+                  handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
+                  openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}

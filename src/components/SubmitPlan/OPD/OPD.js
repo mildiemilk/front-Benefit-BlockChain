@@ -23,6 +23,7 @@ import stethoscope from '../../image/icons-8-stethoscope.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
+import OpdModal from './OpdModal'
 
 class OPD extends Component {
   constructor() {
@@ -70,6 +71,7 @@ class OPD extends Component {
       this.props.planList[this.props.nowPlan].planId,
       'opd',
     )
+    this.props.handleRecordVerifyState()
   }
 
   handleToggle = () => {
@@ -111,7 +113,10 @@ class OPD extends Component {
   }
 
   handleChangeToNull = name => this.setState({ [name]: null })
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState()
+  }
 
   render() {
     return (
@@ -237,6 +242,12 @@ class OPD extends Component {
               บันทึก
             </Button>
           </Form>
+          <OpdModal
+            openModal={this.props.openModal}
+            handleCloseModal={this.props.handleCloseModal}
+            handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
+          />
         </div>
       </div>
     )

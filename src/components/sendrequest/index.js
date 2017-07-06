@@ -9,8 +9,20 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
-import {Detail,Head,Head2, subInner,Submit,BoxIndiv1,
-        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn,Time,Edit} from './styled'
+import {
+  Detail,
+  Head,
+  Head2,
+  subInner,
+  Submit,
+  BoxIndiv1,
+  BoxIndiv2,
+  BoxIndiv3,
+  BoxIndiv4,
+  SideIn,
+  Time,
+  Edit,
+} from './styled'
 import moment from 'moment'
 import {
   Grid,
@@ -30,7 +42,6 @@ class Sendrequest extends Component {
       step: 6,
     }
   }
-
   render() {
     return (
       <div className="ChooseInsurer">
@@ -44,7 +55,11 @@ class Sendrequest extends Component {
             <BoxIndiv1 />
             <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
             <BoxIndiv2 />
-            <Head2 style={{display:'inline-block'}}>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2> <ModalInsurer/>
+            <Head2 style={{ display: 'inline-block' }}>
+              รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
+            </Head2>
+            {' '}
+            <ModalInsurer />
             <BoxIndiv3>
               บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
               {' '}

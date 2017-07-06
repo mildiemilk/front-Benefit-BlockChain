@@ -80,11 +80,11 @@ class IPD extends Component {
 
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value })
-    this.props.handleVerifyState()
+    this.props.handleVerifyState('ipdRecord')
   }
 
   handleClick = () => {
-    this.props.handleRecordVerifyState()
+    this.props.handleRecordVerifyState('ipdRecord')
     const {
       ipdCoPlay,
       ipdType,
@@ -148,11 +148,13 @@ class IPD extends Component {
   handleResetdata = () => {
     this.setState({ ipdType: '' })
     this.props.handleNewReset()
+    this.props.handleVerifyState('ipdRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
       this.handleResetdata()
+      this.props.handleAfterReset()
     }
   }
 

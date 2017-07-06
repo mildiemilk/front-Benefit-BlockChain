@@ -71,7 +71,7 @@ class OPD extends Component {
       this.props.planList[this.props.nowPlan].planId,
       'opd',
     )
-    this.props.handleRecordVerifyState()
+    this.props.handleRecordVerifyState('opdRecord')
   }
 
   handleToggle = () => {
@@ -104,18 +104,21 @@ class OPD extends Component {
     this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
+    this.prop.shandleAfterReset()
+    this.props.handleVerifyState('opdRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'OPD' && this.props.reset === true) {
       this.handleResetdata()
+      this.props.handleAfterReset()
     }
   }
 
   handleChangeToNull = name => this.setState({ [name]: null })
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value })
-    this.props.handleVerifyState()
+    this.props.handleVerifyState('opdRecord')
   }
 
   render() {
@@ -130,7 +133,7 @@ class OPD extends Component {
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
         <div className="row">
-          <Form>
+          <Form onSubmit={this.handleClick}>
             <Form.Group inline>
               <Form.Field>
                 <Radio
@@ -237,7 +240,6 @@ class OPD extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
-              onClick={this.handleClick}
             >
               บันทึก
             </Button>

@@ -36,27 +36,29 @@ class Dental extends Component {
 
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value })
-    this.props.handleVerifyState()
+    this.props.handleVerifyState('dentalRecord')
   }
 
   handleClick = () => {
     this.props.editPlan(
       this.state,
-      this.props.planList[this.props.nowPlan].planId,
+      // this.props.planList[this.props.nowPlan].planId,
       'dental',
     )
-    this.props.handleRecordVerifyState()
+    this.props.handleRecordVerifyState('dentalRecord')
   }
 
   handleResetdata = () => {
     document.getElementById('dentalPerYear').value = ''
     this.setState({ dentalPerYear: null })
     this.props.handleNewReset()
+    this.props.handleVerifyState('dentalRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'Dental' && this.props.reset === true) {
       this.handleResetdata()
+      this.props.handleAfterReset()
     }
   }
 

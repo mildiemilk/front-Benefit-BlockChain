@@ -1,7 +1,7 @@
 import axios from 'axios'
 import auth from './auth'
 import profileCompany from './profileCompany'
-import { setTimeOut } from './chooseInsurer'
+import { chooseInsurer, setTimeOut, getAllInsurer } from './chooseInsurer'
 
 export function APIRequest(options, authenticate = true) {
   const headers = options.headers ? options.headers : {}
@@ -26,5 +26,7 @@ export default {
   auth,
   APIRequest,
   profileCompany,
+  chooseInsurer,
   setTimeOut,
+  getAllInsurer,
 }

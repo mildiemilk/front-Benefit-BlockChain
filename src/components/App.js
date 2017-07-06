@@ -39,6 +39,7 @@ import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 
 import ViewAllPlan from './ViewAllPlan'
+import ComparePlan from './ComparePlan'
 
 const App = ({ isAuthenticated }) => (
   <div>
@@ -72,6 +73,7 @@ const App = ({ isAuthenticated }) => (
                 </Switch>
               : <Switch>
                   <Route path="/view" component={ViewAllPlan} />
+                  <Route path="/compareplan" component={ComparePlan} />
                   <Route path="/settingprofile" component={SettingProfile} />
                   <Route path="/welcome" component={welcomePage} />
                   <Route path="/postbox" component={Postbox} />

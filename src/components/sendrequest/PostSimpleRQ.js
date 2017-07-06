@@ -16,7 +16,7 @@ const CardHeader = styled(Card)`
   }
 `
 
-class Postre extends Component {
+class PostSimpleRQ extends Component {
   render() {
     return (
       <div>
@@ -54,7 +54,7 @@ class Postre extends Component {
                 <strong>
                   <PostreText>อัพโหลดแผนประกันที่ใช้ในปัจจุบัน :</PostreText>
                 </strong>
-                <PostreText>Insurance_Plan_2016.pdf</PostreText>
+                <PostreText> Insurance_Plan_2016.pdf</PostreText>
                 <br />
                 <br />
                 <strong>
@@ -102,4 +102,4 @@ const mapStateToProps = state => ({
   data: state.fillsimpleReducer,
 })
 
-export default connect(mapStateToProps, null)(Postre)
+export default connect(mapStateToProps, null)(PostSimpleRQ)

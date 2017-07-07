@@ -30,11 +30,17 @@ class SubmitPlan extends Component {
       planName: '',
       employeeOfPlan: '',
       planId: -1,
+      nextPage: false,
+      canGoToNextPage: true,
+      warningModal: false,
     }
   }
   onClickhandler = e => {
-    e.preventDefault()
-    window.location.href = '/chooseinsurer'
+    this.setState({ nextPage: true })
+    if (this.state.canGoToNextPage) {
+      e.preventDefault()
+      window.location.href = '/chooseinsurer'
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -42,7 +48,31 @@ class SubmitPlan extends Component {
   handlePlan = val => {
     this.setState({ planId: val })
   }
+
+  handleSetGoToNextPage = () => {
+    this.setState({ canGoToNextPage: false })
+  }
+
+  handleMoveToNextPage = () => {
+    if (this.state.warningModal) {
+      this.setState({ canGoToNextPage: true })
+      this.setState({ warningModal: false })
+      window.location.href = '/chooseinsurer'
+    } else {
+      this.setState({ canGoToNextPage: true })
+    }
+  }
+
+  handleWarningModal = () => {
+    this.setState({ warningModal: true })
+  }
+
+  handleNextPage = () => {
+    this.setState({ nextPage: false })
+  }
+
   render() {
+    console.log(this.state.CanGoToNextPage)
     return (
       <div>
         <NavInsure step={this.state.step} />
@@ -63,7 +93,14 @@ class SubmitPlan extends Component {
                 handlePlan={this.handlePlan}
               />
               <div className="fillBox">
-                <AllPlan nowPlan={this.state.planId} />
+                <AllPlan
+                  nowPlan={this.state.planId}
+                  nextPage={this.state.nextPage}
+                  handleNextPage={this.handleNextPage}
+                  handleSetGoToNextPage={this.handleSetGoToNextPage}
+                  handleWarningModal={this.handleWarningModal}
+                  handleMoveToNextPage={this.handleMoveToNextPage}
+                />
               </div>
 
               <Button

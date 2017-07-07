@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Icon, Table, Rating, Header, Checkbox } from 'semantic-ui-react'
+import { Icon, Table, Rating, Header, Checkbox, Popup } from 'semantic-ui-react'
 import styled from 'react-sc'
 import { getAllPlan } from '../../api/setPlan'
 import SearchBox from './SearchBox'
+import ModalView from './ModalView'
 
 class ViewPlanBox extends Component {
   constructor() {
@@ -23,9 +24,23 @@ class ViewPlanBox extends Component {
           <td> {list[i].updateBy} </td>
           <td> {list[i].updatedAt} </td>
           <td>
-            <Icon disabled name="edit" size="large" />
-            <Icon disabled name="paste" size="large" />
-            <Icon disabled name="trash" size="large" />
+            <Popup
+              trigger={<Icon disabled name="edit" size="large" />}
+              content="แก้ไขแผน"
+              position="bottom left"
+              size="mini"
+              basic
+            />
+
+            <Popup
+              trigger={<Icon disabled name="paste" size="large" />}
+              content="คัดลอกแผน"
+              position="bottom left"
+              size="mini"
+              basic
+            />
+
+            <ModalView />
           </td>
         </tr>,
       )

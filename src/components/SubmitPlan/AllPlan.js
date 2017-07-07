@@ -80,6 +80,11 @@ class AllsetPlan extends Component {
     this.setState({ openModal: true })
   }
 
+  handleOpenModalNextPage = () => {
+    this.setState({ openModal: true })
+    this.props.handleWarningModal()
+  }
+
   handleCloseModal = () => {
     this.setState({ openModal: false })
   }
@@ -90,6 +95,7 @@ class AllsetPlan extends Component {
     this.setState({ changeToRecord: false })
     this.setState({ isChange: true })
     this.setState({ [name]: false })
+    this.props.handleSetGoToNextPage()
     this.handleText(name)
   }
 
@@ -98,6 +104,7 @@ class AllsetPlan extends Component {
     this.setState({ isChange: true })
     this.setState({ changeToRecord: true })
     this.setState({ [name]: true })
+    this.props.handleMoveToNextPage()
   }
 
   handleAfterReset = () => {
@@ -202,6 +209,11 @@ class AllsetPlan extends Component {
           this.setState({ isChange: false })
         }
       }
+    }
+
+    if (this.props.nextPage && this.state.verifyState === false) {
+      this.handleOpenModalNextPage()
+      this.props.handleNextPage()
     }
   }
 

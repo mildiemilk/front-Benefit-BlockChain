@@ -22,7 +22,7 @@ class Bidding extends Component {
         <div className="row">
           <div className="large-12 columns">
             <Head> การเสนอราคาประมูล </Head>
-            <Divider />
+            <Divider style={{marginBottom: '30px'}}/>
           </div>
         </div>
         <div className='row'>
@@ -43,8 +43,6 @@ class Bidding extends Component {
             </div>
         </div>
       </div>
-
-
     )
   }
 }

@@ -1,25 +1,21 @@
 import React, { Component } from 'react'
-import Countdown from 'react-count-down'
 import { Divider } from 'semantic-ui-react'
 import { Head, Nav, Pic, Font, FontNum, TextNav, FontAucTime, FontNumAucTime } from './styled'
 import building from '../../../assets/icons-8-city.png'
 import time from '../../../assets/icons-8-time.png'
 import auction from '../../../assets/icons-8-auction.png'
+import CountDowns from './CountDowns'
 class Bidding extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render() {
-    const cb = () => {
-      console.log('expired callback')
-    }
-    const OPTIONS = {
-      endDate: '03/01/2018 10:55 AM',
-      prefix: 'until my birthday!',
-      cb,
-    }
-
+  
+    const currentDate = new Date();
+    const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
+    console.log(year);
+    
     return (
       <div className="NavBid">
         <div className="row">
@@ -52,7 +48,9 @@ class Bidding extends Component {
               <Pic><img src={time}/></Pic>
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br/>
-                <FontNumAucTime>03:33:33:33</FontNumAucTime>
+                <FontNumAucTime><CountDowns date={`${year}-12-24T00:00:00`}/></FontNumAucTime>
+                
+                {/*<Countdown/>*/}
               </TextNav>
             </Nav>
           </div>

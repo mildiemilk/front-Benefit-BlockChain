@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Countdown from 'react-count-down'
 import { Divider } from 'semantic-ui-react'
 import { Text, TextIn } from './styled'
 import NavBidding from './NavBidding'
@@ -23,14 +22,7 @@ class Bidding extends Component {
   }
 
   render() {
-    const cb = () => {
-      console.log('expired callback')
-    }
-    const OPTIONS = {
-      endDate: '03/01/2018 10:55 AM',
-      prefix: 'until my birthday!',
-      cb,
-    }
+  
     return (
       <div className="Bidding">
         <NavBidding/>
@@ -39,7 +31,6 @@ class Bidding extends Component {
           ? <Details handleClick = {this.handleClick} />
           : <Box handleClick = {this.handleClick} />}
         </div>
-        <Countdown style options={OPTIONS} />
       </div>
     )
   }

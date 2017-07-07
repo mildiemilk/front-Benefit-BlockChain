@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Countdown from 'react-count-down'
 import { Divider, Icon } from 'semantic-ui-react'
 import { Card, Text, TextIn, IconPointer} from './styled'
 

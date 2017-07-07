@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import ViewPlanBox from './ViewPlanBox'
 import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
@@ -7,33 +8,11 @@ import styled from 'react-sc'
 import SearchBox from './SearchBox'
 import NavInsure from '../NavInsure'
 import ModalView from './ModalView'
+import { getAllPlan } from '../../api/setPlan'
 
-export default class ViewAllPlan extends Component {
+export class ViewAllPlan extends Component {
   constructor() {
     super()
-    this.list = [
-      {
-        name: 'Management1',
-        updataBy: 'HR',
-        date: '9 June 1995',
-      },
-      {
-        name: 'Management2',
-        updataBy: 'HR',
-        date: '16 June 1995',
-      },
-      {
-        name: 'Plan 3',
-        updataBy: 'HR',
-        date: '18 June 1995',
-      },
-      {
-        name: 'แผน 4',
-        updataBy: 'ฝ่ายบุคคล',
-        date: '20 มิถุนายน 1995',
-      },
-    ]
-
     this.state = {
       step: 3,
       passwordToConfirm: '',
@@ -48,12 +27,16 @@ export default class ViewAllPlan extends Component {
   filterPlan(list) {
     return list.filter(
       plan =>
-        plan.name.toLowerCase().indexOf(this.state.SearchTerm.toLowerCase()) >=
-        0,
+        plan.planName
+          .toLowerCase()
+          .indexOf(this.state.SearchTerm.toLowerCase()) >= 0,
     )
   }
 
   render() {
+    {
+      this.props.getAllPlan()
+    }
     return (
       <div className="ViewAllPlan">
         <NavInsure step={this.state.step} />
@@ -84,7 +67,7 @@ export default class ViewAllPlan extends Component {
                     <th> Action </th>
                   </tr>
                 </table>
-                <ViewPlanBox items={this.filterPlan(this.list)} />
+                <ViewPlanBox planList={this.filterPlan(this.props.planList)} />
               </div>
             </div>
           </RecViewAllPlan>
@@ -94,3 +77,13 @@ export default class ViewAllPlan extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewAllPlan)

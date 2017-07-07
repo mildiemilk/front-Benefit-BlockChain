@@ -28,7 +28,7 @@ export function setTimeOutFailure(data) {
 export function getAllInsurerSuccess(data) {
   return { type: GETALLINSURER_REQUEST_SUCCESS, data }
 }
-export function getALLInsurerFailure(data) {
+export function getAllInsurerFailure(data) {
   return { type: GETALLINSURER_REQUEST_FAILUER, data }
 }
 
@@ -57,6 +57,7 @@ export function setTimeOut(state = defaultTimeOut, action) {
 }
 
 export function getAllInsurer(state = defaultAllInsurer, action) {
+  console.log(action)
   switch (action.type) {
     case GETALLINSURER_REQUEST_SUCCESS:
       return action.data

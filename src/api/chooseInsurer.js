@@ -12,12 +12,12 @@ const CHOOSEINSURER_URI = '/api/chooseInsurer'
 const SETTIMEOUT_URI = '/api/setTimeout'
 const GETALLINSURER_URI = '/api/getAllInsurer'
 
-export function chooseInsurer(Insurers) {
+export function chooseInsurer(insurers) {
   return dispatch => {
     const options = {
       method: 'put',
       url: CHOOSEINSURER_URI,
-      data: { Insurers },
+      data: { insurers },
     }
 
     APIRequest(options, true)
@@ -34,8 +34,8 @@ export function chooseInsurer(Insurers) {
 
 export function getAllInsurer() {
   return dispatch => {
-    const option = {
-      method: 'GET',
+    const options = {
+      method: 'get',
       url: GETALLINSURER_URI,
     }
 

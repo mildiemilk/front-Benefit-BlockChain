@@ -16,7 +16,7 @@ import {
   CancleButton,
   ConfirmButton,
   Edit,
-} from './Styled'
+} from './styled'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'

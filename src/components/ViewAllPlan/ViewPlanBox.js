@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Table, Rating, Header, Checkbox, Popup } from 'semantic-ui-react'
 import styled from 'react-sc'
-import { getAllPlan } from '../../api/setPlan'
 import SearchBox from './SearchBox'
 import ModalView from './ModalView'
 
@@ -12,7 +11,6 @@ class ViewPlanBox extends Component {
   }
 
   renderList = list => {
-    console.log(list)
     const output = []
     for (var i = 0; i < list.length; i++) {
       output.push(
@@ -49,23 +47,16 @@ class ViewPlanBox extends Component {
   }
 
   render() {
-    {
-      this.props.getAllPlan()
-    }
     return (
       <table>
-        {this.renderList(this.props.items)}
+        {this.renderList(this.props.planList)}
       </table>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
-})
+const mapDispatchToProps = dispatch => ({})
 
-const mapStateToProps = state => ({
-  planList: state.plan,
-})
+const mapStateToProps = state => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox)

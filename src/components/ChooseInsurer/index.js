@@ -34,35 +34,48 @@ class InsurerSelect extends Component {
       step: 4,
       num: 0,
       date: null,
-      time: '',
+      insurers: [],
     }
   }
   handleTimeOut = () => {
-    console.log('ddsfwe')
-    const { date, time } = this.state
-    console.log(this.state)
+    const { date } = this.state
     this.props.setTimeOut(date)
   }
 
   handleDate = date => {
-    //  console.log(this.state.date)
-
     this.setState({
       date: date,
     })
   }
+
   handleTime = time => {
     time._d.setDate(this.state.date._d.getDate())
     this.state.date._d.setTime(time._d.getTime())
-    this.setState({
-      time: time,
-    })
   }
 
   handleCheck = e => {
-    if (e.target.checked) this.setState({ num: this.state.num + 1 })
-    else this.setState({ num: this.state.num - 1 })
+    if (e.target.checked) {
+      this.setState({
+        num: this.state.num + 1,
+        insurers: this.state.insurers.concat(
+          this.props.insurerList[e.target.id],
+        ),
+      })
+    } else {
+      let index = this.state.insurers.indexOf(
+        this.props.insurerList[e.target.id],
+      )
+      this.setState({
+        num: this.state.num - 1,
+        insurers: this.state.insurers.splice(index, 1),
+      })
+    }
   }
+
+  handleSubmit = () => {
+    this.props.chooseInsurer(this.state.insurers)
+  }
+
   render() {
     return (
       <div className="ChooseInsurer">
@@ -80,7 +93,9 @@ class InsurerSelect extends Component {
                   <span>
                     {' '}จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
                   </span>
-                  <SubmitInsure>บันทึก</SubmitInsure>
+                  <SubmitInsure onClick={this.handleSubmit}>
+                    บันทึก
+                  </SubmitInsure>
                 </HeadIn>
                 <div className="row">
                   <CardInsure handleCheck={this.handleCheck} />
@@ -120,6 +135,8 @@ const mapDispatchToProps = dispatch => ({
   chooseInsurer: insurers => dispatch(chooseInsurer(insurers)),
 })
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  insurerList: state.getAllInsurer,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect)

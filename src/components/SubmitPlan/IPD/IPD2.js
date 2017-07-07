@@ -66,7 +66,10 @@ class IPD2 extends Component {
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState()
+  }
 
   render() {
     return (
@@ -74,15 +77,15 @@ class IPD2 extends Component {
         <Form.Group inline>
           <Form.Field>
             <Radio
-              label="ค่าห้อง และค่าอาหาร"
               name="IPD2Group"
               value="firstChoice"
               checked={this.state.value === 'firstChoice'}
               onChange={this.handleRadio}
             />
           </Form.Field>
+          <span>ค่าห้อง และค่าอาหาร</span>
           {this.state.value === 'firstChoice'
-            ? <div style={{ display: 'inherit' }}>
+            ? <div style={{ display: '-webkit-box' }}>
                 <Form.Input
                   type="number"
                   placeholder="จำนวนเงิน"
@@ -90,6 +93,7 @@ class IPD2 extends Component {
                   id="rbLumsumRoomPerNight"
                   onChange={this.props.handleChange}
                   required
+                  style={{ marginLeft: '7%' }}
                 />
                 <Form.Input
                   type="number"
@@ -101,13 +105,14 @@ class IPD2 extends Component {
                   required
                 />
               </div>
-            : <div style={{ display: 'inherit' }}>
+            : <div style={{ display: '-webkit-box' }}>
                 <Form.Input
                   type="number"
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
                   onChange={this.props.handleChange}
+                  style={{ marginLeft: '7%' }}
                   readOnly
                 />
                 <Form.Input

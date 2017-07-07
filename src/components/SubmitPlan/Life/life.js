@@ -54,9 +54,13 @@ class Life extends Component {
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState('lifeRecord')
+  }
 
   handleClick = () => {
+    this.props.handleRecordVerifyState('lifeRecord')
     const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
@@ -74,16 +78,17 @@ class Life extends Component {
     this.setState({ lifeNotExceed: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
+    this.props.handleVerifyState('lifeRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'Life' && this.props.reset === true) {
       this.handleResetdata()
+      this.props.handleAfterReset()
     }
   }
 
   render() {
-    console.log(this.props.planList)
     return (
       <div>
         <br />
@@ -94,7 +99,7 @@ class Life extends Component {
         </p>
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
-        <Form>
+        <Form onSubmit={this.handleClick}>
           <Form.Group inline>
             <Form.Field>
               <Radio
@@ -220,7 +225,6 @@ class Life extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
-              onClick={this.handleClick}
             >
               บันทึก
             </Button>

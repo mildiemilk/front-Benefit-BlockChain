@@ -41,8 +41,6 @@ class Bidding extends Component {
         </div>
         <Countdown style options={OPTIONS} />
       </div>
-
-
     )
   }
 }

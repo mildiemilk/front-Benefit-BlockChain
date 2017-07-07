@@ -54,7 +54,7 @@ export const ConfirmButton = styled.button`
     color: #ffffff;
     margin-left: 1%;
 `
-export const Edit  = styled.div`
+export const Edit = styled.div`
     color: #9b9b9b;
     display: inline-block;
     float: right;

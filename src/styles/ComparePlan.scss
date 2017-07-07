@@ -1,0 +1,147 @@
+.ComparePlan{
+  .CompareHead{
+    table {
+        width: 100%;
+        height: 60px;
+        background-color: #dce4f3;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    th {
+        height: 100%;
+    }
+    tr {
+        height: 100%;
+    }
+    th:nth-child(n) {
+      max-width: 70px;
+      border-left: 1px solid #979797;
+    }
+    th:nth-child(1) {
+      max-width: 390px;
+      width: 42.5%;
+      border-left: 0px solid #979797;
+    }
+    td {
+      border: 1px solid black;
+      height: 50px;
+    }
+  }
+
+  .CompareLife{
+    table {
+        width: 100%;
+        height: 80px;
+        background-color: #ffffff;
+    }
+    th {
+        height: 100%;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(n) {
+      max-width: 70px;
+      border: 1px solid #9b9b9b;
+    }
+    th:nth-child(1) {
+      max-width: 390px;
+      width: 42.5%;
+      border: 1px solid #9b9b9b;
+    }
+  }
+
+  .CompareIPD{
+    table {
+        width: 100%;
+        background-color: #ffffff;
+    }
+    th {
+        position: relative;
+        height: 100%;
+        padding: 1%;
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+        border-bottom: 1px solid #9b9b9b;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(n) {
+      max-width: 0px;
+
+    }
+    th:nth-child(1) {
+      max-width: 390px;
+      width: 42.5%;
+      text-align: left;
+    }
+  }
+
+  .CompareIPDWithDrop{
+    table {
+        width: 100%;
+        background-color: #ffffff;
+    }
+    th {
+        position: relative;
+        height: 100%;
+        padding: 1%;
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(n) {
+      max-width: 0px;
+
+    }
+    th:nth-child(1) {
+      max-width: 390px;
+      width: 42.5%;
+      text-align: left;
+    }
+  }
+
+  .SubCompareIPD{
+    table {
+        width: 100%;
+        background-color: #ffffff;
+        border-bottom: 0px solid #9b9b9b;
+    }
+    th {
+        position: relative;
+        height: 100%;
+        padding: 1%;
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+        border-bottom: 0px solid #9b9b9b;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(n) {
+      max-width: 0px;
+
+    }
+    th:nth-child(1) {
+      max-width: 390px;
+      width: 42.5%;
+      text-align: left;
+    }
+  }
+
+}

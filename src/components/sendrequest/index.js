@@ -9,8 +9,21 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
-import {Detail,Head,Head2, subInner,Submit,BoxIndiv1,
-        BoxIndiv2,BoxIndiv3,BoxIndiv4,SideIn,Time,Edit} from './styled'
+import ModalPlanBox from './ModalPlanBox/'
+import {
+  Detail,
+  Head,
+  Head2,
+  subInner,
+  Submit,
+  BoxIndiv1,
+  BoxIndiv2,
+  BoxIndiv3,
+  BoxIndiv4,
+  SideIn,
+  Time,
+  Edit,
+} from './styled'
 import moment from 'moment'
 import {
   Grid,
@@ -22,6 +35,7 @@ import {
   Icon,
   Progress,
 } from 'semantic-ui-react'
+import PostSimpleRQ from './PostSimpleRQ'
 
 class Sendrequest extends Component {
   constructor(props) {
@@ -30,7 +44,6 @@ class Sendrequest extends Component {
       step: 6,
     }
   }
-
   render() {
     return (
       <div className="ChooseInsurer">
@@ -41,10 +54,16 @@ class Sendrequest extends Component {
               <Head>ส่งคำขอและรอการเสนอราคา</Head>
             </div>
             <Head2>กรุณาตรวจสอบข้อมูลของคุณ</Head2>
-            <BoxIndiv1 />
+            <PostSimpleRQ />
             <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
-            <BoxIndiv2 />
-            <Head2 style={{display:'inline-block'}}>รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน</Head2> <ModalInsurer/>
+            <BoxIndiv2>
+              <ModalPlanBox />
+            </BoxIndiv2>
+            <Head2 style={{ display: 'inline-block' }}>
+              รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
+            </Head2>
+            {' '}
+            <ModalInsurer />
             <BoxIndiv3>
               บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
               {' '}

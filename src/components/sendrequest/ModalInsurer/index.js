@@ -63,9 +63,8 @@ class ModalInsurer extends Component {
       <Modals
         trigger={
           <Edit onClick={this.handleOpen}>
-            <Icon name='write'/>แก้ไข
+            <Icon name="write" />แก้ไข
           </Edit>
-          
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
@@ -88,7 +87,6 @@ ModalInsurer.propTypes = {
   handleChange: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-})
+const mapStateToProps = state => ({})
 
 export default connect(mapStateToProps, null)(ModalInsurer)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Item } from 'semantic-ui-react'
 
-
 export default class Sidebar extends Component {
   state = { activeItem: 'home' }
 
@@ -40,7 +39,7 @@ export default class Sidebar extends Component {
 
     return (
       <aside className="sidebar">
-        <Item.Group  className="sidebarstyle" relaxed >
+        <Item.Group className="sidebarstyle" relaxed>
           <Item onClick={this.handleItemClick1}>
             <Icon name="home" size="large" />
             <Item.Content verticalAlign="middle">Dashboard</Item.Content>

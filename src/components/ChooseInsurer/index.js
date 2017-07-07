@@ -46,7 +46,7 @@ class InsurerSelect extends Component {
 
   handleDate = date => {
     //  console.log(this.state.date)
-    
+
     this.setState({
       date: date,
     })
@@ -58,7 +58,7 @@ class InsurerSelect extends Component {
       time: time,
     })
   }
- 
+
   handleCheck = e => {
     if (e.target.checked) this.setState({ num: this.state.num + 1 })
     else this.setState({ num: this.state.num - 1 })
@@ -77,7 +77,9 @@ class InsurerSelect extends Component {
             <div className="row">
               <SideIn>
                 <HeadIn className="row">
-                  <span> จำนวนบริษัทประกันที่เลือก  {this.state.num} บริษัท</span>
+                  <span>
+                    {' '}จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
+                  </span>
                   <SubmitInsure>บันทึก</SubmitInsure>
                 </HeadIn>
                 <div className="row">
@@ -93,7 +95,6 @@ class InsurerSelect extends Component {
                   selected={this.state.date}
                   onChange={this.handleDate}
                   minDate={moment()}
-                  
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
                 <TimePicker

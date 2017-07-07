@@ -5,8 +5,7 @@ import { getAllInsurer } from '../../reducers/chooseInsurer'
 class CardInsure extends React.Component {
   constructor() {
     super()
-    this.state = {
-    }
+    this.state = {}
   }
 
   renderList = insurers => {
@@ -32,8 +31,7 @@ class CardInsure extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-})
+const mapDispatchToProps = dispatch => ({})
 
 const mapStateToProps = state => ({
   getAllInsurer: state.getAllInsurer,

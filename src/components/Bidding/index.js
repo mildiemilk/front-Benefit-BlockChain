@@ -4,10 +4,22 @@ import { Divider } from 'semantic-ui-react'
 import { Text, TextIn } from './styled'
 import NavBidding from './NavBidding'
 import Box from './Box'
-
+import Details from './Details'
 class Bidding extends Component {
   constructor() {
     super()
+    this.state = {
+      isDetail: false
+    }
+  }
+
+  handleClick = () => {
+      const {isDetail } = this.state
+      if (!isDetail) 
+      this.setState({ isDetail: true })
+      else 
+      this.setState({ isDetail: false })
+   
   }
 
   render() {
@@ -21,38 +33,11 @@ class Bidding extends Component {
     }
     return (
       <div className="Bidding">
-        <NavBidding />
-        <div className="BidContent">
-          <div className="HeadBidContent">
-            <div className="row">
-              <div className="large-3 columns">
-                <Text>ชื่อบริษัทประกัน</Text>
-              </div>
-              <div className="large-6 columns">
-                <div className="row">
-                  <div className="large-4 columns">
-                    <TextIn>เลขที่ใบเสนอราคา</TextIn>
-                  </div>
-                  <div className="large-2 columns">
-                    <TextIn>ครั้งที่เสนอราคา</TextIn>
-                  </div>
-                  <div className="large-2 columns">
-                    <TextIn>วันที่</TextIn>
-                  </div>
-                  <div className="large-4 columns">
-                    <TextIn>ราคาประมูล</TextIn>
-                  </div>
-                </div>
-              </div>
-              <div className="large-1 columns">
-                <Text>ดูแผนประกัน</Text>
-              </div>
-              <div className="large-2 columns">
-                <Text>สถานะ</Text>
-              </div>
-            </div>
-          </div>
-          <Box />
+        <NavBidding/>
+        <div className='BidContent'>
+          {this.state.isDetail
+          ? <Details handleClick = {this.handleClick} />
+          : <Box handleClick = {this.handleClick} />}
         </div>
         <Countdown style options={OPTIONS} />
       </div>

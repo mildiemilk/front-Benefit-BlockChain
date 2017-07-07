@@ -20,10 +20,11 @@ import {
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
+import ChooseInsurer from '../../ChooseInsurer'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    max-width: 500px;
+    
     margin: 0 auto;
     padding-left: 4%;
   }
@@ -70,28 +71,10 @@ class ModalInsurer extends Component {
       >
 
         <ModalContents>
-          <ModalHeader>
-            {' '}
-            กรุณาใส่พาสเวิร์ดของคุณอีกครั้งเพื่อ
-            {' '}
-            <br />
-            {' '}
-            ยืนยันการเลือกโบรกเกอร์
-            {' '}
-            <br />
-            {' '}
-          </ModalHeader>
-          <ModalContent>
+          
+            <ChooseInsurer/>
 
-            dfdgfkdfgjh
-
-          </ModalContent>
-          <div style={{ marginLeft: '2%' }}>
-            <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
-            <ConfirmButton onClick={this.props.handlePost}>
-              {' '}ยืนยัน{' '}
-            </ConfirmButton>
-          </div>
+        
         </ModalContents>
 
       </Modals>

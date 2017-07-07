@@ -9,6 +9,7 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
+import ModalPlanBox from './ModalPlanBox/'
 import {
   Detail,
   Head,
@@ -55,7 +56,9 @@ class Sendrequest extends Component {
             <Head2>กรุณาตรวจสอบข้อมูลของคุณ</Head2>
             <PostSimpleRQ />
             <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
-            <BoxIndiv2 />
+            <BoxIndiv2>
+              <ModalPlanBox />
+            </BoxIndiv2>
             <Head2 style={{ display: 'inline-block' }}>
               รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
             </Head2>

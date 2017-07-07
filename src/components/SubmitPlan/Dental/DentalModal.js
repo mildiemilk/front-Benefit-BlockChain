@@ -15,9 +15,9 @@ import '../../../styles/SubmitPlan.scss'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    max-width: 550px;
+    max-width: 500px;
+    position: relative;
     margin: 0 auto;
-    padding-left: 4%;
   }
 `
 
@@ -65,46 +65,47 @@ class DentalModal extends Component {
       <Modals trigger={<div />} open={this.props.openModal}>
 
         <ModalContents>
-          <Modal.Header>
+          <ModalContents>
             <p className="header-modal">
               คุณต้องการบันทึกรายละเอียดแพลนของคุณหรือไม่ ?
             </p>
-          </Modal.Header>
-          <Modal.Content>
+          </ModalContents>
+          <ModalContents>
             <p className="text-modal">
               คุณได้เปลี่ยนแปลงรายละเอียดแพลนโดยไม่ได้ทำการบันทึก
             </p>
-          </Modal.Content>
-          <Modal.Content style={{ marginTop: '7%' }}>
-            <Button
-              style={{
-                textAlign: 'center',
-                width: '232px',
-                height: '40px',
-                borderRadius: '20px',
-                color: '#ffffff',
-                backgroundColor: '#f7555f',
-                marginLeft: '0.7%',
-              }}
-              onClick={this.handleContinue}
-            >
-              ยกเลิก
-            </Button>
-            <Button
-              style={{
-                textAlign: 'center',
-                width: '232px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
-                borderRadius: '20px',
-              }}
-              onClick={this.handleSubmit}
-              type="submit"
-            >
-              บันทึก
-            </Button>
-          </Modal.Content>
+          </ModalContents>
+          <ModalContents style={{ marginTop: '7%' }}>
+            <div style={{ display: 'flex' }}>
+              <Button
+                style={{
+                  textAlign: 'center',
+                  width: '232px',
+                  height: '40px',
+                  borderRadius: '20px',
+                  color: '#ffffff',
+                  backgroundColor: '#f7555f',
+                }}
+                onClick={this.handleContinue}
+              >
+                ยกเลิก
+              </Button>
+              <Button
+                style={{
+                  textAlign: 'center',
+                  width: '232px',
+                  height: '40px',
+                  backgroundColor: '#3A7BD5',
+                  color: 'white',
+                  borderRadius: '20px',
+                }}
+                onClick={this.handleSubmit}
+                type="submit"
+              >
+                บันทึก
+              </Button>
+            </div>
+          </ModalContents>
         </ModalContents>
       </Modals>
     )

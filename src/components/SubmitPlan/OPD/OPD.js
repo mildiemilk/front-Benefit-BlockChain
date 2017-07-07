@@ -104,7 +104,7 @@ class OPD extends Component {
     this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
-    this.prop.shandleAfterReset()
+    this.props.handleAfterReset()
     this.props.handleVerifyState('opdRecord')
   }
 

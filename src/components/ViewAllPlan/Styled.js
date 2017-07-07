@@ -27,7 +27,6 @@ export const RecViewAllPlan = styled.div`
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  margin-top: 3%;
   padding-top: 3%;
   padding-bottom: 5%;
 `

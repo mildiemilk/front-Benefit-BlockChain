@@ -85,7 +85,7 @@ export default class ComparePlan extends Component {
         <NavInsure step={this.state.step} />
         <div className="row">
           <RecComparePlan>
-            <div style={{ marginTop: '2%' }} className="row">
+            <div className="row">
               <div className="large-5 large-offset-1 columns">
                 <CompareHeader> เปรียบเทียบแผนประกันภัย </CompareHeader>
                 <BackHome>&lt; กลับหน้าหลัก </BackHome>

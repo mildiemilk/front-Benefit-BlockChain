@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Countdown from 'react-count-down'
 import { Divider, Icon } from 'semantic-ui-react'
 import { Card, Text, TextIn, IconPointer } from './styled'
 import { bidding } from '../../api/bidding'
@@ -99,12 +98,4 @@ class Box extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  list: state.biddingReducer,
-})
-
-const mapDispatchToProps = dispatch => ({
-  bidding: () => dispatch(bidding()),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Box)
+export default Box

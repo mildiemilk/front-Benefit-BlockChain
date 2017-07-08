@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Countdown from 'react-count-down'
 import { Divider } from 'semantic-ui-react'
 import { Text, TextIn } from './styled'
 import NavBidding from './NavBidding'
@@ -42,7 +41,6 @@ class Bidding extends Component {
             ? <Details handleClick={this.handleClick} />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
         </div>
-        <Countdown style options={OPTIONS} />
       </div>
     )
   }

@@ -97,6 +97,7 @@ class AllsetPlan extends Component {
     this.setState({ [name]: false })
     this.props.handleSetGoToNextPage()
     this.handleText(name)
+    this.props.handleUnBuildNewPlan()
   }
 
   handleRecordVerifyState = name => {
@@ -105,10 +106,14 @@ class AllsetPlan extends Component {
     this.setState({ changeToRecord: true })
     this.setState({ [name]: true })
     this.props.handleMoveToNextPage()
+    this.props.handleBuildNewPlan()
   }
 
   handleAfterReset = () => {
     this.setState({ verifyState: true })
+    this.setState({ checkInput: false })
+    this.props.handleMoveToNextPage()
+    this.props.handleBuildNewPlan()
   }
   handleText = value => {
     if (value === 'ipdRecord') {
@@ -214,6 +219,11 @@ class AllsetPlan extends Component {
     if (this.props.nextPage && this.state.verifyState === false) {
       this.handleOpenModalNextPage()
       this.props.handleNextPage()
+    }
+
+    if (this.props.newPlan && this.state.verifyState === false) {
+      this.handleOpenModal()
+      this.props.handleResetPlan()
     }
   }
 

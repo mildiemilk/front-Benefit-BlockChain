@@ -30,8 +30,6 @@ class FormSubmitPlan extends Component {
     }
   }
 
-  static propTypes = {}
-
   handleReset = () => {
     this.setState({ planName: '' })
     this.setState({ employeeOfPlan: '' })
@@ -40,7 +38,7 @@ class FormSubmitPlan extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleClick = () => {
-    console.log(this.props.planList)
+    this.props.handleModalFinish()
     if (this.props.nowPlan === -1) {
       this.props.createPlan(this.state)
       this.props.handlePlan(this.props.planList.length)
@@ -54,6 +52,7 @@ class FormSubmitPlan extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="fillBox">
@@ -73,9 +72,9 @@ class FormSubmitPlan extends Component {
           <div className="row">
             <div className="large-4 columns">
               <div className="paragraph-step1">
-                <p>ชื่อแพลน</p>
+                <p className="p-in-modal">ชื่อแพลน</p>
                 <br />
-                <p>จำนวนพนักงานในแพลน</p>
+                <p className="p-in-modal">จำนวนพนักงานในแพลน</p>
               </div>
             </div>
             <div className="large-8 columns">
@@ -128,8 +127,6 @@ class FormSubmitPlan extends Component {
     )
   }
 }
-
-FormSubmitPlan.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   createPlan: data => dispatch(createPlan(data)),

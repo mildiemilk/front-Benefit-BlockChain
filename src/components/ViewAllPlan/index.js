@@ -42,7 +42,7 @@ export class ViewAllPlan extends Component {
         <NavInsure step={this.state.step} />
         <div className="row">
           <RecViewAllPlan>
-            <div style={{ marginTop: '2%' }} className="row">
+            <div className="row">
               <div className="large-3 large-offset-1 columns">
                 <ViewHeader> แพลนทั้งหมด </ViewHeader>
                 <BackHome>&lt; กลับหน้าหลัก </BackHome>

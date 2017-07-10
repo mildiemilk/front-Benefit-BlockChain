@@ -28,25 +28,20 @@ import {
 import CardInsure from './CardInsure'
 
 class InsurerSelect extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       step: 4,
       num: 0,
       date: null,
-      time: '',
     }
   }
   handleTimeOut = () => {
-    console.log('ddsfwe')
-    const { date, time } = this.state
-    console.log(this.state)
+    const { date } = this.state
     this.props.setTimeOut(date)
   }
 
   handleDate = date => {
-    //  console.log(this.state.date)
-
     this.setState({
       date: date,
     })
@@ -55,7 +50,7 @@ class InsurerSelect extends Component {
     time._d.setDate(this.state.date._d.getDate())
     this.state.date._d.setTime(time._d.getTime())
     this.setState({
-      time: time,
+      date: time,
     })
   }
 
@@ -64,6 +59,16 @@ class InsurerSelect extends Component {
     else this.setState({ num: this.state.num - 1 })
   }
   render() {
+    console.log('eiei');
+    console.log(this.state.date);
+    console.log(moment(this.state.date)
+                  .locale('th')
+                  .format('DD MMMM YYYY'));
+    console.log(this.props.timeout);
+    console.log(moment(this.props.timeout.timeout)
+                  .locale('th')
+                  .format('DD MMMM YYYY'));
+    
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -99,7 +104,6 @@ class InsurerSelect extends Component {
                 <span>&nbsp;เวลา&nbsp;</span>
                 <TimePicker
                   onChange={this.handleTime}
-                  selected={this.state.time}
                   showSecond={false}
                 />
                 <br />
@@ -120,6 +124,8 @@ const mapDispatchToProps = dispatch => ({
   chooseInsurer: insurers => dispatch(chooseInsurer(insurers)),
 })
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  timeout: state.setTimeOut,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect)

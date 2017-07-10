@@ -46,7 +46,7 @@ export function getAllInsurer() {
       .catch(err => {
         // dispatch(getAllInsurerFailure(err.response.data))
         console.log(err.response)
-      })
+      }) 
   }
 }
 
@@ -60,11 +60,11 @@ export function setTimeOut(timeout) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
+        console.log('timeout:'+res)
         dispatch(setTimeOutSuccess(res.data))
       })
       .catch(err => {
-        dispatch(setTimeOutFailure(err.response.data))
+        // dispatch(setTimeOutFailure(err.response.data))
         console.log(err.response)
       })
   }

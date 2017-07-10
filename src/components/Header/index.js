@@ -25,7 +25,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.data, 'the data retieved')
     return (
       <HeadNav>
         <LogoPosition>

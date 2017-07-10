@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Divider } from 'semantic-ui-react'
 import { Head, Nav, Pic, Font, FontNum, TextNav, FontAucTime, FontNumAucTime } from './styled'
+import { connect } from 'react-redux'
 import building from '../../../assets/icons-8-city.png'
 import time from '../../../assets/icons-8-time.png'
 import auction from '../../../assets/icons-8-auction.png'
 import CountDowns from './CountDowns'
+
 class Bidding extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +16,6 @@ class Bidding extends Component {
   
     const currentDate = new Date();
     const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
-    console.log(year);
     
     return (
       <div className="NavBid">
@@ -48,9 +49,7 @@ class Bidding extends Component {
               <Pic><img src={time}/></Pic>
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br/>
-                <FontNumAucTime><CountDowns date={`${year}-12-24T00:00:00`}/></FontNumAucTime>
-                
-                {/*<Countdown/>*/}
+                <FontNumAucTime><CountDowns date={this.props.timeout.timeout}/></FontNumAucTime>
               </TextNav>
             </Nav>
           </div>
@@ -60,4 +59,8 @@ class Bidding extends Component {
   }
 }
 
-export default Bidding
+const mapStateToProps = state => ({
+  timeout: state.setTimeOut,
+})
+
+export default connect(mapStateToProps, null)(Bidding)

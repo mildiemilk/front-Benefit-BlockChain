@@ -22,6 +22,7 @@ import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like.jpg'
 import erase from '../../image/icons-8-erase.png'
+import LifeModal from './LifeModal'
 
 const options = [{ text: '1', value: 1 }]
 
@@ -84,7 +85,6 @@ class Life extends Component {
   componentDidUpdate() {
     if (this.props.setPlan === 'Life' && this.props.reset === true) {
       this.handleResetdata()
-      this.props.handleAfterReset()
     }
   }
 
@@ -230,6 +230,13 @@ class Life extends Component {
             </Button>
           </div>
         </Form>
+        <LifeModal
+          openModal={this.props.openModal}
+          handleCloseModal={this.props.handleCloseModal}
+          handleClick={this.handleClick}
+          handleNextPlan={this.props.handleNextPlan}
+          handleReset={this.props.handleReset}
+        />
       </div>
     )
   }

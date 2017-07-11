@@ -12,7 +12,6 @@ import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
 import '../../../styles/SubmitPlan.scss'
-import LifeModal from './LifeModal'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -46,8 +45,10 @@ class LifeModal extends Component {
       modalOpen: false,
     })
 
-  handleContinue = () => {
+  handleCancel = () => {
     this.props.handleCloseModal()
+    this.props.handleReset()
+    this.props.handleNextPlan()
   }
 
   handleSubmit = () => {
@@ -87,7 +88,7 @@ class LifeModal extends Component {
                 backgroundColor: '#f7555f',
                 marginLeft: '0.7%',
               }}
-              onClick={this.handleContinue}
+              onClick={this.handleCancel}
             >
               ยกเลิก
             </Button>

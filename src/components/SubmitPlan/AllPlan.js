@@ -97,6 +97,7 @@ class AllsetPlan extends Component {
     this.setState({ [name]: false })
     this.props.handleSetGoToNextPage()
     this.handleText(name)
+    this.props.handleUnBuildNewPlan()
   }
 
   handleRecordVerifyState = name => {
@@ -105,11 +106,9 @@ class AllsetPlan extends Component {
     this.setState({ changeToRecord: true })
     this.setState({ [name]: true })
     this.props.handleMoveToNextPage()
+    this.props.handleBuildNewPlan()
   }
 
-  handleAfterReset = () => {
-    this.setState({ verifyState: true })
-  }
   handleText = value => {
     if (value === 'ipdRecord') {
       this.setState({ textIpd: 'text-menu' })
@@ -136,6 +135,7 @@ class AllsetPlan extends Component {
       this.setState({ nextPlan: value })
     } else {
       this.setState({ setPlan: value })
+      this.setState({ nextPlan: value })
     }
   }
 
@@ -177,6 +177,10 @@ class AllsetPlan extends Component {
 
   handleReset = () => {
     this.setState({ reset: true })
+    this.setState({ verifyState: true })
+    this.setState({ checkInput: false })
+    this.props.handleMoveToNextPage()
+    this.props.handleBuildNewPlan()
   }
 
   handleNewReset = () => {
@@ -215,20 +219,22 @@ class AllsetPlan extends Component {
       this.handleOpenModalNextPage()
       this.props.handleNextPage()
     }
+
+    if (this.props.newPlan && this.state.verifyState === false) {
+      this.handleOpenModal()
+      this.props.handleResetPlan()
+    }
   }
 
   render() {
+    console.log(this.state.verifyState)
     return (
       <div>
         <div className="fillBox">
           <div className="headBox">
             <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
-            <div className="box-in-head-box">
-              <img
-                src={erase}
-                className="image-erase"
-                onClick={() => this.handleReset()}
-              />
+            <div className="box-in-head-box" onClick={() => this.handleReset()}>
+              <img src={erase} className="image-erase" />
               <span className="headLogo">Reset</span>
             </div>
           </div>
@@ -333,8 +339,8 @@ class AllsetPlan extends Component {
                   handleRecordVerifyState={this.handleRecordVerifyState}
                   handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
-                  handleAfterReset={this.handleAfterReset}
                   openModal={this.state.openModal}
+                  handleReset={this.handleReset}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}
@@ -347,8 +353,8 @@ class AllsetPlan extends Component {
                   handleRecordVerifyState={this.handleRecordVerifyState}
                   handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
-                  handleAfterReset={this.handleAfterReset}
                   openModal={this.state.openModal}
+                  handleReset={this.handleReset}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}
@@ -361,8 +367,8 @@ class AllsetPlan extends Component {
                   handleRecordVerifyState={this.handleRecordVerifyState}
                   handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
-                  handleAfterReset={this.handleAfterReset}
                   openModal={this.state.openModal}
+                  handleReset={this.handleReset}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}
@@ -374,9 +380,9 @@ class AllsetPlan extends Component {
                   handleCloseModal={this.handleCloseModal}
                   handleRecordVerifyState={this.handleRecordVerifyState}
                   handleNextPlan={this.handleNextPlan}
-                  handleAfterReset={this.handleAfterReset}
                   handleNewReset={this.handleNewReset}
                   openModal={this.state.openModal}
+                  handleReset={this.handleReset}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   nowPlan={this.props.nowPlan}

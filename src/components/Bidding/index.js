@@ -1,25 +1,24 @@
 import React, { Component } from 'react'
-import Countdown from 'react-count-down'
 import { Divider } from 'semantic-ui-react'
 import { Text, TextIn } from './styled'
 import NavBidding from './NavBidding'
 import Box from './Box'
+import { connect } from 'react-redux'
+import { bidding } from '../../api/bidding'
 import Details from './Details'
+
 class Bidding extends Component {
   constructor() {
     super()
     this.state = {
-      isDetail: false
+      isDetail: false,
     }
   }
 
   handleClick = () => {
-      const {isDetail } = this.state
-      if (!isDetail) 
-      this.setState({ isDetail: true })
-      else 
-      this.setState({ isDetail: false })
-   
+    const { isDetail } = this.state
+    if (!isDetail) this.setState({ isDetail: true })
+    else this.setState({ isDetail: false })
   }
 
   render() {
@@ -31,18 +30,28 @@ class Bidding extends Component {
       prefix: 'until my birthday!',
       cb,
     }
+    {
+      this.props.bidding()
+    }
     return (
       <div className="Bidding">
-        <NavBidding/>
-        <div className='BidContent'>
+        <NavBidding />
+        <div className="BidContent">
           {this.state.isDetail
-          ? <Details handleClick = {this.handleClick} />
-          : <Box handleClick = {this.handleClick} />}
+            ? <Details handleClick={this.handleClick} />
+            : <Box handleClick={this.handleClick} list={this.props.data} />}
         </div>
-        <Countdown style options={OPTIONS} />
       </div>
     )
   }
 }
 
-export default Bidding
+const mapStateToProps = state => ({
+  data: state.biddingReducer,
+})
+
+const mapDispatchToProps = dispatch => ({
+  bidding: () => dispatch(bidding()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bidding)

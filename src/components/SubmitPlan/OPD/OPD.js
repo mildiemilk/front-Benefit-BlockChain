@@ -104,14 +104,12 @@ class OPD extends Component {
     this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
-    this.prop.shandleAfterReset()
     this.props.handleVerifyState('opdRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'OPD' && this.props.reset === true) {
       this.handleResetdata()
-      this.props.handleAfterReset()
     }
   }
 
@@ -249,6 +247,7 @@ class OPD extends Component {
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
             handleNextPlan={this.props.handleNextPlan}
+            handleReset={this.props.handleReset}
           />
         </div>
       </div>

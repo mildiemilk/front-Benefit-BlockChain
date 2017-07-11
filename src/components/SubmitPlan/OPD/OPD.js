@@ -68,7 +68,7 @@ class OPD extends Component {
         opdCoPlayMixNotExceed,
         opdCoPlayMixYear,
       },
-      this.props.planList[this.props.nowPlan].planId,
+      this.props.planList[this.props.activePlan].planId,
       'opd',
     )
     this.props.handleRecordVerifyState('opdRecord')
@@ -104,20 +104,18 @@ class OPD extends Component {
     this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
-    this.props.handleAfterReset()
     this.props.handleVerifyState('opdRecord')
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'OPD' && this.props.reset === true) {
       this.handleResetdata()
-      this.props.handleAfterReset()
     }
   }
 
   handleChangeToNull = name => this.setState({ [name]: null })
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState('opdRecord')
   }
 
@@ -150,6 +148,7 @@ class OPD extends Component {
                     placeholder="จำนวนเงิน"
                     name="opdPerYear"
                     id="opdPerYear"
+                    value={this.props.opdPerYear}
                     onChange={this.handleChange}
                     required
                   />
@@ -180,6 +179,7 @@ class OPD extends Component {
                       placeholder="จำนวนเงิน"
                       name="opdPerTime"
                       id="opdPerTime"
+                      value={this.props.opdPerTime}
                       onChange={this.handleChange}
                       required
                     />
@@ -189,6 +189,7 @@ class OPD extends Component {
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
+                      value={this.props.opdTimeNotExceedPerYear}
                       onChange={this.handleChange}
                       required
                     />
@@ -218,11 +219,17 @@ class OPD extends Component {
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
             {this.state.opdCoPlay
               ? <CoPlay
-                  handleChange={this.handleChange}
+                  handleChange={thi.props.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  opdCoPlay={this.props.opdCoPlay}
+                  opdCoPlayQuota={this.props.opdCoPlayQuota}
+                  opdCoPlayDeductable={this.props.opdCoPlayDeductable}
+                  opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
+                  opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
+                  opdCoPlayMixYear={this.props.opdCoPlayMixYear}
                 />
               : ''}
             <br />
@@ -248,7 +255,6 @@ class OPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
-            handleNextPlan={this.props.handleNextPlan}
           />
         </div>
       </div>

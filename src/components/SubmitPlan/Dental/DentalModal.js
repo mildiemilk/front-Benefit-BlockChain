@@ -45,7 +45,7 @@ class DentalModal extends Component {
       modalOpen: false,
     })
 
-  handleContinue = () => {
+  handleCancel = () => {
     this.props.handleCloseModal()
   }
 
@@ -86,7 +86,7 @@ class DentalModal extends Component {
                   color: '#ffffff',
                   backgroundColor: '#f7555f',
                 }}
-                onClick={this.handleContinue}
+                onClick={this.handleCancel}
               >
                 ยกเลิก
               </Button>

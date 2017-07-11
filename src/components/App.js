@@ -61,6 +61,7 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/view" component={ViewAllPlan} />
                     <Route path="/bidding" component={Bidding} />
                     <Route path="/chooseinsurer" component={ChooseInsurer} />
+                    <Route path="/uploadfile" component={Uploadfile} />
                   </Switch>
                 </MainLayout>
               </Switch>

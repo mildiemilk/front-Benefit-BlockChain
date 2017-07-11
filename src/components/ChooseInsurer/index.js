@@ -34,6 +34,7 @@ class InsurerSelect extends Component {
       step: 4,
       num: 0,
       date: null,
+      insurers: [],
     }
   }
   handleTimeOut = () => {
@@ -46,18 +47,35 @@ class InsurerSelect extends Component {
       date: date,
     })
   }
+
   handleTime = time => {
     time._d.setDate(this.state.date._d.getDate())
     this.state.date._d.setTime(time._d.getTime())
-    this.setState({
-      date: time,
-    })
   }
 
   handleCheck = e => {
-    if (e.target.checked) this.setState({ num: this.state.num + 1 })
-    else this.setState({ num: this.state.num - 1 })
+    if (e.target.checked) {
+      this.setState({
+        num: this.state.num + 1,
+        insurers: this.state.insurers.concat(
+          this.props.insurerList[e.target.id],
+        ),
+      })
+    } else {
+      let index = this.state.insurers.indexOf(
+        this.props.insurerList[e.target.id],
+      )
+      this.setState({
+        num: this.state.num - 1,
+        insurers: this.state.insurers.splice(index, 1),
+      })
+    }
   }
+
+  handleSubmit = () => {
+    this.props.chooseInsurer(this.state.insurers)
+  }
+
   render() {
         
     return (
@@ -76,7 +94,9 @@ class InsurerSelect extends Component {
                   <span>
                     {' '}จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
                   </span>
-                  <SubmitInsure>บันทึก</SubmitInsure>
+                  <SubmitInsure onClick={this.handleSubmit}>
+                    บันทึก
+                  </SubmitInsure>
                 </HeadIn>
                 <div className="row">
                   <CardInsure handleCheck={this.handleCheck} />
@@ -98,7 +118,7 @@ class InsurerSelect extends Component {
                   showSecond={false}
                 />
                 <br />
-                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
+                <Submit onClick={this.handleTimeOut}>บันทึกก</Submit>
 
               </SideIn>
             </div>
@@ -117,6 +137,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
+  insurerList: state.getAllInsurer,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect)

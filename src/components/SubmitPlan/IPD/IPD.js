@@ -140,7 +140,7 @@ class IPD extends Component {
         ipdCoPlayMixNotExceed,
         ipdCoPlayMixYear,
       },
-      this.props.planList[this.props.nowPlan].planId,
+      this.props.planList[this.props.activePlan].planId,
       'ipd',
     )
   }
@@ -154,7 +154,6 @@ class IPD extends Component {
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
       this.handleResetdata()
-      this.props.handleAfterReset()
     }
   }
 
@@ -273,7 +272,6 @@ class IPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
-            handleNextPlan={this.props.handleNextPlan}
           />
         </div>
       </div>

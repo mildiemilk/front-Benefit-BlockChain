@@ -35,12 +35,6 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class ModalPostbox extends Component {
   constructor() {
     super()
@@ -81,7 +75,7 @@ class ModalPostbox extends Component {
             {' '}
           </ModalHeader>
           <ModalContent>
-            <Inputs
+            <Input
               style={{
                 width: '280px',
                 height: '40px',

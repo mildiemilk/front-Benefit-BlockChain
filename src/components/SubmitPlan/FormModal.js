@@ -61,7 +61,15 @@ class FormModal extends Component {
         basic
       >
         <ModalContents>
-          <FormSubmitPlan handleModalFinish={this.props.handleModalFinish} />
+          <FormSubmitPlan
+            activePlan={this.props.activePlan}
+            handlePlan={this.props.handlePlan}
+            handleModalFinish={this.props.handleModalFinish}
+            handleChange={this.props.handleChange}
+            handleResetProfilePlan={this.props.handleResetProfilePlan}
+            planName={this.props.planName}
+            employeeOfPlan={this.props.employeeOfPlan}
+          />
         </ModalContents>
       </Modals>
     )

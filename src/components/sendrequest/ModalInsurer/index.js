@@ -72,8 +72,7 @@ class ModalInsurer extends Component {
 
         <ModalContents>
 
-            <ChooseInsurer/>
-
+          <ChooseInsurer />
 
         </ModalContents>
 

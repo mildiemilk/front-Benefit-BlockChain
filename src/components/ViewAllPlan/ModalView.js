@@ -90,17 +90,16 @@ class ModalView extends Component {
           </ModalContent>
           <div style={{ marginLeft: '2%', marginTop: '5%' }}>
             <CancleButton> ยกเลิก </CancleButton>
-            <ConfirmButton> ลบ </ConfirmButton>
+            <ConfirmButton
+              onClick={() => this.props.handleDelete(this.props.planId)}
+            >
+              {' '}ลบ{' '}
+            </ConfirmButton>
           </div>
         </ModalContents>
       </Modals>
     )
   }
-}
-
-ModalView.propTypes = {
-  handlePost: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

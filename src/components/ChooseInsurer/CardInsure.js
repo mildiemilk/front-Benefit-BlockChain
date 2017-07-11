@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Check, Cardlast } from './styled'
 import { connect } from 'react-redux'
-import { getAllInsurer } from '../../reducers/chooseInsurer'
+import { getAllInsurer } from '../../api/chooseInsurer'
 class CardInsure extends React.Component {
   constructor() {
     super()
@@ -14,27 +14,34 @@ class CardInsure extends React.Component {
       <Card className="large-2 columns">
         <Check
           type="checkbox"
-          name="selector"
+          id={insurers.indexOf(insurer)}
           onChange={this.props.handleCheck}
         />
-        {insurer}
+        {insurer.insurerName}
+        hhh
       </Card>
     ))
+  }
+
+  componentDidMount() {
+    this.props.getAllInsurer()
   }
 
   render() {
     return (
       <div>
-        {this.renderList(this.props.getAllInsurer)}
+        {this.renderList(this.props.insurerList)}
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  getAllInsurer: () => dispatch(getAllInsurer()),
+})
 
 const mapStateToProps = state => ({
-  getAllInsurer: state.getAllInsurer,
+  insurerList: state.getAllInsurer,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardInsure)

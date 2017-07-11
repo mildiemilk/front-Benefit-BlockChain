@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Divider, Icon } from 'semantic-ui-react'
-import { Card, Text, TextIn, IconPointer, ButtonStatusAppove, ButtonStatusCancle } from './styled'
+import {
+  Text,
+  TextIn,
+  IconPointer,
+  ButtonStatusAppove,
+  ButtonStatusCancle,
+} from './styled'
 import { bidding } from '../../api/bidding'
 import { connect } from 'react-redux'
 import ModalSelectInsurer from './ModalSelectInsurer'
@@ -70,6 +76,7 @@ class Box extends Component {
         }
     } 
     return bids.map(bid => (
+      
       <div className = 'boxDetail' >
         <div className={this.boxStyling(status,end.end)}>
         <div className="row">
@@ -85,8 +92,7 @@ class Box extends Component {
                 <Text>{bid.timeOfBidding}</Text>
               </div>
               <div className="large-2 columns">
-                <Text>{moment(bid.updatedAt)
-                  .format('L')}</Text>
+                <Text>{moment(bid.updatedAt).format('L')}</Text>
               </div>
               <div className="large-4 columns">
                 <Text>{bid.priceOfBidding}</Text>
@@ -152,8 +158,7 @@ class Box extends Component {
 }
 
 const mapStateToProps = state => ({
-    end: state.endTimeout,
-    
+  end: state.endTimeout,
 })
 
-export default connect(mapStateToProps,null)(Box)
+export default connect(mapStateToProps, null)(Box)

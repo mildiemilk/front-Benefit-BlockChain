@@ -209,7 +209,7 @@ export const ButtonStatusAppove = styled.div`
     padding: 7%;
 	cursor: pointer;
 
-` 
+`
 export const ButtonStatusCancle = styled.div`
 	width: 80%;
 	height: 41px;
@@ -220,7 +220,7 @@ export const ButtonStatusCancle = styled.div`
     margin-top: -7%;
     padding: 7%;
 
-` 
+`
 export const ModalHeader = styled.p`
   font-size: 18px;
   letter-spacing: 0.4px;

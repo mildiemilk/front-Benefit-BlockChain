@@ -1,5 +1,10 @@
 import { APIRequest } from '.'
-import { getBiddingSuccess, getBiddingFailure, EndSuccess, EndFailure } from '../reducers/bidding'
+import {
+  getBiddingSuccess,
+  getBiddingFailure,
+  EndSuccess,
+  EndFailure,
+} from '../reducers/bidding'
 import { withRouter } from 'react-router'
 import Postbox from '../components/PostBox'
 
@@ -23,8 +28,8 @@ export function bidding() {
   }
 }
 
-export function endTimeout(end){
-    return dispatch => {
-        dispatch(EndSuccess({end}))
-    }
+export function endTimeout(end) {
+  return dispatch => {
+    dispatch(EndSuccess({ end }))
+  }
 }

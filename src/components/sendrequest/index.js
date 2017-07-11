@@ -45,8 +45,8 @@ class Sendrequest extends Component {
     }
   }
   render() {
-    console.log(this.props);
-    console.log(moment(this.props.timeout).locale('th').format('DD MMMM YYYY'));
+    console.log(this.props)
+    console.log(moment(this.props.timeout).locale('th').format('DD MMMM YYYY'))
     return (
       <div>
         <NavInsure step={this.state.step} />

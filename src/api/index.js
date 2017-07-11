@@ -2,7 +2,7 @@ import axios from 'axios'
 import auth from './auth'
 import profileCompany from './profileCompany'
 import { chooseInsurer, setTimeOut, getAllInsurer } from './chooseInsurer'
-import { endTimeout, bidding }  from './bidding'
+import { endTimeout, bidding } from './bidding'
 
 export function APIRequest(options, authenticate = true) {
   const headers = options.headers ? options.headers : {}
@@ -10,7 +10,7 @@ export function APIRequest(options, authenticate = true) {
     ? { Authorization: `${localStorage.getItem('token')}` }
     : {}
   const defaultOption = {
-    baseURL: 'http://chonthichas-air:61879',
+    baseURL: 'http://chonthichas-macbook-air.local:59175',
     headers: Object.assign(
       {},
       { 'Content-Type': 'application/json' },

@@ -15,9 +15,8 @@ import {
   Segment,
   Dropdown,
 } from 'semantic-ui-react'
-import CoPlay from './CoPlay'
 
-class IPD3 extends Component {
+class IPD3Bidding extends Component {
   constructor() {
     super()
     this.state = {
@@ -38,52 +37,6 @@ class IPD3 extends Component {
   }
 
   static propTypes = {}
-
-  handleToggle = () => {
-    if (this.state.permit) {
-      document.getElementById('rbScheduleSurgery').value = null
-      this.setState({ permit: false })
-    } else {
-      this.setState({ permit: true })
-    }
-  }
-
-  handleResetdata = () => {
-    document.getElementById('rbSchedulePatient').value = ''
-    this.props.handleChangeToNull('rbSchedulePatient')
-    document.getElementById('rbScheduleIntensiveCarePatient').value = ''
-    this.props.handleChangeToNull('rbScheduleIntensiveCarePatient')
-    document.getElementById('rbScheduleDoctor').value = ''
-    this.props.handleChangeToNull('rbScheduleDoctor')
-    document.getElementById('rbScheduleSurgery').value = ''
-    this.props.handleChangeToNull('rbScheduleSurgery')
-    document.getElementById('rbScheduleService').value = ''
-    this.props.handleChangeToNull('rbScheduleService')
-    document.getElementById('rbScheduleSmallSurgery').value = ''
-    this.props.handleChangeToNull('rbScheduleSmallSurgery')
-    document.getElementById('rbScheduleAdviser').value = ''
-    this.props.handleChangeToNull('rbScheduleAdviser')
-    document.getElementById('rbScheduleAmbulance').value = ''
-    this.props.handleChangeToNull('rbScheduleAmbulance')
-    document.getElementById('rbScheduleAccident').value = ''
-    this.props.handleChangeToNull('rbScheduleAccident')
-    document.getElementById('rbScheduleTreatment').value = ''
-    this.props.handleChangeToNull('rbScheduleTreatment')
-    document.getElementById('rbScheduleTransplant').value = ''
-    this.props.handleChangeToNull('rbScheduleTransplant')
-    this.props.handleNewReset()
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
-  }
-
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
-    this.props.handleVerifyState()
-  }
 
   handleRadio = (e, { value }) => {
     this.setState({ value })
@@ -186,7 +139,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbSchedulePatient"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -197,7 +150,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleIntensiveCarePatient"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -208,7 +161,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleDoctor"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -224,7 +177,7 @@ class IPD3 extends Component {
                       name="rbScheduleSugeryNonSchedule"
                       onChange={this.props.handleChange}
                       id="rbScheduleSugeryNonSchedule"
-                      required
+                      readOnly
                     />
                   : <Form.Input
                       type="number"
@@ -246,7 +199,7 @@ class IPD3 extends Component {
                       name="rbScheduleSugerySchedule"
                       onChange={this.props.handleChange}
                       id="rbScheduleSugerySchedule"
-                      required
+                      readOnly
                     />
                   : <Form.Input
                       type="number"
@@ -266,7 +219,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleService"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -280,7 +233,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleSmallSurgery"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -291,7 +244,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAdviser"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -302,7 +255,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAmbulance"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -313,7 +266,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAccident"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -324,7 +277,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTreatment"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -338,7 +291,7 @@ class IPD3 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTransplant"
                   onChange={this.props.handleChange}
-                  required
+                  readOnly
                 />
                 <p> บาท</p>
               </Form.Group>
@@ -350,9 +303,9 @@ class IPD3 extends Component {
   }
 }
 
-IPD3.propTypes = {}
+IPD3Bidding.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({})
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(IPD3)
+export default connect(mapStateToProps, mapDispatchToProps)(IPD3Bidding)

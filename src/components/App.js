@@ -63,6 +63,7 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/bidding" component={Bidding} />
                     <Route path="/chooseinsurer" component={ChooseInsurer} />
                     <Route path="/uploadfile" component={Uploadfile} />
+                    <Route component={EmptyLayout} />
                   </Switch>
                 </MainLayout>
               </Switch>

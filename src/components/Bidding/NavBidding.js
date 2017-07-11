@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import { Divider } from 'semantic-ui-react'
-import { Head, Nav, Pic, Font, FontNum, TextNav, FontAucTime, FontNumAucTime } from './styled'
+import {
+  Head,
+  Nav,
+  Pic,
+  Font,
+  FontNum,
+  TextNav,
+  FontAucTime,
+  FontNumAucTime,
+} from './styled'
 import { connect } from 'react-redux'
 import building from '../../../assets/icons-8-city.png'
 import time from '../../../assets/icons-8-time.png'
@@ -50,8 +59,10 @@ class Bidding extends Component {
             <Nav>
               <Pic><img src={time} /></Pic>
               <TextNav>
-                <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br/>
-                <FontNumAucTime><CountDowns date={this.props.timeout.timeout}/></FontNumAucTime>
+                <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
+                <FontNumAucTime>
+                  <CountDowns date={this.props.timeout.timeout} />
+                </FontNumAucTime>
               </TextNav>
             </Nav>
           </div>

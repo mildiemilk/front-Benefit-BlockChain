@@ -77,7 +77,6 @@ class InsurerSelect extends Component {
   }
 
   render() {
-        
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -113,10 +112,7 @@ class InsurerSelect extends Component {
                   minDate={moment()}
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
-                <TimePicker
-                  onChange={this.handleTime}
-                  showSecond={false}
-                />
+                <TimePicker onChange={this.handleTime} showSecond={false} />
                 <br />
                 <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
 

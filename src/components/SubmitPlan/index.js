@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import MenuPlan from './MenuPlan/MenuPlan'
 import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
 import AllPlan from './AllPlan'
+import ModalPlanListBidding from './ModalPlanListBidding'
 import NavInsure from '../NavInsure'
 import { getAllPlan, copyPlan, deletePlan } from '../../api/setPlan'
 import {

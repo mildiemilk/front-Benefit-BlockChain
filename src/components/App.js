@@ -33,7 +33,7 @@ import '../styles/main.scss'
 import createBrowserHistory from 'history/createBrowserHistory'
 import ViewAllPlan from './ViewAllPlan'
 import ComparePlan from './ComparePlan'
-
+import AddBenefit from './AddBenefit'
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -53,6 +53,7 @@ const App = ({ isAuthenticated }) => (
                       path="/dashboard/simplerequirement"
                       component={simpleRQ}
                     />
+                    <Route path='/addbenefit' component = {AddBenefit}/>
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/compareplan" component={ComparePlan} />
                     <Route path="/submitplan" component={SubmitPlan} />

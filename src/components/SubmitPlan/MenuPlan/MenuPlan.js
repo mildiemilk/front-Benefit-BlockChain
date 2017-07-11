@@ -107,7 +107,7 @@ class MenuPlan extends Component {
     return (
       <div className="menu-box">
         <p className="menu-header">จัดแผนประกันภัย</p>
-        <span className="menu-text">ดูแพลนทั้งหมด</span>
+        <Link to='/view'><span className="menu-text">ดูแพลนทั้งหมด</span></Link>
         <div className="menu-bar">
           <span>รายการแพลน</span>
           <Popup

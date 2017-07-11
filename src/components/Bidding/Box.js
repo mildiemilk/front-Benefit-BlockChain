@@ -19,35 +19,59 @@ class Box extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   
+  boxStyling = (status,end) => {
+    if(end == 'Timeout'){
+      if(status === 'Join' ) {
+        return 'boxes';
+      }
+      else {
+        return 'boxCancelTimeout';
+      }
+    }
+    else {
+      if(status === 'Join' ) {
+        return 'boxes';
+      }
+      else if(status === 'Cancel') {
+        return 'boxCancel';
+      }
+      else {
+        return 'wait'
+      }
+    }  
+  };
+
   renderList = bids => {
-    let $status = 'Join'
+    
+    let status = 'Join'
+    let statusModule = ''
     const { end } = this.props
     if(end.end === 'Timeout'){
-        if($status === 'Join'){
-            $status =(<ModalSelectInsurer
+        if(status === 'Join'){
+            statusModule =(<ModalSelectInsurer
                       handlePost={this.handlePost}
                       handleChange={this.handleChange}
                     />)
         }
         else{
-            $status =(<ButtonStatusCancle>ไม่เข้าร่วมประมูล</ButtonStatusCancle>)
+            statusModule =(<ButtonStatusCancle>ไม่เข้าร่วมประมูล</ButtonStatusCancle>)
         }
     }
     else {
-        if($status === 'Join'){
-            // document.getElementById('box').className = 'boxs';
-            $status =(<Text style={{color:'#2ac294'}}>ร่วมประมูล</Text>)
+        if(status === 'Join'){
+            statusModule =(<Text style={{color:'#2ac294'}}>ร่วมประมูล</Text>)
         }
-        else if ($status === 'Cancle'){
-            $status =(<Text style={{color:'#f1535d'}}>ไม่ร่วมประมูล</Text>)
+        else if (status === 'Cancel'){
+        
+            statusModule =(<Text style={{color:'#f1535d'}}>ไม่ร่วมประมูล</Text>)
         }
         else{
-            $status =(<Text style={{color:'#3a7bd5'}}>กำลังพิจารณา</Text>)
+            statusModule =(<Text style={{color:'#3a7bd5'}}>กำลังพิจารณา</Text>)
         }
     } 
     return bids.map(bid => (
-    //   <div id = 'box' >
-        <Card>
+      <div className = 'boxDetail' >
+        <div className={this.boxStyling(status,end.end)}>
         <div className="row">
           <div className="large-3 columns">
             <Text>{bid.insurerName}</Text>
@@ -80,16 +104,16 @@ class Box extends Component {
 
           </div>
           <div className="large-2 columns">
-            <Text>{$status}</Text>
+            <Text>{statusModule}</Text>
           </div>
         </div>
-        </Card>
-      
+        </div>
+      </div>
     ))
   }
 
   render() {
-
+    
     return (
       <div className="Box">
         <div className="HeadBidContent">

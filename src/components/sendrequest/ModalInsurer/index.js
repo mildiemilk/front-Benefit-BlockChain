@@ -24,7 +24,7 @@ import ChooseInsurer from '../../ChooseInsurer'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    
+
     margin: 0 auto;
     padding-left: 4%;
   }
@@ -71,10 +71,9 @@ class ModalInsurer extends Component {
       >
 
         <ModalContents>
-          
-            <ChooseInsurer/>
 
-        
+          <ChooseInsurer />
+
         </ModalContents>
 
       </Modals>

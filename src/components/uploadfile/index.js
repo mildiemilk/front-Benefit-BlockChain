@@ -13,17 +13,19 @@ import csvpic from '../image/icons-8-csv.png'
 import {
   Detail,
   Head,
-  Head2,
   Inner,
+  Inner2,
   UploadBox,
-  INInner,
+  FileuploadBox,
   subInner,
   Submit,
   Submitupload,
   Inboxtext,
+  BrowsButton,
   Imagestyle,
   DropzoneStyle,
   inputStyle,
+  TextNormal,
 } from './styled'
 import {
   Grid,
@@ -41,47 +43,127 @@ class Uploadfile extends Component {
     super(props)
     this.state = {
       step: 5,
-      files: [],
+      ClaimData: [],
+      summitBrokerFile: '',
     }
   }
-  onDrop(files) {
-    this.setState({
-      files: this.state.files.concat(files),
-    })
-    console.log(this.state.files)
-  }
-
-  _handleImageChange(e, stateName) {
+  _handleUploadcliamdata(e) {
     e.preventDefault()
-    let reader = new FileReader()
     let file = e.target.files[0]
-    reader.onloadend = () => {
-      this.setState({
-        [stateName]: file,
-        filePreviewUrl: reader.result,
-      })
-    }
-    reader.readAsDataURL(file)
+    this.setState({
+      ClaimData: this.state.ClaimData.concat(file),
+    })
+    console.log(this.state.ClaimData)
   }
 
-  RenderListfile = files => {
-    return files.map(file => (
-      <Grid.Row>
-        <Grid.Column width={2}>
-          <Image src={csvpic} />
-        </Grid.Column>
-        <Grid.Column width={14}>
+  _handleUploadBroker(e) {
+    e.preventDefault()
+    let file = e.target.files[0]
+    this.setState({
+      summitBrokerFile: file,
+    })
+    console.log(this.state.summitBrokerFile)
+  }
+
+  handleDelete = e => {
+    console.log(e.target.id)
+    const ClaimDatas = this.state.ClaimData
+    ClaimDatas.splice(e.target.id, 1)
+    this.setState({
+      ClaimData: ClaimDatas,
+    })
+    console.log(this.state.ClaimData)
+  }
+
+  RenderUploadRow = ClaimData => {
+    const output = []
+    for (var i = 1; i < ClaimData.length; i++) {
+      output.push(
+        <tr style={{ height: '50px' }}>
+          <td> </td>
+          <td>
+            <FileuploadBox>
+              <p>
+                {this.state.ClaimData[i].name} &nbsp;
+                {(this.state.ClaimData[i].size / 100000).toFixed(2)} MB
+                <Icon
+                  id={i}
+                  onClick={this.handleDelete}
+                  style={{ positon: 'absolute', top: '-25px' }}
+                  link
+                  name="close"
+                />
+              </p>
+            </FileuploadBox>
+          </td>
+          <td>
+            <input
+              style={{ opacity: '0', position: 'absolute' }}
+              type="file"
+              accept=".xls,.xlsx,.pdf,.docx"
+              onChange={e => this._handleUploadcliamdata(e)}
+            />
+            <BrowsButton>เลือกไฟล์</BrowsButton>
+          </td>
+        </tr>,
+      )
+    }
+    return output
+  }
+
+  handleDelete = e => {
+    console.log(e.target.id)
+    const ClaimDatas = this.state.ClaimData
+    ClaimDatas.splice(e.target.id, 1)
+    this.setState({
+      ClaimData: ClaimDatas,
+    })
+    console.log(this.state.ClaimData)
+  }
+
+  RenderListClaimData = ClaimData => {
+    if (this.state.ClaimData.length >= 1) {
+      return (
+        <p>
+          {this.state.ClaimData[0].name} &nbsp;
+          {(this.state.ClaimData[0].size / 100000).toFixed(2)} MB
           <Icon
+            id={0}
             style={{ positon: 'absolute', top: '-25px' }}
             link
             name="close"
+            onClick={this.handleDelete}
           />
-          <p> {file.name} - {file.size} bytes </p>
-          <Progress percent={20} size="tiny" color="blue" />
-        </Grid.Column>
-        <Divider />
-      </Grid.Row>
-    ))
+        </p>
+      )
+    } else return <p />
+  }
+
+  handleDeleteBrokerFile = e => {
+    const summitBrokerFiles = this.state.summitBrokerFile
+    summitBrokerFiles.splice(e.target.id, 1)
+    this.setState({
+      summitBrokerFile: summitBrokerFiles,
+    })
+    console.log(this.state.ClaimData)
+  }
+
+  RendersummitBrokerFile = summitBrokerFile => {
+    if (this.state.summitBrokerFile) {
+      return (
+        <p>
+          {this.state.summitBrokerFile.name} &nbsp;
+          {(this.state.summitBrokerFile.size / 100000).toFixed(2)} MB
+          <Icon
+            id={0}
+            style={{ positon: 'absolute', top: '-25px' }}
+            link
+            name="close"
+            onClick={this.handleDeleteBrokerFile}
+          />
+        </p>
+      )
+    } else return <p />
   }
 
   render() {
@@ -95,60 +177,96 @@ class Uploadfile extends Component {
             <Head>อัพโหลดไฟล์</Head>
             <Grid>
               <Grid.Row>
-                <Grid.Column width={8}>
+                <TextNormal>
+                  กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
+                  (รองรับไฟล์ประเภท .pdf, .docx และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
+                  <br />
+                </TextNormal>
+                <Grid.Column width={16}>
                   <Inner>
-                    <Head2>
-                      กรุณาอัพโหลด Employee Claim Data
-                    </Head2>
-                    <DropzoneStyle onDrop={this.onDrop.bind(this)}>
-                      <Imagestyle src={uploadicon} />
-                      <Inboxtext>ลากไฟล์มาวางที่นี้<br />หรือ<br /></Inboxtext>
-                      <Submitupload>
-                        {/* <inputStyle type="file"
-                        onChange={e => this._handleImageChange(e, 'file1')} /> */}
-                        เลือกไฟล์
-                      </Submitupload>
-                    </DropzoneStyle>
+                    <table style={{ width: '100%' }}>
+                      <tr>
+                        <td style={{ width: '274px' }}>
+                          <TextNormal>
+                            กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์ :
+                          </TextNormal>
+                        </td>
+                        <td>
+                          <FileuploadBox>
+                            {this.RendersummitBrokerFile(
+                              this.state.summitBrokerFile,
+                            )}
+                          </FileuploadBox>
+                        </td>
+                        <td>
+                          <input
+                            style={{ opacity: '0', position: 'absolute' }}
+                            type="file"
+                            accept=".xls,.xlsx,.pdf,.docx"
+                            onChange={e => this._handleUploadBroker(e)}
+                          />
+                          <BrowsButton>
+                            เลือกไฟล์
+                          </BrowsButton>
+                        </td>
+                      </tr>
+                    </table>
                   </Inner>
                 </Grid.Column>
-                <Grid.Column width={8}>
-                  <Inner>
-                    <Head2>
-                      กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์
-                    </Head2>
-                    <DropzoneStyle onDrop={this.onDrop.bind(this)}>
-                      <Imagestyle src={uploadicon} />
-                      <Inboxtext>ลากไฟล์มาวางที่นี้<br />หรือ<br /></Inboxtext>
-                      <Submitupload>
-                        {/* <inputStyle type="file"
-                        onChange={e => this._handleImageChange(e, 'file1')} /> */}
-                        เลือกไฟล์
-                      </Submitupload>
-                    </DropzoneStyle>
-                  </Inner>
+
+                <Grid.Column width={16}>
+                  <Inner2>
+                    <table style={{ width: '100%' }}>
+                      <tr style={{ height: '50px' }}>
+                        <td style={{ width: '275px' }}>
+                          <TextNormal>
+                            กรุณาอัพโหลด Employee Claim Data :
+                          </TextNormal>
+                        </td>
+                        <td>
+                          <FileuploadBox>
+                            {this.RenderListClaimData(this.state.ClaimData)}
+
+                          </FileuploadBox>
+                        </td>
+                        <td>
+                          <input
+                            style={{ opacity: '0', position: 'absolute' }}
+                            type="file"
+                            accept=".xls,.xlsx,.pdf,.docx"
+                            onChange={e => this._handleUploadcliamdata(e)}
+                          />
+                          <BrowsButton>เลือกไฟล์</BrowsButton>
+                        </td>
+                      </tr>
+
+                      {this.RenderUploadRow(this.state.ClaimData)}
+
+                      <tr style={{ height: '50px' }}>
+                        <td />
+                        <td>
+                          <BrowsButton>
+                            <input
+                              style={{ opacity: '0', position: 'absolute' }}
+                              type="file"
+                              accept=".xls,.xlsx,.pdf,.docx"
+                              onChange={e => this._handleUploadcliamdata(e)}
+                            />
+                            + เพิ่มไฟล์
+                          </BrowsButton>
+                        </td>
+                        <td />
+                      </tr>
+                    </table>
+                  </Inner2>
                 </Grid.Column>
+
               </Grid.Row>
 
-              <Grid.Row centered>
-                <Grid.Column width={16}>
-                  <UploadBox>
-                    <Grid>
-                      <Grid.Row>
-                        <Grid.Column width={16}>
-                          <Head2 style={{ fontSize: '20px' }}>
-                            uploading
-                          </Head2>
-                        </Grid.Column>
-                      </Grid.Row>
-                      <Divider />
-                      {this.RenderListfile(this.state.files)}
-                    </Grid>
-                  </UploadBox>
-                </Grid.Column>
-              </Grid.Row>
             </Grid>
+            <Submit>ต่อไป</Submit>
           </Detail>
-          <Submit>ต่อไป</Submit>
+
         </div>
       </div>
     )

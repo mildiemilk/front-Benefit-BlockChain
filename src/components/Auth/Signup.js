@@ -91,19 +91,9 @@ class SignUp extends Component {
                     />
                   </Form.Field>
 
-                  <Button
-                    style={{
-                      marginTop: '50px',
-                      marginBottom: '129px',
-                      textAlign: 'center',
-                      width: '329px',
-                      backgroundColor: '#3A7BD5',
-                      color: 'white',
-                    }}
-                    type="submit"
-                  >
+                  <button className="signUpButton">
                     สมัครสมาชิก
-                  </Button>
+                  </button>
                 </Form>
               </div>
             </div>

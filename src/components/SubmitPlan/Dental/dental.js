@@ -57,7 +57,6 @@ class Dental extends Component {
   componentDidUpdate() {
     if (this.props.setPlan === 'Dental' && this.props.reset === true) {
       this.handleResetdata()
-      this.props.handleAfterReset()
     }
   }
 
@@ -111,6 +110,7 @@ class Dental extends Component {
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
           handleNextPlan={this.props.handleNextPlan}
+          handleReset={this.props.handleReset}
         />
       </div>
     )

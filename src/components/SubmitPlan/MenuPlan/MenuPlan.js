@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { getAllPlan, copyPlan, deletePlan } from '../../../api/setPlan'
 import {
   Button,
   Checkbox,
@@ -31,21 +30,6 @@ class MenuPlan extends Component {
       isOpen: false,
       modalOpen: false,
     }
-  }
-
-  handleEdit = e => {
-    this.props.handlePlan(e.target.id)
-  }
-
-  handleCopy = e => {
-    this.props.handlePlan(e.target.id)
-    this.props.copyPlan(this.props.planList[e.target.id].planId)
-  }
-
-  handleDelete = e => {
-    this.props.handlePlan(-1)
-    console.log(this.props.planList[e.target.id].planId)
-    this.props.deletePlan(this.props.planList[e.target.id].planId)
   }
 
   handleOpen = () => {
@@ -84,21 +68,21 @@ class MenuPlan extends Component {
               <List divided relaxed>
                 <List.Item>
                   <List.Content>
-                    <p id={i} onClick={this.handleEdit}>
+                    <p id={i} onClick={this.props.handleEdit}>
                       <Icon name="edit" />แก้ไขแพลน
                     </p>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content>
-                    <p id={i} onClick={this.handleCopy}>
+                    <p id={i} onClick={this.props.handleCopy}>
                       <Icon name="copy" />คัดลอกแพลน
                     </p>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content>
-                    <p id={i} onClick={this.handleDelete}>
+                    <p id={i} onClick={this.props.handleDelete}>
                       <Icon name="trash outline" />ลบแพลน
                     </p>
                   </List.Content>
@@ -120,9 +104,6 @@ class MenuPlan extends Component {
   }
 
   render() {
-    {
-      this.props.getAllPlan()
-    }
     return (
       <div className="menu-box">
         <p className="menu-header">จัดแผนประกันภัย</p>
@@ -143,12 +124,18 @@ class MenuPlan extends Component {
           />
         </div>
         <FormModal
+          activePlan={this.props.activePlan}
+          handlePlan={this.props.handlePlan}
           openModalForm={this.props.openModalForm}
           handleCloseModal={this.props.handleCloseModal}
           handleModalFinish={this.props.handleModalFinish}
+          handleResetProfilePlan={this.props.handleResetProfilePlan}
+          handleChange={this.props.handleChange}
+          planName={this.props.planName}
+          employeeOfPlan={this.props.employeeOfPlan}
         />
         <div className="menu-add-plan">
-          <p onClick={() => this.props.handlePlan(-1)}>
+          <p onClick={this.props.handleNewPlan}>
             <Icon name="add circle" size="big" />สร้างแพลนใหม่
           </p>
         </div>
@@ -160,14 +147,8 @@ class MenuPlan extends Component {
 
 MenuPlan.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
-  deletePlan: planId => dispatch(deletePlan(planId)),
-  copyPlan: planId => dispatch(copyPlan(planId)),
-})
+const mapDispatchToProps = dispatch => ({})
 
-const mapStateToProps = state => ({
-  planList: state.plan,
-})
+const mapStateToProps = state => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuPlan)

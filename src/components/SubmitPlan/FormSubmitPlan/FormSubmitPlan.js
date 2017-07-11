@@ -24,35 +24,25 @@ const moneyOptions = [{ text: '100', value: 100 }, { text: '200', value: 200 }]
 class FormSubmitPlan extends Component {
   constructor() {
     super()
-    this.state = {
-      planName: '',
-      employeeOfPlan: '',
-    }
+    this.state = {}
   }
-
-  handleReset = () => {
-    this.setState({ planName: '' })
-    this.setState({ employeeOfPlan: '' })
-  }
-
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleClick = () => {
-    this.props.handleModalFinish()
-    if (this.props.nowPlan === -1) {
-      this.props.createPlan(this.state)
+    const { planName, employeeOfPlan } = this.props
+    if (this.props.activePlan === -1) {
+      this.props.handleModalFinish()
+      this.props.createPlan({ planName, employeeOfPlan })
       this.props.handlePlan(this.props.planList.length)
     } else {
       this.props.editPlan(
-        this.state,
-        this.props.planList[this.props.nowPlan].planId,
+        { planName, employeeOfPlan },
+        this.props.planList[this.props.activePlan].planId,
         'profilePlan',
       )
     }
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className="fillBox">
@@ -64,7 +54,7 @@ class FormSubmitPlan extends Component {
               <img
                 src={erase}
                 className="image-erase"
-                onClick={() => this.handleReset()}
+                onClick={() => this.props.handleResetProfilePlan()}
               />
               <span className="headLogo">Reset</span>
             </div>
@@ -83,8 +73,8 @@ class FormSubmitPlan extends Component {
                   <Form.Input
                     placeholder="ชื่อแพลน"
                     name="planName"
-                    value={this.state.planName}
-                    onChange={this.handleChange}
+                    value={this.props.planName}
+                    onChange={this.props.handleChange}
                     style={{ marginTop: '7%' }}
                     required
                   />
@@ -94,10 +84,10 @@ class FormSubmitPlan extends Component {
                   <Form.Select
                     placeholder="เท่า"
                     options={moneyOptions}
-                    value={this.state.employeeOfPlan}
+                    value={this.props.employeeOfPlan}
                     name="employeeOfPlan"
                     id="employeeOfPlan"
-                    onChange={this.handleChange}
+                    onChange={this.props.handleChange}
                   />
                   <br />
                 </Form.Group>

@@ -8,16 +8,17 @@ import {
   getALLInsurerFailure,
 } from '../reducers/chooseInsurer'
 
+const test = ''
 const CHOOSEINSURER_URI = '/api/chooseInsurer'
 const SETTIMEOUT_URI = '/api/setTimeout'
 const GETALLINSURER_URI = '/api/getAllInsurer'
 
-export function chooseInsurer(Insurers) {
+export function chooseInsurer(insurers) {
   return dispatch => {
     const options = {
       method: 'put',
       url: CHOOSEINSURER_URI,
-      data: { Insurers },
+      data: { insurers },
     }
 
     APIRequest(options, true)
@@ -34,8 +35,8 @@ export function chooseInsurer(Insurers) {
 
 export function getAllInsurer() {
   return dispatch => {
-    const option = {
-      method: 'GET',
+    const options = {
+      method: 'get',
       url: GETALLINSURER_URI,
     }
 
@@ -60,11 +61,11 @@ export function setTimeOut(timeout) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
+        console.log('timeout:' + res)
         dispatch(setTimeOutSuccess(res.data))
       })
       .catch(err => {
-        dispatch(setTimeOutFailure(err.response.data))
+        // dispatch(setTimeOutFailure(err.response.data))
         console.log(err.response)
       })
   }

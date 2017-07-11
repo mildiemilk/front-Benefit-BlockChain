@@ -28,7 +28,7 @@ export function setTimeOutFailure(data) {
 export function getAllInsurerSuccess(data) {
   return { type: GETALLINSURER_REQUEST_SUCCESS, data }
 }
-export function getALLInsurerFailure(data) {
+export function getAllInsurerFailure(data) {
   return { type: GETALLINSURER_REQUEST_FAILUER, data }
 }
 

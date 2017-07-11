@@ -103,14 +103,12 @@ class simpleRQ extends Component {
   handleCheck = (e, { name, checked }) => this.setState({ [name]: checked })
 
   render() {
-    // console.log(this.props.data)
     let { filePreviewUrl } = this.state
     let $filePreview = null
     if (filePreviewUrl) {
       $filePreview = <span>{this.state.file.name}&nbsp;</span>
     }
 
-    console.log(this.state)
     return (
       <div id="simpleRQ">
         <NavInsure step={this.state.step} />

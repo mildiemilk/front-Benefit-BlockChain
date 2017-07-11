@@ -1,17 +1,57 @@
 import React, { Component } from 'react'
 import { Divider, Icon } from 'semantic-ui-react'
-import { Card, Text, TextIn, IconPointer } from './styled'
+import {
+  Card,
+  Text,
+  TextIn,
+  IconPointer,
+  ButtonStatusAppove,
+  ButtonStatusCancle,
+} from './styled'
 import { bidding } from '../../api/bidding'
 import { connect } from 'react-redux'
+import ModalSelectInsurer from './ModalSelectInsurer'
+import moment from 'moment'
 
 class Box extends Component {
   constructor() {
     super()
     this.state = {}
   }
+  handlePost = e => {
+    e.preventDefault()
+    const { passwordToConfirm } = this.state
+    this.props.postBox(passwordToConfirm)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   renderList = bids => {
-    console.log(bids)
-    return bids.map(bid => (
+    let $status = 'Join'
+    const { end } = this.props
+    if (end.end === 'Timeout') {
+      if ($status === 'Join') {
+        $status = (
+          <ModalSelectInsurer
+            handlePost={this.handlePost}
+            handleChange={this.handleChange}
+          />
+        )
+      } else {
+        $status = <ButtonStatusCancle>ไม่เข้าร่วมประมูล</ButtonStatusCancle>
+      }
+    } else {
+      if ($status === 'Join') {
+        // document.getElementById('box').className = 'boxs';
+        $status = <Text style={{ color: '#2ac294' }}>ร่วมประมูล</Text>
+      } else if ($status === 'Cancle') {
+        $status = <Text style={{ color: '#f1535d' }}>ไม่ร่วมประมูล</Text>
+      } else {
+        $status = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>
+      }
+    }
+    return bids.map(bid => //   <div id = 'box' >
+    (
       <Card>
         <div className="row">
           <div className="large-3 columns">
@@ -26,7 +66,7 @@ class Box extends Component {
                 <Text>{bid.timeOfBidding}</Text>
               </div>
               <div className="large-2 columns">
-                <Text>{bid.updatedAt}</Text>
+                <Text>{moment(bid.updatedAt).format('L')}</Text>
               </div>
               <div className="large-4 columns">
                 <Text>{bid.priceOfBidding}</Text>
@@ -44,23 +84,14 @@ class Box extends Component {
 
           </div>
           <div className="large-2 columns">
-            <Text>test</Text>
+            <Text>{$status}</Text>
           </div>
         </div>
-
       </Card>
     ))
   }
 
   render() {
-    let $status = null
-    if ($status === 'Yes') {
-      $status = <Text style={{ color: '#2ac294' }}>ร่วมประมูล</Text>
-    } else if ($status === 'No') {
-      $status = <Text style={{ color: '#f1535d' }}>ไม่ร่วมประมูล</Text>
-    } else {
-      $status = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>
-    }
     return (
       <div className="Box">
         <div className="HeadBidContent">
@@ -98,4 +129,8 @@ class Box extends Component {
   }
 }
 
-export default Box
+const mapStateToProps = state => ({
+  end: state.endTimeout,
+})
+
+export default connect(mapStateToProps, null)(Box)

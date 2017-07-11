@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
 import {
@@ -25,6 +26,7 @@ import {
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import IPDDropBox from './IPDDropBox'
+import { getAllPlan } from '../../api/setPlan'
 
 const Icons = styled(Icon)`
   &&&{
@@ -34,7 +36,7 @@ const Icons = styled(Icon)`
   }
 `
 
-export default class ComparePlan extends Component {
+class ComparePlan extends Component {
   constructor() {
     super()
     this.state = {
@@ -79,6 +81,126 @@ export default class ComparePlan extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getAllPlan()
+    console.log(this.props.planList)
+  }
+
+  renderPlanName = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        <SubCompareTables>
+          Management <br /> {plan.planName}
+        </SubCompareTables>
+      </th>
+    ))
+  }
+
+  renderLife = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed === 0
+          ? ''
+          : plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed}
+      </th>
+    ))
+  }
+
+  renderDental = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.dentalPerYear === null ? '' : plan.dentalPerYear}
+      </th>
+    ))
+  }
+
+  renderOPD = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.opdPerYear +
+          plan.opdPerTime +
+          plan.opdTimeNotExceedPerYear +
+          plan.opdCoPlayQuota +
+          plan.opdCoPlayDeductable +
+          plan.opdCoPlayMixPercentage +
+          plan.opdCoPlayMixNotExceed +
+          plan.opdCoPlayMixYear ===
+          0
+          ? ''
+          : plan.opdPerYear +
+              plan.opdPerTime +
+              plan.opdTimeNotExceedPerYear +
+              plan.opdCoPlayQuota +
+              plan.opdCoPlayDeductable +
+              plan.opdCoPlayMixPercentage +
+              plan.opdCoPlayMixNotExceed +
+              plan.opdCoPlayMixYear}
+      </th>
+    ))
+  }
+
+  renderIPD = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.ipdLumsumPerYear +
+          plan.ipdLumsumPerTime +
+          plan.ipdLumsumTimeNotExceedPerYear +
+          plan.rbLumsumRoomPerNight +
+          plan.rbLumsumNigthNotExceedPerYear +
+          plan.rbLumsumPayNotExceedPerNight +
+          plan.rbLumsumPayNotExceedPerYear +
+          plan.rbSchedulePatient +
+          plan.rbScheduleIntensiveCarePatient +
+          plan.rbScheduleDoctor +
+          plan.rbScheduleSurgerySchedule +
+          plan.rbScheduleSurgeryNonSchedule +
+          plan.rbScheduleService +
+          plan.rbScheduleSmallSurgery +
+          plan.rbScheduleAdviser +
+          plan.rbScheduleAmbulance +
+          plan.rbScheduleAccident +
+          plan.rbScheduleTreatment +
+          plan.rbScheduleTransplant +
+          plan.ipdCoPlayQuota +
+          plan.ipdCoPlayDeductable +
+          plan.ipdCoPlayMixPercentage +
+          plan.ipdCoPlayMixNotExceed +
+          plan.ipdCoPlayMixYear ===
+          0
+          ? ''
+          : plan.ipdLumsumPerYear +
+              plan.ipdLumsumPerTime +
+              plan.ipdLumsumTimeNotExceedPerYear +
+              plan.rbLumsumRoomPerNight +
+              plan.rbLumsumNigthNotExceedPerYear +
+              plan.rbLumsumPayNotExceedPerNight +
+              plan.rbLumsumPayNotExceedPerYear +
+              plan.rbSchedulePatient +
+              plan.rbScheduleIntensiveCarePatient +
+              plan.rbScheduleDoctor +
+              plan.rbScheduleSurgerySchedule +
+              plan.rbScheduleSurgeryNonSchedule +
+              plan.rbScheduleService +
+              plan.rbScheduleSmallSurgery +
+              plan.rbScheduleAdviser +
+              plan.rbScheduleAmbulance +
+              plan.rbScheduleAccident +
+              plan.rbScheduleTreatment +
+              plan.rbScheduleTransplant +
+              plan.ipdCoPlayQuota +
+              plan.ipdCoPlayDeductable +
+              plan.ipdCoPlayMixPercentage +
+              plan.ipdCoPlayMixNotExceed +
+              plan.ipdCoPlayMixYear}
+      </th>
+    ))
+  }
+
   render() {
     return (
       <div className="ComparePlan">
@@ -108,31 +230,7 @@ export default class ComparePlan extends Component {
                           ผลประโยชน์ความคุ้มครอง (Benefits)
                         </TopicCompareTable>
                       </th>
-                      <th>
-                        <SubCompareTables>
-                          Management <br /> Plan 1
-                        </SubCompareTables>
-                      </th>
-                      <th>
-                        <SubCompareTables>
-                          Management <br /> Plan 2
-                        </SubCompareTables>
-                      </th>
-                      <th>
-                        <SubCompareTables>
-                          Management <br /> Plan 3
-                        </SubCompareTables>
-                      </th>
-                      <th>
-                        <SubCompareTables>
-                          Management <br /> Plan 4
-                        </SubCompareTables>
-                      </th>
-                      <th>
-                        <SubCompareTables>
-                          Management <br /> Plan 5
-                        </SubCompareTables>
-                      </th>
+                      {this.renderPlanName()}
                     </tr>
                   </table>
                 </div>
@@ -153,11 +251,7 @@ export default class ComparePlan extends Component {
                           name="caret down"
                         />
                       </th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
+                      {this.renderLife()}
                     </tr>
                     {this.state.lifeBox
                       ? <HiddenBox>
@@ -184,11 +278,7 @@ export default class ComparePlan extends Component {
                           name="caret down"
                         />
                       </th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
+                      {this.renderDental()}
                     </tr>
                     {this.state.dentalBox
                       ? <HiddenBox>
@@ -218,11 +308,7 @@ export default class ComparePlan extends Component {
                           name="caret down"
                         />
                       </th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
+                      {this.renderOPD()}
                     </tr>
                     {this.state.OPDBox
                       ? <HiddenBox>
@@ -252,15 +338,13 @@ export default class ComparePlan extends Component {
                           name="caret down"
                         />
                       </th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
-                      <th>1,000,000</th>
+                      {this.renderIPD()}
                     </tr>
                   </table>
                 </div>
-                {this.state.IPDBox ? <IPDDropBox /> : null}
+                {this.state.IPDBox
+                  ? <IPDDropBox planList={this.props.planList} />
+                  : null}
 
                 <div style={{ marginTop: '5%' }}>
                   <Note>
@@ -289,3 +373,13 @@ export default class ComparePlan extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComparePlan)

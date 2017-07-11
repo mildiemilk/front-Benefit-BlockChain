@@ -74,7 +74,8 @@ class Uploadfile extends Component{
             <td>
               <FileuploadBox>
                 <p>
-                {this.state.ClaimData[i].name} - {this.state.ClaimData[i].size/100000} MB
+                {this.state.ClaimData[i].name} &nbsp;
+                {(this.state.ClaimData[i].size/100000).toFixed( 2 ) } MB
                 <Icon id={i} onClick={this.handleDelete} style={{positon:'absolute',top:'-25px'}} link name='close'  />
                 </p>
               </FileuploadBox>
@@ -82,7 +83,7 @@ class Uploadfile extends Component{
             <td>
               <input
                 style={{ opacity: '0', position: 'absolute' }}
-                type="file"
+                type="file" accept=".xls,.xlsx,.pdf,.docx"
                 onChange={e => this._handleUploadcliamdata(e)}
               />
               <BrowsButton>เลือกไฟล์</BrowsButton>
@@ -106,8 +107,8 @@ class Uploadfile extends Component{
   RenderListClaimData = (ClaimData) => {
     if(this.state.ClaimData.length>=1){
       return <p>
-         {this.state.ClaimData[0].name} -
-          {this.state.ClaimData[0].size/100000} MB
+         {this.state.ClaimData[0].name} &nbsp;
+          {(this.state.ClaimData[0].size/100000).toFixed( 2 ) } MB
         <Icon id={0} style={{positon:'absolute',top:'-25px'}}
           link name='close'
           onClick={this.handleDelete} />
@@ -126,10 +127,10 @@ class Uploadfile extends Component{
   }
 
   RendersummitBrokerFile = (summitBrokerFile) => {
-    if(this.state.summitBrokerFile.length>=1){
+    if(this.state.summitBrokerFile){
       return <p>
-        {this.state.summitBrokerFile.name} -
-        {this.state.summitBrokerFile.size/100000} MB
+        {this.state.summitBrokerFile.name} &nbsp;
+        {(this.state.summitBrokerFile.size/100000).toFixed( 2 )} MB
         <Icon id={0} style={{positon:'absolute',top:'-25px'}}
           link name='close'
           onClick={this.handleDeleteBrokerFile} />
@@ -152,7 +153,7 @@ class Uploadfile extends Component{
             <Grid.Row>
               <TextNormal>
                 กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
-               (รองรับไฟล์ประเภท .pdf, .doc และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)<br></br>
+               (รองรับไฟล์ประเภท .pdf, .docx และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)<br></br>
               </TextNormal>
               <Grid.Column width={16}>
                 <Inner>
@@ -165,13 +166,13 @@ class Uploadfile extends Component{
                       </td>
                       <td>
                         <FileuploadBox>
-                          {this.RendersummitBrokerFile(this.state.ClaimData)}
+                          {this.RendersummitBrokerFile(this.state.summitBrokerFile)}
                         </FileuploadBox>
                       </td>
                       <td>
                         <input
                           style={{ opacity: '0', position: 'absolute' }}
-                          type="file"
+                          type="file" accept=".xls,.xlsx,.pdf,.docx"
                           onChange={e => this._handleUploadBroker(e)}
                         />
                           <BrowsButton>
@@ -202,7 +203,7 @@ class Uploadfile extends Component{
                       <td>
                         <input
                           style={{ opacity: '0', position: 'absolute' }}
-                          type="file"
+                          type="file" accept=".xls,.xlsx,.pdf,.docx"
                           onChange={e => this._handleUploadcliamdata(e)}
                         />
                         <BrowsButton>เลือกไฟล์</BrowsButton>
@@ -217,7 +218,7 @@ class Uploadfile extends Component{
                         <BrowsButton>
                           <input
                             style={{ opacity: '0', position: 'absolute' }}
-                            type="file"
+                            type="file" accept=".xls,.xlsx,.pdf,.docx"
                             onChange={e => this._handleUploadcliamdata(e)}
                           />
                           + เพิ่มไฟล์

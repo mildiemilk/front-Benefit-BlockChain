@@ -53,7 +53,7 @@ export const Inner2 = styled.div`
     margin-bottom: 15px;
     padding-top: 29px;
     padding-left: 25px;
-    overflow: scroll;
+    overflow-y: scroll;
 
 `
 export const FileuploadBox = styled.div`

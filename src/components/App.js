@@ -40,7 +40,7 @@ const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
       <EmptyLayout>
-        {isAuthenticated
+        {true
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />
@@ -63,6 +63,7 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/chooseinsurer" component={ChooseInsurer} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
+                    <Route path='/uploadfile' component={Uploadfile}/>
                   </Switch>
                 </MainLayout>
               </Switch>

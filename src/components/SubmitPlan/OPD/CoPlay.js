@@ -100,6 +100,7 @@ class CoPlay extends Component {
                   placeholder="เปอร์เซน"
                   name="opdCoPlayQuota"
                   id="opdCoPlayQuota"
+                  value={this.props.opdCoPlayQuota}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -129,6 +130,7 @@ class CoPlay extends Component {
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayDeductable"
                   id="opdCoPlayDeductable"
+                  value={this.props.opdCoPlayDeductable}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -160,6 +162,7 @@ class CoPlay extends Component {
                     placeholder="เปอร์เซ็น"
                     name="opdCoPlayMixPercentage"
                     id="opdCoPlayMixPercentage"
+                    value={this.props.opdCoPlayMixPercentage}
                     onChange={this.props.handleChange}
                     required
                   />
@@ -170,6 +173,7 @@ class CoPlay extends Component {
                     placeholder="จำนวนเงิน"
                     name="opdCoPlayMixNotExceed"
                     id="opdCoPlayMixNotExceed"
+                    value={this.props.opdCoPlayMixNotExceed}
                     onChange={this.props.handleChange}
                     required
                   />
@@ -180,6 +184,7 @@ class CoPlay extends Component {
                     placeholder="ปี"
                     name="opdCoPlayMixYear"
                     id="opdCoPlayMixYear"
+                    value={this.props.opdCoPlayMixYear}
                     onChange={this.props.handleChange}
                     required
                   />

@@ -118,7 +118,7 @@ class InsurerSelect extends Component {
                   showSecond={false}
                 />
                 <br />
-                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
+                <Submit onClick={this.handleTimeOut}>บันทึกก</Submit>
 
               </SideIn>
             </div>

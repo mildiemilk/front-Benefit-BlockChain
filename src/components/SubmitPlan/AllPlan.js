@@ -347,7 +347,7 @@ class AllsetPlan extends Component {
                   openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
-                  nowPlan={this.props.nowPlan}
+                  activePlan={this.props.activePlan}
                 />
               : null}
             {this.state.setPlan === 'OPD'
@@ -361,7 +361,17 @@ class AllsetPlan extends Component {
                   openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
-                  nowPlan={this.props.nowPlan}
+                  activePlan={this.props.activePlan}
+                  handleChange={this.props.handleChange}
+                  opdCoPlay={this.props.opdCoPlay}
+                  opdPerYear={this.props.opdPerYear}
+                  opdPerTime={this.props.opdPerTime}
+                  opdTimeNotExceedPerYear={this.props.opdTimeNotExceedPerYear}
+                  opdCoPlayQuota={this.props.opdCoPlayQuota}
+                  opdCoPlayDeductable={this.props.opdCoPlayDeductable}
+                  opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
+                  opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
+                  opdCoPlayMixYear={this.props.opdCoPlayMixYear}
                 />
               : null}
             {this.state.setPlan === 'Dental'
@@ -375,7 +385,10 @@ class AllsetPlan extends Component {
                   openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
-                  nowPlan={this.props.nowPlan}
+                  activePlan={this.props.activePlan}
+                  dentalPerYear={this.props.dentalPerYear}
+                  handleChange={this.props.handleChange}
+                  handleResetDental={this.props.handleResetDental}
                 />
               : null}
             {this.state.setPlan === 'Life'
@@ -389,7 +402,12 @@ class AllsetPlan extends Component {
                   openModal={this.state.openModal}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
-                  nowPlan={this.props.nowPlan}
+                  activePlan={this.props.activePlan}
+                  handleChange={this.props.handleChange}
+                  lifePerYear={this.props.lifePerYear}
+                  lifeTimeOfSalary={this.props.lifeTimeOfSalary}
+                  lifeNotExceed={this.props.lifeNotExceed}
+                  handleResetLife={this.props.handleResetLife}
                 />
               : null}
           </div>

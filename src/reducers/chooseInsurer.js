@@ -57,7 +57,6 @@ export function setTimeOut(state = defaultTimeOut, action) {
 }
 
 export function getAllInsurer(state = defaultAllInsurer, action) {
-  console.log(action)
   switch (action.type) {
     case GETALLINSURER_REQUEST_SUCCESS:
       return action.data

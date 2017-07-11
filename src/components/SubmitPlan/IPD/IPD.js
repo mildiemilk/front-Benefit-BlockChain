@@ -140,7 +140,7 @@ class IPD extends Component {
         ipdCoPlayMixNotExceed,
         ipdCoPlayMixYear,
       },
-      this.props.planList[this.props.nowPlan].planId,
+      this.props.planList[this.props.activePlan].planId,
       'ipd',
     )
   }

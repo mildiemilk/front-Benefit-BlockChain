@@ -18,6 +18,7 @@ class CardInsure extends React.Component {
           onChange={this.props.handleCheck}
         />
         {insurer.insurerName}
+        hhh
       </Card>
     ))
   }

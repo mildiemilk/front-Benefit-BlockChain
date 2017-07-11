@@ -154,7 +154,6 @@ class IPD extends Component {
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
       this.handleResetdata()
-      this.props.handleAfterReset()
     }
   }
 
@@ -274,6 +273,7 @@ class IPD extends Component {
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
             handleNextPlan={this.props.handleNextPlan}
+            handleReset={this.props.handleReset}
           />
         </div>
       </div>

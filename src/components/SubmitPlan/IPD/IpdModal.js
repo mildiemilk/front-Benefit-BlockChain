@@ -45,8 +45,10 @@ class IpdModal extends Component {
       modalOpen: false,
     })
 
-  handleContinue = () => {
+  handleCancel = () => {
     this.props.handleCloseModal()
+    this.props.handleReset()
+    this.props.handleNextPlan()
   }
 
   handleSubmit = () => {
@@ -86,7 +88,7 @@ class IpdModal extends Component {
                 backgroundColor: '#f7555f',
                 marginLeft: '0.7%',
               }}
-              onClick={this.handleContinue}
+              onClick={this.handleCancel}
             >
               ยกเลิก
             </Button>

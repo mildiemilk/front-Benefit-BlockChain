@@ -10,7 +10,7 @@ export function APIRequest(options, authenticate = true) {
     ? { Authorization: `${localStorage.getItem('token')}` }
     : {}
   const defaultOption = {
-    baseURL: 'http://localhost:8000',
+    baseURL: 'http://crazyboys-mbp:56869',
     headers: Object.assign(
       {},
       { 'Content-Type': 'application/json' },

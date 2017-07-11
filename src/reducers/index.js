@@ -10,7 +10,7 @@ import {
   chooseInsurerReducer,
   getAllInsurer,
 } from './chooseInsurer'
-import { endTimeout } from './bidding'
+import { biddingReducer, endTimeout } from './bidding'
 
 const rootReducer = combineReducers({
   authReducer,
@@ -22,6 +22,7 @@ const rootReducer = combineReducers({
   chooseInsurerReducer,
   setTimeOut,
   getAllInsurer,
+  biddingReducer,
   endTimeout,
 })
 

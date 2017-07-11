@@ -13,40 +13,42 @@ class Bidding extends Component {
   }
 
   render() {
-  
-    const currentDate = new Date();
-    const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
-    
+    const currentDate = new Date()
+    const year = currentDate.getMonth() === 11 && currentDate.getDate() > 23
+      ? currentDate.getFullYear() + 1
+      : currentDate.getFullYear()
+    console.log(year)
+
     return (
       <div className="NavBid">
         <div className="row">
           <div className="large-12 columns">
             <Head> การเสนอราคาประมูล </Head>
-            <Divider style={{marginBottom: '30px'}}/>
+            <Divider style={{ marginBottom: '30px' }} />
           </div>
         </div>
         <div className="row">
           <div className="large-4 columns">
             <Nav>
-              <Pic><img src={building}/></Pic>
+              <Pic><img src={building} /></Pic>
               <TextNav>
-                <Font>จำนวนบริษัทประกัน</Font><br/>
+                <Font>จำนวนบริษัทประกัน</Font><br />
                 <FontNum>5</FontNum>
               </TextNav>
             </Nav>
           </div>
           <div className="large-4 columns">
             <Nav>
-              <Pic><img src={auction}/></Pic>
+              <Pic><img src={auction} /></Pic>
               <TextNav>
-                <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime><br/>
+                <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime><br />
                 <FontNumAucTime>10,000,000</FontNumAucTime>
               </TextNav>
             </Nav>
           </div>
           <div className="large-4 columns">
             <Nav>
-              <Pic><img src={time}/></Pic>
+              <Pic><img src={time} /></Pic>
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br/>
                 <FontNumAucTime><CountDowns date={this.props.timeout.timeout}/></FontNumAucTime>

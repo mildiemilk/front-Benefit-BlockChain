@@ -59,16 +59,7 @@ class InsurerSelect extends Component {
     else this.setState({ num: this.state.num - 1 })
   }
   render() {
-    console.log('eiei');
-    console.log(this.state.date);
-    console.log(moment(this.state.date)
-                  .locale('th')
-                  .format('DD MMMM YYYY'));
-    console.log(this.props.timeout);
-    console.log(moment(this.props.timeout.timeout)
-                  .locale('th')
-                  .format('DD MMMM YYYY'));
-    
+        
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />

@@ -112,8 +112,6 @@ class Dental extends Component {
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
-          handleNextPlan={this.props.handleNextPlan}
-          handleReset={this.props.handleReset}
         />
       </div>
     )

@@ -39,62 +39,63 @@ class SignUp extends Component {
     return (
       <div className="box">
         <img src={logo} style={{ maxWidth: '30%' }} />
-        <div className="boxForm">
-          <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
-          <div className="row" />
-          <div className="boxCenter">
-            <div className="row">
-              <div className="large-4 large-offset-4 columns">
-                <Form onSubmit={this.handleSubmit}>
-                  <Form.Field>
-                    <Form.Input
-                      style={{
-                        width: '325px',
-                        backgroundImage: `url(${userIcon})`,
-                        backgroundSize: '32px,32px',
-                        backgroundRepeat: 'no-repeat',
-                        paddingLeft: '13%',
-                      }}
-                      placeholder="อีเมลของคุณ"
-                      name="email"
-                      onChange={this.handleChange}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      style={{
-                        width: '325px',
-                        backgroundImage: `url(${passwordIcon})`,
-                        backgroundSize: '32px,32px',
-                        backgroundRepeat: 'no-repeat',
-                        paddingLeft: '13%',
-                      }}
-                      placeholder="พาสเวิร์ด"
-                      name="password"
-                      type="password"
-                      onChange={this.handleChange}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      style={{
-                        width: '325px',
-                        backgroundImage: `url(${passwordIcon})`,
-                        backgroundSize: '32px,32px',
-                        backgroundRepeat: 'no-repeat',
-                        paddingLeft: '13%',
-                      }}
-                      placeholder="ยืนยันพาสเวิร์ด"
-                      name="confirmPassword"
-                      type="password"
-                      onChange={this.handleChange}
-                    />
-                  </Form.Field>
-
-                  <button className="signUpButton">
-                    สมัครสมาชิก
-                  </button>
-                </Form>
+        <div className="large-9 large-centered columns">
+          <div className="boxForm">
+            <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
+            <div className="row" />
+            <div className="boxCenter">
+              <div className="row">
+                <div className="large-4 large-offset-4 columns">
+                  <Form onSubmit={this.handleSubmit}>
+                    <Form.Field>
+                      <Form.Input
+                        style={{
+                          width: '325px',
+                          backgroundImage: `url(${userIcon})`,
+                          backgroundSize: '32px,32px',
+                          backgroundRepeat: 'no-repeat',
+                          paddingLeft: '13%',
+                        }}
+                        placeholder="อีเมลของคุณ"
+                        name="email"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <Form.Input
+                        style={{
+                          width: '325px',
+                          backgroundImage: `url(${passwordIcon})`,
+                          backgroundSize: '32px,32px',
+                          backgroundRepeat: 'no-repeat',
+                          paddingLeft: '13%',
+                        }}
+                        placeholder="พาสเวิร์ด"
+                        name="password"
+                        type="password"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <Form.Input
+                        style={{
+                          width: '325px',
+                          backgroundImage: `url(${passwordIcon})`,
+                          backgroundSize: '32px,32px',
+                          backgroundRepeat: 'no-repeat',
+                          paddingLeft: '13%',
+                        }}
+                        placeholder="ยืนยันพาสเวิร์ด"
+                        name="confirmPassword"
+                        type="password"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Field>
+                    <button className="signUpButton">
+                      สมัครสมาชิก
+                    </button>
+                  </Form>
+                </div>
               </div>
             </div>
           </div>

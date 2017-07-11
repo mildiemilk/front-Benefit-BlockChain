@@ -34,7 +34,7 @@ class SubmitPlan extends Component {
       nextPage: false,
       canGoToNextPage: true,
       warningModal: false,
-      firstTime: false,
+      firstTime: true,
       openModalForm: false,
       newPlan: false,
       canBuildNewPlan: true,
@@ -59,7 +59,6 @@ class SubmitPlan extends Component {
   handleCloseModal = e =>
     this.setState({
       openModalForm: false,
-      firstTime: false,
     })
 
   handleSetGoToNextPage = () => {
@@ -87,6 +86,7 @@ class SubmitPlan extends Component {
   handleModalFinish = () => {
     this.setState({ openModalForm: false })
     this.setState({ firstTime: false })
+    this.setState({ newPlan: false })
   }
 
   handleBuildNewPlan = () => {

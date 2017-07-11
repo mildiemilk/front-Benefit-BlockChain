@@ -2,13 +2,15 @@ import axios from 'axios'
 import auth from './auth'
 import profileCompany from './profileCompany'
 import { chooseInsurer, setTimeOut, getAllInsurer } from './chooseInsurer'
+import { endTimeout, bidding } from './bidding'
+
 export function APIRequest(options, authenticate = true) {
   const headers = options.headers ? options.headers : {}
   const authorization = authenticate
     ? { Authorization: `${localStorage.getItem('token')}` }
     : {}
   const defaultOption = {
-    baseURL: 'http://localhost:8000',
+    baseURL: 'http://crazyboys-mbp:56869',
     headers: Object.assign(
       {},
       { 'Content-Type': 'application/json' },
@@ -28,4 +30,6 @@ export default {
   chooseInsurer,
   setTimeOut,
   getAllInsurer,
+  endTimeout,
+  bidding,
 }

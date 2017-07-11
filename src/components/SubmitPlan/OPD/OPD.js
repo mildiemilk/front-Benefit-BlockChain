@@ -183,9 +183,9 @@ class OPD extends Component {
                       onChange={this.handleChange}
                       required
                     />
+                    <span>บาท/ครั้ง ครั้งละไม่เกิน</span>
                     <Form.Input
                       type="number"
-                      label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
@@ -203,9 +203,9 @@ class OPD extends Component {
                       onChange={this.handleChange}
                       readOnly
                     />
+                    <span>บาท/ครั้ง ครั้งละไม่เกิน</span>
                     <Form.Input
                       type="number"
-                      label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
@@ -255,8 +255,6 @@ class OPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
-            handleNextPlan={this.props.handleNextPlan}
-            handleReset={this.props.handleReset}
           />
         </div>
       </div>

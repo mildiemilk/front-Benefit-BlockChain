@@ -24,41 +24,13 @@ import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
 import DentalModal from './DentalModal'
 
-class Dental extends Component {
+class DentalBidding extends Component {
   constructor(props) {
     super(props)
     this.state = {}
   }
 
   static propTypes = {}
-
-  handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState('dentalRecord')
-  }
-
-  handleClick = () => {
-    const { dentalPerYear } = this.props
-    this.props.editPlan(
-      { dentalPerYear },
-      this.props.planList[this.props.activePlan].planId,
-      'dental',
-    )
-    this.props.handleRecordVerifyState('dentalRecord')
-  }
-
-  handleResetdata = () => {
-    document.getElementById('dentalPerYear').value = ''
-    this.props.handleResetDental()
-    this.props.handleNewReset()
-    this.props.handleVerifyState('dentalRecord')
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'Dental' && this.props.reset === true) {
-      this.handleResetdata()
-    }
-  }
 
   render() {
     return (
@@ -81,41 +53,17 @@ class Dental extends Component {
               id="dentalPerYear"
               onChange={this.handleChange}
               value={this.props.dentalPerYear}
-              required
+              readOnly
             />
             <p> บาท/ปี</p>
           </Form.Group>
-          <div className="row">
-            <Button
-              style={{
-                marginTop: '3%',
-                textAlign: 'center',
-                width: '164px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
-                float: 'right',
-                borderRadius: '20px',
-                marginRight: '5%',
-                marginBottom: '3%',
-              }}
-              type="submit"
-            >
-              บันทึก
-            </Button>
-          </div>
         </Form>
-        <DentalModal
-          openModal={this.props.openModal}
-          handleCloseModal={this.props.handleCloseModal}
-          handleClick={this.handleClick}
-        />
       </div>
     )
   }
 }
 
-Dental.propTypes = {
+DentalBidding.propTypes = {
   dentalPerYear: PropTypes.number,
   onFormChange: PropTypes.func,
 }
@@ -128,4 +76,4 @@ const mapStateToProps = state => ({
   planList: state.plan,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dental)
+export default connect(mapStateToProps, mapDispatchToProps)(DentalBidding)

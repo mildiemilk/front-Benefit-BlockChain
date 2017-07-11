@@ -16,6 +16,7 @@ import NavBidding from './NavBidding'
 import Plan from './Plan'
 import { bidding } from '../../api/bidding'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 class Details extends Component {
   constructor() {
@@ -23,7 +24,6 @@ class Details extends Component {
   }
 
   renderList = bids => {
-    console.log(bids)
     return bids.map(bid => (
       <BoxDetail>
         <InSide>
@@ -32,14 +32,16 @@ class Details extends Component {
               <TextLine> {bid.insurerName} </TextLine>
             </div>
             <div className="large-3 large-offseet-6 columns">
-              <TextSide> เลขที่ใบเสนอราคา {bid.bidingId} </TextSide>
+              <TextSide> เลขที่ใบเสนอราคา {bid.biddingId} </TextSide>
             </div>
           </div>
         </InSide>
         <HeadBar>
           <div className="row">
             <div className="large-4 columns">
-              <HeadList> วันที่เสนอราคา: {bid.updatedAt} </HeadList>
+              <HeadList>
+                {' '}วันที่เสนอราคา: {moment(bid.updatedAt).format('L')}{' '}
+              </HeadList>
             </div>
             <div className="large-3 large-offset-1 columns">
               <HeadList>การเสนอราคาครั้งที่ {bid.timeOfBidding}</HeadList>

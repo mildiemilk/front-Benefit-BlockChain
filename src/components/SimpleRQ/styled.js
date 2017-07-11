@@ -83,3 +83,8 @@ export const InputBox = styled.input`
         opacity: 0.35;
     }
 `
+
+export const BottomSpace = styled.div`
+  margin-top: 10px;
+	margin-bottom: 10px;
+`

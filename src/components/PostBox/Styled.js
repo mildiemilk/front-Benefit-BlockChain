@@ -69,12 +69,11 @@ export const Probox2 = styled.div`
   top: 20px;
 `
 
-export const PostreText = styled.text`
+export const PostreText = styled.span`
   width: 169px;
   height: 24px;
-  font-family: Kanit;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 500px;
   letter-spacing: 0.3px;
   text-align: left;
   color: #323028;
@@ -157,4 +156,8 @@ export const ConfirmButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 1%;
+`
+
+export const TopSpace = styled.div`
+  margin-top: 6px;
 `

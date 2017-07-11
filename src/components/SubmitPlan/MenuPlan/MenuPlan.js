@@ -21,10 +21,16 @@ import {
 } from 'semantic-ui-react'
 import '../../../styles/SubmitPlan.scss'
 import erase from '../../image/icons-8-erase.png'
+import FormModal from '../FormModal'
 
-class FormSubmitPlan extends Component {
+class MenuPlan extends Component {
   constructor() {
     super()
+    this.state = {
+      step: 6,
+      isOpen: false,
+      modalOpen: false,
+    }
   }
 
   handleEdit = e => {
@@ -41,6 +47,24 @@ class FormSubmitPlan extends Component {
     console.log(this.props.planList[e.target.id].planId)
     this.props.deletePlan(this.props.planList[e.target.id].planId)
   }
+
+  handleOpen = () => {
+    this.setState({ isOpen: true })
+  }
+
+  handleClose = () => {
+    this.setState({ isOpen: false })
+  }
+
+  handleOpenModal = e =>
+    this.setState({
+      modalOpen: true,
+    })
+
+  handleCloseModal = e =>
+    this.setState({
+      modalOpen: false,
+    })
 
   renderList = list => {
     const output = []
@@ -84,6 +108,9 @@ class FormSubmitPlan extends Component {
             on="click"
             hideOnScroll
             position="bottom center"
+            open={this.state.isOpen}
+            onClose={this.handleClose}
+            onOpen={this.handleOpen}
           />
           <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
         </div>,
@@ -115,6 +142,11 @@ class FormSubmitPlan extends Component {
             position="bottom center"
           />
         </div>
+        <FormModal
+          openModalForm={this.props.openModalForm}
+          handleCloseModal={this.props.handleCloseModal}
+          handleModalFinish={this.props.handleModalFinish}
+        />
         <div className="menu-add-plan">
           <p onClick={() => this.props.handlePlan(-1)}>
             <Icon name="add circle" size="big" />สร้างแพลนใหม่
@@ -126,7 +158,7 @@ class FormSubmitPlan extends Component {
   }
 }
 
-FormSubmitPlan.propTypes = {}
+MenuPlan.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
@@ -138,4 +170,4 @@ const mapStateToProps = state => ({
   planList: state.plan,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormSubmitPlan)
+export default connect(mapStateToProps, mapDispatchToProps)(MenuPlan)

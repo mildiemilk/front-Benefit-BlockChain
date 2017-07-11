@@ -96,36 +96,18 @@ class Login extends Component {
                     ? <p style={{ color: 'red' }}> {this.props.data.message}</p>
                     : <p />}
                   <a className="link">ลืมพาสเวิร์ด?</a>
-                  <Button
-                    style={{
-                      marginTop: '20px',
-                      textAlign: 'center',
-                      width: '315px',
-                      backgroundColor: '#3A7BD5',
-                      color: 'white',
-                    }}
-                    type="submit"
-                  >
+                  <button className="logInButton">
                     ลงชื่อเข้าใช้
-                  </Button>
+                  </button>
                 </Form>
                 <hr className="line2" />
                 <p className="question">ยังไม่เคยสมัคร?</p>
-                <Button
-                  style={{
-                    marginTop: '3%',
-                    textAlign: 'center',
-                    width: '315px',
-                    fontSize: '11.4px',
-                    backgroundColor: '#F7555F',
-                    color: 'white',
-                    marginBottom: '10%',
-                  }}
-                  type="button"
+                <button
+                  className="newMemberButton"
                   onClick={() => this.signUpHandler()}
                 >
                   สร้างบัญชีใหม่
-                </Button>
+                </button>
               </div>
             </div>
           </div>

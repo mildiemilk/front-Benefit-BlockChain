@@ -27,6 +27,7 @@ import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
+import IpdModal from './IpdModal'
 
 class IPD extends Component {
   constructor() {
@@ -77,9 +78,13 @@ class IPD extends Component {
 
   handleChangeToNull = name => this.setState({ [name]: null })
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState('ipdRecord')
+  }
 
   handleClick = () => {
+    this.props.handleRecordVerifyState('ipdRecord')
     const {
       ipdCoPlay,
       ipdType,
@@ -143,6 +148,7 @@ class IPD extends Component {
   handleResetdata = () => {
     this.setState({ ipdType: '' })
     this.props.handleNewReset()
+    this.props.handleVerifyState('ipdRecord')
   }
 
   componentDidUpdate() {
@@ -262,6 +268,13 @@ class IPD extends Component {
               บันทึก
             </Button>
           </Form>
+          <IpdModal
+            openModal={this.props.openModal}
+            handleCloseModal={this.props.handleCloseModal}
+            handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
+            handleReset={this.props.handleReset}
+          />
         </div>
       </div>
     )

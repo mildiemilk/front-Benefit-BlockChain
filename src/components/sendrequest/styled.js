@@ -32,7 +32,8 @@ export const Submit = styled.button`
     padding: 1%;
     color: white;
     margin: 1% 80%;
-    border-color: white;
+    border-color: #f7555f;
+    border-style: solid;
 `
 export const BoxIndiv1 = styled.div`
     border-radius: 8px;
@@ -57,6 +58,8 @@ export const BoxIndiv3 = styled.div`
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     padding:3%;
     height: 210px;
+    width: 851.03px;
+    display: inline-block;
 `
 export const BoxIndiv4 = styled.div`
     border-radius: 8px;
@@ -67,9 +70,23 @@ export const BoxIndiv4 = styled.div`
     height: 180px;
 `
 
+export const PostreText = styled.text`
+  width: 169px;
+  height: 24px;
+  font-family: Kanit;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+  margin-left: 2%;
+`
+
 export const Time = styled.div`
     color: #3a7bd5;
+    display: inline-block;
 `
+
 export const PlanBox = styled.div`
   width: 100%;
   height: 60px;

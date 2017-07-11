@@ -6,6 +6,7 @@ import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './Styled'
 import styled from 'react-sc'
 import SearchBox from './SearchBox'
 import NavInsure from '../NavInsure'
+import ModalView from './ModalView'
 
 export default class ViewAllPlan extends Component {
   constructor() {
@@ -58,7 +59,7 @@ export default class ViewAllPlan extends Component {
         <NavInsure step={this.state.step} />
         <div className="row">
           <RecViewAllPlan>
-            <div style={{ marginTop: '2%' }} className="row">
+            <div className="row">
               <div className="large-3 large-offset-1 columns">
                 <ViewHeader> แพลนทั้งหมด </ViewHeader>
                 <BackHome>&lt; กลับหน้าหลัก </BackHome>
@@ -76,7 +77,7 @@ export default class ViewAllPlan extends Component {
               <div className="large-10 large-offset-1 columns">
                 <table>
                   <tr>
-                    <th> <Icon disabled name="trash" size="large" /> </th>
+                    <th> <ModalView /> </th>
                     <th> ชื่อแพลน </th>
                     <th> แก้ไขครั้งล่าสุดโดย </th>
                     <th> วันที่ </th>

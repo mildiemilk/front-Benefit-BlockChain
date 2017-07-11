@@ -32,6 +32,7 @@ import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 import createBrowserHistory from 'history/createBrowserHistory'
 import ViewAllPlan from './ViewAllPlan'
+import ComparePlan from './ComparePlan'
 
 const history = createBrowserHistory()
 
@@ -39,7 +40,7 @@ const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
       <EmptyLayout>
-        {true
+        {isAuthenticated
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />
@@ -53,13 +54,15 @@ const App = ({ isAuthenticated }) => (
                       component={simpleRQ}
                     />
                     <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/compareplan" component={ComparePlan} />
                     <Route path="/submitplan" component={SubmitPlan} />
                     <Route path="/ipd" component={IPD} />
                     <Route path="/sendrequest" component={Sendrequest} />
                     <Route path="/view" component={ViewAllPlan} />
                     <Route path="/bidding" component={Bidding} />
                     <Route path="/chooseinsurer" component={ChooseInsurer} />
-                    <Route component={EmptyLayout} />
+                    <Route path="/signup" component={Signup} />
+                    <Route path="/login" component={Login} />
                   </Switch>
                 </MainLayout>
               </Switch>

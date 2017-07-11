@@ -231,7 +231,12 @@ class SettingProfile extends Component {
                 <Detail3>
                   เบอร์โทร
                 </Detail3>
-                <Box name="tel" size="big" placeholder="เบอร์โทร" />
+                <Box
+                  name="tel"
+                  size="big"
+                  placeholder="เบอร์โทร"
+                  type="number"
+                />
                 <Detail3>
                   ประเภทธุรกิจ
                 </Detail3>

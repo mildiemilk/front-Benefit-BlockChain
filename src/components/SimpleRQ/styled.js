@@ -61,7 +61,7 @@ export const PostMainButton = styled.button`
 `
 
 export const UploadButton = styled.button`
-    width: 262px;
+    width: 163px;
     height: 40px;
     border-radius: 20px;
     color: #ffffff;

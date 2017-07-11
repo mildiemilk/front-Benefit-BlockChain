@@ -11,8 +11,6 @@ import {
 import {
   ModalHeader,
   ModalContent,
-  EditButton,
-  PostButton,
   ButtonNew,
   CancleButton,
   ConfirmButton,
@@ -34,12 +32,6 @@ const Modals = styled(Modal)`
   &&&{
     background: transparent;
     margin-top: -120px;
-  }
-`
-
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
   }
 `
 
@@ -83,7 +75,7 @@ class ModalPostbox extends Component {
             {' '}
           </ModalHeader>
           <ModalContent>
-            <Inputs
+            <Input
               style={{
                 width: '280px',
                 height: '40px',

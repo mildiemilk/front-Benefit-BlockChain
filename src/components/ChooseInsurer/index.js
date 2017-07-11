@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { setTimeOut } from '../../api/chooseInsurer'
+import { setTimeOut, chooseInsurer } from '../../api/chooseInsurer'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
@@ -33,7 +33,7 @@ class InsurerSelect extends Component {
     this.state = {
       step: 4,
       num: 0,
-      date: '',
+      date: null,
       time: '',
     }
   }
@@ -41,26 +41,29 @@ class InsurerSelect extends Component {
     console.log('ddsfwe')
     const { date, time } = this.state
     console.log(this.state)
-    this.props.setTimeOut({ date, time })
+    this.props.setTimeOut(date)
   }
 
   handleDate = date => {
+    //  console.log(this.state.date)
+
     this.setState({
       date: date,
     })
   }
   handleTime = time => {
+    time._d.setDate(this.state.date._d.getDate())
+    this.state.date._d.setTime(time._d.getTime())
     this.setState({
       time: time,
     })
   }
+
   handleCheck = e => {
     if (e.target.checked) this.setState({ num: this.state.num + 1 })
     else this.setState({ num: this.state.num - 1 })
   }
   render() {
-    console.log(this.state.date)
-    console.log(this.state.time)
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -74,12 +77,12 @@ class InsurerSelect extends Component {
             <div className="row">
               <SideIn>
                 <HeadIn className="row">
-                  <span> เลือกทั้งหมด {this.state.num} บริษัท</span>
+                  <span>
+                    {' '}จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
+                  </span>
                   <SubmitInsure>บันทึก</SubmitInsure>
                 </HeadIn>
                 <div className="row">
-                  <CardInsure handleCheck={this.handleCheck} />
-                  <CardInsure handleCheck={this.handleCheck} />
                   <CardInsure handleCheck={this.handleCheck} />
                 </div>
               </SideIn>
@@ -95,8 +98,8 @@ class InsurerSelect extends Component {
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
                 <TimePicker
-                  defaultValue={moment()}
                   onChange={this.handleTime}
+                  selected={this.state.time}
                   showSecond={false}
                 />
                 <br />
@@ -111,10 +114,10 @@ class InsurerSelect extends Component {
     )
   }
 }
-// export default InsurerSelect
 
 const mapDispatchToProps = dispatch => ({
-  setTimeOut: (date, time) => dispatch(setTimeOut({ date, time })),
+  setTimeOut: timeout => dispatch(setTimeOut(timeout)),
+  chooseInsurer: insurers => dispatch(chooseInsurer(insurers)),
 })
 
 const mapStateToProps = state => ({})

@@ -23,6 +23,7 @@ import stethoscope from '../../image/icons-8-stethoscope.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
+import OpdModal from './OpdModal'
 
 class OPD extends Component {
   constructor() {
@@ -70,6 +71,7 @@ class OPD extends Component {
       this.props.planList[this.props.nowPlan].planId,
       'opd',
     )
+    this.props.handleRecordVerifyState('opdRecord')
   }
 
   handleToggle = () => {
@@ -102,6 +104,7 @@ class OPD extends Component {
     this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
+    this.props.handleVerifyState('opdRecord')
   }
 
   componentDidUpdate() {
@@ -111,7 +114,10 @@ class OPD extends Component {
   }
 
   handleChangeToNull = name => this.setState({ [name]: null })
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    this.props.handleVerifyState('opdRecord')
+  }
 
   render() {
     return (
@@ -125,7 +131,7 @@ class OPD extends Component {
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
         <div className="row">
-          <Form>
+          <Form onSubmit={this.handleClick}>
             <Form.Group inline>
               <Form.Field>
                 <Radio
@@ -213,8 +219,8 @@ class OPD extends Component {
                   handleChange={this.handleChange}
                   handleChangeToNull={this.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
-                  reset={this.props.state.reset}
-                  setPlan={this.props.state.setPlan}
+                  reset={this.props.reset}
+                  setPlan={this.props.setPlan}
                 />
               : ''}
             <br />
@@ -232,11 +238,17 @@ class OPD extends Component {
                 marginBottom: '3%',
               }}
               type="submit"
-              onClick={this.handleClick}
             >
               บันทึก
             </Button>
           </Form>
+          <OpdModal
+            openModal={this.props.openModal}
+            handleCloseModal={this.props.handleCloseModal}
+            handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
+            handleReset={this.props.handleReset}
+          />
         </div>
       </div>
     )

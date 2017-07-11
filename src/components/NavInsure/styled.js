@@ -14,6 +14,7 @@ export const StepRadius = styled(Step.Group)`
     &&&{
       border-radius: 40px;
       width: 100%;
+      margin-top: 14.5px;
     }
   `
 

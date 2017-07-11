@@ -118,10 +118,8 @@ class Uploadfile extends Component{
   }
 
   handleDeleteBrokerFile = (e) => {
-    const summitBrokerFiles = this.state.summitBrokerFile
-    summitBrokerFiles.splice(e.target.id,1)
     this.setState({
-      summitBrokerFile: summitBrokerFiles
+      summitBrokerFile: ''
     })
     console.log(this.state.ClaimData);
   }
@@ -131,7 +129,7 @@ class Uploadfile extends Component{
       return <p>
         {this.state.summitBrokerFile.name} &nbsp;
         {(this.state.summitBrokerFile.size/100000).toFixed( 2 )} MB
-        <Icon id={0} style={{positon:'absolute',top:'-25px'}}
+        <Icon id={1} style={{positon:'absolute',top:'-25px'}}
           link name='close'
           onClick={this.handleDeleteBrokerFile} />
       </p>

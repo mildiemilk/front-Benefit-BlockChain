@@ -27,56 +27,52 @@ import LifeModal from './LifeModal'
 const options = [{ text: '1', value: 1 }]
 
 class Life extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      value: '',
-      lifePerYear: null,
-      lifeTimeOfSalary: null,
-      lifeNotExceed: null,
+      value: this.props.lifePerYear !== null
+        ? 'firstLifeChoice'
+        : this.props.lifeNotExceed !== null
+            ? 'thirdLifeChoice'
+            : this.props.lifeTimeOfSalary !== null ? 'secondLifeChoice' : '',
     }
   }
 
   static propTypes = {}
 
   handleRadio = (e, { value }) => {
+    this.handleResetData()
     this.setState({ value })
-    if (this.state.value === 'secondLifeChoice') {
-      document.getElementById('lifeTimeOfSalary').value = ''
-      this.setState({ lifeTimeOfSalary: null })
-    } else if (this.state.value === 'firstLifeChoice') {
-      document.getElementById('lifePerYear').value = ''
-      this.setState({ lifePerYear: null })
-    } else {
-      document.getElementById('lifeTimeOfSalary').value = ''
-      this.setState({ lifeTimeOfSalary: null })
-      document.getElementById('lifeNotExceed').value = ''
-      this.setState({ lifeNotExceed: null })
-    }
+    // if (this.state.value === 'secondLifeChoice') {
+    //   document.getElementById('lifeTimeOfSalary').value = ''
+    // } else if (this.state.value === 'firstLifeChoice') {
+    //   document.getElementById('lifePerYear').value = ''
+    // } else {
+    //   document.getElementById('lifeTimeOfSalary').value = ''
+    //   document.getElementById('lifeNotExceed').value = ''
+    // }
   }
 
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState('lifeRecord')
   }
 
   handleClick = () => {
     this.props.handleRecordVerifyState('lifeRecord')
-    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.state
+    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.props
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
-      this.props.planList[this.props.nowPlan].planId,
+      this.props.planList[this.props.activePlan].planId,
       'life',
     )
   }
 
-  handleResetdata = () => {
+  handleResetData = () => {
     document.getElementById('lifeTimeOfSalary').value = ''
-    this.setState({ lifeTimeOfSalary: null })
     document.getElementById('lifePerYear').value = ''
-    this.setState({ lifePerYear: null })
     document.getElementById('lifeNotExceed').value = ''
-    this.setState({ lifeNotExceed: null })
+    this.props.handleResetLife()
     this.setState({ value: '' })
     this.props.handleNewReset()
     this.props.handleVerifyState('lifeRecord')
@@ -117,6 +113,7 @@ class Life extends Component {
                   name="lifePerYear"
                   id="lifePerYear"
                   onChange={this.handleChange}
+                  value={this.props.lifePerYear}
                   required
                 />
               : <Form.Input
@@ -144,7 +141,7 @@ class Life extends Component {
                   placeholder="เท่า"
                   name="lifeTimeOfSalary"
                   id="lifeTimeOfSalary"
-                  value={this.state.lifeTimeOfSalary}
+                  value={this.props.lifeTimeOfSalary}
                   options={options}
                   onChange={this.handleChange}
                   required
@@ -176,7 +173,7 @@ class Life extends Component {
                     options={options}
                     name="lifeTimeOfSalary"
                     id="lifeTimeOfSalary"
-                    value={this.state.lifeTimeOfSalary}
+                    value={this.props.lifeTimeOfSalary}
                     onChange={this.handleChange}
                   />
                   <Form.Input
@@ -185,6 +182,7 @@ class Life extends Component {
                     placeholder="จำนวนบาท"
                     name="lifeNotExceed"
                     id="lifeNotExceed"
+                    value={this.props.lifeNotExceed}
                     onChange={this.handleChange}
                     required
                   />

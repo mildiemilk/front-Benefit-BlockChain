@@ -2,70 +2,80 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Table, Rating, Header, Checkbox, Popup } from 'semantic-ui-react'
 import styled from 'react-sc'
-import { getAllPlan } from '../../api/setPlan'
 import SearchBox from './SearchBox'
 import ModalView from './ModalView'
+import { copyPlan, deletePlan } from '../../api/setPlan'
 
 class ViewPlanBox extends Component {
   constructor() {
     super()
   }
 
+  handleCopy = planId => {
+    this.props.copyPlan(planId)
+  }
+
+  handleDelete = planId => {
+    this.props.deletePlan(planId)
+  }
+
   renderList = list => {
-    console.log(list)
-    const output = []
-    for (var i = 0; i < list.length; i++) {
-      output.push(
-        <tr>
-          <td>
-            <Checkbox />
-          </td>
-          <td singleLine> {list[i].planName} </td>
-          <td> {list[i].updateBy} </td>
-          <td> {list[i].updatedAt} </td>
-          <td>
-            <Popup
-              trigger={<Icon disabled name="edit" size="large" />}
-              content="แก้ไขแผน"
-              position="bottom left"
-              size="mini"
-              basic
-            />
+    return list.map(element => (
+      <tr>
+        <td>
+          <Checkbox />
+        </td>
+        <td singleLine> {element.planName} </td>
+        <td> {element.updateBy} </td>
+        <td> {element.updatedAt} </td>
+        <td>
+          <Popup
+            trigger={<Icon disabled name="edit" size="large" />}
+            content="แก้ไขแผน"
+            position="bottom left"
+            size="mini"
+            basic
+          />
 
-            <Popup
-              trigger={<Icon disabled name="paste" size="large" />}
-              content="คัดลอกแผน"
-              position="bottom left"
-              size="mini"
-              basic
-            />
+          <Popup
+            trigger={
+              <Icon
+                disabled
+                name="paste"
+                size="large"
+                onClick={() => this.handleCopy(element.planId)}
+              />
+            }
+            content="คัดลอกแผน"
+            position="bottom left"
+            size="mini"
+            basic
+          />
 
-            <ModalView />
-          </td>
-        </tr>,
-      )
-    }
-    return output
+          <ModalView
+            planId={element.planId}
+            list={list}
+            handleDelete={this.handleDelete}
+          />
+        </td>
+      </tr>
+    ))
   }
 
   render() {
-    {
-      this.props.getAllPlan()
-    }
     return (
       <table>
-        {this.renderList(this.props.items)}
+        {this.renderList(this.props.planList)}
       </table>
     )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
+  deletePlan: planId => dispatch(deletePlan(planId)),
+  copyPlan: planId => dispatch(copyPlan(planId)),
 })
 
-const mapStateToProps = state => ({
-  planList: state.plan,
-})
+const mapStateToProps = state => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox)

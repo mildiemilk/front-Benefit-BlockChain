@@ -80,6 +80,152 @@ export default class IPDDropBox extends Component {
     }
   }
 
+  renderFirstIPD = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => <th> </th>)
+  }
+
+  renderRbSchedulePatient = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
+        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+      </th>
+    ))
+  }
+
+  renderRbScheduleIntensiveCarePatient = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleIntensiveCarePatient === null
+          ? '-'
+          : plan.rbScheduleIntensiveCarePatient}
+        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+      </th>
+    ))
+  }
+
+  renderRbScheduleDoctor = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
+        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+      </th>
+    ))
+  }
+
+  renderRbScheduleSurgery = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleSurgerySchedule === null
+          ? plan.rbScheduleSurgeryNonSchedule === null
+              ? '-'
+              : plan.rbScheduleSurgeryNonSchedule
+          : plan.rbScheduleSurgerySchedule}
+      </th>
+    ))
+  }
+
+  renderRbScheduleAllService = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleService +
+          plan.rbScheduleSmallSurgery +
+          plan.rbScheduleAdviser +
+          plan.rbScheduleAmbulance +
+          plan.rbScheduleAccident +
+          plan.rbScheduleTreatment ===
+          0
+          ? ''
+          : plan.rbScheduleService +
+              plan.rbScheduleSmallSurgery +
+              plan.rbScheduleAdviser +
+              plan.rbScheduleAmbulance +
+              plan.rbScheduleAccident +
+              plan.rbScheduleTreatment}
+      </th>
+    ))
+  }
+
+  renderRbScheduleService = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
+        <Sub>
+          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+        </Sub>
+      </th>
+    ))
+  }
+
+  renderRbScheduleSmallSurgery = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleSmallSurgery === null
+          ? '-'
+          : plan.rbScheduleSmallSurgery}
+        <Sub>
+          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+        </Sub>
+      </th>
+    ))
+  }
+
+  renderRbScheduleAdviser = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
+      </th>
+    ))
+  }
+
+  renderRbScheduleAmbulance = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
+      </th>
+    ))
+  }
+
+  renderRbScheduleAccident = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
+      </th>
+    ))
+  }
+
+  renderRbScheduleTreatment = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
+        <Sub>
+          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+        </Sub>
+      </th>
+    ))
+  }
+
+  renderRbScheduleTransplant = () => {
+    let plans = this.props.planList
+    return plans.map((plan, index) => (
+      <th>
+        {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
+      </th>
+    ))
+  }
+
   render() {
     return (
       <div className="ComparePlan">
@@ -95,11 +241,7 @@ export default class IPDDropBox extends Component {
                   name="caret down"
                 />
               </th>
-              <th> </th>
-              <th> </th>
-              <th> </th>
-              <th> </th>
-              <th> </th>
+              {this.renderFirstIPD()}
             </tr>
           </table>
         </div>
@@ -117,26 +259,7 @@ export default class IPDDropBox extends Component {
                       (สูงสุดต่อวัน)
                     </IPDDetail>
                   </th>
-                  <th>
-                    2,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    2,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    2,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    2,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    2,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
+                  {this.renderRbSchedulePatient()}
                 </tr>
 
                 <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
@@ -149,26 +272,7 @@ export default class IPDDropBox extends Component {
                       (สูงสุดต่อวัน)
                     </IPDDetail>
                   </th>
-                  <th>
-                    4,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    4,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    4,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    4,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                  <th>
-                    4,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
+                  {this.renderRbScheduleIntensiveCarePatient()}
                 </tr>
               </table>
             </div>
@@ -182,26 +286,7 @@ export default class IPDDropBox extends Component {
                   {' '}2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน{' '}
                 </IPDTopic>
               </th>
-              <th>
-                800
-                <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-              </th>
-              <th>
-                800
-                <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-              </th>
-              <th>
-                800
-                <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-              </th>
-              <th>
-                800
-                <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-              </th>
-              <th>
-                800
-                <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-              </th>
+              {this.renderRbScheduleDoctor()}
             </tr>
           </table>
         </div>
@@ -215,21 +300,7 @@ export default class IPDDropBox extends Component {
                   และหัตถการ ตามตารางผ่าตัด{' '}
                 </IPDTopic>
               </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
+              {this.renderRbScheduleSurgery()}
             </tr>
           </table>
         </div>
@@ -245,21 +316,7 @@ export default class IPDDropBox extends Component {
                   name="caret down"
                 />
               </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
+              {this.renderRbScheduleAllService()}
             </tr>
           </table>
         </div>
@@ -281,31 +338,7 @@ export default class IPDDropBox extends Component {
                       คุ้มครองสูงสุดต่อครั้ง
                     </IPDDetail>
                   </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
+                  {this.renderRbScheduleService()}
                 </tr>
 
                 <tr>
@@ -316,31 +349,7 @@ export default class IPDDropBox extends Component {
                       {' '}
                     </IPDDetail>
                   </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
+                  {this.renderRbScheduleSmallSurgery()}
                 </tr>
 
                 <tr>
@@ -350,42 +359,14 @@ export default class IPDDropBox extends Component {
                       ผ่าตัดต่อครั้ง
                     </IPDDetail>
                   </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
+                  {this.renderRbScheduleAdviser()}
                 </tr>
 
                 <tr>
                   <th>
                     <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
                   </th>
-                  <th>
-                    1,000
-                  </th>
-                  <th>
-                    1,000
-                  </th>
-                  <th>
-                    1,000
-                  </th>
-                  <th>
-                    1,000
-                  </th>
-                  <th>
-                    1,000
-                  </th>
+                  {this.renderRbScheduleAmbulance()}
                 </tr>
 
                 <tr>
@@ -395,21 +376,7 @@ export default class IPDDropBox extends Component {
                       ช.ม. หลังเกิดอุบัติเหตุต่อครั้ง
                     </IPDDetail>
                   </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
-                  <th>
-                    4,000
-                  </th>
+                  {this.renderRbScheduleAccident()}
                 </tr>
 
                 <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
@@ -425,31 +392,7 @@ export default class IPDDropBox extends Component {
                       สูงสุดต่อครั้ง
                     </IPDDetail>
                   </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
-                  </th>
+                  {this.renderRbScheduleTreatment()}
                 </tr>
               </table>
             </div>
@@ -468,21 +411,7 @@ export default class IPDDropBox extends Component {
                   (ปีละไม่เกิน)**{' '}
                 </IPDTopic>
               </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
-              <th>
-                40,000
-              </th>
+              {this.renderRbScheduleTransplant()}
             </tr>
           </table>
         </div>

@@ -27,22 +27,21 @@ import DentalModal from './DentalModal'
 class Dental extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      dentalPerYear: null,
-    }
+    this.state = {}
   }
 
   static propTypes = {}
 
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState('dentalRecord')
   }
 
   handleClick = () => {
+    const { dentalPerYear } = this.props
     this.props.editPlan(
-      this.state,
-      // this.props.planList[this.props.nowPlan].planId,
+      { dentalPerYear },
+      this.props.planList[this.props.activePlan].planId,
       'dental',
     )
     this.props.handleRecordVerifyState('dentalRecord')
@@ -50,7 +49,7 @@ class Dental extends Component {
 
   handleResetdata = () => {
     document.getElementById('dentalPerYear').value = ''
-    this.setState({ dentalPerYear: null })
+    this.props.handleResetDental()
     this.props.handleNewReset()
     this.props.handleVerifyState('dentalRecord')
   }
@@ -81,9 +80,7 @@ class Dental extends Component {
               name="dentalPerYear"
               id="dentalPerYear"
               onChange={this.handleChange}
-              /*defaultValue={
-                this.props.planList[this.props.nowPlan].dentalPerYear
-              }*/
+              value={this.props.dentalPerYear}
               required
             />
             <p> บาท/ปี</p>

@@ -114,12 +114,12 @@ class InsurerSelect extends Component {
                 <span>&nbsp;เวลา&nbsp;</span>
                 <TimePicker onChange={this.handleTime} showSecond={false} />
                 <br />
-                <Submit onClick={this.handleTimeOut}>บันทึกก</Submit>
+                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
 
               </SideIn>
             </div>
           </Detail>
-          <Next>ต่อไป</Next>
+          <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
         </div>
       </div>
     )

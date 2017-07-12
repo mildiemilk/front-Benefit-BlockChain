@@ -42,7 +42,7 @@ class Bidding extends Component {
               <Pic><img src={building} /></Pic>
               <TextNav>
                 <Font>จำนวนบริษัทประกัน</Font><br />
-                <FontNum>5</FontNum>
+                <FontNum>{this.props.num}</FontNum>
               </TextNav>
             </Nav>
           </div>
@@ -74,6 +74,7 @@ class Bidding extends Component {
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
+  num: state.chooseInsurerReducer.length,
 })
 
 export default connect(mapStateToProps, null)(Bidding)

@@ -8,7 +8,6 @@ import {
   getALLInsurerFailure,
 } from '../reducers/chooseInsurer'
 
-const test = ''
 const CHOOSEINSURER_URI = '/api/chooseInsurer'
 const SETTIMEOUT_URI = '/api/setTimeout'
 const GETALLINSURER_URI = '/api/getAllInsurer'

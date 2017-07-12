@@ -6,7 +6,7 @@ export const Detail = styled.div`
     margin-top:3%;
     padding: 7%;
     padding-top: 25px;
-    height: 1600px;
+    height: 100%;
 
 `
 

@@ -167,7 +167,7 @@ class Uploadfile extends Component {
   render() {
     return (
       <div>
-        <div className="ChooseInsurer">
+        <div>
           <NavInsure step={this.state.step} />
         </div>
         <div className="row">
@@ -262,7 +262,7 @@ class Uploadfile extends Component {
               </Grid.Row>
 
             </Grid>
-            <Submit>ต่อไป</Submit>
+            <Link to="/sendrequest"><Submit>ต่อไป</Submit></Link>
           </Detail>
 
         </div>

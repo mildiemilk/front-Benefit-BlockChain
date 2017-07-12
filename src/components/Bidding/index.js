@@ -8,11 +8,14 @@ import { bidding } from '../../api/bidding'
 import Details from './Details'
 
 class Bidding extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       isDetail: false,
     }
+    setInterval(function() {
+      props.bidding()
+    }, 2000)
   }
 
   handleClick = () => {
@@ -30,9 +33,7 @@ class Bidding extends Component {
       prefix: 'until my birthday!',
       cb,
     }
-    {
-      this.props.bidding()
-    }
+
     return (
       <div className="Bidding">
         <NavBidding />

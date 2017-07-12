@@ -48,7 +48,7 @@ class Sendrequest extends Component {
     console.log(this.props)
     console.log(moment(this.props.timeout).locale('th').format('DD MMMM YYYY'))
     return (
-      <div className="ChooseInsurer">
+      <div>
         <NavInsure step={this.state.step} />
         <div className="row">
           <Detail className="large-12 columns">
@@ -81,7 +81,7 @@ class Sendrequest extends Component {
             <Head2>อัพโหลดไฟล์</Head2>
             <BoxIndiv4 />
           </Detail>
-          <Submit>ส่งคำขอ</Submit>
+          <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
         </div>
       </div>
     )

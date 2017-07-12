@@ -83,7 +83,7 @@ class IPD2 extends Component {
               onChange={this.handleRadio}
             />
           </Form.Field>
-          <span>ค่าห้อง และค่าอาหาร</span>
+          <span>ค่าห้องและค่าอาหาร</span>
           {this.state.value === 'firstChoice'
             ? <div style={{ display: '-webkit-box' }}>
                 <Form.Input

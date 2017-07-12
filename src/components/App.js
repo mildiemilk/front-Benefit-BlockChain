@@ -33,6 +33,7 @@ import '../styles/main.scss'
 import createBrowserHistory from 'history/createBrowserHistory'
 import ViewAllPlan from './ViewAllPlan'
 import ComparePlan from './ComparePlan'
+import SettingBenefit from './SettingBenefit'
 
 const history = createBrowserHistory()
 
@@ -40,7 +41,7 @@ const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
       <EmptyLayout>
-        {isAuthenticated
+        {true
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />
@@ -62,6 +63,7 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/bidding" component={Bidding} />
                     <Route path="/chooseinsurer" component={ChooseInsurer} />
                     <Route path="/uploadfile" component={Uploadfile} />
+                    <Route path="/settingbenefit" component={SettingBenefit} />
                   </Switch>
                 </MainLayout>
               </Switch>

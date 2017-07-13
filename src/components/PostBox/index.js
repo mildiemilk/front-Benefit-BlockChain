@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import { Redirect } from 'react-router-dom';
 import { Grid, Image, Button, Comment, Form } from 'semantic-ui-react'
 import { Divider, Card, Feed, Rating } from 'semantic-ui-react'
 import {
@@ -42,6 +43,10 @@ const RatingNew = styled(Rating)`
 `
 
 class PostBox extends Component {
+  static propTypes = {
+    selectBroker: PropTypes.bool.isRequired,
+  };
+
   constructor() {
     super()
     this.state = {
@@ -57,6 +62,13 @@ class PostBox extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
+    const { selectBroker } = this.props;
+    console.log(selectBroker);
+
+    if (selectBroker) {
+      return <Redirect to="/submitplan" />;
+    }
+
     return (
       <div>
         <NavInsure step={this.state.step} />
@@ -112,8 +124,12 @@ class PostBox extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  selectBroker: state.postBoxReducer.selectBroker,
+})
+
 const mapDispatchToProps = dispatch => ({
   postBox: passwordToConfirm => dispatch(postBox(passwordToConfirm)),
 })
 
-export default connect(null, mapDispatchToProps)(PostBox)
+export default connect(mapStateToProps, mapDispatchToProps)(PostBox)

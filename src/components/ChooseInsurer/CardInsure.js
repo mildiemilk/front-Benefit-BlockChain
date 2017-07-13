@@ -29,7 +29,7 @@ class CardInsure extends React.Component {
   render() {
     return (
       <div>
-        {this.renderList(this.props.insurerList)}
+        {this.renderList(this.props.insurerList)}\
       </div>
     )
   }

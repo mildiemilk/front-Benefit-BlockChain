@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 import { HeadLists, TextInput } from './styled'
-import List from './ListHealth'
+import ListExpense from './ListExpense'
 
-class HealthBenefit extends Component {
+class ExpenseBenefit extends Component {
     constructor(props){
         super(props)
         this.state = {
-            HealthList: [],
+            ExpenseList: [],
             text: '',
         }
     }
 
     addTodo = () => {
         this.setState({
-            HealthList: this.state.HealthList.concat(this.state.text),
+            ExpenseList: this.state.ExpenseList.concat(this.state.text),
             text: '',
         })
     }
     removeTodo = (e) => {
-        const result = this.state.HealthList;
+        const result = this.state.ExpenseList;
         result.splice(e, 1);
         this.setState({
-            HealthList: result
+            ExpenseList: result
         })
     }
 
@@ -41,11 +41,11 @@ class HealthBenefit extends Component {
             <div>
                 <HeadLists>กรุณาระบุรายละเอียดที่ต้องการ</HeadLists>
                 <TextInput placeholder='กดเพื่อพิมพ์รายละเอียดที่ต้องการแล้วกด Enter' onChange={this.handleTextChange} type="text" value={this.state.text} onKeyPress={this.addTodoEnter}/>
-                <List HealthList={this.state.HealthList}
+                <ListExpense ExpenseList={this.state.ExpenseList}
                     sendDel={this.removeTodo}/>
             </div>
         )
     }
 }
 
-export default HealthBenefit
+export default ExpenseBenefit

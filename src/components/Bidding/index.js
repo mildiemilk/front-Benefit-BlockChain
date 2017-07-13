@@ -12,24 +12,19 @@ class Bidding extends Component {
     super()
     this.state = {
       isDetail: false,
+      Detail: {},
     }
   }
 
-  handleClick = () => {
+  handleClick = (Detail) => {
     const { isDetail } = this.state
-    if (!isDetail) this.setState({ isDetail: true })
+    console.log(Detail);
+    if (!isDetail) this.setState({ isDetail: true, Detail: Detail })
     else this.setState({ isDetail: false })
   }
 
   render() {
-    const cb = () => {
-      console.log('expired callback')
-    }
-    const OPTIONS = {
-      endDate: '03/01/2018 10:55 AM',
-      prefix: 'until my birthday!',
-      cb,
-    }
+
     {
       this.props.bidding()
     }
@@ -38,7 +33,7 @@ class Bidding extends Component {
         <NavBidding />
         <div className="BidContent">
           {this.state.isDetail
-            ? <Details handleClick={this.handleClick} />
+            ? <Details handleClick={this.handleClick} bid={this.state.Detail} />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
         </div>
       </div>

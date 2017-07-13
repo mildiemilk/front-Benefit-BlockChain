@@ -10,7 +10,7 @@ export function APIRequest(options, authenticate = true) {
     ? { Authorization: `${localStorage.getItem('token')}` }
     : {}
   const defaultOption = {
-    baseURL: 'http://chonthichas-macbook-air.local:59175',
+    baseURL: 'http://chonthichas-air:49485',
     headers: Object.assign(
       {},
       { 'Content-Type': 'application/json' },

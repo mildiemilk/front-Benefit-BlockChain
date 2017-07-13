@@ -34,15 +34,8 @@ export const Card = styled.div`
 	background-color: #f5f5f5;
 	border: solid 1px rgba(151, 151, 151, 0.39);
     margin:1%;
-`
-export const Cardlast = styled.div`
-    width: 14%;
-	height: 145px;
-	border-radius: 8px;
-	background-color: #f5f5f5;
-	border: solid 1px rgba(151, 151, 151, 0.39);
-    margin:1%;
-    float:left !important;
+    margin-right: 1.5%;
+    float: left !important;
 `
 export const Submit = styled.button`
     width: 164px;

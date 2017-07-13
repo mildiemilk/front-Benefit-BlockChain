@@ -161,12 +161,12 @@ export const Font = styled.div`
 	font-size: 20px;
 	display: inline-block;
 	position: absolute;
-    bottom: 69%;
+    bottom: 62%;
     left: 36%;
 `
 export const FontAucTime = styled(Font)`
 	&&& {
-		font-size: 17px;
+		font-size: 16px;
 	}
 `
 export const FontNum = styled.div`
@@ -178,7 +178,7 @@ export const FontNum = styled.div`
 `
 export const FontNumAucTime = styled(FontNum)`
 	&&& {
-		font-size: 38px;
+		font-size: 35px;
 		color: #505050;
 	}
 `

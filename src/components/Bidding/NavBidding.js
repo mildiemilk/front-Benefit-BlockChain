@@ -11,9 +11,9 @@ import {
   FontNumAucTime,
 } from './styled'
 import { connect } from 'react-redux'
-import building from '../../../assets/icons-8-city.png'
-import time from '../../../assets/icons-8-time.png'
-import auction from '../../../assets/icons-8-auction.png'
+import building from '../../../assets/bidding/icons-8-city.png'
+import time from '../../../assets/bidding/icons-8-time.png'
+import auction from '../../../assets/bidding/icons-8-auction.png'
 import CountDowns from './CountDowns'
 
 class Bidding extends Component {

@@ -89,7 +89,7 @@ export const BlogContent = styled.span`
   margin-top: 10%;
 `
 
-export const AddPlan = styled.button`
+export const AddPlan = styled.div`
   width: 110%;
   height: 50px;
   border-top-left-radius: 5px;
@@ -98,6 +98,9 @@ export const AddPlan = styled.button`
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   border-color: #e4e4e4;
   border-style: solid;
+  text-align: center;
+  padding-top: 12px;
+  cursor: pointer;
 `
 
 export const AddContent = styled.span`
@@ -108,6 +111,15 @@ export const AddContent = styled.span`
   letter-spacing: 0.2px;
   text-align: left;
   color: #9b9b9b;
+`
+
+export const AddTopic = styled.span`
+  width: 145px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: center;
 `
 
 export const BackButton = styled.button`

@@ -17,6 +17,7 @@ import {
 import styled from 'react-sc'
 import NavBenefit from '../NavBenefit'
 import SettingPlan from './SettingPlan.js'
+import AddPlanBar from './AddPlanBar.js'
 
 export class SettingBenefit extends Component {
   constructor() {
@@ -24,20 +25,23 @@ export class SettingBenefit extends Component {
     this.state = {
       step: 3,
       addPlan: false,
+      planName: [
+        { name: 'แผนสิทธิประโยชน์ 1' },
+        { name: 'แผนสิทธิประโยชน์ 2' },
+        { name: 'แผนสิทธิประโยชน์ 3' },
+      ],
     }
   }
 
   handleAddPlan = () => {
-    if (this.state.addPlan) {
-      this.setState({ addPlan: false })
-    } else {
+    if (this.state.addPlan === false) {
       this.setState({ addPlan: true })
     }
   }
 
   render() {
     return (
-      <div>
+      <div className="SettingBenefit">
         <NavBenefit step={this.state.step} />
         <div className="row">
           <Rec>
@@ -49,12 +53,17 @@ export class SettingBenefit extends Component {
 
             <div className="row">
               <div className="large-2 large-offset-1 columns">
+                {this.state.addPlan
+                  ? <AddPlanBar planName={this.state.planName} />
+                  : null}
+
                 <AddPlan onClick={this.handleAddPlan}>
                   <AddContent>
                     <Icon disabled name="add circle" />
                     เพิ่มแผนสิทธิประโยชน์
                   </AddContent>
                 </AddPlan>
+
               </div>
 
               <div className="large-8 columns">

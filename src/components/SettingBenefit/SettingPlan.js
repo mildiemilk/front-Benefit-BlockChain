@@ -49,7 +49,7 @@ export class SettingPlan extends Component {
 
   render() {
     return (
-      <div className="SettingBenefit">
+      <div>
         <Blogs>
           <PlanName> ชื่อแผนสิทธิประโยชน์ </PlanName>
           <NameInput placeholder="ชื่อแผนสิทธิประโยชน์" />

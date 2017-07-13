@@ -1,0 +1,27 @@
+.SettingBenefit{
+  .ui.button{
+    color: #ffffff;
+    background: #5c6879;
+    border: solid 1px #5c6879;
+    padding: 1em 1em;
+    font-family: Kanit;
+    cursor: initial;
+  }
+
+  .ui.input {
+    width: 25%;
+  }
+
+  .ui.input input{
+    font-family: Kanit;
+    margin-left: 5%;
+  }
+
+  .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before{
+    width: 3rem;
+  }
+
+  .ui.toggle.checkbox input:checked ~ .box:after, .ui.toggle.checkbox input:checked ~ label:after {
+    left: 1.6rem;
+  }
+}

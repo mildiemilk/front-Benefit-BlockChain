@@ -2,7 +2,7 @@ import styled from 'react-sc'
 import Health from '../../../assets/AddBenefit/artboards-1.png'
 import Expense from '../../../assets/AddBenefit/artboards-2.png'
 
-export const Detail = styled.div `
+export const Detail = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 5px;

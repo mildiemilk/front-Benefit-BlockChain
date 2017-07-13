@@ -70,37 +70,36 @@ class Box extends Component {
       }
     }
     return bids.map(bid => (
-
-      <div className = 'boxDetail' >
-        <div className={this.boxStyling(status,end.end)}>
-        <div className="row">
-          <div className="large-3 columns">
-            <Text>{bid.insurerName}</Text>
-          </div>
-          <div className="large-6 columns">
-            <div className="row">
-              <div className="large-4 columns">
-                <Text>{bid.biddingId}</Text>
-              </div>
-              <div className="large-2 columns">
-                <Text>{bid.timeOfBidding}</Text>
-              </div>
-              <div className="large-2 columns">
-                <Text>{moment(bid.updatedAt).format('L')}</Text>
-              </div>
-              <div className="large-4 columns">
-                <Text>{bid.priceOfBidding}</Text>
+      <div className="boxDetail">
+        <div className={this.boxStyling(status, end.end)}>
+          <div className="row">
+            <div className="large-3 columns">
+              <Text>{bid.insurerName}</Text>
+            </div>
+            <div className="large-6 columns">
+              <div className="row">
+                <div className="large-4 columns">
+                  <Text>{bid.biddingId}</Text>
+                </div>
+                <div className="large-2 columns">
+                  <Text>{bid.timeOfBidding}</Text>
+                </div>
+                <div className="large-2 columns">
+                  <Text>{moment(bid.updatedAt).format('L')}</Text>
+                </div>
+                <div className="large-4 columns">
+                  <Text>{bid.priceOfBidding}</Text>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="large-1 columns">
-            <Text>
-              <IconPointer
-                name="external"
-                size="big"
-                onClick={() => this.props.handleClick(bid)}
-              />
-            </Text>
+            <div className="large-1 columns">
+              <Text>
+                <IconPointer
+                  name="external"
+                  size="big"
+                  onClick={() => this.props.handleClick(bid)}
+                />
+              </Text>
 
             </div>
             <div className="large-2 columns">

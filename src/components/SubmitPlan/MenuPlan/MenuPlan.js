@@ -55,48 +55,55 @@ class MenuPlan extends Component {
     for (var i = 0; i < list.length; i++) {
       output.push(
         <div className="menu-select-plan">
-          <span>{list[i].planName}</span>
-          <Popup
-            trigger={
-              <Icon
-                style={{ float: 'right' }}
-                name="ellipsis vertical"
-                size="large"
+          <div className="row">
+            <div className="large-2 columns">
+              <Checkbox />
+            </div>
+            <div className="large-10 columns">
+              <span>{list[i].planName}</span>
+              <Popup
+                trigger={
+                  <Icon
+                    style={{ float: 'right', cursor: 'pointer' }}
+                    name="ellipsis vertical"
+                    size="large"
+                  />
+                }
+                content={
+                  <List divided relaxed>
+                    <List.Item>
+                      <List.Content>
+                        <p id={i} onClick={this.props.handleEdit}>
+                          <Icon name="edit" />แก้ไขแพลน
+                        </p>
+                      </List.Content>
+                    </List.Item>
+                    <List.Item>
+                      <List.Content>
+                        <p id={i} onClick={this.props.handleCopy}>
+                          <Icon name="copy" />คัดลอกแพลน
+                        </p>
+                      </List.Content>
+                    </List.Item>
+                    <List.Item>
+                      <List.Content>
+                        <p id={i} onClick={this.props.handleDelete}>
+                          <Icon name="trash outline" />ลบแพลน
+                        </p>
+                      </List.Content>
+                    </List.Item>
+                  </List>
+                }
+                on="click"
+                hideOnScroll
+                position="bottom center"
+                open={this.state.isOpen}
+                onClose={this.handleClose}
+                onOpen={this.handleOpen}
               />
-            }
-            content={
-              <List divided relaxed>
-                <List.Item>
-                  <List.Content>
-                    <p id={i} onClick={this.props.handleEdit}>
-                      <Icon name="edit" />แก้ไขแพลน
-                    </p>
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <p id={i} onClick={this.props.handleCopy}>
-                      <Icon name="copy" />คัดลอกแพลน
-                    </p>
-                  </List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Content>
-                    <p id={i} onClick={this.props.handleDelete}>
-                      <Icon name="trash outline" />ลบแพลน
-                    </p>
-                  </List.Content>
-                </List.Item>
-              </List>
-            }
-            on="click"
-            hideOnScroll
-            position="bottom center"
-            open={this.state.isOpen}
-            onClose={this.handleClose}
-            onOpen={this.handleOpen}
-          />
-          <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
+              <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
+            </div>
+          </div>
         </div>,
       )
     }
@@ -114,7 +121,11 @@ class MenuPlan extends Component {
             trigger={
               <div style={{ float: 'right' }}>
                 <span>ชื่อ</span>
-                <Icon name="caret down" size="small" />
+                <Icon
+                  name="caret down"
+                  size="small"
+                  style={{ cursor: 'pointer' }}
+                />
               </div>
             }
             content="Hide the popup on any scroll event"
@@ -140,6 +151,9 @@ class MenuPlan extends Component {
           </p>
         </div>
         {this.renderList(this.props.planList)}
+        <div className="menu-compare-plan">
+          เปรียบเทียบแพลน
+        </div>
       </div>
     )
   }

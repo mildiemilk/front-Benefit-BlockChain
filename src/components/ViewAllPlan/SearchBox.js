@@ -24,7 +24,7 @@ class SearchBox extends React.Component {
 
   render() {
     return (
-      <div className="SearchViewPlan">
+      <div className="ViewAllPlan">
         <Input
           style={{ marginTop: '20%' }}
           action="ไป"

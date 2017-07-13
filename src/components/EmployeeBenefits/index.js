@@ -23,6 +23,17 @@ class employeeBenefits extends Component {
     this.state = {
       groupName: [{ name: 'GroupA' }, { name: 'GroupB' }, { name: 'GroupC' }],
       planName: [{ name: 'planA' }, { name: 'planB' }, { name: 'planC' }],
+      selectPlan: [],
+    }
+  }
+
+  handleFixedChange = (e, { value }) => {
+    this.setState({ value })
+    if (this.state.selectPlan.length > 0) {
+      this.state.selectPlan.pop()
+      this.state.selectPlan.push(value)
+    } else {
+      this.state.selectPlan.push(value)
     }
   }
 

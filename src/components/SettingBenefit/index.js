@@ -8,27 +8,37 @@ import {
   AddContent,
   HeaderSpace,
   Blog,
+  Blogs,
   BlogImg,
   BlogContent,
   BackButton,
   NextButton,
 } from './Styled'
 import styled from 'react-sc'
-import NavInsure from '../NavInsure'
-import { getAllPlan } from '../../api/setPlan'
+import NavBenefit from '../NavBenefit'
+import SettingPlan from './SettingPlan.js'
 
 export class SettingBenefit extends Component {
   constructor() {
     super()
     this.state = {
       step: 3,
+      addPlan: false,
+    }
+  }
+
+  handleAddPlan = () => {
+    if (this.state.addPlan) {
+      this.setState({ addPlan: false })
+    } else {
+      this.setState({ addPlan: true })
     }
   }
 
   render() {
     return (
       <div>
-        <NavInsure step={this.state.step} />
+        <NavBenefit step={this.state.step} />
         <div className="row">
           <Rec>
             <HeaderSpace className="row">
@@ -39,7 +49,7 @@ export class SettingBenefit extends Component {
 
             <div className="row">
               <div className="large-2 large-offset-1 columns">
-                <AddPlan>
+                <AddPlan onClick={this.handleAddPlan}>
                   <AddContent>
                     <Icon disabled name="add circle" />
                     เพิ่มแผนสิทธิประโยชน์
@@ -48,10 +58,15 @@ export class SettingBenefit extends Component {
               </div>
 
               <div className="large-8 columns">
-                <Blog>
-                  <BlogImg src="../../../setbenefit/icons-8-form.png" />
-                  <BlogContent> ยังไม่มีการสร้างแผนสิทธิประโยชน์ </BlogContent>
-                </Blog>
+                {this.state.addPlan
+                  ? <SettingPlan />
+                  : <Blog>
+                      <BlogImg src="../../../setbenefit/icons-8-form.png" />
+                      <BlogContent>
+                        {' '}ยังไม่มีการสร้างแผนสิทธิประโยชน์{' '}
+                      </BlogContent>
+                    </Blog>}
+
               </div>
 
               <div className="large-1 columns" />

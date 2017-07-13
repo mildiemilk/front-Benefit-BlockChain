@@ -36,6 +36,7 @@ import ViewAllPlan from './ViewAllPlan'
 import ComparePlan from './ComparePlan'
 import AddBenefit from './AddBenefit'
 import SettingBenefit from './SettingBenefit'
+import Logout from './Auth/logout'
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -48,6 +49,7 @@ const App = ({ isAuthenticated }) => (
                 <Route path="/confirm_identity" component={confirm_identity} />
                 <Route path="/welcome" component={welcomePage} />
                 <Route path="/settingprofile" component={SettingProfile} />
+                <Route path="/logout" component={Logout} />
                 <MainLayout>
                   <Switch>
                     <Route path="/postbox" component={Postbox} />

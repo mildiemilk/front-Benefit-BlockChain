@@ -81,7 +81,7 @@ class Sendrequest extends Component {
             <Head2>อัพโหลดไฟล์</Head2>
             <BoxIndiv4 />
           </Detail>
-          <Link to='/bidding'><Submit>ส่งคำขอ</Submit></Link>
+          <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
         </div>
       </div>
     )

@@ -119,7 +119,7 @@ class InsurerSelect extends Component {
               </SideIn>
             </div>
           </Detail>
-          <Link to='/uploadfile'><Next>ต่อไป</Next></Link>
+          <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
         </div>
       </div>
     )

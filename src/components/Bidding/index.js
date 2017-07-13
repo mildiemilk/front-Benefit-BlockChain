@@ -8,12 +8,15 @@ import { bidding } from '../../api/bidding'
 import Details from './Details'
 
 class Bidding extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       isDetail: false,
       Detail: {},
     }
+    setInterval(function() {
+      props.bidding()
+    }, 2000)
   }
 
   handleClick = (Detail) => {

@@ -24,57 +24,51 @@ class Box extends Component {
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  
-  boxStyling = (status,end) => {
-    if(end == 'Timeout'){
-      if(status === 'Join' ) {
-        return 'boxes';
+
+  boxStyling = (status, end) => {
+    if (end == 'Timeout') {
+      if (status === 'Join') {
+        return 'boxes'
+      } else {
+        return 'boxCancelTimeout'
       }
-      else {
-        return 'boxCancelTimeout';
-      }
-    }
-    else {
-      if(status === 'Join' ) {
-        return 'boxes';
-      }
-      else if(status === 'Cancel') {
-        return 'boxCancel';
-      }
-      else {
+    } else {
+      if (status === 'Join') {
+        return 'boxes'
+      } else if (status === 'Cancel') {
+        return 'boxCancel'
+      } else {
         return 'wait'
       }
-    }  
-  };
+    }
+  }
 
   renderList = bids => {
-    
     let status = 'Join'
     let statusModule = ''
     const { end } = this.props
-    if(end.end === 'Timeout'){
-        if(status === 'Join'){
-            statusModule =(<ModalSelectInsurer
-                      handlePost={this.handlePost}
-                      handleChange={this.handleChange}
-                    />)
-        }
-        else{
-            statusModule =(<ButtonStatusCancle>ไม่เข้าร่วมประมูล</ButtonStatusCancle>)
-        }
+    if (end.end === 'Timeout') {
+      if (status === 'Join') {
+        statusModule = (
+          <ModalSelectInsurer
+            handlePost={this.handlePost}
+            handleChange={this.handleChange}
+          />
+        )
+      } else {
+        statusModule = (
+          <ButtonStatusCancle>ไม่เข้าร่วมประมูล</ButtonStatusCancle>
+        )
+      }
+    } else {
+      if (status === 'Join') {
+        statusModule = <Text style={{ color: '#2ac294' }}>ร่วมประมูล</Text>
+      } else if (status === 'Cancel') {
+        statusModule = <Text style={{ color: '#f1535d' }}>ไม่ร่วมประมูล</Text>
+      } else {
+        statusModule = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>
+      }
     }
-    else {
-        if(status === 'Join'){
-            statusModule =(<Text style={{color:'#2ac294'}}>ร่วมประมูล</Text>)
-        }
-        else if (status === 'Cancel'){
-        
-            statusModule =(<Text style={{color:'#f1535d'}}>ไม่ร่วมประมูล</Text>)
-        }
-        else{
-            statusModule =(<Text style={{color:'#3a7bd5'}}>กำลังพิจารณา</Text>)
-        }
-    } 
     return bids.map(bid => (
 
       <div className = 'boxDetail' >
@@ -108,18 +102,17 @@ class Box extends Component {
               />
             </Text>
 
+            </div>
+            <div className="large-2 columns">
+              <Text>{statusModule}</Text>
+            </div>
           </div>
-          <div className="large-2 columns">
-            <Text>{statusModule}</Text>
-          </div>
-        </div>
         </div>
       </div>
     ))
   }
 
   render() {
-    
     return (
       <div className="Box">
         <div className="HeadBidContent">

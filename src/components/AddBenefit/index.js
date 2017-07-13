@@ -87,8 +87,16 @@ class AddBenefit extends Component {
                 </Detail>
                
             </div>
-        ) 
-    }
+        )
+  }
+
+  render() {
+    return (
+      <div className="AddBenefit">
+        <NavBenefit step={this.state.step} />
+      </div>
+    )
+  }
 }
 
-export default AddBenefit;
+export default AddBenefit

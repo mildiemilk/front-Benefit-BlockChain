@@ -74,7 +74,7 @@ class Bidding extends Component {
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
-  num: state.chooseInsurerReducer.length
+  num: state.chooseInsurerReducer.length,
 })
 
 export default connect(mapStateToProps, null)(Bidding)

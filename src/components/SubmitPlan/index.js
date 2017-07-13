@@ -189,7 +189,7 @@ class SubmitPlan extends Component {
       this.props.getAllPlan()
     }
     return (
-      <div>
+      <div className="SubmitPlan">
         <NavInsure step={this.state.step} />
         <div className="big-box">
           <div className="row">
@@ -211,7 +211,7 @@ class SubmitPlan extends Component {
                 employeeOfPlan={this.state.employeeOfPlan}
               />
             </div>
-            <div className="large-9 columns">
+            <div className="large-9 columns" style={{ paddingRight: '2.5%' }}>
               <div style={{ marginLeft: '70%', marginTop: '9%' }}>
                 <span>อนุญาติให้โบรกเกอร์</span>
                 <Checkbox toggle onClick={this.handleToggle} />

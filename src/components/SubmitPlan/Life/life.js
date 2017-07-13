@@ -167,7 +167,7 @@ class Life extends Component {
               />
             </Form.Field>
             {this.state.value === 'thirdLifeChoice'
-              ? <div style={{ display: 'inherit' }}>
+              ? <div style={{ display: '-webkit-box' }}>
                   <Form.Select
                     placeholder="เท่า"
                     options={options}
@@ -175,6 +175,7 @@ class Life extends Component {
                     id="lifeTimeOfSalary"
                     value={this.props.lifeTimeOfSalary}
                     onChange={this.handleChange}
+                    style={{ width: '150px' }}
                   />
                   <Form.Input
                     type="number"
@@ -185,9 +186,10 @@ class Life extends Component {
                     value={this.props.lifeNotExceed}
                     onChange={this.handleChange}
                     required
+                    style={{ width: '95px' }}
                   />
                 </div>
-              : <div style={{ display: 'inherit' }}>
+              : <div style={{ display: '-webkit-box' }}>
                   <Form.Select
                     placeholder="เท่า"
                     options={1}
@@ -195,6 +197,7 @@ class Life extends Component {
                     name="lifeTimeOfSalary"
                     id="lifeTimeOfSalary"
                     disabled
+                    style={{ width: '150px' }}
                   />
                   <Form.Input
                     type="number"
@@ -204,6 +207,7 @@ class Life extends Component {
                     id="lifeNotExceed"
                     onChange={this.handleChange}
                     readOnly
+                    style={{ width: '100px' }}
                   />
                 </div>}
             <p> บาท</p>
@@ -219,7 +223,6 @@ class Life extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '5%',
                 marginBottom: '3%',
               }}
               type="submit"

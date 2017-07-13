@@ -13,6 +13,7 @@ import {
   Container,
   Dropdown,
   Radio,
+  Icon,
 } from 'semantic-ui-react'
 import '../../styles/employeeBenefits.scss'
 
@@ -21,9 +22,11 @@ class SelectOptionPlan extends Component {
     super()
     this.state = {
       selected: '',
+      value: '',
+      plan: '',
     }
   }
-
+  handleChange = (e, { value }) => this.setState({ value })
   handleActive = index => {
     this.setState({ selected: index })
   }
@@ -35,12 +38,24 @@ class SelectOptionPlan extends Component {
         <div className="row">
           <div className="large-1 columns">
             <div className="select-button">
-              <this.props.selectOption />
+              <Form.Field>
+                <this.props.selectOption
+                  name="planGroup"
+                  value={element.name}
+                  checked={this.state.value === element.name}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
             </div>
           </div>
           <div className={this.props.columnsLenght}>
             <div className="fixed-plan-box">
               {element.name}
+              <Icon
+                style={{ float: 'right' }}
+                name="ellipsis vertical"
+                size="large"
+              />
             </div>
           </div>
           {this.props.plan === 'Flex'
@@ -59,27 +74,12 @@ class SelectOptionPlan extends Component {
   }
 
   render() {
+    console.log(this.state.value)
     return (
       <div>
-        {/*<div className="large-1 columns">
-              <div className="select-button">
-                <this.props.selectOption />
-              </div>
-            </div>
-            <div className={this.props.columnsLenght}>
-              <div className="fixed-plan-box">
-                แผนสิทธิประโยชน์ 1
-              </div>
-            </div>
-            {this.props.plan === 'Flex'
-              ? <div className="large-4 columns">
-                  <div className="basic-status-box">
-                    <p>ตั้งแผนนี้เป็นค่าเริ่มต้น</p>
-                  </div>
-                </div>
-              : null
-            }*/}
-        {this.renderList(this.props.planName)}
+        <Form>
+          {this.renderList(this.props.planName)}
+        </Form>
       </div>
     )
   }

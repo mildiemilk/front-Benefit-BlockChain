@@ -259,7 +259,6 @@ class IPD extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '5%',
                 marginBottom: '3%',
               }}
               type="submit"

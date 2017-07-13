@@ -181,16 +181,18 @@ class OPD extends Component {
                       id="opdPerTime"
                       value={this.props.opdPerTime}
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       required
                     />
-                    <span>บาท/ครั้ง ครั้งละไม่เกิน</span>
                     <Form.Input
                       type="number"
+                      label="บาท/ครั้ง ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
                       value={this.props.opdTimeNotExceedPerYear}
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       required
                     />
                   </div>
@@ -201,15 +203,17 @@ class OPD extends Component {
                       name="opdPerTime"
                       id="opdPerTime"
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       readOnly
                     />
-                    <span>บาท/ครั้ง ครั้งละไม่เกิน</span>
                     <Form.Input
                       type="number"
                       placeholder="จำนวนเงิน"
+                      label="บาท/ครั้ง ครั้งละไม่เกิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       readOnly
                     />
                   </div>}
@@ -243,7 +247,6 @@ class OPD extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '32px',
                 marginBottom: '3%',
               }}
               type="submit"

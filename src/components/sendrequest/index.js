@@ -9,7 +9,7 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
-import ModalPlanBox from './ModalPlanBox/'
+import ModalPlanBox from './ModalPlanBox'
 import {
   Detail,
   Head,

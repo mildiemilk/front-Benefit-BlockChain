@@ -67,7 +67,7 @@ class FormSubmitPlan extends Component {
                 <p className="p-in-modal">จำนวนพนักงานในแพลน</p>
               </div>
             </div>
-            <div className="large-8 columns">
+            <div className="large-8 columns" style={{ paddingRight: '4%' }}>
               <Form>
                 <Form.Group widths="equal">
                   <Form.Input
@@ -101,7 +101,6 @@ class FormSubmitPlan extends Component {
                     color: 'white',
                     float: 'right',
                     borderRadius: '20px',
-                    marginRight: '5%',
                     marginBottom: '3%',
                   }}
                   type="submit"

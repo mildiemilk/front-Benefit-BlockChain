@@ -111,4 +111,9 @@ class ModalPlanBox extends Component {
     )
   }
 }
-export default ModalPlanBox
+
+const mapStateToProps = state => ({
+  data: state.plan,
+})
+
+export default connect(mapStateToProps, null)(ModalPlanBox)

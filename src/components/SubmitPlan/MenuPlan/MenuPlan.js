@@ -64,7 +64,7 @@ class MenuPlan extends Component {
               <Popup
                 trigger={
                   <Icon
-                    style={{ float: 'right' }}
+                    style={{ float: 'right', cursor: 'pointer' }}
                     name="ellipsis vertical"
                     size="large"
                   />
@@ -121,7 +121,11 @@ class MenuPlan extends Component {
             trigger={
               <div style={{ float: 'right' }}>
                 <span>ชื่อ</span>
-                <Icon name="caret down" size="small" />
+                <Icon
+                  name="caret down"
+                  size="small"
+                  style={{ cursor: 'pointer' }}
+                />
               </div>
             }
             content="Hide the popup on any scroll event"

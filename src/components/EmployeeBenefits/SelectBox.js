@@ -26,22 +26,18 @@ class SelectBox extends Component {
     super()
     this.state = {
       plan: '',
-      selectOption: Checkbox,
+      selectOption: '',
       columnsLenght: 'large-11 columns',
     }
-  }
-
-  handleSelecPlan = value => {
-    console.log(value)
   }
 
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value })
     if (value === 'Fixed') {
-      this.setState({ selectOption: Radio })
+      this.setState({ selectOption: 'Fixed' })
       this.setState({ columnsLenght: 'large-11 columns' })
     } else {
-      this.setState({ selectOption: Checkbox })
+      this.setState({ selectOption: 'Flex' })
       this.setState({ columnsLenght: 'large-7 columns' })
     }
   }

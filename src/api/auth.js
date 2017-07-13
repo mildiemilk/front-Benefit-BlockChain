@@ -56,15 +56,8 @@ export function register(email, confirmPassword, password, role) {
 
 export function logout() {
   return dispatch => {
-    const options = {
-      method: 'get',
-      url: LOGOUT_URI,
-    }
-
-    APIRequest(options).then(() => {
-      dispatch(logoutRequestSuccess())
-      window.location = '/login'
-    })
+    localStorage.clear()
+    window.location = '/login'
   }
 }
 

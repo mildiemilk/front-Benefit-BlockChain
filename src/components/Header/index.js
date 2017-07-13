@@ -20,9 +20,9 @@ class Header extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    this.props.getCompanyName()
-  }
+  // componentDidMount() {
+  //   this.props.getCompanyName()
+  // }
 
   render() {
     return (
@@ -33,24 +33,26 @@ class Header extends Component {
           </div>
         </LogoPosition>
         <Menu.Item style={{ width: '20%' }} position="right">
-          <div>
-            <SpanStyle>
-              {this.props.data.companyName}
-            </SpanStyle>
-            <ImageCss src={avatarn} avatar size="mini" />
-          </div>
+          {this.props.data.companyName
+            ? <div>
+                <SpanStyle>
+                  {this.props.data.companyName}
+                </SpanStyle>
+                <ImageCss src={avatarn} avatar size="mini" />
+              </div>
+            : <div />}
         </Menu.Item>
       </HeadNav>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getCompanyName: data => dispatch(getCompanyName()),
-})
+// const mapDispatchToProps = dispatch => ({
+//   getCompanyName: data => dispatch(getCompanyName()),
+// })
 
 const mapStateToProps = state => ({
   data: state.profile,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, null)(Header)

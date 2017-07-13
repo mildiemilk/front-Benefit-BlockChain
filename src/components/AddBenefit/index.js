@@ -35,8 +35,9 @@ class AddBenefit extends Component {
                 :<Detail handleSetting={this.handleSetting}/>
                 }
             </div>
+
         )
-  }
+    }
 }
  
 export default AddBenefit

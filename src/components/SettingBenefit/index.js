@@ -8,27 +8,41 @@ import {
   AddContent,
   HeaderSpace,
   Blog,
+  Blogs,
   BlogImg,
   BlogContent,
   BackButton,
   NextButton,
 } from './Styled'
 import styled from 'react-sc'
-import NavInsure from '../NavInsure'
-import { getAllPlan } from '../../api/setPlan'
+import NavBenefit from '../NavBenefit'
+import SettingPlan from './SettingPlan.js'
+import AddPlanBar from './AddPlanBar.js'
 
 export class SettingBenefit extends Component {
   constructor() {
     super()
     this.state = {
       step: 3,
+      addPlan: false,
+      planName: [
+        { name: 'แผนสิทธิประโยชน์ 1' },
+        { name: 'แผนสิทธิประโยชน์ 2' },
+        { name: 'แผนสิทธิประโยชน์ 3' },
+      ],
+    }
+  }
+
+  handleAddPlan = () => {
+    if (this.state.addPlan === false) {
+      this.setState({ addPlan: true })
     }
   }
 
   render() {
     return (
-      <div>
-        <NavInsure step={this.state.step} />
+      <div className="SettingBenefit">
+        <NavBenefit step={this.state.step} />
         <div className="row">
           <Rec>
             <HeaderSpace className="row">
@@ -39,19 +53,29 @@ export class SettingBenefit extends Component {
 
             <div className="row">
               <div className="large-2 large-offset-1 columns">
-                <AddPlan>
+                {this.state.addPlan
+                  ? <AddPlanBar planName={this.state.planName} />
+                  : null}
+
+                <AddPlan onClick={this.handleAddPlan}>
                   <AddContent>
                     <Icon disabled name="add circle" />
                     เพิ่มแผนสิทธิประโยชน์
                   </AddContent>
                 </AddPlan>
+
               </div>
 
               <div className="large-8 columns">
-                <Blog>
-                  <BlogImg src="../../../setbenefit/icons-8-form.png" />
-                  <BlogContent> ยังไม่มีการสร้างแผนสิทธิประโยชน์ </BlogContent>
-                </Blog>
+                {this.state.addPlan
+                  ? <SettingPlan />
+                  : <Blog>
+                      <BlogImg src="../../../setbenefit/icons-8-form.png" />
+                      <BlogContent>
+                        {' '}ยังไม่มีการสร้างแผนสิทธิประโยชน์{' '}
+                      </BlogContent>
+                    </Blog>}
+
               </div>
 
               <div className="large-1 columns" />

@@ -23,10 +23,10 @@ class Details extends Component {
     super(props)
     console.log(this.props)
   }
-  
+
   render() {
     const { bid } = this.props
-   
+
     return (
       <div className="Bidding">
         <Back onClick={() => this.props.handleClick()}> &lt; กลับหน้าหลัก</Back>
@@ -44,7 +44,9 @@ class Details extends Component {
           <HeadBar>
             <div className="row">
               <div className="large-4 columns">
-                <HeadList> วันที่เสนอราคา: {moment(bid.updatedAt).format('L')} </HeadList>
+                <HeadList>
+                  {' '}วันที่เสนอราคา: {moment(bid.updatedAt).format('L')}{' '}
+                </HeadList>
               </div>
               <div className="large-3 large-offset-1 columns">
                 <HeadList>การเสนอราคาครั้งที่ {bid.timeOfBidding}</HeadList>
@@ -84,7 +86,6 @@ class Details extends Component {
 
 const mapStateToProps = state => ({
   data: state.biddingReducer,
-
 })
 
 const mapDispatchToProps = dispatch => ({

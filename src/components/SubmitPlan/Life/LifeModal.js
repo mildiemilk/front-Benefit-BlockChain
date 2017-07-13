@@ -66,12 +66,12 @@ class LifeModal extends Component {
 
         <ModalContents>
           <Modal.Header>
-            <p className="header-modal">
+            <p style={{ textAlign: 'center' }}>
               คุณต้องการบันทึกรายละเอียดแพลนของคุณหรือไม่ ?
             </p>
           </Modal.Header>
           <Modal.Content>
-            <p className="text-modal">
+            <p style={{ textAlign: 'center' }}>
               คุณได้เปลี่ยนแปลงรายละเอียดแพลนโดยไม่ได้ทำการบันทึก
             </p>
           </Modal.Content>

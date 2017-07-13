@@ -19,15 +19,14 @@ class Bidding extends Component {
     }, 2000)
   }
 
-  handleClick = (Detail) => {
+  handleClick = Detail => {
     const { isDetail } = this.state
-    console.log(Detail);
+    console.log(Detail)
     if (!isDetail) this.setState({ isDetail: true, Detail: Detail })
     else this.setState({ isDetail: false })
   }
 
   render() {
-
     {
       this.props.bidding()
     }

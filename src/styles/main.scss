@@ -8,6 +8,7 @@
 @import './Bidding.scss';
 @import './ComparePlan.scss';
 @import './AddBenefit.scss';
+@import './SettingBenefit.scss';
 
 @font-face {
     font-family: 'kanit';
@@ -22,6 +23,12 @@ body {
     font-family: 'Kanit';
     }
     background: #F1F1F1;
+
+    .toggle{
+      .ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
+        background-color: #4db698 !important;
+      }
+    }
 }
 
 

@@ -19,69 +19,64 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 class Details extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    console.log(this.props)
   }
-
-  renderList = bids => {
-    return bids.map(bid => (
-      <BoxDetail>
-        <InSide>
-          <div className="row">
-            <div className="large-3 columns">
-              <TextLine> {bid.insurerName} </TextLine>
-            </div>
-            <div className="large-3 large-offseet-6 columns">
-              <TextSide> เลขที่ใบเสนอราคา {bid.biddingId} </TextSide>
-            </div>
-          </div>
-        </InSide>
-        <HeadBar>
-          <div className="row">
-            <div className="large-4 columns">
-              <HeadList>
-                {' '}วันที่เสนอราคา: {moment(bid.updatedAt).format('L')}{' '}
-              </HeadList>
-            </div>
-            <div className="large-3 large-offset-1 columns">
-              <HeadList>การเสนอราคาครั้งที่ {bid.timeOfBidding}</HeadList>
-            </div>
-            <div className="large-3 columns">
-              <HeadList>ราคาที่เสนอ {bid.priceOfBidding} บาท</HeadList>
-            </div>
-          </div>
-        </HeadBar>
-        <InSide>
-          <div className="row">
-            <div className="large-3 columns">
-              <TextLine>รายการแพลนของคุณ</TextLine>
-            </div>
-          </div>
-          <div className="row">
-            <Plan />
-          </div>
-        </InSide>
-        <InSide>
-          <div className="row">
-            <div className="large-6 columns">
-              <TextInsure>ข้อเสนอจากบริษัทประกัน</TextInsure>
-              {' '}
-              <Special>พิเศษสำหรับคุณ</Special>
-            </div>
-          </div>
-          <div className="row">
-            <Plan />
-          </div>
-        </InSide>
-      </BoxDetail>
-    ))
-  }
-
+  
   render() {
+    const { bid } = this.props
+   
     return (
       <div className="Bidding">
-        <Back onClick={this.props.handleClick}> &lt; กลับหน้าหลัก</Back>
-        {this.renderList(this.props.data)}
+        <Back onClick={() => this.props.handleClick()}> &lt; กลับหน้าหลัก</Back>
+        <BoxDetail>
+          <InSide>
+            <div className="row">
+              <div className="large-3 columns">
+                <TextLine> {bid.insurerName} </TextLine>
+              </div>
+              <div className="large-3 large-offseet-6 columns">
+                <TextSide> เลขที่ใบเสนอราคา {bid.biddingId} </TextSide>
+              </div>
+            </div>
+          </InSide>
+          <HeadBar>
+            <div className="row">
+              <div className="large-4 columns">
+                <HeadList> วันที่เสนอราคา: {moment(bid.updatedAt).format('L')} </HeadList>
+              </div>
+              <div className="large-3 large-offset-1 columns">
+                <HeadList>การเสนอราคาครั้งที่ {bid.timeOfBidding}</HeadList>
+              </div>
+              <div className="large-3 columns">
+                <HeadList>ราคาที่เสนอ {bid.priceOfBidding} บาท</HeadList>
+              </div>
+            </div>
+          </HeadBar>
+          <InSide>
+            <div className="row">
+              <div className="large-3 columns">
+                <TextLine>รายการแพลนของคุณ</TextLine>
+              </div>
+            </div>
+            <div className="row">
+              <Plan />
+            </div>
+          </InSide>
+          <InSide>
+            <div className="row">
+              <div className="large-6 columns">
+                <TextInsure>ข้อเสนอจากบริษัทประกัน</TextInsure>
+                {' '}
+                <Special>พิเศษสำหรับคุณ</Special>
+              </div>
+            </div>
+            <div className="row">
+              <Plan />
+            </div>
+          </InSide>
+        </BoxDetail>
       </div>
     )
   }
@@ -89,6 +84,7 @@ class Details extends Component {
 
 const mapStateToProps = state => ({
   data: state.biddingReducer,
+
 })
 
 const mapDispatchToProps = dispatch => ({

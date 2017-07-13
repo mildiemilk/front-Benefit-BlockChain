@@ -58,7 +58,7 @@ export const BoxIndiv3 = styled.div`
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     padding:3%;
     height: 210px;
-    width: 851.03px;
+    width: 100%;
     display: inline-block;
 `
 export const BoxIndiv4 = styled.div`

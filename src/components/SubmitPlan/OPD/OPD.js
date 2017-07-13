@@ -129,7 +129,7 @@ class OPD extends Component {
           </u>
         </p>
         <br />
-        <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
+        <p className="head"> ระบุรูปแบบประกันที่ต้องการ </p>
         <div className="row">
           <Form onSubmit={this.handleClick}>
             <Form.Group inline>

@@ -97,7 +97,7 @@ class Box extends Component {
                 <IconPointer
                   name="external"
                   size="big"
-                  onClick={this.props.handleClick}
+                  onClick={() => this.props.handleClick(bid)}
                 />
               </Text>
 

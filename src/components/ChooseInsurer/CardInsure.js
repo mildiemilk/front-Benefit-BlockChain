@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Check, Cardlast } from './styled'
+import { Card, Check } from './styled'
 import { connect } from 'react-redux'
 import { getAllInsurer } from '../../api/chooseInsurer'
 class CardInsure extends React.Component {

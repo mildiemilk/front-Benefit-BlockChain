@@ -28,6 +28,7 @@ import EmptyLayout from './EmptyLayout'
 import Uploadfile from './uploadfile'
 import NavLayout from './NavLayout'
 import Bidding from './Bidding'
+import EmployeeBenefits from './EmployeeBenefits/'
 import 'semantic-ui-css/semantic.min.css'
 import '../styles/main.scss'
 import createBrowserHistory from 'history/createBrowserHistory'
@@ -43,7 +44,7 @@ const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
       <EmptyLayout>
-        {true
+        {isAuthenticated
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />
@@ -68,6 +69,10 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/uploadfile" component={Uploadfile} />
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
+                    <Route
+                      path="/EmployeeBenefits"
+                      component={EmployeeBenefits}
+                    />
                   </Switch>
                 </MainLayout>
               </Switch>

@@ -1,0 +1,8 @@
+.git
+.gitignore
+/assets
+/src
+/node_modules
+/webpack
+/README.md
+/LICENSE.md

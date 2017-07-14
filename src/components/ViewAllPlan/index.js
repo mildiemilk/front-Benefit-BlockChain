@@ -11,13 +11,16 @@ import ModalView from './ModalView'
 import { getAllPlan } from '../../api/setPlan'
 
 export class ViewAllPlan extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       step: 3,
       passwordToConfirm: '',
       SearchTerm: '',
     }
+    setInterval(function() {
+      props.getAllPlan()
+    }, 2000)
   }
 
   handleSearchBoxChange(keyword) {
@@ -34,9 +37,6 @@ export class ViewAllPlan extends Component {
   }
 
   render() {
-    {
-      this.props.getAllPlan()
-    }
     return (
       <div className="ViewAllPlan">
         <NavInsure step={this.state.step} />

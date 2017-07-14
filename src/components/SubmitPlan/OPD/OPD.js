@@ -115,7 +115,7 @@ class OPD extends Component {
           </u>
         </p>
         <br />
-        <p className="head">ระบุรูปแบบประกันที่ต้องการ </p>
+        <p className="head"> ระบุรูปแบบประกันที่ต้องการ </p>
         <div className="row">
           <Form onSubmit={this.handleClick}>
             <Form.Group inline>
@@ -167,16 +167,18 @@ class OPD extends Component {
                       id="opdPerTime"
                       value={this.props.opdPerTime}
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       required
                     />
                     <Form.Input
                       type="number"
-                      label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                      label="บาท/ครั้ง ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
                       value={this.props.opdTimeNotExceedPerYear}
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       required
                     />
                   </div>
@@ -187,15 +189,17 @@ class OPD extends Component {
                       name="opdPerTime"
                       id="opdPerTime"
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       readOnly
                     />
                     <Form.Input
                       type="number"
-                      label="บาท/ครั้ง  ครั้งละไม่เกิน"
                       placeholder="จำนวนเงิน"
+                      label="บาท/ครั้ง ครั้งละไม่เกิน"
                       name="opdTimeNotExceedPerYear"
                       id="opdTimeNotExceedPerYear"
                       onChange={this.handleChange}
+                      style={{ width: '140px' }}
                       readOnly
                     />
                   </div>}
@@ -234,7 +238,6 @@ class OPD extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '32px',
                 marginBottom: '3%',
               }}
               type="submit"
@@ -246,8 +249,6 @@ class OPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
-            handleNextPlan={this.props.handleNextPlan}
-            handleReset={this.props.handleReset}
           />
         </div>
       </div>

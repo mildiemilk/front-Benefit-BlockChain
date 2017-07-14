@@ -47,8 +47,6 @@ class DentalModal extends Component {
 
   handleCancel = () => {
     this.props.handleCloseModal()
-    this.props.handleReset()
-    this.props.handleNextPlan()
   }
 
   handleSubmit = () => {
@@ -67,12 +65,12 @@ class DentalModal extends Component {
 
         <ModalContents>
           <ModalContents>
-            <p className="header-modal">
+            <p style={{ textAlign: 'center' }}>
               คุณต้องการบันทึกรายละเอียดแพลนของคุณหรือไม่ ?
             </p>
           </ModalContents>
           <ModalContents>
-            <p className="text-modal">
+            <p style={{ textAlign: 'center' }}>
               คุณได้เปลี่ยนแปลงรายละเอียดแพลนโดยไม่ได้ทำการบันทึก
             </p>
           </ModalContents>

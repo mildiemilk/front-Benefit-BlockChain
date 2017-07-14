@@ -355,7 +355,7 @@ class AllsetPlan extends Component {
                   ipdLumsumTimeNotExceedPerYear={
                     this.props.ipdLumsumTimeNotExceedPerYear
                   }
-                  rbLumsumRoomPerNight={this.props.rbLumsumPayNotExceedPerNight}
+                  rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
                   rbLumsumNigthNotExceedPerYear={
                     this.props.rbLumsumNigthNotExceedPerYear
                   }

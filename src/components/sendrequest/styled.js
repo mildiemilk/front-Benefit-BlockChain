@@ -6,7 +6,7 @@ export const Detail = styled.div`
     margin-top:3%;
     padding: 7%;
     padding-top: 25px;
-    height: 1600px;
+    height: 100%;
 
 `
 
@@ -58,7 +58,7 @@ export const BoxIndiv3 = styled.div`
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     padding:3%;
     height: 210px;
-    width: 851.03px;
+    width: 100%;
     display: inline-block;
 `
 export const BoxIndiv4 = styled.div`
@@ -73,9 +73,8 @@ export const BoxIndiv4 = styled.div`
 export const PostreText = styled.text`
   width: 169px;
   height: 24px;
-  font-family: Kanit;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 500px;
   letter-spacing: 0.3px;
   text-align: left;
   color: #323028;
@@ -94,4 +93,8 @@ export const PlanBox = styled.div`
   background-color: #eaeaea;
   border: solid 1px rgba(151, 151, 151, 0.39);
   padding: 8% 8%;
+`
+
+export const TopSpace = styled.div`
+  margin-top: 6px;
 `

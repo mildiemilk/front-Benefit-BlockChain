@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import MenuPlan from './MenuPlan/MenuPlan'
 import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
 import AllPlan from './AllPlan'
+import ModalPlanListBidding from './ModalPlanListBidding'
 import NavInsure from '../NavInsure'
 import { getAllPlan, copyPlan, deletePlan } from '../../api/setPlan'
 import {
@@ -80,7 +81,6 @@ class SubmitPlan extends Component {
     }
     setInterval(() => {
       props.getAllPlan()
-      this.setState({ firstTime: this.props.planList.length === 0 })
     }, 2000)
   }
 
@@ -145,6 +145,7 @@ class SubmitPlan extends Component {
 
   handleDelete = e => {
     this.props.deletePlan(this.props.planList[e.target.id].planId)
+    if (this.props.planList.length === 1) this.setState({ firstTime: true })
   }
 
   handleResetProfilePlan = () => {
@@ -211,6 +212,7 @@ class SubmitPlan extends Component {
   handlePlan = val => {
     this.setState({
       activePlan: val,
+      firstTime: false,
       planName: this.props.planList[val].planName,
       employeeOfPlan: this.props.planList[val].employeeOfPlan,
       dentalPerYear: this.props.planList[val].dentalPerYear,
@@ -231,8 +233,7 @@ class SubmitPlan extends Component {
       ipdLumsumPerTime: this.props.planList[val].ipdLumsumPerTime,
       ipdLumsumTimeNotExceedPerYear: this.props.planList[val]
         .ipdLumsumTimeNotExceedPerYear,
-      rbLumsumRoomPerNight: this.props.planList[val]
-        .rbLumsumPayNotExceedPerNight,
+      rbLumsumRoomPerNight: this.props.planList[val].rbLumsumRoomPerNight,
       rbLumsumNigthNotExceedPerYear: this.props.planList[val]
         .rbLumsumNigthNotExceedPerYear,
       rbLumsumPayNotExceedPerNight: this.props.planList[val]
@@ -292,6 +293,7 @@ class SubmitPlan extends Component {
 
   handleModalFinish = () => {
     this.setState({ openModalForm: false })
+    this.setState({ newPlan: false })
   }
 
   handleBuildNewPlan = () => {
@@ -308,7 +310,7 @@ class SubmitPlan extends Component {
 
   render() {
     return (
-      <div>
+      <div className="SubmitPlan">
         <NavInsure step={this.state.step} />
         <div className="big-box">
           <div className="row">
@@ -330,7 +332,7 @@ class SubmitPlan extends Component {
                 employeeOfPlan={this.state.employeeOfPlan}
               />
             </div>
-            <div className="large-9 columns">
+            <div className="large-9 columns" style={{ paddingRight: '2.5%' }}>
               <div style={{ marginLeft: '70%', marginTop: '9%' }}>
                 <span>อนุญาติให้โบรกเกอร์</span>
                 <Checkbox toggle onClick={this.handleToggle} />
@@ -388,9 +390,7 @@ class SubmitPlan extends Component {
                         ipdLumsumTimeNotExceedPerYear={
                           this.state.ipdLumsumTimeNotExceedPerYear
                         }
-                        rbLumsumRoomPerNight={
-                          this.state.rbLumsumPayNotExceedPerNight
-                        }
+                        rbLumsumRoomPerNight={this.state.rbLumsumRoomPerNight}
                         rbLumsumNigthNotExceedPerYear={
                           this.state.rbLumsumNigthNotExceedPerYear
                         }

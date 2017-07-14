@@ -16,7 +16,7 @@ export function postBox(passwordToConfirm) {
       .then(res => {
         console.log(res)
         dispatch(selectBrokerSuccess(res.data))
-        window.location.href = '/submitplan'
+        // window.location.href = '/submitplan'
       })
       .catch(err => {
         dispatch(selectBrokerFailure(err.response.data))

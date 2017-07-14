@@ -150,9 +150,6 @@ class SettingProfile extends Component {
 
   render() {
     const { profile } = this.state
-    // console.log(this.state)
-    console.log('profile: ')
-    console.log(this.state)
     let { imagePreviewUrl } = this.state
     let $imagePreview = null
     // let elmnt = document.getElementById("Image")

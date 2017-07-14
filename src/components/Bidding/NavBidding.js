@@ -10,10 +10,12 @@ import {
   FontAucTime,
   FontNumAucTime,
 } from './styled'
-import building from '../../../assets/icons-8-city.png'
-import time from '../../../assets/icons-8-time.png'
-import auction from '../../../assets/icons-8-auction.png'
+import { connect } from 'react-redux'
+import building from '../../../assets/bidding/icons-8-city.png'
+import time from '../../../assets/bidding/icons-8-time.png'
+import auction from '../../../assets/bidding/icons-8-auction.png'
 import CountDowns from './CountDowns'
+
 class Bidding extends Component {
   constructor(props) {
     super(props)
@@ -40,7 +42,7 @@ class Bidding extends Component {
               <Pic><img src={building} /></Pic>
               <TextNav>
                 <Font>จำนวนบริษัทประกัน</Font><br />
-                <FontNum>5</FontNum>
+                <FontNum>{this.props.num}</FontNum>
               </TextNav>
             </Nav>
           </div>
@@ -59,10 +61,8 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
                 <FontNumAucTime>
-                  <CountDowns date={`${year}-12-24T00:00:00`} />
+                  <CountDowns date={this.props.timeout.timeout} />
                 </FontNumAucTime>
-
-                {/*<Countdown/>*/}
               </TextNav>
             </Nav>
           </div>
@@ -72,4 +72,9 @@ class Bidding extends Component {
   }
 }
 
-export default Bidding
+const mapStateToProps = state => ({
+  timeout: state.setTimeOut,
+  num: state.chooseInsurerReducer.length,
+})
+
+export default connect(mapStateToProps, null)(Bidding)

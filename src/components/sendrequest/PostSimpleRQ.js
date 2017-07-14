@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PostreText } from './styled'
+import { PostreText, TopSpace } from './styled'
 import { Card, Image, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
 
@@ -13,6 +13,12 @@ const CardHeader = styled(Card)`
     padding-top: 0.2%;
     font-size: 20px;
     box-shadow: 0 0 0 0;
+  }
+`
+
+const Checkboxs = styled(Checkbox)`
+  &&&{
+    margin-bottom: 5px;
   }
 `
 
@@ -37,58 +43,104 @@ class PostSimpleRQ extends Component {
             </Card.Content>
             <Card.Content extra>
               <Card.Description>
-                <strong>
-                  <PostreText>จำนวนพนักงานที่ต้องการแผนประกัน :</PostreText>
-                </strong>
-                {' '}
-                <PostreText>{this.props.data.numberOfEmployee}</PostreText>
-                {' '}
-                <br />
-                <br />
-                <strong>
-                  <PostreText>รูปแบบประกันที่ต้องการ :</PostreText>
-                </strong>
-                <PostreText>{this.props.data.typeOfInsurance}</PostreText>
-                <br />
-                <br />
-                <strong>
-                  <PostreText>อัพโหลดแผนประกันที่ใช้ในปัจจุบัน :</PostreText>
-                </strong>
-                <PostreText> Insurance_Plan_2016.pdf</PostreText>
-                <br />
-                <br />
-                <strong>
-                  <PostreText>วันหมดอายุกรมทัน :</PostreText>
-                </strong>
-                {' '}
-                <PostreText>{this.props.data.day}</PostreText>
-                {'/'}
-                <PostreText>{this.props.data.month}</PostreText>
-                {'/'}
-                <PostreText>{this.props.data.year}</PostreText>
-                <br />
-                <br />
-                <strong><PostreText>แผนประกันที่ต้องการ :</PostreText></strong>
+                <TopSpace className="row">
+                  <div className="large-4 columns">
+                    <strong>
+                      <PostreText>จำนวนพนักงานที่ต้องการแผนประกัน</PostreText>
+                    </strong>
+                  </div>
+                  <div className="large-8 columns">
+                    {' '}
+                    <PostreText>{this.props.data.numberOfEmployee}</PostreText>
+                    {' '}
+                  </div>
+                </TopSpace>
 
-                <PostreText>
-                  <Checkbox label="OPD" checked={this.props.data.OPD} />
-                </PostreText>
-                <PostreText>
-                  <Checkbox label="IPD" checked={this.props.data.IPD} />
-                </PostreText>
-                <PostreText>
-                  <Checkbox label="Dental" checked={this.props.data.dental} />
-                </PostreText>
-                <PostreText>
-                  <Checkbox label="Life" checked={this.props.data.life} />
-                </PostreText>
-                <PostreText>
-                  <Checkbox
-                    label="อื่นๆ: &nbsp;"
-                    checked={this.props.data.other}
-                  />
-                  {this.props.data.otherDes}
-                </PostreText>
+                <TopSpace className="row">
+                  <div className="large-4 columns">
+                    <strong>
+                      <PostreText>รูปแบบประกันที่ต้องการ</PostreText>
+                    </strong>
+                  </div>
+                  <div className="large-8 columns">
+                    <PostreText>{this.props.data.typeOfInsurance}</PostreText>
+                  </div>
+                </TopSpace>
+
+                <TopSpace className="row">
+                  <div className="large-4 columns">
+                    <strong>
+                      <PostreText>อัพโหลดแผนประกันที่ใช้ในปัจจุบัน</PostreText>
+                    </strong>
+                  </div>
+                  <div className="large-8 columns">
+                    <PostreText>Insurance_Plan_2016.pdf</PostreText>
+                  </div>
+                </TopSpace>
+
+                <TopSpace className="row">
+                  <div className="large-4 columns">
+                    <strong>
+                      <PostreText>วันหมดอายุกรมทัน</PostreText>
+                    </strong>
+                  </div>
+                  <div className="large-8 columns">
+                    {' '}
+                    <PostreText>{this.props.data.day}</PostreText>
+                    {'/'}
+                    <PostreText>{this.props.data.month}</PostreText>
+                    {'/'}
+                    <PostreText>{this.props.data.year}</PostreText>
+                  </div>
+                </TopSpace>
+
+                <TopSpace className="row">
+                  <div className="large-4 columns">
+                    <strong>
+                      <strong>
+                        <PostreText>แผนประกันที่ต้องการ</PostreText>
+                      </strong>
+                    </strong>
+                  </div>
+                  <div className="large-8 columns">
+                    <PostreText>
+                      <Checkboxs
+                        label="ค่ารักษาพยาบาลกรณีผู้ป่วยใน (IPD)"
+                        checked={this.props.data.IPD}
+                      />
+                      <br />
+                    </PostreText>
+                    <PostreText>
+                      <Checkboxs
+                        label="ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (OPD)"
+                        checked={this.props.data.OPD}
+                      />
+                      <br />
+                    </PostreText>
+                    <PostreText>
+                      <Checkboxs
+                        label="ค่ารักษาทันตกรรม (Dental)"
+                        checked={this.props.data.dental}
+                      />
+                      <br />
+                    </PostreText>
+                    <PostreText>
+                      <Checkboxs
+                        label="ประกันชีวิต (Life)"
+                        checked={this.props.data.life}
+                      />
+                      <br />
+                    </PostreText>
+                    <PostreText>
+                      <Checkboxs
+                        label="อื่นๆ: &nbsp;"
+                        checked={this.props.data.other}
+                      />
+                      {this.props.data.otherDes}
+                    </PostreText>
+                  </div>
+                </TopSpace>
+
               </Card.Description>
             </Card.Content>
           </Card>

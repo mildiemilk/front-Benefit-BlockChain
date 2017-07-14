@@ -77,6 +77,15 @@ class IPD3 extends Component {
     this.props.handleVerifyState()
   }
 
+  handleRadio = (e, { value }) => {
+    this.setState({ value })
+    if (this.state.value === 'Non-Schedule') {
+      document.getElementById('rbScheduleSugeryNonSchedule').value = ''
+    } else {
+      document.getElementById('rbScheduleSugerySchedule').value = ''
+    }
+  }
+
   render() {
     return (
       <div>
@@ -95,7 +104,6 @@ class IPD3 extends Component {
             <br />
             <p>2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน</p>
             <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ</p>
-            {' '}
             <div className="paragraph">
               <Form.Field>
                 <Radio
@@ -116,8 +124,6 @@ class IPD3 extends Component {
                 />
               </Form.Field>
             </div>
-            <br />
-            <br />
             <p>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
             <div className="paragraph">
               <p>
@@ -250,7 +256,7 @@ class IPD3 extends Component {
                     />}
                 <p> บาท</p>
               </Form.Group>
-              <Form.Group inline style={{ marginTop: '25%' }}>
+              <Form.Group inline style={{ marginTop: '15.5%' }}>
                 <Form.Input
                   type="number"
                   style={{ height: '30px', width: '100px' }}

@@ -9,7 +9,7 @@ import Sidebar from '../sidebar'
 import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
-import ModalPlanBox from './ModalPlanBox/'
+import ModalPlanBox from './ModalPlanBox'
 import {
   Detail,
   Head,
@@ -45,8 +45,10 @@ class Sendrequest extends Component {
     }
   }
   render() {
+    console.log(this.props)
+    console.log(moment(this.props.timeout).locale('th').format('DD MMMM YYYY'))
     return (
-      <div className="ChooseInsurer">
+      <div>
         <NavInsure step={this.state.step} />
         <div className="row">
           <Detail className="large-12 columns">
@@ -68,18 +70,18 @@ class Sendrequest extends Component {
               บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
               {' '}
               <Time>
-                {moment(this.props.timeout.date)
+                {moment(this.props.timeout.timeout)
                   .locale('th')
                   .format('DD MMMM YYYY')}
               </Time>
               &nbsp; ภายในเวลา
               {' '}
-              <Time>{moment(this.props.timeout.time).format('LT')}</Time>
+              <Time>{moment(this.props.timeout.timeout).format('LT')}</Time>
             </BoxIndiv3>
             <Head2>อัพโหลดไฟล์</Head2>
             <BoxIndiv4 />
           </Detail>
-          <Submit>ส่งคำขอ</Submit>
+          <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
         </div>
       </div>
     )

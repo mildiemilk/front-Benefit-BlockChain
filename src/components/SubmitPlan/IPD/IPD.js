@@ -197,7 +197,7 @@ class IPD extends Component {
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
-                  rbLumsumRoomPerNight={this.props.rbLumsumPayNotExceedPerNight}
+                  rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
                   rbLumsumNigthNotExceedPerYear={
                     this.props.rbLumsumNigthNotExceedPerYear
                   }
@@ -263,7 +263,6 @@ class IPD extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '5%',
                 marginBottom: '3%',
               }}
               type="submit"
@@ -276,8 +275,6 @@ class IPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
-            handleNextPlan={this.props.handleNextPlan}
-            handleReset={this.props.handleReset}
           />
         </div>
       </div>

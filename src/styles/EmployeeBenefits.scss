@@ -1,0 +1,163 @@
+.employeeBenefits-box{
+  width: 100%;
+  height: 800px;
+  padding-top: 5%;
+  position: relative;
+  position: relative;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
+}
+
+
+.employeeBenefits-head-text{
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+}
+
+.employeeBenefits-Menu-Tab-head-box{
+  width: 100%;
+  height: 80px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #f6f7f9;
+  border: solid 1px #c1c1c1;
+  text-align: center;
+  padding-top: 15%;
+}
+
+.employeeBenefits-Menu-Tab-box{
+  width: 100%;
+  height: 70px;
+  background-color: #ffffff;
+  border: solid 1px #c1c1c1;
+  text-align: center;
+  padding-top: 14%;
+  cursor:pointer
+}
+
+.employeeBenefits-Menu-Tab-box-active{
+  width: 100%;
+  height: 70px;
+  background-color: #3a7bd5;
+  border: solid 1px #c1c1c1;
+  text-align: center;
+  padding-top: 14%;
+  color: white;
+  cursor:pointer
+}
+
+.employeeBenefits-Start-box{
+  width: 100%;
+  height: 440px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px rgba(151, 151, 151, 0.66);
+  padding-top: 25%;
+}
+
+
+.employeeBenefits-center-in-box{
+  text-align: center;
+}
+
+.employeeBenefits-text-start-box{
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: #9b9b9b;
+}
+
+.employeeBenefits-select-box{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px rgba(151, 151, 151, 0.66);
+
+}
+
+.employeeBenefits-select-head-box{
+  background-color: #5c6879;
+  width: 100%;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: left;
+  padding-left: 3%;
+  padding-top: 1.5%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.employeeBenefits-select-plan{
+  padding-top: 8%;
+  padding-left: 7%;
+  padding-right: 7%;
+
+}
+
+
+.plan-box{
+  width: 100%;
+  height: 49px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  border: solid 1px #d9d9d9;
+  padding-top: 3%;
+  padding-left: 8%;
+  margin-bottom: 5%;
+}
+
+.select-button{
+  margin-top:45%
+}
+
+.basic-status-box{
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px #979797;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #9b9b9b;
+  padding-top: 3.5%;
+  margin-top: 5%;
+  cursor:pointer
+}
+
+.basic-status-box-active{
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #42bc69;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: white;
+  padding-top: 3.5%;
+  margin-top: 5%;
+  cursor:pointer
+}
+
+.record-select-plan{
+  width: 162.4px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  border-color: #3a7bd5;
+  border-style: solid;
+  color: white;
+  float: right;
+  margin-top:7%;
+  margin-bottom: 5.5%;
+}

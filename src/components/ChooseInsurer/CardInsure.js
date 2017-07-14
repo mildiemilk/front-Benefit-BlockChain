@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Check, Cardlast } from './styled'
+import { Card, Check } from './styled'
 import { connect } from 'react-redux'
 import { getAllInsurer } from '../../api/chooseInsurer'
 class CardInsure extends React.Component {
@@ -18,7 +18,6 @@ class CardInsure extends React.Component {
           onChange={this.props.handleCheck}
         />
         {insurer.insurerName}
-        hhh
       </Card>
     ))
   }
@@ -30,7 +29,7 @@ class CardInsure extends React.Component {
   render() {
     return (
       <div>
-        {this.renderList(this.props.insurerList)}
+        {this.renderList(this.props.insurerList)}\
       </div>
     )
   }

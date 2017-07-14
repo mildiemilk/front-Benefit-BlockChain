@@ -28,8 +28,8 @@ import {
 import CardInsure from './CardInsure'
 
 class InsurerSelect extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       step: 4,
       num: 0,
@@ -112,18 +112,14 @@ class InsurerSelect extends Component {
                   minDate={moment()}
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
-                <TimePicker
-                  onChange={this.handleTime}
-                  selected={this.state.time}
-                  showSecond={false}
-                />
+                <TimePicker onChange={this.handleTime} showSecond={false} />
                 <br />
-                <Submit onClick={this.handleTimeOut}>บันทึกก</Submit>
+                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
 
               </SideIn>
             </div>
           </Detail>
-          <Next>ต่อไป</Next>
+          <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
         </div>
       </div>
     )
@@ -136,6 +132,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  timeout: state.setTimeOut,
   insurerList: state.getAllInsurer,
 })
 

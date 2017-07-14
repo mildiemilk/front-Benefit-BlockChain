@@ -57,7 +57,6 @@ class FormModal extends Component {
         onClose={this.handleClose}
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
-        basic
       >
         <ModalContents>
           <FormSubmitPlan

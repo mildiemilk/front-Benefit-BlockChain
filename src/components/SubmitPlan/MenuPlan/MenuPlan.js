@@ -29,6 +29,7 @@ class MenuPlan extends Component {
       step: 6,
       isOpen: false,
       modalOpen: false,
+      comparePlan: [],
     }
   }
 
@@ -50,6 +51,31 @@ class MenuPlan extends Component {
       modalOpen: false,
     })
 
+  handleChange = (e, list) => {
+    if (e.target.checked) {
+      this.setState(
+        {
+          comparePlan: this.state.comparePlan.concat(list[e.target.id]),
+        },
+        () => {
+          console.log(this.state.comparePlan)
+        },
+      )
+    } else {
+      let index = this.state.comparePlan.indexOf(list[e.target.id])
+      const x = this.state.comparePlan
+      x.splice(index, 1)
+      this.setState(
+        {
+          comparePlan: x,
+        },
+        () => {
+          console.log(this.state.comparePlan)
+        },
+      )
+    }
+  }
+
   renderList = list => {
     const output = []
     for (var i = 0; i < list.length; i++) {
@@ -57,7 +83,11 @@ class MenuPlan extends Component {
         <div className="menu-select-plan">
           <div className="row">
             <div className="large-2 columns">
-              <Checkbox />
+              <input
+                type="checkbox"
+                id={i}
+                onChange={e => this.handleChange(e, list)}
+              />
             </div>
             <div className="large-10 columns">
               <span>{list[i].planName}</span>

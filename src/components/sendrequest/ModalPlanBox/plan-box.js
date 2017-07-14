@@ -49,13 +49,13 @@ class planBoxs extends Component {
         <Popup
           trigger={
             <Icon
-              style={{ float: 'right' }}
               name="ellipsis vertical"
               size="large"
+              style={{ float: 'right', cursor: 'pointer' }}
             />
           }
           content={
-            <List divided relaxed>
+            <List divided relaxed style={{ cursor: 'pointer' }}>
               <List.Item>
                 <List.Content onClick={() => this.props.handleModal()}>
                   <p><Icon name="file text outline" />ดูแพลน</p>
@@ -69,11 +69,8 @@ class planBoxs extends Component {
             </List>
           }
           on="click"
-          hideOnScroll
           position="bottom center"
-          open={this.props.isOpen}
-          onClose={this.props.handleClose}
-          onOpen={this.props.handleOpen}
+          style={{ zIndex: '1' }}
         />
         <PlanBoxModal
           modalOpen={this.props.modalOpen}

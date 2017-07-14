@@ -14,8 +14,13 @@ import {
   Dropdown,
   Radio,
   Icon,
+  Popup,
+  List,
 } from 'semantic-ui-react'
-import '../../styles/EmployeeBenefits.scss'
+import { PopupView } from '../Bidding/styled'
+import '../../styles/employeeBenefits.scss'
+import '../../styles/PopUpColor.scss'
+import SettingBenefitModal from './SettingBenefitModal'
 
 const a = []
 
@@ -27,6 +32,7 @@ class SelectOptionPlan extends Component {
       value: '',
       plan: '',
       selectPlan: [],
+      openSettingBenefit: false,
     }
   }
 
@@ -37,6 +43,14 @@ class SelectOptionPlan extends Component {
 
   handleClick = () => {
     console.log(this.state.selectPlan)
+  }
+
+  handleModal = () => {
+    this.setState({ openSettingBenefit: true })
+  }
+
+  closeModal = () => {
+    this.setState({ openSettingBenefit: false })
   }
 
   renderList = list => {
@@ -66,12 +80,37 @@ class SelectOptionPlan extends Component {
           <div className={this.props.columnsLenght}>
             <div className="plan-box">
               {element.name}
-              <Icon
-                style={{ float: 'right' }}
-                name="ellipsis vertical"
-                size="large"
+              <PopupView
+                trigger={
+                  <Icon
+                    style={{ float: 'right', cursor: 'pointer' }}
+                    name="ellipsis vertical"
+                    size="large"
+                  />
+                }
+                content={
+                  <List divided relaxed>
+                    <List.Item>
+                      <List.Content onClick={() => this.handleModal()}>
+                        <p><Icon name="file text outline" />ดูแพลน</p>
+                      </List.Content>
+                    </List.Item>
+                  </List>
+                }
+                on="click"
+                hideOnScroll
+                position="bottom center"
+                style={{
+                  backgroundColor: '#3a7bd5',
+                  color: 'white',
+                  zIndex: '1',
+                }}
               />
             </div>
+            <SettingBenefitModal
+              openSettingBenefit={this.state.openSettingBenefit}
+              closeModal={this.closeModal}
+            />
           </div>
           {this.props.plan === 'Flex'
             ? <div className="large-4 columns">
@@ -91,13 +130,13 @@ class SelectOptionPlan extends Component {
 
   render() {
     return (
-      <div>
+      <div className="PopUpColor">
         <Form>
           {this.renderList(this.props.planName)}
           <div className="row">
             <button
               className="record-select-plan"
-              onClick={() => this.handleClick()}
+              onClick={() => this.props.handleSubmit()}
             >
               บันทึก
             </button>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+
 import {
   Button,
   Checkbox,
@@ -16,6 +17,9 @@ import '../../styles/EmployeeBenefits.scss'
 import MenuTab from './MenuTab'
 import form from '../image/icons-8-form.png'
 import SelectBox from './SelectBox'
+import ModalWarningRecord from './ModalWarningRecord'
+import ModalWarning from './ModalWarning'
+import { PopupView, BackButton, NextButton } from '../Bidding/styled'
 
 class employeeBenefits extends Component {
   constructor() {
@@ -33,13 +37,22 @@ class employeeBenefits extends Component {
       columnsLenght: 'large-11 columns',
       defualtPlan: '',
       activeGroup: '',
+      verifyState: true,
+      openModal: false,
+      verifyChoosePlan: false,
+      openWarningModal: false,
+      warningMessage: '',
     }
   }
 
   handleActiveGroup = index => {
-    this.setState({ activeGroup: index })
-    this.setState({ selectGroup: true })
-    this.setState({ plan: '' })
+    if (this.state.verifyState === false) {
+      this.setState({ openModal: true })
+    } else {
+      this.setState({ activeGroup: index })
+      this.setState({ selectGroup: true })
+      this.setState({ plan: '' })
+    }
   }
 
   handleActivePlan = (index, value) => {
@@ -61,6 +74,8 @@ class employeeBenefits extends Component {
   }
 
   handleFixedChange = value => {
+    this.setState({ verifyState: false })
+    this.setState({ verifyChoosePlan: true })
     if (this.state.selectPlan.length > 0) {
       this.state.selectPlan.pop()
       this.state.selectPlan.push(value)
@@ -69,7 +84,39 @@ class employeeBenefits extends Component {
     }
   }
 
+  handleSubmit = () => {
+    if (this.state.verifyChoosePlan === false) {
+      this.setState({ openWarningModal: true })
+      this.setState({ warningMessage: 'คุณยังไม่ได้เลือกแผนสิทธิสำหรับกลุ่ม' })
+    } else if (
+      this.state.selectOption === 'Flex' &&
+      this.state.defualtPlan === ''
+    ) {
+      this.setState({ openWarningModal: true })
+      this.setState({ warningMessage: 'คุณยังไม่ได้ตั้งค่าแผนเริ่มต้น' })
+    } else if (
+      this.state.selectOption === 'Flex' &&
+      this.state.selectPlan.length < 2
+    ) {
+      this.setState({ openWarningModal: true })
+      this.setState({ warningMessage: 'Flex ต้องมีแผนที่เลือกอย่างน้อย 2 แผน' })
+    } else {
+      this.setState({ verifyState: true })
+      console.log(this.state.selectPlan)
+    }
+  }
+
+  handleCloseModal = () => {
+    this.setState({ openModal: false })
+  }
+
+  closeWarningModal = () => {
+    this.setState({ openWarningModal: false })
+  }
+
   handleFlexChange = (e, { value }) => {
+    this.setState({ verifyState: false })
+    this.setState({ verifyChoosePlan: true })
     if (this.state.selectPlan.length > 0) {
       let index = this.state.selectPlan.indexOf(value)
       if (index > -1) {
@@ -119,6 +166,7 @@ class employeeBenefits extends Component {
                           defualtPlan={this.state.defualtPlan}
                           value={this.state.value}
                           valueFixed={this.state.valueFixed}
+                          handleSubmit={this.handleSubmit}
                         />
                       : <div className="employeeBenefits-Start-box">
                           <div className="employeeBenefits-center-in-box">
@@ -132,7 +180,26 @@ class employeeBenefits extends Component {
                 </div>
               </div>
             </div>
+            <ModalWarningRecord
+              openModal={this.state.openModal}
+              handleCloseModal={this.handleCloseModal}
+              handleSubmit={this.handleSubmit}
+            />
+            <ModalWarning
+              openWarningModal={this.state.openWarningModal}
+              warningMessage={this.state.warningMessage}
+              closeWarningModal={this.closeWarningModal}
+            />
           </Container>
+        </div>
+        <div className="row">
+          <div className="large-3 large-offset-1 columns">
+            <button className="backStepButton">กลับ</button>
+          </div>
+          <div className="large-2 large-offset-5 columns">
+            <button className="nextStepButton">ต่อไป</button>
+          </div>
+          <div className="large-1 columns" />
         </div>
       </div>
     )

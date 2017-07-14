@@ -111,7 +111,7 @@ class MenuPlan extends Component {
                   />
                 }
                 content={
-                  <List divided relaxed>
+                  <List divided relaxed style={{ cursor: 'pointer' }}>
                     <List.Item>
                       <List.Content>
                         <p id={i} onClick={this.props.handleEdit}>
@@ -138,9 +138,6 @@ class MenuPlan extends Component {
                 on="click"
                 hideOnScroll
                 position="bottom center"
-                open={this.state.isOpen}
-                onClose={this.handleClose}
-                onOpen={this.handleOpen}
               />
               <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
             </div>

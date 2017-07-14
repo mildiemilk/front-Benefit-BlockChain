@@ -19,6 +19,7 @@ const ModalContents = styled(Modal.Content)`
     width: 680px;
     position: relative;
     margin: 0 auto;
+    padding: 0px;
   }
 `
 
@@ -57,6 +58,7 @@ class FormModal extends Component {
         onClose={this.handleClose}
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
+        className="SubmitPlan"
       >
         <ModalContents>
           <FormSubmitPlan

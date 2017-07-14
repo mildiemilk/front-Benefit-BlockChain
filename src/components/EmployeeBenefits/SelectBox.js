@@ -58,6 +58,7 @@ class SelectBox extends Component {
                 handleActivePlan={this.props.handleActivePlan}
                 defualtPlan={this.props.defualtPlan}
                 valueFixed={this.props.valueFixed}
+                handleSubmit={this.props.handleSubmit}
               />
             : null}
         </div>

@@ -18,33 +18,25 @@ import {
 import CoPlay from './CoPlay'
 
 class IPD3 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      value: '',
-      permit: false,
-      rbSchedulePatient: null,
-      rbScheduleIntensiveCarePatient: null,
-      rbScheduleDoctor: null,
-      rbScheduleSurgery: null,
-      rbScheduleService: null,
-      rbScheduleSmallSurgery: null,
-      rbScheduleAdviser: null,
-      rbScheduleAmbulance: null,
-      rbScheduleAccident: null,
-      rbScheduleTreatment: null,
-      rbScheduleTransplant: null,
+      value: this.props.rbScheduleSurgerySchedule !== null
+        ? 'Schedule'
+        : this.props.rbScheduleSurgeryNonSchedule !== null
+            ? 'Non-Schedule'
+            : '',
     }
   }
 
   static propTypes = {}
 
-  handleToggle = () => {
-    if (this.state.permit) {
-      document.getElementById('rbScheduleSurgery').value = null
-      this.setState({ permit: false })
+  handleRadio = (e, { value }) => {
+    this.setState({ value })
+    if (this.state.value === 'Non-Schedule') {
+      this.props.handleChangeToNull('rbScheduleSugeryNonSchedule')
     } else {
-      this.setState({ permit: true })
+      this.props.handleChangeToNull('rbScheduleSugerySchedule')
     }
   }
 
@@ -81,7 +73,7 @@ class IPD3 extends Component {
   }
 
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState()
   }
 
@@ -185,6 +177,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbSchedulePatient"
+                  value={this.props.rbSchedulePatient}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -196,6 +189,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleIntensiveCarePatient"
+                  value={this.props.rbScheduleIntensiveCarePatient}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -207,6 +201,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleDoctor"
+                  value={this.props.rbScheduleDoctor}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -221,19 +216,20 @@ class IPD3 extends Component {
                       type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name="rbScheduleSugeryNonSchedule"
+                      name="rbScheduleSurgeryNonSchedule"
+                      value={this.props.rbScheduleSurgeryNonSchedule}
                       onChange={this.props.handleChange}
-                      id="rbScheduleSugeryNonSchedule"
+                      id="rbScheduleSurgeryNonSchedule"
                       required
                     />
                   : <Form.Input
                       type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name="rbScheduleSugeryNonSchedule"
+                      name="rbScheduleSurgeryNonSchedule"
                       onChange={this.props.handleChange}
                       readOnly
-                      id="rbScheduleSugeryNonSchedule"
+                      id="rbScheduleSurgeryNonSchedule"
                     />}
                 <p> บาท</p>
               </Form.Group>
@@ -243,19 +239,20 @@ class IPD3 extends Component {
                       type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name="rbScheduleSugerySchedule"
+                      name="rbScheduleSurgerySchedule"
+                      value={this.props.rbScheduleSurgerySchedule}
                       onChange={this.props.handleChange}
-                      id="rbScheduleSugerySchedule"
+                      id="rbScheduleSurgerySchedule"
                       required
                     />
                   : <Form.Input
                       type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name="rbScheduleSugerySchedule"
+                      name="rbScheduleSurgerySchedule"
                       onChange={this.props.handleChange}
                       readOnly
-                      id="rbScheduleSugerySchedule"
+                      id="rbScheduleSurgerySchedule"
                     />}
                 <p> บาท</p>
               </Form.Group>
@@ -265,6 +262,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleService"
+                  value={this.props.rbScheduleService}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -279,6 +277,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleSmallSurgery"
+                  value={this.props.rbScheduleSmallSurgery}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -290,6 +289,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAdviser"
+                  value={this.props.rbScheduleAdviser}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -301,6 +301,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAmbulance"
+                  value={this.props.rbScheduleAmbulance}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -312,6 +313,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAccident"
+                  value={this.rbScheduleAccident}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -323,6 +325,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTreatment"
+                  value={this.props.rbScheduleTreatment}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -337,6 +340,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTransplant"
+                  value={this.rbScheduleTransplant}
                   onChange={this.props.handleChange}
                   required
                 />

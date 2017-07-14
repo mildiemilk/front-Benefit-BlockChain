@@ -14,9 +14,9 @@ import {
   Dropdown,
   Radio,
 } from 'semantic-ui-react'
-import '../../styles/employeeBenefits.scss'
+import '../../styles/EmployeeBenefits.scss'
 import SelectOptionPlan from './SelectOptionPlan'
-const moneyOptions = [
+const planOptions = [
   { text: 'Fixed', value: 'Fixed' },
   { text: 'Flex', value: 'Flex' },
 ]
@@ -24,26 +24,10 @@ const moneyOptions = [
 class SelectBox extends Component {
   constructor() {
     super()
-    this.state = {
-      plan: '',
-      selectOption: '',
-      columnsLenght: 'large-11 columns',
-    }
-  }
-
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
-    if (value === 'Fixed') {
-      this.setState({ selectOption: 'Fixed' })
-      this.setState({ columnsLenght: 'large-11 columns' })
-    } else {
-      this.setState({ selectOption: 'Flex' })
-      this.setState({ columnsLenght: 'large-7 columns' })
-    }
+    this.state = {}
   }
 
   render() {
-    console.log(this.state.plan)
     return (
       <div className="employeeBenefits-select-box">
         <div className="employeeBenefits-select-head-box">
@@ -54,21 +38,26 @@ class SelectBox extends Component {
           <Dropdown
             placeholder="Fixed/Flex"
             selection
-            options={moneyOptions}
+            options={planOptions}
             name="plan"
-            value={this.state.plan}
+            value={this.props.plan}
             style={{ marginLeft: '5%' }}
-            onChange={this.handleChange}
+            onChange={this.props.handleChangePlan}
           />
           <br />
           <br />
           <p>แผนสิทธิประโยชน์ที่เลือกใช้กับกลุ่มนี้</p>
-          {this.state.plan != ''
+          {this.props.plan != ''
             ? <SelectOptionPlan
-                plan={this.state.plan}
-                selectOption={this.state.selectOption}
-                columnsLenght={this.state.columnsLenght}
+                plan={this.props.plan}
+                selectOption={this.props.selectOption}
+                columnsLenght={this.props.columnsLenght}
                 planName={this.props.planName}
+                handleFixedChange={this.props.handleFixedChange}
+                handleFlexChange={this.props.handleFlexChange}
+                handleActivePlan={this.props.handleActivePlan}
+                defualtPlan={this.props.defualtPlan}
+                valueFixed={this.props.valueFixed}
               />
             : null}
         </div>

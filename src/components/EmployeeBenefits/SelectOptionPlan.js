@@ -15,7 +15,7 @@ import {
   Radio,
   Icon,
 } from 'semantic-ui-react'
-import '../../styles/employeeBenefits.scss'
+import '../../styles/EmployeeBenefits.scss'
 
 const a = []
 
@@ -23,44 +23,16 @@ class SelectOptionPlan extends Component {
   constructor() {
     super()
     this.state = {
-      selected: '',
+      selectedGroup: '',
       value: '',
       plan: '',
       selectPlan: [],
     }
   }
 
-  handleFixedChange = (e, { value }) => {
+  handleChange = (e, { value }) => {
     this.setState({ value })
-    if (this.state.selectPlan.length > 0) {
-      this.state.selectPlan.pop()
-      this.state.selectPlan.push(value)
-    } else {
-      this.state.selectPlan.push(value)
-    }
-  }
-
-  handleFlexChange = (e, { value }) => {
-    if (this.state.selectPlan.length > 0) {
-      let index = this.state.selectPlan.indexOf(value)
-      if (index > -1) {
-        this.state.selectPlan.splice(index, 1)
-        if (this.state.selected === index) {
-          this.setState({ selected: '' })
-        }
-      } else {
-        this.state.selectPlan.push(value)
-      }
-    } else {
-      this.state.selectPlan.push(value)
-    }
-  }
-
-  handleActive = (index, value) => {
-    let indexOfSelectPlan = this.state.selectPlan.indexOf(value)
-    if (indexOfSelectPlan > -1) {
-      this.setState({ selected: index })
-    }
+    this.props.handleFixedChange(value)
   }
 
   handleClick = () => {
@@ -69,7 +41,7 @@ class SelectOptionPlan extends Component {
 
   renderList = list => {
     return list.map((element, index) => {
-      const isActive = index === this.state.selected ? '-active' : ''
+      const isActive = index === this.props.defualtPlan ? '-active' : ''
       return (
         <div className="row">
           <div className="large-1 columns">
@@ -80,13 +52,13 @@ class SelectOptionPlan extends Component {
                       name="planGroup"
                       value={element.name}
                       checked={this.state.value === element.name}
-                      onChange={this.handleFixedChange}
+                      onChange={this.handleChange}
                     />
                   </Form.Field>
                 : <Form.Field>
                     <Checkbox
                       value={element.name}
-                      onChange={this.handleFlexChange}
+                      onChange={this.props.handleFlexChange}
                     />
                   </Form.Field>}
             </div>
@@ -105,7 +77,8 @@ class SelectOptionPlan extends Component {
             ? <div className="large-4 columns">
                 <div
                   className={`basic-status-box${isActive}`}
-                  onClick={() => this.handleActive(index, element.name)}
+                  onClick={() =>
+                    this.props.handleActivePlan(index, element.name)}
                 >
                   <p>ตั้งแผนนี้เป็นค่าเริ่มต้น</p>
                 </div>

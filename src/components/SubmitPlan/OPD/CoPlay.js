@@ -18,28 +18,20 @@ import {
 import '../../../styles/SubmitPlan.scss'
 
 class CoPlay extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      showCoPlay: false,
-      value: '',
-      opdCoPlay: null,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      value: this.props.opdCoPlayQuota !== null
+        ? 'Quota Share'
+        : this.props.opdCoPlayDeductable !== null
+            ? 'Deductable'
+            : this.props.opdCoPlayMixPercentage !== null &&
+                this.props.opdCoPlayMixNotExceed !== null &&
+                this.props.opdCoPlayMixYear !== null
+                ? 'opdCoPlayMixYear'
+                : '',
     }
-    const value = ''
   }
-
-  static propTypes = {}
-
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleRadio = (e, { value }) => {
     this.setState({ value })

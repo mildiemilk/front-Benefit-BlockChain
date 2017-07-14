@@ -32,54 +32,18 @@ import IpdModal from './IpdModal'
 class IPD extends Component {
   constructor() {
     super()
-    this.state = {
-      ipdCoPlay: false,
-      showForm: 1,
-      ipdType: '',
-      ipdLumsumPerYear: null,
-      ipdLumsumPerTime: null,
-      ipdLumsumTimeNotExceedPerYear: null,
-      rbLumsumRoomPerNight: null,
-      rbLumsumNigthNotExceedPerYear: null,
-      rbLumsumPayNotExceedPerNight: null,
-      rbLumsumPayNotExceedPerYear: null,
-      rbSchedulePatient: null,
-      rbScheduleIntensiveCarePatient: null,
-      rbScheduleDoctor: null,
-      rbScheduleSurgery: null,
-      rbScheduleService: null,
-      rbScheduleSmallSurgery: null,
-      rbScheduleAdviser: null,
-      rbScheduleAmbulance: null,
-      rbScheduleAccident: null,
-      rbScheduleTreatment: null,
-      rbScheduleTransplant: null,
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixYear: null,
-    }
+    this.state = {}
   }
 
   static propTypes = {}
 
-  handleToggle = () => {
-    if (this.state.ipdCoPlay) {
-      this.setState({ ipdCoPlay: false })
-    } else {
-      this.setState({ ipdCoPlay: true })
-    }
+  handleRadio = (e, { name, value }) => {
+    this.handleResetdata()
+    this.props.handleChange(e, { name, value })
   }
-
-  handleRadio = (e, { ipdType }) => {
-    this.setState({ ipdType })
-  }
-
-  handleChangeToNull = name => this.setState({ [name]: null })
 
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState('ipdRecord')
   }
 
@@ -98,7 +62,8 @@ class IPD extends Component {
       rbSchedulePatient,
       rbScheduleIntensiveCarePatient,
       rbScheduleDoctor,
-      rbScheduleSurgery,
+      rbScheduleSurgerySchedule,
+      rbScheduleSurgeryNonSchedule,
       rbScheduleService,
       rbScheduleSmallSurgery,
       rbScheduleAdviser,
@@ -111,7 +76,7 @@ class IPD extends Component {
       ipdCoPlayMixPercentage,
       ipdCoPlayMixNotExceed,
       ipdCoPlayMixYear,
-    } = this.state
+    } = this.props
     this.props.editPlan(
       {
         ipdCoPlay,
@@ -126,7 +91,8 @@ class IPD extends Component {
         rbSchedulePatient,
         rbScheduleIntensiveCarePatient,
         rbScheduleDoctor,
-        rbScheduleSurgery,
+        rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule,
         rbScheduleService,
         rbScheduleSmallSurgery,
         rbScheduleAdviser,
@@ -146,7 +112,7 @@ class IPD extends Component {
   }
 
   handleResetdata = () => {
-    this.setState({ ipdType: '' })
+    this.props.handleResetIPD()
     this.props.handleNewReset()
     this.props.handleVerifyState('ipdRecord')
   }
@@ -175,9 +141,9 @@ class IPD extends Component {
                 <Form.Field>
                   <Radio
                     label="Lumsum"
-                    name="IPDGroup"
-                    ipdType="Lumsum"
-                    checked={this.state.ipdType === 'Lumsum'}
+                    name="ipdType"
+                    value="Lumsum"
+                    checked={this.props.ipdType === 'Lumsum'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
@@ -186,9 +152,9 @@ class IPD extends Component {
                 <Form.Field>
                   <Radio
                     label="R&B Lumsum"
-                    name="IPDGroup"
-                    ipdType="R&B Lumsum"
-                    checked={this.state.ipdType === 'R&B Lumsum'}
+                    name="ipdType"
+                    value="R&B Lumsum"
+                    checked={this.props.ipdType === 'R&B Lumsum'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
@@ -197,9 +163,9 @@ class IPD extends Component {
                 <Form.Field>
                   <Radio
                     label="R&B Schedule"
-                    name="IPDGroup"
-                    ipdType="R&B Schedule"
-                    checked={this.state.ipdType === 'R&B Schedule'}
+                    name="ipdType"
+                    value="R&B Schedule"
+                    checked={this.props.ipdType === 'R&B Schedule'}
                     onChange={this.handleRadio}
                   />
                 </Form.Field>
@@ -209,40 +175,78 @@ class IPD extends Component {
           <br />
           <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
           <Form>
-            {this.state.ipdType === 'Lumsum'
+            {this.props.ipdType === 'Lumsum'
               ? <IPD1
                   handleVerifyState={this.props.handleVerifyState}
                   handleChange={this.handleChange}
-                  handleChangeToNull={this.handleChangeToNull}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  ipdLumsumPerYear={this.props.ipdLumsumPerYear}
+                  ipdLumsumPerTime={this.props.ipdLumsumPerTime}
+                  ipdLumsumTimeNotExceedPerYear={
+                    this.props.ipdLumsumTimeNotExceedPerYear
+                  }
                 />
               : null}
-            {this.state.ipdType === 'R&B Lumsum'
+            {this.props.ipdType === 'R&B Lumsum'
               ? <IPD2
                   handleChange={this.handleChange}
-                  handleChangeToNull={this.handleChangeToNull}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
+                  rbLumsumNigthNotExceedPerYear={
+                    this.props.rbLumsumNigthNotExceedPerYear
+                  }
+                  rbLumsumPayNotExceedPerNight={
+                    this.props.rbLumsumPayNotExceedPerNight
+                  }
+                  rbLumsumPayNotExceedPerYear={
+                    this.props.rbLumsumPayNotExceedPerYear
+                  }
                 />
               : null}
-            {this.state.ipdType === 'R&B Schedule'
+            {this.props.ipdType === 'R&B Schedule'
               ? <IPD3
                   handleChange={this.handleChange}
                   handleNewReset={this.props.handleNewReset}
-                  handleChangeToNull={this.handleChangeToNull}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  rbSchedulePatient={this.props.rbSchedulePatient}
+                  rbScheduleIntensiveCarePatient={
+                    this.props.rbScheduleIntensiveCarePatient
+                  }
+                  rbScheduleDoctor={this.props.rbScheduleDoctor}
+                  rbScheduleSurgerySchedule={
+                    this.props.rbScheduleSurgerySchedule
+                  }
+                  rbScheduleSurgeryNonSchedule={
+                    this.props.rbScheduleSurgeryNonSchedule
+                  }
+                  rbScheduleService={this.props.rbScheduleService}
+                  rbScheduleSmallSurgery={this.props.rbScheduleSmallSurgery}
+                  rbScheduleAdviser={this.props.rbScheduleAdviser}
+                  rbScheduleAmbulance={this.props.rbScheduleAmbulance}
+                  rbScheduleAccident={this.props.rbScheduleAccident}
+                  rbScheduleTreatment={this.props.rbScheduleTreatment}
+                  rbScheduleTransplant={this.props.rbScheduleTransplant}
                 />
               : null}
             <br />
-            <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.ipdCoPlay
+            <Checkbox
+              toggle
+              label="Co-Play"
+              checked={this.props.ipdCoPlay}
+              onClick={this.props.handleToggle}
+            />
+            {this.props.ipdCoPlay
               ? <CoPlay
                   handleChange={this.handleChange}
-                  handleChangeToNull={this.handleChangeToNull}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}

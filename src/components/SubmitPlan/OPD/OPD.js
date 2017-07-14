@@ -26,19 +26,15 @@ import erase from '../../image/icons-8-erase.png'
 import OpdModal from './OpdModal'
 
 class OPD extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      opdCoPlay: false,
-      value: '',
-      opdPerYear: null,
-      opdPerTime: null,
-      opdTimeNotExceedPerYear: null,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      value: this.props.opdPerYear !== null
+        ? 'firstChoice'
+        : this.props.opdPerTime !== null &&
+            this.props.opdTimeNotExceedPerYear !== null
+            ? 'secondChoice'
+            : '',
     }
   }
 
@@ -55,7 +51,7 @@ class OPD extends Component {
       opdCoPlayMixPercentage,
       opdCoPlayMixNotExceed,
       opdCoPlayMixYear,
-    } = this.state
+    } = this.props
     this.props.editPlan(
       {
         opdCoPlay,
@@ -74,34 +70,25 @@ class OPD extends Component {
     this.props.handleRecordVerifyState('opdRecord')
   }
 
-  handleToggle = () => {
-    if (this.state.opdCoPlay) {
-      this.setState({ opdCoPlay: false })
-    } else {
-      this.setState({ opdCoPlay: true })
-    }
-  }
-
   handleRadio = (e, { value }) => {
+    this.handleResetdata()
     this.setState({ value })
-    if (this.state.value === 'secondChoice') {
-      document.getElementById('opdPerTime').value = ''
-      this.setState({ opdPerTime: null })
-      document.getElementById('opdTimeNotExceedPerYear').value = ''
-      this.setState({ opdTimeNotExceedPerYear: null })
-    } else {
-      document.getElementById('opdPerYear').value = ''
-      this.setState({ opdPerYear: null })
-    }
+    // if (this.state.value === 'secondChoice') {
+    //   document.getElementById('opdPerTime').value = ''
+    //   this.setState({ opdPerTime: null })
+    //   document.getElementById('opdTimeNotExceedPerYear').value = ''
+    //   this.setState({ opdTimeNotExceedPerYear: null })
+    // } else {
+    //   document.getElementById('opdPerYear').value = ''
+    //   this.setState({ opdPerYear: null })
+    // }
   }
 
   handleResetdata = () => {
+    this.props.handleResetOPD()
     document.getElementById('opdPerTime').value = ''
-    this.setState({ opdPerTime: null })
     document.getElementById('opdTimeNotExceedPerYear').value = ''
-    this.setState({ opdTimeNotExceedPerYear: null })
     document.getElementById('opdPerYear').value = ''
-    this.setState({ opdPerYear: null })
     this.setState({ value: '' })
     this.props.handleNewReset()
     this.props.handleVerifyState('opdRecord')
@@ -113,7 +100,6 @@ class OPD extends Component {
     }
   }
 
-  handleChangeToNull = name => this.setState({ [name]: null })
   handleChange = (e, { name, value }) => {
     this.props.handleChange(e, { name, value })
     this.props.handleVerifyState('opdRecord')
@@ -220,11 +206,16 @@ class OPD extends Component {
               <p className="selectText"> บาท/ปี</p>
             </Form.Group>
             <br />
-            <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.opdCoPlay
+            <Checkbox
+              toggle
+              label="Co-Play"
+              checked={this.props.opdCoPlay}
+              onClick={this.props.handleToggle}
+            />
+            {this.props.opdCoPlay
               ? <CoPlay
-                  handleChange={thi.props.handleChange}
-                  handleChangeToNull={this.handleChangeToNull}
+                  handleChange={this.props.handleChange}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}

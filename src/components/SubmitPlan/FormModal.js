@@ -50,7 +50,6 @@ class FormModal extends Component {
   }
 
   render() {
-    console.log(this.props.openModalForm)
     return (
       <Modals
         trigger={<div />}
@@ -58,7 +57,6 @@ class FormModal extends Component {
         onClose={this.handleClose}
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
-        basic
       >
         <ModalContents>
           <FormSubmitPlan

@@ -12,7 +12,7 @@ import {
   Input,
   Container,
 } from 'semantic-ui-react'
-import '../../styles/employeeBenefits.scss'
+import '../../styles/EmployeeBenefits.scss'
 
 class MenuTab extends Component {
   constructor() {
@@ -22,17 +22,13 @@ class MenuTab extends Component {
     }
   }
 
-  handleActive = index => {
-    this.setState({ selected: index })
-  }
-
   renderList = list => {
     return list.map((element, index) => {
-      const isActive = index === this.state.selected ? '-active' : ''
+      const isActive = index === this.props.activeGroup ? '-active' : ''
       return (
         <div
           className={`employeeBenefits-Menu-Tab-box${isActive}`}
-          onClick={() => this.handleActive(index)}
+          onClick={() => this.props.handleActiveGroup(index)}
         >
           {element.name}
         </div>

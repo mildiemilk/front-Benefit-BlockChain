@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PostreText, TopSpace } from './Styled'
+import { PostreText, TopSpace } from './styled'
 import { Card, Image, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
 

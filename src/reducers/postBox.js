@@ -1,4 +1,5 @@
 const defaultpostBoxReducer = {
+  selectBroker: false,
   message: null,
   error: false,
 }
@@ -18,6 +19,7 @@ export default function postBoxReducer(state = defaultpostBoxReducer, action) {
   switch (action.type) {
     case SELECTBROKER_REQUEST_SUCCESS:
       return Object.assign({}, state, {
+        selectBroker: true,
         message: action.data.message,
         error: false,
       })

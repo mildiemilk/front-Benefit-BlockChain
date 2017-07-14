@@ -19,6 +19,7 @@ import form from '../image/icons-8-form.png'
 import SelectBox from './SelectBox'
 import ModalWarningRecord from './ModalWarningRecord'
 import ModalWarning from './ModalWarning'
+import { PopupView, BackButton, NextButton } from '../Bidding/styled'
 
 class employeeBenefits extends Component {
   constructor() {
@@ -190,6 +191,15 @@ class employeeBenefits extends Component {
               closeWarningModal={this.closeWarningModal}
             />
           </Container>
+        </div>
+        <div className="row">
+          <div className="large-3 large-offset-1 columns">
+            <button className="backStepButton">กลับ</button>
+          </div>
+          <div className="large-2 large-offset-5 columns">
+            <button className="nextStepButton">ต่อไป</button>
+          </div>
+          <div className="large-1 columns" />
         </div>
       </div>
     )

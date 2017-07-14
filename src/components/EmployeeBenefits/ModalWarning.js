@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    max-width: 500px;
+    max-width: 300px;
     position: relative;
     margin: 0 auto;
   }
@@ -23,7 +23,9 @@ const ModalContents = styled(Modal.Content)`
 const Modals = styled(Modal)`
   &&&{
     background: transparent;
-    margin-top: -120px;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
   }
 `
 

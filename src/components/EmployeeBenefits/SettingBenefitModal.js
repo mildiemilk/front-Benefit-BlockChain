@@ -63,7 +63,7 @@ class SettingBenefitModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <SettingPlan />
+          <SettingPlan style={{ border: 'aliceblue' }} />
         </ModalContents>
         <ModalContents>
           <div className="row">

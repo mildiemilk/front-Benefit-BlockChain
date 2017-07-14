@@ -8,13 +8,11 @@ import {
   AddContent,
   HeaderSpace,
   Blog,
-  Blogs,
   BlogImg,
   BlogContent,
   BackButton,
   NextButton,
 } from './styled'
-import styled from 'react-sc'
 import NavBenefit from '../NavBenefit'
 import SettingPlan from './setting-plan.js'
 import AddPlanBar from './add-planbar.js'

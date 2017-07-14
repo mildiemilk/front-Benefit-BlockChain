@@ -19,37 +19,23 @@ import '../../../styles/submit-plan.scss'
 import CoPlay from './coplay'
 
 class IPD1 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      value: '',
-      ipdLumsumPerYear: null,
-      ipdLumsumPerTime: null,
-      ipdLumsumTimeNotExceedPerYear: null,
+      value: this.props.ipdLumsumPerYear !== null
+        ? 'firstChoice'
+        : this.props.ipdLumsumPerTime !== null &&
+            this.props.ipdLumsumTimeNotExceedPerYear !== null
+            ? 'secondChoice'
+            : '',
     }
   }
 
   static propTypes = {}
 
-  handleToggle = () => {
-    if (this.state.showCoPlay) {
-      this.setState({ showCoPlay: false })
-    } else {
-      this.setState({ showCoPlay: true })
-    }
-  }
-
   handleRadio = (e, { value }) => {
+    this.handleResetdata()
     this.setState({ value })
-    if (this.state.value === 'secondChoice') {
-      document.getElementById('ipdLumsumPerTime').value = ''
-      this.props.handleChangeToNull('ipdLumsumPerTime')
-      document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
-      this.props.handleChangeToNull('ipdLumsumTimeNotExceedPerYear')
-    } else {
-      document.getElementById('ipdLumsumPerYear').value = ''
-      this.props.handleChangeToNull('ipdLumsumPerYear')
-    }
   }
 
   handleResetdata = () => {
@@ -67,10 +53,6 @@ class IPD1 extends Component {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
       this.handleResetdata()
     }
-  }
-
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
   }
 
   render() {
@@ -92,6 +74,7 @@ class IPD1 extends Component {
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
+                value={this.props.ipdLumsumPerYear}
                 onChange={this.props.handleChange}
                 required
               />
@@ -122,6 +105,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumPerTime"
                   id="ipdLumsumPerTime"
+                  value={this.props.ipdLumsumPerTime}
                   onChange={this.props.handleChange}
                   style={{ width: '145px' }}
                   required
@@ -132,6 +116,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
+                  value={this.ipdLumsumTimeNotExceedPerYear}
                   onChange={this.props.handleChange}
                   style={{ width: '145px' }}
                   required

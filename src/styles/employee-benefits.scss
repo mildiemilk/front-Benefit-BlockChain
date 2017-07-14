@@ -1,8 +1,8 @@
 .employeeBenefits-box{
   width: 100%;
-  height: 800px;
+  height: 100%;
   padding-top: 5%;
-  position: relative;
+  padding-bottom: 6.5%;
   position: relative;
   border-radius: 5px;
   background-color: #ffffff;
@@ -112,7 +112,13 @@
   padding-top: 3%;
   padding-left: 8%;
   margin-bottom: 5%;
+  .popup{
+    .ui.bottom.center.popup:before{
+      background-color: black;
+    }
+  }
 }
+
 
 .select-button{
   margin-top:45%
@@ -158,6 +164,47 @@
   border-style: solid;
   color: white;
   float: right;
-  margin-top:7%;
+  margin-top:5%;
   margin-bottom: 5.5%;
 }
+
+.backButton{
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  border-color: #f7555f;
+  border-style: solid;
+  color: white;
+  float: right;
+  margin-top:5%;
+  margin-bottom: 3%;
+  margin-right: 2.75%;
+}
+
+.nextStepButton{
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #46b3b8;
+  border-color: #46b3b8;
+  border-style: solid;
+  color: white;
+  float: right;
+  margin-top:12%;
+  margin-bottom: 3%;
+}
+
+.backStepButton{
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  border-color: #f7555f;
+  border-style: solid;
+  color: white;
+  float: right;
+  margin-top:12%;
+  margin-bottom: 3%;
+}
+

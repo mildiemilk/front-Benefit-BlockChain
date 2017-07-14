@@ -2,6 +2,7 @@
  * Default State
  */
 const defaultPlan = []
+const comparePlan = []
 
 /**
  * Action Constansts
@@ -12,6 +13,7 @@ const EDITPLAN_REQUEST_SUCCESS = 'EDITPLAN_REQUEST_SUCCESS'
 const EDITPLAN_REQUEST_FAILURE = 'EDITPLAN_REQUEST_FAILURE'
 const GETALLPLAN_REQUEST_SUCCESS = 'GETALLPLAN_REQUEST_SUCCESS'
 const GETALLPLAN_REQUEST_FAILURE = 'GETALLPLAN_REQUEST_FAILURE'
+const MENUPLAN_REQUEST_SUSCESS = 'MENUPLAN_REQUEST_SUSCESS'
 
 /**
  * Actions
@@ -39,10 +41,15 @@ export function getAllPlanSuccess(data) {
 export function getAllPlanFailure(data) {
   return { type: GETALLPLAN_REQUEST_FAILURE, data }
 }
+
+export function menuPlanSuccess(data) {
+  return { type: MENUPLAN_REQUEST_SUSCESS, data }
+}
+
 /**
  * Reducer
  */
-export default function planReducer(state = defaultPlan, action) {
+export function plan(state = defaultPlan, action) {
   switch (action.type) {
     case CREATEPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, {})
@@ -57,6 +64,16 @@ export default function planReducer(state = defaultPlan, action) {
       return action.data
     case GETALLPLAN_REQUEST_FAILURE:
       return Object.assign({}, state, {})
+    default:
+      return state
+  }
+}
+
+export function menuplanReducer(state = comparePlan, action) {
+  switch (action.type) {
+    case MENUPLAN_REQUEST_SUSCESS:
+      console.log('ccccccccccccccccc', action.data)
+      return action.data
     default:
       return state
   }

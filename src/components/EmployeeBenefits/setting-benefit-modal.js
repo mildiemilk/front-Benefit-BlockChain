@@ -8,15 +8,13 @@ import {
   Form,
   Input,
 } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
-import '../../styles/submit-plan.scss'
-import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
-
+import SettingPlan from '../SettingBenefit/setting-plan'
+import '../../styles/employee-benefits.scss'
 const ModalContents = styled(Modal.Content)`
   &&&{
-    width: 680px;
+    width: 100%;
     position: relative;
     margin: 0 auto;
     padding: 0px;
@@ -27,6 +25,9 @@ const Modals = styled(Modal)`
   &&&{
     background: transparent;
     margin-top: -120px;
+    position: relative;
+    height: 100%;
+    z-index: 2;
   }
 `
 
@@ -35,8 +36,9 @@ const Inputs = styled(Input)`
     font-family: Kanit;
   }
 `
+import { BackButton } from '../SettingBenefit/Styled'
 
-class FormModal extends Component {
+class SettingBenefitModal extends Component {
   constructor() {
     super()
     this.state = {
@@ -47,37 +49,33 @@ class FormModal extends Component {
   }
 
   handleClose = e => {
-    this.props.handleCloseModal()
+    this.props.closeModal()
   }
 
   render() {
     return (
       <Modals
         trigger={<div />}
-        open={this.props.openModalForm}
-        onClose={this.handleClose}
+        open={this.props.openSettingBenefit}
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
-        className="SubmitPlan"
+        onClose={this.handleClose}
       >
         <ModalContents>
-          <FormSubmitPlan
-            activePlan={this.props.activePlan}
-            handlePlan={this.props.handlePlan}
-            handleModalFinish={this.props.handleModalFinish}
-            handleChange={this.props.handleChange}
-            handleResetProfilePlan={this.props.handleResetProfilePlan}
-            planName={this.props.planName}
-            employeeOfPlan={this.props.employeeOfPlan}
-          />
+          <SettingPlan style={{ border: 'aliceblue' }} />
+        </ModalContents>
+        <ModalContents>
+          <div className="row">
+            <button className="backButton">กลับไป</button>
+          </div>
         </ModalContents>
       </Modals>
     )
   }
 }
 
-FormModal.propTypes = {}
+SettingBenefitModal.propTypes = {}
 
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, null)(FormModal)
+export default connect(mapStateToProps, null)(SettingBenefitModal)

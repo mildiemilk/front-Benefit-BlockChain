@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 import { Grid, Image, Button, Comment, Form } from 'semantic-ui-react'
 import { Divider, Card, Feed, Rating } from 'semantic-ui-react'
 import {
@@ -45,7 +45,7 @@ const RatingNew = styled(Rating)`
 class PostBox extends Component {
   static propTypes = {
     selectBroker: PropTypes.bool.isRequired,
-  };
+  }
 
   constructor() {
     super()
@@ -62,11 +62,11 @@ class PostBox extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
-    const { selectBroker } = this.props;
-    console.log(selectBroker);
+    const { selectBroker } = this.props
+    console.log(selectBroker)
 
     if (selectBroker) {
-      return <Redirect to="/submitplan" />;
+      return <Redirect to="/submitplan" />
     }
 
     return (

@@ -80,6 +80,7 @@ export function copyPlan(planId) {
       })
   }
 }
+
 export function getAllPlan() {
   return dispatch => {
     const options = {
@@ -94,6 +95,13 @@ export function getAllPlan() {
       .catch(err => {
         console.log(err.response)
       })
+  }
+}
+
+export function menuPlans(comparePlan) {
+  return dispatch => {
+    dispatch(menuPlanSuccess(comparePlan))
+    window.location.href = '/compareplan'
   }
 }
 

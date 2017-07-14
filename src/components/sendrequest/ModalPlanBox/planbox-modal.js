@@ -38,6 +38,7 @@ const Modals = styled(Modal)`
   &&&{
     background: transparent;
     margin-top: -120px;
+    z-index: 2;
   }
 `
 
@@ -67,6 +68,7 @@ class PlanBoxModal extends Component {
         onClose={this.handleClose}
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
+        className="SubmitPlan"
       >
         <ModalHeaders>
           <p style={{ textAlign: 'center' }}>ดูแพลน</p>

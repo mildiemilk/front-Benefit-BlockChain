@@ -11,7 +11,6 @@ import {
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
-import '../../../styles/submit-plan.scss'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -34,7 +33,7 @@ const Inputs = styled(Input)`
   }
 `
 
-class DentalModal extends Component {
+class ModalWarningRecord extends Component {
   constructor() {
     super()
     this.state = { modalOpen: false }
@@ -50,9 +49,8 @@ class DentalModal extends Component {
   }
 
   handleSubmit = () => {
+    this.props.handleSubmit()
     this.props.handleCloseModal()
-    this.props.handleNextPlan()
-    this.props.handleClick()
   }
 
   handleOpen = e =>
@@ -111,8 +109,8 @@ class DentalModal extends Component {
   }
 }
 
-DentalModal.propTypes = {}
+ModalWarningRecord.propTypes = {}
 
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, null)(DentalModal)
+export default connect(mapStateToProps, null)(ModalWarningRecord)

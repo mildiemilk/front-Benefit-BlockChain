@@ -23,12 +23,17 @@ import erase from '../../image/icons-8-erase.png'
 import FormModal from '../form-modal'
 
 class MenuPlan extends Component {
+  static propTypes = {
+    MenuPlan: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
       step: 6,
       isOpen: false,
       modalOpen: false,
+      comparePlan: [],
     }
   }
 
@@ -50,6 +55,37 @@ class MenuPlan extends Component {
       modalOpen: false,
     })
 
+  handleChange = (e, list) => {
+    if (e.target.checked) {
+      this.setState(
+        {
+          comparePlan: this.state.comparePlan.concat(list[e.target.id]),
+        },
+        () => {
+          console.log(this.state.comparePlan)
+        },
+      )
+    } else {
+      let index = this.state.comparePlan.indexOf(list[e.target.id])
+      const x = this.state.comparePlan
+      x.splice(index, 1)
+      this.setState(
+        {
+          comparePlan: x,
+        },
+        () => {
+          console.log(this.state.comparePlan)
+        },
+      )
+    }
+  }
+
+  handleSelectPlan = e => {
+    e.preventDefault()
+    const { comparePlan } = this.state
+    this.props.menuPlans(comparePlan)
+  }
+
   renderList = list => {
     const output = []
     for (var i = 0; i < list.length; i++) {
@@ -57,7 +93,11 @@ class MenuPlan extends Component {
         <div className="menu-select-plan">
           <div className="row">
             <div className="large-2 columns">
-              <Checkbox />
+              <input
+                type="checkbox"
+                id={i}
+                onChange={e => this.handleChange(e, list)}
+              />
             </div>
             <div className="large-10 columns">
               <span>{list[i].planName}</span>
@@ -70,7 +110,7 @@ class MenuPlan extends Component {
                   />
                 }
                 content={
-                  <List divided relaxed>
+                  <List divided relaxed style={{ cursor: 'pointer' }}>
                     <List.Item>
                       <List.Content>
                         <p id={i} onClick={this.props.handleEdit}>
@@ -97,9 +137,6 @@ class MenuPlan extends Component {
                 on="click"
                 hideOnScroll
                 position="bottom center"
-                open={this.state.isOpen}
-                onClose={this.handleClose}
-                onOpen={this.handleOpen}
               />
               <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
             </div>
@@ -151,7 +188,7 @@ class MenuPlan extends Component {
           </p>
         </div>
         {this.renderList(this.props.planList)}
-        <div className="menu-compare-plan">
+        <div className="menu-compare-plan" onClick={this.handleSelectPlan}>
           เปรียบเทียบแพลน
         </div>
       </div>
@@ -161,7 +198,9 @@ class MenuPlan extends Component {
 
 MenuPlan.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  menuPlans: compareplan => dispatch(menuPlans(compareplan)),
+})
 
 const mapStateToProps = state => ({})
 

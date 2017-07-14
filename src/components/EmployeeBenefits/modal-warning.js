@@ -11,22 +11,21 @@ import {
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
-import '../../styles/submit-plan.scss'
-import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    width: 680px;
+    max-width: 300px;
     position: relative;
     margin: 0 auto;
-    padding: 0px;
   }
 `
 
 const Modals = styled(Modal)`
   &&&{
     background: transparent;
-    margin-top: -120px;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
   }
 `
 
@@ -36,7 +35,7 @@ const Inputs = styled(Input)`
   }
 `
 
-class FormModal extends Component {
+class ModalWarning extends Component {
   constructor() {
     super()
     this.state = {
@@ -47,37 +46,32 @@ class FormModal extends Component {
   }
 
   handleClose = e => {
-    this.props.handleCloseModal()
+    this.props.closeWarningModal()
   }
 
   render() {
     return (
       <Modals
         trigger={<div />}
-        open={this.props.openModalForm}
-        onClose={this.handleClose}
+        open={this.props.openWarningModal}
+        dimmer="inverted"
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
-        className="SubmitPlan"
+        onClose={this.handleClose}
       >
         <ModalContents>
-          <FormSubmitPlan
-            activePlan={this.props.activePlan}
-            handlePlan={this.props.handlePlan}
-            handleModalFinish={this.props.handleModalFinish}
-            handleChange={this.props.handleChange}
-            handleResetProfilePlan={this.props.handleResetProfilePlan}
-            planName={this.props.planName}
-            employeeOfPlan={this.props.employeeOfPlan}
-          />
+          <p>Warning</p>
+        </ModalContents>
+        <ModalContents>
+          <p>{this.props.warningMessage}</p>
         </ModalContents>
       </Modals>
     )
   }
 }
 
-FormModal.propTypes = {}
+ModalWarning.propTypes = {}
 
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, null)(FormModal)
+export default connect(mapStateToProps, null)(ModalWarning)

@@ -5,36 +5,34 @@ import HealthBenefit from './health-benefit'
 import ExpenseBenefit from './expense-benefit'
 
 class Detail extends Component {
-     constructor(props){
-        super(props)
-        this.state = {
-            isHealth: false,
-            isExpense: false,
-            HealthList: [],
-            ExpenseList: [],
-        }
+  constructor(props) {
+    super(props)
+    this.state = {
+      isHealth: false,
+      isExpense: false,
+      HealthList: [],
+      ExpenseList: [],
     }
+  }
 
-    handleToggleHealth = () => {
-        if (this.state.isHealth) {
-        this.setState({ isHealth: false })
-        } else {
-        this.setState({ isHealth: true })
-        }
+  handleToggleHealth = () => {
+    if (this.state.isHealth) {
+      this.setState({ isHealth: false })
+    } else {
+      this.setState({ isHealth: true })
     }
+  }
 
-    handleToggleExpense = () => {
-        if (this.state.isExpense) {
-        this.setState({ isExpense: false })
-        } else {
-        this.setState({ isExpense: true })
-        }
+  handleToggleExpense = () => {
+    if (this.state.isExpense) {
+      this.setState({ isExpense: false })
+    } else {
+      this.setState({ isExpense: true })
     }
-    boxInStyle = (state) => {
-        if(state)
-        return 'BoxLine'
-    }
-
+  }
+  boxInStyle = state => {
+    if (state) return 'BoxLine'
+  }
     render(){
         return(
             <div>
@@ -109,10 +107,8 @@ class Detail extends Component {
                         <div className="large-1 columns" />
                     </div>
             </div>
-
-
-        )
-    }
+    )
+  }
 }
 
 export default Detail

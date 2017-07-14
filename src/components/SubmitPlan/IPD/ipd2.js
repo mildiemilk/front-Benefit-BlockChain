@@ -18,39 +18,29 @@ import {
 import CoPlay from './coplay'
 
 class IPD2 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      value: '',
-      rbLumsumRoomPerNight: null,
-      rbLumsumNigthNotExceedPerYear: null,
-      rbLumsumPayNotExceedPerNight: null,
-      rbLumsumPayNotExceedPerYear: null,
+      value: this.props.rbLumsumRoomPerNight !== null &&
+        this.props.rbLumsumNigthNotExceedPerYear !== null
+        ? 'firstChoice'
+        : this.props.rbLumsumPayNotExceedPerNight !== null &&
+            this.props.rbLumsumPayNotExceedPerYear !== null
+            ? 'secondChoice'
+            : '',
     }
-    const value = ''
   }
 
   static propTypes = {}
 
   handleRadio = (e, { value }) => {
+    this.handleResetdata()
     this.setState({ value })
-    if (this.state.value === 'secondChoice') {
-      document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
-      this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight')
-      document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
-      this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear')
-    } else {
-      document.getElementById('rbLumsumRoomPerNight').value = ''
-      this.props.handleChangeToNull('rbLumsumRoomPerNight')
-      document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
-      this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear')
-    }
   }
 
   handleResetdata = () => {
     document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
     this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight')
-    document.getElementById('rbLumsumPayNotExceedPerYear').value = ''
     this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear')
     document.getElementById('rbLumsumRoomPerNight').value = ''
     this.props.handleChangeToNull('rbLumsumRoomPerNight')
@@ -67,7 +57,7 @@ class IPD2 extends Component {
   }
 
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState()
   }
 
@@ -91,6 +81,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
+                  value={this.props.rbLumsumRoomPerNight}
                   onChange={this.props.handleChange}
                   required
                   style={{ width: '120px', marginLeft: '7%' }}
@@ -101,6 +92,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumNigthNotExceedPerYear"
                   id="rbLumsumNigthNotExceedPerYear"
+                  value={this.props.rbLumsumNigthNotExceedPerYear}
                   onChange={this.props.handleChange}
                   required
                   style={{ width: '150px' }}
@@ -146,6 +138,7 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerNight"
                 id="rbLumsumPayNotExceedPerNight"
+                value={this.props.rbLumsumPayNotExceedPerNight}
                 onChange={this.props.handleChange}
                 required
                 style={{ width: '150px' }}
@@ -169,6 +162,7 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerYear"
                 id="rbLumsumPayNotExceedPerYear"
+                value={this.props.rbLumsumPayNotExceedPerYear}
                 onChange={this.props.handleChange}
                 required
                 style={{ width: '150px' }}

@@ -186,7 +186,6 @@ class AllsetPlan extends Component {
   handleNewReset = () => {
     this.setState({ reset: false })
   }
-  handleChangeToNull = name => this.setState({ [name]: null })
 
   componentDidUpdate() {
     if (this.state.isChange) {
@@ -227,7 +226,6 @@ class AllsetPlan extends Component {
   }
 
   render() {
-    console.log(this.state.verifyState)
     return (
       <div>
         <div className="fillBox">
@@ -340,10 +338,57 @@ class AllsetPlan extends Component {
                   handleNextPlan={this.handleNextPlan}
                   handleNewReset={this.handleNewReset}
                   openModal={this.state.openModal}
+                  handleChange={this.props.handleChange}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   handleReset={this.handleReset}
+                  handleResetIPD={this.props.handleResetIPD}
+                  handleToggle={this.props.handleToggleIpdCoPlay}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   activePlan={this.props.activePlan}
+                  lifePerYear={this.props.lifePerYear}
+                  lifeTimeOfSalary={this.props.lifeTimeOfSalary}
+                  lifeNotExceed={this.props.lifeNotExceed}
+                  ipdType={this.props.ipdType}
+                  ipdLumsumPerYear={this.props.ipdLumsumPerYear}
+                  ipdLumsumPerTime={this.props.ipdLumsumPerTime}
+                  ipdLumsumTimeNotExceedPerYear={
+                    this.props.ipdLumsumTimeNotExceedPerYear
+                  }
+                  rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
+                  rbLumsumNigthNotExceedPerYear={
+                    this.props.rbLumsumNigthNotExceedPerYear
+                  }
+                  rbLumsumPayNotExceedPerNight={
+                    this.props.rbLumsumPayNotExceedPerNight
+                  }
+                  rbLumsumPayNotExceedPerYear={
+                    this.props.rbLumsumPayNotExceedPerYear
+                  }
+                  rbSchedulePatient={this.props.rbSchedulePatient}
+                  rbScheduleIntensiveCarePatient={
+                    this.props.rbScheduleIntensiveCarePatient
+                  }
+                  rbScheduleDoctor={this.props.rbScheduleDoctor}
+                  rbScheduleSurgerySchedule={
+                    this.props.rbScheduleSurgerySchedule
+                  }
+                  rbScheduleSurgeryNonSchedule={
+                    this.props.rbScheduleSurgeryNonSchedule
+                  }
+                  rbScheduleService={this.props.rbScheduleService}
+                  rbScheduleSmallSurgery={this.props.rbScheduleSmallSurgery}
+                  rbScheduleAdviser={this.props.rbScheduleAdviser}
+                  rbScheduleAmbulance={this.props.rbScheduleAmbulance}
+                  rbScheduleAccident={this.props.rbScheduleAccident}
+                  rbScheduleTreatment={this.props.rbScheduleTreatment}
+                  rbScheduleTransplant={this.props.rbScheduleTransplant}
+                  ipdCoPlay={this.props.ipdCoPlay}
+                  ipdCoPlayQuota={this.props.ipdCoPlayQuota}
+                  ipdCoPlayDeductable={this.props.ipdCoPlayDeductable}
+                  ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
+                  ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
+                  ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
                 />
               : null}
             {this.state.setPlan === 'OPD'
@@ -355,10 +400,13 @@ class AllsetPlan extends Component {
                   handleNewReset={this.handleNewReset}
                   openModal={this.state.openModal}
                   handleReset={this.handleReset}
+                  handleResetOPD={this.props.handleResetOPD}
+                  handleToggle={this.props.handleToggleOpdCoPlay}
                   reset={this.state.reset}
                   setPlan={this.state.setPlan}
                   activePlan={this.props.activePlan}
                   handleChange={this.props.handleChange}
+                  handleChangeToNull={this.props.handleChangeToNull}
                   opdCoPlay={this.props.opdCoPlay}
                   opdPerYear={this.props.opdPerYear}
                   opdPerTime={this.props.opdPerTime}

@@ -10,6 +10,7 @@ import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
 import ModalPlanBox from './ModalPlanBox'
+import Insurer from './insurer'
 import {
   Detail,
   Head,
@@ -35,7 +36,7 @@ import {
   Icon,
   Progress,
 } from 'semantic-ui-react'
-import PostSimpleRQ from './PostSimpleRQ'
+import PostSimpleRQ from './simple-requirement'
 
 class Sendrequest extends Component {
   constructor(props) {
@@ -77,6 +78,7 @@ class Sendrequest extends Component {
               &nbsp; ภายในเวลา
               {' '}
               <Time>{moment(this.props.timeout.timeout).format('LT')}</Time>
+              <Insurer/>
             </BoxIndiv3>
             <Head2>อัพโหลดไฟล์</Head2>
             <BoxIndiv4 />

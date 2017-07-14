@@ -1,14 +1,14 @@
-@import './simpleRQ';
+@import 'simple-requirement';
 @import './vendor/foundation/_setting.scss';
-@import './settingStyle.scss';
-@import './Navinsure.scss';
-@import './ChooseInsurer.scss';
-@import './ViewAllPlan.scss';
+@import 'setting-style';
+@import 'nav-insure';
+@import 'choose-insurer';
+@import 'view-all-plan';
 @import './sidebar.scss';
-@import './Bidding.scss';
-@import './ComparePlan.scss';
-@import './AddBenefit.scss';
-@import './SettingBenefit.scss';
+@import 'bidding';
+@import 'compare-plan';
+@import 'add-benefit';
+@import 'setting-benefit';
 
 @font-face {
     font-family: 'kanit';

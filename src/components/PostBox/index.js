@@ -14,7 +14,7 @@ import {
   PostContent,
   Space,
   PostStepBox,
-} from './Styled'
+} from './styled'
 import {
   Reg8,
   Broke,
@@ -23,15 +23,15 @@ import {
   contentWarpper,
   ChatBoxName,
   ChatBoxImg,
-} from './Styled'
-import Chatlist from './ChatList'
-import Chatbox from './ChatBox'
-import Steps from './Step'
-import Postre from './Postre'
+} from './styled'
+import Chatlist from './chat-list'
+import Chatbox from './chat-box'
+import Steps from './step'
+import Postre from './postre'
 import styled from 'react-sc'
-import ModalPostBox from './ModalPostBox'
+import ModalPostBox from './modal-postbox'
 import NavInsure from '../NavInsure'
-import { postBox } from '../../api/postBox'
+import { postBox } from '../../api/post-box'
 import { connect } from 'react-redux'
 
 const RatingNew = styled(Rating)`

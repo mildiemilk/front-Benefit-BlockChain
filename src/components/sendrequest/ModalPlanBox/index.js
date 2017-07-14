@@ -17,7 +17,7 @@ import {
   SideIn,
   PlanBox,
 } from '../styled'
-import PlanBoxModal from './PlanBoxModal'
+import PlanBoxModal from './planbox-modal'
 import {
   Grid,
   Image,
@@ -30,8 +30,8 @@ import {
   Popup,
   List,
 } from 'semantic-ui-react'
-import { getAllPlan } from '../../../api/setPlan'
-import PlanBoxs from './plan-box'
+import { getAllPlan } from '../../../api/set-plan'
+import PlanBoxs from './planbox'
 import { ListBox } from './styled'
 import NavInsure from '../../NavInsure'
 class ModalPlanBox extends Component {

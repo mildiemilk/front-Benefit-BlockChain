@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Divider } from 'semantic-ui-react'
 import { Text, TextIn } from './styled'
-import NavBidding from './NavBidding'
-import Box from './Box'
+import NavBidding from './nav-bidding'
+import Box from './box'
 import { connect } from 'react-redux'
 import { bidding } from '../../api/bidding'
-import Details from './Details'
+import Details from './details'
 
 class Bidding extends Component {
   constructor(props) {

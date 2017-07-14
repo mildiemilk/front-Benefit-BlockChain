@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import NavBenefit from '../NavBenefit'
 import { Icon, Divider, Checkbox } from 'semantic-ui-react'
-import Health from '../../../assets/AddBenefit/artboards-1.png'
-import Expense from '../../../assets/AddBenefit/artboards-2.png'
-import gift from '../image/gigift.jpg'
-import HealthBenefit from './HealthBenefit'
-import ExpenseBenefit from './ExpenseBenefit'
-import Detail from './Detail'
-import Setting from './Setting'
+import Detail from './detail'
+import Setting from './setting'
 
 class AddBenefit extends Component {
     constructor(props){
@@ -39,5 +34,5 @@ class AddBenefit extends Component {
         )
     }
 }
- 
+
 export default AddBenefit

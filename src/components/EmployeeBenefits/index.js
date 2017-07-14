@@ -12,10 +12,10 @@ import {
   Input,
   Container,
 } from 'semantic-ui-react'
-import '../../styles/employeeBenefits.scss'
-import MenuTab from './MenuTab'
+import '../../styles/employee-benefits.scss'
+import MenuTab from './menutab'
 import form from '../image/icons-8-form.png'
-import SelectBox from './SelectBox'
+import SelectBox from './select-box'
 
 class employeeBenefits extends Component {
   constructor() {

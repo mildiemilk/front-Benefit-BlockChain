@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { editPlan } from '../../../api/setPlan'
+import { editPlan } from '../../../api/set-plan'
 import {
   Button,
   Checkbox,
@@ -16,13 +16,13 @@ import {
   Segment,
   Dropdown,
 } from 'semantic-ui-react'
-import '../../../styles/SubmitPlan.scss'
+import '../../../styles/submit-plan.scss'
 import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like.jpg'
 import erase from '../../image/icons-8-erase.png'
-import LifeModal from './LifeModal'
+import LifeModal from './life-modal'
 
 const options = [{ text: '1', value: 1 }]
 

@@ -1,0 +1,51 @@
+import React, { Component } from 'react'
+import { HeadLists, TextInput } from './styled'
+import ListExpense from './list-expense'
+
+class ExpenseBenefit extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            ExpenseList: [],
+            text: '',
+        }
+    }
+
+    addTodo = () => {
+        this.setState({
+            ExpenseList: this.state.ExpenseList.concat(this.state.text),
+            text: '',
+        })
+    }
+    removeTodo = (e) => {
+        const result = this.state.ExpenseList;
+        result.splice(e, 1);
+        this.setState({
+            ExpenseList: result
+        })
+    }
+
+    addTodoEnter = (e) => {
+        if (e.key === 'Enter') {
+            this.addTodo()
+        }
+    }
+
+    handleTextChange = (e) => {
+        this.setState({
+            text: e.target.value
+        })
+    }
+    render(){
+        return(
+            <div>
+                <HeadLists>กรุณาระบุรายละเอียดที่ต้องการ</HeadLists>
+                <TextInput placeholder='กดเพื่อพิมพ์รายละเอียดที่ต้องการแล้วกด Enter' onChange={this.handleTextChange} type="text" value={this.state.text} onKeyPress={this.addTodoEnter}/>
+                <ListExpense ExpenseList={this.state.ExpenseList}
+                    sendDel={this.removeTodo}/>
+            </div>
+        )
+    }
+}
+
+export default ExpenseBenefit

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import auth from './auth'
-import profileCompany from './profileCompany'
-import { chooseInsurer, setTimeOut, getAllInsurer } from './chooseInsurer'
+import profileCompany from './profile-company'
+import { chooseInsurer, setTimeOut, getAllInsurer } from './choose-insurer'
 import { endTimeout, bidding } from './bidding'
 
 export function APIRequest(options, authenticate = true) {

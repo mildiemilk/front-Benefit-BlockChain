@@ -5,7 +5,7 @@ import logo from './logo_white.png'
 import avatarn from './avatarn.JPG'
 import { connect } from 'react-redux'
 import { HeadNav, LogoPosition, SpanStyle } from './styled'
-import { getCompanyName } from '../../api/profileCompany'
+import { getCompanyName } from '../../api/profile-company'
 
 const ImageCss = styled(Image)`
   &&&{

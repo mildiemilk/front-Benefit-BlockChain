@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { setTimeOut, chooseInsurer } from '../../api/chooseInsurer'
+import { setTimeOut, chooseInsurer } from '../../api/choose-insurer'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
@@ -25,7 +25,7 @@ import {
   SubmitInsure,
   Next,
 } from './styled'
-import CardInsure from './CardInsure'
+import CardInsure from './card-insure'
 
 class InsurerSelect extends Component {
   constructor(props) {
@@ -54,6 +54,7 @@ class InsurerSelect extends Component {
   }
 
   handleCheck = e => {
+    console.log(e.target.checked)
     if (e.target.checked) {
       this.setState({
         num: this.state.num + 1,

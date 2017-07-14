@@ -22,11 +22,11 @@ import {
   OPDTopic,
   TextInBoxs,
   Note,
-} from './Styled'
+} from './styled'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
-import IPDDropBox from './IPDDropBox'
-import { getAllPlan } from '../../api/setPlan'
+import IPDDropBox from './ipd-dropbox'
+import { getAllPlan } from '../../api/set-plan'
 
 const Icons = styled(Icon)`
   &&&{

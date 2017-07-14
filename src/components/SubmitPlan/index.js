@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import MenuPlan from './MenuPlan/MenuPlan'
-import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
-import AllPlan from './AllPlan'
-import ModalPlanListBidding from './ModalPlanListBidding'
+import MenuPlan from './MenuPlan/menu-plan'
+import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
+import AllPlan from './all-plan'
+import ModalPlanListBidding from './modal-plan-list-bidding'
 import NavInsure from '../NavInsure'
-import { getAllPlan, copyPlan, deletePlan } from '../../api/setPlan'
+import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan'
 import {
   Button,
   Checkbox,
@@ -22,7 +22,7 @@ import {
   Dropdown,
   Icon,
 } from 'semantic-ui-react'
-import '../../styles/SubmitPlan.scss'
+import '../../styles/submit-plan.scss'
 
 class SubmitPlan extends Component {
   constructor(props) {

@@ -13,11 +13,11 @@ import {
   BlogContent,
   BackButton,
   NextButton,
-} from './Styled'
+} from './styled'
 import styled from 'react-sc'
 import NavBenefit from '../NavBenefit'
-import SettingPlan from './SettingPlan.js'
-import AddPlanBar from './AddPlanBar.js'
+import SettingPlan from './setting-plan.js'
+import AddPlanBar from './add-planbar.js'
 
 export class SettingBenefit extends Component {
   constructor() {

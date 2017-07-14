@@ -9,7 +9,7 @@ export const DetailDiv = styled.div `
 	background-color: #ffffff;
 	box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
     padding: 5% 8%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
 `
 
 export const Text = styled.div`
@@ -156,4 +156,25 @@ export const ButtonSettings = styled.div`
     margin-left: 31%;
     color: #ffffff;
     padding: 1% 2%;
+`
+export const BackButton = styled.button`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  color: #ffffff;
+  border-color: #f7555f;
+  border-style: solid;
+  margin-top: 25px;
+`
+
+export const NextButton = styled.button`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #46b3b8;
+  color: white;
+  border-color: #46b3b8;
+  border-style: solid;
+  margin-top: 25px;
 `

@@ -6,6 +6,7 @@ import avatarn from './avatarn.JPG'
 import { connect } from 'react-redux'
 import { HeadNav, LogoPosition, SpanStyle } from './styled'
 import { getCompanyName } from '../../api/profileCompany'
+import PropTypes from 'prop-types'
 
 const ImageCss = styled(Image)`
   &&&{
@@ -20,9 +21,13 @@ class Header extends Component {
     this.state = {}
   }
 
-  // componentDidMount() {
-  //   this.props.getCompanyName()
-  // }
+  componentDidMount() {
+    this.props.getCompanyName()
+  }
+
+  static propTypes = {
+    getCompanyName: PropTypes.func.isRequired,
+  }
 
   render() {
     return (
@@ -47,12 +52,12 @@ class Header extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   getCompanyName: data => dispatch(getCompanyName()),
-// })
+const mapDispatchToProps = dispatch => ({
+  getCompanyName: data => dispatch(getCompanyName()),
+})
 
 const mapStateToProps = state => ({
   data: state.profile,
 })
 
-export default connect(mapStateToProps, null)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

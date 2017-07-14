@@ -89,7 +89,6 @@ class ModalPlanBox extends Component {
     return (
       <div>
         <div className="row">
-
           {this.renderList(this.props.planList)}
         </div>
       </div>

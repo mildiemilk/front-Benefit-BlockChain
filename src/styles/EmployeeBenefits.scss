@@ -1,3 +1,4 @@
+
 .employeeBenefits-box{
   width: 100%;
   height: 800px;
@@ -112,7 +113,13 @@
   padding-top: 3%;
   padding-left: 8%;
   margin-bottom: 5%;
+  .popup{
+    .ui.bottom.center.popup:before{
+      background-color: black;
+    }
+  }
 }
+
 
 .select-button{
   margin-top:45%
@@ -161,3 +168,19 @@
   margin-top:7%;
   margin-bottom: 5.5%;
 }
+
+.backButton{
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  border-color: #f7555f;
+  border-style: solid;
+  color: white;
+  float: right;
+  margin-top:3%;
+  margin-bottom: 3%;
+  margin-right: 2.75%;
+}
+
+

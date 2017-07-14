@@ -34,6 +34,8 @@ import { getAllPlan } from '../../../api/setPlan'
 import PlanBoxs from './plan-box'
 import { ListBox } from './styled'
 import NavInsure from '../../NavInsure'
+
+let open = []
 class ModalPlanBox extends Component {
   constructor(props) {
     super(props)
@@ -69,7 +71,7 @@ class ModalPlanBox extends Component {
     })
 
   renderList = list => {
-    return list.map(element => (
+    return list.map((element, index) => (
       <ListBox className="large-4 columns">
         <PlanBoxs
           isOpen={this.state.isOpen}

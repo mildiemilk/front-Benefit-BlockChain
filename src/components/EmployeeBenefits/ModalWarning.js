@@ -7,30 +7,16 @@ import {
   Checkbox,
   Form,
   Input,
-  Icon,
 } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
-import FormSubmitPlan from '../../SubmitPlan/FormSubmitPlan/FormSubmitPlan'
-import AllPlan from '../../SubmitPlan/AllPlan'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    width: 800px;
+    max-width: 500px;
     position: relative;
     margin: 0 auto;
-    padding-left: 6.4%;
-    padding-right: 4%;
-  }
-`
-const ModalHeaders = styled(Modal.Header)`
-  &&&{
-    width: 800px;
-    position: relative;
-    margin: 0 auto;
-    padding-left: 4%;
-    padding-right: 4%;
   }
 `
 
@@ -38,7 +24,6 @@ const Modals = styled(Modal)`
   &&&{
     background: transparent;
     margin-top: -120px;
-    z-index: 2;
   }
 `
 
@@ -47,45 +32,44 @@ const Inputs = styled(Input)`
     font-family: Kanit;
   }
 `
-class PlanBoxModal extends Component {
-  constructor(props) {
-    super(props)
+
+class ModalWarning extends Component {
+  constructor() {
+    super()
     this.state = {
+      modalOpen: false,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
     }
   }
 
   handleClose = e => {
-    this.props.handleCloseModal()
+    this.props.closeWarningModal()
   }
 
   render() {
     return (
       <Modals
         trigger={<div />}
-        open={this.props.modalOpen}
-        onClose={this.handleClose}
+        open={this.props.openWarningModal}
+        dimmer="inverted"
         closeOnEscape={this.state.closeOnEscape}
         closeOnRootNodeClick={this.state.closeOnRootNodeClick}
-        className="SubmitPlan"
+        onClose={this.handleClose}
       >
-        <ModalHeaders>
-          <p style={{ textAlign: 'center' }}>ดูแพลน</p>
-        </ModalHeaders>
         <ModalContents>
-          <FormSubmitPlan />
+          <p>Warning</p>
         </ModalContents>
         <ModalContents>
-          <AllPlan />
+          <p>{this.props.warningMessage}</p>
         </ModalContents>
       </Modals>
     )
   }
 }
 
-PlanBoxModal.propTypes = {}
+ModalWarning.propTypes = {}
 
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, null)(PlanBoxModal)
+export default connect(mapStateToProps, null)(ModalWarning)

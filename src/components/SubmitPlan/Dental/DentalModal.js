@@ -62,7 +62,6 @@ class DentalModal extends Component {
       modalOpen: true,
     })
   render() {
-    console.log(this.props.openModal)
     return (
       <Modals trigger={<div />} open={this.props.openModal}>
 

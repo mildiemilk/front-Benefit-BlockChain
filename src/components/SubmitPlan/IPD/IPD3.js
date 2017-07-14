@@ -18,32 +18,25 @@ import {
 import CoPlay from './CoPlay'
 
 class IPD3 extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      permit: false,
-      rbSchedulePatient: null,
-      rbScheduleIntensiveCarePatient: null,
-      rbScheduleDoctor: null,
-      rbScheduleSurgery: null,
-      rbScheduleService: null,
-      rbScheduleSmallSurgery: null,
-      rbScheduleAdviser: null,
-      rbScheduleAmbulance: null,
-      rbScheduleAccident: null,
-      rbScheduleTreatment: null,
-      rbScheduleTransplant: null,
+      value: this.props.rbScheduleSurgerySchedule !== null
+        ? 'Schedule'
+        : this.props.rbScheduleSurgeryNonSchedule !== null
+            ? 'Non-Schedule'
+            : '',
     }
   }
 
   static propTypes = {}
 
-  handleToggle = () => {
-    if (this.state.permit) {
-      document.getElementById('rbScheduleSurgery').value = null
-      this.setState({ permit: false })
+  handleRadio = (e, { value }) => {
+    this.setState({ value })
+    if (this.state.value === 'Non-Schedule') {
+      this.props.handleChangeToNull('rbScheduleSugeryNonSchedule')
     } else {
-      this.setState({ permit: true })
+      this.props.handleChangeToNull('rbScheduleSugerySchedule')
     }
   }
 
@@ -80,7 +73,7 @@ class IPD3 extends Component {
   }
 
   handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
+    this.props.handleChange(e, { name, value })
     this.props.handleVerifyState()
   }
 
@@ -101,9 +94,28 @@ class IPD3 extends Component {
             </div>
             <br />
             <p>2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน</p>
-            <span>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ</span>
+            <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ</p>
             {' '}
-            <Checkbox toggle onClick={this.handleToggle} />
+            <div className="paragraph">
+              <Form.Field>
+                <Radio
+                  name="IPD3Group"
+                  value="Non-Schedule"
+                  label="3.1 Non-Schedule"
+                  checked={this.state.value === 'Non-Schedule'}
+                  onChange={this.handleRadio}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Radio
+                  name="IPD3Group"
+                  value="Schedule"
+                  label="3.2 Schedule"
+                  checked={this.state.value === 'Schedule'}
+                  onChange={this.handleRadio}
+                />
+              </Form.Field>
+            </div>
             <br />
             <br />
             <p>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
@@ -159,6 +171,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbSchedulePatient"
+                  value={this.props.rbSchedulePatient}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -170,6 +183,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleIntensiveCarePatient"
+                  value={this.props.rbScheduleIntensiveCarePatient}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -181,30 +195,58 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleDoctor"
+                  value={this.props.rbScheduleDoctor}
                   onChange={this.props.handleChange}
                   required
                 />
                 <p> บาท</p>
               </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                {this.state.permit
+              <Form.Group
+                inline
+                style={{ marginBottom: '5%', marginTop: '20%' }}
+              >
+                {this.state.value === 'Non-Schedule'
                   ? <Form.Input
                       type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name="rbScheduleSurgery"
+                      name="rbScheduleSurgeryNonSchedule"
+                      value={this.props.rbScheduleSurgeryNonSchedule}
                       onChange={this.props.handleChange}
-                      id="rbScheduleSurgery"
+                      id="rbScheduleSurgeryNonSchedule"
                       required
                     />
                   : <Form.Input
                       type="number"
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
-                      name="rbScheduleSurgery"
+                      name="rbScheduleSurgeryNonSchedule"
                       onChange={this.props.handleChange}
                       readOnly
-                      id="rbScheduleSurgery"
+                      id="rbScheduleSurgeryNonSchedule"
+                    />}
+                <p> บาท</p>
+              </Form.Group>
+              <Form.Group inline style={{ marginBottom: '5%' }}>
+                {this.state.value === 'Schedule'
+                  ? <Form.Input
+                      type="number"
+                      style={{ height: '30px', width: '100px' }}
+                      placeholder="จำนวนเงิน"
+                      name="rbScheduleSurgerySchedule"
+                      value={this.props.rbScheduleSurgerySchedule}
+                      onChange={this.props.handleChange}
+                      id="rbScheduleSurgerySchedule"
+                      required
+                    />
+                  : <Form.Input
+                      type="number"
+                      style={{ height: '30px', width: '100px' }}
+                      placeholder="จำนวนเงิน"
+                      name="rbScheduleSurgerySchedule"
+                      onChange={this.props.handleChange}
+                      readOnly
+                      id="rbScheduleSurgerySchedule"
                     />}
                 <p> บาท</p>
               </Form.Group>
@@ -214,6 +256,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleService"
+                  value={this.props.rbScheduleService}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -228,6 +271,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleSmallSurgery"
+                  value={this.props.rbScheduleSmallSurgery}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -239,6 +283,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAdviser"
+                  value={this.props.rbScheduleAdviser}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -250,6 +295,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAmbulance"
+                  value={this.props.rbScheduleAmbulance}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -261,6 +307,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAccident"
+                  value={this.rbScheduleAccident}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -272,6 +319,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTreatment"
+                  value={this.props.rbScheduleTreatment}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -286,6 +334,7 @@ class IPD3 extends Component {
                   style={{ height: '30px', width: '100px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTransplant"
+                  value={this.rbScheduleTransplant}
                   onChange={this.props.handleChange}
                   required
                 />

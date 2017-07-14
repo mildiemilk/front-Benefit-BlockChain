@@ -50,7 +50,6 @@ class FormModal extends Component {
   }
 
   render() {
-    console.log(this.props.openModalForm)
     return (
       <Modals
         trigger={<div />}

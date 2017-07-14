@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import { authReducer, signupReducer } from './auth'
 import fillsimpleReducer from './simpleRequirement'
 import profile from './profile'
-import plan from './submitPlan'
+import { plan, menuplanReducer } from './submitPlan'
 import postBoxReducer from './postBox'
 import {
   setTimeOut,
@@ -18,6 +18,7 @@ const rootReducer = combineReducers({
   profile,
   fillsimpleReducer,
   plan,
+  menuplanReducer,
   postBoxReducer,
   chooseInsurerReducer,
   setTimeOut,

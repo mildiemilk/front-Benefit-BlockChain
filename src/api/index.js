@@ -3,6 +3,7 @@ import auth from './auth'
 import profileCompany from './profileCompany'
 import { chooseInsurer, setTimeOut, getAllInsurer } from './chooseInsurer'
 import { endTimeout, bidding } from './bidding'
+import { menuPlans } from './setPlan'
 
 export function APIRequest(options, authenticate = true) {
   const headers = options.headers ? options.headers : {}
@@ -32,4 +33,5 @@ export default {
   getAllInsurer,
   endTimeout,
   bidding,
+  menuPlans,
 }

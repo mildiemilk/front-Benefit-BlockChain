@@ -21,8 +21,13 @@ import {
 import '../../../styles/SubmitPlan.scss'
 import erase from '../../image/icons-8-erase.png'
 import FormModal from '../FormModal'
+import { menuPlans } from '../../../api/setPlan'
 
 class MenuPlan extends Component {
+  static propTypes = {
+    MenuPlan: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -74,6 +79,12 @@ class MenuPlan extends Component {
         },
       )
     }
+  }
+
+  handleSelectPlan = e => {
+    e.preventDefault()
+    const { comparePlan } = this.state
+    this.props.menuPlans(comparePlan)
   }
 
   renderList = list => {
@@ -181,7 +192,7 @@ class MenuPlan extends Component {
           </p>
         </div>
         {this.renderList(this.props.planList)}
-        <div className="menu-compare-plan">
+        <div className="menu-compare-plan" onClick={this.handleSelectPlan}>
           เปรียบเทียบแพลน
         </div>
       </div>
@@ -191,7 +202,9 @@ class MenuPlan extends Component {
 
 MenuPlan.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  menuPlans: compareplan => dispatch(menuPlans(compareplan)),
+})
 
 const mapStateToProps = state => ({})
 

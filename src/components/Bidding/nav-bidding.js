@@ -61,7 +61,7 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
                 <FontNumAucTime>
-                  <CountDowns date={this.props.timeout.timeout} />
+                  <CountDowns date={this.props.timeout} />
                 </FontNumAucTime>
               </TextNav>
             </Nav>
@@ -73,8 +73,8 @@ class Bidding extends Component {
 }
 
 const mapStateToProps = state => ({
-  timeout: state.setTimeOut,
-  num: state.chooseInsurerReducer.length,
+  timeout: state.setTimeOut.timeout,
+  num: state.chooseInsurerReducer.insurers.length,
 })
 
 export default connect(mapStateToProps, null)(Bidding)

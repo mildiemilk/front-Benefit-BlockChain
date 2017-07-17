@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
 
 import { authReducer, signupReducer } from './auth'
-import fillsimpleReducer from './simpleRequirement'
+import fillsimpleReducer from './simple-requirement'
 import profile from './profile'
-import plan from './submitPlan'
-import postBoxReducer from './postBox'
+import { plan, menuplanReducer} from './submit-plan'
+import postBoxReducer from './post-box'
 import {
   setTimeOut,
   chooseInsurerReducer,
   getAllInsurer,
-} from './chooseInsurer'
-import biddingReducer from './bidding'
+} from './choose-insurer'
+import { biddingReducer, endTimeout } from './bidding'
 
 const rootReducer = combineReducers({
   authReducer,
@@ -18,11 +18,13 @@ const rootReducer = combineReducers({
   profile,
   fillsimpleReducer,
   plan,
+  menuplanReducer,
   postBoxReducer,
   chooseInsurerReducer,
   setTimeOut,
   getAllInsurer,
   biddingReducer,
+  endTimeout,
 })
 
 export default rootReducer

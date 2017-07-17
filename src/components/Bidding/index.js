@@ -1,35 +1,32 @@
 import React, { Component } from 'react'
 import { Divider } from 'semantic-ui-react'
 import { Text, TextIn } from './styled'
-import NavBidding from './NavBidding'
-import Box from './Box'
+import NavBidding from './nav-bidding'
+import Box from './box'
 import { connect } from 'react-redux'
 import { bidding } from '../../api/bidding'
-import Details from './Details'
+import Details from './details'
 
 class Bidding extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       isDetail: false,
+      Detail: {},
     }
+    setInterval(function() {
+      props.bidding()
+    }, 2000)
   }
 
-  handleClick = () => {
+  handleClick = Detail => {
     const { isDetail } = this.state
-    if (!isDetail) this.setState({ isDetail: true })
+    console.log(Detail)
+    if (!isDetail) this.setState({ isDetail: true, Detail: Detail })
     else this.setState({ isDetail: false })
   }
 
   render() {
-    const cb = () => {
-      console.log('expired callback')
-    }
-    const OPTIONS = {
-      endDate: '03/01/2018 10:55 AM',
-      prefix: 'until my birthday!',
-      cb,
-    }
     {
       this.props.bidding()
     }
@@ -38,7 +35,7 @@ class Bidding extends Component {
         <NavBidding />
         <div className="BidContent">
           {this.state.isDetail
-            ? <Details handleClick={this.handleClick} />
+            ? <Details handleClick={this.handleClick} bid={this.state.Detail} />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
         </div>
       </div>

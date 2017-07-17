@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { setTimeOut, chooseInsurer } from '../../api/chooseInsurer'
+import { setTimeOut, chooseInsurer } from '../../api/choose-insurer'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
@@ -25,11 +25,11 @@ import {
   SubmitInsure,
   Next,
 } from './styled'
-import CardInsure from './CardInsure'
+import CardInsure from './card-insure'
 
 class InsurerSelect extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       step: 4,
       num: 0,
@@ -54,6 +54,7 @@ class InsurerSelect extends Component {
   }
 
   handleCheck = e => {
+    console.log(e.target.checked)
     if (e.target.checked) {
       this.setState({
         num: this.state.num + 1,
@@ -112,18 +113,14 @@ class InsurerSelect extends Component {
                   minDate={moment()}
                 />
                 <span>&nbsp;เวลา&nbsp;</span>
-                <TimePicker
-                  onChange={this.handleTime}
-                  selected={this.state.time}
-                  showSecond={false}
-                />
+                <TimePicker onChange={this.handleTime} showSecond={false} />
                 <br />
-                <Submit onClick={this.handleTimeOut}>บันทึกก</Submit>
+                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
 
               </SideIn>
             </div>
           </Detail>
-          <Next>ต่อไป</Next>
+          <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
         </div>
       </div>
     )
@@ -136,6 +133,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  timeout: state.setTimeOut,
   insurerList: state.getAllInsurer,
 })
 

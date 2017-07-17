@@ -161,12 +161,12 @@ export const Font = styled.div`
 	font-size: 20px;
 	display: inline-block;
 	position: absolute;
-    bottom: 69%;
+    bottom: 62%;
     left: 36%;
 `
 export const FontAucTime = styled(Font)`
 	&&& {
-		font-size: 17px;
+		font-size: 16px;
 	}
 `
 export const FontNum = styled.div`
@@ -178,10 +178,98 @@ export const FontNum = styled.div`
 `
 export const FontNumAucTime = styled(FontNum)`
 	&&& {
-		font-size: 38px;
+		font-size: 35px;
 		color: #505050;
 	}
 `
 export const TextNav = styled.div`
 	margin-top: 1%;
+`
+
+export const CountTime = styled.div`
+	display: inline-block;
+	font-size: 35px;
+	color: #323028;
+`
+
+export const DisplayTime = styled.div`
+	display: none;
+`
+export const DisplayTimeout = styled.div`
+	color: #f7555f;
+`
+export const ButtonStatusAppove = styled.div`
+	width: 80%;
+	height: 41px;
+	border-radius: 30px;
+	background-color: #2ac294;
+	color: white;
+	margin-left: 12%;
+    margin-top: -7%;
+    padding: 7%;
+	cursor: pointer;
+
+`
+export const ButtonStatusCancle = styled.div`
+	width: 80%;
+	height: 41px;
+	border-radius: 30px;
+	background-color: #9b9b9b;
+	color: white;
+	margin-left: 12%;
+    margin-top: -7%;
+    padding: 7%;
+
+`
+export const ModalHeader = styled.p`
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #000000;
+`
+
+export const ModalContent = styled.p`
+font-size: 14px;
+font-weight: 500;
+letter-spacing: 0.3px;
+text-align: left;
+color: #323028;
+padding-left: 5%;
+`
+
+export const ButtonNew = styled.button`
+    width: 174px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f7555f;
+    font-size: 120%;
+    border-color: #f7555f;
+    border-style: solid;
+    color: #ffffff;
+    position: absolute;
+    margin-top: 1.5%;
+    margin-left: 43%;
+`
+
+export const CancleButton = styled.button`
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f7555f;
+    font-size: 120%;
+    border-color: #f7555f;
+    border-style: solid;
+    color: #ffffff;
+`
+
+export const ConfirmButton = styled.button`
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #386cb2;
+    font-size: 120%;
+    border-color: #386cb2;
+    border-style: solid;
+    color: #ffffff;
+    margin-left: 1%;
 `

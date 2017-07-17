@@ -17,7 +17,7 @@ import {
   SideIn,
   PlanBox,
 } from '../styled'
-import PlanBoxModal from './PlanBoxModal'
+import PlanBoxModal from './planbox-modal'
 import {
   Grid,
   Image,
@@ -30,7 +30,12 @@ import {
   Popup,
   List,
 } from 'semantic-ui-react'
+import { getAllPlan } from '../../../api/set-plan'
+import PlanBoxs from './planbox'
+import { ListBox } from './styled'
+import NavInsure from '../../NavInsure'
 
+let open = []
 class ModalPlanBox extends Component {
   constructor(props) {
     super(props)
@@ -39,6 +44,7 @@ class ModalPlanBox extends Component {
       isOpen: false,
       modalOpen: false,
     }
+    props.getAllPlan()
   }
 
   handleOpen = () => {
@@ -64,51 +70,40 @@ class ModalPlanBox extends Component {
       modalOpen: false,
     })
 
+  renderList = list => {
+    return list.map((element, index) => (
+      <ListBox className="large-4 columns">
+        <PlanBoxs
+          isOpen={this.state.isOpen}
+          modalOpen={this.state.modalOpen}
+          handleOpen={this.handleOpen}
+          handleClose={this.handleClose}
+          handleModal={this.handleModal}
+          handleOpenModal={this.handleOpenModal}
+          handleCloseModal={this.handleCloseModal}
+          planList={element}
+        />
+      </ListBox>
+    ))
+  }
+
   render() {
     return (
-      <div className="ChooseInsurer">
+      <div>
         <div className="row">
-          <div className="large-4 columns">
-            <PlanBox>
-              <span>Plan A</span>
-              <Popup
-                trigger={
-                  <Icon
-                    style={{ float: 'right' }}
-                    name="ellipsis vertical"
-                    size="large"
-                  />
-                }
-                content={
-                  <List divided relaxed>
-                    <List.Item>
-                      <List.Content onClick={() => this.handleModal()}>
-                        <p><Icon name="file text outline" />ดูแพลน</p>
-                      </List.Content>
-                    </List.Item>
-                    <List.Item>
-                      <List.Content>
-                        <p><Icon name="trash outline" />ลบแพลน</p>
-                      </List.Content>
-                    </List.Item>
-                  </List>
-                }
-                on="click"
-                hideOnScroll
-                position="bottom center"
-                open={this.state.isOpen}
-                onClose={this.handleClose}
-                onOpen={this.handleOpen}
-              />
-              <PlanBoxModal
-                modalOpen={this.state.modalOpen}
-                handleCloseModal={this.handleCloseModal}
-              />
-            </PlanBox>
-          </div>
+          {this.renderList(this.props.planList)}
         </div>
       </div>
     )
   }
 }
-export default ModalPlanBox
+
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalPlanBox)

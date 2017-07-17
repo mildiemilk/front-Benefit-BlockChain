@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { editPlan } from '../../../api/setPlan'
+import { editPlan } from '../../../api/set-plan'
 import {
   Button,
   Checkbox,
@@ -16,13 +16,13 @@ import {
   Segment,
   Dropdown,
 } from 'semantic-ui-react'
-import '../../../styles/SubmitPlan.scss'
+import '../../../styles/submit-plan.scss'
 import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-tooth.jpg'
 import heart from '../../image/icons-8-like1.jpg'
 import erase from '../../image/icons-8-erase.png'
-import DentalModal from './DentalModal'
+import DentalModal from './dental-modal'
 
 class Dental extends Component {
   constructor(props) {
@@ -96,7 +96,6 @@ class Dental extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '5%',
                 marginBottom: '3%',
               }}
               type="submit"
@@ -109,8 +108,6 @@ class Dental extends Component {
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
-          handleNextPlan={this.props.handleNextPlan}
-          handleReset={this.props.handleReset}
         />
       </div>
     )

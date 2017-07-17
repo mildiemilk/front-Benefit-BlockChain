@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { createProfile } from '../../api/profileCompany'
+import { createProfile } from '../../api/profile-company'
 import {
   Button,
   Form,
@@ -24,7 +24,7 @@ import {
   Detail2,
   Detail3,
   Next,
-} from './Styled'
+} from './styled'
 import styled from 'react-sc'
 
 const SegmentWithHeight = styled(Segment)`
@@ -150,9 +150,6 @@ class SettingProfile extends Component {
 
   render() {
     const { profile } = this.state
-    // console.log(this.state)
-    console.log('profile: ')
-    console.log(this.state)
     let { imagePreviewUrl } = this.state
     let $imagePreview = null
     // let elmnt = document.getElementById("Image")

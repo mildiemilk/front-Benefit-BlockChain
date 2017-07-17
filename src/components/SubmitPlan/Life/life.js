@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { editPlan } from '../../../api/setPlan'
+import { editPlan } from '../../../api/set-plan'
 import {
   Button,
   Checkbox,
@@ -16,13 +16,13 @@ import {
   Segment,
   Dropdown,
 } from 'semantic-ui-react'
-import '../../../styles/SubmitPlan.scss'
+import '../../../styles/submit-plan.scss'
 import bed from '../../image/icons-8-single-bed1.jpg'
 import stethoscope from '../../image/icons-8-stethoscope1.jpg'
 import tooth from '../../image/icons-8-toot1.jpg'
 import heart from '../../image/icons-8-like.jpg'
 import erase from '../../image/icons-8-erase.png'
-import LifeModal from './LifeModal'
+import LifeModal from './life-modal'
 
 const options = [{ text: '1', value: 1 }]
 
@@ -167,7 +167,7 @@ class Life extends Component {
               />
             </Form.Field>
             {this.state.value === 'thirdLifeChoice'
-              ? <div style={{ display: 'inherit' }}>
+              ? <div style={{ display: '-webkit-box' }}>
                   <Form.Select
                     placeholder="เท่า"
                     options={options}
@@ -175,6 +175,7 @@ class Life extends Component {
                     id="lifeTimeOfSalary"
                     value={this.props.lifeTimeOfSalary}
                     onChange={this.handleChange}
+                    style={{ width: '150px' }}
                   />
                   <Form.Input
                     type="number"
@@ -185,9 +186,10 @@ class Life extends Component {
                     value={this.props.lifeNotExceed}
                     onChange={this.handleChange}
                     required
+                    style={{ width: '95px' }}
                   />
                 </div>
-              : <div style={{ display: 'inherit' }}>
+              : <div style={{ display: '-webkit-box' }}>
                   <Form.Select
                     placeholder="เท่า"
                     options={1}
@@ -195,6 +197,7 @@ class Life extends Component {
                     name="lifeTimeOfSalary"
                     id="lifeTimeOfSalary"
                     disabled
+                    style={{ width: '150px' }}
                   />
                   <Form.Input
                     type="number"
@@ -204,6 +207,7 @@ class Life extends Component {
                     id="lifeNotExceed"
                     onChange={this.handleChange}
                     readOnly
+                    style={{ width: '100px' }}
                   />
                 </div>}
             <p> บาท</p>
@@ -219,7 +223,6 @@ class Life extends Component {
                 color: 'white',
                 float: 'right',
                 borderRadius: '20px',
-                marginRight: '5%',
                 marginBottom: '3%',
               }}
               type="submit"
@@ -232,8 +235,6 @@ class Life extends Component {
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
-          handleNextPlan={this.props.handleNextPlan}
-          handleReset={this.props.handleReset}
         />
       </div>
     )

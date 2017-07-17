@@ -5,7 +5,8 @@ import logo from './logo_white.png'
 import avatarn from './avatarn.JPG'
 import { connect } from 'react-redux'
 import { HeadNav, LogoPosition, SpanStyle } from './styled'
-import { getCompanyName } from '../../api/profileCompany'
+import { getCompanyName } from '../../api/profile-company'
+import PropTypes from 'prop-types'
 
 const ImageCss = styled(Image)`
   &&&{
@@ -24,8 +25,11 @@ class Header extends Component {
     this.props.getCompanyName()
   }
 
+  static propTypes = {
+    getCompanyName: PropTypes.func.isRequired,
+  }
+
   render() {
-    console.log(this.props.data, 'the data retieved')
     return (
       <HeadNav>
         <LogoPosition>
@@ -34,12 +38,14 @@ class Header extends Component {
           </div>
         </LogoPosition>
         <Menu.Item style={{ width: '20%' }} position="right">
-          <div>
-            <SpanStyle>
-              {this.props.data.companyName}
-            </SpanStyle>
-            <ImageCss src={avatarn} avatar size="mini" />
-          </div>
+          {this.props.data.companyName
+            ? <div>
+                <SpanStyle>
+                  {this.props.data.companyName}
+                </SpanStyle>
+                <ImageCss src={avatarn} avatar size="mini" />
+              </div>
+            : <div />}
         </Menu.Item>
       </HeadNav>
     )

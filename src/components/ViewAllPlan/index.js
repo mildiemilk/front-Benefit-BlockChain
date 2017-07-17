@@ -1,23 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-import ViewPlanBox from './ViewPlanBox'
+import ViewPlanBox from './view-planbox'
 import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
-import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './Styled'
+import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './styled'
 import styled from 'react-sc'
-import SearchBox from './SearchBox'
+import SearchBox from './search-box'
 import NavInsure from '../NavInsure'
-import ModalView from './ModalView'
-import { getAllPlan } from '../../api/setPlan'
+import ModalView from './modal-view'
+import { getAllPlan } from '../../api/set-plan'
 
 export class ViewAllPlan extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       step: 3,
       passwordToConfirm: '',
       SearchTerm: '',
     }
+    setInterval(function() {
+      props.getAllPlan()
+    }, 2000)
   }
 
   handleSearchBoxChange(keyword) {
@@ -34,9 +37,6 @@ export class ViewAllPlan extends Component {
   }
 
   render() {
-    {
-      this.props.getAllPlan()
-    }
     return (
       <div className="ViewAllPlan">
         <NavInsure step={this.state.step} />

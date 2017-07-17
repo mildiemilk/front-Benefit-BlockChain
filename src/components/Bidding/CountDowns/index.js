@@ -1,6 +1,9 @@
 import React, { PropTypes, Component } from 'react'
+import { CountTime, DisplayTime, DisplayTimeout } from '../styled'
+import { connect } from 'react-redux'
+import { endTimeout } from '../../../api/bidding'
 
-class Countdowns extends Component {
+class CountDowns extends Component {
   constructor(props) {
     super(props)
 
@@ -9,14 +12,22 @@ class Countdowns extends Component {
       hours: 0,
       min: 0,
       sec: 0,
+      end: '',
     }
+    const { end } = this.state
+    this.props.endTimeout(this.state.end)
   }
 
   componentDidMount() {
     // update every second
     this.interval = setInterval(() => {
       const date = this.calculateCountdown(this.props.date)
-      date ? this.setState(date) : this.stop()
+      if (date) this.setState(date)
+      else {
+        this.stop()
+        this.setState({ end: 'Timeout' })
+        this.props.endTimeout(this.state.end)
+      }
     }, 1000)
   }
 
@@ -27,7 +38,7 @@ class Countdowns extends Component {
   calculateCountdown(endDate) {
     let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000
 
-    // clear countdown when date is reached
+    // clear CountDowns when date is reached
     if (diff <= 0) return false
 
     const timeLeft = {
@@ -78,33 +89,57 @@ class Countdowns extends Component {
 
   render() {
     const countDown = this.state
+    let $isDay = this.addLeadingZeros(countDown.days)
+    let $isHours = this.addLeadingZeros(countDown.hours)
+    let $isMin = this.addLeadingZeros(countDown.min)
+    let $isSec = this.addLeadingZeros(countDown.sec)
 
+    if (
+      $isDay == '00' &&
+      $isHours == '00' &&
+      $isMin == '00' &&
+      $isSec <= '01'
+    ) {
+      console.log('session timeout')
+      console.log(this.state.end)
+      console.log(this.props.end.end)
+      $isDay = <DisplayTime />
+      $isHours = <DisplayTimeout>หมดเวลา</DisplayTimeout>
+      $isMin = <DisplayTime />
+      $isSec = <DisplayTime />
+    } else {
+      console.log('exist')
+      $isDay = <CountTime>{this.addLeadingZeros(countDown.days)}:</CountTime>
+      $isHours = <CountTime>{this.addLeadingZeros(countDown.hours)}:</CountTime>
+      $isMin = <CountTime>{this.addLeadingZeros(countDown.min)}:</CountTime>
+      $isSec = <CountTime>{this.addLeadingZeros(countDown.sec)}</CountTime>
+    }
     return (
       <div className="Countdown">
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.days)}</strong>:
+            <strong>{$isDay}</strong>
             {/*<span>{countDown.days === 1 ? 'Day' : 'Days'}</span>*/}
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.hours)}</strong>:
+            <strong>{$isHours}</strong>
             {/*<span>Hours</span>*/}
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.min)}</strong>:
+            <strong>{$isMin}</strong>
             {/*<span>Min</span>*/}
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.sec)}</strong>
+            <strong>{$isSec}</strong>
             {/*<span>Sec</span>*/}
           </span>
         </span>
@@ -113,12 +148,19 @@ class Countdowns extends Component {
   }
 }
 
-Countdowns.propTypes = {
+CountDowns.propTypes = {
   date: PropTypes.string.isRequired,
 }
 
-Countdowns.defaultProps = {
+CountDowns.defaultProps = {
   date: new Date(),
 }
 
-export default Countdowns
+const mapDispatchToProps = dispatch => ({
+  endTimeout: end => dispatch(endTimeout({ end })),
+})
+const mapStateToProps = state => ({
+  end: state.endTimeout,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CountDowns)

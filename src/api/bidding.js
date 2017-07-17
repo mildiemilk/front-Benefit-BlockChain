@@ -1,9 +1,13 @@
 import { APIRequest } from '.'
-import { getBiddingSuccess, getBiddingFailure } from '../reducers/bidding'
+import {
+  getBiddingSuccess,
+  getBiddingFailure,
+  EndSuccess,
+} from '../reducers/bidding'
 import { withRouter } from 'react-router'
-import Postbox from '../components/PostBox'
 
 const BIDDING_URI = '/api/getbidding'
+
 export function bidding() {
   return dispatch => {
     const options = {
@@ -13,12 +17,17 @@ export function bidding() {
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
         dispatch(getBiddingSuccess(res.data))
       })
       .catch(err => {
         dispatch(getBiddingFailure(err.response.data))
         console.log(err.response)
       })
+  }
+}
+
+export function endTimeout(end) {
+  return dispatch => {
+    dispatch(EndSuccess({ end }))
   }
 }

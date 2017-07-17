@@ -11,6 +11,7 @@ import ModalInsurer from './ModalInsurer'
 import csvpic from '../image/icons-8-csv.png'
 import ModalPlanBox from './ModalPlanBox'
 import Insurer from './insurer'
+import '../../styles/send-request.scss'
 import {
   Detail,
   Head,
@@ -43,13 +44,20 @@ class Sendrequest extends Component {
     super(props)
     this.state = {
       step: 6,
+      position: 'relative-box',
     }
+  }
+
+  changePositionPage = () => {
+    if (this.state.position === 'relative-box')
+      this.setState({ position: 'fixed-box' })
+    else this.setState({ position: 'relative-box' })
   }
   render() {
     console.log(this.props)
     console.log(moment(this.props.timeout).locale('th').format('DD MMMM YYYY'))
     return (
-      <div>
+      <div className={this.state.position}>
         <NavInsure step={this.state.step} />
         <div className="row">
           <Detail className="large-12 columns">
@@ -60,7 +68,7 @@ class Sendrequest extends Component {
             <PostSimpleRQ />
             <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
             <BoxIndiv2>
-              <ModalPlanBox />
+              <ModalPlanBox changePositionPage={this.changePositionPage} />
             </BoxIndiv2>
             <Head2 style={{ display: 'inline-block' }}>
               รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน

@@ -2,7 +2,6 @@ import styled from 'react-sc'
 
 export const Submit = styled.button`
     position: relative;
-    right: -700px;
     height: 40px;
     width: 164px;
     height: 40px;

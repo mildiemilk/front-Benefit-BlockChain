@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { createProfile } from '../../api/profile-company'
 import styled from 'react-sc'
 import NavSettingBenefit from '../navSettingBenefit'
 import PlanTemplate from './plantemplate'
@@ -46,8 +45,6 @@ import {
   Message,
 } from 'semantic-ui-react'
 import ModalPlan from './modal-plan'
-
-// ----------------------------------------------------------------
 
 class ChooseInsurancePlan extends Component {
   constructor(props) {
@@ -250,7 +247,7 @@ class ChooseInsurancePlan extends Component {
               </InnerHead2>
               {this.RenderInnerRight()}
             </InnerRight>
-            <Submit>ต่อไป</Submit>
+            <Link to="/addbenefit"><Submit>ต่อไป</Submit></Link>
           </Detail>
 
         </div>

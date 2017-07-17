@@ -17,7 +17,7 @@ import {
 import { Icon, Checkbox } from 'semantic-ui-react'
 import HealthBenefit from './health-benefit'
 import ExpenseBenefit from './expense-benefit'
-
+import { Link } from 'react-router-dom'
 class Detail extends Component {
   constructor(props) {
     super(props)
@@ -120,10 +120,12 @@ class Detail extends Component {
         </DetailDiv>
         <div className="row">
           <div className="large-3 large-offset-1 columns">
-            <BackButton> กลับ </BackButton>
+            <Link to="chooseinsuranceplan">
+              <BackButton> กลับ </BackButton>
+            </Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <NextButton> ต่อไป </NextButton>
+            <Link to="/settingbenefit"><NextButton> ต่อไป </NextButton></Link>
           </div>
           <div className="large-1 columns" />
         </div>

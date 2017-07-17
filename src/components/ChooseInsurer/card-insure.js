@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Check } from './styled'
 import { connect } from 'react-redux'
 import { getAllInsurer } from '../../api/choose-insurer'
+
 class CardInsure extends React.Component {
   constructor() {
     super()
@@ -23,7 +24,7 @@ class CardInsure extends React.Component {
         <Check
           type="checkbox"
           id={insurers.indexOf(insurer)}
-          defaultChecked={this.handleDefaultCheck(insurer.insurerName)}
+          //defaultChecked={this.handleDefaultCheck(insurer.insurerName)}
           onChange={this.props.handleCheck}
         />
         {insurer.insurerName}

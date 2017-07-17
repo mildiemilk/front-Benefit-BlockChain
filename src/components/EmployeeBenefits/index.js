@@ -198,7 +198,9 @@ class employeeBenefits extends Component {
         </div>
         <div className="row">
           <div className="large-3 large-offset-1 columns">
-            <button className="back-step-button">กลับ</button>
+            <Link to="/download">
+              <button className="back-step-button">กลับ</button>
+            </Link>
           </div>
           <div className="large-2 large-offset-5 columns">
             <button className="next-step-button">ต่อไป</button>

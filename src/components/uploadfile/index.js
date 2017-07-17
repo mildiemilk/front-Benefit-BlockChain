@@ -260,7 +260,7 @@ class Uploadfile extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Submit>ต่อไป</Submit>
+            <Link to="./sendrequest"><Submit>ต่อไป</Submit></Link>
           </Detail>
 
         </div>

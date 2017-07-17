@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react'
 import { Submit } from './styled'
 import pic from '../image/gifts.png'
+import { Link } from 'react-router-dom'
 
 const congrat = () => (
   <Container>
@@ -37,10 +38,13 @@ const congrat = () => (
       <p style={{ fontFamily: 'Kanit' }}>
         คุณได้จัดแผนประกันภัยเรียบร้อยแล้ว <br />
         กรุณากด ‘ต่อไป’ เพื่อไปยังขั้นตอนจัดแผนสิทธิประโยชน์ <br />
+
       </p>
-      <Submit>
-        ต่อไป
-      </Submit>
+      <Link to="/chooseinsuranceplan">
+        <Submit>
+          ต่อไป
+        </Submit>
+      </Link>
     </div>
   </Container>
 )

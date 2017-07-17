@@ -63,11 +63,11 @@ class SettingBenefitModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <SettingPlan style={{ border: 'aliceblue' }} />
+          <SettingPlan />
         </ModalContents>
         <ModalContents>
           <div className="row">
-            <button className="backButton">กลับไป</button>
+            <button className="back-button">กลับไป</button>
           </div>
         </ModalContents>
       </Modals>

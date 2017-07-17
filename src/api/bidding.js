@@ -3,10 +3,8 @@ import {
   getBiddingSuccess,
   getBiddingFailure,
   EndSuccess,
-  EndFailure,
 } from '../reducers/bidding'
 import { withRouter } from 'react-router'
-import Postbox from '../components/PostBox'
 
 const BIDDING_URI = '/api/getbidding'
 

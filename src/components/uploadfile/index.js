@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { createProfile } from '../../api/profileCompany'
+import { createProfile } from '../../api/profile-company'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
@@ -167,7 +167,7 @@ class Uploadfile extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="ChooseInsurer">
           <NavInsure step={this.state.step} />
         </div>
         <div className="row">
@@ -258,11 +258,9 @@ class Uploadfile extends Component {
                     </table>
                   </Inner2>
                 </Grid.Column>
-
               </Grid.Row>
-
             </Grid>
-            <Link to="/sendrequest"><Submit>ต่อไป</Submit></Link>
+            <Submit>ต่อไป</Submit>
           </Detail>
 
         </div>

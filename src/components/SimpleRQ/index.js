@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import * as simpleRQOption from './simpleRQOption'
+import * as simpleRQOption from './simple-requirement-option'
 import {
   Grid,
   Container,
@@ -19,9 +19,9 @@ import {
   Modal,
   Image,
 } from 'semantic-ui-react'
-import { fillSimpleRQ } from '../../api/simpleRequirement'
+import { fillSimpleRQ } from '../../api/simple-requirement'
 import { UploadButton, InputBox, BottomSpace } from './styled'
-import ModalSimpleRQ from './ModalSimpleRQ'
+import ModalSimpleRQ from './modal-simple-requirement'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-import ViewPlanBox from './ViewPlanBox'
+import ViewPlanBox from './view-planbox'
 import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
-import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './Styled'
+import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './styled'
 import styled from 'react-sc'
-import SearchBox from './SearchBox'
+import SearchBox from './search-box'
 import NavInsure from '../NavInsure'
-import ModalView from './ModalView'
-import { getAllPlan } from '../../api/setPlan'
+import ModalView from './modal-view'
+import { getAllPlan } from '../../api/set-plan'
 
 export class ViewAllPlan extends Component {
   constructor(props) {

@@ -1,0 +1,22 @@
+  .ChooseInsurancePlan{
+    .ui.accordion .title:not(.ui){
+      padding:0px;
+      width: 449px;
+      margin:0px;
+    }
+    .ui.accordion:not(.styled) .title ~ .content:not(.ui){
+     padding:0px;
+    }
+    .ui.accordion .accordion .title .dropdown.icon,
+    .ui.accordion .title .dropdown.icon{
+      position: relative;
+      top: 13px;
+      left: 20px;
+      font-size: 1.4em;
+    }
+    .ui.message{
+      box-shadow: none;
+      padding:10px;
+    }
+
+  }

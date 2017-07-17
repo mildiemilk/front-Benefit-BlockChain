@@ -113,34 +113,3 @@ export const DropzoneStyle = styled(Dropzone)`
   &&&{
   }
 `
-
-// export const UploadBox = styled.div`
-//     position:relative;
-//     border: solid 1px rgba(151, 151, 151, 0.66);
-//     border-radius: 8px;
-//     width: 100%;
-//     height: 250px;
-//     padding: 0px 20px 40px 20px;
-//     overflow-y: scroll;
-//
-// `
-// export const INInner = styled.div`
-//     border: dashed 1px rgba(151, 151, 151, 0.66);
-//     border-radius: 8px;
-//     position:relative;
-//     padding:5%;
-//     padding-top: 15%;
-//     height: 268px;
-// `
-// export const Submitupload = styled.button`
-//     display:block;
-//     margin: auto;
-//     width: 268px;
-//   	height: 36px;
-//   	border-radius: 20px;
-//   	background-color: #3a7bd5;
-//     padding: 1%;
-//     color: white;
-//     float:center;
-//     border-color: white;
-// `

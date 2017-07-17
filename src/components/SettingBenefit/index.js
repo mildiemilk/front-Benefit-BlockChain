@@ -8,17 +8,15 @@ import {
   AddContent,
   HeaderSpace,
   Blog,
-  Blogs,
   BlogImg,
   BlogContent,
   BackButton,
   NextButton,
-} from './Styled'
-import styled from 'react-sc'
+} from './styled'
 import NavBenefit from '../NavBenefit'
-import SettingPlan from './SettingPlan.js'
-import AddPlanBar from './AddPlanBar.js'
-import ModalPlan from './ModalPlan.js'
+import SettingPlan from './setting-plan.js'
+import AddPlanBar from './add-planbar.js'
+import ModalPlan from './modal-plan.js'
 
 export class SettingBenefit extends Component {
   constructor() {

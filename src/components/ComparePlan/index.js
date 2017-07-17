@@ -22,11 +22,11 @@ import {
   OPDTopic,
   TextInBoxs,
   Note,
-} from './Styled'
+} from './styled'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
-import IPDDropBox from './IPDDropBox'
-import { getAllPlan } from '../../api/setPlan'
+import IPDDropBox from './ipd-dropbox'
+import { getAllPlan } from '../../api/set-plan'
 
 const Icons = styled(Icon)`
   &&&{
@@ -37,8 +37,8 @@ const Icons = styled(Icon)`
 `
 
 class ComparePlan extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       step: 3,
       passwordToConfirm: '',
@@ -47,6 +47,7 @@ class ComparePlan extends Component {
       OPDBox: false,
       IPDBox: false,
     }
+    console.log(this.props.planList)
   }
 
   handleToggleLife = () => {
@@ -82,7 +83,6 @@ class ComparePlan extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllPlan()
     console.log(this.props.planList)
   }
 
@@ -374,12 +374,8 @@ class ComparePlan extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
-})
-
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.menuplanReducer,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComparePlan)
+export default connect(mapStateToProps, null)(ComparePlan)

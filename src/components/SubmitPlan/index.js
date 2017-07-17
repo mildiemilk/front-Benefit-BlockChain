@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import MenuPlan from './MenuPlan/MenuPlan'
-import FormSubmitPlan from './FormSubmitPlan/FormSubmitPlan'
-import AllPlan from './AllPlan'
-import ModalPlanListBidding from './ModalPlanListBidding'
+import MenuPlan from './MenuPlan/menu-plan'
+import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
+import AllPlan from './all-plan'
+import ModalPlanListBidding from './modal-plan-list-bidding'
 import NavInsure from '../NavInsure'
-import { getAllPlan, copyPlan, deletePlan } from '../../api/setPlan'
+import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan'
 import {
   Button,
   Checkbox,
@@ -22,7 +22,7 @@ import {
   Dropdown,
   Icon,
 } from 'semantic-ui-react'
-import '../../styles/SubmitPlan.scss'
+import '../../styles/submit-plan.scss'
 
 class SubmitPlan extends Component {
   constructor(props) {
@@ -39,10 +39,36 @@ class SubmitPlan extends Component {
       canBuildNewPlan: true,
       planName: '',
       employeeOfPlan: '',
-      opdCoPlay: false,
+      ipdType: '',
+      ipdLumsumPerYear: null,
+      ipdLumsumPerTime: null,
+      ipdLumsumTimeNotExceedPerYear: null,
+      rbLumsumRoomPerNight: null,
+      rbLumsumNigthNotExceedPerYear: null,
+      rbLumsumPayNotExceedPerNight: null,
+      rbLumsumPayNotExceedPerYear: null,
+      rbSchedulePatient: null,
+      rbScheduleIntensiveCarePatient: null,
+      rbScheduleDoctor: null,
+      rbScheduleSurgerySchedule: null,
+      rbScheduleSurgeryNonSchedule: null,
+      rbScheduleService: null,
+      rbScheduleSmallSurgery: null,
+      rbScheduleAdviser: null,
+      rbScheduleAmbulance: null,
+      rbScheduleAccident: null,
+      rbScheduleTreatment: null,
+      rbScheduleTransplant: null,
+      ipdCoPlay: false,
+      ipdCoPlayQuota: null,
+      ipdCoPlayDeductable: null,
+      ipdCoPlayMixPercentage: null,
+      ipdCoPlayMixNotExceed: null,
+      ipdCoPlayMixYear: null,
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
+      opdCoPlay: false,
       opdCoPlayQuota: null,
       opdCoPlayDeductable: null,
       opdCoPlayMixPercentage: null,
@@ -53,6 +79,9 @@ class SubmitPlan extends Component {
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
     }
+    setInterval(() => {
+      props.getAllPlan()
+    }, 2000)
   }
 
   onClickhandler = e => {
@@ -65,7 +94,35 @@ class SubmitPlan extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
+  handleChangeToNull = name => this.setState({ [name]: null })
+
   handleToggle = () => {}
+
+  handleToggleOpdCoPlay = () => {
+    if (this.state.opdCoPlay)
+      this.setState({
+        opdCoPlay: !this.state.opdCoPlay,
+        opdCoPlayQuota: null,
+        opdCoPlayDeductable: null,
+        opdCoPlayMixPercentage: null,
+        opdCoPlayMixNotExceed: null,
+        opdCoPlayMixYear: null,
+      })
+    else this.setState({ opdCoPlay: !this.state.opdCoPlay })
+  }
+
+  handleToggleIpdCoPlay = () => {
+    if (this.state.ipdCoPlay)
+      this.setState({
+        ipdCoPlay: !this.state.opdCoPlay,
+        ipdCoPlayQuota: null,
+        ipdCoPlayDeductable: null,
+        ipdCoPlayMixPercentage: null,
+        ipdCoPlayMixNotExceed: null,
+        ipdCoPlayMixYear: null,
+      })
+    else this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+  }
 
   handleNewPlan = () => {
     this.setState({
@@ -87,8 +144,8 @@ class SubmitPlan extends Component {
   }
 
   handleDelete = e => {
-    this.handlePlan(-1)
     this.props.deletePlan(this.props.planList[e.target.id].planId)
+    if (this.props.planList.length === 1) this.setState({ firstTime: true })
   }
 
   handleResetProfilePlan = () => {
@@ -110,33 +167,101 @@ class SubmitPlan extends Component {
 
   handleResetOPD = () => {
     this.setState({
-      lifePerYear: null,
-      lifeTimeOfSalary: null,
-      lifeNotExceed: null,
+      opdPerYear: null,
+      opdPerTime: null,
+      opdTimeNotExceedPerYear: null,
+      opdCoPlayQuota: null,
+      opdCoPlayDeductable: null,
+      opdCoPlayMixPercentage: null,
+      opdCoPlayMixNotExceed: null,
+      opdCoPlayMixYear: null,
+    })
+  }
+
+  handleResetIPD = () => {
+    this.setState({
+      ipdType: '',
+      ipdLumsumPerYear: null,
+      ipdLumsumPerTime: null,
+      ipdLumsumTimeNotExceedPerYear: null,
+      rbLumsumRoomPerNight: null,
+      rbLumsumNigthNotExceedPerYear: null,
+      rbLumsumPayNotExceedPerNight: null,
+      rbLumsumPayNotExceedPerYear: null,
+      rbSchedulePatient: null,
+      rbScheduleIntensiveCarePatient: null,
+      rbScheduleDoctor: null,
+      rbScheduleSurgerySchedule: null,
+      rbScheduleSurgeryNonSchedule: null,
+      rbScheduleService: null,
+      rbScheduleSmallSurgery: null,
+      rbScheduleAdviser: null,
+      rbScheduleAmbulance: null,
+      rbScheduleAccident: null,
+      rbScheduleTreatment: null,
+      rbScheduleTransplant: null,
+      ipdCoPlay: false,
+      ipdCoPlayQuota: null,
+      ipdCoPlayDeductable: null,
+      ipdCoPlayMixPercentage: null,
+      ipdCoPlayMixNotExceed: null,
+      ipdCoPlayMixYear: null,
     })
   }
 
   handlePlan = val => {
-    this.setState({ activePlan: val })
-    if (val !== -1)
-      this.setState({
-        planName: this.props.planList[val].planName,
-        employeeOfPlan: this.props.planList[val].employeeOfPlan,
-        dentalPerYear: this.props.planList[val].dentalPerYear,
-        lifePerYear: this.props.planList[val].lifePerYear,
-        lifeTimeOfSalary: this.props.planList[val].lifeTimeOfSalary,
-        lifeNotExceed: this.props.planList[val].lifeNotExceed,
-        opdCoPlay: this.props.planList[val].opdCoPlay,
-        opdPerYear: this.props.planList[val].opdPerYear,
-        opdPerTime: this.props.planList[val].opdPerTime,
-        opdTimeNotExceedPerYear: this.props.planList[val]
-          .opdTimeNotExceedPerYear,
-        opdCoPlayQuota: this.props.planList[val].opdCoPlayQuota,
-        opdCoPlayDeductable: this.props.planList[val].opdCoPlayDeductable,
-        opdCoPlayMixPercentage: this.props.planList[val].opdCoPlayMixPercentage,
-        opdCoPlayMixNotExceed: this.props.planList[val].opdCoPlayMixNotExceed,
-        opdCoPlayMixYear: this.props.planList[val].opdCoPlayMixYear,
-      })
+    this.setState({
+      activePlan: val,
+      firstTime: false,
+      planName: this.props.planList[val].planName,
+      employeeOfPlan: this.props.planList[val].employeeOfPlan,
+      dentalPerYear: this.props.planList[val].dentalPerYear,
+      lifePerYear: this.props.planList[val].lifePerYear,
+      lifeTimeOfSalary: this.props.planList[val].lifeTimeOfSalary,
+      lifeNotExceed: this.props.planList[val].lifeNotExceed,
+      opdCoPlay: this.props.planList[val].opdCoPlay,
+      opdPerYear: this.props.planList[val].opdPerYear,
+      opdPerTime: this.props.planList[val].opdPerTime,
+      opdTimeNotExceedPerYear: this.props.planList[val].opdTimeNotExceedPerYear,
+      opdCoPlayQuota: this.props.planList[val].opdCoPlayQuota,
+      opdCoPlayDeductable: this.props.planList[val].opdCoPlayDeductable,
+      opdCoPlayMixPercentage: this.props.planList[val].opdCoPlayMixPercentage,
+      opdCoPlayMixNotExceed: this.props.planList[val].opdCoPlayMixNotExceed,
+      opdCoPlayMixYear: this.props.planList[val].opdCoPlayMixYear,
+      ipdType: this.props.planList[val].ipdType,
+      ipdLumsumPerYear: this.props.planList[val].ipdLumsumPerYear,
+      ipdLumsumPerTime: this.props.planList[val].ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear: this.props.planList[val]
+        .ipdLumsumTimeNotExceedPerYear,
+      rbLumsumRoomPerNight: this.props.planList[val].rbLumsumRoomPerNight,
+      rbLumsumNigthNotExceedPerYear: this.props.planList[val]
+        .rbLumsumNigthNotExceedPerYear,
+      rbLumsumPayNotExceedPerNight: this.props.planList[val]
+        .rbLumsumPayNotExceedPerNight,
+      rbLumsumPayNotExceedPerYear: this.props.planList[val]
+        .rbLumsumPayNotExceedPerYear,
+      rbSchedulePatient: this.props.planList[val].rbSchedulePatient,
+      rbScheduleIntensiveCarePatient: this.props.planList[val]
+        .rbScheduleIntensiveCarePatient,
+      rbScheduleDoctor: this.props.planList[val].rbScheduleDoctor,
+      rbScheduleSurgerySchedule: this.props.planList[val]
+        .rbScheduleSurgerySchedule,
+      rbScheduleSurgeryNonSchedule: this.props.planList[val]
+        .rbScheduleSurgeryNonSchedule,
+      rbScheduleService: this.props.planList[val].rbScheduleService,
+      rbScheduleSmallSurgery: this.props.planList[val].rbScheduleSmallSurgery,
+      rbScheduleAdviser: this.props.planList[val].rbScheduleAdviser,
+      rbScheduleAmbulance: this.props.planList[val].rbScheduleAmbulance,
+      rbScheduleAccident: this.props.planList[val].rbScheduleAccident,
+      rbScheduleTreatment: this.props.planList[val].rbScheduleTreatment,
+      rbScheduleTransplant: this.props.planList[val].rbScheduleTransplant,
+      ipdCoPlay: this.props.planList[val].ipdCoPlay,
+      ipdCoPlayQuota: this.props.planList[val].ipdCoPlayQuota,
+      ipdCoPlayDeductable: this.props.planList[val].ipdCoPlayDeductable,
+      ipdCoPlayMixPercentage: this.props.planList[val].ipdCoPlayMixPercentage,
+      ipdCoPlayMixNotExceed: this.props.planList[val].ipdCoPlayMixNotExceed,
+      ipdCoPlayMixYear: this.props.planList[val].ipdCoPlayMixYear,
+    })
   }
 
   handleCloseModal = e =>
@@ -168,7 +293,6 @@ class SubmitPlan extends Component {
 
   handleModalFinish = () => {
     this.setState({ openModalForm: false })
-    this.setState({ firstTime: false })
     this.setState({ newPlan: false })
   }
 
@@ -185,9 +309,6 @@ class SubmitPlan extends Component {
   }
 
   render() {
-    {
-      this.props.getAllPlan()
-    }
     return (
       <div className="SubmitPlan">
         <NavInsure step={this.state.step} />
@@ -238,9 +359,14 @@ class SubmitPlan extends Component {
                         handleBuildNewPlan={this.handleBuildNewPlan}
                         handleUnBuildNewPlan={this.handleUnBuildNewPlan}
                         handleChange={this.handleChange}
+                        handleChangeToNull={this.handleChangeToNull}
+                        handleToggleIpdCoPlay={this.handleToggleIpdCoPlay}
+                        handleToggleOpdCoPlay={this.handleToggleOpdCoPlay}
                         handleResetPlan={this.handleResetPlan}
                         handleResetDental={this.handleResetDental}
                         handleResetLife={this.handleResetLife}
+                        handleResetOPD={this.handleResetOPD}
+                        handleResetIPD={this.handleResetIPD}
                         opdCoPlay={this.state.opdCoPlay}
                         opdPerYear={this.state.opdPerYear}
                         opdPerTime={this.state.opdPerTime}
@@ -258,6 +384,50 @@ class SubmitPlan extends Component {
                         lifePerYear={this.state.lifePerYear}
                         lifeTimeOfSalary={this.state.lifeTimeOfSalary}
                         lifeNotExceed={this.state.lifeNotExceed}
+                        ipdType={this.state.ipdType}
+                        ipdLumsumPerYear={this.state.ipdLumsumPerYear}
+                        ipdLumsumPerTime={this.state.ipdLumsumPerTime}
+                        ipdLumsumTimeNotExceedPerYear={
+                          this.state.ipdLumsumTimeNotExceedPerYear
+                        }
+                        rbLumsumRoomPerNight={this.state.rbLumsumRoomPerNight}
+                        rbLumsumNigthNotExceedPerYear={
+                          this.state.rbLumsumNigthNotExceedPerYear
+                        }
+                        rbLumsumPayNotExceedPerNight={
+                          this.state.rbLumsumPayNotExceedPerNight
+                        }
+                        rbLumsumPayNotExceedPerYear={
+                          this.state.rbLumsumPayNotExceedPerYear
+                        }
+                        rbSchedulePatient={this.state.rbSchedulePatient}
+                        rbScheduleIntensiveCarePatient={
+                          this.state.rbScheduleIntensiveCarePatient
+                        }
+                        rbScheduleDoctor={this.state.rbScheduleDoctor}
+                        rbScheduleSurgerySchedule={
+                          this.state.rbScheduleSurgerySchedule
+                        }
+                        rbScheduleSurgeryNonSchedule={
+                          this.state.rbScheduleSurgeryNonSchedule
+                        }
+                        rbScheduleService={this.state.rbScheduleService}
+                        rbScheduleSmallSurgery={
+                          this.state.rbScheduleSmallSurgery
+                        }
+                        rbScheduleAdviser={this.state.rbScheduleAdviser}
+                        rbScheduleAmbulance={this.state.rbScheduleAmbulance}
+                        rbScheduleAccident={this.state.rbScheduleAccident}
+                        rbScheduleTreatment={this.state.rbScheduleTreatment}
+                        rbScheduleTransplant={this.state.rbScheduleTransplant}
+                        ipdCoPlay={this.state.ipdCoPlay}
+                        ipdCoPlayQuota={this.state.ipdCoPlayQuota}
+                        ipdCoPlayDeductable={this.state.ipdCoPlayDeductable}
+                        ipdCoPlayMixPercentage={
+                          this.state.ipdCoPlayMixPercentage
+                        }
+                        ipdCoPlayMixNotExceed={this.state.ipdCoPlayMixNotExceed}
+                        ipdCoPlayMixYear={this.state.ipdCoPlayMixYear}
                       />
                     </div>
 

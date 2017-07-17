@@ -137,7 +137,7 @@ export const EmptyPlan = styled.div`
   border-style: dashed;
   border-color:#9b9b9b;
   padding:10px;
-  
+
 `
 export const EmptyPlanText = styled.p`
 

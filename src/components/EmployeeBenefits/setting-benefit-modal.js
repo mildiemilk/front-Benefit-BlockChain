@@ -12,6 +12,8 @@ import styled from 'react-sc'
 import { connect } from 'react-redux'
 import SettingPlan from '../SettingBenefit/setting-plan'
 import '../../styles/employee-benefits.scss'
+import { BackButton } from '../SettingBenefit/styled'
+
 const ModalContents = styled(Modal.Content)`
   &&&{
     width: 100%;
@@ -36,7 +38,6 @@ const Inputs = styled(Input)`
     font-family: Kanit;
   }
 `
-import { BackButton } from '../SettingBenefit/Styled'
 
 class SettingBenefitModal extends Component {
   constructor() {
@@ -62,11 +63,11 @@ class SettingBenefitModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <SettingPlan style={{ border: 'aliceblue' }} />
+          <SettingPlan />
         </ModalContents>
         <ModalContents>
           <div className="row">
-            <button className="backButton">กลับไป</button>
+            <button className="back-button">กลับไป</button>
           </div>
         </ModalContents>
       </Modals>

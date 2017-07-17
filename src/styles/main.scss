@@ -5,10 +5,15 @@
 @import 'choose-insurer';
 @import 'view-all-plan';
 @import './sidebar.scss';
+@import './bidding.scss';
+@import './compare-plan.scss';
+@import './ChooseInsurance.scss';
 @import 'bidding';
 @import 'compare-plan';
 @import 'add-benefit';
 @import 'setting-benefit';
+@import 'modal-plan-table.scss';
+
 
 @font-face {
     font-family: 'kanit';

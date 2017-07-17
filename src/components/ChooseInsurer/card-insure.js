@@ -9,17 +9,16 @@ class CardInsure extends React.Component {
     this.state = {}
   }
 
-  handleDefaultCheck = (e) =>{
-
-   this.props.insurerChecked.map(insurerCheckedis => {
-      if(e === insurerCheckedis.insurerName){
-        return true
+  handleDefaultCheck = e => {
+    if (this.props.insurerChecked !== undefined)
+      this.props.insurerChecked.map(insurerCheckedis => {
+        if (e === insurerCheckedis.insurerName) {
+          return true
         }
-   })
+      })
   }
 
   renderList = insurers => {
-
     return insurers.map(insurer => (
       <Card className="large-2 columns">
         <Check

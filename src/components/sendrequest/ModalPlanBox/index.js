@@ -58,22 +58,28 @@ class ModalPlanBox extends Component {
   handleModal = () => {
     this.setState({ isOpen: false })
     this.setState({ modalOpen: true })
+    this.props.changePositionPage()
   }
 
-  handleOpenModal = e =>
+  handleOpenModal = e => {
     this.setState({
       modalOpen: true,
     })
+    this.props.changePositionPage()
+  }
 
-  handleCloseModal = e =>
+  handleCloseModal = e => {
     this.setState({
       modalOpen: false,
     })
+    this.props.changePositionPage()
+  }
 
   renderList = list => {
     return list.map((element, index) => (
       <ListBox className="large-4 columns">
         <PlanBoxs
+          changePositionPage={this.props.changePositionPage}
           isOpen={this.state.isOpen}
           modalOpen={this.state.modalOpen}
           handleOpen={this.handleOpen}

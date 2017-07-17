@@ -47,6 +47,7 @@ class SelectBox extends Component {
           <br />
           <br />
           <p>แผนสิทธิประโยชน์ที่เลือกใช้กับกลุ่มนี้</p>
+          <br />
           {this.props.plan != ''
             ? <SelectOptionPlan
                 plan={this.props.plan}

@@ -16,7 +16,8 @@ import {
 import NavBenefit from '../NavBenefit'
 import SettingPlan from './setting-plan.js'
 import AddPlanBar from './add-planbar.js'
-
+import ModalPlan from './modal-plan.js'
+import {Link} from 'react-router-dom'
 export class SettingBenefit extends Component {
   constructor() {
     super()
@@ -83,11 +84,12 @@ export class SettingBenefit extends Component {
 
           <div className="row">
             <div className="large-3 large-offset-1 columns">
-              <BackButton> กลับ </BackButton>
+              <Link to='/addbenefit'><BackButton> กลับ </BackButton></Link>
             </div>
 
             <div className="large-2 large-offset-5 columns">
-              <NextButton> ต่อไป </NextButton>
+              <Link to='/download'><NextButton> ต่อไป </NextButton></Link>
+              {/*<ModalPlan />*/}
             </div>
 
             <div className="large-1 columns" />

@@ -20,7 +20,7 @@ import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import passwordIcon from '../../image/icons8-password.png'
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 const ModalContents = styled(Modal.Content)`
   &&&{
     max-width: 500px;
@@ -113,7 +113,7 @@ class ModalSelectInsurer extends Component {
           <div style={{ marginLeft: '2%' }}>
             <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
             <ConfirmButton onClick={this.props.handlePost}>
-              {' '}ยืนยัน{' '}
+              <Link to='/congrat'>{' '}ยืนยัน{' '}</Link>
             </ConfirmButton>
           </div>
         </ModalContents>

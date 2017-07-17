@@ -9,7 +9,7 @@ export const Detail = styled.div`
     margin-top:3%;
     padding: 5%;
     padding-top: 25px;
-    height: 100%;
+    height: 761px;
 
 `
 

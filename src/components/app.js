@@ -39,6 +39,8 @@ import SettingBenefit from './SettingBenefit'
 import Logout from './Auth/logout'
 import SettingPlan from './SettingBenefit/setting-plan.js'
 import Download from './Download'
+import Congrat from './congrat'
+import ChooseInsuranceplan from './ChooseInsurancePlan'
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -71,11 +73,13 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/uploadfile" component={Uploadfile} />
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
+                    <Route path="/congrat" component={Congrat}/>
                     <Route
-                      path="/EmployeeBenefits"
+                      path="/employeeBenefits"
                       component={EmployeeBenefits}
                     />
                     <Route path="/Download" component={Download}/>
+                    <Route path="/chooseinsuranceplan" component={ChooseInsuranceplan}/>
                   </Switch>
                 </MainLayout>
               </Switch>

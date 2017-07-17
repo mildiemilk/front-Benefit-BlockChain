@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NavBenefit from '../NavBenefit'
 import { DetailDiv, Text, DetailIn, List, Head, Side, BackButton, NextButton, Upload, UploadInput, UploadButton, UploadDiv } from './styled'
-
+import {Link} from 'react-router-dom'
  class Download extends Component {
      constructor(props){
          super(props)
@@ -70,10 +70,10 @@ import { DetailDiv, Text, DetailIn, List, Head, Side, BackButton, NextButton, Up
                 </DetailDiv>
                 <div className="row">
                     <div className="large-3 large-offset-1 columns">
-                        <BackButton> กลับ </BackButton>
+                        <Link to='settingbenefit'><BackButton> กลับ </BackButton></Link>
                     </div>
                     <div className="large-2 large-offset-5 columns">
-                    <NextButton> ต่อไป </NextButton>
+                    <Link to='/employeebenefits'><NextButton> ต่อไป </NextButton></Link>
                     </div>
                     <div className="large-1 columns" />
                 </div>

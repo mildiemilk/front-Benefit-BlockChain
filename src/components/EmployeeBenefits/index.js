@@ -20,6 +20,8 @@ import SelectBox from './select-box'
 import ModalWarningRecord from './modal-warning-record'
 import ModalWarning from './modal-warning'
 import { PopupView, BackButton, NextButton } from '../Bidding/styled'
+import FinishSelectPlan from './finish-select-plan'
+import NavBenefit from '../NavBenefit/'
 
 class employeeBenefits extends Component {
   constructor() {
@@ -42,6 +44,7 @@ class employeeBenefits extends Component {
       verifyChoosePlan: false,
       openWarningModal: false,
       warningMessage: '',
+      step: 5,
     }
   }
 
@@ -135,6 +138,7 @@ class employeeBenefits extends Component {
   render() {
     return (
       <div>
+        <NavBenefit step={this.state.step} />
         <div className="employeeBenefits-box">
           <Container>
             <div className="row">
@@ -194,10 +198,10 @@ class employeeBenefits extends Component {
         </div>
         <div className="row">
           <div className="large-3 large-offset-1 columns">
-            <button className="backStepButton">กลับ</button>
+            <Link to='/download'><button className="back-step-button">กลับ</button></Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <button className="nextStepButton">ต่อไป</button>
+            <button className="next-step-button">ต่อไป</button>
           </div>
           <div className="large-1 columns" />
         </div>

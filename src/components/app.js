@@ -38,7 +38,7 @@ import AddBenefit from './AddBenefit'
 import SettingBenefit from './SettingBenefit'
 import Logout from './Auth/logout'
 import SettingPlan from './SettingBenefit/setting-plan.js'
-
+import Download from './Download'
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -75,6 +75,7 @@ const App = ({ isAuthenticated }) => (
                       path="/EmployeeBenefits"
                       component={EmployeeBenefits}
                     />
+                    <Route path="/Download" component={Download}/>
                   </Switch>
                 </MainLayout>
               </Switch>

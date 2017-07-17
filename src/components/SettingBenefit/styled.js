@@ -43,7 +43,6 @@ export const Blogs = styled.div`
   background-color: #ffffff;
   background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  border: solid 1px #979797;
   padding: 20px;
 `
 
@@ -142,6 +141,18 @@ export const NextButton = styled.button`
   border-color: #46b3b8;
   border-style: solid;
   margin-top: 25px;
+`
+
+export const SaveButton = styled.button`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  color: #ffffff;
+  border-color: #3a7bd5;
+  border-style: solid;
+  margin-top: 3%;
+  margin-left: 72%;
 `
 
 export const Line = styled.hr`

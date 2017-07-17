@@ -13,6 +13,7 @@ import {
   BlogContent,
   BackButton,
   NextButton,
+  SaveButton,
   PlanName,
   NameInput,
   Line,
@@ -82,6 +83,8 @@ export class SettingPlan extends Component {
             </div>
             <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" />
           </PlanBox>
+
+          <SaveButton> บันทึก </SaveButton>
 
         </Blogs>
       </div>

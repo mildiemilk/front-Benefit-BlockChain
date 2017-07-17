@@ -10,6 +10,7 @@ import {
   EmptyPlanText,
 } from './styled'
 import { Image, Checkbox, Segment, Icon, Message } from 'semantic-ui-react'
+import ModalPlan from './modal-plan'
 
 class PlanTemplate extends Component {
   constructor() {
@@ -61,7 +62,7 @@ class PlanTemplate extends Component {
       return (
         <td>
           <td style={{ width: '40px' }}>
-            <ImageIcon2 src={icon2} size="mini" />
+            <ModalPlan />
           </td>
           <td style={{ width: '30px' }}>
             <Icon name="chevron right" size="big" style={{ left: '20px' }} />

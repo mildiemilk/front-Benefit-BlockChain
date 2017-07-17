@@ -18,10 +18,12 @@ import {
   HiddenContent,
   Img,
   TextInBoxs,
+  ImageIcon2,
 } from './styled'
 import IPDDropBox from './ipd-dropbox'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
+import icon2 from '../image/icons-8-view-file.png'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -102,9 +104,7 @@ class ModalModalExample extends Component {
     return (
       <Modals
         trigger={
-          <PostMainButton id="postButton" onClick={this.handleOpen}>
-            {' '}Test
-          </PostMainButton>
+          <ImageIcon2 src={icon2} size="mini" onClick={this.handleOpen} />
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}

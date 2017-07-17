@@ -38,6 +38,7 @@ import AddBenefit from './AddBenefit'
 import SettingBenefit from './SettingBenefit'
 import Logout from './Auth/logout'
 import SettingPlan from './SettingBenefit/setting-plan.js'
+import ChooseInsurancePlan from './ChooseInsurancePlan'
 
 const history = createBrowserHistory()
 
@@ -75,6 +76,11 @@ const App = ({ isAuthenticated }) => (
                       path="/EmployeeBenefits"
                       component={EmployeeBenefits}
                     />
+                    <Route
+                      path="/chooseinsuranceplan"
+                      component={ChooseInsurancePlan}
+                    />
+
                   </Switch>
                 </MainLayout>
               </Switch>

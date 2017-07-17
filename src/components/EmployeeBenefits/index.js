@@ -20,6 +20,7 @@ import SelectBox from './select-box'
 import ModalWarningRecord from './modal-warning-record'
 import ModalWarning from './modal-warning'
 import { PopupView, BackButton, NextButton } from '../Bidding/styled'
+import FinishSelectPlan from './finish-select-plan'
 
 class employeeBenefits extends Component {
   constructor() {

@@ -227,15 +227,7 @@ class Uploadfile extends Component{
                     </table>
                 </Inner2>
               </Grid.Column>
-
             </Grid.Row>
-
-
-
-
-
-
-
           </Grid>
           <Submit>ต่อไป</Submit>
         </Detail>

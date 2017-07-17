@@ -12,6 +12,8 @@ import styled from 'react-sc'
 import { connect } from 'react-redux'
 import SettingPlan from '../SettingBenefit/setting-plan'
 import '../../styles/employee-benefits.scss'
+import { BackButton } from '../SettingBenefit/styled'
+
 const ModalContents = styled(Modal.Content)`
   &&&{
     width: 100%;
@@ -36,7 +38,7 @@ const Inputs = styled(Input)`
     font-family: Kanit;
   }
 `
-import { BackButton } from '../SettingBenefit/Styled'
+
 
 class SettingBenefitModal extends Component {
   constructor() {

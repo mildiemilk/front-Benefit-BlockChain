@@ -1,0 +1,121 @@
+.ModalPlanTable{
+  .PlanHeader{
+    table {
+        width: 100%;
+        height: 50px;
+        background-color: #dce4f3;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    th {
+        height: 100%;
+        height: 50px;
+        text-align: center;
+    }
+    tr {
+        height: 100%;
+        height: 50px;
+    }
+    th:nth-child(1) {
+      width: 380px;
+      height: 50px;
+      border-left: 0px solid #979797;
+    }
+    th:nth-child(2) {
+      width: 238px;
+      height: 50px;
+      border-left: 1px solid #979797;
+    }
+    td {
+      border: 1px solid black;
+      height: 50px;
+    }
+  }
+
+  .PlanLife{
+    table {
+        width: 100%;
+        height: 68px;
+        background-color: #ffffff;
+    }
+    th {
+        height: 100%;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(1) {
+      width: 381px;
+      border: 1px solid #9b9b9b;
+    }
+    th:nth-child(2) {
+      width: 237px;
+      border: 1px solid #9b9b9b;
+      text-align: center;
+    }
+  }
+
+  .PlanIPD{
+    table {
+        width: 100%;
+        background-color: #ffffff;
+    }
+    th {
+        position: relative;
+        height: 100%;
+        padding: 1%;
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+        border-bottom: 1px solid #9b9b9b;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(1) {
+      width: 381px;
+      text-align: left;
+    }
+    th:nth-child(2) {
+      width: 237px;
+      text-align: center;
+    }
+  }
+
+  .SubPlanIPD{
+    table {
+        width: 100%;
+        background-color: #ffffff;
+        border-bottom: 0px solid #9b9b9b;
+    }
+    th {
+        position: relative;
+        height: 100%;
+        padding: 1%;
+        border-left: 1px solid #9b9b9b;
+        border-right: 1px solid #9b9b9b;
+        border-bottom: 0px solid #9b9b9b;
+    }
+    tr {
+        height: 100%;
+    }
+    td {
+      border: 1px solid black;
+    }
+    th:nth-child(1) {
+      width: 381px;
+      text-align: left;
+      padding-right: 4%;
+    }
+    th:nth-child(2) {
+      width: 237px;
+      text-align: center;
+    }
+  }
+
+}

@@ -18,6 +18,7 @@ import styled from 'react-sc'
 import NavBenefit from '../NavBenefit'
 import SettingPlan from './SettingPlan.js'
 import AddPlanBar from './AddPlanBar.js'
+import ModalPlan from './ModalPlan.js'
 
 export class SettingBenefit extends Component {
   constructor() {
@@ -90,6 +91,7 @@ export class SettingBenefit extends Component {
 
             <div className="large-2 large-offset-5 columns">
               <NextButton> ต่อไป </NextButton>
+              <ModalPlan />
             </div>
 
             <div className="large-1 columns" />

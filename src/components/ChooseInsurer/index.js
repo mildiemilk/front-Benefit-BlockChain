@@ -26,7 +26,6 @@ import {
   Next,
 } from './styled'
 import CardInsure from './card-insure'
-
 class InsurerSelect extends Component {
   constructor(props) {
     super(props)

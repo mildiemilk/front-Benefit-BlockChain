@@ -21,6 +21,7 @@ import {
 import '../../../styles/submit-plan.scss'
 import erase from '../../image/icons-8-erase.png'
 import FormModal from '../form-modal'
+import { menuPlans } from '../../../api/set-plan'
 
 class MenuPlan extends Component {
   static propTypes = {

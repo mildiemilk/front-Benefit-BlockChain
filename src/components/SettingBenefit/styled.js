@@ -43,7 +43,6 @@ export const Blogs = styled.div`
   background-color: #ffffff;
   background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  border: solid 1px #979797;
   padding: 20px;
 `
 
@@ -144,6 +143,18 @@ export const NextButton = styled.button`
   margin-top: 25px;
 `
 
+export const SaveButton = styled.button`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  color: #ffffff;
+  border-color: #3a7bd5;
+  border-style: solid;
+  margin-top: 3%;
+  margin-left: 72%;
+`
+
 export const Line = styled.hr`
   width: 100%;
   height: 2px;
@@ -207,4 +218,176 @@ export const ToggleBox = styled.div`
   margin-top: 18px;
   padding-top: 8px;
   padding-left: 6px;
+`
+
+export const ModalHeader = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #323028;
+`
+
+export const ModalTopic = styled.p`
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+`
+
+export const ModalContent = styled.p`
+  width: 300px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+`
+
+export const EditButton = styled.button`
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #f7555f;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    border-color: #f7555f;
+    border-style: solid;
+    color: #ffffff;
+`
+
+export const PostButton = styled.button`
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #3a7bd5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    border-color: #3a7bd5;
+    border-style: solid;
+    color: #ffffff;
+    margin-left: 2%;
+`
+
+export const PostMainButton = styled.button`
+    width: 174px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f7555f;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    border-color: #f7555f;
+    border-style: solid;
+    color: #ffffff;
+    margin-left: 82%;
+`
+
+export const LineModal = styled.hr`
+  width: 100%;
+  height: 1px;
+  color: #979797;
+`
+
+export const TableHeader = styled.p`
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #323028;
+`
+
+export const LifeTopic = styled.span`
+  width: 249px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.56;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #4a4a4a;
+  position: absolute;
+  margin-left: -30%;
+  margin-top: 2.5%;
+`
+
+export const TextInBoxs = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  color: #323028;
+`
+
+export const OPDTopic = styled.span`
+  width: 100%px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.56;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #4a4a4a;
+  position: absolute;
+  margin-left: -30%;
+  margin-top: 1.2%;
+`
+
+export const IPDTopic = styled.span`
+  width: 100%;
+  height: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.56;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #4a4a4a;
+`
+
+export const IPDDetail = styled.span`
+  width: 344px;
+  height: 48px;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #323028;
+  position: relative;
+  left: 4%;
+`
+
+export const HiddenBox = styled.div`
+  color: #323028;
+  height: 73px;
+  width: 628px;
+  border-bottom: solid 1px #979797;
+  border-right: solid 1px #979797;
+  border-left: solid 1px #979797;
+`
+
+export const HiddenContent = styled.span`
+  width: 600px;
+  height: 25px;
+  font-size: 14px;
+  color: #323028;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 1%;
+`
+
+export const Img = styled.img`
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-left: 2%;
+  margin-right: 73%;
+  margin-top: 2%;
+`
+
+export const Sub = styled.span`
+  width: 100%;
+  height: 18px;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #323028;
 `

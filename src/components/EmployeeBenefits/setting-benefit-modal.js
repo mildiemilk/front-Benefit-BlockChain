@@ -39,7 +39,6 @@ const Inputs = styled(Input)`
   }
 `
 
-
 class SettingBenefitModal extends Component {
   constructor() {
     super()
@@ -64,11 +63,16 @@ class SettingBenefitModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <SettingPlan style={{ border: 'aliceblue' }} />
+          <SettingPlan />
         </ModalContents>
         <ModalContents>
           <div className="row">
-            <button className="backButton">กลับไป</button>
+            <button
+              className="back-button"
+              onClick={() => this.props.closeModal()}
+            >
+              กลับ
+            </button>
           </div>
         </ModalContents>
       </Modals>

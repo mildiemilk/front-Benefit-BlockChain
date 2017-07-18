@@ -45,6 +45,7 @@ import {
   Label,
   Message,
 } from 'semantic-ui-react'
+import ModalPlan from './modal-plan'
 
 // ----------------------------------------------------------------
 
@@ -249,7 +250,7 @@ class ChooseInsurancePlan extends Component {
               </InnerHead2>
               {this.RenderInnerRight()}
             </InnerRight>
-            <Submit>ต่อไป</Submit>
+            <Link to="/addbenefit"><Submit>ต่อไป</Submit></Link>
           </Detail>
 
         </div>

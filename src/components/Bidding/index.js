@@ -13,29 +13,36 @@ class Bidding extends Component {
     this.state = {
       isDetail: false,
       Detail: {},
+      index: '',
     }
     setInterval(function() {
       props.bidding()
     }, 2000)
   }
 
-  handleClick = Detail => {
+  handleClick = (Detail, index) => {
     const { isDetail } = this.state
     console.log(Detail)
-    if (!isDetail) this.setState({ isDetail: true, Detail: Detail })
+    if (!isDetail)
+      this.setState({
+        isDetail: true,
+        Detail: Detail,
+        index: index,
+      })
     else this.setState({ isDetail: false })
   }
 
   render() {
-    {
-      this.props.bidding()
-    }
     return (
       <div className="Bidding">
         <NavBidding />
         <div className="BidContent">
           {this.state.isDetail
-            ? <Details handleClick={this.handleClick} bid={this.state.Detail} />
+            ? <Details
+                handleClick={this.handleClick}
+                bid={this.state.Detail}
+                index={this.state.index}
+              />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
         </div>
       </div>

@@ -69,7 +69,7 @@ class Box extends Component {
         statusModule = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>
       }
     }
-    return bids.map(bid => (
+    return bids.map((bid, index) => (
       <div className="boxDetail">
         <div className={this.boxStyling(status, end.end)}>
           <div className="row">
@@ -97,7 +97,7 @@ class Box extends Component {
                 <IconPointer
                   name="external"
                   size="big"
-                  onClick={() => this.props.handleClick(bid)}
+                  onClick={() => this.props.handleClick(bid, index)}
                 />
               </Text>
 

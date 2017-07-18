@@ -448,10 +448,8 @@ export const TableHeader = styled.p`
 `
 
 export const LifeTopic = styled.span`
-  width: 249px;
-  height: 25px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.56;
   letter-spacing: 0.2px;
   text-align: left;
@@ -472,7 +470,7 @@ export const OPDTopic = styled.span`
   width: 100%px;
   height: 25px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.56;
   letter-spacing: 0.2px;
   text-align: left;
@@ -483,14 +481,12 @@ export const OPDTopic = styled.span`
 `
 
 export const IPDTopic = styled.span`
-  width: 100%;
-  height: 25px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.56;
   letter-spacing: 0.2px;
   text-align: left;
-  color: #4a4a4a;
+  color: #323028;
 `
 
 export const IPDDetail = styled.span`

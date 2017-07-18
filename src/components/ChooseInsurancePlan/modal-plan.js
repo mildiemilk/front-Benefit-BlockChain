@@ -157,7 +157,7 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      <TextInBoxs> 1,000,000 </TextInBoxs>
+                      1,000,000
                     </th>
 
                   </tr>
@@ -187,7 +187,7 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      <TextInBoxs> 1,000,000 </TextInBoxs>
+                      1,000,000
                     </th>
 
                   </tr>
@@ -220,7 +220,7 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      <TextInBoxs> 1,000,000 </TextInBoxs>
+                      1,000,000
                     </th>
 
                   </tr>
@@ -253,7 +253,7 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      <TextInBoxs> 1,000,000 </TextInBoxs>
+                      1,000,000{' '}
                     </th>
 
                   </tr>

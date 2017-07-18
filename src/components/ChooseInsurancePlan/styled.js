@@ -19,7 +19,7 @@ export const Head = styled.p`
     font-weight: bold;
 
 `
-export const TextInbox = styled.p`
+export const TextInbox = styled.div`
     position: relative;
     left:65px;
     top: -10px;
@@ -28,7 +28,7 @@ export const TextInbox = styled.p`
     letter-spacing: 0.2px;
     color: #323028;
 `
-export const Inboxtext = styled.p`
+export const Inboxtext = styled.div`
     font-size: 20px;
     color: #ffffff;
   	letter-spacing: 0.3px;
@@ -38,7 +38,7 @@ export const Inboxtext = styled.p`
 `
 export const Inner = styled.div`
     display: inline-block;
-    width: 450px;
+    width: 100%;
     height: 650px;
     border-radius: 5px;
     background-color: #ffffff;
@@ -48,7 +48,7 @@ export const Inner = styled.div`
     margin-right: 10px;
 `
 export const InnerHead = styled.div`
-    width: 449px;
+    width: 100%;
     height: 60px;
     border-radius: 5px 5px 0px 0px;
     background-color: #5c6879;
@@ -56,12 +56,8 @@ export const InnerHead = styled.div`
 
 export const InnerRight = styled.div`
 
-    position: relative;
-    top:-650px;
-    left:470px;
-    width: 450px;
+    width: 100%;
     height: 650px;
-    padding:10px;
     border-radius: 5px;
     background-color: #ffffff;
     background-color: var(--white-two);
@@ -70,22 +66,21 @@ export const InnerRight = styled.div`
 
 `
 export const InnerHead2 = styled.div`
-      position: relative;
-      top:-10px;
-      left: -10px;
-      width: 449px;
+
+      width: 100%;
       height: 60px;
       border-radius: 5px 5px 0px 0px;
       background-color: #3a7bd5;
 `
 export const ManagePlan = styled.div`
-  width: 427px;
+  width: 95%;
   height: 60px;
   margin-bottom: 10px;
   border-radius: 5px;
   background-color: #f2f2f2;
   border: solid 1px #e6e6e6;
   padding: 8px;
+  margin: 10px;
 `
 export const Submit = styled.button`
     position: relative;
@@ -131,7 +126,8 @@ export const ImageIcon2 = styled(Image)`
   }
 `
 export const EmptyPlan = styled.div`
-  width: 427px;
+  margin: 8px;
+  width: 97%;
   height: 50px;
   border-radius: 5px;
   border-style: dashed;
@@ -139,8 +135,7 @@ export const EmptyPlan = styled.div`
   padding:10px;
 
 `
-export const EmptyPlanText = styled.p`
-
+export const EmptyPlanText = styled.div`
     text-align: center;
     top:auto;
     font-weight: 500;

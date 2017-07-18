@@ -8,9 +8,10 @@ export const Submit = styled.button`
     height: 40px;
     border-radius: 20px;
     color: #ffffff;
-    background-color: #f7555f;
+    background-color: #46b3b8;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
+    font-size: 18px;
     border-style: solid;
     color: #ffffff;
 `

@@ -264,7 +264,10 @@ class ModalModalExample extends Component {
             </div>
 
             <div className="row">
-              <div className="large-4 large-offset-8 columns">
+              <div
+                className="large-4 large-offset-8 columns"
+                onClick={this.handleClose}
+              >
                 <BackButton> กลับ </BackButton>
               </div>
             </div>

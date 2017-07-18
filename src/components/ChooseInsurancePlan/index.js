@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { createProfile } from '../../api/profile-company'
 import styled from 'react-sc'
 import NavSettingBenefit from '../navSettingBenefit'
 import PlanTemplate from './plantemplate'
@@ -46,8 +45,6 @@ import {
   Message,
 } from 'semantic-ui-react'
 import ModalPlan from './modal-plan'
-
-// ----------------------------------------------------------------
 
 class ChooseInsurancePlan extends Component {
   constructor(props) {
@@ -237,20 +234,26 @@ class ChooseInsurancePlan extends Component {
         <div className="row">
           <Detail className="large-12 columns">
             <Head>เลือกแผนประกันที่ต้องการ</Head>
-            <Inner>
-              <InnerHead>
-                <Inboxtext>แผนประกันทั้งหมด</Inboxtext>
-              </InnerHead>
-              <AccordionStyle panels={panels} />
-              <AccordionStyle2 panels={panels2} />
-            </Inner>
-            <InnerRight>
-              <InnerHead2>
-                <Inboxtext>แผนประกันที่เลือก</Inboxtext>
-              </InnerHead2>
-              {this.RenderInnerRight()}
-            </InnerRight>
-            <Link to="/addbenefit"><Submit>ต่อไป</Submit></Link>
+            <div className="row">
+              <div className="large-6 columns">
+                <Inner>
+                  <InnerHead>
+                    <Inboxtext>แผนประกันทั้งหมด</Inboxtext>
+                  </InnerHead>
+                  <AccordionStyle panels={panels} />
+                  <AccordionStyle2 panels={panels2} />
+                </Inner>
+              </div>
+              <div className="large-6 columns">
+                <InnerRight>
+                  <InnerHead2>
+                    <Inboxtext>แผนประกันที่เลือก</Inboxtext>
+                  </InnerHead2>
+                  {this.RenderInnerRight()}
+                </InnerRight>
+                <Link to="/addbenefit"><Submit>ต่อไป</Submit></Link>
+              </div>
+            </div>
           </Detail>
 
         </div>

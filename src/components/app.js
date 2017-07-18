@@ -40,6 +40,7 @@ import Logout from './Auth/logout'
 import SettingPlan from './SettingBenefit/setting-plan.js'
 import Download from './Download'
 import Congrat from './congrat'
+import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart/'
 
@@ -49,7 +50,7 @@ const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
       <EmptyLayout>
-        {isAuthenticated
+        {true
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />
@@ -76,6 +77,7 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
                     <Route path="/congrat" component={Congrat} />
+                    <Route path="/congratStep4" component={Congrat2} />
                     <Route
                       path="/employeeBenefits"
                       component={EmployeeBenefits}

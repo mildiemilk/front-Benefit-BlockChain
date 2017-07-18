@@ -46,6 +46,26 @@ const Inputs = styled(Input)`
 export class SettingPlan extends Component {
   constructor() {
     super()
+    this.state = {
+      healthToggle: false,
+      expenseToggle: false,
+    }
+  }
+
+  handleToggleHealth = () => {
+    if (this.state.healthToggle) {
+      this.setState({ healthToggle: false })
+    } else {
+      this.setState({ healthToggle: true })
+    }
+  }
+
+  handleExpenseToggle = () => {
+    if (this.state.expenseToggle) {
+      this.setState({ expenseToggle: false })
+    } else {
+      this.setState({ expenseToggle: true })
+    }
   }
 
   render() {
@@ -67,10 +87,12 @@ export class SettingPlan extends Component {
             <PlanTopic> ค่าใช้จ่ายสุขภาพ (Health) </PlanTopic>
             <div className="toggle">
               <ToggleBox>
-                <Checkbox toggle />
+                <Checkbox toggle onClick={this.handleToggleHealth} />
               </ToggleBox>
             </div>
-            <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" />
+            {this.state.healthToggle
+              ? <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" />
+              : <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" readOnly />}
           </PlanBox>
 
           <PlanBox>
@@ -78,10 +100,12 @@ export class SettingPlan extends Component {
             <PlanTopic> ค่าใช้จ่ายทั่วไป (General Expense) </PlanTopic>
             <div className="toggle">
               <ToggleBox>
-                <Checkbox toggle />
+                <Checkbox toggle onClick={this.handleExpenseToggle} />
               </ToggleBox>
             </div>
-            <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" />
+            {this.state.expenseToggle
+              ? <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" />
+              : <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" readOnly />}
           </PlanBox>
 
           <SaveButton> บันทึก </SaveButton>

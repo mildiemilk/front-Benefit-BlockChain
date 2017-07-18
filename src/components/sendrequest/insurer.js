@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { Card } from './styled'
-import { chooseInsurerReducer } from '../../api/choose-insurer'
+import { getSelectInsurer } from '../../api/choose-insurer'
 import { connect } from 'react-redux'
 
-class Insurer extends Component {
+class Insurer extends React.Component {
   constructor(props) {
     super(props)
-  }
+    this.state = {
 
+    }
+    props.getSelectInsurer()
+  
+  }
+  
   renderList = insurers => {
     console.log(insurers)
     return insurers.map(insurer => (
@@ -27,10 +32,12 @@ class Insurer extends Component {
     )
   }
 }
-const mapDispatchToProps = dispatch => ({})
-
-const mapStateToProps = state => ({
-  insurers: state.chooseInsurerReducer.insurers,
+const mapDispatchToProps = dispatch => ({
+  getSelectInsurer: () => dispatch(getSelectInsurer()),
 })
 
-export default connect(mapStateToProps, null)(Insurer)
+const mapStateToProps = state => ({
+  insurers: state.getSelectInsurer,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Insurer)

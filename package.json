@@ -81,6 +81,7 @@
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
     "react-sc": "^0.2.1",
+    "react-toastify": "^1.7.0",
     "redux": "^3.5.2",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",

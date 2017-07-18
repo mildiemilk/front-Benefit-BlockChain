@@ -26,7 +26,9 @@ import {
   Next,
 } from './styled'
 import CardInsure from './card-insure'
-
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
 class InsurerSelect extends Component {
   constructor(props) {
     super(props)
@@ -74,9 +76,10 @@ class InsurerSelect extends Component {
   }
 
   handleSubmit = () => {
+    toast(<div>Done!</div>);
     this.props.chooseInsurer(this.state.insurers)
   }
-
+  
   render() {
     return (
       <div className="ChooseInsurer">
@@ -121,6 +124,9 @@ class InsurerSelect extends Component {
             </div>
           </Detail>
           <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
+          <ToastContainer  hideProgressBar={true} autoClose={1500} position={toast.POSITION.TOP_RIGHT} style={{zIndex:'30'}} />
+
+ 
         </div>
       </div>
     )

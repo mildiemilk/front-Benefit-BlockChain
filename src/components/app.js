@@ -41,6 +41,7 @@ import SettingPlan from './SettingBenefit/setting-plan.js'
 import Download from './Download'
 import Congrat from './congrat'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
+import SelectRealTime from './SelectRealTime'
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -74,7 +75,8 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
                     <Route path="/congrat" component={Congrat}/>
-                    <Route
+                    <Route path='/SelectRealTime' component={SelectRealTime}/>
+                    
                       path="/employeeBenefits"
                       component={EmployeeBenefits}
                     />

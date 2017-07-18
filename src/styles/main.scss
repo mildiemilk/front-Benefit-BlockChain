@@ -13,7 +13,7 @@
 @import 'add-benefit';
 @import 'setting-benefit';
 @import 'modal-plan-table.scss';
-
+@import 'nav-select-real-time';
 
 @font-face {
     font-family: 'kanit';
@@ -34,6 +34,15 @@ body {
         background-color: #4db698 !important;
       }
     }
+}
+
+.clearfix::before, 
+.clearfix::after{
+  display: table;
+  content: "";
+}
+.clearfix::after{
+  clear: both;
 }
 
 

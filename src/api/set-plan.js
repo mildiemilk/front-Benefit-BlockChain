@@ -3,6 +3,7 @@ import {
   createPlanSuccess,
   editPlanSuccess,
   getAllPlanSuccess,
+  menuPlanSuccess,
 } from '../reducers/submit-plan'
 
 const CREATE_PLAN_URI = '/api/createPlan'

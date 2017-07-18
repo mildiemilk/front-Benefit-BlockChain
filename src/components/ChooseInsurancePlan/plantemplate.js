@@ -10,6 +10,7 @@ import {
   EmptyPlanText,
 } from './styled'
 import { Image, Checkbox, Segment, Icon, Message } from 'semantic-ui-react'
+import ModalPlan from './modal-plan'
 
 class PlanTemplate extends Component {
   constructor() {
@@ -61,7 +62,7 @@ class PlanTemplate extends Component {
       return (
         <td>
           <td style={{ width: '40px' }}>
-            <ImageIcon2 src={icon2} size="mini" />
+            <ModalPlan />
           </td>
           <td style={{ width: '30px' }}>
             <Icon name="chevron right" size="big" style={{ left: '20px' }} />
@@ -93,25 +94,89 @@ class PlanTemplate extends Component {
     } else {
       if (this.props.colorPlan == 1) {
         return (
-          <div
-            onClick={() => this.props.handleDeleteOurplan(this.props.index)}
-            style={{ cursor: 'pointer' }}
-          >
-            <ManagePlan>
-              {this.RenderTable(colorPlan, id)}
-            </ManagePlan>
-          </div>
+          <ManagePlan>
+            <table>
+              <tr>
+                <td
+                  style={{ width: '55px', cursor: 'pointer' }}
+                  onClick={() =>
+                    this.props.handleDeleteOurplan(this.props.index)}
+                >
+                  <Image
+                    src={icon1}
+                    style={{ width: '25px', height: '30px' }}
+                  />
+                </td>
+                <td
+                  style={{ width: '65%', cursor: 'pointer' }}
+                  onClick={() =>
+                    this.props.handleDeleteOurplan(this.props.index)}
+                >
+                  <b>{this.props.id}</b><br />
+                  ราคาต่อหัว : {this.props.price} บาท
+                </td>
+                <td>
+                  <td style={{ width: '40px' }}>
+                    <ModalPlan />
+                  </td>
+                  <td
+                    style={{ width: '30px', cursor: 'pointer' }}
+                    onClick={() =>
+                      this.props.handleDeleteOurplan(this.props.index)}
+                  >
+                    <Icon
+                      name="chevron right"
+                      size="big"
+                      style={{ left: '20px' }}
+                    />
+                  </td>
+                </td>
+              </tr>
+            </table>
+          </ManagePlan>
         )
       } else if (this.props.colorPlan == 2) {
         return (
-          <div
-            onClick={() => this.props.handleDeleteSpacialPlan(this.props.index)}
-            style={{ cursor: 'pointer' }}
-          >
-            <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
-              {this.RenderTable(colorPlan, id)}
-            </ManagePlan>
-          </div>
+          <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
+            <table>
+              <tr>
+                <td
+                  style={{ width: '55px', cursor: 'pointer' }}
+                  onClick={() =>
+                    this.props.handleDeleteSpacialPlan(this.props.index)}
+                >
+                  <Image
+                    src={icon1}
+                    style={{ width: '25px', height: '30px' }}
+                  />
+                </td>
+                <td
+                  style={{ width: '65%', cursor: 'pointer' }}
+                  onClick={() =>
+                    this.props.handleDeleteSpacialPlan(this.props.index)}
+                >
+                  <b>{this.props.id}</b><br />
+                  ราคาต่อหัว : {this.props.price} บาท
+                </td>
+                <td>
+                  <td style={{ width: '40px' }}>
+                    <ModalPlan />
+                  </td>
+                  <td
+                    style={{ width: '30px', cursor: 'pointer' }}
+                    onClick={() =>
+                      this.props.handleDeleteSpacialPlan(this.props.index)}
+                  >
+                    <Icon
+                      name="chevron right"
+                      size="big"
+                      style={{ left: '20px' }}
+                    />
+                  </td>
+                </td>
+              </tr>
+            </table>
+          </ManagePlan>
         )
       }
     }

@@ -42,18 +42,18 @@ export const Inner = styled.div`
     border: solid 1px rgba(151, 151, 151, 0.66);
     margin-bottom: 15px;
     padding-top: 25px;
-    padding-left: 32px;
+    padding-left: 25px;
 `
 
 export const Inner2 = styled.div`
     border-radius: 8px;
     width: 100%;
-    height: 244px;
+    height: 100%;
     border: solid 1px rgba(151, 151, 151, 0.66);
     margin-bottom: 15px;
     padding-top: 29px;
     padding-left: 25px;
-    overflow-y: scroll;
+
 
 `
 export const FileuploadBox = styled.div`
@@ -69,6 +69,7 @@ export const FileuploadBox = styled.div`
 export const BrowsButton = styled.button`
     width: 163px;
     height: 40px;
+    margin-left: 5px;
     border-radius: 20px;
     color: #ffffff;
     background-color: #3a7bd5;
@@ -77,6 +78,21 @@ export const BrowsButton = styled.button`
     border-color: #3a7bd5;
     border-style: solid;
     color: #ffffff;
+`
+export const AddBlockButton = styled.div`
+    width: 163px;
+    height: 40px;
+    margin-left: 5px;
+    border-radius: 20px;
+    color: #ffffff;
+    background-color: #3a7bd5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    text-align: center;
+    border-color: #3a7bd5;
+    border-style: solid;
+    color: #ffffff;
+    cursor:pointer;
+    padding-top: 10px;
 `
 
 export const Submit = styled.button`
@@ -109,6 +125,7 @@ export const Imagestyle = styled(Image)`
     height: 63px;
   }
 `
+
 export const DropzoneStyle = styled(Dropzone)`
   &&&{
   }

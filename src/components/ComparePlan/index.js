@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Button } from 'semantic-ui-react'
-import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Divider, Search, Input, Table, Icon, Button } from 'semantic-ui-react'
 import {
   PostContent,
   BackHome,
@@ -90,9 +90,7 @@ class ComparePlan extends Component {
     let plans = this.props.planList
     return plans.map((plan, index) => (
       <th>
-        <SubCompareTables>
-          Management <br /> {plan.planName}
-        </SubCompareTables>
+        {plan.planName}
       </th>
     ))
   }
@@ -102,7 +100,7 @@ class ComparePlan extends Component {
     return plans.map((plan, index) => (
       <th>
         {plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed === 0
-          ? ''
+          ? '-'
           : plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed}
       </th>
     ))
@@ -112,7 +110,7 @@ class ComparePlan extends Component {
     let plans = this.props.planList
     return plans.map((plan, index) => (
       <th>
-        {plan.dentalPerYear === null ? '' : plan.dentalPerYear}
+        {plan.dentalPerYear === null ? '-' : plan.dentalPerYear}
       </th>
     ))
   }
@@ -130,7 +128,7 @@ class ComparePlan extends Component {
           plan.opdCoPlayMixNotExceed +
           plan.opdCoPlayMixYear ===
           0
-          ? ''
+          ? '-'
           : plan.opdPerYear +
               plan.opdPerTime +
               plan.opdTimeNotExceedPerYear +
@@ -172,7 +170,7 @@ class ComparePlan extends Component {
           plan.ipdCoPlayMixNotExceed +
           plan.ipdCoPlayMixYear ===
           0
-          ? ''
+          ? '-'
           : plan.ipdLumsumPerYear +
               plan.ipdLumsumPerTime +
               plan.ipdLumsumTimeNotExceedPerYear +
@@ -210,13 +208,17 @@ class ComparePlan extends Component {
             <div className="row">
               <div className="large-5 large-offset-1 columns">
                 <CompareHeader> เปรียบเทียบแผนประกันภัย </CompareHeader>
-                <BackHome>&lt; กลับหน้าหลัก </BackHome>
+                <Link to="/submitplan">
+                  <BackHome>&lt; กลับหน้าหลัก </BackHome>
+                </Link>
               </div>
               <div className="large-3 large-offset-1 columns">
-                <ViewButton>
-                  <Icon disabled name="add to calendar" />
-                  ดูแผนทั้งหมด
-                </ViewButton>
+                <Link to="/view">
+                  <ViewButton>
+                    <Icon disabled name="add to calendar" />
+                    ดูแผนทั้งหมด
+                  </ViewButton>
+                </Link>
               </div>
             </div>
 

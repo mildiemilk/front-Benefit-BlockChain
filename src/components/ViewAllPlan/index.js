@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Button } from 'semantic-ui-react'
 import ViewPlanBox from './view-planbox'
-import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
+import { Divider, Search, Input, Table, Icon, Button } from 'semantic-ui-react'
 import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './styled'
 import styled from 'react-sc'
 import SearchBox from './search-box'
@@ -45,7 +45,9 @@ export class ViewAllPlan extends Component {
             <div className="row">
               <div className="large-3 large-offset-1 columns">
                 <ViewHeader> แพลนทั้งหมด </ViewHeader>
-                <BackHome>&lt; กลับหน้าหลัก </BackHome>
+                <Link to="/submitplan">
+                  <BackHome>&lt; กลับหน้าหลัก </BackHome>
+                </Link>
               </div>
 
               <div className="large-2 large-offset-4 columns">

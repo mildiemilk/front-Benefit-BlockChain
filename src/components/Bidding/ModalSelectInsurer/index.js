@@ -113,7 +113,7 @@ class ModalSelectInsurer extends Component {
           <div style={{ marginLeft: '2%' }}>
             <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
             <ConfirmButton onClick={this.props.handlePost}>
-              <Link to='/congrat'>{' '}ยืนยัน{' '}</Link>
+              <Link to="/congrat">{' '}ยืนยัน{' '}</Link>
             </ConfirmButton>
           </div>
         </ModalContents>

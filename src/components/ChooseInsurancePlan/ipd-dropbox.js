@@ -259,7 +259,7 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                   </th>
                   <th>
-                    <TextInBoxs> 2,000 </TextInBoxs>
+                    2,000
                     <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
                   </th>
                 </tr>
@@ -275,7 +275,7 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                   </th>
                   <th>
-                    <TextInBoxs> 4,000 </TextInBoxs>
+                    4,000
                     <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
                   </th>
                 </tr>
@@ -292,7 +292,7 @@ export default class IPDDropBox extends Component {
                 </IPDTopic>
               </th>
               <th>
-                <TextInBoxs> 800 </TextInBoxs>
+                800
                 <Sub><br /> สูงสุด 60 วัน </Sub>
               </th>
             </tr>
@@ -309,7 +309,7 @@ export default class IPDDropBox extends Component {
                 </IPDTopic>
               </th>
               <th>
-                <TextInBoxs> 40,000 </TextInBoxs>
+                40,000
               </th>
             </tr>
           </table>
@@ -327,7 +327,7 @@ export default class IPDDropBox extends Component {
                 />
               </th>
               <th>
-                <TextInBoxs> 40,000 </TextInBoxs>
+                40,000
               </th>
             </tr>
           </table>
@@ -377,7 +377,7 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                   </th>
                   <th>
-                    <TextInBoxs> 4,000 </TextInBoxs>
+                    4,000
                   </th>
                 </tr>
 
@@ -386,7 +386,7 @@ export default class IPDDropBox extends Component {
                     <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
                   </th>
                   <th>
-                    <TextInBoxs> 1,000 </TextInBoxs>
+                    1,000
                   </th>
                 </tr>
 
@@ -398,7 +398,7 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                   </th>
                   <th>
-                    <TextInBoxs> 4,000 </TextInBoxs>
+                    4,000
                   </th>
                 </tr>
 
@@ -439,7 +439,7 @@ export default class IPDDropBox extends Component {
                 </IPDTopic>
               </th>
               <th>
-                <TextInBoxs> 40,000 </TextInBoxs>
+                40,000
               </th>
             </tr>
           </table>

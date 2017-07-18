@@ -14,7 +14,7 @@
         height: 100%;
     }
     th:nth-child(n) {
-      max-width: 70px;
+      max-width: 1px;
       border-left: 1px solid #979797;
     }
     th:nth-child(1) {
@@ -44,7 +44,7 @@
       border: 1px solid black;
     }
     th:nth-child(n) {
-      max-width: 70px;
+      max-width: 1px;
       border: 1px solid #9b9b9b;
     }
     th:nth-child(1) {

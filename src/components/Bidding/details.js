@@ -25,8 +25,9 @@ class Details extends Component {
   }
 
   render() {
-    const { bid } = this.props
-
+    const { bid, index, data } = this.props
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
+    console.log(this.props.data)
     return (
       <div className="Bidding">
         <Back onClick={() => this.props.handleClick()}> &lt; กลับหน้าหลัก</Back>
@@ -63,7 +64,7 @@ class Details extends Component {
               </div>
             </div>
             <div className="row">
-              <Plan />
+              <Plan planList={data[index].detail} />
             </div>
           </InSide>
           <InSide>
@@ -75,7 +76,7 @@ class Details extends Component {
               </div>
             </div>
             <div className="row">
-              <Plan />
+              <Plan planList={data[index].detail} />
             </div>
           </InSide>
         </BoxDetail>

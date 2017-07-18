@@ -14,6 +14,8 @@
 @import 'setting-benefit';
 @import 'modal-plan-table.scss';
 @import 'nav-select-real-time';
+@import '../../node_modules/react-vis/dist/style';
+@import "../../node_modules/react-vis/dist/styles/legends";
 
 @font-face {
     font-family: 'kanit';
@@ -33,6 +35,15 @@ body {
       .ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
         background-color: #4db698 !important;
       }
+    }
+
+    button{
+      outline: none;
+    }
+
+    .ui.button{
+      font-family: Kanit;
+      font-weight: 100;
     }
 }
 

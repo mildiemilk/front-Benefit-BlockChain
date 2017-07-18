@@ -41,6 +41,8 @@ import SettingPlan from './SettingBenefit/setting-plan.js'
 import Download from './Download'
 import Congrat from './congrat'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
+import PieChart from './PieChart/'
+
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -83,6 +85,7 @@ const App = ({ isAuthenticated }) => (
                       path="/chooseinsuranceplan"
                       component={ChooseInsuranceplan}
                     />
+                    <Route path="/piechart" component={PieChart} />
                   </Switch>
                 </MainLayout>
               </Switch>

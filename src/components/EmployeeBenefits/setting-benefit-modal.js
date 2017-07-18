@@ -67,7 +67,12 @@ class SettingBenefitModal extends Component {
         </ModalContents>
         <ModalContents>
           <div className="row">
-            <button className="back-button">กลับไป</button>
+            <button
+              className="back-button"
+              onClick={() => this.props.closeModal()}
+            >
+              กลับ
+            </button>
           </div>
         </ModalContents>
       </Modals>

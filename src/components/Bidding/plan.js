@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
 import { List, IconPlan, DetailList, PopupList, PopupView } from './styled'
 import { Popup, Icon } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 class Plan extends Component {
-  render() {
-    return (
+  constructor() {
+    super()
+  }
+
+  renderList = bids => {
+    console.log('ccccccccc')
+    console.log(bids)
+    return bids.map(bid => (
       <div className="large-4 columns">
         <List>
           <IconPlan name="add to calendar" size="big" />
           <DetailList>
-            ManageMent Plan 1 <br />
-            ราคาต่อหัว 12,000 บาท
+            {bid.planName} <br />
+            {bid.priceOfBidding}
             <PopupView
               trigger={
                 <PopupList>
@@ -28,6 +35,16 @@ class Plan extends Component {
             />
           </DetailList>
         </List>
+      </div>
+    ))
+  }
+
+  render() {
+    console.log('bbbbbbbbbbbb')
+    console.log(this.props.planList)
+    return (
+      <div>
+        {this.renderList(this.props.planList)}
       </div>
     )
   }

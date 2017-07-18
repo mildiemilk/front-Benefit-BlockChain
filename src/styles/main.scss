@@ -13,7 +13,8 @@
 @import 'add-benefit';
 @import 'setting-benefit';
 @import 'modal-plan-table.scss';
-
+@import '../../node_modules/react-vis/dist/style';
+@import "../../node_modules/react-vis/dist/styles/legends";
 
 @font-face {
     font-family: 'kanit';

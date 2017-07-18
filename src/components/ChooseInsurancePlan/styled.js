@@ -149,8 +149,6 @@ export const EmptyPlanText = styled.p`
     color: #9b9b9b;
 `
 
-//----------------------------------------------------------------------------------------------
-
 export const Header = styled.span`
   width: 253px;
   height: 30px;

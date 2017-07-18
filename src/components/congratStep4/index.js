@@ -10,10 +10,10 @@ import {
   Icon,
 } from 'semantic-ui-react'
 import { Submit, ImageStyle, Head, Space } from './styled'
-import pic from '../image/gifts.png'
+import pic from '../image/send-gift.png'
 import { Link } from 'react-router-dom'
 
-class congrat extends Component {
+class congratStep4 extends Component {
   constructor() {
     super()
     this.state = {}
@@ -41,4 +41,4 @@ class congrat extends Component {
   }
 }
 
-export default congrat
+export default congratStep4

@@ -11,6 +11,8 @@ import PlanTemplate from './plantemplate'
 import Sidebar from '../sidebar'
 import icon1 from '../image/icons-8-treatment-plan.png'
 import icon2 from '../image/icons-8-view-file.png'
+import { getAllPlan } from '../../api/set-plan'
+import { choosePlan } from '../../api/benefit-plan'
 
 import _ from 'lodash'
 import {
@@ -57,25 +59,7 @@ class ChooseInsurancePlan extends Component {
       ChooseColor: [],
       PlanTemplateState: 1,
       ChooseInsurance: [],
-
-      OurPlan: [
-        {
-          planName: 'แผนประกันที่ 1',
-          price: 12000,
-        },
-        {
-          planName: 'แผนประกันที่ 2',
-          price: 12500,
-        },
-        {
-          planName: 'แผนประกันที่ 3',
-          price: 11000,
-        },
-        {
-          planName: 'แผนประกันที่ 4',
-          price: 12300,
-        },
-      ],
+      OurPlan: [],
       SpacialPlan: [
         {
           planName: 'แผนจากบริษัทประกันที่ 1',
@@ -87,6 +71,7 @@ class ChooseInsurancePlan extends Component {
         },
       ],
     }
+    props.getAllPlan()
   }
 
   handleDeleteOurplan = index => {
@@ -193,7 +178,17 @@ class ChooseInsurancePlan extends Component {
     return listItems
   }
 
+  handleNext = () => {
+    this.props.choosePlan(this.state.ChooseInsurance)
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.planList !== this.props.planList)
+      this.setState({ OurPlan: newProps.planList })
+  }
+
   render() {
+    console.log(this.state)
     const panels = _.times(1, i => ({
       title: <TextInbox>แผนประกันของคุณ</TextInbox>,
       content: (
@@ -250,7 +245,9 @@ class ChooseInsurancePlan extends Component {
               </InnerHead2>
               {this.RenderInnerRight()}
             </InnerRight>
-            <Link to="/addbenefit"><Submit>ต่อไป</Submit></Link>
+            <Link to="/addbenefit">
+              <Submit onClick={this.handleNext}>ต่อไป</Submit>
+            </Link>
           </Detail>
 
         </div>
@@ -258,4 +255,15 @@ class ChooseInsurancePlan extends Component {
     )
   }
 }
-export default ChooseInsurancePlan
+
+const mapDispatchToProps = dispatch => ({
+  getAllPlan: () => dispatch(getAllPlan()),
+  choosePlan: plans => dispatch(choosePlan(plans)),
+})
+
+const mapStateToProps = state => ({
+  planList: state.plan,
+  choosePlan: state.choosePlan.choosePlan,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChooseInsurancePlan)

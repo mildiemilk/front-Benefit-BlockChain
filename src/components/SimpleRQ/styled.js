@@ -18,7 +18,6 @@ color: #000000;
 `
 
 export const EditButton = styled.button`
-  &&&{
     width: 40%;
     height: 40px;
     border-radius: 20px;
@@ -28,11 +27,9 @@ export const EditButton = styled.button`
     border-color: #f7555f;
     border-style: solid;
     color: #ffffff;
-  }
 `
 
 export const PostButton = styled.button`
-  &&&{
     width: 40%;
     height: 40px;
     border-radius: 20px;
@@ -43,11 +40,9 @@ export const PostButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 2%;
-  }
 `
 
 export const PostMainButton = styled.button`
-  &&&{
     width: 174px;
     height: 40px;
     border-radius: 20px;
@@ -57,7 +52,6 @@ export const PostMainButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 82%;
-  }
 `
 
 export const UploadButton = styled.label`

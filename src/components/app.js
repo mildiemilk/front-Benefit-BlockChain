@@ -51,7 +51,7 @@ const App = ({ isAuthenticated }) => (
   <BrowserRouter>
     <div>
       <EmptyLayout>
-        {true
+        {isAuthenticated
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />

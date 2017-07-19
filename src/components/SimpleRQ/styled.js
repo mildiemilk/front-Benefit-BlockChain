@@ -60,17 +60,20 @@ export const PostMainButton = styled.button`
   }
 `
 
-export const UploadButton = styled.button`
+export const UploadButton = styled.label`
     width: 163px;
     height: 40px;
     border-radius: 20px;
     color: #ffffff;
     background-color: #3a7bd5;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    display: block;
+    padding: 8px;
     text-align: center;
     border-color: #3a7bd5;
     border-style: solid;
     color: #ffffff;
+    cursor: pointer;
 `
 export const InputBox = styled.input`
 	border-radius: 3px;
@@ -87,4 +90,8 @@ export const InputBox = styled.input`
 export const BottomSpace = styled.div`
   margin-top: 10px;
 	margin-bottom: 10px;
+`
+
+export const Inputs = styled.input`
+    display: none;
 `

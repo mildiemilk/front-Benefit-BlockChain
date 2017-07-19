@@ -24,28 +24,30 @@ import {
   Detail2,
   Detail3,
   Next,
+  DefaultImg,
 } from './styled'
 import styled from 'react-sc'
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 683.42px;
+    min-height: 622.42px;
   }
 `
 const NextButton = styled.button`
-    width: 100%;
+    width: 85%;
     height: 40px;
     border: none;
     border-radius: 20px;
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     color: white;
-    margin: 15% 0%;
+    margin: 15% 12%;
     display: block;
     text-align:center;
     padding: 0.5%;
     `
+
 const BusinessTypes = [
   {
     text: 'ประเภท 1',
@@ -171,9 +173,7 @@ class SettingProfile extends Component {
       )
       // }
     } else {
-      $imagePreview = (
-        <div className="preview">Please select an Image for Preview</div>
-      )
+      $imagePreview = <DefaultImg />
     }
     return (
       <div className="setting-profile">
@@ -191,8 +191,9 @@ class SettingProfile extends Component {
               </Detail1>
               <div>{$imagePreview}</div>
 
-              <Oval>
+              <Oval for="buttonImg">
                 <input
+                  id="buttonImg"
                   className="previewInput"
                   type="file"
                   onChange={e => this._handleImageChange(e)}

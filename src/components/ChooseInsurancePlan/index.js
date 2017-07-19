@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { createProfile } from '../../api/profile-company'
 import styled from 'react-sc'
-import NavSettingBenefit from '../navSettingBenefit'
+import NavBenefit from '../NavBenefit'
 import PlanTemplate from './plantemplate'
 import Sidebar from '../sidebar'
 import icon1 from '../image/icons-8-treatment-plan.png'
@@ -227,7 +227,7 @@ class ChooseInsurancePlan extends Component {
     return (
       <div className="ChooseInsurancePlan">
         <div className="ChooseInsurer">
-          <NavSettingBenefit step={this.state.step} />
+          <NavBenefit step={this.state.step} />
         </div>
         <div className="row">
           <Detail className="large-12 columns">

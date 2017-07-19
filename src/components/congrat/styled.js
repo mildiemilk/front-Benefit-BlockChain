@@ -1,4 +1,5 @@
 import styled from 'react-sc'
+import { Image } from 'semantic-ui-react'
 
 export const Submit = styled.button`
     position: relative;
@@ -12,4 +13,24 @@ export const Submit = styled.button`
     text-align: center;
     border-style: solid;
     color: #ffffff;
+`
+export const ImageStyle = styled(Image)`
+  &&&{
+    width: 585px;
+    height: : 242px;
+    display: block;
+    margin: auto;
+  }
+`
+
+export const Head = styled.p`
+  font-family: Kanit;
+  font-weight: bold;
+  font-size: 28px;
+  margin-bottom: 10px;
+`
+export const Space = styled.div`
+  padding: 13%;
+  text-align: center;
+  font-size: 25px;
 `

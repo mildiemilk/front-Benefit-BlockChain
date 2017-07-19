@@ -40,8 +40,10 @@ import Logout from './Auth/logout'
 import SettingPlan from './SettingBenefit/setting-plan.js'
 import Download from './Download'
 import Congrat from './congrat'
+import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart/'
+import SelectRealTime from './SelectRealTime'
 
 const history = createBrowserHistory()
 
@@ -76,6 +78,8 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
                     <Route path="/congrat" component={Congrat} />
+                    <Route path="/congratStep4" component={Congrat2} />
+                    <Route path='/SelectRealTime' component={SelectRealTime}/>
                     <Route
                       path="/employeeBenefits"
                       component={EmployeeBenefits}

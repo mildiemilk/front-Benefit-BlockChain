@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export const Text = styled.span`
   vertical-align: middle;
   padding: 6px 10px;
-  
+
   font-size: 20px;
   font-weight: 300;
 `
@@ -13,10 +13,10 @@ export const Box = styled.input`
 	border: solid 1px #dddddd;
   padding: 2%;
   width: 100%;
-	height: auto;
+	height: 40px;
   &::-webkit-input-placeholder {
         color: #323028;
-        opacity: 0.15;
+        opacity: 0.3;
     }
 `
 export const Border = styled.div`
@@ -32,6 +32,7 @@ export const Detail1 = styled.p`
   padding-top: 6%;
   text-align: center;
   font-size: 120%;
+  font-weight: bold;
 `
 export const Detail2 = styled.p`
   padding-bottom: 2px;
@@ -41,12 +42,12 @@ export const Detail2 = styled.p`
   font-weight:bold;
 `
 export const Detail3 = styled.p`
-  margin: 4px 0px; 
+  margin: 4px 0px;
 `
 
-export const Oval = styled.button`
-  width: 60%;
-  height: auto;
+export const Oval = styled.label`
+  width: 48%;
+  height: 40px;
   border-radius: 20px;
   border: none;
   background-color: #3a7bd5;
@@ -55,7 +56,19 @@ export const Oval = styled.button`
   margin: auto;
   display: block;
   text-align:center;
-  padding: 4%;
+  padding: 2.8%;
   margin-top: 4%;
-  
+  cursor: pointer;
+`
+
+export const DefaultImg = styled.div`
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+  background-color: #d8d8d8;
+  border: solid 1px #979797;
 `

@@ -62,7 +62,7 @@ class ModalSelectInsurer extends Component {
       <Modals
         trigger={
           <ButtonStatusAppove onClick={this.handleOpen}>
-            {' '}เลือก
+            {' '}เลือก Broker
           </ButtonStatusAppove>
         }
         open={this.state.modalOpen}

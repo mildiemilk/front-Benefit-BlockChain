@@ -26,6 +26,7 @@ import {
   DropzoneStyle,
   inputStyle,
   TextNormal,
+  AddBlockButton,
 } from './styled'
 import {
   Grid,
@@ -45,55 +46,87 @@ class Uploadfile extends Component {
       step: 5,
       ClaimData: [],
       summitBrokerFile: '',
+      AmountUploadBlock: 1,
     }
   }
-  _handleUploadcliamdata(e) {
+
+  handleUploadcliamdata(e) {
     e.preventDefault()
     let file = e.target.files[0]
     this.setState({
       ClaimData: this.state.ClaimData.concat(file),
     })
-    console.log(this.state.ClaimData)
+    if (this.state.ClaimData.length >= this.state.AmountUploadBlock) {
+      const add = this.state.AmountUploadBlock + 1
+      this.setState({
+        AmountUploadBlock: add,
+      })
+    }
   }
 
-  _handleUploadBroker(e) {
+  handleUploadBroker(e) {
     e.preventDefault()
     let file = e.target.files[0]
     this.setState({
       summitBrokerFile: file,
     })
-    console.log(this.state.summitBrokerFile)
   }
 
   handleDelete = e => {
-    console.log(e.target.id)
+    e.preventDefault()
+    if (this.state.ClaimData.length <= this.state.AmountUploadBlock - 1) {
+      const newv = this.state.AmountUploadBlock - 1
+      this.setState({
+        AmountUploadBlock: newv,
+      })
+      console.log('decrease :', this.state.AmountUploadBlock)
+    }
+
     const ClaimDatas = this.state.ClaimData
     ClaimDatas.splice(e.target.id, 1)
     this.setState({
       ClaimData: ClaimDatas,
     })
-    console.log(this.state.ClaimData)
+    console.log('length splice :', this.state.ClaimData.length)
   }
 
-  RenderUploadRow = ClaimData => {
+  handleAddAmountUploadBlock = () => {
+    const add = this.state.AmountUploadBlock + 1
+    this.setState({
+      AmountUploadBlock: add,
+    })
+    console.log('AmountUploadBlock:', this.state.AmountUploadBlock)
+  }
+
+  RenderInsideBlock = id => {
+    if (this.state.ClaimData[id]) {
+      return (
+        <p>
+          {this.state.ClaimData[id].name} &nbsp;
+          {(this.state.ClaimData[id].size / 100000).toFixed(2)} MB
+          <Icon
+            id={id}
+            onClick={this.handleDelete}
+            style={{ positon: 'absolute', top: '-25px' }}
+            link
+            name="close"
+          />
+        </p>
+      )
+    }
+    console.log('inner id:', id)
+  }
+
+  RenderUploadRow = () => {
     const output = []
-    for (var i = 1; i < ClaimData.length; i++) {
+    for (var i = 1; i < this.state.AmountUploadBlock; i++) {
+      console.log('outner id:', i)
       output.push(
         <tr style={{ height: '50px' }}>
           <td> </td>
           <td>
             <FileuploadBox>
-              <p>
-                {this.state.ClaimData[i].name} &nbsp;
-                {(this.state.ClaimData[i].size / 100000).toFixed(2)} MB
-                <Icon
-                  id={i}
-                  onClick={this.handleDelete}
-                  style={{ positon: 'absolute', top: '-25px' }}
-                  link
-                  name="close"
-                />
-              </p>
+              {this.RenderInsideBlock(i)}
             </FileuploadBox>
           </td>
           <td>
@@ -101,7 +134,7 @@ class Uploadfile extends Component {
               style={{ opacity: '0', position: 'absolute' }}
               type="file"
               accept=".xls,.xlsx,.pdf,.docx"
-              onChange={e => this._handleUploadcliamdata(e)}
+              onChange={e => this.handleUploadcliamdata(e)}
             />
             <BrowsButton>เลือกไฟล์</BrowsButton>
           </td>
@@ -109,16 +142,6 @@ class Uploadfile extends Component {
       )
     }
     return output
-  }
-
-  handleDelete = e => {
-    console.log(e.target.id)
-    const ClaimDatas = this.state.ClaimData
-    ClaimDatas.splice(e.target.id, 1)
-    this.setState({
-      ClaimData: ClaimDatas,
-    })
-    console.log(this.state.ClaimData)
   }
 
   RenderListClaimData = ClaimData => {
@@ -184,7 +207,7 @@ class Uploadfile extends Component {
                   <Inner>
                     <table style={{ width: '100%' }}>
                       <tr>
-                        <td style={{ width: '274px' }}>
+                        <td style={{ width: '251px' }}>
                           <TextNormal>
                             กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์ :
                           </TextNormal>
@@ -201,7 +224,7 @@ class Uploadfile extends Component {
                             style={{ opacity: '0', position: 'absolute' }}
                             type="file"
                             accept=".xls,.xlsx,.pdf,.docx"
-                            onChange={e => this._handleUploadBroker(e)}
+                            onChange={e => this.handleUploadBroker(e)}
                           />
                           <BrowsButton>
                             เลือกไฟล์
@@ -216,7 +239,7 @@ class Uploadfile extends Component {
                   <Inner2>
                     <table style={{ width: '100%' }}>
                       <tr style={{ height: '50px' }}>
-                        <td style={{ width: '275px' }}>
+                        <td style={{ width: '251px' }}>
                           <TextNormal>
                             กรุณาอัพโหลด Employee Claim Data :
                           </TextNormal>
@@ -224,34 +247,29 @@ class Uploadfile extends Component {
                         <td>
                           <FileuploadBox>
                             {this.RenderListClaimData(this.state.ClaimData)}
-
                           </FileuploadBox>
                         </td>
-                        <td>
-                          <input
-                            style={{ opacity: '0', position: 'absolute' }}
-                            type="file"
-                            accept=".xls,.xlsx,.pdf,.docx"
-                            onChange={e => this._handleUploadcliamdata(e)}
-                          />
-                          <BrowsButton>เลือกไฟล์</BrowsButton>
-                        </td>
-                      </tr>
-
-                      {this.RenderUploadRow(this.state.ClaimData)}
-
-                      <tr style={{ height: '50px' }}>
-                        <td />
                         <td>
                           <BrowsButton>
                             <input
                               style={{ opacity: '0', position: 'absolute' }}
                               type="file"
                               accept=".xls,.xlsx,.pdf,.docx"
-                              onChange={e => this._handleUploadcliamdata(e)}
+                              onChange={e => this.handleUploadcliamdata(e)}
                             />
-                            + เพิ่มไฟล์
+                            เลือกไฟล์
                           </BrowsButton>
+                        </td>
+                      </tr>
+                      {this.RenderUploadRow()}
+                      <tr style={{ height: '50px' }}>
+                        <td />
+                        <td>
+                          <AddBlockButton
+                            onClick={e => this.handleAddAmountUploadBlock(e)}
+                          >
+                            + เพิ่มไฟล์
+                          </AddBlockButton>
                         </td>
                         <td />
                       </tr>
@@ -260,9 +278,8 @@ class Uploadfile extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Link to="./sendrequest"><Submit>ต่อไป</Submit></Link>
+            <Submit>ต่อไป</Submit>
           </Detail>
-
         </div>
       </div>
     )

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import auth from './auth'
 import profileCompany from './profile-company'
-import { chooseInsurer, setTimeOut, getAllInsurer } from './choose-insurer'
+import { chooseInsurer, setTimeOut, getAllInsurer, getSelectInsurer } from './choose-insurer'
 import { endTimeout, bidding } from './bidding'
 import { menuPlans } from './set-plan'
 import { choosePlan } from './benefit-plan'
@@ -36,4 +36,5 @@ export default {
   bidding,
   menuPlans,
   choosePlan,
+  getSelectInsurer,
 }

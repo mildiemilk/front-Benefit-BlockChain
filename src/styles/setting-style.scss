@@ -8,7 +8,7 @@
     border-radius: 50%;
     margin: auto;
     display: block;
-    
+
     }
     .thumbnail img {
     position: absolute;
@@ -30,12 +30,9 @@
     .preview{
         text-align: center;
         margin: 10% 0%;
-
-    
     }
     .previewInput{
-    
-        opacity: 0;
+        display: none;
         position: absolute;
     }
 }

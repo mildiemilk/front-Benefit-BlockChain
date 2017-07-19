@@ -1,0 +1,25 @@
+.NavSelectRealTime{
+    table, td, th {    
+    border-right: 1px solid #ddd;
+    text-align: left;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        padding: 15px;
+    }
+    td:nth-child(1) {
+      max-width: 70px;
+      width: 42.5%;
+      border-left: 0px solid #979797;
+    }
+    td:nth-child(2) {
+      max-width: 70px;
+      border-left: 1px solid #979797;
+    }
+    
+}

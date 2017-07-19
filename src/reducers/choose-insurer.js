@@ -10,6 +10,9 @@ const SETTIMEOUT_REQUEST_SUCCESS = 'SETTIMEOUT_REQUEST_SUCCESS'
 const SETTIMEOUT_REQUEST_FAILURE = 'SETTIMEOUT_REQUEST_FAILURE'
 const GETALLINSURER_REQUEST_SUCCESS = 'GETALLINSURER_REQUEST_SUCCESS'
 const GETALLINSURER_REQUEST_FAILURE = 'GETALLINSURER_REQUEST_FAILURE'
+const GETSELECTINSURER_REQUEST_SUCCESS = 'GETSELECTINSURER_REQUEST_SUCCESS'
+const GETSELECTINSURER_REQUEST_FAILURE = 'GETSELECTINSURER_REQUEST_FAILURE'
+
 export function chooseInsurerSuccess(data) {
   return { type: CHOOSEINSURER_REQUEST_SUCCESS, data }
 }
@@ -21,7 +24,6 @@ export function chooseInsurerFailure(data) {
 export function setTimeOutSuccess(data) {
   return { type: SETTIMEOUT_REQUEST_SUCCESS, data }
 }
-
 export function setTimeOutFailure(data) {
   return { type: SETTIMEOUT_REQUEST_FAILURE, data }
 }
@@ -30,6 +32,12 @@ export function getAllInsurerSuccess(data) {
 }
 export function getAllInsurerFailure(data) {
   return { type: GETALLINSURER_REQUEST_FAILUER, data }
+}
+export function getSelectInsurerSuccess(data) {
+  return { type: GETSELECTINSURER_REQUEST_SUCCESS, data}
+}
+export function getSelectInsurerFailure(data){
+  return { type: GETSELECTINSURER_REQUEST_FAILURE, data}
 }
 
 export function chooseInsurerReducer(state = defaultInsurer, action) {
@@ -43,6 +51,16 @@ export function chooseInsurerReducer(state = defaultInsurer, action) {
   }
 }
 
+export function getSelectInsurer(state = defaultInsurer, action){
+  switch (action.type) {
+    case GETSELECTINSURER_REQUEST_SUCCESS:
+      return action.data
+    case GETSELECTINSURER_REQUEST_FAILURE:
+      return Object.assign({}, state, {})
+    default:
+      return state
+  }
+}
 export function setTimeOut(state = defaultTimeOut, action) {
   switch (action.type) {
     case SETTIMEOUT_REQUEST_SUCCESS:

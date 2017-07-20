@@ -43,14 +43,6 @@ class Life extends Component {
   handleRadio = (e, { value }) => {
     this.handleResetData()
     this.setState({ value })
-    // if (this.state.value === 'secondLifeChoice') {
-    //   document.getElementById('lifeTimeOfSalary').value = ''
-    // } else if (this.state.value === 'firstLifeChoice') {
-    //   document.getElementById('lifePerYear').value = ''
-    // } else {
-    //   document.getElementById('lifeTimeOfSalary').value = ''
-    //   document.getElementById('lifeNotExceed').value = ''
-    // }
   }
 
   handleChange = (e, { name, value }) => {
@@ -248,7 +240,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Life)

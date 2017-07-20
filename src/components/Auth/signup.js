@@ -60,7 +60,7 @@ class SignUp extends Component {
                             onChange={this.handleChange}
                           />
                         </div>
-                        </Form.Field>
+                      </Form.Field>
                       <Form.Field>
                         <div className="divInput">
                           <img

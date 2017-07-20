@@ -1,7 +1,9 @@
 /**
  * Default State
  */
-const defaultPlan = []
+const defaultPlan = {
+  planList: [],
+}
 const comparePlan = []
 
 /**
@@ -58,10 +60,9 @@ export function plan(state = defaultPlan, action) {
     case EDITPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, {})
     case EDITPLAN_REQUEST_FAILURE:
-      console.log(action.data.message)
       return Object.assign({}, state, {})
     case GETALLPLAN_REQUEST_SUCCESS:
-      return action.data
+      return Object.assign({}, state, { planList: action.data })
     case GETALLPLAN_REQUEST_FAILURE:
       return Object.assign({}, state, {})
     default:
@@ -72,7 +73,6 @@ export function plan(state = defaultPlan, action) {
 export function menuplanReducer(state = comparePlan, action) {
   switch (action.type) {
     case MENUPLAN_REQUEST_SUSCESS:
-      console.log('ccccccccccccccccc', action.data)
       return action.data
     default:
       return state

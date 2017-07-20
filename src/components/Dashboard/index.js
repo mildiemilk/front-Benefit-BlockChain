@@ -81,7 +81,7 @@ class Dashboard extends Component {
           ยินดีต้อนรับเข้าสู่ BenefiTable
           <hr className="groove" />
         </span>
-        <divider />
+        <divider style={{ padding: '20px' }} />
 
         <Grid className="dash">
           <Grid.Column width={3} />

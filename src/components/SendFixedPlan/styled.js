@@ -6,7 +6,7 @@ export const Detail = styled.div`
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-
+    margin: 25px 0px;
     padding: 5% 6%;
     padding-top: 25px;
     height: 2200px;

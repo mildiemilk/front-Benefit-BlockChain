@@ -72,6 +72,18 @@ class IPD3 extends Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        value: newProps.rbScheduleSurgerySchedule !== null
+          ? 'Schedule'
+          : newProps.rbScheduleSurgeryNonSchedule !== null
+              ? 'Non-Schedule'
+              : '',
+      })
+    }
+  }
+
   handleChange = (e, { name, value }) => {
     this.props.handleChange(e, { name, value })
     this.props.handleVerifyState()
@@ -228,6 +240,7 @@ class IPD3 extends Component {
                       placeholder="จำนวนเงิน"
                       name="rbScheduleSurgeryNonSchedule"
                       onChange={this.props.handleChange}
+                      value=""
                       readOnly
                       id="rbScheduleSurgeryNonSchedule"
                     />}
@@ -250,6 +263,7 @@ class IPD3 extends Component {
                       style={{ height: '30px', width: '100px' }}
                       placeholder="จำนวนเงิน"
                       name="rbScheduleSurgerySchedule"
+                      value=""
                       onChange={this.props.handleChange}
                       readOnly
                       id="rbScheduleSurgerySchedule"

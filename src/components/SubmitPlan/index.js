@@ -114,7 +114,7 @@ class SubmitPlan extends Component {
   handleToggleIpdCoPlay = () => {
     if (this.state.ipdCoPlay)
       this.setState({
-        ipdCoPlay: !this.state.opdCoPlay,
+        ipdCoPlay: !this.state.ipdCoPlay,
         ipdCoPlayQuota: null,
         ipdCoPlayDeductable: null,
         ipdCoPlayMixPercentage: null,
@@ -210,58 +210,61 @@ class SubmitPlan extends Component {
   }
 
   handlePlan = val => {
-    this.setState({
-      activePlan: val,
-      firstTime: false,
-      planName: this.props.planList[val].planName,
-      employeeOfPlan: this.props.planList[val].employeeOfPlan,
-      dentalPerYear: this.props.planList[val].dentalPerYear,
-      lifePerYear: this.props.planList[val].lifePerYear,
-      lifeTimeOfSalary: this.props.planList[val].lifeTimeOfSalary,
-      lifeNotExceed: this.props.planList[val].lifeNotExceed,
-      opdCoPlay: this.props.planList[val].opdCoPlay,
-      opdPerYear: this.props.planList[val].opdPerYear,
-      opdPerTime: this.props.planList[val].opdPerTime,
-      opdTimeNotExceedPerYear: this.props.planList[val].opdTimeNotExceedPerYear,
-      opdCoPlayQuota: this.props.planList[val].opdCoPlayQuota,
-      opdCoPlayDeductable: this.props.planList[val].opdCoPlayDeductable,
-      opdCoPlayMixPercentage: this.props.planList[val].opdCoPlayMixPercentage,
-      opdCoPlayMixNotExceed: this.props.planList[val].opdCoPlayMixNotExceed,
-      opdCoPlayMixYear: this.props.planList[val].opdCoPlayMixYear,
-      ipdType: this.props.planList[val].ipdType,
-      ipdLumsumPerYear: this.props.planList[val].ipdLumsumPerYear,
-      ipdLumsumPerTime: this.props.planList[val].ipdLumsumPerTime,
-      ipdLumsumTimeNotExceedPerYear: this.props.planList[val]
-        .ipdLumsumTimeNotExceedPerYear,
-      rbLumsumRoomPerNight: this.props.planList[val].rbLumsumRoomPerNight,
-      rbLumsumNigthNotExceedPerYear: this.props.planList[val]
-        .rbLumsumNigthNotExceedPerYear,
-      rbLumsumPayNotExceedPerNight: this.props.planList[val]
-        .rbLumsumPayNotExceedPerNight,
-      rbLumsumPayNotExceedPerYear: this.props.planList[val]
-        .rbLumsumPayNotExceedPerYear,
-      rbSchedulePatient: this.props.planList[val].rbSchedulePatient,
-      rbScheduleIntensiveCarePatient: this.props.planList[val]
-        .rbScheduleIntensiveCarePatient,
-      rbScheduleDoctor: this.props.planList[val].rbScheduleDoctor,
-      rbScheduleSurgerySchedule: this.props.planList[val]
-        .rbScheduleSurgerySchedule,
-      rbScheduleSurgeryNonSchedule: this.props.planList[val]
-        .rbScheduleSurgeryNonSchedule,
-      rbScheduleService: this.props.planList[val].rbScheduleService,
-      rbScheduleSmallSurgery: this.props.planList[val].rbScheduleSmallSurgery,
-      rbScheduleAdviser: this.props.planList[val].rbScheduleAdviser,
-      rbScheduleAmbulance: this.props.planList[val].rbScheduleAmbulance,
-      rbScheduleAccident: this.props.planList[val].rbScheduleAccident,
-      rbScheduleTreatment: this.props.planList[val].rbScheduleTreatment,
-      rbScheduleTransplant: this.props.planList[val].rbScheduleTransplant,
-      ipdCoPlay: this.props.planList[val].ipdCoPlay,
-      ipdCoPlayQuota: this.props.planList[val].ipdCoPlayQuota,
-      ipdCoPlayDeductable: this.props.planList[val].ipdCoPlayDeductable,
-      ipdCoPlayMixPercentage: this.props.planList[val].ipdCoPlayMixPercentage,
-      ipdCoPlayMixNotExceed: this.props.planList[val].ipdCoPlayMixNotExceed,
-      ipdCoPlayMixYear: this.props.planList[val].ipdCoPlayMixYear,
-    })
+    if (val !== -1) {
+      this.setState({
+        activePlan: val,
+        firstTime: false,
+        planName: this.props.planList[val].planName,
+        employeeOfPlan: this.props.planList[val].employeeOfPlan,
+        dentalPerYear: this.props.planList[val].dentalPerYear,
+        lifePerYear: this.props.planList[val].lifePerYear,
+        lifeTimeOfSalary: this.props.planList[val].lifeTimeOfSalary,
+        lifeNotExceed: this.props.planList[val].lifeNotExceed,
+        opdCoPlay: this.props.planList[val].opdCoPlay,
+        opdPerYear: this.props.planList[val].opdPerYear,
+        opdPerTime: this.props.planList[val].opdPerTime,
+        opdTimeNotExceedPerYear: this.props.planList[val]
+          .opdTimeNotExceedPerYear,
+        opdCoPlayQuota: this.props.planList[val].opdCoPlayQuota,
+        opdCoPlayDeductable: this.props.planList[val].opdCoPlayDeductable,
+        opdCoPlayMixPercentage: this.props.planList[val].opdCoPlayMixPercentage,
+        opdCoPlayMixNotExceed: this.props.planList[val].opdCoPlayMixNotExceed,
+        opdCoPlayMixYear: this.props.planList[val].opdCoPlayMixYear,
+        ipdType: this.props.planList[val].ipdType,
+        ipdLumsumPerYear: this.props.planList[val].ipdLumsumPerYear,
+        ipdLumsumPerTime: this.props.planList[val].ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: this.props.planList[val]
+          .ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight: this.props.planList[val].rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: this.props.planList[val]
+          .rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight: this.props.planList[val]
+          .rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear: this.props.planList[val]
+          .rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient: this.props.planList[val].rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: this.props.planList[val]
+          .rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor: this.props.planList[val].rbScheduleDoctor,
+        rbScheduleSurgerySchedule: this.props.planList[val]
+          .rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule: this.props.planList[val]
+          .rbScheduleSurgeryNonSchedule,
+        rbScheduleService: this.props.planList[val].rbScheduleService,
+        rbScheduleSmallSurgery: this.props.planList[val].rbScheduleSmallSurgery,
+        rbScheduleAdviser: this.props.planList[val].rbScheduleAdviser,
+        rbScheduleAmbulance: this.props.planList[val].rbScheduleAmbulance,
+        rbScheduleAccident: this.props.planList[val].rbScheduleAccident,
+        rbScheduleTreatment: this.props.planList[val].rbScheduleTreatment,
+        rbScheduleTransplant: this.props.planList[val].rbScheduleTransplant,
+        ipdCoPlay: this.props.planList[val].ipdCoPlay,
+        ipdCoPlayQuota: this.props.planList[val].ipdCoPlayQuota,
+        ipdCoPlayDeductable: this.props.planList[val].ipdCoPlayDeductable,
+        ipdCoPlayMixPercentage: this.props.planList[val].ipdCoPlayMixPercentage,
+        ipdCoPlayMixNotExceed: this.props.planList[val].ipdCoPlayMixNotExceed,
+        ipdCoPlayMixYear: this.props.planList[val].ipdCoPlayMixYear,
+      })
+    }
   }
 
   handleCloseModal = e =>
@@ -308,6 +311,10 @@ class SubmitPlan extends Component {
     this.setState({ newPlan: false })
   }
 
+  componentDidMount() {
+    if (!this.state.firstTime) this.handlePlan(0)
+  }
+
   render() {
     return (
       <div className="SubmitPlan">
@@ -346,6 +353,7 @@ class SubmitPlan extends Component {
                       handleChange={this.handleChange}
                       planName={this.state.planName}
                       employeeOfPlan={this.state.employeeOfPlan}
+                      handleResetProfilePlan={this.handleResetProfilePlan}
                     />
                     <div className="fillBox">
                       <AllPlan
@@ -474,7 +482,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitPlan)

@@ -262,7 +262,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
   choosePlan: state.choosePlan.choosePlan,
 })
 

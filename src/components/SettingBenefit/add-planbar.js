@@ -87,7 +87,7 @@ export class AddPlanBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps)(AddPlanBar)

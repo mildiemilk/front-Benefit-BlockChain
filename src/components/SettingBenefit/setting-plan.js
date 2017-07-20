@@ -117,7 +117,7 @@ export class SettingPlan extends Component {
 }
 
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps)(SettingPlan)

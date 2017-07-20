@@ -23,7 +23,7 @@ import {
   TextInBoxs,
   Sub,
   IPDDetail,
-} from './Styled'
+} from './styled'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 

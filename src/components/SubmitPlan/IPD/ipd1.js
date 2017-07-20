@@ -39,14 +39,24 @@ class IPD1 extends Component {
   }
 
   handleResetdata = () => {
-    document.getElementById('ipdLumsumPerTime').value = ''
     this.props.handleChangeToNull('ipdLumsumPerTime')
-    document.getElementById('ipdLumsumTimeNotExceedPerYear').value = ''
     this.props.handleChangeToNull('ipdLumsumTimeNotExceedPerYear')
-    document.getElementById('ipdLumsumPerYear').value = ''
     this.props.handleChangeToNull('ipdLumsumPerYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        value: newProps.ipdLumsumPerYear !== null
+          ? 'firstChoice'
+          : newProps.ipdLumsumPerTime !== null &&
+              newProps.ipdLumsumTimeNotExceedPerYear !== null
+              ? 'secondChoice'
+              : '',
+      })
+    }
   }
 
   componentDidUpdate() {
@@ -83,6 +93,7 @@ class IPD1 extends Component {
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerYear"
                 id="ipdLumsumPerYear"
+                value=""
                 onChange={this.props.handleChange}
                 readOnly
               />}
@@ -116,7 +127,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
-                  value={this.ipdLumsumTimeNotExceedPerYear}
+                  value={this.props.ipdLumsumTimeNotExceedPerYear}
                   onChange={this.props.handleChange}
                   style={{ width: '145px' }}
                   required
@@ -128,6 +139,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumPerTime"
                   id="ipdLumsumPerTime"
+                  value=""
                   onChange={this.props.handleChange}
                   style={{ width: '145px' }}
                   readOnly
@@ -138,6 +150,7 @@ class IPD1 extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdLumsumTimeNotExceedPerYear"
                   id="ipdLumsumTimeNotExceedPerYear"
+                  value=""
                   onChange={this.props.handleChange}
                   style={{ width: '145px' }}
                   readOnly

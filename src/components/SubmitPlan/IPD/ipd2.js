@@ -56,6 +56,20 @@ class IPD2 extends Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        value: newProps.rbLumsumRoomPerNight !== null &&
+          newProps.rbLumsumNigthNotExceedPerYear !== null
+          ? 'firstChoice'
+          : newProps.rbLumsumPayNotExceedPerNight !== null &&
+              newProps.rbLumsumPayNotExceedPerYear !== null
+              ? 'secondChoice'
+              : '',
+      })
+    }
+  }
+
   handleChange = (e, { name, value }) => {
     this.props.handleChange(e, { name, value })
     this.props.handleVerifyState()
@@ -104,6 +118,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumRoomPerNight"
                   id="rbLumsumRoomPerNight"
+                  value=""
                   onChange={this.props.handleChange}
                   style={{ marginLeft: '7%' }}
                   readOnly
@@ -115,6 +130,7 @@ class IPD2 extends Component {
                   placeholder="จำนวนเงิน"
                   name="rbLumsumNigthNotExceedPerYear"
                   id="rbLumsumNigthNotExceedPerYear"
+                  value=""
                   onChange={this.props.handleChange}
                   readOnly
                   style={{ width: '150px' }}
@@ -148,6 +164,7 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name="rbLumsumPayNotExceedPerNight"
                 id="rbLumsumPayNotExceedPerNight"
+                value=""
                 onChange={this.props.handleChange}
                 readOnly
                 style={{ width: '150px' }}
@@ -173,6 +190,7 @@ class IPD2 extends Component {
                 placeholder="จำนวนเงิน"
                 name=" rbLumsumPayNotExceedPerYear"
                 id=" rbLumsumPayNotExceedPerYear"
+                value=""
                 onChange={this.props.handleChange}
                 style={{ width: '150px' }}
               />}

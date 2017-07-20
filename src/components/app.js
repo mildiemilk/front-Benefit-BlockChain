@@ -43,9 +43,7 @@ import Congrat from './congrat'
 import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart/'
-import SelectRealTime from './SelectRealTime'
-import EmployeeList from './EmployeeList'
-import SendFixedPlan from './SendFixedPlan'
+
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -78,10 +76,8 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/uploadfile" component={Uploadfile} />
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
-                    <Route path="/congrats" component={Congrat} />
+                    <Route path="/congrat" component={Congrat} />
                     <Route path="/congratStep4" component={Congrat2} />
-                    <Route path="/SelectRealTime" component={SelectRealTime} />
-                    <Route path="/sendfixedplan" component={SendFixedPlan} />
                     <Route
                       path="/employeeBenefits"
                       component={EmployeeBenefits}
@@ -92,7 +88,6 @@ const App = ({ isAuthenticated }) => (
                       component={ChooseInsuranceplan}
                     />
                     <Route path="/piechart" component={PieChart} />
-                    <Route path="/employeelist" component={EmployeeList} />
                   </Switch>
                 </MainLayout>
               </Switch>

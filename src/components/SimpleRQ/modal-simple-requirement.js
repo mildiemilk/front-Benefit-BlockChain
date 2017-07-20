@@ -22,6 +22,7 @@ const Modals = styled(Modal)`
   &&&{
     background: transparent;
     margin-top: -120px;
+    box-shadow: none;
   }
 `
 

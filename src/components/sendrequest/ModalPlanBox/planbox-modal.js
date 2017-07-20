@@ -39,6 +39,7 @@ const Modals = styled(Modal)`
     background: transparent;
     margin-top: -120px;
     z-index: 2;
+    box-shadow: none;
   }
 `
 

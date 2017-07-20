@@ -81,6 +81,7 @@
     "react-donut-chart": "^1.0.5",
     "react-dropzone": "^3.13.3",
     "react-redux": "^5.0.4",
+    "react-responsive": "^1.3.4",
     "react-router-dom": "^4.1.1",
     "react-sc": "^0.2.1",
     "react-toastify": "^1.7.0",

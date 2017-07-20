@@ -77,9 +77,9 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/uploadfile" component={Uploadfile} />
                     <Route path="/settingbenefit" component={SettingBenefit} />
                     <Route path="/settingplan" component={SettingPlan} />
-                    <Route path="/congrat" component={Congrat} />
+                    <Route path="/congrats" component={Congrat} />
                     <Route path="/congratStep4" component={Congrat2} />
-                    <Route path='/SelectRealTime' component={SelectRealTime}/>
+                    <Route path="/SelectRealTime" component={SelectRealTime} />
                     <Route
                       path="/employeeBenefits"
                       component={EmployeeBenefits}

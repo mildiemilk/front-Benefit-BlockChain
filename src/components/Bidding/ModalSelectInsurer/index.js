@@ -43,8 +43,8 @@ const Inputs = styled(Input)`
 `
 
 class ModalSelectInsurer extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = { modalOpen: false }
   }
 
@@ -62,7 +62,7 @@ class ModalSelectInsurer extends Component {
       <Modals
         trigger={
           <ButtonStatusAppove onClick={this.handleOpen}>
-            {' '}เลือก Broker
+            {' '}เลือก
           </ButtonStatusAppove>
         }
         open={this.state.modalOpen}
@@ -112,8 +112,11 @@ class ModalSelectInsurer extends Component {
           </ModalContent>
           <div style={{ marginLeft: '2%' }}>
             <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
-            <ConfirmButton onClick={this.props.handlePost}>
-              <Link to="/congrat">{' '}ยืนยัน{' '}</Link>
+            <ConfirmButton
+              value={this.props.insurerName}
+              onClick={this.props.handlePost}
+            >
+              {' '}ยืนยัน{' '}
             </ConfirmButton>
           </div>
         </ModalContents>
@@ -129,7 +132,7 @@ ModalSelectInsurer.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  data: state.postBoxReducer,
+  data: state.selectFinalInsurer,
 })
 
 export default connect(mapStateToProps, null)(ModalSelectInsurer)

@@ -11,16 +11,23 @@ import { bidding } from '../../api/bidding'
 import { connect } from 'react-redux'
 import ModalSelectInsurer from './ModalSelectInsurer'
 import moment from 'moment'
+import { chooseFinalInsurer } from '../../api/bidding'
 
 class Box extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      passwordToConfirm: '',
+    }
   }
+
   handlePost = e => {
     e.preventDefault()
     const { passwordToConfirm } = this.state
-    this.props.postBox(passwordToConfirm)
+    const insurerName = e.target.value
+    console.log('cccccccc', e.target.value)
+    console.log('bbbbbbb', insurerName)
+    this.props.chooseFinalInsurer(passwordToConfirm, insurerName)
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -43,16 +50,18 @@ class Box extends Component {
     }
   }
 
-  renderList = bids => {
+  getStatusModule = insurerName => {
     let status = 'Join'
     let statusModule = ''
     const { end } = this.props
+    console.log(end.end)
     if (end.end === 'Timeout') {
       if (status === 'Join') {
         statusModule = (
           <ModalSelectInsurer
             handlePost={this.handlePost}
             handleChange={this.handleChange}
+            insurerName={insurerName}
           />
         )
       } else {
@@ -69,6 +78,12 @@ class Box extends Component {
         statusModule = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>
       }
     }
+    return statusModule
+  }
+
+  renderList = bids => {
+    let status = 'Join'
+    const { end } = this.props
     return bids.map((bid, index) => (
       <div className="boxDetail">
         <div className={this.boxStyling(status, end.end)}>
@@ -103,7 +118,7 @@ class Box extends Component {
 
             </div>
             <div className="large-2 columns">
-              <Text>{statusModule}</Text>
+              <Text>{this.getStatusModule(bid.insurerName)}</Text>
             </div>
           </div>
         </div>
@@ -153,4 +168,9 @@ const mapStateToProps = state => ({
   end: state.endTimeout,
 })
 
-export default connect(mapStateToProps, null)(Box)
+const mapDispatchToProps = dispatch => ({
+  chooseFinalInsurer: (data, insurerName) =>
+    dispatch(chooseFinalInsurer(data, insurerName)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Box)

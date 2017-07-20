@@ -7061,7 +7061,6 @@ react-test-renderer@^15.5.4:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-<<<<<<< HEAD
 react-toastify@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-1.7.0.tgz#8731c37e5000ddb33eed40fd10951e0451c5f9d0"
@@ -7078,7 +7077,7 @@ react-transition-group@^1.1.2:
     loose-envify "^1.3.1"
     prop-types "^15.5.6"
     warning "^3.0.0"
-=======
+
 react-vis@^1.6.7:
   version "1.6.7"
   resolved "https://registry.yarnpkg.com/react-vis/-/react-vis-1.6.7.tgz#b7e5f08abeca96ef63e34cf55a509e8e354e0fab"
@@ -7100,7 +7099,6 @@ react-vis@^1.6.7:
     prop-types "^15.5.8"
     react-motion "^0.4.8"
     react-test-renderer "^15.5.4"
->>>>>>> e5534368aa12933a81edd52d3a459ebc02285c1a
 
 react@^15.5.4, react@^15.6.1:
   version "15.6.1"

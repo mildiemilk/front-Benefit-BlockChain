@@ -19,7 +19,7 @@ export const Head = styled.p`
     font-weight: bold;
 
 `
-export const TextInbox = styled.p`
+export const TextInbox = styled.div`
     position: relative;
     left:65px;
     top: -10px;
@@ -28,7 +28,7 @@ export const TextInbox = styled.p`
     letter-spacing: 0.2px;
     color: #323028;
 `
-export const Inboxtext = styled.p`
+export const Inboxtext = styled.div`
     font-size: 20px;
     color: #ffffff;
   	letter-spacing: 0.3px;
@@ -38,7 +38,7 @@ export const Inboxtext = styled.p`
 `
 export const Inner = styled.div`
     display: inline-block;
-    width: 450px;
+    width: 100%;
     height: 650px;
     border-radius: 5px;
     background-color: #ffffff;
@@ -48,7 +48,7 @@ export const Inner = styled.div`
     margin-right: 10px;
 `
 export const InnerHead = styled.div`
-    width: 449px;
+    width: 100%;
     height: 60px;
     border-radius: 5px 5px 0px 0px;
     background-color: #5c6879;
@@ -56,12 +56,8 @@ export const InnerHead = styled.div`
 
 export const InnerRight = styled.div`
 
-    position: relative;
-    top:-650px;
-    left:470px;
-    width: 450px;
+    width: 100%;
     height: 650px;
-    padding:10px;
     border-radius: 5px;
     background-color: #ffffff;
     background-color: var(--white-two);
@@ -70,37 +66,34 @@ export const InnerRight = styled.div`
 
 `
 export const InnerHead2 = styled.div`
-      position: relative;
-      top:-10px;
-      left: -10px;
-      width: 449px;
+
+      width: 100%;
       height: 60px;
       border-radius: 5px 5px 0px 0px;
       background-color: #3a7bd5;
 `
 export const ManagePlan = styled.div`
-  width: 427px;
+  width: 95%;
   height: 60px;
   margin-bottom: 10px;
   border-radius: 5px;
   background-color: #f2f2f2;
   border: solid 1px #e6e6e6;
   padding: 8px;
+  margin: 10px;
 `
 export const Submit = styled.button`
     position: relative;
-    right: -700px;
-    top:  -640px;
+    left:60%;
+    top:  15px;
     height: 40px;
     width: 164px;
-    height: 40px;
     border-radius: 20px;
     color: #ffffff;
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
     border-style: solid;
-    color: #ffffff;
 `
 export const AccordionStyle = styled(Accordion)`
   &&&{
@@ -131,7 +124,8 @@ export const ImageIcon2 = styled(Image)`
   }
 `
 export const EmptyPlan = styled.div`
-  width: 427px;
+  margin: 8px;
+  width: 97%;
   height: 50px;
   border-radius: 5px;
   border-style: dashed;
@@ -139,8 +133,7 @@ export const EmptyPlan = styled.div`
   padding:10px;
 
 `
-export const EmptyPlanText = styled.p`
-
+export const EmptyPlanText = styled.div`
     text-align: center;
     top:auto;
     font-weight: 500;
@@ -148,6 +141,8 @@ export const EmptyPlanText = styled.p`
     letter-spacing: 0.2px;
     color: #9b9b9b;
 `
+
+//----------------------------------------------------------------------------------------------
 
 export const Header = styled.span`
   width: 253px;
@@ -446,8 +441,10 @@ export const TableHeader = styled.p`
 `
 
 export const LifeTopic = styled.span`
+  width: 249px;
+  height: 25px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1.56;
   letter-spacing: 0.2px;
   text-align: left;
@@ -468,7 +465,7 @@ export const OPDTopic = styled.span`
   width: 100%px;
   height: 25px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1.56;
   letter-spacing: 0.2px;
   text-align: left;
@@ -479,12 +476,14 @@ export const OPDTopic = styled.span`
 `
 
 export const IPDTopic = styled.span`
+  width: 100%;
+  height: 25px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 1.56;
   letter-spacing: 0.2px;
   text-align: left;
-  color: #323028;
+  color: #4a4a4a;
 `
 
 export const IPDDetail = styled.span`

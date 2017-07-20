@@ -45,7 +45,7 @@ import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart/'
 import SelectRealTime from './SelectRealTime'
 import EmployeeList from './EmployeeList'
-
+import SendFixedPlan from './SendFixedPlan'
 const history = createBrowserHistory()
 
 const App = ({ isAuthenticated }) => (
@@ -81,6 +81,7 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/congrats" component={Congrat} />
                     <Route path="/congratStep4" component={Congrat2} />
                     <Route path="/SelectRealTime" component={SelectRealTime} />
+                    <Route path="/sendfixedplan" component={SendFixedPlan} />
                     <Route
                       path="/employeeBenefits"
                       component={EmployeeBenefits}

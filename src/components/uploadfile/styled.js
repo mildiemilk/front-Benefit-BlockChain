@@ -66,18 +66,17 @@ export const FileuploadBox = styled.div`
     border: solid 1px rgba(155, 155, 155, 0.64);
 
 `
-export const BrowsButton = styled.button`
-    width: 163px;
-    height: 40px;
-    margin-left: 5px;
+export const BrowsButton = styled.label`
     border-radius: 20px;
-    color: #ffffff;
     background-color: #3a7bd5;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
     border-color: #3a7bd5;
     border-style: solid;
     color: #ffffff;
+    padding: 4% 20%;
+    cursor: pointer;
+    margin-right: 10px;
 `
 export const AddBlockButton = styled.div`
     width: 163px;
@@ -100,14 +99,12 @@ export const Submit = styled.button`
     right: -700px;
     height: 40px;
     width: 164px;
-    height: 40px;
     border-radius: 20px;
     color: #ffffff;
     background-color: #f7555f;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
     border-style: solid;
-    color: #ffffff;
 `
 
 export const inputStyle = styled.input`

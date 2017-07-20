@@ -18,7 +18,6 @@ import {
   Icon,
 } from 'semantic-ui-react'
 
-const myData = [{ angle: 5 }, { angle: 5 }]
 let graphData = []
 const myPlan = [
   { group: 'A', number: 10 },

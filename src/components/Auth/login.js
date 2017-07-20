@@ -14,12 +14,11 @@ import {
   Input,
   Container,
 } from 'semantic-ui-react'
-import userIcon from '../image/icons8-user.png'
 import gift from '../image/gigift.jpg'
 import logo from '../image/logo.png'
 import '../../styles/login-style.scss'
-import passwordIcon from '../image/icons8-password.png'
 import { authenticate } from '../../api/auth'
+import styled from 'react-sc'
 
 class Login extends Component {
   constructor() {
@@ -49,7 +48,7 @@ class Login extends Component {
   render() {
     console.log(this.props.data.error)
     return (
-      <div>
+      <div className="loginStyle">
         <div className="row">
           <div className="large-10 large-offset-4 columns">
             <div className="logostyle">
@@ -73,33 +72,31 @@ class Login extends Component {
                     onSubmit={this.handleSubmit}
                   >
                     <Form.Field>
-                      <Form.Input
-                        style={{
-                          width: '315px',
-                          backgroundImage: `url(${userIcon})`,
-                          backgroundSize: '32px,32px',
-                          backgroundRepeat: 'no-repeat',
-                          paddingLeft: '13%',
-                        }}
-                        placeholder="อีเมลของคุณ"
-                        name="email"
-                        onChange={this.handleChange}
-                      />
+                      <div className="divInput">
+                        <img
+                          className="iconUser"
+                          src="../../../login/icons8-user.png"
+                        />
+                        <Form.Input
+                          placeholder="อีเมลของคุณ"
+                          name="email"
+                          onChange={this.handleChange}
+                        />
+                      </div>
                     </Form.Field>
                     <Form.Field>
-                      <Form.Input
-                        style={{
-                          width: '315px',
-                          backgroundImage: `url(${passwordIcon})`,
-                          backgroundSize: '32px,32px',
-                          backgroundRepeat: 'no-repeat',
-                          paddingLeft: '13%',
-                        }}
-                        placeholder="พาสเวิร์ด"
-                        name="password"
-                        type="password"
-                        onChange={this.handleChange}
-                      />
+                      <div className="divInput">
+                        <img
+                          className="iconPassword"
+                          src="../../../login/icons8-password.png"
+                        />
+                        <Form.Input
+                          placeholder="พาสเวิร์ด"
+                          name="password"
+                          type="password"
+                          onChange={this.handleChange}
+                        />
+                      </div>
                     </Form.Field>
                     {this.props.data.error
                       ? <p style={{ color: 'red' }}>

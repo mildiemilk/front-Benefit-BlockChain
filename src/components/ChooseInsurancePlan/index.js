@@ -198,11 +198,7 @@ class ChooseInsurancePlan extends Component {
             borderRadius: '0px',
             borderColor: '#ffffff',
           }}
-          header={
-            <div>
-              {this.RenderOurplan(this.state.OurPlan)}
-            </div>
-          }
+          header={<div> {this.RenderOurplan(this.state.OurPlan)} </div>}
           content={''}
         />
       ),
@@ -212,12 +208,11 @@ class ChooseInsurancePlan extends Component {
       title: <TextInbox>ข้อเสนอพิเศษจากบริษัทประกัน</TextInbox>,
       content: (
         <Message
-          style={{ backgroundColor: '#ffffff', borderRadius: '0px' }}
-          header={
-            <div>
-              {this.RenderSpacialplan(this.state.SpacialPlan)}
-            </div>
-          }
+          style={{
+            backgroundColor: '#ffffff',
+            borderRadius: '0px',
+          }}
+          header={<div> {this.RenderSpacialplan(this.state.SpacialPlan)} </div>}
           content={''}
         />
       ),
@@ -232,22 +227,28 @@ class ChooseInsurancePlan extends Component {
         <div className="row">
           <Detail className="large-12 columns">
             <Head>เลือกแผนประกันที่ต้องการ</Head>
-            <Inner>
-              <InnerHead>
-                <Inboxtext>แผนประกันทั้งหมด</Inboxtext>
-              </InnerHead>
-              <AccordionStyle panels={panels} />
-              <AccordionStyle2 panels={panels2} />
-            </Inner>
-            <InnerRight>
-              <InnerHead2>
-                <Inboxtext>แผนประกันที่เลือก</Inboxtext>
-              </InnerHead2>
-              {this.RenderInnerRight()}
-            </InnerRight>
-            <Link to="/addbenefit">
-              <Submit onClick={this.handleNext}>ต่อไป</Submit>
-            </Link>
+            <div className="row">
+              <div className="large-6 columns">
+                <Inner>
+                  <InnerHead>
+                    <Inboxtext>แผนประกันทั้งหมด</Inboxtext>
+                  </InnerHead>
+                  <AccordionStyle panels={panels} />
+                  <AccordionStyle2 panels={panels2} />
+                </Inner>
+              </div>
+              <div className="large-6 columns">
+                <InnerRight>
+                  <InnerHead2>
+                    <Inboxtext>แผนประกันที่เลือก</Inboxtext>
+                  </InnerHead2>
+                  {this.RenderInnerRight()}
+                </InnerRight>
+                <Link to="/addbenefit">
+                  <Submit>ต่อไป</Submit>
+                </Link>
+              </div>
+            </div>
           </Detail>
 
         </div>

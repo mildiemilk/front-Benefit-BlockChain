@@ -13,7 +13,7 @@ export const Box = styled.input`
 	border: solid 1px #dddddd;
   padding: 2%;
   width: 100%;
-	height: 40px;
+	height: 38px;
   &::-webkit-input-placeholder {
         color: #323028;
         opacity: 0.3;
@@ -39,7 +39,7 @@ export const Detail2 = styled.p`
   padding-top: 3.5%;
   text-align: center;
   font-size: 120%;
-  font-weight:bold;
+  font-weight: bold;
 `
 export const Detail3 = styled.p`
   margin: 4px 0px;

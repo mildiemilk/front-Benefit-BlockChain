@@ -1,80 +1,117 @@
-.logostyle {
-    margin-top: 8%;
-    max-width: 40%;
-    margin-bottom: 3%;
-}
-.inbox-login{
-    padding-right: 1%;
-    padding-right: 1%;
-    border-radius: 5px;
-    background-color: #ffffff;
-    box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-    margin-bottom: 15%;
-}
-
-.gift{
-    margin-top: 45%;
-    margin-left: 15%;
-}
-
-.line0{
-    margin: 5% 0 5%  0;
-    border-color:blue;
-    width: 315px;
-}
-
-.line2{
-    margin: 5% 0 5%  0;
-    width: 315px;
-}
-
-
-.link{
-    float: right;
-    margin-right:15%;
-}
-
-.loginButton{
-    margin-top: 10%;
-    text-align: center;
-    width: 315px;
-    background-color: #3A7BD5;
-    color: white;
-}
-
-.signupButton{
-    margin-top: 5%;
-    text-align: center;
-    width: 315px;
-    font-size: 11.4px;
-    background-color:#F7555F;
-    color: white;
-}
-
-.question{
-    text-align: center;
-    margin-right: 15%;
-}
-
-.logInButton{
-  width: 88%;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #3a7bd5;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
-  border-color: #3a7bd5;
-  border-style: solid;
-  color: #ffffff;
+.loginStyle{
+  .logostyle {
+      margin-top: 8%;
+      max-width: 40%;
+      margin-bottom: 3%;
+  }
+  .inbox-login{
+      padding-right: 1%;
+      padding-right: 1%;
+      border-radius: 5px;
+      background-color: #ffffff;
+      box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
+      margin-bottom: 15%;
   }
 
-  .newMemberButton{
-    width: 88%;
+  .gift{
+      margin-top: 45%;
+      margin-left: 15%;
+  }
+
+  .line0{
+      margin: 5% 0 5%  0;
+      border-color: #3a7bd5;
+      width: 315px;
+  }
+
+  .line2{
+      margin: 5% 0 5%  0;
+      width: 315px;
+      color: rgba(155, 155, 155, 0.4);
+      opacity: 0.5;
+  }
+
+
+  .link{
+      float: right;
+      margin-right:15%;
+  }
+
+  .loginButton{
+      margin-top: 10%;
+      text-align: center;
+      width: 315px;
+      background-color: #3A7BD5;
+      color: white;
+  }
+
+  .signupButton{
+      margin-top: 5%;
+      text-align: center;
+      width: 315px;
+      font-size: 11.4px;
+      background-color:#F7555F;
+      color: white;
+  }
+
+  .question{
+      text-align: center;
+      margin-right: 15%;
+      color: #4a4a4a;
+  }
+
+  .logInButton{
+    width: 87%;
     height: 40px;
-    margin-bottom: 13%;
     border-radius: 20px;
-    background-color: #f7555f;
+    background-color: #3a7bd5;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
-    border-color: #f7555f;
+    border-color: #3a7bd5;
     border-style: solid;
     color: #ffffff;
     }
+
+    .newMemberButton{
+      width: 87%;
+      height: 40px;
+      margin-bottom: 13%;
+      border-radius: 20px;
+      background-color: #f7555f;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+      border-color: #f7555f;
+      border-style: solid;
+      color: #ffffff;
+      }
+
+      .iconUser{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: 1;
+        top: 4px;
+        left: 4px;
+        opacity: 0.5;
+      }
+
+      .iconPassword{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: 1;
+        top: 4px;
+        left: 4px;
+        opacity: 0.5;
+      }
+
+      .divInput{
+        position: relative;
+      }
+
+      .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
+        padding-left: 11%;
+      }
+
+      .ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input {
+        width: 86%;
+      }
+  }

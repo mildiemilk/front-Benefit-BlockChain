@@ -43,6 +43,7 @@ export const Detail2 = styled.p`
 `
 export const Detail3 = styled.p`
   margin: 4px 0px;
+  font-weight: bold;
 `
 
 export const Oval = styled.label`

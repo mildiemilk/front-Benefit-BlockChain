@@ -58,6 +58,8 @@ class SignUp extends Component {
                             placeholder="อีเมลของคุณ"
                             name="email"
                             onChange={this.handleChange}
+                            type="email"
+                            required
                           />
                         </div>
                       </Form.Field>
@@ -72,6 +74,7 @@ class SignUp extends Component {
                             name="password"
                             type="password"
                             onChange={this.handleChange}
+                            required
                           />
                         </div>
                       </Form.Field>
@@ -86,6 +89,7 @@ class SignUp extends Component {
                             name="confirmPassword"
                             type="password"
                             onChange={this.handleChange}
+                            required
                           />
                         </div>
                       </Form.Field>

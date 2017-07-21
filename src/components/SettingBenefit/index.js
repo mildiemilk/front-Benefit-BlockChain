@@ -24,9 +24,15 @@ export class SettingBenefit extends Component {
       step: 3,
       addPlan: false,
       planName: [
-        { name: 'แผนสิทธิประโยชน์ 1' },
-        { name: 'แผนสิทธิประโยชน์ 2' },
-        { name: 'แผนสิทธิประโยชน์ 3' },
+        {
+          name: 'แผนสิทธิประโยชน์ 1',
+        },
+        {
+          name: 'แผนสิทธิประโยชน์ 2',
+        },
+        {
+          name: 'แผนสิทธิประโยชน์ 3',
+        },
       ],
     }
   }
@@ -45,7 +51,9 @@ export class SettingBenefit extends Component {
           <Rec>
             <HeaderSpace className="row">
               <div className="large-4 large-offset-1 columns">
-                <Header> จัดแผนสิทธิประโยชน์ที่ต้องการ </Header>
+                <Header>
+                  จัดแผนสิทธิประโยชน์ที่ต้องการ
+                </Header>
               </div>
             </HeaderSpace>
 
@@ -83,11 +91,17 @@ export class SettingBenefit extends Component {
 
           <div className="row">
             <div className="large-3 large-offset-1 columns">
-              <Link to="/addbenefit"><BackButton> กลับ </BackButton></Link>
+              <Link to="/addbenefit">
+                <BackButton>
+                  กลับ
+                </BackButton>
+              </Link>
             </div>
 
             <div className="large-2 large-offset-5 columns">
-              <NextButton> ต่อไป </NextButton>
+              <NextButton>
+                ต่อไป
+              </NextButton>
             </div>
 
             <div className="large-1 columns" />
@@ -103,8 +117,6 @@ const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
 })
 
-const mapStateToProps = state => ({
-  planList: state.plan.planList,
-})
+const mapStateToProps = state => ({ planList: state.plan })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingBenefit)

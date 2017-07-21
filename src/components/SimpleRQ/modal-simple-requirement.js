@@ -21,6 +21,7 @@ const ModalContents = styled(Modal.Content)`
 const Modals = styled(Modal)`
   &&&{
     background: transparent;
+    box-shadow: none;
     margin-top: -120px;
   }
 `

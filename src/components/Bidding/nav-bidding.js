@@ -22,6 +22,7 @@ class Bidding extends Component {
   }
 
   render() {
+    console.log(this.props.num)
     const currentDate = new Date()
     const year = currentDate.getMonth() === 11 && currentDate.getDate() > 23
       ? currentDate.getFullYear() + 1
@@ -74,7 +75,6 @@ class Bidding extends Component {
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut.timeout,
-  num: state.chooseInsurerReducer.insurers.length,
 })
 
 export default connect(mapStateToProps, null)(Bidding)

@@ -71,7 +71,7 @@ export const Toggled = styled.div`
     padding: 6% 0%;
 `
 export const HeadList = styled.div`
-    padding: 4% 10%;
+    padding: 10px 10px;
     font-size: 14px;
     font-weight: 500;
 `

@@ -1,7 +1,15 @@
-const defaultInsurer = []
+const defaultInsurer = {
+  defaultInsurer: [],
+}
 const defaultAllInsurer = []
 const defaultTimeOut = {
   timeout: null,
+}
+
+const requestStatus = {
+  success: 'SUCCESS',
+  request: 'REQUEST',
+  failed: 'FAILED',
 }
 
 const CHOOSEINSURER_REQUEST_SUCCESS = 'CHOOSEINSURER_REQUEST_SUCCESS'
@@ -34,16 +42,16 @@ export function getAllInsurerFailure(data) {
   return { type: GETALLINSURER_REQUEST_FAILUER, data }
 }
 export function getSelectInsurerSuccess(data) {
-  return { type: GETSELECTINSURER_REQUEST_SUCCESS, data}
+  return { type: GETSELECTINSURER_REQUEST_SUCCESS, data }
 }
-export function getSelectInsurerFailure(data){
-  return { type: GETSELECTINSURER_REQUEST_FAILURE, data}
+export function getSelectInsurerFailure(data) {
+  return { type: GETSELECTINSURER_REQUEST_FAILURE, data }
 }
 
 export function chooseInsurerReducer(state = defaultInsurer, action) {
   switch (action.type) {
     case CHOOSEINSURER_REQUEST_SUCCESS:
-      return action.data
+      return Object.assign({}, state, { defaultInsurer: action.data })
     case CHOOSEINSURER_REQUEST_FAILURE:
       return Object.assign({}, state, {})
     default:
@@ -51,16 +59,31 @@ export function chooseInsurerReducer(state = defaultInsurer, action) {
   }
 }
 
-export function getSelectInsurer(state = defaultInsurer, action){
+export function getSelectInsurer(state = defaultInsurer, action) {
   switch (action.type) {
     case GETSELECTINSURER_REQUEST_SUCCESS:
-      return action.data
+      console.log('retrieved data ', action.data)
+      return Object.assign({}, state, {
+        defaultInsurer: action.data,
+        requestDone: true,
+      })
     case GETSELECTINSURER_REQUEST_FAILURE:
       return Object.assign({}, state, {})
     default:
       return state
   }
 }
+export function chooseInsurerReducerStatus(state, action) {
+  switch (action.type) {
+    case CHOOSEINSURER_REQUEST_SUCCESS:
+      return requestStatus.success
+    case CHOOSEINSURER_REQUEST_FAILURE:
+      return requestStatus.failed
+    default:
+      return requestStatus.request
+  }
+}
+
 export function setTimeOut(state = defaultTimeOut, action) {
   switch (action.type) {
     case SETTIMEOUT_REQUEST_SUCCESS:

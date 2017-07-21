@@ -18,7 +18,7 @@ import { Image, Container, Divider, Segment, Icon } from 'semantic-ui-react'
 
 // ----------------------------------------------------------------
 
-class SendFixedPlan extends Component {
+class SendFlexPlan extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -97,4 +97,4 @@ class SendFixedPlan extends Component {
   }
 }
 
-export default SendFixedPlan
+export default SendFlexPlan

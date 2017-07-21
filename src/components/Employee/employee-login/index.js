@@ -9,8 +9,10 @@ import '../../../styles/employee-style/login-verify.scss'
 import gift from '../../image/gigift-mobile.png'
 import logo from '../../image/logo-benefitable-mobile.png'
 import footerLogo from '../../image/logo-footer.png'
+import emailIcon from '../../image/icons-8-message.png'
+import keyIcon from '../../image/icons-8-key-copy.png'
 import Header from '../header'
-import Footer from '../footer'
+import Footer from '../footer-absolute'
 import {
   Button,
   Checkbox,

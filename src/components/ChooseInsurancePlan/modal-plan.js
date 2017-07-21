@@ -35,6 +35,7 @@ const ModalContents = styled(Modal.Content)`
 const Modals = styled(Modal)`
   &&&{
     background: transparent;
+    box-shadow: none;
     margin-top: -120px;
   }
 `
@@ -90,15 +91,9 @@ class ModalModalExample extends Component {
     }
   }
 
-  handleClose = e =>
-    this.setState({
-      modalOpen: false,
-    })
+  handleClose = e => this.setState({ modalOpen: false })
 
-  handleOpen = e =>
-    this.setState({
-      modalOpen: true,
-    })
+  handleOpen = e => this.setState({ modalOpen: true })
 
   render() {
     return (
@@ -111,16 +106,27 @@ class ModalModalExample extends Component {
       >
         <ModalContents>
           <div className="row">
-            <ModalHeader> Management Plan 1 <br /> </ModalHeader>
+            <ModalHeader>
+              Management Plan 1
+              <br />
+            </ModalHeader>
             <LineModal />
             <div className="row">
               <div className="large-4 columns">
-                <ModalTopic> จำนวนพนักงานในแพลน : </ModalTopic>
-                <ModalTopic> ราคาต่อหัว : </ModalTopic>
+                <ModalTopic>
+                  จำนวนพนักงานในแพลน :
+                </ModalTopic>
+                <ModalTopic>
+                  ราคาต่อหัว :
+                </ModalTopic>
               </div>
               <div className="large-8 columns">
-                <ModalContent> 1,200 คน </ModalContent>
-                <ModalContent> 12,000 บาท </ModalContent>
+                <ModalContent>
+                  1,200 คน
+                </ModalContent>
+                <ModalContent>
+                  12,000 บาท
+                </ModalContent>
               </div>
             </div>
 
@@ -144,12 +150,19 @@ class ModalModalExample extends Component {
                 </table>
               </div>
 
-              <div style={{ marginTop: '1%' }} className="PlanLife">
+              <div
+                style={{
+                  marginTop: '1%',
+                }}
+                className="PlanLife"
+              >
                 <table>
                   <tr>
                     <th>
                       <Img src="../../../compare/4.png" />
-                      <LifeTopic> ประกันชีวิต (Life) </LifeTopic>
+                      <LifeTopic>
+                        ประกันชีวิต (Life)
+                      </LifeTopic>
                       <Icons
                         onClick={this.handleToggleLife}
                         disabled
@@ -166,20 +179,26 @@ class ModalModalExample extends Component {
                   ? <HiddenBox>
                       <HiddenContent>
                         ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
-                        <br />
-                        {' '}
+                        <br /> {' '}
                         การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
                       </HiddenContent>
                     </HiddenBox>
                   : null}
               </div>
 
-              <div style={{ marginTop: '1%' }} className="PlanLife">
+              <div
+                style={{
+                  marginTop: '1%',
+                }}
+                className="PlanLife"
+              >
                 <table>
                   <tr>
                     <th>
                       <Img src="../../../compare/1.png" />
-                      <LifeTopic> ค่ารักษาทันตกรรม (Dental) </LifeTopic>
+                      <LifeTopic>
+                        ค่ารักษาทันตกรรม (Dental)
+                      </LifeTopic>
                       <Icons
                         onClick={this.handleToggleDental}
                         disabled
@@ -196,21 +215,26 @@ class ModalModalExample extends Component {
                   ? <HiddenBox>
                       <HiddenContent>
                         ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
-                        <br />
-                        {' '}
+                        <br /> {' '}
                         การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
                       </HiddenContent>
                     </HiddenBox>
                   : null}
               </div>
 
-              <div style={{ marginTop: '1%' }} className="PlanLife">
+              <div
+                style={{
+                  marginTop: '1%',
+                }}
+                className="PlanLife"
+              >
                 <table>
                   <tr>
                     <th>
                       <Img src="../../../compare/3.png" />
                       <OPDTopic>
-                        {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยนอก <br />
+                        {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยนอก
+                        <br />
                         (Out Patient Department : OPD){' '}
                       </OPDTopic>
                       <Icons
@@ -229,21 +253,26 @@ class ModalModalExample extends Component {
                   ? <HiddenBox>
                       <HiddenContent>
                         ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
-                        <br />
-                        {' '}
+                        <br /> {' '}
                         การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
                       </HiddenContent>
                     </HiddenBox>
                   : null}
               </div>
 
-              <div style={{ marginTop: '1%' }} className="PlanLife">
+              <div
+                style={{
+                  marginTop: '1%',
+                }}
+                className="PlanLife"
+              >
                 <table>
                   <tr>
                     <th>
                       <Img src="../../../compare/2.png" />
                       <OPDTopic>
-                        ค่ารักษาพยาบาลกรณีผู้ป่วยใน <br />
+                        ค่ารักษาพยาบาลกรณีผู้ป่วยใน
+                        <br />
                         (In-Patient Department : IPD){' '}
                       </OPDTopic>
                       <Icons
@@ -265,7 +294,9 @@ class ModalModalExample extends Component {
 
             <div className="row">
               <div className="large-4 large-offset-8 columns">
-                <BackButton> กลับ </BackButton>
+                <BackButton onClick={this.handleClose}>
+                  กลับ
+                </BackButton>
               </div>
             </div>
           </div>

@@ -21,6 +21,7 @@ const ModalContents = styled(Modal.Content)`
 const Modals = styled(Modal)`
   &&&{
     background: transparent;
+    box-shadow: none;
     margin-top: -120px;
   }
 `
@@ -28,101 +29,109 @@ const Modals = styled(Modal)`
 class ModalModalExample extends Component {
   constructor() {
     super()
-    this.state = { modalOpen: false }
+    this.state = {
+      modalOpen: false,
+    }
   }
 
-  handleClose = e =>
-    this.setState({
-      modalOpen: false,
-    })
+  handleClose = e => this.setState({ modalOpen: false })
 
-  handleOpen = e =>
-    this.setState({
-      modalOpen: true,
-    })
+  handleOpen = e => this.setState({ modalOpen: true })
 
   render() {
     return (
       <Modals
         trigger={
           <PostMainButton id="postButton" onClick={this.handleOpen}>
-            {' '}โพสต์
+            {' '}{' '}
+            โพสต์{' '}
           </PostMainButton>
         }
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >
         <ModalContents>
-          <ModalHeader> ยืนยันการโพสต์ <br /> </ModalHeader>
+          <ModalHeader>
+            ยืนยันการโพสต์
+            <br />
+          </ModalHeader>
           <ModalContent>
             <div>
-              จำนวนพนักงาน: {this.props.data.numberOfEmployee} <br /><br />
-              รูปแบบประกันที่ต้องการ:
-              {' '}
+              จำนวนพนักงาน: {this.props.data.numberOfEmployee}
+              <br /><br />
+              รูปแบบประกันที่ต้องการ: {' '}
               {this.props.data.typeOfInsurance}
               {' '}
               <br />
               <br />
-              อัพโหลดแผนประกันที่ใช้ในปัจจุบัน: <br /><br />
-              วันหมดอายุของกรมธรรม์:
-              {' '}
+              อัพโหลดแผนประกันที่ใช้ในปัจจุบัน:
+              <br /><br />
+              วันหมดอายุของกรมธรรม์: {' '}
               {this.props.data.day}
-              /
-              {this.props.data.month}
-              /
-              {this.props.data.year}
+              / {this.props.data.month}
+              / {this.props.data.year}
               {' '}
               <br />
               <br />
             </div>
             แผนประกันที่ต้องการ:
             <Checkbox
-              style={{ paddingLeft: '2%' }}
+              style={{
+                paddingLeft: '2%',
+              }}
               label="ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (OPD)"
               checked={this.props.data.OPD}
-            />
-            {' '}
-            <br />
-            {' '}
+            /> {' '}
+            <br /> {' '}
             <br />
             <Checkbox
-              style={{ paddingLeft: '30%' }}
+              style={{
+                paddingLeft: '30%',
+              }}
               label="ค่ารักษาพยาบาลกรณีผู้ป่วยใน (IPD)"
               checked={this.props.data.IPD}
-            />
-            {' '}
-            <br />
-            {' '}
+            /> {' '}
+            <br /> {' '}
             <br />
             <Checkbox
-              style={{ paddingLeft: '30%' }}
+              style={{
+                paddingLeft: '30%',
+              }}
               label="ค่ารักษาทันตกรรม (Dental)"
               checked={this.props.data.dental}
-            />
-            {' '}
-            <br />
-            {' '}
+            /> {' '}
+            <br /> {' '}
             <br />
             <Checkbox
-              style={{ paddingLeft: '30%' }}
+              style={{
+                paddingLeft: '30%',
+              }}
               label="ประกันชีวิต (Life)"
               checked={this.props.data.life}
-            />
-            {' '}
-            <br />
-            {' '}
+            /> {' '}
+            <br /> {' '}
             <br />
             <Checkbox
-              style={{ paddingLeft: '30%' }}
+              style={{
+                paddingLeft: '30%',
+              }}
               label="อื่นๆ"
               checked={this.props.data.other}
             />
             : {this.props.data.otherDes}
             <br />{' '}
           </ModalContent>
-          <div style={{ marginLeft: '10%' }}>
-            <EditButton onClick={this.handleClose}> แก้ไข </EditButton>
-            <PostButton onClick={this.props.handlePost}> โพสต์ </PostButton>
+          <div
+            style={{
+              marginLeft: '10%',
+            }}
+          >
+            <EditButton onClick={this.handleClose}>
+              แก้ไข
+            </EditButton>
+            <PostButton onClick={this.props.handlePost}>
+              โพสต์
+            </PostButton>
           </div>
         </ModalContents>
       </Modals>

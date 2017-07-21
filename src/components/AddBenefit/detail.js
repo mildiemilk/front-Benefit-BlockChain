@@ -48,6 +48,7 @@ class Detail extends Component {
     if (state) return 'BoxLine'
   }
   render() {
+    
     return (
       <div>
         <DetailDiv>

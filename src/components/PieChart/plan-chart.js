@@ -21,11 +21,11 @@ import {
 const myData = [{ angle: 5 }, { angle: 5 }]
 let graphData = []
 const myPlan = [
-  { group: 'X', number: 6 },
-  { group: 'Y', number: 17 },
-  { group: 'Z', number: 25 },
-  { group: 'Q', number: 30 },
-  { group: 'R', number: 40 },
+  { group: '1', number: 6 },
+  { group: '2', number: 17 },
+  { group: '3', number: 25 },
+  { group: '4', number: 30 },
+  { group: '5', number: 40 },
 ]
 const graphColor = ['#cd3b54', '#528240', '#12939A', '#19CDD7', '#223F9A']
 
@@ -48,7 +48,7 @@ class Planchart extends Component {
             style={{ background: graphColor[index], height: '3.5px' }}
           />
           <span className="rv-discrete-color-legend-item__title">
-            พนักงานกลุ่ม {element.group} {element.number} คน
+            แผน {element.group} {element.number} คน
           </span>
         </div>
       )
@@ -91,7 +91,7 @@ class Planchart extends Component {
               <div className="chart-data-box">
                 <div
                   className="rv-discrete-color-legend vertical "
-                  style={{ width: '300px', height: '200px' }}
+                  style={{ width: '300px' }}
                 >
                   {this.renderList(myPlan)}
                 </div>

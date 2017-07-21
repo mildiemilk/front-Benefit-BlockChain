@@ -112,6 +112,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.authReducer.token != null,
+  role: state.authReducer.role,
 })
 
 const Container = connect(mapStateToProps)(App)

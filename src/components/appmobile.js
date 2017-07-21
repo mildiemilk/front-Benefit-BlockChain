@@ -6,6 +6,7 @@ import { BrowserRouter, Redirect } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 import employeeLogin from './Employee/employee-login'
 import employeeVerify from '././Employee/employee-verify'
+import EmployeeFixPlan from './Employee/employee-fixplan'
 import '../styles/employee-style/main.scss'
 
 const AppMobile = () => (
@@ -14,6 +15,7 @@ const AppMobile = () => (
       ? <Switch>
           <Route path="/employeelogin" component={employeeLogin} />
           <Route path="/employeeverify" component={employeeVerify} />
+          <Route path="/employeefixplan" component={EmployeeFixPlan} />
         </Switch>
       : <Switch />}
   </div>

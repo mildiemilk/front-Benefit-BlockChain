@@ -98,6 +98,10 @@ class Uploadfile extends Component {
     console.log('AmountUploadBlock:', this.state.AmountUploadBlock)
   }
 
+  handleNextClick = () => {
+    window.location.href = '/sendrequest'
+  }
+
   RenderInsideBlock = id => {
     if (this.state.ClaimData[id]) {
       return (
@@ -278,7 +282,7 @@ class Uploadfile extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Submit>ต่อไป</Submit>
+            <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
           </Detail>
         </div>
       </div>

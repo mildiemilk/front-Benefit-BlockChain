@@ -72,19 +72,27 @@ export class SettingPlan extends Component {
     return (
       <div>
         <Blogs>
-          <PlanName> ชื่อแผนสิทธิประโยชน์ </PlanName>
+          <PlanName>
+            ชื่อแผนสิทธิประโยชน์
+          </PlanName>
           <NameInput placeholder="ชื่อแผนสิทธิประโยชน์" />
           <Line />
-          <PlanContent> กรุณาระบุสิทธิประโยชน์ที่ต้องการ </PlanContent>
+          <PlanContent>
+            กรุณาระบุสิทธิประโยชน์ที่ต้องการ
+          </PlanContent>
           <PlanBox>
             <PlanImg src="../../../setbenefit/3.png" />
-            <PlanTopic> แผนประกันภัย (Insurance) </PlanTopic>
+            <PlanTopic>
+              แผนประกันภัย (Insurance)
+            </PlanTopic>
             <Selects placeholder="เลือกแพลนที่ต้องการ" />
           </PlanBox>
 
           <PlanBox>
             <PlanImg src="../../../setbenefit/5.png" />
-            <PlanTopic> ค่าใช้จ่ายสุขภาพ (Health) </PlanTopic>
+            <PlanTopic>
+              ค่าใช้จ่ายสุขภาพ (Health)
+            </PlanTopic>
             <div className="toggle">
               <ToggleBox>
                 <Checkbox toggle onClick={this.handleToggleHealth} />
@@ -97,7 +105,9 @@ export class SettingPlan extends Component {
 
           <PlanBox>
             <PlanImg src="../../../setbenefit/4.png" />
-            <PlanTopic> ค่าใช้จ่ายทั่วไป (General Expense) </PlanTopic>
+            <PlanTopic>
+              ค่าใช้จ่ายทั่วไป (General Expense)
+            </PlanTopic>
             <div className="toggle">
               <ToggleBox>
                 <Checkbox toggle onClick={this.handleExpenseToggle} />
@@ -108,7 +118,9 @@ export class SettingPlan extends Component {
               : <Inputs action="บาท/ปี" placeholder="จำนวนเงิน" readOnly />}
           </PlanBox>
 
-          <SaveButton> บันทึก </SaveButton>
+          <SaveButton>
+            บันทึก
+          </SaveButton>
 
         </Blogs>
       </div>
@@ -116,8 +128,6 @@ export class SettingPlan extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  planList: state.plan,
-})
+const mapStateToProps = state => ({ planList: state.plan })
 
 export default connect(mapStateToProps)(SettingPlan)

@@ -6,6 +6,7 @@ import Box from './box'
 import { connect } from 'react-redux'
 import { bidding } from '../../api/bidding'
 import Details from './details'
+import { getSelectInsurer } from '../../api/choose-insurer'
 
 class Bidding extends Component {
   constructor(props) {
@@ -18,11 +19,12 @@ class Bidding extends Component {
     setInterval(function() {
       props.bidding()
     }, 2000)
+
+    this.props.getSelectInsurer()
   }
 
   handleClick = (Detail, index) => {
     const { isDetail } = this.state
-    console.log(Detail)
     if (!isDetail)
       this.setState({
         isDetail: true,
@@ -35,7 +37,7 @@ class Bidding extends Component {
   render() {
     return (
       <div className="Bidding">
-        <NavBidding />
+        <NavBidding num={this.props.num} />
         <div className="BidContent">
           {this.state.isDetail
             ? <Details
@@ -52,10 +54,12 @@ class Bidding extends Component {
 
 const mapStateToProps = state => ({
   data: state.biddingReducer,
+  num: state.getSelectInsurer.defaultInsurer.length,
 })
 
 const mapDispatchToProps = dispatch => ({
   bidding: () => dispatch(bidding()),
+  getSelectInsurer: () => dispatch(getSelectInsurer()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bidding)

@@ -8,7 +8,7 @@ export const Head = styled.div`
 
 export const Box = styled.div`
     width: 100%;
-    height: 229px;
+    height: 250px;
     border-radius: 5px;
 	background-color: #ffffff;
 	box-shadow: 0 0 4px 0 rgba(124, 123, 123, 0.5);
@@ -20,7 +20,7 @@ export const List = styled.div`
 	color: #4a4a4a;
     padding-left: 5%;   
     padding-top: 3%;
-` 
+`
 
 export const DetailDiv = styled.div`
 	height: 100%;
@@ -93,6 +93,7 @@ export const BoxList = styled.div`
 export const Lists = styled.div`
     height: 50px;
 	background-color: #efefef;
+    cursor: pointer;
     
 `
 export const ListL = styled.div`
@@ -102,7 +103,13 @@ export const ListL = styled.div`
     padding: 1% 2%;
     padding-top: 2%;
 `
+export const ListTime = styled.div`
+    padding-top: 4.5%;
+    font-size: 18px;
+	font-weight: 500;
+    padding: 13px 0px 2px 15px;
 
+`
 export const ListR = styled.div`
     float: right;
     font-size: 20px;
@@ -119,4 +126,21 @@ export const DetailIn = styled.table`
 `
 export const BoxIn = styled.div`
     
+`
+export const Number = styled.div`
+    display: inline-block;
+    position: absolute;
+    bottom: 18px;
+`
+export const ProgressDiv = styled.div`
+    margin: 0px;
+`
+
+export const Icons = styled.div`
+    width: 15px;
+	height: 9px;
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+	background-color: #4a4a4a;
+
 `

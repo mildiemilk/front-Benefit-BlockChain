@@ -58,32 +58,21 @@ class MenuPlan extends Component {
 
   handleChange = (e, list) => {
     if (e.target.checked) {
-      this.setState(
-        {
-          comparePlan: this.state.comparePlan.concat(list[e.target.id]),
-        },
-        () => {
-          console.log(this.state.comparePlan)
-        },
-      )
+      this.setState({
+        comparePlan: this.state.comparePlan.concat(list[e.target.id]),
+      })
     } else {
       let index = this.state.comparePlan.indexOf(list[e.target.id])
       const x = this.state.comparePlan
       x.splice(index, 1)
-      this.setState(
-        {
-          comparePlan: x,
-        },
-        () => {
-          console.log(this.state.comparePlan)
-        },
-      )
+      this.setState({ comparePlan: x })
     }
   }
 
   handleSelectPlan = e => {
     e.preventDefault()
     const { comparePlan } = this.state
+    console.log(comparePlan)
     this.props.menuPlans(comparePlan)
   }
 

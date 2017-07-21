@@ -38,11 +38,7 @@ class AllsetPlan extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
-      showForm: 1,
       value: '',
-      box: 'fillBox1',
-      results: '',
       setPlan: 'IPD',
       verifyState: true,
       openModal: false,
@@ -67,14 +63,6 @@ class AllsetPlan extends Component {
   }
 
   static propTypes = {}
-
-  handleToggle = () => {
-    if (this.state.showCoPlay) {
-      this.setState({ showCoPlay: false })
-    } else {
-      this.setState({ showCoPlay: true })
-    }
-  }
 
   handleOpenModal = () => {
     this.setState({ openModal: true })
@@ -225,6 +213,27 @@ class AllsetPlan extends Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        setPlan: 'IPD',
+        ipdRecord: false,
+        opdRecord: false,
+        dentalRecord: false,
+        lifeRecord: false,
+        checkInput: false,
+        textOpd: 'text-menu',
+        textOpdActive: 'text-menu-active',
+        textIpd: 'text-menu',
+        textIpdActive: 'text-menu-active',
+        textDental: 'text-menu',
+        textDentalActive: 'text-menu-active',
+        textLife: 'text-menu',
+        textLifeActive: 'text-menu-active',
+      })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -330,6 +339,33 @@ class AllsetPlan extends Component {
                 </div>}
           </div>
           <div className="paragraph">
+            {this.state.setPlan === 'OPD'
+              ? <OPD
+                  handleVerifyState={this.handleVerifyState}
+                  handleCloseModal={this.handleCloseModal}
+                  handleRecordVerifyState={this.handleRecordVerifyState}
+                  handleNextPlan={this.handleNextPlan}
+                  handleNewReset={this.handleNewReset}
+                  openModal={this.state.openModal}
+                  handleReset={this.handleReset}
+                  handleResetOPD={this.props.handleResetOPD}
+                  handleToggle={this.props.handleToggleOpdCoPlay}
+                  reset={this.state.reset}
+                  setPlan={this.state.setPlan}
+                  activePlan={this.props.activePlan}
+                  handleChange={this.props.handleChange}
+                  handleChangeToNull={this.props.handleChangeToNull}
+                  opdCoPlay={this.props.opdCoPlay}
+                  opdPerYear={this.props.opdPerYear}
+                  opdPerTime={this.props.opdPerTime}
+                  opdTimeNotExceedPerYear={this.props.opdTimeNotExceedPerYear}
+                  opdCoPlayQuota={this.props.opdCoPlayQuota}
+                  opdCoPlayDeductable={this.props.opdCoPlayDeductable}
+                  opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
+                  opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
+                  opdCoPlayMixYear={this.props.opdCoPlayMixYear}
+                />
+              : null}
             {this.state.setPlan === 'IPD'
               ? <IPD
                   handleVerifyState={this.handleVerifyState}
@@ -389,33 +425,6 @@ class AllsetPlan extends Component {
                   ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
                   ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
                   ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
-                />
-              : null}
-            {this.state.setPlan === 'OPD'
-              ? <OPD
-                  handleVerifyState={this.handleVerifyState}
-                  handleCloseModal={this.handleCloseModal}
-                  handleRecordVerifyState={this.handleRecordVerifyState}
-                  handleNextPlan={this.handleNextPlan}
-                  handleNewReset={this.handleNewReset}
-                  openModal={this.state.openModal}
-                  handleReset={this.handleReset}
-                  handleResetOPD={this.props.handleResetOPD}
-                  handleToggle={this.props.handleToggleOpdCoPlay}
-                  reset={this.state.reset}
-                  setPlan={this.state.setPlan}
-                  activePlan={this.props.activePlan}
-                  handleChange={this.props.handleChange}
-                  handleChangeToNull={this.props.handleChangeToNull}
-                  opdCoPlay={this.props.opdCoPlay}
-                  opdPerYear={this.props.opdPerYear}
-                  opdPerTime={this.props.opdPerTime}
-                  opdTimeNotExceedPerYear={this.props.opdTimeNotExceedPerYear}
-                  opdCoPlayQuota={this.props.opdCoPlayQuota}
-                  opdCoPlayDeductable={this.props.opdCoPlayDeductable}
-                  opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
-                  opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
-                  opdCoPlayMixYear={this.props.opdCoPlayMixYear}
                 />
               : null}
             {this.state.setPlan === 'Dental'

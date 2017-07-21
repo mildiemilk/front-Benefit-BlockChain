@@ -30,6 +30,7 @@ const Modals = styled(Modal)`
     position: relative;
     height: 100%;
     z-index: 2;
+    box-shadow: none;
   }
 `
 

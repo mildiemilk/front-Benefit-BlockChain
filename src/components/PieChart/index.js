@@ -19,17 +19,6 @@ import {
   Icon,
 } from 'semantic-ui-react'
 
-const myData = [{ angle: 5 }, { angle: 5 }]
-let graphData = []
-const myPlan = [
-  { group: 'A', number: 10 },
-  { group: 'B', number: 20 },
-  { group: 'C', number: 5 },
-  { group: 'D', number: 20 },
-  { group: 'E', number: 30 },
-]
-const graphColor = ['#FF991F', '#DA70BF', '#125C77', '#00441b', '#c7e9c0']
-
 class Piechart extends Component {
   constructor() {
     super()

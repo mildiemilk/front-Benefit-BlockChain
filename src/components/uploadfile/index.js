@@ -134,13 +134,16 @@ class Uploadfile extends Component {
             </FileuploadBox>
           </td>
           <td>
-            <input
-              style={{ opacity: '0', position: 'absolute' }}
-              type="file"
-              accept=".xls,.xlsx,.pdf,.docx"
-              onChange={e => this.handleUploadcliamdata(e)}
-            />
-            <BrowsButton>เลือกไฟล์</BrowsButton>
+            <BrowsButton for="uploadfor">
+              <input
+                id="uploadfor"
+                style={{ display: 'none' }}
+                type="file"
+                accept=".xls,.xlsx,.pdf,.docx"
+                onChange={e => this.handleUploadcliamdata(e)}
+              />
+              เลือกไฟล์
+            </BrowsButton>
           </td>
         </tr>,
       )
@@ -223,14 +226,15 @@ class Uploadfile extends Component {
                             )}
                           </FileuploadBox>
                         </td>
-                        <td>
-                          <input
-                            style={{ opacity: '0', position: 'absolute' }}
-                            type="file"
-                            accept=".xls,.xlsx,.pdf,.docx"
-                            onChange={e => this.handleUploadBroker(e)}
-                          />
-                          <BrowsButton>
+                        <td style={{ width: '20%' }}>
+                          <BrowsButton for="uploadbrokerfor">
+                            <input
+                              id="uploadbrokerfor"
+                              style={{ display: 'none' }}
+                              type="file"
+                              accept=".xls,.xlsx,.pdf,.docx"
+                              onChange={e => this.handleUploadBroker(e)}
+                            />
                             เลือกไฟล์
                           </BrowsButton>
                         </td>
@@ -253,10 +257,11 @@ class Uploadfile extends Component {
                             {this.RenderListClaimData(this.state.ClaimData)}
                           </FileuploadBox>
                         </td>
-                        <td>
-                          <BrowsButton>
+                        <td style={{ width: '20%' }}>
+                          <BrowsButton for="uploadfor">
                             <input
-                              style={{ opacity: '0', position: 'absolute' }}
+                              id="uploadfor"
+                              style={{ display: 'none' }}
                               type="file"
                               accept=".xls,.xlsx,.pdf,.docx"
                               onChange={e => this.handleUploadcliamdata(e)}

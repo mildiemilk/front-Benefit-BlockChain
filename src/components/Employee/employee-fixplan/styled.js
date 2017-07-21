@@ -42,19 +42,19 @@ export const HeaderBoxRight = styled.p`
   letter-spacing: 0.2px;
   text-align: right;
 `
-export const DataStyle = styled.p`
+export const DataStyle = styled.div`
   padding-left: 7%;
   padding-top: 5%;
-  font-size: 11px;
+  font-size: 73%;
   text-align: left;
   line-height: 1.55;
   letter-spacing: 0.3px;
 `
 export const ImageInbox = styled(Image)`
   &&&{
-    width: 100%;
     height: 100%;
-    display: block;
+    width: 100%;
+    display:inline-block;
     margin-top: 15%;
   }
 `

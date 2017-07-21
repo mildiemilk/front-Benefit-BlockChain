@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router'
 import { BrowserRouter, Redirect } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
+import '../styles/employee-style/main.scss'
 import employeeLogin from './Employee/employee-login'
 import employeeVerify from '././Employee/employee-verify'
-import '../styles/employee-style/main.scss'
+import InsuranceDetail from '././Employee/InsuranceDetail'
 
 const AppMobile = () => (
   <div>
@@ -14,6 +15,7 @@ const AppMobile = () => (
       ? <Switch>
           <Route path="/employeelogin" component={employeeLogin} />
           <Route path="/employeeverify" component={employeeVerify} />
+          <Route path="/insurancedetail" component={InsuranceDetail} />
         </Switch>
       : <Switch />}
   </div>

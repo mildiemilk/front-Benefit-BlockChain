@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') Offline.install()
 export const Root = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <AppMobile />
     </BrowserRouter>
   </Provider>
 )

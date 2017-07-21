@@ -22,44 +22,62 @@ import {
   Table,
   Icon,
 } from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
+import ModalAddData from './modal-add-data'
 
 class EmployeeLogin extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      email: '',
+      password: '',
+    }
+  }
+
+  handleChange = (e, { name, value }) => {
+    this.setState({
+      [name]: value,
+    })
   }
 
   render() {
     return (
       <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
-          <div className="row">
-            <div className="small-10 small-centered columns">
-              <div className="gift-log-in-mobile">
-                <img src={gift} />
-                <div className="form-login-mobile">
-                  <Form>
-                    <Form.Field>
-                      <Form.Input placeholder="อีเมล" type="email" required />
-                    </Form.Field>
-                    <Form.Field>
-                      <Form.Input
-                        placeholder="รหัสผ่าน"
-                        type="password"
-                        required
-                      />
-                    </Form.Field>
-                    <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
-                    <button className="button-submit-key">ลงชื่อเข้าใช้</button>
-                  </Form>
-                </div>
+        <Header />
+        <div className="row">
+          <div className="small-10 small-centered columns">
+            <div className="gift-log-in-mobile">
+              <img src={gift} />
+              <div className="form-login-mobile">
+                <Form>
+                  <Form.Field>
+                    <Form.Input
+                      onChange={this.handleChange}
+                      placeholder="อีเมล"
+                      name="email"
+                      type="email"
+                      required
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <Form.Input
+                      onChange={this.handleChange}
+                      placeholder="รหัสผ่าน"
+                      name="password"
+                      type="password"
+                      required
+                    />
+                  </Form.Field>
+                  <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
+                  <ModalAddData
+                    email={this.state.email}
+                    password={this.state.password}
+                  />
+                </Form>
               </div>
             </div>
           </div>
-          <Footer />
-        </MediaQuery>
+        </div>
+        <Footer />
       </div>
     )
   }

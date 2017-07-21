@@ -124,7 +124,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dental)

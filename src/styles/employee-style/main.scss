@@ -1,0 +1,54 @@
+@import '../vendor/foundation/_setting.scss';
+
+@font-face {
+    font-family: 'kanit';
+    font-weight: 400;
+    unicode-range: U+0E00-U+0E7F;
+    src: url('../../fonts/Kanit/Kanit-Regular.ttf');
+}
+
+body {
+    font-family: 'Kanit' !important;
+    h2 {
+    font-family: 'Kanit';
+    }
+    background: #ffffff;
+
+    .toggle{
+      .ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
+        background-color: #4db698 !important;
+      }
+    }
+
+    button{
+      outline: none;
+      font-family: Kanit;
+      cursor: pointer;
+    }
+    input{
+      font-family: Kanit;
+    }
+    table{
+      border-collapse: collapse;
+    }
+
+    .ui.button{
+      font-family: Kanit;
+      font-weight: 100;
+    }
+}
+
+.clearfix::before,
+.clearfix::after{
+  display: table;
+  content: "";
+}
+.clearfix::after{
+  clear: both;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

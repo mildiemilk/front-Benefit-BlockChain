@@ -28,39 +28,21 @@ class CoPlay extends Component {
             : this.props.opdCoPlayMixPercentage !== null &&
                 this.props.opdCoPlayMixNotExceed !== null &&
                 this.props.opdCoPlayMixYear !== null
-                ? 'opdCoPlayMixYear'
+                ? 'Quota Share + Deductable'
                 : '',
     }
   }
 
   handleRadio = (e, { value }) => {
+    this.handleResetdata()
     this.setState({ value })
-    if (this.state.value === 'Quota Share') {
-      document.getElementById('opdCoPlayQuota').value = ''
-      this.props.handleChangeToNull('opdCoPlayQuota')
-    } else if (this.state.value === 'Deductable') {
-      document.getElementById('opdCoPlayDeductable').value = ''
-      this.props.handleChangeToNull('opdCoPlayDeductable')
-    } else {
-      document.getElementById('opdCoPlayMixPercentage').value = ''
-      this.props.handleChangeToNull('opdCoPlayMixPercentage')
-      document.getElementById('opdCoPlayMixNotExceed').value = ''
-      this.props.handleChangeToNull('opdCoPlayMixNotExceed')
-      document.getElementById('opdCoPlayMixYear').value = ''
-      this.props.handleChangeToNull('opdCoPlayMixYear')
-    }
   }
 
   handleResetdata = () => {
-    document.getElementById('opdCoPlayQuota').value = ''
     this.props.handleChangeToNull('opdCoPlayQuota')
-    document.getElementById('opdCoPlayDeductable').value = ''
     this.props.handleChangeToNull('opdCoPlayDeductable')
-    document.getElementById('opdCoPlayMixPercentage').value = ''
     this.props.handleChangeToNull('opdCoPlayMixPercentage')
-    document.getElementById('opdCoPlayMixNotExceed').value = ''
     this.props.handleChangeToNull('opdCoPlayMixNotExceed')
-    document.getElementById('opdCoPlayMixYear').value = ''
     this.props.handleChangeToNull('opdCoPlayMixYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
@@ -131,6 +113,7 @@ class CoPlay extends Component {
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayDeductable"
                   id="opdCoPlayDeductable"
+                  value=""
                   onChange={this.props.handleChange}
                   readOnly
                 />}
@@ -188,6 +171,7 @@ class CoPlay extends Component {
                     placeholder="เปอร์เซ็น"
                     name="opdCoPlayMixPercentage"
                     id="opdCoPlayMixPercentage"
+                    value=""
                     onChange={this.props.handleChange}
                     readOnly
                   />
@@ -198,6 +182,7 @@ class CoPlay extends Component {
                     placeholder="จำนวนเงิน"
                     name="opdCoPlayMixNotExceed"
                     id="opdCoPlayMixNotExceed"
+                    value=""
                     onChange={this.props.handleChange}
                     readOnly
                   />
@@ -208,6 +193,7 @@ class CoPlay extends Component {
                     placeholder="ปี"
                     name="opdCoPlayMixYear"
                     id="opdCoPlayMixYear"
+                    value=""
                     onChange={this.props.handleChange}
                     readOnly
                   />

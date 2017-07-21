@@ -183,6 +183,7 @@ class IPD extends Component {
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  activePlan={this.props.activePlan}
                   ipdLumsumPerYear={this.props.ipdLumsumPerYear}
                   ipdLumsumPerTime={this.props.ipdLumsumPerTime}
                   ipdLumsumTimeNotExceedPerYear={
@@ -197,6 +198,7 @@ class IPD extends Component {
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  activePlan={this.props.activePlan}
                   rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
                   rbLumsumNigthNotExceedPerYear={
                     this.props.rbLumsumNigthNotExceedPerYear
@@ -216,6 +218,7 @@ class IPD extends Component {
                   handleChangeToNull={this.props.handleChangeToNull}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  activePlan={this.props.activePlan}
                   rbSchedulePatient={this.props.rbSchedulePatient}
                   rbScheduleIntensiveCarePatient={
                     this.props.rbScheduleIntensiveCarePatient
@@ -250,6 +253,13 @@ class IPD extends Component {
                   handleNewReset={this.props.handleNewReset}
                   reset={this.props.reset}
                   setPlan={this.props.setPlan}
+                  activePlan={this.props.activePlan}
+                  ipdCoPlay={this.props.ipdCoPlay}
+                  ipdCoPlayQuota={this.props.ipdCoPlayQuota}
+                  ipdCoPlayDeductable={this.props.ipdCoPlayDeductable}
+                  ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
+                  ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
+                  ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
                 />
               : null}
             <br />
@@ -289,7 +299,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(IPD)

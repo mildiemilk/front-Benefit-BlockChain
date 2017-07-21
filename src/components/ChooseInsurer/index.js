@@ -47,7 +47,6 @@ class InsurerSelect extends Component {
 
   componentWillReceiveProps(newProps) {
     if(newProps.insurerChecked !== this.state.insurers) {
-      console.log(newProps.insurerChecked, 'YAY it is my turn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
       this.setState({ insurers: newProps.insurerChecked, num: newProps.nums!==undefined?newProps.nums:0 })
     }
   }

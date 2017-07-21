@@ -16,49 +16,57 @@
 @import 'select-real-time';
 @import '../../node_modules/react-vis/dist/style';
 @import "../../node_modules/react-vis/dist/styles/legends";
-
 @font-face {
-    font-family: 'kanit';
-    font-weight: 400;
-    unicode-range: U+0E00-U+0E7F;
-    src: url('../fonts/Kanit/Kanit-Regular.ttf');
+  font-family: 'kanit';
+  font-weight: 400;
+  unicode-range: U+0E00-U+0E7F;
+  src: url('../fonts/Kanit/Kanit-Regular.ttf');
 }
 
 body {
+  font-family: 'Kanit' !important;
+
+  h2 {
     font-family: 'Kanit';
-    h2 {
-    font-family: 'Kanit';
-    }
-    background: #F1F1F1;
+  }
+  background: F1F1F1;
 
-    .toggle{
-      .ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {
-        background-color: #4db698 !important;
-      }
+  .toggle {
+    .ui.toggle.checkbox input:checked ~ .box:before,
+    .ui.toggle.checkbox input:checked ~ label:before {
+      background-color: #4db698 !important;
     }
+  }
 
-    button{
-      outline: none;
-    }
+  button {
+    outline: none;
+    font-family: Kanit;
+    cursor: pointer;
+  }
 
-    .ui.button{
-      font-family: Kanit;
-      font-weight: 100;
-    }
-    table{
-      border-collapse: collapse;
-    }
+  input {
+    font-family: Kanit;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  .ui.button {
+    font-family: Kanit;
+    font-weight: 100;
+  }
 }
 
-.clearfix::before, 
-.clearfix::after{
+.clearfix::after,
+.clearfix::before {
   display: table;
   content: "";
 }
-.clearfix::after{
+
+.clearfix::after {
   clear: both;
 }
-
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

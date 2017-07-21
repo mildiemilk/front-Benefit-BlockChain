@@ -42,10 +42,8 @@ import Download from './Download'
 import Congrat from './congrat'
 import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
-import PieChart from './PieChart/'
-import SelectRealTime from './SelectRealTime'
-
-const history = createBrowserHistory()
+import PieChart from './PieChart'
+import SendFlexPlan from './SendFlexPlan'
 
 const App = ({ isAuthenticated }) => (
   <BrowserRouter>
@@ -79,7 +77,6 @@ const App = ({ isAuthenticated }) => (
                     <Route path="/settingplan" component={SettingPlan} />
                     <Route path="/congrat" component={Congrat} />
                     <Route path="/congratStep4" component={Congrat2} />
-                    <Route path='/SelectRealTime' component={SelectRealTime}/>
                     <Route
                       path="/employeeBenefits"
                       component={EmployeeBenefits}
@@ -110,6 +107,7 @@ App.propTypes = {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.authReducer.token != null,
+  role: state.authReducer.role,
 })
 
 const Container = connect(mapStateToProps)(App)

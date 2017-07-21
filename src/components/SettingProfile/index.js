@@ -31,7 +31,8 @@ import styled from 'react-sc'
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 622.42px;
+    min-height: 611px;
+    box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
   }
 `
 const NextButton = styled.button`

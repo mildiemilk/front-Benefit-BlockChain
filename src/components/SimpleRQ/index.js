@@ -20,7 +20,7 @@ import {
   Image,
 } from 'semantic-ui-react'
 import { fillSimpleRQ } from '../../api/simple-requirement'
-import { UploadButton, InputBox, BottomSpace } from './styled'
+import { UploadButton, InputBox, BottomSpace, Inputs } from './styled'
 import ModalSimpleRQ from './modal-simple-requirement'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
@@ -156,9 +156,9 @@ class simpleRQ extends Component {
               <div className="large-9 columns">
                 <div>
                   {$filePreview}
-                  <UploadButton>
-                    <input
-                      style={{ opacity: '0', position: 'absolute' }}
+                  <UploadButton for="uploadFile">
+                    <Inputs
+                      id="uploadFile"
                       type="file"
                       onChange={e => this._handleImageChange(e)}
                     />

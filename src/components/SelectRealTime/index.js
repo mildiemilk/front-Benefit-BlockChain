@@ -21,6 +21,7 @@ class SelectRealTime extends Component {
         this.state = {
             isPlan: true,
         }
+        
     }
 
     handlePlan = () => {

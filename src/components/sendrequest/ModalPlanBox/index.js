@@ -30,7 +30,7 @@ import {
   Popup,
   List,
 } from 'semantic-ui-react'
-import { getAllPlan } from '../../../api/set-plan'
+import { getAllPlan, deletePlan } from '../../../api/set-plan'
 import PlanBoxs from './planbox'
 import { ListBox } from './styled'
 import NavInsure from '../../NavInsure'
@@ -43,8 +43,11 @@ class ModalPlanBox extends Component {
       step: 6,
       isOpen: false,
       modalOpen: false,
+      activePlan: 0,
     }
-    props.getAllPlan()
+    setInterval(() => {
+      props.getAllPlan()
+    }, 2000)
   }
 
   handleOpen = () => {
@@ -55,9 +58,12 @@ class ModalPlanBox extends Component {
     this.setState({ isOpen: false })
   }
 
-  handleModal = () => {
-    this.setState({ isOpen: false })
-    this.setState({ modalOpen: true })
+  handleModal = e => {
+    this.setState({
+      isOpen: false,
+      modalOpen: true,
+      activePlan: e.target.id,
+    })
     this.props.changePositionPage()
   }
 
@@ -75,11 +81,18 @@ class ModalPlanBox extends Component {
     this.props.changePositionPage()
   }
 
+  handleDelete = e => {
+    this.props.deletePlan(this.props.planList[e.target.id].planId)
+  }
+
   renderList = list => {
     return list.map((element, index) => (
       <ListBox className="large-4 columns">
         <PlanBoxs
           changePositionPage={this.props.changePositionPage}
+          id={index}
+          activePlan={this.state.activePlan}
+          planList={this.props.planList}
           isOpen={this.state.isOpen}
           modalOpen={this.state.modalOpen}
           handleOpen={this.handleOpen}
@@ -87,7 +100,8 @@ class ModalPlanBox extends Component {
           handleModal={this.handleModal}
           handleOpenModal={this.handleOpenModal}
           handleCloseModal={this.handleCloseModal}
-          planList={element}
+          plan={element}
+          handleDelete={this.handleDelete}
         />
       </ListBox>
     ))
@@ -106,10 +120,11 @@ class ModalPlanBox extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
+  deletePlan: planId => dispatch(deletePlan(planId)),
 })
 
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalPlanBox)

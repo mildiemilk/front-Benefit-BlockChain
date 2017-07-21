@@ -4,6 +4,7 @@
 const defaultAuth = {
   user: null,
   token: localStorage.getItem('token'),
+  role: null,
   message: '',
   error: false,
 }
@@ -50,6 +51,7 @@ export function authReducer(state = defaultAuth, action) {
     case AUTHENTICATE_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         token: action.data.token,
+        role: action.data.role,
         error: false,
       })
     case AUTHENTICATE_REQUEST_FAILURE:

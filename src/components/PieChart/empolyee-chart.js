@@ -18,6 +18,7 @@ import {
   Icon,
 } from 'semantic-ui-react'
 
+const myData = [{ angle: 5 }, { angle: 5 }]
 let graphData = []
 const myPlan = [
   { group: 'A', number: 10 },
@@ -47,7 +48,7 @@ class Empolyeechart extends Component {
             style={{ background: graphColor[index], height: '3.5px' }}
           />
           <span className="rv-discrete-color-legend-item__title">
-            พนักงานกลุ่ม {element.group} {element.number} คน
+            กลุ่ม {element.group} {element.number} คน
           </span>
         </div>
       )
@@ -90,7 +91,7 @@ class Empolyeechart extends Component {
               <div className="chart-data-box">
                 <div
                   className="rv-discrete-color-legend vertical "
-                  style={{ width: '300px', height: '200px' }}
+                  style={{ width: '300px' }}
                 >
                   {this.renderList(myPlan)}
                 </div>

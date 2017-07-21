@@ -42,9 +42,8 @@ import Download from './Download'
 import Congrat from './congrat'
 import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
-import PieChart from './PieChart/'
-
-const history = createBrowserHistory()
+import PieChart from './PieChart'
+import SendFlexPlan from './SendFlexPlan'
 
 const App = ({ isAuthenticated }) => (
   <BrowserRouter>

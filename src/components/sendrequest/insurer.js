@@ -6,13 +6,10 @@ import { connect } from 'react-redux'
 class Insurer extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
 
-    }
     props.getSelectInsurer()
-  
   }
-  
+
   renderList = insurers => {
     console.log(insurers)
     return insurers.map(insurer => (
@@ -37,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
-  insurers: state.getSelectInsurer,
+  insurers: state.getSelectInsurer.defaultInsurer,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Insurer)

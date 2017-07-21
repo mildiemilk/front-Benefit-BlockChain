@@ -2,20 +2,11 @@ import React from 'react'
 import { Card, Check } from './styled'
 import { connect } from 'react-redux'
 import { getAllInsurer } from '../../api/choose-insurer'
-
+import _ from 'lodash'
 class CardInsure extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {}
-  }
-
-  handleDefaultCheck = e => {
-    if (this.props.insurerChecked !== undefined)
-      this.props.insurerChecked.map(insurerCheckedis => {
-        if (e === insurerCheckedis.insurerName) {
-          return true
-        }
-      })
   }
 
   renderList = insurers => {
@@ -24,7 +15,7 @@ class CardInsure extends React.Component {
         <Check
           type="checkbox"
           id={insurers.indexOf(insurer)}
-          //defaultChecked={this.handleDefaultCheck(insurer.insurerName)}
+          defaultChecked={this.props.handleDefaultCheck(insurer)}
           onChange={this.props.handleCheck}
         />
         {insurer.insurerName}
@@ -49,9 +40,4 @@ const mapDispatchToProps = dispatch => ({
   getAllInsurer: () => dispatch(getAllInsurer()),
 })
 
-const mapStateToProps = state => ({
-  insurerChecked: state.chooseInsurerReducer.insurers,
-  insurerList: state.getAllInsurer,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardInsure)
+export default connect(null, mapDispatchToProps)(CardInsure)

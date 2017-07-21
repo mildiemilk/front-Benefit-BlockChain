@@ -32,7 +32,7 @@ class FormSubmitPlan extends Component {
     if (this.props.activePlan === -1) {
       this.props.handleModalFinish()
       this.props.createPlan({ planName, employeeOfPlan })
-      this.props.handlePlan(this.props.planList.length)
+      setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000)
     } else {
       this.props.editPlan(
         { planName, employeeOfPlan },
@@ -123,7 +123,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormSubmitPlan)

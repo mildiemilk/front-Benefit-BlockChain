@@ -18,56 +18,35 @@ import {
 import '../../../styles/submit-plan.scss'
 
 class Coplay extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      ipdCoPlay: false,
-      value: '',
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixYear: null,
+      value: this.props.ipdCoPlayQuota !== null
+        ? 'Quota Share'
+        : this.props.ipdCoPlayDeductable !== null
+            ? 'Deductable'
+            : this.props.ipdCoPlayMixPercentage !== null &&
+                this.props.ipdCoPlayMixNotExceed !== null &&
+                this.props.ipdCoPlayMixYear !== null
+                ? 'Quota Share + Deductable'
+                : '',
     }
-    const value = ''
   }
 
   static propTypes = {}
 
-  onInputChange(e) {
-    this.setState({ nameInput: e.target.value })
-  }
-
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleRadio = (e, { value }) => {
+    this.handleResetdata()
     this.setState({ value })
-    if (this.state.value === 'Quota Share') {
-      document.getElementById('ipdCoPlayQuota').value = ''
-      this.props.handleChangeToNull('ipdCoPlayQuota')
-    } else if (this.state.value === 'Deductable') {
-      document.getElementById('ipdCoPlayDeductable').value = ''
-      this.props.handleChangeToNull('ipdCoPlayDeductable')
-    } else {
-      document.getElementById('ipdCoPlayMixPercentage').value = ''
-      this.props.handleChangeToNull('ipdCoPlayMixPercentage')
-      document.getElementById('ipdCoPlayMixNotExceed').value = ''
-      this.props.handleChangeToNull('ipdCoPlayMixNotExceed')
-      document.getElementById('ipdCoPlayMixYear').value = ''
-      this.props.handleChangeToNull('ipdCoPlayMixYear')
-    }
   }
 
   handleResetdata = () => {
-    document.getElementById('ipdCoPlayQuota').value = ''
     this.props.handleChangeToNull('ipdCoPlayQuota')
-    document.getElementById('ipdCoPlayDeductable').value = ''
     this.props.handleChangeToNull('ipdCoPlayDeductable')
-    document.getElementById('ipdCoPlayMixPercentage').value = ''
     this.props.handleChangeToNull('ipdCoPlayMixPercentage')
-    document.getElementById('ipdCoPlayMixNotExceed').value = ''
     this.props.handleChangeToNull('ipdCoPlayMixNotExceed')
-    document.getElementById('ipdCoPlayMixYear').value = ''
     this.props.handleChangeToNull('ipdCoPlayMixYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
@@ -79,7 +58,30 @@ class Coplay extends Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        value: newProps.ipdCoPlayQuota !== null
+          ? 'Quota Share'
+          : newProps.ipdCoPlayDeductable !== null
+              ? 'Deductable'
+              : newProps.ipdCoPlayMixPercentage !== null &&
+                  newProps.ipdCoPlayMixNotExceed !== null &&
+                  newProps.ipdCoPlayMixYear !== null
+                  ? 'Quota Share + Deductable'
+                  : '',
+      })
+    }
+  }
+
   render() {
+    const {
+      ipdCoPlayDeductable,
+      ipdCoPlayMixNotExceed,
+      ipdCoPlayMixPercentage,
+      ipdCoPlayMixYear,
+      ipdCoPlayQuota,
+    } = this.props
     return (
       <div>
         <div className="coplayParagraph">
@@ -99,6 +101,7 @@ class Coplay extends Component {
                   placeholder="เปอร์เซน"
                   name="ipdCoPlayQuota"
                   id="ipdCoPlayQuota"
+                  value={ipdCoPlayQuota}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -107,6 +110,7 @@ class Coplay extends Component {
                   placeholder="เปอร์เซน"
                   name="ipdCoPlayQuota"
                   id="ipdCoPlayQuota"
+                  value=""
                   readOnly
                   onChange={this.props.handleChange}
                 />}
@@ -128,6 +132,7 @@ class Coplay extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdCoPlayDeductable"
                   id="ipdCoPlayDeductable"
+                  value={ipdCoPlayDeductable}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -136,6 +141,7 @@ class Coplay extends Component {
                   placeholder="จำนวนเงิน"
                   name="ipdCoPlayDeductable"
                   id="ipdCoPlayDeductable"
+                  value=""
                   onChange={this.props.handleChange}
                   readOnly
                 />}
@@ -159,6 +165,7 @@ class Coplay extends Component {
                     placeholder="เปอร์เซ็น"
                     name="ipdCoPlayMixPercentage"
                     id="ipdCoPlayMixPercentage"
+                    value={ipdCoPlayMixPercentage}
                     onChange={this.props.handleChange}
                     required
                   />
@@ -169,6 +176,7 @@ class Coplay extends Component {
                     placeholder="จำนวนเงิน"
                     name="ipdCoPlayMixNotExceed"
                     id="ipdCoPlayMixNotExceed"
+                    value={ipdCoPlayMixNotExceed}
                     onChange={this.props.handleChange}
                     required
                   />
@@ -179,6 +187,7 @@ class Coplay extends Component {
                     placeholder="ปี"
                     name="ipdCoPlayMixYear"
                     id="ipdCoPlayMixYear"
+                    value={ipdCoPlayMixYear}
                     onChange={this.props.handleChange}
                     required
                   />
@@ -190,6 +199,7 @@ class Coplay extends Component {
                     placeholder="เปอร์เซ็น"
                     name="ipdCoPlayMixPercentage"
                     id="ipdCoPlayMixPercentage"
+                    value=""
                     onChange={this.props.handleChange}
                     readOnly
                   />
@@ -200,6 +210,7 @@ class Coplay extends Component {
                     placeholder="จำนวนเงิน"
                     name="ipdCoPlayMixNotExceed"
                     id="ipdCoPlayMixNotExceed"
+                    value=""
                     onChange={this.props.handleChange}
                     readOnly
                   />
@@ -210,6 +221,7 @@ class Coplay extends Component {
                     placeholder="ปี"
                     name="ipdCoPlayMixYear"
                     id="ipdCoPlayMixYear"
+                    value=""
                     onChange={this.props.handleChange}
                     readOnly
                   />

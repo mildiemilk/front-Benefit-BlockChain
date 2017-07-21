@@ -80,7 +80,9 @@ class Login extends Component {
                         <Form.Input
                           placeholder="อีเมลของคุณ"
                           name="email"
+                          type="email"
                           onChange={this.handleChange}
+                          required
                         />
                       </div>
                     </Form.Field>
@@ -95,6 +97,7 @@ class Login extends Component {
                           name="password"
                           type="password"
                           onChange={this.handleChange}
+                          required
                         />
                       </div>
                     </Form.Field>

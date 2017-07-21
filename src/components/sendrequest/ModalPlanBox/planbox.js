@@ -40,12 +40,15 @@ class planBoxs extends Component {
     handleModal: PropTypes.func.isRequired,
     handleOpenModal: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
-    planList: PropTypes.object.isRequired,
+    planList: PropTypes.array.isRequired,
+    plan: PropTypes.object.isRequired,
+    activePlan: PropTypes.number.isRequired,
   }
+
   render() {
     return (
       <PlanBox>
-        <span> {this.props.planList.planName} </span>
+        <span> {this.props.plan.planName} </span>
         <Popup
           trigger={
             <Icon
@@ -57,13 +60,15 @@ class planBoxs extends Component {
           content={
             <List divided relaxed style={{ cursor: 'pointer' }}>
               <List.Item>
-                <List.Content onClick={() => this.props.handleModal()}>
-                  <p><Icon name="file text outline" />ดูแพลน</p>
+                <List.Content onClick={e => this.props.handleModal(e)}>
+                  <p id={this.props.id}>
+                    <Icon name="file text outline" />ดูแพลน
+                  </p>
                 </List.Content>
               </List.Item>
               <List.Item>
-                <List.Content>
-                  <p><Icon name="trash outline" />ลบแพลน</p>
+                <List.Content onClick={this.props.handleDelete}>
+                  <p id={this.props.id}><Icon name="trash outline" />ลบแพลน</p>
                 </List.Content>
               </List.Item>
             </List>
@@ -75,6 +80,8 @@ class planBoxs extends Component {
         <PlanBoxModal
           modalOpen={this.props.modalOpen}
           handleCloseModal={this.props.handleCloseModal}
+          activePlan={this.props.activePlan}
+          planList={this.props.planList}
         />
       </PlanBox>
     )

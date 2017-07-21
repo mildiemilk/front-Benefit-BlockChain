@@ -73,15 +73,6 @@ class OPD extends Component {
   handleRadio = (e, { value }) => {
     this.handleResetdata()
     this.setState({ value })
-    // if (this.state.value === 'secondChoice') {
-    //   document.getElementById('opdPerTime').value = ''
-    //   this.setState({ opdPerTime: null })
-    //   document.getElementById('opdTimeNotExceedPerYear').value = ''
-    //   this.setState({ opdTimeNotExceedPerYear: null })
-    // } else {
-    //   document.getElementById('opdPerYear').value = ''
-    //   this.setState({ opdPerYear: null })
-    // }
   }
 
   handleResetdata = () => {
@@ -143,6 +134,7 @@ class OPD extends Component {
                     placeholder="จำนวนเงิน"
                     name="opdPerYear"
                     id="opdPerYear"
+                    value=""
                     onChange={this.handleChange}
                     readOnly
                   />}
@@ -263,7 +255,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(editPlan(editData, planId, editType)),
 })
 const mapStateToProps = state => ({
-  planList: state.plan,
+  planList: state.plan.planList,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OPD)

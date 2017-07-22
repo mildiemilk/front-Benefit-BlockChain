@@ -39,7 +39,7 @@ class EmployeeLogin extends Component {
           <Header />
           <div className="row">
             <div className="small-10 small-centered columns">
-              <div className="gift-log-in-mobile">
+              <div className="gift-logo-in-mobile">
                 <img src={gift} />
                 <div className="form-login-mobile">
                   <Form>

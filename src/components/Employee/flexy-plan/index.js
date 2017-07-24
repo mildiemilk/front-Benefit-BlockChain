@@ -11,6 +11,8 @@ import Footer from '../footer-relative'
 import Slider from 'react-slick'
 import FlexyPlanBox from './flexy-plan-box'
 import CongrateImage from '../../image/asset-1.png'
+import ConfirmModal from './confirm-modal'
+import DeadlineBox from './deadline-box'
 import {
   Button,
   Checkbox,
@@ -27,7 +29,17 @@ const MediaQuery = require('react-responsive')
 class FlexyPlan extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      openModal: false,
+    }
+  }
+
+  handleCloseModal = () => {
+    this.setState({ openModal: false })
+  }
+
+  handleOpenModal = () => {
+    this.setState({ openModal: true })
   }
 
   render() {
@@ -40,7 +52,6 @@ class FlexyPlan extends Component {
       <div>
         <MediaQuery query="(max-width: 1224px)">
           <Header />
-
           <div className="row">
             <div className="small-10 small-centered columns">
               <div className="deadline-flexy-plan">
@@ -51,43 +62,7 @@ class FlexyPlan extends Component {
                 </div>
                 <div className="deadline-box">
                   <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
-                  <div className="row">
-                    <div className="box-space">
-                      <div
-                        className="small-4 columns"
-                        style={{ paddingRight: '0px' }}
-                      >
-                        <div className="date-deadline-box">
-                          <div className="deadline-text">
-                            08
-                          </div>
-                          <div>วัน</div>
-                        </div>
-                      </div>
-                      <div
-                        className="small-4 columns"
-                        style={{ paddingRight: '0px', paddingLeft: '0px' }}
-                      >
-                        <div className="hour-deadline-box">
-                          <div className="deadline-text">
-                            08
-                          </div>
-                          <div>ชั่วโมง</div>
-                        </div>
-                      </div>
-                      <div
-                        className="small-4 columns"
-                        style={{ paddingLeft: '0px' }}
-                      >
-                        <div className="second-deadline-box">
-                          <div className="deadline-text">
-                            08
-                          </div>
-                          <div>ชั่วโมง</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <DeadlineBox />
                 </div>
               </div>
               <div className="box-space">
@@ -105,11 +80,18 @@ class FlexyPlan extends Component {
                   </div>
                 </Slider>
               </div>
-              <button className="button-submit-flexy-plan">
+              <button
+                className="button-submit-flexy-plan"
+                onClick={() => this.handleOpenModal()}
+              >
                 ยืนยัน
               </button>
             </div>
             <Footer />
+            <ConfirmModal
+              openModal={this.state.openModal}
+              handleCloseModal={this.handleCloseModal}
+            />
           </div>
         </MediaQuery>
       </div>

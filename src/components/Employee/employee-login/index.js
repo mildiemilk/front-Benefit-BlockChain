@@ -85,8 +85,8 @@ class EmployeeLogin extends Component {
               </div>
             </div>
           </div>
-          <Footer />
         </MediaQuery>
+        <Footer />
       </div>
     )
   }

@@ -96,6 +96,9 @@
 
 
 @media (max-width: 768px) and (min-width: 520px)  {
+  .mobile-header{
+    padding-top: 2%;
+  }
   .footer-absolute{
     bottom: 0;
     position: relative;

@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
+import { authenticate } from '../../../api/auth'
 import '../../../styles/employee-style/login-verify.scss'
 import gift from '../../image/gigift-mobile.png'
 import logo from '../../image/logo-benefitable-mobile.png'
@@ -12,7 +13,7 @@ import footerLogo from '../../image/logo-footer.png'
 import emailIcon from '../../image/icons-8-message.png'
 import keyIcon from '../../image/icons-8-key-copy.png'
 import Header from '../header'
-import Footer from '../footer-absolute'
+import Footer from '../footer'
 import {
   Button,
   Checkbox,
@@ -40,7 +41,15 @@ class EmployeeLogin extends Component {
       [name]: value,
     })
   }
-
+  static propTypes = {
+    authenticate: PropTypes.func.isRequired,
+  }
+  handleSubmit = e => {
+    e.preventDefault()
+    const { email, password } = this.state
+    this.props.authenticate(email, password)
+  }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
       <div className="white-background">
@@ -70,6 +79,7 @@ class EmployeeLogin extends Component {
                         onChange={this.handleChange}
                         placeholder="รหัสผ่าน"
                         name="password"
+                        type="password"
                         required
                       />
                     </div>
@@ -91,9 +101,15 @@ class EmployeeLogin extends Component {
   }
 }
 
-EmployeeLogin.propTypes = {}
+EmployeeLogin.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  authenticate: (email, password) => dispatch(authenticate(email, password)),
+})
+const mapStateToProps = state => ({
+  data: state.authReducer,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLogin)

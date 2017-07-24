@@ -67,9 +67,12 @@ class Uploadfile extends Component {
   handleUploadBroker(e) {
     e.preventDefault()
     let file = e.target.files[0]
-    this.setState({
-      summitBrokerFile: file,
-    })
+    this.setState(
+      {
+        summitBrokerFile: file,
+      },
+      () => console.log(this.state.summitBrokerFile),
+    )
   }
 
   handleDelete = e => {

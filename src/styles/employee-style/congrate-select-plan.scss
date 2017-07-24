@@ -1,0 +1,41 @@
+.select-plan-box{
+  text-align: center;
+  padding-top: 18%;
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: 0.2px;
+  color: #4a4a4a;
+}
+
+.select-plan-image{
+  width: 130px;
+  height: 130px;
+}
+.show-deadline-box{
+  padding-top:6%;
+  font-size: 12px;
+  line-height: 1.67;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #4a4a4a;
+  margin-bottom: 16%;
+}
+
+.link-change-plan{
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #3a7bd5;
+  cursor:pointer;
+}
+
+.center-link{
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+@media (max-width: 768px) and (min-width: 520px){
+  .select-plan-box{
+     padding-top: 7%;
+  }
+
+}

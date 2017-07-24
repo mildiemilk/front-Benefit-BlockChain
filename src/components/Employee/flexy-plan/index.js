@@ -7,10 +7,12 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import gift from '../../image/gigift-mobile.png'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 import Slider from 'react-slick'
 import FlexyPlanBox from './flexy-plan-box'
 import CongrateImage from '../../image/asset-1.png'
+import ConfirmModal from './confirm-modal'
+import DeadlineBox from './deadline-box'
 import {
   Button,
   Checkbox,
@@ -27,7 +29,17 @@ const MediaQuery = require('react-responsive')
 class FlexyPlan extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      openModal: false,
+    }
+  }
+
+  handleCloseModal = () => {
+    this.setState({ openModal: false })
+  }
+
+  handleOpenModal = () => {
+    this.setState({ openModal: true })
   }
 
   render() {
@@ -37,81 +49,49 @@ class FlexyPlan extends Component {
       slidesToScroll: 1,
     }
     return (
-      <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
-
-          <div className="row">
-            <div className="small-10 small-centered columns">
-              <div className="deadline-flexy-plan">
-                <img src={CongrateImage} />
-                <div className="congrate-text">ยินดีด้วย!</div>
-                <div className="congrate-text">
-                  มีสิทธิประโยชน์มากมายรอคุณอยู่
-                </div>
-                <div className="deadline-box">
-                  <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
-                  <div className="row">
-                    <div className="box-space">
-                      <div
-                        className="small-4 columns"
-                        style={{ paddingRight: '0px' }}
-                      >
-                        <div className="date-deadline-box">
-                          <div className="deadline-text">
-                            08
-                          </div>
-                          <div>วัน</div>
-                        </div>
-                      </div>
-                      <div
-                        className="small-4 columns"
-                        style={{ paddingRight: '0px', paddingLeft: '0px' }}
-                      >
-                        <div className="hour-deadline-box">
-                          <div className="deadline-text">
-                            08
-                          </div>
-                          <div>ชั่วโมง</div>
-                        </div>
-                      </div>
-                      <div
-                        className="small-4 columns"
-                        style={{ paddingLeft: '0px' }}
-                      >
-                        <div className="second-deadline-box">
-                          <div className="deadline-text">
-                            08
-                          </div>
-                          <div>ชั่วโมง</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div className="flexyPlan">
+        <Header />
+        <div className="row">
+          <div className="small-10 small-centered columns">
+            <div className="deadline-flexy-plan">
+              <img src={CongrateImage} />
+              <div className="congrate-text">ยินดีด้วย!</div>
+              <div className="congrate-text">
+                มีสิทธิประโยชน์มากมายรอคุณอยู่
               </div>
-              <div className="box-space">
-                <div className="header-text-select-flexy-plan">
-                  คุณกำลังเลือก : แผน 1
-                </div>
+              <div className="deadline-box">
+                <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
+                <DeadlineBox />
               </div>
-              <div className="slider">
-                <Slider {...settings}>
-                  <div>
-                    <FlexyPlanBox />
-                  </div>
-                  <div>
-                    <FlexyPlanBox />
-                  </div>
-                </Slider>
-              </div>
-              <button className="button-submit-flexy-plan">
-                ยืนยัน
-              </button>
             </div>
-            <Footer />
+            <div className="box-space">
+              <div className="header-text-select-flexy-plan">
+                คุณกำลังเลือก : แผน 1
+              </div>
+            </div>
+            <div className="slider">
+              <Slider {...settings}>
+                <div>
+                  <FlexyPlanBox />
+                </div>
+                <div>
+                  <FlexyPlanBox />
+                </div>
+              </Slider>
+            </div>
+            <button
+              className="button-submit-flexy-plan"
+              onClick={() => this.handleOpenModal()}
+            >
+              ยืนยัน
+            </button>
           </div>
-        </MediaQuery>
+          <Footer />
+          <ConfirmModal
+            openModal={this.state.openModal}
+            handleCloseModal={this.handleCloseModal}
+          />
+        </div>
       </div>
     )
   }

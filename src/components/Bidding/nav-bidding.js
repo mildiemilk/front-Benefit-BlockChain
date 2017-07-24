@@ -22,13 +22,11 @@ class Bidding extends Component {
   }
 
   render() {
-    console.log(this.props.num)
+    console.log(this.props.timeout)
     const currentDate = new Date()
     const year = currentDate.getMonth() === 11 && currentDate.getDate() > 23
       ? currentDate.getFullYear() + 1
       : currentDate.getFullYear()
-    console.log(year)
-
     return (
       <div className="NavBid">
         <div className="row">

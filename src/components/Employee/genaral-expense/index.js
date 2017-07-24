@@ -7,7 +7,7 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 import GenaralImage from '../../image/genaral-detail.png'
 import info from '../../image/icons-8-info.png'
 import {

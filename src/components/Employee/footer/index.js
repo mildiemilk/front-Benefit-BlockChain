@@ -30,32 +30,30 @@ class Footer extends Component {
 
   render() {
     return (
-      <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <div className="footer">
-            <div className="row">
-              <div className="small-10 small-centered columns">
-                <div className="box-in-footer">
-                  <img src={footerLogo} />
-                  <div className="row">
-                    <div className="small-3 columns">
-                      <span>เกี่ยวกับเรา</span>
-                    </div>
-                    <div className="small-3 columns">
-                      <span>ติดต่อเรา</span>
-                    </div>
-                    <div className="small-3 columns">
-                      <span>แจ้งปัญหา</span>
-                    </div>
-                    <div className="small-3 columns">
-                      <span>Privacy</span>
-                    </div>
+      <div className="footer">
+        <div className="footer-absolute">
+          <div className="row">
+            <div className="small-10 small-centered columns">
+              <div className="box-in-footer">
+                <img src={footerLogo} />
+                <div className="row">
+                  <div className="small-3 columns">
+                    <span>เกี่ยวกับเรา</span>
+                  </div>
+                  <div className="small-3 columns">
+                    <span>ติดต่อเรา</span>
+                  </div>
+                  <div className="small-3 columns">
+                    <span>แจ้งปัญหา</span>
+                  </div>
+                  <div className="small-3 columns">
+                    <span>Privacy</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </MediaQuery>
+        </div>
       </div>
     )
   }

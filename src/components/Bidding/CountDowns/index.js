@@ -100,15 +100,11 @@ class CountDowns extends Component {
       $isMin == '00' &&
       $isSec <= '01'
     ) {
-      console.log('session timeout')
-      console.log(this.state.end)
-      console.log(this.props.end.end)
       $isDay = <DisplayTime />
       $isHours = <DisplayTimeout>หมดเวลา</DisplayTimeout>
       $isMin = <DisplayTime />
       $isSec = <DisplayTime />
     } else {
-      console.log('exist')
       $isDay = <CountTime>{this.addLeadingZeros(countDown.days)}:</CountTime>
       $isHours = <CountTime>{this.addLeadingZeros(countDown.hours)}:</CountTime>
       $isMin = <CountTime>{this.addLeadingZeros(countDown.min)}:</CountTime>

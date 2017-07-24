@@ -10,7 +10,7 @@ import gift from '../../image/gigift-mobile.png'
 import logo from '../../image/logo-benefitable-mobile.png'
 import footerLogo from '../../image/logo-footer.png'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 import { Form, Icon } from 'semantic-ui-react'
 import styled from 'react-sc'
 

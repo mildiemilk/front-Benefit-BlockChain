@@ -98,9 +98,9 @@ class ModalAddData extends Component {
                     src="../../../../employee/icons-8-phone@3x.png"
                   />
                   <Form.Input
-                    placeholder="พาสเวิร์ด"
-                    name="password"
-                    type="password"
+                    placeholder="เบอร์โทรศัพท์มือถือ"
+                    name="tel"
+                    type="number"
                   />
                 </div>
               </Form.Field>

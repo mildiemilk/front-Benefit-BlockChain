@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { setTimeOut, chooseInsurer, getAllInsurer, getSelectInsurer} from '../../api/choose-insurer'
+import {
+  setTimeOut,
+  chooseInsurer,
+  getAllInsurer,
+  getSelectInsurer,
+} from '../../api/choose-insurer'
 import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
@@ -27,84 +32,68 @@ import {
   Next,
   Check,
 } from './styled'
-import CardInsure from './card-insure'
-import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css'; 
+import { toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 class InsurerSelect extends Component {
-
   constructor(props) {
-      super(props)
-      const { nums } = this.props
-      
-      this.state = {
-        step: 4,
-        num: nums!==undefined?nums:0 ,
-        date: null,
-        insurers: [],
-      }  
+    super(props)
+    const { nums } = this.props
+
+    this.state = {
+      step: 4,
+      num: nums !== undefined ? nums : 0,
+      date: null,
+      insurers: [],
+    }
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.insurerChecked !== this.state.insurers) {
-      this.setState({ insurers: newProps.insurerChecked, num: newProps.nums!==undefined?newProps.nums:0 })
+    if (newProps.insurerChecked !== this.state.insurers) {
+      this.setState({
+        insurers: newProps.insurerChecked,
+        num: newProps.nums !== undefined ? newProps.nums : 0,
+      })
     }
   }
 
   componentDidMount() {
     this.props.getAllInsurer()
     this.props.getSelectInsurer()
-    // if(nextProps.chooseInsurerStatus === "SUCCESS") { 
+    // if(nextProps.chooseInsurerStatus === "SUCCESS") {
 
-      // const { insurerChecked, insurerList } = this.props
-      // let CheckedinsurerList = this.props.insurerList
+    // const { insurerChecked, insurerList } = this.props
+    // let CheckedinsurerList = this.props.insurerList
 
-      // console.log("insurerChecked ==> ", insurerChecked)
-      // console.log("insurerList ==> ", insurerList)
-      // const result = CheckedinsurerList.map( insurer => {
-      //   let tempInsurer
-      //   const checkedInsurer =_.find(insurerChecked, { 'insurerName': insurer.insurerName });
-      //   tempInsurer = !(_.isNil(checkedInsurer))
-      //   return tempInsurer
-      // })
-      // this.setState({ insurers: CheckedinsurerList })
-      // console.log("CheckedinsurerList ===> ", CheckedinsurerList)
+    // console.log("insurerChecked ==> ", insurerChecked)
+    // console.log("insurerList ==> ", insurerList)
+    // const result = CheckedinsurerList.map( insurer => {
+    //   let tempInsurer
+    //   const checkedInsurer =_.find(insurerChecked, { 'insurerName': insurer.insurerName });
+    //   tempInsurer = !(_.isNil(checkedInsurer))
+    //   return tempInsurer
+    // })
+    // this.setState({ insurers: CheckedinsurerList })
+    // console.log("CheckedinsurerList ===> ", CheckedinsurerList)
 
     // }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.props.getSelectInsurer()
-  //   if(nextProps.chooseInsurerStatus === "SUCCESS") { 
-  //     const { insurerChecked } = this.props
-  //     let CheckedinsurerList = this.props.insurerList
+  handleDefaultCheck = e => {
+    const { insurerChecked } = this.props
+    const matchedInsurer = _.find(this.state.insurers, {
+      insurerName: e.insurerName,
+    })
 
-  //     console.log("insurerChecked ==> ", insurerChecked)
-  //     console.log("insurerList ==> ", insurerList)
-  //     CheckedinsurerList.map( insurer => {
-  //       let tempInsurer
-  //       const checkedInsurer =_.find(insurerChecked, { 'insurerName': insurer.insurerName });
-  //       tempInsurer.checked = !(_.isNil(checkedInsurer))
-  //       return tempInsurer
-  //     })
-  //     this.setState({ insurers: CheckedinsurerList })
-  //     console.log("CheckedinsurerList ===> ", CheckedinsurerList)
-  //   }
-  // }
-
-  handleDefaultCheck = (e) =>{
-   const { insurerChecked } = this.props
-   const matchedInsurer =_.find(this.state.insurers, { 'insurerName': e.insurerName });
-    
-    if(matchedInsurer !== undefined )
-      return true
+    if (matchedInsurer !== undefined) return true
     else return false
- 
   }
 
   handleTimeOut = () => {
     const { date } = this.state
+    console.log(this.state.date)
     this.props.setTimeOut(date)
+     console.log(this.props.timeout)
   }
 
   handleDate = date => {
@@ -116,36 +105,39 @@ class InsurerSelect extends Component {
   handleTime = time => {
     time._d.setDate(this.state.date._d.getDate())
     this.state.date._d.setTime(time._d.getTime())
+    console.log(this.state.date)
   }
 
   handleCheck = e => {
-      if (e.target.checked) {
-        this.setState({
-          num: this.state.num + 1,
-          insurers: this.state.insurers.concat(
-            this.props.insurerList[e.target.id],
-          ),
-        })
-      } else {
-        let index = this.state.insurers.findIndex((element) => this.props.insurerList[e.target.id].insurerName === element.insurerName)
-        const result = this.state.insurers
-        result.splice(index,1)
+    if (e.target.checked) {
+      this.setState({
+        num: this.state.num + 1,
+        insurers: this.state.insurers.concat(
+          this.props.insurerList[e.target.id],
+        ),
+      })
+    } else {
+      let index = this.state.insurers.findIndex(
+        element =>
+          this.props.insurerList[e.target.id].insurerName ===
+          element.insurerName,
+      )
+      const result = this.state.insurers
+      result.splice(index, 1)
 
-        this.setState({
-          num: this.state.num - 1,
-          insurers: result,
-        })
-      }
+      this.setState({
+        num: this.state.num - 1,
+        insurers: result,
+      })
+    }
   }
-
 
   handleSubmit = () => {
-    toast(<div>Done!</div>);
+    toast(<div>Done!</div>)
     this.props.chooseInsurer(this.state.insurers)
   }
-  
-  renderList = insurers => {
 
+  renderList = insurers => {
     return insurers.map((insurer, index) => (
       <Card className="large-2 columns">
         <Check
@@ -158,9 +150,9 @@ class InsurerSelect extends Component {
       </Card>
     ))
   }
-  
+
   render() {
-    console.log(this.props.nums)
+   
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -183,7 +175,6 @@ class InsurerSelect extends Component {
                 </HeadIn>
                 <div className="row">
                   {this.renderList(this.props.insurerList)}
-
 
                   {/*<CardInsure   handleDefaultCheck = {this.handleDefaultCheck} 
                                 handleCheck={this.handleCheck} 
@@ -210,9 +201,13 @@ class InsurerSelect extends Component {
             </div>
           </Detail>
           <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
-          <ToastContainer  hideProgressBar={true} autoClose={1500} position={toast.POSITION.TOP_RIGHT} style={{zIndex:'30'}} />
+          <ToastContainer
+            hideProgressBar={true}
+            autoClose={1500}
+            position={toast.POSITION.TOP_RIGHT}
+            style={{ zIndex: '30' }}
+          />
 
- 
         </div>
       </div>
     )
@@ -227,6 +222,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  timeout: state.setTimeOut.timeout,
   insurerList: state.getAllInsurer,
   insurerChecked: state.getSelectInsurer.defaultInsurer,
   chooseInsurerStatus: state.chooseInsurerReducerStatus,

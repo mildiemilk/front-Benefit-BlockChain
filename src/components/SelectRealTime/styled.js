@@ -21,7 +21,6 @@ export const List = styled.div`
     padding-left: 5%;   
     padding-top: 3%;
 ` 
-
 export const DetailDiv = styled.div`
 	height: 100%;
 	border-radius: 5px;
@@ -65,11 +64,11 @@ export const HeadList = styled.div`
 `
 
 export const TextR = styled.div`
-    width: 20%;
+    width: 159px;
     color: #ffffff;
     float: right;
     font-size: 16px;
-    margin-top: 2%;
+    margin-top: 15px;
     
 `
 
@@ -94,9 +93,11 @@ export const Lists = styled.div`
     height: 50px;
 	background-color: #efefef;
     cursor: pointer;
+    position: relative;
     
 `
 export const ListL = styled.div`
+    position: absolute;
     float: left;
     font-size: 16px;
 	font-weight: 500;

@@ -54,7 +54,6 @@ class Box extends Component {
     let status = 'Join'
     let statusModule = ''
     const { end } = this.props
-    console.log(end.end)
     if (end.end === 'Timeout') {
       if (status === 'Join') {
         statusModule = (

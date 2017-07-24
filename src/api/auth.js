@@ -20,6 +20,7 @@ export function authenticate(email, password) {
     APIRequest(options, false)
       .then(res => {
         localStorage.setItem('token', res.data.token)
+        localStorage.setItem('role', res.data.role)
         dispatch(authenticateSuccess(res.data))
         if (res.data.Havecompany != null && res.data.Approve === true) {
           window.location.href = '/dashboard'

@@ -65,8 +65,8 @@ class SelectRealTime extends Component {
                      
                         <BoxList>
                             <Lists onClick={this.handlePlan}>
-                                <ListL> แผนสิทธิประโยชน์ที่เลือก </ListL>
-                                <ListR>{TypeIcon}</ListR>
+                                        <ListL> แผนสิทธิประโยชน์ที่เลือก </ListL>
+                                        <ListR>{TypeIcon}</ListR>
                             </Lists>
                         </BoxList>
                         {this.state.isPlan

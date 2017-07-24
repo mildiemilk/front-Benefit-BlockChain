@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Divider } from 'semantic-ui-react'
-import { Head, Box, ListTime } from './styled'
+import { Head, Box, ListTime  } from './styled'
 import styled from 'react-sc'
 import EmpolyeeChart from '../PieChart/empolyee-chart'
 import PlanChart from '../PieChart/plan-chart'

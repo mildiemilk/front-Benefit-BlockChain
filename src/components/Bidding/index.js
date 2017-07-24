@@ -23,7 +23,6 @@ class Bidding extends Component {
     this.props.getSelectInsurer()
   }
 
- 
   handleClick = (Detail, index) => {
     const { isDetail } = this.state
     if (!isDetail)
@@ -36,6 +35,7 @@ class Bidding extends Component {
   }
 
   render() {
+    console.log(this.props.timeout)
     return (
       <div className="Bidding">
         <NavBidding num={this.props.num}/>
@@ -54,6 +54,7 @@ class Bidding extends Component {
 }
 
 const mapStateToProps = state => ({
+  timeout: state.setTimeOut.timeout,
   data: state.biddingReducer,
   num: state.getSelectInsurer.defaultInsurer.length,
 })

@@ -69,8 +69,8 @@ class Planchart extends Component {
                   style={{
                     position: 'absolute',
                     zIndex: 10,
-                    marginLeft: '4.2%',
-                    marginTop: '3%',
+                    marginLeft: '55px',
+                    marginTop: '50px',
                   }}
                 >
                   <p className="chart-radial-sum">129</p>

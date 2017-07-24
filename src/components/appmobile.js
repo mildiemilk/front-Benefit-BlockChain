@@ -9,14 +9,16 @@ import employeeVerify from '././Employee/employee-verify'
 import '../styles/employee-style/main.scss'
 
 const AppMobile = () => (
-  <div>
-    {true
-      ? <Switch>
-          <Route path="/employeelogin" component={employeeLogin} />
-          <Route path="/employeeverify" component={employeeVerify} />
-        </Switch>
-      : <Switch />}
-  </div>
+
+    <div>
+      {true
+        ? <Switch>
+            <Route path="/employeelogin" component={employeeLogin} />
+            <Route path="/employeeverify" component={employeeVerify} />
+          </Switch>
+        : <Switch />}
+    </div>
+  
 )
 
 AppMobile.propTypes = {

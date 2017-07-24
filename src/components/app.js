@@ -43,9 +43,13 @@ import Congrat from './congrat'
 import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart'
+import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
+import Appmobile from './appmobile'
 
-const App = ({ isAuthenticated }) => (
+const App = ({ isAuthenticated, role }) => { 
+  console.log(role)
+  return(
   <BrowserRouter>
     <div>
       <EmptyLayout>
@@ -82,10 +86,12 @@ const App = ({ isAuthenticated }) => (
                       component={EmployeeBenefits}
                     />
                     <Route path="/Download" component={Download} />
+                    <Route path="/Selectrealtime" component={SelectRealTime}/>
                     <Route
                       path="/chooseinsuranceplan"
                       component={ChooseInsuranceplan}
                     />
+                    <Route path="/sendflexplan" component={SendFlexPlan}/>
                     <Route path="/piechart" component={PieChart} />
                   </Switch>
                 </MainLayout>
@@ -97,9 +103,10 @@ const App = ({ isAuthenticated }) => (
               <Redirect to={{ pathname: '/login' }} />
             </Switch>}
       </EmptyLayout>
+      {/*<Appmobile/>*/}
     </div>
   </BrowserRouter>
-)
+)}
 
 App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,

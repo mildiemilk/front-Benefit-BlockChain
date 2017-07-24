@@ -81,7 +81,9 @@ class SendFlexPlan extends Component {
                 height: '130px',
               }}
               className="large-12 "
-            />
+            >
+            
+            </Inner>
           </Detail>
           <div style={{ marginTop: '25px' }} className="row">
             <div className="large-9 columns">

@@ -48,7 +48,7 @@ class Empolyeechart extends Component {
             style={{ background: graphColor[index], height: '3.5px' }}
           />
           <span className="rv-discrete-color-legend-item__title">
-           กลุ่ม {element.group} {element.number} คน
+            กลุ่ม {element.group} {element.number} คน
           </span>
         </div>
       )

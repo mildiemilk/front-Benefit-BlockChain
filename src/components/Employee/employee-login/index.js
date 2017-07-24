@@ -9,8 +9,10 @@ import '../../../styles/employee-style/login-verify.scss'
 import gift from '../../image/gigift-mobile.png'
 import logo from '../../image/logo-benefitable-mobile.png'
 import footerLogo from '../../image/logo-footer.png'
+import emailIcon from '../../image/icons-8-message.png'
+import keyIcon from '../../image/icons-8-key-copy.png'
 import Header from '../header'
-import Footer from '../footer'
+import Footer from '../footer-absolute'
 import {
   Button,
   Checkbox,
@@ -32,24 +34,30 @@ class EmployeeLogin extends Component {
 
   render() {
     return (
-      <div>
+      <div className="white-background">
         <MediaQuery query="(max-width: 1224px)">
           <Header />
           <div className="row">
             <div className="small-10 small-centered columns">
-              <div className="gift-log-in-mobile">
+              <div className="gift-logo-in-mobile">
                 <img src={gift} />
                 <div className="form-login-mobile">
                   <Form>
                     <Form.Field>
-                      <Form.Input placeholder="อีเมล" type="email" required />
+                      <div className="divInput">
+                        <img className="iconImage" src={emailIcon} />
+                        <Form.Input placeholder="อีเมล" type="email" required />
+                      </div>
                     </Form.Field>
                     <Form.Field>
-                      <Form.Input
-                        placeholder="รหัสผ่าน"
-                        type="password"
-                        required
-                      />
+                      <div className="divInput">
+                        <img className="iconImage" src={keyIcon} />
+                        <Form.Input
+                          placeholder="รหัสผ่าน"
+                          type="password"
+                          required
+                        />
+                      </div>
                     </Form.Field>
                     <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
                     <button className="button-submit-key">ลงชื่อเข้าใช้</button>

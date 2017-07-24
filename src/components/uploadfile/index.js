@@ -67,9 +67,12 @@ class Uploadfile extends Component {
   handleUploadBroker(e) {
     e.preventDefault()
     let file = e.target.files[0]
-    this.setState({
-      summitBrokerFile: file,
-    })
+    this.setState(
+      {
+        summitBrokerFile: file,
+      },
+      () => console.log(this.state.summitBrokerFile),
+    )
   }
 
   handleDelete = e => {
@@ -96,6 +99,10 @@ class Uploadfile extends Component {
       AmountUploadBlock: add,
     })
     console.log('AmountUploadBlock:', this.state.AmountUploadBlock)
+  }
+
+  handleNextClick = () => {
+    window.location.href = '/sendrequest'
   }
 
   RenderInsideBlock = id => {
@@ -283,7 +290,7 @@ class Uploadfile extends Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Submit>ต่อไป</Submit>
+            <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
           </Detail>
         </div>
       </div>

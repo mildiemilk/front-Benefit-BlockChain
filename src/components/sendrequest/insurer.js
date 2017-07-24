@@ -6,11 +6,10 @@ import { connect } from 'react-redux'
 class Insurer extends React.Component {
   constructor(props) {
     super(props)
-   
+
     props.getSelectInsurer()
-  
   }
-  
+
   renderList = insurers => {
     console.log(insurers)
     return insurers.map(insurer => (

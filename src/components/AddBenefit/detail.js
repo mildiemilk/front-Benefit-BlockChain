@@ -18,37 +18,18 @@ import { Icon, Checkbox } from 'semantic-ui-react'
 import HealthBenefit from './health-benefit'
 import ExpenseBenefit from './expense-benefit'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 class Detail extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isHealth: false,
-      isExpense: false,
-      HealthList: [],
-      ExpenseList: [],
-    }
+    this.state = {}
   }
 
-  handleToggleHealth = () => {
-    if (this.state.isHealth) {
-      this.setState({ isHealth: false })
-    } else {
-      this.setState({ isHealth: true })
-    }
-  }
-
-  handleToggleExpense = () => {
-    if (this.state.isExpense) {
-      this.setState({ isExpense: false })
-    } else {
-      this.setState({ isExpense: true })
-    }
-  }
   boxInStyle = state => {
     if (state) return 'BoxLine'
   }
   render() {
-    
     return (
       <div>
         <DetailDiv>
@@ -60,11 +41,11 @@ class Detail extends Component {
                 <DivImage>
                   <div className="imagehealth" />
                 </DivImage>
-                <Setting onClick={this.props.handleSetting}>
+                <Setting onClick={() => this.props.handleSetting('Health')}>
                   <Icon name="setting" /> ตั้งค่าขั้นสูง{' '}
                 </Setting>
                 <BoxIn>
-                  <div className={this.boxInStyle(this.state.isHealth)}>
+                  <div className={this.boxInStyle(this.props.isHealth)}>
                     <div className="row">
                       <div className="large-8 columns">
                         <HeadList>ค่าใช้จ่ายสุขภาพ (Health)</HeadList>
@@ -76,7 +57,8 @@ class Detail extends Component {
                             {' '}
                             <Checkbox
                               toggle
-                              onClick={this.handleToggleHealth}
+                              checked={this.props.isHealth}
+                              onClick={this.props.handleToggleHealth}
                             />
                             {' '}
                             มี
@@ -85,7 +67,17 @@ class Detail extends Component {
                       </div>
                     </div>
                   </div>
-                  {this.state.isHealth ? <HealthBenefit /> : null}
+                  {this.props.isHealth
+                    ? <HealthBenefit
+                        removeTodoHealth={this.props.removeTodoHealth}
+                        addTodoHealth={this.props.addTodoHealth}
+                        HealthList={this.props.HealthList}
+                        TextHealth={this.props.TextHealth}
+                        handleTextChangeHealth={
+                          this.props.handleTextChangeHealth
+                        }
+                      />
+                    : null}
                 </BoxIn>
               </Box>
 
@@ -95,9 +87,11 @@ class Detail extends Component {
                 <DivImage>
                   <div className="imageExpense" />
                 </DivImage>
-                <Setting><Icon name="setting" /> ตั้งค่าขั้นสูง </Setting>
+                <Setting onClick={() => this.props.handleSetting('Expense')}>
+                  <Icon name="setting" /> ตั้งค่าขั้นสูง{' '}
+                </Setting>
                 <BoxIn>
-                  <div className={this.boxInStyle(this.state.isExpense)}>
+                  <div className={this.boxInStyle(this.props.isExpense)}>
                     <div className="row">
                       <div className="large-8 columns">
                         <HeadList>ค่าใช้จ่ายทั่วไป (General Expense)</HeadList>
@@ -106,14 +100,28 @@ class Detail extends Component {
                         <Toggled>
                           ไม่มี
                           {' '}
-                          <Checkbox toggle onClick={this.handleToggleExpense} />
+                          <Checkbox
+                            toggle
+                            checked={this.props.isExpense}
+                            onClick={this.props.handleToggleExpense}
+                          />
                           {' '}
                           มี
                         </Toggled>
                       </div>
                     </div>
                   </div>
-                  {this.state.isExpense ? <ExpenseBenefit /> : null}
+                  {this.props.isExpense
+                    ? <ExpenseBenefit
+                        ExpenseList={this.props.ExpenseList}
+                        removeTodoExpense={this.props.removeTodoExpense}
+                        addTodoExpense={this.props.addTodoExpense}
+                        TextExpense={this.props.TextExpense}
+                        handleTextChangeExpense={
+                          this.props.handleTextChangeExpense
+                        }
+                      />
+                    : null}
                 </BoxIn>
               </Box>
             </div>
@@ -126,7 +134,9 @@ class Detail extends Component {
             </Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <Link to="/settingbenefit"><NextButton> ต่อไป </NextButton></Link>
+            <NextButton onClick={this.props.nextButtonHandleclick}>
+              {' '}ต่อไป{' '}
+            </NextButton>
           </div>
           <div className="large-1 columns" />
         </div>

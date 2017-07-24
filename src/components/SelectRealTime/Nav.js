@@ -12,34 +12,33 @@ const DividerStyle = styled(Divider)`
     }
 `
 class NavSelectRealTime extends Component {
-    render(){
-        return (
-                <div>
-                    <div className='row'>
-                        <div className='large-12 column'>
-                            <Head> สรุปจำนวนพนักงาน </Head>
-                            <Divider />
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className = 'large-4 columns'>
-                            <EmpolyeeChart/>
-                            
-                        </div>
-                        <div className = 'large-4 columns'>
-                            <PlanChart/>
-                        </div>
-                        <div className = 'large-4 columns'>
-                            <Box>
-                                <ListTime>เวลาที่เหลือในการเลือกแผนสิทธิประโยชน์</ListTime>
-                                <DividerStyle />
-                            </Box>
-                        </div>
-                    </div>
-                </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <div className="row">
+          <div className="large-12 column">
+            <Head> สรุปจำนวนพนักงาน </Head>
+            <Divider />
+          </div>
+        </div>
+        <div className="row">
+          <div className="large-4 columns">
+            <EmpolyeeChart />
 
+          </div>
+          <div className="large-4 columns">
+            <PlanChart />
+          </div>
+          <div className="large-4 columns">
+            <Box>
+              <ListTime>เวลาที่เหลือในการเลือกแผนสิทธิประโยชน์</ListTime>
+              <DividerStyle />
+            </Box>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default NavSelectRealTime

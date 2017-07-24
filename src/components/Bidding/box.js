@@ -25,8 +25,6 @@ class Box extends Component {
     e.preventDefault()
     const { passwordToConfirm } = this.state
     const insurerName = e.target.value
-    console.log('cccccccc', e.target.value)
-    console.log('bbbbbbb', insurerName)
     this.props.chooseFinalInsurer(passwordToConfirm, insurerName)
   }
 

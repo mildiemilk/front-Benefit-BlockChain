@@ -7,9 +7,9 @@ const defaultTimeOut = {
 }
 
 const requestStatus = {
-  success: "SUCCESS",
-  request: "REQUEST",
-  failed: "FAILED",
+  success: 'SUCCESS',
+  request: 'REQUEST',
+  failed: 'FAILED',
 }
 
 const CHOOSEINSURER_REQUEST_SUCCESS = 'CHOOSEINSURER_REQUEST_SUCCESS'
@@ -42,10 +42,10 @@ export function getAllInsurerFailure(data) {
   return { type: GETALLINSURER_REQUEST_FAILUER, data }
 }
 export function getSelectInsurerSuccess(data) {
-  return { type: GETSELECTINSURER_REQUEST_SUCCESS, data}
+  return { type: GETSELECTINSURER_REQUEST_SUCCESS, data }
 }
-export function getSelectInsurerFailure(data){
-  return { type: GETSELECTINSURER_REQUEST_FAILURE, data}
+export function getSelectInsurerFailure(data) {
+  return { type: GETSELECTINSURER_REQUEST_FAILURE, data }
 }
 
 export function chooseInsurerReducer(state = defaultInsurer, action) {
@@ -59,11 +59,14 @@ export function chooseInsurerReducer(state = defaultInsurer, action) {
   }
 }
 
-export function getSelectInsurer(state = defaultInsurer, action){
+export function getSelectInsurer(state = defaultInsurer, action) {
   switch (action.type) {
     case GETSELECTINSURER_REQUEST_SUCCESS:
       console.log('retrieved data ', action.data)
-      return Object.assign({}, state, { defaultInsurer: action.data, requestDone: true })
+      return Object.assign({}, state, {
+        defaultInsurer: action.data,
+        requestDone: true,
+      })
     case GETSELECTINSURER_REQUEST_FAILURE:
       return Object.assign({}, state, {})
     default:

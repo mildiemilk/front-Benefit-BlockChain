@@ -38,7 +38,7 @@ class Bidding extends Component {
     console.log(this.props.timeout)
     return (
       <div className="Bidding">
-        <NavBidding num={this.props.num}/>
+        <NavBidding num={this.props.num} />
         <div className="BidContent">
           {this.state.isDetail
             ? <Details

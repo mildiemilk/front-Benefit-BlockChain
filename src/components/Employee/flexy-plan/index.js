@@ -7,7 +7,7 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import gift from '../../image/gigift-mobile.png'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 import Slider from 'react-slick'
 import FlexyPlanBox from './flexy-plan-box'
 import CongrateImage from '../../image/asset-1.png'
@@ -49,8 +49,7 @@ class FlexyPlan extends Component {
       slidesToScroll: 1,
     }
     return (
-      <div>
-        <MediaQuery query="(max-width: 1224px)">
+      <div className='flexyPlan'>
           <Header />
           <div className="row">
             <div className="small-10 small-centered columns">
@@ -93,7 +92,6 @@ class FlexyPlan extends Component {
               handleCloseModal={this.handleCloseModal}
             />
           </div>
-        </MediaQuery>
       </div>
     )
   }

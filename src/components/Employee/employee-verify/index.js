@@ -23,7 +23,7 @@ import {
 } from 'semantic-ui-react'
 const MediaQuery = require('react-responsive')
 import Header from '../header'
-import Footer from '../footer-absolute'
+import Footer from '../footer'
 
 class EmployeeVerify extends Component {
   constructor() {

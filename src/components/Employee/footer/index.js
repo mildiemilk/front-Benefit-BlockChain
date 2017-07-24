@@ -30,9 +30,8 @@ class Footer extends Component {
 
   render() {
     return (
-      <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <div className="footer">
+      <div className='footer'>
+          <div className="footer-absolute">
             <div className="row">
               <div className="small-10 small-centered columns">
                 <div className="box-in-footer">
@@ -55,7 +54,6 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-        </MediaQuery>
       </div>
     )
   }

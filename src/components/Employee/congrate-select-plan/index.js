@@ -8,7 +8,7 @@ import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/login-verify.scss'
 import selectPlanImage from '../../image/select-plan.png'
 import Header from '../header'
-import Footer from '../footer-absolute'
+import Footer from '../footer'
 import DeadlineBox from '../flexy-plan/deadline-box'
 import ChangePlanModal from './confirm-change-plan-modal'
 import {

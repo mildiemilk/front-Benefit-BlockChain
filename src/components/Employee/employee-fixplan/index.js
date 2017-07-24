@@ -13,7 +13,7 @@ import healthpic from '../../image/5.png'
 import insurepic from '../../image/7.png'
 import expendpic from '../../image/6.png'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 
 import {
   Submit,

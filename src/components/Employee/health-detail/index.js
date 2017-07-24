@@ -7,7 +7,7 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 import healthImage from '../../image/health-detail.png'
 import info from '../../image/icons-8-info.png'
 import {
@@ -32,9 +32,8 @@ class HealthDetail extends Component {
   render() {
     return (
       <div>
-        <MediaQuery query="(max-width: 1224px)">
           <Header />
-          <div className="row">
+          <div className="row health">
             <div className="small-10 small-centered columns">
               <div className="employee-health-box">
                 <p>สิทธิประโยชน์ด้านสุขภาพ</p>
@@ -76,7 +75,6 @@ class HealthDetail extends Component {
             </div>
           </div>
           <Footer />
-        </MediaQuery>
       </div>
     )
   }

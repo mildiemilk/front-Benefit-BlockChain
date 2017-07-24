@@ -8,7 +8,7 @@ import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
 import Header from '../header'
 import Footer from '../footer-relative'
-import healthImage from '../../image/artboard-1.png'
+import GenaralImage from '../../image/genaral-detail.png'
 import info from '../../image/icons-8-info.png'
 import {
   Button,
@@ -41,7 +41,7 @@ class GenaralExpense extends Component {
                 <div className="health-image-box">
                   <img src={info} style={{ float: 'right' }} />
                   <br />
-                  <img src={healthImage} style={{ marginTop: '2%' }} />
+                  <img src={GenaralImage} style={{ marginTop: '2%' }} />
                   <p className="text-image-health">GENERAL EXPENSE</p>
                 </div>
                 <div className="detail-health-box">
@@ -50,7 +50,7 @@ class GenaralExpense extends Component {
                       <div className="small-6 columns">
                         <div>วงเงินทั้งหมด</div>
                         <div>ซื้อสินค้า</div>
-                        <div className="pharagraph-text">บริการสินค้า</div>
+                        <div className="pharagraph-text">บริการด้านสุขภาพ</div>
                       </div>
                       <div className="small-6 columns">
                         <div className="position-text">

@@ -43,31 +43,36 @@ class EmployeeLogin extends Component {
 
   render() {
     return (
-      <div>
+      <div className="white-background">
         <Header />
         <div className="row">
           <div className="small-10 small-centered columns">
-            <div className="gift-log-in-mobile">
+            <div className="gift-logo-in-mobile">
               <img src={gift} />
               <div className="form-login-mobile">
                 <Form>
                   <Form.Field>
-                    <Form.Input
-                      onChange={this.handleChange}
-                      placeholder="อีเมล"
-                      name="email"
-                      type="email"
-                      required
-                    />
+                    <div className="divInput">
+                      <img className="iconImage" src={emailIcon} />
+                      <Form.Input
+                        onChange={this.handleChange}
+                        placeholder="อีเมล"
+                        name="email"
+                        type="email"
+                        required
+                      />
+                    </div>
                   </Form.Field>
                   <Form.Field>
-                    <Form.Input
-                      onChange={this.handleChange}
-                      placeholder="รหัสผ่าน"
-                      name="password"
-                      type="password"
-                      required
-                    />
+                    <div className="divInput">
+                      <img className="iconImage" src={keyIcon} />
+                      <Form.Input
+                        onChange={this.handleChange}
+                        placeholder="รหัสผ่าน"
+                        name="password"
+                        required
+                      />
+                    </div>
                   </Form.Field>
                   <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
                   <ModalAddData
@@ -76,6 +81,7 @@ class EmployeeLogin extends Component {
                   />
                 </Form>
               </div>
+
             </div>
           </div>
         </div>

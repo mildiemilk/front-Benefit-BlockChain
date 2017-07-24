@@ -10,6 +10,9 @@ import employeeVerify from './Employee/employee-verify'
 import HealthDetail from './Employee/health-detail'
 import GenaralExpense from './Employee/genaral-expense'
 import InsuranceDetail from '././Employee/InsuranceDetail'
+import EmployeeFixPlan from './Employee/employee-fixplan'
+import DashboardStart from './Employee/dashboard-start'
+import FlexyPlan from './Employee/flexy-plan'
 
 import '../styles/employee-style/main.scss'
 
@@ -22,6 +25,9 @@ const AppMobile = () => (
           <Route path="/insurancedetail" component={InsuranceDetail} />
           <Route path="/healthdetail" component={HealthDetail} />
           <Route path="/genaralexpense" component={GenaralExpense} />
+          <Route path="/employeefixplan" component={EmployeeFixPlan} />
+          <Route path="/dashboardstart" component={DashboardStart} />
+          <Route path="/flexyplan" component={FlexyPlan} />
         </Switch>
       : <Switch />}
   </div>

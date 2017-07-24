@@ -8,7 +8,7 @@ import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
 import Header from '../header'
 import Footer from '../footer-relative'
-import healthImage from '../../image/artboard-1.png'
+import healthImage from '../../image/health-detail.png'
 import info from '../../image/icons-8-info.png'
 import {
   Button,

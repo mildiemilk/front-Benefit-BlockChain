@@ -35,39 +35,37 @@ class EmployeeLogin extends Component {
   render() {
     return (
       <div className="white-background">
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
-          <div className="row">
-            <div className="small-10 small-centered columns">
-              <div className="gift-logo-in-mobile">
-                <img src={gift} />
-                <div className="form-login-mobile">
-                  <Form>
-                    <Form.Field>
-                      <div className="divInput">
-                        <img className="iconImage" src={emailIcon} />
-                        <Form.Input placeholder="อีเมล" type="email" required />
-                      </div>
-                    </Form.Field>
-                    <Form.Field>
-                      <div className="divInput">
-                        <img className="iconImage" src={keyIcon} />
-                        <Form.Input
-                          placeholder="รหัสผ่าน"
-                          type="password"
-                          required
-                        />
-                      </div>
-                    </Form.Field>
-                    <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
-                    <button className="button-submit-key">ลงชื่อเข้าใช้</button>
-                  </Form>
-                </div>
+        <Header />
+        <div className="row">
+          <div className="small-10 small-centered columns">
+            <div className="gift-logo-in-mobile">
+              <img src={gift} />
+              <div className="form-login-mobile">
+                <Form>
+                  <Form.Field>
+                    <div className="divInput">
+                      <img className="iconImage" src={emailIcon} />
+                      <Form.Input placeholder="อีเมล" type="email" required />
+                    </div>
+                  </Form.Field>
+                  <Form.Field>
+                    <div className="divInput">
+                      <img className="iconImage" src={keyIcon} />
+                      <Form.Input
+                        placeholder="รหัสผ่าน"
+                        type="password"
+                        required
+                      />
+                    </div>
+                  </Form.Field>
+                  <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
+                  <button className="button-submit-key">ลงชื่อเข้าใช้</button>
+                </Form>
               </div>
             </div>
           </div>
-          <Footer />
-        </MediaQuery>
+        </div>
+        <Footer />
       </div>
     )
   }

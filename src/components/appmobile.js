@@ -11,6 +11,7 @@ import GenaralExpense from './Employee/genaral-expense'
 import EmployeeFixPlan from './Employee/employee-fixplan'
 import DashboardStart from './Employee/dashboard-start'
 import FlexyPlan from './Employee/flexy-plan'
+import CongrateSelectPlan from './Employee/congrate-select-plan'
 
 import '../styles/employee-style/main.scss'
 
@@ -25,6 +26,7 @@ const AppMobile = () => (
           <Route path="/employeefixplan" component={EmployeeFixPlan} />
           <Route path="/dashboardstart" component={DashboardStart} />
           <Route path="/flexyplan" component={FlexyPlan} />
+          <Route path="/congrateselectplan" component={CongrateSelectPlan} />
         </Switch>
       : <Switch />}
   </div>

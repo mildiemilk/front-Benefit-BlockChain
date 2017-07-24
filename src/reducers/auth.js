@@ -4,7 +4,7 @@
 const defaultAuth = {
   user: null,
   token: localStorage.getItem('token'),
-  role: null,
+  role: localStorage.getItem('role'),
   message: '',
   error: false,
 }

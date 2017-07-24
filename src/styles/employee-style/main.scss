@@ -1,10 +1,13 @@
 @import '../vendor/foundation/_setting.scss';
 @import './login-verify.scss';
 @import './health-genaral.scss';
+@import './add-data-modal.scss';
 @import './dashboard-start.scss';
 @import './flexy-plan.scss';
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
+@import './insurance-detail.scss';
+@import './congrate-select-plan.scss';
 
 @font-face {
     font-family: 'kanit';
@@ -18,7 +21,7 @@ body {
     h2 {
     font-family: 'Kanit';
     }
-    background: #ffffff;
+    background: #f5f5f5;
 
     .toggle{
       .ui.toggle.checkbox input:checked ~ .box:before, .ui.toggle.checkbox input:checked ~ label:before {

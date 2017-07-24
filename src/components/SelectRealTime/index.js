@@ -52,7 +52,6 @@ class SelectRealTime extends Component {
       })
     }
   }
-
   render() {
     let TypeIcon = null
     if (!this.state.isPlan) {
@@ -98,7 +97,6 @@ class SelectRealTime extends Component {
           </BoxDetail>
 
         </DetailDiv>
-
         <NextButton>ต่อไป</NextButton>
       </div>
     )

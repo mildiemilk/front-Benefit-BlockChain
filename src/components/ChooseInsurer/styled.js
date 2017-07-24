@@ -28,7 +28,7 @@ export const HeadIn = styled.div`
     padding-left: 1% ;
 `
 export const Card = styled.div`
-  width: 14%;
+  width: 140px;
 	height: 145px;
 	border-radius: 8px;
 	background-color: #f5f5f5;

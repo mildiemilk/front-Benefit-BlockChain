@@ -32,7 +32,6 @@ import {
   Next,
   Check,
 } from './styled'
-import CardInsure from './card-insure'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
@@ -80,25 +79,6 @@ class InsurerSelect extends Component {
     // }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.props.getSelectInsurer()
-  //   if(nextProps.chooseInsurerStatus === "SUCCESS") {
-  //     const { insurerChecked } = this.props
-  //     let CheckedinsurerList = this.props.insurerList
-
-  //     console.log("insurerChecked ==> ", insurerChecked)
-  //     console.log("insurerList ==> ", insurerList)
-  //     CheckedinsurerList.map( insurer => {
-  //       let tempInsurer
-  //       const checkedInsurer =_.find(insurerChecked, { 'insurerName': insurer.insurerName });
-  //       tempInsurer.checked = !(_.isNil(checkedInsurer))
-  //       return tempInsurer
-  //     })
-  //     this.setState({ insurers: CheckedinsurerList })
-  //     console.log("CheckedinsurerList ===> ", CheckedinsurerList)
-  //   }
-  // }
-
   handleDefaultCheck = e => {
     const { insurerChecked } = this.props
     const matchedInsurer = _.find(this.state.insurers, {
@@ -111,7 +91,9 @@ class InsurerSelect extends Component {
 
   handleTimeOut = () => {
     const { date } = this.state
+    console.log(this.state.date)
     this.props.setTimeOut(date)
+    console.log(this.props.timeout)
   }
 
   handleDate = date => {
@@ -123,6 +105,7 @@ class InsurerSelect extends Component {
   handleTime = time => {
     time._d.setDate(this.state.date._d.getDate())
     this.state.date._d.setTime(time._d.getTime())
+    console.log(this.state.date)
   }
 
   handleCheck = e => {
@@ -169,7 +152,6 @@ class InsurerSelect extends Component {
   }
 
   render() {
-    console.log(this.props.nums)
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -239,6 +221,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({
+  timeout: state.setTimeOut.timeout,
   insurerList: state.getAllInsurer,
   insurerChecked: state.getSelectInsurer.defaultInsurer,
   chooseInsurerStatus: state.chooseInsurerReducerStatus,

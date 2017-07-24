@@ -7,7 +7,7 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import gift from '../../image/gigift-mobile.png'
 import Header from '../header'
-import Footer from '../footer-absolute'
+import Footer from '../footer'
 import {
   Button,
   Checkbox,

@@ -24,7 +24,6 @@ import welcomePage from './welcome'
 import Sidebar from './sidebar'
 import Sendrequest from './sendrequest'
 import MainLayout from './main-layout'
-import EmptyLayout from './empty-layout'
 import Uploadfile from './uploadfile'
 import NavLayout from './nav-layout'
 import Bidding from './Bidding'
@@ -46,14 +45,15 @@ import PieChart from './PieChart'
 import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
 import Appmobile from './appmobile'
+import employeeLogin from './Employee/employee-login'
 
 const App = ({ isAuthenticated, role }) => { 
   console.log(role)
   return(
   <BrowserRouter>
     <div>
-      <EmptyLayout>
         {isAuthenticated
+        ? role === 'HR'
           ? <NavLayout>
               <Switch>
                 <Route path="/confirm_identity" component={confirm_identity} />
@@ -97,13 +97,18 @@ const App = ({ isAuthenticated, role }) => {
                 </MainLayout>
               </Switch>
             </NavLayout>
-          : <Switch>
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Redirect to={{ pathname: '/login' }} />
-            </Switch>}
-      </EmptyLayout>
-      {/*<Appmobile/>*/}
+
+          : role === 'Employee'
+            ? <Appmobile/>
+            : null
+        : <Switch>
+            <Route path="/employeelogin" component={employeeLogin} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Redirect to={{ pathname: '/login' }} />
+          </Switch>
+        }
+          
     </div>
   </BrowserRouter>
 )}

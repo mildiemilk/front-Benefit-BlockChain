@@ -1,21 +1,6 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-  Search,
-} from 'semantic-ui-react'
+import { Checkbox, Form, Radio } from 'semantic-ui-react'
 import CoPlayBidding from './coplay-bidding'
 import IPD1Bidding from './ipd1-bidding'
 import IPD2Bidding from './ipd2-bidding'
@@ -53,8 +38,6 @@ class IPDBidding extends Component {
       ipdCoPlayMixYear: null,
     }
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -119,14 +102,8 @@ class IPDBidding extends Component {
   }
 }
 
-IPDBidding.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({
-  editPlan: (editData, planId, editType) =>
-    dispatch(editPlan(editData, planId, editType)),
-})
 const mapStateToProps = state => ({
   planList: state.plan.planList,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(IPDBidding)
+export default connect(mapStateToProps, null)(IPDBidding)

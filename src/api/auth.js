@@ -22,12 +22,22 @@ export function authenticate(email, password) {
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('role', res.data.role)
         dispatch(authenticateSuccess(res.data))
-        if (res.data.Havecompany != null && res.data.Approve === true) {
-          window.location.href = '/dashboard'
-        } else if (res.data.Havecompany != null && res.data.Approve === false) {
-          window.location.href = '/confirm_identity'
-        } else {
-          window.location.href = '/settingprofile'
+        console.log(res.data.role)
+        if (res.data.role === 'HR') {
+          if (res.data.Havecompany != null && res.data.Approve === true) {
+            window.location.href = '/dashboard'
+          } else if (
+            res.data.Havecompany != null &&
+            res.data.Approve === false
+          ) {
+            window.location.href = '/confirm_identity'
+          } else {
+            window.location.href = '/settingprofile'
+          }
+        } else if (res.data.role === 'Employee') {
+          if (res.data.Approve === true) {
+            window.location.href = '/employeeverify'
+          }
         }
       })
       .catch(err => {

@@ -93,7 +93,7 @@ class InsurerSelect extends Component {
     const { date } = this.state
     console.log(this.state.date)
     this.props.setTimeOut(date)
-     console.log(this.props.timeout)
+    console.log(this.props.timeout)
   }
 
   handleDate = date => {
@@ -152,7 +152,6 @@ class InsurerSelect extends Component {
   }
 
   render() {
-   
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />

@@ -1,28 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
-import '../../../styles/employee-style/login-verify.scss'
-import selectPlanImage from '../../image/select-plan.png'
-import Header from '../header'
-import Footer from '../footer-absolute'
-import DeadlineBox from '../flexy-plan/deadline-box'
 import ChangePlanModal from './confirm-change-plan-modal'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
+import DeadlineBox from '../flexy-plan/deadline-box'
+import selectPlanImage from '../../image/select-plan.png'
 
 class CongrateSelectPlan extends Component {
   constructor() {
@@ -43,11 +22,14 @@ class CongrateSelectPlan extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="row">
           <div className="small-10 small-centered columns">
             <div className="select-plan-box">
-              <img className="select-plan-image" src={selectPlanImage} />
+              <img
+                className="select-plan-image"
+                alt="select-plan"
+                src={selectPlanImage}
+              />
               <p>คุณเลือกแผนเรียบร้อยแล้ว</p>
               <p>รอดำเนินการในขั้นตอนต่อไป</p>
             </div>
@@ -56,16 +38,15 @@ class CongrateSelectPlan extends Component {
               <DeadlineBox />
             </div>
             <div className="center-link">
-              <a
+              <button
                 className="link-change-plan"
                 onClick={() => this.handleOpenModal()}
               >
                 <u>ต้องการเปลี่ยนแผน?</u>
-              </a>
+              </button>
             </div>
           </div>
         </div>
-        <Footer />
         <ChangePlanModal
           openModal={this.state.openModal}
           handleCloseModal={this.handleCloseModal}
@@ -75,9 +56,4 @@ class CongrateSelectPlan extends Component {
   }
 }
 
-CongrateSelectPlan.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CongrateSelectPlan)
+export default CongrateSelectPlan

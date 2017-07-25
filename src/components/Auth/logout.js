@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { logout } from '../../api/auth'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { logout } from '../../api/auth'
 
 class Logout extends Component {
   constructor(props) {

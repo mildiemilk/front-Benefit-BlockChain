@@ -1,14 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-  Icon,
-} from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
@@ -43,19 +34,20 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
 class PlanBoxModal extends Component {
+  static propTypes = {
+    handleCloseModal: PropTypes.func.isRequired,
+    modalOpen: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object()).isRequired,
+    activePlan: PropTypes.number.isRequired,
+  }
   constructor(props) {
     super(props)
     const { planList, activePlan } = this.props
     this.state = {
       closeOnEscape: false,
       closeOnRootNodeClick: true,
-      activePlan: activePlan,
+      activePlan: this.state.activePlan,
       nextPage: false,
       canGoToNextPage: true,
       warningModal: false,
@@ -111,8 +103,65 @@ class PlanBoxModal extends Component {
     }
   }
 
-  handleClose = e => {
-    this.props.handleCloseModal()
+  componentDidUpdate() {
+    this.handleUpdate()
+  }
+
+  handleUpdate = () => {
+    const { planList, activePlan } = this.props
+    if (this.state.activePlan !== activePlan) {
+      this.setState({
+        activePlan: this.state.activePlan,
+        planName: planList[activePlan].planName,
+        employeeOfPlan: planList[activePlan].employeeOfPlan,
+        ipdType: planList[activePlan].ipdType,
+        ipdLumsumPerYear: planList[activePlan].ipdLumsumPerYear,
+        ipdLumsumPerTime: planList[activePlan].ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: planList[activePlan]
+          .ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight: planList[activePlan].rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: planList[activePlan]
+          .rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight: planList[activePlan]
+          .rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear: planList[activePlan]
+          .rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient: planList[activePlan].rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: planList[activePlan]
+          .rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor: planList[activePlan].rbScheduleDoctor,
+        rbScheduleSurgerySchedule: planList[activePlan]
+          .rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule: planList[activePlan]
+          .rbScheduleSurgeryNonSchedule,
+        rbScheduleService: planList[activePlan].rbScheduleService,
+        rbScheduleSmallSurgery: planList[activePlan].rbScheduleSmallSurgery,
+        rbScheduleAdviser: planList[activePlan].rbScheduleAdviser,
+        rbScheduleAmbulance: planList[activePlan].rbScheduleAmbulance,
+        rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
+        rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
+        rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
+        ipdCoPlay: planList[activePlan].ipdCoPlay,
+        ipdCoPlayQuota: planList[activePlan].ipdCoPlayQuota,
+        ipdCoPlayDeductable: planList[activePlan].ipdCoPlayDeductable,
+        ipdCoPlayMixPercentage: planList[activePlan].ipdCoPlayMixPercentage,
+        ipdCoPlayMixNotExceed: planList[activePlan].ipdCoPlayMixNotExceed,
+        ipdCoPlayMixYear: planList[activePlan].ipdCoPlayMixYear,
+        opdPerYear: planList[activePlan].opdPerYear,
+        opdPerTime: planList[activePlan].opdPerTime,
+        opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
+        opdCoPlay: planList[activePlan].opdCoPlay,
+        opdCoPlayQuota: planList[activePlan].opdCoPlayQuota,
+        opdCoPlayDeductable: planList[activePlan].opdCoPlayDeductable,
+        opdCoPlayMixPercentage: planList[activePlan].opdCoPlayMixPercentage,
+        opdCoPlayMixNotExceed: planList[activePlan].opdCoPlayMixNotExceed,
+        opdCoPlayMixYear: planList[activePlan].opdCoPlayMixYear,
+        dentalPerYear: planList[activePlan].dentalPerYear,
+        lifePerYear: planList[activePlan].lifePerYear,
+        lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
+        lifeNotExceed: planList[activePlan].lifeNotExceed,
+      })
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -194,7 +243,7 @@ class PlanBoxModal extends Component {
   }
 
   handleToggleIpdCoPlay = () => {
-    if (this.state.ipdCoPlay)
+    if (this.state.ipdCoPlay) {
       this.setState({
         ipdCoPlay: !this.state.ipdCoPlay,
         ipdCoPlayQuota: null,
@@ -203,11 +252,13 @@ class PlanBoxModal extends Component {
         ipdCoPlayMixNotExceed: null,
         ipdCoPlayMixYear: null,
       })
-    else this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+    } else {
+      this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+    }
   }
 
   handleToggleOpdCoPlay = () => {
-    if (this.state.opdCoPlay)
+    if (this.state.opdCoPlay) {
       this.setState({
         opdCoPlay: !this.state.opdCoPlay,
         opdCoPlayQuota: null,
@@ -216,7 +267,9 @@ class PlanBoxModal extends Component {
         opdCoPlayMixNotExceed: null,
         opdCoPlayMixYear: null,
       })
-    else this.setState({ opdCoPlay: !this.state.opdCoPlay })
+    } else {
+      this.setState({ opdCoPlay: !this.state.opdCoPlay })
+    }
   }
 
   handleSetGoToNextPage = () => {
@@ -248,61 +301,8 @@ class PlanBoxModal extends Component {
     this.setState({ canBuildNewPlan: false })
   }
 
-  componentDidUpdate() {
-    const { planList, activePlan } = this.props
-    if (this.state.activePlan !== activePlan) {
-      this.setState({
-        activePlan: activePlan,
-        planName: planList[activePlan].planName,
-        employeeOfPlan: planList[activePlan].employeeOfPlan,
-        ipdType: planList[activePlan].ipdType,
-        ipdLumsumPerYear: planList[activePlan].ipdLumsumPerYear,
-        ipdLumsumPerTime: planList[activePlan].ipdLumsumPerTime,
-        ipdLumsumTimeNotExceedPerYear: planList[activePlan]
-          .ipdLumsumTimeNotExceedPerYear,
-        rbLumsumRoomPerNight: planList[activePlan].rbLumsumRoomPerNight,
-        rbLumsumNigthNotExceedPerYear: planList[activePlan]
-          .rbLumsumNigthNotExceedPerYear,
-        rbLumsumPayNotExceedPerNight: planList[activePlan]
-          .rbLumsumPayNotExceedPerNight,
-        rbLumsumPayNotExceedPerYear: planList[activePlan]
-          .rbLumsumPayNotExceedPerYear,
-        rbSchedulePatient: planList[activePlan].rbSchedulePatient,
-        rbScheduleIntensiveCarePatient: planList[activePlan]
-          .rbScheduleIntensiveCarePatient,
-        rbScheduleDoctor: planList[activePlan].rbScheduleDoctor,
-        rbScheduleSurgerySchedule: planList[activePlan]
-          .rbScheduleSurgerySchedule,
-        rbScheduleSurgeryNonSchedule: planList[activePlan]
-          .rbScheduleSurgeryNonSchedule,
-        rbScheduleService: planList[activePlan].rbScheduleService,
-        rbScheduleSmallSurgery: planList[activePlan].rbScheduleSmallSurgery,
-        rbScheduleAdviser: planList[activePlan].rbScheduleAdviser,
-        rbScheduleAmbulance: planList[activePlan].rbScheduleAmbulance,
-        rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
-        rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
-        rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
-        ipdCoPlay: planList[activePlan].ipdCoPlay,
-        ipdCoPlayQuota: planList[activePlan].ipdCoPlayQuota,
-        ipdCoPlayDeductable: planList[activePlan].ipdCoPlayDeductable,
-        ipdCoPlayMixPercentage: planList[activePlan].ipdCoPlayMixPercentage,
-        ipdCoPlayMixNotExceed: planList[activePlan].ipdCoPlayMixNotExceed,
-        ipdCoPlayMixYear: planList[activePlan].ipdCoPlayMixYear,
-        opdPerYear: planList[activePlan].opdPerYear,
-        opdPerTime: planList[activePlan].opdPerTime,
-        opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
-        opdCoPlay: planList[activePlan].opdCoPlay,
-        opdCoPlayQuota: planList[activePlan].opdCoPlayQuota,
-        opdCoPlayDeductable: planList[activePlan].opdCoPlayDeductable,
-        opdCoPlayMixPercentage: planList[activePlan].opdCoPlayMixPercentage,
-        opdCoPlayMixNotExceed: planList[activePlan].opdCoPlayMixNotExceed,
-        opdCoPlayMixYear: planList[activePlan].opdCoPlayMixYear,
-        dentalPerYear: planList[activePlan].dentalPerYear,
-        lifePerYear: planList[activePlan].lifePerYear,
-        lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
-        lifeNotExceed: planList[activePlan].lifeNotExceed,
-      })
-    }
+  handleClose = () => {
+    this.props.handleCloseModal()
   }
 
   render() {
@@ -401,8 +401,4 @@ class PlanBoxModal extends Component {
   }
 }
 
-PlanBoxModal.propTypes = {}
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, null)(PlanBoxModal)
+export default connect(null, null)(PlanBoxModal)

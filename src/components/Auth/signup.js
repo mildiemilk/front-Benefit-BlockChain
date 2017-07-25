@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { companyFill } from '../../actions'
-import { Button, Checkbox, Form, Grid, Image } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import logo from '../image/logo.png'
-import city from '../image/cityscape2.png'
-import userIcon from '../image/icons8-user.png'
-import passwordIcon from '../image/icons8-password.png'
 import '../../styles/signup.scss'
 import { register } from '../../api/auth'
 
@@ -39,7 +33,7 @@ class SignUp extends Component {
     return (
       <div className="signupStyle">
         <div className="box">
-          <img src={logo} style={{ maxWidth: '30%' }} />
+          <img src={logo} alt="logo" style={{ maxWidth: '30%' }} />
           <div className="large-9 large-centered columns">
             <div className="boxForm">
               <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
@@ -52,6 +46,7 @@ class SignUp extends Component {
                         <div className="divInput">
                           <img
                             className="iconUser"
+                            alt="iconUser"
                             src="../../../login/icons8-user.png"
                           />
                           <Form.Input
@@ -67,6 +62,7 @@ class SignUp extends Component {
                         <div className="divInput">
                           <img
                             className="iconPassword"
+                            alt="iconPassword"
                             src="../../../login/icons8-password.png"
                           />
                           <Form.Input
@@ -82,6 +78,7 @@ class SignUp extends Component {
                         <div className="divInput">
                           <img
                             className="iconPassword"
+                            alt="iconPassword"
                             src="../../../login/icons8-password.png"
                           />
                           <Form.Input

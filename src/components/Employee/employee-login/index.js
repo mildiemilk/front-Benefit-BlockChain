@@ -1,68 +1,102 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
+import PropTypes from 'prop-types'
+import { Form } from 'semantic-ui-react'
+import { authenticate } from '../../../api/auth'
 import '../../../styles/employee-style/login-verify.scss'
 import gift from '../../image/gigift-mobile.png'
-import logo from '../../image/logo-benefitable-mobile.png'
-import footerLogo from '../../image/logo-footer.png'
 import emailIcon from '../../image/icons-8-message.png'
 import keyIcon from '../../image/icons-8-key-copy.png'
 import Header from '../header'
-import Footer from '../footer-absolute'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
+import Footer from '../footer'
+import ModalAddData from './modal-add-data'
 
 class EmployeeLogin extends Component {
-  constructor() {
-    super()
-    this.state = {}
+  static propTypes = {
+    data: PropTypes.string.isRequired,
+    authenticate: PropTypes.func.isRequired,
   }
 
+  constructor() {
+    super()
+    this.state = {
+      email: '',
+      password: '',
+    }
+  }
+
+  handleChange = (e, { name, value }) => {
+    this.setState({
+      [name]: value,
+    })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { email, password } = this.state
+    this.props.authenticate(email, password)
+  }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
-      <div className="white-background">
-        <Header />
-        <div className="row">
-          <div className="small-10 small-centered columns">
-            <div className="gift-logo-in-mobile">
-              <img src={gift} />
-              <div className="form-login-mobile">
-                <Form>
-                  <Form.Field>
-                    <div className="divInput">
-                      <img className="iconImage" src={emailIcon} />
-                      <Form.Input placeholder="อีเมล" type="email" required />
-                    </div>
-                  </Form.Field>
-                  <Form.Field>
-                    <div className="divInput">
-                      <img className="iconImage" src={keyIcon} />
-                      <Form.Input
-                        placeholder="รหัสผ่าน"
-                        type="password"
-                        required
-                      />
-                    </div>
-                  </Form.Field>
-                  <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
-                  <button className="button-submit-key">ลงชื่อเข้าใช้</button>
-                </Form>
+      <div>
+        <div className="white-background">
+          <Header />
+          <div className="row">
+            <div className="small-10 small-centered columns">
+              <div className="gift-logo-in-mobile">
+                <img src={gift} alt="gift" />
+                <div className="form-login-mobile">
+                  <Form>
+                    <Form.Field>
+                      <div className="divInput">
+                        <img
+                          className="iconImage"
+                          alt="icomEmail"
+                          src={emailIcon}
+                        />
+                        <Form.Input
+                          placeholder="อีเมล"
+                          name="email"
+                          type="email"
+                          onChange={this.handleChange}
+                          required
+                        />
+                      </div>
+                    </Form.Field>
+                    <Form.Field>
+                      <div className="divInput">
+                        <img
+                          className="iconImage"
+                          alt="iconKey"
+                          src={keyIcon}
+                        />
+                        <Form.Input
+                          name="password"
+                          placeholder="รหัสผ่าน"
+                          type="password"
+                          onChange={this.handleChange}
+                          required
+                        />
+                      </div>
+                    </Form.Field>
+                    {this.props.data.error
+                      ? <p style={{ color: 'red' }}>
+                          {' '}{this.props.data.message}
+                        </p>
+                      : <p />}
+                    <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
+                    <ModalAddData
+                      email={this.state.email}
+                      password={this.state.password}
+                      handleSubmit={this.handleSubmit}
+                    />
+                  </Form>
+                </div>
               </div>
+
             </div>
+            <div className="small-2 columns" />
           </div>
         </div>
         <Footer />
@@ -71,9 +105,15 @@ class EmployeeLogin extends Component {
   }
 }
 
-EmployeeLogin.propTypes = {}
+EmployeeLogin.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  authenticate: (email, password) => dispatch(authenticate(email, password)),
+})
+const mapStateToProps = state => ({
+  data: state.authReducer,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLogin)

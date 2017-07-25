@@ -1,22 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import styled from 'react-sc'
 import NavBenefit from '../NavBenefit'
-
-import {
-  Detail,
-  Inboxtext,
-  Head,
-  Inner,
-  BackButton,
-  SendButton,
-} from './styled'
-import { Image, Container, Divider, Segment, Icon } from 'semantic-ui-react'
-
-// ----------------------------------------------------------------
+import { Detail, Head, Inner, BackButton, SendButton } from './styled'
 
 class SendFlexPlan extends Component {
   constructor(props) {
@@ -81,9 +65,7 @@ class SendFlexPlan extends Component {
                 height: '130px',
               }}
               className="large-12 "
-            >
-            
-            </Inner>
+            />
           </Detail>
           <div style={{ marginTop: '25px' }} className="row">
             <div className="large-9 columns">

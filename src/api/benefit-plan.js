@@ -6,10 +6,19 @@ import {
   editChoosePlanFailure,
   editOptionSuccess,
   editOptionFailure,
+  getOptionPlanSuccess,
+  getOptionPlanFailure,
+  getBenefitPlanSuccess,
+  getBenefitPlanFailure,
+  setBenefitPlanSuccess,
+  setBenefitPlanFailure,
 } from '../reducers/benefit-plan'
 
 const CHOOSE_PLAN_URI = '/api/benefit-plan'
 const EDITCHOOSE_PLAN_URI = '/api/edit-benefit-plan'
+const GETOPTION_PLAN_URI = '/api/get-option-plan'
+const GETBENEFIT_PLAN_URI = '/api/get-benefit-plan'
+const SETBENEFIT_PLAN_URI = '/api/set-benefit-plan'
 
 export function choosePlan(plan) {
   return dispatch => {
@@ -24,7 +33,7 @@ export function choosePlan(plan) {
         dispatch(choosePlanSuccess(res.data))
       })
       .catch(err => {
-        dispatch(choosePlanSuccess(err.response.data))
+        dispatch(choosePlanFailure(err.response.data))
         console.log(err.response)
       })
   }
@@ -86,6 +95,61 @@ export function planOption(
       })
       .catch(err => {
         dispatch(editOptionFailure(err.response.data))
+        console.log(err.response)
+      })
+  }
+}
+
+export function getOptionPlan() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GETOPTION_PLAN_URI,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getOptionPlanSuccess(res.data))
+      })
+      .catch(err => {
+        dispatch(getOptionPlanFailure(err.response.data))
+        console.log(err.response)
+      })
+  }
+}
+
+export function getBenefitPlan() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GETBENEFIT_PLAN_URI,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getBenefitPlanSuccess(res.data))
+      })
+      .catch(err => {
+        dispatch(getBenefitPlanFailure(err.response.data))
+        console.log(err.response)
+      })
+  }
+}
+
+export function setBenefitPlan(benefitPlans) {
+  return dispatch => {
+    const options = {
+      method: 'post',
+      url: SETBENEFIT_PLAN_URI,
+      data: { benefitPlans },
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(setBenefitPlanSuccess(res.data))
+      })
+      .catch(err => {
+        dispatch(setBenefitPlanFailure(err.response.data))
         console.log(err.response)
       })
   }

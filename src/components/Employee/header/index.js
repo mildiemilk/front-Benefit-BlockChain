@@ -30,12 +30,10 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-        <MediaQuery query="(max-width: 1224px)">
+      <div id='header'>
           <div className="mobile-header">
             <img src={logo} />
           </div>
-        </MediaQuery>
       </div>
     )
   }

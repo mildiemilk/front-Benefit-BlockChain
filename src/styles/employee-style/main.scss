@@ -8,6 +8,7 @@
 @import '~slick-carousel/slick/slick-theme.css';
 @import './insurance-detail.scss';
 @import './congrate-select-plan.scss';
+@import './sidebar.scss';
 
 @font-face {
     font-family: 'kanit';
@@ -60,4 +61,11 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.headlayout{
+  position: relative;
+  margin: 0 auto;
+  min-height: 100%;
+  padding-bottom: 80px;
 }

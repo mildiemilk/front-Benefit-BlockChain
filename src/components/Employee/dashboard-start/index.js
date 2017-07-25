@@ -27,7 +27,7 @@ class DashboardStart extends Component {
 
   render() {
     return (
-      <div className='dashboard'>
+      <div className='dashboard-start'>
           <div className="row">
             <div className="small-10 small-centered columns">
               <div className="dashboard-start-box">

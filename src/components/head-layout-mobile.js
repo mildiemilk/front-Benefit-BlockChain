@@ -4,11 +4,11 @@ import Footer from './Employee/Footer'
 class HeadLayoutMobile extends Component {
   render() {
     return (
-      <div>
+      <div className='headlayout'>
         <Header />
-        <div>
-          {this.props.children}
-        </div>
+          <div id='content'>
+            {this.props.children} 
+          </div>
         <Footer/>
       </div>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Employee/header'
-import Footer from './Employee/Footer'
+import Footer from './Employee/footer'
 class HeadLayoutMobile extends Component {
   render() {
     return (
@@ -9,7 +9,7 @@ class HeadLayoutMobile extends Component {
         <div>
           {this.props.children}
         </div>
-        <Footer/>
+        <Footer />
       </div>
     )
   }

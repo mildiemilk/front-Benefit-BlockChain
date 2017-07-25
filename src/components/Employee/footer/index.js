@@ -30,30 +30,23 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="footer">
-        <div className="footer-absolute">
-          <div className="row">
-            <div className="small-10 small-centered columns">
-              <div className="box-in-footer">
-                <img src={footerLogo} />
-                <div className="row">
-                  <div className="small-3 columns">
-                    <span>เกี่ยวกับเรา</span>
-                  </div>
-                  <div className="small-3 columns">
-                    <span>ติดต่อเรา</span>
-                  </div>
-                  <div className="small-3 columns">
-                    <span>แจ้งปัญหา</span>
-                  </div>
-                  <div className="small-3 columns">
-                    <span>Privacy</span>
-                  </div>
+      <div className='footer'>
+     
+            <div className="row">
+              <div className="small-10 small-centered columns">
+                <div className="box-in-footer">
+                  <img src={footerLogo} />
+                </div>
+                <div className='footer-Head'>
+                    <div className='footer-list'>เกี่ยวกับเรา</div>
+                    <div className='footer-list'>ติดต่อเรา</div>
+                    <div className='footer-list'>แจ้งปัญหา</div>
+                    <div className='footer-list'>Terms</div>
+                    <div className='footer-list'>Privacy</div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          
       </div>
     )
   }

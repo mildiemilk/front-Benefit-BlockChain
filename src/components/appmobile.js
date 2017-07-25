@@ -13,25 +13,28 @@ import InsuranceDetail from '././Employee/InsuranceDetail'
 import EmployeeFixPlan from './Employee/employee-fixplan'
 import DashboardStart from './Employee/dashboard-start'
 import FlexyPlan from './Employee/flexy-plan'
-import CongrateSelectPlan from './Employee/congrate-select-plan'
-
+import CongratSelectPlan from './Employee/congrats-select-plan'
+import HeadLayout from './head-layout-mobile'
 import '../styles/employee-style/main.scss'
-
+// import MainLayoutMobile from './main-layout-mobile'
 const AppMobile = () => (
-  <div>
-    {true
-      ? <Switch>
-          <Route path="/employeeverify" component={employeeVerify} />
-          <Route path="/insurancedetail" component={InsuranceDetail} />
-          <Route path="/healthdetail" component={HealthDetail} />
-          <Route path="/genaralexpense" component={GenaralExpense} />
-          <Route path="/employeefixplan" component={EmployeeFixPlan} />
-          <Route path="/dashboardstart" component={DashboardStart} />
-          <Route path="/flexyplan" component={FlexyPlan} />
-          <Route path="/congrateselectplan" component={CongrateSelectPlan} />
-        </Switch>
-      : <Switch />}
-  </div>
+  <BrowserRouter>
+    <div>
+        <HeadLayout>
+        <Switch>
+            <Route path="/employeeverify" component={employeeVerify} />
+            <Route path="/healthdetail" component={HealthDetail} />
+            <Route path="/genaralexpense" component={GenaralExpense} />
+            <Route path="/employeefixplan" component={EmployeeFixPlan} />
+            <Route path="/congratselectplan" component={CongratSelectPlan} />
+            
+                <Route path="/dashboardstart" component={DashboardStart} />
+                <Route path="/flexyplan" component={FlexyPlan} />
+                {/*<Route path="/side" component={MainLayoutMobile}/>*/}
+        </Switch >
+        </HeadLayout>
+    </div>
+  </BrowserRouter>
 )
 
 AppMobile.propTypes = {

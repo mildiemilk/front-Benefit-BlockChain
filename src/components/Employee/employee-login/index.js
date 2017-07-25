@@ -52,49 +52,53 @@ class EmployeeLogin extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
+      <div>
       <div className="white-background">
-        <Header />
-        <div className="row">
-          <div className="small-10 small-centered columns">
-            <div className="gift-logo-in-mobile">
-              <img src={gift} />
-              <div className="form-login-mobile">
-                <Form>
-                  <Form.Field>
-                    <div className="divInput">
-                      <img className="iconImage" src={emailIcon} />
-                      <Form.Input
-                        onChange={this.handleChange}
-                        placeholder="อีเมล"
-                        name="email"
-                        type="email"
-                        required
-                      />
-                    </div>
-                  </Form.Field>
-                  <Form.Field>
-                    <div className="divInput">
-                      <img className="iconImage" src={keyIcon} />
-                      <Form.Input
-                        onChange={this.handleChange}
-                        placeholder="รหัสผ่าน"
-                        name="password"
-                        type="password"
-                        required
-                      />
-                    </div>
-                  </Form.Field>
-                  <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
-                  <ModalAddData
+          <Header />
+          <div className="row">
+            <div className="small-10 small-centered columns">
+              <div className="gift-logo-in-mobile">
+                <img src={gift} />
+                <div className="form-login-mobile">
+                  <Form>
+                    <Form.Field>
+                      <div className="divInput">
+                        <img className="iconImage" src={emailIcon} />
+                        <Form.Input placeholder="อีเมล" name="email" type="email" onChange={this.handleChange} required />
+                      </div>
+                    </Form.Field>
+                    <Form.Field>
+                      <div className="divInput">
+                        <img className="iconImage" src={keyIcon} />
+                        <Form.Input
+                          name="password"
+                          placeholder="รหัสผ่าน"
+                          type="password"
+                          onChange={this.handleChange}
+                          required
+                        />
+                      </div>
+                    </Form.Field>
+                    {this.props.data.error
+                      ? <p style={{ color: 'red' }}>
+                          {' '}{this.props.data.message}
+                        </p>
+                      : <p />}
+                    <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
+                    <ModalAddData
                     email={this.state.email}
                     password={this.state.password}
+                    handleSubmit={this.handleSubmit}
                   />
-                </Form>
+                  </Form>
+                </div>
               </div>
 
             </div>
+            <div className='small-2 columns'>
+            </div>
           </div>
-        </div>
+          </div>
         <Footer />
       </div>
     )
@@ -113,3 +117,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLogin)
+

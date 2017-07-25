@@ -36,8 +36,9 @@ export function authenticate(email, password) {
           }
         } else if (res.data.role === 'Employee') {
           if (res.data.Approve === true) {
-            window.location.href = '/Employeeverify'
+            window.location.href = '/employeeverify'
           }
+         
         }
       })
       .catch(err => {

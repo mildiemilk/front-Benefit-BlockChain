@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
-import Header from '../header'
-import Footer from '../footer'
+
 import GenaralImage from '../../image/genaral-detail.png'
 import info from '../../image/icons-8-info.png'
 import {
@@ -21,7 +20,6 @@ import {
   Table,
   Icon,
 } from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
 
 class GenaralExpense extends Component {
   constructor() {
@@ -32,8 +30,6 @@ class GenaralExpense extends Component {
   render() {
     return (
       <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
           <div className="row">
             <div className="small-10 small-centered columns">
               <div className="employee-health-box">
@@ -75,8 +71,6 @@ class GenaralExpense extends Component {
               </div>
             </div>
           </div>
-          <Footer />
-        </MediaQuery>
       </div>
     )
   }

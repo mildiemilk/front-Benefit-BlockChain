@@ -1,20 +1,6 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Checkbox, Form, Radio } from 'semantic-ui-react'
 import '../../../../styles/submit-plan.scss'
 import CoPlayBidding from './coplay-bidding'
 
@@ -34,8 +20,6 @@ class OPDBidding extends Component {
       opdCoPlayMixYear: null,
     }
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -114,12 +98,8 @@ class OPDBidding extends Component {
 
 OPDBidding.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({
-  editPlan: (editData, planId, editType) =>
-    dispatch(editPlan(editData, planId, editType)),
-})
 const mapStateToProps = state => ({
   planList: state.plan.planList,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(OPDBidding)
+export default connect(mapStateToProps, null)(OPDBidding)

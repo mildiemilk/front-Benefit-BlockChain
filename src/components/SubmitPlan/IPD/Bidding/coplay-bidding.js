@@ -2,21 +2,13 @@ import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Form, Radio } from 'semantic-ui-react'
 
 class CoplayBidding extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -28,10 +20,7 @@ class CoplayBidding extends Component {
       ipdCoPlayMixNotExceed: null,
       ipdCoPlayMixYear: null,
     }
-    const value = ''
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -127,7 +116,4 @@ class CoplayBidding extends Component {
 
 CoplayBidding.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CoplayBidding)
+export default connect(null, null)(CoplayBidding)

@@ -1,26 +1,16 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-} from 'semantic-ui-react'
+import { Modal, Input } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
+import { connect } from 'react-redux'
 import {
   ModalHeader,
   ModalContent,
-  ButtonNew,
   CancleButton,
   ConfirmButton,
   ButtonStatusAppove,
 } from '../styled'
-import PropTypes from 'prop-types'
-import styled from 'react-sc'
-import passwordIcon from '../../image/icons8-password.png'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+
 const ModalContents = styled(Modal.Content)`
   &&&{
     max-width: 500px;
@@ -43,17 +33,23 @@ const Inputs = styled(Input)`
 `
 
 class ModalSelectInsurer extends Component {
+  static propTypes = {
+    handlePost: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    data: PropTypes.shape.isRequired,
+    insurerName: PropTypes.string.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = { modalOpen: false }
   }
 
-  handleClose = e =>
+  handleClose = () =>
     this.setState({
       modalOpen: false,
     })
 
-  handleOpen = e =>
+  handleOpen = () =>
     this.setState({
       modalOpen: true,
     })
@@ -124,11 +120,6 @@ class ModalSelectInsurer extends Component {
       </Modals>
     )
   }
-}
-
-ModalSelectInsurer.propTypes = {
-  handlePost: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({

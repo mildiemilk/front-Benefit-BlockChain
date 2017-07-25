@@ -2,21 +2,13 @@ import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Form, Radio } from 'semantic-ui-react'
 
 class IPD2Bidding extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -26,10 +18,7 @@ class IPD2Bidding extends Component {
       rbLumsumPayNotExceedPerNight: null,
       rbLumsumPayNotExceedPerYear: null,
     }
-    const value = ''
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -103,7 +92,4 @@ class IPD2Bidding extends Component {
 
 IPD2Bidding.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IPD2Bidding)
+export default connect(null, null)(IPD2Bidding)

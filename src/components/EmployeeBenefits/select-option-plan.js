@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Dropdown,
-  Radio,
-  Icon,
-  Popup,
-  List,
-} from 'semantic-ui-react'
+import { Checkbox, Form, Radio, Icon, List, button } from 'semantic-ui-react'
 import { PopupView } from '../Bidding/styled'
 import '../../styles/employee-benefits.scss'
 import '../../styles/popup-color.scss'
 import SettingBenefitModal from './setting-benefit-modal'
 
-const a = []
-
 class SelectOptionPlan extends Component {
+  static propTypes = {
+    handleFixedChange: PropTypes.func.isRequired,
+    defualtPlan: PropTypes.string.isRequired,
+    selectOption: PropTypes.string.isRequired,
+    handleFlexChange: PropTypes.func.isRequired,
+    columnsLenght: PropTypes.string.isRequired,
+    plan: PropTypes.string.isRequired,
+    handleActivePlan: PropTypes.func.isRequired,
+    planName: PropTypes.arrayof(PropTypes.object()).isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -41,10 +35,6 @@ class SelectOptionPlan extends Component {
     this.props.handleFixedChange(value)
   }
 
-  handleClick = () => {
-    console.log(this.state.selectPlan)
-  }
-
   handleModal = () => {
     this.setState({ openSettingBenefit: true })
   }
@@ -54,7 +44,7 @@ class SelectOptionPlan extends Component {
   }
 
   renderList = list => {
-    return list.map((element, index) => {
+    const lists = list.map((element, index) => {
       const isActive = index === this.props.defualtPlan ? '-active' : ''
       return (
         <div className="row">
@@ -118,6 +108,8 @@ class SelectOptionPlan extends Component {
                   className={`basic-status-box${isActive}`}
                   onClick={() =>
                     this.props.handleActivePlan(index, element.name)}
+                  role="button"
+                  aria-hidden
                 >
                   <p>ตั้งแผนนี้เป็นค่าเริ่มต้น</p>
                 </div>
@@ -126,6 +118,7 @@ class SelectOptionPlan extends Component {
         </div>
       )
     })
+    return lists
   }
 
   render() {
@@ -149,7 +142,4 @@ class SelectOptionPlan extends Component {
 
 SelectOptionPlan.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectOptionPlan)
+export default connect(null, null)(SelectOptionPlan)

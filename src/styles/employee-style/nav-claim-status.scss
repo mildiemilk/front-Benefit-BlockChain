@@ -1,0 +1,74 @@
+.NavClaimStatus{
+  margin-bottom: 32px;
+  text-align: center;
+  .Circle{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #919396;
+    display: inline-block;
+  }
+
+  .Circle-active{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #3a7bd5;
+    border: solid 1px #3a7bd5;
+    display: inline-block;
+  }
+
+  .CircleSpace{
+    margin-left: 40px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .CircleSpace::before{
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: -2.9em;
+    width: 41px;
+    height: .2em;
+    background: #919396;
+    z-index: -1;
+  }
+
+  .DivImg{
+    position: relative;
+  }
+
+  .NavImg{
+    width: 14px;
+    height: 16px;
+    position: absolute;
+    top: 8px;
+    right: 9px;
+  }
+
+  .NavEmailImg{
+    width: 16px;
+    height: 13px;
+    position: absolute;
+    top: 9px;
+    right: 8px;
+  }
+
+  .InlineDiv{
+    display: inline-block;
+  }
+
+  .Status{
+    width: 64px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #919396;
+  }
+
+  .DivStatus{
+    position: absolute;
+    left: -17px;
+  }
+}

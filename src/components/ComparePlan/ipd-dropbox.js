@@ -1,31 +1,8 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
-import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
-import {
-  PostContent,
-  BackHome,
-  RecComparePlan,
-  CompareHeader,
-  ViewButton,
-  CompareTable,
-  SubCompareTables,
-  TopicCompareTable,
-  LifeBox,
-  CompareImg,
-  Box,
-  Boxs,
-  HiddenBox,
-  IPDBox,
-  IPDBoxs,
-  LifeTopic,
-  OPDTopic,
-  IPDTopic,
-  TextInBoxs,
-  Sub,
-  IPDDetail,
-} from './styled'
+import PropTypes from 'prop-types'
+import { Icon } from 'semantic-ui-react'
 import styled from 'react-sc'
-import NavInsure from '../NavInsure'
+import { IPDTopic, Sub, IPDDetail } from './styled'
 
 const Icons = styled(Icon)`
   &&&{
@@ -36,6 +13,9 @@ const Icons = styled(Icon)`
 `
 
 export default class IPDDropBox extends Component {
+  static propTypes = {
+    planList: PropTypes.arrayof(PropTypes.object()).isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -81,13 +61,13 @@ export default class IPDDropBox extends Component {
   }
 
   renderFirstIPD = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => <th> </th>)
+    const plans = this.props.planList
+    return plans.map(() => <th>&nbsp;</th>)
   }
 
   renderRbSchedulePatient = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
         <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
@@ -96,8 +76,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleIntensiveCarePatient = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleIntensiveCarePatient === null
           ? '-'
@@ -108,8 +88,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleDoctor = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
         <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
@@ -118,21 +98,24 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleSurgery = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleSurgerySchedule === null
-          ? plan.rbScheduleSurgeryNonSchedule === null
-              ? '-'
-              : plan.rbScheduleSurgeryNonSchedule
-          : plan.rbScheduleSurgerySchedule}
-      </th>
-    ))
+    const plans = this.props.planList
+    const rbScheduleSurgery = plans.map(plan => {
+      let head
+      if (plan.rbScheduleSurgerySchedule !== null) {
+        head = <th>{plan.rbScheduleSurgerySchedule}</th>
+      } else if (plan.rbScheduleSurgeryNonSchedule !== null) {
+        head = <th>{plan.rbScheduleSurgeryNonSchedule}</th>
+      } else {
+        head = <th>-</th>
+      }
+      return head
+    })
+    return rbScheduleSurgery
   }
 
   renderRbScheduleAllService = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleService +
           plan.rbScheduleSmallSurgery +
@@ -153,8 +136,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleService = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
         <Sub>
@@ -165,8 +148,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleSmallSurgery = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleSmallSurgery === null
           ? '-'
@@ -179,8 +162,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleAdviser = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
       </th>
@@ -188,8 +171,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleAmbulance = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
       </th>
@@ -197,8 +180,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleAccident = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
       </th>
@@ -206,8 +189,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleTreatment = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
         <Sub>
@@ -218,8 +201,8 @@ export default class IPDDropBox extends Component {
   }
 
   renderRbScheduleTransplant = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
       </th>

@@ -1,22 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { Responsive } from 'react-responsive'
 import Hourglass from '../../image/icons-8-hourglass@2x.png'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
 
 class ConsiderClaimStatus extends Component {
   constructor() {
@@ -31,7 +14,11 @@ class ConsiderClaimStatus extends Component {
           <div className="blue-clam-box-header">
             <div className="row">
               <div className="small-1 columns">
-                <img src={Hourglass} className="clam-image" />
+                <img
+                  src={Hourglass}
+                  alt="Blue Hourglass"
+                  className="clam-image"
+                />
               </div>
               <div
                 className="small-11 columns"
@@ -56,9 +43,4 @@ class ConsiderClaimStatus extends Component {
   }
 }
 
-ConsiderClaimStatus.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ConsiderClaimStatus)
+export default ConsiderClaimStatus

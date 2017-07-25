@@ -1,26 +1,18 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { companyFill } from '../../actions'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-} from 'semantic-ui-react'
+import { Form, Container } from 'semantic-ui-react'
 import gift from '../image/gigift.jpg'
 import logo from '../image/logo.png'
 import '../../styles/login-style.scss'
 import { authenticate } from '../../api/auth'
-import styled from 'react-sc'
 
 class Login extends Component {
+  static propTypes = {
+    authenticate: PropTypes.func.isRequired,
+    data: PropTypes.string.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -29,12 +21,8 @@ class Login extends Component {
     }
   }
 
-  static propTypes = {
-    authenticate: PropTypes.func.isRequired,
-  }
-
   signUpHandler() {
-    window.location.href = '/signup'
+    this.window.location.href = '/signup'
   }
 
   handleSubmit = e => {
@@ -46,13 +34,12 @@ class Login extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
-    console.log(this.props.data.error)
     return (
       <div className="loginStyle">
         <div className="row">
           <div className="large-10 large-offset-4 columns">
             <div className="logostyle">
-              <img src={logo} />
+              <img src={logo} alt="logo" />
             </div>
           </div>
         </div>
@@ -61,7 +48,7 @@ class Login extends Component {
             <div className="inbox-login">
               <div className="row">
                 <div className="large-5 columns">
-                  <img src={gift} className="gift" />
+                  <img src={gift} alt="gift" className="gift" />
                 </div>
                 <div className="large-5 columns">
                   <h2 style={{ marginTop: '23%' }}>เข้าสู่ระบบ</h2>
@@ -75,6 +62,7 @@ class Login extends Component {
                       <div className="divInput">
                         <img
                           className="iconUser"
+                          alt="iconUser"
                           src="../../../login/icons8-user.png"
                         />
                         <Form.Input
@@ -90,6 +78,7 @@ class Login extends Component {
                       <div className="divInput">
                         <img
                           className="iconPassword"
+                          alt="iconPassword"
                           src="../../../login/icons8-password.png"
                         />
                         <Form.Input

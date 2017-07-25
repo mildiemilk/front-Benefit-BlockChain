@@ -7,7 +7,7 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
 import Header from '../header'
-import Footer from '../footer-relative'
+import Footer from '../footer'
 import healthImage from '../../image/health-detail.png'
 import info from '../../image/icons-8-info.png'
 import {
@@ -32,9 +32,7 @@ class HealthDetail extends Component {
   render() {
     return (
       <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
-          <div className="row">
+          <div className="row health">
             <div className="small-10 small-centered columns">
               <div className="employee-health-box">
                 <p>สิทธิประโยชน์ด้านสุขภาพ</p>
@@ -61,22 +59,20 @@ class HealthDetail extends Component {
                       </div>
                     </div>
                   </div>
-                  <div className="condition-health-box">
-                    <div className="text-head-condition">
-                      เงื่อนไขในการใช้ Benefit
-                    </div>
-                    <div>- ไม่รวมสินค้าสำหรับบริโภค</div>
-                    <div>- ใช้ซื้อสินค้าได้แค่ในหมวดกีฬา</div>
+                </div>
+                <div className="condition-health-box">
+                  <div className="text-head-condition">
+                    เงื่อนไขในการใช้ Benefit
                   </div>
+                  <div>- ไม่รวมสินค้าสำหรับบริโภค</div>
+                  <div>- ใช้ซื้อสินค้าได้แค่ในหมวดกีฬา</div>
                 </div>
               </div>
-              <div className="link-back-health-detail">
-                <a className="link-back-health-detail"><u>&lt; ย้อนกลับ</u></a>
-              </div>
+            </div>
+            <div className="link-back-health-detail">
+              <a className="link-back-health-detail"><u>&lt; ย้อนกลับ</u></a>
             </div>
           </div>
-          <Footer />
-        </MediaQuery>
       </div>
     )
   }

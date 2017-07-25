@@ -22,7 +22,7 @@ import {
 } from 'semantic-ui-react'
 const MediaQuery = require('react-responsive')
 
-class Footer extends Component {
+class Header extends Component {
   constructor() {
     super()
     this.state = {}
@@ -32,25 +32,16 @@ class Footer extends Component {
     return (
       <div>
         <MediaQuery query="(max-width: 1224px)">
-          <div className="footer">
+          <div className="mobile-header-dashboard">
             <div className="row">
-              <div className="small-10 small-centered columns">
-                <div className="box-in-footer">
-                  <img src={footerLogo} />
-                  <div className="row">
-                    <div className="small-3 columns">
-                      <span>เกี่ยวกับเรา</span>
-                    </div>
-                    <div className="small-3 columns">
-                      <span>ติดต่อเรา</span>
-                    </div>
-                    <div className="small-3 columns">
-                      <span>แจ้งปัญหา</span>
-                    </div>
-                    <div className="small-3 columns">
-                      <span>Privacy</span>
-                    </div>
-                  </div>
+              <div className="small-3 columns">
+                <div className="icon-bar-header">
+                  <Icon name="bars" size="big" />
+                </div>
+              </div>
+              <div className="small-9 columns">
+                <div className="logo-header">
+                  <img src={logo} />
                 </div>
               </div>
             </div>
@@ -61,9 +52,9 @@ class Footer extends Component {
   }
 }
 
-Footer.propTypes = {}
+Header.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({})
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

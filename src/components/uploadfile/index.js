@@ -38,6 +38,7 @@ import {
   Icon,
   Progress,
 } from 'semantic-ui-react'
+import { uploadFile } from '../../api/upload-file'
 
 class Uploadfile extends Component {
   constructor(props) {
@@ -53,9 +54,12 @@ class Uploadfile extends Component {
   handleUploadcliamdata(e) {
     e.preventDefault()
     let file = e.target.files[0]
-    this.setState({
-      ClaimData: this.state.ClaimData.concat(file),
-    })
+    this.setState(
+      {
+        ClaimData: this.state.ClaimData.concat(file),
+      },
+      () => console.log(this.state.ClaimData),
+    )
     if (this.state.ClaimData.length >= this.state.AmountUploadBlock) {
       const add = this.state.AmountUploadBlock + 1
       this.setState({
@@ -67,9 +71,12 @@ class Uploadfile extends Component {
   handleUploadBroker(e) {
     e.preventDefault()
     let file = e.target.files[0]
-    this.setState({
-      summitBrokerFile: file,
-    })
+    this.setState(
+      {
+        summitBrokerFile: file,
+      },
+      () => console.log(this.state.summitBrokerFile),
+    )
   }
 
   handleDelete = e => {
@@ -99,7 +106,9 @@ class Uploadfile extends Component {
   }
 
   handleNextClick = () => {
-    window.location.href = '/sendrequest'
+    const file = this.state.ClaimData
+    this.props.uploadFile(file)
+    //window.location.href = '/sendrequest'
   }
 
   RenderInsideBlock = id => {
@@ -294,4 +303,9 @@ class Uploadfile extends Component {
     )
   }
 }
-export default Uploadfile
+
+const mapDispatchToProps = dispatch => ({
+  uploadFile: ClaimData => dispatch(uploadFile(ClaimData)),
+})
+
+export default connect(null, mapDispatchToProps)(Uploadfile)

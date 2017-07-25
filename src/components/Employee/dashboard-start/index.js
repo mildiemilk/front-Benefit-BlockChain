@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import gift from '../../image/gigift-mobile.png'
-import Header from '../header'
-import Footer from '../footer-absolute'
 import {
   Button,
   Checkbox,
@@ -19,7 +17,7 @@ import {
   Table,
   Icon,
 } from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
+
 
 class DashboardStart extends Component {
   constructor() {
@@ -29,9 +27,7 @@ class DashboardStart extends Component {
 
   render() {
     return (
-      <div>
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
+      <div className='dashboard'>
           <div className="row">
             <div className="small-10 small-centered columns">
               <div className="dashboard-start-box">
@@ -43,8 +39,6 @@ class DashboardStart extends Component {
               </div>
             </div>
           </div>
-          <Footer />
-        </MediaQuery>
       </div>
     )
   }

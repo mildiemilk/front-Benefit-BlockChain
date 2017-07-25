@@ -1,0 +1,33 @@
+.AddData{
+  .iconLetter{
+    width: 18px;
+    height: 15px;
+    position: absolute;
+    z-index: 1;
+    top: 11px;
+    left: 29px;
+    opacity: 1;
+  }
+
+  .iconTel{
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 30px;
+    opacity: 1;
+  }
+
+  .divInput{
+    position: relative;
+  }
+
+  .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
+    padding-left: 13%;
+  }
+
+  .ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input {
+    width: 86%;
+  }
+}

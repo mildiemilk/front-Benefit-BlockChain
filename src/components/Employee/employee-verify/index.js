@@ -21,9 +21,7 @@ import {
   Table,
   Icon,
 } from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
-import Header from '../header'
-import Footer from '../footer-absolute'
+
 
 class EmployeeVerify extends Component {
   constructor() {
@@ -34,8 +32,6 @@ class EmployeeVerify extends Component {
   render() {
     return (
       <div className="white-background">
-        <MediaQuery query="(max-width: 1224px)">
-          <Header />
           <div className="row">
             <div className="small-10 small-centered columns">
               <div className="form-key-box">
@@ -69,8 +65,6 @@ class EmployeeVerify extends Component {
               </div>
             </div>
           </div>
-          <Footer />
-        </MediaQuery>
       </div>
     )
   }

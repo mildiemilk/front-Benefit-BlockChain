@@ -24,7 +24,6 @@ import welcomePage from './welcome'
 import Sidebar from './sidebar'
 import Sendrequest from './sendrequest'
 import MainLayout from './main-layout'
-import EmptyLayout from './empty-layout'
 import Uploadfile from './uploadfile'
 import NavLayout from './nav-layout'
 import Bidding from './Bidding'
@@ -43,63 +42,85 @@ import Congrat from './congrat'
 import Congrat2 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart'
+import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
+import Appmobile from './appmobile'
+import EmployeeLogin from './Employee/employee-login'
 
-const App = ({ isAuthenticated }) => (
-  <BrowserRouter>
-    <div>
-      <EmptyLayout>
+const App = ({ isAuthenticated, role }) => {
+  console.log(role)
+  return (
+    <BrowserRouter>
+      <div>
         {isAuthenticated
-          ? <NavLayout>
-              <Switch>
-                <Route path="/confirm_identity" component={confirm_identity} />
-                <Route path="/welcome" component={welcomePage} />
-                <Route path="/settingprofile" component={SettingProfile} />
-                <Route path="/logout" component={Logout} />
-                <MainLayout>
+          ? role === 'HR'
+              ? <NavLayout>
                   <Switch>
-                    <Route path="/postbox" component={Postbox} />
                     <Route
-                      path="/dashboard/simplerequirement"
-                      component={simpleRQ}
+                      path="/confirm_identity"
+                      component={confirm_identity}
                     />
-                    <Route path="/addbenefit" component={AddBenefit} />
-                    <Route path="/dashboard" component={Dashboard} />
-                    <Route path="/compareplan" component={ComparePlan} />
-                    <Route path="/submitplan" component={SubmitPlan} />
-                    <Route path="/ipd" component={IPD} />
-                    <Route path="/sendrequest" component={Sendrequest} />
-                    <Route path="/view" component={ViewAllPlan} />
-                    <Route path="/bidding" component={Bidding} />
-                    <Route path="/chooseinsurer" component={ChooseInsurer} />
-                    <Route path="/uploadfile" component={Uploadfile} />
-                    <Route path="/settingbenefit" component={SettingBenefit} />
-                    <Route path="/settingplan" component={SettingPlan} />
-                    <Route path="/congrat" component={Congrat} />
-                    <Route path="/congratStep4" component={Congrat2} />
-                    <Route
-                      path="/employeeBenefits"
-                      component={EmployeeBenefits}
-                    />
-                    <Route path="/Download" component={Download} />
-                    <Route
-                      path="/chooseinsuranceplan"
-                      component={ChooseInsuranceplan}
-                    />
-                    <Route path="/piechart" component={PieChart} />
+                    <Route path="/welcome" component={welcomePage} />
+                    <Route path="/settingprofile" component={SettingProfile} />
+                    <Route path="/logout" component={Logout} />
+                    <MainLayout>
+                      <Switch>
+                        <Route path="/postbox" component={Postbox} />
+                        <Route
+                          path="/dashboard/simplerequirement"
+                          component={simpleRQ}
+                        />
+                        <Route path="/addbenefit" component={AddBenefit} />
+                        <Route path="/dashboard" component={Dashboard} />
+                        <Route path="/compareplan" component={ComparePlan} />
+                        <Route path="/submitplan" component={SubmitPlan} />
+                        <Route path="/ipd" component={IPD} />
+                        <Route path="/sendrequest" component={Sendrequest} />
+                        <Route path="/view" component={ViewAllPlan} />
+                        <Route path="/bidding" component={Bidding} />
+                        <Route
+                          path="/chooseinsurer"
+                          component={ChooseInsurer}
+                        />
+                        <Route path="/uploadfile" component={Uploadfile} />
+                        <Route
+                          path="/settingbenefit"
+                          component={SettingBenefit}
+                        />
+                        <Route path="/settingplan" component={SettingPlan} />
+                        <Route path="/congrat" component={Congrat} />
+                        <Route path="/congratStep4" component={Congrat2} />
+                        <Route
+                          path="/employeeBenefits"
+                          component={EmployeeBenefits}
+                        />
+                        <Route path="/Download" component={Download} />
+                        <Route
+                          path="/Selectrealtime"
+                          component={SelectRealTime}
+                        />
+                        <Route
+                          path="/chooseinsuranceplan"
+                          component={ChooseInsuranceplan}
+                        />
+                        <Route path="/sendflexplan" component={SendFlexPlan} />
+                        <Route path="/piechart" component={PieChart} />
+                      </Switch>
+                    </MainLayout>
                   </Switch>
-                </MainLayout>
-              </Switch>
-            </NavLayout>
+                </NavLayout>
+              : role === 'Employee' ? <Appmobile /> : null
           : <Switch>
+              <Route path="/employeelogin" component={EmployeeLogin} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Redirect to={{ pathname: '/login' }} />
             </Switch>}
-      </EmptyLayout>
-    </div>
-  </BrowserRouter>
-)
+
+      </div>
+    </BrowserRouter>
+  )
+}
 
 App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,

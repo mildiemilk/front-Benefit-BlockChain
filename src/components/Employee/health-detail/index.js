@@ -32,30 +32,30 @@ class HealthDetail extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="row health">
-          <div className="small-10 small-centered columns">
-            <div className="employee-health-box">
-              <p>สิทธิประโยชน์ด้านสุขภาพ</p>
-              <div className="health-image-box">
-                <img src={info} style={{ float: 'right' }} />
-                <br />
-                <img src={healthImage} style={{ marginTop: '2%' }} />
-                <p className="text-image-health">HEALTH</p>
-              </div>
-              <div className="detail-health-box">
-                <div className="row">
-                  <div className="text-in-health-image-box">
-                    <div className="small-6 columns">
-                      <div>วงเงินทั้งหมด</div>
-                      <div>ซื้อสินค้า</div>
-                      <div className="pharagraph-text">บริการสินค้า</div>
-                    </div>
-                    <div className="small-6 columns">
-                      <div className="position-text">
-                        <div>1,200 บาท/ปี</div>
-                        <div>400 บาท</div>
-                        <div>800 บาท</div>
+          <div className="row health">
+            <div className="small-10 small-centered columns">
+              <div className="employee-health-box">
+                <p>สิทธิประโยชน์ด้านสุขภาพ</p>
+                <div className="health-image-box">
+                  <img src={info} style={{ float: 'right' }} />
+                  <br />
+                  <img src={healthImage} style={{ marginTop: '2%' }} />
+                  <p className="text-image-health">HEALTH</p>
+                </div>
+                <div className="detail-health-box">
+                  <div className="row">
+                    <div className="text-in-health-image-box">
+                      <div className="small-6 columns">
+                        <div>วงเงินทั้งหมด</div>
+                        <div>ซื้อสินค้า</div>
+                        <div className="pharagraph-text">บริการสินค้า</div>
+                      </div>
+                      <div className="small-6 columns">
+                        <div className="position-text">
+                          <div>1,200 บาท/ปี</div>
+                          <div>400 บาท</div>
+                          <div>800 บาท</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -73,8 +73,6 @@ class HealthDetail extends Component {
               <a className="link-back-health-detail"><u>&lt; ย้อนกลับ</u></a>
             </div>
           </div>
-        </div>
-        <Footer />
       </div>
     )
   }

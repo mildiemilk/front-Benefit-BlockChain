@@ -47,6 +47,7 @@ class ModalAddData extends Component {
       this.setState({ modalOpen: false })
     }
   }
+  
 
   render() {
     return (
@@ -81,7 +82,7 @@ class ModalAddData extends Component {
               </Content>
             </SpaceContent>
 
-            <Form>
+            <Form onSubmit={this.props.handleSubmit}>
               <Form.Field>
                 <div className="divInput">
                   <img
@@ -104,12 +105,13 @@ class ModalAddData extends Component {
                   />
                 </div>
               </Form.Field>
+              <ConfirmButton type='submit'>
+                ยืนยัน
+              </ConfirmButton>
             </Form>
           </div>
 
-          <ConfirmButton>
-            ยืนยัน
-          </ConfirmButton>
+          
         </ModalContents>
       </Modals>
     )

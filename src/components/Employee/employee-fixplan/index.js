@@ -12,9 +12,6 @@ import footerLogo from '../../image/logo-footer.png'
 import healthpic from '../../image/5.png'
 import insurepic from '../../image/7.png'
 import expendpic from '../../image/6.png'
-import Header from '../header'
-import Footer from '../footer'
-
 import {
   Submit,
   HeaderBox,
@@ -36,8 +33,6 @@ import {
   Icon,
 } from 'semantic-ui-react'
 
-const MediaQuery = require('react-responsive')
-
 class EmployeeFixPlan extends Component {
   constructor() {
     super()
@@ -48,7 +43,6 @@ class EmployeeFixPlan extends Component {
     return (
       <div>
         <div className="backgroundStlye">
-          <Header />
           <div className="row">
             <img className="Imagefirst" src={congrat} />
             <div className="textfirst">
@@ -122,7 +116,6 @@ class EmployeeFixPlan extends Component {
               <Submit>
                 ยืนยัน
               </Submit>
-              <Footer />
             </div>
           </div>
         </div>

@@ -55,17 +55,6 @@ export const PlanName = styled.span`
   color: #323028;
 `
 
-export const NameInput = styled.input`
-  width: 77%;
-  height: 40px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  background-color: var(--white-two);
-  border: solid 1px #dddddd;
-  padding: 1%;
-  margin-left: 1%;
-`
-
 export const BlogImg = styled.img`
   width: 70px;
   height: 70px;

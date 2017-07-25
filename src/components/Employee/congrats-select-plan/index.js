@@ -7,8 +7,6 @@ import { RadialChart } from 'react-vis'
 import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/login-verify.scss'
 import selectPlanImage from '../../image/select-plan.png'
-import Header from '../header'
-import Footer from '../footer'
 import DeadlineBox from '../flexy-plan/deadline-box'
 import ChangePlanModal from './confirm-change-plan-modal'
 import {
@@ -22,7 +20,6 @@ import {
   Table,
   Icon,
 } from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
 
 class CongrateSelectPlan extends Component {
   constructor() {
@@ -43,7 +40,6 @@ class CongrateSelectPlan extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="row">
           <div className="small-10 small-centered columns">
             <div className="select-plan-box">
@@ -65,7 +61,6 @@ class CongrateSelectPlan extends Component {
             </div>
           </div>
         </div>
-        <Footer />
         <ChangePlanModal
           openModal={this.state.openModal}
           handleCloseModal={this.handleCloseModal}

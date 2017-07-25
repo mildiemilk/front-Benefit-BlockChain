@@ -22,7 +22,7 @@ import {
 } from 'semantic-ui-react'
 const MediaQuery = require('react-responsive')
 
-class Footer extends Component {
+class Header extends Component {
   constructor() {
     super()
     this.state = {}
@@ -30,31 +30,31 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className='footer'>
-     
+      <div>
+        <MediaQuery query="(max-width: 1224px)">
+          <div className="mobile-header-dashboard">
             <div className="row">
-              <div className="small-10 small-centered columns">
-                <div className="box-in-footer">
-                  <img src={footerLogo} />
+              <div className="small-3 columns">
+                <div className="icon-bar-header">
+                  <Icon name="bars" size="big" />
                 </div>
-                <div className='footer-Head'>
-                    <div className='footer-list'>เกี่ยวกับเรา</div>
-                    <div className='footer-list'>ติดต่อเรา</div>
-                    <div className='footer-list'>แจ้งปัญหา</div>
-                    <div className='footer-list'>Terms</div>
-                    <div className='footer-list'>Privacy</div>
+              </div>
+              <div className="small-9 columns">
+                <div className="logo-header">
+                  <img src={logo} />
                 </div>
               </div>
             </div>
-          
+          </div>
+        </MediaQuery>
       </div>
     )
   }
 }
 
-Footer.propTypes = {}
+Header.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({})
 const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

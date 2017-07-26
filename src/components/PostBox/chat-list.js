@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Card, Feed, Rating, Divider, Header } from 'semantic-ui-react'
 import styled from 'react-sc'
+import { Card, Feed, Rating } from 'semantic-ui-react'
 
 const CardLink = styled(Card.Content)`
   &&&{
@@ -11,6 +11,11 @@ const CardLink = styled(Card.Content)`
 `
 
 export default class ChatList extends Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
   render() {
     return (
       <Card.Group style={{ borderRadius: '0px' }}>

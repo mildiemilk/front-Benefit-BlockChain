@@ -44,7 +44,7 @@ import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart'
 import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
-import Appmobile from './appmobile'
+import Appobile from './appmobile'
 import EmployeeLogin from './Employee/employee-login'
 import ClaimStatusDetail from './Employee/ClaimStatusDetail'
 

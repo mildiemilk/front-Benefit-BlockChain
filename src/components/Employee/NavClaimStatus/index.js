@@ -1,20 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { Responsive } from 'react-responsive'
-import Header from '../header'
-import Footer from '../footer'
-import { Form, Icon } from 'semantic-ui-react'
-import styled from 'react-sc'
-
-const Icons = styled(Icon)`
-  &&&{
-    position: absolute;
-    right: 6px;
-  }
-`
 
 class NavClaimStatus extends Component {
   constructor() {
@@ -40,10 +24,12 @@ class NavClaimStatus extends Component {
             ? <img
                 className="NavImg"
                 src="../../../../employee/navclaimstatus/icons-8-hourglass-copy.png"
+                alt="icons-8"
               />
             : <img
                 className="NavImg"
                 src="../../../../employee/navclaimstatus/icons-8-hourglass.png"
+                alt="icons-8"
               />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> กำลังพิจารณา </p>
@@ -66,10 +52,12 @@ class NavClaimStatus extends Component {
             ? <img
                 className="NavEmailImg"
                 src="../../../../employee/navclaimstatus/icons-8-message-copy.png"
+                alt="icons-8"
               />
             : <img
                 className="NavEmailImg"
                 src="../../../../employee/navclaimstatus/icons-8-message.png"
+                alt="icons-8"
               />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> อนุมัติ </p>
@@ -92,10 +80,12 @@ class NavClaimStatus extends Component {
             ? <img
                 className="NavImg"
                 src="../../../../employee/navclaimstatus/icons-8-money-transfer-copy.png"
+                alt="icons-8"
               />
             : <img
                 className="NavImg"
                 src="../../../../employee/navclaimstatus/icons-8-money-transfer.png"
+                alt="icons-8"
               />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> รอโอนเงิน </p>
@@ -118,10 +108,12 @@ class NavClaimStatus extends Component {
             ? <img
                 className="NavImg"
                 src="../../../../employee/navclaimstatus/icons-8-checked-copy.png"
+                alt="icons-8"
               />
             : <img
                 className="NavImg"
                 src="../../../../employee/navclaimstatus/icons-8-checked.png"
+                alt="icons-8"
               />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> เคลมสำเร็จ </p>
@@ -146,8 +138,5 @@ class NavClaimStatus extends Component {
 }
 
 NavClaimStatus.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
 
 export default NavClaimStatus

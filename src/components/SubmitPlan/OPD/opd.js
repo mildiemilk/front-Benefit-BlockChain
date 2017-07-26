@@ -1,46 +1,62 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Button, Checkbox, Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 import CoPlay from './coplay'
-import bed from '../../image/icons-8-single-bed1.jpg'
-import stethoscope from '../../image/icons-8-stethoscope.jpg'
-import tooth from '../../image/icons-8-toot1.jpg'
-import heart from '../../image/icons-8-like1.jpg'
-import erase from '../../image/icons-8-erase.png'
 import OpdModal from './opd-modal'
 
 class OPD extends Component {
+  static propTypes = {
+    handleVerifyState: PropTypes.func.isRequired,
+    handleCloseModal: PropTypes.func.isRequired,
+    handleRecordVerifyState: PropTypes.func.isRequired,
+    handleNewReset: PropTypes.func.isRequired,
+    openModal: PropTypes.bool.isRequired,
+    handleResetOPD: PropTypes.func.isRequired,
+    handleToggle: PropTypes.func.isRequired,
+    reset: PropTypes.bool.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    opdCoPlay: PropTypes.bool.isRequired,
+    opdPerYear: PropTypes.string.isRequired,
+    opdPerTime: PropTypes.string.isRequired,
+    opdTimeNotExceedPerYear: PropTypes.string.isRequired,
+    opdCoPlayQuota: PropTypes.string.isRequired,
+    opdCoPlayDeductable: PropTypes.string.isRequired,
+    opdCoPlayMixPercentage: PropTypes.string.isRequired,
+    opdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    opdCoPlayMixYear: PropTypes.string.isRequired,
+    editPlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.opdPerYear !== null
-        ? 'firstChoice'
-        : this.props.opdPerTime !== null &&
-            this.props.opdTimeNotExceedPerYear !== null
-            ? 'secondChoice'
-            : '',
+    const { opdPerYear, opdPerTime, opdTimeNotExceedPerYear } = this.props
+    let value
+
+    if (opdPerYear) {
+      value = 'firstChoice'
+    } else if (opdPerTime && opdTimeNotExceedPerYear) {
+      value = 'secondChoice'
+    } else {
+      value = ''
+    }
+
+    this.state = { value }
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'OPD' && this.props.reset === true) {
+      this.handleResetdata()
     }
   }
 
-  static propTypes = {}
-
-  handleClick = e => {
+  handleClick = () => {
     const {
       opdCoPlay,
       opdPerYear,
@@ -83,12 +99,6 @@ class OPD extends Component {
     this.setState({ value: '' })
     this.props.handleNewReset()
     this.props.handleVerifyState('opdRecord')
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'OPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
   }
 
   handleChange = (e, { name, value }) => {

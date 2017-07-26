@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import {
   Detail,
   Head,

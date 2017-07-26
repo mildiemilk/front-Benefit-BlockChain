@@ -23,7 +23,7 @@ import {
   TextInBoxs,
   Note,
 } from './styled'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import NavInsure from '../NavInsure'
 import IPDDropBox from './ipd-dropbox'
 import { getAllPlan } from '../../api/set-plan'

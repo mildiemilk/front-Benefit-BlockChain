@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Feed, Rating, Divider, Header } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 const CardLink = styled(Card.Content)`
   &&&{

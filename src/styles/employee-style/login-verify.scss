@@ -11,9 +11,20 @@
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.14);
   border: solid 1px #979797;
   text-align: center;
-  text-align: center;
   padding-top: 3.7%;
 }
+
+.logo-header{
+  padding-left: 4%;
+}
+
+.icon-bar-header{
+  color: white;
+  padding-left: 13%;
+  padding-top: 3.5%;
+  cursor:pointer
+}
+
 .form-key-box{
   padding-top: 37%;
   text-align: center;
@@ -34,7 +45,7 @@
 }
 .footer{
   background: white;
-  height: 80px; 
+  height: 80px;
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
   border: solid 1px #f5f5f5;
@@ -96,9 +107,16 @@
   .mobile-header{
     padding-top: 2%;
   }
- 
+
   .footer-Head{
     text-align: center;
+    
+  .logo-header{
+  padding-left: 17%;
+  }
+  .footer-absolute{
+    bottom: 0;
+    position: relative;
   }
   .gift-logo-in-mobile{
     padding-top: 19%;
@@ -108,7 +126,7 @@
     padding-top: 19%;
   }
 
-  
+
    .iconImage{
         width: 18px;
         height: 18px;
@@ -129,4 +147,5 @@
       .ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input {
         width: 100%;
       }
+  }
 }

@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 export const DetailDiv = styled.div`
     width: 100%;

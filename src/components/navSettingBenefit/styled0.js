@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Image } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 

@@ -16,7 +16,7 @@ import {
   ConfirmButton,
 } from './styled'
 import PropTypes from 'prop-types'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import passwordIcon from '../image/icons8-password.png'
 import { connect } from 'react-redux'
 

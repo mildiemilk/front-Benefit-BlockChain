@@ -9,6 +9,8 @@
 @import './insurance-detail.scss';
 @import './congrate-select-plan.scss';
 @import './sidebar.scss';
+@import './employee-benefits-dashboard.scss';
+@import './clam-status.scss';
 
 @font-face {
     font-family: 'kanit';
@@ -64,8 +66,5 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .headlayout{
-  position: relative;
-  margin: 0 auto;
-  min-height: 100%;
-  padding-bottom: 80px;
+  height: 100%;
 }

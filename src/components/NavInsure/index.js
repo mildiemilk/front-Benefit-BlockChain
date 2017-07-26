@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { createProfile } from '../../api/profile-company'
 import { Step, Divider } from 'semantic-ui-react'
 import { Head, Step1, StepRadius, Step6 } from './styled'
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 class NavInsure extends Component {
   constructor(props) {

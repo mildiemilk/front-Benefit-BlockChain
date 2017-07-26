@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Image } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import logo from './logo_white.png'
 import avatarn from './avatarn.JPG'
 import { connect } from 'react-redux'

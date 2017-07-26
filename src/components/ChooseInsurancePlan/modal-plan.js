@@ -22,7 +22,7 @@ import {
 } from './styled'
 import IPDDropBox from './ipd-dropbox'
 import PropTypes from 'prop-types'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import icon2 from '../image/icons-8-view-file.png'
 
 const ModalContents = styled(Modal.Content)`

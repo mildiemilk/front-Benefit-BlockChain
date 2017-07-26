@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 import Health from '../../../assets/AddBenefit/artboards-1.png'
 import Expense from '../../../assets/AddBenefit/artboards-2.png'
 

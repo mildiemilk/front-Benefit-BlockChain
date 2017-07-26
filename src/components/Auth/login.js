@@ -18,7 +18,7 @@ import gift from '../image/gigift.jpg'
 import logo from '../image/logo.png'
 import '../../styles/login-style.scss'
 import { authenticate } from '../../api/auth'
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 class Login extends Component {
   constructor() {

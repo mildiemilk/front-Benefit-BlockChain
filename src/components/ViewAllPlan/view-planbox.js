@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Table, Rating, Header, Checkbox, Popup } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import SearchBox from './search-box'
 import ModalView from './modal-view'
 import { copyPlan, deletePlan } from '../../api/set-plan'

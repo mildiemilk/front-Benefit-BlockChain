@@ -9,7 +9,7 @@ import {
   getAllInsurer,
   getSelectInsurer,
 } from '../../api/choose-insurer'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import NavInsure from '../NavInsure'
 import Sidebar from '../sidebar'
 import DatePicker from 'react-datepicker'

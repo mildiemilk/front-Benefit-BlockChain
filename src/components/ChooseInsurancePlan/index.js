@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { createProfile } from '../../api/profile-company'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import NavBenefit from '../NavBenefit'
 import PlanTemplate from './plantemplate'
 import Sidebar from '../sidebar'
@@ -245,7 +245,7 @@ class ChooseInsurancePlan extends Component {
                   {this.RenderInnerRight()}
                 </InnerRight>
                 <Link to="/addbenefit">
-                  <Submit>ต่อไป</Submit>
+                  <Submit onClick={this.handleNext}>ต่อไป</Submit>
                 </Link>
               </div>
             </div>

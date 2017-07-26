@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 export const Header = styled.span`
   width: 253px;
@@ -53,17 +53,6 @@ export const PlanName = styled.span`
   letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
-`
-
-export const NameInput = styled.input`
-  width: 77%;
-  height: 40px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  background-color: var(--white-two);
-  border: solid 1px #dddddd;
-  padding: 1%;
-  margin-left: 1%;
 `
 
 export const BlogImg = styled.img`

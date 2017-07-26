@@ -114,6 +114,7 @@ const App = ({ isAuthenticated, role }) => {
               <Route path="/employeelogin" component={EmployeeLogin} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
+              <Route path="/logout" component={Logout} />
               <Redirect to={{ pathname: '/login' }} />
             </Switch>}
 

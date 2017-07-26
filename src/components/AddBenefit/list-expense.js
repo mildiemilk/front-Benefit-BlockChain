@@ -10,7 +10,7 @@ class ListExpense extends Component {
     return (
       <DetailList>
         {this.props.ExpenseList.map((item, index) => (
-          <TextList key={item + index}>
+          <TextList>
             {item}
             <ButtonDelete onClick={() => this.props.sendDel(index)}>
               <Icon name="delete" />

@@ -8,7 +8,7 @@ import {
   Form,
   Input,
 } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import SettingPlan from '../SettingBenefit/setting-plan'
 import '../../styles/employee-benefits.scss'

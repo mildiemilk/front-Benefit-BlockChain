@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Image, Accordion } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import _ from 'lodash'

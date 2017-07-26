@@ -10,7 +10,7 @@ import {
   AddBox,
   AddTopic,
 } from './styled'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import NavBenefit from '../NavBenefit'
 
 const ListContent = styled(List.Content)`
@@ -22,22 +22,16 @@ const ListContent = styled(List.Content)`
 export class AddPlanBar extends Component {
   constructor() {
     super()
-    this.state = {
-      selected: '',
-    }
-  }
-
-  handleActive = index => {
-    this.setState({ selected: index })
+    this.state = {}
   }
 
   renderList = list => {
     return list.map((element, index) => {
-      const isActive = index === this.state.selected ? '-active' : ''
+      const isActive = index === this.props.activePlan ? '-active' : ''
       return (
         <div
           className={`addBox${isActive}`}
-          onClick={() => this.handleActive(index)}
+          onClick={() => this.props.handleActivePlan(index)}
         >
           <Popup
             trigger={
@@ -51,17 +45,9 @@ export class AddPlanBar extends Component {
               <List divided relaxed>
                 <List.Item>
                   <ListContent>
-                    <Icon name="edit" />แก้ไขแพลน
-                  </ListContent>
-                </List.Item>
-                <List.Item>
-                  <ListContent>
-                    <Icon name="copy" />คัดลอกแพลน
-                  </ListContent>
-                </List.Item>
-                <List.Item>
-                  <ListContent>
-                    <Icon name="trash outline" />ลบแพลน
+                    <p onClick={this.props.handleDeletePlan}>
+                      <Icon name="trash outline" />ลบแพลน
+                    </p>
                   </ListContent>
                 </List.Item>
               </List>
@@ -71,7 +57,7 @@ export class AddPlanBar extends Component {
             position="bottom center"
           />
 
-          <AddTopic> {element.name} </AddTopic>
+          <AddTopic> {element.planName} </AddTopic>
         </div>
       )
     })
@@ -80,7 +66,7 @@ export class AddPlanBar extends Component {
   render() {
     return (
       <div>
-        {this.renderList(this.props.planName)}
+        {this.renderList(this.props.plan)}
       </div>
     )
   }

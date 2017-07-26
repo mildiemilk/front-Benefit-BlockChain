@@ -15,24 +15,30 @@ import DashboardStart from './Employee/dashboard-start'
 import FlexyPlan from './Employee/flexy-plan'
 import CongratSelectPlan from './Employee/congrats-select-plan'
 import HeadLayout from './head-layout-mobile'
+import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard'
+import ClamStatus from './Employee/clam-status'
+import '../styles/employee-style/main.scss'
 import MainLayoutMobile from './main-layout-mobile'
-
 const AppMobile = () => (
   <BrowserRouter>
     <div style={{ height:'100%' }}>
-        <HeadLayout>
+      <HeadLayout>
         <Switch>
-            <Route path="/employeeverify" component={employeeVerify} />
-            <Route path="/healthdetail" component={HealthDetail} />
-            <Route path="/genaralexpense" component={GenaralExpense} />
-            <Route path="/employeefixplan" component={EmployeeFixPlan} />
-            <Route path="/congratselectplan" component={CongratSelectPlan} />
-            
-                <Route path="/dashboardstart" component={DashboardStart} />
-                <Route path="/flexyplan" component={FlexyPlan} />
-                <Route path="/side" component={MainLayoutMobile}/>
-        </Switch >
-        </HeadLayout>
+          <Route path="/employeeverify" component={employeeVerify} />
+          <Route path="/healthdetail" component={HealthDetail} />
+          <Route path="/genaralexpense" component={GenaralExpense} />
+          <Route path="/employeefixplan" component={EmployeeFixPlan} />
+          <Route path="/congratselectplan" component={CongratSelectPlan} />
+          <Route path="/dashboardstart" component={DashboardStart} />
+          <Route path="/flexyplan" component={FlexyPlan} />
+          <Route
+            path="/employeebenefits-dashboard"
+            component={EmployeeBenefitsDashboard}
+          />
+          <Route path="/clamstatus" component={ClamStatus} />
+          <Route path="/side" component={MainLayoutMobile}/>
+        </Switch>
+      </HeadLayout>
     </div>
   </BrowserRouter>
 )

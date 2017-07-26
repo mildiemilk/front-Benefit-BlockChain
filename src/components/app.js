@@ -36,7 +36,6 @@ import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
 import Appmobile from './appmobile'
 import EmployeeLogin from './Employee/employee-login'
-import ClaimStatusDetail from './Employee/ClaimStatusDetail'
 
 class App extends Component {
   static propTypes = {
@@ -106,7 +105,6 @@ class App extends Component {
     } else {
       route = (
         <Switch>
-          <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
           <Route path="/employeelogin" component={EmployeeLogin} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />

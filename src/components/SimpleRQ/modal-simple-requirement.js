@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal, Checkbox } from 'semantic-ui-react'
+import { Modal, Checkbox } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
 import {
   ModalHeader,
   ModalContent,
@@ -7,8 +9,6 @@ import {
   PostButton,
   PostMainButton,
 } from './styled'
-import PropTypes from 'prop-types'
-import styled from 'react-sc'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -32,12 +32,12 @@ class ModalModalExample extends Component {
     this.state = { modalOpen: false }
   }
 
-  handleClose = e =>
+  handleClose = () =>
     this.setState({
       modalOpen: false,
     })
 
-  handleOpen = e =>
+  handleOpen = () =>
     this.setState({
       modalOpen: true,
     })
@@ -132,7 +132,7 @@ class ModalModalExample extends Component {
 }
 
 ModalModalExample.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape.isRequired,
   handlePost: PropTypes.func.isRequired,
 }
 

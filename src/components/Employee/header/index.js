@@ -10,9 +10,9 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
+      <div id="header">
         <div className="mobile-header">
-          <img src={logo} alt="logo" />
+          <img src={logo} />
         </div>
       </div>
     )

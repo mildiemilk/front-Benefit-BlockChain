@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ViewPlanBox from './view-planbox'
-import { Divider, Search, Input, Table, Icon, Button } from 'semantic-ui-react'
-import { PostContent, BackHome, RecViewAllPlan, ViewHeader } from './styled'
-import styled from 'react-sc'
+import { BackHome, RecViewAllPlan, ViewHeader } from './styled'
 import SearchBox from './search-box'
 import NavInsure from '../NavInsure'
 import ModalView from './modal-view'
 import { getAllPlan } from '../../api/set-plan'
 
 export class ViewAllPlan extends Component {
+  static propTypes = {
+    getAllPlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -18,7 +21,7 @@ export class ViewAllPlan extends Component {
       passwordToConfirm: '',
       SearchTerm: '',
     }
-    setInterval(function() {
+    setInterval(() => {
       props.getAllPlan()
     }, 2000)
   }

@@ -1,12 +1,4 @@
 import { APIRequest } from '.'
-import {
-  getBiddingSuccess,
-  getBiddingFailure,
-  EndSuccess,
-  selectFinalInsurerFailure,
-  selectFinalInsurerSuccess,
-} from '../reducers/bidding'
-import { withRouter } from 'react-router'
 
 const UPLOADFILE_URI = '/api/uploadfile'
 
@@ -54,11 +46,11 @@ const UPLOADFILE_URI = '/api/uploadfile'
 // }
 
 export function uploadFile(file) {
-  var formData = new FormData()
+  const formData = new FormData()
   formData.append('file', file)
 
-  return dispatch => {
-    //const files = file
+  return () => {
+    // const files = file
     console.log('aaaaa', file)
     const options = {
       method: 'post',
@@ -67,11 +59,11 @@ export function uploadFile(file) {
     }
 
     APIRequest(options, true)
-      .then(res => {
-        //dispatch(getBiddingSuccess(res.data))
+      .then(() => {
+        // dispatch(getBiddingSuccess(res.data))
       })
       .catch(err => {
-        //dispatch(getBiddingFailure(err.response.data))
+        // dispatch(getBiddingFailure(err.response.data))
         console.log(err.response)
       })
   }

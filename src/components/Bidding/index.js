@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
-import { Divider } from 'semantic-ui-react'
-import { Text, TextIn } from './styled'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import NavBidding from './nav-bidding'
 import Box from './box'
-import { connect } from 'react-redux'
 import { bidding } from '../../api/bidding'
 import Details from './details'
 import { getSelectInsurer } from '../../api/choose-insurer'
 
 class Bidding extends Component {
+  static propTypes = {
+    num: PropTypes.number.isRequired,
+    data: PropTypes.array.isRequired,
+    bidding: PropTypes.func.isRequired,
+    getSelectInsurer: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -16,7 +21,7 @@ class Bidding extends Component {
       Detail: {},
       index: '',
     }
-    setInterval(function() {
+    setInterval(() => {
       props.bidding()
     }, 2000)
 
@@ -25,17 +30,18 @@ class Bidding extends Component {
 
   handleClick = (Detail, index) => {
     const { isDetail } = this.state
-    if (!isDetail)
+    if (!isDetail) {
       this.setState({
         isDetail: true,
-        Detail: Detail,
-        index: index,
+        Detail,
+        index,
       })
-    else this.setState({ isDetail: false })
+    } else {
+      this.setState({ isDetail: false })
+    }
   }
 
   render() {
-    console.log(this.props.timeout)
     return (
       <div className="Bidding">
         <NavBidding num={this.props.num} />

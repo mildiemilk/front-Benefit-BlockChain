@@ -1,26 +1,43 @@
 import React, { Component } from 'react'
+import { Icon, Checkbox } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import {
   DetailDiv,
   Text,
   TextLine,
   Box,
   Setting,
-  Image,
   BoxIn,
   DivImage,
   HeadList,
   Toggled,
-  HeadLists,
   BackButton,
   NextButton,
 } from './styled'
-import { Icon, Checkbox } from 'semantic-ui-react'
 import HealthBenefit from './health-benefit'
 import ExpenseBenefit from './expense-benefit'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 class Detail extends Component {
+  static propTypes = {
+    handleSetting: PropTypes.func.isRequired,
+    HealthList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    ExpenseList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    isHealth: PropTypes.bool.isRequired,
+    isExpense: PropTypes.bool.isRequired,
+    handleToggleHealth: PropTypes.func.isRequired,
+    handleToggleExpense: PropTypes.func.isRequired,
+    handleTextChangeExpense: PropTypes.func.isRequired,
+    handleTextChangeHealth: PropTypes.func.isRequired,
+    addTodoExpense: PropTypes.func.isRequired,
+    removeTodoExpense: PropTypes.func.isRequired,
+    addTodoHealth: PropTypes.func.isRequired,
+    removeTodoHealth: PropTypes.func.isRequired,
+    nextButtonHandleclick: PropTypes.func.isRequired,
+    TextHealth: PropTypes.string.isRequired,
+    TextExpense: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {}
@@ -28,6 +45,7 @@ class Detail extends Component {
 
   boxInStyle = state => {
     if (state) return 'BoxLine'
+    return ''
   }
   render() {
     return (

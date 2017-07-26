@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import { Divider, Icon } from 'semantic-ui-react'
-import {
-  Text,
-  TextIn,
-  IconPointer,
-  ButtonStatusAppove,
-  ButtonStatusCancle,
-} from './styled'
-import { bidding } from '../../api/bidding'
-import { connect } from 'react-redux'
-import ModalSelectInsurer from './ModalSelectInsurer'
 import moment from 'moment'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { Text, TextIn, IconPointer, ButtonStatusCancle } from './styled'
+import ModalSelectInsurer from './ModalSelectInsurer'
 import { chooseFinalInsurer } from '../../api/bidding'
 
 class Box extends Component {
+  static propTypes = {
+    chooseFinalInsurer: PropTypes.func.isRequired,
+    end: PropTypes.shape.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    list: PropTypes.array.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -21,35 +20,8 @@ class Box extends Component {
     }
   }
 
-  handlePost = e => {
-    e.preventDefault()
-    const { passwordToConfirm } = this.state
-    const insurerName = e.target.value
-    this.props.chooseFinalInsurer(passwordToConfirm, insurerName)
-  }
-
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
-  boxStyling = (status, end) => {
-    if (end == 'Timeout') {
-      if (status === 'Join') {
-        return 'boxes'
-      } else {
-        return 'boxCancelTimeout'
-      }
-    } else {
-      if (status === 'Join') {
-        return 'boxes'
-      } else if (status === 'Cancel') {
-        return 'boxCancel'
-      } else {
-        return 'wait'
-      }
-    }
-  }
-
   getStatusModule = insurerName => {
-    let status = 'Join'
+    const status = 'Join'
     let statusModule = ''
     const { end } = this.props
     if (end.end === 'Timeout') {
@@ -78,8 +50,32 @@ class Box extends Component {
     return statusModule
   }
 
+  handlePost = e => {
+    e.preventDefault()
+    const { passwordToConfirm } = this.state
+    const insurerName = e.target.value
+    this.props.chooseFinalInsurer(passwordToConfirm, insurerName)
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  boxStyling = (status, end) => {
+    if (end === 'Timeout') {
+      if (status === 'Join') {
+        return 'boxes'
+      }
+      return 'boxCancelTimeout'
+    }
+    if (status === 'Join') {
+      return 'boxes'
+    } else if (status === 'Cancel') {
+      return 'boxCancel'
+    }
+    return 'wait'
+  }
+
   renderList = bids => {
-    let status = 'Join'
+    const status = 'Join'
     const { end } = this.props
     return bids.map((bid, index) => (
       <div className="boxDetail">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
 import DatePicker from 'react-datepicker'
+import { Dropdown, Form } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 import {
   TinyText,
   BrowsButton,
@@ -8,8 +9,6 @@ import {
   SubmitButton,
   UploadText,
 } from './styled'
-import { Dropdown, Icon, Form } from 'semantic-ui-react'
-
 import '../../../styles/employee-style/claim-insurance.scss'
 
 const expenseOption = [
@@ -47,6 +46,14 @@ const currencyOption = [
   },
 ]
 class GeneralExpenseTemplate extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    EmNameoption: PropTypes.shape.isRequired,
+    date: PropTypes.shape.isRequired,
+    handleUploadcliamFile: PropTypes.func.isRequired,
+    ClaimFile: PropTypes.shape.isRequired,
+    handleChangeDate: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {}

@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { PostreText, TopSpace } from './styled'
-import { Card, Image, Checkbox } from 'semantic-ui-react'
 import styled from 'react-sc'
+import { connect } from 'react-redux'
+import { Card, Image, Checkbox } from 'semantic-ui-react'
+import { PostreText, TopSpace } from './styled'
 
 const CardHeader = styled(Card)`
   &&&{
@@ -23,6 +21,15 @@ const Checkboxs = styled(Checkbox)`
 `
 
 class PostSimpleRQ extends Component {
+  static propTypes = {
+    data: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
   render() {
     return (
       <div>

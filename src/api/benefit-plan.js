@@ -34,7 +34,6 @@ export function choosePlan(plan) {
       })
       .catch(err => {
         dispatch(choosePlanFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -53,7 +52,6 @@ export function editChoosePlan(plan) {
       })
       .catch(err => {
         dispatch(editChoosePlanFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -95,7 +93,6 @@ export function planOption(
       })
       .catch(err => {
         dispatch(editOptionFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -113,7 +110,6 @@ export function getOptionPlan() {
       })
       .catch(err => {
         dispatch(getOptionPlanFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -131,7 +127,6 @@ export function getBenefitPlan() {
       })
       .catch(err => {
         dispatch(getBenefitPlanFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -150,7 +145,6 @@ export function setBenefitPlan(benefitPlans) {
       })
       .catch(err => {
         dispatch(setBenefitPlanFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }

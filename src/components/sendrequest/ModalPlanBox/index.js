@@ -1,42 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import styled from 'react-sc'
-import {
-  Detail,
-  Head,
-  Head2,
-  subInner,
-  Submit,
-  BoxIndiv1,
-  BoxIndiv2,
-  BoxIndiv3,
-  BoxIndiv4,
-  SideIn,
-  PlanBox,
-} from '../styled'
-import PlanBoxModal from './planbox-modal'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-  Progress,
-  Popup,
-  List,
-} from 'semantic-ui-react'
 import { getAllPlan, deletePlan } from '../../../api/set-plan'
 import PlanBoxs from './planbox'
 import { ListBox } from './styled'
-import NavInsure from '../../NavInsure'
 
-let open = []
 class ModalPlanBox extends Component {
+  static propTypes = {
+    getAllPlan: PropTypes.func.isRequired,
+    changePositionPage: PropTypes.func.isRequired,
+    deletePlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -67,14 +42,14 @@ class ModalPlanBox extends Component {
     this.props.changePositionPage()
   }
 
-  handleOpenModal = e => {
+  handleOpenModal = () => {
     this.setState({
       modalOpen: true,
     })
     this.props.changePositionPage()
   }
 
-  handleCloseModal = e => {
+  handleCloseModal = () => {
     this.setState({
       modalOpen: false,
     })
@@ -86,7 +61,7 @@ class ModalPlanBox extends Component {
   }
 
   renderList = list => {
-    return list.map((element, index) => (
+    list.map((element, index) => (
       <ListBox className="large-4 columns">
         <PlanBoxs
           changePositionPage={this.props.changePositionPage}

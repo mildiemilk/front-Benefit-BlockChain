@@ -83,7 +83,7 @@ class CountDowns extends Component {
   addLeadingZeros = value => {
     let values = String(value)
     while (values.length < 2) {
-      values = `0, ${values}`
+      values = `0${values}`
     }
     return values
   }

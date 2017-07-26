@@ -1,14 +1,5 @@
-import React, { Component } from 'react'
-import styled from 'react-sc'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-} from 'semantic-ui-react'
+import React from 'react'
+import { Image, Container } from 'semantic-ui-react'
 
 import pic from './gift.png'
 

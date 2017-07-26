@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 import {
   Rec,
   Header,
@@ -14,16 +16,22 @@ import {
   NextButton,
 } from './styled'
 import NavBenefit from '../NavBenefit'
-import SettingPlan from './setting-plan.js'
-import AddPlanBar from './add-planbar.js'
-import { Link } from 'react-router-dom'
+import SettingPlan from './setting-plan'
+import AddPlanBar from './add-planbar'
 import {
   getOptionPlan,
   getBenefitPlan,
   setBenefitPlan,
 } from '../../api/benefit-plan'
 
-export class SettingBenefit extends Component {
+class SettingBenefit extends Component {
+  static propTypes = {
+    getBenefitPlan: PropTypes.func.isRequired,
+    getOptionPlan: PropTypes.func.isRequired,
+    benefitPlan: PropTypes.array.isRequired,
+    setBenefitPlan: PropTypes.func.isRequired,
+    optionPlan: PropTypes.array.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -37,6 +45,21 @@ export class SettingBenefit extends Component {
       health: '',
       expense: '',
       planList: [],
+    }
+  }
+
+  componentDidMount() {
+    this.props.getOptionPlan()
+    this.props.getBenefitPlan()
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.benefitPlan.length === 0) {
+      this.setState({ emptyPlan: true })
+    } else this.setState({ emptyPlan: false })
+
+    if (newProps.benefitPlan !== this.props.benefitPlan) {
+      this.setState({ planList: newProps.benefitPlan })
     }
   }
 
@@ -106,21 +129,6 @@ export class SettingBenefit extends Component {
       health: planList[index].health,
       expense: planList[index].expense,
     })
-  }
-
-  componentDidMount() {
-    this.props.getOptionPlan()
-    this.props.getBenefitPlan()
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.benefitPlan.length === 0) {
-      this.setState({ emptyPlan: true })
-    } else this.setState({ emptyPlan: false })
-
-    if (newProps.benefitPlan !== this.props.benefitPlan) {
-      this.setState({ planList: newProps.benefitPlan })
-    }
   }
 
   render() {

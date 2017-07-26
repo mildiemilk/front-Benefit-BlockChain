@@ -1,9 +1,15 @@
-import React, { Component, PropTypes } from 'react'
-
-import { withRouter } from 'react-router'
-
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Sidebar from './sidebar'
+
 class MainLayout extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+  }
+  constructor() {
+    super()
+    this.state = {}
+  }
   render() {
     return (
       <div className="row">

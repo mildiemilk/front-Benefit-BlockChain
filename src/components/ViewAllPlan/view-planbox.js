@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Icon, Table, Rating, Header, Checkbox, Popup } from 'semantic-ui-react'
-import styled from 'react-sc'
-import SearchBox from './search-box'
+import { Icon, Checkbox, Popup } from 'semantic-ui-react'
 import ModalView from './modal-view'
 import { copyPlan, deletePlan } from '../../api/set-plan'
 
 class ViewPlanBox extends Component {
-  constructor() {
-    super()
+  static propTypes = {
+    copyPlan: PropTypes.func.isRequired,
+    deletePlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {}
   }
 
   handleCopy = planId => {
@@ -20,7 +26,7 @@ class ViewPlanBox extends Component {
   }
 
   renderList = list => {
-    return list.map(element => (
+    list.map(element => (
       <tr>
         <td>
           <Checkbox />
@@ -76,6 +82,6 @@ const mapDispatchToProps = dispatch => ({
   copyPlan: planId => dispatch(copyPlan(planId)),
 })
 
-const mapStateToProps = state => ({})
+const mapStateToProps = () => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox)

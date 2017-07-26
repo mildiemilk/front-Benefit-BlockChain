@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Card } from './styled'
 import { getSelectInsurer } from '../../api/choose-insurer'
-import { connect } from 'react-redux'
 
 class Insurer extends React.Component {
+  static propTypes = {
+    getSelectInsurer: PropTypes.func.isRequired,
+    insurers: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
   constructor(props) {
     super(props)
 
@@ -11,8 +16,7 @@ class Insurer extends React.Component {
   }
 
   renderList = insurers => {
-    console.log(insurers)
-    return insurers.map(insurer => (
+    insurers.map(insurer => (
       <Card className="large-2 columns">
         {insurer.insurerName}
       </Card>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Nav from './Nav'
 import styled from 'react-sc'
 import { Progress, Icon } from 'semantic-ui-react'
+import Nav from './Nav'
 import {
   DetailDiv,
   NextButton,
@@ -11,15 +11,12 @@ import {
   TextR,
   TextL,
   Num,
-  List,
   ListL,
   Lists,
   ListR,
   BoxList,
   DetailIn,
-  BoxIn,
   Number,
-  ProgressDiv,
 } from './styled'
 
 const ProgressStyle = styled(Progress)`

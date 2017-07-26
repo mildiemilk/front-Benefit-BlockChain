@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { Dropdown } from 'semantic-ui-react'
 import { Backgroundiv, TinyText } from './styled'
 import Header from '../header'

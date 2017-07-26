@@ -1,21 +1,6 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-  Search,
-} from 'semantic-ui-react'
 import bedRecord from '../image/icons-8-single-bed-record.png'
 import bedActive from '../image/icons-8-single-bed.jpg'
 import bed from '../image/icons-8-single-bed1.jpg'
@@ -35,6 +20,66 @@ import OPD from './OPD/opd'
 import Dental from './Dental/dental'
 
 class AllsetPlan extends Component {
+  static propTypes = {
+    activePlan: PropTypes.number.isRequired,
+    nextPage: PropTypes.bool.isRequired,
+    handleNextPage: PropTypes.func.isRequired,
+    handleSetGoToNextPage: PropTypes.func.isRequired,
+    handleWarningModal: PropTypes.func.isRequired,
+    handleMoveToNextPage: PropTypes.func.isRequired,
+    newPlan: PropTypes.func.isRequired,
+    handleBuildNewPlan: PropTypes.func.isRequired,
+    handleUnBuildNewPlan: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    handleToggleIpdCoPlay: PropTypes.func.isRequired,
+    handleToggleOpdCoPlay: PropTypes.func.isRequired,
+    handleResetPlan: PropTypes.func.isRequired,
+    handleResetDental: PropTypes.func.isRequired,
+    handleResetLife: PropTypes.func.isRequired,
+    handleResetOPD: PropTypes.func.isRequired,
+    handleResetIPD: PropTypes.func.isRequired,
+    opdCoPlay: PropTypes.bool.isRequired,
+    opdPerYear: PropTypes.string.isRequired,
+    opdPerTime: PropTypes.string.isRequired,
+    opdTimeNotExceedPerYear: PropTypes.string.isRequired,
+    opdCoPlayQuota: PropTypes.string.isRequired,
+    opdCoPlayDeductable: PropTypes.string.isRequired,
+    opdCoPlayMixPercentage: PropTypes.string.isRequired,
+    opdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    opdCoPlayMixYear: PropTypes.string.isRequired,
+    dentalPerYear: PropTypes.string.isRequired,
+    lifePerYear: PropTypes.string.isRequired,
+    lifeTimeOfSalary: PropTypes.string.isRequired,
+    lifeNotExceed: PropTypes.string.isRequired,
+    ipdType: PropTypes.string.isRequired,
+    ipdLumsumPerYear: PropTypes.string.isRequired,
+    ipdLumsumPerTime: PropTypes.string.isRequired,
+    ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumRoomPerNight: PropTypes.string.isRequired,
+    rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
+    rbSchedulePatient: PropTypes.string.isRequired,
+    rbScheduleIntensiveCarePatient: PropTypes.string.isRequired,
+    rbScheduleDoctor: PropTypes.string.isRequired,
+    rbScheduleSurgerySchedule: PropTypes.string.isRequired,
+    rbScheduleSurgeryNonSchedule: PropTypes.string.isRequired,
+    rbScheduleService: PropTypes.string.isRequired,
+    rbScheduleSmallSurgery: PropTypes.string.isRequired,
+    rbScheduleAdviser: PropTypes.string.isRequired,
+    rbScheduleAmbulance: PropTypes.string.isRequired,
+    rbScheduleAccident: PropTypes.string.isRequired,
+    rbScheduleTreatment: PropTypes.string.isRequired,
+    rbScheduleTransplant: PropTypes.string.isRequired,
+    ipdCoPlay: PropTypes.string.isRequired,
+    ipdCoPlayQuota: PropTypes.string.isRequired,
+    ipdCoPlayDeductable: PropTypes.string.isRequired,
+    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPlayMixYear: PropTypes.string.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -62,7 +107,72 @@ class AllsetPlan extends Component {
     }
   }
 
-  static propTypes = {}
+  componentWillReceiveProps(newProps) {
+    this.handleUpdate(newProps)
+  }
+
+  componentDidUpdate() {
+    this.handleDidUpdate()
+  }
+
+  handleDidUpdate = () => {
+    if (this.state.isChange) {
+      if (this.state.changeToRecord) {
+        if (this.state.ipdRecord && this.state.checkInput) {
+          this.setState({ textIpd: 'text-menu-record' })
+          this.setState({ textIpdActive: 'text-menu-record' })
+          this.setState({ checkInput: false })
+          this.setState({ isChange: false })
+        } else if (this.state.opdRecord && this.state.checkInput) {
+          this.setState({ textOpd: 'text-menu-record' })
+          this.setState({ textOpdActive: 'text-menu-record' })
+          this.setState({ checkInput: false })
+          this.setState({ isChange: false })
+        } else if (this.state.dentalRecord && this.state.checkInput) {
+          this.setState({ textDental: 'text-menu-record' })
+          this.setState({ textDentalActive: 'text-menu-record' })
+          this.setState({ checkInput: false })
+          this.setState({ isChange: false })
+        } else {
+          this.setState({ textLife: 'text-menu-record' })
+          this.setState({ textLifeActive: 'text-menu-record' })
+          this.setState({ checkInput: false })
+          this.setState({ isChange: false })
+        }
+      }
+    }
+
+    if (this.props.nextPage && this.state.verifyState === false) {
+      this.handleOpenModalNextPage()
+      this.props.handleNextPage()
+    }
+
+    if (this.props.newPlan && this.state.verifyState === false) {
+      this.handleOpenModal()
+      this.props.handleResetPlan()
+    }
+  }
+
+  handleUpdate = newProps => {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        setPlan: 'IPD',
+        ipdRecord: false,
+        opdRecord: false,
+        dentalRecord: false,
+        lifeRecord: false,
+        checkInput: false,
+        textOpd: 'text-menu',
+        textOpdActive: 'text-menu-active',
+        textIpd: 'text-menu',
+        textIpdActive: 'text-menu-active',
+        textDental: 'text-menu',
+        textDentalActive: 'text-menu-active',
+        textLife: 'text-menu',
+        textLifeActive: 'text-menu-active',
+      })
+    }
+  }
 
   handleOpenModal = () => {
     this.setState({ openModal: true })
@@ -130,33 +240,39 @@ class AllsetPlan extends Component {
   handleImageActive = value => {
     if (value === 'IPD') {
       if (this.state.ipdRecord) return bedRecord
-      else return bedActive
-    } else if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      else return stethoscopeActive
-    } else if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      else return toothActive
-    } else {
-      if (this.lifeRecord) return heartRecord
-      else return heartActive
+      return bedActive
     }
+    if (value === 'OPD') {
+      if (this.state.opdRecord) return stethoscopeRecord
+      return stethoscopeActive
+    }
+    if (value === 'Dental') {
+      if (this.state.dentalRecord) return toothRecord
+      return toothActive
+    }
+    if (this.lifeRecord) {
+      return heartRecord
+    }
+    return heartActive
   }
 
   handleImage = value => {
     if (value === 'IPD') {
       if (this.state.ipdRecord) return bedRecord
-      else return bed
-    } else if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      else return stethoscope
-    } else if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      else return tooth
-    } else {
-      if (this.lifeRecord) return heartRecord
-      else return heart
+      return bed
     }
+    if (value === 'OPD') {
+      if (this.state.opdRecord) return stethoscopeRecord
+      return stethoscope
+    }
+    if (value === 'Dental') {
+      if (this.state.dentalRecord) return toothRecord
+      return tooth
+    }
+    if (this.lifeRecord) {
+      return heartRecord
+    }
+    return heart
   }
 
   handleNextPlan = () => {
@@ -175,73 +291,19 @@ class AllsetPlan extends Component {
     this.setState({ reset: false })
   }
 
-  componentDidUpdate() {
-    if (this.state.isChange) {
-      if (this.state.changeToRecord) {
-        if (this.state.ipdRecord && this.state.checkInput) {
-          this.setState({ textIpd: 'text-menu-record' })
-          this.setState({ textIpdActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        } else if (this.state.opdRecord && this.state.checkInput) {
-          this.setState({ textOpd: 'text-menu-record' })
-          this.setState({ textOpdActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        } else if (this.state.dentalRecord && this.state.checkInput) {
-          this.setState({ textDental: 'text-menu-record' })
-          this.setState({ textDentalActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        } else {
-          this.setState({ textLife: 'text-menu-record' })
-          this.setState({ textLifeActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        }
-      }
-    }
-
-    if (this.props.nextPage && this.state.verifyState === false) {
-      this.handleOpenModalNextPage()
-      this.props.handleNextPage()
-    }
-
-    if (this.props.newPlan && this.state.verifyState === false) {
-      this.handleOpenModal()
-      this.props.handleResetPlan()
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({
-        setPlan: 'IPD',
-        ipdRecord: false,
-        opdRecord: false,
-        dentalRecord: false,
-        lifeRecord: false,
-        checkInput: false,
-        textOpd: 'text-menu',
-        textOpdActive: 'text-menu-active',
-        textIpd: 'text-menu',
-        textIpdActive: 'text-menu-active',
-        textDental: 'text-menu',
-        textDentalActive: 'text-menu-active',
-        textLife: 'text-menu',
-        textLifeActive: 'text-menu-active',
-      })
-    }
-  }
-
   render() {
     return (
       <div>
         <div className="fillBox">
           <div className="headBox">
             <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
-            <div className="box-in-head-box" onClick={() => this.handleReset()}>
-              <img src={erase} className="image-erase" />
+            <div
+              className="box-in-head-box"
+              onClick={() => this.handleReset()}
+              role="button"
+              aria-hidden
+            >
+              <img src={erase} className="image-erase" alt="erase" />
               <span className="headLogo">Reset</span>
             </div>
           </div>
@@ -251,10 +313,13 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('IPD')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('IPD')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textIpdActive}>IPD</span>
                   </div>
@@ -263,8 +328,14 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('IPD')}
+                    role="button"
+                    aria-hidden
                   >
-                    <img src={this.handleImage('IPD')} className="imageMenu" />
+                    <img
+                      src={this.handleImage('IPD')}
+                      className="imageMenu"
+                      alt="Menu"
+                    />
                     <span className={this.state.textIpd}>IPD</span>
                   </div>
                 </div>}
@@ -273,10 +344,13 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('OPD')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('OPD')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textOpdActive}>OPD</span>
                   </div>
@@ -285,8 +359,14 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('OPD')}
+                    role="button"
+                    aria-hidden
                   >
-                    <img src={this.handleImage('OPD')} className="imageMenu" />
+                    <img
+                      src={this.handleImage('OPD')}
+                      className="imageMenu"
+                      alt="Menu"
+                    />
                     <span className={this.state.textOpd}>OPD</span>
                   </div>
                 </div>}
@@ -295,10 +375,13 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('Dental')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('Dental')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textDentalActive}>Dental</span>
                   </div>
@@ -307,10 +390,13 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('Dental')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImage('Dental')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textDental}>Dental</span>
                   </div>
@@ -320,10 +406,13 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('Life')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('Life')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textLifeActive}>Life</span>
                   </div>
@@ -332,8 +421,14 @@ class AllsetPlan extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('Life')}
+                    role="button"
+                    aria-hidden
                   >
-                    <img src={this.handleImage('Life')} className="imageMenu" />
+                    <img
+                      src={this.handleImage('Life')}
+                      className="imageMenu"
+                      alt="Menu"
+                    />
                     <span className={this.state.textLife}>Life</span>
                   </div>
                 </div>}
@@ -470,9 +565,4 @@ class AllsetPlan extends Component {
   }
 }
 
-AllsetPlan.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(AllsetPlan)
+export default connect(null, null)(AllsetPlan)

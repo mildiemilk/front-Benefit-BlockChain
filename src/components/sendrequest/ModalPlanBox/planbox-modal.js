@@ -38,7 +38,7 @@ class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     modalOpen: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object()).isRequired,
+    planList: PropTypes.array.isRequired,
     activePlan: PropTypes.number.isRequired,
   }
   constructor(props) {

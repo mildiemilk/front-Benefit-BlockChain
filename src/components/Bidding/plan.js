@@ -5,7 +5,7 @@ import { List, IconPlan, DetailList, PopupList, PopupView } from './styled'
 
 class Plan extends Component {
   static propTypes = {
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.array.isRequired,
   }
   renderList = bids => {
     const planlists = bids.map(bid => (

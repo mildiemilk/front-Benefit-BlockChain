@@ -96,4 +96,40 @@
     position: absolute;
     left: -17px;
   }
+
+  @media (max-width: 768px) and (min-width: 520px)  {
+    .CircleSpace{
+      margin-left: 82px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .CircleSpace::before{
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: -5.9em;
+      width: 83px;
+      height: .2em;
+      background: #919396;
+      z-index: -1;
+    }
+
+    .CircleSpace-active{
+      margin-left: 82px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .CircleSpace-active::before{
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: -5.9em;
+      width: 83px;
+      height: .2em;
+      background: #3a7bd5;
+      z-index: -1;
+    }
+  }
 }

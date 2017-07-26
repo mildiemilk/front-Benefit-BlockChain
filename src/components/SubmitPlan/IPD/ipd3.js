@@ -1,42 +1,77 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
-import CoPlay from './coplay'
+import { Form, Radio } from 'semantic-ui-react'
 
 class IPD3 extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    handleNewReset: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    reset: PropTypes.string.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    rbSchedulePatient: PropTypes.string.isRequired,
+    rbScheduleIntensiveCarePatient: PropTypes.string.isRequired,
+    rbScheduleDoctor: PropTypes.string.isRequired,
+    rbScheduleSurgerySchedule: PropTypes.string.isRequired,
+    rbScheduleSurgeryNonSchedule: PropTypes.string.isRequired,
+    rbScheduleService: PropTypes.string.isRequired,
+    rbScheduleSmallSurgery: PropTypes.string.isRequired,
+    rbScheduleAdviser: PropTypes.string.isRequired,
+    rbScheduleAmbulance: PropTypes.string.isRequired,
+    rbScheduleTreatment: PropTypes.string.isRequired,
+    handleVerifyState: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.rbScheduleSurgerySchedule !== null
-        ? 'Schedule'
-        : this.props.rbScheduleSurgeryNonSchedule !== null
-            ? 'Non-Schedule'
-            : '',
+    const {
+      rbScheduleSurgerySchedule,
+      rbScheduleSurgeryNonSchedule,
+    } = this.props
+    let value
+
+    if (rbScheduleSurgerySchedule) {
+      value = 'Schedule'
+    } else if (rbScheduleSurgeryNonSchedule) {
+      value = 'Non-Schedule'
+    } else {
+      value = ''
+    }
+
+    this.state = { value }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { rbScheduleSurgerySchedule, rbScheduleSurgeryNonSchedule } = newProps
+    let value
+
+    if (rbScheduleSurgerySchedule) {
+      value = 'Schedule'
+    } else if (rbScheduleSurgeryNonSchedule) {
+      value = 'Non-Schedule'
+    } else {
+      value = ''
+    }
+
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({ value })
     }
   }
 
-  static propTypes = {}
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'Non-Schedule') {
-      this.props.handleChangeToNull('rbScheduleSugeryNonSchedule')
+      this.props.handleChangeToNull('rbScheduleSurgeryNonSchedule')
     } else {
-      this.props.handleChangeToNull('rbScheduleSugerySchedule')
+      this.props.handleChangeToNull('rbScheduleSurgerySchedule')
     }
   }
 
@@ -66,24 +101,6 @@ class IPD3 extends Component {
     this.props.handleNewReset()
   }
 
-  componentDidUpdate() {
-    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({
-        value: newProps.rbScheduleSurgerySchedule !== null
-          ? 'Schedule'
-          : newProps.rbScheduleSurgeryNonSchedule !== null
-              ? 'Non-Schedule'
-              : '',
-      })
-    }
-  }
-
   handleChange = (e, { name, value }) => {
     this.props.handleChange(e, { name, value })
     this.props.handleVerifyState()
@@ -92,9 +109,9 @@ class IPD3 extends Component {
   handleRadio = (e, { value }) => {
     this.setState({ value })
     if (this.state.value === 'Non-Schedule') {
-      document.getElementById('rbScheduleSugeryNonSchedule').value = ''
+      document.getElementById('rbScheduleSurgeryNonSchedule').value = ''
     } else {
-      document.getElementById('rbScheduleSugerySchedule').value = ''
+      document.getElementById('rbScheduleSurgerySchedule').value = ''
     }
   }
 
@@ -368,9 +385,4 @@ class IPD3 extends Component {
   }
 }
 
-IPD3.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IPD3)
+export default connect(null, null)(IPD3)

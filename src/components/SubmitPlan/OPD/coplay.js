@@ -1,35 +1,55 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Form, Radio } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 
 class CoPlay extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    handleNewReset: PropTypes.func.isRequired,
+    reset: PropTypes.bool.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    opdCoPlayQuota: PropTypes.string.isRequired,
+    opdCoPlayDeductable: PropTypes.string.isRequired,
+    opdCoPlayMixPercentage: PropTypes.string.isRequired,
+    opdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    opdCoPlayMixYear: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.opdCoPlayQuota !== null
-        ? 'Quota Share'
-        : this.props.opdCoPlayDeductable !== null
-            ? 'Deductable'
-            : this.props.opdCoPlayMixPercentage !== null &&
-                this.props.opdCoPlayMixNotExceed !== null &&
-                this.props.opdCoPlayMixYear !== null
-                ? 'Quota Share + Deductable'
-                : '',
+
+    const {
+      opdCoPlayQuota,
+      opdCoPlayDeductable,
+      opdCoPlayMixYear,
+      opdCoPlayMixPercentage,
+      opdCoPlayMixNotExceed,
+    } = this.props
+
+    let value
+
+    if (!opdCoPlayQuota) {
+      if (!opdCoPlayDeductable) {
+        if (
+          !(opdCoPlayMixYear && opdCoPlayMixPercentage && opdCoPlayMixNotExceed)
+        ) {
+          value = ''
+        }
+        value = 'Quota Share + Deductable'
+      }
+      value = 'Deductable'
+    } else {
+      value = 'Quota Share'
+    }
+    this.state = { value }
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'OPD' && this.props.reset === true) {
+      this.handleResetdata()
     }
   }
 
@@ -46,12 +66,6 @@ class CoPlay extends Component {
     this.props.handleChangeToNull('opdCoPlayMixYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'OPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
   }
 
   render() {
@@ -205,9 +219,4 @@ class CoPlay extends Component {
   }
 }
 
-CoPlay.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CoPlay)
+export default connect(null, null)(CoPlay)

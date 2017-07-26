@@ -1,41 +1,69 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Button, Checkbox, Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-  Search,
-} from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 import CoPlay from './coplay'
 import IPD1 from './ipd1'
 import IPD2 from './ipd2'
 import IPD3 from './ipd3'
-import bed from '../../image/icons-8-single-bed.jpg'
-import stethoscope from '../../image/icons-8-stethoscope1.jpg'
-import tooth from '../../image/icons-8-toot1.jpg'
-import heart from '../../image/icons-8-like1.jpg'
-import erase from '../../image/icons-8-erase.png'
 import IpdModal from './ipd-modal'
 
 class IPD extends Component {
+  static propTypes = {
+    handleVerifyState: PropTypes.func.isRequired,
+    handleCloseModal: PropTypes.func.isRequired,
+    handleRecordVerifyState: PropTypes.func.isRequired,
+    handleNewReset: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    handleResetIPD: PropTypes.func.isRequired,
+    handleToggle: PropTypes.func.isRequired,
+    reset: PropTypes.string.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    ipdType: PropTypes.string.isRequired,
+    ipdLumsumPerYear: PropTypes.string.isRequired,
+    ipdLumsumPerTime: PropTypes.string.isRequired,
+    ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumRoomPerNight: PropTypes.string.isRequired,
+    rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
+    rbSchedulePatient: PropTypes.string.isRequired,
+    rbScheduleIntensiveCarePatient: PropTypes.string.isRequired,
+    rbScheduleDoctor: PropTypes.string.isRequired,
+    rbScheduleSurgerySchedule: PropTypes.string.isRequired,
+    rbScheduleSurgeryNonSchedule: PropTypes.string.isRequired,
+    rbScheduleService: PropTypes.string.isRequired,
+    rbScheduleSmallSurgery: PropTypes.string.isRequired,
+    rbScheduleAdviser: PropTypes.string.isRequired,
+    rbScheduleAmbulance: PropTypes.string.isRequired,
+    rbScheduleAccident: PropTypes.string.isRequired,
+    rbScheduleTreatment: PropTypes.string.isRequired,
+    rbScheduleTransplant: PropTypes.string.isRequired,
+    ipdCoPlay: PropTypes.string.isRequired,
+    ipdCoPlayQuota: PropTypes.string.isRequired,
+    ipdCoPlayDeductable: PropTypes.string.isRequired,
+    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPlayMixYear: PropTypes.string.isRequired,
+    editPlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
+
   constructor() {
     super()
     this.state = {}
   }
 
-  static propTypes = {}
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   handleRadio = (e, { name, value }) => {
     this.handleResetdata()
@@ -115,12 +143,6 @@ class IPD extends Component {
     this.props.handleResetIPD()
     this.props.handleNewReset()
     this.props.handleVerifyState('ipdRecord')
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
   }
 
   render() {

@@ -1,0 +1,178 @@
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background:#ffffff;
+  font-family: 'Raleway', Arial, sans-serif;
+}
+
+#app {
+  height: 100%;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 3.75em;
+}
+
+.description {
+  max-width: 20em;
+  margin: 1.2em auto 1em;
+  line-height: 1.3em;
+  font-weight: 400;
+}
+
+.demo-buttons {
+  font-size: 1em;
+  max-width: 1200px;
+  margin: 2em auto 3em;
+  padding: 0 10em;
+
+  a {
+    display: inline-block;
+    margin: 0.75em;
+    padding: 1.35em 1.1em;
+    width: 15em;
+    background: #fffce1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    border-top-left-radius: 20px 50px;
+    border-top-right-radius: 20px 50px;
+    border-bottom-right-radius: 20px 50px;
+    border-bottom-left-radius: 20px 50px;
+    cursor: pointer;
+
+    &.current-demo {
+      background: #c94e50;
+      color: #fffce1;
+    }
+  }
+}
+
+.side-button {
+  display: inline-block;
+  width: 5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  cursor: pointer;
+  background: #fffce1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8em;
+  font-weight: 800;
+
+  &.left {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  &.right {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  &.active {
+    background: #c94e50;
+    color: #fffce1;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  main {
+    font-size: 80%;
+  }
+
+  h1 {
+    padding-top: 1em;
+    font-size: 2.5em;
+  }
+
+  .demo-buttons {
+    max-width: 900px;
+    padding: 0 2em;
+  }
+}
+
+//
+// Burger menu custom styles
+//
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 26px;
+    left: 24px;
+    top: 19px;
+    cursor: pointer;
+}
+
+.bm-burger-bars {
+  background: white;
+  height: 12% !important;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-menu {
+  background:white;
+  //  div{
+  //    &:hover,
+  //   &:focus,&:active {
+  //     background: #c8ddf6;
+  //   }
+   }
+  
+
+
+.bm-item-list a {
+  padding: 0.8em;
+
+  span {
+    margin-left: 10px;
+    font-weight: 700;
+  }
+}
+
+.menu-2 {
+  .bm-cross {
+    background: #999;
+  }
+  
+  .bm-menu {
+    padding: 3.4em 1em 0;
+  }
+
+  a {
+    padding: 1em;
+  }
+
+  i {
+    font-size: 1.7em;
+    vertical-align: middle;
+    color: #282a35;
+  }
+}
+
+.is-open{
+    left: 250px;
+    animation: mymove 0.15s ;
+    animation-timing-function: linear;
+}
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 0px;}
+}
+
+.sideBar{
+    position: relative;
+    margin: 0 auto;
+    min-height: 100%;
+    padding-bottom: 80px;
+}

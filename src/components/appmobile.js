@@ -19,10 +19,10 @@ import HeadLayout from './head-layout-mobile'
 import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard'
 import ClamStatus from './Employee/clam-status'
 import '../styles/employee-style/main.scss'
-// import MainLayoutMobile from './main-layout-mobile'
+import MainLayoutMobile from './main-layout-mobile'
 const AppMobile = () => (
   <BrowserRouter>
-    <div>
+    <div style={{ height: '100%' }}>
       <HeadLayout>
         <Switch>
           <Route path="/employeeverify" component={employeeVerify} />
@@ -38,7 +38,7 @@ const AppMobile = () => (
             component={EmployeeBenefitsDashboard}
           />
           <Route path="/clamstatus" component={ClamStatus} />
-          {/*<Route path="/side" component={MainLayoutMobile}/>*/}
+          <Route path="/side" component={MainLayoutMobile} />
         </Switch>
       </HeadLayout>
     </div>

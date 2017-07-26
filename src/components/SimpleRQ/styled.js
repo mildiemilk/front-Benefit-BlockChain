@@ -1,6 +1,4 @@
 import styled from 'react-sc'
-import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
 
 export const ModalHeader = styled.p`
   font-size: 16px;
@@ -70,12 +68,12 @@ export const UploadButton = styled.label`
     cursor: pointer;
 `
 export const InputBox = styled.input`
-	border-radius: 3px;
-	border: solid 1px #dddddd;
+  border-radius: 3px;
+  border:solid 1px #dddddd;
   padding: 2%;
   width: 100%;
-	height: auto;
-  &::-webkit-input-placeholder {
+  height: auto;
+    &::-webkit-input-placeholder {
         color: #323028;
         opacity: 0.35;
     }
@@ -83,7 +81,7 @@ export const InputBox = styled.input`
 
 export const BottomSpace = styled.div`
   margin-top: 10px;
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 `
 
 export const Inputs = styled.input`

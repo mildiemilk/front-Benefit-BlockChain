@@ -6,6 +6,7 @@ export const Head = styled.p`
   padding-top:24px;
   font-size: 30px;
 `
+
 export const Grid = styled.div`
   padding-top:20px;
 `
@@ -16,7 +17,7 @@ export const StepRadius = styled(Step.Group)`
       width: 100%;
       margin-top: 14.5px;
     }
-  `
+`
 
 export const Step1 = styled(Step)`
   &&&{

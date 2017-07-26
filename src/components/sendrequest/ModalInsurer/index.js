@@ -1,25 +1,9 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-  Icon,
-} from 'semantic-ui-react'
-import {
-  ModalHeader,
-  ModalContent,
-  ButtonNew,
-  CancleButton,
-  ConfirmButton,
-  Edit,
-} from './styled'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
+import { Modal, Icon } from 'semantic-ui-react'
+import { Edit } from './styled'
 import ChooseInsurer from '../../ChooseInsurer'
 
 const ModalContents = styled(Modal.Content)`
@@ -38,24 +22,18 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class ModalInsurer extends Component {
   constructor() {
     super()
     this.state = { modalOpen: false }
   }
 
-  handleClose = e =>
+  handleClose = () =>
     this.setState({
       modalOpen: false,
     })
 
-  handleOpen = e =>
+  handleOpen = () =>
     this.setState({
       modalOpen: true,
     })
@@ -87,6 +65,6 @@ ModalInsurer.propTypes = {
   handleChange: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = () => ({})
 
 export default connect(mapStateToProps, null)(ModalInsurer)

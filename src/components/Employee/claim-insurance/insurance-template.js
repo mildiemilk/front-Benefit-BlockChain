@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Dropdown, Form } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker'
-import moment from 'moment'
+import PropTypes from 'prop-types'
 import {
   TinyText,
   BrowsButton,
@@ -8,8 +9,6 @@ import {
   SubmitButton,
   UploadText,
 } from './styled'
-import { Image, Dropdown, Icon, Form } from 'semantic-ui-react'
-
 import '../../../styles/employee-style/claim-insurance.scss'
 
 const InsuranceTypeOption = [
@@ -71,6 +70,15 @@ const BankOption = [
   },
 ]
 class InsuranceTemplate extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    EmNameoption: PropTypes.shape.isRequired,
+    date: PropTypes.shape.isRequired,
+    handleUploadcliamFile: PropTypes.func.isRequired,
+    ClaimFile: PropTypes.shape.isRequired,
+    handleChangeDate: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {}

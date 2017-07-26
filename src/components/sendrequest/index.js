@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import styled from 'react-sc'
 import NavInsure from '../NavInsure'
-import Sidebar from '../sidebar'
-import uploadicon from '../image/icons-8-upload.png'
 import ModalInsurer from './ModalInsurer'
-import csvpic from '../image/icons-8-csv.png'
 import ModalPlanBox from './ModalPlanBox'
 import Insurer from './insurer'
 import '../../styles/send-request.scss'
@@ -16,30 +12,18 @@ import {
   Detail,
   Head,
   Head2,
-  subInner,
   Submit,
-  BoxIndiv1,
   BoxIndiv2,
   BoxIndiv3,
   BoxIndiv4,
-  SideIn,
   Time,
-  Edit,
 } from './styled'
-import moment from 'moment'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-  Progress,
-} from 'semantic-ui-react'
 import PostSimpleRQ from './simple-requirement'
 
 class Sendrequest extends Component {
+  static propTypes = {
+    timeout: PropTypes.shape.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -49,13 +33,13 @@ class Sendrequest extends Component {
   }
 
   changePositionPage = () => {
-    if (this.state.position === 'relative-box')
+    if (this.state.position === 'relative-box') {
       this.setState({ position: 'fixed-box' })
-    else this.setState({ position: 'relative-box' })
+    } else {
+      this.setState({ position: 'relative-box' })
+    }
   }
   render() {
-    console.log(this.props)
-    console.log(moment(this.props.timeout).locale('th').format('DD MMMM YYYY'))
     return (
       <div className={this.state.position}>
         <NavInsure step={this.state.step} />
@@ -70,7 +54,7 @@ class Sendrequest extends Component {
             <BoxIndiv2>
               <ModalPlanBox changePositionPage={this.changePositionPage} />
             </BoxIndiv2>
-            <Head2 style={{ display: 'inline-block' }}>
+            <Head2>
               รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
             </Head2>
             {' '}
@@ -97,7 +81,6 @@ class Sendrequest extends Component {
     )
   }
 }
-const mapDispatchToProps = dispatch => ({})
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,

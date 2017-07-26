@@ -1,6 +1,4 @@
 import styled from 'react-sc'
-import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
 
 export const PostBoxFront = styled.div`
   font-size: 32px;

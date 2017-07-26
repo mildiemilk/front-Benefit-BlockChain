@@ -1,9 +1,12 @@
 import React from 'react'
-import { SearchView, SearchButton } from './styled'
+import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
-import styled from 'react-sc'
 
 class SearchBox extends React.Component {
+  static propTypes = {
+    name: PropTypes.number.isRequired,
+    callback: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {

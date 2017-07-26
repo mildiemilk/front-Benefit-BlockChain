@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Image, Icon } from 'semantic-ui-react'
 import icon1 from '../image/icons-8-treatment-plan.png'
 import { ManagePlan } from './styled'
 import ModalPlan from './modal-plan'
 
 class PlanTemplate extends Component {
+  static propTypes = {
+    onClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    closetap: PropTypes.bool.isRequired,
+    colorPlan: PropTypes.number.isRequired,
+    handleDeleteChooseInsurance: PropTypes.func.isRequired,
+    handleDeleteOurplan: PropTypes.func.isRequired,
+    handleDeleteSpacialPlan: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
+  }
   constructor() {
     super()
     this.state = {}
@@ -67,10 +79,10 @@ class PlanTemplate extends Component {
   }
 
   render() {
-    const { id, price, colorPlan, closetap } = this.props
+    const { id, price, colorPlan } = this.props
     let component
     if (this.props.closetap) {
-      if (this.props.colorPlan == 1) {
+      if (this.props.colorPlan === 1) {
         component = (
           <div>
             <ManagePlan>
@@ -78,7 +90,7 @@ class PlanTemplate extends Component {
             </ManagePlan>
           </div>
         )
-      } else if (this.props.colorPlan == 2) {
+      } else if (this.props.colorPlan === 2) {
         component = (
           <div>
             component =
@@ -89,7 +101,7 @@ class PlanTemplate extends Component {
         )
       }
     } else {
-      if (this.props.colorPlan == 1) {
+      if (this.props.colorPlan === 1) {
         component = (
           <ManagePlan>
             <table>
@@ -98,6 +110,8 @@ class PlanTemplate extends Component {
                   style={{ width: '55px', cursor: 'pointer' }}
                   onClick={() =>
                     this.props.handleDeleteOurplan(this.props.index)}
+                  role="button"
+                  aria-hidden
                 >
                   <Image
                     src={icon1}
@@ -108,6 +122,8 @@ class PlanTemplate extends Component {
                   style={{ width: '65%', cursor: 'pointer' }}
                   onClick={() =>
                     this.props.handleDeleteOurplan(this.props.index)}
+                  role="button"
+                  aria-hidden
                 >
                   <b>{this.props.id}</b><br />
                   ราคาต่อหัว : {price} บาท
@@ -120,6 +136,8 @@ class PlanTemplate extends Component {
                     style={{ width: '30px', cursor: 'pointer' }}
                     onClick={() =>
                       this.props.handleDeleteOurplan(this.props.index)}
+                    role="button"
+                    aria-hidden
                   >
                     <Icon
                       name="chevron right"
@@ -132,7 +150,7 @@ class PlanTemplate extends Component {
             </table>
           </ManagePlan>
         )
-      } else if (this.props.colorPlan == 2) {
+      } else if (this.props.colorPlan === 2) {
         component = (
           <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
             <table>
@@ -141,6 +159,8 @@ class PlanTemplate extends Component {
                   style={{ width: '55px', cursor: 'pointer' }}
                   onClick={() =>
                     this.props.handleDeleteSpacialPlan(this.props.index)}
+                  role="button"
+                  aria-hidden
                 >
                   <Image
                     src={icon1}
@@ -151,6 +171,8 @@ class PlanTemplate extends Component {
                   style={{ width: '65%', cursor: 'pointer' }}
                   onClick={() =>
                     this.props.handleDeleteSpacialPlan(this.props.index)}
+                  role="button"
+                  aria-hidden
                 >
                   <b>{this.props.id}</b><br />
                   ราคาต่อหัว : {price} บาท
@@ -163,6 +185,8 @@ class PlanTemplate extends Component {
                     style={{ width: '30px', cursor: 'pointer' }}
                     onClick={() =>
                       this.props.handleDeleteSpacialPlan(this.props.index)}
+                    role="button"
+                    aria-hidden
                   >
                     <Icon
                       name="chevron right"

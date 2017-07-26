@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { HeadLists, TextInput } from './styled'
 import ListExpense from './list-expense'
 
 class ExpenseBenefit extends Component {
+  static propTypes = {
+    handleTextChangeExpense: PropTypes.func.isRequired,
+    addTodoExpense: PropTypes.func.isRequired,
+    removeTodoExpense: PropTypes.func.isRequired,
+    TextExpense: PropTypes.string.isRequired,
+    ExpenseList: PropTypes.arrayof(PropTypes.string()).isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {}

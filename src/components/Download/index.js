@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import NavBenefit from '../NavBenefit'
 import {
   DetailDiv,
@@ -14,7 +15,7 @@ import {
   UploadButton,
   UploadDiv,
 } from './styled'
-import { Link } from 'react-router-dom'
+
 class Download extends Component {
   constructor(props) {
     super(props)
@@ -28,12 +29,12 @@ class Download extends Component {
   _handleImageChange(e) {
     e.preventDefault()
 
-    let reader = new FileReader()
-    let file = e.target.files[0]
+    const reader = new FileReader()
+    const file = e.target.files[0]
 
     reader.onloadend = () => {
       this.setState({
-        file: file,
+        file,
         filePreviewUrl: reader.result,
       })
     }
@@ -42,7 +43,7 @@ class Download extends Component {
   }
 
   render() {
-    let { filePreviewUrl } = this.state
+    const { filePreviewUrl } = this.state
     let $filePreview = null
     if (filePreviewUrl) {
       $filePreview = <span>{this.state.file.name}&nbsp;</span>

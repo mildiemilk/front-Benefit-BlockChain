@@ -12,7 +12,7 @@ import {
   getSelectInsurer,
 } from './choose-insurer'
 import { biddingReducer, endTimeout, selectFinalInsurer } from './bidding'
-import { choosePlan } from './benefit-plan'
+import { choosePlan, benefitPlan } from './benefit-plan'
 
 const rootReducer = combineReducers({
   authReducer,
@@ -28,6 +28,7 @@ const rootReducer = combineReducers({
   biddingReducer,
   endTimeout,
   choosePlan,
+  benefitPlan,
   getSelectInsurer,
   selectFinalInsurer,
 })

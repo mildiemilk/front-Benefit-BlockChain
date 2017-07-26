@@ -1,27 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
 import '../../../styles/employee-style/health-genaral.scss'
-import Header from '../header'
-import Footer from '../footer'
 import healthImage from '../../image/health-detail.png'
 import info from '../../image/icons-8-info.png'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
 
 class HealthDetail extends Component {
   constructor() {
@@ -32,15 +12,18 @@ class HealthDetail extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="row health">
           <div className="small-10 small-centered columns">
             <div className="employee-health-box">
               <p>สิทธิประโยชน์ด้านสุขภาพ</p>
               <div className="health-image-box">
-                <img src={info} style={{ float: 'right' }} />
+                <img src={info} alt="info" style={{ float: 'right' }} />
                 <br />
-                <img src={healthImage} style={{ marginTop: '2%' }} />
+                <img
+                  src={healthImage}
+                  alt="health"
+                  style={{ marginTop: '2%' }}
+                />
                 <p className="text-image-health">HEALTH</p>
               </div>
               <div className="detail-health-box">
@@ -60,29 +43,23 @@ class HealthDetail extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="condition-health-box">
-                  <div className="text-head-condition">
-                    เงื่อนไขในการใช้ Benefit
-                  </div>
-                  <div>- ไม่รวมสินค้าสำหรับบริโภค</div>
-                  <div>- ใช้ซื้อสินค้าได้แค่ในหมวดกีฬา</div>
+              </div>
+              <div className="condition-health-box">
+                <div className="text-head-condition">
+                  เงื่อนไขในการใช้ Benefit
                 </div>
+                <div>- ไม่รวมสินค้าสำหรับบริโภค</div>
+                <div>- ใช้ซื้อสินค้าได้แค่ในหมวดกีฬา</div>
               </div>
             </div>
-            <div className="link-back-health-detail">
-              <a className="link-back-health-detail"><u>&lt; ย้อนกลับ</u></a>
-            </div>
+          </div>
+          <div className="link-back-health-detail">
+            <a className="link-back-health-detail"><u>&lt; ย้อนกลับ</u></a>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }
 }
 
-HealthDetail.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(HealthDetail)
+export default HealthDetail

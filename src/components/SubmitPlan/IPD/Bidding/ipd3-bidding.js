@@ -2,21 +2,12 @@ import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Form, Radio } from 'semantic-ui-react'
 
 class IPD3Bidding extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -35,8 +26,6 @@ class IPD3Bidding extends Component {
       rbScheduleTransplant: null,
     }
   }
-
-  static propTypes = {}
 
   handleRadio = (e, { value }) => {
     this.setState({ value })
@@ -302,10 +291,4 @@ class IPD3Bidding extends Component {
     )
   }
 }
-
-IPD3Bidding.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IPD3Bidding)
+export default connect(null, null)(IPD3Bidding)

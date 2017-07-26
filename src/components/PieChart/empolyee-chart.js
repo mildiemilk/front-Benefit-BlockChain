@@ -1,25 +1,9 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import { RadialChart } from 'react-vis'
 import '../../styles/chart-box.scss'
 
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-
-const myData = [{ angle: 5 }, { angle: 5 }]
-let graphData = []
+const graphData = []
 const myPlan = [
   { group: 'A', number: 10 },
   { group: 'B', number: 20 },
@@ -36,7 +20,7 @@ class Empolyeechart extends Component {
   }
 
   renderList = list => {
-    return list.map((element, index) => {
+    const lists = list.map((element, index) => {
       graphData.push({
         angle: element.number,
         style: { stroke: graphColor[index], fill: graphColor[index] },
@@ -53,6 +37,7 @@ class Empolyeechart extends Component {
         </div>
       )
     })
+    return lists
   }
 
   render() {
@@ -104,9 +89,4 @@ class Empolyeechart extends Component {
   }
 }
 
-Empolyeechart.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Empolyeechart)
+export default connect(null, null)(Empolyeechart)

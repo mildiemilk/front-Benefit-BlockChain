@@ -1,28 +1,22 @@
 import React, { Component } from 'react'
-import { Button, Header, Image, Modal, Checkbox, Icon } from 'semantic-ui-react'
+import { Modal, Icon } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
 import {
   ModalHeader,
   ModalContent,
   ModalTopic,
   BackButton,
-  PostMainButton,
   LineModal,
   TableHeader,
-  SpaceContent,
-  PlanImg,
   LifeTopic,
   OPDTopic,
-  IPDTopic,
-  IPDDetail,
   HiddenBox,
   HiddenContent,
   Img,
-  TextInBoxs,
   ImageIcon2,
 } from './styled'
 import IPDDropBox from './ipd-dropbox'
-import PropTypes from 'prop-types'
-import styled from 'react-sc'
 import icon2 from '../image/icons-8-view-file.png'
 
 const ModalContents = styled(Modal.Content)`
@@ -48,6 +42,11 @@ const Icons = styled(Icon)`
 `
 
 class ModalModalExample extends Component {
+  static propTypes = {
+    data: PropTypes.shape.isRequired,
+    handlePost: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -91,9 +90,9 @@ class ModalModalExample extends Component {
     }
   }
 
-  handleClose = e => this.setState({ modalOpen: false })
+  handleClose = () => this.setState({ modalOpen: false })
 
-  handleOpen = e => this.setState({ modalOpen: true })
+  handleOpen = () => this.setState({ modalOpen: true })
 
   render() {
     return (
@@ -304,11 +303,6 @@ class ModalModalExample extends Component {
       </Modals>
     )
   }
-}
-
-ModalModalExample.propTypes = {
-  data: PropTypes.object.isRequired,
-  handlePost: PropTypes.func.isRequired,
 }
 
 export default ModalModalExample

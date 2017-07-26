@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-} from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
-import SettingPlan from '../SettingBenefit/setting-plan'
+import PropTypes from 'prop-types'
+import SettingPlans from '../SettingBenefit/setting-plan'
 import '../../styles/employee-benefits.scss'
-import { BackButton } from '../SettingBenefit/styled'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -34,13 +26,11 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class SettingBenefitModal extends Component {
+  static propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    openSettingBenefit: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -50,7 +40,7 @@ class SettingBenefitModal extends Component {
     }
   }
 
-  handleClose = e => {
+  handleClose = () => {
     this.props.closeModal()
   }
 
@@ -64,7 +54,7 @@ class SettingBenefitModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <SettingPlan />
+          <SettingPlans />
         </ModalContents>
         <ModalContents>
           <div className="row">
@@ -83,6 +73,4 @@ class SettingBenefitModal extends Component {
 
 SettingBenefitModal.propTypes = {}
 
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, null)(SettingBenefitModal)
+export default connect(null, null)(SettingBenefitModal)

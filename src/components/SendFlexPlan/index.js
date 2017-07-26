@@ -1,22 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import styled from 'react-sc'
 import NavBenefit from '../NavBenefit'
-
-import {
-  Detail,
-  Inboxtext,
-  Head,
-  Inner,
-  BackButton,
-  SendButton,
-} from './styled'
-import { Image, Container, Divider, Segment, Icon } from 'semantic-ui-react'
-
-// ----------------------------------------------------------------
+import { Detail, Head, Inner, BackButton, SendButton } from './styled'
 
 class SendFlexPlan extends Component {
   constructor(props) {

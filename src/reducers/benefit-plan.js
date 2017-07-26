@@ -9,6 +9,10 @@ const defaultPlan = {
   isExpense: false,
 }
 
+const defaultBenefitPlan = {
+  plan: [],
+}
+
 /**
  * Action Constansts
  */
@@ -19,6 +23,12 @@ const EDITCHOOSEPLAN_REQUEST_SUCCESS = 'EDITCHOOSEPLAN_REQUEST_SUCCESS'
 const EDITCHOOSEPLAN_REQUEST_FAILURE = 'EDITCHOOSEPLAN_REQUEST_FAILURE'
 const EDITOPTION_REQUEST_SUSCESS = 'EDITOPTION_REQUEST_SUCCESS'
 const EDITOPTION_REQUEST_FAILURE = 'EDITOPTION_REQUEST_FAILURE'
+const GETOPTIONPLAN_REQUEST_SUSCESS = 'GETOPTIONPLAN_REQUEST_SUSCESS'
+const GETOPTIONPLAN_REQUEST_FAILURE = 'GETOPTIONPLAN_REQUEST_FAILURE'
+const GETBENEFITPLAN_REQUEST_SUSCESS = 'GETBENEFITPLAN_REQUEST_SUSCESS'
+const GETBENEFITPLAN_REQUEST_FAILURE = 'GETBENEFITPLAN_REQUEST_FAILURE'
+const SETBENEFITPLAN_REQUEST_SUSCESS = 'SETBENEFITPLAN_REQUEST_SUSCESS'
+const SETBENEFITPLAN_REQUEST_FAILURE = 'SETBENEFITPLAN_REQUEST_FAILURE'
 
 /**
  * Actions
@@ -47,6 +57,30 @@ export function editOptionFailure(data) {
   return { type: EDITOPTION_REQUEST_FAILURE, data }
 }
 
+export function getOptionPlanSuccess(data) {
+  return { type: GETOPTIONPLAN_REQUEST_SUSCESS, data }
+}
+
+export function getOptionPlanFailure(data) {
+  return { type: GETOPTIONPLAN_REQUEST_FAILURE, data }
+}
+
+export function getBenefitPlanSuccess(data) {
+  return { type: GETBENEFITPLAN_REQUEST_SUSCESS, data }
+}
+
+export function getBenefitPlanFailure(data) {
+  return { type: GETBENEFITPLAN_REQUEST_FAILURE, data }
+}
+
+export function setBenefitPlanSuccess(data) {
+  return { type: SETBENEFITPLAN_REQUEST_SUSCESS, data }
+}
+
+export function setBenefitPlanFailure(data) {
+  return { type: SETBENEFITPLAN_REQUEST_FAILURE, data }
+}
+
 /**
  * Reducer
  */
@@ -68,6 +102,31 @@ export function choosePlan(state = defaultPlan, action) {
         isExpense: action.data.isExpense,
       })
     case EDITOPTION_REQUEST_FAILURE:
+      return state
+    case GETOPTIONPLAN_REQUEST_SUSCESS:
+      return Object.assign({}, state, {
+        choosePlan: action.data.plan,
+        health: action.data.health,
+        isHealth: action.data.isHealth,
+        expense: action.data.expense,
+        isExpense: action.data.isExpense,
+      })
+    case GETOPTIONPLAN_REQUEST_FAILURE:
+      return state
+    default:
+      return state
+  }
+}
+
+export function benefitPlan(state = defaultBenefitPlan, action) {
+  switch (action.type) {
+    case GETBENEFITPLAN_REQUEST_SUSCESS:
+      return Object.assign({}, state, { plan: action.data })
+    case GETBENEFITPLAN_REQUEST_FAILURE:
+      return state
+    case SETBENEFITPLAN_REQUEST_SUSCESS:
+      return Object.assign({}, state, { plan: action.data })
+    case SETBENEFITPLAN_REQUEST_FAILURE:
       return state
     default:
       return state

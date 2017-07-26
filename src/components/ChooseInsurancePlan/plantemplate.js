@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
-
+import { Image, Icon } from 'semantic-ui-react'
 import icon1 from '../image/icons-8-treatment-plan.png'
-import icon2 from '../image/icons-8-view-file.png'
-import {
-  ManagePlan,
-  ImageIcon1,
-  ImageIcon2,
-  EmptyPlan,
-  EmptyPlanText,
-} from './styled'
-import { Image, Checkbox, Segment, Icon, Message } from 'semantic-ui-react'
+import { ManagePlan } from './styled'
 import ModalPlan from './modal-plan'
 
 class PlanTemplate extends Component {
@@ -23,7 +15,7 @@ class PlanTemplate extends Component {
   }
 
   RenderTable = (colorPlan, id) => {
-    return (
+    const RenderTables = (
       <p>
         <table>
           <tr>
@@ -34,17 +26,18 @@ class PlanTemplate extends Component {
               <b>{this.props.id}</b><br />
               ราคาต่อหัว : {this.props.price} บาท
             </td>
-            {this.RenderColumIsclosetap(colorPlan, id)}
+            {this.renderColumnIsCloseTap(colorPlan, id)}
           </tr>
         </table>
       </p>
     )
+    return RenderTables
   }
 
-  RenderColumIsclosetap = (colorPlan, id) => {
-    const { handleischoose } = this.props
+  renderColumnIsCloseTap = colorPlan => {
+    let columnIsCloseTap
     if (this.props.closetap) {
-      return (
+      columnIsCloseTap = (
         <td style={{ width: '30px', paddingLeft: '40px' }}>
           <Icon
             name="close"
@@ -58,8 +51,8 @@ class PlanTemplate extends Component {
           />
         </td>
       )
-    } else
-      return (
+    } else {
+      columnIsCloseTap = (
         <td>
           <td style={{ width: '40px' }}>
             <ModalPlan />
@@ -69,13 +62,16 @@ class PlanTemplate extends Component {
           </td>
         </td>
       )
+    }
+    return columnIsCloseTap
   }
 
   render() {
     const { id, price, colorPlan, closetap } = this.props
+    let component
     if (this.props.closetap) {
       if (this.props.colorPlan == 1) {
-        return (
+        component = (
           <div>
             <ManagePlan>
               {this.RenderTable(colorPlan, id)}
@@ -83,8 +79,9 @@ class PlanTemplate extends Component {
           </div>
         )
       } else if (this.props.colorPlan == 2) {
-        return (
+        component = (
           <div>
+            component =
             <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
               {this.RenderTable(colorPlan, id)}
             </ManagePlan>
@@ -93,7 +90,7 @@ class PlanTemplate extends Component {
       }
     } else {
       if (this.props.colorPlan == 1) {
-        return (
+        component = (
           <ManagePlan>
             <table>
               <tr>
@@ -113,7 +110,7 @@ class PlanTemplate extends Component {
                     this.props.handleDeleteOurplan(this.props.index)}
                 >
                   <b>{this.props.id}</b><br />
-                  ราคาต่อหัว : {this.props.price} บาท
+                  ราคาต่อหัว : {price} บาท
                 </td>
                 <td>
                   <td style={{ width: '40px' }}>
@@ -136,7 +133,7 @@ class PlanTemplate extends Component {
           </ManagePlan>
         )
       } else if (this.props.colorPlan == 2) {
-        return (
+        component = (
           <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
             <table>
               <tr>
@@ -156,7 +153,7 @@ class PlanTemplate extends Component {
                     this.props.handleDeleteSpacialPlan(this.props.index)}
                 >
                   <b>{this.props.id}</b><br />
-                  ราคาต่อหัว : {this.props.price} บาท
+                  ราคาต่อหัว : {price} บาท
                 </td>
                 <td>
                   <td style={{ width: '40px' }}>
@@ -180,6 +177,7 @@ class PlanTemplate extends Component {
         )
       }
     }
+    return component
   }
 }
 

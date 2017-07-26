@@ -1,38 +1,14 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
-import bed from '../../image/icons-8-single-bed1.jpg'
-import stethoscope from '../../image/icons-8-stethoscope1.jpg'
-import tooth from '../../image/icons-8-toot1.jpg'
-import heart from '../../image/icons-8-like.jpg'
-import erase from '../../image/icons-8-erase.png'
-import LifeModal from './life-modal'
-
-const options = [{ text: '1', value: 1 }]
 
 class LifeBidding extends Component {
   constructor(props) {
     super(props)
     this.state = {}
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -122,8 +98,6 @@ class LifeBidding extends Component {
     )
   }
 }
-
-LifeBidding.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>

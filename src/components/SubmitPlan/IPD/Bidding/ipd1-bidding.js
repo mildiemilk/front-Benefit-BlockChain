@@ -2,21 +2,13 @@ import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Form, Radio } from 'semantic-ui-react'
 
 class IPD1Bidding extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -26,8 +18,6 @@ class IPD1Bidding extends Component {
       ipdLumsumTimeNotExceedPerYear: null,
     }
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -80,7 +70,7 @@ class IPD1Bidding extends Component {
               onChange={this.props.handleChange}
               readOnly
             />
-          </div>}
+          </div>
           <p> บาท/ปี</p>
         </Form.Group>
       </div>
@@ -88,9 +78,4 @@ class IPD1Bidding extends Component {
   }
 }
 
-IPD1Bidding.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IPD1Bidding)
+export default connect(null, null)(IPD1Bidding)

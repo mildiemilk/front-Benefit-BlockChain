@@ -17,29 +17,109 @@ import NavBenefit from '../NavBenefit'
 import SettingPlan from './setting-plan.js'
 import AddPlanBar from './add-planbar.js'
 import { Link } from 'react-router-dom'
+import {
+  getOptionPlan,
+  getBenefitPlan,
+  setBenefitPlan,
+} from '../../api/benefit-plan'
+
 export class SettingBenefit extends Component {
   constructor() {
     super()
     this.state = {
       step: 3,
-      addPlan: false,
-      planName: [
-        {
-          name: 'แผนสิทธิประโยชน์ 1',
-        },
-        {
-          name: 'แผนสิทธิประโยชน์ 2',
-        },
-        {
-          name: 'แผนสิทธิประโยชน์ 3',
-        },
-      ],
+      activePlan: '',
+      emptyPlan: true,
+      planName: '',
+      plan: '',
+      isHealth: false,
+      isExpense: false,
+      health: '',
+      expense: '',
+      planList: [],
     }
   }
 
   handleAddPlan = () => {
-    if (this.state.addPlan === false) {
-      this.setState({ addPlan: true })
+    this.setState({
+      activePlan: '',
+      emptyPlan: false,
+      planName: '',
+      plan: '',
+      isHealth: false,
+      isExpense: false,
+      health: '',
+      expense: '',
+    })
+  }
+
+  handleDeletePlan = () => {
+    const { activePlan, planList } = this.state
+    planList.splice(activePlan, 1)
+    this.props.setBenefitPlan(this.state.planList)
+    this.handleAddPlan()
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleToggle = (e, { name, checked }) => {
+    this.setState({ [name]: !checked }, () => {
+      if (!this.state.isHealth) this.setState({ health: '' })
+      if (!this.state.isExpense) this.setState({ expense: '' })
+    })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const {
+      planName,
+      plan,
+      isHealth,
+      isExpense,
+      health,
+      expense,
+      activePlan,
+      planList,
+    } = this.state
+    const newPlan = { planName, plan, isHealth, isExpense, health, expense }
+    let updatePlan
+    if (activePlan === '') {
+      updatePlan = planList.concat(newPlan)
+      this.setState({ activePlan: planList.length })
+    } else {
+      updatePlan = planList
+      updatePlan[activePlan] = newPlan
+    }
+    this.setState({ planList: updatePlan }, () =>
+      this.props.setBenefitPlan(this.state.planList),
+    )
+  }
+
+  handleActivePlan = index => {
+    const { planList } = this.state
+    this.setState({
+      activePlan: index,
+      planName: planList[index].planName,
+      plan: planList[index].plan,
+      isHealth: planList[index].isHealth,
+      isExpense: planList[index].isExpense,
+      health: planList[index].health,
+      expense: planList[index].expense,
+    })
+  }
+
+  componentDidMount() {
+    this.props.getOptionPlan()
+    this.props.getBenefitPlan()
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.benefitPlan.length === 0) {
+      this.setState({ emptyPlan: true })
+    } else this.setState({ emptyPlan: false })
+
+    if (newProps.benefitPlan !== this.props.benefitPlan) {
+      this.setState({ planList: newProps.benefitPlan })
     }
   }
 
@@ -59,8 +139,13 @@ export class SettingBenefit extends Component {
 
             <div className="row">
               <div className="large-2 large-offset-1 columns">
-                {this.state.addPlan
-                  ? <AddPlanBar planName={this.state.planName} />
+                {!this.state.emptyPlan
+                  ? <AddPlanBar
+                      plan={this.state.planList}
+                      handleActivePlan={this.handleActivePlan}
+                      handleDeletePlan={this.handleDeletePlan}
+                      activePlan={this.state.activePlan}
+                    />
                   : null}
 
                 <AddPlan onClick={this.handleAddPlan}>
@@ -73,8 +158,19 @@ export class SettingBenefit extends Component {
               </div>
 
               <div className="large-8 columns">
-                {this.state.addPlan
-                  ? <SettingPlan />
+                {!this.state.emptyPlan
+                  ? <SettingPlan
+                      optionPlan={this.props.optionPlan}
+                      handleChange={this.handleChange}
+                      handleToggle={this.handleToggle}
+                      handleSubmit={this.handleSubmit}
+                      planName={this.state.planName}
+                      plan={this.state.plan}
+                      isHealth={this.state.isHealth}
+                      isExpense={this.state.isExpense}
+                      health={this.state.health}
+                      expense={this.state.expense}
+                    />
                   : <Blog>
                       <BlogImg src="../../../setbenefit/icons-8-form.png" />
                       <BlogContent>
@@ -114,9 +210,14 @@ export class SettingBenefit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
+  getOptionPlan: () => dispatch(getOptionPlan()),
+  getBenefitPlan: () => dispatch(getBenefitPlan()),
+  setBenefitPlan: plan => dispatch(setBenefitPlan(plan)),
 })
 
-const mapStateToProps = state => ({ planList: state.plan })
+const mapStateToProps = state => ({
+  optionPlan: state.choosePlan,
+  benefitPlan: state.benefitPlan.plan,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingBenefit)

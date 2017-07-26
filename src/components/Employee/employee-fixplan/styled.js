@@ -1,5 +1,5 @@
 import styled from 'react-sc'
-import { Image, Accordion } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 
 export const Submit = styled.button`
     height: 40px;
@@ -12,7 +12,6 @@ export const Submit = styled.button`
     border-style: solid;
     margin-bottom: 32px;
     margin-top:10px;
-
 `
 export const BoxStyle = styled.div`
   width: 100%;
@@ -34,7 +33,7 @@ export const HeaderBox = styled.div`
   letter-spacing: 0.3px;
   color: #3a7bd5;
   padding-left: 4%;
-    padding-top: 7px;
+  padding-top: 7px;
 `
 export const HeaderBoxRight = styled.p`
   font-size: 11px;

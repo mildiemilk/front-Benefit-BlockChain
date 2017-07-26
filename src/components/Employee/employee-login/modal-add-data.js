@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Modal, Form } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
 import {
   LogInButton,
   AddDataImg,
@@ -10,8 +12,6 @@ import {
   ConfirmButton,
   SpaceImg,
 } from './styled'
-import PropTypes from 'prop-types'
-import styled from 'react-sc'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -29,8 +29,12 @@ const Modals = styled(Modal)`
     margin-top: -120px;
   }
 `
-
 class ModalAddData extends Component {
+  static propTypes = {
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -38,7 +42,7 @@ class ModalAddData extends Component {
     }
   }
 
-  handleClose = e => this.setState({ modalOpen: false })
+  handleClose = () => this.setState({ modalOpen: false })
 
   handleOpen = (email, password) => {
     if (email !== '' && password !== '') {
@@ -80,13 +84,13 @@ class ModalAddData extends Component {
                 เพื่อสิทธิประโยชน์สูงสุดของคุณ
               </Content>
             </SpaceContent>
-
-            <Form>
+            <Form onSubmit={this.props.handleSubmit}>
               <Form.Field>
                 <div className="divInput">
                   <img
                     className="iconLetter"
                     src="../../../../employee/icons-8-message@3x.png"
+                    alt="letter"
                   />
                   <Form.Input placeholder="อีเมลของคุณ" name="email" />
                 </div>
@@ -96,6 +100,7 @@ class ModalAddData extends Component {
                   <img
                     className="iconTel"
                     src="../../../../employee/icons-8-phone@3x.png"
+                    alt="Tel"
                   />
                   <Form.Input
                     placeholder="เบอร์โทรศัพท์มือถือ"
@@ -104,12 +109,11 @@ class ModalAddData extends Component {
                   />
                 </div>
               </Form.Field>
+              <ConfirmButton type="submit">
+                ยืนยัน
+              </ConfirmButton>
             </Form>
           </div>
-
-          <ConfirmButton>
-            ยืนยัน
-          </ConfirmButton>
         </ModalContents>
       </Modals>
     )

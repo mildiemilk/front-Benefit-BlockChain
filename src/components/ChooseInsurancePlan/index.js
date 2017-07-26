@@ -245,7 +245,7 @@ class ChooseInsurancePlan extends Component {
                   {this.RenderInnerRight()}
                 </InnerRight>
                 <Link to="/addbenefit">
-                  <Submit>ต่อไป</Submit>
+                  <Submit onClick={this.handleNext}>ต่อไป</Submit>
                 </Link>
               </div>
             </div>

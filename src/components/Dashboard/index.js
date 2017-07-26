@@ -1,18 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Grid, Image, Container, Segment, Icon } from 'semantic-ui-react'
 import '../../styles/dashboard.scss'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-} from 'semantic-ui-react'
-
 import backgroundpig from '../image/cityscape2.png'
 import Checkboxpic from './group.png'
 import artboard1 from '../image/dashboard/artboard-1.png'
@@ -25,6 +14,7 @@ import artboard6 from '../image/dashboard/artboard-6.png'
 class Dashboard extends Component {
   constructor() {
     super()
+    this.state = {}
   }
 
   render() {
@@ -43,6 +33,7 @@ class Dashboard extends Component {
                 style={{ padding: '10px' }}
                 src={Checkboxpic}
                 avatar
+                alt="Checkbox"
                 size="mini"
               />
               1. แผนประกันภัย
@@ -129,7 +120,7 @@ class Dashboard extends Component {
 
           </Grid.Column>
           <Grid.Column width={3} />
-          <img src={backgroundpig} className="bg" />
+          <img src={backgroundpig} alt="background" className="bg" />
         </Grid>
 
       </Container>
@@ -139,5 +130,4 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {}
 
-const mapStateToProps = state => ({})
-export default connect(mapStateToProps)(Dashboard)
+export default Dashboard

@@ -1,44 +1,19 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Dropzone from 'react-dropzone'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { createProfile } from '../../api/profile-company'
-import styled from 'react-sc'
-import NavInsure from '../NavInsure'
-import Sidebar from '../sidebar'
-import uploadicon from '../image/icons-8-upload.png'
-import csvpic from '../image/icons-8-csv.png'
+import { Grid, Icon } from 'semantic-ui-react'
+import { uploadFile } from '../../api/upload-file'
 import {
   Detail,
   Head,
   Inner,
   Inner2,
-  UploadBox,
   FileuploadBox,
-  subInner,
   Submit,
-  Submitupload,
-  Inboxtext,
   BrowsButton,
-  Imagestyle,
-  DropzoneStyle,
-  inputStyle,
   TextNormal,
   AddBlockButton,
 } from './styled'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-  Progress,
-} from 'semantic-ui-react'
-import { uploadFile } from '../../api/upload-file'
+import NavInsure from '../NavInsure'
 
 class Uploadfile extends Component {
   constructor(props) {
@@ -53,13 +28,10 @@ class Uploadfile extends Component {
 
   handleUploadcliamdata(e) {
     e.preventDefault()
-    let file = e.target.files[0]
-    this.setState(
-      {
-        ClaimData: this.state.ClaimData.concat(file),
-      },
-      () => console.log(this.state.ClaimData),
-    )
+    const file = e.target.files[0]
+    this.setState({
+      ClaimData: this.state.ClaimData.concat(file),
+    })
     if (this.state.ClaimData.length >= this.state.AmountUploadBlock) {
       const add = this.state.AmountUploadBlock + 1
       this.setState({
@@ -70,13 +42,10 @@ class Uploadfile extends Component {
 
   handleUploadBroker(e) {
     e.preventDefault()
-    let file = e.target.files[0]
-    this.setState(
-      {
-        summitBrokerFile: file,
-      },
-      () => console.log(this.state.summitBrokerFile),
-    )
+    const file = e.target.files[0]
+    this.setState({
+      summitBrokerFile: file,
+    })
   }
 
   handleDelete = e => {
@@ -86,7 +55,6 @@ class Uploadfile extends Component {
       this.setState({
         AmountUploadBlock: newv,
       })
-      console.log('decrease :', this.state.AmountUploadBlock)
     }
 
     const ClaimDatas = this.state.ClaimData
@@ -94,7 +62,6 @@ class Uploadfile extends Component {
     this.setState({
       ClaimData: ClaimDatas,
     })
-    console.log('length splice :', this.state.ClaimData.length)
   }
 
   handleAddAmountUploadBlock = () => {
@@ -102,13 +69,12 @@ class Uploadfile extends Component {
     this.setState({
       AmountUploadBlock: add,
     })
-    console.log('AmountUploadBlock:', this.state.AmountUploadBlock)
   }
 
   handleNextClick = () => {
     const file = this.state.ClaimData
     this.props.uploadFile(file)
-    //window.location.href = '/sendrequest'
+    // window.location.href = '/sendrequest'
   }
 
   RenderInsideBlock = id => {
@@ -127,12 +93,11 @@ class Uploadfile extends Component {
         </p>
       )
     }
-    console.log('inner id:', id)
   }
 
   RenderUploadRow = () => {
     const output = []
-    for (var i = 1; i < this.state.AmountUploadBlock; i++) {
+    for (let i = 1; i < this.state.AmountUploadBlock; i++) {
       console.log('outner id:', i)
       output.push(
         <tr style={{ height: '50px' }}>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Divider } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import moment from 'moment'
+import PropTypes from 'prop-types'
 import {
   BoxDetail,
   Back,
-  Text,
   InSide,
   TextSide,
   HeadBar,
@@ -12,22 +13,23 @@ import {
   Special,
   TextInsure,
 } from './styled'
-import NavBidding from './nav-bidding'
 import Plan from './plan'
 import { bidding } from '../../api/bidding'
-import { connect } from 'react-redux'
-import moment from 'moment'
 
 class Details extends Component {
+  static propTypes = {
+    bid: PropTypes.shape.isRequired,
+    index: PropTypes.string.isRequired,
+    data: PropTypes.arrayof(PropTypes.object).isRequired,
+    handleClick: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props)
-    console.log(this.props)
+    this.state = {}
   }
 
   render() {
     const { bid, index, data } = this.props
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
-    console.log(this.props.data)
     return (
       <div className="Bidding">
         <Back onClick={() => this.props.handleClick()}> &lt; กลับหน้าหลัก</Back>

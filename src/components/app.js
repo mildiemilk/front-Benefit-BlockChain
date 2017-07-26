@@ -46,6 +46,7 @@ import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
 import Appmobile from './appmobile'
 import EmployeeLogin from './Employee/employee-login'
+import ClaimStatusDetail from './Employee/ClaimStatusDetail'
 
 const App = ({ isAuthenticated, role }) => {
   console.log(role)
@@ -111,6 +112,7 @@ const App = ({ isAuthenticated, role }) => {
                 </NavLayout>
               : role === 'Employee' ? <Appmobile /> : null
           : <Switch>
+              <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
               <Route path="/employeelogin" component={EmployeeLogin} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />

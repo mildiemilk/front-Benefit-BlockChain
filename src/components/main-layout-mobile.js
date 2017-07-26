@@ -2,6 +2,7 @@ import React from 'react'
 import { push as Menu } from 'react-burger-menu'
 import styled from 'react-sc'
 import { Divider, Icon } from 'semantic-ui-react'
+
 const List = styled.div`
   font-size: 16px;
 	letter-spacing: 0.3px;
@@ -23,7 +24,7 @@ const Head = styled.div`
   font-weight: 500;
 	letter-spacing: 0.3px;
 	color: #323028;
-  margin-top:10%; 
+  margin-top:10%;
 `
 const HeadDiv = styled.div`
   padding-left: 10%;
@@ -51,7 +52,7 @@ class SideBar extends React.Component {
     event.preventDefault()
   }
 
-  hamburger_cross = () => {
+  hamburgerCross = () => {
     const { isClosed } = this.state
     if (isClosed) {
       this.setState({ isClosed: false })
@@ -61,9 +62,10 @@ class SideBar extends React.Component {
   }
 
   OverlayStyle = isClosed => {
-    if (isClosed == false) {
+    if (isClosed === false) {
       return 'is-open'
     }
+    return ''
   }
 
   render() {

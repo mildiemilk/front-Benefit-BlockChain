@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-} from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
@@ -29,19 +21,19 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class OpdModal extends Component {
+  static propTypes = {
+    handleCloseModal: PropTypes.func.isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = { modalOpen: false }
   }
 
-  handleClose = e =>
+  handleClose = () =>
     this.setState({
       modalOpen: false,
     })
@@ -56,7 +48,7 @@ class OpdModal extends Component {
     this.props.handleClick()
   }
 
-  handleOpen = e =>
+  handleOpen = () =>
     this.setState({
       modalOpen: true,
     })
@@ -111,8 +103,4 @@ class OpdModal extends Component {
   }
 }
 
-OpdModal.propTypes = {}
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, null)(OpdModal)
+export default connect(null, null)(OpdModal)

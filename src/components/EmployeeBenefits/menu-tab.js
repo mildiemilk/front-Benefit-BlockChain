@@ -6,7 +6,7 @@ class MenuTab extends Component {
   static propTypes = {
     activeGroup: PropTypes.string.isRequired,
     handleActiveGroup: PropTypes.func.isRequired,
-    groupName: PropTypes.array.isRequired,
+    groupName: PropTypes.arrayof(PropTypes.object).isRequired,
   }
   constructor() {
     super()

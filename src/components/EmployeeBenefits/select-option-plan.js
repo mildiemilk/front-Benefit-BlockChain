@@ -16,7 +16,7 @@ class SelectOptionPlan extends Component {
     columnsLenght: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,
     handleActivePlan: PropTypes.func.isRequired,
-    planName: PropTypes.array.isRequired,
+    planName: PropTypes.arrayof(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
   }
   constructor() {

@@ -1,37 +1,14 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { Responsive } from 'react-responsive'
+
+import { Dropdown } from 'semantic-ui-react'
+import { Backgroundiv, TinyText } from './styled'
 import Header from '../header'
-import Footer from '../footer-relative'
 import InsuranceTemplate from './insurance-template'
 import HealthTemplate from './health-template'
 import GeneralExpenseTemplate from './generalexpense-template'
 import '../../../styles/employee-style/claim-insurance.scss'
-import {
-  Submit,
-  HeaderBox,
-  BoxStyle,
-  HeaderBoxRight,
-  DataStyle,
-  ImageInbox,
-  Backgroundiv,
-  TinyText,
-} from './styled.js'
+import Footer from '../footer'
 
-import {
-  Button,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Icon,
-  Dropdown,
-} from 'semantic-ui-react'
-
-const MediaQuery = require('react-responsive')
 const MinStateOption = [
   { key: 'insurance', text: 'ประกันภัย', value: 'insurance' },
   { key: 'health', text: 'สุขภาพ', value: 'health' },
@@ -64,27 +41,22 @@ class ClaimInsurance extends Component {
   }
 
   handleUploadcliamFile = changeEvent => {
-    let file = changeEvent.target.files[0]
+    const file = changeEvent.target.files[0]
     this.setState({
       ClaimFile: file,
     })
-    console.log(this.state.ClaimFile)
   }
 
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value })
-    console.log(name)
-    console.log(value)
   }
 
   handleChangeDate = date => {
-    this.setState({ date: date, EmployeeName: '' })
-    console.log('date')
-    console.log(this.state.date)
+    this.setState({ date })
   }
 
   rendermainState = () => {
-    if (this.state.mainState == 'insurance') {
+    if (this.state.mainState === 'insurance') {
       return (
         <InsuranceTemplate
           EmNameoption={EmployeeNameOption}
@@ -95,7 +67,7 @@ class ClaimInsurance extends Component {
           date={this.state.date}
         />
       )
-    } else if (this.state.mainState == 'health') {
+    } else if (this.state.mainState === 'health') {
       return (
         <HealthTemplate
           EmNameoption={EmployeeNameOption}
@@ -106,18 +78,17 @@ class ClaimInsurance extends Component {
           date={this.state.date}
         />
       )
-    } else {
-      return (
-        <GeneralExpenseTemplate
-          EmNameoption={EmployeeNameOption}
-          handleChange={this.handleChange}
-          handleUploadcliamFile={this.handleUploadcliamFile}
-          ClaimFile={this.state.ClaimFile}
-          handleChangeDate={this.handleChangeDate}
-          date={this.state.date}
-        />
-      )
     }
+    return (
+      <GeneralExpenseTemplate
+        EmNameoption={EmployeeNameOption}
+        handleChange={this.handleChange}
+        handleUploadcliamFile={this.handleUploadcliamFile}
+        ClaimFile={this.state.ClaimFile}
+        handleChangeDate={this.handleChangeDate}
+        date={this.state.date}
+      />
+    )
   }
 
   render() {
@@ -146,9 +117,4 @@ class ClaimInsurance extends Component {
   }
 }
 
-ClaimInsurance.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ClaimInsurance)
+export default ClaimInsurance

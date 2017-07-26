@@ -1,5 +1,5 @@
 import styled from 'react-sc'
-import { Image, Accordion } from 'semantic-ui-react'
+import { Image } from 'semantic-ui-react'
 
 export const Backgroundiv = styled.div`
     height: 100%;

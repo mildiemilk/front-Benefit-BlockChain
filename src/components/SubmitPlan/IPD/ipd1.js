@@ -1,37 +1,65 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import { Form, Radio } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
-import CoPlay from './coplay'
 
 class IPD1 extends Component {
+  static propTypes = {
+    handleNewReset: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    reset: PropTypes.string.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    ipdLumsumPerYear: PropTypes.string.isRequired,
+    ipdLumsumPerTime: PropTypes.string.isRequired,
+    ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.ipdLumsumPerYear !== null
-        ? 'firstChoice'
-        : this.props.ipdLumsumPerTime !== null &&
-            this.props.ipdLumsumTimeNotExceedPerYear !== null
-            ? 'secondChoice'
-            : '',
+    const {
+      ipdLumsumPerYear,
+      ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear,
+    } = this.props
+    let value
+    if (ipdLumsumPerYear) {
+      value = 'firstChoice'
+    } else if (ipdLumsumPerTime && ipdLumsumTimeNotExceedPerYear) {
+      value = 'secondChoice'
+    } else {
+      value = ''
+    }
+
+    this.state = { value }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const {
+      ipdLumsumPerYear,
+      ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear,
+    } = this.props
+    let value
+    if (ipdLumsumPerYear) {
+      value = 'firstChoice'
+    } else if (ipdLumsumPerTime && ipdLumsumTimeNotExceedPerYear) {
+      value = 'secondChoice'
+    } else {
+      value = ''
+    }
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.state = { value }
     }
   }
 
-  static propTypes = {}
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   handleRadio = (e, { value }) => {
     this.handleResetdata()
@@ -44,25 +72,6 @@ class IPD1 extends Component {
     this.props.handleChangeToNull('ipdLumsumPerYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({
-        value: newProps.ipdLumsumPerYear !== null
-          ? 'firstChoice'
-          : newProps.ipdLumsumPerTime !== null &&
-              newProps.ipdLumsumTimeNotExceedPerYear !== null
-              ? 'secondChoice'
-              : '',
-      })
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
   }
 
   render() {
@@ -163,9 +172,4 @@ class IPD1 extends Component {
   }
 }
 
-IPD1.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IPD1)
+export default connect(null, null)(IPD1)

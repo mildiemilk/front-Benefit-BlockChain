@@ -1,36 +1,38 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Button, Form } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
-import bed from '../../image/icons-8-single-bed1.jpg'
-import stethoscope from '../../image/icons-8-stethoscope1.jpg'
-import tooth from '../../image/icons-8-tooth.jpg'
-import heart from '../../image/icons-8-like1.jpg'
-import erase from '../../image/icons-8-erase.png'
 import DentalModal from './dental-modal'
 
 class Dental extends Component {
+  static propTypes = {
+    handleVerifyState: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    editPlan: PropTypes.func.isRequired,
+    handleRecordVerifyState: PropTypes.func.isRequired,
+    handleResetDental: PropTypes.func.isRequired,
+    handleCloseModal: PropTypes.func.isRequired,
+    dentalPerYear: PropTypes.string.isRequired,
+    handleNewReset: PropTypes.string.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    openModal: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    reset: PropTypes.bool.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {}
   }
 
-  static propTypes = {}
+  componentDidUpdate() {
+    if (this.props.setPlan === 'Dental' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   handleChange = (e, { name, value }) => {
     this.props.handleChange(e, { name, value })
@@ -52,12 +54,6 @@ class Dental extends Component {
     this.props.handleResetDental()
     this.props.handleNewReset()
     this.props.handleVerifyState('dentalRecord')
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'Dental' && this.props.reset === true) {
-      this.handleResetdata()
-    }
   }
 
   render() {
@@ -112,11 +108,6 @@ class Dental extends Component {
       </div>
     )
   }
-}
-
-Dental.propTypes = {
-  dentalPerYear: PropTypes.number,
-  onFormChange: PropTypes.func,
 }
 
 const mapDispatchToProps = dispatch => ({

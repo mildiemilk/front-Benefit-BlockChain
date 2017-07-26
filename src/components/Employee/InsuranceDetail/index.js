@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
-import '../../../styles/employee-style/login-verify.scss'
-import gift from '../../image/gigift-mobile.png'
-import logo from '../../image/logo-benefitable-mobile.png'
-import footerLogo from '../../image/logo-footer.png'
+import { Icon, Link } from 'semantic-ui-react'
+import styled from 'react-sc'
 import Header from '../header'
 import Footer from '../footer'
-import { Form, Icon } from 'semantic-ui-react'
-import styled from 'styled-components'
 
 const Icons = styled(Icon)`
   &&&{
@@ -54,6 +44,7 @@ class InsuranceDetail extends Component {
                     <img
                       className="ToppicImg"
                       src="../../../../employee/insurance/life.png"
+                      alt="Toppic"
                     />
                     <p className="ToppicDetail">
                       LIFE
@@ -63,6 +54,7 @@ class InsuranceDetail extends Component {
                   <img
                     className="NoteIcon"
                     src="../../../../employee/insurance/icons-8-info.png"
+                    alt="Note"
                   />
                 </div>
 
@@ -81,6 +73,7 @@ class InsuranceDetail extends Component {
                     <img
                       className="ToppicImg"
                       src="../../../../employee/insurance/opd.png"
+                      alt="Toppic"
                     />
                     <p className="ToppicDetail">
                       OPD
@@ -90,6 +83,7 @@ class InsuranceDetail extends Component {
                   <img
                     className="NoteIcon"
                     src="../../../../employee/insurance/icons-8-info.png"
+                    alt="Note"
                   />
                 </div>
 
@@ -108,6 +102,7 @@ class InsuranceDetail extends Component {
                     <img
                       className="ToppicImg"
                       src="../../../../employee/insurance/dental.png"
+                      alt="Toppic"
                     />
                     <p className="ToppicDetail">
                       DENTAL
@@ -117,6 +112,7 @@ class InsuranceDetail extends Component {
                   <img
                     className="NoteIcon"
                     src="../../../../employee/insurance/icons-8-info.png"
+                    alt="Note"
                   />
                 </div>
 
@@ -135,6 +131,7 @@ class InsuranceDetail extends Component {
                     <img
                       className="ToppicImg"
                       src="../../../../employee/insurance/ipd.png"
+                      alt="Toppic"
                     />
                     <p className="ToppicDetail">
                       IPD
@@ -144,6 +141,7 @@ class InsuranceDetail extends Component {
                   <img
                     className="NoteIcon"
                     src="../../../../employee/insurance/icons-8-info.png"
+                    alt="Note"
                   />
                 </div>
 
@@ -257,9 +255,4 @@ class InsuranceDetail extends Component {
   }
 }
 
-InsuranceDetail.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(InsuranceDetail)
+export default InsuranceDetail

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 export const Header = styled.span`
   width: 253px;
@@ -168,13 +168,13 @@ export const PlanBox = styled.div`
   position: relative;
   margin-top: 18px;
   &::before {
-        content: "";
-    width: 22px;
-    height: 74px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-		background: #3a7bd5;
-		position: absolute;
+      content:"";
+      width: 22px;
+      height: 74px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+	    background: #3a7bd5;
+	    position: absolute;
     }
 `
 

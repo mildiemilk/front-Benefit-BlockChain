@@ -22,7 +22,7 @@ import {
 import { fillSimpleRQ } from '../../api/simple-requirement'
 import { UploadButton, InputBox, BottomSpace, Inputs } from './styled'
 import ModalSimpleRQ from './modal-simple-requirement'
-import styled from 'styled-components'
+import styled from 'react-sc'
 import NavInsure from '../NavInsure'
 
 const CardHeader = styled(Card)`

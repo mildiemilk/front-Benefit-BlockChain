@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
-import { List, IconPlan, DetailList, PopupList, PopupView } from './styled'
-import { Popup, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
+import { List, IconPlan, DetailList, PopupList, PopupView } from './styled'
 
 class Plan extends Component {
-  constructor() {
-    super()
+  static propTypes = {
+    planList: PropTypes.array.isRequired,
   }
-
   renderList = bids => {
-    console.log('ccccccccc')
-    console.log(bids)
-    return bids.map(bid => (
+    const planlists = bids.map(bid => (
       <div className="large-4 columns">
         <List>
           <IconPlan name="add to calendar" size="big" />
@@ -37,11 +34,10 @@ class Plan extends Component {
         </List>
       </div>
     ))
+    return planlists
   }
 
   render() {
-    console.log('bbbbbbbbbbbb')
-    console.log(this.props.planList)
     return (
       <div>
         {this.renderList(this.props.planList)}

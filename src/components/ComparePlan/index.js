@@ -1,32 +1,23 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Divider, Search, Input, Table, Icon, Button } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import {
-  PostContent,
   BackHome,
   RecComparePlan,
   CompareHeader,
   ViewButton,
-  CompareTable,
-  SubCompareTables,
   TopicCompareTable,
-  LifeBox,
   CompareImg,
-  Box,
-  Boxs,
   HiddenBox,
-  IPDBox,
-  IPDBoxs,
   LifeTopic,
   OPDTopic,
-  TextInBoxs,
   Note,
 } from './styled'
-import styled from 'styled-components'
 import NavInsure from '../NavInsure'
 import IPDDropBox from './ipd-dropbox'
-import { getAllPlan } from '../../api/set-plan'
 
 const Icons = styled(Icon)`
   &&&{
@@ -37,6 +28,9 @@ const Icons = styled(Icon)`
 `
 
 class ComparePlan extends Component {
+  static propTypes = {
+    planList: PropTypes.array.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -47,8 +41,9 @@ class ComparePlan extends Component {
       OPDBox: false,
       IPDBox: false,
     }
-    console.log(this.props.planList)
   }
+
+  componentDidMount() {}
 
   handleToggleLife = () => {
     if (this.state.lifeBox) {
@@ -82,13 +77,9 @@ class ComparePlan extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log(this.props.planList)
-  }
-
   renderPlanName = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.planName}
       </th>
@@ -96,8 +87,8 @@ class ComparePlan extends Component {
   }
 
   renderLife = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed === 0
           ? '-'
@@ -107,8 +98,8 @@ class ComparePlan extends Component {
   }
 
   renderDental = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.dentalPerYear === null ? '-' : plan.dentalPerYear}
       </th>
@@ -116,8 +107,8 @@ class ComparePlan extends Component {
   }
 
   renderOPD = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.opdPerYear +
           plan.opdPerTime +
@@ -142,8 +133,8 @@ class ComparePlan extends Component {
   }
 
   renderIPD = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
+    const plans = this.props.planList
+    return plans.map(plan => (
       <th>
         {plan.ipdLumsumPerYear +
           plan.ipdLumsumPerTime +
@@ -353,16 +344,25 @@ class ComparePlan extends Component {
                     * ค่าใช้จ่ายในข้อ 4.1-4.6 นับรวมจ่ายในผลประโยชน์ ค่ารักษาพยาบาลทั่วไป
                     <br />
                     {' '}
-                    ** ค่าใช้จ่ายข้อ 5 คือ จำนวนเงินสูงสุดที่จ่าย ข้อ 1-4 รวมกัน สำหรับการรักษากรณี ปลูกถ่ายไขกระดูก, เปลี่ยนถ่ายอวัยวะ, การฟอกไต สูงสุดต่อปีกรมธรรม์
+                    ** ค่าใช้จ่ายข้อ 5 คือ จำนวนเงินสูงสุดที่จ่าย ข้อ 1-4 รวมกัน
+                    สำหรับการรักษากรณี ปลูกถ่ายไขกระดูก,
+                    เปลี่ยนถ่ายอวัยวะ, การฟอกไต
+                    สูงสุดต่อปีกรมธรรม์
                     <br />
                     {' '}
-                    - บริการช่วยเหลือฉุกเฉินทางการแพทย์ทั่วโลก เคลื่อนย้ายผู้ป่วยจากโรงพยาบาลเพื่อกลับไปพักฟื้นยังภูมิลำเนา บริการเคลื่อนย้ายศพ ในวงเงินสูงสุดถึง 1,000,000 บาท
+                    - บริการช่วยเหลือฉุกเฉินทางการแพทย์ทั่วโลก
+                    เคลื่อนย้ายผู้ป่วยจากโรงพยาบาลเพื่อกลับไปพักฟื้นยังภูมิลำเนา
+                    บริการเคลื่อนย้ายศพ
+                    ในวงเงินสูงสุดถึง 1,000,000 บาท
                     <br />
                     {' '}
                     - อัตราเบี้ยประกันข้างต้นนี้ มีผลบังคับใช้ตั้งแต่วันที่ XXXXXXX - XXXXXXX
                     <br />
                     {' '}
-                    - เอกสารชุดนี้ไม่ใช่สัญญาประกันภัย รายละเอียดเงื่อนไขความคุ้มครองและข้อยกเว้นที่สมบูรณ์จะระบุในกรมธรรม์ประกันภัย ผู้ซื้อควรทำความเข้าใจรายละเอียดเงื่อนไขก่อนตัดสินใจทำประกันภัยทุกครั้ง
+                    - เอกสารชุดนี้ไม่ใช่สัญญาประกันภัย
+                    รายละเอียดเงื่อนไขความคุ้มครองและ
+                    ข้อยกเว้นที่สมบูรณ์จะระบุในกรมธรรม์ประกันภัย
+                    ผู้ซื้อควรทำความเข้าใจรายละเอียดเงื่อนไขก่อนตัดสินใจทำประกันภัยทุกครั้ง
                   </Note>
                 </div>
 

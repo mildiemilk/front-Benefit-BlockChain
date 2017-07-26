@@ -13,6 +13,7 @@ import InsuranceDetail from '././Employee/InsuranceDetail'
 import EmployeeFixPlan from './Employee/employee-fixplan'
 import DashboardStart from './Employee/dashboard-start'
 import FlexyPlan from './Employee/flexy-plan'
+import ClaimInsurance from './Employee/claim-insurance'
 import CongratSelectPlan from './Employee/congrats-select-plan'
 import HeadLayout from './head-layout-mobile'
 import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard'
@@ -31,6 +32,7 @@ const AppMobile = () => (
           <Route path="/congratselectplan" component={CongratSelectPlan} />
           <Route path="/dashboardstart" component={DashboardStart} />
           <Route path="/flexyplan" component={FlexyPlan} />
+          <Route path="/claiminsurance" component={ClaimInsurance} />
           <Route
             path="/employeebenefits-dashboard"
             component={EmployeeBenefitsDashboard}

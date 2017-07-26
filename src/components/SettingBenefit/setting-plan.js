@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Icon, Select, Checkbox, Input } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import { Select, Checkbox, Input } from 'semantic-ui-react'
 import {
-  Rec,
-  Header,
-  AddPlan,
-  AddContent,
-  HeaderSpace,
-  Blog,
   Blogs,
-  BlogImg,
-  BlogContent,
-  BackButton,
-  NextButton,
   SaveButton,
   PlanName,
   Line,
@@ -22,8 +12,7 @@ import {
   PlanTopic,
   ToggleBox,
 } from './styled'
-import styled from 'styled-components'
-import NavBenefit from '../NavBenefit'
+import styled from 'react-sc'
 
 const Selects = styled(Select)`
     &&&{
@@ -44,7 +33,7 @@ const Inputs = styled(Input)`
 
 const NameInput = styled(Input)`
     &&&{
-    
+
       border-radius: 3px;
       background-color: #ffffff;
       padding: 1%;
@@ -53,7 +42,19 @@ const NameInput = styled(Input)`
     }
 `
 
-export class SettingPlan extends Component {
+class SettingPlan extends Component {
+  static propTypes = {
+    optionPlan: PropTypes.array.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleToggle: PropTypes.func.isRequired,
+    planName: PropTypes.string.isRequired,
+    plan: PropTypes.string.isRequired,
+    isHealth: PropTypes.bool.isRequired,
+    health: PropTypes.string.isRequired,
+    isExpense: PropTypes.bool.isRequired,
+    expense: PropTypes.string.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -61,21 +62,22 @@ export class SettingPlan extends Component {
     }
   }
 
+  componentDidMount() {
+    this.renderOption()
+  }
+
   renderOption = () => {
     const options = this.props.optionPlan.choosePlan
-    let optionPlan = []
+    const optionPlan = []
     options.map((option, index) => {
-      let name = optionPlan.push({
+      optionPlan.push({
         key: index,
         text: option.planName,
         value: option._id,
       })
+      return option
     })
-    this.setState({ optionPlan: optionPlan })
-  }
-
-  componentDidMount() {
-    this.renderOption()
+    this.setState({ optionPlan })
   }
 
   render() {
@@ -198,8 +200,4 @@ export class SettingPlan extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({})
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingPlan)
+export default SettingPlan

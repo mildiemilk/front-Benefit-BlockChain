@@ -1,25 +1,10 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
+import { Icon } from 'semantic-ui-react'
 import paper from '../../image/icons-8-fine-print@2x.png'
 import Benefits1 from '../../image/flexy-1.png'
 import Benefits2 from '../../image/flexy-2.png'
 import Benefits3 from '../../image/flexy-3.png'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
+
 const MediaQuery = require('react-responsive')
 
 class EmployeeBenefitsDashboard extends Component {
@@ -37,7 +22,7 @@ class EmployeeBenefitsDashboard extends Component {
         <div className="employee-benefits-dashboard-box">
           <div className="header-employee-benefits-dashboard-box">
             <div className="benefits-plan-employee-text">
-              <img src={paper} className="paper-image" />
+              <img src={paper} alt="paper" className="paper-image" />
               <span>แผนสิทธิประโยชน์</span>
             </div>
             <div className="employee-benefits-date-text">
@@ -55,6 +40,7 @@ class EmployeeBenefitsDashboard extends Component {
                   >
                     <img
                       src={Benefits1}
+                      alt="Benefits1"
                       className="employee-benefits-dashboard-image"
                     />
                   </div>
@@ -71,6 +57,7 @@ class EmployeeBenefitsDashboard extends Component {
                   >
                     <img
                       src={Benefits1}
+                      alt="Benefits1"
                       className="employee-benefits-dashboard-image"
                     />
                   </div>
@@ -102,6 +89,7 @@ class EmployeeBenefitsDashboard extends Component {
                   >
                     <img
                       src={Benefits2}
+                      alt="Benefits2"
                       className="employee-benefits-dashboard-image"
                     />
                   </div>
@@ -118,6 +106,7 @@ class EmployeeBenefitsDashboard extends Component {
                   >
                     <img
                       src={Benefits2}
+                      alt="Benefits2"
                       className="employee-benefits-dashboard-image"
                     />
                   </div>
@@ -149,6 +138,7 @@ class EmployeeBenefitsDashboard extends Component {
                   >
                     <img
                       src={Benefits3}
+                      alt="Benefits3"
                       className="employee-benefits-dashboard-image"
                     />
                   </div>
@@ -165,6 +155,7 @@ class EmployeeBenefitsDashboard extends Component {
                   >
                     <img
                       src={Benefits3}
+                      alt="Benefits3"
                       className="employee-benefits-dashboard-image"
                     />
                   </div>
@@ -197,11 +188,4 @@ class EmployeeBenefitsDashboard extends Component {
   }
 }
 
-EmployeeBenefitsDashboard.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  EmployeeBenefitsDashboard,
-)
+export default EmployeeBenefitsDashboard

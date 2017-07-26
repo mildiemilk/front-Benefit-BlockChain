@@ -1,22 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { Responsive } from 'react-responsive'
 import CheckBlue from '../../image/icons-8-checked@2x-blue.png'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
 
 class WaitTransferClaimStatus extends Component {
   constructor() {
@@ -31,7 +14,11 @@ class WaitTransferClaimStatus extends Component {
           <div className="blue-clam-box-header">
             <div className="row">
               <div className="small-1 columns">
-                <img src={CheckBlue} className="clam-image" />
+                <img
+                  src={CheckBlue}
+                  alt="check blue color"
+                  className="clam-image"
+                />
               </div>
               <div
                 className="small-11 columns"
@@ -56,11 +43,4 @@ class WaitTransferClaimStatus extends Component {
   }
 }
 
-WaitTransferClaimStatus.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  WaitTransferClaimStatus,
-)
+export default WaitTransferClaimStatus

@@ -1,14 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
 import congrat from '../../image/asset-1.png'
-import logo from '../../image/logo-benefitable-mobile.png'
-import '../../../styles/employee-style/fixplan.scss'
-import footerLogo from '../../image/logo-footer.png'
 import healthpic from '../../image/5.png'
 import insurepic from '../../image/7.png'
 import expendpic from '../../image/6.png'
@@ -19,19 +10,7 @@ import {
   HeaderBoxRight,
   DataStyle,
   ImageInbox,
-} from './styled.js'
-
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
+} from './styled'
 
 class EmployeeFixPlan extends Component {
   constructor() {
@@ -44,7 +23,7 @@ class EmployeeFixPlan extends Component {
       <div>
         <div className="backgroundStlye">
           <div className="row">
-            <img className="Imagefirst" src={congrat} />
+            <img className="Imagefirst" alt="asset" src={congrat} />
             <div className="textfirst">
               ยินดีด้วย!<br />นี้คือสิทธิประโยชน์ของคุณ
             </div>
@@ -124,9 +103,4 @@ class EmployeeFixPlan extends Component {
   }
 }
 
-EmployeeFixPlan.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeeFixPlan)
+export default EmployeeFixPlan

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'react-sc'
 import { Image } from 'semantic-ui-react'
 
 export const Submit = styled.button`

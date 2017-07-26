@@ -1,7 +1,6 @@
-import styled from 'styled-components'
+import styled from 'react-sc'
 import { Image, Accordion } from 'semantic-ui-react'
-import Dropzone from 'react-dropzone'
-import _ from 'lodash'
+
 export const Detail = styled.div`
     border-radius: 5px;
     background-color: #ffffff;
@@ -15,9 +14,8 @@ export const Detail = styled.div`
 
 export const Head = styled.p`
     font-size: 30px;
-  	letter-spacing: 0.4px;
+    letter-spacing: 0.4px;
     font-weight: bold;
-
 `
 export const TextInbox = styled.div`
     position: relative;
@@ -31,7 +29,7 @@ export const TextInbox = styled.div`
 export const Inboxtext = styled.div`
     font-size: 20px;
     color: #ffffff;
-  	letter-spacing: 0.3px;
+    letter-spacing: 0.3px;
     padding-left: 5%;
     padding-top: 4%;
     text-align: center;
@@ -328,11 +326,10 @@ export const PlanBox = styled.div`
     height: 74px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-		background: #3a7bd5;
-		position: absolute;
+    background: #3a7bd5;
+    position: absolute;
     }
 `
-
 export const PlanImg = styled.img`
   width: 50px;
   height: 50px;

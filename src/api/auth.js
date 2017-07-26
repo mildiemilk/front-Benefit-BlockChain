@@ -6,7 +6,6 @@ import {
 } from '../reducers/auth'
 
 const LOGIN_URI = '/api/login'
-const LOGOUT_URI = 'api/logout'
 const REGISTER_URI = 'api/register'
 
 export function authenticate(email, password) {
@@ -22,7 +21,6 @@ export function authenticate(email, password) {
         localStorage.setItem('token', res.data.token)
         localStorage.setItem('role', res.data.role)
         dispatch(authenticateSuccess(res.data))
-        console.log(res.data.role)
         if (res.data.role === 'HR') {
           if (res.data.Havecompany != null && res.data.Approve === true) {
             window.location.href = '/dashboard'
@@ -38,12 +36,10 @@ export function authenticate(email, password) {
           if (res.data.Approve === true) {
             window.location.href = '/employeeverify'
           }
-         
         }
       })
       .catch(err => {
         dispatch(authenticateFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -56,18 +52,17 @@ export function register(email, confirmPassword, password, role) {
       data: { email, password, confirmPassword, role },
     }
     APIRequest(options, false)
-      .then(res => {
+      .then(() => {
         window.location.href = '/login'
       })
       .catch(err => {
         dispatch(signupFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
 
 export function logout() {
-  return dispatch => {
+  return () => {
     localStorage.clear()
     window.location = '/login'
   }

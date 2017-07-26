@@ -3,9 +3,7 @@ import {
   chooseInsurerSuccess,
   setTimeOutSuccess,
   getAllInsurerSuccess,
-  getALLInsurerFailure,
   getSelectInsurerSuccess,
-  getSelectInsurerFailure,
 } from '../reducers/choose-insurer'
 
 const CHOOSEINSURER_URI = '/api/chooseInsurer'
@@ -23,7 +21,6 @@ export function chooseInsurer(insurers) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
         dispatch(chooseInsurerSuccess(res.data))
       })
       .catch(err => {
@@ -32,20 +29,19 @@ export function chooseInsurer(insurers) {
   }
 }
 
-export function getSelectInsurer(){
+export function getSelectInsurer() {
   return dispatch => {
-      const options = {
-        method: 'get',
-        url: GETSELECTINSURER_URI,
-      }
-  APIRequest(options,true)
-    .then(res => {
-      dispatch(getSelectInsurerSuccess(res.data))
-    })
-    .catch(err => {
-      console.log(err.response)
-    })
-  
+    const options = {
+      method: 'get',
+      url: GETSELECTINSURER_URI,
+    }
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getSelectInsurerSuccess(res.data))
+      })
+      .catch(err => {
+        console.log(err.response)
+      })
   }
 }
 

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Image, Accordion } from 'semantic-ui-react'
+import styled from 'react-sc'
+import { Image } from 'semantic-ui-react'
 
 export const Submit = styled.button`
     height: 40px;
@@ -12,7 +12,6 @@ export const Submit = styled.button`
     border-style: solid;
     margin-bottom: 32px;
     margin-top:10px;
-
 `
 export const BoxStyle = styled.div`
   width: 100%;

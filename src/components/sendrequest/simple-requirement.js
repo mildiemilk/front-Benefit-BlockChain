@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { PostreText, TopSpace } from './styled'
 import { Card, Image, Checkbox } from 'semantic-ui-react'
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 const CardHeader = styled(Card)`
   &&&{

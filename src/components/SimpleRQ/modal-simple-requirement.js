@@ -8,7 +8,7 @@ import {
   PostMainButton,
 } from './styled'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 const ModalContents = styled(Modal.Content)`
   &&&{

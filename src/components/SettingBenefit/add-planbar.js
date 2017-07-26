@@ -1,17 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Icon, Select, Checkbox, Input, Popup, List } from 'semantic-ui-react'
-import {
-  Rec,
-  Header,
-  AddPlan,
-  AddContent,
-  HeaderSpace,
-  AddBox,
-  AddTopic,
-} from './styled'
-import styled from 'styled-components'
-import NavBenefit from '../NavBenefit'
+import styled from 'react-sc'
+import { Icon, Popup, List } from 'semantic-ui-react'
+import { AddTopic } from './styled'
 
 const ListContent = styled(List.Content)`
     &&&{
@@ -19,19 +11,27 @@ const ListContent = styled(List.Content)`
     }
 `
 
-export class AddPlanBar extends Component {
+class AddPlanBar extends Component {
+  static propTypes = {
+    plan: PropTypes.string.isRequired,
+    activePlan: PropTypes.string.isRequired,
+    handleActivePlan: PropTypes.func.isRequired,
+    handleDeletePlan: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {}
   }
 
   renderList = list => {
-    return list.map((element, index) => {
+    list.map((element, index) => {
       const isActive = index === this.props.activePlan ? '-active' : ''
       return (
         <div
           className={`addBox${isActive}`}
           onClick={() => this.props.handleActivePlan(index)}
+          role="button"
+          aria-hidden
         >
           <Popup
             trigger={
@@ -45,7 +45,11 @@ export class AddPlanBar extends Component {
               <List divided relaxed>
                 <List.Item>
                   <ListContent>
-                    <p onClick={this.props.handleDeletePlan}>
+                    <p
+                      onClick={this.props.handleDeletePlan}
+                      role="button"
+                      aria-hidden
+                    >
                       <Icon name="trash outline" />ลบแพลน
                     </p>
                   </ListContent>

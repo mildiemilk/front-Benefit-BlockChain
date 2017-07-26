@@ -1,36 +1,19 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Form } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
-import bed from '../../image/icons-8-single-bed1.jpg'
-import stethoscope from '../../image/icons-8-stethoscope1.jpg'
-import tooth from '../../image/icons-8-tooth.jpg'
-import heart from '../../image/icons-8-like1.jpg'
-import erase from '../../image/icons-8-erase.png'
-import DentalModal from './dental-modal'
 
 class DentalBidding extends Component {
+  static propTypes = {
+    dentalPerYear: PropTypes.number.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {}
   }
-
-  static propTypes = {}
 
   render() {
     return (
@@ -61,11 +44,6 @@ class DentalBidding extends Component {
       </div>
     )
   }
-}
-
-DentalBidding.propTypes = {
-  dentalPerYear: PropTypes.number,
-  onFormChange: PropTypes.func,
 }
 
 const mapDispatchToProps = dispatch => ({

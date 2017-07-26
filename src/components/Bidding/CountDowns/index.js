@@ -1,9 +1,12 @@
 import React, { PropTypes, Component } from 'react'
-import { CountTime, DisplayTime, DisplayTimeout } from '../styled'
 import { connect } from 'react-redux'
 import { endTimeout } from '../../../api/bidding'
+import { CountTime, DisplayTime, DisplayTimeout } from '../styled'
 
 class CountDowns extends Component {
+  static propTypes = {
+    endTimeout: PropTypes.shape.isRequired,
+  }
   constructor(props) {
     super(props)
 
@@ -12,9 +15,7 @@ class CountDowns extends Component {
       hours: 0,
       min: 0,
       sec: 0,
-      end: '',
     }
-    const { end } = this.state
     this.props.endTimeout(this.state.end)
   }
 
@@ -35,7 +36,7 @@ class CountDowns extends Component {
     this.stop()
   }
 
-  calculateCountdown(endDate) {
+  calculateCountdown = endDate => {
     let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000
 
     // clear CountDowns when date is reached
@@ -79,12 +80,12 @@ class CountDowns extends Component {
     clearInterval(this.interval)
   }
 
-  addLeadingZeros(value) {
-    value = String(value)
-    while (value.length < 2) {
-      value = '0' + value
+  addLeadingZeros = value => {
+    let values = String(value)
+    while (values.length < 2) {
+      values = `0${values}`
     }
-    return value
+    return values
   }
 
   render() {
@@ -95,9 +96,9 @@ class CountDowns extends Component {
     let $isSec = this.addLeadingZeros(countDown.sec)
 
     if (
-      $isDay == '00' &&
-      $isHours == '00' &&
-      $isMin == '00' &&
+      $isDay === '00' &&
+      $isHours === '00' &&
+      $isMin === '00' &&
       $isSec <= '01'
     ) {
       $isDay = <DisplayTime />
@@ -115,28 +116,24 @@ class CountDowns extends Component {
         <span className="Countdown-col">
           <span className="Countdown-col-element">
             <strong>{$isDay}</strong>
-            {/*<span>{countDown.days === 1 ? 'Day' : 'Days'}</span>*/}
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
             <strong>{$isHours}</strong>
-            {/*<span>Hours</span>*/}
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
             <strong>{$isMin}</strong>
-            {/*<span>Min</span>*/}
           </span>
         </span>
 
         <span className="Countdown-col">
           <span className="Countdown-col-element">
             <strong>{$isSec}</strong>
-            {/*<span>Sec</span>*/}
           </span>
         </span>
       </div>

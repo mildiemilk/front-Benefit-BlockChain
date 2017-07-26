@@ -1,26 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-} from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import '../../styles/employee-benefits.scss'
 import MenuTab from './menu-tab'
 import form from '../image/icons-8-form.png'
 import SelectBox from './select-box'
 import ModalWarningRecord from './modal-warning-record'
 import ModalWarning from './modal-warning'
-import { PopupView, BackButton, NextButton } from '../Bidding/styled'
-import FinishSelectPlan from './finish-select-plan'
 import NavBenefit from '../NavBenefit/'
 
 class employeeBenefits extends Component {
@@ -59,7 +45,7 @@ class employeeBenefits extends Component {
   }
 
   handleActivePlan = (index, value) => {
-    let indexOfSelectPlan = this.state.selectPlan.indexOf(value)
+    const indexOfSelectPlan = this.state.selectPlan.indexOf(value)
     if (indexOfSelectPlan > -1) {
       this.setState({ defualtPlan: index })
     }
@@ -105,7 +91,6 @@ class employeeBenefits extends Component {
       this.setState({ warningMessage: 'Flex ต้องมีแผนที่เลือกอย่างน้อย 2 แผน' })
     } else {
       this.setState({ verifyState: true })
-      console.log(this.state.selectPlan)
     }
   }
 
@@ -121,7 +106,7 @@ class employeeBenefits extends Component {
     this.setState({ verifyState: false })
     this.setState({ verifyChoosePlan: true })
     if (this.state.selectPlan.length > 0) {
-      let index = this.state.selectPlan.indexOf(value)
+      const index = this.state.selectPlan.indexOf(value)
       if (index > -1) {
         this.state.selectPlan.splice(index, 1)
         if (this.state.defualtPlan === index) {
@@ -162,7 +147,6 @@ class employeeBenefits extends Component {
                           plan={this.state.plan}
                           selectOption={this.state.selectOption}
                           columnsLenght={this.state.columnsLenght}
-                          planName={this.state.planName}
                           handleChangePlan={this.handleChangePlan}
                           handleFixedChange={this.handleFixedChange}
                           handleFlexChange={this.handleFlexChange}
@@ -174,7 +158,7 @@ class employeeBenefits extends Component {
                         />
                       : <div className="employeeBenefits-Start-box">
                           <div className="employeeBenefits-center-in-box">
-                            <img src={form} className="imageMenu" />
+                            <img src={form} alt="form" className="imageMenu" />
                             <p className="employeeBenefits-text-start-box">
                               ยังไม่มีการจัดแผนสิทธิประโยชน์
                             </p>
@@ -214,7 +198,4 @@ class employeeBenefits extends Component {
 
 employeeBenefits.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(employeeBenefits)
+export default employeeBenefits

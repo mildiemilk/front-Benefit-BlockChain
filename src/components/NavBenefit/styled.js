@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { Step } from 'semantic-ui-react'
+import styled from 'react-sc'
+
 export const Head = styled.p`
   margin-bottom: 0px;
   padding-top:24px;

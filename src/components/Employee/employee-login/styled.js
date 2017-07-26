@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 export const HeaderEmp = styled.div`
   width: 100%;

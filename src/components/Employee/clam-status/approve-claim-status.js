@@ -1,22 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { Responsive } from 'react-responsive'
 import Message from '../../image/icons-8-message@2x.png'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-const MediaQuery = require('react-responsive')
 
 class ApproveClaimStatus extends Component {
   constructor() {
@@ -31,7 +14,7 @@ class ApproveClaimStatus extends Component {
           <div className="blue-clam-box-header">
             <div className="row">
               <div className="small-1 columns">
-                <img src={Message} className="clam-image" />
+                <img src={Message} alt="mail blue" className="clam-image" />
               </div>
               <div
                 className="small-11 columns"
@@ -55,10 +38,4 @@ class ApproveClaimStatus extends Component {
     )
   }
 }
-
-ApproveClaimStatus.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ApproveClaimStatus)
+export default ApproveClaimStatus

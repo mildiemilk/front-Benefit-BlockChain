@@ -1,6 +1,4 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import styled from 'react-sc'
 
 export const ModalHeader = styled.p`
   font-size: 18px;

@@ -26,7 +26,7 @@ import {
   Next,
   DefaultImg,
 } from './styled'
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 const SegmentWithHeight = styled(Segment)`
   &&&{

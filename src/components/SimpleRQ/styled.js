@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'react-sc'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Nav from './Nav'
-import styled from 'styled-components'
+import styled from 'react-sc'
 import { Progress, Icon } from 'semantic-ui-react'
 import {
   DetailDiv,

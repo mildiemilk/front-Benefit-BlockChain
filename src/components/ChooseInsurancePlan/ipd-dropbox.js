@@ -1,31 +1,8 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
-import { Divider, Search, Input, Table, Icon } from 'semantic-ui-react'
-import {
-  PostContent,
-  BackHome,
-  RecComparePlan,
-  CompareHeader,
-  ViewButton,
-  CompareTable,
-  SubCompareTables,
-  TopicCompareTable,
-  LifeBox,
-  CompareImg,
-  Box,
-  Boxs,
-  HiddenBox,
-  IPDBox,
-  IPDBoxs,
-  LifeTopic,
-  OPDTopic,
-  IPDTopic,
-  TextInBoxs,
-  Sub,
-  IPDDetail,
-} from './styled'
-import styled from 'styled-components'
-import NavInsure from '../NavInsure'
+import { Icon } from 'semantic-ui-react'
+import styled from 'react-sc'
+import PropTypes from 'prop-types'
+import { IPDTopic, Sub, IPDDetail } from './styled'
 
 const Icons = styled(Icon)`
   &&&{
@@ -35,6 +12,9 @@ const Icons = styled(Icon)`
 `
 
 export default class IPDDropBox extends Component {
+  static propTypes = {
+    planList: PropTypes.array.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -79,151 +59,151 @@ export default class IPDDropBox extends Component {
     }
   }
 
-  renderFirstIPD = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => <th> </th>)
-  }
+  // renderFirstIPD = () => {
+  //   const plans = this.props.planList
+  //   return plans.map(plan => <th>""</th>)
+  // }
 
-  renderRbSchedulePatient = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
-        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-      </th>
-    ))
-  }
+  // renderRbSchedulePatient = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
+  //       <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleIntensiveCarePatient = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleIntensiveCarePatient === null
-          ? '-'
-          : plan.rbScheduleIntensiveCarePatient}
-        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-      </th>
-    ))
-  }
+  // renderRbScheduleIntensiveCarePatient = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleIntensiveCarePatient === null
+  //         ? '-'
+  //         : plan.rbScheduleIntensiveCarePatient}
+  //       <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleDoctor = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
-        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-      </th>
-    ))
-  }
+  // renderRbScheduleDoctor = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
+  //       <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleSurgery = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleSurgerySchedule === null
-          ? plan.rbScheduleSurgeryNonSchedule === null
-              ? '-'
-              : plan.rbScheduleSurgeryNonSchedule
-          : plan.rbScheduleSurgerySchedule}
-      </th>
-    ))
-  }
+  // renderRbScheduleSurgery = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleSurgerySchedule === null
+  //         ? plan.rbScheduleSurgeryNonSchedule === null
+  //             ? '-'
+  //             : plan.rbScheduleSurgeryNonSchedule
+  //         : plan.rbScheduleSurgerySchedule}
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleAllService = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleService +
-          plan.rbScheduleSmallSurgery +
-          plan.rbScheduleAdviser +
-          plan.rbScheduleAmbulance +
-          plan.rbScheduleAccident +
-          plan.rbScheduleTreatment ===
-          0
-          ? ''
-          : plan.rbScheduleService +
-              plan.rbScheduleSmallSurgery +
-              plan.rbScheduleAdviser +
-              plan.rbScheduleAmbulance +
-              plan.rbScheduleAccident +
-              plan.rbScheduleTreatment}
-      </th>
-    ))
-  }
+  // renderRbScheduleAllService = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleService +
+  //         plan.rbScheduleSmallSurgery +
+  //         plan.rbScheduleAdviser +
+  //         plan.rbScheduleAmbulance +
+  //         plan.rbScheduleAccident +
+  //         plan.rbScheduleTreatment ===
+  //         0
+  //         ? ''
+  //         : plan.rbScheduleService +
+  //             plan.rbScheduleSmallSurgery +
+  //             plan.rbScheduleAdviser +
+  //             plan.rbScheduleAmbulance +
+  //             plan.rbScheduleAccident +
+  //             plan.rbScheduleTreatment}
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleService = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
-        <Sub>
-          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-        </Sub>
-      </th>
-    ))
-  }
+  // renderRbScheduleService = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
+  //       <Sub>
+  //         <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+  //       </Sub>
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleSmallSurgery = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleSmallSurgery === null
-          ? '-'
-          : plan.rbScheduleSmallSurgery}
-        <Sub>
-          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-        </Sub>
-      </th>
-    ))
-  }
+  // renderRbScheduleSmallSurgery = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleSmallSurgery === null
+  //         ? '-'
+  //         : plan.rbScheduleSmallSurgery}
+  //       <Sub>
+  //         <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+  //       </Sub>
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleAdviser = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
-      </th>
-    ))
-  }
+  // renderRbScheduleAdviser = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleAmbulance = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
-      </th>
-    ))
-  }
+  // renderRbScheduleAmbulance = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleAccident = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
-      </th>
-    ))
-  }
+  // renderRbScheduleAccident = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleTreatment = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
-        <Sub>
-          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-        </Sub>
-      </th>
-    ))
-  }
+  // renderRbScheduleTreatment = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
+  //       <Sub>
+  //         <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+  //       </Sub>
+  //     </th>
+  //   ))
+  // }
 
-  renderRbScheduleTransplant = () => {
-    let plans = this.props.planList
-    return plans.map((plan, index) => (
-      <th>
-        {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
-      </th>
-    ))
-  }
+  // renderRbScheduleTransplant = () => {
+  //   let plans = this.props.planList
+  //   return plans.map((plan, index) => (
+  //     <th>
+  //       {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
+  //     </th>
+  //   ))
+  // }
 
   render() {
     return (

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 export const HeadNav = styled.div`
   position: fixed;

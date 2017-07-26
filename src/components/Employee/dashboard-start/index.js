@@ -1,23 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
-import { Responsive } from 'react-responsive'
 import gift from '../../image/gigift-mobile.png'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
-
 
 class DashboardStart extends Component {
   constructor() {
@@ -39,14 +21,9 @@ class DashboardStart extends Component {
               </div>
             </div>
           </div>
-      </div>
+        </div>
     )
   }
 }
 
-DashboardStart.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardStart)
+export default DashboardStart

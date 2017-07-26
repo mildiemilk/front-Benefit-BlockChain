@@ -1,11 +1,12 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { Step } from 'semantic-ui-react'
+import styled from 'react-sc'
+
 export const Head = styled.p`
   margin-bottom: 0px;
   padding-top:24px;
   font-size: 30px;
 `
+
 export const Grid = styled.div`
   padding-top:20px;
 `
@@ -16,7 +17,7 @@ export const StepRadius = styled(Step.Group)`
       width: 100%;
       margin-top: 14.5px;
     }
-  `
+`
 
 export const Step1 = styled(Step)`
   &&&{

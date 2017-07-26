@@ -1,48 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import {
-  Detail,
-  Head,
-  Head2,
-  subInner,
-  Submit,
-  BoxIndiv1,
-  BoxIndiv2,
-  BoxIndiv3,
-  BoxIndiv4,
-  SideIn,
-  PlanBox,
-} from '../styled'
+import { Icon, Popup, List } from 'semantic-ui-react'
+import { PlanBox } from '../styled'
 import PlanBoxModal from './planbox-modal'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-  Progress,
-  Popup,
-  List,
-} from 'semantic-ui-react'
 
-class planBoxs extends Component {
+export default class planBoxs extends Component {
   static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
     modalOpen: PropTypes.bool.isRequired,
-    handleOpen: PropTypes.func.isRequired,
-    handleClose: PropTypes.func.isRequired,
     handleModal: PropTypes.func.isRequired,
-    handleOpenModal: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     planList: PropTypes.array.isRequired,
-    plan: PropTypes.object.isRequired,
+    plan: PropTypes.shape.isRequired,
     activePlan: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {}
   }
 
   render() {
@@ -87,5 +63,3 @@ class planBoxs extends Component {
     )
   }
 }
-
-export default planBoxs

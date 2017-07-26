@@ -1,7 +1,7 @@
 import React from 'react'
 import { SearchView, SearchButton } from './styled'
 import { Input } from 'semantic-ui-react'
-import styled from 'styled-components'
+import styled from 'react-sc'
 
 class SearchBox extends React.Component {
   constructor(props) {

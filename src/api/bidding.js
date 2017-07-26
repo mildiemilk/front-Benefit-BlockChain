@@ -6,7 +6,6 @@ import {
   selectFinalInsurerFailure,
   selectFinalInsurerSuccess,
 } from '../reducers/bidding'
-import { withRouter } from 'react-router'
 
 const BIDDING_URI = '/api/getbidding'
 const CHOOSEFINALINSURER_URI = '/api/choosefinalinsurer'
@@ -24,7 +23,6 @@ export function bidding() {
       })
       .catch(err => {
         dispatch(getBiddingFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }
@@ -36,7 +34,6 @@ export function endTimeout(end) {
 }
 
 export function chooseFinalInsurer(passwordToConfirm, insurerName) {
-  console.log('aaaaaa', insurerName)
   return dispatch => {
     const options = {
       method: 'post',
@@ -49,13 +46,11 @@ export function chooseFinalInsurer(passwordToConfirm, insurerName) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
         dispatch(selectFinalInsurerSuccess(res.data))
         window.location.href = '/congrats'
       })
       .catch(err => {
         dispatch(selectFinalInsurerFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }

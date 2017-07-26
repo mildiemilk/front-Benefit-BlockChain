@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Dropdown,
-  Radio,
-} from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
 import '../../styles/employee-benefits.scss'
 import SelectOptionPlan from './select-option-plan'
+
 const planOptions = [
   { text: 'Fixed', value: 'Fixed' },
   { text: 'Flex', value: 'Flex' },
 ]
 
 class SelectBox extends Component {
+  static propTypes = {
+    plan: PropTypes.string.isRequired,
+    handleChangePlan: PropTypes.func.isRequired,
+    selectOption: PropTypes.string.isRequired,
+    columnsLenght: PropTypes.string.isRequired,
+    planName: PropTypes.arrayof(PropTypes.object()).isRequired,
+    handleFixedChange: PropTypes.func.isRequired,
+    handleFlexChange: PropTypes.func.isRequired,
+    handleActivePlan: PropTypes.func.isRequired,
+    defualtPlan: PropTypes.string.isRequired,
+    valueFixed: PropTypes.string.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  }
   constructor() {
     super()
     this.state = {}
@@ -48,7 +49,7 @@ class SelectBox extends Component {
           <br />
           <p>แผนสิทธิประโยชน์ที่เลือกใช้กับกลุ่มนี้</p>
           <br />
-          {this.props.plan != ''
+          {this.props.plan !== ''
             ? <SelectOptionPlan
                 plan={this.props.plan}
                 selectOption={this.props.selectOption}
@@ -70,7 +71,4 @@ class SelectBox extends Component {
 
 SelectBox.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectBox)
+export default SelectBox

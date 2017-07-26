@@ -41,7 +41,7 @@ export function getCompanyName() {
         localStorage.setItem('companyname', res.data.companyName)
         dispatch(getCompanyNameSuccess(res.data.companyName))
       })
-      .catch(err => {})
+      .catch(() => {})
   }
 }
 

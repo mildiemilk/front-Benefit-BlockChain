@@ -1,25 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { Responsive } from 'react-responsive'
 import Header from '../header'
 import Footer from '../footer'
-import { Form, Icon } from 'semantic-ui-react'
-import styled from 'react-sc'
 import NavClaimStatus from '../NavClaimStatus'
-
-const Icons = styled(Icon)`
-  &&&{
-    position: absolute;
-    right: 6px;
-  }
-`
 
 class ClaimStatusDetail extends Component {
   constructor() {
     super()
+    this.state = {}
   }
 
   render() {
@@ -43,6 +30,7 @@ class ClaimStatusDetail extends Component {
                   <img
                     className="StatusImg"
                     src="../../../../employee/claimdetail/icons-8-hourglass@2x.png"
+                    alt="Hourglass Icon"
                   />
                   <span className="StatusHeader"> กำลังพิจารณา </span>
                 </div>
@@ -74,8 +62,5 @@ class ClaimStatusDetail extends Component {
 }
 
 ClaimStatusDetail.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
 
 export default ClaimStatusDetail

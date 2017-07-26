@@ -39,10 +39,9 @@ class EmployeeLogin extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
-      <div>
-        <div className="white-background">
+        <div className="login">
           <Header />
-          <div className="row">
+          <div className="row bg">
             <div className="small-10 small-centered columns">
               <div className="gift-logo-in-mobile">
                 <img src={gift} alt="gift" />
@@ -98,9 +97,10 @@ class EmployeeLogin extends Component {
             </div>
             <div className="small-2 columns" />
           </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+        
+    
     )
   }
 }

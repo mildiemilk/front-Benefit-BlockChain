@@ -27,7 +27,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         include: [resolve(__dirname, '../src'), resolve(__dirname)],
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
       },
       {
         test: /\.(css|scss)$/,

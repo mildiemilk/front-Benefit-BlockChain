@@ -52,7 +52,7 @@ const App = ({ isAuthenticated, role }) => {
   console.log(role)
   return (
     <BrowserRouter>
-      <div>
+      <div style={{ height:'100%'}}>
         {isAuthenticated
           ? role === 'HR'
               ? <NavLayout>

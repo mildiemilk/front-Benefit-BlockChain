@@ -15,7 +15,7 @@ class SelectBox extends Component {
     handleChangePlan: PropTypes.func.isRequired,
     selectOption: PropTypes.string.isRequired,
     columnsLenght: PropTypes.string.isRequired,
-    planName: PropTypes.arrayof(PropTypes.object()).isRequired,
+    planName: PropTypes.array.isRequired,
     handleFixedChange: PropTypes.func.isRequired,
     handleFlexChange: PropTypes.func.isRequired,
     handleActivePlan: PropTypes.func.isRequired,

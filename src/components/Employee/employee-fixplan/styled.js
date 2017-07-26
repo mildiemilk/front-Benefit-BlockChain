@@ -33,7 +33,7 @@ export const HeaderBox = styled.div`
   letter-spacing: 0.3px;
   color: #3a7bd5;
   padding-left: 4%;
-  padding-top: 7px;
+    padding-top: 7px;
 `
 export const HeaderBoxRight = styled.p`
   font-size: 11px;

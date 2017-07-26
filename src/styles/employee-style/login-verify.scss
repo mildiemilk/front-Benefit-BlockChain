@@ -1,9 +1,13 @@
-.white-background{
-  background-color: white;
-  padding-bottom: 100px;
+.login{
   position: relative;
+  margin: 0 auto;
+  min-height: 100%;
+  padding-bottom: 80px;
+  background: white;
 }
-
+.bg{
+  background: white;
+}
 .mobile-header{
   width: 100%;
   height: 60px;
@@ -11,15 +15,6 @@
   box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.14);
   border: solid 1px #979797;
   text-align: center;
-  padding-top: 3.7%;
-}
-
-.mobile-header-dashboard{
-  width: 100%;
-  height: 60px;
-  background-color: #3a7bd5;
-  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.14);
-  border: solid 1px #979797;
   padding-top: 3.7%;
 }
 
@@ -34,9 +29,6 @@
   cursor:pointer
 }
 
-.icon-header-dashboard{
-  text-align: left;
-}
 .form-key-box{
   padding-top: 37%;
   text-align: center;
@@ -61,7 +53,7 @@
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
   border: solid 1px #f5f5f5;
-  position:relative;
+  position:absolute;
   bottom:0;
   .footer-list{
     display: inline-block;
@@ -122,9 +114,7 @@
 
   .footer-Head{
     text-align: center;
-  .mobile-header-dashboard{
-    padding-top: 2%;
-  }
+    
   .logo-header{
   padding-left: 17%;
   }

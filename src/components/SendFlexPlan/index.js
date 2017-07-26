@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavBenefit from '../NavBenefit'
 import { Detail, Head, Inner, BackButton, SendButton } from './styled'
+import styled from 'react-sc'
 
 class SendFlexPlan extends Component {
   constructor(props) {

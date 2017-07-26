@@ -29,7 +29,7 @@ const Icons = styled(Icon)`
 
 class ComparePlan extends Component {
   static propTypes = {
-    planList: PropTypes.arrayof(PropTypes.object()).isRequired,
+    planList: PropTypes.array.isRequired,
   }
   constructor(props) {
     super(props)

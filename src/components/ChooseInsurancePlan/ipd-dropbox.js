@@ -13,7 +13,7 @@ const Icons = styled(Icon)`
 
 export default class IPDDropBox extends Component {
   static propTypes = {
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.array.isRequired,
   }
   constructor() {
     super()

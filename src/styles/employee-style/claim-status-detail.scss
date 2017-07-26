@@ -1,0 +1,62 @@
+.ClaimStatusDetail{
+  .MarginDiv{
+    margin: 32px 0px;
+  }
+
+  .ClaimNumber{
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #4a4a4a;
+  }
+
+  .BodyDiv{
+    widows: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+    padding: 32px 0px;
+  }
+
+  .StatusHeader{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.3px;
+    color: #3a7bd5;
+    margin-left: 20px;
+  }
+
+  .StatusImg{
+    width: 14px;
+    height: 16px;
+    position: absolute;
+    top: 3px;
+  }
+
+  .DivImg{
+    position: relative;
+  }
+
+  .Detail{
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 1.71;
+    color: #323028;
+    display: inherit;
+  }
+
+  .DivDetail{
+    padding: 16px 0px;
+  }
+
+  .BackButton{
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    color: #3a7bd5;
+  }
+
+  .DivBack{
+    margin-top: 40px;
+    text-align: center;
+  }
+}

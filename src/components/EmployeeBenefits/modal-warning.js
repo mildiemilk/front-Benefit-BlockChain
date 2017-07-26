@@ -1,16 +1,7 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-} from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
-import { connect } from 'react-redux'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -29,13 +20,12 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class ModalWarning extends Component {
+  static propTypes = {
+    openWarningModal: PropTypes.bool.isRequired,
+    closeWarningModal: PropTypes.func.isRequired,
+    warningMessage: PropTypes.string.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -45,7 +35,7 @@ class ModalWarning extends Component {
     }
   }
 
-  handleClose = e => {
+  handleClose = () => {
     this.props.closeWarningModal()
   }
 
@@ -72,6 +62,4 @@ class ModalWarning extends Component {
 
 ModalWarning.propTypes = {}
 
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, null)(ModalWarning)
+export default ModalWarning

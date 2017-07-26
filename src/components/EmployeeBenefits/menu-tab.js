@@ -1,34 +1,28 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-} from 'semantic-ui-react'
 import '../../styles/employee-benefits.scss'
 
 class MenuTab extends Component {
+  static propTypes = {
+    activeGroup: PropTypes.string.isRequired,
+    handleActiveGroup: PropTypes.func.isRequired,
+    groupName: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
   constructor() {
     super()
     this.state = {
       selected: '',
     }
   }
-
   renderList = list => {
-    return list.map((element, index) => {
+    list.map((element, index) => {
       const isActive = index === this.props.activeGroup ? '-active' : ''
       return (
         <div
           className={`employeeBenefits-Menu-Tab-box${isActive}`}
           onClick={() => this.props.handleActiveGroup(index)}
+          role="button"
+          aria-hidden
         >
           {element.name}
         </div>
@@ -50,7 +44,4 @@ class MenuTab extends Component {
 
 MenuTab.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MenuTab)
+export default MenuTab

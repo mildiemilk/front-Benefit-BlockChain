@@ -1,25 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import TimePicker from 'rc-time-picker'
+import { toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
+import 'rc-time-picker/assets/index.css'
+import 'react-datepicker/dist/react-datepicker.css'
+import _ from 'lodash'
+import 'react-toastify/dist/ReactToastify.min.css'
 import {
   setTimeOut,
   chooseInsurer,
   getAllInsurer,
   getSelectInsurer,
 } from '../../api/choose-insurer'
-import styled from 'react-sc'
 import NavInsure from '../NavInsure'
-import Sidebar from '../sidebar'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import TimePicker from 'rc-time-picker'
-import 'rc-time-picker/assets/index.css'
-const format = 'h:mm a'
-const now = moment().hour(0).minute(0)
-import 'react-datepicker/dist/react-datepicker.css'
-import _ from 'lodash'
 import {
   Detail,
   Head,
@@ -32,10 +30,16 @@ import {
   Next,
   Check,
 } from './styled'
-import { toast } from 'react-toastify'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
+
 class InsurerSelect extends Component {
+  static propTypes = {
+    nums: PropTypes.number.isRequired,
+    getAllInsurer: PropTypes.func.isRequired,
+    getSelectInsurer: PropTypes.func.isRequired,
+    setTimeOut: PropTypes.func.isRequired,
+    insurerList: PropTypes.arrayof(PropTypes.object).isRequired,
+    chooseInsurer: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props)
     const { nums } = this.props
@@ -45,15 +49,7 @@ class InsurerSelect extends Component {
       num: nums !== undefined ? nums : 0,
       date: null,
       insurers: [],
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.insurerChecked !== this.state.insurers) {
-      this.setState({
-        insurers: newProps.insurerChecked,
-        num: newProps.nums !== undefined ? newProps.nums : 0,
-      })
+      hideProgressBar: true,
     }
   }
 
@@ -79,33 +75,38 @@ class InsurerSelect extends Component {
     // }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.insurerChecked !== this.state.insurers) {
+      this.setState({
+        insurers: newProps.insurerChecked,
+        num: newProps.nums !== undefined ? newProps.nums : 0,
+      })
+    }
+  }
+
   handleDefaultCheck = e => {
-    const { insurerChecked } = this.props
     const matchedInsurer = _.find(this.state.insurers, {
       insurerName: e.insurerName,
     })
 
-    if (matchedInsurer !== undefined) return true
-    else return false
+    if (matchedInsurer !== undefined) {
+      return true
+    }
+    return false
   }
 
   handleTimeOut = () => {
     const { date } = this.state
-    console.log(this.state.date)
     this.props.setTimeOut(date)
-    console.log(this.props.timeout)
   }
 
   handleDate = date => {
-    this.setState({
-      date: date,
-    })
+    this.setState({ date })
   }
 
   handleTime = time => {
     time._d.setDate(this.state.date._d.getDate())
     this.state.date._d.setTime(time._d.getTime())
-    console.log(this.state.date)
   }
 
   handleCheck = e => {
@@ -117,7 +118,7 @@ class InsurerSelect extends Component {
         ),
       })
     } else {
-      let index = this.state.insurers.findIndex(
+      const index = this.state.insurers.findIndex(
         element =>
           this.props.insurerList[e.target.id].insurerName ===
           element.insurerName,
@@ -138,7 +139,7 @@ class InsurerSelect extends Component {
   }
 
   renderList = insurers => {
-    return insurers.map((insurer, index) => (
+    insurers.map((insurer, index) => (
       <Card className="large-2 columns">
         <Check
           type="checkbox"
@@ -175,10 +176,10 @@ class InsurerSelect extends Component {
                 <div className="row">
                   {this.renderList(this.props.insurerList)}
 
-                  {/*<CardInsure   handleDefaultCheck = {this.handleDefaultCheck} 
-                                handleCheck={this.handleCheck} 
-                                insurerChecked = {this.props.insurerChecked} 
-                                insurerList ={this.props.insurerList} />*/}
+                  {/* <CardInsure   handleDefaultCheck = {this.handleDefaultCheck}
+                                handleCheck={this.handleCheck}
+                                insurerChecked = {this.props.insurerChecked}
+                                insurerList ={this.props.insurerList} /> */}
                 </div>
               </SideIn>
               <SideIn>
@@ -201,7 +202,7 @@ class InsurerSelect extends Component {
           </Detail>
           <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
           <ToastContainer
-            hideProgressBar={true}
+            hideProgressBar={this.state.hideProgressBar}
             autoClose={1500}
             position={toast.POSITION.TOP_RIGHT}
             style={{ zIndex: '30' }}

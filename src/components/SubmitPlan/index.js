@@ -1,30 +1,48 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Route, Redirect, withRouter, Switch } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Button, Checkbox, Icon } from 'semantic-ui-react'
 import MenuPlan from './MenuPlan/menu-plan'
 import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
 import AllPlan from './all-plan'
-import ModalPlanListBidding from './modal-plan-list-bidding'
 import NavInsure from '../NavInsure'
 import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-  Icon,
-} from 'semantic-ui-react'
+
 import '../../styles/submit-plan.scss'
 
 class SubmitPlan extends Component {
+  static propTypes = {
+    ipdType: PropTypes.string.isRequired,
+    ipdLumsumPerYear: PropTypes.string.isRequired,
+    ipdLumsumPerTime: PropTypes.string.isRequired,
+    ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumRoomPerNight: PropTypes.string.isRequired,
+    rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
+    rbSchedulePatient: PropTypes.string.isRequired,
+    rbScheduleIntensiveCarePatient: PropTypes.string.isRequired,
+    rbScheduleDoctor: PropTypes.string.isRequired,
+    rbScheduleSurgerySchedule: PropTypes.string.isRequired,
+    rbScheduleSurgeryNonSchedule: PropTypes.string.isRequired,
+    rbScheduleService: PropTypes.string.isRequired,
+    rbScheduleSmallSurgery: PropTypes.string.isRequired,
+    rbScheduleAdviser: PropTypes.string.isRequired,
+    rbScheduleAmbulance: PropTypes.string.isRequired,
+    rbScheduleAccident: PropTypes.string.isRequired,
+    rbScheduleTreatment: PropTypes.string.isRequired,
+    rbScheduleTransplant: PropTypes.string.isRequired,
+    ipdCoPlay: PropTypes.string.isRequired,
+    ipdCoPlayQuota: PropTypes.string.isRequired,
+    ipdCoPlayDeductable: PropTypes.string.isRequired,
+    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPlayMixYear: PropTypes.string.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    getAllPlan: PropTypes.func.isRequired,
+    copyPlan: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -99,7 +117,7 @@ class SubmitPlan extends Component {
   handleToggle = () => {}
 
   handleToggleOpdCoPlay = () => {
-    if (this.state.opdCoPlay)
+    if (this.state.opdCoPlay) {
       this.setState({
         opdCoPlay: !this.state.opdCoPlay,
         opdCoPlayQuota: null,
@@ -108,11 +126,13 @@ class SubmitPlan extends Component {
         opdCoPlayMixNotExceed: null,
         opdCoPlayMixYear: null,
       })
-    else this.setState({ opdCoPlay: !this.state.opdCoPlay })
+    } else {
+      this.setState({ opdCoPlay: !this.state.opdCoPlay })
+    }
   }
 
   handleToggleIpdCoPlay = () => {
-    if (this.state.ipdCoPlay)
+    if (this.state.ipdCoPlay) {
       this.setState({
         ipdCoPlay: !this.state.ipdCoPlay,
         ipdCoPlayQuota: null,
@@ -121,7 +141,9 @@ class SubmitPlan extends Component {
         ipdCoPlayMixNotExceed: null,
         ipdCoPlayMixYear: null,
       })
-    else this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+    } else {
+      this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+    }
   }
 
   handleNewPlan = () => {
@@ -267,6 +289,10 @@ class SubmitPlan extends Component {
     }
   }
 
+  componentDidMount() {
+    if (!this.state.firstTime) this.handlePlan(0)
+  }
+
   handleCloseModal = e =>
     this.setState({
       openModalForm: false,
@@ -309,10 +335,6 @@ class SubmitPlan extends Component {
 
   handleResetPlan = () => {
     this.setState({ newPlan: false })
-  }
-
-  componentDidMount() {
-    if (!this.state.firstTime) this.handlePlan(0)
   }
 
   render() {

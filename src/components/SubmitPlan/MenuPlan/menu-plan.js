@@ -1,31 +1,29 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-  Popup,
-  Icon,
-  List,
-} from 'semantic-ui-react'
+import { Popup, Icon, List } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
-import erase from '../../image/icons-8-erase.png'
 import FormModal from '../form-modal'
 import { menuPlans } from '../../../api/set-plan'
 
 class MenuPlan extends Component {
   static propTypes = {
-    MenuPlan: PropTypes.func.isRequired,
+    menuPlans: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired,
+    handleCopy: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    employeeOfPlan: PropTypes.string.isRequired,
+    planName: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleResetProfilePlan: PropTypes.func.isRequired,
+    handleModalFinish: PropTypes.func.isRequired,
+    handleCloseModal: PropTypes.func.isRequired,
+    openModalForm: PropTypes.func.isRequired,
+    handlePlan: PropTypes.func.isRequired,
+    handleNewPlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
   }
 
   constructor() {
@@ -46,12 +44,12 @@ class MenuPlan extends Component {
     this.setState({ isOpen: false })
   }
 
-  handleOpenModal = e =>
+  handleOpenModal = () =>
     this.setState({
       modalOpen: true,
     })
 
-  handleCloseModal = e =>
+  handleCloseModal = () =>
     this.setState({
       modalOpen: false,
     })
@@ -62,7 +60,7 @@ class MenuPlan extends Component {
         comparePlan: this.state.comparePlan.concat(list[e.target.id]),
       })
     } else {
-      let index = this.state.comparePlan.indexOf(list[e.target.id])
+      const index = this.state.comparePlan.indexOf(list[e.target.id])
       const x = this.state.comparePlan
       x.splice(index, 1)
       this.setState({ comparePlan: x })
@@ -72,13 +70,12 @@ class MenuPlan extends Component {
   handleSelectPlan = e => {
     e.preventDefault()
     const { comparePlan } = this.state
-    console.log(comparePlan)
     this.props.menuPlans(comparePlan)
   }
 
   renderList = list => {
     const output = []
-    for (var i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length; i += 1) {
       output.push(
         <div className="menu-select-plan">
           <div className="row">
@@ -103,21 +100,36 @@ class MenuPlan extends Component {
                   <List divided relaxed style={{ cursor: 'pointer' }}>
                     <List.Item>
                       <List.Content>
-                        <p id={i} onClick={this.props.handleEdit}>
+                        <p
+                          id={i}
+                          onClick={this.props.handleEdit}
+                          role="button"
+                          aria-hidden
+                        >
                           <Icon name="edit" />แก้ไขแพลน
                         </p>
                       </List.Content>
                     </List.Item>
                     <List.Item>
                       <List.Content>
-                        <p id={i} onClick={this.props.handleCopy}>
+                        <p
+                          id={i}
+                          onClick={this.props.handleCopy}
+                          role="button"
+                          aria-hidden
+                        >
                           <Icon name="copy" />คัดลอกแพลน
                         </p>
                       </List.Content>
                     </List.Item>
                     <List.Item>
                       <List.Content>
-                        <p id={i} onClick={this.props.handleDelete}>
+                        <p
+                          id={i}
+                          onClick={this.props.handleDelete}
+                          role="button"
+                          aria-hidden
+                        >
                           <Icon name="trash outline" />ลบแพลน
                         </p>
                       </List.Content>
@@ -173,12 +185,17 @@ class MenuPlan extends Component {
           employeeOfPlan={this.props.employeeOfPlan}
         />
         <div className="menu-add-plan">
-          <p onClick={this.props.handleNewPlan}>
+          <p onClick={this.props.handleNewPlan} role="button" aria-hidden>
             <Icon name="add circle" size="big" />สร้างแพลนใหม่
           </p>
         </div>
         {this.renderList(this.props.planList)}
-        <div className="menu-compare-plan" onClick={this.handleSelectPlan}>
+        <div
+          className="menu-compare-plan"
+          onClick={this.handleSelectPlan}
+          role="button"
+          aria-hidden
+        >
           เปรียบเทียบแพลน
         </div>
       </div>
@@ -192,6 +209,4 @@ const mapDispatchToProps = dispatch => ({
   menuPlans: compareplan => dispatch(menuPlans(compareplan)),
 })
 
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(MenuPlan)
+export default connect(null, mapDispatchToProps)(MenuPlan)

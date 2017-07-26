@@ -15,7 +15,7 @@ import OPD from './SubmitPlan/OPD/opd'
 import Life from './SubmitPlan/Life/life'
 import Dental from './SubmitPlan/Dental/dental'
 import Signup from './Auth/signup'
-import confirm_identity from './confirm_identity'
+import confirmIdentity from './confirm_identity'
 import ChooseInsurer from './ChooseInsurer'
 import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/form-submit-plan'
 import SubmitPlan from './SubmitPlan'
@@ -52,14 +52,14 @@ const App = ({ isAuthenticated, role }) => {
   console.log(role)
   return (
     <BrowserRouter>
-      <div style={{ height:'100%'}}>
+      <div style={{ height: '100%' }}>
         {isAuthenticated
           ? role === 'HR'
               ? <NavLayout>
                   <Switch>
                     <Route
-                      path="/confirm_identity"
-                      component={confirm_identity}
+                      path="/confirmIdentity"
+                      component={confirmIdentity}
                     />
                     <Route path="/welcome" component={welcomePage} />
                     <Route path="/settingprofile" component={SettingProfile} />

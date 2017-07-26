@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
-import CoPlay from './coplay'
+import PropTypes from 'prop-types'
+import { Form, Radio } from 'semantic-ui-react'
 
 class IPD2 extends Component {
+  static propTypes = {
+    activePlan: PropTypes.number.isRequired,
+    rbLumsumRoomPerNight: PropTypes.string.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    reset: PropTypes.string.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    handleNewReset: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleVerifyState: PropTypes.func.isRequired,
+    rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
+    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -31,7 +31,25 @@ class IPD2 extends Component {
     }
   }
 
-  static propTypes = {}
+  componentWillReceiveProps(newProps) {
+    if (newProps.activePlan !== this.props.activePlan) {
+      this.setState({
+        value: newProps.rbLumsumRoomPerNight !== null &&
+          newProps.rbLumsumNigthNotExceedPerYear !== null
+          ? 'firstChoice'
+          : newProps.rbLumsumPayNotExceedPerNight !== null &&
+              newProps.rbLumsumPayNotExceedPerYear !== null
+              ? 'secondChoice'
+              : '',
+      })
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   handleRadio = (e, { value }) => {
     this.handleResetdata()
@@ -48,26 +66,6 @@ class IPD2 extends Component {
     this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({
-        value: newProps.rbLumsumRoomPerNight !== null &&
-          newProps.rbLumsumNigthNotExceedPerYear !== null
-          ? 'firstChoice'
-          : newProps.rbLumsumPayNotExceedPerNight !== null &&
-              newProps.rbLumsumPayNotExceedPerYear !== null
-              ? 'secondChoice'
-              : '',
-      })
-    }
   }
 
   handleChange = (e, { name, value }) => {
@@ -120,7 +118,6 @@ class IPD2 extends Component {
                   id="rbLumsumRoomPerNight"
                   value=""
                   onChange={this.props.handleChange}
-                  style={{ marginLeft: '7%' }}
                   readOnly
                   style={{ width: '120px', marginLeft: '7%' }}
                 />
@@ -202,9 +199,4 @@ class IPD2 extends Component {
   }
 }
 
-IPD2.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(IPD2)
+export default connect(null, null)(IPD2)

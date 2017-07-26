@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-} from 'semantic-ui-react'
+import { Modal } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import styled from 'react-sc'
 import { connect } from 'react-redux'
@@ -31,13 +23,19 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class FormModal extends Component {
+  static propTypes = {
+    handleCloseModal: PropTypes.func.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    openModalForm: PropTypes.func.isRequired,
+    handlePlan: PropTypes.func.isRequired,
+    handleModalFinish: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleResetProfilePlan: PropTypes.func.isRequired,
+    planName: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.string.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -47,7 +45,7 @@ class FormModal extends Component {
     }
   }
 
-  handleClose = e => {
+  handleClose = () => {
     this.props.handleCloseModal()
   }
 
@@ -77,8 +75,4 @@ class FormModal extends Component {
   }
 }
 
-FormModal.propTypes = {}
-
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, null)(FormModal)
+export default connect(null, null)(FormModal)

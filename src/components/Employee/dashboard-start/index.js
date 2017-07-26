@@ -9,19 +9,19 @@ class DashboardStart extends Component {
 
   render() {
     return (
-      <div className='dashboard-start'>
-          <div className="row">
-            <div className="small-10 small-centered columns">
-              <div className="dashboard-start-box">
-                <img src={gift} />
-                <div className="text-dashboard-start">
-                  <p>สิทธิประโยชน์ของคุณจะเริ่มมีผล</p>
-                  <p>วันที่ 1 พฤษภาคม 2560</p>
-                </div>
+      <div className="dashboard-start">
+        <div className="row">
+          <div className="small-10 small-centered columns">
+            <div className="dashboard-start-box">
+              <img src={gift} />
+              <div className="text-dashboard-start">
+                <p>สิทธิประโยชน์ของคุณจะเริ่มมีผล</p>
+                <p>วันที่ 1 พฤษภาคม 2560</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
     )
   }
 }

@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
+import { connect } from 'react-redux'
+import { Modal, Input } from 'semantic-ui-react'
 import {
   ModalHeader,
   ModalContent,
@@ -15,10 +10,6 @@ import {
   CancleButton,
   ConfirmButton,
 } from './styled'
-import PropTypes from 'prop-types'
-import styled from 'react-sc'
-import passwordIcon from '../image/icons8-password.png'
-import { connect } from 'react-redux'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -37,17 +28,21 @@ const Modals = styled(Modal)`
 `
 
 class ModalPostbox extends Component {
+  static propTypes = {
+    data: PropTypes.shape.isRequired,
+  }
+
   constructor() {
     super()
     this.state = { modalOpen: false }
   }
 
-  handleClose = e =>
+  handleClose = () =>
     this.setState({
       modalOpen: false,
     })
 
-  handleOpen = e =>
+  handleOpen = () =>
     this.setState({
       modalOpen: true,
     })

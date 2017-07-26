@@ -44,24 +44,23 @@ class SideBar extends React.Component {
   constructor() {
     super()
     this.state = {
-      isClosed: true
+      isClosed: true,
     }
   }
-  showSettings = (event) => {
-    event.preventDefault();
+  showSettings = event => {
+    event.preventDefault()
   }
 
   hamburger_cross = () => {
     const { isClosed } = this.state
     if (isClosed) {
       this.setState({ isClosed: false })
-    }
-    else {
+    } else {
       this.setState({ isClosed: true })
     }
   }
 
-  OverlayStyle = (isClosed) => {
+  OverlayStyle = isClosed => {
     if (isClosed == false) {
       return 'is-open'
     }
@@ -70,9 +69,14 @@ class SideBar extends React.Component {
   render() {
     return (
       <div>
-        <Menu burgerButtonClassName={this.OverlayStyle(this.state.isClosed)} onStateChange={this.hamburger_cross} width={'230px'} pageWrapId={"page-wrap"} >
+        <Menu
+          burgerButtonClassName={this.OverlayStyle(this.state.isClosed)}
+          onStateChange={this.hamburger_cross}
+          width={'230px'}
+          pageWrapId={'page-wrap'}
+        >
           <HeadDiv>
-            <Icon name='user circle' size='huge'/>
+            <Icon name="user circle" size="huge" />
             <Head>สมศรี ช่างสงสัย</Head>
             <Number>เลขพนักงาน : 0000001</Number>
           </HeadDiv>
@@ -91,7 +95,7 @@ class SideBar extends React.Component {
           </SettingDiv>
         </Menu>
       </div>
-    );
+    )
   }
 }
 

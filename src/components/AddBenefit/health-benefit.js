@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { HeadLists, TextInput } from './styled'
 import List from './list-health'
 
 class HealthBenefit extends Component {
+  static propTypes = {
+    handleTextChangeHealth: PropTypes.func.isRequired,
+    addTodoHealth: PropTypes.func.isRequired,
+    removeTodoHealth: PropTypes.func.isRequired,
+    TextHealth: PropTypes.string.isRequired,
+    HealthList: PropTypes.arrayof(PropTypes.string()).isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {}

@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import NavBenefit from '../NavBenefit'
-import { Icon, Divider, Checkbox } from 'semantic-ui-react'
 import Detail from './detail'
 import Setting from './setting'
-import { connect } from 'react-redux'
 import { planOption } from '../../api/benefit-plan'
 
 class AddBenefit extends Component {
+  static propTypes = {
+    planOption: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -80,7 +84,6 @@ class AddBenefit extends Component {
   }
 
   addTodoHealth = () => {
-    console.log(this.state.TextHealth)
     this.setState({
       HealthList: this.state.HealthList.concat(this.state.TextHealth),
       TextHealth: '',
@@ -96,7 +99,6 @@ class AddBenefit extends Component {
   }
 
   handleTextChangeExpense = e => {
-    console.log('aaaaaaaaa')
     this.setState({
       TextExpense: e.target.value,
     })
@@ -144,7 +146,7 @@ class AddBenefit extends Component {
     })
   }
 
-  nextButtonHandleclick = e => {
+  nextButtonHandleclick = () => {
     const {
       isHealth,
       isExpense,
@@ -179,13 +181,6 @@ class AddBenefit extends Component {
           ? <Setting
               Types={this.state.Types}
               handleSetting={this.handleSetting}
-              settingOnchange={this.settingOnchange}
-              Setting1={this.state.Setting1}
-              Setting2={this.state.Setting2}
-              Setting3={this.state.Setting3}
-              Setting4={this.state.Setting4}
-              Setting5={this.state.Setting5}
-              Setting6={this.state.Setting6}
               handleOptionChangeHealth1={this.handleOptionChangeHealth1}
               handleOptionChangeHealth2={this.handleOptionChangeHealth2}
               handleOptionChangeHealth3={this.handleOptionChangeHealth3}
@@ -207,8 +202,6 @@ class AddBenefit extends Component {
               isExpense={this.state.isExpense}
               handleToggleHealth={this.handleToggleHealth}
               handleToggleExpense={this.handleToggleExpense}
-              ExpenseListText={this.state.ExpenseListText}
-              HealthListText={this.state.HealthListText}
               handleTextChangeExpense={this.handleTextChangeExpense}
               handleTextChangeHealth={this.handleTextChangeHealth}
               addTodoExpense={this.addTodoExpense}

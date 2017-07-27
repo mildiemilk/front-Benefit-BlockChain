@@ -89,23 +89,23 @@ class IPD1 extends Component {
           </Form.Field>
           {this.state.value === 'firstChoice'
             ? <Form.Input
-                type="number"
-                placeholder="จำนวนเงิน"
-                name="ipdLumsumPerYear"
-                id="ipdLumsumPerYear"
-                value={this.props.ipdLumsumPerYear}
-                onChange={this.props.handleChange}
-                required
-              />
+              type="number"
+              placeholder="จำนวนเงิน"
+              name="ipdLumsumPerYear"
+              id="ipdLumsumPerYear"
+              value={this.props.ipdLumsumPerYear}
+              onChange={this.props.handleChange}
+              required
+            />
             : <Form.Input
-                type="number"
-                placeholder="จำนวนเงิน"
-                name="ipdLumsumPerYear"
-                id="ipdLumsumPerYear"
-                value=""
-                onChange={this.props.handleChange}
-                readOnly
-              />}
+              type="number"
+              placeholder="จำนวนเงิน"
+              name="ipdLumsumPerYear"
+              id="ipdLumsumPerYear"
+              value=""
+              onChange={this.props.handleChange}
+              readOnly
+            />}
           <p> บาท/ปี</p>
         </Form.Group>
         <Form.Group inline>
@@ -120,51 +120,51 @@ class IPD1 extends Component {
           </Form.Field>
           {this.state.value === 'secondChoice'
             ? <div style={{ display: 'inherit' }}>
-                <Form.Input
-                  type="number"
-                  placeholder="จำนวนเงิน"
-                  name="ipdLumsumPerTime"
-                  id="ipdLumsumPerTime"
-                  value={this.props.ipdLumsumPerTime}
-                  onChange={this.props.handleChange}
-                  style={{ width: '145px' }}
-                  required
-                />
-                <Form.Input
-                  type="number"
-                  label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                  placeholder="จำนวนเงิน"
-                  name="ipdLumsumTimeNotExceedPerYear"
-                  id="ipdLumsumTimeNotExceedPerYear"
-                  value={this.props.ipdLumsumTimeNotExceedPerYear}
-                  onChange={this.props.handleChange}
-                  style={{ width: '145px' }}
-                  required
-                />
-              </div>
+              <Form.Input
+                type="number"
+                placeholder="จำนวนเงิน"
+                name="ipdLumsumPerTime"
+                id="ipdLumsumPerTime"
+                value={this.props.ipdLumsumPerTime}
+                onChange={this.props.handleChange}
+                style={{ width: '145px' }}
+                required
+              />
+              <Form.Input
+                type="number"
+                label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                placeholder="จำนวนเงิน"
+                name="ipdLumsumTimeNotExceedPerYear"
+                id="ipdLumsumTimeNotExceedPerYear"
+                value={this.props.ipdLumsumTimeNotExceedPerYear}
+                onChange={this.props.handleChange}
+                style={{ width: '145px' }}
+                required
+              />
+            </div>
             : <div style={{ display: 'inherit' }}>
-                <Form.Input
-                  type="number"
-                  placeholder="จำนวนเงิน"
-                  name="ipdLumsumPerTime"
-                  id="ipdLumsumPerTime"
-                  value=""
-                  onChange={this.props.handleChange}
-                  style={{ width: '145px' }}
-                  readOnly
-                />
-                <Form.Input
-                  type="number"
-                  label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                  placeholder="จำนวนเงิน"
-                  name="ipdLumsumTimeNotExceedPerYear"
-                  id="ipdLumsumTimeNotExceedPerYear"
-                  value=""
-                  onChange={this.props.handleChange}
-                  style={{ width: '145px' }}
-                  readOnly
-                />
-              </div>}
+              <Form.Input
+                type="number"
+                placeholder="จำนวนเงิน"
+                name="ipdLumsumPerTime"
+                id="ipdLumsumPerTime"
+                value=""
+                onChange={this.props.handleChange}
+                style={{ width: '145px' }}
+                readOnly
+              />
+              <Form.Input
+                type="number"
+                label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                placeholder="จำนวนเงิน"
+                name="ipdLumsumTimeNotExceedPerYear"
+                id="ipdLumsumTimeNotExceedPerYear"
+                value=""
+                onChange={this.props.handleChange}
+                style={{ width: '145px' }}
+                readOnly
+              />
+            </div>}
           <p> บาท/ปี</p>
         </Form.Group>
       </div>

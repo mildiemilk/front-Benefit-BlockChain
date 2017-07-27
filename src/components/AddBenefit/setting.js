@@ -43,25 +43,25 @@ class Setting extends Component {
             <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
-                    <DivInput
-                      type="radio"
-                      value="full"
-                      checked={this.props.selectedOptionHealth1 === 'full'}
-                      onChange={this.props.handleOptionChangeHealth1}
-                    />
-                    ให้สิทธิประโยชน์เต็มจำนวน
+                  <DivInput
+                    type="radio"
+                    value="full"
+                    checked={this.props.selectedOptionHealth1 === 'full'}
+                    onChange={this.props.handleOptionChangeHealth1}
+                  />
+                  ให้สิทธิประโยชน์เต็มจำนวน
                     <ButtonSetting>ค่าเริ่มต้น</ButtonSetting>
-                  </div>
+                </div>
                 : <div>
-                    <DivInput
-                      type="radio"
-                      value="full"
-                      checked={this.props.selectedOptionExpense1 === 'full'}
-                      onChange={this.props.handleOptionChangeExpense1}
-                    />
-                    ให้สิทธิประโยชน์เต็มจำนวน
+                  <DivInput
+                    type="radio"
+                    value="full"
+                    checked={this.props.selectedOptionExpense1 === 'full'}
+                    onChange={this.props.handleOptionChangeExpense1}
+                  />
+                  ให้สิทธิประโยชน์เต็มจำนวน
                     <ButtonSetting>ค่าเริ่มต้น</ButtonSetting>
-                  </div>}
+                </div>}
             </label>
           </SettingLine>
         </div>
@@ -70,22 +70,22 @@ class Setting extends Component {
             <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
-                    <DivInput
-                      type="radio"
-                      value="pro-rate"
-                      checked={this.props.selectedOptionHealth1 === 'pro-rate'}
-                      onChange={this.props.handleOptionChangeHealth1}
-                    />
-                    ให้สิทธิประโยชน์ตาม Pro-rate
+                  <DivInput
+                    type="radio"
+                    value="pro-rate"
+                    checked={this.props.selectedOptionHealth1 === 'pro-rate'}
+                    onChange={this.props.handleOptionChangeHealth1}
+                  />
+                  ให้สิทธิประโยชน์ตาม Pro-rate
                   </div>
                 : <div>
-                    <DivInput
-                      type="radio"
-                      value="pro-rate"
-                      checked={this.props.selectedOptionExpense1 === 'pro-rate'}
-                      onChange={this.props.handleOptionChangeExpense1}
-                    />
-                    ให้สิทธิประโยชน์ตาม Pro-rate
+                  <DivInput
+                    type="radio"
+                    value="pro-rate"
+                    checked={this.props.selectedOptionExpense1 === 'pro-rate'}
+                    onChange={this.props.handleOptionChangeExpense1}
+                  />
+                  ให้สิทธิประโยชน์ตาม Pro-rate
                   </div>}
             </label>
           </SettingLine>
@@ -97,25 +97,25 @@ class Setting extends Component {
             <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
-                    <DivInput
-                      type="radio"
-                      value="full"
-                      checked={this.props.selectedOptionHealth2 === 'full'}
-                      onChange={this.props.handleOptionChangeHealth2}
-                    />
-                    ให้สิทธิประโยชน์เต็มจำนวน
+                  <DivInput
+                    type="radio"
+                    value="full"
+                    checked={this.props.selectedOptionHealth2 === 'full'}
+                    onChange={this.props.handleOptionChangeHealth2}
+                  />
+                  ให้สิทธิประโยชน์เต็มจำนวน
                     <ButtonSetting>ค่าเริ่มต้น</ButtonSetting>
-                  </div>
+                </div>
                 : <div>
-                    <DivInput
-                      type="radio"
-                      value="full"
-                      checked={this.props.selectedOptionExpense2 === 'full'}
-                      onChange={this.props.handleOptionChangeExpense2}
-                    />
-                    ให้สิทธิประโยชน์เต็มจำนวน
+                  <DivInput
+                    type="radio"
+                    value="full"
+                    checked={this.props.selectedOptionExpense2 === 'full'}
+                    onChange={this.props.handleOptionChangeExpense2}
+                  />
+                  ให้สิทธิประโยชน์เต็มจำนวน
                     <ButtonSetting>ค่าเริ่มต้น</ButtonSetting>
-                  </div>}
+                </div>}
             </label>
           </SettingLine>
         </div>
@@ -124,22 +124,22 @@ class Setting extends Component {
             <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
-                    <DivInput
-                      type="radio"
-                      value="pro-rate"
-                      checked={this.props.selectedOptionHealth2 === 'pro-rate'}
-                      onChange={this.props.handleOptionChangeHealth2}
-                    />
-                    ให้สิทธิประโยชน์ตาม Pro-rate
+                  <DivInput
+                    type="radio"
+                    value="pro-rate"
+                    checked={this.props.selectedOptionHealth2 === 'pro-rate'}
+                    onChange={this.props.handleOptionChangeHealth2}
+                  />
+                  ให้สิทธิประโยชน์ตาม Pro-rate
                   </div>
                 : <div>
-                    <DivInput
-                      type="radio"
-                      value="pro-rate"
-                      checked={this.props.selectedOptionExpense2 === 'pro-rate'}
-                      onChange={this.props.handleOptionChangeExpense2}
-                    />
-                    ให้สิทธิประโยชน์ตาม Pro-rate
+                  <DivInput
+                    type="radio"
+                    value="pro-rate"
+                    checked={this.props.selectedOptionExpense2 === 'pro-rate'}
+                    onChange={this.props.handleOptionChangeExpense2}
+                  />
+                  ให้สิทธิประโยชน์ตาม Pro-rate
                   </div>}
             </label>
           </SettingLine>
@@ -153,25 +153,25 @@ class Setting extends Component {
             <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
-                    <DivInput
-                      type="radio"
-                      value="full"
-                      checked={this.props.selectedOptionHealth3 === 'full'}
-                      onChange={this.props.handleOptionChangeHealth3}
-                    />
-                    ให้สิทธิประโยชน์เต็มจำนวน
+                  <DivInput
+                    type="radio"
+                    value="full"
+                    checked={this.props.selectedOptionHealth3 === 'full'}
+                    onChange={this.props.handleOptionChangeHealth3}
+                  />
+                  ให้สิทธิประโยชน์เต็มจำนวน
                     <ButtonSetting>ค่าเริ่มต้น</ButtonSetting>
-                  </div>
+                </div>
                 : <div>
-                    <DivInput
-                      type="radio"
-                      value="full"
-                      checked={this.props.selectedOptionExpense3 === 'full'}
-                      onChange={this.props.handleOptionChangeExpense3}
-                    />
-                    ให้สิทธิประโยชน์เต็มจำนวน
+                  <DivInput
+                    type="radio"
+                    value="full"
+                    checked={this.props.selectedOptionExpense3 === 'full'}
+                    onChange={this.props.handleOptionChangeExpense3}
+                  />
+                  ให้สิทธิประโยชน์เต็มจำนวน
                     <ButtonSetting>ค่าเริ่มต้น</ButtonSetting>
-                  </div>}
+                </div>}
             </label>
           </SettingLine>
         </div>
@@ -180,22 +180,22 @@ class Setting extends Component {
             <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
-                    <DivInput
-                      type="radio"
-                      value="pro-rate"
-                      checked={this.props.selectedOptionHealth3 === 'pro-rate'}
-                      onChange={this.props.handleOptionChangeHealth3}
-                    />
-                    ให้สิทธิประโยชน์ตาม Pro-rate
+                  <DivInput
+                    type="radio"
+                    value="pro-rate"
+                    checked={this.props.selectedOptionHealth3 === 'pro-rate'}
+                    onChange={this.props.handleOptionChangeHealth3}
+                  />
+                  ให้สิทธิประโยชน์ตาม Pro-rate
                   </div>
                 : <div>
-                    <DivInput
-                      type="radio"
-                      value="pro-rate"
-                      checked={this.props.selectedOptionExpense3 === 'pro-rate'}
-                      onChange={this.props.handleOptionChangeExpense3}
-                    />
-                    ให้สิทธิประโยชน์ตาม Pro-rate
+                  <DivInput
+                    type="radio"
+                    value="pro-rate"
+                    checked={this.props.selectedOptionExpense3 === 'pro-rate'}
+                    onChange={this.props.handleOptionChangeExpense3}
+                  />
+                  ให้สิทธิประโยชน์ตาม Pro-rate
                   </div>}
             </label>
           </SettingLine>

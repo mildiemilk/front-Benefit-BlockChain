@@ -51,17 +51,17 @@ class SelectBox extends Component {
           <br />
           {this.props.plan !== ''
             ? <SelectOptionPlan
-                plan={this.props.plan}
-                selectOption={this.props.selectOption}
-                columnsLenght={this.props.columnsLenght}
-                planName={this.props.planName}
-                handleFixedChange={this.props.handleFixedChange}
-                handleFlexChange={this.props.handleFlexChange}
-                handleActivePlan={this.props.handleActivePlan}
-                defualtPlan={this.props.defualtPlan}
-                valueFixed={this.props.valueFixed}
-                handleSubmit={this.props.handleSubmit}
-              />
+              plan={this.props.plan}
+              selectOption={this.props.selectOption}
+              columnsLenght={this.props.columnsLenght}
+              planName={this.props.planName}
+              handleFixedChange={this.props.handleFixedChange}
+              handleFlexChange={this.props.handleFlexChange}
+              handleActivePlan={this.props.handleActivePlan}
+              defualtPlan={this.props.defualtPlan}
+              valueFixed={this.props.valueFixed}
+              handleSubmit={this.props.handleSubmit}
+            />
             : null}
         </div>
       </div>

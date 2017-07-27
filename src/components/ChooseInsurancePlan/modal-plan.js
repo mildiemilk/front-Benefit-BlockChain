@@ -19,14 +19,14 @@ import {
 import IPDDropBox from './ipd-dropbox'
 import icon2 from '../image/icons-8-view-file.png'
 
-const ModalContents = styled(Modal.Content)`
+const ModalContents = styled(Modal.Content) `
   &&&{
     max-width: 670px;
     margin: 0 auto;
   }
 `
 
-const Modals = styled(Modal)`
+const Modals = styled(Modal) `
   &&&{
     background: transparent;
     box-shadow: none;
@@ -34,7 +34,7 @@ const Modals = styled(Modal)`
   }
 `
 
-const Icons = styled(Icon)`
+const Icons = styled(Icon) `
   &&&{
     position: absolute;
     margin-top: 2.5%;
@@ -176,12 +176,12 @@ class ModalModalExample extends Component {
                 </table>
                 {this.state.lifeBox
                   ? <HiddenBox>
-                      <HiddenContent>
-                        ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
+                    <HiddenContent>
+                      ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
                         <br /> {' '}
-                        การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
+                      การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
                       </HiddenContent>
-                    </HiddenBox>
+                  </HiddenBox>
                   : null}
               </div>
 
@@ -212,12 +212,12 @@ class ModalModalExample extends Component {
                 </table>
                 {this.state.dentalBox
                   ? <HiddenBox>
-                      <HiddenContent>
-                        ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
+                    <HiddenContent>
+                      ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
                         <br /> {' '}
-                        การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
+                      การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
                       </HiddenContent>
-                    </HiddenBox>
+                  </HiddenBox>
                   : null}
               </div>
 
@@ -250,12 +250,12 @@ class ModalModalExample extends Component {
                 </table>
                 {this.state.OPDBox
                   ? <HiddenBox>
-                      <HiddenContent>
-                        ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
+                    <HiddenContent>
+                      ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้จ่ายสำหรับ
                         <br /> {' '}
-                        การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
+                      การตรวจทางห้องปฏิบัติการ (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
                       </HiddenContent>
-                    </HiddenBox>
+                  </HiddenBox>
                   : null}
               </div>
 

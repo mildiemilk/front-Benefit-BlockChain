@@ -119,7 +119,7 @@ class SubmitPlan extends Component {
 
   handleChangeToNull = name => this.setState({ [name]: null })
 
-  handleToggle = () => {}
+  handleToggle = () => { }
 
   handleToggleOpdCoPlay = () => {
     if (this.state.opdCoPlay) {
@@ -370,124 +370,124 @@ class SubmitPlan extends Component {
               </div>
               {!this.state.firstTime
                 ? <div>
-                    <FormSubmitPlan
+                  <FormSubmitPlan
+                    activePlan={this.state.activePlan}
+                    handlePlan={this.handlePlan}
+                    handleChange={this.handleChange}
+                    planName={this.state.planName}
+                    employeeOfPlan={this.state.employeeOfPlan}
+                    handleResetProfilePlan={this.handleResetProfilePlan}
+                  />
+                  <div className="fillBox">
+                    <AllPlan
                       activePlan={this.state.activePlan}
-                      handlePlan={this.handlePlan}
+                      nextPage={this.state.nextPage}
+                      handleNextPage={this.handleNextPage}
+                      handleSetGoToNextPage={this.handleSetGoToNextPage}
+                      handleWarningModal={this.handleWarningModal}
+                      handleMoveToNextPage={this.handleMoveToNextPage}
+                      newPlan={this.state.newPlan}
+                      handleBuildNewPlan={this.handleBuildNewPlan}
+                      handleUnBuildNewPlan={this.handleUnBuildNewPlan}
                       handleChange={this.handleChange}
-                      planName={this.state.planName}
-                      employeeOfPlan={this.state.employeeOfPlan}
-                      handleResetProfilePlan={this.handleResetProfilePlan}
+                      handleChangeToNull={this.handleChangeToNull}
+                      handleToggleIpdCoPlay={this.handleToggleIpdCoPlay}
+                      handleToggleOpdCoPlay={this.handleToggleOpdCoPlay}
+                      handleResetPlan={this.handleResetPlan}
+                      handleResetDental={this.handleResetDental}
+                      handleResetLife={this.handleResetLife}
+                      handleResetOPD={this.handleResetOPD}
+                      handleResetIPD={this.handleResetIPD}
+                      opdCoPlay={this.state.opdCoPlay}
+                      opdPerYear={this.state.opdPerYear}
+                      opdPerTime={this.state.opdPerTime}
+                      opdTimeNotExceedPerYear={
+                        this.state.opdTimeNotExceedPerYear
+                      }
+                      opdCoPlayQuota={this.state.opdCoPlayQuota}
+                      opdCoPlayDeductable={this.state.opdCoPlayDeductable}
+                      opdCoPlayMixPercentage={
+                        this.state.opdCoPlayMixPercentage
+                      }
+                      opdCoPlayMixNotExceed={this.state.opdCoPlayMixNotExceed}
+                      opdCoPlayMixYear={this.state.opdCoPlayMixYear}
+                      dentalPerYear={this.state.dentalPerYear}
+                      lifePerYear={this.state.lifePerYear}
+                      lifeTimeOfSalary={this.state.lifeTimeOfSalary}
+                      lifeNotExceed={this.state.lifeNotExceed}
+                      ipdType={this.state.ipdType}
+                      ipdLumsumPerYear={this.state.ipdLumsumPerYear}
+                      ipdLumsumPerTime={this.state.ipdLumsumPerTime}
+                      ipdLumsumTimeNotExceedPerYear={
+                        this.state.ipdLumsumTimeNotExceedPerYear
+                      }
+                      rbLumsumRoomPerNight={this.state.rbLumsumRoomPerNight}
+                      rbLumsumNigthNotExceedPerYear={
+                        this.state.rbLumsumNigthNotExceedPerYear
+                      }
+                      rbLumsumPayNotExceedPerNight={
+                        this.state.rbLumsumPayNotExceedPerNight
+                      }
+                      rbLumsumPayNotExceedPerYear={
+                        this.state.rbLumsumPayNotExceedPerYear
+                      }
+                      rbSchedulePatient={this.state.rbSchedulePatient}
+                      rbScheduleIntensiveCarePatient={
+                        this.state.rbScheduleIntensiveCarePatient
+                      }
+                      rbScheduleDoctor={this.state.rbScheduleDoctor}
+                      rbScheduleSurgerySchedule={
+                        this.state.rbScheduleSurgerySchedule
+                      }
+                      rbScheduleSurgeryNonSchedule={
+                        this.state.rbScheduleSurgeryNonSchedule
+                      }
+                      rbScheduleService={this.state.rbScheduleService}
+                      rbScheduleSmallSurgery={
+                        this.state.rbScheduleSmallSurgery
+                      }
+                      rbScheduleAdviser={this.state.rbScheduleAdviser}
+                      rbScheduleAmbulance={this.state.rbScheduleAmbulance}
+                      rbScheduleAccident={this.state.rbScheduleAccident}
+                      rbScheduleTreatment={this.state.rbScheduleTreatment}
+                      rbScheduleTransplant={this.state.rbScheduleTransplant}
+                      ipdCoPlay={this.state.ipdCoPlay}
+                      ipdCoPlayQuota={this.state.ipdCoPlayQuota}
+                      ipdCoPlayDeductable={this.state.ipdCoPlayDeductable}
+                      ipdCoPlayMixPercentage={
+                        this.state.ipdCoPlayMixPercentage
+                      }
+                      ipdCoPlayMixNotExceed={this.state.ipdCoPlayMixNotExceed}
+                      ipdCoPlayMixYear={this.state.ipdCoPlayMixYear}
                     />
-                    <div className="fillBox">
-                      <AllPlan
-                        activePlan={this.state.activePlan}
-                        nextPage={this.state.nextPage}
-                        handleNextPage={this.handleNextPage}
-                        handleSetGoToNextPage={this.handleSetGoToNextPage}
-                        handleWarningModal={this.handleWarningModal}
-                        handleMoveToNextPage={this.handleMoveToNextPage}
-                        newPlan={this.state.newPlan}
-                        handleBuildNewPlan={this.handleBuildNewPlan}
-                        handleUnBuildNewPlan={this.handleUnBuildNewPlan}
-                        handleChange={this.handleChange}
-                        handleChangeToNull={this.handleChangeToNull}
-                        handleToggleIpdCoPlay={this.handleToggleIpdCoPlay}
-                        handleToggleOpdCoPlay={this.handleToggleOpdCoPlay}
-                        handleResetPlan={this.handleResetPlan}
-                        handleResetDental={this.handleResetDental}
-                        handleResetLife={this.handleResetLife}
-                        handleResetOPD={this.handleResetOPD}
-                        handleResetIPD={this.handleResetIPD}
-                        opdCoPlay={this.state.opdCoPlay}
-                        opdPerYear={this.state.opdPerYear}
-                        opdPerTime={this.state.opdPerTime}
-                        opdTimeNotExceedPerYear={
-                          this.state.opdTimeNotExceedPerYear
-                        }
-                        opdCoPlayQuota={this.state.opdCoPlayQuota}
-                        opdCoPlayDeductable={this.state.opdCoPlayDeductable}
-                        opdCoPlayMixPercentage={
-                          this.state.opdCoPlayMixPercentage
-                        }
-                        opdCoPlayMixNotExceed={this.state.opdCoPlayMixNotExceed}
-                        opdCoPlayMixYear={this.state.opdCoPlayMixYear}
-                        dentalPerYear={this.state.dentalPerYear}
-                        lifePerYear={this.state.lifePerYear}
-                        lifeTimeOfSalary={this.state.lifeTimeOfSalary}
-                        lifeNotExceed={this.state.lifeNotExceed}
-                        ipdType={this.state.ipdType}
-                        ipdLumsumPerYear={this.state.ipdLumsumPerYear}
-                        ipdLumsumPerTime={this.state.ipdLumsumPerTime}
-                        ipdLumsumTimeNotExceedPerYear={
-                          this.state.ipdLumsumTimeNotExceedPerYear
-                        }
-                        rbLumsumRoomPerNight={this.state.rbLumsumRoomPerNight}
-                        rbLumsumNigthNotExceedPerYear={
-                          this.state.rbLumsumNigthNotExceedPerYear
-                        }
-                        rbLumsumPayNotExceedPerNight={
-                          this.state.rbLumsumPayNotExceedPerNight
-                        }
-                        rbLumsumPayNotExceedPerYear={
-                          this.state.rbLumsumPayNotExceedPerYear
-                        }
-                        rbSchedulePatient={this.state.rbSchedulePatient}
-                        rbScheduleIntensiveCarePatient={
-                          this.state.rbScheduleIntensiveCarePatient
-                        }
-                        rbScheduleDoctor={this.state.rbScheduleDoctor}
-                        rbScheduleSurgerySchedule={
-                          this.state.rbScheduleSurgerySchedule
-                        }
-                        rbScheduleSurgeryNonSchedule={
-                          this.state.rbScheduleSurgeryNonSchedule
-                        }
-                        rbScheduleService={this.state.rbScheduleService}
-                        rbScheduleSmallSurgery={
-                          this.state.rbScheduleSmallSurgery
-                        }
-                        rbScheduleAdviser={this.state.rbScheduleAdviser}
-                        rbScheduleAmbulance={this.state.rbScheduleAmbulance}
-                        rbScheduleAccident={this.state.rbScheduleAccident}
-                        rbScheduleTreatment={this.state.rbScheduleTreatment}
-                        rbScheduleTransplant={this.state.rbScheduleTransplant}
-                        ipdCoPlay={this.state.ipdCoPlay}
-                        ipdCoPlayQuota={this.state.ipdCoPlayQuota}
-                        ipdCoPlayDeductable={this.state.ipdCoPlayDeductable}
-                        ipdCoPlayMixPercentage={
-                          this.state.ipdCoPlayMixPercentage
-                        }
-                        ipdCoPlayMixNotExceed={this.state.ipdCoPlayMixNotExceed}
-                        ipdCoPlayMixYear={this.state.ipdCoPlayMixYear}
-                      />
-                    </div>
-
-                    <Button
-                      style={{
-                        marginLeft: '70%',
-                        marginTop: '5%',
-                        marginBottom: '5%',
-                        width: '164px',
-                        height: '40px',
-                        borderRadius: '20px',
-                        color: '#ffffff',
-                        backgroundColor: '#f7555f',
-                      }}
-                      onClick={this.onClickhandler}
-                    >
-                      {' '}ต่อไป
-                    </Button>
                   </div>
+
+                  <Button
+                    style={{
+                      marginLeft: '70%',
+                      marginTop: '5%',
+                      marginBottom: '5%',
+                      width: '164px',
+                      height: '40px',
+                      borderRadius: '20px',
+                      color: '#ffffff',
+                      backgroundColor: '#f7555f',
+                    }}
+                    onClick={this.onClickhandler}
+                  >
+                    {' '}ต่อไป
+                    </Button>
+                </div>
                 : <div className="start-box">
-                    <div className="box-in-start-box">
-                      <Icon
-                        name="calendar plus"
-                        size="huge"
-                        style={{ marginLeft: '9%' }}
-                      />
-                      <p>ยังไม่มีการสร้างแพลนใหม่</p>
-                    </div>
-                  </div>}
+                  <div className="box-in-start-box">
+                    <Icon
+                      name="calendar plus"
+                      size="huge"
+                      style={{ marginLeft: '9%' }}
+                    />
+                    <p>ยังไม่มีการสร้างแพลนใหม่</p>
+                  </div>
+                </div>}
             </div>
           </div>
         </div>

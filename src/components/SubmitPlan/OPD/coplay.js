@@ -92,13 +92,13 @@ class CoPlay extends Component {
                 required
               />
               : <Form.Input
-                  type="number"
-                  placeholder="เปอร์เซน"
-                  name="opdCoPlayQuota"
-                  id="opdCoPlayQuota"
-                  readOnly
-                  onChange={this.props.handleChange}
-                />}
+                type="number"
+                placeholder="เปอร์เซน"
+                name="opdCoPlayQuota"
+                id="opdCoPlayQuota"
+                readOnly
+                onChange={this.props.handleChange}
+              />}
             <p className="selectText"> %</p>
           </Form.Group>
           <Form.Group inline>
@@ -113,23 +113,23 @@ class CoPlay extends Component {
             </Form.Field>
             {this.state.value === 'Deductable'
               ? <Form.Input
-                  type="number"
-                  placeholder="จำนวนเงิน"
-                  name="opdCoPlayDeductable"
-                  id="opdCoPlayDeductable"
-                  value={this.props.opdCoPlayDeductable}
-                  onChange={this.props.handleChange}
-                  required
-                />
+                type="number"
+                placeholder="จำนวนเงิน"
+                name="opdCoPlayDeductable"
+                id="opdCoPlayDeductable"
+                value={this.props.opdCoPlayDeductable}
+                onChange={this.props.handleChange}
+                required
+              />
               : <Form.Input
-                  type="number"
-                  placeholder="จำนวนเงิน"
-                  name="opdCoPlayDeductable"
-                  id="opdCoPlayDeductable"
-                  value=""
-                  onChange={this.props.handleChange}
-                  readOnly
-                />}
+                type="number"
+                placeholder="จำนวนเงิน"
+                name="opdCoPlayDeductable"
+                id="opdCoPlayDeductable"
+                value=""
+                onChange={this.props.handleChange}
+                readOnly
+              />}
             <p className="selectText"> บาท</p>
           </Form.Group>
           <Form.Group inline>
@@ -144,73 +144,73 @@ class CoPlay extends Component {
             </Form.Field>
             {this.state.value === 'Quota Share + Deductable'
               ? <div style={{ display: 'inherit' }}>
-                  <Form.Input
-                    type="number"
-                    style={{ width: '80px' }}
-                    placeholder="เปอร์เซ็น"
-                    name="opdCoPlayMixPercentage"
-                    id="opdCoPlayMixPercentage"
-                    value={this.props.opdCoPlayMixPercentage}
-                    onChange={this.props.handleChange}
-                    required
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '90px' }}
-                    label=" %ไม่เกิน"
-                    placeholder="จำนวนเงิน"
-                    name="opdCoPlayMixNotExceed"
-                    id="opdCoPlayMixNotExceed"
-                    value={this.props.opdCoPlayMixNotExceed}
-                    onChange={this.props.handleChange}
-                    required
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '40px' }}
-                    label=" ต่อ"
-                    placeholder="ปี"
-                    name="opdCoPlayMixYear"
-                    id="opdCoPlayMixYear"
-                    value={this.props.opdCoPlayMixYear}
-                    onChange={this.props.handleChange}
-                    required
-                  />
-                </div>
+                <Form.Input
+                  type="number"
+                  style={{ width: '80px' }}
+                  placeholder="เปอร์เซ็น"
+                  name="opdCoPlayMixPercentage"
+                  id="opdCoPlayMixPercentage"
+                  value={this.props.opdCoPlayMixPercentage}
+                  onChange={this.props.handleChange}
+                  required
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '90px' }}
+                  label=" %ไม่เกิน"
+                  placeholder="จำนวนเงิน"
+                  name="opdCoPlayMixNotExceed"
+                  id="opdCoPlayMixNotExceed"
+                  value={this.props.opdCoPlayMixNotExceed}
+                  onChange={this.props.handleChange}
+                  required
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '40px' }}
+                  label=" ต่อ"
+                  placeholder="ปี"
+                  name="opdCoPlayMixYear"
+                  id="opdCoPlayMixYear"
+                  value={this.props.opdCoPlayMixYear}
+                  onChange={this.props.handleChange}
+                  required
+                />
+              </div>
               : <div style={{ display: 'inherit' }}>
-                  <Form.Input
-                    type="number"
-                    style={{ width: '80px' }}
-                    placeholder="เปอร์เซ็น"
-                    name="opdCoPlayMixPercentage"
-                    id="opdCoPlayMixPercentage"
-                    value=""
-                    onChange={this.props.handleChange}
-                    readOnly
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '90px' }}
-                    label=" %ไม่เกิน"
-                    placeholder="จำนวนเงิน"
-                    name="opdCoPlayMixNotExceed"
-                    id="opdCoPlayMixNotExceed"
-                    value=""
-                    onChange={this.props.handleChange}
-                    readOnly
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '40px' }}
-                    label=" ต่อ"
-                    placeholder="ปี"
-                    name="opdCoPlayMixYear"
-                    id="opdCoPlayMixYear"
-                    value=""
-                    onChange={this.props.handleChange}
-                    readOnly
-                  />
-                </div>}
+                <Form.Input
+                  type="number"
+                  style={{ width: '80px' }}
+                  placeholder="เปอร์เซ็น"
+                  name="opdCoPlayMixPercentage"
+                  id="opdCoPlayMixPercentage"
+                  value=""
+                  onChange={this.props.handleChange}
+                  readOnly
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '90px' }}
+                  label=" %ไม่เกิน"
+                  placeholder="จำนวนเงิน"
+                  name="opdCoPlayMixNotExceed"
+                  id="opdCoPlayMixNotExceed"
+                  value=""
+                  onChange={this.props.handleChange}
+                  readOnly
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '40px' }}
+                  label=" ต่อ"
+                  placeholder="ปี"
+                  name="opdCoPlayMixYear"
+                  id="opdCoPlayMixYear"
+                  value=""
+                  onChange={this.props.handleChange}
+                  readOnly
+                />
+              </div>}
           </Form.Group>
         </div>
       </div>

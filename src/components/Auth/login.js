@@ -92,8 +92,8 @@ class Login extends Component {
                     </Form.Field>
                     {this.props.data.error
                       ? <p style={{ color: 'red' }}>
-                          {' '}{this.props.data.message}
-                        </p>
+                        {' '}{this.props.data.message}
+                      </p>
                       : <p />}
                     <a className="link">ลืมพาสเวิร์ด?</a>
                     <button className="logInButton">

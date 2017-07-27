@@ -122,23 +122,23 @@ class Coplay extends Component {
             </Form.Field>
             {this.state.value === 'Quota Share'
               ? <Form.Input
-                  type="number"
-                  placeholder="เปอร์เซน"
-                  name="ipdCoPlayQuota"
-                  id="ipdCoPlayQuota"
-                  value={ipdCoPlayQuota}
-                  onChange={this.props.handleChange}
-                  required
-                />
+                type="number"
+                placeholder="เปอร์เซน"
+                name="ipdCoPlayQuota"
+                id="ipdCoPlayQuota"
+                value={ipdCoPlayQuota}
+                onChange={this.props.handleChange}
+                required
+              />
               : <Form.Input
-                  type="number"
-                  placeholder="เปอร์เซน"
-                  name="ipdCoPlayQuota"
-                  id="ipdCoPlayQuota"
-                  value=""
-                  readOnly
-                  onChange={this.props.handleChange}
-                />}
+                type="number"
+                placeholder="เปอร์เซน"
+                name="ipdCoPlayQuota"
+                id="ipdCoPlayQuota"
+                value=""
+                readOnly
+                onChange={this.props.handleChange}
+              />}
             <p className="selectText"> %</p>
           </Form.Group>
           <Form.Group inline>
@@ -153,23 +153,23 @@ class Coplay extends Component {
             </Form.Field>
             {this.state.value === 'Deductable'
               ? <Form.Input
-                  type="number"
-                  placeholder="จำนวนเงิน"
-                  name="ipdCoPlayDeductable"
-                  id="ipdCoPlayDeductable"
-                  value={ipdCoPlayDeductable}
-                  onChange={this.props.handleChange}
-                  required
-                />
+                type="number"
+                placeholder="จำนวนเงิน"
+                name="ipdCoPlayDeductable"
+                id="ipdCoPlayDeductable"
+                value={ipdCoPlayDeductable}
+                onChange={this.props.handleChange}
+                required
+              />
               : <Form.Input
-                  type="number"
-                  placeholder="จำนวนเงิน"
-                  name="ipdCoPlayDeductable"
-                  id="ipdCoPlayDeductable"
-                  value=""
-                  onChange={this.props.handleChange}
-                  readOnly
-                />}
+                type="number"
+                placeholder="จำนวนเงิน"
+                name="ipdCoPlayDeductable"
+                id="ipdCoPlayDeductable"
+                value=""
+                onChange={this.props.handleChange}
+                readOnly
+              />}
             <p className="selectText"> บาท</p>
           </Form.Group>
           <Form.Group inline>
@@ -184,73 +184,73 @@ class Coplay extends Component {
             </Form.Field>
             {this.state.value === 'Quota Share + Deductable'
               ? <div style={{ display: 'inherit' }}>
-                  <Form.Input
-                    type="number"
-                    style={{ width: '80px' }}
-                    placeholder="เปอร์เซ็น"
-                    name="ipdCoPlayMixPercentage"
-                    id="ipdCoPlayMixPercentage"
-                    value={ipdCoPlayMixPercentage}
-                    onChange={this.props.handleChange}
-                    required
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '90px' }}
-                    label=" %ไม่เกิน"
-                    placeholder="จำนวนเงิน"
-                    name="ipdCoPlayMixNotExceed"
-                    id="ipdCoPlayMixNotExceed"
-                    value={ipdCoPlayMixNotExceed}
-                    onChange={this.props.handleChange}
-                    required
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '40px' }}
-                    label=" ต่อ"
-                    placeholder="ปี"
-                    name="ipdCoPlayMixYear"
-                    id="ipdCoPlayMixYear"
-                    value={ipdCoPlayMixYear}
-                    onChange={this.props.handleChange}
-                    required
-                  />
-                </div>
+                <Form.Input
+                  type="number"
+                  style={{ width: '80px' }}
+                  placeholder="เปอร์เซ็น"
+                  name="ipdCoPlayMixPercentage"
+                  id="ipdCoPlayMixPercentage"
+                  value={ipdCoPlayMixPercentage}
+                  onChange={this.props.handleChange}
+                  required
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '90px' }}
+                  label=" %ไม่เกิน"
+                  placeholder="จำนวนเงิน"
+                  name="ipdCoPlayMixNotExceed"
+                  id="ipdCoPlayMixNotExceed"
+                  value={ipdCoPlayMixNotExceed}
+                  onChange={this.props.handleChange}
+                  required
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '40px' }}
+                  label=" ต่อ"
+                  placeholder="ปี"
+                  name="ipdCoPlayMixYear"
+                  id="ipdCoPlayMixYear"
+                  value={ipdCoPlayMixYear}
+                  onChange={this.props.handleChange}
+                  required
+                />
+              </div>
               : <div style={{ display: 'inherit' }}>
-                  <Form.Input
-                    type="number"
-                    style={{ width: '80px' }}
-                    placeholder="เปอร์เซ็น"
-                    name="ipdCoPlayMixPercentage"
-                    id="ipdCoPlayMixPercentage"
-                    value=""
-                    onChange={this.props.handleChange}
-                    readOnly
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '90px' }}
-                    label=" %ไม่เกิน"
-                    placeholder="จำนวนเงิน"
-                    name="ipdCoPlayMixNotExceed"
-                    id="ipdCoPlayMixNotExceed"
-                    value=""
-                    onChange={this.props.handleChange}
-                    readOnly
-                  />
-                  <Form.Input
-                    type="number"
-                    style={{ width: '40px' }}
-                    label=" ต่อ"
-                    placeholder="ปี"
-                    name="ipdCoPlayMixYear"
-                    id="ipdCoPlayMixYear"
-                    value=""
-                    onChange={this.props.handleChange}
-                    readOnly
-                  />
-                </div>}
+                <Form.Input
+                  type="number"
+                  style={{ width: '80px' }}
+                  placeholder="เปอร์เซ็น"
+                  name="ipdCoPlayMixPercentage"
+                  id="ipdCoPlayMixPercentage"
+                  value=""
+                  onChange={this.props.handleChange}
+                  readOnly
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '90px' }}
+                  label=" %ไม่เกิน"
+                  placeholder="จำนวนเงิน"
+                  name="ipdCoPlayMixNotExceed"
+                  id="ipdCoPlayMixNotExceed"
+                  value=""
+                  onChange={this.props.handleChange}
+                  readOnly
+                />
+                <Form.Input
+                  type="number"
+                  style={{ width: '40px' }}
+                  label=" ต่อ"
+                  placeholder="ปี"
+                  name="ipdCoPlayMixYear"
+                  id="ipdCoPlayMixYear"
+                  value=""
+                  onChange={this.props.handleChange}
+                  readOnly
+                />
+              </div>}
           </Form.Group>
         </div>
       </div>

@@ -11,7 +11,7 @@ import {
   ConfirmButton,
 } from './styled'
 
-const ModalContents = styled(Modal.Content)`
+const ModalContents = styled(Modal.Content) `
   &&&{
     max-width: 500px;
     margin: 0 auto;
@@ -19,7 +19,7 @@ const ModalContents = styled(Modal.Content)`
   }
 `
 
-const Modals = styled(Modal)`
+const Modals = styled(Modal) `
   &&&{
     background: transparent;
     box-shadow: none;
@@ -87,11 +87,11 @@ class ModalPostbox extends Component {
 
             {this.props.data.error
               ? <span style={{ color: 'red' }}>
-                  <br />
-                  <div style={{ marginLeft: '15%', marginTop: '2%' }}>
-                    {this.props.data.message}
-                  </div>
-                </span>
+                <br />
+                <div style={{ marginLeft: '15%', marginTop: '2%' }}>
+                  {this.props.data.message}
+                </div>
+              </span>
               : <span />}
 
             <p style={{ paddingTop: '4%' }}>

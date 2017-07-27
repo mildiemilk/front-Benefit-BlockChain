@@ -8,7 +8,7 @@ import avatarn from './avatarn.JPG'
 import { HeadNav, LogoPosition, SpanStyle } from './styled'
 import { getCompanyName } from '../../api/profile-company'
 
-const ImageCss = styled(Image)`
+const ImageCss = styled(Image) `
   &&&{
   position: absolute;
    right: 3%;
@@ -41,11 +41,11 @@ class Header extends Component {
         <Menu.Item style={{ width: '20%' }} position="right">
           {this.props.data.companyName
             ? <div>
-                <SpanStyle>
-                  {this.props.data.companyName}
-                </SpanStyle>
-                <ImageCss src={avatarn} avatar size="mini" />
-              </div>
+              <SpanStyle>
+                {this.props.data.companyName}
+              </SpanStyle>
+              <ImageCss src={avatarn} avatar size="mini" />
+            </div>
             : <div />}
         </Menu.Item>
       </HeadNav>

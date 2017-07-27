@@ -143,27 +143,27 @@ class employeeBenefits extends Component {
                   <div className="large-9 columns">
                     {this.state.selectGroup
                       ? <SelectBox
-                          planName={this.state.planName}
-                          plan={this.state.plan}
-                          selectOption={this.state.selectOption}
-                          columnsLenght={this.state.columnsLenght}
-                          handleChangePlan={this.handleChangePlan}
-                          handleFixedChange={this.handleFixedChange}
-                          handleFlexChange={this.handleFlexChange}
-                          handleActivePlan={this.handleActivePlan}
-                          defualtPlan={this.state.defualtPlan}
-                          value={this.state.value}
-                          valueFixed={this.state.valueFixed}
-                          handleSubmit={this.handleSubmit}
-                        />
+                        planName={this.state.planName}
+                        plan={this.state.plan}
+                        selectOption={this.state.selectOption}
+                        columnsLenght={this.state.columnsLenght}
+                        handleChangePlan={this.handleChangePlan}
+                        handleFixedChange={this.handleFixedChange}
+                        handleFlexChange={this.handleFlexChange}
+                        handleActivePlan={this.handleActivePlan}
+                        defualtPlan={this.state.defualtPlan}
+                        value={this.state.value}
+                        valueFixed={this.state.valueFixed}
+                        handleSubmit={this.handleSubmit}
+                      />
                       : <div className="employeeBenefits-Start-box">
-                          <div className="employeeBenefits-center-in-box">
-                            <img src={form} alt="form" className="imageMenu" />
-                            <p className="employeeBenefits-text-start-box">
-                              ยังไม่มีการจัดแผนสิทธิประโยชน์
+                        <div className="employeeBenefits-center-in-box">
+                          <img src={form} alt="form" className="imageMenu" />
+                          <p className="employeeBenefits-text-start-box">
+                            ยังไม่มีการจัดแผนสิทธิประโยชน์
                             </p>
-                          </div>
-                        </div>}
+                        </div>
+                      </div>}
                   </div>
                 </div>
               </div>

@@ -131,23 +131,23 @@ class OPD extends Component {
               </Form.Field>
               {this.state.value === 'firstChoice'
                 ? <Form.Input
-                    type="number"
-                    placeholder="จำนวนเงิน"
-                    name="opdPerYear"
-                    id="opdPerYear"
-                    value={this.props.opdPerYear}
-                    onChange={this.handleChange}
-                    required
-                  />
+                  type="number"
+                  placeholder="จำนวนเงิน"
+                  name="opdPerYear"
+                  id="opdPerYear"
+                  value={this.props.opdPerYear}
+                  onChange={this.handleChange}
+                  required
+                />
                 : <Form.Input
-                    type="number"
-                    placeholder="จำนวนเงิน"
-                    name="opdPerYear"
-                    id="opdPerYear"
-                    value=""
-                    onChange={this.handleChange}
-                    readOnly
-                  />}
+                  type="number"
+                  placeholder="จำนวนเงิน"
+                  name="opdPerYear"
+                  id="opdPerYear"
+                  value=""
+                  onChange={this.handleChange}
+                  readOnly
+                />}
               <p className="selectText"> บาท/ปี</p>
             </Form.Group>
             <Form.Group inline>
@@ -162,49 +162,49 @@ class OPD extends Component {
               </Form.Field>
               {this.state.value === 'secondChoice'
                 ? <div style={{ display: 'inherit' }}>
-                    <Form.Input
-                      type="number"
-                      placeholder="จำนวนเงิน"
-                      name="opdPerTime"
-                      id="opdPerTime"
-                      value={this.props.opdPerTime}
-                      onChange={this.handleChange}
-                      style={{ width: '140px' }}
-                      required
-                    />
-                    <Form.Input
-                      type="number"
-                      label="บาท/ครั้ง ครั้งละไม่เกิน"
-                      placeholder="จำนวนเงิน"
-                      name="opdTimeNotExceedPerYear"
-                      id="opdTimeNotExceedPerYear"
-                      value={this.props.opdTimeNotExceedPerYear}
-                      onChange={this.handleChange}
-                      style={{ width: '140px' }}
-                      required
-                    />
-                  </div>
+                  <Form.Input
+                    type="number"
+                    placeholder="จำนวนเงิน"
+                    name="opdPerTime"
+                    id="opdPerTime"
+                    value={this.props.opdPerTime}
+                    onChange={this.handleChange}
+                    style={{ width: '140px' }}
+                    required
+                  />
+                  <Form.Input
+                    type="number"
+                    label="บาท/ครั้ง ครั้งละไม่เกิน"
+                    placeholder="จำนวนเงิน"
+                    name="opdTimeNotExceedPerYear"
+                    id="opdTimeNotExceedPerYear"
+                    value={this.props.opdTimeNotExceedPerYear}
+                    onChange={this.handleChange}
+                    style={{ width: '140px' }}
+                    required
+                  />
+                </div>
                 : <div style={{ display: 'inherit' }}>
-                    <Form.Input
-                      type="number"
-                      placeholder="จำนวนเงิน"
-                      name="opdPerTime"
-                      id="opdPerTime"
-                      onChange={this.handleChange}
-                      style={{ width: '140px' }}
-                      readOnly
-                    />
-                    <Form.Input
-                      type="number"
-                      placeholder="จำนวนเงิน"
-                      label="บาท/ครั้ง ครั้งละไม่เกิน"
-                      name="opdTimeNotExceedPerYear"
-                      id="opdTimeNotExceedPerYear"
-                      onChange={this.handleChange}
-                      style={{ width: '140px' }}
-                      readOnly
-                    />
-                  </div>}
+                  <Form.Input
+                    type="number"
+                    placeholder="จำนวนเงิน"
+                    name="opdPerTime"
+                    id="opdPerTime"
+                    onChange={this.handleChange}
+                    style={{ width: '140px' }}
+                    readOnly
+                  />
+                  <Form.Input
+                    type="number"
+                    placeholder="จำนวนเงิน"
+                    label="บาท/ครั้ง ครั้งละไม่เกิน"
+                    name="opdTimeNotExceedPerYear"
+                    id="opdTimeNotExceedPerYear"
+                    onChange={this.handleChange}
+                    style={{ width: '140px' }}
+                    readOnly
+                  />
+                </div>}
               <p className="selectText"> บาท/ปี</p>
             </Form.Group>
             <br />
@@ -216,18 +216,18 @@ class OPD extends Component {
             />
             {this.props.opdCoPlay
               ? <CoPlay
-                  handleChange={this.props.handleChange}
-                  handleChangeToNull={this.props.handleChangeToNull}
-                  handleNewReset={this.props.handleNewReset}
-                  reset={this.props.reset}
-                  setPlan={this.props.setPlan}
-                  opdCoPlay={this.props.opdCoPlay}
-                  opdCoPlayQuota={this.props.opdCoPlayQuota}
-                  opdCoPlayDeductable={this.props.opdCoPlayDeductable}
-                  opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
-                  opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
-                  opdCoPlayMixYear={this.props.opdCoPlayMixYear}
-                />
+                handleChange={this.props.handleChange}
+                handleChangeToNull={this.props.handleChangeToNull}
+                handleNewReset={this.props.handleNewReset}
+                reset={this.props.reset}
+                setPlan={this.props.setPlan}
+                opdCoPlay={this.props.opdCoPlay}
+                opdCoPlayQuota={this.props.opdCoPlayQuota}
+                opdCoPlayDeductable={this.props.opdCoPlayDeductable}
+                opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
+                opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
+                opdCoPlayMixYear={this.props.opdCoPlayMixYear}
+              />
               : ''}
             <br />
             <Button

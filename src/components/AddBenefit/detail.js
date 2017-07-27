@@ -87,14 +87,14 @@ class Detail extends Component {
                   </div>
                   {this.props.isHealth
                     ? <HealthBenefit
-                        removeTodoHealth={this.props.removeTodoHealth}
-                        addTodoHealth={this.props.addTodoHealth}
-                        HealthList={this.props.HealthList}
-                        TextHealth={this.props.TextHealth}
-                        handleTextChangeHealth={
-                          this.props.handleTextChangeHealth
-                        }
-                      />
+                      removeTodoHealth={this.props.removeTodoHealth}
+                      addTodoHealth={this.props.addTodoHealth}
+                      HealthList={this.props.HealthList}
+                      TextHealth={this.props.TextHealth}
+                      handleTextChangeHealth={
+                        this.props.handleTextChangeHealth
+                      }
+                    />
                     : null}
                 </BoxIn>
               </Box>
@@ -131,14 +131,14 @@ class Detail extends Component {
                   </div>
                   {this.props.isExpense
                     ? <ExpenseBenefit
-                        ExpenseList={this.props.ExpenseList}
-                        removeTodoExpense={this.props.removeTodoExpense}
-                        addTodoExpense={this.props.addTodoExpense}
-                        TextExpense={this.props.TextExpense}
-                        handleTextChangeExpense={
-                          this.props.handleTextChangeExpense
-                        }
-                      />
+                      ExpenseList={this.props.ExpenseList}
+                      removeTodoExpense={this.props.removeTodoExpense}
+                      addTodoExpense={this.props.addTodoExpense}
+                      TextExpense={this.props.TextExpense}
+                      handleTextChangeExpense={
+                        this.props.handleTextChangeExpense
+                      }
+                    />
                     : null}
                 </BoxIn>
               </Box>

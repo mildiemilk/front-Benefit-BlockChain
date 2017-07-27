@@ -14,7 +14,7 @@ import {
   ToggleBox,
 } from './styled'
 
-const Selects = styled(Select)`
+const Selects = styled(Select) `
     &&&{
       margin-left: 51%;
       margin-top: 3.5%;
@@ -22,7 +22,7 @@ const Selects = styled(Select)`
     }
 `
 
-const Inputs = styled(Input)`
+const Inputs = styled(Input) `
     &&&{
       position: absolute;
       top: 25%;
@@ -31,7 +31,7 @@ const Inputs = styled(Input)`
     }
 `
 
-const NameInput = styled(Input)`
+const NameInput = styled(Input) `
     &&&{
 
       border-radius: 3px;
@@ -117,76 +117,76 @@ class SettingPlan extends Component {
 
             {this.props.optionPlan.isHealth
               ? <PlanBox>
-                  <PlanImg src="../../../setbenefit/5.png" />
-                  <PlanTopic>
-                    ค่าใช้จ่ายสุขภาพ (Health)
+                <PlanImg src="../../../setbenefit/5.png" />
+                <PlanTopic>
+                  ค่าใช้จ่ายสุขภาพ (Health)
                   </PlanTopic>
-                  <div className="toggle">
-                    <ToggleBox>
-                      <Checkbox
-                        name="isHealth"
-                        checked={this.props.isHealth}
-                        toggle
-                        onClick={this.props.handleToggle}
-                      />
-                    </ToggleBox>
-                  </div>
-                  {this.props.isHealth
-                    ? <Inputs
-                        required
-                        type="number"
-                        name="health"
-                        value={this.props.health}
-                        action="บาท/ปี"
-                        placeholder="จำนวนเงิน"
-                        onChange={this.props.handleChange}
-                      />
-                    : <Inputs
-                        type="number"
-                        name="health"
-                        value=""
-                        action="บาท/ปี"
-                        placeholder="จำนวนเงิน"
-                        readOnly
-                      />}
-                </PlanBox>
+                <div className="toggle">
+                  <ToggleBox>
+                    <Checkbox
+                      name="isHealth"
+                      checked={this.props.isHealth}
+                      toggle
+                      onClick={this.props.handleToggle}
+                    />
+                  </ToggleBox>
+                </div>
+                {this.props.isHealth
+                  ? <Inputs
+                    required
+                    type="number"
+                    name="health"
+                    value={this.props.health}
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    onChange={this.props.handleChange}
+                  />
+                  : <Inputs
+                    type="number"
+                    name="health"
+                    value=""
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    readOnly
+                  />}
+              </PlanBox>
               : null}
 
             {this.props.optionPlan.isExpense
               ? <PlanBox>
-                  <PlanImg src="../../../setbenefit/4.png" />
-                  <PlanTopic>
-                    ค่าใช้จ่ายทั่วไป (General Expense)
+                <PlanImg src="../../../setbenefit/4.png" />
+                <PlanTopic>
+                  ค่าใช้จ่ายทั่วไป (General Expense)
                   </PlanTopic>
-                  <div className="toggle">
-                    <ToggleBox>
-                      <Checkbox
-                        name="isExpense"
-                        checked={this.props.isExpense}
-                        toggle
-                        onClick={this.props.handleToggle}
-                      />
-                    </ToggleBox>
-                  </div>
-                  {this.props.isExpense
-                    ? <Inputs
-                        required
-                        type="text"
-                        name="expense"
-                        value={this.props.expense}
-                        action="บาท/ปี"
-                        placeholder="จำนวนเงิน"
-                        onChange={this.props.handleChange}
-                      />
-                    : <Inputs
-                        type="number"
-                        name="expense"
-                        value=""
-                        action="บาท/ปี"
-                        placeholder="จำนวนเงิน"
-                        readOnly
-                      />}
-                </PlanBox>
+                <div className="toggle">
+                  <ToggleBox>
+                    <Checkbox
+                      name="isExpense"
+                      checked={this.props.isExpense}
+                      toggle
+                      onClick={this.props.handleToggle}
+                    />
+                  </ToggleBox>
+                </div>
+                {this.props.isExpense
+                  ? <Inputs
+                    required
+                    type="text"
+                    name="expense"
+                    value={this.props.expense}
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    onChange={this.props.handleChange}
+                  />
+                  : <Inputs
+                    type="number"
+                    name="expense"
+                    value=""
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    readOnly
+                  />}
+              </PlanBox>
               : null}
 
             <SaveButton type="submit">

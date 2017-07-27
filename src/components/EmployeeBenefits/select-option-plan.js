@@ -52,19 +52,19 @@ class SelectOptionPlan extends Component {
             <div className="select-button">
               {this.props.selectOption === 'Fixed'
                 ? <Form.Field>
-                    <Radio
-                      name="planGroup"
-                      value={element.name}
-                      checked={this.state.value === element.name}
-                      onChange={this.handleChange}
-                    />
-                  </Form.Field>
+                  <Radio
+                    name="planGroup"
+                    value={element.name}
+                    checked={this.state.value === element.name}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
                 : <Form.Field>
-                    <Checkbox
-                      value={element.name}
-                      onChange={this.props.handleFlexChange}
-                    />
-                  </Form.Field>}
+                  <Checkbox
+                    value={element.name}
+                    onChange={this.props.handleFlexChange}
+                  />
+                </Form.Field>}
             </div>
           </div>
           <div className={this.props.columnsLenght}>
@@ -104,16 +104,16 @@ class SelectOptionPlan extends Component {
           </div>
           {this.props.plan === 'Flex'
             ? <div className="large-4 columns">
-                <div
-                  className={`basic-status-box${isActive}`}
-                  onClick={() =>
-                    this.props.handleActivePlan(index, element.name)}
-                  role="button"
-                  aria-hidden
-                >
-                  <p>ตั้งแผนนี้เป็นค่าเริ่มต้น</p>
-                </div>
+              <div
+                className={`basic-status-box${isActive}`}
+                onClick={() =>
+                  this.props.handleActivePlan(index, element.name)}
+                role="button"
+                aria-hidden
+              >
+                <p>ตั้งแผนนี้เป็นค่าเริ่มต้น</p>
               </div>
+            </div>
             : null}
         </div>
       )

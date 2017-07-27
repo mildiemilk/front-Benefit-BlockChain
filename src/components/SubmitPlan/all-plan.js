@@ -310,253 +310,253 @@ class AllsetPlan extends Component {
           <div className="row">
             {this.state.setPlan === 'IPD'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('IPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('IPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textIpdActive}>IPD</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('IPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('IPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textIpdActive}>IPD</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('IPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('IPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textIpd}>IPD</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('IPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('IPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textIpd}>IPD</span>
+                </div>
+              </div>}
             {this.state.setPlan === 'OPD'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('OPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('OPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textOpdActive}>OPD</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('OPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('OPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textOpdActive}>OPD</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('OPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('OPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textOpd}>OPD</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('OPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('OPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textOpd}>OPD</span>
+                </div>
+              </div>}
             {this.state.setPlan === 'Dental'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('Dental')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('Dental')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textDentalActive}>Dental</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('Dental')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('Dental')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textDentalActive}>Dental</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('Dental')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('Dental')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textDental}>Dental</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('Dental')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('Dental')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textDental}>Dental</span>
+                </div>
+              </div>}
             {this.state.setPlan === 'Life'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('Life')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('Life')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textLifeActive}>Life</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('Life')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('Life')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textLifeActive}>Life</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('Life')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('Life')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textLife}>Life</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('Life')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('Life')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textLife}>Life</span>
+                </div>
+              </div>}
           </div>
           <div className="paragraph">
             {this.state.setPlan === 'OPD'
               ? <OPD
-                  handleVerifyState={this.handleVerifyState}
-                  handleCloseModal={this.handleCloseModal}
-                  handleRecordVerifyState={this.handleRecordVerifyState}
-                  handleNextPlan={this.handleNextPlan}
-                  handleNewReset={this.handleNewReset}
-                  openModal={this.state.openModal}
-                  handleReset={this.handleReset}
-                  handleResetOPD={this.props.handleResetOPD}
-                  handleToggle={this.props.handleToggleOpdCoPlay}
-                  reset={this.state.reset}
-                  setPlan={this.state.setPlan}
-                  activePlan={this.props.activePlan}
-                  handleChange={this.props.handleChange}
-                  handleChangeToNull={this.props.handleChangeToNull}
-                  opdCoPlay={this.props.opdCoPlay}
-                  opdPerYear={this.props.opdPerYear}
-                  opdPerTime={this.props.opdPerTime}
-                  opdTimeNotExceedPerYear={this.props.opdTimeNotExceedPerYear}
-                  opdCoPlayQuota={this.props.opdCoPlayQuota}
-                  opdCoPlayDeductable={this.props.opdCoPlayDeductable}
-                  opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
-                  opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
-                  opdCoPlayMixYear={this.props.opdCoPlayMixYear}
-                />
+                handleVerifyState={this.handleVerifyState}
+                handleCloseModal={this.handleCloseModal}
+                handleRecordVerifyState={this.handleRecordVerifyState}
+                handleNextPlan={this.handleNextPlan}
+                handleNewReset={this.handleNewReset}
+                openModal={this.state.openModal}
+                handleReset={this.handleReset}
+                handleResetOPD={this.props.handleResetOPD}
+                handleToggle={this.props.handleToggleOpdCoPlay}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+                activePlan={this.props.activePlan}
+                handleChange={this.props.handleChange}
+                handleChangeToNull={this.props.handleChangeToNull}
+                opdCoPlay={this.props.opdCoPlay}
+                opdPerYear={this.props.opdPerYear}
+                opdPerTime={this.props.opdPerTime}
+                opdTimeNotExceedPerYear={this.props.opdTimeNotExceedPerYear}
+                opdCoPlayQuota={this.props.opdCoPlayQuota}
+                opdCoPlayDeductable={this.props.opdCoPlayDeductable}
+                opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
+                opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
+                opdCoPlayMixYear={this.props.opdCoPlayMixYear}
+              />
               : null}
             {this.state.setPlan === 'IPD'
               ? <IPD
-                  handleVerifyState={this.handleVerifyState}
-                  handleCloseModal={this.handleCloseModal}
-                  handleRecordVerifyState={this.handleRecordVerifyState}
-                  handleNextPlan={this.handleNextPlan}
-                  handleNewReset={this.handleNewReset}
-                  openModal={this.state.openModal}
-                  handleChange={this.props.handleChange}
-                  handleChangeToNull={this.props.handleChangeToNull}
-                  handleReset={this.handleReset}
-                  handleResetIPD={this.props.handleResetIPD}
-                  handleToggle={this.props.handleToggleIpdCoPlay}
-                  reset={this.state.reset}
-                  setPlan={this.state.setPlan}
-                  activePlan={this.props.activePlan}
-                  lifePerYear={this.props.lifePerYear}
-                  lifeTimeOfSalary={this.props.lifeTimeOfSalary}
-                  lifeNotExceed={this.props.lifeNotExceed}
-                  ipdType={this.props.ipdType}
-                  ipdLumsumPerYear={this.props.ipdLumsumPerYear}
-                  ipdLumsumPerTime={this.props.ipdLumsumPerTime}
-                  ipdLumsumTimeNotExceedPerYear={
-                    this.props.ipdLumsumTimeNotExceedPerYear
-                  }
-                  rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
-                  rbLumsumNigthNotExceedPerYear={
-                    this.props.rbLumsumNigthNotExceedPerYear
-                  }
-                  rbLumsumPayNotExceedPerNight={
-                    this.props.rbLumsumPayNotExceedPerNight
-                  }
-                  rbLumsumPayNotExceedPerYear={
-                    this.props.rbLumsumPayNotExceedPerYear
-                  }
-                  rbSchedulePatient={this.props.rbSchedulePatient}
-                  rbScheduleIntensiveCarePatient={
-                    this.props.rbScheduleIntensiveCarePatient
-                  }
-                  rbScheduleDoctor={this.props.rbScheduleDoctor}
-                  rbScheduleSurgerySchedule={
-                    this.props.rbScheduleSurgerySchedule
-                  }
-                  rbScheduleSurgeryNonSchedule={
-                    this.props.rbScheduleSurgeryNonSchedule
-                  }
-                  rbScheduleService={this.props.rbScheduleService}
-                  rbScheduleSmallSurgery={this.props.rbScheduleSmallSurgery}
-                  rbScheduleAdviser={this.props.rbScheduleAdviser}
-                  rbScheduleAmbulance={this.props.rbScheduleAmbulance}
-                  rbScheduleAccident={this.props.rbScheduleAccident}
-                  rbScheduleTreatment={this.props.rbScheduleTreatment}
-                  rbScheduleTransplant={this.props.rbScheduleTransplant}
-                  ipdCoPlay={this.props.ipdCoPlay}
-                  ipdCoPlayQuota={this.props.ipdCoPlayQuota}
-                  ipdCoPlayDeductable={this.props.ipdCoPlayDeductable}
-                  ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
-                  ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
-                  ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
-                />
+                handleVerifyState={this.handleVerifyState}
+                handleCloseModal={this.handleCloseModal}
+                handleRecordVerifyState={this.handleRecordVerifyState}
+                handleNextPlan={this.handleNextPlan}
+                handleNewReset={this.handleNewReset}
+                openModal={this.state.openModal}
+                handleChange={this.props.handleChange}
+                handleChangeToNull={this.props.handleChangeToNull}
+                handleReset={this.handleReset}
+                handleResetIPD={this.props.handleResetIPD}
+                handleToggle={this.props.handleToggleIpdCoPlay}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+                activePlan={this.props.activePlan}
+                lifePerYear={this.props.lifePerYear}
+                lifeTimeOfSalary={this.props.lifeTimeOfSalary}
+                lifeNotExceed={this.props.lifeNotExceed}
+                ipdType={this.props.ipdType}
+                ipdLumsumPerYear={this.props.ipdLumsumPerYear}
+                ipdLumsumPerTime={this.props.ipdLumsumPerTime}
+                ipdLumsumTimeNotExceedPerYear={
+                  this.props.ipdLumsumTimeNotExceedPerYear
+                }
+                rbLumsumRoomPerNight={this.props.rbLumsumRoomPerNight}
+                rbLumsumNigthNotExceedPerYear={
+                  this.props.rbLumsumNigthNotExceedPerYear
+                }
+                rbLumsumPayNotExceedPerNight={
+                  this.props.rbLumsumPayNotExceedPerNight
+                }
+                rbLumsumPayNotExceedPerYear={
+                  this.props.rbLumsumPayNotExceedPerYear
+                }
+                rbSchedulePatient={this.props.rbSchedulePatient}
+                rbScheduleIntensiveCarePatient={
+                  this.props.rbScheduleIntensiveCarePatient
+                }
+                rbScheduleDoctor={this.props.rbScheduleDoctor}
+                rbScheduleSurgerySchedule={
+                  this.props.rbScheduleSurgerySchedule
+                }
+                rbScheduleSurgeryNonSchedule={
+                  this.props.rbScheduleSurgeryNonSchedule
+                }
+                rbScheduleService={this.props.rbScheduleService}
+                rbScheduleSmallSurgery={this.props.rbScheduleSmallSurgery}
+                rbScheduleAdviser={this.props.rbScheduleAdviser}
+                rbScheduleAmbulance={this.props.rbScheduleAmbulance}
+                rbScheduleAccident={this.props.rbScheduleAccident}
+                rbScheduleTreatment={this.props.rbScheduleTreatment}
+                rbScheduleTransplant={this.props.rbScheduleTransplant}
+                ipdCoPlay={this.props.ipdCoPlay}
+                ipdCoPlayQuota={this.props.ipdCoPlayQuota}
+                ipdCoPlayDeductable={this.props.ipdCoPlayDeductable}
+                ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
+                ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
+                ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
+              />
               : null}
             {this.state.setPlan === 'Dental'
               ? <Dental
-                  handleVerifyState={this.handleVerifyState}
-                  handleCloseModal={this.handleCloseModal}
-                  handleRecordVerifyState={this.handleRecordVerifyState}
-                  handleNextPlan={this.handleNextPlan}
-                  handleNewReset={this.handleNewReset}
-                  openModal={this.state.openModal}
-                  handleReset={this.handleReset}
-                  reset={this.state.reset}
-                  setPlan={this.state.setPlan}
-                  activePlan={this.props.activePlan}
-                  dentalPerYear={this.props.dentalPerYear}
-                  handleChange={this.props.handleChange}
-                  handleResetDental={this.props.handleResetDental}
-                />
+                handleVerifyState={this.handleVerifyState}
+                handleCloseModal={this.handleCloseModal}
+                handleRecordVerifyState={this.handleRecordVerifyState}
+                handleNextPlan={this.handleNextPlan}
+                handleNewReset={this.handleNewReset}
+                openModal={this.state.openModal}
+                handleReset={this.handleReset}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+                activePlan={this.props.activePlan}
+                dentalPerYear={this.props.dentalPerYear}
+                handleChange={this.props.handleChange}
+                handleResetDental={this.props.handleResetDental}
+              />
               : null}
             {this.state.setPlan === 'Life'
               ? <Life
-                  handleVerifyState={this.handleVerifyState}
-                  handleCloseModal={this.handleCloseModal}
-                  handleRecordVerifyState={this.handleRecordVerifyState}
-                  handleNextPlan={this.handleNextPlan}
-                  handleNewReset={this.handleNewReset}
-                  openModal={this.state.openModal}
-                  handleReset={this.handleReset}
-                  reset={this.state.reset}
-                  setPlan={this.state.setPlan}
-                  activePlan={this.props.activePlan}
-                  handleChange={this.props.handleChange}
-                  lifePerYear={this.props.lifePerYear}
-                  lifeTimeOfSalary={this.props.lifeTimeOfSalary}
-                  lifeNotExceed={this.props.lifeNotExceed}
-                  handleResetLife={this.props.handleResetLife}
-                />
+                handleVerifyState={this.handleVerifyState}
+                handleCloseModal={this.handleCloseModal}
+                handleRecordVerifyState={this.handleRecordVerifyState}
+                handleNextPlan={this.handleNextPlan}
+                handleNewReset={this.handleNewReset}
+                openModal={this.state.openModal}
+                handleReset={this.handleReset}
+                reset={this.state.reset}
+                setPlan={this.state.setPlan}
+                activePlan={this.props.activePlan}
+                handleChange={this.props.handleChange}
+                lifePerYear={this.props.lifePerYear}
+                lifeTimeOfSalary={this.props.lifeTimeOfSalary}
+                lifeNotExceed={this.props.lifeNotExceed}
+                handleResetLife={this.props.handleResetLife}
+              />
               : null}
           </div>
         </div>

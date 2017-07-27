@@ -242,49 +242,49 @@ class IPD3 extends Component {
               >
                 {this.state.value === 'Non-Schedule'
                   ? <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSurgeryNonSchedule"
-                      value={this.props.rbScheduleSurgeryNonSchedule}
-                      onChange={this.props.handleChange}
-                      id="rbScheduleSurgeryNonSchedule"
-                      required
-                    />
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSurgeryNonSchedule"
+                    value={this.props.rbScheduleSurgeryNonSchedule}
+                    onChange={this.props.handleChange}
+                    id="rbScheduleSurgeryNonSchedule"
+                    required
+                  />
                   : <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSurgeryNonSchedule"
-                      onChange={this.props.handleChange}
-                      value=""
-                      readOnly
-                      id="rbScheduleSurgeryNonSchedule"
-                    />}
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSurgeryNonSchedule"
+                    onChange={this.props.handleChange}
+                    value=""
+                    readOnly
+                    id="rbScheduleSurgeryNonSchedule"
+                  />}
                 <p> บาท</p>
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 {this.state.value === 'Schedule'
                   ? <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSurgerySchedule"
-                      value={this.props.rbScheduleSurgerySchedule}
-                      onChange={this.props.handleChange}
-                      id="rbScheduleSurgerySchedule"
-                      required
-                    />
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSurgerySchedule"
+                    value={this.props.rbScheduleSurgerySchedule}
+                    onChange={this.props.handleChange}
+                    id="rbScheduleSurgerySchedule"
+                    required
+                  />
                   : <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSurgerySchedule"
-                      value=""
-                      onChange={this.props.handleChange}
-                      readOnly
-                      id="rbScheduleSurgerySchedule"
-                    />}
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSurgerySchedule"
+                    value=""
+                    onChange={this.props.handleChange}
+                    readOnly
+                    id="rbScheduleSurgerySchedule"
+                  />}
                 <p> บาท</p>
               </Form.Group>
               <Form.Group inline style={{ marginTop: '15.5%' }}>

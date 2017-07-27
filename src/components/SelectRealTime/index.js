@@ -19,7 +19,7 @@ import {
   Number,
 } from './styled'
 
-const ProgressStyle = styled(Progress)`
+const ProgressStyle = styled(Progress) `
     &&&{
         width: 80%;
         margin: 0px 20px;
@@ -80,16 +80,16 @@ class SelectRealTime extends Component {
             </BoxList>
             {this.state.isPlan
               ? <DetailIn>
-                  <tr>
-                    <td>แผนสิทธิประโยชน์ 1</td>
-                    <td>
-                      <ProgressStyle percent={68} color="yellow" />
-                      <Number>
-                        68 คน
+                <tr>
+                  <td>แผนสิทธิประโยชน์ 1</td>
+                  <td>
+                    <ProgressStyle percent={68} color="yellow" />
+                    <Number>
+                      68 คน
                       </Number>
-                    </td>
-                  </tr>
-                </DetailIn>
+                  </td>
+                </tr>
+              </DetailIn>
               : null}
           </BoxDetail>
 

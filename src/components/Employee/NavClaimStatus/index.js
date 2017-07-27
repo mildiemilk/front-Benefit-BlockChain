@@ -22,15 +22,15 @@ class NavClaimStatus extends Component {
           <div className={`Circle${isActive}`} />
           {this.state.pendingStatus
             ? <img
-                className="NavImg"
-                src="../../../../employee/navclaimstatus/icons-8-hourglass-copy.png"
-                alt="icons-8"
-              />
+              className="NavImg"
+              src="../../../../employee/navclaimstatus/icons-8-hourglass-copy.png"
+              alt="icons-8"
+            />
             : <img
-                className="NavImg"
-                src="../../../../employee/navclaimstatus/icons-8-hourglass.png"
-                alt="icons-8"
-              />}
+              className="NavImg"
+              src="../../../../employee/navclaimstatus/icons-8-hourglass.png"
+              alt="icons-8"
+            />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> กำลังพิจารณา </p>
           </div>
@@ -50,15 +50,15 @@ class NavClaimStatus extends Component {
           <div className={`Circle${isActive}`} />
           {this.state.approveStatus
             ? <img
-                className="NavEmailImg"
-                src="../../../../employee/navclaimstatus/icons-8-message-copy.png"
-                alt="icons-8"
-              />
+              className="NavEmailImg"
+              src="../../../../employee/navclaimstatus/icons-8-message-copy.png"
+              alt="icons-8"
+            />
             : <img
-                className="NavEmailImg"
-                src="../../../../employee/navclaimstatus/icons-8-message.png"
-                alt="icons-8"
-              />}
+              className="NavEmailImg"
+              src="../../../../employee/navclaimstatus/icons-8-message.png"
+              alt="icons-8"
+            />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> อนุมัติ </p>
           </div>
@@ -78,15 +78,15 @@ class NavClaimStatus extends Component {
           <div className={`Circle${isActive}`} />
           {this.state.watingStatus
             ? <img
-                className="NavImg"
-                src="../../../../employee/navclaimstatus/icons-8-money-transfer-copy.png"
-                alt="icons-8"
-              />
+              className="NavImg"
+              src="../../../../employee/navclaimstatus/icons-8-money-transfer-copy.png"
+              alt="icons-8"
+            />
             : <img
-                className="NavImg"
-                src="../../../../employee/navclaimstatus/icons-8-money-transfer.png"
-                alt="icons-8"
-              />}
+              className="NavImg"
+              src="../../../../employee/navclaimstatus/icons-8-money-transfer.png"
+              alt="icons-8"
+            />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> รอโอนเงิน </p>
           </div>
@@ -106,15 +106,15 @@ class NavClaimStatus extends Component {
           <div className={`Circle${isActive}`} />
           {this.state.claimedStatus
             ? <img
-                className="NavImg"
-                src="../../../../employee/navclaimstatus/icons-8-checked-copy.png"
-                alt="icons-8"
-              />
+              className="NavImg"
+              src="../../../../employee/navclaimstatus/icons-8-checked-copy.png"
+              alt="icons-8"
+            />
             : <img
-                className="NavImg"
-                src="../../../../employee/navclaimstatus/icons-8-checked.png"
-                alt="icons-8"
-              />}
+              className="NavImg"
+              src="../../../../employee/navclaimstatus/icons-8-checked.png"
+              alt="icons-8"
+            />}
           <div className="DivStatus">
             <p className={`Status${isActive}`}> เคลมสำเร็จ </p>
           </div>

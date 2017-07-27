@@ -4,7 +4,7 @@ import { Icon } from 'semantic-ui-react'
 import styled from 'react-sc'
 import { IPDTopic, Sub, IPDDetail } from './styled'
 
-const Icons = styled(Icon)`
+const Icons = styled(Icon) `
   &&&{
     position: absolute;
     right: 2%;
@@ -126,11 +126,11 @@ export default class IPDDropBox extends Component {
           0
           ? ''
           : plan.rbScheduleService +
-              plan.rbScheduleSmallSurgery +
-              plan.rbScheduleAdviser +
-              plan.rbScheduleAmbulance +
-              plan.rbScheduleAccident +
-              plan.rbScheduleTreatment}
+          plan.rbScheduleSmallSurgery +
+          plan.rbScheduleAdviser +
+          plan.rbScheduleAmbulance +
+          plan.rbScheduleAccident +
+          plan.rbScheduleTreatment}
       </th>
     ))
   }
@@ -231,34 +231,34 @@ export default class IPDDropBox extends Component {
 
         {this.state.firstIPDBox
           ? <div className="SubCompareIPD">
-              <table>
-                <tr>
-                  <th>
-                    <IPDDetail>
+            <table>
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา
                       {' '}
-                      1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา
-                      {' '}
-                      <br />
-                      (สูงสุดต่อวัน)
+                    <br />
+                    (สูงสุดต่อวัน)
                     </IPDDetail>
-                  </th>
-                  {this.renderRbSchedulePatient()}
-                </tr>
+                </th>
+                {this.renderRbSchedulePatient()}
+              </tr>
 
-                <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
-                  <th>
-                    <IPDDetail>
+              <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก
                       {' '}
-                      1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก
-                      {' '}
-                      <br />
-                      (สูงสุดต่อวัน)
+                    <br />
+                    (สูงสุดต่อวัน)
                     </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleIntensiveCarePatient()}
-                </tr>
-              </table>
-            </div>
+                </th>
+                {this.renderRbScheduleIntensiveCarePatient()}
+              </tr>
+            </table>
+          </div>
           : null}
 
         <div className="CompareIPD">
@@ -306,79 +306,79 @@ export default class IPDDropBox extends Component {
 
         {this.state.fourthIPDBox
           ? <div className="SubCompareIPD">
-              <table>
-                <tr>
-                  <th>
-                    <IPDDetail>
+            <table>
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิต
                       {' '}
-                      4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิต
-                      {' '}
-                      <br />
-                      และส่วนประกอบของโลหิตค่าตรวจทางห้องปฏิบัติ <br />
-                      การอุปกรณ์ทางการแพทย์ ค่าห้องผ่าตัดและ <br />
-                      อุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/ <br />
-                      กิจกรรมบำบัด ค่าแพทย์วิสัญญี/พยาบาลวิสัญญี <br />
-                      คุ้มครองสูงสุดต่อครั้ง
+                    <br />
+                    และส่วนประกอบของโลหิตค่าตรวจทางห้องปฏิบัติ <br />
+                    การอุปกรณ์ทางการแพทย์ ค่าห้องผ่าตัดและ <br />
+                    อุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/ <br />
+                    กิจกรรมบำบัด ค่าแพทย์วิสัญญี/พยาบาลวิสัญญี <br />
+                    คุ้มครองสูงสุดต่อครั้ง
                     </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleService()}
-                </tr>
+                </th>
+                {this.renderRbScheduleService()}
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail>
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง
                       {' '}
-                      4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง
-                      {' '}
-                    </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleSmallSurgery()}
-                </tr>
+                  </IPDDetail>
+                </th>
+                {this.renderRbScheduleSmallSurgery()}
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail>
-                      {' '}4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการ
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการ
                       ผ่าตัดต่อครั้ง
                     </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleAdviser()}
-                </tr>
+                </th>
+                {this.renderRbScheduleAdviser()}
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleAmbulance()}
-                </tr>
+              <tr>
+                <th>
+                  <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
+                </th>
+                {this.renderRbScheduleAmbulance()}
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail>
-                      {' '}4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24
                       ช.ม. หลังเกิดอุบัติเหตุต่อครั้ง
                     </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleAccident()}
-                </tr>
+                </th>
+                {this.renderRbScheduleAccident()}
+              </tr>
 
-                <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
-                  <th>
-                    <IPDDetail>
+              <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภาย
                       {' '}
-                      4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภาย
-                      {' '}
-                      <br />
-                      หลังจากการออกจากโรงพยาบาลรวมถึงค่ารักษา <br />
-                      พยาบาลแบบผู้ป่วยนอก และค่ากายภาพบำบัดที่ต่อ <br />
-                      เนื่องจากผู้ป่วยใน (สูงสุดไม่เกิน 30 วัน) คุ้มครอง <br />
-                      สูงสุดต่อครั้ง
+                    <br />
+                    หลังจากการออกจากโรงพยาบาลรวมถึงค่ารักษา <br />
+                    พยาบาลแบบผู้ป่วยนอก และค่ากายภาพบำบัดที่ต่อ <br />
+                    เนื่องจากผู้ป่วยใน (สูงสุดไม่เกิน 30 วัน) คุ้มครอง <br />
+                    สูงสุดต่อครั้ง
                     </IPDDetail>
-                  </th>
-                  {this.renderRbScheduleTreatment()}
-                </tr>
-              </table>
-            </div>
+                </th>
+                {this.renderRbScheduleTreatment()}
+              </tr>
+            </table>
+          </div>
           : null}
 
         <div className="CompareIPD">

@@ -104,22 +104,22 @@ class Life extends Component {
             </Form.Field>
             {this.state.value === 'firstLifeChoice'
               ? <Form.Input
-                  type="number"
-                  placeholder="จำนวนบาท"
-                  name="lifePerYear"
-                  id="lifePerYear"
-                  onChange={this.handleChange}
-                  value={this.props.lifePerYear}
-                  required
-                />
+                type="number"
+                placeholder="จำนวนบาท"
+                name="lifePerYear"
+                id="lifePerYear"
+                onChange={this.handleChange}
+                value={this.props.lifePerYear}
+                required
+              />
               : <Form.Input
-                  type="number"
-                  placeholder="จำนวนบาท"
-                  name="lifePerYear"
-                  id="lifePerYear"
-                  onChange={this.handleChange}
-                  readOnly
-                />}
+                type="number"
+                placeholder="จำนวนบาท"
+                name="lifePerYear"
+                id="lifePerYear"
+                onChange={this.handleChange}
+                readOnly
+              />}
             <p> บาท</p>
           </Form.Group>
           <Form.Group inline>
@@ -134,22 +134,22 @@ class Life extends Component {
             </Form.Field>
             {this.state.value === 'secondLifeChoice'
               ? <Form.Select
-                  placeholder="เท่า"
-                  name="lifeTimeOfSalary"
-                  id="lifeTimeOfSalary"
-                  value={this.props.lifeTimeOfSalary}
-                  options={options}
-                  onChange={this.handleChange}
-                  required
-                />
+                placeholder="เท่า"
+                name="lifeTimeOfSalary"
+                id="lifeTimeOfSalary"
+                value={this.props.lifeTimeOfSalary}
+                options={options}
+                onChange={this.handleChange}
+                required
+              />
               : <Form.Select
-                  placeholder="เท่า"
-                  name="lifeTimeOfSalary"
-                  id="lifeTimeOfSalary"
-                  options={1}
-                  onChange={this.handleChange}
-                  disabled
-                />}
+                placeholder="เท่า"
+                name="lifeTimeOfSalary"
+                id="lifeTimeOfSalary"
+                options={1}
+                onChange={this.handleChange}
+                disabled
+              />}
             <p> เท่า</p>
           </Form.Group>
           <Form.Group inline>
@@ -164,48 +164,48 @@ class Life extends Component {
             </Form.Field>
             {this.state.value === 'thirdLifeChoice'
               ? <div style={{ display: '-webkit-box' }}>
-                  <Form.Select
-                    placeholder="เท่า"
-                    options={options}
-                    name="lifeTimeOfSalary"
-                    id="lifeTimeOfSalary"
-                    value={this.props.lifeTimeOfSalary}
-                    onChange={this.handleChange}
-                    style={{ width: '150px' }}
-                  />
-                  <Form.Input
-                    type="number"
-                    label="เท่า แต่ไม่เกิน"
-                    placeholder="จำนวนบาท"
-                    name="lifeNotExceed"
-                    id="lifeNotExceed"
-                    value={this.props.lifeNotExceed}
-                    onChange={this.handleChange}
-                    required
-                    style={{ width: '95px' }}
-                  />
-                </div>
+                <Form.Select
+                  placeholder="เท่า"
+                  options={options}
+                  name="lifeTimeOfSalary"
+                  id="lifeTimeOfSalary"
+                  value={this.props.lifeTimeOfSalary}
+                  onChange={this.handleChange}
+                  style={{ width: '150px' }}
+                />
+                <Form.Input
+                  type="number"
+                  label="เท่า แต่ไม่เกิน"
+                  placeholder="จำนวนบาท"
+                  name="lifeNotExceed"
+                  id="lifeNotExceed"
+                  value={this.props.lifeNotExceed}
+                  onChange={this.handleChange}
+                  required
+                  style={{ width: '95px' }}
+                />
+              </div>
               : <div style={{ display: '-webkit-box' }}>
-                  <Form.Select
-                    placeholder="เท่า"
-                    options={1}
-                    onChange={this.handleChange}
-                    name="lifeTimeOfSalary"
-                    id="lifeTimeOfSalary"
-                    disabled
-                    style={{ width: '150px' }}
-                  />
-                  <Form.Input
-                    type="number"
-                    label="เท่า แต่ไม่เกิน"
-                    placeholder="จำนวนบาท"
-                    name="lifeNotExceed"
-                    id="lifeNotExceed"
-                    onChange={this.handleChange}
-                    readOnly
-                    style={{ width: '100px' }}
-                  />
-                </div>}
+                <Form.Select
+                  placeholder="เท่า"
+                  options={1}
+                  onChange={this.handleChange}
+                  name="lifeTimeOfSalary"
+                  id="lifeTimeOfSalary"
+                  disabled
+                  style={{ width: '150px' }}
+                />
+                <Form.Input
+                  type="number"
+                  label="เท่า แต่ไม่เกิน"
+                  placeholder="จำนวนบาท"
+                  name="lifeNotExceed"
+                  id="lifeNotExceed"
+                  onChange={this.handleChange}
+                  readOnly
+                  style={{ width: '100px' }}
+                />
+              </div>}
             <p> บาท</p>
           </Form.Group>
           <div className="row">

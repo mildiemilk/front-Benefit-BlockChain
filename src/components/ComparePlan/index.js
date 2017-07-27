@@ -19,7 +19,7 @@ import {
 import NavInsure from '../NavInsure'
 import IPDDropBox from './ipd-dropbox'
 
-const Icons = styled(Icon)`
+const Icons = styled(Icon) `
   &&&{
     position: absolute;
     margin-left: -1.5%;
@@ -43,7 +43,7 @@ class ComparePlan extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   handleToggleLife = () => {
     if (this.state.lifeBox) {
@@ -121,13 +121,13 @@ class ComparePlan extends Component {
           0
           ? '-'
           : plan.opdPerYear +
-              plan.opdPerTime +
-              plan.opdTimeNotExceedPerYear +
-              plan.opdCoPlayQuota +
-              plan.opdCoPlayDeductable +
-              plan.opdCoPlayMixPercentage +
-              plan.opdCoPlayMixNotExceed +
-              plan.opdCoPlayMixYear}
+          plan.opdPerTime +
+          plan.opdTimeNotExceedPerYear +
+          plan.opdCoPlayQuota +
+          plan.opdCoPlayDeductable +
+          plan.opdCoPlayMixPercentage +
+          plan.opdCoPlayMixNotExceed +
+          plan.opdCoPlayMixYear}
       </th>
     ))
   }
@@ -163,29 +163,29 @@ class ComparePlan extends Component {
           0
           ? '-'
           : plan.ipdLumsumPerYear +
-              plan.ipdLumsumPerTime +
-              plan.ipdLumsumTimeNotExceedPerYear +
-              plan.rbLumsumRoomPerNight +
-              plan.rbLumsumNigthNotExceedPerYear +
-              plan.rbLumsumPayNotExceedPerNight +
-              plan.rbLumsumPayNotExceedPerYear +
-              plan.rbSchedulePatient +
-              plan.rbScheduleIntensiveCarePatient +
-              plan.rbScheduleDoctor +
-              plan.rbScheduleSurgerySchedule +
-              plan.rbScheduleSurgeryNonSchedule +
-              plan.rbScheduleService +
-              plan.rbScheduleSmallSurgery +
-              plan.rbScheduleAdviser +
-              plan.rbScheduleAmbulance +
-              plan.rbScheduleAccident +
-              plan.rbScheduleTreatment +
-              plan.rbScheduleTransplant +
-              plan.ipdCoPlayQuota +
-              plan.ipdCoPlayDeductable +
-              plan.ipdCoPlayMixPercentage +
-              plan.ipdCoPlayMixNotExceed +
-              plan.ipdCoPlayMixYear}
+          plan.ipdLumsumPerTime +
+          plan.ipdLumsumTimeNotExceedPerYear +
+          plan.rbLumsumRoomPerNight +
+          plan.rbLumsumNigthNotExceedPerYear +
+          plan.rbLumsumPayNotExceedPerNight +
+          plan.rbLumsumPayNotExceedPerYear +
+          plan.rbSchedulePatient +
+          plan.rbScheduleIntensiveCarePatient +
+          plan.rbScheduleDoctor +
+          plan.rbScheduleSurgerySchedule +
+          plan.rbScheduleSurgeryNonSchedule +
+          plan.rbScheduleService +
+          plan.rbScheduleSmallSurgery +
+          plan.rbScheduleAdviser +
+          plan.rbScheduleAmbulance +
+          plan.rbScheduleAccident +
+          plan.rbScheduleTreatment +
+          plan.rbScheduleTransplant +
+          plan.ipdCoPlayQuota +
+          plan.ipdCoPlayDeductable +
+          plan.ipdCoPlayMixPercentage +
+          plan.ipdCoPlayMixNotExceed +
+          plan.ipdCoPlayMixYear}
       </th>
     ))
   }
@@ -248,11 +248,11 @@ class ComparePlan extends Component {
                     </tr>
                     {this.state.lifeBox
                       ? <HiddenBox>
-                          <br />
-                          &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
+                        <br />
+                        &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
                           {' '}
-                          <br />
-                          &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
+                        <br />
+                        &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
                           (วันละ 1 ครั้ง <br />&nbsp; ไม่เกิน 30 ต่อปี)
                         </HiddenBox>
                       : null}
@@ -275,11 +275,11 @@ class ComparePlan extends Component {
                     </tr>
                     {this.state.dentalBox
                       ? <HiddenBox>
-                          <br />
-                          &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
+                        <br />
+                        &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
                           {' '}
-                          <br />
-                          &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
+                        <br />
+                        &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
                           (วันละ 1 ครั้ง <br />&nbsp; ไม่เกิน 30 ต่อปี)
                         </HiddenBox>
                       : null}
@@ -305,11 +305,11 @@ class ComparePlan extends Component {
                     </tr>
                     {this.state.OPDBox
                       ? <HiddenBox>
-                          <br />
-                          &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
+                        <br />
+                        &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
                           {' '}
-                          <br />
-                          &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
+                        <br />
+                        &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
                           (วันละ 1 ครั้ง <br />&nbsp; ไม่เกิน 30 ต่อปี)
                         </HiddenBox>
                       : null}

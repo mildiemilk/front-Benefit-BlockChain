@@ -48,10 +48,10 @@ class Bidding extends Component {
         <div className="BidContent">
           {this.state.isDetail
             ? <Details
-                handleClick={this.handleClick}
-                bid={this.state.Detail}
-                index={this.state.index}
-              />
+              handleClick={this.handleClick}
+              bid={this.state.Detail}
+              index={this.state.index}
+            />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
         </div>
       </div>

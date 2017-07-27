@@ -4,7 +4,7 @@ import styled from 'react-sc'
 import PropTypes from 'prop-types'
 import { IPDTopic, Sub, IPDDetail } from './styled'
 
-const Icons = styled(Icon)`
+const Icons = styled(Icon) `
   &&&{
     position: absolute;
     left: 88%;
@@ -227,40 +227,40 @@ export default class IPDDropBox extends Component {
 
         {this.state.firstIPDBox
           ? <div className="SubPlanIPD">
-              <table>
-                <tr>
-                  <th>
-                    <IPDDetail>
+            <table>
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา
                       {' '}
-                      1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา
-                      {' '}
-                      <br />
-                      (สูงสุดต่อวัน)
+                    <br />
+                    (สูงสุดต่อวัน)
                     </IPDDetail>
-                  </th>
-                  <th>
-                    2,000
+                </th>
+                <th>
+                  2,000
                     <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                </tr>
+                </th>
+              </tr>
 
-                <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
-                  <th>
-                    <IPDDetail>
+              <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก
                       {' '}
-                      1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก
-                      {' '}
-                      <br />
-                      (สูงสุดต่อวัน)
+                    <br />
+                    (สูงสุดต่อวัน)
                     </IPDDetail>
-                  </th>
-                  <th>
-                    4,000
+                </th>
+                <th>
+                  4,000
                     <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-                  </th>
-                </tr>
-              </table>
-            </div>
+                </th>
+              </tr>
+            </table>
+          </div>
           : null}
 
         <div className="PlanIPD">
@@ -315,94 +315,94 @@ export default class IPDDropBox extends Component {
 
         {this.state.fourthIPDBox
           ? <div className="SubPlanIPD">
-              <table>
-                <tr>
-                  <th>
-                    <IPDDetail>
-                      4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิต และส่วนประกอบของโลหิต
+            <table>
+              <tr>
+                <th>
+                  <IPDDetail>
+                    4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิต และส่วนประกอบของโลหิต
                       ค่าตรวจทางห้องปฏิบัติ การอุปกรณ์ทางการแพทย์ ค่าห้องผ่าตัดและอุปกรณ์
                       ค่ายากลับบ้าน ค่ากายภาพบำบัด/กิจกรรมบำบัด ค่าแพทย์วิสัญญี/พยาบาลวิสัญญี
                       คุ้มครองสูงสุดต่อครั้ง
                     </IPDDetail>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง
+                </th>
+                <th>
+                  <Sub>
+                    คุ้มครองค่าใช้จ่ายตามจริง
                       <br /> ไม่เกินความคุ้มครองสูงสุด
                     </Sub>
-                  </th>
-                </tr>
+                </th>
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail>
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง
                       {' '}
-                      4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง
-                      {' '}
-                    </IPDDetail>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง
+                  </IPDDetail>
+                </th>
+                <th>
+                  <Sub>
+                    คุ้มครองค่าใช้จ่ายตามจริง
                       <br /> ไม่เกินความคุ้มครองสูงสุด
                     </Sub>
-                  </th>
-                </tr>
+                </th>
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail>
-                      {' '}4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการ
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการ
                       ผ่าตัดต่อครั้ง
                     </IPDDetail>
+                </th>
+                <th>
+                  4,000
                   </th>
-                  <th>
-                    4,000
-                  </th>
-                </tr>
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
+              <tr>
+                <th>
+                  <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
+                </th>
+                <th>
+                  1,000
                   </th>
-                  <th>
-                    1,000
-                  </th>
-                </tr>
+              </tr>
 
-                <tr>
-                  <th>
-                    <IPDDetail>
-                      {' '}4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24
+              <tr>
+                <th>
+                  <IPDDetail>
+                    {' '}4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24
                       ช.ม. หลังเกิดอุบัติเหตุต่อครั้ง
                     </IPDDetail>
+                </th>
+                <th>
+                  4,000
                   </th>
-                  <th>
-                    4,000
-                  </th>
-                </tr>
+              </tr>
 
-                <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
-                  <th>
-                    <IPDDetail>
-                      {' '}
-                      4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภาย
+              <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
+                <th>
+                  <IPDDetail>
+                    {' '}
+                    4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภาย
                       หลังจากการออกจากโรงพยาบาลรวมถึงค่ารักษา
                       พยาบาลแบบผู้ป่วยนอก และค่ากายภาพบำบัดที่ต่อ
                       เนื่องจากผู้ป่วยใน (สูงสุดไม่เกิน 30 วัน) คุ้มครอง
                       สูงสุดต่อครั้ง
                     </IPDDetail>
-                  </th>
-                  <th>
-                    <Sub>
-                      คุ้มครองค่าใช้จ่ายตามจริง <br />
-                      ตามความต้องการของแพทย์ <br />
-                      ไม่เกินความคุ้มครองสูงสุด
+                </th>
+                <th>
+                  <Sub>
+                    คุ้มครองค่าใช้จ่ายตามจริง <br />
+                    ตามความต้องการของแพทย์ <br />
+                    ไม่เกินความคุ้มครองสูงสุด
                     </Sub>
-                  </th>
-                </tr>
-              </table>
-            </div>
+                </th>
+              </tr>
+            </table>
+          </div>
           : null}
 
         <div className="PlanIPD">

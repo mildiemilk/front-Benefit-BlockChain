@@ -149,11 +149,11 @@ class SettingBenefit extends Component {
               <div className="large-2 large-offset-1 columns">
                 {!this.state.emptyPlan
                   ? <AddPlanBar
-                      plan={this.state.planList}
-                      handleActivePlan={this.handleActivePlan}
-                      handleDeletePlan={this.handleDeletePlan}
-                      activePlan={this.state.activePlan}
-                    />
+                    plan={this.state.planList}
+                    handleActivePlan={this.handleActivePlan}
+                    handleDeletePlan={this.handleDeletePlan}
+                    activePlan={this.state.activePlan}
+                  />
                   : null}
 
                 <AddPlan onClick={this.handleAddPlan}>
@@ -168,23 +168,23 @@ class SettingBenefit extends Component {
               <div className="large-8 columns">
                 {!this.state.emptyPlan
                   ? <SettingPlan
-                      optionPlan={this.props.optionPlan}
-                      handleChange={this.handleChange}
-                      handleToggle={this.handleToggle}
-                      handleSubmit={this.handleSubmit}
-                      planName={this.state.planName}
-                      plan={this.state.plan}
-                      isHealth={this.state.isHealth}
-                      isExpense={this.state.isExpense}
-                      health={this.state.health}
-                      expense={this.state.expense}
-                    />
+                    optionPlan={this.props.optionPlan}
+                    handleChange={this.handleChange}
+                    handleToggle={this.handleToggle}
+                    handleSubmit={this.handleSubmit}
+                    planName={this.state.planName}
+                    plan={this.state.plan}
+                    isHealth={this.state.isHealth}
+                    isExpense={this.state.isExpense}
+                    health={this.state.health}
+                    expense={this.state.expense}
+                  />
                   : <Blog>
-                      <BlogImg src="../../../setbenefit/icons-8-form.png" />
-                      <BlogContent>
-                        {' '}ยังไม่มีการสร้างแผนสิทธิประโยชน์{' '}
-                      </BlogContent>
-                    </Blog>}
+                    <BlogImg src="../../../setbenefit/icons-8-form.png" />
+                    <BlogContent>
+                      {' '}ยังไม่มีการสร้างแผนสิทธิประโยชน์{' '}
+                    </BlogContent>
+                  </Blog>}
 
               </div>
 

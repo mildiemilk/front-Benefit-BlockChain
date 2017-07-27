@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 const ModalContents = styled(Modal.Content)`
   &&&{

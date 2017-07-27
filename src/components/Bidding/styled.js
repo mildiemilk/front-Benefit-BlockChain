@@ -1,5 +1,5 @@
 import { Icon, Popup } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 export const Head = styled.p`
   margin-bottom: 0px;

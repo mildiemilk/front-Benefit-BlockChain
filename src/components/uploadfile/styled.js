@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Image } from 'semantic-ui-react'
 
 export const Detail = styled.div`

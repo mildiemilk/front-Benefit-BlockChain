@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Sidebar from './sidebar'
+import Sidebar from './Sidebar'
 
 class MainLayout extends Component {
   static propTypes = {

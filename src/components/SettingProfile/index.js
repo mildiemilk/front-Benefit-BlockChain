@@ -4,7 +4,7 @@ import {
   Segment,
   Dropdown,
 } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { createProfile } from '../../api/profile-company'
 import {

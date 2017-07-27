@@ -1,4 +1,4 @@
-import styled from 'react-sc'
+import styled from 'styled-components'
 
 export const ModalHeader = styled.p`
   font-size: 16px;

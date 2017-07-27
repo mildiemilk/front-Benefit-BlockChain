@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Icon } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { IPDTopic, Sub, IPDDetail } from './styled'
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Modal, Checkbox } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import {
   ModalHeader,
   ModalContent,

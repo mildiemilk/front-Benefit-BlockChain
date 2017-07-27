@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Card, Feed, Rating } from 'semantic-ui-react'
 
 const CardLink = styled(Card.Content)`

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Link } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import Header from '../header'
 import Footer from '../footer'
 

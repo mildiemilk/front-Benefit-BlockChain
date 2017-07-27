@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { IPDTopic, Sub, IPDDetail } from './styled'
 
 const Icons = styled(Icon) `

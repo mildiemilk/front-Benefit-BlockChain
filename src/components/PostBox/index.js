@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
 import { Rating } from 'semantic-ui-react'
 import PropTypes from 'prop-types'

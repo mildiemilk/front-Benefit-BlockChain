@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Image } from 'semantic-ui-react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import logo from './logo_white.png'

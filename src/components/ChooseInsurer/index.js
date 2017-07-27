@@ -139,7 +139,7 @@ class InsurerSelect extends Component {
   }
 
   renderList = insurers => {
-    insurers.map((insurer, index) => (
+    const list = insurers.map((insurer, index) => (
       <Card className="large-2 columns">
         <Check
           type="checkbox"
@@ -150,6 +150,7 @@ class InsurerSelect extends Component {
         {insurer.insurerName}
       </Card>
     ))
+    return list
   }
 
   render() {

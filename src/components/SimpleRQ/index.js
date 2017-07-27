@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Card, Input, Select, Form, Checkbox } from 'semantic-ui-react'
 import * as simpleRQOption from './simple-requirement-option'
 import { fillSimpleRQ } from '../../api/simple-requirement'

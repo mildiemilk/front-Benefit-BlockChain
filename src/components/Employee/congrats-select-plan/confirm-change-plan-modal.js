@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Modal } from 'semantic-ui-react'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { push as Menu } from 'react-burger-menu'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import { Divider, Icon } from 'semantic-ui-react'
 
 const List = styled.div`

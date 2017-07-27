@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styled from 'react-sc'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Card, Image, Checkbox } from 'semantic-ui-react'
 import { PostreText, TopSpace } from './styled'

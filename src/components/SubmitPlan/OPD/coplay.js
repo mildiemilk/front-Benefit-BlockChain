@@ -177,7 +177,7 @@ class CoPlay extends Component {
                     required
                   />
                 </div>
-              : <div style={{ display: 'inherit' }}>
+              : <span style={{ display: 'inherit' }}>
                   <Form.Input
                     type="number"
                     style={{ width: '80px' }}
@@ -210,7 +210,7 @@ class CoPlay extends Component {
                     onChange={this.props.handleChange}
                     readOnly
                   />
-                </div>}
+                </span>}
           </Form.Group>
         </div>
       </div>

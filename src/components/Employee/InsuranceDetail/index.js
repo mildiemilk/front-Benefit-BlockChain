@@ -152,87 +152,87 @@ class InsuranceDetail extends Component {
                         คุ้มครองสูงสุด 20,000 บาท
                       </span>
                       {this.state.IPDBox
-                        ? <Icons
-                            onClick={this.handleToggleIPD}
-                            disabled
-                            name="remove"
-                          />
-                        : <Icons
-                            onClick={this.handleToggleIPD}
-                            disabled
-                            name="plus"
-                          />}
+                      ? <Icons
+                        onClick={this.handleToggleIPD}
+                        disabled
+                        name="remove"
+                      />
+                      : <Icons
+                        onClick={this.handleToggleIPD}
+                        disabled
+                        name="plus"
+                      />}
 
                       {this.state.IPDBox
-                        ? <div className="SpaceSubDetail">
-                            <div className="clearfix">
-                              <span className="LeftDetail">
-                                Lumsum
-                              </span>
-                              <span className="RightDetail">
-                                1,200 บาท/ปี
-                              </span>
-                            </div>
+                      ? <div className="SpaceSubDetail">
+                        <div className="clearfix">
+                          <span className="LeftDetail">
+                            Lumsum
+                          </span>
+                          <span className="RightDetail">
+                            1,200 บาท/ปี
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="LeftDetail">
-                                Co-Pay
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="LeftDetail">
+                            Co-Pay
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="TabDetail">
-                                Quota Share
-                              </span>
-                              <span className="RightDetail">
-                                10%
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="TabDetail">
+                            Quota Share
+                          </span>
+                          <span className="RightDetail">
+                            10%
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="LeftDetail">
-                                Detail 1
-                              </span>
-                              <span className="RightDetail">
-                                400 บาท
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="LeftDetail">
+                            Detail 1
+                          </span>
+                          <span className="RightDetail">
+                            400 บาท
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="LeftDetail">
-                                Detail 2
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="LeftDetail">
+                            Detail 2
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="TabDetail">
-                                Detail 2.1
-                              </span>
-                              <span className="RightDetail">
-                                200 บาท/ครั้ง
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="TabDetail">
+                            Detail 2.1
+                          </span>
+                          <span className="RightDetail">
+                            200 บาท/ครั้ง
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="TabDetail">
-                                Detail 2.2
-                              </span>
-                              <span className="RightDetail">
-                                500 บาท
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="TabDetail">
+                            Detail 2.2
+                          </span>
+                          <span className="RightDetail">
+                            500 บาท
+                          </span>
+                        </div>
 
-                            <div className="clearfix">
-                              <span className="LeftDetail">
-                                Detail 3
-                              </span>
-                              <span className="RightDetail">
-                                300 บาท
-                              </span>
-                            </div>
+                        <div className="clearfix">
+                          <span className="LeftDetail">
+                            Detail 3
+                          </span>
+                          <span className="RightDetail">
+                            300 บาท
+                          </span>
+                        </div>
 
-                          </div>
-                        : null}
+                      </div>
+                      : null}
                     </div>
                   </div>
                 </div>

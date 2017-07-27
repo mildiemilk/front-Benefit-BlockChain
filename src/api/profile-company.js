@@ -24,7 +24,6 @@ export function createProfile(profile) {
       })
       .catch(err => {
         dispatch(createProfileFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }

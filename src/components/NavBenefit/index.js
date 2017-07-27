@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { createProfile } from '../../api/profile-company'
 import { Step, Divider } from 'semantic-ui-react'
 import { Head, Step1, StepRadius, Step6 } from './styled'
-import styled from 'react-sc'
 
 class NavInsure extends Component {
+  static propTypes = {
+    step: PropTypes.number.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {

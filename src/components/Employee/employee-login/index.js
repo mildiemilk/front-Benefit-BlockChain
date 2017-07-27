@@ -39,68 +39,66 @@ class EmployeeLogin extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     return (
-        <div className="login">
-          <Header />
-          <div className="row bg">
-            <div className="small-10 small-centered columns">
-              <div className="gift-logo-in-mobile">
-                <img src={gift} alt="gift" />
-                <div className="form-login-mobile">
-                  <Form>
-                    <Form.Field>
-                      <div className="divInput">
-                        <img
-                          className="iconImage"
-                          alt="icomEmail"
-                          src={emailIcon}
-                        />
-                        <Form.Input
-                          placeholder="อีเมล"
-                          name="email"
-                          type="email"
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </div>
-                    </Form.Field>
-                    <Form.Field>
-                      <div className="divInput">
-                        <img
-                          className="iconImage"
-                          alt="iconKey"
-                          src={keyIcon}
-                        />
-                        <Form.Input
-                          name="password"
-                          placeholder="รหัสผ่าน"
-                          type="password"
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </div>
-                    </Form.Field>
-                    {this.props.data.error
-                      ? <p style={{ color: 'red' }}>
-                          {' '}{this.props.data.message}
-                        </p>
-                      : <p />}
-                    <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
-                    <ModalAddData
-                      email={this.state.email}
-                      password={this.state.password}
-                      handleSubmit={this.handleSubmit}
-                    />
-                  </Form>
-                </div>
+      <div className="login">
+        <Header />
+        <div className="row bg">
+          <div className="small-10 small-centered columns">
+            <div className="gift-logo-in-mobile">
+              <img src={gift} alt="gift" />
+              <div className="form-login-mobile">
+                <Form>
+                  <Form.Field>
+                    <div className="divInput">
+                      <img
+                        className="iconImage"
+                        alt="icomEmail"
+                        src={emailIcon}
+                      />
+                      <Form.Input
+                        placeholder="อีเมล"
+                        name="email"
+                        type="email"
+                        onChange={this.handleChange}
+                        required
+                      />
+                    </div>
+                  </Form.Field>
+                  <Form.Field>
+                    <div className="divInput">
+                      <img
+                        className="iconImage"
+                        alt="iconKey"
+                        src={keyIcon}
+                      />
+                      <Form.Input
+                        name="password"
+                        placeholder="รหัสผ่าน"
+                        type="password"
+                        onChange={this.handleChange}
+                        required
+                      />
+                    </div>
+                  </Form.Field>
+                  {this.props.data.error
+                    ? <p style={{ color: 'red' }}>
+                      {' '}{this.props.data.message}
+                    </p>
+                    : <p />}
+                  <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
+                  <ModalAddData
+                    email={this.state.email}
+                    password={this.state.password}
+                    handleSubmit={this.handleSubmit}
+                  />
+                </Form>
               </div>
-
             </div>
-            <div className="small-2 columns" />
+
           </div>
-          <Footer />
+          <div className="small-2 columns" />
         </div>
-        
-    
+        <Footer />
+      </div>
     )
   }
 }

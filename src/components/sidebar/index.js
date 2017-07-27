@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Menu, Icon, Item } from 'semantic-ui-react'
+import { Icon, Item } from 'semantic-ui-react'
 
 export default class Sidebar extends Component {
   state = { activeItem: 'home' }
 
-  //handleItemClicklogin = (e, { name }) => this.setState({ activeItem: login })
   handleItemClick1 = e => {
     e.preventDefault()
     window.location.href = '/dashboard'
@@ -35,8 +34,6 @@ export default class Sidebar extends Component {
   }
 
   render() {
-    const { activeItem } = this.state
-
     return (
       <aside className="sidebar">
         <Item.Group className="sidebarstyle" relaxed>

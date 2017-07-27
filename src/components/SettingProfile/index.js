@@ -1,32 +1,21 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import {
+  Segment,
+  Dropdown,
+} from 'semantic-ui-react'
+import styled from 'react-sc'
+import PropTypes from 'prop-types'
 import { createProfile } from '../../api/profile-company'
 import {
-  Button,
-  Form,
-  Grid,
-  Segment,
-  Image,
-  Dropdown,
-  Menu,
-  Container,
-} from 'semantic-ui-react'
-import {
-  Text,
   Box,
-  Border,
   Head,
   Detail1,
   Oval,
   Detail2,
   Detail3,
-  Next,
   DefaultImg,
 } from './styled'
-import styled from 'react-sc'
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
@@ -79,6 +68,10 @@ const NumberOfEmployees = [
 ]
 
 class SettingProfile extends Component {
+  static propTypes = {
+    profile: PropTypes.shape.isRequired,
+    createProfile: PropTypes.shape.isRequired,
+  }
   constructor() {
     super()
     this.state = {
@@ -94,20 +87,18 @@ class SettingProfile extends Component {
       imagePreviewUrl: '',
     }
   }
-  _handleSubmit(e) {
-    e.preventDefault()
-    // TODO: do something with -> this.state.file
-    console.log('handle uploading-', this.state.file)
+  onInputChange(value, stateName) {
+    this.setState({ [stateName]: value })
   }
-  _handleImageChange(e) {
+
+  _handleImageChange = e => {
     e.preventDefault()
 
-    let reader = new FileReader()
-    let file = e.target.files[0]
-
+    const reader = new FileReader()
+    const file = e.target.files[0]
     reader.onloadend = () => {
       this.setState({
-        file: file,
+        file,
         imagePreviewUrl: reader.result,
       })
     }
@@ -116,7 +107,6 @@ class SettingProfile extends Component {
   }
   handleSubmit = e => {
     e.preventDefault()
-    const { companyFill } = this.props
     const {
       companyName: { value: companyName },
       location: { value: location },
@@ -127,12 +117,12 @@ class SettingProfile extends Component {
     } = e.target
 
     this.setState({
-      companyName: companyName,
-      location: location,
-      hrDetail: hrDetail,
-      tel: tel,
-      companyBroker: companyBroker,
-      companyInsurer: companyInsurer,
+      companyName,
+      location,
+      hrDetail,
+      tel,
+      companyBroker,
+      companyInsurer,
     })
 
     const { typeOfBusiness, numberOfEmployees } = this.state
@@ -147,13 +137,8 @@ class SettingProfile extends Component {
       companyInsurer,
     })
   }
-  onInputChange(value, stateName) {
-    this.setState({ [stateName]: value })
-  }
-
   render() {
-    const { profile } = this.state
-    let { imagePreviewUrl } = this.state
+    const { imagePreviewUrl } = this.state
     let $imagePreview = null
     // let elmnt = document.getElementById("Image")
     // let width = elmnt.clientWidth;
@@ -169,10 +154,9 @@ class SettingProfile extends Component {
 
       $imagePreview = (
         <div className="thumbnail">
-          <img id="Image" src={imagePreviewUrl} />
+          <img id="Image" src={imagePreviewUrl} alt="imageCompany" />
         </div>
       )
-      // }
     } else {
       $imagePreview = <DefaultImg />
     }
@@ -278,8 +262,8 @@ class SettingProfile extends Component {
                 />
                 {this.props.profile.error
                   ? <span style={{ color: 'red' }}>
-                      {' '}<br />{this.props.profile.message}
-                    </span>
+                    {' '}<br />{this.props.profile.message}
+                  </span>
                   : <span />}
               </Segment>
             </div>
@@ -300,9 +284,4 @@ SettingProfile.propTypes = {}
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
 })
-
-const mapStateToProps = state => ({
-  profile: state.profile,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)
+export default connect(null, mapDispatchToProps)(SettingProfile)

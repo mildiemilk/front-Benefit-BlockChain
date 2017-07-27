@@ -1,5 +1,4 @@
 import styled from 'react-sc'
-import { Link } from 'react-router-dom'
 
 export const Text = styled.span`
   vertical-align: middle;
@@ -9,11 +8,11 @@ export const Text = styled.span`
   font-weight: 300;
 `
 export const Box = styled.input`
-	border-radius: 3px;
-	border: solid 1px #dddddd;
+  border-radius: 3px;
+  border: solid 1px #dddddd;
   padding: 2%;
   width: 100%;
-	height: 38px;
+  height: 38px;
   &::-webkit-input-placeholder {
         color: #323028;
         opacity: 0.3;

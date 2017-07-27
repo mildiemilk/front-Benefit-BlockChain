@@ -51,7 +51,6 @@ export function uploadFile(file) {
 
   return () => {
     // const files = file
-    console.log('aaaaa', file)
     const options = {
       method: 'post',
       url: UPLOADFILE_URI,

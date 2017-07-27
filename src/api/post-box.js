@@ -14,12 +14,10 @@ export function postBox(passwordToConfirm) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
         dispatch(selectBrokerSuccess(res.data))
       })
       .catch(err => {
         dispatch(selectBrokerFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }

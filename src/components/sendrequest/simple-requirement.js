@@ -22,7 +22,7 @@ const Checkboxs = styled(Checkbox)`
 
 class PostSimpleRQ extends Component {
   static propTypes = {
-    data: PropTypes.arrayof(PropTypes.object).isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor(props) {

@@ -10,7 +10,7 @@ export default class planBoxs extends Component {
     handleModal: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     plan: PropTypes.shape.isRequired,
     activePlan: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,

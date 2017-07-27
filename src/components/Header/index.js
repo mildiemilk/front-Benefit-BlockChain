@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Menu, Image } from 'semantic-ui-react'
 import styled from 'react-sc'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import logo from './logo_white.png'
 import avatarn from './avatarn.JPG'
-import { connect } from 'react-redux'
 import { HeadNav, LogoPosition, SpanStyle } from './styled'
 import { getCompanyName } from '../../api/profile-company'
-import PropTypes from 'prop-types'
 
 const ImageCss = styled(Image)`
   &&&{
@@ -16,6 +16,11 @@ const ImageCss = styled(Image)`
   }
 `
 class Header extends Component {
+  static propTypes = {
+    getCompanyName: PropTypes.func.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }
+
   constructor() {
     super()
     this.state = {}
@@ -23,10 +28,6 @@ class Header extends Component {
 
   componentDidMount() {
     this.props.getCompanyName()
-  }
-
-  static propTypes = {
-    getCompanyName: PropTypes.func.isRequired,
   }
 
   render() {
@@ -53,7 +54,7 @@ class Header extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getCompanyName: data => dispatch(getCompanyName()),
+  getCompanyName: () => dispatch(getCompanyName()),
 })
 
 const mapStateToProps = state => ({

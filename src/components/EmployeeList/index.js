@@ -1,22 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Divider,
-  Icon,
-  Popup,
-  List,
-} from 'semantic-ui-react'
+import { Form, Divider, Icon, Popup, List } from 'semantic-ui-react'
 import '../../styles/employee-list.scss'
 
 class employeeList extends Component {
@@ -113,9 +96,8 @@ class employeeList extends Component {
   }
 
   plusLimitChange = () => {
-    if (this.state.maxList > this.renderSeach().length) {
-      return
-    } else {
+    if (this.state.maxList <= this.renderSeach().length) {
+      const { data } = this.state
       this.setState({
         minList: this.state.minList + 4,
         maxList: this.state.maxList + 4,
@@ -128,9 +110,7 @@ class employeeList extends Component {
   }
 
   minusLimitChange = () => {
-    if (this.state.minList === 0) {
-      return
-    } else {
+    if (this.state.minList !== 0) {
       this.setState({
         minList: this.state.minList - 4,
         maxList: this.state.maxList - 4,
@@ -138,14 +118,88 @@ class employeeList extends Component {
       })
     }
   }
+  sortByGroup = value => {
+    if (value === 'respect') {
+      this.setState({
+        data: this.state.data.sort((a, b) => {
+          if (a.group.toLowerCase() < b.group.toLowerCase()) return -1
+          if (a.group.toLowerCase() > b.group.toLowerCase()) return 1
+          return 0
+        }),
+      })
+    } else {
+      this.setState({
+        data: this.state.data.sort((a, b) => {
+          if (a.group.toLowerCase() < b.group.toLowerCase()) return 1
+          if (a.group.toLowerCase() > b.group.toLowerCase()) return -1
+          return 0
+        }),
+      })
+    }
+  }
 
-  renderListEmployee = data => {
+  sortByName = value => {
+    if (value === 'respect') {
+      this.setState({
+        data: this.state.data.sort((a, b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+          return 0
+        }),
+      })
+    } else {
+      this.setState({
+        data: this.state.data.sort((a, b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
+          return 0
+        }),
+      })
+    }
+  }
+
+  sortByCode = value => {
+    if (value === 'respect') {
+      this.setState({
+        data: this.state.data.sort((a, b) => {
+          if (a.code.toLowerCase() < b.code.toLowerCase()) return -1
+          if (a.code.toLowerCase() > b.code.toLowerCase()) return 1
+          return 0
+        }),
+      })
+    } else {
+      this.setState({
+        data: this.state.data.sort((a, b) => {
+          if (a.code.toLowerCase() < b.code.toLowerCase()) return 1
+          if (a.code.toLowerCase() > b.code.toLowerCase()) return -1
+          return 0
+        }),
+      })
+    }
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  renderSeach = () => {
+    const list = this.state.data.filter(
+      data =>
+        data.name.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
+        data.code.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
+        data.level.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
+        data.position.toLowerCase().indexOf(this.state.seach.toLowerCase()) >=
+          0 ||
+        data.group.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0,
+    )
+    return list
+  }
+
+  renderListEmployee = () => {
     const seachData = this.renderSeach()
     const showData = seachData.filter(
       (data, index) =>
         index >= this.state.minList && index <= this.state.maxList,
     )
-    return showData.map((element, index) => (
+    return showData.map(element => (
       <div className="employee-list-box">
         <div className="row">
           <div className="large-2 columns">
@@ -197,79 +251,6 @@ class employeeList extends Component {
     ))
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
-  renderSeach = () => {
-    return this.state.data.filter(
-      data =>
-        data.name.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
-        data.code.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
-        data.level.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
-        data.position.toLowerCase().indexOf(this.state.seach.toLowerCase()) >=
-          0 ||
-        data.group.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0,
-    )
-  }
-
-  sortByName = value => {
-    if (value === 'respect') {
-      this.setState({
-        data: this.state.data.sort(function compare(a, b) {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
-          return 0
-        }),
-      })
-    } else {
-      this.setState({
-        data: this.state.data.sort(function compare(a, b) {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
-          return 0
-        }),
-      })
-    }
-  }
-
-  sortByCode = value => {
-    if (value === 'respect') {
-      this.setState({
-        data: this.state.data.sort(function compare(a, b) {
-          if (a.code.toLowerCase() < b.code.toLowerCase()) return -1
-          if (a.code.toLowerCase() > b.code.toLowerCase()) return 1
-          return 0
-        }),
-      })
-    } else {
-      this.setState({
-        data: this.state.data.sort(function compare(a, b) {
-          if (a.code.toLowerCase() < b.code.toLowerCase()) return 1
-          if (a.code.toLowerCase() > b.code.toLowerCase()) return -1
-          return 0
-        }),
-      })
-    }
-  }
-
-  sortByGroup = value => {
-    if (value === 'respect') {
-      this.setState({
-        data: this.state.data.sort(function compare(a, b) {
-          if (a.group.toLowerCase() < b.group.toLowerCase()) return -1
-          if (a.group.toLowerCase() > b.group.toLowerCase()) return 1
-          return 0
-        }),
-      })
-    } else {
-      this.setState({
-        data: this.state.data.sort(function compare(a, b) {
-          if (a.group.toLowerCase() < b.group.toLowerCase()) return 1
-          if (a.group.toLowerCase() > b.group.toLowerCase()) return -1
-          return 0
-        }),
-      })
-    }
-  }
   render() {
     return (
       <div>
@@ -414,6 +395,8 @@ class employeeList extends Component {
               <div
                 className="list-change-level-box"
                 onClick={this.minusLimitChange}
+                role="button"
+                aria-hidden
               >
                 <Icon name="caret left" size="large" />
               </div>
@@ -423,6 +406,8 @@ class employeeList extends Component {
               <div
                 className="list-change-level-box"
                 onClick={this.plusLimitChange}
+                role="button"
+                aria-hidden
               >
                 <Icon name="caret right" size="large" />
               </div>
@@ -434,9 +419,4 @@ class employeeList extends Component {
   }
 }
 
-employeeList.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(employeeList)
+export default employeeList

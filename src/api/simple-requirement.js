@@ -39,13 +39,11 @@ export function fillSimpleRQ(
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
         dispatch(fillsimpleRqSuccess(res.data))
         window.location.href = '/postbox'
       })
       .catch(err => {
         dispatch(fillsimpleRqFailure(err.response.data))
-        console.log(err.response)
       })
   }
 }

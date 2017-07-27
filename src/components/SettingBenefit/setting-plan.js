@@ -44,7 +44,7 @@ const NameInput = styled(Input)`
 
 class SettingPlan extends Component {
   static propTypes = {
-    optionPlan: PropTypes.arrayof(PropTypes.object).isRequired,
+    optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleToggle: PropTypes.func.isRequired,

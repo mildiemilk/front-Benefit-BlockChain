@@ -9,7 +9,7 @@ class ViewPlanBox extends Component {
   static propTypes = {
     copyPlan: PropTypes.func.isRequired,
     deletePlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor(props) {

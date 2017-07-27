@@ -39,7 +39,7 @@ export function getAllInsurerSuccess(data) {
   return { type: GETALLINSURER_REQUEST_SUCCESS, data }
 }
 export function getAllInsurerFailure(data) {
-  return { type: GETALLINSURER_REQUEST_FAILUER, data }
+  return { type: GETALLINSURER_REQUEST_FAILURE, data }
 }
 export function getSelectInsurerSuccess(data) {
   return { type: GETSELECTINSURER_REQUEST_SUCCESS, data }
@@ -62,7 +62,6 @@ export function chooseInsurerReducer(state = defaultInsurer, action) {
 export function getSelectInsurer(state = defaultInsurer, action) {
   switch (action.type) {
     case GETSELECTINSURER_REQUEST_SUCCESS:
-      console.log('retrieved data ', action.data)
       return Object.assign({}, state, {
         defaultInsurer: action.data,
         requestDone: true,

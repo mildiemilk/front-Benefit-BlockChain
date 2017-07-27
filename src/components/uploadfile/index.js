@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Grid, Icon } from 'semantic-ui-react'
 import { uploadFile } from '../../api/upload-file'
@@ -16,6 +17,10 @@ import {
 import NavInsure from '../NavInsure'
 
 class Uploadfile extends Component {
+  static propTypes = {
+    uploadFile: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -93,15 +98,15 @@ class Uploadfile extends Component {
         </p>
       )
     }
+    return ''
   }
 
   RenderUploadRow = () => {
     const output = []
-    for (let i = 1; i < this.state.AmountUploadBlock; i++) {
-      console.log('outner id:', i)
+    for (let i = 1; i < this.state.AmountUploadBlock; i += 1) {
       output.push(
         <tr style={{ height: '50px' }}>
-          <td> </td>
+          <td>&nbsp;</td>
           <td>
             <FileuploadBox>
               {this.RenderInsideBlock(i)}
@@ -125,12 +130,13 @@ class Uploadfile extends Component {
     return output
   }
 
-  RenderListClaimData = ClaimData => {
-    if (this.state.ClaimData.length >= 1) {
+  RenderListClaimData = () => {
+    const { ClaimData } = this.state
+    if (ClaimData.length >= 1) {
       return (
         <p>
-          {this.state.ClaimData[0].name} &nbsp;
-          {(this.state.ClaimData[0].size / 100000).toFixed(2)} MB
+          {ClaimData[0].name} &nbsp;
+          {(ClaimData[0].size / 100000).toFixed(2)} MB
           <Icon
             id={0}
             style={{ positon: 'absolute', top: '-25px' }}
@@ -140,22 +146,23 @@ class Uploadfile extends Component {
           />
         </p>
       )
-    } else return <p />
+    }
+    return <p />
   }
 
-  handleDeleteBrokerFile = e => {
+  handleDeleteBrokerFile = () => {
     this.setState({
       summitBrokerFile: '',
     })
-    console.log(this.state.ClaimData)
   }
 
-  RendersummitBrokerFile = summitBrokerFile => {
-    if (this.state.summitBrokerFile) {
+  RendersummitBrokerFile = () => {
+    const { summitBrokerFile } = this.state
+    if (summitBrokerFile) {
       return (
         <p>
-          {this.state.summitBrokerFile.name} &nbsp;
-          {(this.state.summitBrokerFile.size / 100000).toFixed(2)} MB
+          {summitBrokerFile.name} &nbsp;
+          {(summitBrokerFile.size / 100000).toFixed(2)} MB
           <Icon
             id={1}
             style={{ positon: 'absolute', top: '-25px' }}
@@ -165,7 +172,8 @@ class Uploadfile extends Component {
           />
         </p>
       )
-    } else return <p />
+    }
+    return <p />
   }
 
   render() {
@@ -195,9 +203,7 @@ class Uploadfile extends Component {
                         </td>
                         <td>
                           <FileuploadBox>
-                            {this.RendersummitBrokerFile(
-                              this.state.summitBrokerFile,
-                            )}
+                            {this.RendersummitBrokerFile()}
                           </FileuploadBox>
                         </td>
                         <td style={{ width: '20%' }}>
@@ -228,7 +234,7 @@ class Uploadfile extends Component {
                         </td>
                         <td>
                           <FileuploadBox>
-                            {this.RenderListClaimData(this.state.ClaimData)}
+                            {this.RenderListClaimData()}
                           </FileuploadBox>
                         </td>
                         <td style={{ width: '20%' }}>

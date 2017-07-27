@@ -19,7 +19,7 @@ class Dental extends Component {
     activePlan: PropTypes.number.isRequired,
     setPlan: PropTypes.string.isRequired,
     openModal: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     reset: PropTypes.bool.isRequired,
   }
 

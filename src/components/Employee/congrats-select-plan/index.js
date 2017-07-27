@@ -38,12 +38,14 @@ class CongrateSelectPlan extends Component {
               <DeadlineBox />
             </div>
             <div className="center-link">
-              <button
+              <p
                 className="link-change-plan"
                 onClick={() => this.handleOpenModal()}
+                role="button"
+                aria-hidden
               >
                 <u>ต้องการเปลี่ยนแผน?</u>
-              </button>
+              </p>
             </div>
           </div>
         </div>

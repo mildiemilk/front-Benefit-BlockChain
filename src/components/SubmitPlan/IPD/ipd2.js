@@ -20,28 +20,41 @@ class IPD2 extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.rbLumsumRoomPerNight !== null &&
-        this.props.rbLumsumNigthNotExceedPerYear !== null
-        ? 'firstChoice'
-        : this.props.rbLumsumPayNotExceedPerNight !== null &&
-            this.props.rbLumsumPayNotExceedPerYear !== null
-            ? 'secondChoice'
-            : '',
+    const {
+      rbLumsumRoomPerNight,
+      rbLumsumPayNotExceedPerYear,
+      rbLumsumPayNotExceedPerNight,
+      rbLumsumNigthNotExceedPerYear,
+    } = this.props
+    let value
+    if (rbLumsumRoomPerNight && rbLumsumNigthNotExceedPerYear) {
+      value = 'firstChoice'
+    } else if (rbLumsumPayNotExceedPerNight && rbLumsumPayNotExceedPerYear) {
+      value = 'secondChoice'
+    } else {
+      value = ''
     }
+    this.state = { value }
   }
 
   componentWillReceiveProps(newProps) {
+    const {
+      rbLumsumRoomPerNight,
+      rbLumsumPayNotExceedPerYear,
+      rbLumsumPayNotExceedPerNight,
+      rbLumsumNigthNotExceedPerYear,
+    } = newProps
+    let value
+    if (rbLumsumRoomPerNight && rbLumsumNigthNotExceedPerYear) {
+      value = 'firstChoice'
+    } else if (rbLumsumPayNotExceedPerNight && rbLumsumPayNotExceedPerYear) {
+      value = 'secondChoice'
+    } else {
+      value = ''
+    }
+
     if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({
-        value: newProps.rbLumsumRoomPerNight !== null &&
-          newProps.rbLumsumNigthNotExceedPerYear !== null
-          ? 'firstChoice'
-          : newProps.rbLumsumPayNotExceedPerNight !== null &&
-              newProps.rbLumsumPayNotExceedPerYear !== null
-              ? 'secondChoice'
-              : '',
-      })
+      this.state = { value }
     }
   }
 

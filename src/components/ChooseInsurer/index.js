@@ -37,7 +37,7 @@ class InsurerSelect extends Component {
     getAllInsurer: PropTypes.func.isRequired,
     getSelectInsurer: PropTypes.func.isRequired,
     setTimeOut: PropTypes.func.isRequired,
-    insurerList: PropTypes.array.isRequired,
+    insurerList: PropTypes.arrayOf(PropTypes.object).isRequired,
     chooseInsurer: PropTypes.func.isRequired,
   }
   constructor(props) {

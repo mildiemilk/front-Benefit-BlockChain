@@ -93,7 +93,7 @@ class IPDBidding extends Component {
             {this.state.ipdType === 'R&B Schedule' ? <IPD3Bidding /> : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {true ? <CoPlayBidding /> : null}
+            {this.state.ipdCoPlay ? <CoPlayBidding /> : null}
             <br />
           </Form>
         </div>

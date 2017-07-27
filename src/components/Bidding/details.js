@@ -20,7 +20,7 @@ class Details extends Component {
   static propTypes = {
     bid: PropTypes.shape.isRequired,
     index: PropTypes.string.isRequired,
-    data: PropTypes.array.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleClick: PropTypes.func.isRequired,
   }
   constructor(props) {

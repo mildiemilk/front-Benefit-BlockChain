@@ -9,7 +9,7 @@ class HealthBenefit extends Component {
     addTodoHealth: PropTypes.func.isRequired,
     removeTodoHealth: PropTypes.func.isRequired,
     TextHealth: PropTypes.string.isRequired,
-    HealthList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    HealthList: PropTypes.arrayOf(PropTypes.string).isRequired,
   }
 
   constructor(props) {

@@ -23,7 +23,7 @@ class MenuPlan extends Component {
     openModalForm: PropTypes.func.isRequired,
     handlePlan: PropTypes.func.isRequired,
     handleNewPlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor() {

@@ -1,8 +1,11 @@
 import { APIRequest } from '.'
 import {
   createPlanSuccess,
+  createPlanFailure,
   editPlanSuccess,
+  editPlanFailure,
   getAllPlanSuccess,
+  getAllPlanFailure,
   menuPlanSuccess,
 } from '../reducers/submit-plan'
 
@@ -25,7 +28,7 @@ export function createPlan(profilePlan) {
         dispatch(createPlanSuccess(res.data))
       })
       .catch(err => {
-        console.log(err.response)
+        dispatch(createPlanFailure(err.response.data))
       })
   }
 }
@@ -43,7 +46,7 @@ export function editPlan(editData, planId, editType) {
         dispatch(editPlanSuccess(res.data))
       })
       .catch(err => {
-        console.log(err.response)
+        dispatch(editPlanFailure(err.response.data))
       })
   }
 }
@@ -94,7 +97,7 @@ export function getAllPlan() {
         dispatch(getAllPlanSuccess(res.data))
       })
       .catch(err => {
-        console.log(err.response)
+        dispatch(getAllPlanFailure(err.response.data))
       })
   }
 }

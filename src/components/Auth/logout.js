@@ -11,7 +11,6 @@ class Logout extends Component {
   }
 
   render() {
-    console.log('aaaaaaaaaaaaaaaaaaaa')
     return (
       <div>
         logout

@@ -36,11 +36,16 @@ import SelectRealTime from './SelectRealTime'
 import SendFlexPlan from './SendFlexPlan'
 import Appmobile from './appmobile'
 import EmployeeLogin from './Employee/employee-login'
+import EmployeeList from './EmployeeList'
 
 class App extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    role: PropTypes.string.isRequired,
+    role: PropTypes.string,
+  }
+
+  static defaultProps = {
+    role: '',
   }
 
   constructor() {
@@ -92,6 +97,7 @@ class App extends Component {
                   />
                   <Route path="/sendflexplan" component={SendFlexPlan} />
                   <Route path="/piechart" component={PieChart} />
+                  <Route path="/EmployeeList" component={EmployeeList} />
                 </Switch>
               </MainLayout>
             </Switch>

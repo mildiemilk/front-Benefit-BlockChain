@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Form, Radio } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 
@@ -219,4 +218,4 @@ class CoPlay extends Component {
   }
 }
 
-export default connect(null, null)(CoPlay)
+export default CoPlay

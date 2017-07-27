@@ -4,7 +4,6 @@ import { Menu } from 'semantic-ui-react'
 export default class Menus extends Component {
   state = { activeItem: 'home' }
 
-  //handleItemClicklogin = (e, { name }) => this.setState({ activeItem: login })
   handleItemClickHi = e => {
     e.preventDefault()
     window.location.href = '/hi'

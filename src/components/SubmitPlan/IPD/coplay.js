@@ -21,32 +21,58 @@ class Coplay extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.ipdCoPlayQuota !== null
-        ? 'Quota Share'
-        : this.props.ipdCoPlayDeductable !== null
-            ? 'Deductable'
-            : this.props.ipdCoPlayMixPercentage !== null &&
-                this.props.ipdCoPlayMixNotExceed !== null &&
-                this.props.ipdCoPlayMixYear !== null
-                ? 'Quota Share + Deductable'
-                : '',
+    const {
+      ipdCoPlayQuota,
+      ipdCoPlayDeductable,
+      ipdCoPlayMixYear,
+      ipdCoPlayMixPercentage,
+      ipdCoPlayMixNotExceed,
+    } = this.props
+
+    let value
+
+    if (!ipdCoPlayQuota) {
+      if (!ipdCoPlayDeductable) {
+        if (
+          !(ipdCoPlayMixYear && ipdCoPlayMixPercentage && ipdCoPlayMixNotExceed)
+        ) {
+          value = ''
+        }
+        value = 'Quota Share + Deductable'
+      }
+      value = 'Deductable'
+    } else {
+      value = 'Quota Share'
     }
+    this.state = { value }
   }
 
   componentWillReceiveProps(newProps) {
+    const {
+      ipdCoPlayQuota,
+      ipdCoPlayDeductable,
+      ipdCoPlayMixYear,
+      ipdCoPlayMixPercentage,
+      ipdCoPlayMixNotExceed,
+    } = newProps
+
+    let value
+
+    if (!ipdCoPlayQuota) {
+      if (!ipdCoPlayDeductable) {
+        if (
+          !(ipdCoPlayMixYear && ipdCoPlayMixPercentage && ipdCoPlayMixNotExceed)
+        ) {
+          value = ''
+        }
+        value = 'Quota Share + Deductable'
+      }
+      value = 'Deductable'
+    } else {
+      value = 'Quota Share'
+    }
     if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({
-        value: newProps.ipdCoPlayQuota !== null
-          ? 'Quota Share'
-          : newProps.ipdCoPlayDeductable !== null
-              ? 'Deductable'
-              : newProps.ipdCoPlayMixPercentage !== null &&
-                  newProps.ipdCoPlayMixNotExceed !== null &&
-                  newProps.ipdCoPlayMixYear !== null
-                  ? 'Quota Share + Deductable'
-                  : '',
-      })
+      this.state = { value }
     }
   }
 

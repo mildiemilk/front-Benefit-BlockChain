@@ -9,8 +9,8 @@ export const Detail = styled.div`
 
 export const Head = styled.p`
   font-size: 30px;
-	font-weight: 500;
-	letter-spacing: 0.4px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
 `
 
 export const Side = styled.div`
@@ -19,7 +19,7 @@ export const Side = styled.div`
 `
 export const SideIn = styled.div`
   border-radius: 8px;
-	border: solid 1px rgba(151, 151, 151, 0.66);
+  border: solid 1px rgba(151, 151, 151, 0.66);
   padding:3%;
   margin: 1% 0%;
 `
@@ -29,19 +29,19 @@ export const HeadIn = styled.div`
 `
 export const Card = styled.div`
   width: 140px;
-	height: 145px;
-	border-radius: 8px;
-	background-color: #f5f5f5;
-	border: solid 1px rgba(151, 151, 151, 0.39);
+  height: 145px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  border: solid 1px rgba(151, 151, 151, 0.39);
   margin:1%;
   margin-right: 1.5%;
   float: left !important;
 `
 export const Submit = styled.button`
   width: 164px;
-	height: 40px;
-	border-radius: 20px;
-	background-color: #3a7bd5;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
   padding: 1%;
   color: white;
   margin: 1% 80%;
@@ -49,9 +49,9 @@ export const Submit = styled.button`
 `
 export const SubmitInsure = styled.button`
   width: 164px;
-	height: 40px;
-	border-radius: 20px;
-	background-color: #3a7bd5;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
   padding: 1%;
   color: white;
   display:inline-block;
@@ -61,9 +61,9 @@ export const SubmitInsure = styled.button`
 `
 export const Next = styled.button`
   width: 164px;
-	height: 40px;
-	border-radius: 20px;
-	background-color: #f7555f;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
   padding: 1%;
   color: white;
   display:inline-block;
@@ -74,6 +74,6 @@ export const Next = styled.button`
 export const Check = styled.input`
   float:right;
   width: 20px;
-	height: 20px;
+  height: 20px;
   margin-top:5%;
 `

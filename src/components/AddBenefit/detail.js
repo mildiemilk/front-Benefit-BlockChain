@@ -21,8 +21,8 @@ import ExpenseBenefit from './expense-benefit'
 class Detail extends Component {
   static propTypes = {
     handleSetting: PropTypes.func.isRequired,
-    HealthList: PropTypes.arrayof(PropTypes.string()).isRequired,
-    ExpenseList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    HealthList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    ExpenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
     isHealth: PropTypes.bool.isRequired,
     isExpense: PropTypes.bool.isRequired,
     handleToggleHealth: PropTypes.func.isRequired,

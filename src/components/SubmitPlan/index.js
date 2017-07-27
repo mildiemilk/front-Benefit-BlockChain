@@ -38,9 +38,10 @@ class SubmitPlan extends Component {
     ipdCoPlayMixPercentage: PropTypes.string.isRequired,
     ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
     ipdCoPlayMixYear: PropTypes.string.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     getAllPlan: PropTypes.func.isRequired,
     copyPlan: PropTypes.func.isRequired,
+    deletePlan: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -100,6 +101,10 @@ class SubmitPlan extends Component {
     setInterval(() => {
       props.getAllPlan()
     }, 2000)
+  }
+
+  componentDidMount() {
+    if (!this.state.firstTime) this.handlePlan(0)
   }
 
   onClickhandler = e => {
@@ -289,11 +294,7 @@ class SubmitPlan extends Component {
     }
   }
 
-  componentDidMount() {
-    if (!this.state.firstTime) this.handlePlan(0)
-  }
-
-  handleCloseModal = e =>
+  handleCloseModal = () =>
     this.setState({
       openModalForm: false,
     })

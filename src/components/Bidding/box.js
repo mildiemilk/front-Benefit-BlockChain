@@ -11,7 +11,7 @@ class Box extends Component {
     chooseFinalInsurer: PropTypes.func.isRequired,
     end: PropTypes.shape.isRequired,
     handleClick: PropTypes.func.isRequired,
-    list: PropTypes.array.isRequired,
+    list: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
     super()

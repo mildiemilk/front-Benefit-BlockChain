@@ -9,7 +9,7 @@ class ExpenseBenefit extends Component {
     addTodoExpense: PropTypes.func.isRequired,
     removeTodoExpense: PropTypes.func.isRequired,
     TextExpense: PropTypes.string.isRequired,
-    ExpenseList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    ExpenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
   }
 
   constructor(props) {

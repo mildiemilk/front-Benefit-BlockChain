@@ -51,7 +51,7 @@ class IPD extends Component {
     ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
     ipdCoPlayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor() {

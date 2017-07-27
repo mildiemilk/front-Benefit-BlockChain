@@ -5,7 +5,7 @@ import { DetailList, ButtonDelete, TextList } from './styled'
 
 class ListHealth extends Component {
   static propTypes = {
-    HealthList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    HealthList: PropTypes.arrayOf(PropTypes.string).isRequired,
     sendDel: PropTypes.func.isRequired,
   }
 

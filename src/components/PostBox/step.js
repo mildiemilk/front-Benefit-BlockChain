@@ -11,6 +11,10 @@ const steps = [
 ]
 
 export default class Steps extends Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
   render() {
     return (
       <div>

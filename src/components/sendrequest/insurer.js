@@ -7,7 +7,7 @@ import { getSelectInsurer } from '../../api/choose-insurer'
 class Insurer extends React.Component {
   static propTypes = {
     getSelectInsurer: PropTypes.func.isRequired,
-    insurers: PropTypes.arrayof(PropTypes.object).isRequired,
+    insurers: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props)

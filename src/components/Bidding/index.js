@@ -10,7 +10,7 @@ import { getSelectInsurer } from '../../api/choose-insurer'
 class Bidding extends Component {
   static propTypes = {
     num: PropTypes.number.isRequired,
-    data: PropTypes.array.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     bidding: PropTypes.func.isRequired,
     getSelectInsurer: PropTypes.func.isRequired,
   }

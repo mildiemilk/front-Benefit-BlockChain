@@ -87,7 +87,7 @@ class OPDBidding extends Component {
             </Form.Group>
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {true ? <CoPlayBidding /> : ''}
+            {this.state.opdCoPlay ? <CoPlayBidding /> : ''}
             <br />
           </Form>
         </div>

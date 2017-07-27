@@ -10,7 +10,7 @@ class ModalPlanBox extends Component {
     getAllPlan: PropTypes.func.isRequired,
     changePositionPage: PropTypes.func.isRequired,
     deletePlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props)

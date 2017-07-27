@@ -28,7 +28,7 @@ class ChooseInsurancePlan extends Component {
   static propTypes = {
     getAllPlan: PropTypes.func.isRequired,
     choosePlan: PropTypes.func.isRequired,
-    planList: PropTypes.array.isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props)

@@ -5,7 +5,7 @@ import { DetailList, ButtonDelete, TextList } from './styled'
 
 class ListExpense extends Component {
   static propTypes = {
-    ExpenseList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    ExpenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
     sendDel: PropTypes.func.isRequired,
   }
 

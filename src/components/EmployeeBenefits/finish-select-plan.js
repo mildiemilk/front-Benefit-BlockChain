@@ -1,25 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Dropdown,
-  Radio,
-} from 'semantic-ui-react'
 import '../../styles/employee-benefits.scss'
-import SelectOptionPlan from './select-option-plan'
-const planOptions = [
-  { text: 'Fixed', value: 'Fixed' },
-  { text: 'Flex', value: 'Flex' },
-]
 
 class FinishSelectPlan extends Component {
   constructor() {
@@ -56,9 +36,4 @@ class FinishSelectPlan extends Component {
   }
 }
 
-FinishSelectPlan.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(FinishSelectPlan)
+export default FinishSelectPlan

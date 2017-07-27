@@ -20,7 +20,7 @@ class FormSubmitPlan extends Component {
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
     employeeOfPlan: PropTypes.string.isRequired,
-    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor() {

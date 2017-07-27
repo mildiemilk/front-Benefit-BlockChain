@@ -5,9 +5,9 @@ import { Divider, Icon } from 'semantic-ui-react'
 
 const List = styled.div`
   font-size: 16px;
-	letter-spacing: 0.3px;
+  letter-spacing: 0.3px;
   font-weight: 300;
-	color: #4a4a4a;
+  color: #4a4a4a;
   padding: 6% 10%;
   &:active,&:hover,&:focus{
     background: #c8ddf6;
@@ -15,15 +15,15 @@ const List = styled.div`
 `
 const Number = styled.div`
   font-size: 12px;
-	letter-spacing: 0.3px;
+  letter-spacing: 0.3px;
   font-weight: 300;
   color: #323028;
 `
 const Head = styled.div`
   font-size: 16px;
   font-weight: 500;
-	letter-spacing: 0.3px;
-	color: #323028;
+  letter-spacing: 0.3px;
+  color: #323028;
   margin-top:10%;
 `
 const HeadDiv = styled.div`
@@ -36,7 +36,7 @@ const SettingDiv = styled.div`
 const Dividers = styled(Divider)`
   &&&{
     height: 2px;
-	  border: solid 1px #f0f0f0;
+    border: solid 1px #f0f0f0;
     margin: 8% 0%;
   }
 `

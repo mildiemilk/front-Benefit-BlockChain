@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import TimePicker from 'rc-time-picker'
 
-const format = 'h:mm a'
-const now = moment().hour(0).minute(0)
 class Timeout extends Component {
+  static propTypes = {
+    setTimeOut: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -19,9 +22,7 @@ class Timeout extends Component {
   }
 
   handleDate = date => {
-    this.setState({
-      date: date,
-    })
+    this.setState({ date })
   }
 
   handleTime = time => {

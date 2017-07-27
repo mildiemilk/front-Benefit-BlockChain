@@ -15,7 +15,7 @@ class MenuTab extends Component {
     }
   }
   renderList = list => {
-    list.map((element, index) => {
+    const showList = list.map((element, index) => {
       const isActive = index === this.props.activeGroup ? '-active' : ''
       return (
         <div
@@ -28,6 +28,7 @@ class MenuTab extends Component {
         </div>
       )
     })
+    return showList
   }
 
   render() {
@@ -37,6 +38,7 @@ class MenuTab extends Component {
           กลุ่มของพนักงาน
         </div>
         {this.renderList(this.props.groupName)}
+
       </div>
     )
   }

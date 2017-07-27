@@ -81,16 +81,16 @@ class CoPlay extends Component {
                 onChange={this.handleRadio}
               />
             </Form.Field>
-            {this.state.value === 'Quota Share'
-              ? <Form.Input
-                  type="number"
-                  placeholder="เปอร์เซน"
-                  name="opdCoPlayQuota"
-                  id="opdCoPlayQuota"
-                  value={this.props.opdCoPlayQuota}
-                  onChange={this.props.handleChange}
-                  required
-                />
+            {this.state.value === 'Quota Share' ?
+              <Form.Input
+                type="number"
+                placeholder="เปอร์เซน"
+                name="opdCoPlayQuota"
+                id="opdCoPlayQuota"
+                value={this.props.opdCoPlayQuota}
+                onChange={this.props.handleChange}
+                required
+              />
               : <Form.Input
                   type="number"
                   placeholder="เปอร์เซน"

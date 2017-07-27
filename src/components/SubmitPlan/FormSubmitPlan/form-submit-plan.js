@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Button, Form } from 'semantic-ui-react'
 import { createPlan, editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+
 import '../../../styles/submit-plan.scss'
 import erase from '../../image/icons-8-erase.png'
 
 const moneyOptions = [{ text: '100', value: 100 }, { text: '200', value: 200 }]
 
 class FormSubmitPlan extends Component {
+  static propTypes = {
+    activePlan: PropTypes.number.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    editPlan: PropTypes.func.isRequired,
+    createPlan: PropTypes.func.isRequired,
+    handlePlan: PropTypes.func.isRequired,
+    handleModalFinish: PropTypes.func.isRequired,
+    handleResetProfilePlan: PropTypes.func.isRequired,
+    planName: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.string.isRequired,
+    planList: PropTypes.arrayof(PropTypes.object).isRequired,
+  }
+
   constructor() {
     super()
     this.state = {}
@@ -55,6 +56,9 @@ class FormSubmitPlan extends Component {
                 src={erase}
                 className="image-erase"
                 onClick={() => this.props.handleResetProfilePlan()}
+                role="button"
+                aria-hidden
+                alt="erase"
               />
               <span className="headLogo">Reset</span>
             </div>

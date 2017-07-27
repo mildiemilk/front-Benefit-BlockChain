@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import {
   DetailDiv,
   Text,
@@ -7,10 +8,25 @@ import {
   DivInput,
   SettingLine,
   ButtonSetting,
-  ButtonSettings,
 } from './styled'
 
 class Setting extends Component {
+  static propTypes = {
+    Types: PropTypes.string.isRequired,
+    handleSetting: PropTypes.func.isRequired,
+    handleOptionChangeHealth1: PropTypes.func.isRequired,
+    handleOptionChangeHealth2: PropTypes.func.isRequired,
+    handleOptionChangeHealth3: PropTypes.func.isRequired,
+    handleOptionChangeExpense1: PropTypes.func.isRequired,
+    handleOptionChangeExpense2: PropTypes.func.isRequired,
+    handleOptionChangeExpense3: PropTypes.func.isRequired,
+    selectedOptionHealth1: PropTypes.string.isRequired,
+    selectedOptionHealth2: PropTypes.string.isRequired,
+    selectedOptionHealth3: PropTypes.string.isRequired,
+    selectedOptionExpense1: PropTypes.string.isRequired,
+    selectedOptionExpense2: PropTypes.string.isRequired,
+    selectedOptionExpense3: PropTypes.string.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {}
@@ -24,7 +40,7 @@ class Setting extends Component {
         <SettingList>การคำนวณสวัสดิการสำหรับพนักงานเข้าใหม่กลางปี</SettingList>
         <div className="radio">
           <SettingLine>
-            <label>
+            <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
                     <DivInput
@@ -51,7 +67,7 @@ class Setting extends Component {
         </div>
         <div className="radio">
           <SettingLine>
-            <label>
+            <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
                     <DivInput
@@ -78,7 +94,7 @@ class Setting extends Component {
         <SettingList>การคำนวณสวัสดิการสำหรับพนักงานลาออกกลางปี</SettingList>
         <div className="radio">
           <SettingLine>
-            <label>
+            <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
                     <DivInput
@@ -105,7 +121,7 @@ class Setting extends Component {
         </div>
         <div className="radio">
           <SettingLine>
-            <label>
+            <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
                     <DivInput
@@ -134,7 +150,7 @@ class Setting extends Component {
         </SettingList>
         <div className="radio">
           <SettingLine>
-            <label>
+            <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
                     <DivInput
@@ -161,7 +177,7 @@ class Setting extends Component {
         </div>
         <div className="radio">
           <SettingLine>
-            <label>
+            <label htmlFor="SettingLine">
               {this.props.Types === 'Health'
                 ? <div>
                     <DivInput

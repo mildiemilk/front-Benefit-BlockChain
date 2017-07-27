@@ -1,44 +1,54 @@
 import React, { Component } from 'react'
-
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Button, Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
-import bed from '../../image/icons-8-single-bed1.jpg'
-import stethoscope from '../../image/icons-8-stethoscope1.jpg'
-import tooth from '../../image/icons-8-toot1.jpg'
-import heart from '../../image/icons-8-like.jpg'
-import erase from '../../image/icons-8-erase.png'
 import LifeModal from './life-modal'
 
 const options = [{ text: '1', value: 1 }]
 
 class Life extends Component {
+  static propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    handleVerifyState: PropTypes.func.isRequired,
+    editPlan: PropTypes.string.isRequired,
+    handleResetLife: PropTypes.func.isRequired,
+    handleNewReset: PropTypes.func.isRequired,
+    lifePerYear: PropTypes.string.isRequired,
+    lifeTimeOfSalary: PropTypes.string.isRequired,
+    lifeNotExceed: PropTypes.string.isRequired,
+    handleRecordVerifyState: PropTypes.func.isRequired,
+    handleCloseModal: PropTypes.func.isRequired,
+    planList: PropTypes.string.isRequired,
+    activePlan: PropTypes.string.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    reset: PropTypes.string.isRequired,
+    openModal: PropTypes.string.isRequired,
+  }
   constructor(props) {
     super(props)
-    this.state = {
-      value: this.props.lifePerYear !== null
-        ? 'firstLifeChoice'
-        : this.props.lifeNotExceed !== null
-            ? 'thirdLifeChoice'
-            : this.props.lifeTimeOfSalary !== null ? 'secondLifeChoice' : '',
+    const { lifePerYear, lifeNotExceed, lifeTimeOfSalary } = this.props
+    let value
+
+    if (lifePerYear) {
+      value = 'firstLifeChoice'
+    } else if (lifeNotExceed) {
+      value = 'thirdLifeChoice'
+    } else if (lifeTimeOfSalary) {
+      value = 'secondLifeChoice'
+    } else {
+      value = ''
     }
+
+    this.state = { value }
   }
 
-  static propTypes = {}
+  componentDidUpdate() {
+    if (this.props.setPlan === 'Life' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
 
   handleRadio = (e, { value }) => {
     this.handleResetData()
@@ -51,8 +61,8 @@ class Life extends Component {
   }
 
   handleClick = () => {
-    this.props.handleRecordVerifyState('lifeRecord')
     const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.props
+    this.props.handleRecordVerifyState('lifeRecord')
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
       this.props.planList[this.props.activePlan].planId,
@@ -68,12 +78,6 @@ class Life extends Component {
     this.setState({ value: '' })
     this.props.handleNewReset()
     this.props.handleVerifyState('lifeRecord')
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'Life' && this.props.reset === true) {
-      this.handleResetdata()
-    }
   }
 
   render() {

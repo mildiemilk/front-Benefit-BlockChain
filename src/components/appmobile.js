@@ -16,7 +16,7 @@ import ClaimInsurance from './Employee/claim-insurance'
 import CongratSelectPlan from './Employee/congrats-select-plan'
 import HeadLayout from './head-layout-mobile'
 import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard'
-import ClamStatus from './Employee/clam-status'
+import ClaimStatusDetail from './Employee/ClaimStatusDetail'
 
 const AppMobile = () => (
   <BrowserRouter>
@@ -35,7 +35,7 @@ const AppMobile = () => (
             path="/employeebenefits-dashboard"
             component={EmployeeBenefitsDashboard}
           />
-          <Route path="/clamstatus" component={ClamStatus} />
+          <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
         </Switch>
       </HeadLayout>
     </div>

@@ -1,48 +1,14 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { RadialChart } from 'react-vis'
+import { Table } from 'semantic-ui-react'
 import '../../styles/chart-box.scss'
 import EmpolyeeChart from './empolyee-chart'
 import PlanChart from './plan-chart'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Container,
-  Table,
-  Icon,
-} from 'semantic-ui-react'
 
 class Piechart extends Component {
   constructor() {
     super()
     this.state = {}
-  }
-
-  renderList = list => {
-    return list.map((element, index) => {
-      graphData.push({
-        angle: element.number,
-        style: { stroke: graphColor[index], fill: graphColor[index] },
-      })
-      return (
-        <div className="rv-discrete-color-legend-item vertical">
-          <span
-            className="rv-discrete-color-legend-item__color"
-            style={{ background: graphColor[index] }}
-          />
-          <span className="rv-discrete-color-legend-item__title">
-            พนักงานกลุ่ม {element.group} {element.number} คน
-          </span>
-        </div>
-      )
-    })
   }
 
   render() {
@@ -159,7 +125,7 @@ class Piechart extends Component {
 
 Piechart.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
+const mapDispatchToProps = () => ({})
+const mapStateToProps = () => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Piechart)

@@ -1,18 +1,9 @@
-import React, { Component } from 'react'
-import styled from 'react-sc'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-} from 'semantic-ui-react'
+import React from 'react'
+import { Image, Container } from 'semantic-ui-react'
 
 import pic from './proove@3x.png'
 
-const confirm_identity = () => (
+const confirmIdentity = () => (
   <Container>
 
     <div style={{ padding: '13%', textAlign: 'center' }}>
@@ -42,4 +33,4 @@ const confirm_identity = () => (
   </Container>
 )
 
-export default confirm_identity
+export default confirmIdentity

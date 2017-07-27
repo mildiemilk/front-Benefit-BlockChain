@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'react-sc'
 import { Select, Checkbox, Input } from 'semantic-ui-react'
 import {
   Blogs,
@@ -12,7 +13,6 @@ import {
   PlanTopic,
   ToggleBox,
 } from './styled'
-import styled from 'react-sc'
 
 const Selects = styled(Select)`
     &&&{
@@ -44,7 +44,7 @@ const NameInput = styled(Input)`
 
 class SettingPlan extends Component {
   static propTypes = {
-    optionPlan: PropTypes.array.isRequired,
+    optionPlan: PropTypes.arrayof(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleToggle: PropTypes.func.isRequired,

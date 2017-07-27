@@ -1,38 +1,26 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import styled from 'react-sc'
 import { Redirect } from 'react-router-dom'
-import { Grid, Image, Button, Comment, Form } from 'semantic-ui-react'
-import { Divider, Card, Feed, Rating } from 'semantic-ui-react'
+import { Rating } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import NavInsure from '../NavInsure'
+import { postBox } from '../../api/post-box'
 import {
-  Reg4,
   Reg3,
-  Reg,
   PostBoxFront,
   Open4,
   Time,
-  Probox,
-  Probox2,
-  PostContent,
   Space,
-  PostStepBox,
-} from './styled'
-import {
   Reg8,
-  Broke,
-  SelectBroke,
   RecPostBox,
-  contentWarpper,
   ChatBoxName,
   ChatBoxImg,
 } from './styled'
 import Chatlist from './chat-list'
 import Chatbox from './chat-box'
-import Steps from './step'
 import Postre from './postre'
-import styled from 'react-sc'
 import ModalPostBox from './modal-postbox'
-import NavInsure from '../NavInsure'
-import { postBox } from '../../api/post-box'
-import { connect } from 'react-redux'
 
 const RatingNew = styled(Rating)`
   &&&{
@@ -45,6 +33,7 @@ const RatingNew = styled(Rating)`
 class PostBox extends Component {
   static propTypes = {
     selectBroker: PropTypes.bool.isRequired,
+    postBox: PropTypes.func.isRequired,
   }
 
   constructor() {
@@ -63,7 +52,6 @@ class PostBox extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     const { selectBroker } = this.props
-    console.log(selectBroker)
 
     if (selectBroker) {
       return <Redirect to="/submitplan" />

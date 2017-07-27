@@ -1,26 +1,14 @@
 import React, { Component } from 'react'
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Checkbox,
-  Form,
-  Input,
-  Icon,
-  Popup,
-} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import styled from 'react-sc'
+import { connect } from 'react-redux'
+import { Modal, Icon, Popup } from 'semantic-ui-react'
 import {
   ModalHeader,
   ModalContent,
-  ButtonNew,
   CancleButton,
   ConfirmButton,
 } from './styled'
-import PropTypes from 'prop-types'
-import styled from 'react-sc'
-import passwordIcon from '../image/icons8-password.png'
-import { connect } from 'react-redux'
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -38,24 +26,22 @@ const Modals = styled(Modal)`
   }
 `
 
-const Inputs = styled(Input)`
-  &&&{
-    font-family: Kanit;
-  }
-`
-
 class ModalView extends Component {
+  static propTypes = {
+    handleDelete: PropTypes.func.isRequired,
+    planId: PropTypes.number.isRequired,
+  }
   constructor() {
     super()
     this.state = { modalOpen: false }
   }
 
-  handleClose = e =>
+  handleClose = () =>
     this.setState({
       modalOpen: false,
     })
 
-  handleOpen = e =>
+  handleOpen = () =>
     this.setState({
       modalOpen: true,
     })

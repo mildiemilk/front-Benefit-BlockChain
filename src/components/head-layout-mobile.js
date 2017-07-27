@@ -16,14 +16,14 @@ class HeadLayoutMobile extends Component {
 
   render() {
     return (
-      <div className='headlayout'>
-        <Side/>
-        <main  id="page-wrap" className = 'sideBar' >
+      <div className="headlayout">
+        <Side />
+        <main id="page-wrap" className="sideBar">
           <Header />
-            <div id='content'>
-              {this.props.children} 
-            </div>
-          <Footer/>
+          <div id="content">
+            {this.props.children}
+          </div>
+          <Footer />
         </main>
       </div>
     )

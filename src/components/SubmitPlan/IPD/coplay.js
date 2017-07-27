@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-} from 'semantic-ui-react'
+import { Form, Radio } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 
 class Coplay extends Component {
+  static propTypes = {
+    handleNewReset: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleChangeToNull: PropTypes.func.isRequired,
+    reset: PropTypes.string.isRequired,
+    setPlan: PropTypes.string.isRequired,
+    activePlan: PropTypes.number.isRequired,
+    ipdCoPlayQuota: PropTypes.string.isRequired,
+    ipdCoPlayDeductable: PropTypes.string.isRequired,
+    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPlayMixYear: PropTypes.string.isRequired,
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -30,31 +31,6 @@ class Coplay extends Component {
                 this.props.ipdCoPlayMixYear !== null
                 ? 'Quota Share + Deductable'
                 : '',
-    }
-  }
-
-  static propTypes = {}
-
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
-  handleRadio = (e, { value }) => {
-    this.handleResetdata()
-    this.setState({ value })
-  }
-
-  handleResetdata = () => {
-    this.props.handleChangeToNull('ipdCoPlayQuota')
-    this.props.handleChangeToNull('ipdCoPlayDeductable')
-    this.props.handleChangeToNull('ipdCoPlayMixPercentage')
-    this.props.handleChangeToNull('ipdCoPlayMixNotExceed')
-    this.props.handleChangeToNull('ipdCoPlayMixYear')
-    this.setState({ value: '' })
-    this.props.handleNewReset()
-  }
-
-  componentDidUpdate() {
-    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
     }
   }
 
@@ -72,6 +48,29 @@ class Coplay extends Component {
                   : '',
       })
     }
+  }
+
+  componentDidUpdate() {
+    if (this.props.setPlan === 'IPD' && this.props.reset === true) {
+      this.handleResetdata()
+    }
+  }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleRadio = (e, { value }) => {
+    this.handleResetdata()
+    this.setState({ value })
+  }
+
+  handleResetdata = () => {
+    this.props.handleChangeToNull('ipdCoPlayQuota')
+    this.props.handleChangeToNull('ipdCoPlayDeductable')
+    this.props.handleChangeToNull('ipdCoPlayMixPercentage')
+    this.props.handleChangeToNull('ipdCoPlayMixNotExceed')
+    this.props.handleChangeToNull('ipdCoPlayMixYear')
+    this.setState({ value: '' })
+    this.props.handleNewReset()
   }
 
   render() {
@@ -233,9 +232,4 @@ class Coplay extends Component {
   }
 }
 
-Coplay.propTypes = {}
-
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Coplay)
+export default connect(null, null)(Coplay)

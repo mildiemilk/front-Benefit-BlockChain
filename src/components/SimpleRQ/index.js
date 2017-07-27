@@ -1,28 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import * as simpleRQOption from './simple-requirement-option'
-import {
-  Grid,
-  Container,
-  Header,
-  Divider,
-  Step,
-  Card,
-  List,
-  Input,
-  Select,
-  Button,
-  Form,
-  Checkbox,
-  Modal,
-  Image,
-} from 'semantic-ui-react'
-import { fillSimpleRQ } from '../../api/simple-requirement'
-import { UploadButton, InputBox, BottomSpace, Inputs } from './styled'
-import ModalSimpleRQ from './modal-simple-requirement'
 import styled from 'react-sc'
+import { Card, Input, Select, Form, Checkbox } from 'semantic-ui-react'
+import * as simpleRQOption from './simple-requirement-option'
+import { fillSimpleRQ } from '../../api/simple-requirement'
+import { UploadButton, BottomSpace, Inputs } from './styled'
+import ModalSimpleRQ from './modal-simple-requirement'
 import NavInsure from '../NavInsure'
 
 const CardHeader = styled(Card)`
@@ -57,12 +41,12 @@ class simpleRQ extends Component {
   _handleImageChange(e) {
     e.preventDefault()
 
-    let reader = new FileReader()
-    let file = e.target.files[0]
+    const reader = new FileReader()
+    const file = e.target.files[0]
 
     reader.onloadend = () => {
       this.setState({
-        file: file,
+        file,
         filePreviewUrl: reader.result,
       })
     }
@@ -103,7 +87,7 @@ class simpleRQ extends Component {
   handleCheck = (e, { name, checked }) => this.setState({ [name]: checked })
 
   render() {
-    let { filePreviewUrl } = this.state
+    const { filePreviewUrl } = this.state
     let $filePreview = null
     if (filePreviewUrl) {
       $filePreview = <span>{this.state.file.name}&nbsp;</span>
@@ -258,10 +242,8 @@ class simpleRQ extends Component {
                 </Form>
               </div>
             </BottomSpace>
-
           </Card>
           <ModalSimpleRQ data={this.state} handlePost={this.handlePost} />
-
         </div>
       </div>
     )
@@ -271,10 +253,6 @@ class simpleRQ extends Component {
 simpleRQ.propTypes = {
   fillSimpleRQ: PropTypes.func.isRequired,
 }
-
-const mapStateToProps = state => ({
-  data: state.simpleRQ,
-})
 
 const mapDispatchToProps = dispatch => ({
   fillSimpleRQ: (

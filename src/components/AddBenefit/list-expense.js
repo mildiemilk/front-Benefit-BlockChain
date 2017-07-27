@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
-import { DetailList, ButtonDelete, TextList } from './styled'
 import { Icon } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
+import { DetailList, ButtonDelete, TextList } from './styled'
 
 class ListExpense extends Component {
+  static propTypes = {
+    ExpenseList: PropTypes.arrayof(PropTypes.string()).isRequired,
+    sendDel: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
+    this.state = {}
   }
+
   render() {
     return (
       <DetailList>

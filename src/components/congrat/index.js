@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
-import styled from 'react-sc'
-import {
-  Grid,
-  Image,
-  Container,
-  Divider,
-  Checkbox,
-  Segment,
-  Icon,
-} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Container } from 'semantic-ui-react'
 import { Submit, ImageStyle, Head, Space } from './styled'
 import pic from '../image/gifts.png'
-import { Link } from 'react-router-dom'
 
 class congrat extends Component {
   constructor() {

@@ -28,9 +28,9 @@ class SettingBenefit extends Component {
   static propTypes = {
     getBenefitPlan: PropTypes.func.isRequired,
     getOptionPlan: PropTypes.func.isRequired,
-    benefitPlan: PropTypes.array.isRequired,
+    benefitPlan: PropTypes.arrayof(PropTypes.object).isRequired,
     setBenefitPlan: PropTypes.func.isRequired,
-    optionPlan: PropTypes.array.isRequired,
+    optionPlan: PropTypes.arrayof(PropTypes.object).isRequired,
   }
   constructor() {
     super()

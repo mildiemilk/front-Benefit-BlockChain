@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Card,
-  Image,
-  Checkbox,
-  Feed,
-  Rating,
-  Comment,
-  Button,
-  Form,
-  Header,
-} from 'semantic-ui-react'
+import { Card, Comment, Button, Form } from 'semantic-ui-react'
 
 export default class ChatBox extends Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
   render() {
     return (
       <Comment.Group style={{ marginLeft: '5%', paddingTop: '5%' }}>

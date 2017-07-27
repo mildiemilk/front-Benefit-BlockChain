@@ -1,20 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Image,
-  Input,
-  Radio,
-  Segment,
-  Dropdown,
-  Search,
-} from 'semantic-ui-react'
 import bedRecord from '../image/icons-8-single-bed-record.png'
 import bedActive from '../image/icons-8-single-bed.jpg'
 import bed from '../image/icons-8-single-bed1.jpg'
@@ -27,13 +13,20 @@ import tooth from '../image/icons-8-toot1.jpg'
 import heartRecord from '../image/icons-8-like-record.png'
 import heart from '../image/icons-8-like1.jpg'
 import heartActive from '../image/icons-8-like.jpg'
-import erase from '../image/icons-8-erase.png'
 import IPDBidding from './IPD/Bidding/ipd-bidding'
 import LifeBidding from './Life/life-bidding'
 import OPDBidding from './OPD/Bidding/opd-bidding'
 import DentalBidding from './Dental/dental-bidding'
 
 class ModalPlanListBidding extends Component {
+  static propTypes = {
+    handleWarningModal: PropTypes.func.isRequired,
+    handleSetGoToNextPage: PropTypes.func.isRequired,
+    handleUnBuildNewPlan: PropTypes.func.isRequired,
+    handleMoveToNextPage: PropTypes.func.isRequired,
+    handleBuildNewPlan: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super()
     this.state = {
@@ -64,8 +57,6 @@ class ModalPlanListBidding extends Component {
       changeToRecord: false,
     }
   }
-
-  static propTypes = {}
 
   handleToggle = () => {
     if (this.state.showCoPlay) {
@@ -141,33 +132,39 @@ class ModalPlanListBidding extends Component {
   handleImageActive = value => {
     if (value === 'IPD') {
       if (this.state.ipdRecord) return bedRecord
-      else return bedActive
-    } else if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      else return stethoscopeActive
-    } else if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      else return toothActive
-    } else {
-      if (this.lifeRecord) return heartRecord
-      else return heartActive
+      return bedActive
     }
+    if (value === 'OPD') {
+      if (this.state.opdRecord) return stethoscopeRecord
+      return stethoscopeActive
+    }
+    if (value === 'Dental') {
+      if (this.state.dentalRecord) return toothRecord
+      return toothActive
+    }
+    if (this.lifeRecord) {
+      return heartRecord
+    }
+    return heartActive
   }
 
   handleImage = value => {
     if (value === 'IPD') {
       if (this.state.ipdRecord) return bedRecord
-      else return bed
-    } else if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      else return stethoscope
-    } else if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      else return tooth
-    } else {
-      if (this.lifeRecord) return heartRecord
-      else return heart
+      return bed
     }
+    if (value === 'OPD') {
+      if (this.state.opdRecord) return stethoscopeRecord
+      return stethoscope
+    }
+    if (value === 'Dental') {
+      if (this.state.dentalRecord) return toothRecord
+      return tooth
+    }
+    if (this.lifeRecord) {
+      return heartRecord
+    }
+    return heart
   }
 
   handleNextPlan = () => {
@@ -200,10 +197,13 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('IPD')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('IPD')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textIpdActive}>IPD</span>
                   </div>
@@ -212,8 +212,14 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('IPD')}
+                    role="button"
+                    aria-hidden
                   >
-                    <img src={this.handleImage('IPD')} className="imageMenu" />
+                    <img
+                      src={this.handleImage('IPD')}
+                      className="imageMenu"
+                      alt="Menu"
+                    />
                     <span className={this.state.textIpd}>IPD</span>
                   </div>
                 </div>}
@@ -222,10 +228,13 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('OPD')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('OPD')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textOpdActive}>OPD</span>
                   </div>
@@ -234,8 +243,14 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('OPD')}
+                    role="button"
+                    aria-hidden
                   >
-                    <img src={this.handleImage('OPD')} className="imageMenu" />
+                    <img
+                      src={this.handleImage('OPD')}
+                      className="imageMenu"
+                      alt="Menu"
+                    />
                     <span className={this.state.textOpd}>OPD</span>
                   </div>
                 </div>}
@@ -244,10 +259,13 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('Dental')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('Dental')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textDentalActive}>Dental</span>
                   </div>
@@ -256,10 +274,13 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('Dental')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImage('Dental')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textDental}>Dental</span>
                   </div>
@@ -269,10 +290,13 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab-active"
                     onClick={() => this.handleClick('Life')}
+                    role="button"
+                    aria-hidden
                   >
                     <img
                       src={this.handleImageActive('Life')}
                       className="imageMenu"
+                      alt="Menu"
                     />
                     <span className={this.state.textLifeActive}>Life</span>
                   </div>
@@ -281,8 +305,14 @@ class ModalPlanListBidding extends Component {
                   <div
                     className="x-tab"
                     onClick={() => this.handleClick('Life')}
+                    role="button"
+                    aria-hidden
                   >
-                    <img src={this.handleImage('Life')} className="imageMenu" />
+                    <img
+                      src={this.handleImage('Life')}
+                      className="imageMenu"
+                      alt="Menu"
+                    />
                     <span className={this.state.textLife}>Life</span>
                   </div>
                 </div>}
@@ -301,9 +331,4 @@ class ModalPlanListBidding extends Component {
 
 ModalPlanListBidding.propTypes = {}
 
-const mapDispatchToProps = dispatch => ({})
-const mapStateToProps = state => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ModalPlanListBidding,
-)
+export default connect(null, null)(ModalPlanListBidding)

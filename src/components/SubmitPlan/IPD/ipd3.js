@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form, Radio } from 'semantic-ui-react'
+import about from '../../image/icons-8-about.png'
 
 class IPD3 extends Component {
   static propTypes = {
@@ -133,7 +134,10 @@ class IPD3 extends Component {
               </div>
               <br />
               <p>2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน</p>
-              <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ</p>
+              <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ
+                <span>
+                  <img src={about} alt="about" />
+                </span></p>
               <div className="paragraph">
                 <Form.Field>
                   <Radio
@@ -239,7 +243,7 @@ class IPD3 extends Component {
                 </Form.Group>
                 <Form.Group
                   inline
-                  style={{ marginBottom: '5%', marginTop: '17%' }}
+                  style={{ marginBottom: '5%', marginTop: '29%' }}
                 >
                   {this.state.value === 'Non-Schedule'
                     ? <Form.Input

@@ -6,6 +6,7 @@ import { editPlan } from '../../../api/set-plan'
 import '../../../styles/submit-plan.scss'
 import CoPlay from './coplay'
 import OpdModal from './opd-modal'
+import about from '../../image/icons-8-about.png'
 
 class OPD extends Component {
   static propTypes = {
@@ -114,9 +115,16 @@ class OPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
           </u>
+          <span>
+            <img src={about} alt="about" />
+          </span>
         </p>
         <br />
-        <p className="head"> ระบุรูปแบบประกันที่ต้องการ </p>
+        <p className="head"> ระบุรูปแบบประกันที่ต้องการ
+          <span>
+            <img src={about} alt="about" />
+          </span>
+        </p>
         <div className="row">
           <Form onSubmit={this.handleClick}>
             <Form.Group inline>
@@ -214,6 +222,9 @@ class OPD extends Component {
               checked={this.props.opdCoPlay}
               onClick={this.props.handleToggle}
             />
+            <span>
+              <img src={about} alt="about" />
+            </span>
             {this.props.opdCoPlay
               ? <CoPlay
                 handleChange={this.props.handleChange}

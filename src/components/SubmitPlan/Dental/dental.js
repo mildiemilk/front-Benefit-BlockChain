@@ -5,6 +5,7 @@ import { Button, Form } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
 import '../../../styles/submit-plan.scss'
 import DentalModal from './dental-modal'
+import about from '../../image/icons-8-about.png'
 
 class Dental extends Component {
   static propTypes = {
@@ -64,6 +65,9 @@ class Dental extends Component {
           <u>
             ค่ารักษาทันตกรรม (Dental)
           </u>
+          <span>
+            <img src={about} alt="about" />
+          </span>
         </p>
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>

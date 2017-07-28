@@ -9,6 +9,7 @@ import IPD1 from './ipd1'
 import IPD2 from './ipd2'
 import IPD3 from './ipd3'
 import IpdModal from './ipd-modal'
+import about from '../../image/icons-8-about.png'
 
 class IPD extends Component {
   static propTypes = {
@@ -153,11 +154,16 @@ class IPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
           </u>
-          <span> img src={about}
+          <span>
+            <img src={about} alt="about" />
           </span>
         </p>
         <br />
-        <p className="head">เลือกแผนที่ต้องการ </p>
+        <p className="head">เลือกแผนที่ต้องการ
+          <span>
+            <img src={about} alt="about" />
+          </span>
+        </p>
         <div className="row">
           <Form>
             <Form.Group inline>
@@ -266,10 +272,13 @@ class IPD extends Component {
             <br />
             <Checkbox
               toggle
-              label="Co-Play"
+              label="Co-Pay"
               checked={this.props.ipdCoPlay}
               onClick={this.props.handleToggle}
             />
+            <span>
+              <img src={about} alt="about" />
+            </span>
             {this.props.ipdCoPlay
               ? <CoPlay
                 handleChange={this.handleChange}

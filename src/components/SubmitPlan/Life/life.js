@@ -171,18 +171,7 @@ class Life extends Component {
                   id="lifeTimeOfSalary"
                   value={this.props.lifeTimeOfSalary}
                   onChange={this.handleChange}
-                  style={{ width: '150px' }}
-                />
-                <Form.Input
-                  type="number"
-                  label="เท่า แต่ไม่เกิน"
-                  placeholder="จำนวนบาท"
-                  name="lifeNotExceed"
-                  id="lifeNotExceed"
-                  value={this.props.lifeNotExceed}
-                  onChange={this.handleChange}
-                  required
-                  style={{ width: '95px' }}
+                  style={{ width: '100px' }}
                 />
               </div>
               : <div style={{ display: '-webkit-box' }}>
@@ -195,19 +184,42 @@ class Life extends Component {
                   disabled
                   style={{ width: '150px' }}
                 />
-                <Form.Input
-                  type="number"
-                  label="เท่า แต่ไม่เกิน"
-                  placeholder="จำนวนบาท"
-                  name="lifeNotExceed"
-                  id="lifeNotExceed"
-                  onChange={this.handleChange}
-                  readOnly
-                  style={{ width: '100px' }}
-                />
               </div>}
             <p> บาท</p>
           </Form.Group>
+          {this.state.value === 'thirdLifeChoice'
+            ? <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    label="เท่า แต่ไม่เกิน"
+                    placeholder="จำนวนบาท"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
+                    onChange={this.handleChange}
+                    required
+                  />
+                </Form.Field>
+                <p>บาท</p>
+              </Form.Group>
+            </div>
+            : <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    label="เท่า แต่ไม่เกิน"
+                    placeholder="จำนวนบาท"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                </Form.Field>
+                <p>บาท</p>
+              </Form.Group>
+            </div>}
           <div className="row">
             <Button
               style={{

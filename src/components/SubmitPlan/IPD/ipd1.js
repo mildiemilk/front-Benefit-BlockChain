@@ -95,6 +95,7 @@ class IPD1 extends Component {
               id="ipdLumsumPerYear"
               value={this.props.ipdLumsumPerYear}
               onChange={this.props.handleChange}
+              style={{ width: '120px' }}
               required
             />
             : <Form.Input
@@ -104,6 +105,7 @@ class IPD1 extends Component {
               id="ipdLumsumPerYear"
               value=""
               onChange={this.props.handleChange}
+              style={{ width: '120px' }}
               readOnly
             />}
           <p> บาท/ปี</p>
@@ -127,7 +129,7 @@ class IPD1 extends Component {
                 id="ipdLumsumPerTime"
                 value={this.props.ipdLumsumPerTime}
                 onChange={this.props.handleChange}
-                style={{ width: '145px' }}
+                style={{ width: '105px' }}
                 required
               />
               <Form.Input
@@ -138,7 +140,7 @@ class IPD1 extends Component {
                 id="ipdLumsumTimeNotExceedPerYear"
                 value={this.props.ipdLumsumTimeNotExceedPerYear}
                 onChange={this.props.handleChange}
-                style={{ width: '145px' }}
+                style={{ width: '105px' }}
                 required
               />
             </div>
@@ -150,7 +152,7 @@ class IPD1 extends Component {
                 id="ipdLumsumPerTime"
                 value=""
                 onChange={this.props.handleChange}
-                style={{ width: '145px' }}
+                style={{ width: '105px' }}
                 readOnly
               />
               <Form.Input
@@ -161,7 +163,7 @@ class IPD1 extends Component {
                 id="ipdLumsumTimeNotExceedPerYear"
                 value=""
                 onChange={this.props.handleChange}
-                style={{ width: '145px' }}
+                style={{ width: '105px' }}
                 readOnly
               />
             </div>}

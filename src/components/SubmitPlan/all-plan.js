@@ -294,7 +294,7 @@ class AllsetPlan extends Component {
   render() {
     return (
       <div>
-        <div className="fillBox">
+        <div className="fillBox2">
           <div className="headBox">
             <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
             <div

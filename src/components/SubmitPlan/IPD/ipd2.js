@@ -109,7 +109,7 @@ class IPD2 extends Component {
                 value={this.props.rbLumsumRoomPerNight}
                 onChange={this.props.handleChange}
                 required
-                style={{ width: '120px', marginLeft: '7%' }}
+                style={{ width: '90px', marginLeft: '5%' }}
               />
               <Form.Input
                 type="number"
@@ -120,7 +120,7 @@ class IPD2 extends Component {
                 value={this.props.rbLumsumNigthNotExceedPerYear}
                 onChange={this.props.handleChange}
                 required
-                style={{ width: '150px' }}
+                style={{ width: '110px' }}
               />
             </div>
             : <div style={{ display: '-webkit-box' }}>
@@ -132,7 +132,7 @@ class IPD2 extends Component {
                 value=""
                 onChange={this.props.handleChange}
                 readOnly
-                style={{ width: '120px', marginLeft: '7%' }}
+                style={{ width: '90px', marginLeft: '5%' }}
               />
               <Form.Input
                 type="number"
@@ -143,7 +143,7 @@ class IPD2 extends Component {
                 value=""
                 onChange={this.props.handleChange}
                 readOnly
-                style={{ width: '150px' }}
+                style={{ width: '110px' }}
               />
             </div>}
           <p> คืน</p>
@@ -167,7 +167,7 @@ class IPD2 extends Component {
               value={this.props.rbLumsumPayNotExceedPerNight}
               onChange={this.props.handleChange}
               required
-              style={{ width: '150px' }}
+              style={{ width: '120px' }}
             />
             : <Form.Input
               type="number"
@@ -177,9 +177,9 @@ class IPD2 extends Component {
               value=""
               onChange={this.props.handleChange}
               readOnly
-              style={{ width: '150px' }}
+              style={{ width: '120px' }}
             />}
-          <p> บาท/คืน ไม่เกินปีล่ะ</p>
+          <p> บาท/คืน</p>
         </Form.Group>
         <Form.Group inline style={{ marginLeft: '25px' }}>
           {this.state.value === 'secondChoice'
@@ -192,7 +192,7 @@ class IPD2 extends Component {
               value={this.props.rbLumsumPayNotExceedPerYear}
               onChange={this.props.handleChange}
               required
-              style={{ width: '150px' }}
+              style={{ width: '140px' }}
             />
             : <Form.Input
               type="number"
@@ -202,7 +202,7 @@ class IPD2 extends Component {
               id=" rbLumsumPayNotExceedPerYear"
               value=""
               onChange={this.props.handleChange}
-              style={{ width: '150px' }}
+              style={{ width: '140px' }}
             />}
           <p> คืน</p>
         </Form.Group>

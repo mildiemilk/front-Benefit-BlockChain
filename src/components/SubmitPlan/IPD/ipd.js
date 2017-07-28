@@ -153,6 +153,8 @@ class IPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
           </u>
+          <span> img src={about}
+          </span>
         </p>
         <br />
         <p className="head">เลือกแผนที่ต้องการ </p>

@@ -146,7 +146,7 @@ class CoPlay extends Component {
               ? <div style={{ display: 'inherit' }}>
                 <Form.Input
                   type="number"
-                  style={{ width: '80px' }}
+                  style={{ width: '85px' }}
                   placeholder="เปอร์เซ็น"
                   name="opdCoPlayMixPercentage"
                   id="opdCoPlayMixPercentage"
@@ -156,7 +156,7 @@ class CoPlay extends Component {
                 />
                 <Form.Input
                   type="number"
-                  style={{ width: '90px' }}
+                  style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayMixNotExceed"
@@ -165,22 +165,11 @@ class CoPlay extends Component {
                   onChange={this.props.handleChange}
                   required
                 />
-                <Form.Input
-                  type="number"
-                  style={{ width: '40px' }}
-                  label=" ต่อ"
-                  placeholder="ปี"
-                  name="opdCoPlayMixYear"
-                  id="opdCoPlayMixYear"
-                  value={this.props.opdCoPlayMixYear}
-                  onChange={this.props.handleChange}
-                  required
-                />
               </div>
               : <div style={{ display: 'inherit' }}>
                 <Form.Input
                   type="number"
-                  style={{ width: '80px' }}
+                  style={{ width: '85px' }}
                   placeholder="เปอร์เซ็น"
                   name="opdCoPlayMixPercentage"
                   id="opdCoPlayMixPercentage"
@@ -190,7 +179,7 @@ class CoPlay extends Component {
                 />
                 <Form.Input
                   type="number"
-                  style={{ width: '90px' }}
+                  style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="opdCoPlayMixNotExceed"
@@ -199,19 +188,43 @@ class CoPlay extends Component {
                   onChange={this.props.handleChange}
                   readOnly
                 />
-                <Form.Input
-                  type="number"
-                  style={{ width: '40px' }}
-                  label=" ต่อ"
-                  placeholder="ปี"
-                  name="opdCoPlayMixYear"
-                  id="opdCoPlayMixYear"
-                  value=""
-                  onChange={this.props.handleChange}
-                  readOnly
-                />
               </div>}
           </Form.Group>
+          {this.state.value === 'Quota Share + Deductable'
+            ? <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    style={{ width: '70px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPlayMixYear"
+                    id="opdCoPlayMixYear"
+                    value=""
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                </Form.Field>
+              </Form.Group>
+            </div>
+            : <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    style={{ width: '70px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPlayMixYear"
+                    id="opdCoPlayMixYear"
+                    value=""
+                    onChange={this.props.handleChange}
+                    readOnly
+                  />
+                </Form.Field>
+              </Form.Group>
+            </div>}
         </div>
       </div>
     )

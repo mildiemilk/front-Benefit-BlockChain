@@ -104,7 +104,6 @@ class Coplay extends Component {
       ipdCoPlayDeductable,
       ipdCoPlayMixNotExceed,
       ipdCoPlayMixPercentage,
-      ipdCoPlayMixYear,
       ipdCoPlayQuota,
     } = this.props
     return (
@@ -196,23 +195,12 @@ class Coplay extends Component {
                 />
                 <Form.Input
                   type="number"
-                  style={{ width: '90px' }}
+                  style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="ipdCoPlayMixNotExceed"
                   id="ipdCoPlayMixNotExceed"
                   value={ipdCoPlayMixNotExceed}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <Form.Input
-                  type="number"
-                  style={{ width: '40px' }}
-                  label=" ต่อ"
-                  placeholder="ปี"
-                  name="ipdCoPlayMixYear"
-                  id="ipdCoPlayMixYear"
-                  value={ipdCoPlayMixYear}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -230,7 +218,7 @@ class Coplay extends Component {
                 />
                 <Form.Input
                   type="number"
-                  style={{ width: '90px' }}
+                  style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="ipdCoPlayMixNotExceed"
@@ -239,19 +227,43 @@ class Coplay extends Component {
                   onChange={this.props.handleChange}
                   readOnly
                 />
-                <Form.Input
-                  type="number"
-                  style={{ width: '40px' }}
-                  label=" ต่อ"
-                  placeholder="ปี"
-                  name="ipdCoPlayMixYear"
-                  id="ipdCoPlayMixYear"
-                  value=""
-                  onChange={this.props.handleChange}
-                  readOnly
-                />
               </div>}
           </Form.Group>
+          {this.state.value === 'Quota Share + Deductable'
+            ? <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    style={{ width: '70px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPlayMixYear"
+                    id="ipdCoPlayMixYear"
+                    value=""
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                </Form.Field>
+              </Form.Group>
+            </div>
+            : <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    style={{ width: '70px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPlayMixYear"
+                    id="ipdCoPlayMixYear"
+                    value=""
+                    onChange={this.props.handleChange}
+                    readOnly
+                  />
+                </Form.Field>
+              </Form.Group>
+            </div>}
         </div>
       </div>
     )

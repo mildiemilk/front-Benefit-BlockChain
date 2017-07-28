@@ -169,7 +169,7 @@ class OPD extends Component {
                     id="opdPerTime"
                     value={this.props.opdPerTime}
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     required
                   />
                   <Form.Input
@@ -180,7 +180,7 @@ class OPD extends Component {
                     id="opdTimeNotExceedPerYear"
                     value={this.props.opdTimeNotExceedPerYear}
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     required
                   />
                 </div>
@@ -191,7 +191,7 @@ class OPD extends Component {
                     name="opdPerTime"
                     id="opdPerTime"
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     readOnly
                   />
                   <Form.Input
@@ -201,7 +201,7 @@ class OPD extends Component {
                     name="opdTimeNotExceedPerYear"
                     id="opdTimeNotExceedPerYear"
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     readOnly
                   />
                 </div>}

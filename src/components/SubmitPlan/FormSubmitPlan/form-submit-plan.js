@@ -46,7 +46,7 @@ class FormSubmitPlan extends Component {
   render() {
     return (
       <div>
-        <div className="fillBox">
+        <div className="fillBox1">
           <div className="headBox">
             <span className="headLogo">
               ขั้นตอนที่ 1 : Choose High Level Plan{' '}
@@ -63,56 +63,58 @@ class FormSubmitPlan extends Component {
               <span className="headLogo">Reset</span>
             </div>
           </div>
-          <div className="row">
-            <div className="large-4 columns">
-              <div className="paragraph-step1">
-                <p className="p-in-modal">ชื่อแพลน</p>
-                <br />
-                <p className="p-in-modal">จำนวนพนักงานในแพลน</p>
+          <div className="set-padding">
+            <div className="row">
+              <div className="large-4 columns">
+                <div className="paragraph-step1">
+                  <p className="p-in-modal">ชื่อแพลน</p>
+                  <br />
+                  <p className="p-in-modal">จำนวนพนักงานในแพลน</p>
+                </div>
               </div>
-            </div>
-            <div className="large-8 columns" style={{ paddingRight: '4%' }}>
-              <Form>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    placeholder="ชื่อแพลน"
-                    name="planName"
-                    value={this.props.planName}
-                    onChange={this.props.handleChange}
-                    style={{ marginTop: '7%' }}
-                    required
-                  />
-                  <br />
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Select
-                    placeholder="เท่า"
-                    options={moneyOptions}
-                    value={this.props.employeeOfPlan}
-                    name="employeeOfPlan"
-                    id="employeeOfPlan"
-                    onChange={this.props.handleChange}
-                  />
-                  <br />
-                </Form.Group>
-                <Button
-                  style={{
-                    marginTop: '3%',
-                    textAlign: 'center',
-                    width: '164px',
-                    height: '40px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
-                    float: 'right',
-                    borderRadius: '20px',
-                    marginBottom: '3%',
-                  }}
-                  type="submit"
-                  onClick={this.handleClick}
-                >
-                  บันทึก
+              <div className="large-8 columns">
+                <Form>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      placeholder="ชื่อแพลน"
+                      name="planName"
+                      value={this.props.planName}
+                      onChange={this.props.handleChange}
+                      style={{ marginTop: '7%', paddingLeft: '0px' }}
+                      required
+                    />
+                    <br />
+                  </Form.Group>
+                  <Form.Group widths="equal">
+                    <Form.Select
+                      placeholder="เท่า"
+                      options={moneyOptions}
+                      value={this.props.employeeOfPlan}
+                      name="employeeOfPlan"
+                      id="employeeOfPlan"
+                      onChange={this.props.handleChange}
+                    />
+                    <br />
+                  </Form.Group>
+                  <Button
+                    style={{
+                      marginTop: '3%',
+                      textAlign: 'center',
+                      width: '164px',
+                      height: '40px',
+                      backgroundColor: '#3A7BD5',
+                      color: 'white',
+                      float: 'right',
+                      borderRadius: '20px',
+                      marginBottom: '3%',
+                    }}
+                    type="submit"
+                    onClick={this.handleClick}
+                  >
+                    บันทึก
                 </Button>
-              </Form>
+                </Form>
+              </div>
             </div>
           </div>
         </div>

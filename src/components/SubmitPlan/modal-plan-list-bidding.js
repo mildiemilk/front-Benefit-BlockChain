@@ -30,7 +30,7 @@ class ModalPlanListBidding extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
+      showCoPay: false,
       showForm: 1,
       value: '',
       box: 'fillBox1',
@@ -59,10 +59,10 @@ class ModalPlanListBidding extends Component {
   }
 
   handleToggle = () => {
-    if (this.state.showCoPlay) {
-      this.setState({ showCoPlay: false })
+    if (this.state.showCoPay) {
+      this.setState({ showCoPay: false })
     } else {
-      this.setState({ showCoPlay: true })
+      this.setState({ showCoPay: true })
     }
   }
 
@@ -194,128 +194,128 @@ class ModalPlanListBidding extends Component {
           <div className="row">
             {this.state.setPlan === 'IPD'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('IPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('IPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textIpdActive}>IPD</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('IPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('IPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textIpdActive}>IPD</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('IPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('IPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textIpd}>IPD</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('IPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('IPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textIpd}>IPD</span>
+                </div>
+              </div>}
             {this.state.setPlan === 'OPD'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('OPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('OPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textOpdActive}>OPD</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('OPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('OPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textOpdActive}>OPD</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('OPD')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('OPD')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textOpd}>OPD</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('OPD')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('OPD')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textOpd}>OPD</span>
+                </div>
+              </div>}
             {this.state.setPlan === 'Dental'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('Dental')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('Dental')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textDentalActive}>Dental</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('Dental')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('Dental')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textDentalActive}>Dental</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('Dental')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('Dental')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textDental}>Dental</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('Dental')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('Dental')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textDental}>Dental</span>
+                </div>
+              </div>}
             {this.state.setPlan === 'Life'
               ? <div className="large-3 columns">
-                  <div
-                    className="x-tab-active"
-                    onClick={() => this.handleClick('Life')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImageActive('Life')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textLifeActive}>Life</span>
-                  </div>
+                <div
+                  className="x-tab-active"
+                  onClick={() => this.handleClick('Life')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImageActive('Life')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textLifeActive}>Life</span>
                 </div>
+              </div>
               : <div className="large-3 columns">
-                  <div
-                    className="x-tab"
-                    onClick={() => this.handleClick('Life')}
-                    role="button"
-                    aria-hidden
-                  >
-                    <img
-                      src={this.handleImage('Life')}
-                      className="imageMenu"
-                      alt="Menu"
-                    />
-                    <span className={this.state.textLife}>Life</span>
-                  </div>
-                </div>}
+                <div
+                  className="x-tab"
+                  onClick={() => this.handleClick('Life')}
+                  role="button"
+                  aria-hidden
+                >
+                  <img
+                    src={this.handleImage('Life')}
+                    className="imageMenu"
+                    alt="Menu"
+                  />
+                  <span className={this.state.textLife}>Life</span>
+                </div>
+              </div>}
           </div>
           <div className="paragraph">
             {this.state.setPlan === 'IPD' ? <IPDBidding /> : null}

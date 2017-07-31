@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Form, Radio } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 
-class Coplay extends Component {
+class CoPay extends Component {
   static propTypes = {
     handleNewReset: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -12,29 +12,29 @@ class Coplay extends Component {
     reset: PropTypes.string.isRequired,
     setPlan: PropTypes.string.isRequired,
     activePlan: PropTypes.number.isRequired,
-    ipdCoPlayQuota: PropTypes.string.isRequired,
-    ipdCoPlayDeductable: PropTypes.string.isRequired,
-    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
-    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    ipdCoPlayMixYear: PropTypes.string.isRequired,
+    ipdCoPayQuota: PropTypes.string.isRequired,
+    ipdCoPayDeductable: PropTypes.string.isRequired,
+    ipdCoPayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPayMixYear: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props)
     const {
-      ipdCoPlayQuota,
-      ipdCoPlayDeductable,
-      ipdCoPlayMixYear,
-      ipdCoPlayMixPercentage,
-      ipdCoPlayMixNotExceed,
+      ipdCoPayQuota,
+      ipdCoPayDeductable,
+      ipdCoPayMixYear,
+      ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed,
     } = this.props
 
     let value
 
-    if (!ipdCoPlayQuota) {
-      if (!ipdCoPlayDeductable) {
+    if (!ipdCoPayQuota) {
+      if (!ipdCoPayDeductable) {
         if (
-          !(ipdCoPlayMixYear && ipdCoPlayMixPercentage && ipdCoPlayMixNotExceed)
+          !(ipdCoPayMixYear && ipdCoPayMixPercentage && ipdCoPayMixNotExceed)
         ) {
           value = ''
         }
@@ -49,19 +49,19 @@ class Coplay extends Component {
 
   componentWillReceiveProps(newProps) {
     const {
-      ipdCoPlayQuota,
-      ipdCoPlayDeductable,
-      ipdCoPlayMixYear,
-      ipdCoPlayMixPercentage,
-      ipdCoPlayMixNotExceed,
+      ipdCoPayQuota,
+      ipdCoPayDeductable,
+      ipdCoPayMixYear,
+      ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed,
     } = newProps
 
     let value
 
-    if (!ipdCoPlayQuota) {
-      if (!ipdCoPlayDeductable) {
+    if (!ipdCoPayQuota) {
+      if (!ipdCoPayDeductable) {
         if (
-          !(ipdCoPlayMixYear && ipdCoPlayMixPercentage && ipdCoPlayMixNotExceed)
+          !(ipdCoPayMixYear && ipdCoPayMixPercentage && ipdCoPayMixNotExceed)
         ) {
           value = ''
         }
@@ -90,30 +90,30 @@ class Coplay extends Component {
   }
 
   handleResetdata = () => {
-    this.props.handleChangeToNull('ipdCoPlayQuota')
-    this.props.handleChangeToNull('ipdCoPlayDeductable')
-    this.props.handleChangeToNull('ipdCoPlayMixPercentage')
-    this.props.handleChangeToNull('ipdCoPlayMixNotExceed')
-    this.props.handleChangeToNull('ipdCoPlayMixYear')
+    this.props.handleChangeToNull('ipdCoPayQuota')
+    this.props.handleChangeToNull('ipdCoPayDeductable')
+    this.props.handleChangeToNull('ipdCoPayMixPercentage')
+    this.props.handleChangeToNull('ipdCoPayMixNotExceed')
+    this.props.handleChangeToNull('ipdCoPayMixYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
   }
 
   render() {
     const {
-      ipdCoPlayDeductable,
-      ipdCoPlayMixNotExceed,
-      ipdCoPlayMixPercentage,
-      ipdCoPlayQuota,
+      ipdCoPayDeductable,
+      ipdCoPayMixNotExceed,
+      ipdCoPayMixPercentage,
+      ipdCoPayQuota,
     } = this.props
     return (
       <div>
-        <div className="coplayParagraph">
+        <div className="copayParagraph">
           <Form.Group inline>
             <Form.Field>
               <Radio
                 label="Quota Share"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Quota Share"
                 checked={this.state.value === 'Quota Share'}
                 onChange={this.handleRadio}
@@ -123,17 +123,17 @@ class Coplay extends Component {
               ? <Form.Input
                 type="number"
                 placeholder="เปอร์เซน"
-                name="ipdCoPlayQuota"
-                id="ipdCoPlayQuota"
-                value={ipdCoPlayQuota}
+                name="ipdCoPayQuota"
+                id="ipdCoPayQuota"
+                value={ipdCoPayQuota}
                 onChange={this.props.handleChange}
                 required
               />
               : <Form.Input
                 type="number"
                 placeholder="เปอร์เซน"
-                name="ipdCoPlayQuota"
-                id="ipdCoPlayQuota"
+                name="ipdCoPayQuota"
+                id="ipdCoPayQuota"
                 value=""
                 readOnly
                 onChange={this.props.handleChange}
@@ -144,7 +144,7 @@ class Coplay extends Component {
             <Form.Field>
               <Radio
                 label="Deductable"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Deductable"
                 checked={this.state.value === 'Deductable'}
                 onChange={this.handleRadio}
@@ -154,17 +154,17 @@ class Coplay extends Component {
               ? <Form.Input
                 type="number"
                 placeholder="จำนวนเงิน"
-                name="ipdCoPlayDeductable"
-                id="ipdCoPlayDeductable"
-                value={ipdCoPlayDeductable}
+                name="ipdCoPayDeductable"
+                id="ipdCoPayDeductable"
+                value={ipdCoPayDeductable}
                 onChange={this.props.handleChange}
                 required
               />
               : <Form.Input
                 type="number"
                 placeholder="จำนวนเงิน"
-                name="ipdCoPlayDeductable"
-                id="ipdCoPlayDeductable"
+                name="ipdCoPayDeductable"
+                id="ipdCoPayDeductable"
                 value=""
                 onChange={this.props.handleChange}
                 readOnly
@@ -175,7 +175,7 @@ class Coplay extends Component {
             <Form.Field>
               <Radio
                 label="Quota Share + Deductable"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Quota Share + Deductable"
                 checked={this.state.value === 'Quota Share + Deductable'}
                 onChange={this.handleRadio}
@@ -187,9 +187,9 @@ class Coplay extends Component {
                   type="number"
                   style={{ width: '80px' }}
                   placeholder="เปอร์เซ็น"
-                  name="ipdCoPlayMixPercentage"
-                  id="ipdCoPlayMixPercentage"
-                  value={ipdCoPlayMixPercentage}
+                  name="ipdCoPayMixPercentage"
+                  id="ipdCoPayMixPercentage"
+                  value={ipdCoPayMixPercentage}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -198,9 +198,9 @@ class Coplay extends Component {
                   style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
-                  name="ipdCoPlayMixNotExceed"
-                  id="ipdCoPlayMixNotExceed"
-                  value={ipdCoPlayMixNotExceed}
+                  name="ipdCoPayMixNotExceed"
+                  id="ipdCoPayMixNotExceed"
+                  value={ipdCoPayMixNotExceed}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -210,8 +210,8 @@ class Coplay extends Component {
                   type="number"
                   style={{ width: '80px' }}
                   placeholder="เปอร์เซ็น"
-                  name="ipdCoPlayMixPercentage"
-                  id="ipdCoPlayMixPercentage"
+                  name="ipdCoPayMixPercentage"
+                  id="ipdCoPayMixPercentage"
                   value=""
                   onChange={this.props.handleChange}
                   readOnly
@@ -221,8 +221,8 @@ class Coplay extends Component {
                   style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
-                  name="ipdCoPlayMixNotExceed"
-                  id="ipdCoPlayMixNotExceed"
+                  name="ipdCoPayMixNotExceed"
+                  id="ipdCoPayMixNotExceed"
                   value=""
                   onChange={this.props.handleChange}
                   readOnly
@@ -238,8 +238,8 @@ class Coplay extends Component {
                     style={{ width: '70px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="opdCoPlayMixYear"
-                    id="ipdCoPlayMixYear"
+                    name="opdCoPayMixYear"
+                    id="ipdCoPayMixYear"
                     value=""
                     onChange={this.props.handleChange}
                     required
@@ -255,8 +255,8 @@ class Coplay extends Component {
                     style={{ width: '70px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="opdCoPlayMixYear"
-                    id="ipdCoPlayMixYear"
+                    name="opdCoPayMixYear"
+                    id="ipdCoPayMixYear"
                     value=""
                     onChange={this.props.handleChange}
                     readOnly
@@ -270,4 +270,4 @@ class Coplay extends Component {
   }
 }
 
-export default connect(null, null)(Coplay)
+export default connect(null, null)(CoPay)

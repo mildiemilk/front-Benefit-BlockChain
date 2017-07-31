@@ -32,22 +32,22 @@ class AllsetPlan extends Component {
     handleUnBuildNewPlan: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleChangeToNull: PropTypes.func.isRequired,
-    handleToggleIpdCoPlay: PropTypes.func.isRequired,
-    handleToggleOpdCoPlay: PropTypes.func.isRequired,
+    handleToggleIpdCoPay: PropTypes.func.isRequired,
+    handleToggleOpdCoPay: PropTypes.func.isRequired,
     handleResetPlan: PropTypes.func.isRequired,
     handleResetDental: PropTypes.func.isRequired,
     handleResetLife: PropTypes.func.isRequired,
     handleResetOPD: PropTypes.func.isRequired,
     handleResetIPD: PropTypes.func.isRequired,
-    opdCoPlay: PropTypes.bool.isRequired,
+    opdCoPay: PropTypes.bool.isRequired,
     opdPerYear: PropTypes.string.isRequired,
     opdPerTime: PropTypes.string.isRequired,
     opdTimeNotExceedPerYear: PropTypes.string.isRequired,
-    opdCoPlayQuota: PropTypes.string.isRequired,
-    opdCoPlayDeductable: PropTypes.string.isRequired,
-    opdCoPlayMixPercentage: PropTypes.string.isRequired,
-    opdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    opdCoPlayMixYear: PropTypes.string.isRequired,
+    opdCoPayQuota: PropTypes.string.isRequired,
+    opdCoPayDeductable: PropTypes.string.isRequired,
+    opdCoPayMixPercentage: PropTypes.string.isRequired,
+    opdCoPayMixNotExceed: PropTypes.string.isRequired,
+    opdCoPayMixYear: PropTypes.string.isRequired,
     dentalPerYear: PropTypes.string.isRequired,
     lifePerYear: PropTypes.string.isRequired,
     lifeTimeOfSalary: PropTypes.string.isRequired,
@@ -72,12 +72,12 @@ class AllsetPlan extends Component {
     rbScheduleAccident: PropTypes.string.isRequired,
     rbScheduleTreatment: PropTypes.string.isRequired,
     rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPlay: PropTypes.string.isRequired,
-    ipdCoPlayQuota: PropTypes.string.isRequired,
-    ipdCoPlayDeductable: PropTypes.string.isRequired,
-    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
-    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    ipdCoPlayMixYear: PropTypes.string.isRequired,
+    ipdCoPay: PropTypes.string.isRequired,
+    ipdCoPayQuota: PropTypes.string.isRequired,
+    ipdCoPayDeductable: PropTypes.string.isRequired,
+    ipdCoPayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPayMixYear: PropTypes.string.isRequired,
   }
 
   constructor() {
@@ -444,21 +444,21 @@ class AllsetPlan extends Component {
                 openModal={this.state.openModal}
                 handleReset={this.handleReset}
                 handleResetOPD={this.props.handleResetOPD}
-                handleToggle={this.props.handleToggleOpdCoPlay}
+                handleToggle={this.props.handleToggleOpdCoPay}
                 reset={this.state.reset}
                 setPlan={this.state.setPlan}
                 activePlan={this.props.activePlan}
                 handleChange={this.props.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
-                opdCoPlay={this.props.opdCoPlay}
+                opdCoPay={this.props.opdCoPay}
                 opdPerYear={this.props.opdPerYear}
                 opdPerTime={this.props.opdPerTime}
                 opdTimeNotExceedPerYear={this.props.opdTimeNotExceedPerYear}
-                opdCoPlayQuota={this.props.opdCoPlayQuota}
-                opdCoPlayDeductable={this.props.opdCoPlayDeductable}
-                opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
-                opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
-                opdCoPlayMixYear={this.props.opdCoPlayMixYear}
+                opdCoPayQuota={this.props.opdCoPayQuota}
+                opdCoPayDeductable={this.props.opdCoPayDeductable}
+                opdCoPayMixPercentage={this.props.opdCoPayMixPercentage}
+                opdCoPayMixNotExceed={this.props.opdCoPayMixNotExceed}
+                opdCoPayMixYear={this.props.opdCoPayMixYear}
               />
               : null}
             {this.state.setPlan === 'IPD'
@@ -473,7 +473,7 @@ class AllsetPlan extends Component {
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleReset={this.handleReset}
                 handleResetIPD={this.props.handleResetIPD}
-                handleToggle={this.props.handleToggleIpdCoPlay}
+                handleToggle={this.props.handleToggleIpdCoPay}
                 reset={this.state.reset}
                 setPlan={this.state.setPlan}
                 activePlan={this.props.activePlan}
@@ -514,12 +514,12 @@ class AllsetPlan extends Component {
                 rbScheduleAccident={this.props.rbScheduleAccident}
                 rbScheduleTreatment={this.props.rbScheduleTreatment}
                 rbScheduleTransplant={this.props.rbScheduleTransplant}
-                ipdCoPlay={this.props.ipdCoPlay}
-                ipdCoPlayQuota={this.props.ipdCoPlayQuota}
-                ipdCoPlayDeductable={this.props.ipdCoPlayDeductable}
-                ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
-                ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
-                ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
+                ipdCoPay={this.props.ipdCoPay}
+                ipdCoPayQuota={this.props.ipdCoPayQuota}
+                ipdCoPayDeductable={this.props.ipdCoPayDeductable}
+                ipdCoPayMixPercentage={this.props.ipdCoPayMixPercentage}
+                ipdCoPayMixNotExceed={this.props.ipdCoPayMixNotExceed}
+                ipdCoPayMixYear={this.props.ipdCoPayMixYear}
               />
               : null}
             {this.state.setPlan === 'Dental'

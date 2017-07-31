@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Checkbox, Form, Radio } from 'semantic-ui-react'
-import CoPlayBidding from './coplay-bidding'
+import CoPayBidding from './copay-bidding'
 import IPD1Bidding from './ipd1-bidding'
 import IPD2Bidding from './ipd2-bidding'
 import IPD3Bidding from './ipd3-bidding'
@@ -10,7 +10,7 @@ class IPDBidding extends Component {
   constructor() {
     super()
     this.state = {
-      ipdCoPlay: false,
+      ipdCoPay: false,
       showForm: 1,
       ipdType: '',
       ipdLumsumPerYear: null,
@@ -31,11 +31,11 @@ class IPDBidding extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixYear: null,
+      ipdCoPayQuota: null,
+      ipdCoPayDeductable: null,
+      ipdCoPayMixPercentage: null,
+      ipdCoPayMixNotExceed: null,
+      ipdCoPayMixYear: null,
     }
   }
 
@@ -93,7 +93,7 @@ class IPDBidding extends Component {
             {this.state.ipdType === 'R&B Schedule' ? <IPD3Bidding /> : null}
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.ipdCoPlay ? <CoPlayBidding /> : null}
+            {this.state.ipdCoPay ? <CoPayBidding /> : null}
             <br />
           </Form>
         </div>

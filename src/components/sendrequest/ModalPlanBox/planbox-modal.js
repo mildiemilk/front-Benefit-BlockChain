@@ -81,21 +81,21 @@ class PlanBoxModal extends Component {
       rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
       rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
       rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
-      ipdCoPlay: planList[activePlan].ipdCoPlay,
-      ipdCoPlayQuota: planList[activePlan].ipdCoPlayQuota,
-      ipdCoPlayDeductable: planList[activePlan].ipdCoPlayDeductable,
-      ipdCoPlayMixPercentage: planList[activePlan].ipdCoPlayMixPercentage,
-      ipdCoPlayMixNotExceed: planList[activePlan].ipdCoPlayMixNotExceed,
-      ipdCoPlayMixYear: planList[activePlan].ipdCoPlayMixYear,
+      ipdCoPay: planList[activePlan].ipdCoPay,
+      ipdCoPayQuota: planList[activePlan].ipdCoPayQuota,
+      ipdCoPayDeductable: planList[activePlan].ipdCoPayDeductable,
+      ipdCoPayMixPercentage: planList[activePlan].ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed: planList[activePlan].ipdCoPayMixNotExceed,
+      ipdCoPayMixYear: planList[activePlan].ipdCoPayMixYear,
       opdPerYear: planList[activePlan].opdPerYear,
       opdPerTime: planList[activePlan].opdPerTime,
       opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
-      opdCoPlay: planList[activePlan].opdCoPlay,
-      opdCoPlayQuota: planList[activePlan].opdCoPlayQuota,
-      opdCoPlayDeductable: planList[activePlan].opdCoPlayDeductable,
-      opdCoPlayMixPercentage: planList[activePlan].opdCoPlayMixPercentage,
-      opdCoPlayMixNotExceed: planList[activePlan].opdCoPlayMixNotExceed,
-      opdCoPlayMixYear: planList[activePlan].opdCoPlayMixYear,
+      opdCoPay: planList[activePlan].opdCoPay,
+      opdCoPayQuota: planList[activePlan].opdCoPayQuota,
+      opdCoPayDeductable: planList[activePlan].opdCoPayDeductable,
+      opdCoPayMixPercentage: planList[activePlan].opdCoPayMixPercentage,
+      opdCoPayMixNotExceed: planList[activePlan].opdCoPayMixNotExceed,
+      opdCoPayMixYear: planList[activePlan].opdCoPayMixYear,
       dentalPerYear: planList[activePlan].dentalPerYear,
       lifePerYear: planList[activePlan].lifePerYear,
       lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
@@ -141,21 +141,21 @@ class PlanBoxModal extends Component {
         rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
         rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
         rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
-        ipdCoPlay: planList[activePlan].ipdCoPlay,
-        ipdCoPlayQuota: planList[activePlan].ipdCoPlayQuota,
-        ipdCoPlayDeductable: planList[activePlan].ipdCoPlayDeductable,
-        ipdCoPlayMixPercentage: planList[activePlan].ipdCoPlayMixPercentage,
-        ipdCoPlayMixNotExceed: planList[activePlan].ipdCoPlayMixNotExceed,
-        ipdCoPlayMixYear: planList[activePlan].ipdCoPlayMixYear,
+        ipdCoPay: planList[activePlan].ipdCoPay,
+        ipdCoPayQuota: planList[activePlan].ipdCoPayQuota,
+        ipdCoPayDeductable: planList[activePlan].ipdCoPayDeductable,
+        ipdCoPayMixPercentage: planList[activePlan].ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: planList[activePlan].ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: planList[activePlan].ipdCoPayMixYear,
         opdPerYear: planList[activePlan].opdPerYear,
         opdPerTime: planList[activePlan].opdPerTime,
         opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
-        opdCoPlay: planList[activePlan].opdCoPlay,
-        opdCoPlayQuota: planList[activePlan].opdCoPlayQuota,
-        opdCoPlayDeductable: planList[activePlan].opdCoPlayDeductable,
-        opdCoPlayMixPercentage: planList[activePlan].opdCoPlayMixPercentage,
-        opdCoPlayMixNotExceed: planList[activePlan].opdCoPlayMixNotExceed,
-        opdCoPlayMixYear: planList[activePlan].opdCoPlayMixYear,
+        opdCoPay: planList[activePlan].opdCoPay,
+        opdCoPayQuota: planList[activePlan].opdCoPayQuota,
+        opdCoPayDeductable: planList[activePlan].opdCoPayDeductable,
+        opdCoPayMixPercentage: planList[activePlan].opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: planList[activePlan].opdCoPayMixNotExceed,
+        opdCoPayMixYear: planList[activePlan].opdCoPayMixYear,
         dentalPerYear: planList[activePlan].dentalPerYear,
         lifePerYear: planList[activePlan].lifePerYear,
         lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
@@ -190,11 +190,11 @@ class PlanBoxModal extends Component {
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      opdCoPayQuota: null,
+      opdCoPayDeductable: null,
+      opdCoPayMixPercentage: null,
+      opdCoPayMixNotExceed: null,
+      opdCoPayMixYear: null,
     })
   }
 
@@ -220,21 +220,21 @@ class PlanBoxModal extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-      ipdCoPlay: false,
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixYear: null,
+      ipdCoPay: false,
+      ipdCoPayQuota: null,
+      ipdCoPayDeductable: null,
+      ipdCoPayMixPercentage: null,
+      ipdCoPayMixNotExceed: null,
+      ipdCoPayMixYear: null,
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
-      opdCoPlay: false,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      opdCoPay: false,
+      opdCoPayQuota: null,
+      opdCoPayDeductable: null,
+      opdCoPayMixPercentage: null,
+      opdCoPayMixNotExceed: null,
+      opdCoPayMixYear: null,
       dentalPerYear: null,
       lifePerYear: null,
       lifeTimeOfSalary: null,
@@ -242,33 +242,33 @@ class PlanBoxModal extends Component {
     })
   }
 
-  handleToggleIpdCoPlay = () => {
-    if (this.state.ipdCoPlay) {
+  handleToggleIpdCoPay = () => {
+    if (this.state.ipdCoPay) {
       this.setState({
-        ipdCoPlay: !this.state.ipdCoPlay,
-        ipdCoPlayQuota: null,
-        ipdCoPlayDeductable: null,
-        ipdCoPlayMixPercentage: null,
-        ipdCoPlayMixNotExceed: null,
-        ipdCoPlayMixYear: null,
+        ipdCoPay: !this.state.ipdCoPay,
+        ipdCoPayQuota: null,
+        ipdCoPayDeductable: null,
+        ipdCoPayMixPercentage: null,
+        ipdCoPayMixNotExceed: null,
+        ipdCoPayMixYear: null,
       })
     } else {
-      this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+      this.setState({ ipdCoPay: !this.state.ipdCoPay })
     }
   }
 
-  handleToggleOpdCoPlay = () => {
-    if (this.state.opdCoPlay) {
+  handleToggleOpdCoPay = () => {
+    if (this.state.opdCoPay) {
       this.setState({
-        opdCoPlay: !this.state.opdCoPlay,
-        opdCoPlayQuota: null,
-        opdCoPlayDeductable: null,
-        opdCoPlayMixPercentage: null,
-        opdCoPlayMixNotExceed: null,
-        opdCoPlayMixYear: null,
+        opdCoPay: !this.state.opdCoPay,
+        opdCoPayQuota: null,
+        opdCoPayDeductable: null,
+        opdCoPayMixPercentage: null,
+        opdCoPayMixNotExceed: null,
+        opdCoPayMixYear: null,
       })
     } else {
-      this.setState({ opdCoPlay: !this.state.opdCoPlay })
+      this.setState({ opdCoPay: !this.state.opdCoPay })
     }
   }
 
@@ -337,8 +337,8 @@ class PlanBoxModal extends Component {
             handleMoveToNextPage={this.handleMoveToNextPage}
             handleBuildNewPlan={this.handleBuildNewPlan}
             handleUnBuildNewPlan={this.handleUnBuildNewPlan}
-            handleToggleIpdCoPlay={this.handleToggleIpdCoPlay}
-            handleToggleOpdCoPlay={this.handleToggleOpdCoPlay}
+            handleToggleIpdCoPay={this.handleToggleIpdCoPay}
+            handleToggleOpdCoPay={this.handleToggleOpdCoPay}
             handleChangeToNull={this.handleChangeToNull}
             handleChange={this.handleChange}
             handleResetDental={this.handleResetDental}
@@ -375,21 +375,21 @@ class PlanBoxModal extends Component {
             rbScheduleAccident={this.state.rbScheduleAccident}
             rbScheduleTreatment={this.state.rbScheduleTreatment}
             rbScheduleTransplant={this.state.rbScheduleTransplant}
-            ipdCoPlay={this.state.ipdCoPlay}
-            ipdCoPlayQuota={this.state.ipdCoPlayQuota}
-            ipdCoPlayDeductable={this.state.ipdCoPlayDeductable}
-            ipdCoPlayMixPercentage={this.state.ipdCoPlayMixPercentage}
-            ipdCoPlayMixNotExceed={this.state.ipdCoPlayMixNotExceed}
-            ipdCoPlayMixYear={this.state.ipdCoPlayMixYear}
-            opdCoPlay={this.state.opdCoPlay}
+            ipdCoPay={this.state.ipdCoPay}
+            ipdCoPayQuota={this.state.ipdCoPayQuota}
+            ipdCoPayDeductable={this.state.ipdCoPayDeductable}
+            ipdCoPayMixPercentage={this.state.ipdCoPayMixPercentage}
+            ipdCoPayMixNotExceed={this.state.ipdCoPayMixNotExceed}
+            ipdCoPayMixYear={this.state.ipdCoPayMixYear}
+            opdCoPay={this.state.opdCoPay}
             opdPerYear={this.state.opdPerYear}
             opdPerTime={this.state.opdPerTime}
             opdTimeNotExceedPerYear={this.state.opdTimeNotExceedPerYear}
-            opdCoPlayQuota={this.state.opdCoPlayQuota}
-            opdCoPlayDeductable={this.state.opdCoPlayDeductable}
-            opdCoPlayMixPercentage={this.state.opdCoPlayMixPercentage}
-            opdCoPlayMixNotExceed={this.state.opdCoPlayMixNotExceed}
-            opdCoPlayMixYear={this.state.opdCoPlayMixYear}
+            opdCoPayQuota={this.state.opdCoPayQuota}
+            opdCoPayDeductable={this.state.opdCoPayDeductable}
+            opdCoPayMixPercentage={this.state.opdCoPayMixPercentage}
+            opdCoPayMixNotExceed={this.state.opdCoPayMixNotExceed}
+            opdCoPayMixYear={this.state.opdCoPayMixYear}
             dentalPerYear={this.state.dentalPerYear}
             lifePerYear={this.state.lifePerYear}
             lifeTimeOfSalary={this.state.lifeTimeOfSalary}

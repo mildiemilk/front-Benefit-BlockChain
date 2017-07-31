@@ -2,22 +2,22 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Checkbox, Form, Radio } from 'semantic-ui-react'
 import '../../../../styles/submit-plan.scss'
-import CoPlayBidding from './coplay-bidding'
+import CoPayBidding from './copay-bidding'
 
 class OPDBidding extends Component {
   constructor() {
     super()
     this.state = {
-      opdCoPlay: false,
+      opdCoPay: false,
       value: '',
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      opdCoPayQuota: null,
+      opdCoPayDeductable: null,
+      opdCoPayMixPercentage: null,
+      opdCoPayMixNotExceed: null,
+      opdCoPayMixYear: null,
     }
   }
 
@@ -87,7 +87,7 @@ class OPDBidding extends Component {
             </Form.Group>
             <br />
             <Checkbox toggle label="Co-Play" onClick={this.handleToggle} />
-            {this.state.opdCoPlay ? <CoPlayBidding /> : ''}
+            {this.state.opdCoPay ? <CoPayBidding /> : ''}
             <br />
           </Form>
         </div>

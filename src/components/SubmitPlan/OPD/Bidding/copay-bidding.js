@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Form, Radio } from 'semantic-ui-react'
 import '../../../../styles/submit-plan.scss'
 
-class CoPlayBidding extends Component {
+class CoPayBidding extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
   }
@@ -12,26 +12,26 @@ class CoPlayBidding extends Component {
   constructor() {
     super()
     this.state = {
-      showCoPlay: false,
+      showCoPay: false,
       value: '',
-      opdCoPlay: null,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      opdCoPay: null,
+      opdCoPayQuota: null,
+      opdCoPayDeductable: null,
+      opdCoPayMixPercentage: null,
+      opdCoPayMixNotExceed: null,
+      opdCoPayMixYear: null,
     }
   }
 
   render() {
     return (
       <div>
-        <div className="coplayParagraph">
+        <div className="copayParagraph">
           <Form.Group inline>
             <Form.Field>
               <Radio
                 label="Quota Share"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 checked={this.state.value === 'Quota Share'}
                 onChange={this.handleRadio}
               />
@@ -39,8 +39,8 @@ class CoPlayBidding extends Component {
             <Form.Input
               type="number"
               placeholder="เปอร์เซน"
-              name="opdCoPlayQuota"
-              id="opdCoPlayQuota"
+              name="opdCoPayQuota"
+              id="opdCoPayQuota"
               readOnly
               onChange={this.props.handleChange}
             />
@@ -50,7 +50,7 @@ class CoPlayBidding extends Component {
             <Form.Field>
               <Radio
                 label="Deductable"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Deductable"
                 checked={this.state.value === 'Deductable'}
                 onChange={this.handleRadio}
@@ -59,8 +59,8 @@ class CoPlayBidding extends Component {
             <Form.Input
               type="number"
               placeholder="จำนวนเงิน"
-              name="opdCoPlayDeductable"
-              id="opdCoPlayDeductable"
+              name="opdCoPayDeductable"
+              id="opdCoPayDeductable"
               onChange={this.props.handleChange}
               readOnly
             />
@@ -70,7 +70,7 @@ class CoPlayBidding extends Component {
             <Form.Field>
               <Radio
                 label="Quota Share + Deductable"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Quota Share + Deductable"
                 checked={this.state.value === 'Quota Share + Deductable'}
                 onChange={this.handleRadio}
@@ -81,8 +81,8 @@ class CoPlayBidding extends Component {
                 type="number"
                 style={{ width: '80px' }}
                 placeholder="เปอร์เซ็น"
-                name="opdCoPlayMixPercentage"
-                id="opdCoPlayMixPercentage"
+                name="opdCoPayMixPercentage"
+                id="opdCoPayMixPercentage"
                 onChange={this.props.handleChange}
                 readOnly
               />
@@ -91,8 +91,8 @@ class CoPlayBidding extends Component {
                 style={{ width: '90px' }}
                 label=" %ไม่เกิน"
                 placeholder="จำนวนเงิน"
-                name="opdCoPlayMixNotExceed"
-                id="opdCoPlayMixNotExceed"
+                name="opdCoPayMixNotExceed"
+                id="opdCoPayMixNotExceed"
                 onChange={this.props.handleChange}
                 readOnly
               />
@@ -101,8 +101,8 @@ class CoPlayBidding extends Component {
                 style={{ width: '40px' }}
                 label=" ต่อ"
                 placeholder="ปี"
-                name="opdCoPlayMixYear"
-                id="opdCoPlayMixYear"
+                name="opdCoPayMixYear"
+                id="opdCoPayMixYear"
                 onChange={this.props.handleChange}
                 readOnly
               />
@@ -114,6 +114,6 @@ class CoPlayBidding extends Component {
   }
 }
 
-CoPlayBidding.propTypes = {}
+CoPayBidding.propTypes = {}
 
-export default connect(null, null)(CoPlayBidding)
+export default connect(null, null)(CoPayBidding)

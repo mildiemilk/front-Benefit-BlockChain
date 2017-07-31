@@ -32,12 +32,12 @@ class SubmitPlan extends Component {
     rbScheduleAccident: PropTypes.string.isRequired,
     rbScheduleTreatment: PropTypes.string.isRequired,
     rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPlay: PropTypes.string.isRequired,
-    ipdCoPlayQuota: PropTypes.string.isRequired,
-    ipdCoPlayDeductable: PropTypes.string.isRequired,
-    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
-    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    ipdCoPlayMixYear: PropTypes.string.isRequired,
+    ipdCoPay: PropTypes.string.isRequired,
+    ipdCoPayQuota: PropTypes.string.isRequired,
+    ipdCoPayDeductable: PropTypes.string.isRequired,
+    ipdCoPayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPayMixYear: PropTypes.string.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     getAllPlan: PropTypes.func.isRequired,
     copyPlan: PropTypes.func.isRequired,
@@ -78,21 +78,21 @@ class SubmitPlan extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-      ipdCoPlay: false,
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixYear: null,
+      ipdCoPay: false,
+      ipdCoPayQuota: null,
+      ipdCoPayDeductable: null,
+      ipdCoPayMixPercentage: null,
+      ipdCoPayMixNotExceed: null,
+      ipdCoPayMixYear: null,
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
-      opdCoPlay: false,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      opdCoPay: false,
+      opdCoPayQuota: null,
+      opdCoPayDeductable: null,
+      opdCoPayMixPercentage: null,
+      opdCoPayMixNotExceed: null,
+      opdCoPayMixYear: null,
       dentalPerYear: null,
       lifePerYear: null,
       lifeTimeOfSalary: null,
@@ -121,33 +121,33 @@ class SubmitPlan extends Component {
 
   handleToggle = () => { }
 
-  handleToggleOpdCoPlay = () => {
-    if (this.state.opdCoPlay) {
+  handleToggleOpdCoPay = () => {
+    if (this.state.opdCoPay) {
       this.setState({
-        opdCoPlay: !this.state.opdCoPlay,
-        opdCoPlayQuota: null,
-        opdCoPlayDeductable: null,
-        opdCoPlayMixPercentage: null,
-        opdCoPlayMixNotExceed: null,
-        opdCoPlayMixYear: null,
+        opdCoPay: !this.state.opdCoPay,
+        opdCoPayQuota: null,
+        opdCoPayDeductable: null,
+        opdCoPayMixPercentage: null,
+        opdCoPayMixNotExceed: null,
+        opdCoPayMixYear: null,
       })
     } else {
-      this.setState({ opdCoPlay: !this.state.opdCoPlay })
+      this.setState({ opdCoPay: !this.state.opdCoPay })
     }
   }
 
-  handleToggleIpdCoPlay = () => {
-    if (this.state.ipdCoPlay) {
+  handleToggleIpdCoPay = () => {
+    if (this.state.ipdCoPay) {
       this.setState({
-        ipdCoPlay: !this.state.ipdCoPlay,
-        ipdCoPlayQuota: null,
-        ipdCoPlayDeductable: null,
-        ipdCoPlayMixPercentage: null,
-        ipdCoPlayMixNotExceed: null,
-        ipdCoPlayMixYear: null,
+        ipdCoPay: !this.state.ipdCoPay,
+        ipdCoPayQuota: null,
+        ipdCoPayDeductable: null,
+        ipdCoPayMixPercentage: null,
+        ipdCoPayMixNotExceed: null,
+        ipdCoPayMixYear: null,
       })
     } else {
-      this.setState({ ipdCoPlay: !this.state.ipdCoPlay })
+      this.setState({ ipdCoPay: !this.state.ipdCoPay })
     }
   }
 
@@ -197,11 +197,11 @@ class SubmitPlan extends Component {
       opdPerYear: null,
       opdPerTime: null,
       opdTimeNotExceedPerYear: null,
-      opdCoPlayQuota: null,
-      opdCoPlayDeductable: null,
-      opdCoPlayMixPercentage: null,
-      opdCoPlayMixNotExceed: null,
-      opdCoPlayMixYear: null,
+      opdCoPayQuota: null,
+      opdCoPayDeductable: null,
+      opdCoPayMixPercentage: null,
+      opdCoPayMixNotExceed: null,
+      opdCoPayMixYear: null,
     })
   }
 
@@ -227,12 +227,12 @@ class SubmitPlan extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-      ipdCoPlay: false,
-      ipdCoPlayQuota: null,
-      ipdCoPlayDeductable: null,
-      ipdCoPlayMixPercentage: null,
-      ipdCoPlayMixNotExceed: null,
-      ipdCoPlayMixYear: null,
+      ipdCoPay: false,
+      ipdCoPayQuota: null,
+      ipdCoPayDeductable: null,
+      ipdCoPayMixPercentage: null,
+      ipdCoPayMixNotExceed: null,
+      ipdCoPayMixYear: null,
     })
   }
 
@@ -247,16 +247,16 @@ class SubmitPlan extends Component {
         lifePerYear: this.props.planList[val].lifePerYear,
         lifeTimeOfSalary: this.props.planList[val].lifeTimeOfSalary,
         lifeNotExceed: this.props.planList[val].lifeNotExceed,
-        opdCoPlay: this.props.planList[val].opdCoPlay,
+        opdCoPay: this.props.planList[val].opdCoPay,
         opdPerYear: this.props.planList[val].opdPerYear,
         opdPerTime: this.props.planList[val].opdPerTime,
         opdTimeNotExceedPerYear: this.props.planList[val]
           .opdTimeNotExceedPerYear,
-        opdCoPlayQuota: this.props.planList[val].opdCoPlayQuota,
-        opdCoPlayDeductable: this.props.planList[val].opdCoPlayDeductable,
-        opdCoPlayMixPercentage: this.props.planList[val].opdCoPlayMixPercentage,
-        opdCoPlayMixNotExceed: this.props.planList[val].opdCoPlayMixNotExceed,
-        opdCoPlayMixYear: this.props.planList[val].opdCoPlayMixYear,
+        opdCoPayQuota: this.props.planList[val].opdCoPayQuota,
+        opdCoPayDeductable: this.props.planList[val].opdCoPayDeductable,
+        opdCoPayMixPercentage: this.props.planList[val].opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: this.props.planList[val].opdCoPayMixNotExceed,
+        opdCoPayMixYear: this.props.planList[val].opdCoPayMixYear,
         ipdType: this.props.planList[val].ipdType,
         ipdLumsumPerYear: this.props.planList[val].ipdLumsumPerYear,
         ipdLumsumPerTime: this.props.planList[val].ipdLumsumPerTime,
@@ -284,12 +284,12 @@ class SubmitPlan extends Component {
         rbScheduleAccident: this.props.planList[val].rbScheduleAccident,
         rbScheduleTreatment: this.props.planList[val].rbScheduleTreatment,
         rbScheduleTransplant: this.props.planList[val].rbScheduleTransplant,
-        ipdCoPlay: this.props.planList[val].ipdCoPlay,
-        ipdCoPlayQuota: this.props.planList[val].ipdCoPlayQuota,
-        ipdCoPlayDeductable: this.props.planList[val].ipdCoPlayDeductable,
-        ipdCoPlayMixPercentage: this.props.planList[val].ipdCoPlayMixPercentage,
-        ipdCoPlayMixNotExceed: this.props.planList[val].ipdCoPlayMixNotExceed,
-        ipdCoPlayMixYear: this.props.planList[val].ipdCoPlayMixYear,
+        ipdCoPay: this.props.planList[val].ipdCoPay,
+        ipdCoPayQuota: this.props.planList[val].ipdCoPayQuota,
+        ipdCoPayDeductable: this.props.planList[val].ipdCoPayDeductable,
+        ipdCoPayMixPercentage: this.props.planList[val].ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: this.props.planList[val].ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: this.props.planList[val].ipdCoPayMixYear,
       })
     }
   }
@@ -387,26 +387,26 @@ class SubmitPlan extends Component {
                         handleUnBuildNewPlan={this.handleUnBuildNewPlan}
                         handleChange={this.handleChange}
                         handleChangeToNull={this.handleChangeToNull}
-                        handleToggleIpdCoPlay={this.handleToggleIpdCoPlay}
-                        handleToggleOpdCoPlay={this.handleToggleOpdCoPlay}
+                        handleToggleIpdCoPay={this.handleToggleIpdCoPay}
+                        handleToggleOpdCoPay={this.handleToggleOpdCoPay}
                         handleResetPlan={this.handleResetPlan}
                         handleResetDental={this.handleResetDental}
                         handleResetLife={this.handleResetLife}
                         handleResetOPD={this.handleResetOPD}
                         handleResetIPD={this.handleResetIPD}
-                        opdCoPlay={this.state.opdCoPlay}
+                        opdCoPay={this.state.opdCoPay}
                         opdPerYear={this.state.opdPerYear}
                         opdPerTime={this.state.opdPerTime}
                         opdTimeNotExceedPerYear={
                           this.state.opdTimeNotExceedPerYear
                         }
-                        opdCoPlayQuota={this.state.opdCoPlayQuota}
-                        opdCoPlayDeductable={this.state.opdCoPlayDeductable}
-                        opdCoPlayMixPercentage={
-                          this.state.opdCoPlayMixPercentage
+                        opdCoPayQuota={this.state.opdCoPayQuota}
+                        opdCoPayDeductable={this.state.opdCoPayDeductable}
+                        opdCoPayMixPercentage={
+                          this.state.opdCoPayMixPercentage
                         }
-                        opdCoPlayMixNotExceed={this.state.opdCoPlayMixNotExceed}
-                        opdCoPlayMixYear={this.state.opdCoPlayMixYear}
+                        opdCoPayMixNotExceed={this.state.opdCoPayMixNotExceed}
+                        opdCoPayMixYear={this.state.opdCoPayMixYear}
                         dentalPerYear={this.state.dentalPerYear}
                         lifePerYear={this.state.lifePerYear}
                         lifeTimeOfSalary={this.state.lifeTimeOfSalary}
@@ -447,14 +447,14 @@ class SubmitPlan extends Component {
                         rbScheduleAccident={this.state.rbScheduleAccident}
                         rbScheduleTreatment={this.state.rbScheduleTreatment}
                         rbScheduleTransplant={this.state.rbScheduleTransplant}
-                        ipdCoPlay={this.state.ipdCoPlay}
-                        ipdCoPlayQuota={this.state.ipdCoPlayQuota}
-                        ipdCoPlayDeductable={this.state.ipdCoPlayDeductable}
-                        ipdCoPlayMixPercentage={
-                          this.state.ipdCoPlayMixPercentage
+                        ipdCoPay={this.state.ipdCoPay}
+                        ipdCoPayQuota={this.state.ipdCoPayQuota}
+                        ipdCoPayDeductable={this.state.ipdCoPayDeductable}
+                        ipdCoPayMixPercentage={
+                          this.state.ipdCoPayMixPercentage
                         }
-                        ipdCoPlayMixNotExceed={this.state.ipdCoPlayMixNotExceed}
-                        ipdCoPlayMixYear={this.state.ipdCoPlayMixYear}
+                        ipdCoPayMixNotExceed={this.state.ipdCoPayMixNotExceed}
+                        ipdCoPayMixYear={this.state.ipdCoPayMixYear}
                       />
                     </div>
 

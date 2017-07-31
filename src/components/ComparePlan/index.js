@@ -113,21 +113,21 @@ class ComparePlan extends Component {
         {plan.opdPerYear +
           plan.opdPerTime +
           plan.opdTimeNotExceedPerYear +
-          plan.opdCoPlayQuota +
-          plan.opdCoPlayDeductable +
-          plan.opdCoPlayMixPercentage +
-          plan.opdCoPlayMixNotExceed +
-          plan.opdCoPlayMixYear ===
+          plan.opdCoPayQuota +
+          plan.opdCoPayDeductable +
+          plan.opdCoPayMixPercentage +
+          plan.opdCoPayMixNotExceed +
+          plan.opdCoPayMixYear ===
           0
           ? '-'
           : plan.opdPerYear +
           plan.opdPerTime +
           plan.opdTimeNotExceedPerYear +
-          plan.opdCoPlayQuota +
-          plan.opdCoPlayDeductable +
-          plan.opdCoPlayMixPercentage +
-          plan.opdCoPlayMixNotExceed +
-          plan.opdCoPlayMixYear}
+          plan.opdCoPayQuota +
+          plan.opdCoPayDeductable +
+          plan.opdCoPayMixPercentage +
+          plan.opdCoPayMixNotExceed +
+          plan.opdCoPayMixYear}
       </th>
     ))
   }
@@ -155,11 +155,11 @@ class ComparePlan extends Component {
           plan.rbScheduleAccident +
           plan.rbScheduleTreatment +
           plan.rbScheduleTransplant +
-          plan.ipdCoPlayQuota +
-          plan.ipdCoPlayDeductable +
-          plan.ipdCoPlayMixPercentage +
-          plan.ipdCoPlayMixNotExceed +
-          plan.ipdCoPlayMixYear ===
+          plan.ipdCoPayQuota +
+          plan.ipdCoPayDeductable +
+          plan.ipdCoPayMixPercentage +
+          plan.ipdCoPayMixNotExceed +
+          plan.ipdCoPayMixYear ===
           0
           ? '-'
           : plan.ipdLumsumPerYear +
@@ -181,11 +181,11 @@ class ComparePlan extends Component {
           plan.rbScheduleAccident +
           plan.rbScheduleTreatment +
           plan.rbScheduleTransplant +
-          plan.ipdCoPlayQuota +
-          plan.ipdCoPlayDeductable +
-          plan.ipdCoPlayMixPercentage +
-          plan.ipdCoPlayMixNotExceed +
-          plan.ipdCoPlayMixYear}
+          plan.ipdCoPayQuota +
+          plan.ipdCoPayDeductable +
+          plan.ipdCoPayMixPercentage +
+          plan.ipdCoPayMixNotExceed +
+          plan.ipdCoPayMixYear}
       </th>
     ))
   }

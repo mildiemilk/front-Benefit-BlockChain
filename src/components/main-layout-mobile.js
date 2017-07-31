@@ -73,7 +73,7 @@ class SideBar extends React.Component {
       <div>
         <Menu
           burgerButtonClassName={this.OverlayStyle(this.state.isClosed)}
-          onStateChange={this.hamburger_cross}
+          onStateChange={this.hamburgerCross}
           width={'230px'}
           pageWrapId={'page-wrap'}
         >

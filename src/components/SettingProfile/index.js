@@ -284,4 +284,9 @@ SettingProfile.propTypes = {}
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
 })
-export default connect(null, mapDispatchToProps)(SettingProfile)
+
+const mapStateToProps = state => ({
+  profile: state.profile,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)

@@ -26,7 +26,7 @@ const Inputs = styled(Input) `
     &&&{
       position: absolute;
       top: 25%;
-      margin-left: 60.5%;
+      margin-left: 62.5%;
       color: transparent;
     }
 `
@@ -37,8 +37,7 @@ const NameInput = styled(Input) `
       border-radius: 3px;
       background-color: #ffffff;
       padding: 1%;
-      margin-left: 1%;
-      width: 77%;
+      width: 77.25% !important;
     }
 `
 

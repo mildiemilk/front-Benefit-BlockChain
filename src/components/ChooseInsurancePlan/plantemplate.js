@@ -29,12 +29,12 @@ class PlanTemplate extends Component {
   RenderTable = (colorPlan, id) => {
     const RenderTables = (
       <p>
-        <table>
+        <table style={{ width: '100%' }}>
           <tr>
             <td style={{ width: '55px' }}>
               <Image src={icon1} style={{ width: '25px', height: '30px' }} />
             </td>
-            <td style={{ width: '280px' }}>
+            <td style={{ width: '70%' }}>
               <b>{this.props.id}</b><br />
               ราคาต่อหัว : {this.props.price} บาท
             </td>
@@ -93,7 +93,6 @@ class PlanTemplate extends Component {
       } else if (this.props.colorPlan === 2) {
         component = (
           <div>
-            component =
             <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
               {this.RenderTable(colorPlan, id)}
             </ManagePlan>
@@ -119,7 +118,7 @@ class PlanTemplate extends Component {
                   />
                 </td>
                 <td
-                  style={{ width: '65%', cursor: 'pointer' }}
+                  style={{ width: '70%', cursor: 'pointer' }}
                   onClick={() =>
                     this.props.handleDeleteOurplan(this.props.index)}
                   role="button"
@@ -168,7 +167,7 @@ class PlanTemplate extends Component {
                   />
                 </td>
                 <td
-                  style={{ width: '65%', cursor: 'pointer' }}
+                  style={{ width: '70%', cursor: 'pointer' }}
                   onClick={() =>
                     this.props.handleDeleteSpacialPlan(this.props.index)}
                   role="button"

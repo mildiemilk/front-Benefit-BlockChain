@@ -52,7 +52,7 @@ class SubmitPlan extends Component {
       nextPage: false,
       canGoToNextPage: true,
       warningModal: false,
-      firstTime: this.props.planList.length === 1,
+      firstTime: this.props.planList.length === 0,
       openModalForm: false,
       newPlan: false,
       canBuildNewPlan: true,

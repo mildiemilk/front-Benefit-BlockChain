@@ -37,6 +37,7 @@ import SendFlexPlan from './SendFlexPlan'
 import Appmobile from './appmobile'
 import EmployeeLogin from './Employee/employee-login'
 import EmployeeList from './EmployeeList'
+import ViewAllPlan from './ViewAllPlan'
 
 class App extends Component {
   static propTypes = {
@@ -98,6 +99,7 @@ class App extends Component {
                   <Route path="/sendflexplan" component={SendFlexPlan} />
                   <Route path="/piechart" component={PieChart} />
                   <Route path="/EmployeeList" component={EmployeeList} />
+                  <Route path="/view" component={ViewAllPlan} />
                 </Switch>
               </MainLayout>
             </Switch>

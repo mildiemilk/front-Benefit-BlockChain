@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import { Button, Checkbox, Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
 import '../../../styles/submit-plan.scss'
-import CoPlay from './coplay'
+import CoPay from './copay'
 import OpdModal from './opd-modal'
+import about from '../../image/icons-8-about.png'
 
 class OPD extends Component {
   static propTypes = {
@@ -21,15 +22,15 @@ class OPD extends Component {
     activePlan: PropTypes.number.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleChangeToNull: PropTypes.func.isRequired,
-    opdCoPlay: PropTypes.bool.isRequired,
+    opdCoPay: PropTypes.bool.isRequired,
     opdPerYear: PropTypes.string.isRequired,
     opdPerTime: PropTypes.string.isRequired,
     opdTimeNotExceedPerYear: PropTypes.string.isRequired,
-    opdCoPlayQuota: PropTypes.string.isRequired,
-    opdCoPlayDeductable: PropTypes.string.isRequired,
-    opdCoPlayMixPercentage: PropTypes.string.isRequired,
-    opdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    opdCoPlayMixYear: PropTypes.string.isRequired,
+    opdCoPayQuota: PropTypes.string.isRequired,
+    opdCoPayDeductable: PropTypes.string.isRequired,
+    opdCoPayMixPercentage: PropTypes.string.isRequired,
+    opdCoPayMixNotExceed: PropTypes.string.isRequired,
+    opdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
@@ -58,27 +59,27 @@ class OPD extends Component {
 
   handleClick = () => {
     const {
-      opdCoPlay,
+      opdCoPay,
       opdPerYear,
       opdPerTime,
       opdTimeNotExceedPerYear,
-      opdCoPlayQuota,
-      opdCoPlayDeductable,
-      opdCoPlayMixPercentage,
-      opdCoPlayMixNotExceed,
-      opdCoPlayMixYear,
+      opdCoPayQuota,
+      opdCoPayDeductable,
+      opdCoPayMixPercentage,
+      opdCoPayMixNotExceed,
+      opdCoPayMixYear,
     } = this.props
     this.props.editPlan(
       {
-        opdCoPlay,
+        opdCoPay,
         opdPerYear,
         opdPerTime,
         opdTimeNotExceedPerYear,
-        opdCoPlayQuota,
-        opdCoPlayDeductable,
-        opdCoPlayMixPercentage,
-        opdCoPlayMixNotExceed,
-        opdCoPlayMixYear,
+        opdCoPayQuota,
+        opdCoPayDeductable,
+        opdCoPayMixPercentage,
+        opdCoPayMixNotExceed,
+        opdCoPayMixYear,
       },
       this.props.planList[this.props.activePlan].planId,
       'opd',
@@ -114,9 +115,16 @@ class OPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
           </u>
+          <span>
+            <img src={about} alt="about" />
+          </span>
         </p>
         <br />
-        <p className="head"> ระบุรูปแบบประกันที่ต้องการ </p>
+        <p className="head"> ระบุรูปแบบประกันที่ต้องการ
+          <span>
+            <img src={about} alt="about" />
+          </span>
+        </p>
         <div className="row">
           <Form onSubmit={this.handleClick}>
             <Form.Group inline>
@@ -169,7 +177,7 @@ class OPD extends Component {
                     id="opdPerTime"
                     value={this.props.opdPerTime}
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     required
                   />
                   <Form.Input
@@ -180,7 +188,7 @@ class OPD extends Component {
                     id="opdTimeNotExceedPerYear"
                     value={this.props.opdTimeNotExceedPerYear}
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     required
                   />
                 </div>
@@ -191,7 +199,7 @@ class OPD extends Component {
                     name="opdPerTime"
                     id="opdPerTime"
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     readOnly
                   />
                   <Form.Input
@@ -201,7 +209,7 @@ class OPD extends Component {
                     name="opdTimeNotExceedPerYear"
                     id="opdTimeNotExceedPerYear"
                     onChange={this.handleChange}
-                    style={{ width: '140px' }}
+                    style={{ width: '100px' }}
                     readOnly
                   />
                 </div>}
@@ -211,22 +219,25 @@ class OPD extends Component {
             <Checkbox
               toggle
               label="Co-Play"
-              checked={this.props.opdCoPlay}
+              checked={this.props.opdCoPay}
               onClick={this.props.handleToggle}
             />
-            {this.props.opdCoPlay
-              ? <CoPlay
+            <span>
+              <img src={about} alt="about" />
+            </span>
+            {this.props.opdCoPay
+              ? <CoPay
                 handleChange={this.props.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}
                 setPlan={this.props.setPlan}
-                opdCoPlay={this.props.opdCoPlay}
-                opdCoPlayQuota={this.props.opdCoPlayQuota}
-                opdCoPlayDeductable={this.props.opdCoPlayDeductable}
-                opdCoPlayMixPercentage={this.props.opdCoPlayMixPercentage}
-                opdCoPlayMixNotExceed={this.props.opdCoPlayMixNotExceed}
-                opdCoPlayMixYear={this.props.opdCoPlayMixYear}
+                opdCoPay={this.props.opdCoPay}
+                opdCoPayQuota={this.props.opdCoPayQuota}
+                opdCoPayDeductable={this.props.opdCoPayDeductable}
+                opdCoPayMixPercentage={this.props.opdCoPayMixPercentage}
+                opdCoPayMixNotExceed={this.props.opdCoPayMixNotExceed}
+                opdCoPayMixYear={this.props.opdCoPayMixYear}
               />
               : ''}
             <br />

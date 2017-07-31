@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import { Button, Checkbox, Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
 import '../../../styles/submit-plan.scss'
-import CoPlay from './coplay'
+import CoPay from './copay'
 import IPD1 from './ipd1'
 import IPD2 from './ipd2'
 import IPD3 from './ipd3'
 import IpdModal from './ipd-modal'
+import about from '../../image/icons-8-about.png'
 
 class IPD extends Component {
   static propTypes = {
@@ -44,12 +45,12 @@ class IPD extends Component {
     rbScheduleAccident: PropTypes.string.isRequired,
     rbScheduleTreatment: PropTypes.string.isRequired,
     rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPlay: PropTypes.string.isRequired,
-    ipdCoPlayQuota: PropTypes.string.isRequired,
-    ipdCoPlayDeductable: PropTypes.string.isRequired,
-    ipdCoPlayMixPercentage: PropTypes.string.isRequired,
-    ipdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    ipdCoPlayMixYear: PropTypes.string.isRequired,
+    ipdCoPay: PropTypes.string.isRequired,
+    ipdCoPayQuota: PropTypes.string.isRequired,
+    ipdCoPayDeductable: PropTypes.string.isRequired,
+    ipdCoPayMixPercentage: PropTypes.string.isRequired,
+    ipdCoPayMixNotExceed: PropTypes.string.isRequired,
+    ipdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
@@ -78,7 +79,7 @@ class IPD extends Component {
   handleClick = () => {
     this.props.handleRecordVerifyState('ipdRecord')
     const {
-      ipdCoPlay,
+      ipdCoPay,
       ipdType,
       ipdLumsumPerYear,
       ipdLumsumPerTime,
@@ -99,15 +100,15 @@ class IPD extends Component {
       rbScheduleAccident,
       rbScheduleTreatment,
       rbScheduleTransplant,
-      ipdCoPlayQuota,
-      ipdCoPlayDeductable,
-      ipdCoPlayMixPercentage,
-      ipdCoPlayMixNotExceed,
-      ipdCoPlayMixYear,
+      ipdCoPayQuota,
+      ipdCoPayDeductable,
+      ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed,
+      ipdCoPayMixYear,
     } = this.props
     this.props.editPlan(
       {
-        ipdCoPlay,
+        ipdCoPay,
         ipdType,
         ipdLumsumPerYear,
         ipdLumsumPerTime,
@@ -128,11 +129,11 @@ class IPD extends Component {
         rbScheduleAccident,
         rbScheduleTreatment,
         rbScheduleTransplant,
-        ipdCoPlayQuota,
-        ipdCoPlayDeductable,
-        ipdCoPlayMixPercentage,
-        ipdCoPlayMixNotExceed,
-        ipdCoPlayMixYear,
+        ipdCoPayQuota,
+        ipdCoPayDeductable,
+        ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed,
+        ipdCoPayMixYear,
       },
       this.props.planList[this.props.activePlan].planId,
       'ipd',
@@ -153,9 +154,16 @@ class IPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
           </u>
+          <span>
+            <img src={about} alt="about" />
+          </span>
         </p>
         <br />
-        <p className="head">เลือกแผนที่ต้องการ </p>
+        <p className="head">เลือกแผนที่ต้องการ
+          <span>
+            <img src={about} alt="about" />
+          </span>
+        </p>
         <div className="row">
           <Form>
             <Form.Group inline>
@@ -264,24 +272,27 @@ class IPD extends Component {
             <br />
             <Checkbox
               toggle
-              label="Co-Play"
-              checked={this.props.ipdCoPlay}
+              label="Co-Pay"
+              checked={this.props.ipdCoPay}
               onClick={this.props.handleToggle}
             />
-            {this.props.ipdCoPlay
-              ? <CoPlay
+            <span>
+              <img src={about} alt="about" />
+            </span>
+            {this.props.ipdCoPay
+              ? <CoPay
                 handleChange={this.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}
                 setPlan={this.props.setPlan}
                 activePlan={this.props.activePlan}
-                ipdCoPlay={this.props.ipdCoPlay}
-                ipdCoPlayQuota={this.props.ipdCoPlayQuota}
-                ipdCoPlayDeductable={this.props.ipdCoPlayDeductable}
-                ipdCoPlayMixPercentage={this.props.ipdCoPlayMixPercentage}
-                ipdCoPlayMixNotExceed={this.props.ipdCoPlayMixNotExceed}
-                ipdCoPlayMixYear={this.props.ipdCoPlayMixYear}
+                ipdCoPay={this.props.ipdCoPay}
+                ipdCoPayQuota={this.props.ipdCoPayQuota}
+                ipdCoPayDeductable={this.props.ipdCoPayDeductable}
+                ipdCoPayMixPercentage={this.props.ipdCoPayMixPercentage}
+                ipdCoPayMixNotExceed={this.props.ipdCoPayMixNotExceed}
+                ipdCoPayMixYear={this.props.ipdCoPayMixYear}
               />
               : null}
             <br />

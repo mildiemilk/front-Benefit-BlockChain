@@ -3,37 +3,37 @@ import PropTypes from 'prop-types'
 import { Form, Radio } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 
-class CoPlay extends Component {
+class CoPay extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
     handleChangeToNull: PropTypes.func.isRequired,
     handleNewReset: PropTypes.func.isRequired,
     reset: PropTypes.bool.isRequired,
     setPlan: PropTypes.string.isRequired,
-    opdCoPlayQuota: PropTypes.string.isRequired,
-    opdCoPlayDeductable: PropTypes.string.isRequired,
-    opdCoPlayMixPercentage: PropTypes.string.isRequired,
-    opdCoPlayMixNotExceed: PropTypes.string.isRequired,
-    opdCoPlayMixYear: PropTypes.string.isRequired,
+    opdCoPayQuota: PropTypes.string.isRequired,
+    opdCoPayDeductable: PropTypes.string.isRequired,
+    opdCoPayMixPercentage: PropTypes.string.isRequired,
+    opdCoPayMixNotExceed: PropTypes.string.isRequired,
+    opdCoPayMixYear: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props)
 
     const {
-      opdCoPlayQuota,
-      opdCoPlayDeductable,
-      opdCoPlayMixYear,
-      opdCoPlayMixPercentage,
-      opdCoPlayMixNotExceed,
+      opdCoPayQuota,
+      opdCoPayDeductable,
+      opdCoPayMixYear,
+      opdCoPayMixPercentage,
+      opdCoPayMixNotExceed,
     } = this.props
 
     let value
 
-    if (!opdCoPlayQuota) {
-      if (!opdCoPlayDeductable) {
+    if (!opdCoPayQuota) {
+      if (!opdCoPayDeductable) {
         if (
-          !(opdCoPlayMixYear && opdCoPlayMixPercentage && opdCoPlayMixNotExceed)
+          !(opdCoPayMixYear && opdCoPayMixPercentage && opdCoPayMixNotExceed)
         ) {
           value = ''
         }
@@ -58,11 +58,11 @@ class CoPlay extends Component {
   }
 
   handleResetdata = () => {
-    this.props.handleChangeToNull('opdCoPlayQuota')
-    this.props.handleChangeToNull('opdCoPlayDeductable')
-    this.props.handleChangeToNull('opdCoPlayMixPercentage')
-    this.props.handleChangeToNull('opdCoPlayMixNotExceed')
-    this.props.handleChangeToNull('opdCoPlayMixYear')
+    this.props.handleChangeToNull('opdCoPayQuota')
+    this.props.handleChangeToNull('opdCoPayDeductable')
+    this.props.handleChangeToNull('opdCoPayMixPercentage')
+    this.props.handleChangeToNull('opdCoPayMixNotExceed')
+    this.props.handleChangeToNull('opdCoPayMixYear')
     this.setState({ value: '' })
     this.props.handleNewReset()
   }
@@ -70,12 +70,12 @@ class CoPlay extends Component {
   render() {
     return (
       <div>
-        <div className="coplayParagraph">
+        <div className="copayParagraph">
           <Form.Group inline>
             <Form.Field>
               <Radio
                 label="Quota Share"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Quota Share"
                 checked={this.state.value === 'Quota Share'}
                 onChange={this.handleRadio}
@@ -85,17 +85,17 @@ class CoPlay extends Component {
               <Form.Input
                 type="number"
                 placeholder="เปอร์เซน"
-                name="opdCoPlayQuota"
-                id="opdCoPlayQuota"
-                value={this.props.opdCoPlayQuota}
+                name="opdCoPayQuota"
+                id="opdCoPayQuota"
+                value={this.props.opdCoPayQuota}
                 onChange={this.props.handleChange}
                 required
               />
               : <Form.Input
                 type="number"
                 placeholder="เปอร์เซน"
-                name="opdCoPlayQuota"
-                id="opdCoPlayQuota"
+                name="opdCoPayQuota"
+                id="opdCoPayQuota"
                 readOnly
                 onChange={this.props.handleChange}
               />}
@@ -105,7 +105,7 @@ class CoPlay extends Component {
             <Form.Field>
               <Radio
                 label="Deductable"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Deductable"
                 checked={this.state.value === 'Deductable'}
                 onChange={this.handleRadio}
@@ -115,17 +115,17 @@ class CoPlay extends Component {
               ? <Form.Input
                 type="number"
                 placeholder="จำนวนเงิน"
-                name="opdCoPlayDeductable"
-                id="opdCoPlayDeductable"
-                value={this.props.opdCoPlayDeductable}
+                name="opdCoPayDeductable"
+                id="opdCoPayDeductable"
+                value={this.props.opdCoPayDeductable}
                 onChange={this.props.handleChange}
                 required
               />
               : <Form.Input
                 type="number"
                 placeholder="จำนวนเงิน"
-                name="opdCoPlayDeductable"
-                id="opdCoPlayDeductable"
+                name="opdCoPayDeductable"
+                id="opdCoPayDeductable"
                 value=""
                 onChange={this.props.handleChange}
                 readOnly
@@ -136,7 +136,7 @@ class CoPlay extends Component {
             <Form.Field>
               <Radio
                 label="Quota Share + Deductable"
-                name="CoPlayGroup"
+                name="CoPayGroup"
                 value="Quota Share + Deductable"
                 checked={this.state.value === 'Quota Share + Deductable'}
                 onChange={this.handleRadio}
@@ -146,33 +146,22 @@ class CoPlay extends Component {
               ? <div style={{ display: 'inherit' }}>
                 <Form.Input
                   type="number"
-                  style={{ width: '80px' }}
+                  style={{ width: '85px' }}
                   placeholder="เปอร์เซ็น"
-                  name="opdCoPlayMixPercentage"
-                  id="opdCoPlayMixPercentage"
-                  value={this.props.opdCoPlayMixPercentage}
+                  name="opdCoPayMixPercentage"
+                  id="opdCoPayMixPercentage"
+                  value={this.props.opdCoPayMixPercentage}
                   onChange={this.props.handleChange}
                   required
                 />
                 <Form.Input
                   type="number"
-                  style={{ width: '90px' }}
+                  style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
-                  name="opdCoPlayMixNotExceed"
-                  id="opdCoPlayMixNotExceed"
-                  value={this.props.opdCoPlayMixNotExceed}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <Form.Input
-                  type="number"
-                  style={{ width: '40px' }}
-                  label=" ต่อ"
-                  placeholder="ปี"
-                  name="opdCoPlayMixYear"
-                  id="opdCoPlayMixYear"
-                  value={this.props.opdCoPlayMixYear}
+                  name="opdCoPayMixNotExceed"
+                  id="opdCoPayMixNotExceed"
+                  value={this.props.opdCoPayMixNotExceed}
                   onChange={this.props.handleChange}
                   required
                 />
@@ -180,42 +169,66 @@ class CoPlay extends Component {
               : <div style={{ display: 'inherit' }}>
                 <Form.Input
                   type="number"
-                  style={{ width: '80px' }}
+                  style={{ width: '85px' }}
                   placeholder="เปอร์เซ็น"
-                  name="opdCoPlayMixPercentage"
-                  id="opdCoPlayMixPercentage"
+                  name="opdCoPayMixPercentage"
+                  id="opdCoPayMixPercentage"
                   value=""
                   onChange={this.props.handleChange}
                   readOnly
                 />
                 <Form.Input
                   type="number"
-                  style={{ width: '90px' }}
+                  style={{ width: '105px' }}
                   label=" %ไม่เกิน"
                   placeholder="จำนวนเงิน"
-                  name="opdCoPlayMixNotExceed"
-                  id="opdCoPlayMixNotExceed"
-                  value=""
-                  onChange={this.props.handleChange}
-                  readOnly
-                />
-                <Form.Input
-                  type="number"
-                  style={{ width: '40px' }}
-                  label=" ต่อ"
-                  placeholder="ปี"
-                  name="opdCoPlayMixYear"
-                  id="opdCoPlayMixYear"
+                  name="opdCoPayMixNotExceed"
+                  id="opdCoPayMixNotExceed"
                   value=""
                   onChange={this.props.handleChange}
                   readOnly
                 />
               </div>}
           </Form.Group>
+          {this.state.value === 'Quota Share + Deductable'
+            ? <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    style={{ width: '70px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPayMixYear"
+                    id="opdCoPayMixYear"
+                    value=""
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                </Form.Field>
+              </Form.Group>
+            </div>
+            : <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    style={{ width: '70px' }}
+                    label=" ต่อ"
+                    placeholder="ปี"
+                    name="opdCoPayMixYear"
+                    id="opdCoPayMixYear"
+                    value=""
+                    onChange={this.props.handleChange}
+                    readOnly
+                  />
+                </Form.Field>
+              </Form.Group>
+            </div>}
         </div>
       </div>
     )
   }
 }
 
-export default CoPlay
+export default CoPay

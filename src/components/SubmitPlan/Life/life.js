@@ -5,6 +5,7 @@ import { Button, Form, Radio } from 'semantic-ui-react'
 import { editPlan } from '../../../api/set-plan'
 import '../../../styles/submit-plan.scss'
 import LifeModal from './life-modal'
+import about from '../../image/icons-8-about.png'
 
 const options = [{ text: '1', value: 1 }]
 
@@ -88,6 +89,9 @@ class Life extends Component {
           <u>
             ประกันชีวิต (Life)
           </u>
+          <span>
+            <img src={about} alt="about" />
+          </span>
         </p>
         <br />
         <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
@@ -171,18 +175,7 @@ class Life extends Component {
                   id="lifeTimeOfSalary"
                   value={this.props.lifeTimeOfSalary}
                   onChange={this.handleChange}
-                  style={{ width: '150px' }}
-                />
-                <Form.Input
-                  type="number"
-                  label="เท่า แต่ไม่เกิน"
-                  placeholder="จำนวนบาท"
-                  name="lifeNotExceed"
-                  id="lifeNotExceed"
-                  value={this.props.lifeNotExceed}
-                  onChange={this.handleChange}
-                  required
-                  style={{ width: '95px' }}
+                  style={{ width: '100px' }}
                 />
               </div>
               : <div style={{ display: '-webkit-box' }}>
@@ -195,19 +188,42 @@ class Life extends Component {
                   disabled
                   style={{ width: '150px' }}
                 />
-                <Form.Input
-                  type="number"
-                  label="เท่า แต่ไม่เกิน"
-                  placeholder="จำนวนบาท"
-                  name="lifeNotExceed"
-                  id="lifeNotExceed"
-                  onChange={this.handleChange}
-                  readOnly
-                  style={{ width: '100px' }}
-                />
               </div>}
             <p> บาท</p>
           </Form.Group>
+          {this.state.value === 'thirdLifeChoice'
+            ? <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    label="เท่า แต่ไม่เกิน"
+                    placeholder="จำนวนบาท"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
+                    onChange={this.handleChange}
+                    required
+                  />
+                </Form.Field>
+                <p>บาท</p>
+              </Form.Group>
+            </div>
+            : <div style={{ marginLeft: '5.5%' }}>
+              <Form.Group inline>
+                <Form.Field>
+                  <Form.Input
+                    type="number"
+                    label="เท่า แต่ไม่เกิน"
+                    placeholder="จำนวนบาท"
+                    name="lifeNotExceed"
+                    id="lifeNotExceed"
+                    onChange={this.handleChange}
+                    readOnly
+                  />
+                </Form.Field>
+                <p>บาท</p>
+              </Form.Group>
+            </div>}
           <div className="row">
             <Button
               style={{

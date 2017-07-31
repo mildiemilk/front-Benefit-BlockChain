@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form, Radio } from 'semantic-ui-react'
+import about from '../../image/icons-8-about.png'
 
 class IPD3 extends Component {
   static propTypes = {
@@ -117,267 +118,272 @@ class IPD3 extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ipd3">
         <div className="row">
-          <div className="large-9 columns">
-            <p>ระบุรูปแบบที่ต้องการ</p>
-            <p>1. ค่าห้อง ค่าอาหาร และค่าบริการ</p>
-            <div className="paragraph">
-              <p>
-                1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา (สูงสุดต่อวัน)
-              </p>
-              <p>
-                1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก (สูงสุดต่อวัน)
-              </p>
-            </div>
-            <br />
-            <p>2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน</p>
-            <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ</p>
-            <div className="paragraph">
-              <Form.Field>
-                <Radio
-                  name="IPD3Group"
-                  value="Non-Schedule"
-                  label="3.1 Non-Schedule"
-                  checked={this.state.value === 'Non-Schedule'}
-                  onChange={this.handleRadio}
-                />
-              </Form.Field>
-              <Form.Field>
-                <Radio
-                  name="IPD3Group"
-                  value="Schedule"
-                  label="3.2 Schedule"
-                  checked={this.state.value === 'Schedule'}
-                  onChange={this.handleRadio}
-                />
-              </Form.Field>
-            </div>
-            <p>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
-            <div className="paragraph">
-              <p>
-                4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิตและส่วนประกอบ
-              </p>
-              <div className="paragraph1">
+          <div className="ipd3">
+            <div className="large-9 columns">
+              <p>ระบุรูปแบบที่ต้องการ</p>
+              <p>1. ค่าห้อง ค่าอาหาร และค่าบริการ</p>
+              <div className="paragraph">
                 <p>
-                  ของโลหิตค่าตรวจทางห้องปฎิบัติการอุปกรณ์ทางการแพทย์ ค่าห้อง
-                </p>
+                  1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา (สูงสุดต่อวัน)
+              </p>
                 <p>
-                  ผ่าตัดและอุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/กิจกรรมบำบัด
-                </p>
-                <p>ค่าแพทย์วิสัญญี/พยาบาลวัสัญญี คุ้มครองสูงสุดต่อครั้ง </p>
+                  1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก (สูงสุดต่อวัน)
+              </p>
               </div>
               <br />
-              <p>4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง</p>
-              <p>
-                4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการผ่าตัดต่อครั้ง
-              </p>
-              <p>4.4 ค่าบริการรถพยาบาลต่อครั้ง</p>
-              <p>
-                4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24 ช.ม.หลังเกิดอุบัติเหตุต่อครั้ง
-              </p>
-              <p>
-                4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภายหลังจากการออก
-              </p>
-              <div className="paragraph1">
-                <p>จากโรงพยาบาลต่อเนื่องภายหลังจากการออก</p>
-                <p>
-                  กายภาพบำบัดที่ต่อเนื่องจากผู้ป่วย(สูงสุดไม่เกิน 30 วัน)คุ้มครอง
-                </p>
-                <p>สูงสุดต่อครั้ง</p>
+              <p>2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน</p>
+              <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ
+                <span>
+                  <img src={about} alt="about" />
+                </span></p>
+              <div className="paragraph">
+                <Form.Field>
+                  <Radio
+                    name="IPD3Group"
+                    value="Non-Schedule"
+                    label="3.1 Non-Schedule"
+                    checked={this.state.value === 'Non-Schedule'}
+                    onChange={this.handleRadio}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <Radio
+                    name="IPD3Group"
+                    value="Schedule"
+                    label="3.2 Schedule"
+                    checked={this.state.value === 'Schedule'}
+                    onChange={this.handleRadio}
+                  />
+                </Form.Field>
               </div>
-              <br />
-              <p>
-                5. ค่ารักษากรณี ปลูกถ่ายไขกระดูก,เปลี่ยนถ่ายอวัยวะ, การฟอกไต(ไม่รวมค่า
+              <p>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
+              <div className="paragraph">
+                <p>
+                  4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิตและส่วนประกอบ
               </p>
-              <div className="paragraph1">
-                <p>ใช้จ่ายของผู้บริจาคอวัยวะ) (ปีล่ะไม่เกิน)</p>
+                <div className="paragraph1">
+                  <p>
+                    ของโลหิตค่าตรวจทางห้องปฎิบัติการอุปกรณ์ทางการแพทย์ ค่าห้อง
+                </p>
+                  <p>
+                    ผ่าตัดและอุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/กิจกรรมบำบัด
+                </p>
+                  <p>ค่าแพทย์วิสัญญี/พยาบาลวัสัญญี คุ้มครองสูงสุดต่อครั้ง </p>
+                </div>
+                <br />
+                <p>4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง</p>
+                <p>
+                  4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการผ่าตัดต่อครั้ง
+              </p>
+                <p>4.4 ค่าบริการรถพยาบาลต่อครั้ง</p>
+                <p>
+                  4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24 ช.ม.หลังเกิดอุบัติเหตุต่อครั้ง
+              </p>
+                <p>
+                  4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภายหลังจากการออก
+              </p>
+                <div className="paragraph1">
+                  <p>จากโรงพยาบาลต่อเนื่องภายหลังจากการออก</p>
+                  <p>
+                    กายภาพบำบัดที่ต่อเนื่องจากผู้ป่วย(สูงสุดไม่เกิน 27 วัน)คุ้มครอง
+                </p>
+                  <p>สูงสุดต่อครั้ง</p>
+                </div>
+                <br />
+                <p>
+                  5. ค่ารักษากรณี ปลูกถ่ายไขกระดูก,เปลี่ยนถ่ายอวัยวะ, การฟอกไต(ไม่รวมค่า
+              </p>
+                <div className="paragraph1">
+                  <p>ใช้จ่ายของผู้บริจาคอวัยวะ) (ปีล่ะไม่เกิน)</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="large-3 columns">
-            <Form>
-              <Form.Group
-                inline
-                style={{ marginTop: '35%', marginBottom: '5%' }}
-              >
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbSchedulePatient"
-                  value={this.props.rbSchedulePatient}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleIntensiveCarePatient"
-                  value={this.props.rbScheduleIntensiveCarePatient}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleDoctor"
-                  value={this.props.rbScheduleDoctor}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group
-                inline
-                style={{ marginBottom: '5%', marginTop: '20%' }}
-              >
-                {this.state.value === 'Non-Schedule'
-                  ? <Form.Input
+            <div className="large-3 columns">
+              <Form>
+                <Form.Group
+                  inline
+                  style={{ marginTop: '42%', marginBottom: '5%' }}
+                >
+                  <Form.Input
                     type="number"
-                    style={{ height: '30px', width: '100px' }}
+                    style={{ height: '27px', width: '90px' }}
                     placeholder="จำนวนเงิน"
-                    name="rbScheduleSurgeryNonSchedule"
-                    value={this.props.rbScheduleSurgeryNonSchedule}
+                    name="rbSchedulePatient"
+                    value={this.props.rbSchedulePatient}
                     onChange={this.props.handleChange}
-                    id="rbScheduleSurgeryNonSchedule"
                     required
                   />
-                  : <Form.Input
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '5%' }}>
+                  <Form.Input
                     type="number"
-                    style={{ height: '30px', width: '100px' }}
+                    style={{ height: '27px', width: '90px' }}
                     placeholder="จำนวนเงิน"
-                    name="rbScheduleSurgeryNonSchedule"
+                    name="rbScheduleIntensiveCarePatient"
+                    value={this.props.rbScheduleIntensiveCarePatient}
                     onChange={this.props.handleChange}
-                    value=""
-                    readOnly
-                    id="rbScheduleSurgeryNonSchedule"
-                  />}
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                {this.state.value === 'Schedule'
-                  ? <Form.Input
-                    type="number"
-                    style={{ height: '30px', width: '100px' }}
-                    placeholder="จำนวนเงิน"
-                    name="rbScheduleSurgerySchedule"
-                    value={this.props.rbScheduleSurgerySchedule}
-                    onChange={this.props.handleChange}
-                    id="rbScheduleSurgerySchedule"
                     required
                   />
-                  : <Form.Input
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '5%' }}>
+                  <Form.Input
                     type="number"
-                    style={{ height: '30px', width: '100px' }}
+                    style={{ height: '27px', width: '90px' }}
                     placeholder="จำนวนเงิน"
-                    name="rbScheduleSurgerySchedule"
-                    value=""
+                    name="rbScheduleDoctor"
+                    value={this.props.rbScheduleDoctor}
                     onChange={this.props.handleChange}
-                    readOnly
-                    id="rbScheduleSurgerySchedule"
-                  />}
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginTop: '15.5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleService"
-                  value={this.props.rbScheduleService}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group
-                inline
-                style={{ marginTop: '59%', marginBottom: '5%' }}
-              >
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleSmallSurgery"
-                  value={this.props.rbScheduleSmallSurgery}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleAdviser"
-                  value={this.props.rbScheduleAdviser}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleAmbulance"
-                  value={this.props.rbScheduleAmbulance}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleAccident"
-                  value={this.rbScheduleAccident}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group inline style={{ marginBottom: '5%' }}>
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleTreatment"
-                  value={this.props.rbScheduleTreatment}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-              <Form.Group
-                inline
-                style={{ marginTop: '55%', marginBottom: '5%' }}
-              >
-                <Form.Input
-                  type="number"
-                  style={{ height: '30px', width: '100px' }}
-                  placeholder="จำนวนเงิน"
-                  name="rbScheduleTransplant"
-                  value={this.rbScheduleTransplant}
-                  onChange={this.props.handleChange}
-                  required
-                />
-                <p> บาท</p>
-              </Form.Group>
-            </Form>
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group
+                  inline
+                  style={{ marginBottom: '5%', marginTop: '29%' }}
+                >
+                  {this.state.value === 'Non-Schedule'
+                    ? <Form.Input
+                      type="number"
+                      style={{ height: '27px', width: '90px' }}
+                      placeholder="จำนวนเงิน"
+                      name="rbScheduleSurgeryNonSchedule"
+                      value={this.props.rbScheduleSurgeryNonSchedule}
+                      onChange={this.props.handleChange}
+                      id="rbScheduleSurgeryNonSchedule"
+                      required
+                    />
+                    : <Form.Input
+                      type="number"
+                      style={{ height: '27px', width: '90px' }}
+                      placeholder="จำนวนเงิน"
+                      name="rbScheduleSurgeryNonSchedule"
+                      onChange={this.props.handleChange}
+                      value=""
+                      readOnly
+                      id="rbScheduleSurgeryNonSchedule"
+                    />}
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '5%' }}>
+                  {this.state.value === 'Schedule'
+                    ? <Form.Input
+                      type="number"
+                      style={{ height: '27px', width: '90px' }}
+                      placeholder="จำนวนเงิน"
+                      name="rbScheduleSurgerySchedule"
+                      value={this.props.rbScheduleSurgerySchedule}
+                      onChange={this.props.handleChange}
+                      id="rbScheduleSurgerySchedule"
+                      required
+                    />
+                    : <Form.Input
+                      type="number"
+                      style={{ height: '27px', width: '90px' }}
+                      placeholder="จำนวนเงิน"
+                      name="rbScheduleSurgerySchedule"
+                      value=""
+                      onChange={this.props.handleChange}
+                      readOnly
+                      id="rbScheduleSurgerySchedule"
+                    />}
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginTop: '22.5%' }}>
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleService"
+                    value={this.props.rbScheduleService}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group
+                  inline
+                  style={{ marginTop: '72%', marginBottom: '2%' }}
+                >
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSmallSurgery"
+                    value={this.props.rbScheduleSmallSurgery}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '2%' }}>
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleAdviser"
+                    value={this.props.rbScheduleAdviser}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '2%' }}>
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleAmbulance"
+                    value={this.props.rbScheduleAmbulance}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '2%' }}>
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleAccident"
+                    value={this.rbScheduleAccident}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group inline style={{ marginBottom: '2%' }}>
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleTreatment"
+                    value={this.props.rbScheduleTreatment}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+                <Form.Group
+                  inline
+                  style={{ marginTop: '75%', marginBottom: '5%' }}
+                >
+                  <Form.Input
+                    type="number"
+                    style={{ height: '27px', width: '90px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleTransplant"
+                    value={this.rbScheduleTransplant}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                  <p> บาท</p>
+                </Form.Group>
+              </Form>
+            </div>
           </div>
         </div>
       </div>

@@ -335,16 +335,27 @@
     }
     .ui.checkbox label {
       font-size: 13px;
+      font-weight: normal;
+    }
+
+    .ui.form .inline.field > label, .ui.form .inline.field > p, .ui.form .inline.fields .field > label, .ui.form .inline.fields .field > p, .ui.form .inline.fields > label{
+      font-size: 13px;
+      font-weight: normal;
     }
 
 
   .ipd3{
-   font-size: 11.5px;
+    font-size: 11.5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    label{
+       font-weight: normal;
+    }
    .SubmitPlan.ui.checkbox.label {
       font-size: 11.5px;
     }
     .ui.form .inline.fields .field {
-      padding-right: 6%;
+      padding-right: 8px;
     }
   }
 

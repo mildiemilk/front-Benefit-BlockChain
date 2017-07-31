@@ -32,7 +32,7 @@ export const List = styled.div`
 
 export const Head = styled.div`
   background-color: #5c6879;
-    
+
 `
 
 export const Side = styled.div`

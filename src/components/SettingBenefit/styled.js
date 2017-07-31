@@ -43,7 +43,7 @@ export const Blogs = styled.div`
   background-color: #ffffff;
   background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  padding: 14px;
 `
 
 export const PlanName = styled.span`
@@ -73,8 +73,8 @@ export const BlogContent = styled.span`
   text-align: center;
   color: #9b9b9b;
   position: absolute;
-  margin-left: 220px;
-  margin-top: 10%;
+  margin-left: 192px;
+  margin-top: 11.5%;
 `
 
 export const AddPlan = styled.div`
@@ -149,6 +149,7 @@ export const Line = styled.hr`
   height: 2px;
   border: solid 1px #c3c3c3;
   margin: 3% 0;
+  background-color: #c3c3c3;
 `
 
 export const PlanContent = styled.p`
@@ -203,7 +204,7 @@ export const ToggleBox = styled.div`
   height: 38px;
   border-radius: 5px;
   background-color: #ececec;
-  margin-left: 51%;
+  margin-left: 53%;
   margin-top: 18px;
   padding-top: 8px;
   padding-left: 6px;

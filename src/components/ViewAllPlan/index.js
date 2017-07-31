@@ -9,7 +9,7 @@ import NavInsure from '../NavInsure'
 import ModalView from './modal-view'
 import { getAllPlan } from '../../api/set-plan'
 
-export class ViewAllPlan extends Component {
+class ViewAllPlan extends Component {
   static propTypes = {
     getAllPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,

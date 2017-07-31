@@ -300,6 +300,7 @@
     background-color: var(--white-two);
     border: solid 1px rgba(151, 151, 151, 0.66);
     margin-bottom: 15%;
+    margin-top: 15.6%;
     padding-left: 35%;
     padding-top: 10%;
   }
@@ -332,19 +333,31 @@
   font-size: 13px;
     .ui.form {
       font-size: 13px;
+      font-weight: normal;
     }
     .ui.checkbox label {
       font-size: 13px;
+      font-weight: normal;
+    }
+
+    .ui.form .inline.field > label, .ui.form .inline.field > p, .ui.form .inline.fields .field > label, .ui.form .inline.fields .field > p, .ui.form .inline.fields > label{
+      font-size: 13px;
+      font-weight: normal;
     }
 
 
   .ipd3{
-   font-size: 11.5px;
+    font-size: 11.5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    label{
+       font-weight: normal;
+    }
    .SubmitPlan.ui.checkbox.label {
       font-size: 11.5px;
     }
     .ui.form .inline.fields .field {
-      padding-right: 6%;
+      padding-right: 8px;
     }
   }
 

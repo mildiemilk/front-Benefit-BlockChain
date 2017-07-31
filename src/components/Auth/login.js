@@ -21,8 +21,8 @@ class Login extends Component {
     }
   }
 
-  signUpHandler() {
-    this.window.location.href = '/signup'
+  signUpHandler = () => {
+    window.location.href = '/signup'
   }
 
   handleSubmit = e => {

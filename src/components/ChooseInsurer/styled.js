@@ -14,21 +14,21 @@ export const Head = styled.p`
 `
 
 export const Side = styled.div`
-  margin: 2% 1%;
+  margin: 2% 4%;
   font-size: 15px;
 `
 export const SideIn = styled.div`
   border-radius: 8px;
   border: solid 1px rgba(151, 151, 151, 0.66);
   padding:3%;
-  margin: 1% 0%;
+  margin: 1% 4%;
 `
 export const HeadIn = styled.div`
     margin: 2%;
     padding-left: 1% ;
 `
 export const Card = styled.div`
-  width: 140px;
+  width: 123px !important;
   height: 145px;
   border-radius: 8px;
   background-color: #f5f5f5;

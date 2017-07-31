@@ -40,7 +40,8 @@ class Detail extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+    }
   }
 
   boxInStyle = state => {

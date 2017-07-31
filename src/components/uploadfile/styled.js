@@ -6,7 +6,7 @@ export const Detail = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   margin-top:3%;
-  padding: 5%;
+  padding: 30px 42px !important;
   padding-top: 25px;
   height: 100%;
 
@@ -18,12 +18,14 @@ export const Head = styled.p`
   font-weight: bold;
 
 `
-export const TextNormal = styled.p`
+export const TextNormal = styled.div`
   font-family: Kanit;
   font-size: 14px;
   letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
+  padding-left: 2%;
+  padding-bottom: 2%;
 `
 export const Inboxtext = styled.p`
   font-size: 15px;

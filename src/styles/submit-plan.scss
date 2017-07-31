@@ -339,12 +339,14 @@
 
 
   .ipd3{
-   font-size: 11.5px;
+    font-size: 11.5px;
+    padding-left: 3px;
+    padding-right: 3px;
    .SubmitPlan.ui.checkbox.label {
       font-size: 11.5px;
     }
     .ui.form .inline.fields .field {
-      padding-right: 6%;
+      padding-right: 8px;
     }
   }
 

@@ -37,7 +37,16 @@ class ChooseInsurancePlan extends Component {
       ChooseColor: [],
       PlanTemplateState: 1,
       ChooseInsurance: [],
-      OurPlan: [],
+      OurPlan: [
+        {
+          planName: 'ประกันที่ 1',
+          price: 1563,
+        },
+        {
+          planName: 'ประกันที่ 2',
+          price: 9900,
+        },
+      ],
       SpacialPlan: [
         {
           planName: 'แผนจากบริษัทประกันที่ 1',
@@ -196,7 +205,7 @@ class ChooseInsurancePlan extends Component {
           <NavBenefit step={this.state.step} />
         </div>
         <div className="row">
-          <Detail className="large-12 columns">
+          <Detail >
             <Head>เลือกแผนประกันที่ต้องการ</Head>
             <div className="row">
               <div className="large-6 columns">

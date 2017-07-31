@@ -114,11 +114,9 @@ export const ImageIcon1 = styled(Image)`
 `
 export const ImageIcon2 = styled(Image)`
   &&&{
-     position: relative;
-     left: 0px;
-     top: -32px;
-     width: 25px;
-     height: 27px;
+
+     width: 80%;
+
   }
 `
 export const EmptyPlan = styled.div`

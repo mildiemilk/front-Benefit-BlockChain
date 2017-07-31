@@ -25,23 +25,15 @@ export const TextNormal = styled.p`
   text-align: left;
   color: #323028;
 `
-export const Inboxtext = styled.p`
-  font-size: 15px;
-  color:#d8d8d8;
-  letter-spacing: 0.4px;
-  font-weight: bold;
-  padding-left: 5%;
-  padding-top: 2%;
-  text-align: center;
-`
+
 export const Inner = styled.div`
   border-radius: 8px;
   width: 100%;
   height: 81px;
   border: solid 1px rgba(151, 151, 151, 0.66);
   margin-bottom: 15px;
-  padding-top: 25px;
-  padding-left: 25px;
+  padding: 25px;
+
 `
 
 export const Inner2 = styled.div`
@@ -50,18 +42,22 @@ export const Inner2 = styled.div`
   height: 100%;
   border: solid 1px rgba(151, 151, 151, 0.66);
   margin-bottom: 15px;
-  padding-top: 29px;
-  padding-left: 25px;
+  padding: 29px;
+
 `
 export const FileuploadBox = styled.div`
+  position:relative;
+  top:-8px;
+  margin-bottom: 10px;
   padding:8px;
-  width: 380px;
+  width: 100%;
   height: 40px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   border: solid 1px rgba(155, 155, 155, 0.64);
 `
 export const BrowsButton = styled.label`
+  
   border-radius: 20px;
   background-color: #3a7bd5;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
@@ -74,6 +70,8 @@ export const BrowsButton = styled.label`
   margin-right: 10px;
 `
 export const AddBlockButton = styled.div`
+  position: relative;
+  left: 35%;
   width: 163px;
   height: 40px;
   margin-left: 5px;

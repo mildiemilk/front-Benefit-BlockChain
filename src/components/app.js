@@ -29,7 +29,8 @@ import Logout from './Auth/logout'
 import SettingPlan from './SettingBenefit/setting-plan'
 import Download from './Download'
 import Congrat from './congrat'
-import Congrat2 from './congratStep4'
+import CongratStep3 from './congratStep3'
+import CongratStep4 from './congratStep4'
 import ChooseInsuranceplan from './ChooseInsurancePlan'
 import PieChart from './PieChart'
 import SelectRealTime from './SelectRealTime'
@@ -62,7 +63,13 @@ class App extends Component {
         route = (
           <NavLayout>
             <Switch>
+              <Route path="/addbenefit" component={AddBenefit} />
               <Route path="/confirm_identity" component={confirmIdentity} />
+              <Route path="/compareplan" component={ComparePlan} />
+              <Route path="/chooseinsurer" component={ChooseInsurer} />
+              <Route path="/congrat" component={Congrat} />
+              <Route path="/congratstep3" component={CongratStep3} />
+              <Route path="/congratstep4" component={CongratStep4} />
               <Route path="/welcome" component={welcomePage} />
               <Route path="/settingprofile" component={SettingProfile} />
               <Route path="/logout" component={Logout} />
@@ -73,19 +80,14 @@ class App extends Component {
                     path="/dashboard/simplerequirement"
                     component={simpleRQ}
                   />
-                  <Route path="/addbenefit" component={AddBenefit} />
                   <Route path="/dashboard" component={Dashboard} />
-                  <Route path="/compareplan" component={ComparePlan} />
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/ipd" component={IPD} />
-                  <Route path="/sendrequest" component={Sendrequest} />ÍÍ
+                  <Route path="/sendrequest" component={Sendrequest} />
                   <Route path="/bidding" component={Bidding} />
-                  <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/uploadfile" component={Uploadfile} />
                   <Route path="/settingbenefit" component={SettingBenefit} />
                   <Route path="/settingplan" component={SettingPlan} />
-                  <Route path="/congrat" component={Congrat} />
-                  <Route path="/congratStep4" component={Congrat2} />
                   <Route
                     path="/employeeBenefits"
                     component={EmployeeBenefits}

@@ -115,7 +115,7 @@ export const ImageIcon1 = styled(Image)`
 export const ImageIcon2 = styled(Image)`
   &&&{
 
-     width: 80%;
+     width: 30px;
 
   }
 `

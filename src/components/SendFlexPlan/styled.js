@@ -27,6 +27,7 @@ export const BackButton = styled.button`
   display: inline-block;
   width: 164px;
   height: 40px;
+  margin-left: 5%;
   border-radius: 20px;
   color: #ffffff;
   background-color: #f7555f;

@@ -5,24 +5,24 @@ export const Detail = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   margin-top:3%;
-  padding: 7%;
-  padding-top: 25px;
+  padding: 3% 5%;
   height: 100%;
 
 `
 
-export const Head = styled.p`
+export const Head = styled.div`
   font-size: 30px;
   letter-spacing: 0.4px;
   font-weight: bold;
+  margin-bottom: 10px;
 
 `
-export const Head2 = styled.p`
+export const TopicHead = styled.p`
   font-size: 15px;
   letter-spacing: 0.4px;
   font-weight: bold;
   padding-top: 10px;
-  padding-bottom: 3px
+  padding-bottom: 3px;
 
 `
 export const Submit = styled.button`
@@ -36,44 +36,20 @@ export const Submit = styled.button`
   border-color: #f7555f;
   border-style: solid;
 `
-export const BoxIndiv1 = styled.div`
+export const BoxIndiv = styled.div`
   border-radius: 8px;
   background-color: #ffffff;
   background-color: var(--white-two);
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   padding:3%;
-  height: 320px;
-`
-export const BoxIndiv2 = styled.div`
-  border-radius: 8px;
-  background-color: #ffffff;
-  background-color: var(--white-two);
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  padding:3%;
-  height: 230px;
-`
-export const BoxIndiv3 = styled.div`
-  border-radius: 8px;
-  background-color: #ffffff;
-  background-color: var(--white-two);
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  padding:3%;
-  padding-bottom: 1%;
-  height: 100%;
   width: 100%;
-  display: inline-block;
-`
-export const BoxIndiv4 = styled.div`
-  border-radius: 8px;
-  background-color: #ffffff;
-  background-color: var(--white-two);
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  padding:3%;
-  height: 180px;
+  height: 100%;
+  margin-bottom: 5px;
 `
 
+
 export const PostreText = styled.text`
-  width: 169px;
+  width: 100%;
   height: 24px;
   font-size: 14px;
   font-weight: 500px;
@@ -99,14 +75,12 @@ export const PlanBox = styled.div`
 
 export const TopSpace = styled.div`
   margin-top: 6px;
+  width:100%;
 `
 export const Card = styled.div`
-  width: 15%;
+  width: 100%;
   height: 145px;
   border-radius: 8px;
   background-color: #f5f5f5;
   border: solid 1px rgba(151, 151, 151, 0.39);
-  margin: 2% 0%;
-  margin-right: 1.5%;
-  float: left !important;
 `

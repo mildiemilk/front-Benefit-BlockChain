@@ -6,6 +6,7 @@ import { Rating } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import NavInsure from '../NavInsure'
 import { postBox } from '../../api/post-box'
+import { getSimpleRQ } from '../../api/simple-requirement'
 import {
   Reg3,
   PostBoxFront,
@@ -34,6 +35,7 @@ class PostBox extends Component {
   static propTypes = {
     selectBroker: PropTypes.bool.isRequired,
     postBox: PropTypes.func.isRequired,
+    getSimpleReq: PropTypes.shape.isRequired,
   }
 
   constructor() {
@@ -42,6 +44,9 @@ class PostBox extends Component {
       step: 2,
       passwordToConfirm: '',
     }
+  }
+  componentDidMount() {
+    this.props.getSimpleReq()
   }
   handlePost = e => {
     e.preventDefault()
@@ -67,7 +72,7 @@ class PostBox extends Component {
                 <PostBoxFront>
                   <br /><br /><br />กระดานสนทนา
                 </PostBoxFront>
-                <Space><Postre /></Space>
+                <Space><Postre data={this.props.getSimpleReq} /></Space>
               </div>
             </div>
             <div className="row">
@@ -93,14 +98,14 @@ class PostBox extends Component {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row" style={{ marginBottom: '3%' }}>
               <div
                 className="large-3 large-offset-1 columns"
                 style={{ paddingRight: '0%' }}
               >
                 <Chatlist />
               </div>
-              <div className="large-7 columns" style={{ paddingLeft: '0%' }}>
+              <div className="large-7 columns" style={{ paddingLeft: '0%', paddingBottom: '4%' }}>
                 <Reg8><Chatbox /></Reg8>
               </div>
               <div className="large-1 columns" />
@@ -114,10 +119,12 @@ class PostBox extends Component {
 
 const mapStateToProps = state => ({
   selectBroker: state.postBoxReducer.selectBroker,
+  getSimpleReq: state.fillsimpleReducer,
 })
 
 const mapDispatchToProps = dispatch => ({
   postBox: passwordToConfirm => dispatch(postBox(passwordToConfirm)),
+  getSimpleReq: () => dispatch(getSimpleRQ()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostBox)

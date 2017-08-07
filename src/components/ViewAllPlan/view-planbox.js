@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import moment from 'moment'
 import { Icon, Checkbox, Popup } from 'semantic-ui-react'
 import ModalView from './modal-view'
 import { copyPlan, deletePlan } from '../../api/set-plan'
@@ -33,7 +34,8 @@ class ViewPlanBox extends Component {
         </td>
         <td singleLine> {element.planName} </td>
         <td> {element.updateBy} </td>
-        <td> {element.updatedAt} </td>
+        <td> {moment(element.updatedAt).locale('th')
+                  .format('DD MMMM YYYY')} </td>
         <td>
           <Popup
             trigger={<Icon disabled name="edit" size="large" />}

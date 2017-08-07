@@ -8,17 +8,17 @@ import ModalInsurer from './ModalInsurer'
 import ModalPlanBox from './ModalPlanBox'
 import Insurer from './insurer'
 import '../../styles/send-request.scss'
+// import PostSimpleRQ from './simple-requirement'
+import Postre from './postre'
 import {
   Detail,
   Head,
-  Head2,
+  TopicHead,
   Submit,
-  BoxIndiv2,
-  BoxIndiv3,
-  BoxIndiv4,
+  BoxIndiv,
   Time,
 } from './styled'
-import PostSimpleRQ from './simple-requirement'
+
 
 class Sendrequest extends Component {
   static propTypes = {
@@ -45,21 +45,19 @@ class Sendrequest extends Component {
         <NavInsure step={this.state.step} />
         <div className="row">
           <Detail className="large-12 columns">
-            <div className="row">
-              <Head>ส่งคำขอและรอการเสนอราคา</Head>
-            </div>
-            <Head2>กรุณาตรวจสอบข้อมูลของคุณ</Head2>
-            <PostSimpleRQ />
-            <Head2>กรุณาตรวจสอบแพลนของคุณ</Head2>
-            <BoxIndiv2>
+            <Head>ส่งคำขอและรอการเสนอราคา</Head>
+            <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
+            <Postre />
+            <TopicHead>กรุณาตรวจสอบแพลนของคุณ</TopicHead>
+            <BoxIndiv>
               <ModalPlanBox changePositionPage={this.changePositionPage} />
-            </BoxIndiv2>
-            <Head2>
+            </BoxIndiv>
+            <TopicHead>
               รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
-            </Head2>
+            </TopicHead>
             {' '}
             <ModalInsurer />
-            <BoxIndiv3>
+            <BoxIndiv>
               บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
               {' '}
               <Time>
@@ -71,9 +69,9 @@ class Sendrequest extends Component {
               {' '}
               <Time>{moment(this.props.timeout.timeout).format('LT')}</Time>
               <Insurer />
-            </BoxIndiv3>
-            <Head2>อัพโหลดไฟล์</Head2>
-            <BoxIndiv4 />
+            </BoxIndiv>
+            <TopicHead>อัพโหลดไฟล์</TopicHead>
+            <BoxIndiv />
           </Detail>
           <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
         </div>

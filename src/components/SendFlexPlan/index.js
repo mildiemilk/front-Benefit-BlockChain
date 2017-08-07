@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import NavBenefit from '../NavBenefit'
 import { Detail, Head, Inner, BackButton, SendButton } from './styled'
 
@@ -72,7 +73,9 @@ class SendFlexPlan extends Component {
               <BackButton>กลับ</BackButton>
             </div>
             <div className="large-3 columns">
-              <SendButton>ส่งข้อมูล</SendButton>
+              <Link to="/congratstep3">
+                <SendButton>ส่งข้อมูล</SendButton>
+              </Link>
             </div>
           </div>
         </div>

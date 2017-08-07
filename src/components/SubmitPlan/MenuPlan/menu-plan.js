@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Popup, Icon, List } from 'semantic-ui-react'
 import '../../../styles/submit-plan.scss'
 import FormModal from '../form-modal'
@@ -24,6 +24,7 @@ class MenuPlan extends Component {
     handlePlan: PropTypes.func.isRequired,
     handleNewPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor() {
@@ -150,6 +151,9 @@ class MenuPlan extends Component {
   }
 
   render() {
+    if (this.props.comparePlan === this.state.comparePlan) {
+      return <Redirect to="/compareplan" />
+    }
     return (
       <div className="menu-box">
         <p className="menu-header">จัดแผนประกันภัย</p>
@@ -206,7 +210,11 @@ class MenuPlan extends Component {
 MenuPlan.propTypes = {}
 
 const mapDispatchToProps = dispatch => ({
-  menuPlans: compareplan => dispatch(menuPlans(compareplan)),
+  menuPlans: comparePlan => dispatch(menuPlans(comparePlan)),
 })
 
-export default connect(null, mapDispatchToProps)(MenuPlan)
+const mapStateToProps = state => ({
+  comparePlan: state.menuplanReducer,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuPlan)

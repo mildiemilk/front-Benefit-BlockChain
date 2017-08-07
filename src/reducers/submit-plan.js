@@ -4,7 +4,7 @@
 const defaultPlan = {
   planList: [],
 }
-const comparePlan = []
+const comparePlan = JSON.parse(localStorage.getItem('comparePlan'))
 
 /**
  * Action Constansts

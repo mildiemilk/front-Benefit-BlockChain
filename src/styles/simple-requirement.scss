@@ -1,7 +1,12 @@
-#simpleRQ {
+.simpleRQ {
 
     height: 952px;
     margin-top: 72;
+    .ui.input input{
+        font-family: Kanit !important;
+        padding-left:2%; 
+}
+
 }
 
 #containerWithBg {
@@ -85,6 +90,3 @@
     color: #ffffff;
 }
 
-.ui.input input{
-    font-family: Kanit !important;
-}

@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 
 export const ModalHeader = styled.p`
-  font-size: 16px;
-  letter-spacing: 0.4px;
-  text-align: center;
-  color: #000000;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #000000;
 `
 
 export const ModalContent = styled.p`
-font-size: 14px;
-font-weight: 500;
-letter-spacing: 0.3px;
-text-align: left;
-color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #000000;
 `
 
 export const EditButton = styled.button`
@@ -87,3 +87,4 @@ export const BottomSpace = styled.div`
 export const Inputs = styled.input`
     display: none;
 `
+

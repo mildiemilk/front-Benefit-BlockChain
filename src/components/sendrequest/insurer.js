@@ -16,11 +16,12 @@ class Insurer extends React.Component {
   }
 
   renderList = insurers => {
-    insurers.map(insurer => (
+    const list = insurers.map(insurer => (
       <Card className="large-2 columns">
         {insurer.insurerName}
       </Card>
     ))
+    return list
   }
 
   render() {

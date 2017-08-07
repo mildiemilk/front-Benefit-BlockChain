@@ -17,6 +17,7 @@
         "error",
         "as-needed"
       ],
+      "linebreak-style": 0,
       "no-lonely-if": 0,
       "no-confusing-arrow": 0,
       "no-shadow": 0,

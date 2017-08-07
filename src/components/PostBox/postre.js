@@ -20,6 +20,12 @@ const Checkboxs = styled(Checkbox)`
   }
 `
 
+const CardDescription = styled(Card.Description)`
+  &&&{
+    max-width: 100%;
+  }
+`
+
 class Postre extends Component {
   static propTypes = {
     data: PropTypes.shape.isRequired,
@@ -49,14 +55,14 @@ class Postre extends Component {
               </Card.Meta>
             </Card.Content>
             <Card.Content extra>
-              <Card.Description>
+              <CardDescription>
                 <TopSpace className="row">
-                  <div className="large-4 columns">
+                  <div className="large-5 columns">
                     <strong>
                       <PostreText>จำนวนพนักงานที่ต้องการแผนประกัน</PostreText>
                     </strong>
                   </div>
-                  <div className="large-8 columns">
+                  <div className="large-7 columns">
                     {' '}
                     <PostreText>{this.props.data.numberOfEmployee}</PostreText>
                     {' '}
@@ -64,34 +70,34 @@ class Postre extends Component {
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-4 columns">
+                  <div className="large-5 columns">
                     <strong>
                       <PostreText>รูปแบบประกันที่ต้องการ</PostreText>
                     </strong>
                   </div>
-                  <div className="large-8 columns">
+                  <div className="large-7 columns">
                     <PostreText>{this.props.data.typeOfInsurance}</PostreText>
                   </div>
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-4 columns">
+                  <div className="large-5 columns">
                     <strong>
                       <PostreText>อัพโหลดแผนประกันที่ใช้ในปัจจุบัน</PostreText>
                     </strong>
                   </div>
-                  <div className="large-8 columns">
+                  <div className="large-7 columns">
                     <PostreText>Insurance_Plan_2016.pdf</PostreText>
                   </div>
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-4 columns">
+                  <div className="large-5 columns">
                     <strong>
                       <PostreText>วันหมดอายุกรมทัน</PostreText>
                     </strong>
                   </div>
-                  <div className="large-8 columns">
+                  <div className="large-7 columns">
                     {' '}
                     <PostreText>{this.props.data.day}</PostreText>
                     {'/'}
@@ -102,14 +108,14 @@ class Postre extends Component {
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-4 columns">
+                  <div className="large-5 columns">
                     <strong>
                       <strong>
                         <PostreText>แผนประกันที่ต้องการ</PostreText>
                       </strong>
                     </strong>
                   </div>
-                  <div className="large-8 columns">
+                  <div className="large-7 columns">
                     <PostreText>
                       <Checkboxs
                         label="ค่ารักษาพยาบาลกรณีผู้ป่วยใน (IPD)"
@@ -148,7 +154,7 @@ class Postre extends Component {
                   </div>
                 </TopSpace>
 
-              </Card.Description>
+              </CardDescription>
             </Card.Content>
           </Card>
         </Card.Group>

@@ -35,7 +35,7 @@ class Setting extends Component {
   render() {
     return (
       <DetailDiv>
-        <Text>ตั้งค่าแผนสิทธิประโยชน์</Text>
+        <Text>ตั้งค่าแผนสิทธิประโยชน์ {this.props.Types}</Text>
         <Back onClick={this.props.handleSetting}> &lt; กลับหน้าหลัก</Back>
         <SettingList>การคำนวณสวัสดิการสำหรับพนักงานเข้าใหม่กลางปี</SettingList>
         <div className="radio">

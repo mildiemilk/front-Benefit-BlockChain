@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Grid, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import { uploadFile } from '../../api/upload-file'
 import {
   Detail,
@@ -105,14 +105,13 @@ class Uploadfile extends Component {
     const output = []
     for (let i = 1; i < this.state.AmountUploadBlock; i += 1) {
       output.push(
-        <tr style={{ height: '50px' }}>
-          <td>&nbsp;</td>
-          <td>
+        <div className="row">
+          <div className=" large-offset-4 large-6  columns">
             <FileuploadBox>
               {this.RenderInsideBlock(i)}
             </FileuploadBox>
-          </td>
-          <td>
+          </div>
+          <div className=" large-2 columns">
             <BrowsButton for="uploadfor">
               <input
                 id="uploadfor"
@@ -123,8 +122,8 @@ class Uploadfile extends Component {
               />
               เลือกไฟล์
             </BrowsButton>
-          </td>
-        </tr>,
+          </div>
+        </div>,
       )
     }
     return output
@@ -182,94 +181,77 @@ class Uploadfile extends Component {
         <div className="ChooseInsurer">
           <NavInsure step={this.state.step} />
         </div>
-        <div className="row">
-          <Detail className="large-12 columns">
-            <Head>อัพโหลดไฟล์</Head>
-            <Grid>
-              <Grid.Row>
-                <TextNormal>
-                  กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
-                  (รองรับไฟล์ประเภท .pdf, .docx และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
-                  <br />
-                </TextNormal>
-                <Grid.Column width={16}>
-                  <Inner>
-                    <table style={{ width: '100%' }}>
-                      <tr>
-                        <td style={{ width: '251px' }}>
-                          <TextNormal>
-                            กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์ :
-                          </TextNormal>
-                        </td>
-                        <td>
-                          <FileuploadBox>
-                            {this.RendersummitBrokerFile()}
-                          </FileuploadBox>
-                        </td>
-                        <td style={{ width: '20%' }}>
-                          <BrowsButton for="uploadbrokerfor">
-                            <input
-                              id="uploadbrokerfor"
-                              style={{ display: 'none' }}
-                              type="file"
-                              accept=".xls,.xlsx,.pdf,.docx"
-                              onChange={e => this.handleUploadBroker(e)}
-                            />
-                            เลือกไฟล์
-                          </BrowsButton>
-                        </td>
-                      </tr>
-                    </table>
-                  </Inner>
-                </Grid.Column>
+        <Detail>
+          <Head>อัพโหลดไฟล์</Head>
 
-                <Grid.Column width={16}>
-                  <Inner2>
-                    <table style={{ width: '100%' }}>
-                      <tr style={{ height: '50px' }}>
-                        <td style={{ width: '251px' }}>
-                          <TextNormal>
-                            กรุณาอัพโหลด Employee Claim Data :
-                          </TextNormal>
-                        </td>
-                        <td>
-                          <FileuploadBox>
-                            {this.RenderListClaimData()}
-                          </FileuploadBox>
-                        </td>
-                        <td style={{ width: '20%' }}>
-                          <BrowsButton for="uploadfor">
-                            <input
-                              id="uploadfor"
-                              style={{ display: 'none' }}
-                              type="file"
-                              accept=".xls,.xlsx,.pdf,.docx"
-                              onChange={e => this.handleUploadcliamdata(e)}
-                            />
-                            เลือกไฟล์
-                          </BrowsButton>
-                        </td>
-                      </tr>
-                      {this.RenderUploadRow()}
-                      <tr style={{ height: '50px' }}>
-                        <td />
-                        <td>
-                          <AddBlockButton
-                            onClick={e => this.handleAddAmountUploadBlock(e)}
-                          >
-                            + เพิ่มไฟล์
-                          </AddBlockButton>
-                        </td>
-                        <td />
-                      </tr>
-                    </table>
-                  </Inner2>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-            <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
-          </Detail>
-        </div>
+
+          <TextNormal>
+                กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
+                (รองรับไฟล์ประเภท .pdf, .docx และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
+                <br />
+          </TextNormal>
+          <div className="row">
+            <div className=" large-12 columns">
+              <Inner>
+                <div className=" large-4 columns">
+                  <TextNormal>
+                    กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์ :
+                  </TextNormal>
+                </div>
+                <div className=" large-6 columns">
+                  <FileuploadBox>
+                    {this.RendersummitBrokerFile()}
+                  </FileuploadBox>
+                </div>
+                <div className=" large-2 columns">
+                  <BrowsButton for="uploadbrokerfor">
+                    <input
+                      id="uploadbrokerfor"
+                      style={{ display: 'none' }}
+                      type="file"
+                      accept=".xls,.xlsx,.pdf,.docx"
+                      onChange={e => this.handleUploadBroker(e)}
+                    />
+                    เลือกไฟล์
+                  </BrowsButton>
+                </div>
+              </Inner>
+            </div>
+          </div>
+          <Inner2>
+            <div className="row">
+              <div className="large-4 columns">
+                <TextNormal>
+                  กรุณาอัพโหลด Employee Claim Data :
+                </TextNormal>
+              </div>
+              <div className="large-6 columns">
+                <FileuploadBox>
+                  {this.RenderListClaimData()}
+                </FileuploadBox>
+              </div>
+              <div className="large-2 columns">
+                <BrowsButton for="uploadfor">
+                  <input
+                    id="uploadfor"
+                    style={{ display: 'none' }}
+                    type="file"
+                    accept=".xls,.xlsx,.pdf,.docx"
+                    onChange={e => this.handleUploadcliamdata(e)}
+                  />
+                  เลือกไฟล์
+                </BrowsButton>
+              </div>
+            </div>
+            {this.RenderUploadRow()}
+            <AddBlockButton
+              onClick={e => this.handleAddAmountUploadBlock(e)}
+            >
+              + เพิ่มไฟล์
+            </AddBlockButton>
+          </Inner2>
+          <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
+        </Detail>
       </div>
     )
   }

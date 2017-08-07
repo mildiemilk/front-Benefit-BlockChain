@@ -26,7 +26,7 @@ class ViewPlanBox extends Component {
   }
 
   renderList = list => {
-    list.map(element => (
+    const plans = list.map(element => (
       <tr>
         <td>
           <Checkbox />
@@ -66,6 +66,7 @@ class ViewPlanBox extends Component {
         </td>
       </tr>
     ))
+    return plans
   }
 
   render() {

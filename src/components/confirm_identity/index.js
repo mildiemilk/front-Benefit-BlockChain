@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Container } from 'semantic-ui-react'
 
-import pic from './proove@3x.png'
+import pic from '../image/proove@3x.png'
 
 const confirmIdentity = () => (
   <Container>

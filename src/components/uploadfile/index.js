@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import { uploadFile } from '../../api/upload-file'
 import {
   Detail,
@@ -256,7 +257,9 @@ class Uploadfile extends Component {
               + เพิ่มไฟล์
             </AddBlockButton>
           </Inner>
-          <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
+          <Link to="/sendrequest">
+            <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
+          </Link>
         </Detail>
       </div>
     )

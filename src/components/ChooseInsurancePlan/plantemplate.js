@@ -65,11 +65,11 @@ class PlanTemplate extends Component {
       )
     } else {
       columnIsCloseTap = (
-        <td>
-          <td style={{ width: '40px' }}>
+        <td style={{ width: '18%' }}>
+          <td>
             <ModalPlan />
           </td>
-          <td style={{ width: '30px' }}>
+          <td>
             <Icon name="chevron right" size="big" style={{ left: '20px' }} />
           </td>
         </td>

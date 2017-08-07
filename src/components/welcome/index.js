@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, Container } from 'semantic-ui-react'
 
-import pic from './gift.png'
+import pic from '../image/gift.png'
 
 const welcomePage = () => (
   <Container>

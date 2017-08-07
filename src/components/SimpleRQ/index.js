@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Card, Input, Select, Form, Checkbox } from 'semantic-ui-react'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 import * as simpleRQOption from './simple-requirement-option'
 import { fillSimpleRQ } from '../../api/simple-requirement'
 import { UploadButton, BottomSpace, Inputs } from './styled'
@@ -16,7 +18,14 @@ const CardHeader = styled(Card)`
       font-size: 20px;
       box-shadow: 0 0 0 0;
     }
-  `
+`
+
+const DatePickers = styled(DatePicker)`
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #dddddd;
+  height: 30px;
+`
 
 class simpleRQ extends Component {
   constructor() {
@@ -25,9 +34,6 @@ class simpleRQ extends Component {
       step: 1,
       numberOfEmployee: '',
       typeOfInsurance: '',
-      day: '',
-      month: '',
-      year: '',
       IPD: false,
       OPD: false,
       dental: false,
@@ -36,6 +42,7 @@ class simpleRQ extends Component {
       otherDes: '',
       file: '',
       filePreviewUrl: '',
+      date: null,
     }
   }
   _handleImageChange(e) {
@@ -52,6 +59,9 @@ class simpleRQ extends Component {
     }
 
     reader.readAsDataURL(file)
+  }
+  handleDate = date => {
+    this.setState({ date })
   }
   handlePost = e => {
     e.preventDefault()
@@ -94,7 +104,7 @@ class simpleRQ extends Component {
     }
 
     return (
-      <div id="simpleRQ">
+      <div className="simpleRQ">
         <NavInsure step={this.state.step} />
         <div className="row">
           <Card fluid id="cardSimpleRQ">
@@ -157,26 +167,10 @@ class simpleRQ extends Component {
                 <p> วันหมดอายุของกรมธรรม์ </p>
               </div>
               <div className="large-9 columns">
-                <Select
-                  id="daySelect"
-                  name="day"
-                  placeholder="วัน"
-                  options={simpleRQOption.dayOption}
-                  onChange={this.handleChange}
-                />
-                <Select
-                  id="monthSelect"
-                  name="month"
-                  placeholder="เดือน"
-                  options={simpleRQOption.monthOption}
-                  onChange={this.handleChange}
-                />
-                <Select
-                  id="yearSelect"
-                  name="year"
-                  placeholder="ปี"
-                  options={simpleRQOption.yearOption}
-                  onChange={this.handleChange}
+                <DatePickers
+                  selected={this.state.date}
+                  onChange={this.handleDate}
+                  minDate={moment()}
                 />
               </div>
             </BottomSpace>

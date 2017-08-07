@@ -30,19 +30,14 @@ class CoPay extends Component {
 
     let value
 
-    if (!opdCoPayQuota) {
-      if (!opdCoPayDeductable) {
-        if (
-          !(opdCoPayMixYear && opdCoPayMixPercentage && opdCoPayMixNotExceed)
-        ) {
-          value = ''
-        }
-        value = 'Quota Share + Deductable'
-      }
-      value = 'Deductable'
-    } else {
+    if (opdCoPayQuota) {
       value = 'Quota Share'
-    }
+    } else if (opdCoPayDeductable) {
+      value = 'Deductable'
+    } else if (opdCoPayMixYear && opdCoPayMixPercentage && opdCoPayMixNotExceed) {
+      value = 'Quota Share + Deductable'
+    } else value = ''
+
     this.state = { value }
   }
 

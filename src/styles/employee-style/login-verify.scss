@@ -4,6 +4,10 @@
   min-height: 100%;
   padding-bottom: 80px;
   background: white;
+   .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
+    padding-left: 14%;
+    font-family: Kanit !important;
+  }
 }
 .bg{
   background: white;
@@ -97,14 +101,9 @@
  .divInput{
         position: relative;
       }
-
-      .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
-        padding-left: 14%;
-      }
-
-      .ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input {
-        width: 100%;
-      }
+  .ui.form .field .ui.input, .ui.form .fields .field .ui.input, .ui.form .wide.field .ui.input {
+    width: 100%;
+  }
 
 
 @media (max-width: 768px) and (min-width: 520px)  {

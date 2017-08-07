@@ -35,15 +35,12 @@ class ComparePlan extends Component {
     super(props)
     this.state = {
       step: 3,
-      passwordToConfirm: '',
       lifeBox: false,
       dentalBox: false,
       OPDBox: false,
       IPDBox: false,
     }
   }
-
-  componentDidMount() { }
 
   handleToggleLife = () => {
     if (this.state.lifeBox) {

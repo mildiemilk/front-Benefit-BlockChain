@@ -8,12 +8,14 @@ import {
   Detail,
   Head,
   Inner,
-  Inner2,
   FileuploadBox,
+  FileuploadBoxs,
   Submit,
   BrowsButton,
   TextNormal,
   AddBlockButton,
+  Upload,
+  Uploads,
 } from './styled'
 import NavInsure from '../NavInsure'
 
@@ -108,21 +110,23 @@ class Uploadfile extends Component {
       output.push(
         <div className="row">
           <div className=" large-offset-4 large-6  columns">
-            <FileuploadBox>
+            <FileuploadBoxs>
               {this.RenderInsideBlock(i)}
-            </FileuploadBox>
+            </FileuploadBoxs>
           </div>
           <div className=" large-2 columns">
-            <BrowsButton for="uploadfor">
-              <input
-                id="uploadfor"
-                style={{ display: 'none' }}
-                type="file"
-                accept=".xls,.xlsx,.pdf,.docx"
-                onChange={e => this.handleUploadcliamdata(e)}
-              />
-              เลือกไฟล์
-            </BrowsButton>
+            <Uploads>
+              <BrowsButton for="uploadfor">
+                <input
+                  id="uploadfor"
+                  style={{ display: 'none' }}
+                  type="file"
+                  accept=".xls,.xlsx,.pdf,.docx"
+                  onChange={e => this.handleUploadcliamdata(e)}
+                />
+                เลือกไฟล์
+              </BrowsButton>
+            </Uploads>
           </div>
         </div>,
       )
@@ -184,16 +188,14 @@ class Uploadfile extends Component {
         </div>
         <Detail>
           <Head>อัพโหลดไฟล์</Head>
-
-
           <TextNormal>
                 กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
                 (รองรับไฟล์ประเภท .pdf, .docx และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
                 <br />
           </TextNormal>
-          <div className="row">
-            <div className=" large-12 columns">
-              <Inner>
+          <Inner>
+            <div className="row">
+              <div className=" large-12 columns">
                 <div className=" large-4 columns">
                   <TextNormal>
                     กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์ :
@@ -205,21 +207,23 @@ class Uploadfile extends Component {
                   </FileuploadBox>
                 </div>
                 <div className=" large-2 columns">
-                  <BrowsButton for="uploadbrokerfor">
-                    <input
-                      id="uploadbrokerfor"
-                      style={{ display: 'none' }}
-                      type="file"
-                      accept=".xls,.xlsx,.pdf,.docx"
-                      onChange={e => this.handleUploadBroker(e)}
-                    />
-                    เลือกไฟล์
-                  </BrowsButton>
+                  <Upload>
+                    <BrowsButton for="uploadbrokerfor">
+                      <input
+                        id="uploadbrokerfor"
+                        style={{ display: 'none' }}
+                        type="file"
+                        accept=".xls,.xlsx,.pdf,.docx"
+                        onChange={e => this.handleUploadBroker(e)}
+                      />
+                      เลือกไฟล์
+                    </BrowsButton>
+                  </Upload>
                 </div>
-              </Inner>
+              </div>
             </div>
-          </div>
-          <Inner2>
+          </Inner>
+          <Inner>
             <div className="row">
               <div className="large-4 columns">
                 <TextNormal>
@@ -232,16 +236,18 @@ class Uploadfile extends Component {
                 </FileuploadBox>
               </div>
               <div className="large-2 columns">
-                <BrowsButton for="uploadfor">
-                  <input
-                    id="uploadfor"
-                    style={{ display: 'none' }}
-                    type="file"
-                    accept=".xls,.xlsx,.pdf,.docx"
-                    onChange={e => this.handleUploadcliamdata(e)}
-                  />
-                  เลือกไฟล์
+                <Upload>
+                  <BrowsButton for="uploadfor">
+                    <input
+                      id="uploadfor"
+                      style={{ display: 'none' }}
+                      type="file"
+                      accept=".xls,.xlsx,.pdf,.docx"
+                      onChange={e => this.handleUploadcliamdata(e)}
+                    />
+                    เลือกไฟล์
                 </BrowsButton>
+                </Upload>
               </div>
             </div>
             {this.RenderUploadRow()}

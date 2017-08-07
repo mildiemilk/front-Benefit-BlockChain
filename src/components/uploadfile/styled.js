@@ -12,7 +12,7 @@ export const Detail = styled.div`
 
 `
 
-export const Head = styled.p`
+export const Head = styled.div`
   font-size: 30px;
   letter-spacing: 0.4px;
   font-weight: bold;
@@ -26,31 +26,21 @@ export const TextNormal = styled.div`
   color: #323028;
   padding-left: 2%;
   padding-bottom: 2%;
+  padding-top: 27px;
+  margin-left: 19px;
 `
 
 export const Inner = styled.div`
   border-radius: 8px;
   width: 100%;
-  height: 81px;
-  border: solid 1px rgba(151, 151, 151, 0.66);
-  margin-bottom: 15px;
-  padding: 25px;
-
-`
-
-export const Inner2 = styled.div`
-  border-radius: 8px;
-  width: 100%;
   height: 100%;
   border: solid 1px rgba(151, 151, 151, 0.66);
   margin-bottom: 15px;
-  padding: 29px;
-
+  padding-bottom: 17px;
 `
 export const FileuploadBox = styled.div`
-  position:relative;
-  top:-8px;
   margin-bottom: 10px;
+  margin-top: 19px;
   padding:8px;
   width: 100%;
   height: 40px;
@@ -58,6 +48,21 @@ export const FileuploadBox = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   border: solid 1px rgba(155, 155, 155, 0.64);
 `
+
+export const FileuploadBoxs = FileuploadBox.extend`
+  margin-top: 12px;
+`
+
+export const Upload = styled.div`
+  margin-top: 26px;
+  margin-left: 8px;
+`
+
+export const Uploads = styled.div`
+  margin-top: 27px;
+  margin-left: 8px;
+`
+
 export const BrowsButton = styled.label`
   
   border-radius: 20px;

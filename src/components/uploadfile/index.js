@@ -256,7 +256,7 @@ class Uploadfile extends Component {
             >
               + เพิ่มไฟล์
             </AddBlockButton>
-          </Inner2>
+          </Inner>
           <Link to="/sendrequest">
             <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
           </Link>

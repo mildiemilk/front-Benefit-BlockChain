@@ -37,7 +37,7 @@ export function editPlan(editData, planId, editType) {
   return dispatch => {
     const options = {
       method: 'put',
-      url: `${EDIT_PLAN_URI}'/'${planId}'/'${editType}`,
+      url: `${EDIT_PLAN_URI}/${planId}/${editType}`,
       data: editData,
     }
 
@@ -55,7 +55,7 @@ export function deletePlan(planId) {
   return () => {
     const options = {
       method: 'delete',
-      url: `${DELETE_PLAN_URI}'/'${planId}`,
+      url: `${DELETE_PLAN_URI}/${planId}`,
     }
 
     APIRequest(options, true)
@@ -72,7 +72,7 @@ export function copyPlan(planId) {
   return () => {
     const options = {
       method: 'post',
-      url: `${COPY_PLAN_URI}'/'${planId}`,
+      url: `${COPY_PLAN_URI}/${planId}`,
     }
 
     APIRequest(options, true)

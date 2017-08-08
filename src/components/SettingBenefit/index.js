@@ -56,7 +56,22 @@ class SettingBenefit extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.benefitPlan.length === 0) {
       this.setState({ emptyPlan: true })
-    } else this.setState({ emptyPlan: false })
+    } else {
+      if (this.state.activePlan === '') {
+        const planList = newProps.benefitPlan
+        const index = 0
+        this.setState({
+          activePlan: index,
+          planName: planList[index].planName,
+          plan: planList[index].plan,
+          isHealth: planList[index].isHealth,
+          isExpense: planList[index].isExpense,
+          health: planList[index].health,
+          expense: planList[index].expense,
+        })
+      }
+      this.setState({ emptyPlan: false })
+    }
 
     if (newProps.benefitPlan !== this.props.benefitPlan) {
       this.setState({ planList: newProps.benefitPlan })
@@ -203,9 +218,11 @@ class SettingBenefit extends Component {
             </div>
 
             <div className="large-2 large-offset-5 columns">
-              <NextButton>
-                ต่อไป
-              </NextButton>
+              <Link to="/download">
+                <NextButton>
+                  ต่อไป
+                </NextButton>
+              </Link>
             </div>
 
             <div className="large-1 columns" />

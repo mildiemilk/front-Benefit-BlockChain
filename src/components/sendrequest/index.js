@@ -8,7 +8,8 @@ import ModalInsurer from './ModalInsurer'
 import ModalPlanBox from './ModalPlanBox'
 import Insurer from './insurer'
 import '../../styles/send-request.scss'
-// import PostSimpleRQ from './simple-requirement'
+import { getSimpleRQ } from '../../api/simple-requirement'
+import { getTimeout } from '../../api/choose-insurer'
 import Postre from './postre'
 import {
   Detail,
@@ -17,12 +18,15 @@ import {
   Submit,
   BoxIndiv,
   Time,
+  InsurerDiv,
 } from './styled'
 
 
 class Sendrequest extends Component {
   static propTypes = {
-    timeout: PropTypes.shape.isRequired,
+    getSimpleReq: PropTypes.func.isRequired,
+    getTimeout: PropTypes.func.isRequired,
+    timeout: PropTypes.string.isRequired,
   }
   constructor(props) {
     super(props)
@@ -31,7 +35,10 @@ class Sendrequest extends Component {
       position: 'relative-box',
     }
   }
-
+  componentDidMount() {
+    this.props.getSimpleReq()
+    this.props.getTimeout()
+  }
   changePositionPage = () => {
     if (this.state.position === 'relative-box') {
       this.setState({ position: 'fixed-box' })
@@ -40,48 +47,57 @@ class Sendrequest extends Component {
     }
   }
   render() {
+    const { timeout } = this.props
     return (
       <div className={this.state.position}>
         <NavInsure step={this.state.step} />
-        <div className="row">
-          <Detail className="large-12 columns">
-            <Head>ส่งคำขอและรอการเสนอราคา</Head>
-            <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
-            <Postre />
-            <TopicHead>กรุณาตรวจสอบแพลนของคุณ</TopicHead>
-            <BoxIndiv>
-              <ModalPlanBox changePositionPage={this.changePositionPage} />
-            </BoxIndiv>
-            <TopicHead>
-              รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
-            </TopicHead>
-            {' '}
-            <ModalInsurer />
-            <BoxIndiv>
-              บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
-              {' '}
-              <Time>
-                {moment(this.props.timeout.timeout)
-                  .locale('th')
-                  .format('DD MMMM YYYY')}
-              </Time>
-              &nbsp; ภายในเวลา
-              {' '}
-              <Time>{moment(this.props.timeout.timeout).format('LT')}</Time>
-              <Insurer />
-            </BoxIndiv>
-            <TopicHead>อัพโหลดไฟล์</TopicHead>
-            <BoxIndiv />
-          </Detail>
-          <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
-        </div>
+        <Detail >
+          <div className="row">
+            <div className="large-12 columns">
+              <Head>ส่งคำขอและรอการเสนอราคา</Head>
+              <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
+              <Postre data={this.props} />
+              <TopicHead>กรุณาตรวจสอบแพลนของคุณ</TopicHead>
+              <BoxIndiv>
+                <ModalPlanBox changePositionPage={this.changePositionPage} />
+              </BoxIndiv>
+              <InsurerDiv>
+                <TopicHead>
+                  รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
+                </TopicHead>
+                {' '}
+                <ModalInsurer />
+              </InsurerDiv>
+              <BoxIndiv>
+                บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
+                {' '}
+                <Time>
+                  {moment(timeout)
+                    .locale('th')
+                    .format('DD MMMM YYYY')}
+                </Time>
+                &nbsp; ภายในเวลา
+                {' '}
+                <Time>{moment(timeout).format('LT')}</Time>
+                <Insurer />
+              </BoxIndiv>
+              <TopicHead>อัพโหลดไฟล์</TopicHead>
+              <BoxIndiv />
+            </div>
+          </div>
+        </Detail>
+        <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
       </div>
     )
   }
 }
-
+const mapDispatchToProps = dispatch => ({
+  getSimpleReq: () => dispatch(getSimpleRQ()),
+  getTimeout: () => dispatch(getTimeout()),
+})
 const mapStateToProps = state => ({
-  timeout: state.setTimeOut,
+  timeout: state.getTimeout,
+  simpleReq: state.fillsimpleReducer,
 })
 
-export default connect(mapStateToProps, null)(Sendrequest)
+export default connect(mapStateToProps, mapDispatchToProps)(Sendrequest)

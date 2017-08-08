@@ -24,7 +24,7 @@ class AddPlanBar extends Component {
   }
 
   renderList = list => {
-    list.map((element, index) => {
+    const lists = list.map((element, index) => {
       const isActive = index === this.props.activePlan ? '-active' : ''
       return (
         <div
@@ -65,6 +65,7 @@ class AddPlanBar extends Component {
         </div>
       )
     })
+    return lists
   }
 
   render() {

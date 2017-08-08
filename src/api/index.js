@@ -4,6 +4,7 @@ import profileCompany from './profile-company'
 import {
   chooseInsurer,
   setTimeOut,
+  getTimeout,
   getAllInsurer,
   getSelectInsurer,
 } from './choose-insurer'
@@ -37,6 +38,7 @@ export default {
   profileCompany,
   chooseInsurer,
   setTimeOut,
+  getTimeout,
   getAllInsurer,
   endTimeout,
   bidding,

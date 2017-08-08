@@ -4,12 +4,14 @@ export const Detail = styled.div`
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  margin-top:3%;
-  padding: 3% 5%;
+  padding: 6%;
   height: 100%;
 
 `
-
+export const InsurerDiv = styled.div`
+  margin-bottom: 0.5%;
+  margin-top: 1%;
+`
 export const Head = styled.div`
   font-size: 30px;
   letter-spacing: 0.4px;
@@ -17,13 +19,13 @@ export const Head = styled.div`
   margin-bottom: 10px;
 
 `
-export const TopicHead = styled.p`
+export const TopicHead = styled.div`
   font-size: 15px;
   letter-spacing: 0.4px;
   font-weight: bold;
   padding-top: 10px;
-  padding-bottom: 3px;
-
+  padding-bottom: 15px;
+  display: inline-block;
 `
 export const Submit = styled.button`
   width: 164px;
@@ -39,9 +41,8 @@ export const Submit = styled.button`
 export const BoxIndiv = styled.div`
   border-radius: 8px;
   background-color: #ffffff;
-  background-color: var(--white-two);
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  padding:3%;
+  padding:3% 3%;
   width: 100%;
   height: 100%;
   margin-bottom: 5px;
@@ -77,10 +78,14 @@ export const TopSpace = styled.div`
   margin-top: 6px;
   width:100%;
 `
+
 export const Card = styled.div`
-  width: 100%;
+  width: 122px !important;
   height: 145px;
   border-radius: 8px;
+  float: left !important;
+  margin-right: 16px;
+  margin-top: 15px;
   background-color: #f5f5f5;
   border: solid 1px rgba(151, 151, 151, 0.39);
 `

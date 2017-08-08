@@ -33,6 +33,7 @@ class OPD extends Component {
     opdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -262,6 +263,7 @@ class OPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
           />
         </div>
       </div>

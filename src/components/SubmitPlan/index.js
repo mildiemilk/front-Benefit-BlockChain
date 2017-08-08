@@ -78,7 +78,7 @@ class SubmitPlan extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.havePlan && (this.state.activePlan === -1)) {
+    if (newProps.havePlan && (this.state.activePlan === -1) && !this.state.newPlan) {
       const val = 0
       const { planList } = newProps
       this.setState({
@@ -323,10 +323,12 @@ class SubmitPlan extends Component {
     }
   }
 
-  handleCloseModal = () =>
-    this.setState({
-      openModalForm: false,
-    })
+  handleCloseModal = () => {
+    this.setState({ openModalForm: false, warningModal: false })
+    if (this.props.havePlan) {
+      this.handlePlan(0)
+    }
+  }
 
   handleSetGoToNextPage = () => {
     this.setState({ canGoToNextPage: false })
@@ -406,6 +408,7 @@ class SubmitPlan extends Component {
                     <div className="fillBox">
                       <AllPlan
                         activePlan={this.state.activePlan}
+                        handlePlan={this.handlePlan}
                         nextPage={this.state.nextPage}
                         handleNextPage={this.handleNextPage}
                         handleSetGoToNextPage={this.handleSetGoToNextPage}

@@ -52,15 +52,16 @@ class FormSubmitPlan extends Component {
               ขั้นตอนที่ 1 : Choose High Level Plan{' '}
             </span>
             <div className="box-in-head-box">
-              <img
-                src={erase}
-                className="image-erase"
-                onClick={() => this.props.handleResetProfilePlan()}
-                role="button"
-                aria-hidden
-                alt="erase"
-              />
-              <span className="headLogo">Reset</span>
+              <span role="button" aria-hidden onClick={() => this.props.handleResetProfilePlan()}>
+                <img
+                  src={erase}
+                  className="image-erase"
+                  role="button"
+                  aria-hidden
+                  alt="erase"
+                />
+                <span className="headLogo">Reset</span>
+              </span>
             </div>
           </div>
           <div className="set-padding">
@@ -73,7 +74,7 @@ class FormSubmitPlan extends Component {
                 </div>
               </div>
               <div className="large-8 columns">
-                <Form>
+                <Form onSubmit={this.handleClick}>
                   <Form.Group widths="equal">
                     <Form.Input
                       placeholder="ชื่อแพลน"
@@ -109,7 +110,6 @@ class FormSubmitPlan extends Component {
                       marginBottom: '3%',
                     }}
                     type="submit"
-                    onClick={this.handleClick}
                   >
                     บันทึก
                 </Button>

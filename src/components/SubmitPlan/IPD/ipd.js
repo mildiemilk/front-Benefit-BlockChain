@@ -53,6 +53,7 @@ class IPD extends Component {
     ipdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
   }
 
   constructor() {
@@ -318,6 +319,7 @@ class IPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
           />
         </div>
       </div>

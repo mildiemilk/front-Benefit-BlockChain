@@ -26,6 +26,7 @@ class Life extends Component {
     setPlan: PropTypes.string.isRequired,
     reset: PropTypes.string.isRequired,
     openModal: PropTypes.string.isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props)
@@ -247,6 +248,7 @@ class Life extends Component {
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
+          handleNextPlan={this.props.handleNextPlan}
         />
       </div>
     )

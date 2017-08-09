@@ -104,8 +104,8 @@ export function getAllPlan() {
 
 export function menuPlans(comparePlan) {
   return dispatch => {
+    localStorage.setItem('comparePlan', JSON.stringify(comparePlan))
     dispatch(menuPlanSuccess(comparePlan))
-    window.location.href = '/compareplan'
   }
 }
 

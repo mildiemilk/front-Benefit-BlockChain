@@ -12,36 +12,11 @@ import '../../styles/submit-plan.scss'
 
 class SubmitPlan extends Component {
   static propTypes = {
-    ipdType: PropTypes.string.isRequired,
-    ipdLumsumPerYear: PropTypes.string.isRequired,
-    ipdLumsumPerTime: PropTypes.string.isRequired,
-    ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
-    rbLumsumRoomPerNight: PropTypes.string.isRequired,
-    rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
-    rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
-    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
-    rbSchedulePatient: PropTypes.string.isRequired,
-    rbScheduleIntensiveCarePatient: PropTypes.string.isRequired,
-    rbScheduleDoctor: PropTypes.string.isRequired,
-    rbScheduleSurgerySchedule: PropTypes.string.isRequired,
-    rbScheduleSurgeryNonSchedule: PropTypes.string.isRequired,
-    rbScheduleService: PropTypes.string.isRequired,
-    rbScheduleSmallSurgery: PropTypes.string.isRequired,
-    rbScheduleAdviser: PropTypes.string.isRequired,
-    rbScheduleAmbulance: PropTypes.string.isRequired,
-    rbScheduleAccident: PropTypes.string.isRequired,
-    rbScheduleTreatment: PropTypes.string.isRequired,
-    rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPay: PropTypes.string.isRequired,
-    ipdCoPayQuota: PropTypes.string.isRequired,
-    ipdCoPayDeductable: PropTypes.string.isRequired,
-    ipdCoPayMixPercentage: PropTypes.string.isRequired,
-    ipdCoPayMixNotExceed: PropTypes.string.isRequired,
-    ipdCoPayMixYear: PropTypes.string.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     getAllPlan: PropTypes.func.isRequired,
     copyPlan: PropTypes.func.isRequired,
     deletePlan: PropTypes.func.isRequired,
+    havePlan: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -52,7 +27,6 @@ class SubmitPlan extends Component {
       nextPage: false,
       canGoToNextPage: true,
       warningModal: false,
-      firstTime: this.props.planList.length === 0,
       openModalForm: false,
       newPlan: false,
       canBuildNewPlan: true,
@@ -103,8 +77,63 @@ class SubmitPlan extends Component {
     }, 2000)
   }
 
-  componentDidMount() {
-    if (!this.state.firstTime) this.handlePlan(0)
+  componentWillReceiveProps(newProps) {
+    if (newProps.havePlan && (this.state.activePlan === -1) && !this.state.newPlan) {
+      const val = 0
+      const { planList } = newProps
+      this.setState({
+        activePlan: val,
+        planName: planList[val].planName,
+        employeeOfPlan: planList[val].employeeOfPlan,
+        dentalPerYear: planList[val].dentalPerYear,
+        lifePerYear: planList[val].lifePerYear,
+        lifeTimeOfSalary: planList[val].lifeTimeOfSalary,
+        lifeNotExceed: planList[val].lifeNotExceed,
+        opdCoPay: planList[val].opdCoPay,
+        opdPerYear: planList[val].opdPerYear,
+        opdPerTime: planList[val].opdPerTime,
+        opdTimeNotExceedPerYear: planList[val]
+          .opdTimeNotExceedPerYear,
+        opdCoPayQuota: planList[val].opdCoPayQuota,
+        opdCoPayDeductable: planList[val].opdCoPayDeductable,
+        opdCoPayMixPercentage: planList[val].opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: planList[val].opdCoPayMixNotExceed,
+        opdCoPayMixYear: planList[val].opdCoPayMixYear,
+        ipdType: planList[val].ipdType,
+        ipdLumsumPerYear: planList[val].ipdLumsumPerYear,
+        ipdLumsumPerTime: planList[val].ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: planList[val]
+          .ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight: planList[val].rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: planList[val]
+          .rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight: planList[val]
+          .rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear: planList[val]
+          .rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient: planList[val].rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: planList[val]
+          .rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor: planList[val].rbScheduleDoctor,
+        rbScheduleSurgerySchedule: planList[val]
+          .rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule: planList[val]
+          .rbScheduleSurgeryNonSchedule,
+        rbScheduleService: planList[val].rbScheduleService,
+        rbScheduleSmallSurgery: planList[val].rbScheduleSmallSurgery,
+        rbScheduleAdviser: planList[val].rbScheduleAdviser,
+        rbScheduleAmbulance: planList[val].rbScheduleAmbulance,
+        rbScheduleAccident: planList[val].rbScheduleAccident,
+        rbScheduleTreatment: planList[val].rbScheduleTreatment,
+        rbScheduleTransplant: planList[val].rbScheduleTransplant,
+        ipdCoPay: planList[val].ipdCoPay,
+        ipdCoPayQuota: planList[val].ipdCoPayQuota,
+        ipdCoPayDeductable: planList[val].ipdCoPayDeductable,
+        ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
+      })
+    }
   }
 
   onClickhandler = e => {
@@ -172,7 +201,7 @@ class SubmitPlan extends Component {
 
   handleDelete = e => {
     this.props.deletePlan(this.props.planList[e.target.id].planId)
-    if (this.props.planList.length === 1) this.setState({ firstTime: true })
+    this.setState({ activePlan: -1 })
   }
 
   handleResetProfilePlan = () => {
@@ -238,66 +267,68 @@ class SubmitPlan extends Component {
 
   handlePlan = val => {
     if (val !== -1) {
+      const { planList } = this.props
       this.setState({
         activePlan: val,
-        firstTime: false,
-        planName: this.props.planList[val].planName,
-        employeeOfPlan: this.props.planList[val].employeeOfPlan,
-        dentalPerYear: this.props.planList[val].dentalPerYear,
-        lifePerYear: this.props.planList[val].lifePerYear,
-        lifeTimeOfSalary: this.props.planList[val].lifeTimeOfSalary,
-        lifeNotExceed: this.props.planList[val].lifeNotExceed,
-        opdCoPay: this.props.planList[val].opdCoPay,
-        opdPerYear: this.props.planList[val].opdPerYear,
-        opdPerTime: this.props.planList[val].opdPerTime,
-        opdTimeNotExceedPerYear: this.props.planList[val]
+        planName: planList[val].planName,
+        employeeOfPlan: planList[val].employeeOfPlan,
+        dentalPerYear: planList[val].dentalPerYear,
+        lifePerYear: planList[val].lifePerYear,
+        lifeTimeOfSalary: planList[val].lifeTimeOfSalary,
+        lifeNotExceed: planList[val].lifeNotExceed,
+        opdCoPay: planList[val].opdCoPay,
+        opdPerYear: planList[val].opdPerYear,
+        opdPerTime: planList[val].opdPerTime,
+        opdTimeNotExceedPerYear: planList[val]
           .opdTimeNotExceedPerYear,
-        opdCoPayQuota: this.props.planList[val].opdCoPayQuota,
-        opdCoPayDeductable: this.props.planList[val].opdCoPayDeductable,
-        opdCoPayMixPercentage: this.props.planList[val].opdCoPayMixPercentage,
-        opdCoPayMixNotExceed: this.props.planList[val].opdCoPayMixNotExceed,
-        opdCoPayMixYear: this.props.planList[val].opdCoPayMixYear,
-        ipdType: this.props.planList[val].ipdType,
-        ipdLumsumPerYear: this.props.planList[val].ipdLumsumPerYear,
-        ipdLumsumPerTime: this.props.planList[val].ipdLumsumPerTime,
-        ipdLumsumTimeNotExceedPerYear: this.props.planList[val]
+        opdCoPayQuota: planList[val].opdCoPayQuota,
+        opdCoPayDeductable: planList[val].opdCoPayDeductable,
+        opdCoPayMixPercentage: planList[val].opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: planList[val].opdCoPayMixNotExceed,
+        opdCoPayMixYear: planList[val].opdCoPayMixYear,
+        ipdType: planList[val].ipdType,
+        ipdLumsumPerYear: planList[val].ipdLumsumPerYear,
+        ipdLumsumPerTime: planList[val].ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: planList[val]
           .ipdLumsumTimeNotExceedPerYear,
-        rbLumsumRoomPerNight: this.props.planList[val].rbLumsumRoomPerNight,
-        rbLumsumNigthNotExceedPerYear: this.props.planList[val]
+        rbLumsumRoomPerNight: planList[val].rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: planList[val]
           .rbLumsumNigthNotExceedPerYear,
-        rbLumsumPayNotExceedPerNight: this.props.planList[val]
+        rbLumsumPayNotExceedPerNight: planList[val]
           .rbLumsumPayNotExceedPerNight,
-        rbLumsumPayNotExceedPerYear: this.props.planList[val]
+        rbLumsumPayNotExceedPerYear: planList[val]
           .rbLumsumPayNotExceedPerYear,
-        rbSchedulePatient: this.props.planList[val].rbSchedulePatient,
-        rbScheduleIntensiveCarePatient: this.props.planList[val]
+        rbSchedulePatient: planList[val].rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: planList[val]
           .rbScheduleIntensiveCarePatient,
-        rbScheduleDoctor: this.props.planList[val].rbScheduleDoctor,
-        rbScheduleSurgerySchedule: this.props.planList[val]
+        rbScheduleDoctor: planList[val].rbScheduleDoctor,
+        rbScheduleSurgerySchedule: planList[val]
           .rbScheduleSurgerySchedule,
-        rbScheduleSurgeryNonSchedule: this.props.planList[val]
+        rbScheduleSurgeryNonSchedule: planList[val]
           .rbScheduleSurgeryNonSchedule,
-        rbScheduleService: this.props.planList[val].rbScheduleService,
-        rbScheduleSmallSurgery: this.props.planList[val].rbScheduleSmallSurgery,
-        rbScheduleAdviser: this.props.planList[val].rbScheduleAdviser,
-        rbScheduleAmbulance: this.props.planList[val].rbScheduleAmbulance,
-        rbScheduleAccident: this.props.planList[val].rbScheduleAccident,
-        rbScheduleTreatment: this.props.planList[val].rbScheduleTreatment,
-        rbScheduleTransplant: this.props.planList[val].rbScheduleTransplant,
-        ipdCoPay: this.props.planList[val].ipdCoPay,
-        ipdCoPayQuota: this.props.planList[val].ipdCoPayQuota,
-        ipdCoPayDeductable: this.props.planList[val].ipdCoPayDeductable,
-        ipdCoPayMixPercentage: this.props.planList[val].ipdCoPayMixPercentage,
-        ipdCoPayMixNotExceed: this.props.planList[val].ipdCoPayMixNotExceed,
-        ipdCoPayMixYear: this.props.planList[val].ipdCoPayMixYear,
+        rbScheduleService: planList[val].rbScheduleService,
+        rbScheduleSmallSurgery: planList[val].rbScheduleSmallSurgery,
+        rbScheduleAdviser: planList[val].rbScheduleAdviser,
+        rbScheduleAmbulance: planList[val].rbScheduleAmbulance,
+        rbScheduleAccident: planList[val].rbScheduleAccident,
+        rbScheduleTreatment: planList[val].rbScheduleTreatment,
+        rbScheduleTransplant: planList[val].rbScheduleTransplant,
+        ipdCoPay: planList[val].ipdCoPay,
+        ipdCoPayQuota: planList[val].ipdCoPayQuota,
+        ipdCoPayDeductable: planList[val].ipdCoPayDeductable,
+        ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
       })
     }
   }
 
-  handleCloseModal = () =>
-    this.setState({
-      openModalForm: false,
-    })
+  handleCloseModal = () => {
+    this.setState({ openModalForm: false, warningModal: false })
+    if (this.props.havePlan) {
+      this.handlePlan(0)
+    }
+  }
 
   handleSetGoToNextPage = () => {
     this.setState({ canGoToNextPage: false })
@@ -364,7 +395,7 @@ class SubmitPlan extends Component {
                 />
               </div>
               <div className="large-9 columns">
-                {!this.state.firstTime
+                {this.props.havePlan
                   ? <div>
                     <FormSubmitPlan
                       activePlan={this.state.activePlan}
@@ -377,6 +408,7 @@ class SubmitPlan extends Component {
                     <div className="fillBox">
                       <AllPlan
                         activePlan={this.state.activePlan}
+                        handlePlan={this.handlePlan}
                         nextPage={this.state.nextPage}
                         handleNextPage={this.handleNextPage}
                         handleSetGoToNextPage={this.handleSetGoToNextPage}
@@ -503,6 +535,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
+  havePlan: state.plan.planList.length !== 0,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitPlan)

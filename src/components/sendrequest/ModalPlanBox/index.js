@@ -61,7 +61,7 @@ class ModalPlanBox extends Component {
   }
 
   renderList = list => {
-    list.map((element, index) => (
+    const lists = list.map((element, index) => (
       <ListBox className="large-4 columns">
         <PlanBoxs
           changePositionPage={this.props.changePositionPage}
@@ -80,6 +80,7 @@ class ModalPlanBox extends Component {
         />
       </ListBox>
     ))
+    return lists
   }
 
   render() {

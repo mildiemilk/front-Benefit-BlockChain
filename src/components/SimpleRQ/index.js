@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { Card, Input, Select, Form, Checkbox } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import * as simpleRQOption from './simple-requirement-option'
 import { fillSimpleRQ } from '../../api/simple-requirement'
 import { UploadButton, BottomSpace, Inputs } from './styled'
 import ModalSimpleRQ from './modal-simple-requirement'
@@ -26,7 +25,10 @@ const DatePickers = styled(DatePicker)`
   border: solid 1px #dddddd;
   height: 30px;
 `
-
+const employeeOption = [
+  { key: '1', text: '1-500', value: '1-500' },
+  { key: '2', text: '500-1000', value: '500-1000' },
+]
 class simpleRQ extends Component {
   constructor() {
     super()
@@ -74,9 +76,7 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
-      day,
-      month,
-      year,
+      date,
     } = this.state
     this.props.fillSimpleRQ(
       numberOfEmployee,
@@ -87,9 +87,7 @@ class simpleRQ extends Component {
       life,
       other,
       otherDes,
-      day,
-      month,
-      year,
+      date,
     )
   }
 
@@ -122,7 +120,7 @@ class simpleRQ extends Component {
                   name="numberOfEmployee"
                   defaultValue={this.state.numberOfEmployee}
                   placeholder="จำนวนพนักงาน"
-                  options={simpleRQOption.employeeOption}
+                  options={employeeOption}
                   onChange={this.handleChange}
                 />
               </div>
@@ -258,9 +256,7 @@ const mapDispatchToProps = dispatch => ({
     life,
     other,
     otherDes,
-    day,
-    month,
-    year,
+    date,
   ) =>
     dispatch(
       fillSimpleRQ(
@@ -272,9 +268,7 @@ const mapDispatchToProps = dispatch => ({
         life,
         other,
         otherDes,
-        day,
-        month,
-        year,
+        date,
       ),
     ),
 })

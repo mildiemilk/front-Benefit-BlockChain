@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Modal, Checkbox } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import moment from 'moment'
 import {
   ModalHeader,
   ModalContent,
@@ -67,11 +68,8 @@ class ModalModalExample extends Component {
               อัพโหลดแผนประกันที่ใช้ในปัจจุบัน: <br /><br />
               วันหมดอายุของกรมธรรม์:
               {' '}
-              {this.props.data.day}
-              /
-              {this.props.data.month}
-              /
-              {this.props.data.year}
+              {moment(this.props.data.date).locale('th')
+                  .format('DD MMMM YYYY')}
               {' '}
               <br />
               <br />

@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import { Card, Image, Checkbox } from 'semantic-ui-react'
 import { PostreText, TopSpace } from './styled'
+
 
 const CardHeader = styled(Card)`
   &&&{
@@ -37,6 +39,8 @@ class Postre extends Component {
   }
 
   render() {
+    const { numberOfEmployee, typeOfInsurance, date, IPD, OPD, dental,
+            other, otherDes, life } = this.props.data
     return (
       <div>
         <Card.Group>
@@ -64,7 +68,7 @@ class Postre extends Component {
                   </div>
                   <div className="large-7 columns">
                     {' '}
-                    <PostreText>{this.props.data.numberOfEmployee}</PostreText>
+                    <PostreText>{numberOfEmployee}</PostreText>
                     {' '}
                   </div>
                 </TopSpace>
@@ -76,7 +80,7 @@ class Postre extends Component {
                     </strong>
                   </div>
                   <div className="large-7 columns">
-                    <PostreText>{this.props.data.typeOfInsurance}</PostreText>
+                    <PostreText>{typeOfInsurance}</PostreText>
                   </div>
                 </TopSpace>
 
@@ -94,16 +98,13 @@ class Postre extends Component {
                 <TopSpace className="row">
                   <div className="large-5 columns">
                     <strong>
-                      <PostreText>วันหมดอายุกรมทัน</PostreText>
+                      <PostreText>วันหมดอายุกรมธรรม์</PostreText>
                     </strong>
                   </div>
                   <div className="large-7 columns">
                     {' '}
-                    <PostreText>{this.props.data.day}</PostreText>
-                    {'/'}
-                    <PostreText>{this.props.data.month}</PostreText>
-                    {'/'}
-                    <PostreText>{this.props.data.year}</PostreText>
+                    <PostreText>{moment(date).locale('th')
+                  .format('DD MMMM YYYY')}</PostreText>
                   </div>
                 </TopSpace>
 
@@ -119,37 +120,37 @@ class Postre extends Component {
                     <PostreText>
                       <Checkboxs
                         label="ค่ารักษาพยาบาลกรณีผู้ป่วยใน (IPD)"
-                        checked={this.props.data.IPD}
+                        checked={IPD}
                       />
                       <br />
                     </PostreText>
                     <PostreText>
                       <Checkboxs
                         label="ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (OPD)"
-                        checked={this.props.data.OPD}
+                        checked={OPD}
                       />
                       <br />
                     </PostreText>
                     <PostreText>
                       <Checkboxs
                         label="ค่ารักษาทันตกรรม (Dental)"
-                        checked={this.props.data.dental}
+                        checked={dental}
                       />
                       <br />
                     </PostreText>
                     <PostreText>
                       <Checkboxs
                         label="ประกันชีวิต (Life)"
-                        checked={this.props.data.life}
+                        checked={life}
                       />
                       <br />
                     </PostreText>
                     <PostreText>
                       <Checkboxs
                         label="อื่นๆ: &nbsp;"
-                        checked={this.props.data.other}
+                        checked={other}
                       />
-                      {this.props.data.otherDes}
+                      {otherDes}
                     </PostreText>
                   </div>
                 </TopSpace>

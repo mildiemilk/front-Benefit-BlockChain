@@ -2,9 +2,13 @@ import { APIRequest } from '.'
 import {
   fillsimpleRqSuccess,
   fillsimpleRqFailure,
+  getsimpleRqSuccess,
+  getsimpleRqFailure,
 } from '../reducers/simple-requirement'
 
 const SIMPLERQ_URI = '/admin/simpleRequirement'
+const GETSIMPLERQ_URI = '/admin/getSimpleRequirement'
+
 export function fillSimpleRQ(
   numberOfEmployee,
   typeOfInsurance,
@@ -14,9 +18,7 @@ export function fillSimpleRQ(
   life,
   other,
   otherDes,
-  day,
-  month,
-  year,
+  date,
 ) {
   return dispatch => {
     const options = {
@@ -31,9 +33,7 @@ export function fillSimpleRQ(
         life,
         other,
         otherDes,
-        day,
-        month,
-        year,
+        date,
       },
     }
 
@@ -44,6 +44,23 @@ export function fillSimpleRQ(
       })
       .catch(err => {
         dispatch(fillsimpleRqFailure(err.response.data))
+      })
+  }
+}
+
+export function getSimpleRQ() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GETSIMPLERQ_URI,
+    }
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getsimpleRqSuccess(res.data))
+      })
+      .catch(err => {
+        dispatch(getsimpleRqFailure(err.response.data))
       })
   }
 }

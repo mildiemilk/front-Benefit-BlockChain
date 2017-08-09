@@ -63,18 +63,18 @@ class App extends Component {
         route = (
           <NavLayout>
             <Switch>
-              <Route path="/addbenefit" component={AddBenefit} />
               <Route path="/confirm_identity" component={confirmIdentity} />
-              <Route path="/compareplan" component={ComparePlan} />
-              <Route path="/chooseinsurer" component={ChooseInsurer} />
-              <Route path="/congrat" component={Congrat} />
-              <Route path="/congratstep3" component={CongratStep3} />
-              <Route path="/congratstep4" component={CongratStep4} />
               <Route path="/welcome" component={welcomePage} />
               <Route path="/settingprofile" component={SettingProfile} />
               <Route path="/logout" component={Logout} />
               <MainLayout>
                 <Switch>
+                  <Route path="/congrat" component={Congrat} />
+                  <Route path="/congratstep3" component={CongratStep3} />
+                  <Route path="/congratstep4" component={CongratStep4} />
+                  <Route path="/compareplan" component={ComparePlan} />
+                  <Route path="/chooseinsurer" component={ChooseInsurer} />
+                  <Route path="/addbenefit" component={AddBenefit} />
                   <Route path="/postbox" component={Postbox} />
                   <Route
                     path="/dashboard/simplerequirement"

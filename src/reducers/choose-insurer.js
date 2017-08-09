@@ -16,6 +16,8 @@ const CHOOSEINSURER_REQUEST_SUCCESS = 'CHOOSEINSURER_REQUEST_SUCCESS'
 const CHOOSEINSURER_REQUEST_FAILURE = 'CHOOSEINSURER_REQUEST_FAILURE'
 const SETTIMEOUT_REQUEST_SUCCESS = 'SETTIMEOUT_REQUEST_SUCCESS'
 const SETTIMEOUT_REQUEST_FAILURE = 'SETTIMEOUT_REQUEST_FAILURE'
+const GETTIMEOUT_REQUEST_SUCCESS = 'GETTIMEOUT_REQUEST_SUCCESS'
+const GETTIMEOUT_REQUEST_FAILURE = 'GETTIMEOUT_REQUEST_FAILURE'
 const GETALLINSURER_REQUEST_SUCCESS = 'GETALLINSURER_REQUEST_SUCCESS'
 const GETALLINSURER_REQUEST_FAILURE = 'GETALLINSURER_REQUEST_FAILURE'
 const GETSELECTINSURER_REQUEST_SUCCESS = 'GETSELECTINSURER_REQUEST_SUCCESS'
@@ -34,6 +36,12 @@ export function setTimeOutSuccess(data) {
 }
 export function setTimeOutFailure(data) {
   return { type: SETTIMEOUT_REQUEST_FAILURE, data }
+}
+export function getTimeoutSuccess(data) {
+  return { type: GETTIMEOUT_REQUEST_SUCCESS, data }
+}
+export function getTimeoutFailure(data) {
+  return { type: GETTIMEOUT_REQUEST_FAILURE, data }
 }
 export function getAllInsurerSuccess(data) {
   return { type: GETALLINSURER_REQUEST_SUCCESS, data }
@@ -90,6 +98,12 @@ export function setTimeOut(state = defaultTimeOut, action) {
         timeout: action.data,
       })
     case SETTIMEOUT_REQUEST_FAILURE:
+      return Object.assign({}, state, {})
+    case GETTIMEOUT_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        timeout: action.data,
+      })
+    case GETALLINSURER_REQUEST_FAILURE:
       return Object.assign({}, state, {})
     default:
       return state

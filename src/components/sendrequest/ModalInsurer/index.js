@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
 import { Modal, Icon } from 'semantic-ui-react'
 import { Edit } from './styled'
 import ChooseInsurer from '../../ChooseInsurer'
@@ -60,11 +58,4 @@ class ModalInsurer extends Component {
   }
 }
 
-ModalInsurer.propTypes = {
-  handlePost: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-}
-
-const mapStateToProps = () => ({})
-
-export default connect(mapStateToProps, null)(ModalInsurer)
+export default ModalInsurer

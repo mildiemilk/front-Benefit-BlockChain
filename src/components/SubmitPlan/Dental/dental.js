@@ -46,7 +46,10 @@ class Dental extends Component {
   }
 
   handleClick = () => {
-    const { dentalPerYear } = this.props
+    let { dentalPerYear } = this.props
+    if (dentalPerYear === '') {
+      dentalPerYear = null
+    }
     this.props.editPlan(
       { dentalPerYear },
       this.props.planList[this.props.activePlan].planId,
@@ -86,7 +89,6 @@ class Dental extends Component {
               id="dentalPerYear"
               onChange={this.handleChange}
               value={this.props.dentalPerYear}
-              required
             />
             <p> บาท/ปี</p>
           </Form.Group>

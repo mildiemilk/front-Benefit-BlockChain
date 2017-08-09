@@ -5,7 +5,7 @@ import NavBidding from './nav-bidding'
 import Box from './box'
 import { bidding } from '../../api/bidding'
 import Details from './details'
-import { getSelectInsurer } from '../../api/choose-insurer'
+import { getSelectInsurer, getTimeout } from '../../api/choose-insurer'
 
 class Bidding extends Component {
   static propTypes = {
@@ -13,6 +13,8 @@ class Bidding extends Component {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
     bidding: PropTypes.func.isRequired,
     getSelectInsurer: PropTypes.func.isRequired,
+    getTimeout: PropTypes.func.isRequired,
+    timeout: PropTypes.string.isRequired,
   }
   constructor(props) {
     super(props)
@@ -27,7 +29,9 @@ class Bidding extends Component {
 
     this.props.getSelectInsurer()
   }
-
+  componentDidMount = () => {
+    this.props.getTimeout()
+  }
   handleClick = (Detail, index) => {
     const { isDetail } = this.state
     if (!isDetail) {
@@ -44,7 +48,7 @@ class Bidding extends Component {
   render() {
     return (
       <div className="Bidding">
-        <NavBidding num={this.props.num} />
+        <NavBidding num={this.props.num} timeout={this.props.timeout} />
         <div className="BidContent">
           {this.state.isDetail
             ? <Details
@@ -60,7 +64,7 @@ class Bidding extends Component {
 }
 
 const mapStateToProps = state => ({
-  timeout: state.setTimeOut.timeout,
+  timeout: state.setTimeOut,
   data: state.biddingReducer,
   num: state.getSelectInsurer.defaultInsurer.length,
 })
@@ -68,6 +72,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   bidding: () => dispatch(bidding()),
   getSelectInsurer: () => dispatch(getSelectInsurer()),
+  getTimeout: () => dispatch(getTimeout()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bidding)

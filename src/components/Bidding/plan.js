@@ -9,30 +9,28 @@ class Plan extends Component {
   }
   renderList = bids => {
     const planlists = bids.map(bid => (
-      <div className="large-4 columns">
-        <List>
-          <IconPlan name="add to calendar" size="big" />
-          <DetailList>
-            {bid.planName} <br />
-            {bid.priceOfBidding}
-            <PopupView
-              trigger={
-                <PopupList>
-                  <Icon name="ellipsis vertical" size="large" />
-                </PopupList>
-              }
-              content={
-                <p>
-                  <Icon name="edit" />ดูแพลน
-                </p>
-              }
-              on="click"
-              hideOnScroll
-              position="bottom center"
-            />
-          </DetailList>
-        </List>
-      </div>
+      <List className="large-4 columns">
+        <IconPlan name="add to calendar" size="big" />
+        <DetailList>
+          {bid.planName} <br />
+          {bid.priceOfBidding}
+        </DetailList>
+        <PopupView
+          trigger={
+            <PopupList>
+              <Icon name="ellipsis vertical" size="large" />
+            </PopupList>
+          }
+          content={
+            <p>
+              <Icon name="edit" />ดูแพลน
+            </p>
+          }
+          on="click"
+          hideOnScroll
+          position="bottom center"
+        />
+      </List>
     ))
     return planlists
   }

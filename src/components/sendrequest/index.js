@@ -33,6 +33,7 @@ class Sendrequest extends Component {
     this.state = {
       step: 6,
       position: 'relative-box',
+      // timeout: null,
     }
   }
   componentDidMount() {
@@ -47,7 +48,7 @@ class Sendrequest extends Component {
     }
   }
   render() {
-    const { timeout } = this.props
+    const { timeout } = this.props.timeout
     return (
       <div className={this.state.position}>
         <NavInsure step={this.state.step} />
@@ -96,7 +97,7 @@ const mapDispatchToProps = dispatch => ({
   getTimeout: () => dispatch(getTimeout()),
 })
 const mapStateToProps = state => ({
-  timeout: state.getTimeout,
+  timeout: state.setTimeOut,
   simpleReq: state.fillsimpleReducer,
 })
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import TimePicker from 'rc-time-picker'
+import { Submit } from './styled'
 
 class Timeout extends Component {
   static propTypes = {
@@ -40,6 +41,8 @@ class Timeout extends Component {
         />
         <span>&nbsp;เวลา&nbsp;</span>
         <TimePicker onChange={this.handleTime} showSecond={false} />
+        <br />
+        <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
       </div>
     )
   }

@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import TimePicker from 'rc-time-picker'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 import 'rc-time-picker/assets/index.css'
@@ -25,11 +22,11 @@ import {
   SideIn,
   Card,
   HeadIn,
-  Submit,
   SubmitInsure,
   Next,
   Check,
 } from './styled'
+import Timeout from './timeout'
 
 class InsurerSelect extends Component {
   static propTypes = {
@@ -47,7 +44,6 @@ class InsurerSelect extends Component {
     this.state = {
       step: 4,
       num: nums !== undefined ? nums : 0,
-      date: null,
       insurers: [],
       hideProgressBar: true,
     }
@@ -94,21 +90,6 @@ class InsurerSelect extends Component {
     }
     return false
   }
-
-  handleTimeOut = () => {
-    const { date } = this.state
-    this.props.setTimeOut(date)
-  }
-
-  handleDate = date => {
-    this.setState({ date })
-  }
-
-  handleTime = time => {
-    time._d.setDate(this.state.date._d.getDate())
-    this.state.date._d.setTime(time._d.getTime())
-  }
-
   handleCheck = e => {
     if (e.target.checked) {
       this.setState({
@@ -188,16 +169,7 @@ class InsurerSelect extends Component {
                 <p className="insure">
                   บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
                 </p>
-                <DatePicker
-                  selected={this.state.date}
-                  onChange={this.handleDate}
-                  minDate={moment()}
-                />
-                <span>&nbsp;เวลา&nbsp;</span>
-                <TimePicker onChange={this.handleTime} showSecond={false} />
-                <br />
-                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
-
+                <Timeout setTimeOut={this.props.setTimeOut} />
               </SideIn>
             </div>
           </Detail>

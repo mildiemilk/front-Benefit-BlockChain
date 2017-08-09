@@ -19,17 +19,20 @@ class CountDowns extends Component {
     this.props.endTimeout(this.state.end)
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(newProps) {
     // update every second
-    this.interval = setInterval(() => {
-      const date = this.calculateCountdown(this.props.date)
-      if (date) this.setState(date)
-      else {
-        this.stop()
-        this.setState({ end: 'Timeout' })
-        this.props.endTimeout(this.state.end)
-      }
-    }, 1000)
+    if (newProps.date !== this.props.date) {
+      console.log('count', this.props.date)
+      this.interval = setInterval(() => {
+        const date = this.calculateCountdown(this.props.date)
+        if (date) this.setState(date)
+        else {
+          this.stop()
+          this.setState({ end: 'Timeout' })
+          this.props.endTimeout(this.state.end)
+        }
+      }, 1000)
+    }
   }
 
   componentWillUnmount() {

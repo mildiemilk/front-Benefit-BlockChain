@@ -65,7 +65,8 @@ export const IconPointer = styled(Icon)`
 `
 
 export const InSide = styled.div`
-  margin: 3%;
+  margin: 30px 0px;
+  margin-left: 40px;
 `
 export const TextSide = styled.div`
   padding-left: 16%;
@@ -77,19 +78,23 @@ export const HeadBar = styled.div`
   width: 100%;
   height: 50px;
   background: #3a7bd5;
-  padding: 1.5% 3%;
+  padding: 1.5% 0%;
+  padding-left: 4%;
 `
 export const TextLine = styled.div`
   font-size: 16px;
 `
 
 export const List = styled.div`
+  float: left !important;
+  margin-right: 16px;
   margin-top: 16px;
-  width: 295.7px;
+  width: 296.5px !important;
   height: 70px;
   border-radius: 5px;
   background-color: #d8d8d8;
   border: solid 1px #979797;
+  position: relative;
 `
 export const IconPlan = styled(Icon)`
   &&&{
@@ -101,14 +106,13 @@ export const IconPlan = styled(Icon)`
 export const DetailList = styled.div`
   display: inline-block;
   position: absolute;
-  padding: 1% 0%;
+  top: 16px;
 `
 
 export const PopupList = styled.div`
-  display: inline-block;
   position: absolute;
-  bottom: 32%;
-  left: 137%;
+  bottom: 35%;
+  left: 85%;
   cursor: pointer;
 `
 

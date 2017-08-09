@@ -28,6 +28,7 @@ class Bidding extends Component {
   }
 
   render() {
+    console.log('nav', this.props)
     return (
       <div className="NavBid">
         <div className="row">
@@ -61,7 +62,7 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
                 <FontNumAucTime>
-                  <CountDowns date={this.props.timeout} />
+                  <CountDowns date={this.props.timeout.timeout} />
                 </FontNumAucTime>
               </TextNav>
             </Nav>
@@ -72,8 +73,8 @@ class Bidding extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  timeout: state.setTimeOut.timeout,
+const mapStateToProps = () => ({
+  // timeout: state.setTimeOut.timeout,
 })
 
 export default connect(mapStateToProps, null)(Bidding)

@@ -4,7 +4,7 @@ import { Icon, Popup, List } from 'semantic-ui-react'
 import { PlanBox } from '../styled'
 import PlanBoxModal from './planbox-modal'
 
-export default class planBoxs extends Component {
+export default class PlanBoxs extends Component {
   static propTypes = {
     modalOpen: PropTypes.bool.isRequired,
     handleModal: PropTypes.func.isRequired,

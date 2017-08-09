@@ -22,6 +22,7 @@ class Dental extends Component {
     openModal: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     reset: PropTypes.bool.isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -108,6 +109,7 @@ class Dental extends Component {
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
+          handleNextPlan={this.props.handleNextPlan}
         />
       </div>
     )

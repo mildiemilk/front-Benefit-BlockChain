@@ -41,6 +41,7 @@ class LifeModal extends Component {
 
   handleCancel = () => {
     this.props.handleCloseModal()
+    this.props.handleNextPlan()
   }
 
   handleSubmit = () => {

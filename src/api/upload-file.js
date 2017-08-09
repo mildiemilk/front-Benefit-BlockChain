@@ -45,9 +45,9 @@ const UPLOADFILE_URI = '/api/uploadfile'
 //   }
 // }
 
-export function uploadFile(file) {
+export function uploadFile(files) {
   const formData = new FormData()
-  formData.append('file', file)
+  formData.append('files', files)
 
   return () => {
     // const files = file

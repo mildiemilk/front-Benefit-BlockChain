@@ -78,6 +78,7 @@ class AllsetPlan extends Component {
     ipdCoPayMixPercentage: PropTypes.string.isRequired,
     ipdCoPayMixNotExceed: PropTypes.string.isRequired,
     ipdCoPayMixYear: PropTypes.string.isRequired,
+    handlePlan: PropTypes.func.isRequired,
   }
 
   constructor() {
@@ -93,7 +94,6 @@ class AllsetPlan extends Component {
       opdRecord: false,
       dentalRecord: false,
       lifeRecord: false,
-      checkInput: false,
       textOpd: 'text-menu',
       textOpdActive: 'text-menu-active',
       textIpd: 'text-menu',
@@ -116,38 +116,37 @@ class AllsetPlan extends Component {
   }
 
   handleDidUpdate = () => {
-    if (this.state.isChange) {
-      if (this.state.changeToRecord) {
-        if (this.state.ipdRecord && this.state.checkInput) {
+    const { isChange, changeToRecord, ipdRecord, opdRecord,
+      dentalRecord, lifeRecord, setPlan, verifyState } = this.state
+    if (isChange) {
+      if (changeToRecord) {
+        if (ipdRecord && setPlan === 'IPD') {
           this.setState({ textIpd: 'text-menu-record' })
           this.setState({ textIpdActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
           this.setState({ isChange: false })
-        } else if (this.state.opdRecord && this.state.checkInput) {
+        } else if (opdRecord && setPlan === 'OPD') {
+          console.log('opd record!!!')
           this.setState({ textOpd: 'text-menu-record' })
           this.setState({ textOpdActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
           this.setState({ isChange: false })
-        } else if (this.state.dentalRecord && this.state.checkInput) {
+        } else if (dentalRecord && setPlan === 'Dental') {
           this.setState({ textDental: 'text-menu-record' })
           this.setState({ textDentalActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
           this.setState({ isChange: false })
-        } else {
+        } else if (lifeRecord && setPlan === 'Life') {
           this.setState({ textLife: 'text-menu-record' })
           this.setState({ textLifeActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
           this.setState({ isChange: false })
         }
       }
     }
 
-    if (this.props.nextPage && this.state.verifyState === false) {
+    if (this.props.nextPage && verifyState === false) {
       this.handleOpenModalNextPage()
       this.props.handleNextPage()
     }
 
-    if (this.props.newPlan && this.state.verifyState === false) {
+    if (this.props.newPlan && verifyState === false) {
       this.handleOpenModal()
       this.props.handleResetPlan()
     }
@@ -161,7 +160,6 @@ class AllsetPlan extends Component {
         opdRecord: false,
         dentalRecord: false,
         lifeRecord: false,
-        checkInput: false,
         textOpd: 'text-menu',
         textOpdActive: 'text-menu-active',
         textIpd: 'text-menu',
@@ -185,11 +183,16 @@ class AllsetPlan extends Component {
 
   handleCloseModal = () => {
     this.setState({ openModal: false })
+    this.setState({ verifyState: true })
+    this.setState({ isChange: false })
+    this.setState({ changeToRecord: false })
+    this.setState({ [name]: false })
+    this.props.handleMoveToNextPage()
+    this.props.handleBuildNewPlan()
   }
 
   handleVerifyState = name => {
     this.setState({ verifyState: false })
-    this.setState({ checkInput: true })
     this.setState({ changeToRecord: false })
     this.setState({ isChange: true })
     this.setState({ [name]: false })
@@ -232,8 +235,9 @@ class AllsetPlan extends Component {
       this.handleOpenModal()
       this.setState({ nextPlan: value })
     } else {
-      this.setState({ setPlan: value })
-      this.setState({ nextPlan: value })
+      const { handlePlan, activePlan } = this.props
+      this.setState({ setPlan: value, nextPlan: value })
+      handlePlan(activePlan)
     }
   }
 
@@ -250,9 +254,7 @@ class AllsetPlan extends Component {
       if (this.state.dentalRecord) return toothRecord
       return toothActive
     }
-    if (this.lifeRecord) {
-      return heartRecord
-    }
+    if (this.state.lifeRecord) return heartRecord
     return heartActive
   }
 
@@ -282,7 +284,6 @@ class AllsetPlan extends Component {
   handleReset = () => {
     this.setState({ reset: true })
     this.setState({ verifyState: true })
-    this.setState({ checkInput: false })
     this.props.handleMoveToNextPage()
     this.props.handleBuildNewPlan()
   }

@@ -27,13 +27,13 @@ class FormModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
-    openModalForm: PropTypes.func.isRequired,
+    openModalForm: PropTypes.bool.isRequired,
     handlePlan: PropTypes.func.isRequired,
     handleModalFinish: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
   }
 
   constructor() {

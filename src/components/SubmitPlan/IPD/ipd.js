@@ -45,7 +45,7 @@ class IPD extends Component {
     rbScheduleAccident: PropTypes.string.isRequired,
     rbScheduleTreatment: PropTypes.string.isRequired,
     rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPay: PropTypes.string.isRequired,
+    ipdCoPay: PropTypes.bool.isRequired,
     ipdCoPayQuota: PropTypes.string.isRequired,
     ipdCoPayDeductable: PropTypes.string.isRequired,
     ipdCoPayMixPercentage: PropTypes.string.isRequired,

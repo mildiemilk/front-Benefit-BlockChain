@@ -15,14 +15,18 @@ class Dental extends Component {
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleResetDental: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
-    dentalPerYear: PropTypes.string.isRequired,
-    handleNewReset: PropTypes.string.isRequired,
+    dentalPerYear: PropTypes.string,
+    handleNewReset: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
     setPlan: PropTypes.string.isRequired,
-    openModal: PropTypes.func.isRequired,
+    openModal: PropTypes.bool.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     reset: PropTypes.bool.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    dentalPerYear: null,
   }
 
   constructor(props) {

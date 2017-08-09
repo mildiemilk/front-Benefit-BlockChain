@@ -26,7 +26,7 @@ class IpdModal extends Component {
     handleCloseModal: PropTypes.func.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
     handleClick: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
+    openModal: PropTypes.bool.isRequired,
   }
 
   constructor() {

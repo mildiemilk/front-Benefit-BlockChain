@@ -18,7 +18,7 @@ const ImageCss = styled(Image) `
 class Header extends Component {
   static propTypes = {
     getCompanyName: PropTypes.func.isRequired,
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.shape.isRequired,
   }
 
   constructor() {

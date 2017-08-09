@@ -23,7 +23,7 @@ class OPD extends Component {
     handleChange: PropTypes.func.isRequired,
     handleChangeToNull: PropTypes.func.isRequired,
     opdCoPay: PropTypes.bool.isRequired,
-    opdPerYear: PropTypes.string.isRequired,
+    opdPerYear: PropTypes.number.isRequired,
     opdPerTime: PropTypes.string.isRequired,
     opdTimeNotExceedPerYear: PropTypes.string.isRequired,
     opdCoPayQuota: PropTypes.string.isRequired,

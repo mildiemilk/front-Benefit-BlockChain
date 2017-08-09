@@ -125,7 +125,6 @@ class AllsetPlan extends Component {
           this.setState({ textIpdActive: 'text-menu-record' })
           this.setState({ isChange: false })
         } else if (opdRecord && setPlan === 'OPD') {
-          console.log('opd record!!!')
           this.setState({ textOpd: 'text-menu-record' })
           this.setState({ textOpdActive: 'text-menu-record' })
           this.setState({ isChange: false })

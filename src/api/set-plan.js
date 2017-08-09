@@ -97,6 +97,7 @@ export function getAllPlan() {
         dispatch(getAllPlanSuccess(res.data))
       })
       .catch(err => {
+        console.log(err)
         dispatch(getAllPlanFailure(err.response.data))
       })
   }

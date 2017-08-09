@@ -20,9 +20,8 @@ class ModalPlanBox extends Component {
       modalOpen: false,
       activePlan: 0,
     }
-    setInterval(() => {
-      props.getAllPlan()
-    }, 2000)
+    const { getAllPlan } = props
+    setInterval(getAllPlan, 2000)
   }
 
   handleOpen = () => {

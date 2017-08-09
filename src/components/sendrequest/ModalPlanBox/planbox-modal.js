@@ -96,7 +96,7 @@ class PlanBoxModal extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentWillReceiveProps() {
     this.handleUpdate()
   }
 

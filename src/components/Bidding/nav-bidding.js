@@ -28,7 +28,6 @@ class Bidding extends Component {
   }
 
   render() {
-    console.log('nav', this.props)
     return (
       <div className="NavBid">
         <div className="row">

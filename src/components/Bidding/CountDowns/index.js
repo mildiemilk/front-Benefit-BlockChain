@@ -22,7 +22,6 @@ class CountDowns extends Component {
   componentWillReceiveProps(newProps) {
     // update every second
     if (newProps.date !== this.props.date) {
-      console.log('count', this.props.date)
       this.interval = setInterval(() => {
         const date = this.calculateCountdown(this.props.date)
         if (date) this.setState(date)

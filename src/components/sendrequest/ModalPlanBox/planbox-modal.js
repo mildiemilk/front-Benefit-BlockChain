@@ -309,7 +309,7 @@ class PlanBoxModal extends Component {
         className="SubmitPlan"
       >
         <ModalHeaders>
-          <p style={{ textAlign: 'center' }}>ดูแพลน</p>
+          <div style={{ textAlign: 'center' }}>ดูแพลน</div>
         </ModalHeaders>
         <ModalContents>
           <FormSubmitPlan

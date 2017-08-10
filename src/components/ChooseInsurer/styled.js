@@ -37,15 +37,20 @@ export const Card = styled.div`
   margin-right: 1.5%;
   float: left !important;
 `;
-export const Submit = styled.button`
+export const Submit = styled.div`
   width: 164px;
   height: 40px;
   border-radius: 20px;
   background-color: #3a7bd5;
-  padding: 1%;
+  padding: 10px;
+  text-align: center;
   color: white;
-  margin: 1% 80%;
+  margin: 1%;
   border-color: white;
+  cursor: pointer;
+  float: right;
+  display: block;
+  margin-top: 39px;
 `;
 export const SubmitInsure = styled.button`
   width: 164px;

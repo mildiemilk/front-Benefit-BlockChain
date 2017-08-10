@@ -37,9 +37,8 @@ const Modals = styled(Modal)`
 class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
-    modalOpen: PropTypes.func.isRequired,
+    modalOpen: PropTypes.bool.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    activePlan: PropTypes.number.isRequired,
   }
   constructor() {
     super()
@@ -54,7 +53,7 @@ class PlanBoxModal extends Component {
       canBuildNewPlan: true,
       planName: '',
       employeeOfPlan: '',
-      ipdType: '',
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -96,65 +95,123 @@ class PlanBoxModal extends Component {
     }
   }
 
-  componentWillReceiveProps() {
-    this.handleUpdate()
+  componentWillReceiveProps(newProps) {
+    const { planList, activePlan } = newProps
+    if (newProps.modalOpen !== this.props.modalOpen) {
+      this.handleUpdate(planList, activePlan)
+    }
   }
 
-  handleUpdate = () => {
-    const { planList, activePlan } = this.props
-    if (this.state.activePlan !== activePlan) {
+  handlePlan = val => {
+    if (val !== -1) {
+      const { planList } = this.props
       this.setState({
-        activePlan: this.state.activePlan,
-        planName: planList[activePlan].planName,
-        employeeOfPlan: planList[activePlan].employeeOfPlan,
-        ipdType: planList[activePlan].ipdType,
-        ipdLumsumPerYear: planList[activePlan].ipdLumsumPerYear,
-        ipdLumsumPerTime: planList[activePlan].ipdLumsumPerTime,
-        ipdLumsumTimeNotExceedPerYear: planList[activePlan]
+        activePlan: val,
+        planName: planList[val].planName,
+        employeeOfPlan: planList[val].employeeOfPlan,
+        dentalPerYear: planList[val].dentalPerYear,
+        lifePerYear: planList[val].lifePerYear,
+        lifeTimeOfSalary: planList[val].lifeTimeOfSalary,
+        lifeNotExceed: planList[val].lifeNotExceed,
+        opdCoPay: planList[val].opdCoPay,
+        opdPerYear: planList[val].opdPerYear,
+        opdPerTime: planList[val].opdPerTime,
+        opdTimeNotExceedPerYear: planList[val]
+          .opdTimeNotExceedPerYear,
+        opdCoPayQuota: planList[val].opdCoPayQuota,
+        opdCoPayDeductable: planList[val].opdCoPayDeductable,
+        opdCoPayMixPercentage: planList[val].opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: planList[val].opdCoPayMixNotExceed,
+        opdCoPayMixYear: planList[val].opdCoPayMixYear,
+        ipdType: planList[val].ipdType,
+        ipdLumsumPerYear: planList[val].ipdLumsumPerYear,
+        ipdLumsumPerTime: planList[val].ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: planList[val]
           .ipdLumsumTimeNotExceedPerYear,
-        rbLumsumRoomPerNight: planList[activePlan].rbLumsumRoomPerNight,
-        rbLumsumNigthNotExceedPerYear: planList[activePlan]
+        rbLumsumRoomPerNight: planList[val].rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: planList[val]
           .rbLumsumNigthNotExceedPerYear,
-        rbLumsumPayNotExceedPerNight: planList[activePlan]
+        rbLumsumPayNotExceedPerNight: planList[val]
           .rbLumsumPayNotExceedPerNight,
-        rbLumsumPayNotExceedPerYear: planList[activePlan]
+        rbLumsumPayNotExceedPerYear: planList[val]
           .rbLumsumPayNotExceedPerYear,
-        rbSchedulePatient: planList[activePlan].rbSchedulePatient,
-        rbScheduleIntensiveCarePatient: planList[activePlan]
+        rbSchedulePatient: planList[val].rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: planList[val]
           .rbScheduleIntensiveCarePatient,
-        rbScheduleDoctor: planList[activePlan].rbScheduleDoctor,
-        rbScheduleSurgerySchedule: planList[activePlan]
+        rbScheduleDoctor: planList[val].rbScheduleDoctor,
+        rbScheduleSurgerySchedule: planList[val]
           .rbScheduleSurgerySchedule,
-        rbScheduleSurgeryNonSchedule: planList[activePlan]
+        rbScheduleSurgeryNonSchedule: planList[val]
           .rbScheduleSurgeryNonSchedule,
-        rbScheduleService: planList[activePlan].rbScheduleService,
-        rbScheduleSmallSurgery: planList[activePlan].rbScheduleSmallSurgery,
-        rbScheduleAdviser: planList[activePlan].rbScheduleAdviser,
-        rbScheduleAmbulance: planList[activePlan].rbScheduleAmbulance,
-        rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
-        rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
-        rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
-        ipdCoPay: planList[activePlan].ipdCoPay,
-        ipdCoPayQuota: planList[activePlan].ipdCoPayQuota,
-        ipdCoPayDeductable: planList[activePlan].ipdCoPayDeductable,
-        ipdCoPayMixPercentage: planList[activePlan].ipdCoPayMixPercentage,
-        ipdCoPayMixNotExceed: planList[activePlan].ipdCoPayMixNotExceed,
-        ipdCoPayMixYear: planList[activePlan].ipdCoPayMixYear,
-        opdPerYear: planList[activePlan].opdPerYear,
-        opdPerTime: planList[activePlan].opdPerTime,
-        opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
-        opdCoPay: planList[activePlan].opdCoPay,
-        opdCoPayQuota: planList[activePlan].opdCoPayQuota,
-        opdCoPayDeductable: planList[activePlan].opdCoPayDeductable,
-        opdCoPayMixPercentage: planList[activePlan].opdCoPayMixPercentage,
-        opdCoPayMixNotExceed: planList[activePlan].opdCoPayMixNotExceed,
-        opdCoPayMixYear: planList[activePlan].opdCoPayMixYear,
-        dentalPerYear: planList[activePlan].dentalPerYear,
-        lifePerYear: planList[activePlan].lifePerYear,
-        lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
-        lifeNotExceed: planList[activePlan].lifeNotExceed,
+        rbScheduleService: planList[val].rbScheduleService,
+        rbScheduleSmallSurgery: planList[val].rbScheduleSmallSurgery,
+        rbScheduleAdviser: planList[val].rbScheduleAdviser,
+        rbScheduleAmbulance: planList[val].rbScheduleAmbulance,
+        rbScheduleAccident: planList[val].rbScheduleAccident,
+        rbScheduleTreatment: planList[val].rbScheduleTreatment,
+        rbScheduleTransplant: planList[val].rbScheduleTransplant,
+        ipdCoPay: planList[val].ipdCoPay,
+        ipdCoPayQuota: planList[val].ipdCoPayQuota,
+        ipdCoPayDeductable: planList[val].ipdCoPayDeductable,
+        ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
       })
     }
+  }
+
+  handleUpdate = (planList, activePlan) => {
+    this.setState({
+      activePlan,
+      planName: planList[activePlan].planName,
+      employeeOfPlan: planList[activePlan].employeeOfPlan,
+      ipdType: planList[activePlan].ipdType,
+      ipdLumsumPerYear: planList[activePlan].ipdLumsumPerYear,
+      ipdLumsumPerTime: planList[activePlan].ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear: planList[activePlan]
+        .ipdLumsumTimeNotExceedPerYear,
+      rbLumsumRoomPerNight: planList[activePlan].rbLumsumRoomPerNight,
+      rbLumsumNigthNotExceedPerYear: planList[activePlan]
+        .rbLumsumNigthNotExceedPerYear,
+      rbLumsumPayNotExceedPerNight: planList[activePlan]
+        .rbLumsumPayNotExceedPerNight,
+      rbLumsumPayNotExceedPerYear: planList[activePlan]
+        .rbLumsumPayNotExceedPerYear,
+      rbSchedulePatient: planList[activePlan].rbSchedulePatient,
+      rbScheduleIntensiveCarePatient: planList[activePlan]
+        .rbScheduleIntensiveCarePatient,
+      rbScheduleDoctor: planList[activePlan].rbScheduleDoctor,
+      rbScheduleSurgerySchedule: planList[activePlan]
+        .rbScheduleSurgerySchedule,
+      rbScheduleSurgeryNonSchedule: planList[activePlan]
+        .rbScheduleSurgeryNonSchedule,
+      rbScheduleService: planList[activePlan].rbScheduleService,
+      rbScheduleSmallSurgery: planList[activePlan].rbScheduleSmallSurgery,
+      rbScheduleAdviser: planList[activePlan].rbScheduleAdviser,
+      rbScheduleAmbulance: planList[activePlan].rbScheduleAmbulance,
+      rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
+      rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
+      rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
+      ipdCoPay: planList[activePlan].ipdCoPay,
+      ipdCoPayQuota: planList[activePlan].ipdCoPayQuota,
+      ipdCoPayDeductable: planList[activePlan].ipdCoPayDeductable,
+      ipdCoPayMixPercentage: planList[activePlan].ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed: planList[activePlan].ipdCoPayMixNotExceed,
+      ipdCoPayMixYear: planList[activePlan].ipdCoPayMixYear,
+      opdPerYear: planList[activePlan].opdPerYear,
+      opdPerTime: planList[activePlan].opdPerTime,
+      opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
+      opdCoPay: planList[activePlan].opdCoPay,
+      opdCoPayQuota: planList[activePlan].opdCoPayQuota,
+      opdCoPayDeductable: planList[activePlan].opdCoPayDeductable,
+      opdCoPayMixPercentage: planList[activePlan].opdCoPayMixPercentage,
+      opdCoPayMixNotExceed: planList[activePlan].opdCoPayMixNotExceed,
+      opdCoPayMixYear: planList[activePlan].opdCoPayMixYear,
+      dentalPerYear: planList[activePlan].dentalPerYear,
+      lifePerYear: planList[activePlan].lifePerYear,
+      lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
+      lifeNotExceed: planList[activePlan].lifeNotExceed,
+    })
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -193,7 +250,7 @@ class PlanBoxModal extends Component {
 
   handleResetIPD = () => {
     this.setState({
-      ipdType: '',
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -323,6 +380,7 @@ class PlanBoxModal extends Component {
         <ModalContents>
           <AllPlan
             activePlan={this.state.activePlan}
+            handlePlan={this.handlePlan}
             nextPage={this.state.nextPage}
             handleNextPage={this.handleNextPage}
             handleSetGoToNextPage={this.handleSetGoToNextPage}

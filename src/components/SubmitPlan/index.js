@@ -32,7 +32,7 @@ class SubmitPlan extends Component {
       canBuildNewPlan: true,
       planName: '',
       employeeOfPlan: '',
-      ipdType: '',
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -236,7 +236,7 @@ class SubmitPlan extends Component {
 
   handleResetIPD = () => {
     this.setState({
-      ipdType: '',
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,

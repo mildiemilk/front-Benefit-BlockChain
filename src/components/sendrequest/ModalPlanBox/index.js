@@ -18,7 +18,7 @@ class ModalPlanBox extends Component {
       step: 6,
       isOpen: false,
       modalOpen: false,
-      activePlan: 0,
+      activePlan: -1,
     }
     const { getAllPlan } = props
     setInterval(getAllPlan, 2000)

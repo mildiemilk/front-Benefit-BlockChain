@@ -26,7 +26,7 @@ class Sendrequest extends Component {
   static propTypes = {
     getSimpleReq: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
-    timeout: PropTypes.string.isRequired,
+    timeout: PropTypes.shape.isRequired,
   }
   constructor(props) {
     super(props)

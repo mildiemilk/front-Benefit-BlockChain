@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Select, Checkbox, Input } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Select, Checkbox, Input } from 'semantic-ui-react';
 import {
   Blogs,
   SaveButton,
@@ -12,7 +12,7 @@ import {
   PlanImg,
   PlanTopic,
   ToggleBox,
-} from './styled'
+} from './styled';
 
 const Selects = styled(Select) `
     &&&{
@@ -20,7 +20,7 @@ const Selects = styled(Select) `
       margin-top: 3.5%;
       width: 47.5%;
     }
-`
+`;
 
 const Inputs = styled(Input) `
     &&&{
@@ -29,7 +29,7 @@ const Inputs = styled(Input) `
       margin-left: 62.5%;
       color: transparent;
     }
-`
+`;
 
 const NameInput = styled(Input) `
     &&&{
@@ -39,7 +39,7 @@ const NameInput = styled(Input) `
       padding: 1%;
       width: 77.25% !important;
     }
-`
+`;
 
 class SettingPlan extends Component {
   static propTypes = {
@@ -55,28 +55,28 @@ class SettingPlan extends Component {
     expense: PropTypes.string.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       optionPlan: [],
-    }
+    };
   }
 
   componentDidMount() {
-    this.renderOption()
+    this.renderOption();
   }
 
   renderOption = () => {
-    const options = this.props.optionPlan.choosePlan
-    const optionPlan = []
+    const options = this.props.optionPlan.choosePlan;
+    const optionPlan = [];
     options.map((option, index) => {
       optionPlan.push({
         key: index,
         text: option.planName,
         value: option._id,
-      })
-      return option
-    })
-    this.setState({ optionPlan })
+      });
+      return option;
+    });
+    this.setState({ optionPlan });
   }
 
   render() {
@@ -195,8 +195,8 @@ class SettingPlan extends Component {
 
         </Blogs>
       </div>
-    )
+    );
   }
 }
 
-export default SettingPlan
+export default SettingPlan;

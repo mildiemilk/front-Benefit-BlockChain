@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Form, Radio } from 'semantic-ui-react'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Form, Radio } from 'semantic-ui-react';
+import '../../../styles/submit-plan.scss';
 
 class CoPay extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ class CoPay extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
 
     const {
       opdCoPayQuota,
@@ -26,40 +26,40 @@ class CoPay extends Component {
       opdCoPayMixYear,
       opdCoPayMixPercentage,
       opdCoPayMixNotExceed,
-    } = this.props
+    } = this.props;
 
-    let value
+    let value;
 
     if (opdCoPayQuota) {
-      value = 'Quota Share'
+      value = 'Quota Share';
     } else if (opdCoPayDeductable) {
-      value = 'Deductable'
+      value = 'Deductable';
     } else if (opdCoPayMixYear && opdCoPayMixPercentage && opdCoPayMixNotExceed) {
-      value = 'Quota Share + Deductable'
-    } else value = ''
+      value = 'Quota Share + Deductable';
+    } else value = '';
 
-    this.state = { value }
+    this.state = { value };
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'OPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.handleResetdata()
-    this.setState({ value })
+    this.handleResetdata();
+    this.setState({ value });
   }
 
   handleResetdata = () => {
-    this.props.handleChangeToNull('opdCoPayQuota')
-    this.props.handleChangeToNull('opdCoPayDeductable')
-    this.props.handleChangeToNull('opdCoPayMixPercentage')
-    this.props.handleChangeToNull('opdCoPayMixNotExceed')
-    this.props.handleChangeToNull('opdCoPayMixYear')
-    this.setState({ value: '' })
-    this.props.handleNewReset()
+    this.props.handleChangeToNull('opdCoPayQuota');
+    this.props.handleChangeToNull('opdCoPayDeductable');
+    this.props.handleChangeToNull('opdCoPayMixPercentage');
+    this.props.handleChangeToNull('opdCoPayMixNotExceed');
+    this.props.handleChangeToNull('opdCoPayMixYear');
+    this.setState({ value: '' });
+    this.props.handleNewReset();
   }
 
   render() {
@@ -222,8 +222,8 @@ class CoPay extends Component {
             </div>}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default CoPay
+export default CoPay;

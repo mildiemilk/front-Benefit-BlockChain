@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Table } from 'semantic-ui-react'
-import '../../styles/chart-box.scss'
-import EmpolyeeChart from './empolyee-chart'
-import PlanChart from './plan-chart'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Table } from 'semantic-ui-react';
+import '../../styles/chart-box.scss';
+import EmpolyeeChart from './empolyee-chart';
+import PlanChart from './plan-chart';
 
 class Piechart extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -119,13 +119,13 @@ class Piechart extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-Piechart.propTypes = {}
+Piechart.propTypes = {};
 
-const mapDispatchToProps = () => ({})
-const mapStateToProps = () => ({})
+const mapDispatchToProps = () => ({});
+const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Piechart)
+export default connect(mapStateToProps, mapDispatchToProps)(Piechart);

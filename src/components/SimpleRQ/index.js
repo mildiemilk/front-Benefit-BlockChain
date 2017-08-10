@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { Card, Input, Select, Form, Checkbox } from 'semantic-ui-react'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import { fillSimpleRQ } from '../../api/simple-requirement'
-import { UploadButton, BottomSpace, Inputs } from './styled'
-import ModalSimpleRQ from './modal-simple-requirement'
-import NavInsure from '../NavInsure'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { Card, Input, Select, Form, Checkbox } from 'semantic-ui-react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import { fillSimpleRQ } from '../../api/simple-requirement';
+import { UploadButton, BottomSpace, Inputs } from './styled';
+import ModalSimpleRQ from './modal-simple-requirement';
+import NavInsure from '../NavInsure';
 
 const CardHeader = styled(Card)`
     &&&{
@@ -17,21 +17,21 @@ const CardHeader = styled(Card)`
       font-size: 20px;
       box-shadow: 0 0 0 0;
     }
-`
+`;
 
 const DatePickers = styled(DatePicker)`
   border-radius: 3px;
   background-color: #ffffff;
   border: solid 1px #dddddd;
   height: 30px;
-`
+`;
 const employeeOption = [
   { key: '1', text: '1-500', value: '1-500' },
   { key: '2', text: '500-1000', value: '500-1000' },
-]
+];
 class simpleRQ extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       step: 1,
       numberOfEmployee: '',
@@ -45,28 +45,28 @@ class simpleRQ extends Component {
       file: '',
       filePreviewUrl: '',
       date: null,
-    }
+    };
   }
   _handleImageChange(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const reader = new FileReader()
-    const file = e.target.files[0]
+    const reader = new FileReader();
+    const file = e.target.files[0];
 
     reader.onloadend = () => {
       this.setState({
         file,
         filePreviewUrl: reader.result,
-      })
-    }
+      });
+    };
 
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file);
   }
   handleDate = date => {
-    this.setState({ date })
+    this.setState({ date });
   }
   handlePost = e => {
-    e.preventDefault()
+    e.preventDefault();
     const {
       numberOfEmployee,
       typeOfInsurance,
@@ -77,7 +77,7 @@ class simpleRQ extends Component {
       other,
       otherDes,
       date,
-    } = this.state
+    } = this.state;
     this.props.fillSimpleRQ(
       numberOfEmployee,
       typeOfInsurance,
@@ -88,17 +88,17 @@ class simpleRQ extends Component {
       other,
       otherDes,
       date,
-    )
+    );
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleCheck = (e, { name, checked }) => this.setState({ [name]: checked })
 
   render() {
-    const { filePreviewUrl } = this.state
-    let $filePreview = null
+    const { filePreviewUrl } = this.state;
+    let $filePreview = null;
     if (filePreviewUrl) {
-      $filePreview = <span>{this.state.file.name}&nbsp;</span>
+      $filePreview = <span>{this.state.file.name}&nbsp;</span>;
     }
 
     return (
@@ -238,13 +238,13 @@ class simpleRQ extends Component {
           <ModalSimpleRQ data={this.state} handlePost={this.handlePost} />
         </div>
       </div>
-    )
+    );
   }
 }
 
 simpleRQ.propTypes = {
   fillSimpleRQ: PropTypes.func.isRequired,
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   fillSimpleRQ: (
@@ -271,6 +271,6 @@ const mapDispatchToProps = dispatch => ({
         date,
       ),
     ),
-})
+});
 
-export default connect(null, mapDispatchToProps)(simpleRQ)
+export default connect(null, mapDispatchToProps)(simpleRQ);

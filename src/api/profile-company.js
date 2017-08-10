@@ -1,12 +1,12 @@
-import { APIRequest } from '.'
+import { APIRequest } from '.';
 import {
   createProfileSuccess,
   createProfileFailure,
   getCompanyNameSuccess,
-} from '../reducers/profile'
+} from '../reducers/profile';
 
-const PROFILE_URI = '/admin/registerCompany'
-const COMPANYNAME_URI = '/admin/getCompanyName'
+const PROFILE_URI = '/admin/registerCompany';
+const COMPANYNAME_URI = '/admin/getCompanyName';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -14,18 +14,18 @@ export function createProfile(profile) {
       method: 'post',
       url: PROFILE_URI,
       data: profile,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        localStorage.setItem('profile', res.data.profile)
-        dispatch(createProfileSuccess(res.data))
-        window.location.href = '/confirm_identity'
+        localStorage.setItem('profile', res.data.profile);
+        dispatch(createProfileSuccess(res.data));
+        window.location.href = '/confirm_identity';
       })
       .catch(err => {
-        dispatch(createProfileFailure(err.response.data))
-      })
-  }
+        dispatch(createProfileFailure(err.response.data));
+      });
+  };
 }
 
 export function getCompanyName() {
@@ -33,17 +33,17 @@ export function getCompanyName() {
     const options = {
       method: 'get',
       url: COMPANYNAME_URI,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        localStorage.setItem('companyname', res.data.companyName)
-        dispatch(getCompanyNameSuccess(res.data.companyName))
+        localStorage.setItem('companyname', res.data.companyName);
+        dispatch(getCompanyNameSuccess(res.data.companyName));
       })
-      .catch(() => {})
-  }
+      .catch(() => {});
+  };
 }
 
 export default {
   createProfile,
-}
+};

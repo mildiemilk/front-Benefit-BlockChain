@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class NavClaimStatus extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       pendingStatus: true,
       approveStatus: false,
       watingStatus: false,
       claimedStatus: false,
-    }
+    };
   }
 
   renderPending = () => {
-    let isActive = ''
+    let isActive = '';
     if (this.state.pendingStatus) {
-      isActive = '-active'
+      isActive = '-active';
     }
     return (
       <div className="InlineDiv">
@@ -36,13 +36,13 @@ class NavClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   renderApprove = () => {
-    let isActive = ''
+    let isActive = '';
     if (this.state.approveStatus) {
-      isActive = '-active'
+      isActive = '-active';
     }
     return (
       <div className={`CircleSpace${isActive}`}>
@@ -64,13 +64,13 @@ class NavClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   renderWaiting = () => {
-    let isActive = ''
+    let isActive = '';
     if (this.state.watingStatus) {
-      isActive = '-active'
+      isActive = '-active';
     }
     return (
       <div className={`CircleSpace${isActive}`}>
@@ -92,13 +92,13 @@ class NavClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   renderClaimed = () => {
-    let isActive = ''
+    let isActive = '';
     if (this.state.claimedStatus) {
-      isActive = '-active'
+      isActive = '-active';
     }
     return (
       <div className={`CircleSpace${isActive}`}>
@@ -120,7 +120,7 @@ class NavClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   render() {
@@ -133,10 +133,10 @@ class NavClaimStatus extends Component {
           {this.renderClaimed()}
         </div>
       </div>
-    )
+    );
   }
 }
 
-NavClaimStatus.propTypes = {}
+NavClaimStatus.propTypes = {};
 
-export default NavClaimStatus
+export default NavClaimStatus;

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import '../../styles/employee-benefits.scss'
+import React, { Component } from 'react';
+import '../../styles/employee-benefits.scss';
 
 class FinishSelectPlan extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -32,8 +32,8 @@ class FinishSelectPlan extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default FinishSelectPlan
+export default FinishSelectPlan;

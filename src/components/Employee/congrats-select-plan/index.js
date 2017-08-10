@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import ChangePlanModal from './confirm-change-plan-modal'
-import DeadlineBox from '../flexy-plan/deadline-box'
-import selectPlanImage from '../../image/select-plan.png'
+import React, { Component } from 'react';
+import ChangePlanModal from './confirm-change-plan-modal';
+import DeadlineBox from '../flexy-plan/deadline-box';
+import selectPlanImage from '../../image/select-plan.png';
 
 class CongrateSelectPlan extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       openModal: false,
-    }
+    };
   }
 
   handleCloseModal = () => {
-    this.setState({ openModal: false })
+    this.setState({ openModal: false });
   }
 
   handleOpenModal = () => {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   render() {
@@ -54,8 +54,8 @@ class CongrateSelectPlan extends Component {
           handleCloseModal={this.handleCloseModal}
         />
       </div>
-    )
+    );
   }
 }
 
-export default CongrateSelectPlan
+export default CongrateSelectPlan;

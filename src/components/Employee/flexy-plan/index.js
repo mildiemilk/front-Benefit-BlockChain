@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import Slider from 'react-slick'
-import FlexyPlanBox from './flexy-plan-box'
-import CongrateImage from '../../image/asset-1.png'
-import ConfirmModal from './confirm-modal'
-import DeadlineBox from './deadline-box'
+import React, { Component } from 'react';
+import Slider from 'react-slick';
+import FlexyPlanBox from './flexy-plan-box';
+import CongrateImage from '../../image/asset-1.png';
+import ConfirmModal from './confirm-modal';
+import DeadlineBox from './deadline-box';
 
 class FlexyPlan extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       openModal: false,
-    }
+    };
   }
 
   handleCloseModal = () => {
-    this.setState({ openModal: false })
+    this.setState({ openModal: false });
   }
 
   handleOpenModal = () => {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   render() {
@@ -26,7 +26,7 @@ class FlexyPlan extends Component {
       dots: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-    }
+    };
     return (
       <div className="flexyPlan">
         <div className="row">
@@ -75,8 +75,8 @@ class FlexyPlan extends Component {
           handleCloseModal={this.handleCloseModal}
         />
       </div>
-    )
+    );
   }
 }
 
-export default FlexyPlan
+export default FlexyPlan;

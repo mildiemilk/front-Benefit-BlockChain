@@ -10,27 +10,27 @@ const defaultfillsimpleReducer = {
   date: '',
   message: null,
   error: false,
-}
+};
 
-const FILLSIMPLERQ_REQUEST_SUCCESS = 'FILLSIMPLERQ_REQUEST_SUCCESS'
-const FILLSIMPLERQ_REQUEST_FAILURE = 'FILLSIMPLERQ_REQUEST_FAILURE'
-const GETSIMPLERQ_REQUEST_SUCCESS = 'GETSIMPLERQ_REQUEST_SUCCESS'
-const GETSIMPLERQ_REQUEST_FAILURE = 'GETSIMPLERQ_REQUEST_FAILURE'
+const FILLSIMPLERQ_REQUEST_SUCCESS = 'FILLSIMPLERQ_REQUEST_SUCCESS';
+const FILLSIMPLERQ_REQUEST_FAILURE = 'FILLSIMPLERQ_REQUEST_FAILURE';
+const GETSIMPLERQ_REQUEST_SUCCESS = 'GETSIMPLERQ_REQUEST_SUCCESS';
+const GETSIMPLERQ_REQUEST_FAILURE = 'GETSIMPLERQ_REQUEST_FAILURE';
 
 export function fillsimpleRqSuccess(data) {
-  return { type: FILLSIMPLERQ_REQUEST_SUCCESS, data }
+  return { type: FILLSIMPLERQ_REQUEST_SUCCESS, data };
 }
 
 export function fillsimpleRqFailure(data) {
-  return { type: FILLSIMPLERQ_REQUEST_FAILURE, data }
+  return { type: FILLSIMPLERQ_REQUEST_FAILURE, data };
 }
 
 export function getsimpleRqSuccess(data) {
-  return { type: GETSIMPLERQ_REQUEST_SUCCESS, data }
+  return { type: GETSIMPLERQ_REQUEST_SUCCESS, data };
 }
 
 export function getsimpleRqFailure(data) {
-  return { type: GETSIMPLERQ_REQUEST_FAILURE, data }
+  return { type: GETSIMPLERQ_REQUEST_FAILURE, data };
 }
 
 export default function fillsimpleReducer(
@@ -51,12 +51,12 @@ export default function fillsimpleReducer(
         date: action.data.date,
         message: action.data.message,
         error: false,
-      })
+      });
     case FILLSIMPLERQ_REQUEST_FAILURE:
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,
-      })
+      });
     case GETSIMPLERQ_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         numberOfEmployee: action.data.numberOfEmployee,
@@ -70,13 +70,13 @@ export default function fillsimpleReducer(
         date: action.data.date,
         message: action.data.message,
         error: false,
-      })
+      });
     case GETSIMPLERQ_REQUEST_FAILURE:
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,
-      })
+      });
     default:
-      return state
+      return state;
   }
 }

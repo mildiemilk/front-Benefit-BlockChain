@@ -12,7 +12,7 @@ const defaultProfile = {
   companyInsurer: '',
   message: null,
   error: false,
-}
+};
 /*
   companyName: localStorage.getItem('profile').companyName,
   location: localStorage.getItem('profile').location,
@@ -27,23 +27,23 @@ const defaultProfile = {
 /**
  * Action Constansts
  */
-const PROFILECOMPANY_REQUEST_SUCCESS = 'PROFILECOMPANY_REQUEST_SUCCESS'
-const GET_COM_NAME_REQUEST_SUCCESS = 'GET_COM_NAME_REQUEST_SUCCESS'
-const PROFILECOMPANY_REQUEST_FAILURE = 'PROFILECOMPANY_REQUEST_FAILURE'
+const PROFILECOMPANY_REQUEST_SUCCESS = 'PROFILECOMPANY_REQUEST_SUCCESS';
+const GET_COM_NAME_REQUEST_SUCCESS = 'GET_COM_NAME_REQUEST_SUCCESS';
+const PROFILECOMPANY_REQUEST_FAILURE = 'PROFILECOMPANY_REQUEST_FAILURE';
 
 /**
  * Actions
  */
 export function createProfileSuccess(data) {
-  return { type: PROFILECOMPANY_REQUEST_SUCCESS, data }
+  return { type: PROFILECOMPANY_REQUEST_SUCCESS, data };
 }
 
 export function createProfileFailure(data) {
-  return { type: PROFILECOMPANY_REQUEST_FAILURE, data }
+  return { type: PROFILECOMPANY_REQUEST_FAILURE, data };
 }
 
 export function getCompanyNameSuccess(data) {
-  return { type: GET_COM_NAME_REQUEST_SUCCESS, data }
+  return { type: GET_COM_NAME_REQUEST_SUCCESS, data };
 }
 
 /**
@@ -64,16 +64,16 @@ export default function profileReducer(state = defaultProfile, action) {
         companyInsurer: action.data.profile.companyInsurer,
         message: action.data.message,
         error: false,
-      })
+      });
     case GET_COM_NAME_REQUEST_SUCCESS:
-      return Object.assign({}, state, { companyName: action.data })
+      return Object.assign({}, state, { companyName: action.data });
     case PROFILECOMPANY_REQUEST_FAILURE:
-      console.log(action.data.message)
+      console.log(action.data.message);
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,
-      })
+      });
     default:
-      return state
+      return state;
   }
 }

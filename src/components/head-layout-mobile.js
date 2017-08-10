@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Header from './Employee/header'
-import Footer from './Employee/footer'
-import Side from './main-layout-mobile'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Header from './Employee/header';
+import Footer from './Employee/footer';
+import Side from './main-layout-mobile';
 
 class HeadLayoutMobile extends Component {
   static propTypes = {
@@ -10,8 +10,8 @@ class HeadLayoutMobile extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -26,7 +26,7 @@ class HeadLayoutMobile extends Component {
           <Footer />
         </main>
       </div>
-    )
+    );
   }
 }
-export default HeadLayoutMobile
+export default HeadLayoutMobile;

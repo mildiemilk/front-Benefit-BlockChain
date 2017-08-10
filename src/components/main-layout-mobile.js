@@ -1,7 +1,7 @@
-import React from 'react'
-import { push as Menu } from 'react-burger-menu'
-import styled from 'styled-components'
-import { Divider, Icon } from 'semantic-ui-react'
+import React from 'react';
+import { push as Menu } from 'react-burger-menu';
+import styled from 'styled-components';
+import { Divider, Icon } from 'semantic-ui-react';
 
 const List = styled.div`
   font-size: 16px;
@@ -12,60 +12,60 @@ const List = styled.div`
   &:active,&:hover,&:focus{
     background: #c8ddf6;
   }
-`
+`;
 const Number = styled.div`
   font-size: 12px;
   letter-spacing: 0.3px;
   font-weight: 300;
   color: #323028;
-`
+`;
 const Head = styled.div`
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.3px;
   color: #323028;
   margin-top:10%;
-`
+`;
 const HeadDiv = styled.div`
   padding-left: 10%;
   padding-top: 15%;
-`
+`;
 const SettingDiv = styled.div`
   margin-top: 36%;
-`
+`;
 const Dividers = styled(Divider)`
   &&&{
     height: 2px;
     border: solid 1px #f0f0f0;
     margin: 8% 0%;
   }
-`
+`;
 
 class SideBar extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       isClosed: true,
-    }
+    };
   }
   showSettings = event => {
-    event.preventDefault()
+    event.preventDefault();
   }
 
   hamburgerCross = () => {
-    const { isClosed } = this.state
+    const { isClosed } = this.state;
     if (isClosed) {
-      this.setState({ isClosed: false })
+      this.setState({ isClosed: false });
     } else {
-      this.setState({ isClosed: true })
+      this.setState({ isClosed: true });
     }
   }
 
   OverlayStyle = isClosed => {
     if (isClosed === false) {
-      return 'is-open'
+      return 'is-open';
     }
-    return ''
+    return '';
   }
 
   render() {
@@ -97,8 +97,8 @@ class SideBar extends React.Component {
           </SettingDiv>
         </Menu>
       </div>
-    )
+    );
   }
 }
 
-export default SideBar
+export default SideBar;

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import FormSubmitPlan from '../../SubmitPlan/FormSubmitPlan/form-submit-plan'
-import AllPlan from '../../SubmitPlan/all-plan'
+import React, { Component } from 'react';
+import { Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import FormSubmitPlan from '../../SubmitPlan/FormSubmitPlan/form-submit-plan';
+import AllPlan from '../../SubmitPlan/all-plan';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -14,7 +14,7 @@ const ModalContents = styled(Modal.Content)`
     padding-left: 6.4%;
     padding-right: 4%;
   }
-`
+`;
 const ModalHeaders = styled(Modal.Header)`
   &&&{
     width: 800px;
@@ -23,7 +23,7 @@ const ModalHeaders = styled(Modal.Header)`
     padding-left: 4%;
     padding-right: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -32,7 +32,7 @@ const Modals = styled(Modal)`
     z-index: 2;
     box-shadow: none;
   }
-`
+`;
 
 class PlanBoxModal extends Component {
   static propTypes = {
@@ -41,7 +41,7 @@ class PlanBoxModal extends Component {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       closeOnEscape: false,
       closeOnRootNodeClick: true,
@@ -92,19 +92,19 @@ class PlanBoxModal extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
-    }
+    };
   }
 
   componentWillReceiveProps(newProps) {
-    const { planList, activePlan } = newProps
+    const { planList, activePlan } = newProps;
     if (newProps.modalOpen !== this.props.modalOpen) {
-      this.handleUpdate(planList, activePlan)
+      this.handleUpdate(planList, activePlan);
     }
   }
 
   handlePlan = val => {
     if (val !== -1) {
-      const { planList } = this.props
+      const { planList } = this.props;
       this.setState({
         activePlan: val,
         planName: planList[val].planName,
@@ -156,7 +156,7 @@ class PlanBoxModal extends Component {
         ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
         ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
         ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
-      })
+      });
     }
   }
 
@@ -211,7 +211,7 @@ class PlanBoxModal extends Component {
       lifePerYear: planList[activePlan].lifePerYear,
       lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
       lifeNotExceed: planList[activePlan].lifeNotExceed,
-    })
+    });
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -219,12 +219,12 @@ class PlanBoxModal extends Component {
   handleChangeToNull = name => this.setState({ [name]: null })
 
   handleResetProfilePlan = () => {
-    this.setState({ planName: '' })
-    this.setState({ employeeOfPlan: '' })
+    this.setState({ planName: '' });
+    this.setState({ employeeOfPlan: '' });
   }
 
   handleResetDental = () => {
-    this.setState({ dentalPerYear: null })
+    this.setState({ dentalPerYear: null });
   }
 
   handleResetLife = () => {
@@ -232,7 +232,7 @@ class PlanBoxModal extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
-    })
+    });
   }
 
   handleResetOPD = () => {
@@ -245,7 +245,7 @@ class PlanBoxModal extends Component {
       opdCoPayMixPercentage: null,
       opdCoPayMixNotExceed: null,
       opdCoPayMixYear: null,
-    })
+    });
   }
 
   handleResetIPD = () => {
@@ -289,7 +289,7 @@ class PlanBoxModal extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
-    })
+    });
   }
 
   handleToggleIpdCoPay = () => {
@@ -301,9 +301,9 @@ class PlanBoxModal extends Component {
         ipdCoPayMixPercentage: null,
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
-      })
+      });
     } else {
-      this.setState({ ipdCoPay: !this.state.ipdCoPay })
+      this.setState({ ipdCoPay: !this.state.ipdCoPay });
     }
   }
 
@@ -316,43 +316,43 @@ class PlanBoxModal extends Component {
         opdCoPayMixPercentage: null,
         opdCoPayMixNotExceed: null,
         opdCoPayMixYear: null,
-      })
+      });
     } else {
-      this.setState({ opdCoPay: !this.state.opdCoPay })
+      this.setState({ opdCoPay: !this.state.opdCoPay });
     }
   }
 
   handleSetGoToNextPage = () => {
-    this.setState({ canGoToNextPage: false })
+    this.setState({ canGoToNextPage: false });
   }
 
   handleMoveToNextPage = () => {
     if (this.state.warningModal) {
-      this.setState({ canGoToNextPage: true })
-      this.setState({ warningModal: false })
+      this.setState({ canGoToNextPage: true });
+      this.setState({ warningModal: false });
     } else {
-      this.setState({ canGoToNextPage: true })
+      this.setState({ canGoToNextPage: true });
     }
   }
 
   handleWarningModal = () => {
-    this.setState({ warningModal: true })
+    this.setState({ warningModal: true });
   }
 
   handleNextPage = () => {
-    this.setState({ nextPage: false })
+    this.setState({ nextPage: false });
   }
 
   handleBuildNewPlan = () => {
-    this.setState({ canBuildNewPlan: true })
+    this.setState({ canBuildNewPlan: true });
   }
 
   handleUnBuildNewPlan = () => {
-    this.setState({ canBuildNewPlan: false })
+    this.setState({ canBuildNewPlan: false });
   }
 
   handleClose = () => {
-    this.props.handleCloseModal()
+    this.props.handleCloseModal();
   }
 
   render() {
@@ -448,8 +448,8 @@ class PlanBoxModal extends Component {
           />
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default connect(null, null)(PlanBoxModal)
+export default connect(null, null)(PlanBoxModal);

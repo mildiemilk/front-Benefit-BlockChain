@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Button, Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import { Button, Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import '../../../styles/submit-plan.scss';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -11,7 +11,7 @@ const ModalContents = styled(Modal.Content)`
     position: relative;
     margin: 0 auto;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -19,7 +19,7 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     box-shadow: none;
   }
-`
+`;
 
 class DentalModal extends Component {
   static propTypes = {
@@ -29,8 +29,8 @@ class DentalModal extends Component {
     openModal: PropTypes.bool.isRequired,
   }
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -39,14 +39,14 @@ class DentalModal extends Component {
     })
 
   handleCancel = () => {
-    this.props.handleCloseModal()
-    this.props.handleNextPlan()
+    this.props.handleCloseModal();
+    this.props.handleNextPlan();
   }
 
   handleSubmit = () => {
-    this.props.handleCloseModal()
-    this.props.handleNextPlan()
-    this.props.handleClick()
+    this.props.handleCloseModal();
+    this.props.handleNextPlan();
+    this.props.handleClick();
   }
 
   handleOpen = () =>
@@ -101,8 +101,8 @@ class DentalModal extends Component {
           </ModalContents>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default connect(null, null)(DentalModal)
+export default connect(null, null)(DentalModal);

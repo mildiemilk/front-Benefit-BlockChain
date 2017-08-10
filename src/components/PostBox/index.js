@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
-import { Rating } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import NavInsure from '../NavInsure'
-import { postBox } from '../../api/post-box'
-import { getSimpleRQ } from '../../api/simple-requirement'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
+import { Rating } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import NavInsure from '../NavInsure';
+import { postBox } from '../../api/post-box';
+import { getSimpleRQ } from '../../api/simple-requirement';
 import {
   Reg3,
   PostBoxFront,
@@ -17,11 +17,11 @@ import {
   RecPostBox,
   ChatBoxName,
   ChatBoxImg,
-} from './styled'
-import Chatlist from './chat-list'
-import Chatbox from './chat-box'
-import Postre from './postre'
-import ModalPostBox from './modal-postbox'
+} from './styled';
+import Chatlist from './chat-list';
+import Chatbox from './chat-box';
+import Postre from './postre';
+import ModalPostBox from './modal-postbox';
 
 const RatingNew = styled(Rating)`
   &&&{
@@ -29,7 +29,7 @@ const RatingNew = styled(Rating)`
     margin-left: 24.5%;
     margin-top: 3%;
   }
-`
+`;
 
 class PostBox extends Component {
   static propTypes = {
@@ -39,27 +39,27 @@ class PostBox extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       step: 2,
       passwordToConfirm: '',
-    }
+    };
   }
   componentDidMount() {
-    this.props.getSimpleReq()
+    this.props.getSimpleReq();
   }
   handlePost = e => {
-    e.preventDefault()
-    const { passwordToConfirm } = this.state
-    this.props.postBox(passwordToConfirm)
+    e.preventDefault();
+    const { passwordToConfirm } = this.state;
+    this.props.postBox(passwordToConfirm);
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
-    const { selectBroker } = this.props
+    const { selectBroker } = this.props;
 
     if (selectBroker) {
-      return <Redirect to="/submitplan" />
+      return <Redirect to="/submitplan" />;
     }
 
     return (
@@ -113,18 +113,18 @@ class PostBox extends Component {
           </RecPostBox>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   selectBroker: state.postBoxReducer.selectBroker,
   getSimpleReq: state.fillsimpleReducer,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   postBox: passwordToConfirm => dispatch(postBox(passwordToConfirm)),
   getSimpleReq: () => dispatch(getSimpleRQ()),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostBox)
+export default connect(mapStateToProps, mapDispatchToProps)(PostBox);

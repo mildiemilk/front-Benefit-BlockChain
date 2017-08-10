@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const HeadNav = styled.div`
   position: fixed;
@@ -7,12 +7,12 @@ export const HeadNav = styled.div`
   height: 65px;
   width: 100%;
   z-index: 20;
-`
+`;
 export const LogoPosition = styled.div`
   position: absolute;
   left: 29px;
   top: 13px;
-`
+`;
 
 export const SpanStyle = styled.span`
   font-family: Kanit;
@@ -21,4 +21,4 @@ export const SpanStyle = styled.span`
   top: 29px;
   fontSize: 120%;
   color: white;
-`
+`;

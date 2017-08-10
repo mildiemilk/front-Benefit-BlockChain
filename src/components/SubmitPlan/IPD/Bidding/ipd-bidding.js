@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Checkbox, Form, Radio } from 'semantic-ui-react'
-import CoPayBidding from './copay-bidding'
-import IPD1Bidding from './ipd1-bidding'
-import IPD2Bidding from './ipd2-bidding'
-import IPD3Bidding from './ipd3-bidding'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Checkbox, Form, Radio } from 'semantic-ui-react';
+import CoPayBidding from './copay-bidding';
+import IPD1Bidding from './ipd1-bidding';
+import IPD2Bidding from './ipd2-bidding';
+import IPD3Bidding from './ipd3-bidding';
 
 class IPDBidding extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       ipdCoPay: false,
       showForm: 1,
@@ -36,7 +36,7 @@ class IPDBidding extends Component {
       ipdCoPayMixPercentage: null,
       ipdCoPayMixNotExceed: null,
       ipdCoPayMixYear: null,
-    }
+    };
   }
 
   render() {
@@ -98,12 +98,12 @@ class IPDBidding extends Component {
           </Form>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, null)(IPDBidding)
+export default connect(mapStateToProps, null)(IPDBidding);

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Form, Radio } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form, Radio } from 'semantic-ui-react';
 
 class IPD2Bidding extends Component {
   static propTypes = {
@@ -10,14 +10,14 @@ class IPD2Bidding extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       value: '',
       rbLumsumRoomPerNight: null,
       rbLumsumNigthNotExceedPerYear: null,
       rbLumsumPayNotExceedPerNight: null,
       rbLumsumPayNotExceedPerYear: null,
-    }
+    };
   }
 
   render() {
@@ -86,10 +86,10 @@ class IPD2Bidding extends Component {
         </Form.Group>
 
       </div>
-    )
+    );
   }
 }
 
-IPD2Bidding.propTypes = {}
+IPD2Bidding.propTypes = {};
 
-export default connect(null, null)(IPD2Bidding)
+export default connect(null, null)(IPD2Bidding);

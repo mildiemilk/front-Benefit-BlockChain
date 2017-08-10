@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Form, Radio } from 'semantic-ui-react'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form, Radio } from 'semantic-ui-react';
+import '../../../styles/submit-plan.scss';
 
 class CoPay extends Component {
   static propTypes = {
@@ -20,26 +20,26 @@ class CoPay extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     const {
       ipdCoPayQuota,
       ipdCoPayDeductable,
       ipdCoPayMixYear,
       ipdCoPayMixPercentage,
       ipdCoPayMixNotExceed,
-    } = this.props
+    } = this.props;
 
-    let value
+    let value;
 
     if (ipdCoPayQuota) {
-      value = 'Quota Share'
+      value = 'Quota Share';
     } else if (ipdCoPayDeductable) {
-      value = 'Deductable'
+      value = 'Deductable';
     } else if (ipdCoPayMixYear && ipdCoPayMixPercentage && ipdCoPayMixNotExceed) {
-      value = 'Quota Share + Deductable'
-    } else value = ''
+      value = 'Quota Share + Deductable';
+    } else value = '';
 
-    this.state = { value }
+    this.state = { value };
   }
 
   componentWillReceiveProps(newProps) {
@@ -49,49 +49,49 @@ class CoPay extends Component {
       ipdCoPayMixYear,
       ipdCoPayMixPercentage,
       ipdCoPayMixNotExceed,
-    } = newProps
+    } = newProps;
 
-    let value
+    let value;
 
     if (!ipdCoPayQuota) {
       if (!ipdCoPayDeductable) {
         if (
           !(ipdCoPayMixYear && ipdCoPayMixPercentage && ipdCoPayMixNotExceed)
         ) {
-          value = ''
+          value = '';
         }
-        value = 'Quota Share + Deductable'
+        value = 'Quota Share + Deductable';
       }
-      value = 'Deductable'
+      value = 'Deductable';
     } else {
-      value = 'Quota Share'
+      value = 'Quota Share';
     }
     if (newProps.activePlan !== this.props.activePlan) {
-      this.state = { value }
+      this.state = { value };
     }
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleRadio = (e, { value }) => {
-    this.handleResetdata()
-    this.setState({ value })
+    this.handleResetdata();
+    this.setState({ value });
   }
 
   handleResetdata = () => {
-    this.props.handleChangeToNull('ipdCoPayQuota')
-    this.props.handleChangeToNull('ipdCoPayDeductable')
-    this.props.handleChangeToNull('ipdCoPayMixPercentage')
-    this.props.handleChangeToNull('ipdCoPayMixNotExceed')
-    this.props.handleChangeToNull('ipdCoPayMixYear')
-    this.setState({ value: '' })
-    this.props.handleNewReset()
+    this.props.handleChangeToNull('ipdCoPayQuota');
+    this.props.handleChangeToNull('ipdCoPayDeductable');
+    this.props.handleChangeToNull('ipdCoPayMixPercentage');
+    this.props.handleChangeToNull('ipdCoPayMixNotExceed');
+    this.props.handleChangeToNull('ipdCoPayMixYear');
+    this.setState({ value: '' });
+    this.props.handleNewReset();
   }
 
   render() {
@@ -100,7 +100,7 @@ class CoPay extends Component {
       ipdCoPayMixNotExceed,
       ipdCoPayMixPercentage,
       ipdCoPayQuota,
-    } = this.props
+    } = this.props;
     return (
       <div>
         <div className="copayParagraph">
@@ -261,8 +261,8 @@ class CoPay extends Component {
             </div>}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(CoPay)
+export default connect(null, null)(CoPay);

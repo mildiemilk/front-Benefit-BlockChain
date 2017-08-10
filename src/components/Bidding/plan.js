@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Icon } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import { List, IconPlan, DetailList, PopupList, PopupView } from './styled'
+import React, { Component } from 'react';
+import { Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
 
 class Plan extends Component {
   static propTypes = {
@@ -31,8 +31,8 @@ class Plan extends Component {
           position="bottom center"
         />
       </List>
-    ))
-    return planlists
+    ));
+    return planlists;
   }
 
   render() {
@@ -40,8 +40,8 @@ class Plan extends Component {
       <div>
         {this.renderList(this.props.planList)}
       </div>
-    )
+    );
   }
 }
 
-export default Plan
+export default Plan;

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
-import '../../../styles/employee-style/login-verify.scss'
-import key from '../../image/key.png'
-import keyIcon from '../../image/icons-8-key-copy.png'
+import React, { Component } from 'react';
+import { Form } from 'semantic-ui-react';
+import '../../../styles/employee-style/login-verify.scss';
+import key from '../../image/key.png';
+import keyIcon from '../../image/icons-8-key-copy.png';
 
 class EmployeeVerify extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -47,8 +47,8 @@ class EmployeeVerify extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default EmployeeVerify
+export default EmployeeVerify;

@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import ConsiderClaimStatus from './consider-claim-status'
-import ApproveClaimStatus from './approve-claim-status'
-import WaitTransferClaimStatus from './wait-transfer-claim-status'
-import FinishClaimStatus from './finish-claim-status'
-import NotApproveClaimStatus from './not-approve-claim-status'
+import React, { Component } from 'react';
+import ConsiderClaimStatus from './consider-claim-status';
+import ApproveClaimStatus from './approve-claim-status';
+import WaitTransferClaimStatus from './wait-transfer-claim-status';
+import FinishClaimStatus from './finish-claim-status';
+import NotApproveClaimStatus from './not-approve-claim-status';
 
 class ClamStatus extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -21,8 +21,8 @@ class ClamStatus extends Component {
         <FinishClaimStatus />
         <NotApproveClaimStatus />
       </div>
-    )
+    );
   }
 }
 
-export default ClamStatus
+export default ClamStatus;

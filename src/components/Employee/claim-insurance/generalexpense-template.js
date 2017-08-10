@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import DatePicker from 'react-datepicker'
-import { Dropdown, Form } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import { Dropdown, Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import {
   TinyText,
   BrowsButton,
   NewLine,
   SubmitButton,
   UploadText,
-} from './styled'
-import '../../../styles/employee-style/claim-insurance.scss'
+} from './styled';
+import '../../../styles/employee-style/claim-insurance.scss';
 
 const expenseOption = [
   {
@@ -27,7 +27,7 @@ const expenseOption = [
     text: 'ค่าอาหาร',
     value: 'food',
   },
-]
+];
 const currencyOption = [
   {
     key: '1',
@@ -44,7 +44,7 @@ const currencyOption = [
     text: 'กีบลาว',
     value: 'Lak',
   },
-]
+];
 class GeneralExpenseTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
@@ -55,8 +55,8 @@ class GeneralExpenseTemplate extends Component {
     handleChangeDate: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -147,8 +147,8 @@ class GeneralExpenseTemplate extends Component {
         </SubmitButton>
         <NewLine />
       </div>
-    )
+    );
   }
 }
 
-export default GeneralExpenseTemplate
+export default GeneralExpenseTemplate;

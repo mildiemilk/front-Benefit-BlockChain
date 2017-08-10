@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import TimePicker from 'rc-time-picker'
-import { Submit } from './styled'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import TimePicker from 'rc-time-picker';
+import { Submit } from './styled';
 
 class Timeout extends Component {
   static propTypes = {
@@ -11,24 +11,24 @@ class Timeout extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       date: null,
-    }
+    };
   }
 
   handleTimeOut = () => {
-    const { date } = this.state
-    this.props.setTimeOut(date)
+    const { date } = this.state;
+    this.props.setTimeOut(date);
   }
 
   handleDate = date => {
-    this.setState({ date })
+    this.setState({ date });
   }
 
   handleTime = time => {
-    time._d.setDate(this.state.date._d.getDate())
-    this.state.date._d.setTime(time._d.getTime())
+    time._d.setDate(this.state.date._d.getDate());
+    this.state.date._d.setTime(time._d.getTime());
   }
 
   render() {
@@ -44,8 +44,8 @@ class Timeout extends Component {
         <br />
         <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
       </div>
-    )
+    );
   }
 }
 
-export default Timeout
+export default Timeout;

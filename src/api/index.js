@@ -1,23 +1,23 @@
-import axios from 'axios'
-import auth from './auth'
-import profileCompany from './profile-company'
+import axios from 'axios';
+import auth from './auth';
+import profileCompany from './profile-company';
 import {
   chooseInsurer,
   setTimeOut,
   getTimeout,
   getAllInsurer,
   getSelectInsurer,
-} from './choose-insurer'
-import { endTimeout, bidding } from './bidding'
-import { menuPlans } from './set-plan'
-import { choosePlan, getOptionPlan } from './benefit-plan'
-import { chooseFinalInsurer } from './bidding'
+} from './choose-insurer';
+import { endTimeout, bidding } from './bidding';
+import { menuPlans } from './set-plan';
+import { choosePlan, getOptionPlan } from './benefit-plan';
+import { chooseFinalInsurer } from './bidding';
 
 export function APIRequest(options, authenticate = true) {
-  const headers = options.headers ? options.headers : {}
+  const headers = options.headers ? options.headers : {};
   const authorization = authenticate
     ? { Authorization: `${localStorage.getItem('token')}` }
-    : {}
+    : {};
   const defaultOption = {
     baseURL: 'http://localhost:8000',
     headers: Object.assign(
@@ -26,10 +26,10 @@ export function APIRequest(options, authenticate = true) {
       headers,
       authorization,
     ),
-  }
-  const mergedOption = Object.assign({}, options, defaultOption)
+  };
+  const mergedOption = Object.assign({}, options, defaultOption);
 
-  return axios(mergedOption)
+  return axios(mergedOption);
 }
 
 export default {
@@ -47,4 +47,4 @@ export default {
   getSelectInsurer,
   chooseFinalInsurer,
   getOptionPlan,
-}
+};

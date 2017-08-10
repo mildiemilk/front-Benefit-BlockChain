@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Icon, Checkbox } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { Icon, Checkbox } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   DetailDiv,
   Text,
@@ -14,9 +14,9 @@ import {
   Toggled,
   BackButton,
   NextButton,
-} from './styled'
-import HealthBenefit from './health-benefit'
-import ExpenseBenefit from './expense-benefit'
+} from './styled';
+import HealthBenefit from './health-benefit';
+import ExpenseBenefit from './expense-benefit';
 
 class Detail extends Component {
   static propTypes = {
@@ -39,14 +39,14 @@ class Detail extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-    }
+    };
   }
 
   boxInStyle = state => {
-    if (state) return 'BoxLine'
-    return ''
+    if (state) return 'BoxLine';
+    return '';
   }
   render() {
     return (
@@ -160,9 +160,8 @@ class Detail extends Component {
           <div className="large-1 columns" />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Detail
-
+export default Detail;

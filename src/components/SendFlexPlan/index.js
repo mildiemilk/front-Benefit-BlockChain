@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import NavBenefit from '../NavBenefit'
-import { Detail, Head, Inner, BackButton, SendButton } from './styled'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import NavBenefit from '../NavBenefit';
+import { Detail, Head, Inner, BackButton, SendButton } from './styled';
 
 class SendFlexPlan extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 6,
-    }
+    };
   }
 
   render() {
@@ -80,8 +80,8 @@ class SendFlexPlan extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default SendFlexPlan
+export default SendFlexPlan;

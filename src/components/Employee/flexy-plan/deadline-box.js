@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class DeadlineBox extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -41,8 +41,8 @@ class DeadlineBox extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default DeadlineBox
+export default DeadlineBox;

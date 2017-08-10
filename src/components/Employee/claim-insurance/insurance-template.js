@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Dropdown, Form } from 'semantic-ui-react'
-import DatePicker from 'react-datepicker'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { Dropdown, Form } from 'semantic-ui-react';
+import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 import {
   TinyText,
   BrowsButton,
   NewLine,
   SubmitButton,
   UploadText,
-} from './styled'
-import '../../../styles/employee-style/claim-insurance.scss'
+} from './styled';
+import '../../../styles/employee-style/claim-insurance.scss';
 
 const InsuranceTypeOption = [
   {
@@ -27,7 +27,7 @@ const InsuranceTypeOption = [
     text: 'Dental',
     value: 'Dental',
   },
-]
+];
 
 const currencyOption = [
   {
@@ -45,7 +45,7 @@ const currencyOption = [
     text: 'กีบลาว',
     value: 'Lak',
   },
-]
+];
 
 const BankOption = [
   {
@@ -68,7 +68,7 @@ const BankOption = [
     text: 'ทหารไทย',
     value: 'TMB',
   },
-]
+];
 class InsuranceTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
@@ -80,8 +80,8 @@ class InsuranceTemplate extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -197,8 +197,8 @@ class InsuranceTemplate extends Component {
         <NewLine />
 
       </div>
-    )
+    );
   }
 }
 
-export default InsuranceTemplate
+export default InsuranceTemplate;

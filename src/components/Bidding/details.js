@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import moment from 'moment'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import {
   BoxDetail,
   Back,
@@ -12,9 +12,9 @@ import {
   HeadList,
   Special,
   TextInsure,
-} from './styled'
-import Plan from './plan'
-import { bidding } from '../../api/bidding'
+} from './styled';
+import Plan from './plan';
+import { bidding } from '../../api/bidding';
 
 class Details extends Component {
   static propTypes = {
@@ -24,12 +24,12 @@ class Details extends Component {
     handleClick: PropTypes.func.isRequired,
   }
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   render() {
-    const { bid, index, data } = this.props
+    const { bid, index, data } = this.props;
     return (
       <div className="Bidding">
         <Back onClick={() => this.props.handleClick()}> &lt; กลับหน้าหลัก</Back>
@@ -83,16 +83,16 @@ class Details extends Component {
           </InSide>
         </BoxDetail>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   data: state.biddingReducer,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   bidding: () => dispatch(bidding()),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
+export default connect(mapStateToProps, mapDispatchToProps)(Details);

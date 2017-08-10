@@ -1,7 +1,7 @@
-import { APIRequest } from '.'
-import { selectBrokerSuccess, selectBrokerFailure } from '../reducers/post-box'
+import { APIRequest } from '.';
+import { selectBrokerSuccess, selectBrokerFailure } from '../reducers/post-box';
 
-const SIMPLERQ_URI = '/api/postbox'
+const SIMPLERQ_URI = '/api/postbox';
 export function postBox(passwordToConfirm) {
   return dispatch => {
     const options = {
@@ -10,14 +10,14 @@ export function postBox(passwordToConfirm) {
       data: {
         passwordToConfirm,
       },
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(selectBrokerSuccess(res.data))
+        dispatch(selectBrokerSuccess(res.data));
       })
       .catch(err => {
-        dispatch(selectBrokerFailure(err.response.data))
-      })
-  }
+        dispatch(selectBrokerFailure(err.response.data));
+      });
+  };
 }

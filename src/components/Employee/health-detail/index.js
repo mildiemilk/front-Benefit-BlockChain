@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import '../../../styles/employee-style/health-genaral.scss'
-import healthImage from '../../image/health-detail.png'
-import info from '../../image/icons-8-info.png'
+import React, { Component } from 'react';
+import '../../../styles/employee-style/health-genaral.scss';
+import healthImage from '../../image/health-detail.png';
+import info from '../../image/icons-8-info.png';
 
 class HealthDetail extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -58,8 +58,8 @@ class HealthDetail extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default HealthDetail
+export default HealthDetail;

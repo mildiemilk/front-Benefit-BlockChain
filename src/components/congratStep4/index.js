@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import { Submit, ImageStyle, Head, Space } from './styled'
-import pic from '../image/send-gift.png'
+import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Submit, ImageStyle, Head, Space } from './styled';
+import pic from '../image/send-gift.png';
 
 class congratStep4 extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
   render() {
     return (
@@ -28,8 +28,8 @@ class congratStep4 extends Component {
           </Link>
         </Space>
       </Container>
-    )
+    );
   }
 }
 
-export default congratStep4
+export default congratStep4;

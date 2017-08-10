@@ -1,63 +1,63 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Switch, Route } from 'react-router'
-import { BrowserRouter, Redirect } from 'react-router-dom'
-import 'semantic-ui-css/semantic.min.css'
-import SettingProfile from './SettingProfile'
-import Postbox from './PostBox'
-import simpleRQ from './SimpleRQ'
-import Dashboard from './Dashboard'
-import Login from './Auth/login'
-import IPD from './SubmitPlan/IPD/ipd'
-import Signup from './Auth/signup'
-import confirmIdentity from './confirm_identity'
-import ChooseInsurer from './ChooseInsurer'
-import SubmitPlan from './SubmitPlan'
-import welcomePage from './welcome'
-import Sendrequest from './sendrequest'
-import MainLayout from './main-layout'
-import Uploadfile from './uploadfile'
-import NavLayout from './nav-layout'
-import Bidding from './Bidding'
-import EmployeeBenefits from './EmployeeBenefits/'
-import '../styles/main.scss'
-import ComparePlan from './ComparePlan'
-import AddBenefit from './AddBenefit'
-import SettingBenefit from './SettingBenefit'
-import Logout from './Auth/logout'
-import SettingPlan from './SettingBenefit/setting-plan'
-import Download from './Download'
-import Congrat from './congrat'
-import CongratStep3 from './congratStep3'
-import CongratStep4 from './congratStep4'
-import ChooseInsuranceplan from './ChooseInsurancePlan'
-import PieChart from './PieChart'
-import SelectRealTime from './SelectRealTime'
-import SendFlexPlan from './SendFlexPlan'
-import Appmobile from './appmobile'
-import EmployeeLogin from './Employee/employee-login'
-import EmployeeList from './EmployeeList'
-import ViewAllPlan from './ViewAllPlan'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router';
+import { BrowserRouter, Redirect } from 'react-router-dom';
+import 'semantic-ui-css/semantic.min.css';
+import SettingProfile from './SettingProfile';
+import Postbox from './PostBox';
+import simpleRQ from './SimpleRQ';
+import Dashboard from './Dashboard';
+import Login from './Auth/login';
+import IPD from './SubmitPlan/IPD/ipd';
+import Signup from './Auth/signup';
+import confirmIdentity from './confirm_identity';
+import ChooseInsurer from './ChooseInsurer';
+import SubmitPlan from './SubmitPlan';
+import welcomePage from './welcome';
+import Sendrequest from './sendrequest';
+import MainLayout from './main-layout';
+import Uploadfile from './uploadfile';
+import NavLayout from './nav-layout';
+import Bidding from './Bidding';
+import EmployeeBenefits from './EmployeeBenefits/';
+import '../styles/main.scss';
+import ComparePlan from './ComparePlan';
+import AddBenefit from './AddBenefit';
+import SettingBenefit from './SettingBenefit';
+import Logout from './Auth/logout';
+import SettingPlan from './SettingBenefit/setting-plan';
+import Download from './Download';
+import Congrat from './congrat';
+import CongratStep3 from './congratStep3';
+import CongratStep4 from './congratStep4';
+import ChooseInsuranceplan from './ChooseInsurancePlan';
+import PieChart from './PieChart';
+import SelectRealTime from './SelectRealTime';
+import SendFlexPlan from './SendFlexPlan';
+import Appmobile from './appmobile';
+import EmployeeLogin from './Employee/employee-login';
+import EmployeeList from './EmployeeList';
+import ViewAllPlan from './ViewAllPlan';
 
 class App extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     role: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     role: '',
-  }
+  };
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
-    const { isAuthenticated, role } = this.props
-    let route
+    const { isAuthenticated, role } = this.props;
+    let route;
     if (isAuthenticated) {
       if (role === 'HR') {
         route = (
@@ -106,11 +106,11 @@ class App extends Component {
               </MainLayout>
             </Switch>
           </NavLayout>
-        )
+        );
       } else if (role === 'Employee') {
-        route = <Appmobile />
+        route = <Appmobile />;
       } else {
-        route = null
+        route = null;
       }
     } else {
       route = (
@@ -121,22 +121,24 @@ class App extends Component {
           <Route path="/logout" component={Logout} />
           <Redirect to={{ pathname: '/login' }} />
         </Switch>
-      )
+      );
     }
+
     return (
       <BrowserRouter>
         <div style={{ height: '100%' }}>
           {route}
         </div>
       </BrowserRouter>
-    )
+    );
   }
+
 }
 
 const mapStateToProps = state => ({
   isAuthenticated: state.authReducer.token != null,
   role: state.authReducer.role,
-})
+});
 
-const Container = connect(mapStateToProps)(App)
-export default Container
+const Container = connect(mapStateToProps)(App);
+export default Container;

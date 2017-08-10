@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import DatePicker from 'react-datepicker'
-import { Dropdown, Form } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import { Dropdown, Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import {
   TinyText,
   BrowsButton,
   NewLine,
   SubmitButton,
   UploadText,
-} from './styled'
-import '../../../styles/employee-style/claim-insurance.scss'
+} from './styled';
+import '../../../styles/employee-style/claim-insurance.scss';
 
 const HealthOption = [
   {
@@ -27,7 +27,7 @@ const HealthOption = [
     text: 'ตรวจสุขภาพประจำปี',
     value: 'bodycheck',
   },
-]
+];
 const currencyOption = [
   {
     key: '1',
@@ -44,7 +44,7 @@ const currencyOption = [
     text: 'กีบลาว',
     value: 'Lak',
   },
-]
+];
 class HealthTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
@@ -56,8 +56,8 @@ class HealthTemplate extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -148,8 +148,8 @@ class HealthTemplate extends Component {
         </SubmitButton>
         <NewLine />
       </div>
-    )
+    );
   }
 }
 
-export default HealthTemplate
+export default HealthTemplate;

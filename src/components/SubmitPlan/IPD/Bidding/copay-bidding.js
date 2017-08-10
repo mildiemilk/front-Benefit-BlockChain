@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Form, Radio } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form, Radio } from 'semantic-ui-react';
 
 class CopayBidding extends Component {
   static propTypes = {
@@ -10,7 +10,7 @@ class CopayBidding extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       ipdCoPay: false,
       value: '',
@@ -19,7 +19,7 @@ class CopayBidding extends Component {
       ipdCoPayMixPercentage: null,
       ipdCoPayMixNotExceed: null,
       ipdCoPayMixYear: null,
-    }
+    };
   }
 
   render() {
@@ -110,10 +110,10 @@ class CopayBidding extends Component {
           </Form.Group>
         </div>
       </div>
-    )
+    );
   }
 }
 
-CopayBidding.propTypes = {}
+CopayBidding.propTypes = {};
 
-export default connect(null, null)(CopayBidding)
+export default connect(null, null)(CopayBidding);

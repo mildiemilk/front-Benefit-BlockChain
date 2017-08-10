@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { HeadLists, TextInput } from './styled'
-import List from './list-health'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { HeadLists, TextInput } from './styled';
+import List from './list-health';
 
 class HealthBenefit extends Component {
   static propTypes = {
@@ -13,13 +13,13 @@ class HealthBenefit extends Component {
   }
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   addTodoEnter = e => {
     if (e.key === 'Enter') {
-      this.props.addTodoHealth()
+      this.props.addTodoHealth();
     }
   }
 
@@ -39,8 +39,8 @@ class HealthBenefit extends Component {
           sendDel={this.props.removeTodoHealth}
         />
       </div>
-    )
+    );
   }
 }
 
-export default HealthBenefit
+export default HealthBenefit;

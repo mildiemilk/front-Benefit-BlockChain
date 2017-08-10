@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Form, Radio } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Form, Radio } from 'semantic-ui-react';
 
 class IPD2 extends Component {
   static propTypes = {
@@ -19,22 +19,22 @@ class IPD2 extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     const {
       rbLumsumRoomPerNight,
       rbLumsumPayNotExceedPerYear,
       rbLumsumPayNotExceedPerNight,
       rbLumsumNigthNotExceedPerYear,
-    } = this.props
-    let value
+    } = this.props;
+    let value;
     if (rbLumsumRoomPerNight && rbLumsumNigthNotExceedPerYear) {
-      value = 'firstChoice'
+      value = 'firstChoice';
     } else if (rbLumsumPayNotExceedPerNight && rbLumsumPayNotExceedPerYear) {
-      value = 'secondChoice'
+      value = 'secondChoice';
     } else {
-      value = ''
+      value = '';
     }
-    this.state = { value }
+    this.state = { value };
   }
 
   componentWillReceiveProps(newProps) {
@@ -43,47 +43,47 @@ class IPD2 extends Component {
       rbLumsumPayNotExceedPerYear,
       rbLumsumPayNotExceedPerNight,
       rbLumsumNigthNotExceedPerYear,
-    } = newProps
-    let value
+    } = newProps;
+    let value;
     if (rbLumsumRoomPerNight && rbLumsumNigthNotExceedPerYear) {
-      value = 'firstChoice'
+      value = 'firstChoice';
     } else if (rbLumsumPayNotExceedPerNight && rbLumsumPayNotExceedPerYear) {
-      value = 'secondChoice'
+      value = 'secondChoice';
     } else {
-      value = ''
+      value = '';
     }
 
     if (newProps.activePlan !== this.props.activePlan) {
-      this.state = { value }
+      this.state = { value };
     }
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.handleResetdata()
-    this.setState({ value })
+    this.handleResetdata();
+    this.setState({ value });
   }
 
   handleResetdata = () => {
-    document.getElementById('rbLumsumPayNotExceedPerNight').value = ''
-    this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight')
-    this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear')
-    document.getElementById('rbLumsumRoomPerNight').value = ''
-    this.props.handleChangeToNull('rbLumsumRoomPerNight')
-    document.getElementById('rbLumsumNigthNotExceedPerYear').value = ''
-    this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear')
-    this.setState({ value: '' })
-    this.props.handleNewReset()
+    document.getElementById('rbLumsumPayNotExceedPerNight').value = '';
+    this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight');
+    this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear');
+    document.getElementById('rbLumsumRoomPerNight').value = '';
+    this.props.handleChangeToNull('rbLumsumRoomPerNight');
+    document.getElementById('rbLumsumNigthNotExceedPerYear').value = '';
+    this.props.handleChangeToNull('rbLumsumNigthNotExceedPerYear');
+    this.setState({ value: '' });
+    this.props.handleNewReset();
   }
 
   handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState()
+    this.props.handleChange(e, { name, value });
+    this.props.handleVerifyState();
   }
 
   render() {
@@ -208,8 +208,8 @@ class IPD2 extends Component {
         </Form.Group>
 
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(IPD2)
+export default connect(null, null)(IPD2);

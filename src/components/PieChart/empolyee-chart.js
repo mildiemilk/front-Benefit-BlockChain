@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { RadialChart } from 'react-vis'
-import '../../styles/chart-box.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { RadialChart } from 'react-vis';
+import '../../styles/chart-box.scss';
 
-const graphData = []
+const graphData = [];
 const myPlan = [
   { group: 'A', number: 10 },
   { group: 'B', number: 20 },
   { group: 'C', number: 5 },
   { group: 'D', number: 20 },
   { group: 'E', number: 30 },
-]
-const graphColor = ['#FF991F', '#DA70BF', '#125C77', '#00441b', '#c7e9c0']
+];
+const graphColor = ['#FF991F', '#DA70BF', '#125C77', '#00441b', '#c7e9c0'];
 
 class Empolyeechart extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   renderList = list => {
@@ -24,7 +24,7 @@ class Empolyeechart extends Component {
       graphData.push({
         angle: element.number,
         style: { stroke: graphColor[index], fill: graphColor[index] },
-      })
+      });
       return (
         <div className="rv-discrete-color-legend-item vertical">
           <span
@@ -35,9 +35,9 @@ class Empolyeechart extends Component {
             กลุ่ม {element.group} {element.number} คน
           </span>
         </div>
-      )
-    })
-    return lists
+      );
+    });
+    return lists;
   }
 
   render() {
@@ -85,8 +85,8 @@ class Empolyeechart extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(Empolyeechart)
+export default connect(null, null)(Empolyeechart);

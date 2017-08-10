@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Modal, Input } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { Modal, Input } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
 import {
   ModalHeader,
   ModalContent,
   CancleButton,
   ConfirmButton,
   ButtonStatusAppove,
-} from '../styled'
+} from '../styled';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
@@ -17,20 +17,20 @@ const ModalContents = styled(Modal.Content) `
     margin: 0 auto;
     padding-left: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal) `
   &&&{
     background: transparent;
     margin-top: -120px;
   }
-`
+`;
 
 const Inputs = styled(Input) `
   &&&{
     font-family: Kanit;
   }
-`
+`;
 
 class ModalSelectInsurer extends Component {
   static propTypes = {
@@ -40,8 +40,8 @@ class ModalSelectInsurer extends Component {
     insurerName: PropTypes.string.isRequired,
   }
   constructor(props) {
-    super(props)
-    this.state = { modalOpen: false }
+    super(props);
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -118,12 +118,12 @@ class ModalSelectInsurer extends Component {
         </ModalContents>
 
       </Modals>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   data: state.selectFinalInsurer,
-})
+});
 
-export default connect(mapStateToProps, null)(ModalSelectInsurer)
+export default connect(mapStateToProps, null)(ModalSelectInsurer);

@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import '../../../styles/employee-style/login-verify.scss'
-import footerLogo from '../../image/logo-footer.png'
+import React, { Component } from 'react';
+import '../../../styles/employee-style/login-verify.scss';
+import footerLogo from '../../image/logo-footer.png';
 
 class Footer extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -26,8 +26,8 @@ class Footer extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Footer
+export default Footer;

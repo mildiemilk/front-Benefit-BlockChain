@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Modal, Form } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Modal, Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   LogInButton,
   AddDataImg,
@@ -11,7 +11,7 @@ import {
   SpaceContent,
   ConfirmButton,
   SpaceImg,
-} from './styled'
+} from './styled';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -20,7 +20,7 @@ const ModalContents = styled(Modal.Content)`
     padding-left: 4%;
     text-align: center;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -28,7 +28,7 @@ const Modals = styled(Modal)`
     box-shadow: none;
     margin-top: -120px;
   }
-`
+`;
 class ModalAddData extends Component {
   static propTypes = {
     email: PropTypes.string.isRequired,
@@ -36,19 +36,19 @@ class ModalAddData extends Component {
     handleSubmit: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       modalOpen: false,
-    }
+    };
   }
 
   handleClose = () => this.setState({ modalOpen: false })
 
   handleOpen = (email, password) => {
     if (email !== '' && password !== '') {
-      this.setState({ modalOpen: true })
+      this.setState({ modalOpen: true });
     } else {
-      this.setState({ modalOpen: false })
+      this.setState({ modalOpen: false });
     }
   }
 
@@ -116,8 +116,8 @@ class ModalAddData extends Component {
           </div>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default ModalAddData
+export default ModalAddData;

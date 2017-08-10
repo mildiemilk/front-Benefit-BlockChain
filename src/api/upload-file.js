@@ -1,6 +1,6 @@
-import { APIRequest } from '.'
+import { APIRequest } from '.';
 
-const UPLOADFILE_URI = '/api/uploadfile'
+const UPLOADFILE_URI = '/api/uploadfile';
 
 // const toBinaryString = (files) => { return new Promise((resolve, reject) => {
 //   console.log('zzzzzzzzzzzz')
@@ -46,8 +46,8 @@ const UPLOADFILE_URI = '/api/uploadfile'
 // }
 
 export function uploadFile(files) {
-  const formData = new FormData()
-  formData.append('files', files)
+  const formData = new FormData();
+  formData.append('files', files);
 
   return () => {
     // const files = file
@@ -55,7 +55,7 @@ export function uploadFile(files) {
       method: 'post',
       url: UPLOADFILE_URI,
       data: formData,
-    }
+    };
 
     APIRequest(options, true)
       .then(() => {
@@ -63,7 +63,7 @@ export function uploadFile(files) {
       })
       .catch(err => {
         // dispatch(getBiddingFailure(err.response.data))
-        console.log(err.response)
-      })
-  }
+        console.log(err.response);
+      });
+  };
 }

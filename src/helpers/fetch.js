@@ -6,10 +6,10 @@ export const post = async ({ url, body, success, failure, dispatch }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    })
-    const data = await res.json()
-    dispatch({ type: success, data })
+    });
+    const data = await res.json();
+    dispatch({ type: success, data });
   } catch (e) {
-    dispatch({ type: failure })
+    dispatch({ type: failure });
   }
-}
+};

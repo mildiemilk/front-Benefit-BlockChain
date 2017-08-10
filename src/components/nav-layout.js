@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Header from './Header'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Header from './Header';
 
 class EmptyLayout extends Component {
   static propTypes = {
@@ -8,8 +8,8 @@ class EmptyLayout extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
   render() {
     return (
@@ -19,7 +19,7 @@ class EmptyLayout extends Component {
           {this.props.children}
         </div>
       </div>
-    )
+    );
   }
 }
-export default EmptyLayout
+export default EmptyLayout;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const CompareHeader = styled.p`
   font-size: 32px;
@@ -7,21 +7,21 @@ export const CompareHeader = styled.p`
   text-align: left;
   color: #323028;
   margin:0%;
-`
+`;
 
 export const PostContent = styled.p`
   font-size: 32px;
   font-weight: 500;
   color: #505050;
   margin:0%;
-`
+`;
 
 export const BackHome = styled.p`
   font-size: 20px;
   letter-spacing: 0.3px;
   text-align: left;
   color: #bfbfbf;
-`
+`;
 
 export const ViewButton = styled.div`
   font-size: 14px;
@@ -30,7 +30,7 @@ export const ViewButton = styled.div`
   color: #bfbfbf;
   margin-top: 22%;
   margin-left: 18%;
-`
+`;
 
 export const RecComparePlan = styled.div`
   border-radius: 5px;
@@ -38,7 +38,7 @@ export const RecComparePlan = styled.div`
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   padding-top: 3%;
   padding-bottom: 5%;
-`
+`;
 
 export const CompareTable = styled.div`
   height: 60px;
@@ -46,7 +46,7 @@ export const CompareTable = styled.div`
   border-top-right-radius: 5px;
   background-color: #dce4f3;
   text-align: center;
-`
+`;
 
 export const SubCompareTables = styled.span`
   font-size: 14px;
@@ -54,26 +54,26 @@ export const SubCompareTables = styled.span`
   letter-spacing: 0px;
   text-align: center;
   color: #323028;
-`
+`;
 
 export const TopicCompareTable = styled.div`
   height: 60px;
   padding-top: 6%;
   color: #323028;
-`
+`;
 
 export const Box = styled.div`
   width: 100%;
   height: 91px;
   border: solid 1px #979797;
-`
+`;
 
 export const Boxs = styled.div`
   width: 20%;
   height: 90px;
   border-left: solid 1px #979797;
   display: inline-block;
-`
+`;
 
 export const TextInBoxs = styled.span`
   color: #323028;
@@ -81,12 +81,12 @@ export const TextInBoxs = styled.span`
   margin-left: 1%;
   margin-top: 2.5%;
   position: absolute;
-`
+`;
 
 export const CompareImg = styled.img`
   margin-right: 73%;
   margin-top: 2%;
-`
+`;
 
 export const HiddenBox = styled.div`
   color: #323028;
@@ -95,7 +95,7 @@ export const HiddenBox = styled.div`
   border-bottom: solid 1px #979797;
   border-right: solid 1px #979797;
   border-left: solid 1px #979797;
-`
+`;
 
 export const IPDBox = styled.div`
   width: 100%;
@@ -103,14 +103,14 @@ export const IPDBox = styled.div`
   border-left: solid 1px #979797;
   border-right: solid 1px #979797;
   border-bottom: solid 1px #979797;
-`
+`;
 
 export const IPDBoxs = styled.div`
   width: 20%;
   border-left: solid 1px #979797;
   text-align: center;
   display: inline-block;
-`
+`;
 export const LifeTopic = styled.span`
   width: 249px;
   height: 25px;
@@ -123,7 +123,7 @@ export const LifeTopic = styled.span`
   position: absolute;
   margin-left: -17%;
   margin-top: 2.5%;
-`
+`;
 export const OPDTopic = styled.span`
   width: 100%px;
   height: 25px;
@@ -136,7 +136,7 @@ export const OPDTopic = styled.span`
   position: absolute;
   margin-left: -17%;
   margin-top: 23px;
-`
+`;
 
 export const IPDTopic = styled.span`
   width: 100%;
@@ -147,7 +147,7 @@ export const IPDTopic = styled.span`
   letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
-`
+`;
 
 export const IPDDetail = styled.span`
   width: 344px;
@@ -159,7 +159,7 @@ export const IPDDetail = styled.span`
   color: #323028;
   position: relative;
   left: 4%;
-`
+`;
 
 export const Sub = styled.span`
   width: 100%;
@@ -169,7 +169,7 @@ export const Sub = styled.span`
   letter-spacing: 0px;
   text-align: left;
   color: #323028;
-`
+`;
 
 export const Note = styled.span`
   width: 935px;
@@ -179,4 +179,4 @@ export const Note = styled.span`
   letter-spacing: 0px;
   text-align: left;
   color: #323028;
-`
+`;

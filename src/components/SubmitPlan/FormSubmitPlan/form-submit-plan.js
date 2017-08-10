@@ -16,11 +16,15 @@ class FormSubmitPlan extends Component {
     editPlan: PropTypes.func.isRequired,
     createPlan: PropTypes.func.isRequired,
     handlePlan: PropTypes.func.isRequired,
-    handleModalFinish: PropTypes.func.isRequired,
+    handleModalFinish: PropTypes.func,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }
+
+  static defaultProps = {
+    handleModalFinish: null,
   }
 
   constructor() {

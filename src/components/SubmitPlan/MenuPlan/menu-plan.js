@@ -14,7 +14,7 @@ class MenuPlan extends Component {
     handleCopy: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
     planName: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleResetProfilePlan: PropTypes.func.isRequired,

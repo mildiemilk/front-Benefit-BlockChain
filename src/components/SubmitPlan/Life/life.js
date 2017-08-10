@@ -48,7 +48,7 @@ class Life extends Component {
 
   componentDidUpdate() {
     if (this.props.setPlan === 'Life' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetData()
     }
   }
 

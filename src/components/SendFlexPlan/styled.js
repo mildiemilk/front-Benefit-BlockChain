@@ -7,7 +7,6 @@ export const Detail = styled.div`
     margin: 25px 0px;
     padding: 5% 6%;
     padding-top: 25px;
-    height: 2200px;
 `
 export const Head = styled.p`
     font-size: 30px;
@@ -16,12 +15,13 @@ export const Head = styled.p`
 
 `
 export const Inner = styled.div`
-  width: 100%;
-  border-radius: 8px;
-  background-color: #ffffff;
-  background-color: var(--white-two);
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  margin: 25px 0px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #ffffff;
+    background-color: var(--white-two);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    padding: 3%;
+    position: relative;
 `
 export const BackButton = styled.button`
   display: inline-block;
@@ -44,4 +44,23 @@ export const SendButton = styled.button`
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
     border-style: solid;
+`
+export const List = styled.div`
+    font-size: 16px;
+    margin: 2% 0%;
+`
+export const Line = styled.div`
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #323028;
+    display: inline-block;
+    margin-left: 50px;
+    margin-right: 10px;
+`
+export const Imgs = styled.img`
+    position: absolute;
+    left: 33px;
+    top: 23px;
+
 `

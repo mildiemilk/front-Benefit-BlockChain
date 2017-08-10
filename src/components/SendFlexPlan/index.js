@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import NavBenefit from '../NavBenefit'
-import { Detail, Head, Inner, BackButton, SendButton } from './styled'
+import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs } from './styled'
+import Timeout from '../ChooseInsurer/timeout'
+import { setTimeOut } from '../../api/choose-insurer'
+import time from '../../../assets/sendflexplan/icons-8-timer.png'
 
 class SendFlexPlan extends Component {
+  static propTypes = {
+    setTimeOut: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -13,14 +21,12 @@ class SendFlexPlan extends Component {
 
   render() {
     return (
-      <div className="ChooseInsurancePlan">
-        <div className="ChooseInsurer">
-          <NavBenefit step={this.state.step} />
-        </div>
+      <div>
+        <NavBenefit step={this.state.step} />
         <div className="row">
           <Detail className="large-12 ">
             <Head>ส่งข้อมูล</Head>
-            กรุณาตรวจสอบแผนประกันภัยที่เลือก
+            <List>กรุณาตรวจสอบแผนประกันภัยที่เลือก</List>
             <Inner
               style={{
                 height: '150px',
@@ -28,7 +34,7 @@ class SendFlexPlan extends Component {
               className="large-12 "
             />
 
-            กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ
+            <List>กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ</List>
             <Inner
               style={{
                 height: '500px',
@@ -36,7 +42,7 @@ class SendFlexPlan extends Component {
               className="large-12 "
             />
 
-            กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ
+            <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
             <Inner
               style={{
                 height: '400px',
@@ -44,7 +50,7 @@ class SendFlexPlan extends Component {
               className="large-12 "
             />
 
-            กรุณาตรวจการอัพโหลดไฟล์ของคุณ
+            <List>กรุณาตรวจการอัพโหลดไฟล์ของคุณ</List>
             <Inner
               style={{
                 height: '80px',
@@ -52,7 +58,7 @@ class SendFlexPlan extends Component {
               className="large-12 "
             />
 
-            กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ
+            <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
             <Inner
               style={{
                 height: '400px',
@@ -60,13 +66,12 @@ class SendFlexPlan extends Component {
               className="large-12 "
             />
 
-            กรุณาตั้งระยะเวลาการเลือกแผนสิทธิประโยชน์ของพนักงาน
-            <Inner
-              style={{
-                height: '130px',
-              }}
-              className="large-12 "
-            />
+            <List>กรุณาตั้งระยะเวลาการเลือกแผนสิทธิประโยชน์ของพนักงาน</List>
+            <Inner>
+              <Imgs src={time} alt="time" />
+              <Line> พนักงานสามารถเลือกสิทธิประโยชน์ได้ถึง วันที่ </Line>
+              <Timeout setTimeOut={this.props.setTimeOut} />
+            </Inner>
           </Detail>
           <div style={{ marginTop: '25px' }} className="row">
             <div className="large-9 columns">
@@ -84,4 +89,11 @@ class SendFlexPlan extends Component {
   }
 }
 
-export default SendFlexPlan
+const mapDispatchToProps = dispatch => ({
+  setTimeOut: timeout => dispatch(setTimeOut(timeout)),
+})
+const mapStateToProps = () => {
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SendFlexPlan)
+

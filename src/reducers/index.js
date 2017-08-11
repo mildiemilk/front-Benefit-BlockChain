@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 
 import { authReducer, signupReducer } from './auth'
+import { userReducer } from './user'
 import fillsimpleReducer from './simple-requirement'
 import profile from './profile'
 import { plan, menuplanReducer } from './submit-plan'
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   benefitPlan,
   getSelectInsurer,
   selectFinalInsurer,
+  userReducer,
 })
 
 export default rootReducer

@@ -9,7 +9,7 @@ import emailIcon from '../../image/icons-8-message.png'
 import keyIcon from '../../image/icons-8-key-copy.png'
 import Header from '../header'
 import Footer from '../footer'
-import ModalAddData from './modal-add-data'
+import { LogInButton } from './styled'
 
 class EmployeeLogin extends Component {
   static propTypes = {
@@ -23,9 +23,10 @@ class EmployeeLogin extends Component {
       email: '',
       password: '',
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange = (e, { name, value }) => {
+  handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
     })
@@ -85,11 +86,10 @@ class EmployeeLogin extends Component {
                     </p>
                     : <p />}
                   <a className="link-mobile-login">ลืมพาสเวิร์ด?</a>
-                  <ModalAddData
-                    email={this.state.email}
-                    password={this.state.password}
-                    handleSubmit={this.handleSubmit}
-                  />
+                  <LogInButton onClick={this.handleSubmit}>
+                    {' '}{' '}
+                    ลงชื่อเข้าใช้{' '}
+                  </LogInButton>
                 </Form>
               </div>
             </div>

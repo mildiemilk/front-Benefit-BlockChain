@@ -3,10 +3,13 @@ import {
   authenticateSuccess,
   signupFailure,
   authenticateFailure,
+  updatePasswordSuccess,
+  updatePasswordFailure,
 } from '../reducers/auth'
 
 const LOGIN_URI = '/api/login'
 const REGISTER_URI = 'api/register'
+const UPDATE_PASSWORD = 'api/user/change-password'
 
 export function authenticate(email, password) {
   return dispatch => {
@@ -15,7 +18,6 @@ export function authenticate(email, password) {
       url: LOGIN_URI,
       data: { email, password },
     }
-
     APIRequest(options, false)
       .then(res => {
         localStorage.setItem('token', res.data.token)
@@ -34,7 +36,11 @@ export function authenticate(email, password) {
           }
         } else if (res.data.role === 'Employee') {
           if (res.data.Approve === true) {
-            window.location.href = '/employeeverify'
+            if (!res.data.personalVerify) {
+              window.location.href = '/employeeverify'
+            } else {
+              window.location.href = '/flexyplan'
+            }
           }
         }
       })
@@ -63,8 +69,32 @@ export function register(email, confirmPassword, password, role) {
 
 export function logout() {
   return () => {
+    const role = localStorage.getItem('role')
     localStorage.clear()
-    window.location = '/login'
+    if (role === 'Employee') {
+      window.location = '/employeelogin'
+    } else {
+      window.location = '/login'
+    }
+  }
+}
+
+export function updatePassword(password, confirmPassword) {
+  return dispatch => {
+    const options = {
+      method: 'put',
+      url: UPDATE_PASSWORD,
+      data: { password, confirmPassword },
+    }
+    APIRequest(options, true)
+      .then(res => {
+        // window.location.href = '/'
+        // console.log('Update Password Success!')
+        dispatch(updatePasswordSuccess(res.data))
+      })
+      .catch(err => {
+        dispatch(updatePasswordFailure(err.response.data))
+      })
   }
 }
 

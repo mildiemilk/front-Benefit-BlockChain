@@ -17,12 +17,14 @@ import CongratSelectPlan from './Employee/congrats-select-plan'
 import HeadLayout from './head-layout-mobile'
 import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard'
 import ClaimStatusDetail from './Employee/ClaimStatusDetail'
+import Logout from './Auth/logout'
 
 const AppMobile = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
       <HeadLayout>
         <Switch>
+          <Route path="/logout" component={Logout} />
           <Route path="/employeeverify" component={employeeVerify} />
           <Route path="/healthdetail" component={HealthDetail} />
           <Route path="/genaralexpense" component={GenaralExpense} />

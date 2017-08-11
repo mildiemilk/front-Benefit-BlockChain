@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Modal, Form } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Modal, Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   AddDataImg,
   Header,
@@ -10,7 +10,7 @@ import {
   SpaceContent,
   ConfirmButton,
   SpaceImg,
-} from './styled'
+} from './styled';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -19,7 +19,7 @@ const ModalContents = styled(Modal.Content)`
     padding-left: 4%;
     text-align: center;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -27,7 +27,7 @@ const Modals = styled(Modal)`
     box-shadow: none;
     margin-top: -120px;
   }
-`
+`;
 class ModalAddData extends Component {
   static propTypes = {
     error: PropTypes.string.isRequired,
@@ -38,9 +38,9 @@ class ModalAddData extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-    }
+    };
   }
 
   render() {
@@ -104,8 +104,8 @@ class ModalAddData extends Component {
           </div>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default ModalAddData
+export default ModalAddData;

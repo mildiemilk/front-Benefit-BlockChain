@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import gift from '../../image/gigift-mobile.png'
+import React, { Component } from 'react';
+import gift from '../../image/gigift-mobile.png';
 
 class DashboardStart extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -22,8 +22,8 @@ class DashboardStart extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default DashboardStart
+export default DashboardStart;

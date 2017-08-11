@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import '../../styles/submit-plan.scss'
-import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
+import React, { Component } from 'react';
+import { Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import '../../styles/submit-plan.scss';
+import FormSubmitPlan from './FormSubmitPlan/form-submit-plan';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -13,7 +13,7 @@ const ModalContents = styled(Modal.Content)`
     margin: 0 auto;
     padding: 0px;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -21,32 +21,32 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     box-shadow: none;
   }
-`
+`;
 
 class FormModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
-    openModalForm: PropTypes.func.isRequired,
+    openModalForm: PropTypes.bool.isRequired,
     handlePlan: PropTypes.func.isRequired,
     handleModalFinish: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       modalOpen: false,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
-    }
+    };
   }
 
   handleClose = () => {
-    this.props.handleCloseModal()
+    this.props.handleCloseModal();
   }
 
   render() {
@@ -71,8 +71,8 @@ class FormModal extends Component {
           />
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default connect(null, null)(FormModal)
+export default connect(null, null)(FormModal);

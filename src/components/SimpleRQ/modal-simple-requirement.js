@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { Modal, Checkbox } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import moment from 'moment'
+import React, { Component } from 'react';
+import { Modal, Checkbox } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import moment from 'moment';
 import {
   ModalHeader,
   ModalContent,
   EditButton,
   PostButton,
   PostMainButton,
-} from './styled'
+} from './styled';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -17,7 +17,7 @@ const ModalContents = styled(Modal.Content)`
     margin: 0 auto;
     padding-left: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -25,12 +25,12 @@ const Modals = styled(Modal)`
     box-shadow: none;
     margin-top: -120px;
   }
-`
+`;
 
 class ModalModalExample extends Component {
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -125,13 +125,13 @@ class ModalModalExample extends Component {
           </div>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
 ModalModalExample.propTypes = {
   data: PropTypes.shape.isRequired,
   handlePost: PropTypes.func.isRequired,
-}
+};
 
-export default ModalModalExample
+export default ModalModalExample;

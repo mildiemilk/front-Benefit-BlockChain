@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Image } from 'semantic-ui-react'
+import styled from 'styled-components';
+import { Image } from 'semantic-ui-react';
 
 export const Detail = styled.div`
   border-radius: 5px;
@@ -12,13 +12,13 @@ export const Detail = styled.div`
   padding: 30px 42px !important;
   padding-top: 25px;
   height: 100%;
-`
-
+`;
 export const Head = styled.div`
   font-size: 30px;
   letter-spacing: 0.4px;
   font-weight: bold;
-`
+
+`;
 export const TextNormal = styled.div`
   font-family: Kanit;
   font-size: 14px;
@@ -29,8 +29,7 @@ export const TextNormal = styled.div`
   padding-bottom: 2%;
   padding-top: 27px;
   margin-left: 19px;
-`
-
+`;
 export const Inner = styled.div`
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -41,7 +40,7 @@ export const Inner = styled.div`
   border: solid 1px rgba(151, 151, 151, 0.66);
   margin-bottom: 15px;
   padding-bottom: 17px;
-`
+`;
 export const FileuploadBox = styled.div`
   margin-bottom: 10px;
   margin-top: 19px;
@@ -54,19 +53,18 @@ export const FileuploadBox = styled.div`
   -ms-border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   border: solid 1px rgba(155, 155, 155, 0.64);
-`
+`;
 export const FileuploadBoxs = FileuploadBox.extend`
   margin-top: 12px;
-`
-
+`;
 export const Upload = styled.div`
   margin-top: 26px;
   margin-left: 8px;
-`
+`;
 export const Uploads = styled.div`
   margin-top: 27px;
   margin-left: 8px;
-`
+`;
 export const BrowsButton = styled.label`
   border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -83,7 +81,7 @@ export const BrowsButton = styled.label`
   margin-right: 10px;
   display: block;
   width: 100%;
-`
+`;
 export const AddBlockButton = styled.div`
   position: relative;
   left: 35%;
@@ -103,7 +101,7 @@ export const AddBlockButton = styled.div`
   color: #ffffff;
   cursor:pointer;
   padding-top: 10px;
-`
+`;
 export const Submit = styled.button`
   position: relative;
   right: -700px;
@@ -118,11 +116,11 @@ export const Submit = styled.button`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   text-align: center;
   border-style: solid;
-`
+`;
 export const inputStyle = styled.input`
   opacity: 0;
   position: absolute;
-`
+`;
 export const Imagestyle = styled(Image)`
   &&&{
     position:relative;
@@ -132,4 +130,4 @@ export const Imagestyle = styled(Image)`
     width: 74px;
     height: 63px;
   }
-`
+`;

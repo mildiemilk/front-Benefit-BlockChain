@@ -5,7 +5,7 @@ export const saveState = () => {
   // } catch (err) {
   //   // console.warn(err)
   // }
-}
+};
 
 export const loadState = () => {
   // try {
@@ -17,4 +17,4 @@ export const loadState = () => {
   // } catch (err) {
   //   return undefined
   // }
-}
+};

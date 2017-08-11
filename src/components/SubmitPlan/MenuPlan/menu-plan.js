@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom'
-import { Popup, Icon, List } from 'semantic-ui-react'
-import '../../../styles/submit-plan.scss'
-import FormModal from '../form-modal'
-import { menuPlans } from '../../../api/set-plan'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { Popup, Icon, List } from 'semantic-ui-react';
+import '../../../styles/submit-plan.scss';
+import FormModal from '../form-modal';
+import { menuPlans } from '../../../api/set-plan';
 
 class MenuPlan extends Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class MenuPlan extends Component {
     handleCopy: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
     planName: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     handleResetProfilePlan: PropTypes.func.isRequired,
@@ -28,21 +28,21 @@ class MenuPlan extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       step: 6,
       isOpen: false,
       modalOpen: false,
       comparePlan: [],
-    }
+    };
   }
 
   handleOpen = () => {
-    this.setState({ isOpen: true })
+    this.setState({ isOpen: true });
   }
 
   handleClose = () => {
-    this.setState({ isOpen: false })
+    this.setState({ isOpen: false });
   }
 
   handleOpenModal = () =>
@@ -59,23 +59,23 @@ class MenuPlan extends Component {
     if (e.target.checked) {
       this.setState({
         comparePlan: this.state.comparePlan.concat(list[e.target.id]),
-      })
+      });
     } else {
-      const index = this.state.comparePlan.indexOf(list[e.target.id])
-      const x = this.state.comparePlan
-      x.splice(index, 1)
-      this.setState({ comparePlan: x })
+      const index = this.state.comparePlan.indexOf(list[e.target.id]);
+      const x = this.state.comparePlan;
+      x.splice(index, 1);
+      this.setState({ comparePlan: x });
     }
   }
 
   handleSelectPlan = e => {
-    e.preventDefault()
-    const { comparePlan } = this.state
-    this.props.menuPlans(comparePlan)
+    e.preventDefault();
+    const { comparePlan } = this.state;
+    this.props.menuPlans(comparePlan);
   }
 
   renderList = list => {
-    const output = []
+    const output = [];
     for (let i = 0; i < list.length; i += 1) {
       output.push(
         <div className="menu-select-plan">
@@ -145,14 +145,14 @@ class MenuPlan extends Component {
             </div>
           </div>
         </div>,
-      )
+      );
     }
-    return output
+    return output;
   }
 
   render() {
     if (this.props.comparePlan === this.state.comparePlan) {
-      return <Redirect to="/compareplan" />
+      return <Redirect to="/compareplan" />;
     }
     return (
       <div className="menu-box">
@@ -203,18 +203,18 @@ class MenuPlan extends Component {
           เปรียบเทียบแพลน
         </div>
       </div>
-    )
+    );
   }
 }
 
-MenuPlan.propTypes = {}
+MenuPlan.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   menuPlans: comparePlan => dispatch(menuPlans(comparePlan)),
-})
+});
 
 const mapStateToProps = state => ({
   comparePlan: state.menuplanReducer,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuPlan)
+export default connect(mapStateToProps, mapDispatchToProps)(MenuPlan);

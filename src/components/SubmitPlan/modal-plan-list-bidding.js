@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import bedRecord from '../image/icons-8-single-bed-record.png'
-import bedActive from '../image/icons-8-single-bed.jpg'
-import bed from '../image/icons-8-single-bed1.jpg'
-import stethoscopeRecord from '../image/icons-8-stethoscope-record.png'
-import stethoscope from '../image/icons-8-stethoscope1.jpg'
-import stethoscopeActive from '../image/icons-8-stethoscope.jpg'
-import toothRecord from '../image/icons-8-tooth-record.png'
-import toothActive from '../image/icons-8-tooth.jpg'
-import tooth from '../image/icons-8-toot1.jpg'
-import heartRecord from '../image/icons-8-like-record.png'
-import heart from '../image/icons-8-like1.jpg'
-import heartActive from '../image/icons-8-like.jpg'
-import IPDBidding from './IPD/Bidding/ipd-bidding'
-import LifeBidding from './Life/life-bidding'
-import OPDBidding from './OPD/Bidding/opd-bidding'
-import DentalBidding from './Dental/dental-bidding'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import bedRecord from '../image/icons-8-single-bed-record.png';
+import bedActive from '../image/icons-8-single-bed.jpg';
+import bed from '../image/icons-8-single-bed1.jpg';
+import stethoscopeRecord from '../image/icons-8-stethoscope-record.png';
+import stethoscope from '../image/icons-8-stethoscope1.jpg';
+import stethoscopeActive from '../image/icons-8-stethoscope.jpg';
+import toothRecord from '../image/icons-8-tooth-record.png';
+import toothActive from '../image/icons-8-tooth.jpg';
+import tooth from '../image/icons-8-toot1.jpg';
+import heartRecord from '../image/icons-8-like-record.png';
+import heart from '../image/icons-8-like1.jpg';
+import heartActive from '../image/icons-8-like.jpg';
+import IPDBidding from './IPD/Bidding/ipd-bidding';
+import LifeBidding from './Life/life-bidding';
+import OPDBidding from './OPD/Bidding/opd-bidding';
+import DentalBidding from './Dental/dental-bidding';
 
 class ModalPlanListBidding extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ class ModalPlanListBidding extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       showCoPay: false,
       showForm: 1,
@@ -55,132 +55,132 @@ class ModalPlanListBidding extends Component {
       textLifeActive: 'text-menu-active',
       isChange: false,
       changeToRecord: false,
-    }
+    };
   }
 
   handleToggle = () => {
     if (this.state.showCoPay) {
-      this.setState({ showCoPay: false })
+      this.setState({ showCoPay: false });
     } else {
-      this.setState({ showCoPay: true })
+      this.setState({ showCoPay: true });
     }
   }
 
   handleOpenModal = () => {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   handleOpenModalNextPage = () => {
-    this.setState({ openModal: true })
-    this.props.handleWarningModal()
+    this.setState({ openModal: true });
+    this.props.handleWarningModal();
   }
 
   handleCloseModal = () => {
-    this.setState({ openModal: false })
+    this.setState({ openModal: false });
   }
 
   handleVerifyState = name => {
-    this.setState({ verifyState: false })
-    this.setState({ checkInput: true })
-    this.setState({ changeToRecord: false })
-    this.setState({ isChange: true })
-    this.setState({ [name]: false })
-    this.props.handleSetGoToNextPage()
-    this.handleText(name)
-    this.props.handleUnBuildNewPlan()
+    this.setState({ verifyState: false });
+    this.setState({ checkInput: true });
+    this.setState({ changeToRecord: false });
+    this.setState({ isChange: true });
+    this.setState({ [name]: false });
+    this.props.handleSetGoToNextPage();
+    this.handleText(name);
+    this.props.handleUnBuildNewPlan();
   }
 
   handleRecordVerifyState = name => {
-    this.setState({ verifyState: true })
-    this.setState({ isChange: true })
-    this.setState({ changeToRecord: true })
-    this.setState({ [name]: true })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ verifyState: true });
+    this.setState({ isChange: true });
+    this.setState({ changeToRecord: true });
+    this.setState({ [name]: true });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleText = value => {
     if (value === 'ipdRecord') {
-      this.setState({ textIpd: 'text-menu' })
-      this.setState({ textIpdActive: 'text-menu-active' })
+      this.setState({ textIpd: 'text-menu' });
+      this.setState({ textIpdActive: 'text-menu-active' });
     } else if (value === 'opdRecord') {
-      this.setState({ textOpd: 'text-menu' })
-      this.setState({ textOpdActive: 'text-menu-active' })
+      this.setState({ textOpd: 'text-menu' });
+      this.setState({ textOpdActive: 'text-menu-active' });
     } else if (value === 'dentalRecord') {
-      this.setState({ textDental: 'text-menu' })
-      this.setState({ textDentalActive: 'text-menu-active' })
+      this.setState({ textDental: 'text-menu' });
+      this.setState({ textDentalActive: 'text-menu-active' });
     } else {
-      this.setState({ textLife: 'text-menu' })
-      this.setState({ textLifeActive: 'text-menu-active' })
+      this.setState({ textLife: 'text-menu' });
+      this.setState({ textLifeActive: 'text-menu-active' });
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.setState({ value })
+    this.setState({ value });
   }
 
   handleClick = value => {
     if (this.state.verifyState === false) {
-      this.handleOpenModal()
-      this.setState({ nextPlan: value })
+      this.handleOpenModal();
+      this.setState({ nextPlan: value });
     } else {
-      this.setState({ setPlan: value })
-      this.setState({ nextPlan: value })
+      this.setState({ setPlan: value });
+      this.setState({ nextPlan: value });
     }
   }
 
   handleImageActive = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord
-      return bedActive
+      if (this.state.ipdRecord) return bedRecord;
+      return bedActive;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      return stethoscopeActive
+      if (this.state.opdRecord) return stethoscopeRecord;
+      return stethoscopeActive;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      return toothActive
+      if (this.state.dentalRecord) return toothRecord;
+      return toothActive;
     }
     if (this.lifeRecord) {
-      return heartRecord
+      return heartRecord;
     }
-    return heartActive
+    return heartActive;
   }
 
   handleImage = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord
-      return bed
+      if (this.state.ipdRecord) return bedRecord;
+      return bed;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      return stethoscope
+      if (this.state.opdRecord) return stethoscopeRecord;
+      return stethoscope;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      return tooth
+      if (this.state.dentalRecord) return toothRecord;
+      return tooth;
     }
     if (this.lifeRecord) {
-      return heartRecord
+      return heartRecord;
     }
-    return heart
+    return heart;
   }
 
   handleNextPlan = () => {
-    this.setState({ setPlan: this.state.nextPlan })
+    this.setState({ setPlan: this.state.nextPlan });
   }
 
   handleReset = () => {
-    this.setState({ reset: true })
-    this.setState({ verifyState: true })
-    this.setState({ checkInput: false })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ reset: true });
+    this.setState({ verifyState: true });
+    this.setState({ checkInput: false });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleNewReset = () => {
-    this.setState({ reset: false })
+    this.setState({ reset: false });
   }
   handleChangeToNull = name => this.setState({ [name]: null })
 
@@ -325,10 +325,10 @@ class ModalPlanListBidding extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-ModalPlanListBidding.propTypes = {}
+ModalPlanListBidding.propTypes = {};
 
-export default connect(null, null)(ModalPlanListBidding)
+export default connect(null, null)(ModalPlanListBidding);

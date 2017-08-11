@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import '../../../styles/employee-style/login-verify.scss'
-import logo from '../../image/logo-benefitable-mobile.png'
+import React, { Component } from 'react';
+import '../../../styles/employee-style/login-verify.scss';
+import logo from '../../image/logo-benefitable-mobile.png';
 
 class Header extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -15,8 +15,8 @@ class Header extends Component {
           <img src={logo} alt="logo" />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Header
+export default Header;

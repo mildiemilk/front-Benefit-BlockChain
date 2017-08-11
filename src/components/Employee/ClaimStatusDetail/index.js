@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Header from '../header'
-import Footer from '../footer'
-import NavClaimStatus from '../NavClaimStatus'
+import React, { Component } from 'react';
+import Header from '../header';
+import Footer from '../footer';
+import NavClaimStatus from '../NavClaimStatus';
 
 class ClaimStatusDetail extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -57,10 +57,10 @@ class ClaimStatusDetail extends Component {
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
-ClaimStatusDetail.propTypes = {}
+ClaimStatusDetail.propTypes = {};
 
-export default ClaimStatusDetail
+export default ClaimStatusDetail;

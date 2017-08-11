@@ -1,23 +1,20 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import TimePicker from 'rc-time-picker'
-import { toast } from 'react-toastify'
-import { ToastContainer } from 'react-toastify'
-import 'rc-time-picker/assets/index.css'
-import 'react-datepicker/dist/react-datepicker.css'
-import _ from 'lodash'
-import 'react-toastify/dist/ReactToastify.min.css'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'rc-time-picker/assets/index.css';
+import 'react-datepicker/dist/react-datepicker.css';
+import _ from 'lodash';
+import 'react-toastify/dist/ReactToastify.min.css';
 import {
   setTimeOut,
   chooseInsurer,
   getAllInsurer,
   getSelectInsurer,
-} from '../../api/choose-insurer'
-import NavInsure from '../NavInsure'
+} from '../../api/choose-insurer';
+import NavInsure from '../NavInsure';
 import {
   Detail,
   Head,
@@ -25,11 +22,11 @@ import {
   SideIn,
   Card,
   HeadIn,
-  Submit,
   SubmitInsure,
   Next,
   Check,
-} from './styled'
+} from './styled';
+import Timeout from './timeout';
 
 class InsurerSelect extends Component {
   static propTypes = {
@@ -41,21 +38,20 @@ class InsurerSelect extends Component {
     chooseInsurer: PropTypes.func.isRequired,
   }
   constructor(props) {
-    super(props)
-    const { nums } = this.props
+    super(props);
+    const { nums } = this.props;
 
     this.state = {
       step: 4,
       num: nums !== undefined ? nums : 0,
-      date: null,
       insurers: [],
       hideProgressBar: true,
-    }
+    };
   }
 
   componentDidMount() {
-    this.props.getAllInsurer()
-    this.props.getSelectInsurer()
+    this.props.getAllInsurer();
+    this.props.getSelectInsurer();
     // if(nextProps.chooseInsurerStatus === "SUCCESS") {
 
     // const { insurerChecked, insurerList } = this.props
@@ -80,35 +76,20 @@ class InsurerSelect extends Component {
       this.setState({
         insurers: newProps.insurerChecked,
         num: newProps.nums !== undefined ? newProps.nums : 0,
-      })
+      });
     }
   }
 
   handleDefaultCheck = e => {
     const matchedInsurer = _.find(this.state.insurers, {
       insurerName: e.insurerName,
-    })
+    });
 
     if (matchedInsurer !== undefined) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
-
-  handleTimeOut = () => {
-    const { date } = this.state
-    this.props.setTimeOut(date)
-  }
-
-  handleDate = date => {
-    this.setState({ date })
-  }
-
-  handleTime = time => {
-    time._d.setDate(this.state.date._d.getDate())
-    this.state.date._d.setTime(time._d.getTime())
-  }
-
   handleCheck = e => {
     if (e.target.checked) {
       this.setState({
@@ -116,26 +97,26 @@ class InsurerSelect extends Component {
         insurers: this.state.insurers.concat(
           this.props.insurerList[e.target.id],
         ),
-      })
+      });
     } else {
       const index = this.state.insurers.findIndex(
         element =>
           this.props.insurerList[e.target.id].insurerName ===
           element.insurerName,
-      )
-      const result = this.state.insurers
-      result.splice(index, 1)
+      );
+      const result = this.state.insurers;
+      result.splice(index, 1);
 
       this.setState({
         num: this.state.num - 1,
         insurers: result,
-      })
+      });
     }
   }
 
   handleSubmit = () => {
-    toast(<div>Done!</div>)
-    this.props.chooseInsurer(this.state.insurers)
+    toast(<div>Done!</div>);
+    this.props.chooseInsurer(this.state.insurers);
   }
 
   renderList = insurers => {
@@ -149,8 +130,8 @@ class InsurerSelect extends Component {
         />
         {insurer.insurerName}
       </Card>
-    ))
-    return list
+    ));
+    return list;
   }
 
   render() {
@@ -188,16 +169,7 @@ class InsurerSelect extends Component {
                 <p className="insure">
                   บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
                 </p>
-                <DatePicker
-                  selected={this.state.date}
-                  onChange={this.handleDate}
-                  minDate={moment()}
-                />
-                <span>&nbsp;เวลา&nbsp;</span>
-                <TimePicker onChange={this.handleTime} showSecond={false} />
-                <br />
-                <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
-
+                <Timeout setTimeOut={this.props.setTimeOut} />
               </SideIn>
             </div>
           </Detail>
@@ -211,7 +183,7 @@ class InsurerSelect extends Component {
 
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -220,7 +192,7 @@ const mapDispatchToProps = dispatch => ({
   chooseInsurer: insurers => dispatch(chooseInsurer(insurers)),
   getAllInsurer: () => dispatch(getAllInsurer()),
   getSelectInsurer: () => dispatch(getSelectInsurer()),
-})
+});
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut.timeout,
@@ -228,6 +200,6 @@ const mapStateToProps = state => ({
   insurerChecked: state.getSelectInsurer.defaultInsurer,
   chooseInsurerStatus: state.chooseInsurerReducerStatus,
   nums: state.getSelectInsurer.defaultInsurer.length,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect)
+export default connect(mapStateToProps, mapDispatchToProps)(InsurerSelect);

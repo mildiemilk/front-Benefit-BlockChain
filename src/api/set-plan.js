@@ -1,4 +1,4 @@
-import { APIRequest } from '.'
+import { APIRequest } from '.';
 import {
   createPlanSuccess,
   createPlanFailure,
@@ -7,13 +7,13 @@ import {
   getAllPlanSuccess,
   getAllPlanFailure,
   menuPlanSuccess,
-} from '../reducers/submit-plan'
+} from '../reducers/submit-plan';
 
-const CREATE_PLAN_URI = '/api/createPlan'
-const EDIT_PLAN_URI = 'api/editPlan'
-const GET_ALL_PLAN_URI = '/api/getAllPlan'
-const COPY_PLAN_URI = '/api/copyPlan'
-const DELETE_PLAN_URI = '/api/deletePlan'
+const CREATE_PLAN_URI = '/api/createPlan';
+const EDIT_PLAN_URI = 'api/editPlan';
+const GET_ALL_PLAN_URI = '/api/getAllPlan';
+const COPY_PLAN_URI = '/api/copyPlan';
+const DELETE_PLAN_URI = '/api/deletePlan';
 
 export function createPlan(profilePlan) {
   return dispatch => {
@@ -21,16 +21,16 @@ export function createPlan(profilePlan) {
       method: 'post',
       url: CREATE_PLAN_URI,
       data: profilePlan,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(createPlanSuccess(res.data))
+        dispatch(createPlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(createPlanFailure(err.response.data))
-      })
-  }
+        dispatch(createPlanFailure(err.response.data));
+      });
+  };
 }
 
 export function editPlan(editData, planId, editType) {
@@ -39,16 +39,16 @@ export function editPlan(editData, planId, editType) {
       method: 'put',
       url: `${EDIT_PLAN_URI}/${planId}/${editType}`,
       data: editData,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(editPlanSuccess(res.data))
+        dispatch(editPlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(editPlanFailure(err.response.data))
-      })
-  }
+        dispatch(editPlanFailure(err.response.data));
+      });
+  };
 }
 
 export function deletePlan(planId) {
@@ -56,16 +56,16 @@ export function deletePlan(planId) {
     const options = {
       method: 'delete',
       url: `${DELETE_PLAN_URI}/${planId}`,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
+        console.log(res);
       })
       .catch(err => {
-        console.log(err.response)
-      })
-  }
+        console.log(err.response);
+      });
+  };
 }
 
 export function copyPlan(planId) {
@@ -73,16 +73,16 @@ export function copyPlan(planId) {
     const options = {
       method: 'post',
       url: `${COPY_PLAN_URI}/${planId}`,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        console.log(res)
+        console.log(res);
       })
       .catch(err => {
-        console.log(err.response)
-      })
-  }
+        console.log(err.response);
+      });
+  };
 }
 
 export function getAllPlan() {
@@ -90,25 +90,26 @@ export function getAllPlan() {
     const options = {
       method: 'get',
       url: GET_ALL_PLAN_URI,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(getAllPlanSuccess(res.data))
+        dispatch(getAllPlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getAllPlanFailure(err.response.data))
-      })
-  }
+        console.log(err);
+        dispatch(getAllPlanFailure(err.response.data));
+      });
+  };
 }
 
 export function menuPlans(comparePlan) {
   return dispatch => {
-    localStorage.setItem('comparePlan', JSON.stringify(comparePlan))
-    dispatch(menuPlanSuccess(comparePlan))
-  }
+    localStorage.setItem('comparePlan', JSON.stringify(comparePlan));
+    dispatch(menuPlanSuccess(comparePlan));
+  };
 }
 
 export default {
   createPlan,
-}
+};

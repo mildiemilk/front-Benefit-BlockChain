@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Form, Container } from 'semantic-ui-react'
-import gift from '../image/gigift.jpg'
-import logo from '../image/logo.png'
-import '../../styles/login-style.scss'
-import { authenticate } from '../../api/auth'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form, Container } from 'semantic-ui-react';
+import gift from '../image/gigift.jpg';
+import logo from '../image/logo.png';
+import '../../styles/login-style.scss';
+import { authenticate } from '../../api/auth';
 
 class Login extends Component {
   static propTypes = {
@@ -14,21 +14,21 @@ class Login extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: '',
-    }
+    };
   }
 
   signUpHandler = () => {
-    window.location.href = '/signup'
+    window.location.href = '/signup';
   }
 
   handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.props.authenticate(email, password);
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -114,19 +114,19 @@ class Login extends Component {
           </div>
         </Container>
       </div>
-    )
+    );
   }
 }
 
 Login.propTypes = {
   authenticate: PropTypes.func.isRequired,
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   authenticate: (email, password) => dispatch(authenticate(email, password)),
-})
+});
 const mapStateToProps = state => ({
   data: state.authReducer,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

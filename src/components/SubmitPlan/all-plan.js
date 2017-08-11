@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import bedRecord from '../image/icons-8-single-bed-record.png'
-import bedActive from '../image/icons-8-single-bed.jpg'
-import bed from '../image/icons-8-single-bed1.jpg'
-import stethoscopeRecord from '../image/icons-8-stethoscope-record.png'
-import stethoscope from '../image/icons-8-stethoscope1.jpg'
-import stethoscopeActive from '../image/icons-8-stethoscope.jpg'
-import toothRecord from '../image/icons-8-tooth-record.png'
-import toothActive from '../image/icons-8-tooth.jpg'
-import tooth from '../image/icons-8-toot1.jpg'
-import heartRecord from '../image/icons-8-like-record.png'
-import heart from '../image/icons-8-like1.jpg'
-import heartActive from '../image/icons-8-like.jpg'
-import erase from '../image/icons-8-erase.png'
-import IPD from './IPD/ipd'
-import Life from './Life/life'
-import OPD from './OPD/opd'
-import Dental from './Dental/dental'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import bedRecord from '../image/icons-8-single-bed-record.png';
+import bedActive from '../image/icons-8-single-bed.jpg';
+import bed from '../image/icons-8-single-bed1.jpg';
+import stethoscopeRecord from '../image/icons-8-stethoscope-record.png';
+import stethoscope from '../image/icons-8-stethoscope1.jpg';
+import stethoscopeActive from '../image/icons-8-stethoscope.jpg';
+import toothRecord from '../image/icons-8-tooth-record.png';
+import toothActive from '../image/icons-8-tooth.jpg';
+import tooth from '../image/icons-8-toot1.jpg';
+import heartRecord from '../image/icons-8-like-record.png';
+import heart from '../image/icons-8-like1.jpg';
+import heartActive from '../image/icons-8-like.jpg';
+import erase from '../image/icons-8-erase.png';
+import IPD from './IPD/ipd';
+import Life from './Life/life';
+import OPD from './OPD/opd';
+import Dental from './Dental/dental';
 
 class AllsetPlan extends Component {
   static propTypes = {
@@ -27,7 +27,7 @@ class AllsetPlan extends Component {
     handleSetGoToNextPage: PropTypes.func.isRequired,
     handleWarningModal: PropTypes.func.isRequired,
     handleMoveToNextPage: PropTypes.func.isRequired,
-    newPlan: PropTypes.func.isRequired,
+    newPlan: PropTypes.bool.isRequired,
     handleBuildNewPlan: PropTypes.func.isRequired,
     handleUnBuildNewPlan: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
@@ -40,48 +40,89 @@ class AllsetPlan extends Component {
     handleResetOPD: PropTypes.func.isRequired,
     handleResetIPD: PropTypes.func.isRequired,
     opdCoPay: PropTypes.bool.isRequired,
-    opdPerYear: PropTypes.string.isRequired,
-    opdPerTime: PropTypes.string.isRequired,
-    opdTimeNotExceedPerYear: PropTypes.string.isRequired,
-    opdCoPayQuota: PropTypes.string.isRequired,
-    opdCoPayDeductable: PropTypes.string.isRequired,
-    opdCoPayMixPercentage: PropTypes.string.isRequired,
-    opdCoPayMixNotExceed: PropTypes.string.isRequired,
-    opdCoPayMixYear: PropTypes.string.isRequired,
-    dentalPerYear: PropTypes.string.isRequired,
-    lifePerYear: PropTypes.string.isRequired,
-    lifeTimeOfSalary: PropTypes.string.isRequired,
-    lifeNotExceed: PropTypes.string.isRequired,
-    ipdType: PropTypes.string.isRequired,
-    ipdLumsumPerYear: PropTypes.string.isRequired,
-    ipdLumsumPerTime: PropTypes.string.isRequired,
-    ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
-    rbLumsumRoomPerNight: PropTypes.string.isRequired,
-    rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
-    rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
-    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
-    rbSchedulePatient: PropTypes.string.isRequired,
-    rbScheduleIntensiveCarePatient: PropTypes.string.isRequired,
-    rbScheduleDoctor: PropTypes.string.isRequired,
-    rbScheduleSurgerySchedule: PropTypes.string.isRequired,
-    rbScheduleSurgeryNonSchedule: PropTypes.string.isRequired,
-    rbScheduleService: PropTypes.string.isRequired,
-    rbScheduleSmallSurgery: PropTypes.string.isRequired,
-    rbScheduleAdviser: PropTypes.string.isRequired,
-    rbScheduleAmbulance: PropTypes.string.isRequired,
-    rbScheduleAccident: PropTypes.string.isRequired,
-    rbScheduleTreatment: PropTypes.string.isRequired,
-    rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPay: PropTypes.string.isRequired,
-    ipdCoPayQuota: PropTypes.string.isRequired,
-    ipdCoPayDeductable: PropTypes.string.isRequired,
-    ipdCoPayMixPercentage: PropTypes.string.isRequired,
-    ipdCoPayMixNotExceed: PropTypes.string.isRequired,
-    ipdCoPayMixYear: PropTypes.string.isRequired,
+    opdPerYear: PropTypes.number,
+    opdPerTime: PropTypes.string,
+    opdTimeNotExceedPerYear: PropTypes.string,
+    opdCoPayQuota: PropTypes.string,
+    opdCoPayDeductable: PropTypes.string,
+    opdCoPayMixPercentage: PropTypes.string,
+    opdCoPayMixNotExceed: PropTypes.string,
+    opdCoPayMixYear: PropTypes.string,
+    dentalPerYear: PropTypes.string,
+    lifePerYear: PropTypes.string,
+    lifeTimeOfSalary: PropTypes.string,
+    lifeNotExceed: PropTypes.string,
+    ipdType: PropTypes.string,
+    ipdLumsumPerYear: PropTypes.string,
+    ipdLumsumPerTime: PropTypes.string,
+    ipdLumsumTimeNotExceedPerYear: PropTypes.string,
+    rbLumsumRoomPerNight: PropTypes.string,
+    rbLumsumNigthNotExceedPerYear: PropTypes.string,
+    rbLumsumPayNotExceedPerNight: PropTypes.string,
+    rbLumsumPayNotExceedPerYear: PropTypes.string,
+    rbSchedulePatient: PropTypes.string,
+    rbScheduleIntensiveCarePatient: PropTypes.string,
+    rbScheduleDoctor: PropTypes.string,
+    rbScheduleSurgerySchedule: PropTypes.string,
+    rbScheduleSurgeryNonSchedule: PropTypes.string,
+    rbScheduleService: PropTypes.string,
+    rbScheduleSmallSurgery: PropTypes.string,
+    rbScheduleAdviser: PropTypes.string,
+    rbScheduleAmbulance: PropTypes.string,
+    rbScheduleAccident: PropTypes.string,
+    rbScheduleTreatment: PropTypes.string,
+    rbScheduleTransplant: PropTypes.string,
+    ipdCoPay: PropTypes.bool.isRequired,
+    ipdCoPayQuota: PropTypes.string,
+    ipdCoPayDeductable: PropTypes.string,
+    ipdCoPayMixPercentage: PropTypes.string,
+    ipdCoPayMixNotExceed: PropTypes.string,
+    ipdCoPayMixYear: PropTypes.string,
+    handlePlan: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    opdPerYear: null,
+    opdPerTime: null,
+    opdTimeNotExceedPerYear: null,
+    opdCoPayQuota: null,
+    opdCoPayDeductable: null,
+    opdCoPayMixPercentage: null,
+    opdCoPayMixNotExceed: null,
+    opdCoPayMixYear: null,
+    dentalPerYear: null,
+    lifePerYear: null,
+    lifeTimeOfSalary: null,
+    lifeNotExceed: null,
+    ipdType: null,
+    ipdLumsumPerYear: null,
+    ipdLumsumPerTime: null,
+    ipdLumsumTimeNotExceedPerYear: null,
+    rbLumsumRoomPerNight: null,
+    rbLumsumNigthNotExceedPerYear: null,
+    rbLumsumPayNotExceedPerNight: null,
+    rbLumsumPayNotExceedPerYear: null,
+    rbSchedulePatient: null,
+    rbScheduleIntensiveCarePatient: null,
+    rbScheduleDoctor: null,
+    rbScheduleSurgerySchedule: null,
+    rbScheduleSurgeryNonSchedule: null,
+    rbScheduleService: null,
+    rbScheduleSmallSurgery: null,
+    rbScheduleAdviser: null,
+    rbScheduleAmbulance: null,
+    rbScheduleAccident: null,
+    rbScheduleTreatment: null,
+    rbScheduleTransplant: null,
+    ipdCoPayQuota: null,
+    ipdCoPayDeductable: null,
+    ipdCoPayMixPercentage: null,
+    ipdCoPayMixNotExceed: null,
+    ipdCoPayMixYear: null,
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       value: '',
       setPlan: 'IPD',
@@ -93,7 +134,6 @@ class AllsetPlan extends Component {
       opdRecord: false,
       dentalRecord: false,
       lifeRecord: false,
-      checkInput: false,
       textOpd: 'text-menu',
       textOpdActive: 'text-menu-active',
       textIpd: 'text-menu',
@@ -104,52 +144,50 @@ class AllsetPlan extends Component {
       textLifeActive: 'text-menu-active',
       isChange: false,
       changeToRecord: false,
-    }
+    };
   }
 
   componentWillReceiveProps(newProps) {
-    this.handleUpdate(newProps)
+    this.handleUpdate(newProps);
   }
 
   componentDidUpdate() {
-    this.handleDidUpdate()
+    this.handleDidUpdate();
   }
 
   handleDidUpdate = () => {
-    if (this.state.isChange) {
-      if (this.state.changeToRecord) {
-        if (this.state.ipdRecord && this.state.checkInput) {
-          this.setState({ textIpd: 'text-menu-record' })
-          this.setState({ textIpdActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        } else if (this.state.opdRecord && this.state.checkInput) {
-          this.setState({ textOpd: 'text-menu-record' })
-          this.setState({ textOpdActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        } else if (this.state.dentalRecord && this.state.checkInput) {
-          this.setState({ textDental: 'text-menu-record' })
-          this.setState({ textDentalActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
-        } else {
-          this.setState({ textLife: 'text-menu-record' })
-          this.setState({ textLifeActive: 'text-menu-record' })
-          this.setState({ checkInput: false })
-          this.setState({ isChange: false })
+    const { isChange, changeToRecord, ipdRecord, opdRecord,
+      dentalRecord, lifeRecord, setPlan, verifyState } = this.state;
+    if (isChange) {
+      if (changeToRecord) {
+        if (ipdRecord && setPlan === 'IPD') {
+          this.setState({ textIpd: 'text-menu-record' });
+          this.setState({ textIpdActive: 'text-menu-record' });
+          this.setState({ isChange: false });
+        } else if (opdRecord && setPlan === 'OPD') {
+          this.setState({ textOpd: 'text-menu-record' });
+          this.setState({ textOpdActive: 'text-menu-record' });
+          this.setState({ isChange: false });
+        } else if (dentalRecord && setPlan === 'Dental') {
+          this.setState({ textDental: 'text-menu-record' });
+          this.setState({ textDentalActive: 'text-menu-record' });
+          this.setState({ isChange: false });
+        } else if (lifeRecord && setPlan === 'Life') {
+          this.setState({ textLife: 'text-menu-record' });
+          this.setState({ textLifeActive: 'text-menu-record' });
+          this.setState({ isChange: false });
         }
       }
     }
 
-    if (this.props.nextPage && this.state.verifyState === false) {
-      this.handleOpenModalNextPage()
-      this.props.handleNextPage()
+    if (this.props.nextPage && verifyState === false) {
+      this.handleOpenModalNextPage();
+      this.props.handleNextPage();
     }
 
-    if (this.props.newPlan && this.state.verifyState === false) {
-      this.handleOpenModal()
-      this.props.handleResetPlan()
+    if (this.props.newPlan && verifyState === false) {
+      this.handleOpenModal();
+      this.props.handleResetPlan();
     }
   }
 
@@ -161,7 +199,6 @@ class AllsetPlan extends Component {
         opdRecord: false,
         dentalRecord: false,
         lifeRecord: false,
-        checkInput: false,
         textOpd: 'text-menu',
         textOpdActive: 'text-menu-active',
         textIpd: 'text-menu',
@@ -170,125 +207,128 @@ class AllsetPlan extends Component {
         textDentalActive: 'text-menu-active',
         textLife: 'text-menu',
         textLifeActive: 'text-menu-active',
-      })
+      });
     }
   }
 
   handleOpenModal = () => {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   handleOpenModalNextPage = () => {
-    this.setState({ openModal: true })
-    this.props.handleWarningModal()
+    this.setState({ openModal: true });
+    this.props.handleWarningModal();
   }
 
   handleCloseModal = () => {
-    this.setState({ openModal: false })
+    this.setState({ openModal: false });
+    this.setState({ verifyState: true });
+    this.setState({ isChange: false });
+    this.setState({ changeToRecord: false });
+    this.setState({ [name]: false });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleVerifyState = name => {
-    this.setState({ verifyState: false })
-    this.setState({ checkInput: true })
-    this.setState({ changeToRecord: false })
-    this.setState({ isChange: true })
-    this.setState({ [name]: false })
-    this.props.handleSetGoToNextPage()
-    this.handleText(name)
-    this.props.handleUnBuildNewPlan()
+    this.setState({ verifyState: false });
+    this.setState({ changeToRecord: false });
+    this.setState({ isChange: true });
+    this.setState({ [name]: false });
+    this.props.handleSetGoToNextPage();
+    this.handleText(name);
+    this.props.handleUnBuildNewPlan();
   }
 
   handleRecordVerifyState = name => {
-    this.setState({ verifyState: true })
-    this.setState({ isChange: true })
-    this.setState({ changeToRecord: true })
-    this.setState({ [name]: true })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ verifyState: true });
+    this.setState({ isChange: true });
+    this.setState({ changeToRecord: true });
+    this.setState({ [name]: true });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleText = value => {
     if (value === 'ipdRecord') {
-      this.setState({ textIpd: 'text-menu' })
-      this.setState({ textIpdActive: 'text-menu-active' })
+      this.setState({ textIpd: 'text-menu' });
+      this.setState({ textIpdActive: 'text-menu-active' });
     } else if (value === 'opdRecord') {
-      this.setState({ textOpd: 'text-menu' })
-      this.setState({ textOpdActive: 'text-menu-active' })
+      this.setState({ textOpd: 'text-menu' });
+      this.setState({ textOpdActive: 'text-menu-active' });
     } else if (value === 'dentalRecord') {
-      this.setState({ textDental: 'text-menu' })
-      this.setState({ textDentalActive: 'text-menu-active' })
+      this.setState({ textDental: 'text-menu' });
+      this.setState({ textDentalActive: 'text-menu-active' });
     } else {
-      this.setState({ textLife: 'text-menu' })
-      this.setState({ textLifeActive: 'text-menu-active' })
+      this.setState({ textLife: 'text-menu' });
+      this.setState({ textLifeActive: 'text-menu-active' });
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.setState({ value })
+    this.setState({ value });
   }
 
   handleClick = value => {
     if (this.state.verifyState === false) {
-      this.handleOpenModal()
-      this.setState({ nextPlan: value })
+      this.handleOpenModal();
+      this.setState({ nextPlan: value });
     } else {
-      this.setState({ setPlan: value })
-      this.setState({ nextPlan: value })
+      const { handlePlan, activePlan } = this.props;
+      this.setState({ setPlan: value, nextPlan: value });
+      handlePlan(activePlan);
     }
   }
 
   handleImageActive = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord
-      return bedActive
+      if (this.state.ipdRecord) return bedRecord;
+      return bedActive;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      return stethoscopeActive
+      if (this.state.opdRecord) return stethoscopeRecord;
+      return stethoscopeActive;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      return toothActive
+      if (this.state.dentalRecord) return toothRecord;
+      return toothActive;
     }
-    if (this.lifeRecord) {
-      return heartRecord
-    }
-    return heartActive
+    if (this.state.lifeRecord) return heartRecord;
+    return heartActive;
   }
 
   handleImage = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord
-      return bed
+      if (this.state.ipdRecord) return bedRecord;
+      return bed;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      return stethoscope
+      if (this.state.opdRecord) return stethoscopeRecord;
+      return stethoscope;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      return tooth
+      if (this.state.dentalRecord) return toothRecord;
+      return tooth;
     }
     if (this.lifeRecord) {
-      return heartRecord
+      return heartRecord;
     }
-    return heart
+    return heart;
   }
 
   handleNextPlan = () => {
-    this.setState({ setPlan: this.state.nextPlan })
+    this.setState({ setPlan: this.state.nextPlan });
   }
 
   handleReset = () => {
-    this.setState({ reset: true })
-    this.setState({ verifyState: true })
-    this.setState({ checkInput: false })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ reset: true });
+    this.setState({ verifyState: true });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleNewReset = () => {
-    this.setState({ reset: false })
+    this.setState({ reset: false });
   }
 
   render() {
@@ -561,8 +601,8 @@ class AllsetPlan extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(AllsetPlan)
+export default connect(null, null)(AllsetPlan);

@@ -152,8 +152,7 @@
       "no-shadow": 0,
       "no-underscore-dangle": 0,
       "semi": [
-        1,
-        "never"
+      "error", "always"
       ],
       "import/no-extraneous-dependencies": 0,
       "import/prefer-default-export": 0,

@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { Icon } from 'semantic-ui-react'
-import paper from '../../image/icons-8-fine-print@2x.png'
-import Benefits1 from '../../image/flexy-1.png'
-import Benefits2 from '../../image/flexy-2.png'
-import Benefits3 from '../../image/flexy-3.png'
+import React, { Component } from 'react';
+import { Icon } from 'semantic-ui-react';
+import paper from '../../image/icons-8-fine-print@2x.png';
+import Benefits1 from '../../image/flexy-1.png';
+import Benefits2 from '../../image/flexy-2.png';
+import Benefits3 from '../../image/flexy-3.png';
 
-const MediaQuery = require('react-responsive')
+const MediaQuery = require('react-responsive');
 
 class EmployeeBenefitsDashboard extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -184,8 +184,8 @@ class EmployeeBenefitsDashboard extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default EmployeeBenefitsDashboard
+export default EmployeeBenefitsDashboard;

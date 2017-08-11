@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Sidebar from './sidebar'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Sidebar from './sidebar';
 
 class MainLayout extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
   }
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
   render() {
     return (
@@ -24,7 +24,7 @@ class MainLayout extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-export default MainLayout
+export default MainLayout;

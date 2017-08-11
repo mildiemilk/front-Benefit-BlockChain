@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Form } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import { updatePassword } from '../../../api/auth'
-import { updatePersonalDetails } from '../../../api/personalDetail'
-import ModalAddData from './modal-add-data'
-import '../../../styles/employee-style/login-verify.scss'
-import key from '../../image/key.png'
-import keyIcon from '../../image/icons-8-key-copy.png'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { updatePassword } from '../../../api/auth';
+import { updatePersonalDetails } from '../../../api/personalDetail';
+import ModalAddData from './modal-add-data';
+import '../../../styles/employee-style/login-verify.scss';
+import key from '../../image/key.png';
+import keyIcon from '../../image/icons-8-key-copy.png';
 
-const passwordPattern = /^(?=.*\d)(?=.*[A-Z]).{8,20}/
-const phonePattern = /^[\+]?[(]?[0-9]{2,3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const passwordPattern = /^(?=.*\d)(?=.*[A-Z]).{8,20}/;
+const phonePattern = /^[\+]?[(]?[0-9]{2,3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class EmployeeVerify extends Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class EmployeeVerify extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       password: '',
       confirmPassword: '',
@@ -28,71 +28,71 @@ class EmployeeVerify extends Component {
       phone: '',
       showModal: false,
       error: null,
-    }
-    this.handleChangeInput = this.handleChangeInput.bind(this)
-    this.handleSubmitButton = this.handleSubmitButton.bind(this)
-    this.handleSubmitButtonModal = this.handleSubmitButtonModal.bind(this)
-    this.handleHideModel = this.handleHideModel.bind(this)
+    };
+    this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleSubmitButton = this.handleSubmitButton.bind(this);
+    this.handleSubmitButtonModal = this.handleSubmitButtonModal.bind(this);
+    this.handleHideModel = this.handleHideModel.bind(this);
   }
 
   handleChangeInput = ({ target: { name, value } }) => {
     // console.log(name, value)
-    const checkPassword = passwordPattern.test(value)
+    const checkPassword = passwordPattern.test(value);
     if (name === 'password') {
       if (value.length >= 8 && value.length <= 20) {
         if (!checkPassword) {
           // console.log('chackPassword: ', checkPassword)
-          this.setState({ error: 'พาสเวิร์ดควรมีตัวอักษรพิมพ์เล็กพิมพ์ใหญ่และตัวเลข' })
+          this.setState({ error: 'พาสเวิร์ดควรมีตัวอักษรพิมพ์เล็กพิมพ์ใหญ่และตัวเลข' });
         } else {
-          this.setState({ error: '' })
+          this.setState({ error: '' });
         }
       } else if (value === '') {
-        this.setState({ error: '' })
+        this.setState({ error: '' });
       } else {
-        this.setState({ error: 'พาสเวิร์ดควรมีความยาว 8-20 ตัวอักษร' })
+        this.setState({ error: 'พาสเวิร์ดควรมีความยาว 8-20 ตัวอักษร' });
       }
     }
-    this.setState({ [name]: value })
+    this.setState({ [name]: value });
   }
 
   handleSubmitButton() {
     // console.log('handleSubmitButton')
-    this.setState({ error: null })
-    const { password, confirmPassword } = this.state
+    this.setState({ error: null });
+    const { password, confirmPassword } = this.state;
     if (password === confirmPassword) {
-      this.props.updatePassword(password, confirmPassword)
+      this.props.updatePassword(password, confirmPassword);
       // console.log('Password === ConfirmPassword')
-      this.setState({ showModal: true })
+      this.setState({ showModal: true });
     } else {
-      this.setState({ error: 'พาสเวิร์ดไม่ตรงกัน' })
+      this.setState({ error: 'พาสเวิร์ดไม่ตรงกัน' });
       // console.log('Password !== ConfirmPassword')
     }
   }
 
   handleSubmitButtonModal() {
-    const { email, phone } = this.state
-    const checkEmail = emailPattern.test(email)
-    const checkPhone = phonePattern.test(phone)
+    const { email, phone } = this.state;
+    const checkEmail = emailPattern.test(email);
+    const checkPhone = phonePattern.test(phone);
     if (email && !phone) {
-      this.setState({ error: 'กรุณากรอกเบอร์โทรศัพท์ด้วยค่ะ' })
+      this.setState({ error: 'กรุณากรอกเบอร์โทรศัพท์ด้วยค่ะ' });
     } else if (!email && phone) {
-      this.setState({ error: 'กรุณากรอกอีเมลด้วยค่ะ' })
+      this.setState({ error: 'กรุณากรอกอีเมลด้วยค่ะ' });
     } else {
-      this.setState({ error: '' })
+      this.setState({ error: '' });
       if (!checkEmail && !checkPhone) {
-        this.setState({ error: 'กรุณากรอกอีเมลและเบอร์โทรศัพท์ให้ถูกต้องด้วยค่ะ' })
+        this.setState({ error: 'กรุณากรอกอีเมลและเบอร์โทรศัพท์ให้ถูกต้องด้วยค่ะ' });
       } else if (!checkEmail) {
-        this.setState({ error: 'กรุณากรอกอีเมลให้ถูกต้องด้วยค่ะ' })
+        this.setState({ error: 'กรุณากรอกอีเมลให้ถูกต้องด้วยค่ะ' });
       } else if (!checkPhone) {
-        this.setState({ error: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้องด้วยค่ะ' })
+        this.setState({ error: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้องด้วยค่ะ' });
       } else {
-        this.props.updatePersonalDetails(email, phone)
+        this.props.updatePersonalDetails(email, phone);
       }
     }
   }
 
   handleHideModel() {
-    this.setState({ showModal: false })
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -146,7 +146,7 @@ class EmployeeVerify extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -157,6 +157,6 @@ const mapDispatchToProps = dispatch => ({
   updatePersonalDetails: (personalEmail, phone) => dispatch(
     updatePersonalDetails(personalEmail, phone),
   ),
-})
+});
 
-export default connect(null, mapDispatchToProps)(EmployeeVerify)
+export default connect(null, mapDispatchToProps)(EmployeeVerify);

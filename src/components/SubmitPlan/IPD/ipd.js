@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react'
-import { editPlan } from '../../../api/set-plan'
-import '../../../styles/submit-plan.scss'
-import CoPay from './copay'
-import IPD1 from './ipd1'
-import IPD2 from './ipd2'
-import IPD3 from './ipd3'
-import IpdModal from './ipd-modal'
-import about from '../../image/icons-8-about.png'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { editPlan } from '../../../api/set-plan';
+import '../../../styles/submit-plan.scss';
+import CoPay from './copay';
+import IPD1 from './ipd1';
+import IPD2 from './ipd2';
+import IPD3 from './ipd3';
+import IpdModal from './ipd-modal';
+import about from '../../image/icons-8-about.png';
 
 class IPD extends Component {
   static propTypes = {
@@ -45,7 +45,7 @@ class IPD extends Component {
     rbScheduleAccident: PropTypes.string.isRequired,
     rbScheduleTreatment: PropTypes.string.isRequired,
     rbScheduleTransplant: PropTypes.string.isRequired,
-    ipdCoPay: PropTypes.string.isRequired,
+    ipdCoPay: PropTypes.bool.isRequired,
     ipdCoPayQuota: PropTypes.string.isRequired,
     ipdCoPayDeductable: PropTypes.string.isRequired,
     ipdCoPayMixPercentage: PropTypes.string.isRequired,
@@ -53,31 +53,32 @@ class IPD extends Component {
     ipdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleRadio = (e, { name, value }) => {
-    this.handleResetdata()
-    this.props.handleChange(e, { name, value })
+    this.handleResetdata();
+    this.props.handleChange(e, { name, value });
   }
 
   handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState('ipdRecord')
+    this.props.handleChange(e, { name, value });
+    this.props.handleVerifyState('ipdRecord');
   }
 
   handleClick = () => {
-    this.props.handleRecordVerifyState('ipdRecord')
+    this.props.handleRecordVerifyState('ipdRecord');
     const {
       ipdCoPay,
       ipdType,
@@ -105,7 +106,7 @@ class IPD extends Component {
       ipdCoPayMixPercentage,
       ipdCoPayMixNotExceed,
       ipdCoPayMixYear,
-    } = this.props
+    } = this.props;
     this.props.editPlan(
       {
         ipdCoPay,
@@ -137,13 +138,13 @@ class IPD extends Component {
       },
       this.props.planList[this.props.activePlan].planId,
       'ipd',
-    )
+    );
   }
 
   handleResetdata = () => {
-    this.props.handleResetIPD()
-    this.props.handleNewReset()
-    this.props.handleVerifyState('ipdRecord')
+    this.props.handleResetIPD();
+    this.props.handleNewReset();
+    this.props.handleVerifyState('ipdRecord');
   }
 
   render() {
@@ -318,21 +319,22 @@ class IPD extends Component {
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
+            handleNextPlan={this.props.handleNextPlan}
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
-IPD.propTypes = {}
+IPD.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>
     dispatch(editPlan(editData, planId, editType)),
-})
+});
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(IPD)
+export default connect(mapStateToProps, mapDispatchToProps)(IPD);

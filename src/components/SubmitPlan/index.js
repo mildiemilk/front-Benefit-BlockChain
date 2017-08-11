@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Button, Icon } from 'semantic-ui-react'
-import MenuPlan from './MenuPlan/menu-plan'
-import FormSubmitPlan from './FormSubmitPlan/form-submit-plan'
-import AllPlan from './all-plan'
-import NavInsure from '../NavInsure'
-import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Button, Icon } from 'semantic-ui-react';
+import MenuPlan from './MenuPlan/menu-plan';
+import FormSubmitPlan from './FormSubmitPlan/form-submit-plan';
+import AllPlan from './all-plan';
+import NavInsure from '../NavInsure';
+import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan';
 
-import '../../styles/submit-plan.scss'
+import '../../styles/submit-plan.scss';
 
 class SubmitPlan extends Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class SubmitPlan extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 3,
       activePlan: -1,
@@ -32,7 +32,7 @@ class SubmitPlan extends Component {
       canBuildNewPlan: true,
       planName: '',
       employeeOfPlan: '',
-      ipdType: '',
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -71,16 +71,16 @@ class SubmitPlan extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
-    }
+    };
     setInterval(() => {
-      props.getAllPlan()
-    }, 2000)
+      props.getAllPlan();
+    }, 2000);
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.havePlan && (this.state.activePlan === -1)) {
-      const val = 0
-      const { planList } = newProps
+    if (newProps.havePlan && (this.state.activePlan === -1) && !this.state.newPlan) {
+      const val = 0;
+      const { planList } = newProps;
       this.setState({
         activePlan: val,
         planName: planList[val].planName,
@@ -132,15 +132,15 @@ class SubmitPlan extends Component {
         ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
         ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
         ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
-      })
+      });
     }
   }
 
   onClickhandler = e => {
-    this.setState({ nextPage: true })
+    this.setState({ nextPage: true });
     if (this.state.canGoToNextPage) {
-      e.preventDefault()
-      window.location.href = '/chooseinsurer'
+      e.preventDefault();
+      window.location.href = '/chooseinsurer';
     }
   }
 
@@ -159,9 +159,9 @@ class SubmitPlan extends Component {
         opdCoPayMixPercentage: null,
         opdCoPayMixNotExceed: null,
         opdCoPayMixYear: null,
-      })
+      });
     } else {
-      this.setState({ opdCoPay: !this.state.opdCoPay })
+      this.setState({ opdCoPay: !this.state.opdCoPay });
     }
   }
 
@@ -174,9 +174,9 @@ class SubmitPlan extends Component {
         ipdCoPayMixPercentage: null,
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
-      })
+      });
     } else {
-      this.setState({ ipdCoPay: !this.state.ipdCoPay })
+      this.setState({ ipdCoPay: !this.state.ipdCoPay });
     }
   }
 
@@ -186,31 +186,31 @@ class SubmitPlan extends Component {
       newPlan: true,
       planName: '',
       employeeOfPlan: '',
-    })
-    if (this.state.canGoToNextPage) this.setState({ openModalForm: true })
+    });
+    if (this.state.canGoToNextPage) this.setState({ openModalForm: true });
   }
 
   handleEdit = e => {
-    this.handlePlan(e.target.id)
+    this.handlePlan(e.target.id);
   }
 
   handleCopy = e => {
-    this.handlePlan(e.target.id)
-    this.props.copyPlan(this.props.planList[e.target.id].planId)
+    this.handlePlan(e.target.id);
+    this.props.copyPlan(this.props.planList[e.target.id].planId);
   }
 
   handleDelete = e => {
-    this.props.deletePlan(this.props.planList[e.target.id].planId)
-    this.setState({ activePlan: -1 })
+    this.props.deletePlan(this.props.planList[e.target.id].planId);
+    this.setState({ activePlan: -1 });
   }
 
   handleResetProfilePlan = () => {
-    this.setState({ planName: '' })
-    this.setState({ employeeOfPlan: '' })
+    this.setState({ planName: '' });
+    this.setState({ employeeOfPlan: '' });
   }
 
   handleResetDental = () => {
-    this.setState({ dentalPerYear: null })
+    this.setState({ dentalPerYear: null });
   }
 
   handleResetLife = () => {
@@ -218,7 +218,7 @@ class SubmitPlan extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
-    })
+    });
   }
 
   handleResetOPD = () => {
@@ -231,12 +231,12 @@ class SubmitPlan extends Component {
       opdCoPayMixPercentage: null,
       opdCoPayMixNotExceed: null,
       opdCoPayMixYear: null,
-    })
+    });
   }
 
   handleResetIPD = () => {
     this.setState({
-      ipdType: '',
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -262,12 +262,12 @@ class SubmitPlan extends Component {
       ipdCoPayMixPercentage: null,
       ipdCoPayMixNotExceed: null,
       ipdCoPayMixYear: null,
-    })
+    });
   }
 
   handlePlan = val => {
     if (val !== -1) {
-      const { planList } = this.props
+      const { planList } = this.props;
       this.setState({
         activePlan: val,
         planName: planList[val].planName,
@@ -319,52 +319,54 @@ class SubmitPlan extends Component {
         ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
         ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
         ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
-      })
+      });
     }
   }
 
-  handleCloseModal = () =>
-    this.setState({
-      openModalForm: false,
-    })
+  handleCloseModal = () => {
+    this.setState({ openModalForm: false, warningModal: false });
+    if (this.props.havePlan) {
+      this.handlePlan(0);
+    }
+  }
 
   handleSetGoToNextPage = () => {
-    this.setState({ canGoToNextPage: false })
+    this.setState({ canGoToNextPage: false });
   }
 
   handleMoveToNextPage = () => {
     if (this.state.warningModal) {
-      this.setState({ canGoToNextPage: true })
-      this.setState({ warningModal: false })
-      window.location.href = '/chooseinsurer'
+      this.setState({ canGoToNextPage: true });
+      this.setState({ warningModal: false });
+      window.location.href = '/chooseinsurer';
     } else {
-      this.setState({ canGoToNextPage: true })
+      this.setState({ canGoToNextPage: true });
     }
   }
 
   handleWarningModal = () => {
-    this.setState({ warningModal: true })
+    this.setState({ warningModal: true });
   }
 
   handleNextPage = () => {
-    this.setState({ nextPage: false })
+    this.setState({ nextPage: false });
   }
 
   handleModalFinish = () => {
-    this.setState({ openModalForm: false })
-    this.setState({ newPlan: false })
+    this.setState({ openModalForm: false });
+    this.setState({ newPlan: false });
   }
 
   handleBuildNewPlan = () => {
-    this.setState({ canBuildNewPlan: true })
+    this.setState({ canBuildNewPlan: true });
   }
 
   handleUnBuildNewPlan = () => {
-    this.setState({ canBuildNewPlan: false })
+    this.setState({ canBuildNewPlan: false });
   }
 
   handleResetPlan = () => {
-    this.setState({ newPlan: false })
+    this.setState({ newPlan: false });
   }
 
   render() {
@@ -406,6 +408,7 @@ class SubmitPlan extends Component {
                     <div className="fillBox">
                       <AllPlan
                         activePlan={this.state.activePlan}
+                        handlePlan={this.handlePlan}
                         nextPage={this.state.nextPage}
                         handleNextPage={this.handleNextPage}
                         handleSetGoToNextPage={this.handleSetGoToNextPage}
@@ -518,21 +521,21 @@ class SubmitPlan extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-SubmitPlan.propTypes = {}
+SubmitPlan.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
   deletePlan: planId => dispatch(deletePlan(planId)),
   copyPlan: planId => dispatch(copyPlan(planId)),
-})
+});
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
   havePlan: state.plan.planList.length !== 0,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubmitPlan)
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitPlan);

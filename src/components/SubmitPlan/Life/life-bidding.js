@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Form, Radio } from 'semantic-ui-react'
-import { editPlan } from '../../../api/set-plan'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Form, Radio } from 'semantic-ui-react';
+import { editPlan } from '../../../api/set-plan';
+import '../../../styles/submit-plan.scss';
 
 class LifeBidding extends Component {
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   render() {
@@ -95,16 +95,16 @@ class LifeBidding extends Component {
           </Form.Group>
         </Form>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>
     dispatch(editPlan(editData, planId, editType)),
-})
+});
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(LifeBidding)
+export default connect(mapStateToProps, mapDispatchToProps)(LifeBidding);

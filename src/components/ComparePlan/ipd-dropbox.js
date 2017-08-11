@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Icon } from 'semantic-ui-react'
-import styled from 'styled-components'
-import { IPDTopic, Sub, IPDDetail } from './styled'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Icon } from 'semantic-ui-react';
+import styled from 'styled-components';
+import { IPDTopic, Sub, IPDDetail } from './styled';
 
 const Icons = styled(Icon) `
   &&&{
@@ -10,14 +10,14 @@ const Icons = styled(Icon) `
     right: 2%;
     top: 25%;
   }
-`
+`;
 
 export default class IPDDropBox extends Component {
   static propTypes = {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       lifeBox: false,
       dentalBox: false,
@@ -25,58 +25,58 @@ export default class IPDDropBox extends Component {
       IPDBox: false,
       firstIPDBox: false,
       fourthIPDBox: false,
-    }
+    };
   }
 
   handleToggleFirstIPD = () => {
     if (this.state.firstIPDBox) {
-      this.setState({ firstIPDBox: false })
+      this.setState({ firstIPDBox: false });
     } else {
-      this.setState({ firstIPDBox: true })
+      this.setState({ firstIPDBox: true });
     }
   }
 
   handleToggleFourthIPD = () => {
     if (this.state.fourthIPDBox) {
-      this.setState({ fourthIPDBox: false })
+      this.setState({ fourthIPDBox: false });
     } else {
-      this.setState({ fourthIPDBox: true })
+      this.setState({ fourthIPDBox: true });
     }
   }
 
   handleToggleOPD = () => {
     if (this.state.OPDBox) {
-      this.setState({ OPDBox: false })
+      this.setState({ OPDBox: false });
     } else {
-      this.setState({ OPDBox: true })
+      this.setState({ OPDBox: true });
     }
   }
 
   handleToggleIPD = () => {
     if (this.state.IPDBox) {
-      this.setState({ IPDBox: false })
+      this.setState({ IPDBox: false });
     } else {
-      this.setState({ IPDBox: true })
+      this.setState({ IPDBox: true });
     }
   }
 
   renderFirstIPD = () => {
-    const plans = this.props.planList
-    return plans.map(() => <th>&nbsp;</th>)
+    const plans = this.props.planList;
+    return plans.map(() => <th>&nbsp;</th>);
   }
 
   renderRbSchedulePatient = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
         <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleIntensiveCarePatient = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleIntensiveCarePatient === null
@@ -84,37 +84,37 @@ export default class IPDDropBox extends Component {
           : plan.rbScheduleIntensiveCarePatient}
         <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleDoctor = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
         <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleSurgery = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     const rbScheduleSurgery = plans.map(plan => {
-      let head
+      let head;
       if (plan.rbScheduleSurgerySchedule !== null) {
-        head = <th>{plan.rbScheduleSurgerySchedule}</th>
+        head = <th>{plan.rbScheduleSurgerySchedule}</th>;
       } else if (plan.rbScheduleSurgeryNonSchedule !== null) {
-        head = <th>{plan.rbScheduleSurgeryNonSchedule}</th>
+        head = <th>{plan.rbScheduleSurgeryNonSchedule}</th>;
       } else {
-        head = <th>-</th>
+        head = <th>-</th>;
       }
-      return head
-    })
-    return rbScheduleSurgery
+      return head;
+    });
+    return rbScheduleSurgery;
   }
 
   renderRbScheduleAllService = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleService +
@@ -132,11 +132,11 @@ export default class IPDDropBox extends Component {
           plan.rbScheduleAccident +
           plan.rbScheduleTreatment}
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleService = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
@@ -144,11 +144,11 @@ export default class IPDDropBox extends Component {
           <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
         </Sub>
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleSmallSurgery = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleSmallSurgery === null
@@ -158,38 +158,38 @@ export default class IPDDropBox extends Component {
           <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
         </Sub>
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleAdviser = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleAmbulance = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleAccident = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleTreatment = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
@@ -197,16 +197,16 @@ export default class IPDDropBox extends Component {
           <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
         </Sub>
       </th>
-    ))
+    ));
   }
 
   renderRbScheduleTransplant = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
       </th>
-    ))
+    ));
   }
 
   render() {
@@ -400,6 +400,6 @@ export default class IPDDropBox extends Component {
         </div>
 
       </div>
-    )
+    );
   }
 }

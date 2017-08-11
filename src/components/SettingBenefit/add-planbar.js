@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { Icon, Popup, List } from 'semantic-ui-react'
-import { AddTopic } from './styled'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import { Icon, Popup, List } from 'semantic-ui-react';
+import { AddTopic } from './styled';
 
 const ListContent = styled(List.Content)`
     &&&{
       font-size: 12px;
     }
-`
+`;
 
 class AddPlanBar extends Component {
   static propTypes = {
@@ -19,13 +19,13 @@ class AddPlanBar extends Component {
     handleDeletePlan: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   renderList = list => {
     const lists = list.map((element, index) => {
-      const isActive = index === this.props.activePlan ? '-active' : ''
+      const isActive = index === this.props.activePlan ? '-active' : '';
       return (
         <div
           className={`addBox${isActive}`}
@@ -63,9 +63,9 @@ class AddPlanBar extends Component {
 
           <AddTopic> {element.planName} </AddTopic>
         </div>
-      )
-    })
-    return lists
+      );
+    });
+    return lists;
   }
 
   render() {
@@ -73,12 +73,12 @@ class AddPlanBar extends Component {
       <div>
         {this.renderList(this.props.plan)}
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps)(AddPlanBar)
+export default connect(mapStateToProps)(AddPlanBar);

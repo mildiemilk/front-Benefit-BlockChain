@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import { Divider } from 'semantic-ui-react'
-import styled from 'styled-components'
-import EmpolyeeChart from '../PieChart/empolyee-chart'
-import PlanChart from '../PieChart/plan-chart'
-import { Head, Box, ListTime } from './styled'
+import React, { Component } from 'react';
+import { Divider } from 'semantic-ui-react';
+import styled from 'styled-components';
+import EmpolyeeChart from '../PieChart/empolyee-chart';
+import PlanChart from '../PieChart/plan-chart';
+import { Head, Box, ListTime } from './styled';
 
 const DividerStyle = styled(Divider)`
     &&&{
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       border: solid 1px rgba(151, 151, 151, 0.22);
     }
-`
+`;
 class NavSelectRealTime extends Component {
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
   render() {
     return (
@@ -41,8 +41,8 @@ class NavSelectRealTime extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default NavSelectRealTime
+export default NavSelectRealTime;

@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { Modal, Icon } from 'semantic-ui-react'
-import { Edit } from './styled'
-import ChooseInsurer from '../../ChooseInsurer'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Modal, Icon } from 'semantic-ui-react';
+import { Edit } from './styled';
+import ChooseInsurer from '../../ChooseInsurer';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -12,7 +10,7 @@ const ModalContents = styled(Modal.Content)`
     margin: 0 auto;
     padding-left: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -20,12 +18,12 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     box-shadow: none;
   }
-`
+`;
 
 class ModalInsurer extends Component {
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -56,15 +54,8 @@ class ModalInsurer extends Component {
         </ModalContents>
 
       </Modals>
-    )
+    );
   }
 }
 
-ModalInsurer.propTypes = {
-  handlePost: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-}
-
-const mapStateToProps = () => ({})
-
-export default connect(mapStateToProps, null)(ModalInsurer)
+export default ModalInsurer;

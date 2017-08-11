@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Image, Accordion } from 'semantic-ui-react'
+import styled from 'styled-components';
+import { Image, Accordion } from 'semantic-ui-react';
 
 export const Detail = styled.div`
     border-radius: 5px;
@@ -10,13 +10,13 @@ export const Detail = styled.div`
     padding-top: 25px;
     height: 850px;
 
-`
+`;
 
 export const Head = styled.p`
     font-size: 30px;
     letter-spacing: 0.4px;
     font-weight: bold;
-`
+`;
 export const TextInbox = styled.div`
     position: relative;
     left:65px;
@@ -25,7 +25,7 @@ export const TextInbox = styled.div`
     font-size: 15px;
     letter-spacing: 0.2px;
     color: #323028;
-`
+`;
 export const Inboxtext = styled.div`
     font-size: 20px;
     color: #ffffff;
@@ -33,7 +33,7 @@ export const Inboxtext = styled.div`
     padding-left: 5%;
     padding-top: 4%;
     text-align: center;
-`
+`;
 export const Inner = styled.div`
     display: inline-block;
     width: 100%;
@@ -44,13 +44,13 @@ export const Inner = styled.div`
     box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
     border: solid 1px #cecece;
     margin-right: 10px;
-`
+`;
 export const InnerHead = styled.div`
     width: 100%;
     height: 60px;
     border-radius: 5px 5px 0px 0px;
     background-color: #5c6879;
-`
+`;
 
 export const InnerRight = styled.div`
 
@@ -62,14 +62,14 @@ export const InnerRight = styled.div`
     box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
     border: solid 1px #cecece;
 
-`
+`;
 export const InnerHead2 = styled.div`
 
       width: 100%;
       height: 60px;
       border-radius: 5px 5px 0px 0px;
       background-color: #3a7bd5;
-`
+`;
 export const ManagePlan = styled.div`
   width: 95%;
   height: 60px;
@@ -79,7 +79,7 @@ export const ManagePlan = styled.div`
   border: solid 1px #e6e6e6;
   padding: 8px;
   margin: 10px;
-`
+`;
 export const Submit = styled.button`
     position: relative;
     left:60%;
@@ -92,17 +92,17 @@ export const Submit = styled.button`
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     text-align: center;
     border-style: solid;
-`
+`;
 export const AccordionStyle = styled(Accordion)`
   &&&{
     background-color: #f3f3f3;
   }
-`
+`;
 export const AccordionStyle2 = styled(Accordion)`
   &&&{
     background: #c0ccda;
   }
-`
+`;
 export const ImageIcon1 = styled(Image)`
   &&&{
      position: relative;
@@ -111,14 +111,14 @@ export const ImageIcon1 = styled(Image)`
      width: 25px;
      height: 25px;
   }
-`
+`;
 export const ImageIcon2 = styled(Image)`
   &&&{
 
      width: 30px;
 
   }
-`
+`;
 export const EmptyPlan = styled.div`
   margin: 8px;
   width: 97%;
@@ -128,7 +128,7 @@ export const EmptyPlan = styled.div`
   border-color:#9b9b9b;
   padding:10px;
 
-`
+`;
 export const EmptyPlanText = styled.div`
     text-align: center;
     top:auto;
@@ -136,7 +136,7 @@ export const EmptyPlanText = styled.div`
     font-size: 15px;
     letter-spacing: 0.2px;
     color: #9b9b9b;
-`
+`;
 
 //----------------------------------------------------------------------------------------------
 
@@ -148,12 +148,12 @@ export const Header = styled.span`
   text-align: left;
   color: #323028;
   font-weight: bold;
-`
+`;
 
 export const HeaderSpace = styled.div`
   margin-top: 15px;
   margin-bottom: 30px;
-`
+`;
 
 export const Rec = styled.div`
   border-radius: 5px;
@@ -161,7 +161,7 @@ export const Rec = styled.div`
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   padding-top: 3%;
   padding-bottom: 5%;
-`
+`;
 
 export const Blog = styled.div`
   width: 100%;
@@ -173,7 +173,7 @@ export const Blog = styled.div`
   background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   border: solid 1px #979797;
-`
+`;
 
 export const Blogs = styled.div`
   width: 100%;
@@ -184,7 +184,7 @@ export const Blogs = styled.div`
   background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   padding: 20px;
-`
+`;
 
 export const PlanName = styled.span`
   width: 149px;
@@ -193,7 +193,7 @@ export const PlanName = styled.span`
   letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
-`
+`;
 
 export const NameInput = styled.input`
   width: 77%;
@@ -204,7 +204,7 @@ export const NameInput = styled.input`
   border: solid 1px #dddddd;
   padding: 1%;
   margin-left: 1%;
-`
+`;
 
 export const BlogImg = styled.img`
   width: 70px;
@@ -213,7 +213,7 @@ export const BlogImg = styled.img`
   position: absolute;
   left: 62%;
   margin-top: 65px;
-`
+`;
 
 export const BlogContent = styled.span`
   width: 200px;
@@ -226,7 +226,7 @@ export const BlogContent = styled.span`
   position: absolute;
   margin-left: 220px;
   margin-top: 10%;
-`
+`;
 
 export const AddPlan = styled.div`
   width: 110%;
@@ -240,7 +240,7 @@ export const AddPlan = styled.div`
   text-align: center;
   padding-top: 12px;
   cursor: pointer;
-`
+`;
 
 export const AddContent = styled.span`
   width: 145px;
@@ -250,7 +250,7 @@ export const AddContent = styled.span`
   letter-spacing: 0.2px;
   text-align: left;
   color: #9b9b9b;
-`
+`;
 
 export const AddTopic = styled.span`
   width: 145px;
@@ -259,7 +259,7 @@ export const AddTopic = styled.span`
   font-weight: bold;
   letter-spacing: 0.3px;
   text-align: center;
-`
+`;
 
 export const BackButton = styled.button`
   width: 164px;
@@ -270,7 +270,7 @@ export const BackButton = styled.button`
   border-color: #f7555f;
   border-style: solid;
   margin-top: 25px;
-`
+`;
 
 export const NextButton = styled.button`
   width: 164px;
@@ -281,7 +281,7 @@ export const NextButton = styled.button`
   border-color: #46b3b8;
   border-style: solid;
   margin-top: 25px;
-`
+`;
 
 export const SaveButton = styled.button`
   width: 164px;
@@ -293,14 +293,14 @@ export const SaveButton = styled.button`
   border-style: solid;
   margin-top: 3%;
   margin-left: 72%;
-`
+`;
 
 export const Line = styled.hr`
   width: 100%;
   height: 2px;
   border: solid 1px #c3c3c3;
   margin: 3% 0;
-`
+`;
 
 export const PlanContent = styled.p`
   width: 190px;
@@ -308,7 +308,7 @@ export const PlanContent = styled.p`
   letter-spacing: 0.2px;
   text-align: left;
   color: #4a4a4a;
-`
+`;
 
 export const PlanBox = styled.div`
   width: 100%;
@@ -327,14 +327,14 @@ export const PlanBox = styled.div`
     background: #3a7bd5;
     position: absolute;
     }
-`
+`;
 export const PlanImg = styled.img`
   width: 50px;
   height: 50px;
   position: absolute;
   margin-left: 4.5%;
   margin-top: 2.1%;
-`
+`;
 
 export const PlanTopic = styled.span`
   width: 250px;
@@ -346,7 +346,7 @@ export const PlanTopic = styled.span`
   position: absolute;
   margin-left: 14%;
   margin-top: 4.5%;
-`
+`;
 
 export const ToggleBox = styled.div`
   width: 54px;
@@ -357,7 +357,7 @@ export const ToggleBox = styled.div`
   margin-top: 18px;
   padding-top: 8px;
   padding-left: 6px;
-`
+`;
 
 export const ModalHeader = styled.p`
   font-size: 16px;
@@ -365,7 +365,7 @@ export const ModalHeader = styled.p`
   letter-spacing: 0.4px;
   text-align: center;
   color: #323028;
-`
+`;
 
 export const ModalTopic = styled.p`
   font-size: 14px;
@@ -373,7 +373,7 @@ export const ModalTopic = styled.p`
   color: #323028;;
   letter-spacing: 0.3px;
   text-align: left;
-`
+`;
 
 export const ModalContent = styled.p`
   width: 300px;
@@ -383,7 +383,7 @@ export const ModalContent = styled.p`
   letter-spacing: 0.3px;
   text-align: left;
   color: #323028;
-`
+`;
 
 export const EditButton = styled.button`
     width: 40%;
@@ -395,7 +395,7 @@ export const EditButton = styled.button`
     border-color: #f7555f;
     border-style: solid;
     color: #ffffff;
-`
+`;
 
 export const PostButton = styled.button`
     width: 40%;
@@ -408,7 +408,7 @@ export const PostButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 2%;
-`
+`;
 
 export const PostMainButton = styled.button`
     width: 174px;
@@ -420,20 +420,20 @@ export const PostMainButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 82%;
-`
+`;
 
 export const LineModal = styled.hr`
   width: 100%;
   height: 1px;
   color: #979797;
-`
+`;
 
 export const TableHeader = styled.p`
   font-size: 14px;
   font-weight: bold;
   text-align: center;
   color: #323028;
-`
+`;
 
 export const LifeTopic = styled.span`
   width: 249px;
@@ -447,14 +447,14 @@ export const LifeTopic = styled.span`
   position: absolute;
   margin-left: -30%;
   margin-top: 2.5%;
-`
+`;
 
 export const TextInBoxs = styled.span`
   font-size: 14px;
   font-weight: 500;
   text-align: center;
   color: #323028;
-`
+`;
 
 export const OPDTopic = styled.span`
   width: 100%px;
@@ -468,7 +468,7 @@ export const OPDTopic = styled.span`
   position: absolute;
   margin-left: -30%;
   margin-top: 1.2%;
-`
+`;
 
 export const IPDTopic = styled.span`
   width: 100%;
@@ -479,7 +479,7 @@ export const IPDTopic = styled.span`
   letter-spacing: 0.2px;
   text-align: left;
   color: #4a4a4a;
-`
+`;
 
 export const IPDDetail = styled.span`
   width: 344px;
@@ -491,7 +491,7 @@ export const IPDDetail = styled.span`
   color: #323028;
   position: relative;
   left: 4%;
-`
+`;
 
 export const HiddenBox = styled.div`
   color: #323028;
@@ -500,7 +500,7 @@ export const HiddenBox = styled.div`
   border-bottom: solid 1px #979797;
   border-right: solid 1px #979797;
   border-left: solid 1px #979797;
-`
+`;
 
 export const HiddenContent = styled.span`
   width: 600px;
@@ -510,7 +510,7 @@ export const HiddenContent = styled.span`
   position: absolute;
   margin-top: 15px;
   margin-left: 1%;
-`
+`;
 
 export const Img = styled.img`
   width: 50px;
@@ -519,7 +519,7 @@ export const Img = styled.img`
   margin-left: 2%;
   margin-right: 73%;
   margin-top: 2%;
-`
+`;
 
 export const Sub = styled.span`
   width: 100%;
@@ -529,4 +529,4 @@ export const Sub = styled.span`
   letter-spacing: 0px;
   text-align: left;
   color: #323028;
-`
+`;

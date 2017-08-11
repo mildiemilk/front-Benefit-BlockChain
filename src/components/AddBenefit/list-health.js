@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Icon } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import { DetailList, ButtonDelete, TextList } from './styled'
+import React, { Component } from 'react';
+import { Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { DetailList, ButtonDelete, TextList } from './styled';
 
 class ListHealth extends Component {
   static propTypes = {
@@ -10,8 +10,8 @@ class ListHealth extends Component {
   }
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   render() {
@@ -27,8 +27,8 @@ class ListHealth extends Component {
         ))}
 
       </DetailList>
-    )
+    );
   }
 }
 
-export default ListHealth
+export default ListHealth;

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import NotApprove from '../../image/not-approve-x.png'
+import React, { Component } from 'react';
+import NotApprove from '../../image/not-approve-x.png';
 
 class NotApproveClaimStatus extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -39,8 +39,8 @@ class NotApproveClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default NotApproveClaimStatus
+export default NotApproveClaimStatus;

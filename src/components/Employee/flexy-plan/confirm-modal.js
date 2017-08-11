@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import { Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import '../../../styles/submit-plan.scss';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -11,7 +11,7 @@ const ModalContents = styled(Modal.Content)`
     padding-left: 5%;
     text-align: center;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -19,7 +19,7 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     box-shadow: none;
   }
-`
+`;
 
 class ConfirmModal extends Component {
   static propTypes = {
@@ -27,19 +27,19 @@ class ConfirmModal extends Component {
     handleCloseModal: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       closeOnEscape: false,
       closeOnRootNodeClick: true,
-    }
+    };
   }
 
   handleSubmit = () => {
-    this.props.handleCloseModal()
+    this.props.handleCloseModal();
   }
 
   handleClose = () => {
-    this.props.handleCloseModal()
+    this.props.handleCloseModal();
   }
 
   render() {
@@ -62,8 +62,8 @@ class ConfirmModal extends Component {
           </button>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default ConfirmModal
+export default ConfirmModal;

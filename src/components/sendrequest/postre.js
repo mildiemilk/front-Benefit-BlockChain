@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import moment from 'moment'
-import { Card, Image, Checkbox } from 'semantic-ui-react'
-import { PostreText, TopSpace } from './styled'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import { Card, Image, Checkbox } from 'semantic-ui-react';
+import { PostreText, TopSpace } from './styled';
 
 const CardHeader = styled(Card)`
   &&&{
@@ -13,19 +13,19 @@ const CardHeader = styled(Card)`
     font-size: 20px;
     box-shadow: 0 0 0 0;
   }
-`
+`;
 
 const Checkboxs = styled(Checkbox)`
   &&&{
     margin-bottom: 5px;
   }
-`
+`;
 
 const CardDescription = styled(Card.Description)`
   &&&{
     max-width: 100%;
   }
-`
+`;
 
 class Postre extends Component {
   static propTypes = {
@@ -33,13 +33,13 @@ class Postre extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
     const { numberOfEmployee, typeOfInsurance, date, IPD, OPD, dental,
-            other, otherDes, life } = this.props.data
+            other, otherDes, life } = this.props.data;
     return (
       <div>
         <Card.Group>
@@ -159,12 +159,12 @@ class Postre extends Component {
           </Card>
         </Card.Group>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   data: state.fillsimpleReducer,
-})
+});
 
-export default connect(mapStateToProps, null)(Postre)
+export default connect(mapStateToProps, null)(Postre);

@@ -1,4 +1,4 @@
-import { APIRequest } from '.'
+import { APIRequest } from '.';
 import {
   chooseInsurerSuccess,
   chooseInsurerFailure,
@@ -10,13 +10,13 @@ import {
   getAllInsurerFailure,
   getSelectInsurerSuccess,
   getSelectInsurerFailure,
-} from '../reducers/choose-insurer'
+} from '../reducers/choose-insurer';
 
-const CHOOSEINSURER_URI = '/api/chooseInsurer'
-const SETTIMEOUT_URI = '/api/setTimeout'
-const GETALLINSURER_URI = '/api/getAllInsurer'
-const GETSELECTINSURER_URI = '/api/getSelectInsurer'
-const GETTIMEOUT_URI = '/api/getTimeout'
+const CHOOSEINSURER_URI = '/api/chooseInsurer';
+const SETTIMEOUT_URI = '/api/setTimeout';
+const GETALLINSURER_URI = '/api/getAllInsurer';
+const GETSELECTINSURER_URI = '/api/getSelectInsurer';
+const GETTIMEOUT_URI = '/api/getTimeout';
 
 export function chooseInsurer(insurers) {
   return dispatch => {
@@ -24,16 +24,16 @@ export function chooseInsurer(insurers) {
       method: 'put',
       url: CHOOSEINSURER_URI,
       data: { insurers },
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(chooseInsurerSuccess(res.data))
+        dispatch(chooseInsurerSuccess(res.data));
       })
       .catch(err => {
-        dispatch(chooseInsurerFailure(err.response.data))
-      })
-  }
+        dispatch(chooseInsurerFailure(err.response.data));
+      });
+  };
 }
 
 export function getSelectInsurer() {
@@ -41,15 +41,15 @@ export function getSelectInsurer() {
     const options = {
       method: 'get',
       url: GETSELECTINSURER_URI,
-    }
+    };
     APIRequest(options, true)
       .then(res => {
-        dispatch(getSelectInsurerSuccess(res.data))
+        dispatch(getSelectInsurerSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getSelectInsurerFailure(err.response.data))
-      })
-  }
+        dispatch(getSelectInsurerFailure(err.response.data));
+      });
+  };
 }
 
 export function getAllInsurer() {
@@ -57,16 +57,16 @@ export function getAllInsurer() {
     const options = {
       method: 'get',
       url: GETALLINSURER_URI,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(getAllInsurerSuccess(res.data))
+        dispatch(getAllInsurerSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getAllInsurerFailure(err.response.data))
-      })
-  }
+        dispatch(getAllInsurerFailure(err.response.data));
+      });
+  };
 }
 
 export function setTimeOut(timeout) {
@@ -75,16 +75,16 @@ export function setTimeOut(timeout) {
       method: 'put',
       url: SETTIMEOUT_URI,
       data: { timeout },
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(setTimeOutSuccess(res.data))
+        dispatch(setTimeOutSuccess(res.data));
       })
       .catch(err => {
-        dispatch(setTimeOutFailure(err.response.data))
-      })
-  }
+        dispatch(setTimeOutFailure(err.response.data));
+      });
+  };
 }
 
 export function getTimeout() {
@@ -92,13 +92,13 @@ export function getTimeout() {
     const options = {
       method: 'get',
       url: GETTIMEOUT_URI,
-    }
+    };
     APIRequest(options, true)
       .then(res => {
-        dispatch(getTimeoutSuccess(res.data))
+        dispatch(getTimeoutSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getTimeoutFailure(err.response.data))
-      })
-  }
+        dispatch(getTimeoutFailure(err.response.data));
+      });
+  };
 }

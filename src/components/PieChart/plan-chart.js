@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { RadialChart } from 'react-vis'
-import '../../styles/chart-box.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { RadialChart } from 'react-vis';
+import '../../styles/chart-box.scss';
 
-const graphData = []
+const graphData = [];
 const myPlan = [
   { group: '1', number: 6 },
   { group: '2', number: 17 },
   { group: '3', number: 25 },
   { group: '4', number: 30 },
   { group: '5', number: 40 },
-]
-const graphColor = ['#cd3b54', '#528240', '#12939A', '#19CDD7', '#223F9A']
+];
+const graphColor = ['#cd3b54', '#528240', '#12939A', '#19CDD7', '#223F9A'];
 
 class Planchart extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   renderList = list => {
@@ -24,7 +24,7 @@ class Planchart extends Component {
       graphData.push({
         angle: element.number,
         style: { stroke: graphColor[index], fill: graphColor[index] },
-      })
+      });
       return (
         <div className="rv-discrete-color-legend-item vertical">
           <span
@@ -35,9 +35,9 @@ class Planchart extends Component {
             แผน {element.group} {element.number} คน
           </span>
         </div>
-      )
-    })
-    return lists
+      );
+    });
+    return lists;
   }
 
   render() {
@@ -85,8 +85,8 @@ class Planchart extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(Planchart)
+export default connect(null, null)(Planchart);

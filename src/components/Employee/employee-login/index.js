@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Form } from 'semantic-ui-react'
-import { authenticate } from '../../../api/auth'
-import '../../../styles/employee-style/login-verify.scss'
-import gift from '../../image/gigift-mobile.png'
-import emailIcon from '../../image/icons-8-message.png'
-import keyIcon from '../../image/icons-8-key-copy.png'
-import Header from '../header'
-import Footer from '../footer'
-import { LogInButton } from './styled'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Form } from 'semantic-ui-react';
+import { authenticate } from '../../../api/auth';
+import '../../../styles/employee-style/login-verify.scss';
+import gift from '../../image/gigift-mobile.png';
+import emailIcon from '../../image/icons-8-message.png';
+import keyIcon from '../../image/icons-8-key-copy.png';
+import Header from '../header';
+import Footer from '../footer';
+import { LogInButton } from './styled';
 
 class EmployeeLogin extends Component {
   static propTypes = {
@@ -18,24 +18,24 @@ class EmployeeLogin extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: '',
-    }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({
       [name]: value,
-    })
+    });
   }
 
   handleSubmit = e => {
-    e.preventDefault()
-    const { email, password } = this.state
-    this.props.authenticate(email, password)
+    e.preventDefault();
+    const { email, password } = this.state;
+    this.props.authenticate(email, password);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
@@ -99,19 +99,19 @@ class EmployeeLogin extends Component {
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
 EmployeeLogin.propTypes = {
   authenticate: PropTypes.func.isRequired,
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   authenticate: (email, password) => dispatch(authenticate(email, password)),
-})
+});
 const mapStateToProps = state => ({
   data: state.authReducer,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLogin)
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeLogin);

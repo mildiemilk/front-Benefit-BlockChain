@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import moment from 'moment'
-import { Icon, Checkbox, Popup } from 'semantic-ui-react'
-import ModalView from './modal-view'
-import { copyPlan, deletePlan } from '../../api/set-plan'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import { Icon, Checkbox, Popup } from 'semantic-ui-react';
+import ModalView from './modal-view';
+import { copyPlan, deletePlan } from '../../api/set-plan';
 
 class ViewPlanBox extends Component {
   static propTypes = {
@@ -14,16 +14,16 @@ class ViewPlanBox extends Component {
   }
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   handleCopy = planId => {
-    this.props.copyPlan(planId)
+    this.props.copyPlan(planId);
   }
 
   handleDelete = planId => {
-    this.props.deletePlan(planId)
+    this.props.deletePlan(planId);
   }
 
   renderList = list => {
@@ -67,8 +67,8 @@ class ViewPlanBox extends Component {
           />
         </td>
       </tr>
-    ))
-    return plans
+    ));
+    return plans;
   }
 
   render() {
@@ -76,15 +76,15 @@ class ViewPlanBox extends Component {
       <table>
         {this.renderList(this.props.planList)}
       </table>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   deletePlan: planId => dispatch(deletePlan(planId)),
   copyPlan: planId => dispatch(copyPlan(planId)),
-})
+});
 
-const mapStateToProps = () => ({})
+const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox);

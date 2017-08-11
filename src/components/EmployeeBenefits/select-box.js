@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Dropdown } from 'semantic-ui-react'
-import '../../styles/employee-benefits.scss'
-import SelectOptionPlan from './select-option-plan'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Dropdown } from 'semantic-ui-react';
+import '../../styles/employee-benefits.scss';
+import SelectOptionPlan from './select-option-plan';
 
 const planOptions = [
   { text: 'Fixed', value: 'Fixed' },
   { text: 'Flex', value: 'Flex' },
-]
+];
 
 class SelectBox extends Component {
   static propTypes = {
@@ -24,8 +24,8 @@ class SelectBox extends Component {
     handleSubmit: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -65,10 +65,10 @@ class SelectBox extends Component {
             : null}
         </div>
       </div>
-    )
+    );
   }
 }
 
-SelectBox.propTypes = {}
+SelectBox.propTypes = {};
 
-export default SelectBox
+export default SelectBox;

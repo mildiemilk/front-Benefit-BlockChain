@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const ModalHeader = styled.p`
   font-size: 18px;
   letter-spacing: 0.4px;
   text-align: center;
   color: #000000;
-`
+`;
 
 export const ModalContent = styled.p`
 font-size: 14px;
@@ -14,7 +14,7 @@ letter-spacing: 0.3px;
 text-align: left;
 color: #323028;
 padding-left: 5%;
-`
+`;
 
 export const ButtonNew = styled.button`
     width: 174px;
@@ -28,7 +28,7 @@ export const ButtonNew = styled.button`
     position: absolute;
     margin-top: 1.5%;
     margin-left: 43%;
-`
+`;
 
 export const CancleButton = styled.button`
     width: 200px;
@@ -39,7 +39,7 @@ export const CancleButton = styled.button`
     border-color: #f7555f;
     border-style: solid;
     color: #ffffff;
-`
+`;
 
 export const ConfirmButton = styled.button`
     width: 200px;
@@ -51,7 +51,7 @@ export const ConfirmButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 1%;
-`
+`;
 export const Edit = styled.div`
     color: #9b9b9b;
     display: inline-block;
@@ -60,4 +60,4 @@ export const Edit = styled.div`
     padding-bottom: 15px;
     cursor: pointer;
 
-`
+`;

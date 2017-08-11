@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import moment from 'moment'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Text, TextIn, IconPointer, ButtonStatusCancle } from './styled'
-import ModalSelectInsurer from './ModalSelectInsurer'
-import { chooseFinalInsurer } from '../../api/bidding'
+import React, { Component } from 'react';
+import moment from 'moment';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Text, TextIn, IconPointer, ButtonStatusCancle } from './styled';
+import ModalSelectInsurer from './ModalSelectInsurer';
+import { chooseFinalInsurer } from '../../api/bidding';
 
 class Box extends Component {
   static propTypes = {
@@ -14,16 +14,16 @@ class Box extends Component {
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       passwordToConfirm: '',
-    }
+    };
   }
 
   getStatusModule = insurerName => {
-    const status = 'Join'
-    let statusModule = ''
-    const { end } = this.props
+    const status = 'Join';
+    let statusModule = '';
+    const { end } = this.props;
     if (end.end === 'Timeout') {
       if (status === 'Join') {
         statusModule = (
@@ -32,29 +32,29 @@ class Box extends Component {
             handleChange={this.handleChange}
             insurerName={insurerName}
           />
-        )
+        );
       } else {
         statusModule = (
           <ButtonStatusCancle>ไม่เข้าร่วมประมูล</ButtonStatusCancle>
-        )
+        );
       }
     } else {
       if (status === 'Join') {
-        statusModule = <Text style={{ color: '#2ac294' }}>ร่วมประมูล</Text>
+        statusModule = <Text style={{ color: '#2ac294' }}>ร่วมประมูล</Text>;
       } else if (status === 'Cancel') {
-        statusModule = <Text style={{ color: '#f1535d' }}>ไม่ร่วมประมูล</Text>
+        statusModule = <Text style={{ color: '#f1535d' }}>ไม่ร่วมประมูล</Text>;
       } else {
-        statusModule = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>
+        statusModule = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>;
       }
     }
-    return statusModule
+    return statusModule;
   }
 
   handlePost = e => {
-    e.preventDefault()
-    const { passwordToConfirm } = this.state
-    const insurerName = e.target.value
-    this.props.chooseFinalInsurer(passwordToConfirm, insurerName)
+    e.preventDefault();
+    const { passwordToConfirm } = this.state;
+    const insurerName = e.target.value;
+    this.props.chooseFinalInsurer(passwordToConfirm, insurerName);
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -62,21 +62,21 @@ class Box extends Component {
   boxStyling = (status, end) => {
     if (end === 'Timeout') {
       if (status === 'Join') {
-        return 'boxes'
+        return 'boxes';
       }
-      return 'boxCancelTimeout'
+      return 'boxCancelTimeout';
     }
     if (status === 'Join') {
-      return 'boxes'
+      return 'boxes';
     } else if (status === 'Cancel') {
-      return 'boxCancel'
+      return 'boxCancel';
     }
-    return 'wait'
+    return 'wait';
   }
 
   renderList = bids => {
-    const status = 'Join'
-    const { end } = this.props
+    const status = 'Join';
+    const { end } = this.props;
     return bids.map((bid, index) => (
       <div className="boxDetail">
         <div className={this.boxStyling(status, end.end)}>
@@ -116,7 +116,7 @@ class Box extends Component {
           </div>
         </div>
       </div>
-    ))
+    ));
   }
 
   render() {
@@ -153,17 +153,17 @@ class Box extends Component {
         </div>
         {this.renderList(this.props.list)}
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   end: state.endTimeout,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   chooseFinalInsurer: (data, insurerName) =>
     dispatch(chooseFinalInsurer(data, insurerName)),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Box)
+export default connect(mapStateToProps, mapDispatchToProps)(Box);

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Image, Icon } from 'semantic-ui-react'
-import icon1 from '../image/icons-8-treatment-plan.png'
-import { ManagePlan } from './styled'
-import ModalPlan from './modal-plan'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Image, Icon } from 'semantic-ui-react';
+import icon1 from '../image/icons-8-treatment-plan.png';
+import { ManagePlan } from './styled';
+import ModalPlan from './modal-plan';
 
 class PlanTemplate extends Component {
   static propTypes = {
@@ -18,12 +18,12 @@ class PlanTemplate extends Component {
     index: PropTypes.number.isRequired,
   }
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   handleClick() {
-    this.props.onClick()
+    this.props.onClick();
   }
 
   RenderTable = (colorPlan, id) => {
@@ -42,12 +42,12 @@ class PlanTemplate extends Component {
           </tr>
         </table>
       </p>
-    )
-    return RenderTables
+    );
+    return RenderTables;
   }
 
   renderColumnIsCloseTap = colorPlan => {
-    let columnIsCloseTap
+    let columnIsCloseTap;
     if (this.props.closetap) {
       columnIsCloseTap = (
         <td style={{ width: '30px', paddingLeft: '40px' }}>
@@ -62,7 +62,7 @@ class PlanTemplate extends Component {
               )}
           />
         </td>
-      )
+      );
     } else {
       columnIsCloseTap = (
         <td style={{ width: '18%' }}>
@@ -73,14 +73,14 @@ class PlanTemplate extends Component {
             <Icon name="chevron right" size="big" style={{ left: '20px' }} />
           </td>
         </td>
-      )
+      );
     }
-    return columnIsCloseTap
+    return columnIsCloseTap;
   }
 
   render() {
-    const { id, price, colorPlan } = this.props
-    let component
+    const { id, price, colorPlan } = this.props;
+    let component;
     if (this.props.closetap) {
       if (this.props.colorPlan === 1) {
         component = (
@@ -89,7 +89,7 @@ class PlanTemplate extends Component {
               {this.RenderTable(colorPlan, id)}
             </ManagePlan>
           </div>
-        )
+        );
       } else if (this.props.colorPlan === 2) {
         component = (
           <div>
@@ -97,7 +97,7 @@ class PlanTemplate extends Component {
               {this.RenderTable(colorPlan, id)}
             </ManagePlan>
           </div>
-        )
+        );
       }
     } else {
       if (this.props.colorPlan === 1) {
@@ -148,7 +148,7 @@ class PlanTemplate extends Component {
               </tr>
             </table>
           </ManagePlan>
-        )
+        );
       } else if (this.props.colorPlan === 2) {
         component = (
           <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
@@ -197,11 +197,11 @@ class PlanTemplate extends Component {
               </tr>
             </table>
           </ManagePlan>
-        )
+        );
       }
     }
-    return component
+    return component;
   }
 }
 
-export default PlanTemplate
+export default PlanTemplate;

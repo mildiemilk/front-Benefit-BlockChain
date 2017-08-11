@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { Icon } from 'semantic-ui-react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { IPDTopic, Sub, IPDDetail } from './styled'
+import React, { Component } from 'react';
+import { Icon } from 'semantic-ui-react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { IPDTopic, Sub, IPDDetail } from './styled';
 
 const Icons = styled(Icon) `
   &&&{
     position: absolute;
     left: 88%;
   }
-`
+`;
 
 export default class IPDDropBox extends Component {
   static propTypes = {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       lifeBox: false,
       dentalBox: false,
@@ -24,38 +24,38 @@ export default class IPDDropBox extends Component {
       IPDBox: false,
       firstIPDBox: false,
       fourthIPDBox: false,
-    }
+    };
   }
 
   handleToggleFirstIPD = () => {
     if (this.state.firstIPDBox) {
-      this.setState({ firstIPDBox: false })
+      this.setState({ firstIPDBox: false });
     } else {
-      this.setState({ firstIPDBox: true })
+      this.setState({ firstIPDBox: true });
     }
   }
 
   handleToggleFourthIPD = () => {
     if (this.state.fourthIPDBox) {
-      this.setState({ fourthIPDBox: false })
+      this.setState({ fourthIPDBox: false });
     } else {
-      this.setState({ fourthIPDBox: true })
+      this.setState({ fourthIPDBox: true });
     }
   }
 
   handleToggleOPD = () => {
     if (this.state.OPDBox) {
-      this.setState({ OPDBox: false })
+      this.setState({ OPDBox: false });
     } else {
-      this.setState({ OPDBox: true })
+      this.setState({ OPDBox: true });
     }
   }
 
   handleToggleIPD = () => {
     if (this.state.IPDBox) {
-      this.setState({ IPDBox: false })
+      this.setState({ IPDBox: false });
     } else {
-      this.setState({ IPDBox: true })
+      this.setState({ IPDBox: true });
     }
   }
 
@@ -426,6 +426,6 @@ export default class IPDDropBox extends Component {
         </div>
 
       </div>
-    )
+    );
   }
 }

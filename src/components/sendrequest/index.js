@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import moment from 'moment'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import NavInsure from '../NavInsure'
-import ModalInsurer from './ModalInsurer'
-import ModalPlanBox from './ModalPlanBox'
-import Insurer from './insurer'
-import '../../styles/send-request.scss'
-import { getSimpleRQ } from '../../api/simple-requirement'
-import { getTimeout } from '../../api/choose-insurer'
-import Postre from './postre'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import NavInsure from '../NavInsure';
+import ModalInsurer from './ModalInsurer';
+import ModalPlanBox from './ModalPlanBox';
+import Insurer from './insurer';
+import '../../styles/send-request.scss';
+import { getSimpleRQ } from '../../api/simple-requirement';
+import { getTimeout } from '../../api/choose-insurer';
+import Postre from './postre';
 import {
   Detail,
   Head,
@@ -19,35 +19,36 @@ import {
   BoxIndiv,
   Time,
   InsurerDiv,
-} from './styled'
+} from './styled';
 
 
 class Sendrequest extends Component {
   static propTypes = {
     getSimpleReq: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
-    timeout: PropTypes.string.isRequired,
+    timeout: PropTypes.shape.isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 6,
       position: 'relative-box',
-    }
+      // timeout: null,
+    };
   }
   componentDidMount() {
-    this.props.getSimpleReq()
-    this.props.getTimeout()
+    this.props.getSimpleReq();
+    this.props.getTimeout();
   }
   changePositionPage = () => {
     if (this.state.position === 'relative-box') {
-      this.setState({ position: 'fixed-box' })
+      this.setState({ position: 'fixed-box' });
     } else {
-      this.setState({ position: 'relative-box' })
+      this.setState({ position: 'relative-box' });
     }
   }
   render() {
-    const { timeout } = this.props
+    const { timeout } = this.props.timeout;
     return (
       <div className={this.state.position}>
         <NavInsure step={this.state.step} />
@@ -88,16 +89,16 @@ class Sendrequest extends Component {
         </Detail>
         <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
       </div>
-    )
+    );
   }
 }
 const mapDispatchToProps = dispatch => ({
   getSimpleReq: () => dispatch(getSimpleRQ()),
   getTimeout: () => dispatch(getTimeout()),
-})
+});
 const mapStateToProps = state => ({
-  timeout: state.getTimeout,
+  timeout: state.setTimeOut,
   simpleReq: state.fillsimpleReducer,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sendrequest)
+export default connect(mapStateToProps, mapDispatchToProps)(Sendrequest);

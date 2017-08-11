@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Icon, Item } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Icon, Item } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Links = styled(Link)`
   color: #6c6c6c;
-`
+`;
 export default class Sidebar extends Component {
   state = { activeItem: 'home' }
 
@@ -43,6 +43,6 @@ export default class Sidebar extends Component {
           </Item>
         </Item.Group>
       </aside>
-    )
+    );
   }
 }

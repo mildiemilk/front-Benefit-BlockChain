@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Card, Comment, Button, Form } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Card, Comment, Button, Form } from 'semantic-ui-react';
 
 export default class ChatBox extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -62,6 +62,6 @@ export default class ChatBox extends Component {
           </Form>
         </div>
       </Comment.Group>
-    )
+    );
   }
 }

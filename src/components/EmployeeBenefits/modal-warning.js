@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -9,7 +9,7 @@ const ModalContents = styled(Modal.Content)`
     position: relative;
     margin: 0 auto;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -18,7 +18,7 @@ const Modals = styled(Modal)`
     width: 300px;
     text-align: center;
   }
-`
+`;
 
 class ModalWarning extends Component {
   static propTypes = {
@@ -27,16 +27,16 @@ class ModalWarning extends Component {
     warningMessage: PropTypes.string.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       modalOpen: false,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
-    }
+    };
   }
 
   handleClose = () => {
-    this.props.closeWarningModal()
+    this.props.closeWarningModal();
   }
 
   render() {
@@ -56,10 +56,10 @@ class ModalWarning extends Component {
           <p>{this.props.warningMessage}</p>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-ModalWarning.propTypes = {}
+ModalWarning.propTypes = {};
 
-export default ModalWarning
+export default ModalWarning;

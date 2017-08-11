@@ -1,36 +1,36 @@
-import { APIRequest } from '.'
+import { APIRequest } from '.';
 import {
   getBiddingSuccess,
   getBiddingFailure,
   EndSuccess,
   selectFinalInsurerFailure,
   selectFinalInsurerSuccess,
-} from '../reducers/bidding'
+} from '../reducers/bidding';
 
-const BIDDING_URI = '/api/getbidding'
-const CHOOSEFINALINSURER_URI = '/api/choosefinalinsurer'
+const BIDDING_URI = '/api/getbidding';
+const CHOOSEFINALINSURER_URI = '/api/choosefinalinsurer';
 
 export function bidding() {
   return dispatch => {
     const options = {
       method: 'get',
       url: BIDDING_URI,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(getBiddingSuccess(res.data))
+        dispatch(getBiddingSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getBiddingFailure(err.response.data))
-      })
-  }
+        dispatch(getBiddingFailure(err.response.data));
+      });
+  };
 }
 
 export function endTimeout(end) {
   return dispatch => {
-    dispatch(EndSuccess({ end }))
-  }
+    dispatch(EndSuccess({ end }));
+  };
 }
 
 export function chooseFinalInsurer(passwordToConfirm, insurerName) {
@@ -42,15 +42,15 @@ export function chooseFinalInsurer(passwordToConfirm, insurerName) {
         passwordToConfirm,
         insurerName,
       },
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(selectFinalInsurerSuccess(res.data))
-        window.location.href = '/congrats'
+        dispatch(selectFinalInsurerSuccess(res.data));
+        window.location.href = '/congrats';
       })
       .catch(err => {
-        dispatch(selectFinalInsurerFailure(err.response.data))
-      })
-  }
+        dispatch(selectFinalInsurerFailure(err.response.data));
+      });
+  };
 }

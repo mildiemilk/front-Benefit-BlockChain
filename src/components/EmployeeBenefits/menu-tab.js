@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import '../../styles/employee-benefits.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import '../../styles/employee-benefits.scss';
 
 class MenuTab extends Component {
   static propTypes = {
@@ -9,14 +9,14 @@ class MenuTab extends Component {
     groupName: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       selected: '',
-    }
+    };
   }
   renderList = list => {
     const showList = list.map((element, index) => {
-      const isActive = index === this.props.activeGroup ? '-active' : ''
+      const isActive = index === this.props.activeGroup ? '-active' : '';
       return (
         <div
           className={`employeeBenefits-Menu-Tab-box${isActive}`}
@@ -26,9 +26,9 @@ class MenuTab extends Component {
         >
           {element.name}
         </div>
-      )
-    })
-    return showList
+      );
+    });
+    return showList;
   }
 
   render() {
@@ -40,10 +40,10 @@ class MenuTab extends Component {
         {this.renderList(this.props.groupName)}
 
       </div>
-    )
+    );
   }
 }
 
-MenuTab.propTypes = {}
+MenuTab.propTypes = {};
 
-export default MenuTab
+export default MenuTab;

@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Button, Form, Radio } from 'semantic-ui-react'
-import { editPlan } from '../../../api/set-plan'
-import '../../../styles/submit-plan.scss'
-import LifeModal from './life-modal'
-import about from '../../image/icons-8-about.png'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Button, Form, Radio } from 'semantic-ui-react';
+import { editPlan } from '../../../api/set-plan';
+import '../../../styles/submit-plan.scss';
+import LifeModal from './life-modal';
+import about from '../../image/icons-8-about.png';
 
-const options = [{ text: '1', value: 1 }]
+const options = [{ text: '1', value: 1 }];
 
 class Life extends Component {
   static propTypes = {
@@ -26,59 +26,60 @@ class Life extends Component {
     setPlan: PropTypes.string.isRequired,
     reset: PropTypes.string.isRequired,
     openModal: PropTypes.string.isRequired,
+    handleNextPlan: PropTypes.func.isRequired,
   }
   constructor(props) {
-    super(props)
-    const { lifePerYear, lifeNotExceed, lifeTimeOfSalary } = this.props
-    let value
+    super(props);
+    const { lifePerYear, lifeNotExceed, lifeTimeOfSalary } = this.props;
+    let value;
 
     if (lifePerYear) {
-      value = 'firstLifeChoice'
+      value = 'firstLifeChoice';
     } else if (lifeNotExceed) {
-      value = 'thirdLifeChoice'
+      value = 'thirdLifeChoice';
     } else if (lifeTimeOfSalary) {
-      value = 'secondLifeChoice'
+      value = 'secondLifeChoice';
     } else {
-      value = ''
+      value = '';
     }
 
-    this.state = { value }
+    this.state = { value };
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'Life' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetData();
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.handleResetData()
-    this.setState({ value })
+    this.handleResetData();
+    this.setState({ value });
   }
 
   handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState('lifeRecord')
+    this.props.handleChange(e, { name, value });
+    this.props.handleVerifyState('lifeRecord');
   }
 
   handleClick = () => {
-    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.props
-    this.props.handleRecordVerifyState('lifeRecord')
+    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.props;
+    this.props.handleRecordVerifyState('lifeRecord');
     this.props.editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
       this.props.planList[this.props.activePlan].planId,
       'life',
-    )
+    );
   }
 
   handleResetData = () => {
-    document.getElementById('lifeTimeOfSalary').value = ''
-    document.getElementById('lifePerYear').value = ''
-    document.getElementById('lifeNotExceed').value = ''
-    this.props.handleResetLife()
-    this.setState({ value: '' })
-    this.props.handleNewReset()
-    this.props.handleVerifyState('lifeRecord')
+    document.getElementById('lifeTimeOfSalary').value = '';
+    document.getElementById('lifePerYear').value = '';
+    document.getElementById('lifeNotExceed').value = '';
+    this.props.handleResetLife();
+    this.setState({ value: '' });
+    this.props.handleNewReset();
+    this.props.handleVerifyState('lifeRecord');
   }
 
   render() {
@@ -247,20 +248,21 @@ class Life extends Component {
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
+          handleNextPlan={this.props.handleNextPlan}
         />
       </div>
-    )
+    );
   }
 }
 
-Life.propTypes = {}
+Life.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>
     dispatch(editPlan(editData, planId, editType)),
-})
+});
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Life)
+export default connect(mapStateToProps, mapDispatchToProps)(Life);

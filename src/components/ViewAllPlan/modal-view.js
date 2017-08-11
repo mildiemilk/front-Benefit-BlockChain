@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { Modal, Icon, Popup } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Modal, Icon, Popup } from 'semantic-ui-react';
 import {
   ModalHeader,
   ModalContent,
   CancleButton,
   ConfirmButton,
-} from './styled'
+} from './styled';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -16,7 +16,7 @@ const ModalContents = styled(Modal.Content)`
     margin: 0 auto;
     padding-left: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -24,7 +24,7 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     box-shadow: none;
   }
-`
+`;
 
 class ModalView extends Component {
   static propTypes = {
@@ -32,8 +32,8 @@ class ModalView extends Component {
     planId: PropTypes.number.isRequired,
   }
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -85,12 +85,12 @@ class ModalView extends Component {
           </div>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   data: state.postBoxReducer,
-})
+});
 
-export default connect(mapStateToProps, null)(ModalView)
+export default connect(mapStateToProps, null)(ModalView);

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Icon } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import { uploadFile } from '../../api/upload-file'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { uploadFile } from '../../api/upload-file';
 import {
   Detail,
   Head,
@@ -16,8 +16,8 @@ import {
   AddBlockButton,
   Upload,
   Uploads,
-} from './styled'
-import NavInsure from '../NavInsure'
+} from './styled';
+import NavInsure from '../NavInsure';
 
 class Uploadfile extends Component {
   static propTypes = {
@@ -25,63 +25,63 @@ class Uploadfile extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 5,
       ClaimData: [],
       summitBrokerFile: '',
       AmountUploadBlock: 1,
-    }
+    };
   }
 
   handleUploadcliamdata(e) {
-    e.preventDefault()
-    const file = e.target.files[0]
+    e.preventDefault();
+    const file = e.target.files[0];
     this.setState({
       ClaimData: this.state.ClaimData.concat(file),
-    })
+    });
     if (this.state.ClaimData.length >= this.state.AmountUploadBlock) {
-      const add = this.state.AmountUploadBlock + 1
+      const add = this.state.AmountUploadBlock + 1;
       this.setState({
         AmountUploadBlock: add,
-      })
+      });
     }
   }
 
   handleUploadBroker(e) {
-    e.preventDefault()
-    const file = e.target.files[0]
+    e.preventDefault();
+    const file = e.target.files[0];
     this.setState({
       summitBrokerFile: file,
-    })
+    });
   }
 
   handleDelete = e => {
-    e.preventDefault()
+    e.preventDefault();
     if (this.state.ClaimData.length <= this.state.AmountUploadBlock - 1) {
-      const newv = this.state.AmountUploadBlock - 1
+      const newv = this.state.AmountUploadBlock - 1;
       this.setState({
         AmountUploadBlock: newv,
-      })
+      });
     }
 
-    const ClaimDatas = this.state.ClaimData
-    ClaimDatas.splice(e.target.id, 1)
+    const ClaimDatas = this.state.ClaimData;
+    ClaimDatas.splice(e.target.id, 1);
     this.setState({
       ClaimData: ClaimDatas,
-    })
+    });
   }
 
   handleAddAmountUploadBlock = () => {
-    const add = this.state.AmountUploadBlock + 1
+    const add = this.state.AmountUploadBlock + 1;
     this.setState({
       AmountUploadBlock: add,
-    })
+    });
   }
 
   handleNextClick = () => {
-    const file = this.state.ClaimData
-    this.props.uploadFile(file)
+    const file = this.state.ClaimData;
+    this.props.uploadFile(file);
     // window.location.href = '/sendrequest'
   }
 
@@ -99,13 +99,13 @@ class Uploadfile extends Component {
             name="close"
           />
         </p>
-      )
+      );
     }
-    return ''
+    return '';
   }
 
   RenderUploadRow = () => {
-    const output = []
+    const output = [];
     for (let i = 1; i < this.state.AmountUploadBlock; i += 1) {
       output.push(
         <div className="row">
@@ -129,13 +129,13 @@ class Uploadfile extends Component {
             </Uploads>
           </div>
         </div>,
-      )
+      );
     }
-    return output
+    return output;
   }
 
   RenderListClaimData = () => {
-    const { ClaimData } = this.state
+    const { ClaimData } = this.state;
     if (ClaimData.length >= 1) {
       return (
         <p>
@@ -149,19 +149,19 @@ class Uploadfile extends Component {
             onClick={this.handleDelete}
           />
         </p>
-      )
+      );
     }
-    return <p />
+    return <p />;
   }
 
   handleDeleteBrokerFile = () => {
     this.setState({
       summitBrokerFile: '',
-    })
+    });
   }
 
   RendersummitBrokerFile = () => {
-    const { summitBrokerFile } = this.state
+    const { summitBrokerFile } = this.state;
     if (summitBrokerFile) {
       return (
         <p>
@@ -175,9 +175,9 @@ class Uploadfile extends Component {
             onClick={this.handleDeleteBrokerFile}
           />
         </p>
-      )
+      );
     }
-    return <p />
+    return <p />;
   }
 
   render() {
@@ -262,12 +262,12 @@ class Uploadfile extends Component {
           </Link>
         </Detail>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   uploadFile: ClaimData => dispatch(uploadFile(ClaimData)),
-})
+});
 
-export default connect(null, mapDispatchToProps)(Uploadfile)
+export default connect(null, mapDispatchToProps)(Uploadfile);

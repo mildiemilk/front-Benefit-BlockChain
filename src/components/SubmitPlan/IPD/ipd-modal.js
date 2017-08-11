@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Button, Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import { Button, Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import '../../../styles/submit-plan.scss';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -11,7 +11,7 @@ const ModalContents = styled(Modal.Content)`
     margin: 0 auto;
     padding-left: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -19,19 +19,19 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     box-shadow: none;
   }
-`
+`;
 
 class IpdModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
     handleClick: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
+    openModal: PropTypes.bool.isRequired,
   }
 
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -40,13 +40,14 @@ class IpdModal extends Component {
     })
 
   handleCancel = () => {
-    this.props.handleCloseModal()
+    this.props.handleCloseModal();
+    this.props.handleNextPlan();
   }
 
   handleSubmit = () => {
-    this.props.handleCloseModal()
-    this.props.handleNextPlan()
-    this.props.handleClick()
+    this.props.handleCloseModal();
+    this.props.handleNextPlan();
+    this.props.handleClick();
   }
 
   handleOpen = () =>
@@ -100,8 +101,8 @@ class IpdModal extends Component {
           </Modal.Content>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default connect(null, null)(IpdModal)
+export default connect(null, null)(IpdModal);

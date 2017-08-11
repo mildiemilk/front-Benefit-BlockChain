@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Input } from 'semantic-ui-react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Input } from 'semantic-ui-react';
 
 class SearchBox extends React.Component {
   static propTypes = {
@@ -8,10 +8,10 @@ class SearchBox extends React.Component {
     callback: PropTypes.func.isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       keyword: props.name,
-    }
+    };
   }
 
   handleInputChange(event) {
@@ -20,9 +20,9 @@ class SearchBox extends React.Component {
         keyword: event.target.value,
       },
       () => {
-        this.props.callback(this.state.keyword)
+        this.props.callback(this.state.keyword);
       },
-    )
+    );
   }
 
   render() {
@@ -36,8 +36,8 @@ class SearchBox extends React.Component {
           onChange={event => this.handleInputChange(event)}
         />
       </div>
-    )
+    );
   }
 }
 
-export default SearchBox
+export default SearchBox;

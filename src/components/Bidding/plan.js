@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Icon } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import { List, IconPlan, DetailList, PopupList, PopupView } from './styled'
+import React, { Component } from 'react';
+import { Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
 
 class Plan extends Component {
   static propTypes = {
@@ -9,32 +9,30 @@ class Plan extends Component {
   }
   renderList = bids => {
     const planlists = bids.map(bid => (
-      <div className="large-4 columns">
-        <List>
-          <IconPlan name="add to calendar" size="big" />
-          <DetailList>
-            {bid.planName} <br />
-            {bid.priceOfBidding}
-            <PopupView
-              trigger={
-                <PopupList>
-                  <Icon name="ellipsis vertical" size="large" />
-                </PopupList>
-              }
-              content={
-                <p>
-                  <Icon name="edit" />ดูแพลน
-                </p>
-              }
-              on="click"
-              hideOnScroll
-              position="bottom center"
-            />
-          </DetailList>
-        </List>
-      </div>
-    ))
-    return planlists
+      <List className="large-4 columns">
+        <IconPlan name="add to calendar" size="big" />
+        <DetailList>
+          {bid.planName} <br />
+          {bid.priceOfBidding}
+        </DetailList>
+        <PopupView
+          trigger={
+            <PopupList>
+              <Icon name="ellipsis vertical" size="large" />
+            </PopupList>
+          }
+          content={
+            <p>
+              <Icon name="edit" />ดูแพลน
+            </p>
+          }
+          on="click"
+          hideOnScroll
+          position="bottom center"
+        />
+      </List>
+    ));
+    return planlists;
   }
 
   render() {
@@ -42,8 +40,8 @@ class Plan extends Component {
       <div>
         {this.renderList(this.props.planList)}
       </div>
-    )
+    );
   }
 }
 
-export default Plan
+export default Plan;

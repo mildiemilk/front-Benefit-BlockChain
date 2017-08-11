@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { Card, Feed, Rating } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Card, Feed, Rating } from 'semantic-ui-react';
 
 const CardLink = styled(Card.Content)`
   &&&{
@@ -8,12 +8,12 @@ const CardLink = styled(Card.Content)`
     background: red;
   }
   }
-`
+`;
 
 export default class ChatList extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -97,6 +97,6 @@ export default class ChatList extends Component {
           </Card.Content>
         </Card>
       </Card.Group>
-    )
+    );
   }
 }

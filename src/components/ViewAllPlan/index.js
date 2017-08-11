@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import ViewPlanBox from './view-planbox'
-import { BackHome, RecViewAllPlan, ViewHeader } from './styled'
-import SearchBox from './search-box'
-import NavInsure from '../NavInsure'
-import ModalView from './modal-view'
-import { getAllPlan } from '../../api/set-plan'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import ViewPlanBox from './view-planbox';
+import { BackHome, RecViewAllPlan, ViewHeader } from './styled';
+import SearchBox from './search-box';
+import NavInsure from '../NavInsure';
+import ModalView from './modal-view';
+import { getAllPlan } from '../../api/set-plan';
 
 class ViewAllPlan extends Component {
   static propTypes = {
@@ -15,19 +15,19 @@ class ViewAllPlan extends Component {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 3,
       passwordToConfirm: '',
       SearchTerm: '',
-    }
+    };
     setInterval(() => {
-      props.getAllPlan()
-    }, 2000)
+      props.getAllPlan();
+    }, 2000);
   }
 
   handleSearchBoxChange(keyword) {
-    this.setState({ SearchTerm: keyword })
+    this.setState({ SearchTerm: keyword });
   }
 
   filterPlan(list) {
@@ -36,7 +36,7 @@ class ViewAllPlan extends Component {
         plan.planName
           .toLowerCase()
           .indexOf(this.state.SearchTerm.toLowerCase()) >= 0,
-    )
+    );
   }
 
   render() {
@@ -79,16 +79,16 @@ class ViewAllPlan extends Component {
         </div>
 
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
-})
+});
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewAllPlan)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewAllPlan);

@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Form, Radio } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form, Radio } from 'semantic-ui-react';
 
 class IPD3Bidding extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       value: '',
       permit: false,
@@ -24,15 +24,15 @@ class IPD3Bidding extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-    }
+    };
   }
 
   handleRadio = (e, { value }) => {
-    this.setState({ value })
+    this.setState({ value });
     if (this.state.value === 'Non-Schedule') {
-      document.getElementById('rbScheduleSugeryNonSchedule').value = ''
+      document.getElementById('rbScheduleSugeryNonSchedule').value = '';
     } else {
-      document.getElementById('rbScheduleSugerySchedule').value = ''
+      document.getElementById('rbScheduleSugerySchedule').value = '';
     }
   }
 
@@ -160,45 +160,45 @@ class IPD3Bidding extends Component {
               >
                 {this.state.value === 'Non-Schedule'
                   ? <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSugeryNonSchedule"
-                      onChange={this.props.handleChange}
-                      id="rbScheduleSugeryNonSchedule"
-                      readOnly
-                    />
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSugeryNonSchedule"
+                    onChange={this.props.handleChange}
+                    id="rbScheduleSugeryNonSchedule"
+                    readOnly
+                  />
                   : <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSugeryNonSchedule"
-                      onChange={this.props.handleChange}
-                      readOnly
-                      id="rbScheduleSugeryNonSchedule"
-                    />}
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSugeryNonSchedule"
+                    onChange={this.props.handleChange}
+                    readOnly
+                    id="rbScheduleSugeryNonSchedule"
+                  />}
                 <p> บาท</p>
               </Form.Group>
               <Form.Group inline style={{ marginBottom: '5%' }}>
                 {this.state.value === 'Schedule'
                   ? <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSugerySchedule"
-                      onChange={this.props.handleChange}
-                      id="rbScheduleSugerySchedule"
-                      readOnly
-                    />
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSugerySchedule"
+                    onChange={this.props.handleChange}
+                    id="rbScheduleSugerySchedule"
+                    readOnly
+                  />
                   : <Form.Input
-                      type="number"
-                      style={{ height: '30px', width: '100px' }}
-                      placeholder="จำนวนเงิน"
-                      name="rbScheduleSugerySchedule"
-                      onChange={this.props.handleChange}
-                      readOnly
-                      id="rbScheduleSugerySchedule"
-                    />}
+                    type="number"
+                    style={{ height: '30px', width: '100px' }}
+                    placeholder="จำนวนเงิน"
+                    name="rbScheduleSugerySchedule"
+                    onChange={this.props.handleChange}
+                    readOnly
+                    id="rbScheduleSugerySchedule"
+                  />}
                 <p> บาท</p>
               </Form.Group>
               <Form.Group inline style={{ marginTop: '15.5%' }}>
@@ -288,7 +288,7 @@ class IPD3Bidding extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-export default connect(null, null)(IPD3Bidding)
+export default connect(null, null)(IPD3Bidding);

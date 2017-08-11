@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Card } from './styled'
-import { getSelectInsurer } from '../../api/choose-insurer'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Card } from './styled';
+import { getSelectInsurer } from '../../api/choose-insurer';
 
 class Insurer extends React.Component {
   static propTypes = {
@@ -10,9 +10,9 @@ class Insurer extends React.Component {
     insurers: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
 
-    props.getSelectInsurer()
+    props.getSelectInsurer();
   }
 
   renderList = insurers => {
@@ -20,8 +20,8 @@ class Insurer extends React.Component {
       <Card className="large-2 columns">
         {insurer.insurerName}
       </Card>
-    ))
-    return list
+    ));
+    return list;
   }
 
   render() {
@@ -31,15 +31,15 @@ class Insurer extends React.Component {
           {this.renderList(this.props.insurers)}
         </div>
       </div>
-    )
+    );
   }
 }
 const mapDispatchToProps = dispatch => ({
   getSelectInsurer: () => dispatch(getSelectInsurer()),
-})
+});
 
 const mapStateToProps = state => ({
   insurers: state.getSelectInsurer.defaultInsurer,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Insurer)
+export default connect(mapStateToProps, mapDispatchToProps)(Insurer);

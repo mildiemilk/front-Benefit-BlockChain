@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import NavBenefit from '../NavBenefit'
-import Detail from './detail'
-import Setting from './setting'
-import { planOption } from '../../api/benefit-plan'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import NavBenefit from '../NavBenefit';
+import Detail from './detail';
+import Setting from './setting';
+import { planOption } from '../../api/benefit-plan';
 
 class AddBenefit extends Component {
   static propTypes = {
@@ -12,7 +12,7 @@ class AddBenefit extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 2,
       isSetting: false,
@@ -29,28 +29,28 @@ class AddBenefit extends Component {
       selectedOptionExpense1: 'full',
       selectedOptionExpense2: 'full',
       selectedOptionExpense3: 'full',
-    }
+    };
   }
 
   handleToggleHealth = () => {
     if (this.state.isHealth) {
-      this.setState({ isHealth: false })
+      this.setState({ isHealth: false });
     } else {
       this.setState({
         isHealth: true,
         HealthList: [],
-      })
+      });
     }
   }
 
   handleToggleExpense = () => {
     if (this.state.isExpense) {
-      this.setState({ isExpense: false })
+      this.setState({ isExpense: false });
     } else {
       this.setState({
         isExpense: true,
         ExpenseList: [],
-      })
+      });
     }
   }
 
@@ -59,12 +59,12 @@ class AddBenefit extends Component {
       this.setState({
         isSetting: false,
         Types: types,
-      })
+      });
     } else {
       this.setState({
         isSetting: true,
         Types: types,
-      })
+      });
     }
   }
 
@@ -72,78 +72,78 @@ class AddBenefit extends Component {
     this.setState({
       ExpenseList: this.state.ExpenseList.concat(this.state.TextExpense),
       TextExpense: '',
-    })
+    });
   }
 
   removeTodoExpense = e => {
-    const result = this.state.ExpenseList
-    result.splice(e, 1)
+    const result = this.state.ExpenseList;
+    result.splice(e, 1);
     this.setState({
       ExpenseList: result,
-    })
+    });
   }
 
   addTodoHealth = () => {
     this.setState({
       HealthList: this.state.HealthList.concat(this.state.TextHealth),
       TextHealth: '',
-    })
+    });
   }
 
   removeTodoHealth = e => {
-    const result = this.state.HealthList
-    result.splice(e, 1)
+    const result = this.state.HealthList;
+    result.splice(e, 1);
     this.setState({
       HealthList: result,
-    })
+    });
   }
 
   handleTextChangeExpense = e => {
     this.setState({
       TextExpense: e.target.value,
-    })
+    });
   }
 
   handleTextChangeHealth = e => {
     this.setState({
       TextHealth: e.target.value,
-    })
+    });
   }
 
   handleOptionChangeHealth1 = changeEvent => {
     this.setState({
       selectedOptionHealth1: changeEvent.target.value,
-    })
+    });
   }
 
   handleOptionChangeExpense1 = changeEvent => {
     this.setState({
       selectedOptionExpense1: changeEvent.target.value,
-    })
+    });
   }
 
   handleOptionChangeHealth2 = changeEvent => {
     this.setState({
       selectedOptionHealth2: changeEvent.target.value,
-    })
+    });
   }
 
   handleOptionChangeExpense2 = changeEvent => {
     this.setState({
       selectedOptionExpense2: changeEvent.target.value,
-    })
+    });
   }
 
   handleOptionChangeHealth3 = changeEvent => {
     this.setState({
       selectedOptionHealth3: changeEvent.target.value,
-    })
+    });
   }
 
   handleOptionChangeExpense3 = changeEvent => {
     this.setState({
       selectedOptionExpense3: changeEvent.target.value,
-    })
+    });
   }
 
   nextButtonHandleclick = () => {
@@ -158,7 +158,7 @@ class AddBenefit extends Component {
       selectedOptionExpense1,
       selectedOptionExpense2,
       selectedOptionExpense3,
-    } = this.state
+    } = this.state;
     this.props.planOption(
       isHealth,
       isExpense,
@@ -170,7 +170,7 @@ class AddBenefit extends Component {
       selectedOptionExpense1,
       selectedOptionExpense2,
       selectedOptionExpense3,
-    )
+    );
   }
 
   render() {
@@ -213,7 +213,7 @@ class AddBenefit extends Component {
             TextExpense={this.state.TextExpense}
           />}
       </div>
-    )
+    );
   }
 }
 
@@ -248,6 +248,6 @@ const mapDispatchToProps = dispatch => ({
         Setting6,
       ),
     ),
-})
+});
 
-export default connect(null, mapDispatchToProps)(AddBenefit)
+export default connect(null, mapDispatchToProps)(AddBenefit);

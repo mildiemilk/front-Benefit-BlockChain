@@ -7,23 +7,23 @@ const defaultUser = {
   phone: '',
   message: '',
   error: false,
-}
+};
 
 /**
  * Action Constansts
  */
-const UPDATE_PERSONALDETAIL_SUCCESS = 'user/UPDATE_PERSONALDETAIL_SUCCESS'
-const UPDATE_PERSONALDETAIL_FAILURE = 'user/UPDATE_PERSONALDETAIL_FAILURE'
+const UPDATE_PERSONALDETAIL_SUCCESS = 'user/UPDATE_PERSONALDETAIL_SUCCESS';
+const UPDATE_PERSONALDETAIL_FAILURE = 'user/UPDATE_PERSONALDETAIL_FAILURE';
 
 /**
  * Actions
  */
 export function updatePersonalDetailSuccess(data) {
-  return { type: UPDATE_PERSONALDETAIL_SUCCESS, data }
+  return { type: UPDATE_PERSONALDETAIL_SUCCESS, data };
 }
 
 export function updatePersonalDetailFailure(data) {
-  return { type: UPDATE_PERSONALDETAIL_FAILURE, data }
+  return { type: UPDATE_PERSONALDETAIL_FAILURE, data };
 }
 
 export function userReducer(state = defaultUser, action) {
@@ -33,13 +33,13 @@ export function userReducer(state = defaultUser, action) {
         personalEmail: action.data.personalEmail,
         phone: action.data.phone,
         error: false,
-      })
+      });
     case UPDATE_PERSONALDETAIL_FAILURE:
       return Object.assign({}, state, {
         message: action.data.error,
         error: true,
-      })
+      });
     default:
-      return state
+      return state;
   }
 }

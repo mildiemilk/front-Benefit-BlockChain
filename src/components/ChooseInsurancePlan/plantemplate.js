@@ -16,7 +16,15 @@ class PlanTemplate extends Component {
     handleDeleteOurplan: PropTypes.func.isRequired,
     handleDeleteSpacialPlan: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,
+    ourPlan: PropTypes.arrayOf(PropTypes.object),
+    // specialPlans: PropTypes.arrayOf(PropTypes.object),
+
   }
+
+  static defaultProps = {
+    ourPlan: [],
+  }
+
   constructor() {
     super();
     this.state = {};
@@ -67,9 +75,6 @@ class PlanTemplate extends Component {
       columnIsCloseTap = (
         <td style={{ width: '18%' }}>
           <td>
-            <ModalPlan />
-          </td>
-          <td>
             <Icon name="chevron right" size="big" style={{ left: '20px' }} />
           </td>
         </td>
@@ -80,7 +85,7 @@ class PlanTemplate extends Component {
 
   render() {
     const { id, price, colorPlan } = this.props;
-    let component;
+    let component = '';
     if (this.props.closetap) {
       if (this.props.colorPlan === 1) {
         component = (
@@ -129,7 +134,7 @@ class PlanTemplate extends Component {
                 </td>
                 <td>
                   <td style={{ width: '40px' }}>
-                    <ModalPlan />
+                    <ModalPlan plan={this.props.ourPlan[this.props.index]} />
                   </td>
                   <td
                     style={{ width: '30px', cursor: 'pointer' }}
@@ -178,7 +183,7 @@ class PlanTemplate extends Component {
                 </td>
                 <td>
                   <td style={{ width: '40px' }}>
-                    <ModalPlan />
+                    {/* <ModalPlan /> */}
                   </td>
                   <td
                     style={{ width: '30px', cursor: 'pointer' }}

@@ -79,27 +79,16 @@ class IPD3 extends Component {
   }
 
   handleResetdata = () => {
-    document.getElementById('rbSchedulePatient').value = '';
     this.props.handleChangeToNull('rbSchedulePatient');
-    document.getElementById('rbScheduleIntensiveCarePatient').value = '';
     this.props.handleChangeToNull('rbScheduleIntensiveCarePatient');
-    document.getElementById('rbScheduleDoctor').value = '';
     this.props.handleChangeToNull('rbScheduleDoctor');
-    document.getElementById('rbScheduleSurgery').value = '';
     this.props.handleChangeToNull('rbScheduleSurgery');
-    document.getElementById('rbScheduleService').value = '';
     this.props.handleChangeToNull('rbScheduleService');
-    document.getElementById('rbScheduleSmallSurgery').value = '';
     this.props.handleChangeToNull('rbScheduleSmallSurgery');
-    document.getElementById('rbScheduleAdviser').value = '';
     this.props.handleChangeToNull('rbScheduleAdviser');
-    document.getElementById('rbScheduleAmbulance').value = '';
     this.props.handleChangeToNull('rbScheduleAmbulance');
-    document.getElementById('rbScheduleAccident').value = '';
     this.props.handleChangeToNull('rbScheduleAccident');
-    document.getElementById('rbScheduleTreatment').value = '';
     this.props.handleChangeToNull('rbScheduleTreatment');
-    document.getElementById('rbScheduleTransplant').value = '';
     this.props.handleChangeToNull('rbScheduleTransplant');
     this.props.handleNewReset();
   }

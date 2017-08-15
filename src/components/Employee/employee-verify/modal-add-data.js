@@ -3,7 +3,6 @@ import { Modal, Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
-  LogInButton,
   AddDataImg,
   Header,
   Content,
@@ -31,41 +30,24 @@ const Modals = styled(Modal)`
 `;
 class ModalAddData extends Component {
   static propTypes = {
-    email: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
+    error: PropTypes.string.isRequired,
+    showModal: PropTypes.bool.isRequired,
+    handleChangeInput: PropTypes.func.isRequired,
+    handleSubmitButtonModal: PropTypes.func.isRequired,
+    handleHideModel: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
     this.state = {
-      modalOpen: false,
     };
-  }
-
-  handleClose = () => this.setState({ modalOpen: false })
-
-  handleOpen = (email, password) => {
-    if (email !== '' && password !== '') {
-      this.setState({ modalOpen: true });
-    } else {
-      this.setState({ modalOpen: false });
-    }
   }
 
   render() {
     return (
       <Modals
-        trigger={
-          <LogInButton
-            onClick={() =>
-              this.handleOpen(this.props.email, this.props.password)}
-          >
-            {' '}{' '}
-            ลงชื่อเข้าใช้{' '}
-          </LogInButton>
-        }
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
+        open={this.props.showModal}
+        onClose={this.props.handleHideModel}
       >
         <ModalContents>
           <div className="AddData">
@@ -84,7 +66,7 @@ class ModalAddData extends Component {
                 เพื่อสิทธิประโยชน์สูงสุดของคุณ
               </Content>
             </SpaceContent>
-            <Form onSubmit={this.props.handleSubmit}>
+            <Form onSubmit={this.props.handleSubmitButtonModal}>
               <Form.Field>
                 <div className="divInput">
                   <img
@@ -92,7 +74,11 @@ class ModalAddData extends Component {
                     src="../../../../employee/icons-8-message@3x.png"
                     alt="letter"
                   />
-                  <Form.Input placeholder="อีเมลของคุณ" name="email" />
+                  <Form.Input
+                    placeholder="อีเมลของคุณ"
+                    name="email"
+                    onChange={this.props.handleChangeInput}
+                  />
                 </div>
               </Form.Field>
               <Form.Field>
@@ -100,15 +86,17 @@ class ModalAddData extends Component {
                   <img
                     className="iconTel"
                     src="../../../../employee/icons-8-phone@3x.png"
-                    alt="Tel"
+                    alt="phone"
                   />
                   <Form.Input
                     placeholder="เบอร์โทรศัพท์มือถือ"
-                    name="tel"
-                    type="number"
+                    name="phone"
+                    type="tel"
+                    onChange={this.props.handleChangeInput}
                   />
                 </div>
               </Form.Field>
+              <p style={{ color: 'red' }}>{this.props.error}</p>
               <ConfirmButton type="submit">
                 ยืนยัน
               </ConfirmButton>

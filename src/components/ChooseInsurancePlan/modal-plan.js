@@ -43,8 +43,7 @@ const Icons = styled(Icon) `
 
 class ModalModalExample extends Component {
   static propTypes = {
-    data: PropTypes.shape.isRequired,
-    handlePost: PropTypes.func.isRequired,
+    plan: PropTypes.shape.isRequired,
   }
 
   constructor() {
@@ -95,6 +94,7 @@ class ModalModalExample extends Component {
   handleOpen = () => this.setState({ modalOpen: true })
 
   render() {
+    const { plan } = this.props;
     return (
       <Modals
         trigger={
@@ -106,7 +106,7 @@ class ModalModalExample extends Component {
         <ModalContents>
           <div className="row">
             <ModalHeader>
-              Management Plan 1
+              {plan.planName}
               <br />
             </ModalHeader>
             <LineModal />
@@ -169,7 +169,9 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      1,000,000
+                      {plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed === 0
+                        ? '-'
+                        : plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed}
                     </th>
 
                   </tr>
@@ -205,7 +207,7 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      1,000,000
+                      {plan.dentalPerYear === null ? '-' : plan.dentalPerYear}
                     </th>
 
                   </tr>
@@ -243,7 +245,23 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      1,000,000
+                      { plan.opdPerYear +
+                        plan.opdPerTime +
+                        plan.opdTimeNotExceedPerYear +
+                        plan.opdCoPayQuota +
+                        plan.opdCoPayDeductable +
+                        plan.opdCoPayMixPercentage +
+                        plan.opdCoPayMixNotExceed +
+                        plan.opdCoPayMixYear === 0
+                        ? '-'
+                        : plan.opdPerYear +
+                        plan.opdPerTime +
+                        plan.opdTimeNotExceedPerYear +
+                        plan.opdCoPayQuota +
+                        plan.opdCoPayDeductable +
+                        plan.opdCoPayMixPercentage +
+                        plan.opdCoPayMixNotExceed +
+                        plan.opdCoPayMixYear}
                     </th>
 
                   </tr>
@@ -281,13 +299,61 @@ class ModalModalExample extends Component {
                       />
                     </th>
                     <th>
-                      1,000,000{' '}
+                      { plan.ipdLumsumPerYear +
+                        plan.ipdLumsumPerTime +
+                        plan.ipdLumsumTimeNotExceedPerYear +
+                        plan.rbLumsumRoomPerNight +
+                        plan.rbLumsumNigthNotExceedPerYear +
+                        plan.rbLumsumPayNotExceedPerNight +
+                        plan.rbLumsumPayNotExceedPerYear +
+                        plan.rbSchedulePatient +
+                        plan.rbScheduleIntensiveCarePatient +
+                        plan.rbScheduleDoctor +
+                        plan.rbScheduleSurgerySchedule +
+                        plan.rbScheduleSurgeryNonSchedule +
+                        plan.rbScheduleService +
+                        plan.rbScheduleSmallSurgery +
+                        plan.rbScheduleAdviser +
+                        plan.rbScheduleAmbulance +
+                        plan.rbScheduleAccident +
+                        plan.rbScheduleTreatment +
+                        plan.rbScheduleTransplant +
+                        plan.ipdCoPayQuota +
+                        plan.ipdCoPayDeductable +
+                        plan.ipdCoPayMixPercentage +
+                        plan.ipdCoPayMixNotExceed +
+                        plan.ipdCoPayMixYear === 0
+                        ? '-'
+                        : plan.ipdLumsumPerYear +
+                        plan.ipdLumsumPerTime +
+                        plan.ipdLumsumTimeNotExceedPerYear +
+                        plan.rbLumsumRoomPerNight +
+                        plan.rbLumsumNigthNotExceedPerYear +
+                        plan.rbLumsumPayNotExceedPerNight +
+                        plan.rbLumsumPayNotExceedPerYear +
+                        plan.rbSchedulePatient +
+                        plan.rbScheduleIntensiveCarePatient +
+                        plan.rbScheduleDoctor +
+                        plan.rbScheduleSurgerySchedule +
+                        plan.rbScheduleSurgeryNonSchedule +
+                        plan.rbScheduleService +
+                        plan.rbScheduleSmallSurgery +
+                        plan.rbScheduleAdviser +
+                        plan.rbScheduleAmbulance +
+                        plan.rbScheduleAccident +
+                        plan.rbScheduleTreatment +
+                        plan.rbScheduleTransplant +
+                        plan.ipdCoPayQuota +
+                        plan.ipdCoPayDeductable +
+                        plan.ipdCoPayMixPercentage +
+                        plan.ipdCoPayMixNotExceed +
+                        plan.ipdCoPayMixYear}
                     </th>
 
                   </tr>
                 </table>
               </div>
-              {this.state.IPDBox ? <IPDDropBox /> : null}
+              {this.state.IPDBox ? <IPDDropBox plan={plan} /> : null}
 
             </div>
 

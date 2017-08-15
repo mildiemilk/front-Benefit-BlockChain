@@ -5,7 +5,6 @@ import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/employee-style/main.scss';
-import '../styles/employee-style/main.scss';
 import employeeVerify from './Employee/employee-verify';
 import HealthDetail from './Employee/health-detail';
 import GenaralExpense from './Employee/genaral-expense';
@@ -17,12 +16,14 @@ import CongratSelectPlan from './Employee/congrats-select-plan';
 import HeadLayout from './head-layout-mobile';
 import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard';
 import ClaimStatusDetail from './Employee/ClaimStatusDetail';
+import Logout from './Auth/logout';
 
 const AppMobile = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
       <HeadLayout>
         <Switch>
+          <Route path="/logout" component={Logout} />
           <Route path="/employeeverify" component={employeeVerify} />
           <Route path="/healthdetail" component={HealthDetail} />
           <Route path="/genaralexpense" component={GenaralExpense} />

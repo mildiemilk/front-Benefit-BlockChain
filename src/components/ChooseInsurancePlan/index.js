@@ -22,12 +22,14 @@ import {
 import NavBenefit from '../NavBenefit';
 import PlanTemplate from './plantemplate';
 import { getAllPlan } from '../../api/set-plan';
-import { choosePlan } from '../../api/benefit-plan';
+import { choosePlan, getOptionPlan } from '../../api/benefit-plan';
 
 class ChooseInsurancePlan extends Component {
   static propTypes = {
     getAllPlan: PropTypes.func.isRequired,
+    getOptionPlan: PropTypes.func.isRequired,
     choosePlan: PropTypes.func.isRequired,
+    choosePlans: PropTypes.arrayOf(PropTypes.object).isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
@@ -37,16 +39,7 @@ class ChooseInsurancePlan extends Component {
       ChooseColor: [],
       PlanTemplateState: 1,
       ChooseInsurance: [],
-      OurPlan: [
-        {
-          planName: 'ประกันที่ 1',
-          price: 1563,
-        },
-        {
-          planName: 'ประกันที่ 2',
-          price: 9900,
-        },
-      ],
+      OurPlan: [],
       SpacialPlan: [
         {
           planName: 'แผนจากบริษัทประกันที่ 1',
@@ -60,12 +53,22 @@ class ChooseInsurancePlan extends Component {
       closetap: true,
     };
     props.getAllPlan();
+    props.getOptionPlan();
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.planList !== this.props.planList) {
-      this.setState({ OurPlan: newProps.planList });
+      this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans) });
     }
+    if (newProps.choosePlans !== this.props.choosePlans) {
+      this.setState({ ChooseInsurance: newProps.choosePlans });
+    }
+  }
+
+  filterPlan = (plans, choosePlan) => {
+    const newPlans = plans.filter(plan =>
+      choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false));
+    return newPlans;
   }
 
   handleDeleteOurplan = index => {
@@ -116,6 +119,14 @@ class ChooseInsurancePlan extends Component {
     }
   }
 
+  checkColor = plan => {
+    const { planList } = this.props;
+    const isOurPlan = planList.filter(ourPlan => ourPlan.planId === plan.planId).length !== 0;
+    if (isOurPlan) {
+      return 1;
+    } return 2;
+  }
+
   RenderInnerRight = () => {
     if (this.state.ChooseInsurance.length >= 1) {
       const listItems = this.state.ChooseInsurance.map((number, i) => (
@@ -123,7 +134,7 @@ class ChooseInsurancePlan extends Component {
           id={number.planName}
           index={i}
           price={number.price}
-          colorPlan={this.state.ChooseColor[i]}
+          colorPlan={this.checkColor(number)}
           closetap={this.state.closetap}
           handleDeleteChooseInsurance={this.handleDeleteChooseInsurance}
         />
@@ -138,31 +149,36 @@ class ChooseInsurancePlan extends Component {
   }
 
   RenderOurplan = () => {
-    const listItems = this.state.OurPlan.map((number, i) => (
-      <PlanTemplate
-        id={number.planName}
-        index={i}
-        price={number.price}
-        colorPlan={1}
-        closetap={false}
-        handleDeleteOurplan={this.handleDeleteOurplan}
-      />
-    ));
-    return listItems;
+    if (this.state.OurPlan.length >= 1) {
+      const listItems = this.state.OurPlan.map((number, i, ourPlan) => (
+        <PlanTemplate
+          id={number.planName}
+          index={i}
+          ourPlan={ourPlan}
+          price={number.price}
+          colorPlan={1}
+          closetap={false}
+          handleDeleteOurplan={this.handleDeleteOurplan}
+        />
+      ));
+      return listItems;
+    } return '';
   }
 
   RenderSpacialplan = () => {
-    const listItems = this.state.SpacialPlan.map((number, i) => (
-      <PlanTemplate
-        id={number.planName}
-        index={i}
-        price={number.price}
-        colorPlan={2}
-        closetap={false}
-        handleDeleteSpacialPlan={this.handleDeleteSpacialPlan}
-      />
-    ));
-    return listItems;
+    if (this.state.SpacialPlan.length >= 1) {
+      const listItems = this.state.SpacialPlan.map((number, i) => (
+        <PlanTemplate
+          id={number.planName}
+          index={i}
+          price={number.price}
+          colorPlan={2}
+          closetap={false}
+          handleDeleteSpacialPlan={this.handleDeleteSpacialPlan}
+        />
+      ));
+      return listItems;
+    } return '';
   }
 
   handleNext = () => {
@@ -239,12 +255,13 @@ class ChooseInsurancePlan extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
+  getOptionPlan: () => dispatch(getOptionPlan()),
   choosePlan: plans => dispatch(choosePlan(plans)),
 });
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-  choosePlan: state.choosePlan.choosePlan,
+  choosePlans: state.choosePlan.choosePlan,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChooseInsurancePlan);

@@ -11,6 +11,7 @@ const defaultPlan = {
 
 const defaultBenefitPlan = {
   plan: [],
+  timeout: null,
 };
 
 /**
@@ -120,11 +121,17 @@ export function choosePlan(state = defaultPlan, action) {
 export function benefitPlan(state = defaultBenefitPlan, action) {
   switch (action.type) {
     case GETBENEFITPLAN_REQUEST_SUCCESS:
-      return Object.assign({}, state, { plan: action.data });
+      return Object.assign({}, state, {
+        plan: action.data.benefitPlans,
+        timeout: action.data.timeout,
+      });
     case GETBENEFITPLAN_REQUEST_FAILURE:
       return state;
     case SETBENEFITPLAN_REQUEST_SUCCESS:
-      return Object.assign({}, state, { plan: action.data });
+      return Object.assign({}, state, {
+        plan: action.data.benefitPlans,
+        timeout: action.data.timeout,
+      });
     case SETBENEFITPLAN_REQUEST_FAILURE:
       return state;
     default:

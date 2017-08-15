@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { push as Menu } from 'react-burger-menu';
 import styled from 'styled-components';
 import { Divider, Icon } from 'semantic-ui-react';
@@ -93,7 +94,11 @@ class SideBar extends React.Component {
           </div>
           <SettingDiv>
             <List>ตั้งค่า</List>
-            <List>ออกจากระบบ</List>
+            <Link to="/logout">
+              <List>
+                ออกจากระบบ
+              </List>
+            </Link>
           </SettingDiv>
         </Menu>
       </div>

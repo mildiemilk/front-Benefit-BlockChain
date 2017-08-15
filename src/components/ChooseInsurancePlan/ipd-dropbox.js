@@ -13,7 +13,7 @@ const Icons = styled(Icon) `
 
 export default class IPDDropBox extends Component {
   static propTypes = {
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    plan: PropTypes.shape.isRequired,
   }
   constructor() {
     super()
@@ -59,153 +59,21 @@ export default class IPDDropBox extends Component {
     }
   }
 
-  // renderFirstIPD = () => {
-  //   const plans = this.props.planList
-  //   return plans.map(plan => <th>""</th>)
-  // }
-
-  // renderRbSchedulePatient = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
-  //       <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleIntensiveCarePatient = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleIntensiveCarePatient === null
-  //         ? '-'
-  //         : plan.rbScheduleIntensiveCarePatient}
-  //       <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleDoctor = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
-  //       <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleSurgery = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleSurgerySchedule === null
-  //         ? plan.rbScheduleSurgeryNonSchedule === null
-  //             ? '-'
-  //             : plan.rbScheduleSurgeryNonSchedule
-  //         : plan.rbScheduleSurgerySchedule}
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleAllService = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleService +
-  //         plan.rbScheduleSmallSurgery +
-  //         plan.rbScheduleAdviser +
-  //         plan.rbScheduleAmbulance +
-  //         plan.rbScheduleAccident +
-  //         plan.rbScheduleTreatment ===
-  //         0
-  //         ? ''
-  //         : plan.rbScheduleService +
-  //             plan.rbScheduleSmallSurgery +
-  //             plan.rbScheduleAdviser +
-  //             plan.rbScheduleAmbulance +
-  //             plan.rbScheduleAccident +
-  //             plan.rbScheduleTreatment}
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleService = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
-  //       <Sub>
-  //         <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-  //       </Sub>
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleSmallSurgery = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleSmallSurgery === null
-  //         ? '-'
-  //         : plan.rbScheduleSmallSurgery}
-  //       <Sub>
-  //         <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-  //       </Sub>
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleAdviser = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleAmbulance = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleAccident = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleTreatment = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
-  //       <Sub>
-  //         <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
-  //       </Sub>
-  //     </th>
-  //   ))
-  // }
-
-  // renderRbScheduleTransplant = () => {
-  //   let plans = this.props.planList
-  //   return plans.map((plan, index) => (
-  //     <th>
-  //       {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
-  //     </th>
-  //   ))
-  // }
+  renderRbScheduleSurgery = () => {
+    const { plan } = this.props
+    let rbScheduleSurgery
+    if (plan.rbScheduleSurgerySchedule !== null) {
+      rbScheduleSurgery = <th>{plan.rbScheduleSurgerySchedule}</th>
+    } else if (plan.rbScheduleSurgeryNonSchedule !== null) {
+      rbScheduleSurgery = <th>{plan.rbScheduleSurgeryNonSchedule}</th>
+    } else {
+      rbScheduleSurgery = <th>-</th>
+    }
+    return rbScheduleSurgery
+  }
 
   render() {
+    const { plan } = this.props
     return (
       <div className="ModalPlanTable">
 
@@ -239,8 +107,8 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                 </th>
                 <th>
-                  2,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+                  {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
+                  <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
                 </th>
               </tr>
 
@@ -255,8 +123,10 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                 </th>
                 <th>
-                  4,000
-                    <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+                  {plan.rbScheduleIntensiveCarePatient === null
+                  ? '-'
+                  : plan.rbScheduleIntensiveCarePatient}
+                  <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
                 </th>
               </tr>
             </table>
@@ -272,7 +142,7 @@ export default class IPDDropBox extends Component {
                 </IPDTopic>
               </th>
               <th>
-                800
+                {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
                 <Sub><br /> สูงสุด 60 วัน </Sub>
               </th>
             </tr>
@@ -288,9 +158,7 @@ export default class IPDDropBox extends Component {
                   และหัตถการ ตามตารางผ่าตัด{' '}
                 </IPDTopic>
               </th>
-              <th>
-                40,000
-              </th>
+              {this.renderRbScheduleSurgery()}
             </tr>
           </table>
         </div>
@@ -307,7 +175,19 @@ export default class IPDDropBox extends Component {
                 />
               </th>
               <th>
-                40,000
+                { plan.rbScheduleService +
+                  plan.rbScheduleSmallSurgery +
+                  plan.rbScheduleAdviser +
+                  plan.rbScheduleAmbulance +
+                  plan.rbScheduleAccident +
+                  plan.rbScheduleTreatment === 0
+                  ? ''
+                  : plan.rbScheduleService +
+                  plan.rbScheduleSmallSurgery +
+                  plan.rbScheduleAdviser +
+                  plan.rbScheduleAmbulance +
+                  plan.rbScheduleAccident +
+                  plan.rbScheduleTreatment}
               </th>
             </tr>
           </table>
@@ -326,10 +206,11 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                 </th>
                 <th>
+                  {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
                   <Sub>
-                    คุ้มครองค่าใช้จ่ายตามจริง
-                      <br /> ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
+                    <br /> คุ้มครองค่าใช้จ่ายตามจริง
+                    <br /> ไม่เกินความคุ้มครองสูงสุด
+                  </Sub>
                 </th>
               </tr>
 
@@ -342,10 +223,13 @@ export default class IPDDropBox extends Component {
                   </IPDDetail>
                 </th>
                 <th>
+                  {plan.rbScheduleSmallSurgery === null
+                    ? '-'
+                    : plan.rbScheduleSmallSurgery}
                   <Sub>
-                    คุ้มครองค่าใช้จ่ายตามจริง
-                      <br /> ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
+                    <br /> คุ้มครองค่าใช้จ่ายตามจริง
+                    <br /> ไม่เกินความคุ้มครองสูงสุด
+                  </Sub>
                 </th>
               </tr>
 
@@ -357,8 +241,8 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                 </th>
                 <th>
-                  4,000
-                  </th>
+                  {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
+                </th>
               </tr>
 
               <tr>
@@ -366,8 +250,8 @@ export default class IPDDropBox extends Component {
                   <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
                 </th>
                 <th>
-                  1,000
-                  </th>
+                  {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
+                </th>
               </tr>
 
               <tr>
@@ -378,8 +262,8 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                 </th>
                 <th>
-                  4,000
-                  </th>
+                  {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
+                </th>
               </tr>
 
               <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
@@ -394,11 +278,12 @@ export default class IPDDropBox extends Component {
                     </IPDDetail>
                 </th>
                 <th>
+                  {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
                   <Sub>
-                    คุ้มครองค่าใช้จ่ายตามจริง <br />
-                    ตามความต้องการของแพทย์ <br />
-                    ไม่เกินความคุ้มครองสูงสุด
-                    </Sub>
+                    <br /> คุ้มครองค่าใช้จ่ายตามจริง
+                    <br /> ตามความต้องการของแพทย์
+                    <br /> ไม่เกินความคุ้มครองสูงสุด
+                  </Sub>
                 </th>
               </tr>
             </table>
@@ -419,7 +304,7 @@ export default class IPDDropBox extends Component {
                 </IPDTopic>
               </th>
               <th>
-                40,000
+                {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
               </th>
             </tr>
           </table>

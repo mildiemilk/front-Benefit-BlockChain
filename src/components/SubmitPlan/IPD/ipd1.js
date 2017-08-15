@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import { Form, Radio } from 'semantic-ui-react'
-import '../../../styles/submit-plan.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Form, Radio } from 'semantic-ui-react';
+import '../../../styles/submit-plan.scss';
 
 class IPD1 extends Component {
   static propTypes = {
@@ -18,22 +18,22 @@ class IPD1 extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     const {
       ipdLumsumPerYear,
       ipdLumsumPerTime,
       ipdLumsumTimeNotExceedPerYear,
-    } = this.props
-    let value
+    } = this.props;
+    let value;
     if (ipdLumsumPerYear) {
-      value = 'firstChoice'
+      value = 'firstChoice';
     } else if (ipdLumsumPerTime && ipdLumsumTimeNotExceedPerYear) {
-      value = 'secondChoice'
+      value = 'secondChoice';
     } else {
-      value = ''
+      value = '';
     }
 
-    this.state = { value }
+    this.state = { value };
   }
 
   componentWillReceiveProps(newProps) {
@@ -41,37 +41,37 @@ class IPD1 extends Component {
       ipdLumsumPerYear,
       ipdLumsumPerTime,
       ipdLumsumTimeNotExceedPerYear,
-    } = this.props
-    let value
+    } = this.props;
+    let value;
     if (ipdLumsumPerYear) {
-      value = 'firstChoice'
+      value = 'firstChoice';
     } else if (ipdLumsumPerTime && ipdLumsumTimeNotExceedPerYear) {
-      value = 'secondChoice'
+      value = 'secondChoice';
     } else {
-      value = ''
+      value = '';
     }
     if (newProps.activePlan !== this.props.activePlan) {
-      this.state = { value }
+      this.state = { value };
     }
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.handleResetdata()
-    this.setState({ value })
+    this.handleResetdata();
+    this.setState({ value });
   }
 
   handleResetdata = () => {
-    this.props.handleChangeToNull('ipdLumsumPerTime')
-    this.props.handleChangeToNull('ipdLumsumTimeNotExceedPerYear')
-    this.props.handleChangeToNull('ipdLumsumPerYear')
-    this.setState({ value: '' })
-    this.props.handleNewReset()
+    this.props.handleChangeToNull('ipdLumsumPerTime');
+    this.props.handleChangeToNull('ipdLumsumTimeNotExceedPerYear');
+    this.props.handleChangeToNull('ipdLumsumPerYear');
+    this.setState({ value: '' });
+    this.props.handleNewReset();
   }
 
   render() {
@@ -170,8 +170,8 @@ class IPD1 extends Component {
           <p> บาท/ปี</p>
         </Form.Group>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(IPD1)
+export default connect(null, null)(IPD1);

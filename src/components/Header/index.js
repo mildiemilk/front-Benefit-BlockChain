@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { Menu, Image } from 'semantic-ui-react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import logo from './logo_white.png'
-import avatarn from './avatarn.JPG'
-import { HeadNav, LogoPosition, SpanStyle } from './styled'
-import { getCompanyName } from '../../api/profile-company'
+import React, { Component } from 'react';
+import { Menu, Image } from 'semantic-ui-react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import logo from './logo_white.png';
+import avatarn from './avatarn.JPG';
+import { HeadNav, LogoPosition, SpanStyle } from './styled';
+import { getCompanyName } from '../../api/profile-company';
 
 const ImageCss = styled(Image) `
   &&&{
@@ -14,7 +14,7 @@ const ImageCss = styled(Image) `
    right: 3%;
    top: 20px;
   }
-`
+`;
 class Header extends Component {
   static propTypes = {
     getCompanyName: PropTypes.func.isRequired,
@@ -22,12 +22,12 @@ class Header extends Component {
   }
 
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   componentDidMount() {
-    this.props.getCompanyName()
+    this.props.getCompanyName();
   }
 
   render() {
@@ -49,16 +49,16 @@ class Header extends Component {
             : <div />}
         </Menu.Item>
       </HeadNav>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   getCompanyName: () => dispatch(getCompanyName()),
-})
+});
 
 const mapStateToProps = state => ({
   data: state.profile,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

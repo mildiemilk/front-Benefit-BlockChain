@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import congrat from '../../image/asset-1.png'
-import healthpic from '../../image/5.png'
-import insurepic from '../../image/7.png'
-import expendpic from '../../image/6.png'
+import React, { Component } from 'react';
+import congrat from '../../image/asset-1.png';
+import healthpic from '../../image/5.png';
+import insurepic from '../../image/7.png';
+import expendpic from '../../image/6.png';
 import {
   Submit,
   HeaderBox,
@@ -10,12 +10,12 @@ import {
   HeaderBoxRight,
   DataStyle,
   ImageInbox,
-} from './styled'
+} from './styled';
 
 class EmployeeFixPlan extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -99,8 +99,8 @@ class EmployeeFixPlan extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default EmployeeFixPlan
+export default EmployeeFixPlan;

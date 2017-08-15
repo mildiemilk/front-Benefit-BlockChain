@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Icon } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
 import {
   BackHome,
   RecComparePlan,
@@ -15,9 +15,9 @@ import {
   LifeTopic,
   OPDTopic,
   Note,
-} from './styled'
-import NavInsure from '../NavInsure'
-import IPDDropBox from './ipd-dropbox'
+} from './styled';
+import NavInsure from '../NavInsure';
+import IPDDropBox from './ipd-dropbox';
 
 const Icons = styled(Icon) `
   &&&{
@@ -25,86 +25,86 @@ const Icons = styled(Icon) `
     margin-left: -1.5%;
     margin-top: 2.5%;
   }
-`
+`;
 
 class ComparePlan extends Component {
   static propTypes = {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 3,
       lifeBox: false,
       dentalBox: false,
       OPDBox: false,
       IPDBox: false,
-    }
+    };
   }
 
   handleToggleLife = () => {
     if (this.state.lifeBox) {
-      this.setState({ lifeBox: false })
+      this.setState({ lifeBox: false });
     } else {
-      this.setState({ lifeBox: true })
+      this.setState({ lifeBox: true });
     }
   }
 
   handleToggleDental = () => {
     if (this.state.dentalBox) {
-      this.setState({ dentalBox: false })
+      this.setState({ dentalBox: false });
     } else {
-      this.setState({ dentalBox: true })
+      this.setState({ dentalBox: true });
     }
   }
 
   handleToggleOPD = () => {
     if (this.state.OPDBox) {
-      this.setState({ OPDBox: false })
+      this.setState({ OPDBox: false });
     } else {
-      this.setState({ OPDBox: true })
+      this.setState({ OPDBox: true });
     }
   }
 
   handleToggleIPD = () => {
     if (this.state.IPDBox) {
-      this.setState({ IPDBox: false })
+      this.setState({ IPDBox: false });
     } else {
-      this.setState({ IPDBox: true })
+      this.setState({ IPDBox: true });
     }
   }
 
   renderPlanName = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.planName}
       </th>
-    ))
+    ));
   }
 
   renderLife = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed === 0
           ? '-'
           : plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed}
       </th>
-    ))
+    ));
   }
 
   renderDental = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.dentalPerYear === null ? '-' : plan.dentalPerYear}
       </th>
-    ))
+    ));
   }
 
   renderOPD = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.opdPerYear +
@@ -126,11 +126,11 @@ class ComparePlan extends Component {
           plan.opdCoPayMixNotExceed +
           plan.opdCoPayMixYear}
       </th>
-    ))
+    ));
   }
 
   renderIPD = () => {
-    const plans = this.props.planList
+    const plans = this.props.planList;
     return plans.map(plan => (
       <th>
         {plan.ipdLumsumPerYear +
@@ -184,7 +184,7 @@ class ComparePlan extends Component {
           plan.ipdCoPayMixNotExceed +
           plan.ipdCoPayMixYear}
       </th>
-    ))
+    ));
   }
 
   render() {
@@ -369,12 +369,12 @@ class ComparePlan extends Component {
           </RecComparePlan>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   planList: state.menuplanReducer,
-})
+});
 
-export default connect(mapStateToProps, null)(ComparePlan)
+export default connect(mapStateToProps, null)(ComparePlan);

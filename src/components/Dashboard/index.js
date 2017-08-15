@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Grid, Image, Container, Segment, Icon } from 'semantic-ui-react'
-import '../../styles/dashboard.scss'
-import backgroundpig from '../image/cityscape2.png'
-import Checkboxpic from '../image/group.png'
-import artboard1 from '../image/dashboard/artboard-1.png'
-import artboard2 from '../image/dashboard/artboard-2.png'
-import artboard3 from '../image/dashboard/artboard-3.png'
-import artboard4 from '../image/dashboard/artboard-4.png'
-import artboard5 from '../image/dashboard/artboard-5.png'
-import artboard6 from '../image/dashboard/artboard-6.png'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Grid, Image, Container, Segment, Icon } from 'semantic-ui-react';
+import '../../styles/dashboard.scss';
+import backgroundpig from '../image/cityscape2.png';
+import Checkboxpic from '../image/group.png';
+import artboard1 from '../image/dashboard/artboard-1.png';
+import artboard2 from '../image/dashboard/artboard-2.png';
+import artboard3 from '../image/dashboard/artboard-3.png';
+import artboard4 from '../image/dashboard/artboard-4.png';
+import artboard5 from '../image/dashboard/artboard-5.png';
+import artboard6 from '../image/dashboard/artboard-6.png';
 
 class Dashboard extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -124,10 +124,10 @@ class Dashboard extends Component {
         </Grid>
 
       </Container>
-    )
+    );
   }
 }
 
-Dashboard.propTypes = {}
+Dashboard.propTypes = {};
 
-export default Dashboard
+export default Dashboard;

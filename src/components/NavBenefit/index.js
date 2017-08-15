@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Step, Divider } from 'semantic-ui-react'
-import { Head, Step1, StepRadius, Step6 } from './styled'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Step, Divider } from 'semantic-ui-react';
+import { Head, Step1, StepRadius, Step6 } from './styled';
 
 class NavInsure extends Component {
   static propTypes = {
     step: PropTypes.number.isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: props.step,
-    }
+    };
   }
 
   render() {
@@ -54,8 +54,8 @@ class NavInsure extends Component {
           </StepRadius>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default NavInsure
+export default NavInsure;

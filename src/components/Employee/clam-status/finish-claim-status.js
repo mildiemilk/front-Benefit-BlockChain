@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import FinishCheck from '../../image/icons-8-checked@2x-green.png'
+import React, { Component } from 'react';
+import FinishCheck from '../../image/icons-8-checked@2x-green.png';
 
 class FinishClaimStatus extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -39,8 +39,8 @@ class FinishClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default FinishClaimStatus
+export default FinishClaimStatus;

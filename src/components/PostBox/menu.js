@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Menu } from 'semantic-ui-react';
 
 export default class Menus extends Component {
   state = { activeItem: 'home' }
 
   handleItemClickHi = e => {
-    e.preventDefault()
-    window.location.href = '/hi'
+    e.preventDefault();
+    window.location.href = '/hi';
   }
   handleItemClickTest = e => {
-    e.preventDefault()
-    window.location.href = '/test'
+    e.preventDefault();
+    window.location.href = '/test';
   }
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
       <Menu style={{ width: '245px' }} pointing vertical>
@@ -61,6 +61,6 @@ export default class Menus extends Component {
           onClick={this.handleItemClick}
         />
       </Menu>
-    )
+    );
   }
 }

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { HeadLists, TextInput } from './styled'
-import ListExpense from './list-expense'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { HeadLists, TextInput } from './styled';
+import ListExpense from './list-expense';
 
 class ExpenseBenefit extends Component {
   static propTypes = {
@@ -13,13 +13,13 @@ class ExpenseBenefit extends Component {
   }
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   addTodoEnter = e => {
     if (e.key === 'Enter') {
-      this.props.addTodoExpense()
+      this.props.addTodoExpense();
     }
   }
 
@@ -39,8 +39,8 @@ class ExpenseBenefit extends Component {
           sendDel={this.props.removeTodoExpense}
         />
       </div>
-    )
+    );
   }
 }
 
-export default ExpenseBenefit
+export default ExpenseBenefit;

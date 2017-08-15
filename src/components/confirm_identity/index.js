@@ -1,7 +1,7 @@
-import React from 'react'
-import { Image, Container } from 'semantic-ui-react'
+import React from 'react';
+import { Image, Container } from 'semantic-ui-react';
 
-import pic from '../image/proove@3x.png'
+import pic from '../image/proove@3x.png';
 
 const confirmIdentity = () => (
   <Container>
@@ -31,6 +31,6 @@ const confirmIdentity = () => (
       />
     </div>
   </Container>
-)
+);
 
-export default confirmIdentity
+export default confirmIdentity;

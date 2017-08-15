@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { Progress, Icon } from 'semantic-ui-react'
-import Nav from './Nav'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Progress, Icon } from 'semantic-ui-react';
+import Nav from './Nav';
 import {
   DetailDiv,
   NextButton,
@@ -17,7 +17,7 @@ import {
   BoxList,
   DetailIn,
   Number,
-} from './styled'
+} from './styled';
 
 const ProgressStyle = styled(Progress) `
     &&&{
@@ -27,34 +27,34 @@ const ProgressStyle = styled(Progress) `
         height: 15px;
         border-radius: 100px;
     }
-`
+`;
 
 class SelectRealTime extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isPlan: true,
-    }
+    };
   }
 
   handlePlan = () => {
-    const { isPlan } = this.state
+    const { isPlan } = this.state;
     if (!isPlan) {
       this.setState({
         isPlan: true,
-      })
+      });
     } else {
       this.setState({
         isPlan: false,
-      })
+      });
     }
   }
   render() {
-    let TypeIcon = null
+    let TypeIcon = null;
     if (!this.state.isPlan) {
-      TypeIcon = <Icon name="caret right" />
+      TypeIcon = <Icon name="caret right" />;
     } else {
-      TypeIcon = <Icon name="caret down" />
+      TypeIcon = <Icon name="caret down" />;
     }
     return (
       <div className="SelectRealTime">
@@ -96,8 +96,8 @@ class SelectRealTime extends Component {
         </DetailDiv>
         <NextButton>ต่อไป</NextButton>
       </div>
-    )
+    );
   }
 }
 
-export default SelectRealTime
+export default SelectRealTime;

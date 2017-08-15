@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import NavBenefit from '../NavBenefit'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import NavBenefit from '../NavBenefit';
 import {
   DetailDiv,
   Text,
@@ -14,45 +14,45 @@ import {
   UploadInput,
   UploadButton,
   UploadDiv,
-} from './styled'
+} from './styled';
 
 class Download extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 4,
       file: null,
       filePreviewUrl: '',
-    }
+    };
   }
 
   _handleImageChange(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const reader = new FileReader()
-    const file = e.target.files[0]
+    const reader = new FileReader();
+    const file = e.target.files[0];
 
     reader.onloadend = () => {
       this.setState({
         file,
         filePreviewUrl: reader.result,
-      })
-    }
+      });
+    };
 
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file);
   }
 
   render() {
-    const { filePreviewUrl } = this.state
-    let $filePreview = null
+    const { filePreviewUrl } = this.state;
+    let $filePreview = null;
     if (filePreviewUrl) {
-      $filePreview = <span>{this.state.file.name}&nbsp;</span>
+      $filePreview = <span>{this.state.file.name}&nbsp;</span>;
     } else {
       $filePreview = (
         <span style={{ opacity: '0.2' }}>
           please Upload file template.xlsx{' '}
         </span>
-      )
+      );
     }
     return (
       <div>
@@ -103,8 +103,8 @@ class Download extends Component {
           <div className="large-1 columns" />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Download
+export default Download;

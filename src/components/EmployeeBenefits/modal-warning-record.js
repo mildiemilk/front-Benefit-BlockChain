@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Button, Modal } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Button, Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -9,14 +9,14 @@ const ModalContents = styled(Modal.Content)`
     position: relative;
     margin: 0 auto;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
     background: transparent;
     margin-top: -120px;
   }
-`
+`;
 
 class ModalWarningRecord extends Component {
   static propTypes = {
@@ -25,8 +25,8 @@ class ModalWarningRecord extends Component {
     openModal: PropTypes.bool.isRequired,
   }
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -35,12 +35,12 @@ class ModalWarningRecord extends Component {
     })
 
   handleCancel = () => {
-    this.props.handleCloseModal()
+    this.props.handleCloseModal();
   }
 
   handleSubmit = () => {
-    this.props.handleSubmit()
-    this.props.handleCloseModal()
+    this.props.handleSubmit();
+    this.props.handleCloseModal();
   }
 
   handleOpen = () =>
@@ -95,8 +95,8 @@ class ModalWarningRecord extends Component {
           </ModalContents>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default ModalWarningRecord
+export default ModalWarningRecord;

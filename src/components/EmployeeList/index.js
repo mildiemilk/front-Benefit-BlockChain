@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Form, Divider, Icon, Popup, List } from 'semantic-ui-react'
-import '../../styles/employee-list.scss'
+import React, { Component } from 'react';
+import { Form, Divider, Icon, Popup, List } from 'semantic-ui-react';
+import '../../styles/employee-list.scss';
 
 class employeeList extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       seach: '',
       minList: 0,
@@ -92,19 +92,19 @@ class employeeList extends Component {
           group: 'D',
         },
       ],
-    }
+    };
   }
 
   plusLimitChange = () => {
     if (this.state.maxList <= this.renderSeach().length) {
-      const { data } = this.state
+      const { data } = this.state;
       this.setState({
         minList: this.state.minList + 4,
         maxList: this.state.maxList + 4,
         pageNumber: this.state.pageNumber + 1,
-      })
+      });
       if (this.state.maxList > data.length) {
-        this.setState({ maxList: data.length })
+        this.setState({ maxList: data.length });
       }
     }
   }
@@ -115,26 +115,26 @@ class employeeList extends Component {
         minList: this.state.minList - 4,
         maxList: this.state.maxList - 4,
         pageNumber: this.state.pageNumber - 1,
-      })
+      });
     }
   }
   sortByGroup = value => {
     if (value === 'respect') {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.group.toLowerCase() < b.group.toLowerCase()) return -1
-          if (a.group.toLowerCase() > b.group.toLowerCase()) return 1
-          return 0
+          if (a.group.toLowerCase() < b.group.toLowerCase()) return -1;
+          if (a.group.toLowerCase() > b.group.toLowerCase()) return 1;
+          return 0;
         }),
-      })
+      });
     } else {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.group.toLowerCase() < b.group.toLowerCase()) return 1
-          if (a.group.toLowerCase() > b.group.toLowerCase()) return -1
-          return 0
+          if (a.group.toLowerCase() < b.group.toLowerCase()) return 1;
+          if (a.group.toLowerCase() > b.group.toLowerCase()) return -1;
+          return 0;
         }),
-      })
+      });
     }
   }
 
@@ -142,19 +142,19 @@ class employeeList extends Component {
     if (value === 'respect') {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
-          return 0
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          return 0;
         }),
-      })
+      });
     } else {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1
-          return 0
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+          return 0;
         }),
-      })
+      });
     }
   }
 
@@ -162,19 +162,19 @@ class employeeList extends Component {
     if (value === 'respect') {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.code.toLowerCase() < b.code.toLowerCase()) return -1
-          if (a.code.toLowerCase() > b.code.toLowerCase()) return 1
-          return 0
+          if (a.code.toLowerCase() < b.code.toLowerCase()) return -1;
+          if (a.code.toLowerCase() > b.code.toLowerCase()) return 1;
+          return 0;
         }),
-      })
+      });
     } else {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.code.toLowerCase() < b.code.toLowerCase()) return 1
-          if (a.code.toLowerCase() > b.code.toLowerCase()) return -1
-          return 0
+          if (a.code.toLowerCase() < b.code.toLowerCase()) return 1;
+          if (a.code.toLowerCase() > b.code.toLowerCase()) return -1;
+          return 0;
         }),
-      })
+      });
     }
   }
 
@@ -189,16 +189,16 @@ class employeeList extends Component {
         data.position.toLowerCase().indexOf(this.state.seach.toLowerCase()) >=
           0 ||
         data.group.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0,
-    )
-    return list
+    );
+    return list;
   }
 
   renderListEmployee = () => {
-    const seachData = this.renderSeach()
+    const seachData = this.renderSeach();
     const showData = seachData.filter(
       (data, index) =>
         index >= this.state.minList && index <= this.state.maxList,
-    )
+    );
     return showData.map(element => (
       <div className="employee-list-box">
         <div className="row">
@@ -248,7 +248,7 @@ class employeeList extends Component {
           </div>
         </div>
       </div>
-    ))
+    ));
   }
 
   render() {
@@ -415,8 +415,8 @@ class employeeList extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default employeeList
+export default employeeList;

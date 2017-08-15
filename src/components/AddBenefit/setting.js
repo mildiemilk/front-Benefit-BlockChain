@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   DetailDiv,
   Text,
@@ -8,7 +8,7 @@ import {
   DivInput,
   SettingLine,
   ButtonSetting,
-} from './styled'
+} from './styled';
 
 class Setting extends Component {
   static propTypes = {
@@ -28,8 +28,8 @@ class Setting extends Component {
     selectedOptionExpense3: PropTypes.string.isRequired,
   }
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   render() {
@@ -201,8 +201,8 @@ class Setting extends Component {
           </SettingLine>
         </div>
       </DetailDiv>
-    )
+    );
   }
 }
 
-export default Setting
+export default Setting;

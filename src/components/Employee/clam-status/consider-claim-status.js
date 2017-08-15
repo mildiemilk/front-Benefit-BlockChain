@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Hourglass from '../../image/icons-8-hourglass@2x.png'
+import React, { Component } from 'react';
+import Hourglass from '../../image/icons-8-hourglass@2x.png';
 
 class ConsiderClaimStatus extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -39,8 +39,8 @@ class ConsiderClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default ConsiderClaimStatus
+export default ConsiderClaimStatus;

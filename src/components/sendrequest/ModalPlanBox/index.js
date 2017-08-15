@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { getAllPlan, deletePlan } from '../../../api/set-plan'
-import PlanBoxs from './planbox'
-import { ListBox } from './styled'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getAllPlan, deletePlan } from '../../../api/set-plan';
+import PlanBoxs from './planbox';
+import { ListBox } from './styled';
 
 class ModalPlanBox extends Component {
   static propTypes = {
@@ -13,23 +13,23 @@ class ModalPlanBox extends Component {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       step: 6,
       isOpen: false,
       modalOpen: false,
       activePlan: -1,
-    }
-    const { getAllPlan } = props
-    setInterval(getAllPlan, 2000)
+    };
+    const { getAllPlan } = props;
+    setInterval(getAllPlan, 2000);
   }
 
   handleOpen = () => {
-    this.setState({ isOpen: true })
+    this.setState({ isOpen: true });
   }
 
   handleClose = () => {
-    this.setState({ isOpen: false })
+    this.setState({ isOpen: false });
   }
 
   handleModal = e => {
@@ -37,26 +37,26 @@ class ModalPlanBox extends Component {
       isOpen: false,
       modalOpen: true,
       activePlan: e.target.id,
-    })
-    this.props.changePositionPage()
+    });
+    this.props.changePositionPage();
   }
 
   handleOpenModal = () => {
     this.setState({
       modalOpen: true,
-    })
-    this.props.changePositionPage()
+    });
+    this.props.changePositionPage();
   }
 
   handleCloseModal = () => {
     this.setState({
       modalOpen: false,
-    })
-    this.props.changePositionPage()
+    });
+    this.props.changePositionPage();
   }
 
   handleDelete = e => {
-    this.props.deletePlan(this.props.planList[e.target.id].planId)
+    this.props.deletePlan(this.props.planList[e.target.id].planId);
   }
 
   renderList = list => {
@@ -78,8 +78,8 @@ class ModalPlanBox extends Component {
           handleDelete={this.handleDelete}
         />
       </ListBox>
-    ))
-    return lists
+    ));
+    return lists;
   }
 
   render() {
@@ -89,17 +89,17 @@ class ModalPlanBox extends Component {
           {this.renderList(this.props.planList)}
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
   deletePlan: planId => dispatch(deletePlan(planId)),
-})
+});
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalPlanBox)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalPlanBox);

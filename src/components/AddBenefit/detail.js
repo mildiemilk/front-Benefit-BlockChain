@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Icon, Checkbox } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import { Icon, Checkbox } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   DetailDiv,
   Text,
@@ -14,9 +14,10 @@ import {
   Toggled,
   BackButton,
   NextButton,
-} from './styled'
-import HealthBenefit from './health-benefit'
-import ExpenseBenefit from './expense-benefit'
+} from './styled';
+import HealthBenefit from './health-benefit';
+import ExpenseBenefit from './expense-benefit';
+import ToggleHealth from './toggle-health';
 
 class Detail extends Component {
   static propTypes = {
@@ -39,14 +40,14 @@ class Detail extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-    }
+    };
   }
 
   boxInStyle = state => {
-    if (state) return 'BoxLine'
-    return ''
+    if (state) return 'BoxLine';
+    return '';
   }
   render() {
     return (
@@ -64,28 +65,10 @@ class Detail extends Component {
                   <Icon name="setting" /> ตั้งค่าขั้นสูง{' '}
                 </Setting>
                 <BoxIn>
-                  <div className={this.boxInStyle(this.props.isHealth)}>
-                    <div className="row">
-                      <div className="large-8 columns">
-                        <HeadList>ค่าใช้จ่ายสุขภาพ (Health)</HeadList>
-                      </div>
-                      <div className="large-4 columns">
-                        <div className="Toggle">
-                          <Toggled>
-                            ไม่มี
-                            {' '}
-                            <Checkbox
-                              toggle
-                              checked={this.props.isHealth}
-                              onClick={this.props.handleToggleHealth}
-                            />
-                            {' '}
-                            มี
-                          </Toggled>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ToggleHealth
+                    boxInStyle={this.boxInStyle} isHealth={this.props.isHealth}
+                    handleToggleHealth={this.props.handleToggleHealth}
+                  />
                   {this.props.isHealth
                     ? <HealthBenefit
                       removeTodoHealth={this.props.removeTodoHealth}
@@ -116,17 +99,19 @@ class Detail extends Component {
                         <HeadList>ค่าใช้จ่ายทั่วไป (General Expense)</HeadList>
                       </div>
                       <div className="large-4 columns">
-                        <Toggled>
-                          ไม่มี
-                          {' '}
-                          <Checkbox
-                            toggle
-                            checked={this.props.isExpense}
-                            onClick={this.props.handleToggleExpense}
-                          />
-                          {' '}
-                          มี
-                        </Toggled>
+                        <div className="toggle">
+                          <Toggled>
+                            ไม่มี
+                            {' '}
+                            <Checkbox
+                              toggle
+                              checked={this.props.isExpense}
+                              onClick={this.props.handleToggleExpense}
+                            />
+                            {' '}
+                            มี
+                          </Toggled>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -160,9 +145,8 @@ class Detail extends Component {
           <div className="large-1 columns" />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Detail
-
+export default Detail;

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react'
-import { editPlan } from '../../../api/set-plan'
-import '../../../styles/submit-plan.scss'
-import CoPay from './copay'
-import OpdModal from './opd-modal'
-import about from '../../image/icons-8-about.png'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { editPlan } from '../../../api/set-plan';
+import '../../../styles/submit-plan.scss';
+import CoPay from './copay';
+import OpdModal from './opd-modal';
+import about from '../../image/icons-8-about.png';
 
 class OPD extends Component {
   static propTypes = {
@@ -37,24 +37,24 @@ class OPD extends Component {
   }
 
   constructor(props) {
-    super(props)
-    const { opdPerYear, opdPerTime, opdTimeNotExceedPerYear } = this.props
-    let value
+    super(props);
+    const { opdPerYear, opdPerTime, opdTimeNotExceedPerYear } = this.props;
+    let value;
 
     if (opdPerYear) {
-      value = 'firstChoice'
+      value = 'firstChoice';
     } else if (opdPerTime && opdTimeNotExceedPerYear) {
-      value = 'secondChoice'
+      value = 'secondChoice';
     } else {
-      value = ''
+      value = '';
     }
 
-    this.state = { value }
+    this.state = { value };
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'OPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
@@ -69,7 +69,7 @@ class OPD extends Component {
       opdCoPayMixPercentage,
       opdCoPayMixNotExceed,
       opdCoPayMixYear,
-    } = this.props
+    } = this.props;
     this.props.editPlan(
       {
         opdCoPay,
@@ -84,28 +84,28 @@ class OPD extends Component {
       },
       this.props.planList[this.props.activePlan].planId,
       'opd',
-    )
-    this.props.handleRecordVerifyState('opdRecord')
+    );
+    this.props.handleRecordVerifyState('opdRecord');
   }
 
   handleRadio = (e, { value }) => {
-    this.handleResetdata()
-    this.setState({ value })
+    this.handleResetdata();
+    this.setState({ value });
   }
 
   handleResetdata = () => {
-    this.props.handleResetOPD()
-    document.getElementById('opdPerTime').value = ''
-    document.getElementById('opdTimeNotExceedPerYear').value = ''
-    document.getElementById('opdPerYear').value = ''
-    this.setState({ value: '' })
-    this.props.handleNewReset()
-    this.props.handleVerifyState('opdRecord')
+    this.props.handleResetOPD();
+    document.getElementById('opdPerTime').value = '';
+    document.getElementById('opdTimeNotExceedPerYear').value = '';
+    document.getElementById('opdPerYear').value = '';
+    this.setState({ value: '' });
+    this.props.handleNewReset();
+    this.props.handleVerifyState('opdRecord');
   }
 
   handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState('opdRecord')
+    this.props.handleChange(e, { name, value });
+    this.props.handleVerifyState('opdRecord');
   }
 
   render() {
@@ -267,18 +267,18 @@ class OPD extends Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
 
-OPD.propTypes = {}
+OPD.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>
     dispatch(editPlan(editData, planId, editType)),
-})
+});
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(OPD)
+export default connect(mapStateToProps, mapDispatchToProps)(OPD);

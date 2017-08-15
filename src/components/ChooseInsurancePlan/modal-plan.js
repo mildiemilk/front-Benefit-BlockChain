@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Modal, Icon } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { Modal, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import {
   ModalHeader,
   ModalContent,
@@ -15,16 +15,16 @@ import {
   HiddenContent,
   Img,
   ImageIcon2,
-} from './styled'
-import IPDDropBox from './ipd-dropbox'
-import icon2 from '../image/icons-8-view-file.png'
+} from './styled';
+import IPDDropBox from './ipd-dropbox';
+import icon2 from '../image/icons-8-view-file.png';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
     max-width: 670px;
     margin: 0 auto;
   }
-`
+`;
 
 const Modals = styled(Modal) `
   &&&{
@@ -32,14 +32,14 @@ const Modals = styled(Modal) `
     box-shadow: none;
     margin-top: -120px;
   }
-`
+`;
 
 const Icons = styled(Icon) `
   &&&{
     position: absolute;
     margin-top: 2.5%;
   }
-`
+`;
 
 class ModalModalExample extends Component {
   static propTypes = {
@@ -47,45 +47,45 @@ class ModalModalExample extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       modalOpen: false,
       lifeBox: false,
       dentalBox: false,
       OPDBox: false,
       IPDBox: false,
-    }
+    };
   }
 
   handleToggleLife = () => {
     if (this.state.lifeBox) {
-      this.setState({ lifeBox: false })
+      this.setState({ lifeBox: false });
     } else {
-      this.setState({ lifeBox: true })
+      this.setState({ lifeBox: true });
     }
   }
 
   handleToggleDental = () => {
     if (this.state.dentalBox) {
-      this.setState({ dentalBox: false })
+      this.setState({ dentalBox: false });
     } else {
-      this.setState({ dentalBox: true })
+      this.setState({ dentalBox: true });
     }
   }
 
   handleToggleOPD = () => {
     if (this.state.OPDBox) {
-      this.setState({ OPDBox: false })
+      this.setState({ OPDBox: false });
     } else {
-      this.setState({ OPDBox: true })
+      this.setState({ OPDBox: true });
     }
   }
 
   handleToggleIPD = () => {
     if (this.state.IPDBox) {
-      this.setState({ IPDBox: false })
+      this.setState({ IPDBox: false });
     } else {
-      this.setState({ IPDBox: true })
+      this.setState({ IPDBox: true });
     }
   }
 
@@ -94,7 +94,7 @@ class ModalModalExample extends Component {
   handleOpen = () => this.setState({ modalOpen: true })
 
   render() {
-    const { plan } = this.props
+    const { plan } = this.props;
     return (
       <Modals
         trigger={
@@ -367,8 +367,8 @@ class ModalModalExample extends Component {
           </div>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-export default ModalModalExample
+export default ModalModalExample;

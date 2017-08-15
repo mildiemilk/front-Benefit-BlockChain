@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import Message from '../../image/icons-8-message@2x.png'
+import React, { Component } from 'react';
+import Message from '../../image/icons-8-message@2x.png';
 
 class ApproveClaimStatus extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -35,7 +35,7 @@ class ApproveClaimStatus extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-export default ApproveClaimStatus
+export default ApproveClaimStatus;

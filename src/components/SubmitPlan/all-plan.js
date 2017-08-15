@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import bedRecord from '../image/icons-8-single-bed-record.png'
-import bedActive from '../image/icons-8-single-bed.jpg'
-import bed from '../image/icons-8-single-bed1.jpg'
-import stethoscopeRecord from '../image/icons-8-stethoscope-record.png'
-import stethoscope from '../image/icons-8-stethoscope1.jpg'
-import stethoscopeActive from '../image/icons-8-stethoscope.jpg'
-import toothRecord from '../image/icons-8-tooth-record.png'
-import toothActive from '../image/icons-8-tooth.jpg'
-import tooth from '../image/icons-8-toot1.jpg'
-import heartRecord from '../image/icons-8-like-record.png'
-import heart from '../image/icons-8-like1.jpg'
-import heartActive from '../image/icons-8-like.jpg'
-import erase from '../image/icons-8-erase.png'
-import IPD from './IPD/ipd'
-import Life from './Life/life'
-import OPD from './OPD/opd'
-import Dental from './Dental/dental'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import bedRecord from '../image/icons-8-single-bed-record.png';
+import bedActive from '../image/icons-8-single-bed.jpg';
+import bed from '../image/icons-8-single-bed1.jpg';
+import stethoscopeRecord from '../image/icons-8-stethoscope-record.png';
+import stethoscope from '../image/icons-8-stethoscope1.jpg';
+import stethoscopeActive from '../image/icons-8-stethoscope.jpg';
+import toothRecord from '../image/icons-8-tooth-record.png';
+import toothActive from '../image/icons-8-tooth.jpg';
+import tooth from '../image/icons-8-toot1.jpg';
+import heartRecord from '../image/icons-8-like-record.png';
+import heart from '../image/icons-8-like1.jpg';
+import heartActive from '../image/icons-8-like.jpg';
+import erase from '../image/icons-8-erase.png';
+import IPD from './IPD/ipd';
+import Life from './Life/life';
+import OPD from './OPD/opd';
+import Dental from './Dental/dental';
 
 class AllsetPlan extends Component {
   static propTypes = {
@@ -122,7 +122,7 @@ class AllsetPlan extends Component {
   }
 
   constructor() {
-    super()
+    super();
     this.state = {
       value: '',
       setPlan: 'IPD',
@@ -144,50 +144,50 @@ class AllsetPlan extends Component {
       textLifeActive: 'text-menu-active',
       isChange: false,
       changeToRecord: false,
-    }
+    };
   }
 
   componentWillReceiveProps(newProps) {
-    this.handleUpdate(newProps)
+    this.handleUpdate(newProps);
   }
 
   componentDidUpdate() {
-    this.handleDidUpdate()
+    this.handleDidUpdate();
   }
 
   handleDidUpdate = () => {
     const { isChange, changeToRecord, ipdRecord, opdRecord,
-      dentalRecord, lifeRecord, setPlan, verifyState } = this.state
+      dentalRecord, lifeRecord, setPlan, verifyState } = this.state;
     if (isChange) {
       if (changeToRecord) {
         if (ipdRecord && setPlan === 'IPD') {
-          this.setState({ textIpd: 'text-menu-record' })
-          this.setState({ textIpdActive: 'text-menu-record' })
-          this.setState({ isChange: false })
+          this.setState({ textIpd: 'text-menu-record' });
+          this.setState({ textIpdActive: 'text-menu-record' });
+          this.setState({ isChange: false });
         } else if (opdRecord && setPlan === 'OPD') {
-          this.setState({ textOpd: 'text-menu-record' })
-          this.setState({ textOpdActive: 'text-menu-record' })
-          this.setState({ isChange: false })
+          this.setState({ textOpd: 'text-menu-record' });
+          this.setState({ textOpdActive: 'text-menu-record' });
+          this.setState({ isChange: false });
         } else if (dentalRecord && setPlan === 'Dental') {
-          this.setState({ textDental: 'text-menu-record' })
-          this.setState({ textDentalActive: 'text-menu-record' })
-          this.setState({ isChange: false })
+          this.setState({ textDental: 'text-menu-record' });
+          this.setState({ textDentalActive: 'text-menu-record' });
+          this.setState({ isChange: false });
         } else if (lifeRecord && setPlan === 'Life') {
-          this.setState({ textLife: 'text-menu-record' })
-          this.setState({ textLifeActive: 'text-menu-record' })
-          this.setState({ isChange: false })
+          this.setState({ textLife: 'text-menu-record' });
+          this.setState({ textLifeActive: 'text-menu-record' });
+          this.setState({ isChange: false });
         }
       }
     }
 
     if (this.props.nextPage && verifyState === false) {
-      this.handleOpenModalNextPage()
-      this.props.handleNextPage()
+      this.handleOpenModalNextPage();
+      this.props.handleNextPage();
     }
 
     if (this.props.newPlan && verifyState === false) {
-      this.handleOpenModal()
-      this.props.handleResetPlan()
+      this.handleOpenModal();
+      this.props.handleResetPlan();
     }
   }
 
@@ -207,128 +207,128 @@ class AllsetPlan extends Component {
         textDentalActive: 'text-menu-active',
         textLife: 'text-menu',
         textLifeActive: 'text-menu-active',
-      })
+      });
     }
   }
 
   handleOpenModal = () => {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   handleOpenModalNextPage = () => {
-    this.setState({ openModal: true })
-    this.props.handleWarningModal()
+    this.setState({ openModal: true });
+    this.props.handleWarningModal();
   }
 
   handleCloseModal = () => {
-    this.setState({ openModal: false })
-    this.setState({ verifyState: true })
-    this.setState({ isChange: false })
-    this.setState({ changeToRecord: false })
-    this.setState({ [name]: false })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ openModal: false });
+    this.setState({ verifyState: true });
+    this.setState({ isChange: false });
+    this.setState({ changeToRecord: false });
+    this.setState({ [name]: false });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleVerifyState = name => {
-    this.setState({ verifyState: false })
-    this.setState({ changeToRecord: false })
-    this.setState({ isChange: true })
-    this.setState({ [name]: false })
-    this.props.handleSetGoToNextPage()
-    this.handleText(name)
-    this.props.handleUnBuildNewPlan()
+    this.setState({ verifyState: false });
+    this.setState({ changeToRecord: false });
+    this.setState({ isChange: true });
+    this.setState({ [name]: false });
+    this.props.handleSetGoToNextPage();
+    this.handleText(name);
+    this.props.handleUnBuildNewPlan();
   }
 
   handleRecordVerifyState = name => {
-    this.setState({ verifyState: true })
-    this.setState({ isChange: true })
-    this.setState({ changeToRecord: true })
-    this.setState({ [name]: true })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ verifyState: true });
+    this.setState({ isChange: true });
+    this.setState({ changeToRecord: true });
+    this.setState({ [name]: true });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleText = value => {
     if (value === 'ipdRecord') {
-      this.setState({ textIpd: 'text-menu' })
-      this.setState({ textIpdActive: 'text-menu-active' })
+      this.setState({ textIpd: 'text-menu' });
+      this.setState({ textIpdActive: 'text-menu-active' });
     } else if (value === 'opdRecord') {
-      this.setState({ textOpd: 'text-menu' })
-      this.setState({ textOpdActive: 'text-menu-active' })
+      this.setState({ textOpd: 'text-menu' });
+      this.setState({ textOpdActive: 'text-menu-active' });
     } else if (value === 'dentalRecord') {
-      this.setState({ textDental: 'text-menu' })
-      this.setState({ textDentalActive: 'text-menu-active' })
+      this.setState({ textDental: 'text-menu' });
+      this.setState({ textDentalActive: 'text-menu-active' });
     } else {
-      this.setState({ textLife: 'text-menu' })
-      this.setState({ textLifeActive: 'text-menu-active' })
+      this.setState({ textLife: 'text-menu' });
+      this.setState({ textLifeActive: 'text-menu-active' });
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.setState({ value })
+    this.setState({ value });
   }
 
   handleClick = value => {
     if (this.state.verifyState === false) {
-      this.handleOpenModal()
-      this.setState({ nextPlan: value })
+      this.handleOpenModal();
+      this.setState({ nextPlan: value });
     } else {
-      const { handlePlan, activePlan } = this.props
-      this.setState({ setPlan: value, nextPlan: value })
-      handlePlan(activePlan)
+      const { handlePlan, activePlan } = this.props;
+      this.setState({ setPlan: value, nextPlan: value });
+      handlePlan(activePlan);
     }
   }
 
   handleImageActive = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord
-      return bedActive
+      if (this.state.ipdRecord) return bedRecord;
+      return bedActive;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      return stethoscopeActive
+      if (this.state.opdRecord) return stethoscopeRecord;
+      return stethoscopeActive;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      return toothActive
+      if (this.state.dentalRecord) return toothRecord;
+      return toothActive;
     }
-    if (this.state.lifeRecord) return heartRecord
-    return heartActive
+    if (this.state.lifeRecord) return heartRecord;
+    return heartActive;
   }
 
   handleImage = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord
-      return bed
+      if (this.state.ipdRecord) return bedRecord;
+      return bed;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord
-      return stethoscope
+      if (this.state.opdRecord) return stethoscopeRecord;
+      return stethoscope;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord
-      return tooth
+      if (this.state.dentalRecord) return toothRecord;
+      return tooth;
     }
     if (this.lifeRecord) {
-      return heartRecord
+      return heartRecord;
     }
-    return heart
+    return heart;
   }
 
   handleNextPlan = () => {
-    this.setState({ setPlan: this.state.nextPlan })
+    this.setState({ setPlan: this.state.nextPlan });
   }
 
   handleReset = () => {
-    this.setState({ reset: true })
-    this.setState({ verifyState: true })
-    this.props.handleMoveToNextPage()
-    this.props.handleBuildNewPlan()
+    this.setState({ reset: true });
+    this.setState({ verifyState: true });
+    this.props.handleMoveToNextPage();
+    this.props.handleBuildNewPlan();
   }
 
   handleNewReset = () => {
-    this.setState({ reset: false })
+    this.setState({ reset: false });
   }
 
   render() {
@@ -601,8 +601,8 @@ class AllsetPlan extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(AllsetPlan)
+export default connect(null, null)(AllsetPlan);

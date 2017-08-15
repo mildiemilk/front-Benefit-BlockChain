@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import { Modal, Input } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { Modal, Input } from 'semantic-ui-react';
 import {
   ModalHeader,
   ModalContent,
   ButtonNew,
   CancleButton,
   ConfirmButton,
-} from './styled'
+} from './styled';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
@@ -17,7 +17,7 @@ const ModalContents = styled(Modal.Content) `
     margin: 0 auto;
     padding-left: 4%;
   }
-`
+`;
 
 const Modals = styled(Modal) `
   &&&{
@@ -25,7 +25,7 @@ const Modals = styled(Modal) `
     box-shadow: none;
     margin-top: -120px;
   }
-`
+`;
 
 class ModalPostbox extends Component {
   static propTypes = {
@@ -33,8 +33,8 @@ class ModalPostbox extends Component {
   }
 
   constructor() {
-    super()
-    this.state = { modalOpen: false }
+    super();
+    this.state = { modalOpen: false };
   }
 
   handleClose = () =>
@@ -108,17 +108,17 @@ class ModalPostbox extends Component {
         </ModalContents>
 
       </Modals>
-    )
+    );
   }
 }
 
 ModalPostbox.propTypes = {
   handlePost: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
-}
+};
 
 const mapStateToProps = state => ({
   data: state.postBoxReducer,
-})
+});
 
-export default connect(mapStateToProps, null)(ModalPostbox)
+export default connect(mapStateToProps, null)(ModalPostbox);

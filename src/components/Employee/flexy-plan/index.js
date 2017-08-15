@@ -1,24 +1,24 @@
-import React, { Component } from 'react'
-import Slider from 'react-slick'
-import FlexyPlanBox from './flexy-plan-box'
-import CongrateImage from '../../image/asset-1.png'
-import ConfirmModal from './confirm-modal'
-import DeadlineBox from './deadline-box'
+import React, { Component } from 'react';
+import Slider from 'react-slick';
+import FlexyPlanBox from './flexy-plan-box';
+import CongrateImage from '../../image/asset-1.png';
+import ConfirmModal from './confirm-modal';
+import DeadlineBox from './deadline-box';
 
 class FlexyPlan extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       openModal: false,
-    }
+    };
   }
 
   handleCloseModal = () => {
-    this.setState({ openModal: false })
+    this.setState({ openModal: false });
   }
 
   handleOpenModal = () => {
-    this.setState({ openModal: true })
+    this.setState({ openModal: true });
   }
 
   render() {
@@ -26,7 +26,7 @@ class FlexyPlan extends Component {
       dots: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-    }
+    };
     return (
       <div className="flexyPlan">
         <div className="row">
@@ -35,16 +35,12 @@ class FlexyPlan extends Component {
               <img src={CongrateImage} alt="Congrate" />
               <div className="congrate-text">ยินดีด้วย!</div>
               <div className="congrate-text">
-                มีสิทธิประโยชน์มากมายรอคุณอยู่
+                นี่คือสิทธิประโยชน์ของคุณ
               </div>
               <div className="deadline-box">
                 <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
                 <DeadlineBox />
               </div>
-            </div>
-            <div className="deadline-box">
-              <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
-              <DeadlineBox />
             </div>
           </div>
           <div className="box-space">
@@ -75,8 +71,8 @@ class FlexyPlan extends Component {
           handleCloseModal={this.handleCloseModal}
         />
       </div>
-    )
+    );
   }
 }
 
-export default FlexyPlan
+export default FlexyPlan;

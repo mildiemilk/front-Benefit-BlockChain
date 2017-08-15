@@ -1,29 +1,29 @@
-import React, { Component } from 'react'
-import { Icon, Link } from 'semantic-ui-react'
-import styled from 'styled-components'
-import Header from '../header'
-import Footer from '../footer'
+import React, { Component } from 'react';
+import { Icon, Link } from 'semantic-ui-react';
+import styled from 'styled-components';
+import Header from '../header';
+import Footer from '../footer';
 
 const Icons = styled(Icon)`
   &&&{
     position: absolute;
     right: 6px;
   }
-`
+`;
 
 class InsuranceDetail extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       IPDBox: false,
-    }
+    };
   }
 
   handleToggleIPD = () => {
     if (this.state.IPDBox) {
-      this.setState({ IPDBox: false })
+      this.setState({ IPDBox: false });
     } else {
-      this.setState({ IPDBox: true })
+      this.setState({ IPDBox: true });
     }
   }
 
@@ -251,8 +251,8 @@ class InsuranceDetail extends Component {
         </div>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
-export default InsuranceDetail
+export default InsuranceDetail;

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Segment,
   Dropdown,
-} from 'semantic-ui-react'
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import { createProfile } from '../../api/profile-company'
+} from 'semantic-ui-react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { createProfile } from '../../api/profile-company';
 import {
   Box,
   Head,
@@ -15,7 +15,7 @@ import {
   Detail2,
   Detail3,
   DefaultImg,
-} from './styled'
+} from './styled';
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
@@ -23,7 +23,7 @@ const SegmentWithHeight = styled(Segment)`
     min-height: 611px;
     box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
   }
-`
+`;
 const NextButton = styled.button`
     width: 85%;
     height: 40px;
@@ -36,7 +36,7 @@ const NextButton = styled.button`
     display: block;
     text-align:center;
     padding: 0.5%;
-    `
+    `;
 
 const BusinessTypes = [
   {
@@ -51,7 +51,7 @@ const BusinessTypes = [
     text: 'ประเภท 3',
     value: 'Type 3',
   },
-]
+];
 const NumberOfEmployees = [
   {
     text: '1-50',
@@ -65,7 +65,7 @@ const NumberOfEmployees = [
     text: '101-150',
     value: '101-150',
   },
-]
+];
 
 class SettingProfile extends Component {
   static propTypes = {
@@ -73,7 +73,7 @@ class SettingProfile extends Component {
     createProfile: PropTypes.shape.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       companyName: '',
       location: '',
@@ -85,28 +85,28 @@ class SettingProfile extends Component {
       companyInsurer: '',
       file: '',
       imagePreviewUrl: '',
-    }
+    };
   }
   onInputChange(value, stateName) {
-    this.setState({ [stateName]: value })
+    this.setState({ [stateName]: value });
   }
 
   _handleImageChange = e => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const reader = new FileReader()
-    const file = e.target.files[0]
+    const reader = new FileReader();
+    const file = e.target.files[0];
     reader.onloadend = () => {
       this.setState({
         file,
         imagePreviewUrl: reader.result,
-      })
-    }
+      });
+    };
 
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file);
   }
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
     const {
       companyName: { value: companyName },
       location: { value: location },
@@ -114,7 +114,7 @@ class SettingProfile extends Component {
       tel: { value: tel },
       companyBroker: { value: companyBroker },
       companyInsurer: { value: companyInsurer },
-    } = e.target
+    } = e.target;
 
     this.setState({
       companyName,
@@ -123,9 +123,9 @@ class SettingProfile extends Component {
       tel,
       companyBroker,
       companyInsurer,
-    })
+    });
 
-    const { typeOfBusiness, numberOfEmployees } = this.state
+    const { typeOfBusiness, numberOfEmployees } = this.state;
     this.props.createProfile({
       companyName,
       location,
@@ -135,11 +135,11 @@ class SettingProfile extends Component {
       numberOfEmployees,
       companyBroker,
       companyInsurer,
-    })
+    });
   }
   render() {
-    const { imagePreviewUrl } = this.state
-    let $imagePreview = null
+    const { imagePreviewUrl } = this.state;
+    let $imagePreview = null;
     // let elmnt = document.getElementById("Image")
     // let width = elmnt.clientWidth;
     // let height = elmnt.clientHeight;
@@ -156,9 +156,9 @@ class SettingProfile extends Component {
         <div className="thumbnail">
           <img id="Image" src={imagePreviewUrl} alt="imageCompany" />
         </div>
-      )
+      );
     } else {
-      $imagePreview = <DefaultImg />
+      $imagePreview = <DefaultImg />;
     }
     return (
       <div className="setting-profile">
@@ -275,18 +275,18 @@ class SettingProfile extends Component {
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
-SettingProfile.propTypes = {}
+SettingProfile.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
-})
+});
 
 const mapStateToProps = state => ({
   profile: state.profile,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(SettingProfile);

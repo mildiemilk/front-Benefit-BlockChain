@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const ModalHeader = styled.p`
     font-size: 16px;
     letter-spacing: 0.4px;
     text-align: center;
     color: #000000;
-`
+`;
 
 export const ModalContent = styled.p`
     font-size: 14px;
@@ -13,7 +13,7 @@ export const ModalContent = styled.p`
     letter-spacing: 0.3px;
     text-align: left;
     color: #000000;
-`
+`;
 
 export const EditButton = styled.button`
     width: 40%;
@@ -25,7 +25,7 @@ export const EditButton = styled.button`
     border-color: #f7555f;
     border-style: solid;
     color: #ffffff;
-`
+`;
 
 export const PostButton = styled.button`
     width: 40%;
@@ -38,7 +38,7 @@ export const PostButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 2%;
-`
+`;
 
 export const PostMainButton = styled.button`
     width: 174px;
@@ -50,7 +50,7 @@ export const PostMainButton = styled.button`
     border-style: solid;
     color: #ffffff;
     margin-left: 82%;
-`
+`;
 
 export const UploadButton = styled.label`
     width: 163px;
@@ -66,7 +66,7 @@ export const UploadButton = styled.label`
     border-style: solid;
     color: #ffffff;
     cursor: pointer;
-`
+`;
 export const InputBox = styled.input`
   border-radius: 3px;
   border:solid 1px #dddddd;
@@ -77,14 +77,13 @@ export const InputBox = styled.input`
         color: #323028;
         opacity: 0.35;
     }
-`
+`;
 
 export const BottomSpace = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
-`
+`;
 
 export const Inputs = styled.input`
     display: none;
-`
-
+`;

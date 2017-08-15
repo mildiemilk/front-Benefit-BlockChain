@@ -1,7 +1,7 @@
-import React from 'react'
-import { Image, Container } from 'semantic-ui-react'
+import React from 'react';
+import { Image, Container } from 'semantic-ui-react';
 
-import pic from '../image/gift.png'
+import pic from '../image/gift.png';
 
 const welcomePage = () => (
   <Container>
@@ -30,6 +30,6 @@ const welcomePage = () => (
       />
     </div>
   </Container>
-)
+);
 
-export default welcomePage
+export default welcomePage;

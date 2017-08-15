@@ -1,22 +1,22 @@
-import styled from 'styled-components'
-import { Image } from 'semantic-ui-react'
+import styled from 'styled-components';
+import { Image } from 'semantic-ui-react';
 
 export const Backgroundiv = styled.div`
     height: 100%;
     padding: 7% 5%;
-`
+`;
 
 export const TinyText = styled.div`
     font-size: 12px;
     color: #34495e;
     margin: 5px;
-`
+`;
 
 export const UploadText = styled.div`
     font-size: 14px;
     letter-spacing: 0.2px;
     text-align: center;
-`
+`;
 export const DataStyle = styled.div`
     padding-left: 7%;
     padding-top: 5%;
@@ -24,7 +24,7 @@ export const DataStyle = styled.div`
     text-align: left;
     line-height: 1.55;
     letter-spacing: 0.3px;
-`
+`;
 
 export const BrowsButton = styled.label`
     margin-left: 5px;
@@ -36,7 +36,7 @@ export const BrowsButton = styled.label`
     letter-spacing: 0.3px;
     text-align: center;
     color: #323028;
-`
+`;
 export const SubmitButton = styled.button`
     width: 100%;
     height: 40px;
@@ -49,11 +49,11 @@ export const SubmitButton = styled.button`
     text-align: center;
     color: #ffffff;
 
-`
+`;
 
 export const NewLine = styled.div`
   margin-bottom: 13px;
-`
+`;
 export const ImageInbox = styled(Image)`
   &&&{
     height: 100%;
@@ -61,4 +61,4 @@ export const ImageInbox = styled(Image)`
     display:inline-block;
     margin-top: 15%;
   }
-`
+`;

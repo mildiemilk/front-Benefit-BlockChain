@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Modal } from 'semantic-ui-react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import SettingPlans from '../SettingBenefit/setting-plan'
-import '../../styles/employee-benefits.scss'
+import React, { Component } from 'react';
+import { Modal } from 'semantic-ui-react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import SettingPlans from '../SettingBenefit/setting-plan';
+import '../../styles/employee-benefits.scss';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -13,7 +13,7 @@ const ModalContents = styled(Modal.Content)`
     margin: 0 auto;
     padding: 0px;
   }
-`
+`;
 
 const Modals = styled(Modal)`
   &&&{
@@ -24,7 +24,7 @@ const Modals = styled(Modal)`
     z-index: 2;
     box-shadow: none;
   }
-`
+`;
 
 class SettingBenefitModal extends Component {
   static propTypes = {
@@ -32,16 +32,16 @@ class SettingBenefitModal extends Component {
     openSettingBenefit: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       modalOpen: false,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
-    }
+    };
   }
 
   handleClose = () => {
-    this.props.closeModal()
+    this.props.closeModal();
   }
 
   render() {
@@ -67,10 +67,10 @@ class SettingBenefitModal extends Component {
           </div>
         </ModalContents>
       </Modals>
-    )
+    );
   }
 }
 
-SettingBenefitModal.propTypes = {}
+SettingBenefitModal.propTypes = {};
 
-export default connect(null, null)(SettingBenefitModal)
+export default connect(null, null)(SettingBenefitModal);

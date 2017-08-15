@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Icon, Popup, List } from 'semantic-ui-react'
-import { PlanBox } from '../styled'
-import PlanBoxModal from './planbox-modal'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Icon, Popup, List } from 'semantic-ui-react';
+import { PlanBox } from '../styled';
+import PlanBoxModal from './planbox-modal';
 
 export default class PlanBoxs extends Component {
   static propTypes = {
@@ -17,8 +17,8 @@ export default class PlanBoxs extends Component {
   }
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   render() {
@@ -60,6 +60,6 @@ export default class PlanBoxs extends Component {
           planList={this.props.planList}
         />
       </PlanBox>
-    )
+    );
   }
 }

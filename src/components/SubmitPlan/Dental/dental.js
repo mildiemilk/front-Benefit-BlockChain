@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Button, Form } from 'semantic-ui-react'
-import { editPlan } from '../../../api/set-plan'
-import '../../../styles/submit-plan.scss'
-import DentalModal from './dental-modal'
-import about from '../../image/icons-8-about.png'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Button, Form } from 'semantic-ui-react';
+import { editPlan } from '../../../api/set-plan';
+import '../../../styles/submit-plan.scss';
+import DentalModal from './dental-modal';
+import about from '../../image/icons-8-about.png';
 
 class Dental extends Component {
   static propTypes = {
@@ -30,39 +30,39 @@ class Dental extends Component {
   }
 
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {};
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'Dental' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState('dentalRecord')
+    this.props.handleChange(e, { name, value });
+    this.props.handleVerifyState('dentalRecord');
   }
 
   handleClick = () => {
-    let { dentalPerYear } = this.props
+    let { dentalPerYear } = this.props;
     if (dentalPerYear === '') {
-      dentalPerYear = null
+      dentalPerYear = null;
     }
     this.props.editPlan(
       { dentalPerYear },
       this.props.planList[this.props.activePlan].planId,
       'dental',
-    )
-    this.props.handleRecordVerifyState('dentalRecord')
+    );
+    this.props.handleRecordVerifyState('dentalRecord');
   }
 
   handleResetdata = () => {
-    document.getElementById('dentalPerYear').value = ''
-    this.props.handleResetDental()
-    this.props.handleNewReset()
-    this.props.handleVerifyState('dentalRecord')
+    document.getElementById('dentalPerYear').value = '';
+    this.props.handleResetDental();
+    this.props.handleNewReset();
+    this.props.handleVerifyState('dentalRecord');
   }
 
   render() {
@@ -118,16 +118,16 @@ class Dental extends Component {
           handleNextPlan={this.props.handleNextPlan}
         />
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   editPlan: (editData, planId, editType) =>
     dispatch(editPlan(editData, planId, editType)),
-})
+});
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dental)
+export default connect(mapStateToProps, mapDispatchToProps)(Dental);

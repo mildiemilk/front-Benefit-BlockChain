@@ -1,13 +1,13 @@
-import { APIRequest } from '.'
+import { APIRequest } from '.';
 import {
   fillsimpleRqSuccess,
   fillsimpleRqFailure,
   getsimpleRqSuccess,
   getsimpleRqFailure,
-} from '../reducers/simple-requirement'
+} from '../reducers/simple-requirement';
 
-const SIMPLERQ_URI = '/admin/simpleRequirement'
-const GETSIMPLERQ_URI = '/admin/getSimpleRequirement'
+const SIMPLERQ_URI = '/admin/simpleRequirement';
+const GETSIMPLERQ_URI = '/admin/getSimpleRequirement';
 
 export function fillSimpleRQ(
   numberOfEmployee,
@@ -35,17 +35,17 @@ export function fillSimpleRQ(
         otherDes,
         date,
       },
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(fillsimpleRqSuccess(res.data))
-        window.location.href = '/postbox'
+        dispatch(fillsimpleRqSuccess(res.data));
+        window.location.href = '/postbox';
       })
       .catch(err => {
-        dispatch(fillsimpleRqFailure(err.response.data))
-      })
-  }
+        dispatch(fillsimpleRqFailure(err.response.data));
+      });
+  };
 }
 
 export function getSimpleRQ() {
@@ -53,14 +53,14 @@ export function getSimpleRQ() {
     const options = {
       method: 'get',
       url: GETSIMPLERQ_URI,
-    }
+    };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(getsimpleRqSuccess(res.data))
+        dispatch(getsimpleRqSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getsimpleRqFailure(err.response.data))
-      })
-  }
+        dispatch(getsimpleRqFailure(err.response.data));
+      });
+  };
 }

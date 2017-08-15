@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Checkbox, Form, Radio, Icon, List, button } from 'semantic-ui-react'
-import { PopupView } from '../Bidding/styled'
-import '../../styles/employee-benefits.scss'
-import '../../styles/popup-color.scss'
-import SettingBenefitModal from './setting-benefit-modal'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Checkbox, Form, Radio, Icon, List, button } from 'semantic-ui-react';
+import { PopupView } from '../Bidding/styled';
+import '../../styles/employee-benefits.scss';
+import '../../styles/popup-color.scss';
+import SettingBenefitModal from './setting-benefit-modal';
 
 class SelectOptionPlan extends Component {
   static propTypes = {
@@ -20,32 +20,32 @@ class SelectOptionPlan extends Component {
     handleSubmit: PropTypes.func.isRequired,
   }
   constructor() {
-    super()
+    super();
     this.state = {
       selectedGroup: '',
       value: '',
       plan: '',
       selectPlan: [],
       openSettingBenefit: false,
-    }
+    };
   }
 
   handleChange = (e, { value }) => {
-    this.setState({ value })
-    this.props.handleFixedChange(value)
+    this.setState({ value });
+    this.props.handleFixedChange(value);
   }
 
   handleModal = () => {
-    this.setState({ openSettingBenefit: true })
+    this.setState({ openSettingBenefit: true });
   }
 
   closeModal = () => {
-    this.setState({ openSettingBenefit: false })
+    this.setState({ openSettingBenefit: false });
   }
 
   renderList = list => {
     const lists = list.map((element, index) => {
-      const isActive = index === this.props.defualtPlan ? '-active' : ''
+      const isActive = index === this.props.defualtPlan ? '-active' : '';
       return (
         <div className="row">
           <div className="large-1 columns">
@@ -116,9 +116,9 @@ class SelectOptionPlan extends Component {
             </div>
             : null}
         </div>
-      )
-    })
-    return lists
+      );
+    });
+    return lists;
   }
 
   render() {
@@ -136,10 +136,10 @@ class SelectOptionPlan extends Component {
           </div>
         </Form>
       </div>
-    )
+    );
   }
 }
 
-SelectOptionPlan.propTypes = {}
+SelectOptionPlan.propTypes = {};
 
-export default connect(null, null)(SelectOptionPlan)
+export default connect(null, null)(SelectOptionPlan);

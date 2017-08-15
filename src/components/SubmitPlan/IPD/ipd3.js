@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Form, Radio } from 'semantic-ui-react'
-import about from '../../image/icons-8-about.png'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Form, Radio } from 'semantic-ui-react';
+import about from '../../image/icons-8-about.png';
 
 class IPD3 extends Component {
   static propTypes = {
@@ -28,82 +28,82 @@ class IPD3 extends Component {
   }
 
   constructor(props) {
-    super(props)
+    super(props);
     const {
       rbScheduleSurgerySchedule,
       rbScheduleSurgeryNonSchedule,
-    } = this.props
-    let value
+    } = this.props;
+    let value;
 
     if (rbScheduleSurgerySchedule) {
-      value = 'Schedule'
+      value = 'Schedule';
     } else if (rbScheduleSurgeryNonSchedule) {
-      value = 'Non-Schedule'
+      value = 'Non-Schedule';
     } else {
-      value = ''
+      value = '';
     }
 
-    this.state = { value }
+    this.state = { value };
   }
 
   componentWillReceiveProps(newProps) {
-    const { rbScheduleSurgerySchedule, rbScheduleSurgeryNonSchedule } = newProps
-    let value
+    const { rbScheduleSurgerySchedule, rbScheduleSurgeryNonSchedule } = newProps;
+    let value;
 
     if (rbScheduleSurgerySchedule) {
-      value = 'Schedule'
+      value = 'Schedule';
     } else if (rbScheduleSurgeryNonSchedule) {
-      value = 'Non-Schedule'
+      value = 'Non-Schedule';
     } else {
-      value = ''
+      value = '';
     }
 
     if (newProps.activePlan !== this.props.activePlan) {
-      this.setState({ value })
+      this.setState({ value });
     }
   }
 
   componentDidUpdate() {
     if (this.props.setPlan === 'IPD' && this.props.reset === true) {
-      this.handleResetdata()
+      this.handleResetdata();
     }
   }
 
   handleRadio = (e, { value }) => {
-    this.setState({ value })
+    this.setState({ value });
     if (this.state.value === 'Non-Schedule') {
-      this.props.handleChangeToNull('rbScheduleSurgeryNonSchedule')
+      this.props.handleChangeToNull('rbScheduleSurgeryNonSchedule');
     } else {
-      this.props.handleChangeToNull('rbScheduleSurgerySchedule')
+      this.props.handleChangeToNull('rbScheduleSurgerySchedule');
     }
   }
 
   handleResetdata = () => {
-    this.props.handleChangeToNull('rbSchedulePatient')
-    this.props.handleChangeToNull('rbScheduleIntensiveCarePatient')
-    this.props.handleChangeToNull('rbScheduleDoctor')
-    this.props.handleChangeToNull('rbScheduleSurgery')
-    this.props.handleChangeToNull('rbScheduleService')
-    this.props.handleChangeToNull('rbScheduleSmallSurgery')
-    this.props.handleChangeToNull('rbScheduleAdviser')
-    this.props.handleChangeToNull('rbScheduleAmbulance')
-    this.props.handleChangeToNull('rbScheduleAccident')
-    this.props.handleChangeToNull('rbScheduleTreatment')
-    this.props.handleChangeToNull('rbScheduleTransplant')
-    this.props.handleNewReset()
+    this.props.handleChangeToNull('rbSchedulePatient');
+    this.props.handleChangeToNull('rbScheduleIntensiveCarePatient');
+    this.props.handleChangeToNull('rbScheduleDoctor');
+    this.props.handleChangeToNull('rbScheduleSurgery');
+    this.props.handleChangeToNull('rbScheduleService');
+    this.props.handleChangeToNull('rbScheduleSmallSurgery');
+    this.props.handleChangeToNull('rbScheduleAdviser');
+    this.props.handleChangeToNull('rbScheduleAmbulance');
+    this.props.handleChangeToNull('rbScheduleAccident');
+    this.props.handleChangeToNull('rbScheduleTreatment');
+    this.props.handleChangeToNull('rbScheduleTransplant');
+    this.props.handleNewReset();
   }
 
   handleChange = (e, { name, value }) => {
-    this.props.handleChange(e, { name, value })
-    this.props.handleVerifyState()
+    this.props.handleChange(e, { name, value });
+    this.props.handleVerifyState();
   }
 
   handleRadio = (e, { value }) => {
-    this.setState({ value })
+    this.setState({ value });
     if (this.state.value === 'Non-Schedule') {
-      document.getElementById('rbScheduleSurgeryNonSchedule').value = ''
+      document.getElementById('rbScheduleSurgeryNonSchedule').value = '';
     } else {
-      document.getElementById('rbScheduleSurgerySchedule').value = ''
+      document.getElementById('rbScheduleSurgerySchedule').value = '';
     }
   }
 
@@ -463,8 +463,8 @@ class IPD3 extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, null)(IPD3)
+export default connect(null, null)(IPD3);

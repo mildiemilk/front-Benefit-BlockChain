@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Flexy1 from '../../image/flexy-1.png'
-import Flexy2 from '../../image/flexy-2.png'
-import Flexy3 from '../../image/flexy-3.png'
+import React, { Component } from 'react';
+import Flexy1 from '../../image/flexy-1.png';
+import Flexy2 from '../../image/flexy-2.png';
+import Flexy3 from '../../image/flexy-3.png';
 
 class FlexyPlanBox extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -83,8 +83,8 @@ class FlexyPlanBox extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default FlexyPlanBox
+export default FlexyPlanBox;

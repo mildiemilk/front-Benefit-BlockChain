@@ -88,11 +88,11 @@ export function setBenefitPlanFailure(data) {
 export function choosePlan(state = defaultPlan, action) {
   switch (action.type) {
     case CHOOSEPLAN_REQUEST_SUCCESS:
-      return Object.assign({}, state, { choosePlan: action.data });
+      return Object.assign({}, state, { choosePlan: action.data.plan });
     case CHOOSEPLAN_REQUEST_FAILURE:
       return state;
     case EDITCHOOSEPLAN_REQUEST_SUCCESS:
-      return Object.assign({}, state, { choosePlan: action.data });
+      return Object.assign({}, state, { choosePlan: action.data.plan });
     case EDITCHOOSEPLAN_REQUEST_FAILURE:
       return state;
     case EDITOPTION_REQUEST_SUCCESS:
@@ -106,6 +106,7 @@ export function choosePlan(state = defaultPlan, action) {
       return state;
     case GETOPTIONPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, {
+        choosePlan: action.data.plan,
         health: action.data.health,
         isHealth: action.data.isHealth,
         expense: action.data.expense,

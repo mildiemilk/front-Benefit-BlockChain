@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import NavBenefit from '../NavBenefit';
 import Detail from './detail';
 import Setting from './setting';
-import { planOption } from '../../api/benefit-plan';
+import { planOption, getOptionPlan } from '../../api/benefit-plan';
 
 class AddBenefit extends Component {
   static propTypes = {
     planOption: PropTypes.func.isRequired,
+    getOptionPlan: PropTypes.func.isRequired,
+    optionPlan: PropTypes.shape.isRequired,
   }
 
   constructor(props) {
@@ -30,6 +32,28 @@ class AddBenefit extends Component {
       selectedOptionExpense2: 'full',
       selectedOptionExpense3: 'full',
     };
+  }
+
+  componentDidMount() {
+    this.props.getOptionPlan();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.optionPlan !== this.props.optionPlan) {
+      const { optionPlan } = newProps;
+      this.setState({
+        isHealth: optionPlan.isHealth,
+        isExpense: optionPlan.isExpense,
+        HealthList: optionPlan.health.HealthList,
+        ExpenseList: optionPlan.expense.ExpenseList,
+        selectedOptionHealth1: optionPlan.health.selectedOptionHealth1,
+        selectedOptionHealth2: optionPlan.health.selectedOptionHealth2,
+        selectedOptionHealth3: optionPlan.health.selectedOptionHealth3,
+        selectedOptionExpense1: optionPlan.expense.selectedOptionExpense1,
+        selectedOptionExpense2: optionPlan.expense.selectedOptionExpense2,
+        selectedOptionExpense3: optionPlan.expense.selectedOptionExpense3,
+      });
+    }
   }
 
   handleToggleHealth = () => {
@@ -248,6 +272,11 @@ const mapDispatchToProps = dispatch => ({
         Setting6,
       ),
     ),
+  getOptionPlan: () => dispatch(getOptionPlan()),
 });
 
-export default connect(null, mapDispatchToProps)(AddBenefit);
+const mapStateToProps = state => ({
+  optionPlan: state.choosePlan,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBenefit);

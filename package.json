@@ -84,7 +84,6 @@
     "react-redux": "^5.0.4",
     "react-responsive": "^1.3.4",
     "react-router-dom": "^4.1.1",
-    "styled-components": "^0.2.1",
     "react-slick": "^0.14.11",
     "react-toastify": "^1.7.0",
     "react-vis": "^1.6.7",

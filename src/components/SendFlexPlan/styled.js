@@ -62,5 +62,28 @@ export const Imgs = styled.img`
     position: absolute;
     left: 33px;
     top: 23px;
-
+`;
+export const DivHealth = styled.div`
+    border-right:solid 1px #979797;
+`;
+export const DivBenefit = styled.div`
+    height: 232px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: solid 1px #979797;
+`;
+export const DivImage = styled.div`
+  position: relative;
+  padding-top:29px;
+`;
+export const TextList = styled.div`
+  padding: 1% 3%;
+  background-color: #cddaed;
+  border-radius: 5px;
+  margin-bottom: 2%;
+`;
+export const DetailList = styled.div`
+    margin-right: 2%;
+    margin-top: 4%;
+    color: #4a4a4a;
 `;

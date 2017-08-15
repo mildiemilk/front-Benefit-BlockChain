@@ -3,22 +3,36 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NavBenefit from '../NavBenefit';
-import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs } from './styled';
+import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit } from './styled';
 import Timeout from '../ChooseInsurer/timeout';
 import { setTimeOut } from '../../api/choose-insurer';
+import { getOptionPlan } from '../../api/benefit-plan';
 import time from '../../../assets/sendflexplan/icons-8-timer.png';
+import ToggleHealth from '../AddBenefit/toggle-health';
+import ToggleExpense from '../AddBenefit/toggle-expense';
+import AddBenefit from './add-benefit';
 
 class SendFlexPlan extends Component {
   static propTypes = {
     setTimeOut: PropTypes.func.isRequired,
+    isHealth: PropTypes.bool.isRequired,
+    getOptionPlan: PropTypes.func.isRequired,
+    List: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       step: 6,
     };
+    // props.getOptionPlan();
   }
-
+  componentDidMount = () => {
+    this.props.getOptionPlan();
+  }
+  boxInStyle = state => {
+    if (state) return 'BoxLine';
+    return '';
+  }
   render() {
     return (
       <div>
@@ -35,12 +49,37 @@ class SendFlexPlan extends Component {
             />
 
             <List>กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ</List>
-            <Inner
-              style={{
-                height: '500px',
-              }}
-              className="large-12 "
-            />
+            <Inner>
+              <DivBenefit>
+                <div className="row">
+                  <div className="large-6 columns">
+                    <DivHealth>
+                      <DivImage>
+                        <div className="imagehealth" />
+                      </DivImage>
+                      <ToggleHealth
+                        boxInStyle={this.boxInStyle} isHealth={this.props.isHealth}
+                      />
+                    </DivHealth>
+                  </div>
+                  <AddBenefit List={this.props.List.health.HealthList} />
+                </div>
+              </DivBenefit>
+              <br />
+              <DivBenefit>
+                <div className="row">
+                  <div className="large-6 columns">
+                    <DivHealth>
+                      <DivImage>
+                        <div className="imageExpense" />
+                      </DivImage>
+                      <ToggleExpense boxInStyle={this.boxInStyle} isHealth={this.props.isHealth} />
+                    </DivHealth>
+                  </div>
+                  <AddBenefit List={this.props.List.expense.ExpenseList} />
+                </div>
+              </DivBenefit>
+            </Inner>
 
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
             <Inner
@@ -91,8 +130,9 @@ class SendFlexPlan extends Component {
 
 const mapDispatchToProps = dispatch => ({
   setTimeOut: timeout => dispatch(setTimeOut(timeout)),
+  getOptionPlan: () => dispatch(getOptionPlan()),
 });
-const mapStateToProps = () => {
-
-};
+const mapStateToProps = state => ({
+  List: state.choosePlan,
+});
 export default connect(mapStateToProps, mapDispatchToProps)(SendFlexPlan);

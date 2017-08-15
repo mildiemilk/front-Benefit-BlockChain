@@ -21,13 +21,13 @@ const CHOOSEPLAN_REQUEST_SUCCESS = 'CHOOSEPLAN_REQUEST_SUCCESS';
 const CHOOSEPLAN_REQUEST_FAILURE = 'CHOOSEPLAN_REQUEST_FAILURE';
 const EDITCHOOSEPLAN_REQUEST_SUCCESS = 'EDITCHOOSEPLAN_REQUEST_SUCCESS';
 const EDITCHOOSEPLAN_REQUEST_FAILURE = 'EDITCHOOSEPLAN_REQUEST_FAILURE';
-const EDITOPTION_REQUEST_SUSCESS = 'EDITOPTION_REQUEST_SUCCESS';
+const EDITOPTION_REQUEST_SUCCESS = 'EDITOPTION_REQUEST_SUCCESS';
 const EDITOPTION_REQUEST_FAILURE = 'EDITOPTION_REQUEST_FAILURE';
-const GETOPTIONPLAN_REQUEST_SUSCESS = 'GETOPTIONPLAN_REQUEST_SUSCESS';
+const GETOPTIONPLAN_REQUEST_SUCCESS = 'GETOPTIONPLAN_REQUEST_SUCCESS';
 const GETOPTIONPLAN_REQUEST_FAILURE = 'GETOPTIONPLAN_REQUEST_FAILURE';
-const GETBENEFITPLAN_REQUEST_SUSCESS = 'GETBENEFITPLAN_REQUEST_SUSCESS';
+const GETBENEFITPLAN_REQUEST_SUCCESS = 'GETBENEFITPLAN_REQUEST_SUCCESS';
 const GETBENEFITPLAN_REQUEST_FAILURE = 'GETBENEFITPLAN_REQUEST_FAILURE';
-const SETBENEFITPLAN_REQUEST_SUSCESS = 'SETBENEFITPLAN_REQUEST_SUSCESS';
+const SETBENEFITPLAN_REQUEST_SUCCESS = 'SETBENEFITPLAN_REQUEST_SUCCESS';
 const SETBENEFITPLAN_REQUEST_FAILURE = 'SETBENEFITPLAN_REQUEST_FAILURE';
 
 /**
@@ -50,7 +50,7 @@ export function editChoosePlanFailure(data) {
 }
 
 export function editOptionSuccess(data) {
-  return { type: EDITOPTION_REQUEST_SUSCESS, data };
+  return { type: EDITOPTION_REQUEST_SUCCESS, data };
 }
 
 export function editOptionFailure(data) {
@@ -58,7 +58,7 @@ export function editOptionFailure(data) {
 }
 
 export function getOptionPlanSuccess(data) {
-  return { type: GETOPTIONPLAN_REQUEST_SUSCESS, data };
+  return { type: GETOPTIONPLAN_REQUEST_SUCCESS, data };
 }
 
 export function getOptionPlanFailure(data) {
@@ -66,7 +66,7 @@ export function getOptionPlanFailure(data) {
 }
 
 export function getBenefitPlanSuccess(data) {
-  return { type: GETBENEFITPLAN_REQUEST_SUSCESS, data };
+  return { type: GETBENEFITPLAN_REQUEST_SUCCESS, data };
 }
 
 export function getBenefitPlanFailure(data) {
@@ -74,7 +74,7 @@ export function getBenefitPlanFailure(data) {
 }
 
 export function setBenefitPlanSuccess(data) {
-  return { type: SETBENEFITPLAN_REQUEST_SUSCESS, data };
+  return { type: SETBENEFITPLAN_REQUEST_SUCCESS, data };
 }
 
 export function setBenefitPlanFailure(data) {
@@ -94,7 +94,7 @@ export function choosePlan(state = defaultPlan, action) {
       return Object.assign({}, state, { choosePlan: action.data });
     case EDITCHOOSEPLAN_REQUEST_FAILURE:
       return state;
-    case EDITOPTION_REQUEST_SUSCESS:
+    case EDITOPTION_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         health: action.data.health,
         isHealth: action.data.isHealth,
@@ -103,9 +103,8 @@ export function choosePlan(state = defaultPlan, action) {
       });
     case EDITOPTION_REQUEST_FAILURE:
       return state;
-    case GETOPTIONPLAN_REQUEST_SUSCESS:
+    case GETOPTIONPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, {
-        choosePlan: action.data.plan,
         health: action.data.health,
         isHealth: action.data.isHealth,
         expense: action.data.expense,
@@ -120,11 +119,11 @@ export function choosePlan(state = defaultPlan, action) {
 
 export function benefitPlan(state = defaultBenefitPlan, action) {
   switch (action.type) {
-    case GETBENEFITPLAN_REQUEST_SUSCESS:
+    case GETBENEFITPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, { plan: action.data });
     case GETBENEFITPLAN_REQUEST_FAILURE:
       return state;
-    case SETBENEFITPLAN_REQUEST_SUSCESS:
+    case SETBENEFITPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, { plan: action.data });
     case SETBENEFITPLAN_REQUEST_FAILURE:
       return state;

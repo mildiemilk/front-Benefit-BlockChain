@@ -52,9 +52,7 @@ export const Image = styled.img`
 `;
 export const DivImage = styled.div`
   position: relative;
-  top: 21%;
-  padding-top: 15%;
-
+  padding-top:35px;
 `;
 export const BoxIn = styled.div`
   position: relative;

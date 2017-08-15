@@ -15,7 +15,6 @@ class ToggleHealth extends Component {
     };
   }
   render() {
-    console.log('toggle yaa');
     return (
       <div className={this.props.boxInStyle(this.props.isHealth)}>
         <div className="row">

@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+// body {
+
+// }
 .flexyPlan{
+  font-family: 'Kanit', sans-serif;
   position: relative;
   .flexy-box{
     padding-left: 7%;
@@ -38,42 +43,22 @@
     }
   }
 
-  .flexy-plan-box{
-    margin-top: 3%;
-    margin-bottom: 3%;
-    width: 100%;
-    height: 110px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px 0 rgba(137, 137, 137, 0.5);
-  }
+  // .flexy-plan-header{
+  //   color: #3a7bd5;
+  //   font-size: 14px;
+  //   font-weight: 500;
+  //   line-height: 1.43;
+  //   letter-spacing: 0.3px;
+  //   padding-left: 4%;
+  // }
 
-  .head-flexy-plan-box{
-    height: 29px;
-    background-color: #c8ddf6;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width: 100%;
-    padding-top: 4px;
-  }
-
-
-
-  .flexy-plan-header{
-    color: #3a7bd5;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.43;
-    letter-spacing: 0.3px;
-    padding-left: 4%;
-  }
-
-  .link-flexy-plan{
-    float: right;
-    font-size: 11px;
-    color: #3a7bd5;
-    letter-spacing: 0.2px;
-    padding-right: 2%;
-  }
+  // .link-flexy-plan{
+  //   float: right;
+  //   font-size: 11px;
+  //   color: #3a7bd5;
+  //   letter-spacing: 0.2px;
+  //   padding-right: 2%;
+  // }
 
   .flexy-plan-detail-box{
     padding-top: 5%;
@@ -81,33 +66,34 @@
     padding-right: 4%;
   }
 
-  .header-flexy-plan-detail{
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.69;
-    letter-spacing: 0.3px;
-    text-align: left;
-    color: #323028;
-  }
+  // .header-flexy-plan-detail{
+  //   font-size: 13px;
+  //   font-weight: 500;
+  //   line-height: 1.69;
+  //   letter-spacing: 0.3px;
+  //   text-align: left;
+  //   color: #323028;
+  // }
 
-  .detail-flexy-text{
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.31;
-    letter-spacing: 0.3px;
-    text-align: left;
-    color: #323028;
-  }
+  // .detail-flexy-text{
+  //   font-size: 13px;
+  //   font-weight: 300;
+  //   line-height: 1.31;
+  //   letter-spacing: 0.3px;
+  //   text-align: left;
+  //   color: #323028;
+  // }
 
-  .flexy-image{
-    max-height: 50px;
-    max-width: 50px;
-  }
+  // .flexy-image{
+  //   display: block;
+  //   margin: 0 auto;
+  //   width: 250px;
+  // }
 
-  .flexy-image-box{
-    padding-right: 5%;
-    float: right;
-  }
+  // .flexy-image-box{
+  //   padding-right: 5%;
+  //   float: right;
+  // }
 
   .deadline-flexy-plan{
     padding-top: 8%;
@@ -180,7 +166,7 @@
   }
 
   .button-submit-flexy-plan{
-    width: 100%;
+    width: 256px;
     height: 40px;
     font-size: 14px;
     letter-spacing: 0.3px;
@@ -191,8 +177,8 @@
     border-color: #3a7bd5;
     border-style: solid;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
-    margin-top: 13%;
-    margin-bottom: 32px;
+    margin: 32px auto;
+    display: block;
   }
 
   .button-confirm-flexy-plan{
@@ -207,6 +193,120 @@
     border-style: solid;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   }
+  .btn-select-plan {
+    &.active {
+      background-color: #3a7bd5 !important;
+      color: #ffffff !important;
+    }
+  }
+  .flexy-plan-box{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 100%;
+    height: 263px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(137, 137, 137, 0.5);
+    background-color: #ffffff;
+  }
+  .head-flexy-plan-box {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .flexy-text-header {
+    display: block;
+    font-family: Kanit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 17px;
+    padding-top: 5px;
+  }
+  .flexy-image-info {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+  .flexy-image-head {
+    margin: 16px auto 0;
+    width: 250.4px;
+    height: 75px;
+  }
+  .flexy-hr {
+    margin: 0;
+    width: 100%;
+    border: solid 1px #c4c4c4;
+  }
+  .body-flexy-plan-box {
+    width: 100%;
+    height: 40px;
+    // border-radius: 3px;
+    border-radius: 0 0 3px 3px;
+    background-color: #cddaed;
+  }
+  .flexy-text-body {
+    // width: 165px;
+    // height: 21px;
+    font-family: Kanit;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #323028;
+    line-height: 40px;
+    padding-left: 32px;
+  }
+  .flexy-more-body {
+    // width: 60px;
+    // height: 22px;
+    font-family: Kanit;
+    font-size: 12px;
+    line-height: 1.83;
+    letter-spacing: 0.2px;
+    text-align: left;
+    color: #5f5f5f;
+    line-height: 40px;
+  }
+  .flexy-text-tail {
+    padding: 0;
+    list-style: none;
+    margin-left: 33px;
+    li:first-child {
+      font-family: Kanit;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.83;
+      letter-spacing: 0.2px;
+      text-align: left;
+      color: #323028;
+    }
+    li {
+      font-family: Kanit;
+      font-size: 11px;
+      line-height: 1.55;
+      letter-spacing: 0.3px;
+      text-align: left;
+      color: #323028;
+    }
+  }
+  .flexy-modal-cancel-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f7555f;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  }
+  .flexy-modal-confirm-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #3a7bd5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  }
   @media (max-width: 768px) and (min-width: 520px){
     .flexy-plan-detail-box{
     padding-top: 3%;
@@ -217,4 +317,42 @@
   }
 
   }
+}
+.flexy-modal-cancel-btn {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #f7555f;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+  margin-right: 8px;
+}
+.flexy-modal-confirm-btn {
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+.flexy-header-confirm {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #4a4a4a;
+}
+.flexy-text-confirm {
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #4a4a4a;
 }

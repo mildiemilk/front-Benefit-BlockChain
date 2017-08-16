@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Icon } from 'semantic-ui-react';
 import NavBenefit from '../NavBenefit';
-import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs } from './styled';
+import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit } from './styled';
 import Timeout from '../ChooseInsurer/timeout';
 import { setTimeOut } from '../../api/choose-insurer';
+import { getOptionPlan } from '../../api/benefit-plan';
 import time from '../../../assets/sendflexplan/icons-8-timer.png';
+import ToggleHealth from '../AddBenefit/toggle-health';
+import ToggleExpense from '../AddBenefit/toggle-expense';
+import AddBenefit from './add-benefit';
+// import InsurancePlan from './InsurancePlan';
 
 class SendFlexPlan extends Component {
   static propTypes = {
     setTimeOut: PropTypes.func.isRequired,
+    getOptionPlan: PropTypes.func.isRequired,
+    List: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -18,7 +26,13 @@ class SendFlexPlan extends Component {
       step: 6,
     };
   }
-
+  componentDidMount = () => {
+    this.props.getOptionPlan();
+  }
+  boxInStyle = state => {
+    if (state) return 'BoxLine';
+    return '';
+  }
   render() {
     return (
       <div>
@@ -27,20 +41,48 @@ class SendFlexPlan extends Component {
           <Detail className="large-12 ">
             <Head>ส่งข้อมูล</Head>
             <List>กรุณาตรวจสอบแผนประกันภัยที่เลือก</List>
-            <Inner
-              style={{
-                height: '150px',
-              }}
-              className="large-12 "
-            />
-
+            <Inner>
+              {/* <InsurancePlan /> */}
+            </Inner>
             <List>กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ</List>
-            <Inner
-              style={{
-                height: '500px',
-              }}
-              className="large-12 "
-            />
+            <Link to="/addbenefit">
+              <Edit onClick={this.handleOpen}>
+                <Icon name="write" />แก้ไข
+              </Edit>
+            </Link>
+            <Inner>
+              <DivBenefit>
+                <div className="row">
+                  <div className="large-6 columns">
+                    <DivHealth>
+                      <DivImage>
+                        <div className="imagehealth" />
+                      </DivImage>
+                      <ToggleHealth
+                        boxInStyle={this.boxInStyle} isHealth={this.props.List.isHealth}
+                      />
+                    </DivHealth>
+                  </div>
+                  <AddBenefit List={this.props.List.health.HealthList} />
+                </div>
+              </DivBenefit>
+              <br />
+              <DivBenefit>
+                <div className="row">
+                  <div className="large-6 columns">
+                    <DivHealth>
+                      <DivImage>
+                        <div className="imageExpense" />
+                      </DivImage>
+                      <ToggleExpense
+                        boxInStyle={this.boxInStyle} isExpense={this.props.List.isExpense}
+                      />
+                    </DivHealth>
+                  </div>
+                  <AddBenefit List={this.props.List.expense.ExpenseList} />
+                </div>
+              </DivBenefit>
+            </Inner>
 
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
             <Inner
@@ -91,8 +133,9 @@ class SendFlexPlan extends Component {
 
 const mapDispatchToProps = dispatch => ({
   setTimeOut: timeout => dispatch(setTimeOut(timeout)),
+  getOptionPlan: () => dispatch(getOptionPlan()),
 });
-const mapStateToProps = () => {
-
-};
+const mapStateToProps = state => ({
+  List: state.choosePlan,
+});
 export default connect(mapStateToProps, mapDispatchToProps)(SendFlexPlan);

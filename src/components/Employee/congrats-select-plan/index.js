@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ChangePlanModal from './confirm-change-plan-modal';
 import DeadlineBox from '../flexy-plan/deadline-box';
-import selectPlanImage from '../../image/select-plan.png';
+import selectPlanImage from '../../../../assets/employee/congrat_select_plan.png';
 
 class CongrateSelectPlan extends Component {
   constructor() {
@@ -25,28 +25,25 @@ class CongrateSelectPlan extends Component {
         <div className="row">
           <div className="small-10 small-centered columns">
             <div className="select-plan-box">
+              <span className="select-plan-header-text">คุณกำลังเลือกแผนที่ 1</span>
               <img
                 className="select-plan-image"
                 alt="select-plan"
                 src={selectPlanImage}
               />
-              <p>คุณเลือกแผนเรียบร้อยแล้ว</p>
-              <p>รอดำเนินการในขั้นตอนต่อไป</p>
+              <ul className="select-plan-header-description">
+                <li>คุณเลือกแผนเรียบร้อยแล้ว</li>
+                <li>รอดำเนินการในขั้นตอนต่อไป</li>
+              </ul>
             </div>
             <div className="show-deadline-box">
-              <p>สามารถทำการเปลี่ยนแผนได้ก่อนวันที่ 12 เม.ย. 60</p>
+              <p>สามารถเปลี่ยนแผนได้ก่อนวันที่ 12 เม.ย. 60</p>
               <DeadlineBox />
             </div>
-            <div className="center-link">
-              <p
-                className="link-change-plan"
-                onClick={() => this.handleOpenModal()}
-                role="button"
-                aria-hidden
-              >
-                <u>ต้องการเปลี่ยนแผน?</u>
-              </p>
-            </div>
+            <button className="select-plan-change" onClick={() => this.handleOpenModal()}>
+              ต้องการเปลี่ยนแผน?
+            </button>
+            <a className="select-plan-view-plan" href="/dashboardstart">ดูแผนที่เลือก</a>
           </div>
         </div>
         <ChangePlanModal

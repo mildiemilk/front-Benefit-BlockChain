@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit');
-// body {
 
-// }
 .flexyPlan{
   font-family: 'Kanit', sans-serif;
   position: relative;
@@ -115,45 +113,6 @@
     letter-spacing: 0.2px;
     text-align: center;
     color: #4a4a4a;
-  }
-
-  .date-deadline-box{
-    width: 100%;
-    height: 70px;
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
-    border: solid 1px #919396;
-    border-right: solid 1px rgba(145, 147, 150, 0.45);
-    text-align: center;
-  }
-
-  .hour-deadline-box{
-    width: 100%;
-    height: 70px;
-    border-top: solid 1px #919396;
-    border-bottom: solid 1px #919396;
-    border-right: none;
-    border-left: none;
-    text-align: center;
-  }
-
-  .second-deadline-box{
-    width: 100%;
-    height: 70px;
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    border: solid 1px #919396;
-    border-left: solid 1px rgba(145, 147, 150, 0.45);
-    text-align: center;
-  }
-
-
-  .deadline-text{
-    font-size: 24px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    color: #ff3f6d;
-    padding-top: 5%;
   }
 
   .header-text-select-flexy-plan
@@ -355,4 +314,44 @@
   letter-spacing: 0.2px;
   text-align: center;
   color: #4a4a4a;
+}
+.date-deadline-box{
+  width: 100%;
+  height: 70px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border: solid 1px #919396;
+  border-right: solid 1px rgba(145, 147, 150, 0.45);
+  text-align: center;
+}
+.hour-deadline-box{
+  width: 100%;
+  height: 70px;
+  border-top: solid 1px #919396;
+  border-bottom: solid 1px #919396;
+  border-right: none;
+  border-left: none;
+  text-align: center;
+}
+.second-deadline-box{
+  width: 100%;
+  height: 70px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border: solid 1px #919396;
+  border-left: solid 1px rgba(145, 147, 150, 0.45);
+  text-align: center;
+}
+.deadline-number{
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #ff3f6d;
+  padding-top: 5%;
+}
+.deadline-text{
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #323028;
 }

@@ -3,10 +3,8 @@ import { Menu, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import logo from './logo_white.png';
-import avatarn from './avatarn.JPG';
+import logoBenefit from './logo_white.png';
 import { HeadNav, LogoPosition, SpanStyle } from './styled';
-import { getCompanyName } from '../../api/profile-company';
 
 const ImageCss = styled(Image) `
   &&&{
@@ -17,7 +15,6 @@ const ImageCss = styled(Image) `
 `;
 class Header extends Component {
   static propTypes = {
-    getCompanyName: PropTypes.func.isRequired,
     data: PropTypes.shape.isRequired,
   }
 
@@ -26,25 +23,22 @@ class Header extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    this.props.getCompanyName();
-  }
-
   render() {
+    const { companyName, logo } = this.props.data;
     return (
       <HeadNav>
         <LogoPosition>
           <div>
-            <Image src={logo} size="small" />
+            <Image src={logoBenefit} size="small" />
           </div>
         </LogoPosition>
         <Menu.Item style={{ width: '20%' }} position="right">
-          {this.props.data.companyName
+          {companyName
             ? <div>
               <SpanStyle>
-                {this.props.data.companyName}
+                {companyName}
               </SpanStyle>
-              <ImageCss src={avatarn} avatar size="mini" />
+              <ImageCss src={logo} avatar size="mini" />
             </div>
             : <div />}
         </Menu.Item>
@@ -53,12 +47,8 @@ class Header extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getCompanyName: () => dispatch(getCompanyName()),
-});
-
 const mapStateToProps = state => ({
   data: state.profile,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, null)(Header);

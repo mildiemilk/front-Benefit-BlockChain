@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { createProfile } from '../../api/profile-company';
+import { createProfile, setLogo } from '../../api/profile-company';
 import {
   Box,
   Head,
@@ -70,7 +70,8 @@ const NumberOfEmployees = [
 class SettingProfile extends Component {
   static propTypes = {
     profile: PropTypes.shape.isRequired,
-    createProfile: PropTypes.shape.isRequired,
+    createProfile: PropTypes.func.isRequired,
+    setLogo: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -125,7 +126,7 @@ class SettingProfile extends Component {
       companyInsurer,
     });
 
-    const { typeOfBusiness, numberOfEmployees } = this.state;
+    const { typeOfBusiness, numberOfEmployees, file } = this.state;
     this.props.createProfile({
       companyName,
       location,
@@ -136,6 +137,7 @@ class SettingProfile extends Component {
       companyBroker,
       companyInsurer,
     });
+    this.props.setLogo(file);
   }
   render() {
     const { imagePreviewUrl } = this.state;
@@ -283,6 +285,7 @@ SettingProfile.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
+  setLogo: data => dispatch(setLogo(data)),
 });
 
 const mapStateToProps = state => ({

@@ -2,11 +2,10 @@ import { APIRequest } from '.';
 import {
   createProfileSuccess,
   createProfileFailure,
-  getCompanyNameSuccess,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/admin/registerCompany';
-const COMPANYNAME_URI = '/admin/getCompanyName';
+const LOGO_URI = '/admin/set-logo';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -18,9 +17,9 @@ export function createProfile(profile) {
 
     APIRequest(options, true)
       .then(res => {
-        localStorage.setItem('profile', res.data.profile);
+        localStorage.setItem('companyName', res.data.profile.companyName);
         dispatch(createProfileSuccess(res.data));
-        window.location.href = '/confirm_identity';
+        // window.location.href = '/confirm_identity';
       })
       .catch(err => {
         dispatch(createProfileFailure(err.response.data));
@@ -28,19 +27,23 @@ export function createProfile(profile) {
   };
 }
 
-export function getCompanyName() {
-  return dispatch => {
+export function setLogo(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  return () => {
     const options = {
-      method: 'get',
-      url: COMPANYNAME_URI,
+      method: 'put',
+      url: LOGO_URI,
+      data: formData,
     };
 
     APIRequest(options, true)
       .then(res => {
-        localStorage.setItem('companyname', res.data.companyName);
-        dispatch(getCompanyNameSuccess(res.data.companyName));
+        localStorage.setItem('logo', res.data.logo);
       })
-      .catch(() => {});
+      .catch(err => {
+        console.log(err);
+      });
   };
 }
 

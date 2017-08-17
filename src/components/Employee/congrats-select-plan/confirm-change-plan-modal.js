@@ -5,13 +5,11 @@ import { Modal } from 'semantic-ui-react';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    max-width: 288px;
-    margin: 0 auto;
-    padding-left: 5%;
-    font-size: 14px;
-    letter-spacing: 0.2px;
-    text-align: center;
-    color: #4a4a4a;
+    width: 288px;
+    height: 149px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding-top: 40px !important;
   }
 `;
 
@@ -36,8 +34,9 @@ class ConfirmModal extends Component {
     };
   }
 
-  handleSubmit = () => {
-    this.props.handleCloseModal();
+  handleChangePlan = () => {
+    window.location.href = '/flexyplan';
+    // this.props.handleCloseModal();
   }
 
   handleClose = () => {
@@ -54,13 +53,23 @@ class ConfirmModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <p>คุณต้องการเปลี่ยนแผนใช่หรือไม่</p>
-          <button
-            className="button-confirm-flexy-plan"
-            onClick={() => this.handleSubmit()}
-          >
-            ใช่
-          </button>
+          <div>
+            <span className="select-plan-header-modal">คุณต้องการเปลี่ยนแผนใช่หรือไม่</span>
+            <div className="select-plan-btn-modal">
+              <button
+                className="select-plan-cancel-model"
+                onClick={() => this.handleClose()}
+              >
+                ไม่ใช่
+              </button>
+              <button
+                className="select-plan-confirm-model"
+                onClick={() => this.handleChangePlan()}
+              >
+                ใช่
+              </button>
+            </div>
+          </div>
         </ModalContents>
       </Modals>
     );

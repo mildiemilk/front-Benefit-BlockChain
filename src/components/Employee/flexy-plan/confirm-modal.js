@@ -6,10 +6,11 @@ import '../../../styles/submit-plan.scss';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    max-width: 288px;
+    width: 288px;
+    height: 174px;
     margin: 0 auto;
-    padding-left: 5%;
     text-align: center;
+    padding-top: 40px !important;
   }
 `;
 
@@ -25,6 +26,7 @@ class ConfirmModal extends Component {
   static propTypes = {
     openModal: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
+    plan: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -35,7 +37,8 @@ class ConfirmModal extends Component {
   }
 
   handleSubmit = () => {
-    this.props.handleCloseModal();
+    window.location.href = '/congratselectplan';
+    // this.props.handleCloseModal();
   }
 
   handleClose = () => {
@@ -43,6 +46,7 @@ class ConfirmModal extends Component {
   }
 
   render() {
+    const { plan } = this.props;
     return (
       <Modals
         trigger={<div />}
@@ -52,14 +56,22 @@ class ConfirmModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <p>คุณเลือกแผน 1</p>
-          <p>กดยืนยันการเลือกของคุณ</p>
-          <button
-            className="button-confirm-flexy-plan"
-            onClick={() => this.handleSubmit()}
-          >
-            ยืนยัน
-          </button>
+          <div>
+            <span className="flexy-header-confirm">คุณเลือกแผน {plan + 1}</span>
+            <p className="flexy-text-confirm">กดยืนยันการเลือกของคุณ</p>
+            <button
+              className="flexy-modal-cancel-btn"
+              onClick={() => this.handleClose()}
+            >
+              ยกเลิก
+            </button>
+            <button
+              className="flexy-modal-confirm-btn"
+              onClick={() => this.handleSubmit()}
+            >
+              ยืนยัน
+            </button>
+          </div>
         </ModalContents>
       </Modals>
     );

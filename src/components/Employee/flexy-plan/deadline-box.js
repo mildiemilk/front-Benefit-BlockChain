@@ -13,10 +13,10 @@ class DeadlineBox extends Component {
           <div className="box-space">
             <div className="small-4 columns" style={{ paddingRight: '0px' }}>
               <div className="date-deadline-box">
-                <div className="deadline-text">
+                <div className="deadline-number">
                   08
                 </div>
-                <div>วัน</div>
+                <div className="deadline-text">วัน</div>
               </div>
             </div>
             <div
@@ -24,18 +24,18 @@ class DeadlineBox extends Component {
               style={{ paddingRight: '0px', paddingLeft: '0px' }}
             >
               <div className="hour-deadline-box">
-                <div className="deadline-text">
-                  08
+                <div className="deadline-number">
+                  12
                 </div>
-                <div>ชั่วโมง</div>
+                <div className="deadline-text">ชั่วโมง</div>
               </div>
             </div>
             <div className="small-4 columns" style={{ paddingLeft: '0px' }}>
               <div className="second-deadline-box">
-                <div className="deadline-text">
-                  08
+                <div className="deadline-number">
+                  36
                 </div>
-                <div>ชั่วโมง</div>
+                <div className="deadline-text">นาที</div>
               </div>
             </div>
           </div>

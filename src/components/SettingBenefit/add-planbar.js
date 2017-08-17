@@ -25,10 +25,10 @@ class AddPlanBar extends Component {
 
   renderList = list => {
     const lists = list.map((element, index) => {
-      const isActive = index === this.props.activePlan ? '-active' : '';
+      const isActive = index === this.props.activePlan ? 'active' : '';
       return (
         <div
-          className={`addBox${isActive}`}
+          className={`addBox ${isActive}`}
           onClick={() => this.props.handleActivePlan(index)}
           role="button"
           aria-hidden

@@ -9,7 +9,6 @@ export default class PlanBoxs extends Component {
     // modalOpen: PropTypes.bool.isRequired,
     handleModal: PropTypes.func.isRequired,
     // handleCloseModal: PropTypes.func.isRequired,
-    handleDelete: PropTypes.func.isRequired,
     // planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     plan: PropTypes.shape.isRequired,
     // activePlan: PropTypes.number.isRequired,
@@ -40,11 +39,6 @@ export default class PlanBoxs extends Component {
                   <p id={this.props.id}>
                     <Icon name="file text outline" />ดูแพลน
                   </p>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content onClick={this.props.handleDelete}>
-                  <p id={this.props.id}><Icon name="trash outline" />ลบแพลน</p>
                 </List.Content>
               </List.Item>
             </List>

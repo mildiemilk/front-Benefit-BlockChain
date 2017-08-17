@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getBenefitPlan } from '../../../api/benefit-plan';
+// import { connect } from 'react-redux';
+// import { getOptionPlan } from '../../../api/benefit-plan';
 import PlanBoxs from './plan-box';
 import { ListBox } from './styled';
 
 class InsurancePlan extends Component {
   static propTypes = {
-    getBenefitPlan: PropTypes.func.isRequired,
     // changePositionPage: PropTypes.func.isRequired,
-    // deletePlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
@@ -20,10 +18,9 @@ class InsurancePlan extends Component {
       modalOpen: false,
       activePlan: -1,
     };
-    props.getBenefitPlan();
   }
   // componentDidmount() {
-  //   this.props.getBenefitPlan();
+  //   this.props.getOptionPlan();
   // }
   // handleOpen = () => {
   //   this.setState({ isOpen: true });
@@ -60,8 +57,9 @@ class InsurancePlan extends Component {
   //   this.props.deletePlan(this.props.planList[e.target.id].planId);
   // }
 
-  renderList = list => {
-    const lists = list.map((element, index) => (
+  renderList = lists => {
+    console.log('list', lists);
+    const allList = lists.map((element, index) => (
       <ListBox className="large-4 columns">
         {/* <PlanBoxs
           changePositionPage={this.props.changePositionPage}
@@ -82,29 +80,22 @@ class InsurancePlan extends Component {
           id={index}
           plan={element}
         />
+
       </ListBox>
     ));
-    return lists;
+    return allList;
   }
 
   render() {
-    return (
-      <div>
+    if (this.props.planList) {
+      return (
         <div className="row">
           {this.renderList(this.props.planList)}
         </div>
-      </div>
-    );
+      );
+    }
+    return <div />;
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  getBenefitPlan: () => dispatch(getBenefitPlan()),
-  // deletePlan: planId => dispatch(deletePlan(planId)),
-});
-
-const mapStateToProps = state => ({
-  planList: state.benefitPlan,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(InsurancePlan);
+export default InsurancePlan;

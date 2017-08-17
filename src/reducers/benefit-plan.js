@@ -30,6 +30,8 @@ const GETBENEFITPLAN_REQUEST_SUCCESS = 'GETBENEFITPLAN_REQUEST_SUCCESS';
 const GETBENEFITPLAN_REQUEST_FAILURE = 'GETBENEFITPLAN_REQUEST_FAILURE';
 const SETBENEFITPLAN_REQUEST_SUCCESS = 'SETBENEFITPLAN_REQUEST_SUCCESS';
 const SETBENEFITPLAN_REQUEST_FAILURE = 'SETBENEFITPLAN_REQUEST_FAILURE';
+const SETTIMEOUT_REQUEST_SUCCESS = 'SETTIMEOUT_REQUEST_SUCCESS';
+const SETTIMEOUT_REQUEST_FAILURE = 'SETTIMEOUT_REQUEST_FAILURE';
 
 /**
  * Actions
@@ -81,6 +83,13 @@ export function setBenefitPlanSuccess(data) {
 export function setBenefitPlanFailure(data) {
   return { type: SETBENEFITPLAN_REQUEST_FAILURE, data };
 }
+export function setTimeoutSuccess(data) {
+  return { type: SETTIMEOUT_REQUEST_SUCCESS, data };
+}
+export function setTimeoutFailure(data) {
+  return { type: SETTIMEOUT_REQUEST_FAILURE, data };
+}
+
 
 /**
  * Reducer
@@ -131,9 +140,14 @@ export function benefitPlan(state = defaultBenefitPlan, action) {
     case SETBENEFITPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         plan: action.data.benefitPlans,
-        timeout: action.data.timeout,
       });
     case SETBENEFITPLAN_REQUEST_FAILURE:
+      return state;
+    case SETTIMEOUT_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        timeout: action.data.timeout,
+      });
+    case SETTIMEOUT_REQUEST_FAILURE:
       return state;
     default:
       return state;

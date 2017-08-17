@@ -143,3 +143,18 @@ export const Icons = styled.div`
   transform: rotate(180deg);
   background-color: #4a4a4a;
 `;
+
+export const Pic = styled.div`
+  border-radius: 50%;
+  background-color: #5c6879;
+  width: 79px;
+  height: 79px;
+  text-align: center;
+  padding: 5%;
+  margin: 7%;
+  display: inline-block;
+`;
+
+export const NavTimeout = styled.div`
+  text-align: center;
+`;

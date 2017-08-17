@@ -8,3 +8,8 @@ background-color: #eaeaea;
 border: solid 1px rgba(151, 151, 151, 0.39);
 padding: 8% 8%;
 `;
+
+export const ListBox = styled.div`
+float: left !important;
+margin-bottom: 2%;
+`;

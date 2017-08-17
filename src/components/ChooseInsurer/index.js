@@ -157,11 +157,6 @@ class InsurerSelect extends Component {
                 </HeadIn>
                 <div className="row">
                   {this.renderList(this.props.insurerList)}
-
-                  {/* <CardInsure   handleDefaultCheck = {this.handleDefaultCheck}
-                                handleCheck={this.handleCheck}
-                                insurerChecked = {this.props.insurerChecked}
-                                insurerList ={this.props.insurerList} /> */}
                 </div>
               </SideIn>
               <SideIn>
@@ -169,7 +164,7 @@ class InsurerSelect extends Component {
                 <p className="insure">
                   บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
                 </p>
-                <Timeout setTimeOut={this.props.setTimeOut} />
+                <Timeout setTimeout={this.props.setTimeOut} />
               </SideIn>
             </div>
           </Detail>

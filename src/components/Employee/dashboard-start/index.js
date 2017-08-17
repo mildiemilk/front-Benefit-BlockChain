@@ -14,10 +14,10 @@ class DashboardStart extends Component {
           <div className="small-10 small-centered columns">
             <div className="dashboard-start-box">
               <img src={gift} alt="gift" />
-              <div className="text-dashboard-start">
-                <p>สิทธิประโยชน์ของคุณจะเริ่มมีผล</p>
-                <p>วันที่ 1 พฤษภาคม 2560</p>
-              </div>
+              <ul className="text-dashboard-start">
+                <li>สิทธิประโยชน์ของคุณจะเริ่มมีผล</li>
+                <li>วันที่ 1 พฤษภาคม 2560</li>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
+import { Button } from 'semantic-ui-react';
 import FlexyPlanBox from './flexy-plan-box';
 import CongrateImage from '../../image/asset-1.png';
 import ConfirmModal from './confirm-modal';
@@ -10,7 +11,10 @@ class FlexyPlan extends Component {
     super();
     this.state = {
       openModal: false,
+      slickGoTo: 0,
     };
+    this.handleClickButton = this.handleClickButton.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleCloseModal = () => {
@@ -21,11 +25,25 @@ class FlexyPlan extends Component {
     this.setState({ openModal: true });
   }
 
+  handleClickButton = ({ target: { dataset: { tag } } }) => {
+    const data = parseInt(tag, 10);
+    this.setState({ slickGoTo: data });
+  }
+
+  handleChange = index => {
+    const data = parseInt(index, 10);
+    this.setState({ slickGoTo: data });
+  }
+
+  handleIsActive = index => index === this.state.slickGoTo ? 'btn-select-plan active' : 'btn-select-plan default';
+
   render() {
     const settings = {
-      dots: true,
+      customPaging: i => <a>${i}</a>,
       slidesToShow: 1,
       slidesToScroll: 1,
+      slickGoTo: this.state.slickGoTo,
+      afterChange: index => this.handleChange(index),
     };
     return (
       <div className="flexyPlan">
@@ -43,18 +61,31 @@ class FlexyPlan extends Component {
               </div>
             </div>
           </div>
-          <div className="box-space">
-            <div className="header-text-select-flexy-plan">
-              คุณกำลังเลือก : แผน 1
-            </div>
+          <div className="box-space" style={{ display: 'block', textAlign: 'center', paddingTop: '2.5%' }}>
+            <Button.Group>
+              <Button
+                className={this.handleIsActive(0)}
+                onClick={e => this.handleClickButton(e)}
+                data-tag={0}
+              >
+                เลือกแผนที่ 1
+              </Button>
+              <Button
+                className={this.handleIsActive(1)}
+                onClick={e => this.handleClickButton(e)}
+                data-tag={1}
+              >
+                เลือกแผนที่ 2
+              </Button>
+            </Button.Group>
           </div>
           <div className="slider">
-            <Slider {...settings}>
+            <Slider {...settings} onChange={e => this.handleChange(e)}>
               <div>
-                <FlexyPlanBox />
+                <FlexyPlanBox plan={this.state.slickGoTo} />
               </div>
               <div>
-                <FlexyPlanBox />
+                <FlexyPlanBox plan={this.state.slickGoTo} />
               </div>
             </Slider>
           </div>
@@ -69,6 +100,7 @@ class FlexyPlan extends Component {
         <ConfirmModal
           openModal={this.state.openModal}
           handleCloseModal={this.handleCloseModal}
+          plan={this.state.slickGoTo}
         />
       </div>
     );

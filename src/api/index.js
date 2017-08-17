@@ -10,7 +10,7 @@ import {
 } from './choose-insurer';
 import { endTimeout, bidding } from './bidding';
 import { menuPlans } from './set-plan';
-import { choosePlan, getOptionPlan } from './benefit-plan';
+import { choosePlan, getOptionPlan, setTimeout } from './benefit-plan';
 import { chooseFinalInsurer } from './bidding';
 
 export function APIRequest(options, authenticate = true) {
@@ -48,4 +48,5 @@ export default {
   getSelectInsurer,
   chooseFinalInsurer,
   getOptionPlan,
+  setTimeout,
 };

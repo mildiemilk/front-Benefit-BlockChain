@@ -15,7 +15,7 @@ const DatePickers = styled(DatePicker)`
 `;
 class Timeout extends Component {
   static propTypes = {
-    setTimeOut: PropTypes.func.isRequired,
+    setTimeout: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -27,7 +27,7 @@ class Timeout extends Component {
 
   handleTimeOut = () => {
     const { date } = this.state;
-    this.props.setTimeOut(date);
+    this.props.setTimeout(date);
   }
 
   handleDate = date => {

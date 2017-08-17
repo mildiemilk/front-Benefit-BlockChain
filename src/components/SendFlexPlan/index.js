@@ -6,19 +6,24 @@ import { Icon } from 'semantic-ui-react';
 import NavBenefit from '../NavBenefit';
 import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit } from './styled';
 import Timeout from '../ChooseInsurer/timeout';
-import { setTimeOut } from '../../api/choose-insurer';
-import { getOptionPlan } from '../../api/benefit-plan';
+import { setTimeout } from '../../api/benefit-plan';
+import { getOptionPlan, getBenefitPlan } from '../../api/benefit-plan';
 import time from '../../../assets/sendflexplan/icons-8-timer.png';
 import ToggleHealth from '../AddBenefit/toggle-health';
 import ToggleExpense from '../AddBenefit/toggle-expense';
 import AddBenefit from './add-benefit';
-// import InsurancePlan from './InsurancePlan';
+import InsurancePlan from './InsurancePlan';
+import SettingBenefit from './SettingBenefit';
 
 class SendFlexPlan extends Component {
   static propTypes = {
-    setTimeOut: PropTypes.func.isRequired,
+    setTimeout: PropTypes.func.isRequired,
     getOptionPlan: PropTypes.func.isRequired,
+    getBenefitPlan: PropTypes.func.isRequired,
     List: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -28,6 +33,7 @@ class SendFlexPlan extends Component {
   }
   componentDidMount = () => {
     this.props.getOptionPlan();
+    this.props.getBenefitPlan();
   }
   boxInStyle = state => {
     if (state) return 'BoxLine';
@@ -41,8 +47,13 @@ class SendFlexPlan extends Component {
           <Detail className="large-12 ">
             <Head>ส่งข้อมูล</Head>
             <List>กรุณาตรวจสอบแผนประกันภัยที่เลือก</List>
+            <Link to="/chooseinsuranceplan">
+              <Edit onClick={this.handleOpen}>
+                <Icon name="write" />แก้ไข
+              </Edit>
+            </Link>
             <Inner>
-              {/* <InsurancePlan /> */}
+              <InsurancePlan planList={this.props.planList} />
             </Inner>
             <List>กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ</List>
             <Link to="/addbenefit">
@@ -85,12 +96,17 @@ class SendFlexPlan extends Component {
             </Inner>
 
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
-            <Inner
-              style={{
-                height: '400px',
-              }}
-              className="large-12 "
-            />
+            <Link to="/settingbenefit">
+              <Edit onClick={this.handleOpen}>
+                <Icon name="write" />แก้ไข
+              </Edit>
+            </Link>
+            <Inner>
+              <SettingBenefit
+                plan={this.props.benefitPlan}
+                optionPlan={this.props.optionPlan}
+              />
+            </Inner>
 
             <List>กรุณาตรวจการอัพโหลดไฟล์ของคุณ</List>
             <Inner
@@ -101,18 +117,14 @@ class SendFlexPlan extends Component {
             />
 
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
-            <Inner
-              style={{
-                height: '400px',
-              }}
-              className="large-12 "
-            />
-
+            <Inner>
+              adsfsf
+            </Inner>
             <List>กรุณาตั้งระยะเวลาการเลือกแผนสิทธิประโยชน์ของพนักงาน</List>
             <Inner>
               <Imgs src={time} alt="time" />
               <Line> พนักงานสามารถเลือกสิทธิประโยชน์ได้ถึง วันที่ </Line>
-              <Timeout setTimeOut={this.props.setTimeOut} />
+              <Timeout setTimeout={this.props.setTimeout} />
             </Inner>
           </Detail>
           <div style={{ marginTop: '25px' }} className="row">
@@ -132,10 +144,14 @@ class SendFlexPlan extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setTimeOut: timeout => dispatch(setTimeOut(timeout)),
+  setTimeout: timeout => dispatch(setTimeout(timeout)),
   getOptionPlan: () => dispatch(getOptionPlan()),
+  getBenefitPlan: () => dispatch(getBenefitPlan()),
 });
 const mapStateToProps = state => ({
   List: state.choosePlan,
+  planList: state.choosePlan.choosePlan,
+  benefitPlan: state.benefitPlan.plan,
+  optionPlan: state.choosePlan,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SendFlexPlan);

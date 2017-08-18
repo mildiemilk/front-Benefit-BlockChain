@@ -132,6 +132,7 @@ export const Number = styled.div`
   position: absolute;
   bottom: 18px;
 `;
+
 export const ProgressDiv = styled.div`
   margin: 0px;
 `;

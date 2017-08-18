@@ -38,7 +38,6 @@ export const Head = styled.div`
 export const Side = styled.div`
   backgrond-color: #ffffff;
   width: 100%;
-  height: 141px;
 `;
 
 export const BackButton = styled.button`
@@ -76,12 +75,8 @@ export const UploadDiv = styled.div`
   display: inline-block;
   padding: 1.5%;
 `;
-export const UploadInput = styled.input`
-  opacity: 0;
-  position: absolute;
-  display: inline-block;
-`;
-export const UploadButton = styled.div`
+
+export const BrowsButton = styled.label`
   width: 163px;
   height: 40px;
   border-radius: 20px;
@@ -93,4 +88,24 @@ export const UploadButton = styled.div`
   margin-left: 3%;
   cursor: pointer;
 
+`;
+
+export const DivDownload = styled.div`
+  width: 364px;
+  height: 100px;
+  margin-top: 19px;
+  margin-left: 234px;
+  margin-bottom: 19px;
+  border-radius: 5px;
+  background-color: #f0f2f4;
+  box-shadow: 0 2px 4px 0 rgba(198, 198, 198, 0.5);
+  border: solid 1px #d1d1d1;
+  padding: 20px;
+  text-align: center;
+`;
+export const Uploads = styled.div`
+  display: inline;
+`;
+export const AltFile = styled.div`
+text-align: center;
 `;

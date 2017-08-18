@@ -11,10 +11,14 @@ import {
   BackButton,
   NextButton,
   Upload,
-  UploadInput,
-  UploadButton,
+  Uploads,
+  BrowsButton,
   UploadDiv,
+  DivDownload,
+  AltFile,
 } from './styled';
+import excel from '../../../assets/Download/icons-8-ms-excel.png';
+import DownL from '../../../assets/Download/group-2.png';
 
 class Download extends Component {
   constructor(props) {
@@ -66,7 +70,23 @@ class Download extends Component {
                 ขั้นตอนที่ 1 : กรุณาดาวน์โหลด Template เพื่อกรอกข้อมูลพนักงาน
               </List>
             </Head>
-            <Side />
+            <Side>
+              <DivDownload>
+                <div className="row">
+                  <div className="large-3 columns">
+                    <img src={excel} alt="excel" />
+                  </div>
+                  <div className="large-6 columns">
+                    <AltFile> Employeedata</AltFile>
+                    <AltFile>Template.xlsx</AltFile>
+                    <AltFile>Filesize: 0.4 Mb</AltFile>
+                  </div>
+                  <div className="large-3 columns">
+                    <img src={DownL} alt="download" />
+                  </div>
+                </div>
+              </DivDownload>
+            </Side>
           </DetailIn>
           <DetailIn>
             <Head>
@@ -81,14 +101,18 @@ class Download extends Component {
                 อัพโหลดไฟล์ :
                 <UploadDiv>{$filePreview}</UploadDiv>
 
-                <UploadButton>
-                  <UploadInput
-                    className="previewInput"
-                    type="file"
-                    onChange={e => this._handleImageChange(e)}
-                  />
-                  เลือกไฟล์
-                </UploadButton>
+                <Uploads>
+                  <BrowsButton for="uploadfor">
+                    <input
+                      id="uploadfor"
+                      style={{ display: 'none' }}
+                      type="file"
+                      accept=".xls,.xlsx,.pdf,.docx"
+                      onChange={e => this.handleUploadcliamdata(e)}
+                    />
+                    เลือกไฟล์
+                  </BrowsButton>
+                </Uploads>
               </Upload>
             </Side>
           </DetailIn>

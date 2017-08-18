@@ -10,6 +10,7 @@ import HealthDetail from './Employee/health-detail';
 import GenaralExpense from './Employee/genaral-expense';
 import EmployeeFixPlan from './Employee/employee-fixplan';
 import DashboardStart from './Employee/dashboard-start';
+import InsuranceDetail from './Employee/InsuranceDetail';
 import FlexyPlan from './Employee/flexy-plan';
 import ClaimInsurance from './Employee/claim-insurance';
 import CongratSelectPlan from './Employee/congrats-select-plan';
@@ -25,6 +26,7 @@ const AppMobile = () => (
         <Switch>
           <Route path="/logout" component={Logout} />
           <Route path="/employeeverify" component={employeeVerify} />
+          <Route path="/insurancedetail" component={InsuranceDetail} />
           <Route path="/healthdetail" component={HealthDetail} />
           <Route path="/genaralexpense" component={GenaralExpense} />
           <Route path="/employeefixplan" component={EmployeeFixPlan} />

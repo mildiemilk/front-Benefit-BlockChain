@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+.employee-health-box{
+  padding-top: 15%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.text-image-health{
+  margin-top: 2%;
+}
+
+.detail-health-box{
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 198px;
+  position: relative;
+  padding-top: 15%;
+  padding-left: 6%;
+  padding-right: 6%;
+  text-align: left;
+}
+
+.text-in-health-image-box{
+  font-size: 12px;
+  color: #323028;
+  letter-spacing: 0.2px;
+}
+
+.position-text{
+  float: right;
+  text-align: right;
+}
+.condition-health-box{
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #919396;
+  margin-top: 7%;
+}
+
+.link-back-health-detail{
+  margin-top: 32px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.text-head-condition{
+  color: #323028;
+}
+
+.pharagraph-text{
+  padding-left: 6.5%;
+}
+.health{
+  margin-bottom: 11%;
+}
+
+.xten-header {
+  font-family: Kanit;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
+  margin: 32px auto 16px;
+  display: block;
+}
+.xten-plan {
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #323028;
+  line-height: 21px;
+  display: inline-block;
+  width: 100%;
+}
+.xten-box {
+  width: 288px;
+  height: 274px;
+  border-radius: 5px;
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: solid 1px #e1e1e1;
+  margin: 3% auto;
+}
+.xten-box-header {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.xten-info {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 20px;
+  height: 20px;
+}
+.xten-box-header-img {
+  width: 193.8px;
+  height: 61.1px;
+  object-fit: contain;
+  margin: 25px auto 11.9px;
+  display: block;
+}
+.xten-box-header-text {
+  font-family: Kanit;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
+  display: block;
+  margin: 0 auto 16px;
+}
+.xten-box-title {
+  width: 100%;
+  height: 40px;
+  background-color: #cddaed;
+  border-top: solid 1px #c4c4c4;
+}
+.xten-box-title-text {
+  font-family: Kanit;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+  line-height: 40px;
+  padding-left: 32px;
+  display: block;
+}
+.xten-box-description-text {
+  padding: 0;
+  list-style: none;
+  margin-left: 33px;
+  li:first-child {
+    font-family: Kanit;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #323028;
+    margin-left: 0;
+  }
+  li {
+    font-family: Kanit;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #323028;
+    margin-left: 19px;
+  }
+}
+.xten-back-btn {
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #3a7bd5;
+  display: block;
+  margin: 32px 0;
+}
+.ui.modal {
+  background: none;
+}
+.xten-box-modal {
+  width: 256px;
+  height: 150.4px;
+  border-radius: 2px;
+  background-color: #d6e9ed;
+  margin: auto;
+  position: relative;
+  padding: 16px;
+}
+.xten-box-modal::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -15px;
+  right: 0;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid #d6e9ed;
+}
+.xten-modal-cancel-box {
+  display: block;
+  line-height: 15px;
+  font-size: 15px;
+  i.icon {
+    width: auto;
+    height: auto;
+  }
+}
+.xten-modal-cancel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.xten-modal-text-header {
+  display: block;
+  font-family: Kanit;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #000000;
+  line-height: 24px;
+}
+.xten-modal-text {
+  display: block;
+  font-family: Kanit;
+  font-size: 12px;
+  color: #505050;
+  margin-top: 21px;
+  text-indent: 2em;
+}
+.insurance-header {
+  font-family: Kanit;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
+  margin: 32px auto 8px;
+  display: inline-block;
+  width: 100%;
+}
+.insurance-plan {
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #323028;
+  line-height: 21px;
+  display: inline-block;
+  width: 100%;
+}
+.insurance-box {
+  width: 288px;
+  height: 178px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px #e1e1e1;
+  display: block;
+  margin: 8px auto;
+  transition: all 400ms;
+}
+.show-description {
+  height: 364.5px;
+}
+.insurance-box-header {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.insurance-info {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+}
+.insurance-box-header-img {
+  width: 88.1px;
+  height: 70px;
+  object-fit: contain;
+  margin: 22px auto 0;
+  display: block;
+}
+.insurance-box-header-text {
+  font-family: Kanit;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
+  display: block;
+  margin: 4px auto 17px;
+  line-height: 24px;
+}
+.insurance-box-title {
+  width: 100%;
+  height: 40px;
+  background-color: #cddaed;
+  border-top: solid 1px #c4c4c4;
+}
+.insurance-box-title-text {
+  font-family: Kanit;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+  line-height: 40px;
+  padding-left: 32px;
+  display: block;
+}
+.insurance-rotate-plus {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.insurance-box-title-show {
+  line-height: 40px;
+  color: #5f5f5f;
+  i.icon {
+    width: auto;
+    height: auto;
+  }
+}
+.insurance-box-title-hide {
+  display: none;
+}
+.insurance-box-description {
+  display: block;
+  margin: 22px, auto;
+  font-family: Kanit;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: #323028;
+  padding: 0;
+  list-style: none;
+}
+.insurance-box-description-left {
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  padding-left: 31px;
+}
+.sub-description {
+  padding-left: 10px;
+}
+.insurance-box-description-right {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  padding-right: 33px;
+}
+.insurance-back-btn {
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #3a7bd5;
+  display: block;
+  margin: 32px 0;
+}
+.ui.modal {
+  background: none;
+}
+.insurance-box-modal {
+  width: 256px;
+  height: 150.4px;
+  border-radius: 2px;
+  background-color: #d6e9ed;
+  margin: auto;
+  position: relative;
+  padding: 16px;
+}
+.insurance-box-modal::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -15px;
+  right: 0;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid #d6e9ed;
+}
+.insurance-modal-cancel-box {
+  display: block;
+  line-height: 15px;
+  font-size: 15px;
+  i.icon {
+    width: auto;
+    height: auto;
+  }
+}
+.insurance-modal-cancel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.insurance-modal-text-header {
+  display: block;
+  font-family: Kanit;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #000000;
+  line-height: 24px;
+}
+.insurance-modal-text {
+  display: block;
+  font-family: Kanit;
+  font-size: 12px;
+  color: #505050;
+  margin-top: 21px;
+  text-indent: 2em;
+}
+@media (max-width: 768px) and (min-width: 520px)  {
+  .text-image-health{
+    margin-top: 1%;
+  }
+  .detail-health-box{
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 198px;
+  position: relative;
+  padding-top: 6%;
+  padding-left: 6%;
+  padding-right: 6%;
+  text-align: left;
+}
+
+}
+

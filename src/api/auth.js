@@ -22,12 +22,14 @@ export function authenticate(email, password) {
       .then(res => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('role', res.data.role);
+        localStorage.setItem('companyName', res.data.companyName);
+        localStorage.setItem('logo', res.data.logo);
         dispatch(authenticateSuccess(res.data));
         if (res.data.role === 'HR') {
-          if (res.data.Havecompany != null && res.data.Approve === true) {
+          if (res.data.companyName !== '' && res.data.Approve === true) {
             window.location.href = '/dashboard';
           } else if (
-            res.data.Havecompany != null &&
+            res.data.companyName !== '' &&
             res.data.Approve === false
           ) {
             window.location.href = '/confirm_identity';

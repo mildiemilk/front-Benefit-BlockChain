@@ -12,6 +12,8 @@ import {
   getBenefitPlanFailure,
   setBenefitPlanSuccess,
   setBenefitPlanFailure,
+  setTimeoutSuccess,
+  setTimeoutFailure,
 } from '../reducers/benefit-plan';
 
 const CHOOSE_PLAN_URI = '/api/benefit-plan';
@@ -19,7 +21,7 @@ const EDITCHOOSE_PLAN_URI = '/api/edit-benefit-plan';
 const GETOPTION_PLAN_URI = '/api/get-option-plan';
 const GETBENEFIT_PLAN_URI = '/api/get-benefit-plan';
 const SETBENEFIT_PLAN_URI = '/api/set-benefit-plan';
-
+const SETTIMEOUT_PLAN_URI = '/api/set-benefit-timeout';
 export function choosePlan(plan) {
   return dispatch => {
     const options = {
@@ -89,7 +91,6 @@ export function planOption(
     APIRequest(options, true)
       .then(res => {
         dispatch(editOptionSuccess(res.data));
-        window.location.href = '/settingbenefit';
       })
       .catch(err => {
         dispatch(editOptionFailure(err.response.data));
@@ -146,5 +147,21 @@ export function setBenefitPlan(benefitPlans) {
       .catch(err => {
         dispatch(setBenefitPlanFailure(err.response.data));
       });
+  };
+}
+export function setTimeout(timeout) {
+  return dispatch => {
+    const options = {
+      method: 'post',
+      url: SETTIMEOUT_PLAN_URI,
+      data: { timeout },
+    };
+    APIRequest(options, true)
+    .then(res => {
+      dispatch(setTimeoutSuccess(res.data));
+    })
+    .catch(err => {
+      dispatch(setTimeoutFailure(err.response.data));
+    });
   };
 }

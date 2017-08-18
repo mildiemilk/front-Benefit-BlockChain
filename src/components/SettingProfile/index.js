@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import {
   Segment,
   Dropdown,
 } from 'semantic-ui-react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { createProfile } from '../../api/profile-company';
+import { createProfile, setLogo } from '../../api/profile-company';
 import {
   Box,
   Head,
@@ -70,7 +71,8 @@ const NumberOfEmployees = [
 class SettingProfile extends Component {
   static propTypes = {
     profile: PropTypes.shape.isRequired,
-    createProfile: PropTypes.shape.isRequired,
+    createProfile: PropTypes.func.isRequired,
+    setLogo: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -138,6 +140,13 @@ class SettingProfile extends Component {
     });
   }
   render() {
+    const { companyName, logo, error, message } = this.props.profile;
+    if (companyName !== '') {
+      if (logo !== '') {
+        return <Redirect to={{ pathname: '/confirm_identity' }} />;
+      }
+      this.props.setLogo(this.state.file);
+    }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     // let elmnt = document.getElementById("Image")
@@ -260,9 +269,9 @@ class SettingProfile extends Component {
                   size="big"
                   placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
                 />
-                {this.props.profile.error
+                {error
                   ? <span style={{ color: 'red' }}>
-                    {' '}<br />{this.props.profile.message}
+                    {' '}<br />{message}
                   </span>
                   : <span />}
               </Segment>
@@ -283,6 +292,7 @@ SettingProfile.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
+  setLogo: data => dispatch(setLogo(data)),
 });
 
 const mapStateToProps = state => ({

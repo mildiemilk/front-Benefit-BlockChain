@@ -1,6 +1,6 @@
 import axios from 'axios';
 import auth from './auth';
-import profileCompany from './profile-company';
+import { profileCompany, setLogo } from './profile-company';
 import {
   chooseInsurer,
   setTimeOut,
@@ -10,7 +10,7 @@ import {
 } from './choose-insurer';
 import { endTimeout, bidding } from './bidding';
 import { menuPlans } from './set-plan';
-import { choosePlan, getOptionPlan } from './benefit-plan';
+import { choosePlan, getOptionPlan, setTimeout } from './benefit-plan';
 import { chooseFinalInsurer } from './bidding';
 
 export function APIRequest(options, authenticate = true) {
@@ -36,6 +36,7 @@ export default {
   auth,
   APIRequest,
   profileCompany,
+  setLogo,
   chooseInsurer,
   setTimeOut,
   getTimeout,
@@ -47,4 +48,5 @@ export default {
   getSelectInsurer,
   chooseFinalInsurer,
   getOptionPlan,
+  setTimeout,
 };

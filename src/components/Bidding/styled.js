@@ -196,6 +196,7 @@ export const DisplayTime = styled.div`
 `;
 export const DisplayTimeout = styled.div`
   color: #f7555f;
+  font-size: 45px;
 `;
 export const ButtonStatusAppove = styled.div`
   width: 80%;

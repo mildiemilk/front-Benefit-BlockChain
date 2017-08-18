@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Divider } from 'semantic-ui-react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import EmpolyeeChart from '../PieChart/empolyee-chart';
 import PlanChart from '../PieChart/plan-chart';
-import { Head, Box, ListTime } from './styled';
+import { Head, Box, ListTime, Pic, NavTimeout } from './styled';
+import time from '../../../assets/bidding/icons-8-time.png';
+import CountDown from '../Bidding/CountDowns';
 
 const DividerStyle = styled(Divider)`
     &&&{
@@ -12,11 +15,15 @@ const DividerStyle = styled(Divider)`
     }
 `;
 class NavSelectRealTime extends Component {
+  static propTypes = {
+    timeout: PropTypes.string.isRequired,
+  }
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
+    console.log('nav', this.props.timeout);
     return (
       <div>
         <div className="row">
@@ -37,6 +44,10 @@ class NavSelectRealTime extends Component {
             <Box>
               <ListTime>เวลาที่เหลือในการเลือกแผนสิทธิประโยชน์</ListTime>
               <DividerStyle />
+              <NavTimeout>
+                <Pic><img src={time} alt="time" /></Pic>
+                <CountDown date={this.props.timeout} />
+              </NavTimeout>
             </Box>
           </div>
         </div>

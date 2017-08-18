@@ -2,6 +2,7 @@ import { APIRequest } from '.';
 import {
   createProfileSuccess,
   createProfileFailure,
+  setLogoSuccess,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/admin/registerCompany';
@@ -19,7 +20,6 @@ export function createProfile(profile) {
       .then(res => {
         localStorage.setItem('companyName', res.data.profile.companyName);
         dispatch(createProfileSuccess(res.data));
-        // window.location.href = '/confirm_identity';
       })
       .catch(err => {
         dispatch(createProfileFailure(err.response.data));
@@ -30,7 +30,7 @@ export function createProfile(profile) {
 export function setLogo(file) {
   const formData = new FormData();
   formData.append('file', file);
-  return () => {
+  return dispatch => {
     const options = {
       method: 'put',
       url: LOGO_URI,
@@ -40,6 +40,7 @@ export function setLogo(file) {
     APIRequest(options, true)
       .then(res => {
         localStorage.setItem('logo', res.data.logo);
+        dispatch(setLogoSuccess(res.data));
       })
       .catch(err => {
         console.log(err);

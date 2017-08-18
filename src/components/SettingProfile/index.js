@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import {
   Segment,
   Dropdown,
@@ -126,7 +127,7 @@ class SettingProfile extends Component {
       companyInsurer,
     });
 
-    const { typeOfBusiness, numberOfEmployees, file } = this.state;
+    const { typeOfBusiness, numberOfEmployees } = this.state;
     this.props.createProfile({
       companyName,
       location,
@@ -137,9 +138,15 @@ class SettingProfile extends Component {
       companyBroker,
       companyInsurer,
     });
-    this.props.setLogo(file);
   }
   render() {
+    const { companyName, logo, error, message } = this.props.profile;
+    if (companyName !== '') {
+      if (logo !== '') {
+        return <Redirect to={{ pathname: '/confirm_identity' }} />;
+      }
+      this.props.setLogo(this.state.file);
+    }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     // let elmnt = document.getElementById("Image")
@@ -262,9 +269,9 @@ class SettingProfile extends Component {
                   size="big"
                   placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
                 />
-                {this.props.profile.error
+                {error
                   ? <span style={{ color: 'red' }}>
-                    {' '}<br />{this.props.profile.message}
+                    {' '}<br />{message}
                   </span>
                   : <span />}
               </Segment>

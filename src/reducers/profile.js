@@ -56,14 +56,13 @@ export default function profileReducer(state = defaultProfile, action) {
         error: false,
       });
     case PROFILECOMPANY_REQUEST_FAILURE:
-      console.log(action.data.message);
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,
       });
     case SETLOGO_REQUEST_SUCCESS:
       return Object.assign({}, state, {
-        logo: action.logo,
+        logo: action.data.logo,
       });
     default:
       return state;

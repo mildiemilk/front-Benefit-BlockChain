@@ -33,7 +33,7 @@ class Header extends Component {
           </div>
         </LogoPosition>
         <Menu.Item style={{ width: '20%' }} position="right">
-          {companyName
+          {companyName !== ''
             ? <div>
               <SpanStyle>
                 {companyName}

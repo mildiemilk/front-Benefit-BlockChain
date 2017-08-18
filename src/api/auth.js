@@ -26,10 +26,10 @@ export function authenticate(email, password) {
         localStorage.setItem('logo', res.data.logo);
         dispatch(authenticateSuccess(res.data));
         if (res.data.role === 'HR') {
-          if (res.data.companyName !== null && res.data.Approve === true) {
+          if (res.data.companyName !== '' && res.data.Approve === true) {
             window.location.href = '/dashboard';
           } else if (
-            res.data.companyName !== null &&
+            res.data.companyName !== '' &&
             res.data.Approve === false
           ) {
             window.location.href = '/confirm_identity';

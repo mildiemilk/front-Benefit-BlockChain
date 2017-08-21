@@ -16,6 +16,7 @@ import EmployeeBenefitsDashboard from './Employee/employee-benefits-dashboard';
 import ClaimStatusDetail from './Employee/ClaimStatusDetail';
 import FindHospital from './Employee/find-hospital';
 import Logout from './Auth/logout';
+import claimStatus from './Employee/claim-status';
 
 const AppMobile = () => (
   <BrowserRouter>
@@ -30,6 +31,7 @@ const AppMobile = () => (
           <Route path="/flexyplan" component={FlexyPlan} />
           <Route path="/findhospital" component={FindHospital} />
           <Route path="/claiminsurance" component={ClaimInsurance} />
+          <Route path="/claimstatus" component={claimStatus} />
           <Route
             path="/employeebenefits-dashboard"
             component={EmployeeBenefitsDashboard}

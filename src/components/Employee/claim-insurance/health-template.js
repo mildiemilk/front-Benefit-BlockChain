@@ -6,7 +6,6 @@ import {
   TinyText,
   BrowsButton,
   NewLine,
-  SubmitButton,
   UploadText,
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
@@ -143,10 +142,6 @@ class HealthTemplate extends Component {
           {this.props.ClaimFile.name}
         </UploadText>
         <NewLine style={{ height: '3px' }} />
-        <SubmitButton>
-          เคลม
-        </SubmitButton>
-        <NewLine />
       </div>
     );
   }

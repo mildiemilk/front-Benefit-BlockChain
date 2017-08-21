@@ -5,6 +5,7 @@
       min-width: 0;
       height: 40px;
       margin-top: 7px;
+      font-size: 15px;
   }
   .ui.fluid.dropdown.currency {
       display: block;
@@ -22,7 +23,21 @@
     padding-left: 5%;
   }
 }
-
+  .ui.modal{
+    background: #ffffff;
+    text-align: center;
+    padding-top: 45px;
+    height: 170px;
+  }
+  .ui.modal > .actions{
+    background: #ffffff;
+    border-top: none;
+    text-align: center;
+    padding:0px 20px;
+  }
+  body .ui.button{
+    width: 65%;
+  }
 .Datebox{
   width: 100%;
   height: 40px;

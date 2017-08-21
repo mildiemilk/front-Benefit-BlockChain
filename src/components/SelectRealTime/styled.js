@@ -132,6 +132,7 @@ export const Number = styled.div`
   position: absolute;
   bottom: 18px;
 `;
+
 export const ProgressDiv = styled.div`
   margin: 0px;
 `;
@@ -142,4 +143,19 @@ export const Icons = styled.div`
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
   background-color: #4a4a4a;
+`;
+
+export const Pic = styled.div`
+  border-radius: 50%;
+  background-color: #5c6879;
+  width: 79px;
+  height: 79px;
+  text-align: center;
+  padding: 5%;
+  margin: 7%;
+  display: inline-block;
+`;
+
+export const NavTimeout = styled.div`
+  text-align: center;
 `;

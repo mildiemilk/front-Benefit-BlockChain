@@ -5,12 +5,15 @@ const defaultAuth = {
   user: null,
   token: localStorage.getItem('token'),
   role: localStorage.getItem('role'),
+  approve: localStorage.getItem('approve'),
+  personalVerify: false,
   message: '',
   error: false,
 };
 
 const defaultSignup = {
   message: null,
+  personalVerify: false,
   error: false,
 };
 
@@ -22,6 +25,8 @@ const AUTHENTICATE_REQUEST_FAILURE = 'auth/AUTHENTICATE_REQUEST_FAILURE';
 const LOGOUT_REQUEST_SUCCESS = 'auth/LOGOUT_REQUEST_SUCCESS';
 const SIGNUP_REQUEST_FAILURE = 'auth/SIGNUP_REQUEST_FAILURE';
 const SIGNUP_REQUEST_SUCCESS = 'auth/SIGNUP_REQUEST_SUCCESS';
+const UPDATE_PASSWORD_FAILURE = 'auth/UPDATE_PASSWORD_FAILURE';
+const UPDATE_PASSWORD_SUCCESS = 'auth/UPDATE_PASSWORD_SUCCESS';
 
 /**
  * Actions
@@ -46,12 +51,22 @@ export function signupSuccess(data) {
   return { type: SIGNUP_REQUEST_SUCCESS, data };
 }
 
+export function updatePasswordFailure(data) {
+  return { type: UPDATE_PASSWORD_FAILURE, data };
+}
+
+export function updatePasswordSuccess(data) {
+  return { type: UPDATE_PASSWORD_SUCCESS, data };
+}
+
 export function authReducer(state = defaultAuth, action) {
   switch (action.type) {
     case AUTHENTICATE_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         token: action.data.token,
         role: action.data.role,
+        approve: action.data.approve,
+        personalVerify: action.data.personalVerify,
         error: false,
       });
     case AUTHENTICATE_REQUEST_FAILURE:
@@ -74,7 +89,7 @@ export function signupReducer(state = defaultSignup, action) {
     case SIGNUP_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         message: action.data.message,
-        erroe: false,
+        error: false,
       });
     default:
       return state;

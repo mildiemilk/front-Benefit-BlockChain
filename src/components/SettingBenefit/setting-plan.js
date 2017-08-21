@@ -37,15 +37,18 @@ const NameInput = styled(Input) `
       border-radius: 3px;
       background-color: #ffffff;
       padding: 1%;
-      width: 77.25% !important;
+      width: 466px !important;
     }
 `;
-
+const FieldsetEdit = styled.fieldset`
+    border: none;
+    padding: 0px;
+`
 class SettingPlan extends Component {
   static propTypes = {
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
+    handleChange: PropTypes.func,
     handleToggle: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,
@@ -53,16 +56,26 @@ class SettingPlan extends Component {
     health: PropTypes.string.isRequired,
     isExpense: PropTypes.bool.isRequired,
     expense: PropTypes.string.isRequired,
+    handleSave: PropTypes.func.isRequired,
   }
+
+  static defaultProps = {
+    handleChange: '',
+  }
+
   constructor() {
     super();
     this.state = {
       optionPlan: [],
     };
   }
-
   componentDidMount() {
     this.renderOption();
+  }
+  componentDidUpdate() {
+    if (this.state.optionPlan.length === 0) {
+      this.renderOption();
+    }
   }
 
   renderOption = () => {
@@ -72,7 +85,7 @@ class SettingPlan extends Component {
       optionPlan.push({
         key: index,
         text: option.planName,
-        value: option._id,
+        value: option.planName,
       });
       return option;
     });
@@ -82,118 +95,120 @@ class SettingPlan extends Component {
   render() {
     return (
       <div>
-        <Blogs>
-          <form onSubmit={this.props.handleSubmit}>
-            <PlanName>
-              ชื่อแผนสิทธิประโยชน์
-            </PlanName>
-            <NameInput
-              required
-              type="text"
-              name="planName"
-              value={this.props.planName}
-              placeholder="แผนสิทธิประโยชน์"
-              onChange={this.props.handleChange}
-            />
-            <Line />
-            <PlanContent>
-              กรุณาระบุสิทธิประโยชน์ที่ต้องการ
-            </PlanContent>
-            <PlanBox>
-              <PlanImg src="../../../setbenefit/3.png" />
-              <PlanTopic>
-                แผนประกันภัย (Insurance)
-              </PlanTopic>
-              <Selects
+        <FieldsetEdit disabled={this.props.handleChange === ''}>
+          <Blogs>
+            <form onSubmit={this.props.handleSubmit}>
+              <PlanName>
+                ชื่อแผนสิทธิประโยชน์
+              </PlanName>
+              <NameInput
                 required
-                name="plan"
-                options={this.state.optionPlan}
-                value={this.props.plan}
-                placeholder="เลือกแพลนที่ต้องการ"
+                type="text"
+                name="planName"
+                value={this.props.planName}
+                placeholder="แผนสิทธิประโยชน์"
                 onChange={this.props.handleChange}
               />
-            </PlanBox>
-
-            {this.props.optionPlan.isHealth
-              ? <PlanBox>
-                <PlanImg src="../../../setbenefit/5.png" />
+              <Line />
+              <PlanContent>
+                กรุณาระบุสิทธิประโยชน์ที่ต้องการ
+              </PlanContent>
+              <PlanBox>
+                <PlanImg src="../../../setbenefit/3.png" />
                 <PlanTopic>
-                  ค่าใช้จ่ายสุขภาพ (Health)
-                  </PlanTopic>
-                <div className="toggle">
-                  <ToggleBox>
-                    <Checkbox
-                      name="isHealth"
-                      checked={this.props.isHealth}
-                      toggle
-                      onClick={this.props.handleToggle}
-                    />
-                  </ToggleBox>
-                </div>
-                {this.props.isHealth
-                  ? <Inputs
-                    required
-                    type="number"
-                    name="health"
-                    value={this.props.health}
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    onChange={this.props.handleChange}
-                  />
-                  : <Inputs
-                    type="number"
-                    name="health"
-                    value=""
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    readOnly
-                  />}
+                  แผนประกันภัย (Insurance)
+                </PlanTopic>
+                <Selects
+                  required
+                  disabled={this.props.handleChange === ''}
+                  name="plan"
+                  options={this.state.optionPlan}
+                  value={this.props.plan}
+                  placeholder="เลือกแพลนที่ต้องการ"
+                  onChange={this.props.handleChange}
+                />
               </PlanBox>
-              : null}
 
-            {this.props.optionPlan.isExpense
-              ? <PlanBox>
-                <PlanImg src="../../../setbenefit/4.png" />
-                <PlanTopic>
-                  ค่าใช้จ่ายทั่วไป (General Expense)
-                  </PlanTopic>
-                <div className="toggle">
-                  <ToggleBox>
-                    <Checkbox
-                      name="isExpense"
-                      checked={this.props.isExpense}
-                      toggle
-                      onClick={this.props.handleToggle}
+              {this.props.optionPlan.isHealth
+                ? <PlanBox>
+                  <PlanImg src="../../../setbenefit/5.png" />
+                  <PlanTopic>
+                    ค่าใช้จ่ายสุขภาพ (Health)
+                    </PlanTopic>
+                  <div className="toggle">
+                    <ToggleBox>
+                      <Checkbox
+                        name="isHealth"
+                        checked={this.props.isHealth}
+                        toggle
+                        onClick={this.props.handleToggle}
+                      />
+                    </ToggleBox>
+                  </div>
+                  {this.props.isHealth
+                    ? <Inputs
+                      required
+                      type="number"
+                      name="health"
+                      value={this.props.health}
+                      action="บาท/ปี"
+                      placeholder="จำนวนเงิน"
+                      onChange={this.props.handleChange}
                     />
-                  </ToggleBox>
-                </div>
-                {this.props.isExpense
-                  ? <Inputs
-                    required
-                    type="text"
-                    name="expense"
-                    value={this.props.expense}
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    onChange={this.props.handleChange}
-                  />
-                  : <Inputs
-                    type="number"
-                    name="expense"
-                    value=""
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    readOnly
-                  />}
-              </PlanBox>
-              : null}
+                    : <Inputs
+                      type="number"
+                      name="health"
+                      value=""
+                      action="บาท/ปี"
+                      placeholder="จำนวนเงิน"
+                      readOnly
+                    />}
+                </PlanBox>
+                : null}
 
-            <SaveButton type="submit">
-              บันทึก
-            </SaveButton>
-          </form>
+              {this.props.optionPlan.isExpense
+                ? <PlanBox>
+                  <PlanImg src="../../../setbenefit/4.png" />
+                  <PlanTopic>
+                    ค่าใช้จ่ายทั่วไป (General Expense)
+                    </PlanTopic>
+                  <div className="toggle">
+                    <ToggleBox>
+                      <Checkbox
+                        name="isExpense"
+                        checked={this.props.isExpense}
+                        toggle
+                        onClick={this.props.handleToggle}
+                      />
+                    </ToggleBox>
+                  </div>
+                  {this.props.isExpense
+                    ? <Inputs
+                      required
+                      type="text"
+                      name="expense"
+                      value={this.props.expense}
+                      action="บาท/ปี"
+                      placeholder="จำนวนเงิน"
+                      onChange={this.props.handleChange}
+                    />
+                    : <Inputs
+                      type="number"
+                      name="expense"
+                      value=""
+                      action="บาท/ปี"
+                      placeholder="จำนวนเงิน"
+                      readOnly
+                    />}
+                </PlanBox>
+                : null}
 
-        </Blogs>
+              <SaveButton className={this.props.handleSave} type="submit">
+                บันทึก
+              </SaveButton>
+            </form>
+          </Blogs>
+        </FieldsetEdit>
       </div>
     );
   }

@@ -3,10 +3,13 @@ import {
   authenticateSuccess,
   signupFailure,
   authenticateFailure,
+  updatePasswordSuccess,
+  updatePasswordFailure,
 } from '../reducers/auth';
 
 const LOGIN_URI = '/api/login';
 const REGISTER_URI = 'api/register';
+const UPDATE_PASSWORD = 'api/user/change-password';
 
 export function authenticate(email, password) {
   return dispatch => {
@@ -15,28 +18,14 @@ export function authenticate(email, password) {
       url: LOGIN_URI,
       data: { email, password },
     };
-
     APIRequest(options, false)
       .then(res => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('role', res.data.role);
+        localStorage.setItem('companyName', res.data.companyName);
+        localStorage.setItem('logo', res.data.logo);
+        localStorage.setItem('approve', res.data.approve);
         dispatch(authenticateSuccess(res.data));
-        if (res.data.role === 'HR') {
-          if (res.data.Havecompany != null && res.data.Approve === true) {
-            window.location.href = '/dashboard';
-          } else if (
-            res.data.Havecompany != null &&
-            res.data.Approve === false
-          ) {
-            window.location.href = '/confirm_identity';
-          } else {
-            window.location.href = '/settingprofile';
-          }
-        } else if (res.data.role === 'Employee') {
-          if (res.data.Approve === true) {
-            window.location.href = '/employeeverify';
-          }
-        }
       })
       .catch(err => {
         dispatch(authenticateFailure(err.response.data));
@@ -63,8 +52,32 @@ export function register(email, confirmPassword, password, role) {
 
 export function logout() {
   return () => {
+    const role = localStorage.getItem('role');
     localStorage.clear();
-    window.location = '/login';
+    if (role === 'Employee') {
+      window.location = '/employeelogin';
+    } else {
+      window.location = '/login';
+    }
+  };
+}
+
+export function updatePassword(password, confirmPassword) {
+  return dispatch => {
+    const options = {
+      method: 'put',
+      url: UPDATE_PASSWORD,
+      data: { password, confirmPassword },
+    };
+    APIRequest(options, true)
+      .then(res => {
+        // window.location.href = '/'
+        // console.log('Update Password Success!')
+        dispatch(updatePasswordSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(updatePasswordFailure(err.response.data));
+      });
   };
 }
 

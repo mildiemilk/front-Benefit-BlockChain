@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Progress, Icon } from 'semantic-ui-react';
 import Nav from './Nav';
+import { getBenefitPlan } from '../../api/benefit-plan';
 import {
   DetailDiv,
   NextButton,
@@ -30,13 +33,19 @@ const ProgressStyle = styled(Progress) `
 `;
 
 class SelectRealTime extends Component {
+  static propTypes = {
+    getBenefitPlan: PropTypes.func.isRequired,
+    timeout: PropTypes.string.isRequired,
+  }
   constructor(props) {
     super(props);
     this.state = {
       isPlan: true,
     };
   }
-
+  componentDidMount() {
+    this.props.getBenefitPlan();
+  }
   handlePlan = () => {
     const { isPlan } = this.state;
     if (!isPlan) {
@@ -50,6 +59,7 @@ class SelectRealTime extends Component {
     }
   }
   render() {
+    console.log('select', this.props);
     let TypeIcon = null;
     if (!this.state.isPlan) {
       TypeIcon = <Icon name="caret right" />;
@@ -58,7 +68,7 @@ class SelectRealTime extends Component {
     }
     return (
       <div className="SelectRealTime">
-        <Nav />
+        <Nav timeout={this.props.timeout} />
         <DetailDiv>
           <HeadDetail>
             รายละเอียด
@@ -100,4 +110,11 @@ class SelectRealTime extends Component {
   }
 }
 
-export default SelectRealTime;
+const mapDispatchToProps = Dispatch => ({
+  getBenefitPlan: () => Dispatch(getBenefitPlan()),
+});
+const mapStateToProps = state => ({
+  timeout: state.benefitPlan.timeout,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectRealTime);

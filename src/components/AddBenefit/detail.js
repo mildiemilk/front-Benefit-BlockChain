@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Checkbox } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
@@ -10,14 +10,14 @@ import {
   Setting,
   BoxIn,
   DivImage,
-  HeadList,
-  Toggled,
   BackButton,
   NextButton,
 } from './styled';
 import HealthBenefit from './health-benefit';
 import ExpenseBenefit from './expense-benefit';
 import ToggleHealth from './toggle-health';
+import HeadHealth from './head-health';
+import ToggleExpense from './toggle-expense';
 
 class Detail extends Component {
   static propTypes = {
@@ -58,12 +58,7 @@ class Detail extends Component {
           <div className="row">
             <div className="large-6 columns">
               <Box>
-                <DivImage>
-                  <div className="imagehealth" />
-                </DivImage>
-                <Setting onClick={() => this.props.handleSetting('Health')}>
-                  <Icon name="setting" /> ตั้งค่าขั้นสูง{' '}
-                </Setting>
+                <HeadHealth handleSetting={this.props.handleSetting} />
                 <BoxIn>
                   <ToggleHealth
                     boxInStyle={this.boxInStyle} isHealth={this.props.isHealth}
@@ -93,28 +88,11 @@ class Detail extends Component {
                   <Icon name="setting" /> ตั้งค่าขั้นสูง{' '}
                 </Setting>
                 <BoxIn>
-                  <div className={this.boxInStyle(this.props.isExpense)}>
-                    <div className="row">
-                      <div className="large-8 columns">
-                        <HeadList>ค่าใช้จ่ายทั่วไป (General Expense)</HeadList>
-                      </div>
-                      <div className="large-4 columns">
-                        <div className="toggle">
-                          <Toggled>
-                            ไม่มี
-                            {' '}
-                            <Checkbox
-                              toggle
-                              checked={this.props.isExpense}
-                              onClick={this.props.handleToggleExpense}
-                            />
-                            {' '}
-                            มี
-                          </Toggled>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ToggleExpense
+                    boxInStyle={this.boxInStyle}
+                    isExpense={this.props.isExpense}
+                    handleToggleExpense={this.props.handleToggleExpense}
+                  />
                   {this.props.isExpense
                     ? <ExpenseBenefit
                       ExpenseList={this.props.ExpenseList}
@@ -138,9 +116,9 @@ class Detail extends Component {
             </Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <NextButton onClick={this.props.nextButtonHandleclick}>
+            <Link to="/settingbenefit"><NextButton onClick={this.props.nextButtonHandleclick}>
               {' '}ต่อไป{' '}
-            </NextButton>
+            </NextButton></Link>
           </div>
           <div className="large-1 columns" />
         </div>

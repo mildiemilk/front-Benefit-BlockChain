@@ -1,79 +1,97 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
-import FlexyPlanBox from './flexy-plan-box';
-import CongrateImage from '../../image/asset-1.png';
-import ConfirmModal from './confirm-modal';
-import DeadlineBox from './deadline-box';
+import FlexyPlanDetail from './FlexyPlanDetail';
+import InsuranceDetail from '../InsuranceDetail';
+import HealthDetail from '../health-detail';
+import GeneralExpense from '../genaral-expense';
 
 class FlexyPlan extends Component {
   constructor() {
     super();
     this.state = {
-      openModal: false,
+      flexyPlanDetail: true,
+      insuranceDetail: false,
+      healthDetail: false,
+      generalExpense: false,
+      plan: 0,
     };
   }
 
-  handleCloseModal = () => {
-    this.setState({ openModal: false });
+  handleClickInsurance = () => {
+    this.setState({
+      flexyPlanDetail: false,
+      insuranceDetail: true,
+    });
   }
 
-  handleOpenModal = () => {
-    this.setState({ openModal: true });
+  handleClickHealth = () => {
+    this.setState({
+      flexyPlanDetail: false,
+      healthDetail: true,
+    });
   }
+
+  handleClickGeneralExpense = () => {
+    this.setState({
+      flexyPlanDetail: false,
+      generalExpense: true,
+    });
+  }
+
+  handleClickBack = () => {
+    this.setState({
+      flexyPlanDetail: true,
+      insuranceDetail: false,
+      healthDetail: false,
+      generalExpense: false,
+    });
+  }
+
+  handleChangePlan = index => this.setState({ plan: index });
 
   render() {
-    const settings = {
-      dots: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    };
+    const {
+      flexyPlanDetail,
+      insuranceDetail,
+      healthDetail,
+      generalExpense,
+      plan,
+    } = this.state;
     return (
-      <div className="flexyPlan">
-        <div className="row">
-          <div className="small-10 small-centered columns">
-            <div className="deadline-flexy-plan">
-              <img src={CongrateImage} alt="Congrate" />
-              <div className="congrate-text">ยินดีด้วย!</div>
-              <div className="congrate-text">
-                มีสิทธิประโยชน์มากมายรอคุณอยู่
-              </div>
-              <div className="deadline-box">
-                <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
-                <DeadlineBox />
-              </div>
-            </div>
-            <div className="deadline-box">
-              <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
-              <DeadlineBox />
-            </div>
-          </div>
-          <div className="box-space">
-            <div className="header-text-select-flexy-plan">
-              คุณกำลังเลือก : แผน 1
-            </div>
-          </div>
-          <div className="slider">
-            <Slider {...settings}>
-              <div>
-                <FlexyPlanBox />
-              </div>
-              <div>
-                <FlexyPlanBox />
-              </div>
-            </Slider>
-          </div>
-          <button
-            className="button-submit-flexy-plan"
-            onClick={() => this.handleOpenModal()}
-          >
-            ยืนยัน
-          </button>
-        </div>
-
-        <ConfirmModal
-          openModal={this.state.openModal}
-          handleCloseModal={this.handleCloseModal}
-        />
+      <div>
+        {
+          flexyPlanDetail ?
+            <FlexyPlanDetail
+              handleClickInsurance={this.handleClickInsurance}
+              handleClickHealth={this.handleClickHealth}
+              handleClickGeneralExpense={this.handleClickGeneralExpense}
+              handleChangePlan={this.handleChangePlan}
+            /> :
+            <div />
+        }
+        {
+          insuranceDetail ?
+            <InsuranceDetail
+              handleClickBack={this.handleClickBack}
+              plan={plan}
+            />
+            : <div />
+        }
+        {
+          healthDetail ?
+            <HealthDetail
+              handleClickBack={this.handleClickBack}
+              plan={plan}
+            />
+            : <div />
+        }
+        {
+          generalExpense ?
+            <GeneralExpense
+              handleClickBack={this.handleClickBack}
+              plan={plan}
+            />
+            : <div />
+        }
       </div>
     );
   }

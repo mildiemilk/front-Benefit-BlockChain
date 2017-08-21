@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
 .dashboard-start{
   position: relative;
   .dashboard-start-box{
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 0.3px;
     text-align: center;
     color: #4a4a4a;
@@ -10,8 +12,18 @@
     padding-top: 48%;
   }
 
-  .text-dashboard-start{
-    margin-top: 13%;
+  .text-dashboard-start {
+    padding: 0;
+    list-style: none;
+    margin-top: 34px;
+    li {
+      font-family: Kanit;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      text-align: center;
+      color: #4a4a4a;
+    }
   }
 
   @media (max-width: 768px) and (min-width: 520px){

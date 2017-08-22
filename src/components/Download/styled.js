@@ -107,5 +107,5 @@ export const Uploads = styled.div`
   display: inline;
 `;
 export const AltFile = styled.div`
-text-align: center;
+  text-align: center;
 `;

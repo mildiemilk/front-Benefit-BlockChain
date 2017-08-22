@@ -3,10 +3,12 @@ import {
   createProfileSuccess,
   createProfileFailure,
   setLogoSuccess,
+  fileEmployeeSuccess,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/admin/registerCompany';
 const LOGO_URI = '/admin/set-logo';
+const FILEEMPLOYEE_URI = '/admin/upload-employee';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -41,6 +43,27 @@ export function setLogo(file) {
       .then(res => {
         localStorage.setItem('logo', res.data.logo);
         dispatch(setLogoSuccess(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function fileEmployee(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  return dispatch => {
+    const options = {
+      method: 'put',
+      url: FILEEMPLOYEE_URI,
+      data: formData,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log('thisfile', file);
+        dispatch(fileEmployeeSuccess(res.data));
       })
       .catch(err => {
         console.log(err);

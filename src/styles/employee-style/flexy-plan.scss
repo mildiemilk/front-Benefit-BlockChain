@@ -41,23 +41,6 @@
     }
   }
 
-  // .flexy-plan-header{
-  //   color: #3a7bd5;
-  //   font-size: 14px;
-  //   font-weight: bold;
-  //   line-height: 1.43;
-  //   letter-spacing: 0.3px;
-  //   padding-left: 4%;
-  // }
-
-  // .link-flexy-plan{
-  //   float: right;
-  //   font-size: 11px;
-  //   color: #3a7bd5;
-  //   letter-spacing: 0.2px;
-  //   padding-right: 2%;
-  // }
-
   .flexy-plan-detail-box{
     padding-top: 5%;
     padding-left: 4%;
@@ -170,7 +153,6 @@
     background-color: #cddaed;
   }
   .flexy-text-body {
-    // height: 21px;
     font-family: Kanit;
     font-size: 14px;
     font-weight: bold;
@@ -361,4 +343,34 @@ ul.slick-dots {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
+}
+.flexy-btn-ny-select-plan {
+  width: 256px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #46b3b8;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #ffffff;
+  line-height: 21px;
+  border: none;
+  display: block;
+  margin: 22.8px auto 8px auto;
+}
+.button-skip-flexy-plan {
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #ffffff;
+  line-height: 21px;
+  border: none;
+  display: block;
+  margin: auto;
 }

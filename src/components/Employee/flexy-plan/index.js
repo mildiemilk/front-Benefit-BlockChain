@@ -16,6 +16,7 @@ class FlexyPlan extends Component {
       fixPlan: false,
       fixPlanNextYear: false,
       flexyPlan: true,
+      flexyPlanNextYear: false,
     };
   }
 
@@ -64,6 +65,8 @@ class FlexyPlan extends Component {
 
   handleChangeCheckBTN = () => this.setState({ checkClickBTN: false });
 
+  handleClickNextYearSelectPlan = () => this.setState({ flexyPlan: true });
+
   render() {
     const {
       flexyPlanDetail,
@@ -73,6 +76,7 @@ class FlexyPlan extends Component {
       plan,
       fixPlanNextYear,
       flexyPlan,
+      flexyPlanNextYear,
     } = this.state;
     return (
       <div>
@@ -84,9 +88,11 @@ class FlexyPlan extends Component {
               handleClickGeneralExpense={this.handleClickGeneralExpense}
               handleChangePlan={this.handleChangePlan}
               handleClickButton={this.handleClickButton}
+              handleClickNextYearSelectPlan={this.handleClickNextYearSelectPlan}
               plan={plan}
               fixPlanNextYear={fixPlanNextYear}
               flexyPlan={flexyPlan}
+              flexyPlanNextYear={flexyPlanNextYear}
             /> :
             <div />
         }

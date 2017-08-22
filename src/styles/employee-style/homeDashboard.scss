@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+.hb-header {
+	line-height: 20px;
+	font-family: Kanit;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.25;
+	letter-spacing: 0.3px;
+	text-align: center;
+	color: #4a4a4a;
+	display: block;
+	margin: 31px auto 32px;
+}
+.hb-box {
+	display: block;
+	// margin-bottom: 32px;
+}
+.hb-box-row {
+	margin-bottom: 32px;
+}
+.hb-box-item {
+	width: 50%;
+	display: inline-block;
+}
+.hb-box-item-img {
+	width: 100px;
+	height: 100px;
+	margin: auto;
+  display: block;
+}
+.hb-box-item-text {
+	margin: auto;
+	display: block;
+	line-height: 21px;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-align: center;
+	color: #4a4a4a;
+	margin-top: 8px;
+}

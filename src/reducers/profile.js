@@ -2,7 +2,7 @@
  * Default State
  */
 const defaultProfile = {
-  companyName: localStorage.getItem('companyName') || '',
+  companyName: localStorage.getItem('companyName'),
   location: '',
   HR: '',
   tel: '',
@@ -10,7 +10,7 @@ const defaultProfile = {
   numberOfEmployees: '',
   companyBroker: '',
   companyInsurer: '',
-  logo: localStorage.getItem('logo') || '',
+  logo: localStorage.getItem('logo'),
   message: null,
   error: false,
 };
@@ -21,6 +21,7 @@ const defaultProfile = {
 const PROFILECOMPANY_REQUEST_SUCCESS = 'PROFILECOMPANY_REQUEST_SUCCESS';
 const PROFILECOMPANY_REQUEST_FAILURE = 'PROFILECOMPANY_REQUEST_FAILURE';
 const SETLOGO_REQUEST_SUCCESS = 'SETLOGO_REQUEST_SUCCESS';
+const AUTHENTICATE_REQUEST_SUCCESS = 'auth/AUTHENTICATE_REQUEST_SUCCESS';
 
 /**
  * Actions
@@ -62,6 +63,11 @@ export default function profileReducer(state = defaultProfile, action) {
       });
     case SETLOGO_REQUEST_SUCCESS:
       return Object.assign({}, state, {
+        logo: action.data.logo,
+      });
+    case AUTHENTICATE_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        companyName: action.data.companyName,
         logo: action.data.logo,
       });
     default:

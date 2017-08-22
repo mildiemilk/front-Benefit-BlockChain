@@ -11,7 +11,8 @@ import { authenticate } from '../../api/auth';
 class Login extends Component {
   static propTypes = {
     authenticate: PropTypes.func.isRequired,
-    data: PropTypes.string.isRequired,
+    data: PropTypes.shape.isRequired,
+    profile: PropTypes.shape.isRequired,
   }
 
   constructor() {
@@ -31,16 +32,15 @@ class Login extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
-    const { error, message, approve, role, personalVerify, companyName } = this.props.data;
+    const { error, message, approve, role, personalVerify } = this.props.data;
+    const { companyName } = this.props.profile;
     if (role === 'HR') {
-      if (companyName !== '' && approve === true) {
+      if (companyName && approve) {
         return <Redirect to={{ pathname: '/dashboard' }} />;
-      } else if (
-        companyName !== '' &&
-        approve === false
-      ) {
+      } else if (companyName && !approve) {
         return <Redirect to={{ pathname: '/confirm_identity' }} />;
-      } return <Redirect to={{ pathname: '/settingprofile' }} />;
+      }
+      return <Redirect to={{ pathname: '/settingprofile' }} />;
     } else if (role === 'Employee') {
       if (approve === true) {
         if (!personalVerify) {
@@ -140,6 +140,7 @@ const mapDispatchToProps = dispatch => ({
 });
 const mapStateToProps = state => ({
   data: state.authReducer,
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

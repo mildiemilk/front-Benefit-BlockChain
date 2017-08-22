@@ -141,8 +141,8 @@ class SettingProfile extends Component {
   }
   render() {
     const { companyName, logo, error, message } = this.props.profile;
-    if (companyName !== '') {
-      if (logo !== '') {
+    if (companyName) {
+      if (logo) {
         return <Redirect to={{ pathname: '/confirm_identity' }} />;
       }
       this.props.setLogo(this.state.file);

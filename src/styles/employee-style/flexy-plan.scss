@@ -44,7 +44,7 @@
   // .flexy-plan-header{
   //   color: #3a7bd5;
   //   font-size: 14px;
-  //   font-weight: 500;
+  //   font-weight: bold;
   //   line-height: 1.43;
   //   letter-spacing: 0.3px;
   //   padding-left: 4%;
@@ -66,7 +66,7 @@
 
   // .header-flexy-plan-detail{
   //   font-size: 13px;
-  //   font-weight: 500;
+  //   font-weight: bold;
   //   line-height: 1.69;
   //   letter-spacing: 0.3px;
   //   text-align: left;
@@ -118,7 +118,7 @@
   .header-text-select-flexy-plan
   {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 0.3px;
     margin-top:8%;
     margin-bottom: 3%;
@@ -176,7 +176,7 @@
     display: block;
     font-family: Kanit;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 0.3px;
     text-align: center;
     color: #000000;
@@ -195,15 +195,11 @@
     width: 250.4px;
     height: 75px;
   }
-  .flexy-hr {
-    margin: 0;
-    width: 100%;
-    border: solid 1px #c4c4c4;
-  }
   .body-flexy-plan-box {
     width: 100%;
     height: 40px;
     // border-radius: 3px;
+    border-top: solid 1px #c4c4c4;
     border-radius: 0 0 3px 3px;
     background-color: #cddaed;
   }
@@ -212,7 +208,7 @@
     // height: 21px;
     font-family: Kanit;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 0.3px;
     text-align: left;
     color: #323028;
@@ -237,7 +233,7 @@
     li:first-child {
       font-family: Kanit;
       font-size: 12px;
-      font-weight: 500;
+      font-weight: bold;
       line-height: 1.83;
       letter-spacing: 0.2px;
       text-align: left;
@@ -304,7 +300,7 @@
 }
 .flexy-header-confirm {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   letter-spacing: 0.3px;
   text-align: center;
   color: #4a4a4a;

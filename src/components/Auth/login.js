@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form, Container } from 'semantic-ui-react';
 import gift from '../image/gigift.jpg';
@@ -21,10 +22,6 @@ class Login extends Component {
     };
   }
 
-  signUpHandler = () => {
-    window.location.href = '/signup';
-  }
-
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -34,6 +31,23 @@ class Login extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
+    const { error, message, approve, role, personalVerify, companyName } = this.props.data;
+    if (role === 'HR') {
+      if (companyName !== '' && approve === true) {
+        return <Redirect to={{ pathname: '/dashboard' }} />;
+      } else if (
+        companyName !== '' &&
+        approve === false
+      ) {
+        return <Redirect to={{ pathname: '/confirm_identity' }} />;
+      } return <Redirect to={{ pathname: '/settingprofile' }} />;
+    } else if (role === 'Employee') {
+      if (approve === true) {
+        if (!personalVerify) {
+          return <Redirect to={{ pathname: '/employeeverify' }} />;
+        } return <Redirect to={{ pathname: '/flexyplan' }} />;
+      }
+    }
     return (
       <div className="loginStyle">
         <div className="row">
@@ -90,9 +104,9 @@ class Login extends Component {
                         />
                       </div>
                     </Form.Field>
-                    {this.props.data.error
+                    {error
                       ? <p style={{ color: 'red' }}>
-                        {' '}{this.props.data.message}
+                        {' '}{message}
                       </p>
                       : <p />}
                     <a className="link">ลืมพาสเวิร์ด?</a>
@@ -102,12 +116,11 @@ class Login extends Component {
                   </Form>
                   <hr className="line2" />
                   <p className="question">ยังไม่เคยสมัคร?</p>
-                  <button
+                  <Link to="/signup"><button
                     className="newMemberButton"
-                    onClick={() => this.signUpHandler()}
                   >
                     สร้างบัญชีใหม่
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>

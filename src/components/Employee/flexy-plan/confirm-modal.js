@@ -26,7 +26,7 @@ class ConfirmModal extends Component {
   static propTypes = {
     openModal: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
-    plan: PropTypes.string.isRequired,
+    plan: PropTypes.number.isRequired,
   }
   constructor() {
     super();

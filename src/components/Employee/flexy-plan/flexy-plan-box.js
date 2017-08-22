@@ -8,10 +8,9 @@ import FlexyGeneralExpense from '../../../../assets/employee/Flexy_Plan_generalE
 class FlexyPlanBox extends Component {
   static propTypes = {
     plan: PropTypes.number.isRequired,
-  };
-
-  static defaultProps = {
-    plan: '',
+    handleClickInsurance: PropTypes.func.isRequired,
+    handleClickHealth: PropTypes.func.isRequired,
+    handleClickGeneralExpense: PropTypes.func.isRequired,
   };
   constructor() {
     super();
@@ -29,12 +28,14 @@ class FlexyPlanBox extends Component {
               <img className="flexy-image-head" src={FlexyInsurance} alt={`plan${plan + 1}`} />
               <span className="flexy-text-header">INSURANCE</span>
             </div>
-            <hr className="flexy-hr" />
-            <div className="body-flexy-plan-box">
-              <a href="">
-                <span className="flexy-text-body small-7 columns">แผนประกันภัย</span>
-                <span className="flexy-more-body small-4 columns">ดูเพิ่มเติม &gt;</span>
-              </a>
+            <div
+              className="body-flexy-plan-box"
+              onClick={this.props.handleClickInsurance}
+              role="button"
+              aria-hidden
+            >
+              <span className="flexy-text-body small-7 columns">แผนประกันภัย</span>
+              <span className="flexy-more-body small-4 columns">ดูเพิ่มเติม &gt;</span>
             </div>
             <div className="tail-flexy-plan-box">
               <ul className="flexy-text-tail">
@@ -52,12 +53,14 @@ class FlexyPlanBox extends Component {
               <img className="flexy-image-head" src={FlexyHealth} alt={`plan${plan + 1}`} />
               <span className="flexy-text-header">HEALTH</span>
             </div>
-            <hr className="flexy-hr" />
-            <div className="body-flexy-plan-box">
-              <a href="">
-                <span className="flexy-text-body small-7 columns">สุขภาพ</span>
-                <span className="flexy-more-body small-4 columns">ดูเพิ่มเติม &gt;</span>
-              </a>
+            <div
+              className="body-flexy-plan-box"
+              onClick={this.props.handleClickHealth}
+              role="button"
+              aria-hidden
+            >
+              <span className="flexy-text-body small-7 columns">สุขภาพ</span>
+              <span className="flexy-more-body small-4 columns">ดูเพิ่มเติม &gt;</span>
             </div>
             <div className="tail-flexy-plan-box">
               <ul className="flexy-text-tail">
@@ -75,12 +78,14 @@ class FlexyPlanBox extends Component {
               <img className="flexy-image-head" src={FlexyGeneralExpense} alt={`plan${plan + 1}`} />
               <span className="flexy-text-header">GENERAL EXPENSE</span>
             </div>
-            <hr className="flexy-hr" />
-            <div className="body-flexy-plan-box">
-              <a href="">
-                <span className="flexy-text-body small-7 columns">ใช้จ่ายทั่วไป</span>
-                <span className="flexy-more-body small-4 columns">ดูเพิ่มเติม &gt;</span>
-              </a>
+            <div
+              className="body-flexy-plan-box"
+              onClick={this.props.handleClickGeneralExpense}
+              role="button"
+              aria-hidden
+            >
+              <span className="flexy-text-body small-7 columns">ใช้จ่ายทั่วไป</span>
+              <span className="flexy-more-body small-4 columns">ดูเพิ่มเติม &gt;</span>
             </div>
             <div className="tail-flexy-plan-box">
               <ul className="flexy-text-tail">

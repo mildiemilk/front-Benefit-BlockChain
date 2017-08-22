@@ -67,6 +67,7 @@ class App extends Component {
               <Route path="/welcome" component={welcomePage} />
               <Route path="/settingprofile" component={SettingProfile} />
               <Route path="/logout" component={Logout} />
+              <Route path="/login" component={Login} />
               <MainLayout>
                 <Switch>
                   <Route path="/congrat" component={Congrat} />

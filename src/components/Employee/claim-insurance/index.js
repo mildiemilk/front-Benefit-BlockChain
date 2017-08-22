@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Dropdown } from 'semantic-ui-react';
-import { Backgroundiv, TinyText } from './styled';
-import Header from '../header';
+import { Modal, Dropdown } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Backgroundiv, TinyText, SubmitButton, SubmitButtonLast } from './styled';
 import InsuranceTemplate from './insurance-template';
 import HealthTemplate from './health-template';
 import GeneralExpenseTemplate from './generalexpense-template';
 import '../../../styles/employee-style/claim-insurance.scss';
 import Footer from '../footer';
 
-const MinStateOption = [
+const MainStateOption = [
   { key: 'insurance', text: 'ประกันภัย', value: 'insurance' },
   { key: 'health', text: 'สุขภาพ', value: 'health' },
   { key: 'generalEx', text: 'ใช้จ่ายทั่วไป', value: 'generalEx' },
@@ -93,24 +93,35 @@ class ClaimInsurance extends Component {
   render() {
     return (
       <div className="InsuranceTemplate">
-        <div>
-          <Header />
-          <Backgroundiv>
-            <p style={{ fontSize: '18px' }}>เคลม</p>
-            <TinyText>ประเภทการเคลม</TinyText>
-            <Dropdown
-              placeholder="เลือกประเภทการเคลม"
-              fluid
-              selection
-              defaultValue="generalEx"
-              name="mainState"
-              options={MinStateOption}
-              onChange={this.handleChange}
-            />
-            {this.rendermainState()}
-          </Backgroundiv>
-          <Footer />
-        </div>
+        <Backgroundiv>
+          <p style={{ fontSize: '18px' }}>เคลม</p>
+          <TinyText>ประเภทการเคลม</TinyText>
+          <Dropdown
+            placeholder="เลือกประเภทการเคลม"
+            fluid
+            selection
+            defaultValue="generalEx"
+            name="mainState"
+            options={MainStateOption}
+            onChange={this.handleChange}
+          />
+          {this.rendermainState()}
+          <Modal
+            trigger={<SubmitButton> เคลม </SubmitButton>}
+            content={<p>
+                        รายการของคุณถูกบันทึกแล้ว <br />
+                          กรุณารอการพิจารณา
+                    </p>}
+            actions={
+              <Link to="/claimstatus">
+                <SubmitButtonLast>
+                  ตกลง
+                </SubmitButtonLast>
+              </Link>
+            }
+          />
+        </Backgroundiv>
+        <Footer />
       </div>
     );
   }

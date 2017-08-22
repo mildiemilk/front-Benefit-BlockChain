@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import NavBenefit from '../NavBenefit';
+import { fileEmployee } from '../../api/profile-company';
 import {
   DetailDiv,
   Text,
@@ -21,6 +24,9 @@ import excel from '../../../assets/Download/icons-8-ms-excel.png';
 import DownL from '../../../assets/Download/group-2.png';
 
 class Download extends Component {
+  static propTypes = {
+    fileEmployee: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -30,12 +36,9 @@ class Download extends Component {
     };
   }
 
-  _handleImageChange(e) {
-    e.preventDefault();
-
+  _handleFileChange(e) {
     const reader = new FileReader();
     const file = e.target.files[0];
-
     reader.onloadend = () => {
       this.setState({
         file,
@@ -44,6 +47,10 @@ class Download extends Component {
     };
 
     reader.readAsDataURL(file);
+  }
+  handleClick = () => {
+    console.log('save', this.state.file);
+    this.props.fileEmployee(this.state.file);
   }
 
   render() {
@@ -100,15 +107,14 @@ class Download extends Component {
               <Upload>
                 อัพโหลดไฟล์ :
                 <UploadDiv>{$filePreview}</UploadDiv>
-
                 <Uploads>
                   <BrowsButton for="uploadfor">
                     <input
                       id="uploadfor"
                       style={{ display: 'none' }}
                       type="file"
-                      accept=".xls,.xlsx,.pdf,.docx"
-                      onChange={e => this.handleUploadcliamdata(e)}
+                      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                      onChange={e => this._handleFileChange(e)}
                     />
                     เลือกไฟล์
                   </BrowsButton>
@@ -122,7 +128,7 @@ class Download extends Component {
             <Link to="settingbenefit"><BackButton> กลับ </BackButton></Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <Link to="/employeebenefits"><NextButton> ต่อไป </NextButton></Link>
+            <Link to="/employeebenefits"><NextButton onClick={this.handleClick}> ต่อไป </NextButton></Link>
           </div>
           <div className="large-1 columns" />
         </div>
@@ -131,4 +137,9 @@ class Download extends Component {
   }
 }
 
-export default Download;
+const mapDispatchToProps = dispatch => ({
+  fileEmployee: data => dispatch(fileEmployee(data)),
+});
+
+
+export default connect(null, mapDispatchToProps)(Download);

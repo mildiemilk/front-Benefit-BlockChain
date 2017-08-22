@@ -24,27 +24,8 @@ export function authenticate(email, password) {
         localStorage.setItem('role', res.data.role);
         localStorage.setItem('companyName', res.data.companyName);
         localStorage.setItem('logo', res.data.logo);
+        localStorage.setItem('approve', res.data.approve);
         dispatch(authenticateSuccess(res.data));
-        if (res.data.role === 'HR') {
-          if (res.data.companyName !== '' && res.data.Approve === true) {
-            window.location.href = '/dashboard';
-          } else if (
-            res.data.companyName !== '' &&
-            res.data.Approve === false
-          ) {
-            window.location.href = '/confirm_identity';
-          } else {
-            window.location.href = '/settingprofile';
-          }
-        } else if (res.data.role === 'Employee') {
-          if (res.data.Approve === true) {
-            if (!res.data.personalVerify) {
-              window.location.href = '/employeeverify';
-            } else {
-              window.location.href = '/flexyplan';
-            }
-          }
-        }
       })
       .catch(err => {
         dispatch(authenticateFailure(err.response.data));

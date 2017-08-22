@@ -10,6 +10,8 @@ import {
   HeaderBoxRight,
   DataStyle,
   ImageInbox,
+  ImageStyle,
+  Textfirst,
 } from './styled';
 
 class EmployeeFixPlan extends Component {
@@ -20,14 +22,14 @@ class EmployeeFixPlan extends Component {
 
   render() {
     return (
-      <div>
+      <div className="fixplan">
         <div className="backgroundStlye">
           <div className="row">
-            <img className="Imagefirst" alt="asset" src={congrat} />
-            <div className="textfirst">
-              ยินดีด้วย!<br />นี้คือสิทธิประโยชน์ของคุณ
-            </div>
             <div className="small-10 small-centered columns">
+              <ImageStyle alt="asset" src={congrat} />
+              <Textfirst >
+                ยินดีด้วย!<br />นี้คือสิทธิประโยชน์ของคุณ
+              </Textfirst>
               <BoxStyle>
                 <HeaderBox>
                   <div

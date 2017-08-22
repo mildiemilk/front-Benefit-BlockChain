@@ -13,37 +13,31 @@
   .clam-box{
     padding-left: 4.3%;
     padding-right: 4.3%;
+    margin-bottom: 10px;
   }
+
   .blue-clam-box-header{
     width: 100%;
     height: 39px;
-    background-color: #c8ddf6;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding-left:4.7%;
-    padding-right:4.7%;
-    padding-top: 3%;
+    background-color: #3a7bd5;
+    border-radius: 5px 0px;
+    padding: 3% 4.7% 0% 4.7%;
   }
+
   .green-clam-box-header{
     width: 100%;
     height: 39px;
-    background-color: #5dc7a9;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding-left:4.7%;
-    padding-right:4.7%;
-    padding-top: 3%;
+    background-color: #46b3b8;
+    border-radius: 5px 0px;
+    padding: 3% 4.7% 0% 4.7%;
   }
 
-  .black-clam-box-header{
+  .red-clam-box-header{
     width: 100%;
     height: 39px;
-    background-color: #c4c4c4;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding-left:4.7%;
-    padding-right:4.7%;
-    padding-top: 3%;
+    background-color: #f7555f;
+    border-radius: 5px 0px;
+    padding: 3% 4.7% 0% 4.7%;
   }
 
   .clam-box-detail{
@@ -69,55 +63,22 @@
     float: right;
   }
 
-  .blue-header-text-status{
+  .header-text-status{
     font-size: 14px;
     font-weight: 500;
     line-height: 1.43;
     letter-spacing: 0.3px;
     text-align: left;
-    color: #3a7bd5;
-  }
-  .green-header-text-status{
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.43;
-    letter-spacing: 0.3px;
-    text-align: left;
-    color: #286755;
-  }
-
-  .black-header-text-status{
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.43;
-    letter-spacing: 0.3px;
-    text-align: left;
-    color: #323028;
+    color: #ffffff;
   }
 
 
-  .blue-no-text-status{
+  .no-text-status{
     font-size: 11px;
     line-height: 2;
     letter-spacing: 0.2px;
     float: right;
-    color: #3a7bd5;
-  }
-
-  .green-no-text-status{
-    font-size: 11px;
-    line-height: 2;
-    letter-spacing: 0.2px;
-    float: right;
-    color: #286755;
-  }
-
-  .black-no-text-status{
-    font-size: 11px;
-    line-height: 2;
-    letter-spacing: 0.2px;
-    float: right;
-    color: #323028;
+    color: #ffffff;
   }
 
 
@@ -140,7 +101,7 @@
   }
 
 
-  .black-get-more-detail-link{
+  .detail-link{
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: 0.2px;

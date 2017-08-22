@@ -14,7 +14,9 @@ import CongratSelectPlan from './Employee/congrats-select-plan';
 import HeadLayout from './head-layout-mobile';
 import ClaimStatusDetail from './Employee/ClaimStatusDetail';
 import YourBenefit from './Employee/YourBenefit';
+import FindHospital from './Employee/find-hospital';
 import Logout from './Auth/logout';
+import claimStatus from './Employee/claim-status';
 
 const AppMobile = () => (
   <BrowserRouter>
@@ -27,8 +29,10 @@ const AppMobile = () => (
           <Route path="/congratselectplan" component={CongratSelectPlan} />
           <Route path="/dashboardstart" component={DashboardStart} />
           <Route path="/flexyplan" component={FlexyPlan} />
+          <Route path="/findhospital" component={FindHospital} />
           <Route path="/claiminsurance" component={ClaimInsurance} />
           <Route path="/yourbenefit" component={YourBenefit} />
+          <Route path="/claimstatus" component={claimStatus} />
           <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
         </Switch>
       </HeadLayout>

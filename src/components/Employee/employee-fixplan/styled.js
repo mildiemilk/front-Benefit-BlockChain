@@ -41,6 +41,12 @@ export const HeaderBoxRight = styled.p`
   letter-spacing: 0.2px;
   text-align: right;
 `;
+export const Textfirst = styled.div`
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
+`;
 export const DataStyle = styled.div`
   padding-left: 7%;
   padding-top: 5%;
@@ -55,5 +61,14 @@ export const ImageInbox = styled(Image)`
     width: 100%;
     display:inline-block;
     margin-top: 15%;
+  }
+`;
+
+export const ImageStyle = styled(Image)`
+  &&&{
+    padding-top: 20px;
+    border-style: none;
+    display:block;
+    margin:auto;
   }
 `;

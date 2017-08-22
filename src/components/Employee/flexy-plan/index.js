@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FlexyPlanDetail from './FlexyPlanDetail';
+import Plan from './Plan';
 import InsuranceDetail from '../InsuranceDetail';
 import HealthDetail from '../health-detail';
 import GeneralExpense from '../genaral-expense';
@@ -13,6 +13,9 @@ class FlexyPlan extends Component {
       healthDetail: false,
       generalExpense: false,
       plan: 0,
+      fixPlan: false,
+      fixPlanNextYear: false,
+      flexyPlan: true,
     };
   }
 
@@ -46,7 +49,20 @@ class FlexyPlan extends Component {
     });
   }
 
-  handleChangePlan = index => this.setState({ plan: index });
+  handleChangePlan = index => {
+    const data = parseInt(index, 10);
+    this.setState({ plan: data });
+  }
+
+  handleClickButton = ({ target: { dataset: { tag } } }) => {
+    const data = parseInt(tag, 10);
+    this.setState({
+      plan: data,
+      checkClickBTN: true,
+    }, () => this.handleChangeCheckBTN());
+  }
+
+  handleChangeCheckBTN = () => this.setState({ checkClickBTN: false });
 
   render() {
     const {
@@ -55,16 +71,22 @@ class FlexyPlan extends Component {
       healthDetail,
       generalExpense,
       plan,
+      fixPlanNextYear,
+      flexyPlan,
     } = this.state;
     return (
       <div>
         {
           flexyPlanDetail ?
-            <FlexyPlanDetail
+            <Plan
               handleClickInsurance={this.handleClickInsurance}
               handleClickHealth={this.handleClickHealth}
               handleClickGeneralExpense={this.handleClickGeneralExpense}
               handleChangePlan={this.handleChangePlan}
+              handleClickButton={this.handleClickButton}
+              plan={plan}
+              fixPlanNextYear={fixPlanNextYear}
+              flexyPlan={flexyPlan}
             /> :
             <div />
         }

@@ -157,6 +157,7 @@ class InsuranceDetail extends Component {
       ipdRotatePlus,
     } = this.state;
     const { plan } = this.props;
+    const alt = plan + 1;
     return (
       <div>
         <span className="insurance-header">แผนประกันภัย</span>
@@ -170,12 +171,12 @@ class InsuranceDetail extends Component {
             <img
               className="insurance-info"
               src={Info}
-              alt=""
+              alt={alt}
               onClick={this.handleOpenModal}
               role="button"
               aria-hidden
             />
-            <img className="insurance-box-header-img" src={Life} alt="" />
+            <img className="insurance-box-header-img" src={Life} alt={alt} />
             <span className="insurance-box-header-text">LIFE</span>
           </div>
           <div className="insurance-box-title">
@@ -196,12 +197,12 @@ class InsuranceDetail extends Component {
             <img
               className="insurance-info"
               src={Info}
-              alt=""
+              alt={alt}
               onClick={this.handleOpenModal}
               role="button"
               aria-hidden
             />
-            <img className="insurance-box-header-img" src={OPD} alt="" />
+            <img className="insurance-box-header-img" src={OPD} alt={alt} />
             <span className="insurance-box-header-text">OPD</span>
           </div>
           <div className="insurance-box-title">
@@ -222,12 +223,12 @@ class InsuranceDetail extends Component {
             <img
               className="insurance-info"
               src={Info}
-              alt=""
+              alt={alt}
               onClick={this.handleOpenModal}
               role="button"
               aria-hidden
             />
-            <img className="insurance-box-header-img" src={Dental} alt="" />
+            <img className="insurance-box-header-img" src={Dental} alt={alt} />
             <span className="insurance-box-header-text">Dental</span>
           </div>
           <div className="insurance-box-title">
@@ -248,12 +249,12 @@ class InsuranceDetail extends Component {
             <img
               className="insurance-info"
               src={Info}
-              alt=""
+              alt={alt}
               onClick={this.handleOpenModal}
               role="button"
               aria-hidden
             />
-            <img className="insurance-box-header-img" src={IPD} alt="" />
+            <img className="insurance-box-header-img" src={IPD} alt={alt} />
             <span className="insurance-box-header-text">IPD</span>
           </div>
           <div className="insurance-box-title">

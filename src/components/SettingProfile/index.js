@@ -288,8 +288,6 @@ class SettingProfile extends Component {
   }
 }
 
-SettingProfile.propTypes = {};
-
 const mapDispatchToProps = dispatch => ({
   createProfile: data => dispatch(createProfile(data)),
   setLogo: data => dispatch(setLogo(data)),

@@ -4,6 +4,7 @@ import { Image } from 'semantic-ui-react';
 export const Backgroundiv = styled.div`
     height: 100%;
     padding: 7% 5%;
+    background-color: #ffffff;
 `;
 
 export const TinyText = styled.div`
@@ -39,6 +40,20 @@ export const BrowsButton = styled.label`
 `;
 export const SubmitButton = styled.button`
     width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #3a7bd5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    border: solid 1px rgba(155, 155, 155, 0.64);
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #ffffff;
+
+`;
+
+export const SubmitButtonLast = styled.button`
+    width: 70%;
     height: 40px;
     border-radius: 20px;
     background-color: #3a7bd5;

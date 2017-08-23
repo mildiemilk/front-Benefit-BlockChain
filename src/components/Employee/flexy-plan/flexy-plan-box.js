@@ -11,6 +11,7 @@ class FlexyPlanBox extends Component {
     handleClickInsurance: PropTypes.func.isRequired,
     handleClickHealth: PropTypes.func.isRequired,
     handleClickGeneralExpense: PropTypes.func.isRequired,
+    flexyPlan: PropTypes.bool.isRequired,
   };
   constructor() {
     super();
@@ -18,9 +19,12 @@ class FlexyPlanBox extends Component {
   }
 
   render() {
-    const { plan } = this.props;
+    const {
+    plan,
+    flexyPlan,
+   } = this.props;
     return (
-      <div>
+      <div className={flexyPlan === true ? 'box-box' : ''}>
         <div className="box-space">
           <div className="flexy-plan-box">
             <div className="head-flexy-plan-box">

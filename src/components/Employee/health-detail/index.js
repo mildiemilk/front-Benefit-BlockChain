@@ -27,6 +27,7 @@ class HealthDetail extends Component {
 
   render() {
     const { plan } = this.props;
+    const alt = plan + 1;
     return (
       <div>
         <span className="xten-header">สิทธิประโยชน์ด้านสุขภาพ</span>
@@ -40,12 +41,12 @@ class HealthDetail extends Component {
             <img
               className="xten-info"
               src={Info}
-              alt=""
+              alt={alt}
               onClick={this.handleOpenModal}
               role="button"
               aria-hidden
             />
-            <img className="xten-box-header-img" src={Health} alt="" />
+            <img className="xten-box-header-img" src={Health} alt={alt} />
             <span className="xten-box-header-text">HEALTH</span>
           </div>
           <div className="xten-box-title">

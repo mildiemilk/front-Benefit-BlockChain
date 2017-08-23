@@ -1,6 +1,6 @@
 import axios from 'axios';
 import auth from './auth';
-import { profileCompany, setLogo } from './profile-company';
+import { profileCompany, setLogo, fileEmployee } from './profile-company';
 import {
   chooseInsurer,
   setTimeOut,
@@ -37,6 +37,7 @@ export default {
   APIRequest,
   profileCompany,
   setLogo,
+  fileEmployee,
   chooseInsurer,
   setTimeOut,
   getTimeout,

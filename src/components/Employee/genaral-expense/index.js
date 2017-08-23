@@ -27,6 +27,7 @@ class GenaralExpense extends Component {
 
   render() {
     const { plan } = this.props;
+    const alt = plan + 1;
     return (
       <div>
         <span className="xten-header">การใช้จ่ายทั่วไป</span>
@@ -40,7 +41,7 @@ class GenaralExpense extends Component {
             <img
               className="xten-info"
               src={Info}
-              alt=""
+              alt={alt}
               onClick={this.handleOpenModal}
               role="button"
               aria-hidden

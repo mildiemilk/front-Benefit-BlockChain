@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
@@ -11,6 +12,9 @@ import IPD3 from './ipd3';
 import IpdModal from './ipd-modal';
 import about from '../../image/icons-8-about.png';
 
+const Checkboxs = styled(Checkbox)`
+  margin-bottom: 15px;
+`
 class IPD extends Component {
   static propTypes = {
     handleVerifyState: PropTypes.func.isRequired,
@@ -270,8 +274,7 @@ class IPD extends Component {
                 rbScheduleTransplant={this.props.rbScheduleTransplant}
               />
               : null}
-            <br />
-            <Checkbox
+            <Checkboxs
               toggle
               label="Co-Pay"
               checked={this.props.ipdCoPay}

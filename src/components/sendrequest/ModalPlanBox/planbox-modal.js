@@ -11,15 +11,19 @@ const ModalContents = styled(Modal.Content)`
     width: 800px;
     position: relative;
     margin: 0 auto;
-    padding-left: 6.4%;
-    padding-right: 4%;
+    padding: 0px 40px 0px 40px;
+    text-align: initial;
   }
 `;
+const ModalContentsWithBottom = ModalContents.extend`
+  padding-bottom: 21px !important;
+`
 const ModalHeaders = styled(Modal.Header)`
   &&&{
     width: 800px;
     position: relative;
     margin: 0 auto;
+    border: none;
     padding-left: 4%;
     padding-right: 4%;
   }
@@ -31,9 +35,15 @@ const Modals = styled(Modal)`
     margin-top: -120px;
     z-index: 2;
     box-shadow: none;
+    padding: 0px;
+    height: auto;
+    position: absolute;
   }
 `;
-
+const CustomHead = styled.div`
+  text-align: center;
+  font-family: kanit;
+`
 class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
@@ -366,7 +376,7 @@ class PlanBoxModal extends Component {
         className="SubmitPlan"
       >
         <ModalHeaders>
-          <div style={{ textAlign: 'center' }}>ดูแพลน</div>
+          <CustomHead>ดูแพลน</CustomHead>
         </ModalHeaders>
         <ModalContents>
           <FormSubmitPlan
@@ -377,7 +387,7 @@ class PlanBoxModal extends Component {
             handleResetProfilePlan={this.handleResetProfilePlan}
           />
         </ModalContents>
-        <ModalContents>
+        <ModalContentsWithBottom>
           <AllPlan
             activePlan={this.state.activePlan}
             handlePlan={this.handlePlan}
@@ -446,7 +456,7 @@ class PlanBoxModal extends Component {
             lifeTimeOfSalary={this.state.lifeTimeOfSalary}
             lifeNotExceed={this.state.lifeNotExceed}
           />
-        </ModalContents>
+        </ModalContentsWithBottom>
       </Modals>
     );
   }

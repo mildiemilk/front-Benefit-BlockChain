@@ -40,7 +40,8 @@ class ChooseInsurancePlan extends Component {
       PlanTemplateState: 1,
       ChooseInsurance: [],
       OurPlan: [],
-      SpacialPlan: [
+      MilkPlan: [],
+      SpecialPlan: [
         {
           planName: 'แผนจากบริษัทประกันที่ 1',
           price: 1563,
@@ -58,23 +59,33 @@ class ChooseInsurancePlan extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.planList !== this.props.planList) {
-      this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans) });
+      console.log('newprop chooseplan', newProps);
+      console.log('state ==>', this.state);
+      this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans),
+        MilkPlan: this.filterPlan(newProps.planList, newProps.choosePlans),
+      });
     }
     if (newProps.choosePlans !== this.props.choosePlans) {
-      this.setState({ ChooseInsurance: newProps.choosePlans });
+      if (newProps.choosePlans !== undefined) {
+        this.setState({ ChooseInsurance: newProps.choosePlans });
+      }
     }
   }
 
   filterPlan = (plans, choosePlan) => {
-    const newPlans = plans.filter(plan =>
-      choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false));
-    return newPlans;
+    // if (choosePlan !== undefined) {
+    //   const newPlans = plans.filter(plan =>
+    //     choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false));
+    //   return newPlans;
+    // }
+    console.log('ch', choosePlan);
+    return plans;
   }
 
   handleDeleteOurplan = index => {
     const file = this.state.OurPlan[index];
-    const OurPlans = this.state.OurPlan;
-    OurPlans.splice(index, 1);
+    let OurPlans = this.state.OurPlan;
+    OurPlans = OurPlans.filter((plan, i) => i !== index);
     this.setState({
       ChooseInsurance: this.state.ChooseInsurance.concat(file),
       OurPlan: OurPlans,
@@ -82,18 +93,19 @@ class ChooseInsurancePlan extends Component {
     });
   }
 
-  handleDeleteSpacialPlan = index => {
-    const file = this.state.SpacialPlan[index];
-    const SpacialPlans = this.state.SpacialPlan;
-    SpacialPlans.splice(index, 1);
+  handleDeleteSpecialPlan = index => {
+    const file = this.state.SpecialPlan[index];
+    const SpecialPlans = this.state.SpecialPlan;
+    SpecialPlans.splice(index, 1);
     this.setState({
       ChooseInsurance: this.state.ChooseInsurance.concat(file),
-      SpacialPlan: SpacialPlans,
+      SpecialPlan: SpecialPlans,
       ChooseColor: this.state.ChooseColor.concat(2),
     });
   }
 
   handleDeleteChooseInsurance = (index, Color) => {
+    console.log('index color', index, Color);
     if (Color === 1) {
       const file = this.state.ChooseInsurance[index];
       const ChooseInsurances = this.state.ChooseInsurance;
@@ -112,7 +124,7 @@ class ChooseInsurancePlan extends Component {
       ChooseInsurances.splice(index, 1);
       ChooseColors.splice(index, 1);
       this.setState({
-        SpacialPlan: this.state.SpacialPlan.concat(file),
+        SpecialPlan: this.state.SpecialPlan.concat(file),
         ChooseInsurance: ChooseInsurances,
         ChooseColor: ChooseColors,
       });
@@ -122,9 +134,12 @@ class ChooseInsurancePlan extends Component {
   checkColor = plan => {
     const { planList } = this.props;
     const isOurPlan = planList.filter(ourPlan => ourPlan.planId === plan.planId).length !== 0;
+    console.log('eiei', planList.filter(ourPlan => ourPlan.planId === plan.planId));
+    console.log('ourplan plan', planList, plan.planId);
     if (isOurPlan) {
       return 1;
-    } return 2;
+    }
+    return 2;
   }
 
   RenderInnerRight = () => {
@@ -165,16 +180,16 @@ class ChooseInsurancePlan extends Component {
     } return '';
   }
 
-  RenderSpacialplan = () => {
-    if (this.state.SpacialPlan.length >= 1) {
-      const listItems = this.state.SpacialPlan.map((number, i) => (
+  RenderSpecialplan = () => {
+    if (this.state.SpecialPlan.length >= 1) {
+      const listItems = this.state.SpecialPlan.map((number, i) => (
         <PlanTemplate
           id={number.planName}
           index={i}
           price={number.price}
           colorPlan={2}
           closetap={false}
-          handleDeleteSpacialPlan={this.handleDeleteSpacialPlan}
+          handleDeleteSpecialPlan={this.handleDeleteSpecialPlan}
         />
       ));
       return listItems;
@@ -209,7 +224,7 @@ class ChooseInsurancePlan extends Component {
             backgroundColor: '#ffffff',
             borderRadius: '0px',
           }}
-          header={<div> {this.RenderSpacialplan(this.state.SpacialPlan)} </div>}
+          header={<div> {this.RenderSpecialplan(this.state.SpecialPlan)} </div>}
           content={''}
         />
       ),

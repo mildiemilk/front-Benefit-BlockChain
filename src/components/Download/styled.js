@@ -109,3 +109,6 @@ export const Uploads = styled.div`
 export const AltFile = styled.div`
   text-align: center;
 `;
+export const ImgWithPointer = styled.img`
+  cursor: pointer;
+`;

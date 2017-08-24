@@ -1,3 +1,4 @@
+import FileSaver from 'file-saver';
 import { APIRequest } from '.';
 import {
   createProfileSuccess,
@@ -9,6 +10,7 @@ import {
 const PROFILE_URI = '/admin/registerCompany';
 const LOGO_URI = '/admin/set-logo';
 const FILEEMPLOYEE_URI = '/admin/upload-employee';
+const GETTEMPLATE_URI = '/admin/get-template';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -64,6 +66,24 @@ export function fileEmployee(file) {
       .then(res => {
         console.log('thisfile', file);
         dispatch(fileEmployeeSuccess(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function getTemplate() {
+  return () => {
+    const options = {
+      method: 'get',
+      url: GETTEMPLATE_URI,
+      responseType: 'blob',
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        FileSaver.saveAs(res.data, 'EmployeedataTemplate.xlsx');
       })
       .catch(err => {
         console.log(err);

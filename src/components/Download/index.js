@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NavBenefit from '../NavBenefit';
-import { fileEmployee } from '../../api/profile-company';
+import { fileEmployee, getTemplate } from '../../api/profile-company';
 import {
   DetailDiv,
   Text,
@@ -19,6 +19,7 @@ import {
   UploadDiv,
   DivDownload,
   AltFile,
+  ImgWithPointer,
 } from './styled';
 import excel from '../../../assets/Download/icons-8-ms-excel.png';
 import DownL from '../../../assets/Download/group-2.png';
@@ -26,6 +27,7 @@ import DownL from '../../../assets/Download/group-2.png';
 class Download extends Component {
   static propTypes = {
     fileEmployee: PropTypes.func.isRequired,
+    getTemplate: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -48,6 +50,7 @@ class Download extends Component {
 
     reader.readAsDataURL(file);
   }
+
   handleClick = () => {
     console.log('save', this.state.file);
     this.props.fileEmployee(this.state.file);
@@ -89,7 +92,7 @@ class Download extends Component {
                     <AltFile>Filesize: 0.4 Mb</AltFile>
                   </div>
                   <div className="large-3 columns">
-                    <img src={DownL} alt="download" />
+                    <ImgWithPointer src={DownL} alt="download" onClick={this.props.getTemplate} role="button" aria-hidden />
                   </div>
                 </div>
               </DivDownload>
@@ -139,6 +142,7 @@ class Download extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fileEmployee: data => dispatch(fileEmployee(data)),
+  getTemplate: () => dispatch(getTemplate()),
 });
 
 

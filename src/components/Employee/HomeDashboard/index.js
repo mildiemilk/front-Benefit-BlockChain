@@ -96,30 +96,40 @@ class HomeDashboard extends Component {
         <span className="hb-header">ยินดีต้อนรับเข้าสู่ BenefiTable</span>
         <div className="hb-box">
           <div className="hb-box-row row">
-            <div className="hb-box-item">
-              <img className="hb-box-item-img" alt="plan" src={Plan} />
-              <span className="hb-box-item-text">แผนสิทธิประโยชน์</span>
-            </div>
-            <div className="hb-box-item">
-              <img className="hb-box-item-img" alt="plan" src={Claim} />
-              <span className="hb-box-item-text">เคลม</span>
-            </div>
+            <Link to="/flexyplan">
+              <div className="hb-box-item">
+                <img className="hb-box-item-img" alt="plan" src={Plan} />
+                <span className="hb-box-item-text">แผนสิทธิประโยชน์</span>
+              </div>
+            </Link>
+            <Link to="/claiminsurance">
+              <div className="hb-box-item">
+                <img className="hb-box-item-img" alt="plan" src={Claim} />
+                <span className="hb-box-item-text">เคลม</span>
+              </div>
+            </Link>
           </div>
           <div className="hb-box-row row">
-            <div className="hb-box-item">
-              <img className="hb-box-item-img" alt="plan" src={StatusClaim} />
-              <span className="hb-box-item-text">สถานะการเคม</span>
-            </div>
-            <div className="hb-box-item">
-              <img className="hb-box-item-img" alt="plan" src={FindHospital} />
-              <span className="hb-box-item-text">ค้นหาโรงพบาบาล</span>
-            </div>
+            <Link to="/claimstatus">
+              <div className="hb-box-item">
+                <img className="hb-box-item-img" alt="plan" src={StatusClaim} />
+                <span className="hb-box-item-text">สถานะการเคม</span>
+              </div>
+            </Link>
+            <Link to="/findhospital">
+              <div className="hb-box-item">
+                <img className="hb-box-item-img" alt="plan" src={FindHospital} />
+                <span className="hb-box-item-text">ค้นหาโรงพบาบาล</span>
+              </div>
+            </Link>
           </div>
           <div className="hb-box-row row">
-            <div className="hb-box-item">
-              <img className="hb-box-item-img" alt="plan" src={Profile} />
-              <span className="hb-box-item-text">โปรไฟล์</span>
-            </div>
+            <Link to="/profile">
+              <div className="hb-box-item">
+                <img className="hb-box-item-img" alt="plan" src={Profile} />
+                <span className="hb-box-item-text">โปรไฟล์</span>
+              </div>
+            </Link>
             <div className="hb-box-item">
               <img className="hb-box-item-img" alt="plan" src={Setting} />
               <span className="hb-box-item-text">ตั้งค่า</span>

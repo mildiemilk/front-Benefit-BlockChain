@@ -17,7 +17,7 @@
     padding: 32px 0px;
   }
 
-  .StatusHeader{
+  .Header{
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
@@ -25,12 +25,38 @@
     color: #3a7bd5;
     margin-left: 20px;
   }
+  .Red{
+    color: #d0011b;
+  }
+  .Blue{
+    color: #3a7bd5;
+  }
+  .Green{
+    color: #46b3b8;
+  }
+
 
   .StatusImg{
-    width: 14px;
+    width: 16px;
     height: 16px;
     position: absolute;
     top: 3px;
+
+    i.big.icon, i.big.icons {
+      line-height: none;
+      vertical-align: middle;
+      font-size: 2em;
+    }
+  }
+
+  .Headpic {
+    width: 138px;
+    height: 58px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 
   .DivImg{
@@ -59,4 +85,5 @@
     margin-top: 40px;
     text-align: center;
   }
+
 }

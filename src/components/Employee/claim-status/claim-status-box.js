@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NotApprove from '../../image/icons-8-cancel.png';
 import Hourglass from '../../image/hourglass.png';
@@ -8,6 +7,8 @@ import Hourglass from '../../image/hourglass.png';
 class ClaimStatusBox extends Component {
   static propTypes = {
     claimdata: PropTypes.shape.isRequired,
+    id: PropTypes.number.isRequired,
+    handleToggleViewDetail: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -36,7 +37,7 @@ class ClaimStatusBox extends Component {
             >
               <span className="header-text-status">ไม่อนุมัติ </span>
               <span className="no-text-status">
-                no.{claimdata.Number}
+                no.{claimdata.number}
               </span>
             </div>
           </div>
@@ -59,9 +60,9 @@ class ClaimStatusBox extends Component {
               className="small-11 columns"
               style={style}
             >
-              <span className="header-text-status">ไม่อนุมัติ </span>
+              <span className="header-text-status">อนุมัติ </span>
               <span className="no-text-status">no.
-                {claimdata.Number}
+                {claimdata.number}
               </span>
             </div>
           </div>
@@ -85,7 +86,7 @@ class ClaimStatusBox extends Component {
             >
               <span className="header-text-status">กำลังพิจารณา</span>
               <span className="no-text-status">
-                no. {claimdata.Number}
+                no. {claimdata.number}
               </span>
             </div>
           </div>
@@ -130,13 +131,19 @@ class ClaimStatusBox extends Component {
         <div className="clam-box">
           {this.renderStatusHead(claimdata)}
           <div className="clam-box-detail">
-            {this.renderType(claimdata)}.
+            {this.renderType(claimdata)}
             <p>วันที่เคลม : {claimdata.date}</p>
             <p>ผู้เคลม : {claimdata.ChooseEmployeeName}</p>
             <span>จำนวนเงิน : {claimdata.AmountMoney} บาท </span>
-            <Link to="/claimstatusdetail">
-              <span className="detail-link">ดูเพิ่มเติม&gt; </span>
-            </Link>
+            <span
+              className="detail-link"
+              role="button"
+              aria-hidden
+              onClick={() =>
+                 this.props.handleToggleViewDetail(this.props.id)}
+            >
+              ดูเพิ่มเติม&gt;
+            </span>
           </div>
         </div>
       </div>

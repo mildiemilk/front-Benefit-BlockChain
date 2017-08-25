@@ -156,9 +156,207 @@
   text-align: center;
   color: #3a7bd5;
 }
+.profile-pd-body-btn-add-user-deactive {
+  line-height: 20px;
+  font-family: Kanit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #e1e1e1;
+}
 .profile-pd-body-icon-add-user {
   height: 20px;
   width: 20px;
   margin-right: 10px;
   vertical-align: middle;
+  color: #e1e1e1;
+}
+.profile-pd-body-icon-add-user {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.profile-pd-box-text {
+  display: block;
+  line-height: 15px;
+  font-family: Kanit;
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  text-align: left;
+  color: #34495e;
+  margin-bottom: 16px;
+}
+.profile-pd-textarea-address {
+  font-family: Kanit;
+  width: 256px;
+  height: 80px;
+  border-radius: 3px;
+  border: solid 1px #c4c4c4;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.1px;
+  text-align: left;
+  color: #000000;
+  margin-top: 3px;
+  padding: 9px;
+}
+.profile-pd-input {
+  width: 256px;
+  height: 40px;
+  border-radius: 3px;
+  border: solid 1px #c4c4c4;
+  line-height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #000000;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.profile-pd-btn-box {
+  margin-top: 16px;
+  display: block;
+  line-height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.profile-pd-btn-cancel {
+  display: inline-block;
+  width: 124px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  margin-right: 8px;
+  border: none;
+  color: #ffffff;
+}
+.profile-pd-btn-save {
+  display: inline-block;
+  width: 124px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  border: none;
+  color: #ffffff;
+}
+.profile-pd-body-edit-family {
+  height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 16px;
+}
+.ui.input input {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  line-height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #000000;
+}
+.profile-pd-icon-remove {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+.profile-pd-edit-family-l {
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  line-height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #4a4a4a;
+}
+.profile-pd-edit-family-r {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  line-height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: #f7555f;
+}
+.profile-pd-input-date {
+  width: 256px;
+  height: 40px;
+  border-radius: 3px;
+  border: solid 1px #c4c4c4;
+  line-height: 18px;
+  font-family: Kanit;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #000000;
+}
+.ui.modal.transition.visible.active {
+  width: 290px;
+  height: 149px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: block;
+  padding: 0px;
+}
+.profile-confirm-modal-box {
+  display: block;
+  margin-top: 40px;
+}
+.profile-confirm-modal-text {
+  line-height: 21px;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #4a4a4a;
+}
+.profile-confirm-modal-btn-box {
+  display: block;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  margin-top: 16px;
+}
+.profile-confirm-modal-btn-l {
+  display: inline-block;
+  line-height: 21px;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  margin-right: 8px;
+  color: #ffffff;
+  border: none;
+}
+.profile-confirm-modal-btn-r {
+  display: inline-block;
+  line-height: 21px;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  color: #ffffff;
+  border: none;
 }

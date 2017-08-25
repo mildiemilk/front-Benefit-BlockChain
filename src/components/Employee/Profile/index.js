@@ -9,25 +9,32 @@ class Profile extends Component {
     this.state = {
       personalDetail: false,
       familyDetail: false,
+      familyDetailAddUser: false,
     };
   }
 
-  handleClickEdit = (key, value) => this.setState({ [key]: !value }, console.log(key, ' ', value));
+  handleClickEdit = (keyChange, value) => this.setState({ [keyChange]: !value });
 
   render() {
     const {
       personalDetail,
-      // familyDetail,
+      familyDetail,
+      familyDetailAddUser,
     } = this.state;
     return (
       <div className="profile-box">
         <HeadProfile />
         <PersonalDetail
           handleClickEdit={this.handleClickEdit}
-          key="personalDetail"
-          value={personalDetail}
+          personalDetail={personalDetail}
+          familyDetail={familyDetail}
         />
-        <FamilyDetail />
+        <FamilyDetail
+          handleClickEdit={this.handleClickEdit}
+          personalDetail={personalDetail}
+          familyDetail={familyDetail}
+          familyDetailAddUser={familyDetailAddUser}
+        />
       </div>
     );
   }

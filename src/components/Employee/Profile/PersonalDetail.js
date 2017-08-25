@@ -6,28 +6,124 @@ import IconUser from '../../../../assets/employee/icon_user@3x.png';
 class PersonalDetail extends Component {
   static propTypes = {
     handleClickEdit: PropTypes.func.isRequired,
-    key: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
+    personalDetail: PropTypes.bool.isRequired,
+    familyDetail: PropTypes.bool.isRequired,
   }
   constructor() {
     super();
     this.state = {};
   }
 
+  // handleClick = () => {
+  //   const {
+  //     handleClickEdit,
+  //     personalDetail,
+  //   } = this.props;
+  //   handleClickEdit('personalDetail', personalDetail)
+  // }
+
   render() {
     const {
       handleClickEdit,
-      key,
-      value,
+      personalDetail,
+      familyDetail,
     } = this.props;
+
+    const detail = (
+      <div className="profile-pd-body-box">
+        <div className="profile-body-text-row row">
+          <div className="profile-body-text-box-l">
+            <span>ที่อยู่:</span>
+          </div>
+          <div className="profile-body-text-box-r">
+            <span>แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10311</span>
+          </div>
+        </div>
+        <div className="profile-body-text-row row">
+          <div className="profile-body-text-box-l">
+            <span>อีเมลส่วนตัว:</span>
+          </div>
+          <div className="profile-body-text-box-r">
+            <span>laksamon@gmail.com</span>
+          </div>
+        </div>
+        <div className="profile-body-text-row row">
+          <div className="profile-body-text-box-l">
+            <span>สถานภาพ:</span>
+          </div>
+          <div className="profile-body-text-box-r">
+            <span>โสด</span>
+          </div>
+        </div>
+        <div className="profile-body-text-row row">
+          <div className="profile-body-text-box-l">
+            <span>เบอร์โทรศัพท์:</span>
+          </div>
+          <div className="profile-body-text-box-r">
+            <span>083-646-6579</span>
+          </div>
+        </div>
+      </div>
+    );
+
+    const edit = (
+      <div className="profile-pd-body-box">
+        <div className="profile-pd-box-text">
+          ที่อยู่
+          <textarea
+            className="profile-pd-textarea-address"
+            defaultValue="แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10311"
+          />
+        </div>
+        <div className="profile-pd-box-text">
+          อีเมลส่วนตัว
+          <input
+            className="profile-pd-input"
+            type="email"
+            defaultValue="laksamon@gmail.com"
+          />
+        </div>
+        <div className="profile-pd-box-text">
+          สถานภาพ
+          <input
+            className="profile-pd-input"
+            type="text"
+            defaultValue="โสด"
+          />
+        </div>
+        <div className="profile-pd-box-text">
+          เบอร์โทรศัพท์
+          <input
+            className="profile-pd-input"
+            type="tel"
+            defaultValue="083-646-6579"
+          />
+        </div>
+        <div className="profile-pd-btn-box">
+          <button
+            className="profile-pd-btn-cancel"
+            onClick={() => handleClickEdit('personalDetail', personalDetail)}
+          >
+            ยกเลิก
+          </button>
+          <button
+            className="profile-pd-btn-save"
+            onClick={() => handleClickEdit('personalDetail', personalDetail)}
+          >
+            บันทึก
+          </button>
+        </div>
+      </div>
+    );
     return (
       <div className="profile-pd-box">
         <HeaderBox
           icon={IconUser}
           title="ข้อมูลส่วนตัว"
           handleClickEdit={handleClickEdit}
-          key={key}
-          value={value}
+          personalDetail={personalDetail}
+          familyDetail={familyDetail}
+          keyChange="personalDetail"
         />
         <div className="profile-pd-body-box">
           <div className="profile-body-text-row row">
@@ -135,40 +231,7 @@ class PersonalDetail extends Component {
             </div>
           </div>
         </div>
-        <div className="profile-pd-body-box">
-          <div className="profile-body-text-row row">
-            <div className="profile-body-text-box-l">
-              <span>ที่อยู่:</span>
-            </div>
-            <div className="profile-body-text-box-r">
-              <span>แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10311</span>
-            </div>
-          </div>
-          <div className="profile-body-text-row row">
-            <div className="profile-body-text-box-l">
-              <span>อีเมลส่วนตัว:</span>
-            </div>
-            <div className="profile-body-text-box-r">
-              <span>laksamon@gmail.com</span>
-            </div>
-          </div>
-          <div className="profile-body-text-row row">
-            <div className="profile-body-text-box-l">
-              <span>สถานภาพ:</span>
-            </div>
-            <div className="profile-body-text-box-r">
-              <span>โสด</span>
-            </div>
-          </div>
-          <div className="profile-body-text-row row">
-            <div className="profile-body-text-box-l">
-              <span>เบอร์โทรศัพท์:</span>
-            </div>
-            <div className="profile-body-text-box-r">
-              <span>083-646-6579</span>
-            </div>
-          </div>
-        </div>
+        { personalDetail ? edit : detail }
       </div>
     );
   }

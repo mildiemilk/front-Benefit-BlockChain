@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import IconUser from '../../../../assets/employee/icon_user@3x.png';
 import IconEdit from '../../../../assets/employee/icon_edit@3x.png';
 
 class HeaderBox extends Component {
@@ -8,8 +7,9 @@ class HeaderBox extends Component {
     icon: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     handleClickEdit: PropTypes.func.isRequired,
-    key: PropTypes.string.isRequired,
-    value: PropTypes.bool.isRequired,
+    personalDetail: PropTypes.bool.isRequired,
+    familyDetail: PropTypes.bool.isRequired,
+    keyChange: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -21,9 +21,24 @@ class HeaderBox extends Component {
       icon,
       title,
       handleClickEdit,
-      key,
-      value,
+      personalDetail,
+      familyDetail,
+      keyChange,
     } = this.props;
+
+    const BtnEdit = (
+      <div>
+        <img className="profile-pd-icon-edit" alt="" src={IconEdit} />
+        <span
+          className="profile-pd-edit-text"
+          onClick={() => handleClickEdit(keyChange, familyDetail)}
+          role="button"
+          aria-hidden
+        >
+          แก้ไข
+        </span>
+      </div>
+    );
     return (
       <div className="profile-pd-header">
         <div className="profile-pd-title">
@@ -31,15 +46,7 @@ class HeaderBox extends Component {
           <span className="profile-pd-title-text">{title}</span>
         </div>
         <div className="profile-pd-edit">
-          <img className="profile-pd-icon-edit" alt="" src={IconEdit} />
-          <span
-            className="profile-pd-edit-text"
-            onClick={handleClickEdit(key, value)}
-            role="button"
-            aria-hidden
-          >
-            แก้ไข
-          </span>
+          {personalDetail || familyDetail ? <div /> : BtnEdit}
         </div>
       </div>
     );

@@ -4,11 +4,15 @@ import {
   createProfileFailure,
   setLogoSuccess,
   fileEmployeeSuccess,
+  fileEmployeeFailure,
+  claimDataSuccess,
+  claimDataFailure,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/admin/registerCompany';
 const LOGO_URI = '/admin/set-logo';
 const FILEEMPLOYEE_URI = '/admin/upload-employee';
+const CLAIMDATA_URI = '/admin/upload-claimdata';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -67,6 +71,34 @@ export function fileEmployee(file) {
       })
       .catch(err => {
         console.log(err);
+        dispatch(fileEmployeeFailure(err.response.data));
+      });
+  };
+}
+
+export function claimData(files) {
+  const formData = new FormData();
+  // files.map((file, index) => (
+  //   formData.append('file', files[index])
+  // ));
+  formData.append('file', files[0]);
+  formData.append('file', files[1]);
+  console.log('formdata', formData);
+  return dispatch => {
+    const options = {
+      method: 'put',
+      url: CLAIMDATA_URI,
+      data: formData,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log('ClaimData', files, res.data);
+        dispatch(claimDataSuccess(res.data));
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(claimDataFailure(err.response.data));
       });
   };
 }

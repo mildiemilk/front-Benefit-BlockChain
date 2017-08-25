@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import FormSubmitPlan from '../../SubmitPlan/FormSubmitPlan/form-submit-plan';
 import AllPlan from '../../SubmitPlan/all-plan';
 
-const ModalContents = styled(Modal.Content)`
+const ModalContents = styled(Modal.Content) `
   &&&{
     width: 800px;
     position: relative;
@@ -18,7 +18,7 @@ const ModalContents = styled(Modal.Content)`
 const ModalContentsWithBottom = ModalContents.extend`
   padding-bottom: 21px !important;
 `
-const ModalHeaders = styled(Modal.Header)`
+const ModalHeaders = styled(Modal.Header) `
   &&&{
     width: 800px;
     position: relative;
@@ -29,7 +29,7 @@ const ModalHeaders = styled(Modal.Header)`
   }
 `;
 
-const Modals = styled(Modal)`
+const Modals = styled(Modal) `
   &&&{
     background: transparent;
     margin-top: -120px;

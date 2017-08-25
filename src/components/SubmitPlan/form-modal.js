@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import '../../styles/submit-plan.scss';
 import FormSubmitPlan from './FormSubmitPlan/form-submit-plan';
 
-const ModalContents = styled(Modal.Content)`
+const ModalContents = styled(Modal.Content) `
   &&&{
     width: 680px;
     position: relative;
@@ -15,7 +15,7 @@ const ModalContents = styled(Modal.Content)`
   }
 `;
 
-const Modals = styled(Modal)`
+const Modals = styled(Modal) `
   &&&{
     background: transparent;
     margin-top: -120px;

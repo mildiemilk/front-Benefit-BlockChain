@@ -30,7 +30,10 @@ const Modals = styled(Modal) `
   &&&{
     background: transparent;
     box-shadow: none;
-    margin-top: -120px;
+    position: absolute;
+    text-align: justify;
+    padding: 0px;
+    height: auto;
   }
 `;
 

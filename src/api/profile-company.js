@@ -78,12 +78,9 @@ export function fileEmployee(file) {
 
 export function claimData(files) {
   const formData = new FormData();
-  // files.map((file, index) => (
-  //   formData.append('file', files[index])
-  // ));
-  formData.append('file', files[0]);
-  formData.append('file', files[1]);
-  console.log('formdata', formData);
+  files.map((file, index) => (
+    formData.append('file', files[index])
+  ));
   return dispatch => {
     const options = {
       method: 'put',
@@ -93,7 +90,6 @@ export function claimData(files) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log('ClaimData', files, res.data);
         dispatch(claimDataSuccess(res.data));
       })
       .catch(err => {

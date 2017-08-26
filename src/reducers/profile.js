@@ -12,6 +12,7 @@ const defaultProfile = {
   companyInsurer: '',
   logo: localStorage.getItem('logo'),
   fileEmployee: '',
+  claimData: [],
   message: null,
   error: false,
 };
@@ -26,6 +27,8 @@ const AUTHENTICATE_REQUEST_SUCCESS = 'auth/AUTHENTICATE_REQUEST_SUCCESS';
 
 const FILEEMPLOYEE_REQUEST_SUCCESS = 'FILEEMPLOYEE_REQUEST_SUCCESS';
 const FILEEMPLOYEE_REQUEST_FAILURE = 'FILEEMPLOYEE_REQUEST_FAILURE';
+const CLAIMDATA_REQUEST_SUCCESS = 'CLAIMDATA_REQUEST_SUCCESS';
+const CLAIMDATA_REQUEST_FAILURE = 'CLAIMDATA_REQUEST_FAILURE';
 /**
  * Actions
  */
@@ -45,6 +48,12 @@ export function fileEmployeeSuccess(data) {
 }
 export function fileEmployeeFailure(data) {
   return { type: FILEEMPLOYEE_REQUEST_FAILURE, data };
+}
+export function claimDataSuccess(data) {
+  return { type: CLAIMDATA_REQUEST_SUCCESS, data };
+}
+export function claimDataFailure(data) {
+  return { type: CLAIMDATA_REQUEST_FAILURE, data };
 }
 /**
  * Reducer
@@ -83,6 +92,15 @@ export default function profileReducer(state = defaultProfile, action) {
         fileEmployee: action.data.fileEmployee,
       });
     case FILEEMPLOYEE_REQUEST_FAILURE:
+      return Object.assign({}, state, {
+        message: action.data.message,
+        error: true,
+      });
+    case CLAIMDATA_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        claimData: action.data.claimData,
+      });
+    case CLAIMDATA_REQUEST_FAILURE:
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,

@@ -18,6 +18,7 @@ import FindHospital from './Employee/find-hospital';
 import Logout from './Auth/logout';
 import claimStatus from './Employee/claim-status';
 import HomeDashboard from './Employee/HomeDashboard';
+import Profile from './Employee/Profile';
 
 const AppMobile = () => (
   <BrowserRouter>
@@ -36,6 +37,7 @@ const AppMobile = () => (
           <Route path="/claimstatus" component={claimStatus} />
           <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
           <Route path="/homedashboard" component={HomeDashboard} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </HeadLayout>
     </div>

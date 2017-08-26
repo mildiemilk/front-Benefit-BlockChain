@@ -14,7 +14,7 @@ class PlanTemplate extends Component {
     colorPlan: PropTypes.number.isRequired,
     handleDeleteChooseInsurance: PropTypes.func.isRequired,
     handleDeleteOurplan: PropTypes.func.isRequired,
-    handleDeleteSpacialPlan: PropTypes.func.isRequired,
+    handleDeleteSpecialPlan: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,
     ourPlan: PropTypes.arrayOf(PropTypes.object),
     // specialPlans: PropTypes.arrayOf(PropTypes.object),
@@ -162,7 +162,7 @@ class PlanTemplate extends Component {
                 <td
                   style={{ width: '55px', cursor: 'pointer' }}
                   onClick={() =>
-                    this.props.handleDeleteSpacialPlan(this.props.index)}
+                    this.props.handleDeleteSpecialPlan(this.props.index)}
                   role="button"
                   aria-hidden
                 >
@@ -174,7 +174,7 @@ class PlanTemplate extends Component {
                 <td
                   style={{ width: '70%', cursor: 'pointer' }}
                   onClick={() =>
-                    this.props.handleDeleteSpacialPlan(this.props.index)}
+                    this.props.handleDeleteSpecialPlan(this.props.index)}
                   role="button"
                   aria-hidden
                 >
@@ -188,7 +188,7 @@ class PlanTemplate extends Component {
                   <td
                     style={{ width: '30px', cursor: 'pointer' }}
                     onClick={() =>
-                      this.props.handleDeleteSpacialPlan(this.props.index)}
+                      this.props.handleDeleteSpecialPlan(this.props.index)}
                     role="button"
                     aria-hidden
                   >

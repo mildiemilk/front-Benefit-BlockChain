@@ -51,7 +51,7 @@ class FormSubmitPlan extends Component {
     return (
       <div>
         <div className="fillBox1">
-          <div className="headBox">
+          <div className="headBox step1">
             <span className="headLogo">
               ขั้นตอนที่ 1 : Choose High Level Plan{' '}
             </span>

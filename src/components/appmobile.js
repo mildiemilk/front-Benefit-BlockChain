@@ -19,6 +19,8 @@ import Logout from './Auth/logout';
 import claimStatus from './Employee/claim-status';
 import HomeDashboard from './Employee/HomeDashboard';
 import Profile from './Employee/Profile';
+import Setting from './Employee/Setting';
+import ChangePassword from './Employee/ChangePassword';
 
 const AppMobile = () => (
   <BrowserRouter>
@@ -38,6 +40,8 @@ const AppMobile = () => (
           <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
           <Route path="/homedashboard" component={HomeDashboard} />
           <Route path="/profile" component={Profile} />
+          <Route path="/setting" component={Setting} />
+          <Route path="/changepassword" component={ChangePassword} />
         </Switch>
       </HeadLayout>
     </div>

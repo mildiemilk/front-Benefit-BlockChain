@@ -64,12 +64,9 @@ class SettingBenefit extends Component {
       health: planList[index].health,
       expense: planList[index].expense,
     });
-    console.log('activeplan', this.state.plan);
   }
 
   render() {
-    console.log('settingbenefit', this.props);
-    console.log('state-plan', this.state.plan);
     return (
       <div className="row SettingBenefit">
         <div className="large-3 columns">

@@ -2,14 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { push as Menu } from 'react-burger-menu';
 import styled from 'styled-components';
-import { Divider, Icon } from 'semantic-ui-react';
+import { Divider, Image } from 'semantic-ui-react';
+import User from '../../assets/employee/user.png';
 
 const List = styled.div`
-  font-size: 16px;
-  letter-spacing: 0.3px;
+  padding-left: 6%;
+  font-size: 14px;
   font-weight: 300;
-  color: #4a4a4a;
-  padding: 6% 10%;
+  line-height: 40px;
+  text-align: left;
+  color: #323028;
   &:active,&:hover,&:focus{
     background: #c8ddf6;
   }
@@ -19,34 +21,46 @@ const Number = styled.div`
   letter-spacing: 0.3px;
   font-weight: 300;
   color: #323028;
+  line-height: 18px;
+  padding-top: 2px;
 `;
 const Head = styled.div`
+  font-family: Kanit;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.3px;
+  text-align: left;
+  line-height: 24px;
+  padding-top: 8px;
   color: #323028;
-  margin-top:10%;
 `;
 const HeadDiv = styled.div`
-  padding-left: 10%;
-  padding-top: 15%;
+  padding-left: 16px;
+  padding-top: 32px;;
 `;
 const SettingDiv = styled.div`
-  margin-top: 36%;
+  margin-top: 30px;
+  padding: 0px !important;
 `;
 const Dividers = styled(Divider)`
   &&&{
     height: 2px;
     border: solid 1px #f0f0f0;
-    margin: 8% 0%;
+    margin-top: 16px;
+    margin-bottom: 6px;
   }
 `;
-
+const LinkEdit = styled(Link)`
+  &&&{
+    padding: 0px;
+  }
+`;
 class SideBar extends React.Component {
   constructor() {
     super();
     this.state = {
       isClosed: true,
+      closeSidebar: false,
     };
   }
   showSettings = event => {
@@ -56,9 +70,9 @@ class SideBar extends React.Component {
   hamburgerCross = () => {
     const { isClosed } = this.state;
     if (isClosed) {
-      this.setState({ isClosed: false });
+      this.setState({ isClosed: false, closeSidebar: true });
     } else {
-      this.setState({ isClosed: true });
+      this.setState({ isClosed: true, closeSidebar: false });
     }
   }
 
@@ -69,6 +83,8 @@ class SideBar extends React.Component {
     return '';
   }
 
+  closeSidebar = () => this.setState({ closeSidebar: false });
+
   render() {
     return (
       <div>
@@ -76,29 +92,64 @@ class SideBar extends React.Component {
           burgerButtonClassName={this.OverlayStyle(this.state.isClosed)}
           onStateChange={this.hamburgerCross}
           width={'230px'}
+          height={'568px'}
           pageWrapId={'page-wrap'}
+          isOpen={this.state.closeSidebar}
         >
           <HeadDiv>
-            <Icon name="user circle" size="huge" />
+            <Image src={User} shape="circular" />
             <Head>สมศรี ช่างสงสัย</Head>
             <Number>เลขพนักงาน : 0000001</Number>
           </HeadDiv>
           <Dividers />
           <div>
-            <List>สิทธิประโยชน์ของฉัน</List>
-            <List>เคลม</List>
-            <List>สถานะการเคลม</List>
-            <List>ประวัติการเคลม</List>
-            <List>ค้นหาโรงพยาบาล</List>
-            <List>โปรไฟล์</List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/homedashboard">
+                หน้าหลัก
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/flexyplan">
+                แผนสิทธิประโยชน์
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/claiminsurance">
+                เคลม
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/claimstatus">
+                สถานะการเคลม
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/claimstatusdetail">
+                ประวัติการเคลม
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/findhospital">
+                ค้นหาโรงพยาบาล
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/profile">
+                โปรไฟล์
+              </Link>
+            </List>
           </div>
           <SettingDiv>
-            <List>ตั้งค่า</List>
-            <Link to="/logout">
+            <List onClick={this.closeSidebar}>
+              <Link to="/setting">
+                ตั้งค่า
+              </Link>
+            </List>
+            <LinkEdit to="/logout">
               <List>
                 ออกจากระบบ
               </List>
-            </Link>
+            </LinkEdit>
           </SettingDiv>
         </Menu>
       </div>

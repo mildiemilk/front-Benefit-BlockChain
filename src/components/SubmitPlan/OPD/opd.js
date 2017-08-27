@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
@@ -8,6 +9,9 @@ import CoPay from './copay';
 import OpdModal from './opd-modal';
 import about from '../../image/icons-8-about.png';
 
+const Checkboxs = styled(Checkbox)`
+  margin-bottom: 15px;
+`
 class OPD extends Component {
   static propTypes = {
     handleVerifyState: PropTypes.func.isRequired,
@@ -216,8 +220,7 @@ class OPD extends Component {
                 </div>}
               <p className="selectText"> บาท/ปี</p>
             </Form.Group>
-            <br />
-            <Checkbox
+            <Checkboxs
               toggle
               label="Co-Play"
               checked={this.props.opdCoPay}

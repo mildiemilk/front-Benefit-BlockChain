@@ -500,6 +500,7 @@ export const HiddenBox = styled.div`
   border-bottom: solid 1px #979797;
   border-right: solid 1px #979797;
   border-left: solid 1px #979797;
+  text-align: left;
 `;
 
 export const HiddenContent = styled.span`

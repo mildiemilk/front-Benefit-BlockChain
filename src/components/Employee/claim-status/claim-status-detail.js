@@ -5,6 +5,7 @@ import NotApprove from '../../image/icons-8-cancelRED.png';
 import considerHead from '../../image/groupConsider.png';
 import approveHead from '../../image/groupApprove.png';
 import rejectHead from '../../image/groupReject.png';
+import NewClaim from './CreateNewclaim';
 
 class ClaimStatusDetail extends Component {
   static propTypes = {
@@ -114,6 +115,40 @@ class ClaimStatusDetail extends Component {
     return list;
   }
 
+  renderRejectReason = claim => {
+    if (claim.status === 'reject') {
+      return (
+        <div>
+          <div className="BodyDiv margin">
+            <h className="HeadReason">เหตุผลที่ไม่ผ่านการอนุมัติ</h>
+            <ul className="Reasontext">
+              <li>จำนวนเงินเกินกว่าที่จะเคลมได้</li>
+              <li>ไม่อนุญาติให้ผู้ถือประกันได้สิทธ์ในการคุ้มครอง</li>
+              <li>Milk48</li>
+            </ul>
+          </div>
+          {this.renderNewclaim(claim)}
+        </div>
+      );
+    }
+    return '';
+  }
+  renderNewclaim = claim => {
+    if (claim.type === 'insurance') {
+      return (
+        <div>
+          <div className="BodyDiv margin">
+            <h className="HeadReason black">เคลมอีกครั้ง</h>
+          </div>
+          <NewClaim
+            oldClaimData={this.props.claimdata}
+          />
+        </div>
+      );
+    }
+    return '';
+  }
+
   render() {
     const claim = this.props.claimdata;
     return (
@@ -146,7 +181,7 @@ class ClaimStatusDetail extends Component {
               </div>
             </div>
           </div>
-
+          {this.renderRejectReason(claim)}
           <div className="DivBack">
             <u
               className="BackButton"

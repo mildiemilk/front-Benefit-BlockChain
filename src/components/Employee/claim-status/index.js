@@ -60,6 +60,23 @@ class ClamStatus extends Component {
           HealthPlace: '',
           expenseType: 'ค่ากาแฟ',
         },
+        {
+          number: '004',
+          status: 'reject',
+          type: 'insurance',
+          ChooseEmployeeName: 'นางคงทน ขยันมาก',
+          ClaimFile: '',
+          InsuranceType: 'IPD',
+          date: '01/12/2017',
+          Hospital: 'โรงพยาบาลพญาไท',
+          AmountMoney: 5780,
+          currency: '',
+          BankName: 'SCB',
+          AccountNumber: '146784521',
+          HealthType: '',
+          HealthPlace: '',
+          expenseType: '',
+        },
       ],
     };
   }
@@ -75,7 +92,7 @@ class ClamStatus extends Component {
     if (this.state.viewDetail === false) {
       return (
         <div>
-          <p className="clam-header">สถานะการเคลม</p>
+          <p className="claim-header">สถานะการเคลม</p>
           {this.renderClaimStatus(this.state.claimData)}
         </div>
       );
@@ -106,7 +123,7 @@ class ClamStatus extends Component {
 
   render() {
     return (
-      <div className="clam-status">
+      <div className="claim-status">
         {this.checkRenderclaimStatus()}
       </div>
     );

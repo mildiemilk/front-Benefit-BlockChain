@@ -124,7 +124,7 @@ class SideBar extends React.Component {
               </Link>
             </List>
             <List onClick={this.closeSidebar}>
-              <Link to="/claimstatusdetail">
+              <Link to="/claimhistory">
                 ประวัติการเคลม
               </Link>
             </List>

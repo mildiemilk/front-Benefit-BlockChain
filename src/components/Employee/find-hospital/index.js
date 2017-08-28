@@ -83,7 +83,7 @@ class FindHospital extends Component {
         </HeadInBox>
         {number.location}<br />
         <Icon name="phone" />
-        {number.phonenumber}
+        &nbsp; {number.phonenumber}
       </ElementBackground>
     ));
     return listItems;

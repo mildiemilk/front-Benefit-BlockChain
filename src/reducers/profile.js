@@ -15,6 +15,7 @@ const defaultProfile = {
   claimData: [],
   employeeDetail: [],
   completeStep: [],
+  groupBenefit: [],
   message: null,
   error: false,
 };
@@ -26,7 +27,6 @@ const PROFILECOMPANY_REQUEST_SUCCESS = 'PROFILECOMPANY_REQUEST_SUCCESS';
 const PROFILECOMPANY_REQUEST_FAILURE = 'PROFILECOMPANY_REQUEST_FAILURE';
 const SETLOGO_REQUEST_SUCCESS = 'SETLOGO_REQUEST_SUCCESS';
 const AUTHENTICATE_REQUEST_SUCCESS = 'auth/AUTHENTICATE_REQUEST_SUCCESS';
-
 const FILEEMPLOYEE_REQUEST_SUCCESS = 'FILEEMPLOYEE_REQUEST_SUCCESS';
 const FILEEMPLOYEE_REQUEST_FAILURE = 'FILEEMPLOYEE_REQUEST_FAILURE';
 const CLAIMDATA_REQUEST_SUCCESS = 'CLAIMDATA_REQUEST_SUCCESS';
@@ -39,6 +39,11 @@ const SETCOMPLETESTEP_REQUEST_SUCCESS = 'SETCOMPLETESTEP_REQUEST_SUCCESS';
 const SETCOMPLETESTEP_REQUEST_FAILURE = 'SETCOMPLETESTEP_REQUEST_FAILURE';
 const GETCOMPLETESTEP_REQUEST_SUCCESS = 'GETCOMPLETESTEP_REQUEST_SUCCESS';
 const GETCOMPLETESTEP_REQUEST_FAILURE = 'GETCOMPLETESTEP_REQUEST_FAILURE';
+const GET_GROUPBENEFIT_REQUEST_SUCCESS = 'GET_GROUPBENEFIT_REQUEST_SUCCESS';
+const GET_GROUPBENEFIT_REQUEST_FAILURE = 'GET_GROUPBENEFIT_REQUEST_FAILURE';
+const SET_GROUPBENEFIT_REQUEST_SUCCESS = 'SET_GROUPBENEFIT_REQUEST_SUCCESS';
+const SET_GROUPBENEFIT_REQUEST_FAILURE = 'SET_GROUPBENEFIT_REQUEST_FAILURE';
+
 /**
  * Actions
  */
@@ -88,6 +93,18 @@ export function getCompleteStepSuccess(data) {
 }
 export function getCompleteStepFailure(data) {
   return { type: GETCOMPLETESTEP_REQUEST_FAILURE, data };
+}
+export function getGroupBenefitSuccess(data) {
+  return { type: GET_GROUPBENEFIT_REQUEST_SUCCESS, data };
+}
+export function getGroupBenefitFailure(data) {
+  return { type: GET_GROUPBENEFIT_REQUEST_FAILURE, data };
+}
+export function setGroupBenefitSuccess(data) {
+  return { type: SET_GROUPBENEFIT_REQUEST_SUCCESS, data };
+}
+export function setGroupBenefitFailure(data) {
+  return { type: SET_GROUPBENEFIT_REQUEST_FAILURE, data };
 }
 /**
  * Reducer
@@ -144,6 +161,11 @@ export default function profile(state = defaultProfile, action) {
         claimData: action.data,
       });
     case GETCLAIMDATA_REQUEST_FAILURE:
+    case GET_GROUPBENEFIT_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        groupBenefit: action.data,
+      });
+    case GET_GROUPBENEFIT_REQUEST_FAILURE:
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,
@@ -171,6 +193,11 @@ export default function profile(state = defaultProfile, action) {
         completeStep: action.data,
       });
     case GETCOMPLETESTEP_REQUEST_FAILURE:
+    case SET_GROUPBENEFIT_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        groupBenefit: action.data,
+      });
+    case SET_GROUPBENEFIT_REQUEST_FAILURE:
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,

@@ -14,12 +14,13 @@ class SelectBox extends Component {
     plan: PropTypes.string.isRequired,
     handleChangePlan: PropTypes.func.isRequired,
     selectOption: PropTypes.string.isRequired,
+    selectPlan: PropTypes.arrayOf(PropTypes.string).isRequired,
     columnsLenght: PropTypes.string.isRequired,
     planName: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleFixedChange: PropTypes.func.isRequired,
     handleFlexChange: PropTypes.func.isRequired,
     handleActivePlan: PropTypes.func.isRequired,
-    defualtPlan: PropTypes.string.isRequired,
+    defaultPlan: PropTypes.string.isRequired,
     valueFixed: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
   }
@@ -52,13 +53,14 @@ class SelectBox extends Component {
           {this.props.plan !== ''
             ? <SelectOptionPlan
               plan={this.props.plan}
+              selectPlan={this.props.selectPlan}
               selectOption={this.props.selectOption}
               columnsLenght={this.props.columnsLenght}
               planName={this.props.planName}
               handleFixedChange={this.props.handleFixedChange}
               handleFlexChange={this.props.handleFlexChange}
               handleActivePlan={this.props.handleActivePlan}
-              defualtPlan={this.props.defualtPlan}
+              defaultPlan={this.props.defaultPlan}
               valueFixed={this.props.valueFixed}
               handleSubmit={this.props.handleSubmit}
             />

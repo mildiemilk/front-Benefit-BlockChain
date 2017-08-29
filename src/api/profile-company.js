@@ -8,6 +8,10 @@ import {
   fileEmployeeFailure,
   claimDataSuccess,
   claimDataFailure,
+  getGroupBenefitSuccess,
+  getGroupBenefitFailure,
+  setGroupBenefitSuccess,
+  setGroupBenefitFailure,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/admin/registerCompany';
@@ -15,6 +19,8 @@ const LOGO_URI = '/admin/set-logo';
 const FILEEMPLOYEE_URI = '/admin/upload-employee';
 const GETTEMPLATE_URI = '/admin/get-template';
 const CLAIMDATA_URI = '/admin/upload-claimdata';
+const GET_GROUPBENEFIT_URI = '/admin/get-group-benefit';
+const SET_GROUPBENEFIT_URI = '/admin/set-group-benefit';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -115,6 +121,41 @@ export function getTemplate() {
       })
       .catch(err => {
         console.log(err);
+      });
+  };
+}
+
+export function getGroupBenefit() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_GROUPBENEFIT_URI,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getGroupBenefitSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getGroupBenefitFailure(err.response.data));
+      });
+  };
+}
+
+export function setGroupBenefit(groupNumber, detail) {
+  return dispatch => {
+    const options = {
+      method: 'put',
+      url: `${SET_GROUPBENEFIT_URI}/${groupNumber}`,
+      data: { detail },
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(setGroupBenefitSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(setGroupBenefitFailure(err.response.data));
       });
   };
 }

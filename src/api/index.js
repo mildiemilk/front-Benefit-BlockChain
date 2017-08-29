@@ -1,6 +1,6 @@
 import axios from 'axios';
 import auth from './auth';
-import { profileCompany, setLogo, fileEmployee, getTemplate, claimData } from './profile-company';
+import { profileCompany, setLogo, fileEmployee, getTemplate, claimData, getGroupBenefit } from './profile-company';
 import {
   chooseInsurer,
   setTimeOut,
@@ -52,4 +52,5 @@ export default {
   getOptionPlan,
   setTimeout,
   getTemplate,
+  getGroupBenefit,
 };

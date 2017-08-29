@@ -80,38 +80,50 @@ class ModalPlanListBidding extends Component {
   }
 
   handleVerifyState = name => {
-    this.setState({ verifyState: false });
-    this.setState({ checkInput: true });
-    this.setState({ changeToRecord: false });
-    this.setState({ isChange: true });
-    this.setState({ [name]: false });
+    this.setState({
+      verifyState: false,
+      checkInput: true,
+      changeToRecord: false,
+      isChange: true,
+      [name]: false,
+    });
     this.props.handleSetGoToNextPage();
     this.handleText(name);
     this.props.handleUnBuildNewPlan();
   }
 
   handleRecordVerifyState = name => {
-    this.setState({ verifyState: true });
-    this.setState({ isChange: true });
-    this.setState({ changeToRecord: true });
-    this.setState({ [name]: true });
+    this.setState({
+      verifyState: true,
+      isChange: true,
+      changeToRecord: true,
+      [name]: true,
+    });
     this.props.handleMoveToNextPage();
     this.props.handleBuildNewPlan();
   }
 
   handleText = value => {
     if (value === 'ipdRecord') {
-      this.setState({ textIpd: 'text-menu' });
-      this.setState({ textIpdActive: 'text-menu-active' });
+      this.setState({
+        textIpd: 'text-menu',
+        textIpdActive: 'text-menu-active',
+      });
     } else if (value === 'opdRecord') {
-      this.setState({ textOpd: 'text-menu' });
-      this.setState({ textOpdActive: 'text-menu-active' });
+      this.setState({
+        textOpd: 'text-menu',
+        textOpdActive: 'text-menu-active',
+      });
     } else if (value === 'dentalRecord') {
-      this.setState({ textDental: 'text-menu' });
-      this.setState({ textDentalActive: 'text-menu-active' });
+      this.setState({
+        textDental: 'text-menu',
+        textDentalActive: 'text-menu-active',
+      });
     } else {
-      this.setState({ textLife: 'text-menu' });
-      this.setState({ textLifeActive: 'text-menu-active' });
+      this.setState({
+        textLife: 'text-menu',
+        textLifeActive: 'text-menu-active',
+      });
     }
   }
 
@@ -124,8 +136,10 @@ class ModalPlanListBidding extends Component {
       this.handleOpenModal();
       this.setState({ nextPlan: value });
     } else {
-      this.setState({ setPlan: value });
-      this.setState({ nextPlan: value });
+      this.setState({
+        setPlan: value,
+        nextPlan: value,
+      });
     }
   }
 
@@ -172,9 +186,11 @@ class ModalPlanListBidding extends Component {
   }
 
   handleReset = () => {
-    this.setState({ reset: true });
-    this.setState({ verifyState: true });
-    this.setState({ checkInput: false });
+    this.setState({
+      reset: true,
+      verifyState: true,
+      checkInput: false,
+    });
     this.props.handleMoveToNextPage();
     this.props.handleBuildNewPlan();
   }

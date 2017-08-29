@@ -115,8 +115,10 @@ class employeeBenefits extends Component {
   }
 
   handleFixedChange = value => {
-    this.setState({ verifyState: false });
-    this.setState({ verifyChoosePlan: true });
+    this.setState({
+      verifyState: false,
+      verifyChoosePlan: true,
+    });
     if (this.state.selectPlan.length > 0) {
       this.state.selectPlan.pop();
       this.state.selectPlan.push(value);
@@ -127,20 +129,26 @@ class employeeBenefits extends Component {
 
   handleSubmit = () => {
     if (this.state.verifyChoosePlan === false) {
-      this.setState({ openWarningModal: true });
-      this.setState({ warningMessage: 'คุณยังไม่ได้เลือกแผนสิทธิสำหรับกลุ่ม' });
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'คุณยังไม่ได้เลือกแผนสิทธิสำหรับกลุ่ม',
+      });
     } else if (
       this.state.selectOption === 'Flex' &&
       this.state.defaultPlan === ''
     ) {
-      this.setState({ openWarningModal: true });
-      this.setState({ warningMessage: 'คุณยังไม่ได้ตั้งค่าแผนเริ่มต้น' });
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'คุณยังไม่ได้ตั้งค่าแผนเริ่มต้น',
+      });
     } else if (
       this.state.selectOption === 'Flex' &&
       this.state.selectPlan.length < 2
     ) {
-      this.setState({ openWarningModal: true });
-      this.setState({ warningMessage: 'Flex ต้องมีแผนที่เลือกอย่างน้อย 2 แผน' });
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'Flex ต้องมีแผนที่เลือกอย่างน้อย 2 แผน',
+      });
     } else {
       this.setState({ verifyState: true });
       const { activeGroup, selectPlan, defaultPlan, plan } = this.state;
@@ -164,8 +172,10 @@ class employeeBenefits extends Component {
   }
 
   handleFlexChange = (e, { value }) => {
-    this.setState({ verifyState: false });
-    this.setState({ verifyChoosePlan: true });
+    this.setState({
+      verifyState: false,
+      verifyChoosePlan: true,
+    });
     if (this.state.selectPlan.length > 0) {
       const index = this.state.selectPlan.indexOf(value);
       if (index > -1) {

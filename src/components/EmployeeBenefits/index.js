@@ -95,8 +95,11 @@ class employeeBenefits extends Component {
     this.setState({ [name]: value });
 
     if (value === groupBenefit[activeGroup].type) {
-      this.setState({ selectPlan: groupBenefit[activeGroup].plan });
-    } else this.setState({ selectPlan: [] });
+      this.setState({
+        selectPlan: groupBenefit[activeGroup].plan,
+        defaultPlan: groupBenefit[activeGroup].default,
+      });
+    } else this.setState({ selectPlan: [], defaultPlan: '' });
 
     if (value === 'Fixed') {
       this.setState({

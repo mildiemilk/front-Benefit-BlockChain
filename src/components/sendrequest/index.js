@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import NavInsure from '../NavInsure';
 import ModalInsurer from './ModalInsurer';
 import ModalPlanBox from './ModalPlanBox';
@@ -15,25 +14,28 @@ import {
   Detail,
   Head,
   TopicHead,
-  Submit,
   BoxIndiv,
   Time,
   InsurerDiv,
 } from './styled';
-
+import { setCompleteStep } from '../../api/profile-company';
+import UploadFile from './upload-file';
+import ModalConfirmPassword from '../ModalConfirmPassword';
 
 class Sendrequest extends Component {
   static propTypes = {
     getSimpleReq: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
     timeout: PropTypes.shape.isRequired,
+    setCompleteStep: PropTypes.func.isRequired,
+    data: PropTypes.shape.isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       step: 6,
       position: 'relative-box',
-      // timeout: null,
+      passwordToConfirm: '',
     };
   }
   componentDidMount() {
@@ -47,6 +49,14 @@ class Sendrequest extends Component {
       this.setState({ position: 'relative-box' });
     }
   }
+  handlePost = e => {
+    e.preventDefault();
+    const { passwordToConfirm } = this.state;
+    const step = 0;
+    this.props.setCompleteStep(passwordToConfirm, step);
+    console.log('complete step', step);
+  }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {
     const { timeout } = this.props.timeout;
     return (
@@ -83,11 +93,23 @@ class Sendrequest extends Component {
                 <Insurer />
               </BoxIndiv>
               <TopicHead>อัพโหลดไฟล์</TopicHead>
-              <BoxIndiv />
+              <BoxIndiv>
+                <UploadFile />
+              </BoxIndiv>
             </div>
           </div>
         </Detail>
-        <Link to="/bidding"><Submit>ส่งคำขอ</Submit></Link>
+        <div className="row">
+          <div className="large-offset-10 large-2 columns">
+            <ModalConfirmPassword
+              handlePost={this.handlePost}
+              handleChange={this.handleChange}
+              data={this.props.data}
+              content="ส่งคำขอ"
+              head="การส่งคำขอ"
+            />
+          </div>
+        </div>
       </div>
     );
   }
@@ -95,10 +117,13 @@ class Sendrequest extends Component {
 const mapDispatchToProps = dispatch => ({
   getSimpleReq: () => dispatch(getSimpleRQ()),
   getTimeout: () => dispatch(getTimeout()),
+  setCompleteStep: (passwordToConfirm, step) =>
+  dispatch(setCompleteStep(passwordToConfirm, step)),
 });
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
   simpleReq: state.fillsimpleReducer,
+  data: state.profile,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sendrequest);

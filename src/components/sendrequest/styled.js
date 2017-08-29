@@ -85,7 +85,15 @@ export const Card = styled.div`
   border-radius: 8px;
   float: left !important;
   margin-right: 16px;
+  padding: 10px;
   margin-top: 15px;
   background-color: #f5f5f5;
   border: solid 1px rgba(151, 151, 151, 0.39);
+`;
+export const DetailFile = styled.div`
+  text-align: center;
+  margin-top: 13px;
+  word-wrap: break-word;
+  width: 89px;
+  margin-left: 12px;
 `;

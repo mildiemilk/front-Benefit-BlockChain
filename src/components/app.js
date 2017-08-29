@@ -68,6 +68,7 @@ class App extends Component {
               <Route path="/settingprofile" component={SettingProfile} />
               <Route path="/logout" component={Logout} />
               <Route path="/login" component={Login} />
+              <Route path="/dashboard" component={Dashboard} />
               <MainLayout>
                 <Switch>
                   <Route path="/congrat" component={Congrat} />
@@ -81,7 +82,6 @@ class App extends Component {
                     path="/dashboard/simplerequirement"
                     component={simpleRQ}
                   />
-                  <Route path="/dashboard" component={Dashboard} />
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/ipd" component={IPD} />
                   <Route path="/sendrequest" component={Sendrequest} />

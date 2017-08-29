@@ -47,7 +47,6 @@ export function chooseFinalInsurer(passwordToConfirm, insurerName) {
     APIRequest(options, true)
       .then(res => {
         dispatch(selectFinalInsurerSuccess(res.data));
-        window.location.href = '/congrats';
       })
       .catch(err => {
         dispatch(selectFinalInsurerFailure(err.response.data));

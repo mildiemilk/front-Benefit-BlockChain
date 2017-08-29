@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import { Modal, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
 import {
   ModalHeader,
   ModalContent,
   CancleButton,
   ConfirmButton,
   ButtonStatusAppove,
-} from '../styled';
+} from './styled';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
-    max-width: 550px;
-    margin: 0 auto;
-    padding-left: 4%;
+    position: absolute;
+    top: 10px;
   }
 `;
 
@@ -23,6 +21,7 @@ const Modals = styled(Modal) `
   &&&{
     background: transparent;
     width: 550px !important;
+    height: 308px !important;
     position: absolute;
     left: 62%;
     top: 40%;
@@ -32,16 +31,36 @@ const Modals = styled(Modal) `
 const Inputs = styled(Input) `
   &&&{
     font-family: Kanit;
+    width: 324.6px;
+    height: 40px;
+    margin-top: 27px;
+    margin-left: 75px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #dddddd;
   }
 `;
 
-class ModalSelectInsurer extends Component {
+const Text = styled.div`
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 30px;
+`;
+
+class ModalConfirmPassword extends Component {
   static propTypes = {
     handlePost: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
     data: PropTypes.shape.isRequired,
-    insurerName: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    head: PropTypes.string.isRequired,
+    value: PropTypes.string,
   }
+
+  static defaultProps = {
+    value: '',
+  }
+
   constructor(props) {
     super(props);
     this.state = { modalOpen: false };
@@ -57,11 +76,12 @@ class ModalSelectInsurer extends Component {
       modalOpen: true,
     })
   render() {
+    const { content, head } = this.props;
     return (
       <Modals
         trigger={
           <ButtonStatusAppove onClick={this.handleOpen}>
-            {' '}เลือก
+            {content}
           </ButtonStatusAppove>
         }
         open={this.state.modalOpen}
@@ -71,22 +91,12 @@ class ModalSelectInsurer extends Component {
         <ModalContents>
           <ModalHeader>
             {' '}
-            กรุณาใส่พาสเวิร์ดของคุณอีกครั้งเพื่อ
-            {' '}
-            <br />
-            {' '}
-            ยืนยันการเลือกบริษัทประกัน
-            {' '}
-            <br />
+            <div>กรุณาใส่พาสเวิร์ดของคุณอีกครั้ง</div>
+            <div>เพื่อยืนยัน{head}</div>
             {' '}
           </ModalHeader>
           <ModalContent>
             <Inputs
-              style={{
-                width: '280px',
-                height: '40px',
-                marginLeft: '12%',
-              }}
               icon="lock"
               iconPosition="left"
               placeholder="รหัสผ่าน"
@@ -104,15 +114,15 @@ class ModalSelectInsurer extends Component {
               </span>
               : <span />}
 
-            <p style={{ paddingTop: '4%' }}>
-              หากยืนยันไปแล้ว จะไม่สามารถเปลี่ยนแปลงได้
-            </p>
+            <Text>
+              หากยืนยัน{head}ไปแล้ว จะไม่สามารถเปลี่ยนแปลงได้
+            </Text>
 
           </ModalContent>
           <div style={{ marginLeft: '2%' }}>
             <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
             <ConfirmButton
-              value={this.props.insurerName}
+              value={this.props.value}
               onClick={this.props.handlePost}
             >
               {' '}ยืนยัน{' '}
@@ -125,8 +135,4 @@ class ModalSelectInsurer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  data: state.selectFinalInsurer,
-});
-
-export default connect(mapStateToProps, null)(ModalSelectInsurer);
+export default ModalConfirmPassword;

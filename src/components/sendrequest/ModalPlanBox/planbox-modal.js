@@ -38,6 +38,8 @@ const Modals = styled(Modal) `
     padding: 0px;
     height: auto;
     position: absolute;
+    left: 55%;
+    top: 40%;
   }
 `;
 const CustomHead = styled.div`

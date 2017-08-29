@@ -10,12 +10,15 @@
 @import './choose-insurance.scss';
 @import 'bidding';
 @import 'compare-plan';
+@import 'dashboard';
 @import 'add-benefit';
 @import 'setting-benefit';
 @import 'modal-plan-table.scss';
 @import 'select-real-time';
 @import '../../node_modules/react-vis/dist/style';
 @import "../../node_modules/react-vis/dist/styles/legends";
+@import 'employee-list.scss';
+
 @font-face {
   font-family: 'kanit';
   font-weight: 400;

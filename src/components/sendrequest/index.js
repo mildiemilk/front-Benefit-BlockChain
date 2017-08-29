@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+// import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavInsure from '../NavInsure';
 import ModalInsurer from './ModalInsurer';
@@ -54,7 +55,7 @@ class Sendrequest extends Component {
     const { passwordToConfirm } = this.state;
     const step = 0;
     this.props.setCompleteStep(passwordToConfirm, step);
-    console.log('complete step', step);
+    // return <Redirect to="/submitplan" />;
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   render() {

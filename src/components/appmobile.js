@@ -10,15 +10,19 @@ import EmployeeFixPlan from './Employee/employee-fixplan';
 import DashboardStart from './Employee/dashboard-start';
 import FlexyPlan from './Employee/flexy-plan';
 import ClaimInsurance from './Employee/claim-insurance';
+import ClaimHistory from './Employee/ClaimHistory';
 import CongratSelectPlan from './Employee/congrats-select-plan';
 import HeadLayout from './head-layout-mobile';
-import ClaimStatusDetail from './Employee/ClaimStatusDetail';
+import EmployeeBenefitsDashboard from './Employee/HomeDashboard';
 import YourBenefit from './Employee/YourBenefit';
 import FindHospital from './Employee/find-hospital';
 import Logout from './Auth/logout';
 import claimStatus from './Employee/claim-status';
 import HomeDashboard from './Employee/HomeDashboard';
 import Profile from './Employee/Profile';
+import Setting from './Employee/Setting';
+import ChangePassword from './Employee/ChangePassword';
+
 
 const AppMobile = () => (
   <BrowserRouter>
@@ -35,9 +39,15 @@ const AppMobile = () => (
           <Route path="/claiminsurance" component={ClaimInsurance} />
           <Route path="/yourbenefit" component={YourBenefit} />
           <Route path="/claimstatus" component={claimStatus} />
-          <Route path="/claimstatusdetail" component={ClaimStatusDetail} />
+          <Route path="/claimhistory" component={ClaimHistory} />
+          <Route
+            path="/employeebenefits-dashboard"
+            component={EmployeeBenefitsDashboard}
+          />
           <Route path="/homedashboard" component={HomeDashboard} />
           <Route path="/profile" component={Profile} />
+          <Route path="/setting" component={Setting} />
+          <Route path="/changepassword" component={ChangePassword} />
         </Switch>
       </HeadLayout>
     </div>

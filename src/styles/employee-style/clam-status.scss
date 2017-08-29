@@ -1,6 +1,10 @@
-.clam-status{
+.claim-status{
   position: relative;
-  .clam-header{
+  p {
+    margin: 0px;
+    line-height: 1.4285em;
+}
+  .claim-header{
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.3px;
@@ -10,42 +14,40 @@
     margin-bottom: 16px;
   }
 
-  .clam-box{
+  .claim-box{
     padding-left: 4.3%;
     padding-right: 4.3%;
     margin-bottom: 10px;
   }
 
-  .blue-clam-box-header{
+  .blue-claim-box-header{
     width: 100%;
     height: 39px;
     background-color: #3a7bd5;
-    border-radius: 5px 0px;
+    border-radius: 5px 5px 0px 0px;
     padding: 3% 4.7% 0% 4.7%;
   }
 
-  .green-clam-box-header{
+  .green-claim-box-header{
     width: 100%;
     height: 39px;
     background-color: #46b3b8;
-    border-radius: 5px 0px;
+    border-radius: 5px 5px 0px 0px;
     padding: 3% 4.7% 0% 4.7%;
   }
 
-  .red-clam-box-header{
+  .red-claim-box-header{
     width: 100%;
     height: 39px;
     background-color: #f7555f;
-    border-radius: 5px 0px;
+    border-radius: 5px 5px 0px 0px;
     padding: 3% 4.7% 0% 4.7%;
   }
 
-  .clam-box-detail{
+  .claim-box-detail{
     width: 100%;
-    height: 155px;
-    padding-left:4.7%;
-    padding-right:4.7%;
-    padding-top:2.5%;
+    height: 120%;
+    padding: 2.5% 4.7%;
     font-size: 12px;
     letter-spacing: 0.2px;
     text-align: left;
@@ -57,7 +59,7 @@
     margin-bottom: 3%;
   }
 
-  .clam-image{
+  .claim-image{
     height: 18px;
     width: 18px;
     float: right;
@@ -110,18 +112,18 @@
   }
 
   @media (max-width: 768px) and (min-width: 520px){
-     .blue-clam-box-header{
+     .blue-claim-box-header{
       padding-left:0%;
       padding-right:2.5%;
       padding-top: 2%;
      }
-    .green-clam-box-header{
+    .green-claim-box-header{
       padding-left:0%;
       padding-right:2.5%;
       padding-top: 2%;
      }
 
-     .black-clam-box-header{
+     .black-claim-box-header{
       padding-left:0%;
       padding-right:2.5%;
       padding-top: 2%;

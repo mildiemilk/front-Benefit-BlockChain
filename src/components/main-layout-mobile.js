@@ -60,6 +60,7 @@ class SideBar extends React.Component {
     super();
     this.state = {
       isClosed: true,
+      closeSidebar: false,
     };
   }
   showSettings = event => {
@@ -69,9 +70,9 @@ class SideBar extends React.Component {
   hamburgerCross = () => {
     const { isClosed } = this.state;
     if (isClosed) {
-      this.setState({ isClosed: false });
+      this.setState({ isClosed: false, closeSidebar: true });
     } else {
-      this.setState({ isClosed: true });
+      this.setState({ isClosed: true, closeSidebar: false });
     }
   }
 
@@ -82,6 +83,8 @@ class SideBar extends React.Component {
     return '';
   }
 
+  closeSidebar = () => this.setState({ closeSidebar: false });
+
   render() {
     return (
       <div>
@@ -91,6 +94,7 @@ class SideBar extends React.Component {
           width={'230px'}
           height={'568px'}
           pageWrapId={'page-wrap'}
+          isOpen={this.state.closeSidebar}
         >
           <HeadDiv>
             <Image src={User} shape="circular" />
@@ -99,16 +103,48 @@ class SideBar extends React.Component {
           </HeadDiv>
           <Dividers />
           <div>
-            <List>หน้าหลัก</List>
-            <List>แผนสิทธิประโยชน์</List>
-            <List>เคลม</List>
-            <List>สถานะการเคลม</List>
-            <List>ประวัติการเคลม</List>
-            <List>ค้นหาโรงพยาบาล</List>
-            <List>โปรไฟล์</List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/homedashboard">
+                หน้าหลัก
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/flexyplan">
+                แผนสิทธิประโยชน์
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/claiminsurance">
+                เคลม
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/claimstatus">
+                สถานะการเคลม
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/claimhistory">
+                ประวัติการเคลม
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/findhospital">
+                ค้นหาโรงพยาบาล
+              </Link>
+            </List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/profile">
+                โปรไฟล์
+              </Link>
+            </List>
           </div>
           <SettingDiv>
-            <List>ตั้งค่า</List>
+            <List onClick={this.closeSidebar}>
+              <Link to="/setting">
+                ตั้งค่า
+              </Link>
+            </List>
             <LinkEdit to="/logout">
               <List>
                 ออกจากระบบ

@@ -103,7 +103,7 @@ h1 {
 // Burger menu custom styles
 //
 .bm-burger-button {
-    position: fixed;
+    position: absolute;
     width: 36px;
     height: 26px;
     left: 24px;
@@ -175,4 +175,9 @@ h1 {
     margin: 0 auto;
     min-height: 100%;
     padding-bottom: 80px;
+}
+
+a {
+  padding: 0px !important;
+  color: #323028 !important;
 }

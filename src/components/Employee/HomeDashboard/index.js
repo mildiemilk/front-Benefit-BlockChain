@@ -130,10 +130,12 @@ class HomeDashboard extends Component {
                 <span className="hb-box-item-text">โปรไฟล์</span>
               </div>
             </Link>
-            <div className="hb-box-item">
-              <img className="hb-box-item-img" alt="plan" src={Setting} />
-              <span className="hb-box-item-text">ตั้งค่า</span>
-            </div>
+            <Link to="/setting">
+              <div className="hb-box-item">
+                <img className="hb-box-item-img" alt="plan" src={Setting} />
+                <span className="hb-box-item-text">ตั้งค่า</span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

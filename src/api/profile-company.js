@@ -1,3 +1,4 @@
+import FileSaver from 'file-saver';
 import { APIRequest } from '.';
 import {
   createProfileSuccess,
@@ -20,6 +21,7 @@ import {
 const PROFILE_URI = '/admin/registerCompany';
 const LOGO_URI = '/admin/set-logo';
 const FILEEMPLOYEE_URI = '/admin/upload-employee';
+const GETTEMPLATE_URI = '/admin/get-template';
 const CLAIMDATA_URI = '/admin/upload-claimdata';
 const GETEMPLOYEEDETAIL_URI = '/admin/get-employee';
 const GETCLAIMDATA_URI = '/admin/get-claim-data';
@@ -141,6 +143,7 @@ export function employeeDetail() {
       });
   };
 }
+
 export function setCompleteStep(passwordToConfirm, step) {
   return dispatch => {
     const options = {
@@ -161,6 +164,7 @@ export function setCompleteStep(passwordToConfirm, step) {
       });
   };
 }
+
 export function getCompleteStep() {
   return dispatch => {
     const options = {
@@ -173,6 +177,23 @@ export function getCompleteStep() {
       })
       .catch(err => {
         dispatch(getCompleteStepFailure(err.response.data));
+      });
+  };
+}
+
+export function getTemplate() {
+  return () => {
+    const options = {
+      method: 'get',
+      url: GETTEMPLATE_URI,
+      responseType: 'blob',
+    };
+    APIRequest(options, true)
+      .then(res => {
+        FileSaver.saveAs(res.data, 'EmployeedataTemplate.xlsx');
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 }

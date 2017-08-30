@@ -134,7 +134,7 @@ class SettingPlan extends Component {
                   <PlanImg src="../../../setbenefit/5.png" />
                   <PlanTopic>
                     ค่าใช้จ่ายสุขภาพ (Health)
-                    </PlanTopic>
+                  </PlanTopic>
                   <div className="toggle">
                     <ToggleBox>
                       <Checkbox

@@ -7,7 +7,11 @@ const HeadList = styled.div`
   font-size: 32px;
   margin: 20px 0px;
 `;
-
+const Dividers = styled(Divider)`
+  height: 2px;
+  border: solid 2px #c3c3c3;
+  margin-bottom:29px;
+`;
 class Head extends Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
@@ -23,7 +27,7 @@ class Head extends Component {
         <HeadList>
           {content}
         </HeadList>
-        <Divider />
+        <Dividers />
       </div>
     );
   }

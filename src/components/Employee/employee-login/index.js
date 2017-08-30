@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MediaQuery from 'react-responsive';
 import { authenticate } from '../../../api/auth';
@@ -8,7 +9,7 @@ import EmployeeLoginDesktop from './IndexDesktop';
 
 class EmployeeLogin extends Component {
   static propTypes = {
-    data: PropTypes.string.isRequired,
+    data: PropTypes.shape({}).isRequired,
     authenticate: PropTypes.func.isRequired,
   }
   constructor(props) {
@@ -28,11 +29,17 @@ class EmployeeLogin extends Component {
   }
 
   render() {
-    const {
-      data,
-    } = this.props;
+    const { data } = this.props;
+    const { approve, role, personalVerify } = data;
+    if (role === 'Employee') {
+      if (approve === true) {
+        if (!personalVerify) {
+          return <Redirect to={{ pathname: '/employeeverify' }} />;
+        } return <Redirect to={{ pathname: '/flexyplan' }} />;
+      }
+    }
     return (
-      <div>
+      <div style={{ height: '100vh' }}>
         <MediaQuery query="(max-width: 767px)">
           <EmployeeLoginMobile
             data={data}

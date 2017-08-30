@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/employee-style/main.scss';
 import employeeVerify from './Employee/employee-verify';
-import EmployeeFixPlan from './Employee/employee-fixplan';
 import DashboardStart from './Employee/dashboard-start';
 import FlexyPlan from './Employee/flexy-plan';
 import ClaimInsurance from './Employee/claim-insurance';
@@ -21,6 +20,7 @@ import HomeDashboard from './Employee/HomeDashboard';
 import Profile from './Employee/Profile';
 import Setting from './Employee/Setting';
 import ChangePassword from './Employee/ChangePassword';
+import EmployeeLogin from './Employee/employee-login';
 
 
 const AppMobile = () => (
@@ -28,9 +28,9 @@ const AppMobile = () => (
     <div style={{ height: '100%' }}>
       <HeadLayout>
         <Switch>
+          <Route path="/employeelogin" component={EmployeeLogin} />
           <Route path="/logout" component={Logout} />
           <Route path="/employeeverify" component={employeeVerify} />
-          <Route path="/employeefixplan" component={EmployeeFixPlan} />
           <Route path="/congratselectplan" component={CongratSelectPlan} />
           <Route path="/dashboardstart" component={DashboardStart} />
           <Route path="/flexyplan" component={FlexyPlan} />

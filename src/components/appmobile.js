@@ -13,7 +13,6 @@ import ClaimInsurance from './Employee/claim-insurance';
 import ClaimHistory from './Employee/ClaimHistory';
 import CongratSelectPlan from './Employee/congrats-select-plan';
 import HeadLayout from './head-layout-mobile';
-import EmployeeBenefitsDashboard from './Employee/HomeDashboard';
 import YourBenefit from './Employee/YourBenefit';
 import FindHospital from './Employee/find-hospital';
 import Logout from './Auth/logout';
@@ -40,10 +39,6 @@ const AppMobile = () => (
           <Route path="/yourbenefit" component={YourBenefit} />
           <Route path="/claimstatus" component={claimStatus} />
           <Route path="/claimhistory" component={ClaimHistory} />
-          <Route
-            path="/employeebenefits-dashboard"
-            component={EmployeeBenefitsDashboard}
-          />
           <Route path="/homedashboard" component={HomeDashboard} />
           <Route path="/profile" component={Profile} />
           <Route path="/setting" component={Setting} />

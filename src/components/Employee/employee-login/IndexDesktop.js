@@ -8,7 +8,7 @@ import keyIcon from '../../image/icons-8-key-copy.png';
 
 class EmployeeLoginDesktop extends Component {
   static propTypes = {
-    data: PropTypes.shape.isRequired,
+    data: PropTypes.shape({}).isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
   }

@@ -32,7 +32,7 @@ class Login extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
-    const { error, message, approve, role, personalVerify } = this.props.data;
+    const { error, message, approve, role } = this.props.data;
     const { companyName } = this.props.profile;
     if (role === 'HR') {
       if (companyName && approve) {
@@ -41,12 +41,6 @@ class Login extends Component {
         return <Redirect to={{ pathname: '/confirm_identity' }} />;
       }
       return <Redirect to={{ pathname: '/settingprofile' }} />;
-    } else if (role === 'Employee') {
-      if (approve === true) {
-        if (!personalVerify) {
-          return <Redirect to={{ pathname: '/employeeverify' }} />;
-        } return <Redirect to={{ pathname: '/flexyplan' }} />;
-      }
     }
     return (
       <div className="loginStyle">

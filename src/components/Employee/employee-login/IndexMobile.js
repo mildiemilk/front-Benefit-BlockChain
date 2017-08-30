@@ -11,7 +11,7 @@ import { LogInButton } from './styled';
 
 class EmployeeLoginMobile extends Component {
   static propTypes = {
-    data: PropTypes.shape.isRequired,
+    data: PropTypes.shape({}).isRequired,
     handleChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
   }

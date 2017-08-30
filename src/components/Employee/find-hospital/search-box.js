@@ -29,6 +29,7 @@ class SearchBox extends React.Component {
     return (
       <div className="searchHospital">
         <Input
+          className="searchHospital-input"
           icon="search"
           iconPosition="left"
           placeholder="ค้นหาโรงพยาบาล"

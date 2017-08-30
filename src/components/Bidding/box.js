@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { Text, TextIn, IconPointer, ButtonStatusCancle } from './styled';
 import ModalConfirmPassword from '../ModalConfirmPassword';
 import { chooseFinalInsurer } from '../../api/bidding';
@@ -13,6 +14,7 @@ class Box extends Component {
     data: PropTypes.shape.isRequired,
     handleClick: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
+    completeStep: PropTypes.bool.isRequired,
   }
   constructor() {
     super();
@@ -58,7 +60,8 @@ class Box extends Component {
     e.preventDefault();
     const { passwordToConfirm } = this.state;
     const insurerName = e.target.value;
-    this.props.chooseFinalInsurer(passwordToConfirm, insurerName);
+    const step = 1;
+    this.props.chooseFinalInsurer(passwordToConfirm, insurerName, step);
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -80,7 +83,10 @@ class Box extends Component {
 
   renderList = bids => {
     const status = 'Join';
-    const { end } = this.props;
+    const { end, completeStep } = this.props;
+    if (completeStep) {
+      return <Redirect to="/congrat" />;
+    }
     return bids.map((bid, index) => (
       <div className="boxDetail">
         <div className={this.boxStyling(status, end.end)}>
@@ -164,11 +170,12 @@ class Box extends Component {
 const mapStateToProps = state => ({
   end: state.endTimeout,
   data: state.selectFinalInsurer,
+  completeStep: state.profile.completeStep[1],
 });
 
 const mapDispatchToProps = dispatch => ({
-  chooseFinalInsurer: (data, insurerName) =>
-    dispatch(chooseFinalInsurer(data, insurerName)),
+  chooseFinalInsurer: (data, insurerName, step) =>
+    dispatch(chooseFinalInsurer(data, insurerName, step)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Box);

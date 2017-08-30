@@ -1,17 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 import '../../styles/chart-box.scss';
 import EmpolyeeChart from './empolyee-chart';
 import PlanChart from './plan-chart';
+import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
+import ModalConfirmPassword from '../ModalConfirmPassword';
 
 class Piechart extends Component {
+  static propTypes = {
+    data: PropTypes.shape.isRequired,
+    setCompleteStep: PropTypes.func.isRequired,
+    completeStep: PropTypes.bool.isRequired,
+    getCompleteStep: PropTypes.func.isRequired,
+  }
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      passwordToConfirm: '',
+    };
   }
+  componentDidMount = () => {
+    this.props.getCompleteStep();
+  }
+  handlePost = e => {
+    e.preventDefault();
+    const { passwordToConfirm } = this.state;
+    const step = 3;
+    this.props.setCompleteStep(passwordToConfirm, step);
+  }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   render() {
+    const { completeStep } = this.props;
+    if (completeStep) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <div>
         <div className="row">
@@ -115,17 +141,27 @@ class Piechart extends Component {
         </div>
         <div className="row">
           <div className="large-11 columns">
-            <button className="send-request-button">ส่งข้อมูล</button>
+            <ModalConfirmPassword
+              handlePost={this.handlePost}
+              handleChange={this.handleChange}
+              data={this.props.data}
+              content="ส่งข้อมูล"
+              head="การส่งข้อมูล"
+            />
           </div>
         </div>
       </div>
     );
   }
 }
-
-Piechart.propTypes = {};
-
-const mapDispatchToProps = () => ({});
-const mapStateToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  setCompleteStep: (passwordToConfirm, step) =>
+  dispatch(setCompleteStep(passwordToConfirm, step)),
+  getCompleteStep: () => dispatch(getCompleteStep()),
+});
+const mapStateToProps = state => ({
+  data: state.profile,
+  completeStep: state.profile.completeStep[3],
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Piechart);

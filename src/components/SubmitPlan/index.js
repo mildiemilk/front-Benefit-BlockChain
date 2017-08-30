@@ -205,8 +205,10 @@ class SubmitPlan extends Component {
   }
 
   handleResetProfilePlan = () => {
-    this.setState({ planName: '' });
-    this.setState({ employeeOfPlan: '' });
+    this.setState({
+      planName: '',
+      employeeOfPlan: '',
+    });
   }
 
   handleResetDental = () => {
@@ -336,8 +338,10 @@ class SubmitPlan extends Component {
 
   handleMoveToNextPage = () => {
     if (this.state.warningModal) {
-      this.setState({ canGoToNextPage: true });
-      this.setState({ warningModal: false });
+      this.setState({
+        canGoToNextPage: true,
+        warningModal: false,
+      });
       window.location.href = '/chooseinsurer';
     } else {
       this.setState({ canGoToNextPage: true });
@@ -353,8 +357,10 @@ class SubmitPlan extends Component {
   }
 
   handleModalFinish = () => {
-    this.setState({ openModalForm: false });
-    this.setState({ newPlan: false });
+    this.setState({
+      openModalForm: false,
+      newPlan: false,
+    });
   }
 
   handleBuildNewPlan = () => {

@@ -75,3 +75,13 @@ input[type=number]::-webkit-outer-spin-button {
 .headlayout{
   height: 100%;
 }
+@media screen and (min-width: 768px) {
+  max-width: 1440px;
+  max-height: 1024px;
+  // position: fixed;
+	// display: block;
+	// top: 16.3%;
+	// right: 16.3%;
+	// bottom: 16.3%;
+	// left: 16.3%;
+}

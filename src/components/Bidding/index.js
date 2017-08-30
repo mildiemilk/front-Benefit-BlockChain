@@ -6,6 +6,7 @@ import Box from './box';
 import { bidding } from '../../api/bidding';
 import Details from './details';
 import { getSelectInsurer, getTimeout } from '../../api/choose-insurer';
+import { getCompleteStep } from '../../api/profile-company';
 
 class Bidding extends Component {
   static propTypes = {
@@ -15,6 +16,7 @@ class Bidding extends Component {
     getSelectInsurer: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
     timeout: PropTypes.string.isRequired,
+    getCompleteStep: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -26,12 +28,14 @@ class Bidding extends Component {
     setInterval(() => {
       props.bidding();
     }, 2000);
-
-    this.props.getSelectInsurer();
   }
+
   componentDidMount = () => {
     this.props.getTimeout();
+    this.props.getSelectInsurer();
+    this.props.getCompleteStep();
   }
+
   handleClick = (Detail, index) => {
     const { isDetail } = this.state;
     if (!isDetail) {
@@ -73,6 +77,7 @@ const mapDispatchToProps = dispatch => ({
   bidding: () => dispatch(bidding()),
   getSelectInsurer: () => dispatch(getSelectInsurer()),
   getTimeout: () => dispatch(getTimeout()),
+  getCompleteStep: () => dispatch(getCompleteStep()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bidding);

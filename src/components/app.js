@@ -39,6 +39,7 @@ import Appmobile from './appmobile';
 import EmployeeLogin from './Employee/employee-login';
 import EmployeeList from './EmployeeList';
 import ViewAllPlan from './ViewAllPlan';
+import ViewYourPlan from './ViewYourPlan';
 
 class App extends Component {
   static propTypes = {
@@ -78,6 +79,7 @@ class App extends Component {
                   <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/addbenefit" component={AddBenefit} />
                   <Route path="/postbox" component={Postbox} />
+                  <Route path="/viewyourplan" component={ViewYourPlan} />
                   <Route
                     path="/simplerequirement"
                     component={simpleRQ}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, Form, Radio, Icon, List, button } from 'semantic-ui-react';
+import { Checkbox, Form, Radio, List, button, Icon } from 'semantic-ui-react';
 import { PopupView } from '../Bidding/styled';
+import { Icons } from './styled';
 import '../../styles/employee-benefits.scss';
 import '../../styles/popup-color.scss';
 import SettingBenefitModal from './setting-benefit-modal';
@@ -77,8 +78,7 @@ class SelectOptionPlan extends Component {
               {element.planName}
               <PopupView
                 trigger={
-                  <Icon
-                    style={{ float: 'right', cursor: 'pointer' }}
+                  <Icons
                     name="ellipsis vertical"
                     size="large"
                   />

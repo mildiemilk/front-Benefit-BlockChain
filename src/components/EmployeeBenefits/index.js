@@ -199,9 +199,9 @@ class employeeBenefits extends Component {
           <Container>
             <div className="row">
               <div className="large-10 large-centered columns">
-                <p className="employeeBenefits-head-text">
+                <div className="employeeBenefits-head-text">
                   จัดแผนสิทธิประโยชน์ให้พนักงานแต่ละกลุ่ม
-                </p>
+                </div>
                 <p>กรุณากดที่ชื่อกลุ่มของพนักงานเพื่อทำการจัดแผนสิทธประโยชน์</p>
                 <div className="row">
                   <div className="large-3 columns">
@@ -216,6 +216,7 @@ class employeeBenefits extends Component {
                       ? <SelectBox
                         planName={this.props.benefitPlan}
                         plan={this.state.plan}
+                        groupName={this.props.groupBenefit[this.state.activeGroup].name}
                         selectPlan={this.state.selectPlan}
                         selectOption={this.state.selectOption}
                         columnsLenght={this.state.columnsLenght}

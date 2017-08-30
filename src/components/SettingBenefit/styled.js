@@ -108,6 +108,7 @@ export const AddTopic = styled.span`
   font-weight: bold;
   letter-spacing: 0.3px;
   text-align: center;
+  margin-left: 24px;
 `;
 
 export const BackButton = styled.button`

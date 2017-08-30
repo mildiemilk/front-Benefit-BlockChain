@@ -23,6 +23,7 @@ class SelectBox extends Component {
     defaultPlan: PropTypes.string.isRequired,
     valueFixed: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    groupName: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -33,7 +34,7 @@ class SelectBox extends Component {
     return (
       <div className="employeeBenefits-select-box">
         <div className="employeeBenefits-select-head-box">
-          <p>กลุ่ม A</p>
+          <p>{this.props.groupName}</p>
         </div>
         <div className="employeeBenefits-select-plan">
           <span>รูปแบบของแผนสิทธิประโยชน์ที่ต้องการ</span>

@@ -1,13 +1,17 @@
 .dashboard {
- 
-  .ui.segment.navTop {
+  padding: 65px 100px 0px 100px;
+  .navTop {
     position: relative;
     padding-top: 10px;
     background-color: #74cbe1;
     font-size: 180%;
     color: white;
+
     padding-left: 2%;
     height: 70px;
+  }
+  .ui.checkbox {
+    font-size: 18px;
   }
   span.menu{
       position: relative;
@@ -20,7 +24,6 @@
   div.backgroundD{
      width:100%;
      height:20%;
-
      background-color: #3a7bd5;
   }
   .ui.Image.d1{
@@ -55,7 +58,7 @@
     position: relative;
     overflow: hidden;
     padding-top: 50px;
-    padding-bottom: 130px;
+    padding-bottom: 200px;
 
     img.bg {
       position: absolute;

@@ -10,12 +10,15 @@
 @import './choose-insurance.scss';
 @import 'bidding';
 @import 'compare-plan';
+@import 'dashboard';
 @import 'add-benefit';
 @import 'setting-benefit';
 @import 'modal-plan-table.scss';
 @import 'select-real-time';
 @import '../../node_modules/react-vis/dist/style';
 @import "../../node_modules/react-vis/dist/styles/legends";
+@import 'employee-list.scss';
+@import 'employee-benefits';
 @font-face {
   font-family: 'kanit';
   font-weight: 400;
@@ -36,7 +39,10 @@ body {
       background-color: #4db698 !important;
     }
   }
-
+  .ui.input {
+    border-radius: 3px;
+    border: solid 1px #dddddd;
+  }
   button {
     outline: none;
     font-family: Kanit;

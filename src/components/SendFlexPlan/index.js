@@ -14,6 +14,7 @@ import ToggleExpense from '../AddBenefit/toggle-expense';
 import AddBenefit from './add-benefit';
 import InsurancePlan from './InsurancePlan';
 import SettingBenefit from './SettingBenefit';
+import EmployeeBenefits from './EmployeeBenefits';
 
 class SendFlexPlan extends Component {
   static propTypes = {
@@ -118,7 +119,7 @@ class SendFlexPlan extends Component {
 
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
             <Inner>
-              adsfsf
+              <EmployeeBenefits />
             </Inner>
             <List>กรุณาตั้งระยะเวลาการเลือกแผนสิทธิประโยชน์ของพนักงาน</List>
             <Inner>

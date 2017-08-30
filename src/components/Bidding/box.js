@@ -3,13 +3,14 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Text, TextIn, IconPointer, ButtonStatusCancle } from './styled';
-import ModalSelectInsurer from './ModalSelectInsurer';
+import ModalConfirmPassword from '../ModalConfirmPassword';
 import { chooseFinalInsurer } from '../../api/bidding';
 
 class Box extends Component {
   static propTypes = {
     chooseFinalInsurer: PropTypes.func.isRequired,
     end: PropTypes.shape.isRequired,
+    data: PropTypes.shape.isRequired,
     handleClick: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
@@ -27,10 +28,13 @@ class Box extends Component {
     if (end.end === 'Timeout') {
       if (status === 'Join') {
         statusModule = (
-          <ModalSelectInsurer
+          <ModalConfirmPassword
             handlePost={this.handlePost}
             handleChange={this.handleChange}
-            insurerName={insurerName}
+            data={this.props.data}
+            value={insurerName}
+            content="เลือก"
+            head="การเลือกบริษัทประกัน"
           />
         );
       } else {
@@ -159,6 +163,7 @@ class Box extends Component {
 
 const mapStateToProps = state => ({
   end: state.endTimeout,
+  data: state.selectFinalInsurer,
 });
 
 const mapDispatchToProps = dispatch => ({

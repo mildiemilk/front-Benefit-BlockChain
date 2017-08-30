@@ -1,102 +1,36 @@
 import React, { Component } from 'react';
 import { Form, Divider, Icon, Popup, List } from 'semantic-ui-react';
-import '../../styles/employee-list.scss';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { employeeDetail } from '../../api/profile-company';
 
 class employeeList extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    employeeDetail: PropTypes.func.isRequired,
+  }
+  constructor(props) {
+    super(props);
     this.state = {
-      seach: '',
+      search: '',
       minList: 0,
       maxList: 3,
       pageNumber: 1,
-      data: [
-        {
-          code: 'M001',
-          name: 'john',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Dev',
-          group: 'A',
-        },
-        {
-          code: 'M002',
-          name: 'Author',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Dev',
-          group: 'A',
-        },
-        {
-          code: 'M003',
-          name: 'Kx',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Sell',
-          group: 'B',
-        },
-        {
-          code: 'M004',
-          name: 'Critl',
-          email: 'email',
-          level: 'outsource',
-          position: 'Dev',
-          group: 'C',
-        },
-        {
-          code: 'M005',
-          name: 'Zai',
-          email: 'email',
-          level: 'คนทั่วไป',
-          position: 'Dev',
-          group: 'Z',
-        },
-        {
-          code: 'M006',
-          name: 'Uni',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Manager',
-          group: 'X',
-        },
-        {
-          code: 'M007',
-          name: 'Jack',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Manager',
-          group: 'Y',
-        },
-        {
-          code: 'M008',
-          name: 'Joe',
-          email: 'email',
-          level: 'พนักงานชั่วคราว',
-          position: 'Business',
-          group: 'F',
-        },
-        {
-          code: 'M009',
-          name: 'Miracle',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Art',
-          group: 'V',
-        },
-        {
-          code: 'M010',
-          name: 'PPD',
-          email: 'email',
-          level: 'พนักงาน',
-          position: 'Art',
-          group: 'D',
-        },
-      ],
+      data: [],
     };
   }
-
+  componentDidMount() {
+    this.props.employeeDetail();
+  }
+  componentWillReceiveProps(newProps) {
+    if (this.state.data !== newProps.data) {
+      this.setState({
+        data: newProps.data,
+      }, () => console.log('state', this.state.data));
+      console.log('props', newProps.data);
+    }
+  }
   plusLimitChange = () => {
-    if (this.state.maxList <= this.renderSeach().length) {
+    if (this.state.maxList <= this.renderSearch().length) {
       const { data } = this.state;
       this.setState({
         minList: this.state.minList + 4,
@@ -122,16 +56,24 @@ class employeeList extends Component {
     if (value === 'respect') {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.group.toLowerCase() < b.group.toLowerCase()) return -1;
-          if (a.group.toLowerCase() > b.group.toLowerCase()) return 1;
+          if (a.detail.benefit_group.toLowerCase() < b.detail.benefit_group.toLowerCase()) {
+            return -1;
+          }
+          if (a.detail.benefit_group.toLowerCase() > b.detail.benefit_group.toLowerCase()) {
+            return 1;
+          }
           return 0;
         }),
       });
     } else {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.group.toLowerCase() < b.group.toLowerCase()) return 1;
-          if (a.group.toLowerCase() > b.group.toLowerCase()) return -1;
+          if (a.detail.benefit_group.toLowerCase() < b.detail.benefit_group.toLowerCase()) {
+            return 1;
+          }
+          if (a.detail.benefit_group.toLowerCase() > b.detail.benefit_group.toLowerCase()) {
+            return -1;
+          }
           return 0;
         }),
       });
@@ -142,16 +84,16 @@ class employeeList extends Component {
     if (value === 'respect') {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          if (a.detail.name.toLowerCase() < b.detail.name.toLowerCase()) return -1;
+          if (a.detail.name.toLowerCase() > b.detail.name.toLowerCase()) return 1;
           return 0;
         }),
       });
     } else {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
-          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+          if (a.detail.name.toLowerCase() < b.detail.name.toLowerCase()) return 1;
+          if (a.detail.name.toLowerCase() > b.detail.name.toLowerCase()) return -1;
           return 0;
         }),
       });
@@ -162,16 +104,24 @@ class employeeList extends Component {
     if (value === 'respect') {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.code.toLowerCase() < b.code.toLowerCase()) return -1;
-          if (a.code.toLowerCase() > b.code.toLowerCase()) return 1;
+          if (a.detail.employee_code.toLowerCase() < b.detail.employee_code.toLowerCase()) {
+            return -1;
+          }
+          if (a.detail.employee_code.toLowerCase() > b.detail.employee_code.toLowerCase()) {
+            return 1;
+          }
           return 0;
         }),
       });
     } else {
       this.setState({
         data: this.state.data.sort((a, b) => {
-          if (a.code.toLowerCase() < b.code.toLowerCase()) return 1;
-          if (a.code.toLowerCase() > b.code.toLowerCase()) return -1;
+          if (a.detail.employee_code.toLowerCase() < b.detail.employee_code.toLowerCase()) {
+            return 1;
+          }
+          if (a.detail.employee_code.toLowerCase() > b.detail.employee_code.toLowerCase()) {
+            return -1;
+          }
           return 0;
         }),
       });
@@ -180,22 +130,22 @@ class employeeList extends Component {
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  renderSeach = () => {
-    const list = this.state.data.filter(
+  renderSearch = data => {
+    const list = data.filter(
       data =>
-        data.name.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
-        data.code.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
-        data.level.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0 ||
-        data.position.toLowerCase().indexOf(this.state.seach.toLowerCase()) >=
+        data.detail.name.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0 ||
+        data.detail.employee_code.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0 ||
+        data.detail.type_of_employee.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0 ||
+        data.detail.level.toLowerCase().indexOf(this.state.search.toLowerCase()) >=
           0 ||
-        data.group.toLowerCase().indexOf(this.state.seach.toLowerCase()) >= 0,
+        data.detail.benefit_group.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0,
     );
     return list;
   }
 
-  renderListEmployee = () => {
-    const seachData = this.renderSeach();
-    const showData = seachData.filter(
+  renderListEmployee = data => {
+    const searchData = this.renderSearch(data);
+    const showData = searchData.filter(
       (data, index) =>
         index >= this.state.minList && index <= this.state.maxList,
     );
@@ -203,37 +153,28 @@ class employeeList extends Component {
       <div className="employee-list-box">
         <div className="row">
           <div className="large-2 columns">
-            <div className="list-box-in-list-first">
-              <div className="row">
-                <div className="large-4 columns">
-                  <div className="profile-employee-box">
-                    <p>{element.name[0]}{element.name[1]}</p>
-                  </div>
-                </div>
-                <div className="large-8 columns">
-                  <span>{element.code}</span>
-                </div>
-              </div>
+            <div className="list-box-in-list">
+              <p>{element.detail.employee_code}</p>
             </div>
           </div>
           <div className="large-2 columns">
             <div className="list-box-in-list">
-              <p>{element.name}</p>
+              <p>{element.detail.name}</p>
             </div>
           </div>
           <div className="large-2 columns">
             <div className="list-box-in-list">
-              <p>{element.level}</p>
+              <p>{element.email}</p>
             </div>
           </div>
           <div className="large-2 columns">
             <div className="list-box-in-list">
-              <p>{element.position}</p>
+              <p>{element.detail.type_of_employee}</p>
             </div>
           </div>
           <div className="large-2 columns">
             <div className="list-box-in-list">
-              <p>{element.group}</p>
+              <p>{element.detail.benefit_group}</p>
             </div>
           </div>
           <div className="large-2 columns">
@@ -252,6 +193,7 @@ class employeeList extends Component {
   }
 
   render() {
+    console.log('state render', this.state.data);
     return (
       <div>
         <div className="row">
@@ -267,7 +209,7 @@ class employeeList extends Component {
                     <Form.Input
                       placeholder="ค้นหา"
                       onChange={this.handleChange}
-                      name="seach"
+                      name="search"
                     />
                     <Icon name="search" size="large" />
                   </Form.Group>
@@ -347,7 +289,7 @@ class employeeList extends Component {
                     />
                   </div>
                   <div className="large-2 columns">
-                    <p>ระดับ</p>
+                    <p>Email</p>
                   </div>
                   <div className="large-2 columns">
                     <p>ตำแหน่ง</p>
@@ -418,5 +360,12 @@ class employeeList extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+  employeeDetail: () => dispatch(employeeDetail()),
+});
 
-export default employeeList;
+const mapStateToProps = state => ({
+  data: state.profile.employeeDetail,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(employeeList);

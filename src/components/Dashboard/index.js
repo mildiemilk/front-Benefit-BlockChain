@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Image, Container, Segment, Icon } from 'semantic-ui-react';
-import '../../styles/dashboard.scss';
+import { Grid, Image, Container, Icon, Checkbox, Divider } from 'semantic-ui-react';
+import { Head, Bar } from './styled';
 import backgroundpig from '../image/cityscape2.png';
-import Checkboxpic from '../image/group.png';
 import artboard1 from '../image/dashboard/artboard-1.png';
 import artboard2 from '../image/dashboard/artboard-2.png';
 import artboard3 from '../image/dashboard/artboard-3.png';
-import artboard4 from '../image/dashboard/artboard-4.png';
+import artboard4 from '../../../assets/Dashboard/history.png';
 import artboard5 from '../image/dashboard/artboard-5.png';
 import artboard6 from '../image/dashboard/artboard-6.png';
 
@@ -19,60 +18,38 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <Container className="dashboard">
-        <Segment.Group>
-          <Segment className="navTop">
-            <Icon name="warning sign" size="big" inverted />
-            ดำเนินขั้นตอนต่อไปนี้เพื่อใช้งาน BenefiTable
-          </Segment>
-        </Segment.Group>
-        <div className="menu1">
-          <span className="menu">
-            <Link to={{ pathname: '/dashboard/simplerequirement' }}>
-              <Image
-                style={{ padding: '10px' }}
-                src={Checkboxpic}
-                avatar
-                alt="Checkbox"
-                size="mini"
-              />
-              1. แผนประกันภัย
-            </Link>
-          </span>
-          <span className="menu">
-            <Image
-              style={{ padding: '10px' }}
-              src={Checkboxpic}
-              avatar
-              size="mini"
-            />
-            2. จัดแผนสิทธิประโยชน์
-          </span>
-          <span className="menu">
-            <Image
-              style={{ padding: '10px' }}
-              src={Checkboxpic}
-              avatar
-              size="mini"
-            />
-            3. อัพเดตข้อมูลพนักงาน
-          </span>
-          <span className="menu">
-            <Image
-              style={{ padding: '10px' }}
-              src={Checkboxpic}
-              avatar
-              size="mini"
-            />
-            4. สรุปจำนวนพนักงาน
-          </span>
+      <div className="dashboard">
+        <div className="navTop">
+          <Icon name="warning sign" size="big" inverted />
+          ดำเนินขั้นตอนต่อไปนี้เพื่อใช้งาน BenefiTable
         </div>
+        <Bar className="row">
+          <div className="large-3 columns">
+            <Link to={{ pathname: '/dashboard/simplerequirement' }}>
+              <Checkbox label="1. แผนประกันภัย" />
+            </Link>
+          </div>
+          <div className="large-3 columns">
+            <Link to={{ pathname: '/dashboard/simplerequirement' }}>
+              <Checkbox label="2. ประมูลราคา" />
+            </Link>
+          </div>
+          <div className="large-3 columns">
+            <Link to={{ pathname: '/dashboard/simplerequirement' }}>
+              <Checkbox label="3. จัดแผนสิทธิประโยชน์" />
+            </Link>
+          </div>
+          <div className="large-3 columns">
+            <Link to={{ pathname: '/dashboard/simplerequirement' }}>
+              <Checkbox label="4. สรุปจำนวนพนักงาน" />
+            </Link>
+          </div>
+        </Bar>
 
-        <span className="header">
+        <Head>
           ยินดีต้อนรับเข้าสู่ BenefiTable
-          <hr className="groove" />
-        </span>
-        <divider style={{ padding: '20px' }} />
+        </Head>
+        <Divider />
 
         <Grid className="dash">
           <Grid.Column width={3} />
@@ -105,7 +82,7 @@ class Dashboard extends Component {
               <Grid.Row columns={3}>
                 <Grid.Column>
                   <Image className="block" src={artboard4} shape="circular" />
-                  <Container textAlign="center"> เตือนความจำ </Container>
+                  <Container textAlign="center"> ประวัติการเคลม </Container>
                 </Grid.Column>
                 <Grid.Column>
                   <Image className="block" src={artboard5} shape="circular" />
@@ -123,7 +100,7 @@ class Dashboard extends Component {
           <img src={backgroundpig} alt="background" className="bg" />
         </Grid>
 
-      </Container>
+      </div>
     );
   }
 }

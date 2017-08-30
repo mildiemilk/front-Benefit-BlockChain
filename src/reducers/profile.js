@@ -43,6 +43,7 @@ const GET_GROUPBENEFIT_REQUEST_SUCCESS = 'GET_GROUPBENEFIT_REQUEST_SUCCESS';
 const GET_GROUPBENEFIT_REQUEST_FAILURE = 'GET_GROUPBENEFIT_REQUEST_FAILURE';
 const SET_GROUPBENEFIT_REQUEST_SUCCESS = 'SET_GROUPBENEFIT_REQUEST_SUCCESS';
 const SET_GROUPBENEFIT_REQUEST_FAILURE = 'SET_GROUPBENEFIT_REQUEST_FAILURE';
+const SELECT_FINAL_INSURER_SUCCESS = 'SELECT_FINAL_INSURER_SUCCESS';
 
 /**
  * Actions
@@ -201,6 +202,10 @@ export default function profile(state = defaultProfile, action) {
       return Object.assign({}, state, {
         message: action.data.message,
         error: true,
+      });
+    case SELECT_FINAL_INSURER_SUCCESS:
+      return Object.assign({}, state, {
+        completeStep: action.data.completeStep,
       });
     default:
       return state;

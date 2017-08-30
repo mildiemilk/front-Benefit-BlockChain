@@ -7,9 +7,6 @@ export const DivHeight = styled.div`
   border: solid 1px #c1c1c1;
 `;
 export const DivBox = styled.div`
-  height: 335px;
-  background-color: #ffffff;
-  border: solid 1px #c1c1c1;
   margin-bottom: 29px;
 `;
 export const Icons = styled(Icon)`
@@ -17,4 +14,3 @@ export const Icons = styled(Icon)`
   left: 276px;
   top: 12px;
 `;
-

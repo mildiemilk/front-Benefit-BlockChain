@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Checkbox, Form, Radio } from 'semantic-ui-react'
-import '../../../../styles/submit-plan.scss'
-import CoPayBidding from './copay-bidding'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Checkbox, Form, Radio } from 'semantic-ui-react';
+import '../../../../styles/submit-plan.scss';
+import CoPayBidding from './copay-bidding';
 
 class OPDBidding extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       opdCoPay: false,
       value: '',
@@ -18,7 +18,7 @@ class OPDBidding extends Component {
       opdCoPayMixPercentage: null,
       opdCoPayMixNotExceed: null,
       opdCoPayMixYear: null,
-    }
+    };
   }
 
   render() {
@@ -92,14 +92,14 @@ class OPDBidding extends Component {
           </Form>
         </div>
       </div>
-    )
+    );
   }
 }
 
-OPDBidding.propTypes = {}
+OPDBidding.propTypes = {};
 
 const mapStateToProps = state => ({
   planList: state.plan.planList,
-})
+});
 
-export default connect(mapStateToProps, null)(OPDBidding)
+export default connect(mapStateToProps, null)(OPDBidding);

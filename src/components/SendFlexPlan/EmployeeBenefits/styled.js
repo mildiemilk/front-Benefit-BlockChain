@@ -45,6 +45,7 @@ export const Detail = styled.div`
 `;
 export const List = styled.div`
   margin-left: 10px;
+  margin-top: 6px;
 `;
 export const ButtonDefault = styled.div`
   width: 79.9px;

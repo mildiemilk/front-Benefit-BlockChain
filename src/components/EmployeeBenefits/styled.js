@@ -14,4 +14,3 @@ export const Icons = styled(Icon)`
   left: 276px;
   top: 12px;
 `;
-

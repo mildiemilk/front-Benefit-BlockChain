@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavInsure from '../NavInsure';
 import ModalInsurer from './ModalInsurer';
@@ -19,7 +19,7 @@ import {
   Time,
   InsurerDiv,
 } from './styled';
-import { setCompleteStep } from '../../api/profile-company';
+import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
 import UploadFile from './upload-file';
 import ModalConfirmPassword from '../ModalConfirmPassword';
 
@@ -30,6 +30,8 @@ class Sendrequest extends Component {
     timeout: PropTypes.shape.isRequired,
     setCompleteStep: PropTypes.func.isRequired,
     data: PropTypes.shape.isRequired,
+    completeStep: PropTypes.bool.isRequired,
+    getCompleteStep: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -42,6 +44,7 @@ class Sendrequest extends Component {
   componentDidMount() {
     this.props.getSimpleReq();
     this.props.getTimeout();
+    this.props.getCompleteStep();
   }
   changePositionPage = () => {
     if (this.state.position === 'relative-box') {
@@ -55,11 +58,14 @@ class Sendrequest extends Component {
     const { passwordToConfirm } = this.state;
     const step = 0;
     this.props.setCompleteStep(passwordToConfirm, step);
-    // return <Redirect to="/submitplan" />;
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   render() {
-    const { timeout } = this.props.timeout;
+    const { timeout, completeStep } = this.props;
+    if (completeStep) {
+      return <Redirect to="/bidding" />;
+    }
     return (
       <div className={this.state.position}>
         <NavInsure step={this.state.step} />
@@ -120,11 +126,13 @@ const mapDispatchToProps = dispatch => ({
   getTimeout: () => dispatch(getTimeout()),
   setCompleteStep: (passwordToConfirm, step) =>
   dispatch(setCompleteStep(passwordToConfirm, step)),
+  getCompleteStep: () => dispatch(getCompleteStep()),
 });
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
   simpleReq: state.fillsimpleReducer,
   data: state.profile,
+  completeStep: state.profile.completeStep[0],
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sendrequest);

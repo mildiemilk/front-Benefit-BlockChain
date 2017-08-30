@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
 import NavBenefit from '../NavBenefit';
-import { Detail, Head, Inner, BackButton, SendButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit } from './styled';
+import { Detail, Head, Inner, BackButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit } from './styled';
 import Timeout from '../ChooseInsurer/timeout';
 import { setTimeout } from '../../api/benefit-plan';
 import { getOptionPlan, getBenefitPlan } from '../../api/benefit-plan';
+import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
 import time from '../../../assets/sendflexplan/icons-8-timer.png';
 import ToggleHealth from '../AddBenefit/toggle-health';
 import ToggleExpense from '../AddBenefit/toggle-expense';
 import AddBenefit from './add-benefit';
 import InsurancePlan from './InsurancePlan';
 import SettingBenefit from './SettingBenefit';
+import ModalConfirmPassword from '../ModalConfirmPassword';
 
 class SendFlexPlan extends Component {
   static propTypes = {
@@ -24,22 +26,40 @@ class SendFlexPlan extends Component {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    data: PropTypes.shape.isRequired,
+    setCompleteStep: PropTypes.func.isRequired,
+    completeStep: PropTypes.bool.isRequired,
+    getCompleteStep: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       step: 6,
+      passwordToConfirm: '',
     };
   }
   componentDidMount = () => {
     this.props.getOptionPlan();
     this.props.getBenefitPlan();
+    this.props.getCompleteStep();
   }
   boxInStyle = state => {
     if (state) return 'BoxLine';
     return '';
   }
+  handlePost = e => {
+    e.preventDefault();
+    const { passwordToConfirm } = this.state;
+    const step = 2;
+    this.props.setCompleteStep(passwordToConfirm, step);
+  }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   render() {
+    const { completeStep } = this.props;
+    if (completeStep) {
+      return <Redirect to="/congratstep3" />;
+    }
     return (
       <div>
         <NavBenefit step={this.state.step} />
@@ -132,9 +152,13 @@ class SendFlexPlan extends Component {
               <BackButton>กลับ</BackButton>
             </div>
             <div className="large-3 columns">
-              <Link to="/congratstep3">
-                <SendButton>ส่งข้อมูล</SendButton>
-              </Link>
+              <ModalConfirmPassword
+                handlePost={this.handlePost}
+                handleChange={this.handleChange}
+                data={this.props.data}
+                content="ส่งข้อมูล"
+                head="การส่งข้อมูล"
+              />
             </div>
           </div>
         </div>
@@ -147,11 +171,16 @@ const mapDispatchToProps = dispatch => ({
   setTimeout: timeout => dispatch(setTimeout(timeout)),
   getOptionPlan: () => dispatch(getOptionPlan()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  setCompleteStep: (passwordToConfirm, step) =>
+  dispatch(setCompleteStep(passwordToConfirm, step)),
+  getCompleteStep: () => dispatch(getCompleteStep()),
 });
 const mapStateToProps = state => ({
   List: state.choosePlan,
   planList: state.choosePlan.choosePlan,
   benefitPlan: state.benefitPlan.plan,
   optionPlan: state.choosePlan,
+  data: state.profile,
+  completeStep: state.profile.completeStep[2],
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SendFlexPlan);

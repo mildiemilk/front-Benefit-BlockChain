@@ -32,7 +32,7 @@ import Congrat from './congrat';
 import CongratStep3 from './congratStep3';
 import CongratStep4 from './congratStep4';
 import ChooseInsuranceplan from './ChooseInsurancePlan';
-import PieChart from './PieChart';
+import Summary from './Summary';
 import SelectRealTime from './SelectRealTime';
 import SendFlexPlan from './SendFlexPlan';
 import Appmobile from './appmobile';
@@ -79,7 +79,7 @@ class App extends Component {
                   <Route path="/addbenefit" component={AddBenefit} />
                   <Route path="/postbox" component={Postbox} />
                   <Route
-                    path="/dashboard/simplerequirement"
+                    path="/simplerequirement"
                     component={simpleRQ}
                   />
                   <Route path="/submitplan" component={SubmitPlan} />
@@ -100,7 +100,7 @@ class App extends Component {
                     component={ChooseInsuranceplan}
                   />
                   <Route path="/sendflexplan" component={SendFlexPlan} />
-                  <Route path="/piechart" component={PieChart} />
+                  <Route path="/Summary" component={Summary} />
                   <Route path="/EmployeeList" component={EmployeeList} />
                   <Route path="/view" component={ViewAllPlan} />
                 </Switch>

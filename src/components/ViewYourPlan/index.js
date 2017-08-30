@@ -100,7 +100,7 @@ class EmployeeBenefits extends Component {
           </div>
         </Detail>
       </div>
-    )
+    );
   }
 }
 

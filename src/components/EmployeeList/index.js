@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
-import { Form, Divider, Icon, Popup, List } from 'semantic-ui-react';
+import { Input, Icon, Popup, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { employeeDetail } from '../../api/profile-company';
+import Head from '../Head';
+import { Pic, Box, Text, Number, Filter } from './styled';
+import employee from '../../../assets/EmployeeList/icons-8-commercial-development-management.png';
+import newjobs from '../../../assets/EmployeeList/icons-8-permanent-job.png';
+import Exit from '../../../assets/EmployeeList/icons-8-export.png';
 
+const Inputs = styled(Input)`
+  height: 40px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px #dddddd;
+  padding-left: 40px;
+  width: 100%;
+`;
 class employeeList extends Component {
   static propTypes = {
     employeeDetail: PropTypes.func.isRequired,
@@ -13,7 +27,7 @@ class employeeList extends Component {
     this.state = {
       search: '',
       minList: 0,
-      maxList: 3,
+      maxList: 7,
       pageNumber: 1,
       data: [],
     };
@@ -25,8 +39,7 @@ class employeeList extends Component {
     if (this.state.data !== newProps.data) {
       this.setState({
         data: newProps.data,
-      }, () => console.log('state', this.state.data));
-      console.log('props', newProps.data);
+      });
     }
   }
   plusLimitChange = () => {
@@ -193,167 +206,188 @@ class employeeList extends Component {
   }
 
   render() {
-    console.log('state render', this.state.data);
     return (
       <div>
+        <Head content="รายชื่อพนักงาน" />
         <div className="row">
-          <div className="large-12 columns">
-            <p className="employee-list-head"> รายชื่อพนักงาน </p>
-            <Divider />
+          <div className="large-3 columns">
+            <Box>
+              <Pic><img src={employee} alt="allEmployee" /></Pic>
+              <Text>พนักงานทั้งหมด</Text>
+              <Number>1200</Number>
+            </Box>
           </div>
-          <div className="employee-list-options">
+          <div className="large-3 columns">
+            <Box>
+              <Pic><img src={employee} alt="allEmployee" /></Pic>
+              <Text>ปรับตำแหน่งเดือนนี้</Text>
+              <Number>1200</Number>
+            </Box>
+          </div>
+          <div className="large-3 columns">
+            <Box>
+              <Pic><img src={newjobs} alt="allEmployee" /></Pic>
+              <Text>เข้าทำงานใหม่เดือนนี้</Text>
+              <Number>1200</Number>
+            </Box>
+          </div>
+          <div className="large-3 columns">
+            <Box>
+              <Pic><img src={Exit} alt="allEmployee" /></Pic>
+              <Text>ลาออกเดือนนี้</Text>
+              <Number>1200</Number>
+            </Box>
+          </div>
+        </div>
+        <div className="row">
+          <div className="large-3 columns">
+            <Inputs
+              icon="search"
+              iconPosition="left"
+              placeholder="Search..."
+              onClick={this.handleChange}
+            />
+            <Filter>
+              mm
+            </Filter>
+          </div>
+          <div className="large-9 columns">
+            <button className="add-employee-button">
+              {' '}เพิ่มพนักงานใหม่{' '}
+            </button>
+          </div>
+        </div>
+        <div className="list-employee-box">
+          <div className="list-header">
             <div className="row">
-              <div className="large-3 columns">
-                <Form>
-                  <Form.Group inline>
-                    <Form.Input
-                      placeholder="ค้นหา"
-                      onChange={this.handleChange}
-                      name="search"
+              <div className="large-2 columns">
+                <span>รหัสพนักงาน</span>
+                <Popup
+                  trigger={
+                    <Icon
+                      name="sort descending"
+                      style={{ cursor: 'pointer' }}
                     />
-                    <Icon name="search" size="large" />
-                  </Form.Group>
-                </Form>
+                  }
+                  content={
+                    <List divided relaxed style={{ cursor: 'pointer' }}>
+                      <List.Item>
+                        <List.Content
+                          onClick={() => this.sortByCode('respect')}
+                        >
+                          <p>A -&gt; Z</p>
+                        </List.Content>
+                      </List.Item>
+                      <List.Item>
+                        <List.Content
+                          onClick={() => this.sortByCode('reverse')}
+                        >
+                          <p>Z -&gt; A</p>
+                        </List.Content>
+                      </List.Item>
+                    </List>
+                  }
+                  on="click"
+                  hideOnScroll
+                  position="bottom center"
+                />
               </div>
-              <div className="large-9 columns">
-                <button className="add-employee-button">
-                  {' '}เพิ่มพนักงานใหม่{' '}
-                </button>
+              <div className="large-2 columns">
+                <span>ชื่อ-นามสกุล</span>
+                <Popup
+                  trigger={
+                    <Icon
+                      name="sort descending"
+                      style={{ cursor: 'pointer' }}
+                    />
+                  }
+                  content={
+                    <List divided relaxed style={{ cursor: 'pointer' }}>
+                      <List.Item>
+                        <List.Content
+                          onClick={() => this.sortByName('respect')}
+                        >
+                          <p>A -&gt; Z</p>
+                        </List.Content>
+                      </List.Item>
+                      <List.Item>
+                        <List.Content
+                          onClick={() => this.sortByName('reverse')}
+                        >
+                          <p>Z -&gt; A</p>
+                        </List.Content>
+                      </List.Item>
+                    </List>
+                  }
+                  on="click"
+                  hideOnScroll
+                  position="bottom center"
+                />
+              </div>
+              <div className="large-2 columns">
+                <p>Email</p>
+              </div>
+              <div className="large-2 columns">
+                <p>ตำแหน่ง</p>
+              </div>
+              <div className="large-2 columns">
+                <span>กลุ่มสิทธิประโยชน์</span>
+                <Popup
+                  trigger={
+                    <Icon
+                      name="sort descending"
+                      style={{ cursor: 'pointer' }}
+                    />
+                  }
+                  content={
+                    <List divided relaxed style={{ cursor: 'pointer' }}>
+                      <List.Item>
+                        <List.Content
+                          onClick={() => this.sortByGroup('respect')}
+                        >
+                          <p>A -&gt; Z</p>
+                        </List.Content>
+                      </List.Item>
+                      <List.Item>
+                        <List.Content
+                          onClick={() => this.sortByGroup('reverse')}
+                        >
+                          <p>Z -&gt; A</p>
+                        </List.Content>
+                      </List.Item>
+                    </List>
+                  }
+                  on="click"
+                  hideOnScroll
+                  position="bottom center"
+                />
+              </div>
+              <div className="large-2 columns">
+                <p>Option</p>
               </div>
             </div>
-            <div className="list-employee-box">
-              <div className="list-header">
-                <div className="row">
-                  <div className="large-2 columns">
-                    <span>รหัสพนักงาน</span>
-                    <Popup
-                      trigger={
-                        <Icon
-                          name="sort descending"
-                          style={{ cursor: 'pointer' }}
-                        />
-                      }
-                      content={
-                        <List divided relaxed style={{ cursor: 'pointer' }}>
-                          <List.Item>
-                            <List.Content
-                              onClick={() => this.sortByCode('respect')}
-                            >
-                              <p>A -&gt; Z</p>
-                            </List.Content>
-                          </List.Item>
-                          <List.Item>
-                            <List.Content
-                              onClick={() => this.sortByCode('reverse')}
-                            >
-                              <p>Z -&gt; A</p>
-                            </List.Content>
-                          </List.Item>
-                        </List>
-                      }
-                      on="click"
-                      hideOnScroll
-                      position="bottom center"
-                    />
-                  </div>
-                  <div className="large-2 columns">
-                    <span>ชื่อ-นามสกุล</span>
-                    <Popup
-                      trigger={
-                        <Icon
-                          name="sort descending"
-                          style={{ cursor: 'pointer' }}
-                        />
-                      }
-                      content={
-                        <List divided relaxed style={{ cursor: 'pointer' }}>
-                          <List.Item>
-                            <List.Content
-                              onClick={() => this.sortByName('respect')}
-                            >
-                              <p>A -&gt; Z</p>
-                            </List.Content>
-                          </List.Item>
-                          <List.Item>
-                            <List.Content
-                              onClick={() => this.sortByName('reverse')}
-                            >
-                              <p>Z -&gt; A</p>
-                            </List.Content>
-                          </List.Item>
-                        </List>
-                      }
-                      on="click"
-                      hideOnScroll
-                      position="bottom center"
-                    />
-                  </div>
-                  <div className="large-2 columns">
-                    <p>Email</p>
-                  </div>
-                  <div className="large-2 columns">
-                    <p>ตำแหน่ง</p>
-                  </div>
-                  <div className="large-2 columns">
-                    <span>กลุ่มสิทธิประโยชน์</span>
-                    <Popup
-                      trigger={
-                        <Icon
-                          name="sort descending"
-                          style={{ cursor: 'pointer' }}
-                        />
-                      }
-                      content={
-                        <List divided relaxed style={{ cursor: 'pointer' }}>
-                          <List.Item>
-                            <List.Content
-                              onClick={() => this.sortByGroup('respect')}
-                            >
-                              <p>A -&gt; Z</p>
-                            </List.Content>
-                          </List.Item>
-                          <List.Item>
-                            <List.Content
-                              onClick={() => this.sortByGroup('reverse')}
-                            >
-                              <p>Z -&gt; A</p>
-                            </List.Content>
-                          </List.Item>
-                        </List>
-                      }
-                      on="click"
-                      hideOnScroll
-                      position="bottom center"
-                    />
-                  </div>
-                  <div className="large-2 columns">
-                    <p>Option</p>
-                  </div>
-                </div>
-              </div>
-              {this.renderListEmployee(this.state.data)}
-            </div>
-            <div className="list-change-level">
-              <div
-                className="list-change-level-box"
-                onClick={this.minusLimitChange}
-                role="button"
-                aria-hidden
-              >
-                <Icon name="caret left" size="large" />
-              </div>
-              <div className="list-change-level-box-number">
-                <p>{this.state.pageNumber}</p>
-              </div>
-              <div
-                className="list-change-level-box"
-                onClick={this.plusLimitChange}
-                role="button"
-                aria-hidden
-              >
-                <Icon name="caret right" size="large" />
-              </div>
-            </div>
+          </div>
+          {this.renderListEmployee(this.state.data)}
+        </div>
+        <div className="list-change-level">
+          <div
+            className="list-change-level-box"
+            onClick={this.minusLimitChange}
+            role="button"
+            aria-hidden
+          >
+            <Icon name="caret left" size="large" />
+          </div>
+          <div className="list-change-level-box-number">
+            <p>{this.state.pageNumber}</p>
+          </div>
+          <div
+            className="list-change-level-box"
+            onClick={this.plusLimitChange}
+            role="button"
+            aria-hidden
+          >
+            <Icon name="caret right" size="large" />
           </div>
         </div>
       </div>

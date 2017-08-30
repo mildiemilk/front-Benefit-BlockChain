@@ -83,6 +83,7 @@ class EmployeeBenefits extends Component {
           ? <SelectBox
             groupName={this.props.groupBenefit[this.state.activeGroup].name}
             planName={this.props.groupBenefit[this.state.activeGroup].plan}
+            numberOfGroup={this.props.groupBenefit[this.state.activeGroup].numberOfGroup}
             type={this.props.groupBenefit[this.state.activeGroup].type}
             default={this.props.groupBenefit[this.state.activeGroup].default}
           />

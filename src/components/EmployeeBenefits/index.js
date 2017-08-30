@@ -155,6 +155,7 @@ class employeeBenefits extends Component {
       const { groupBenefit } = this.props;
       const detail = {
         name: groupBenefit[activeGroup].name,
+        numberOfGroup: groupBenefit[activeGroup].numberOfGroup,
         type: plan,
         plan: selectPlan,
         default: defaultPlan,

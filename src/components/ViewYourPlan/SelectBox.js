@@ -22,6 +22,7 @@ class SelectBox extends Component {
     type: PropTypes.string.isRequired,
     default: PropTypes.number.isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    numberOfGroup: PropTypes.number.isRequired,
   }
   constructor() {
     super();
@@ -119,7 +120,7 @@ class SelectBox extends Component {
               <TextLine>จำนวนพนักงานในกลุ่มนี้ </TextLine>
             </div>
             <div className="large-7 columns">
-              <List>20 คน</List>
+              <List>{this.props.numberOfGroup} คน</List>
             </div>
           </div>
           <div className="row">

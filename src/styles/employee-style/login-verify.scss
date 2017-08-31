@@ -7,7 +7,7 @@
   padding-bottom: 80px;
   background: white;
    .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
-    padding-left: 14%;
+    padding-left: 30px;
     font-family: Kanit !important;
   }
 }
@@ -15,7 +15,7 @@
   .field {
     .ui.input {
       input{
-        padding-left: 14%;
+        padding-left: 30px;
         font-family: Kanit !important;
       }
     }
@@ -242,10 +242,10 @@
   margin-right: 6px;
   width: auto;
 }
-.ui.icon.input input {
+.divInput .ui.icon.input input {
   padding: 0px !important;
   margin: 0px !important;
-  border: none;
+  border: none !important;
   box-shadow: none;
   background: transparent;
   font-family: Kanit;
@@ -253,7 +253,6 @@
   font-weight: 200;
   letter-spacing: 0.3px;
   text-align: left;
-  color: #7c8495;
 }
 .login-d-forget {
   margin-top: 0.2vw;
@@ -290,4 +289,7 @@
   color: red;
   padding: 0px !important;
   margin: 0px!important;
+}
+.divInput .required.field .ui.input {
+  border: none;
 }

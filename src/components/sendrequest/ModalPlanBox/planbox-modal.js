@@ -17,7 +17,7 @@ const ModalContents = styled(Modal.Content) `
 `;
 const ModalContentsWithBottom = ModalContents.extend`
   padding-bottom: 21px !important;
-`
+`;
 const ModalHeaders = styled(Modal.Header) `
   &&&{
     width: 800px;
@@ -38,12 +38,14 @@ const Modals = styled(Modal) `
     padding: 0px;
     height: auto;
     position: absolute;
+    left: 55%;
+    top: 40%;
   }
 `;
 const CustomHead = styled.div`
   text-align: center;
   font-family: kanit;
-`
+`;
 class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,

@@ -33,17 +33,17 @@ const Inputs = styled(Input) `
 
 const NameInput = styled(Input) `
     &&&{
-
-      border-radius: 3px;
+      margin-left: 10px;
+      height: 40px;
       background-color: #ffffff;
       padding: 1%;
-      width: 466px !important;
+      width: 451px !important;
     }
 `;
 const FieldsetEdit = styled.fieldset`
     border: none;
     padding: 0px;
-`
+`;
 class SettingPlan extends Component {
   static propTypes = {
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -134,7 +134,7 @@ class SettingPlan extends Component {
                   <PlanImg src="../../../setbenefit/5.png" />
                   <PlanTopic>
                     ค่าใช้จ่ายสุขภาพ (Health)
-                    </PlanTopic>
+                  </PlanTopic>
                   <div className="toggle">
                     <ToggleBox>
                       <Checkbox

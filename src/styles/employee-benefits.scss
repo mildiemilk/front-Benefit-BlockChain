@@ -13,6 +13,7 @@
 
 .employeeBenefits-head-text{
   font-size: 20px;
+  margin-top: 5px;
   font-weight: 500;
   letter-spacing: 0.3px;
   text-align: left;
@@ -113,6 +114,7 @@
   padding-top: 3%;
   padding-left: 8%;
   margin-bottom: 5%;
+  position: relative;
   .popup{
     .ui.bottom.center.popup:before{
       background-color: black;

@@ -110,7 +110,7 @@ export function getOptionPlan() {
         dispatch(getOptionPlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getOptionPlanFailure(err.response.data));
+        dispatch(getOptionPlanFailure(err));
       });
   };
 }

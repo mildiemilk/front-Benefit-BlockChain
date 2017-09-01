@@ -1,8 +1,9 @@
 import { Step } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-export const Head = styled.p`
-  s
+export const Head = styled.div`
+  font-size: 30px;
+  margin-top: 15px;
 `;
 export const Grid = styled.div`
   padding-top:20px;

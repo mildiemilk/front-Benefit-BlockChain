@@ -13,7 +13,7 @@ import {
 
 const ModalContents = styled(Modal.Content) `
   &&&{
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
     padding-left: 4%;
   }
@@ -22,7 +22,10 @@ const ModalContents = styled(Modal.Content) `
 const Modals = styled(Modal) `
   &&&{
     background: transparent;
-    margin-top: -120px;
+    width: 550px !important;
+    position: absolute;
+    left: 62%;
+    top: 40%;
   }
 `;
 
@@ -102,7 +105,7 @@ class ModalSelectInsurer extends Component {
               : <span />}
 
             <p style={{ paddingTop: '4%' }}>
-              หากยืนยันการส่งคำขอไปแล้ว จะไม่สามารถเปลี่ยนแปลงได้
+              หากยืนยันไปแล้ว จะไม่สามารถเปลี่ยนแปลงได้
             </p>
 
           </ModalContent>

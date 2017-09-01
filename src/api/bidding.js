@@ -33,7 +33,7 @@ export function endTimeout(end) {
   };
 }
 
-export function chooseFinalInsurer(passwordToConfirm, insurerName) {
+export function chooseFinalInsurer(passwordToConfirm, insurerName, step) {
   return dispatch => {
     const options = {
       method: 'post',
@@ -41,13 +41,13 @@ export function chooseFinalInsurer(passwordToConfirm, insurerName) {
       data: {
         passwordToConfirm,
         insurerName,
+        step,
       },
     };
 
     APIRequest(options, true)
       .then(res => {
         dispatch(selectFinalInsurerSuccess(res.data));
-        window.location.href = '/congrats';
       })
       .catch(err => {
         dispatch(selectFinalInsurerFailure(err.response.data));

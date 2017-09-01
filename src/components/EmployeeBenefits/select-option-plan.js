@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Checkbox, Form, Radio, Icon, List, button } from 'semantic-ui-react';
+import { Checkbox, Form, Radio, List, button, Icon } from 'semantic-ui-react';
 import { PopupView } from '../Bidding/styled';
+import { Icons } from './styled';
 import '../../styles/employee-benefits.scss';
 import '../../styles/popup-color.scss';
 import SettingBenefitModal from './setting-benefit-modal';
@@ -10,8 +10,9 @@ import SettingBenefitModal from './setting-benefit-modal';
 class SelectOptionPlan extends Component {
   static propTypes = {
     handleFixedChange: PropTypes.func.isRequired,
-    defualtPlan: PropTypes.string.isRequired,
+    defaultPlan: PropTypes.string.isRequired,
     selectOption: PropTypes.string.isRequired,
+    selectPlan: PropTypes.arrayOf(PropTypes.string).isRequired,
     handleFlexChange: PropTypes.func.isRequired,
     columnsLenght: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,
@@ -19,13 +20,12 @@ class SelectOptionPlan extends Component {
     planName: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selectedGroup: '',
       value: '',
       plan: '',
-      selectPlan: [],
       openSettingBenefit: false,
     };
   }
@@ -43,9 +43,14 @@ class SelectOptionPlan extends Component {
     this.setState({ openSettingBenefit: false });
   }
 
+  isCheck = planName => {
+    const { selectPlan } = this.props;
+    return selectPlan.indexOf(planName) !== -1;
+  }
+
   renderList = list => {
     const lists = list.map((element, index) => {
-      const isActive = index === this.props.defualtPlan ? '-active' : '';
+      const isActive = index === this.props.defaultPlan ? '-active' : '';
       return (
         <div className="row">
           <div className="large-1 columns">
@@ -54,14 +59,15 @@ class SelectOptionPlan extends Component {
                 ? <Form.Field>
                   <Radio
                     name="planGroup"
-                    value={element.name}
-                    checked={this.state.value === element.name}
+                    value={element.planName}
+                    checked={this.isCheck(element.planName)}
                     onChange={this.handleChange}
                   />
                 </Form.Field>
                 : <Form.Field>
                   <Checkbox
-                    value={element.name}
+                    value={element.planName}
+                    checked={this.isCheck(element.planName)}
                     onChange={this.props.handleFlexChange}
                   />
                 </Form.Field>}
@@ -69,11 +75,10 @@ class SelectOptionPlan extends Component {
           </div>
           <div className={this.props.columnsLenght}>
             <div className="plan-box">
-              {element.name}
+              {element.planName}
               <PopupView
                 trigger={
-                  <Icon
-                    style={{ float: 'right', cursor: 'pointer' }}
+                  <Icons
                     name="ellipsis vertical"
                     size="large"
                   />
@@ -107,7 +112,7 @@ class SelectOptionPlan extends Component {
               <div
                 className={`basic-status-box${isActive}`}
                 onClick={() =>
-                  this.props.handleActivePlan(index, element.name)}
+                  this.props.handleActivePlan(index, element.planName)}
                 role="button"
                 aria-hidden
               >
@@ -140,6 +145,4 @@ class SelectOptionPlan extends Component {
   }
 }
 
-SelectOptionPlan.propTypes = {};
-
-export default connect(null, null)(SelectOptionPlan);
+export default (SelectOptionPlan);

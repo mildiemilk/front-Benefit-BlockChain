@@ -7,14 +7,14 @@ import ModalPlan from './modal-plan';
 
 class PlanTemplate extends Component {
   static propTypes = {
-    onClick: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired,
+    // onClick: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     closetap: PropTypes.bool.isRequired,
     colorPlan: PropTypes.number.isRequired,
-    handleDeleteChooseInsurance: PropTypes.func.isRequired,
-    handleDeleteOurplan: PropTypes.func.isRequired,
-    handleDeleteSpecialPlan: PropTypes.func.isRequired,
+    handleDeleteChooseInsurance: PropTypes.func,
+    handleDeleteOurplan: PropTypes.func,
+    handleDeleteSpecialPlan: PropTypes.func,
     index: PropTypes.number.isRequired,
     ourPlan: PropTypes.arrayOf(PropTypes.object),
     // specialPlans: PropTypes.arrayOf(PropTypes.object),
@@ -22,6 +22,9 @@ class PlanTemplate extends Component {
   }
 
   static defaultProps = {
+    handleDeleteChooseInsurance: () => {},
+    handleDeleteOurplan: () => {},
+    handleDeleteSpecialPlan: () => {},
     ourPlan: [],
   }
 
@@ -30,9 +33,9 @@ class PlanTemplate extends Component {
     this.state = {};
   }
 
-  handleClick() {
+  /* handleClick() {
     this.props.onClick();
-  }
+  } */
 
   RenderTable = (colorPlan, id) => {
     const RenderTables = (

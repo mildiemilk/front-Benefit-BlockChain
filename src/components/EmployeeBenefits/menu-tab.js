@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../../styles/employee-benefits.scss';
+import { DivHeight, DivBox } from './styled';
 
 class MenuTab extends Component {
   static propTypes = {
@@ -8,8 +8,8 @@ class MenuTab extends Component {
     handleActiveGroup: PropTypes.func.isRequired,
     groupName: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: '',
     };
@@ -33,13 +33,15 @@ class MenuTab extends Component {
 
   render() {
     return (
-      <div>
+      <DivHeight>
         <div className="employeeBenefits-Menu-Tab-head-box">
           กลุ่มของพนักงาน
         </div>
-        {this.renderList(this.props.groupName)}
+        <DivBox>
+          {this.renderList(this.props.groupName)}
+        </DivBox>
 
-      </div>
+      </DivHeight>
     );
   }
 }

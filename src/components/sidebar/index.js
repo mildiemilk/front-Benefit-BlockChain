@@ -19,7 +19,7 @@ export default class Sidebar extends Component {
           </Item>
           <Item>
             <Icon name="book" size="large" />&nbsp;
-            <Links to="/plan" ><Item.Content verticalAlign="middle">แผนของคุณ</Item.Content></Links>
+            <Links to="/viewplanflex" ><Item.Content verticalAlign="middle">แผนของคุณ</Item.Content></Links>
           </Item>
           <Item>
             <Icon name="group" size="large" />&nbsp;

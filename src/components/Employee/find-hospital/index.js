@@ -74,6 +74,7 @@ class FindHospital extends Component {
   renderFiledHospital = hosList => {
     const listItems = hosList.map((number, i) => (
       <ElementBackground
+        keys={i}
         index={i}
         onClick={() => this.handleIsChoose(
           number.hospitalName, number.latlong)}

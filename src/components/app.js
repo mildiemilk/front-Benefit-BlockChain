@@ -32,13 +32,14 @@ import Congrat from './congrat';
 import CongratStep3 from './congratStep3';
 import CongratStep4 from './congratStep4';
 import ChooseInsuranceplan from './ChooseInsurancePlan';
-import PieChart from './PieChart';
+import Summary from './Summary';
 import SelectRealTime from './SelectRealTime';
 import SendFlexPlan from './SendFlexPlan';
 import Appmobile from './appmobile';
 import EmployeeLogin from './Employee/employee-login';
 import EmployeeList from './EmployeeList';
 import ViewAllPlan from './ViewAllPlan';
+import ViewYourPlan from './ViewYourPlan';
 
 class App extends Component {
   static propTypes = {
@@ -68,6 +69,7 @@ class App extends Component {
               <Route path="/settingprofile" component={SettingProfile} />
               <Route path="/logout" component={Logout} />
               <Route path="/login" component={Login} />
+              <Route path="/dashboard" component={Dashboard} />
               <MainLayout>
                 <Switch>
                   <Route path="/congrat" component={Congrat} />
@@ -77,11 +79,11 @@ class App extends Component {
                   <Route path="/chooseinsurer" component={ChooseInsurer} />
                   <Route path="/addbenefit" component={AddBenefit} />
                   <Route path="/postbox" component={Postbox} />
+                  <Route path="/viewyourplan" component={ViewYourPlan} />
                   <Route
-                    path="/dashboard/simplerequirement"
+                    path="/simplerequirement"
                     component={simpleRQ}
                   />
-                  <Route path="/dashboard" component={Dashboard} />
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/ipd" component={IPD} />
                   <Route path="/sendrequest" component={Sendrequest} />
@@ -100,7 +102,7 @@ class App extends Component {
                     component={ChooseInsuranceplan}
                   />
                   <Route path="/sendflexplan" component={SendFlexPlan} />
-                  <Route path="/piechart" component={PieChart} />
+                  <Route path="/Summary" component={Summary} />
                   <Route path="/EmployeeList" component={EmployeeList} />
                   <Route path="/view" component={ViewAllPlan} />
                 </Switch>

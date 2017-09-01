@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
 .login {
   position: relative;
   margin: 0 auto;
@@ -5,7 +7,7 @@
   padding-bottom: 80px;
   background: white;
    .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
-    padding-left: 14%;
+    padding-left: 30px;
     font-family: Kanit !important;
   }
 }
@@ -13,7 +15,7 @@
   .field {
     .ui.input {
       input{
-        padding-left: 14%;
+        padding-left: 30px;
         font-family: Kanit !important;
       }
     }
@@ -63,7 +65,7 @@
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
   border: solid 1px #f5f5f5;
-  position:absolute;
+  position:fixed;
   bottom:0;
   .footer-list {
     display: inline-block;
@@ -88,7 +90,13 @@
   margin-bottom: 64px;
 }
 .link-mobile-login {
-  float: right;
+  line-height: 18px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-align: right;
+  color: #4990e2 !important;
+  margin-bottom: 7px;
+  display: block;
 }
 .iconImage {
   width: 18px;
@@ -153,4 +161,143 @@
         }
       }
     }
+}
+.login-d-logo {
+  width: 363px;
+  height: 85px;
+  margin: 6vw auto 3vw;
+  display: block;
+}
+.login-d-box {
+  display: flex;
+  margin: auto;
+  width: 70%;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
+  @media screen and (min-width: 768px) and (max-width: 991px){
+    max-height: 530px;
+    max-width: 934px;
+  }
+  
+}
+.login-d-box-l {
+  display: inline-block;
+  width: 50%;
+  // padding: 10vw 5vw;
+  position: relative;
+}
+.login-d-icon-gift {
+  margin: auto;
+  display: block;
+  width: 70%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.login-d-box-r {
+  display: inline-block;
+  width: 50%;
+  padding: 10vw 5vw;
+  // position: relative;
+}
+// .login-d-box-r-box {
+//   left: 50%;
+//   position: absolute;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+// }
+.login-d-header {
+  display: block;
+  font-size: 2.5vw;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 5%;
+}
+.login-d-description {
+  display: block;
+  font-size: 1.3vw;
+  letter-spacing: 0.7px;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+}
+.login-d-line {
+  width: 100%;
+  border: 1px solid #3a7bd5;
+}
+.login-d-input-box {
+  width: 100%;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #dddddd;
+  padding: 0.5vw;
+  margin-bottom: 0.6vw;
+  display: block !important;
+}
+.login-d-icon-input {
+  height: 50%;
+  margin-right: 6px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+.divInput .ui.icon.input input {
+  padding: 0px !important;
+  margin: 0px !important;
+  border: none !important;
+  box-shadow: none;
+  background: transparent;
+  font-family: Kanit;
+  font-size: 1.230em;
+  font-weight: 200;
+  letter-spacing: 0.3px;
+  text-align: left;
+}
+.login-d-forget {
+  margin-top: 0.2vw;
+  margin-bottom: 0.7vw;
+  font-family: Kanit;
+  font-size: 1.2vw;
+  font-weight: 500;
+  text-align: right;
+  color: #4990e2 !important;
+  display: block;
+}
+.login-d-btn-login {
+  width: 100%;
+  height: 2.5vw;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  font-size: 1.2vw;
+  font-family: Kanit;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+}
+@media screen and (min-width: 1200px) {
+  .login-d-header {
+    font-size: 36px;
+  }
+  .login-d-description {
+    font-size: 16px;
+  }
+}
+.login-d-error-msg {
+  color: red;
+  padding: 0px !important;
+  margin: 0px!important;
+}
+.divInput .required.field .ui.input {
+  border: none;
+}
+.ui.left.icon.input.login-d-input-box {
+  input {
+    padding: 0px !important;
+  }
 }

@@ -81,9 +81,7 @@ class Uploadfile extends Component {
 
   handleNextClick = () => {
     const file = this.state.claimData;
-    console.log(file);
     this.props.claimData(file);
-    console.log('upload', file);
   }
 
   RenderInsideBlock = id => {
@@ -123,7 +121,7 @@ class Uploadfile extends Component {
                   style={{ display: 'none' }}
                   name="name[]"
                   type="file"
-                  accept=".pdf,.docx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                  accept=".pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                   onChange={e => this.handleUploadclaimdata(e)}
                 />
                 เลือกไฟล์
@@ -192,7 +190,7 @@ class Uploadfile extends Component {
           <Head>อัพโหลดไฟล์</Head>
           <TextNormal>
                 กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
-                (รองรับไฟล์ประเภท .pdf, .docx และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
+                (รองรับไฟล์ประเภท .pdf และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
                 <br />
           </TextNormal>
           {/* <Inner>

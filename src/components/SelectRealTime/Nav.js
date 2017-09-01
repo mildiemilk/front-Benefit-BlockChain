@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Divider } from 'semantic-ui-react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import EmpolyeeChart from '../PieChart/empolyee-chart';
-import PlanChart from '../PieChart/plan-chart';
+import EmpolyeeChart from '../Summary/empolyee-chart';
+import PlanChart from '../Summary/plan-chart';
 import { Head, Box, ListTime, Pic, NavTimeout } from './styled';
 import time from '../../../assets/bidding/icons-8-time.png';
 import CountDown from '../Bidding/CountDowns';
@@ -23,7 +23,6 @@ class NavSelectRealTime extends Component {
     this.state = {};
   }
   render() {
-    console.log('nav', this.props.timeout);
     return (
       <div>
         <div className="row">

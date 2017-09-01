@@ -66,7 +66,6 @@ class EmployeeBenefits extends Component {
     }
   }
   render() {
-    console.log('props', this.props);
     return (
       <div className="row">
         <div className="large-3 columns">
@@ -91,7 +90,7 @@ class EmployeeBenefits extends Component {
           }
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -14,7 +14,7 @@ import about from '../../image/icons-8-about.png';
 
 const Checkboxs = styled(Checkbox)`
   margin-bottom: 15px;
-`
+`;
 class IPD extends Component {
   static propTypes = {
     handleVerifyState: PropTypes.func.isRequired,

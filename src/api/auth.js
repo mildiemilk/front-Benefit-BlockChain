@@ -71,8 +71,6 @@ export function updatePassword(password, confirmPassword) {
     };
     APIRequest(options, true)
       .then(res => {
-        // window.location.href = '/'
-        // console.log('Update Password Success!')
         dispatch(updatePasswordSuccess(res.data));
       })
       .catch(err => {

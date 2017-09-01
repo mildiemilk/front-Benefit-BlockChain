@@ -81,9 +81,7 @@ class Uploadfile extends Component {
 
   handleNextClick = () => {
     const file = this.state.claimData;
-    console.log(file);
     this.props.claimData(file);
-    console.log('upload', file);
   }
 
   RenderInsideBlock = id => {

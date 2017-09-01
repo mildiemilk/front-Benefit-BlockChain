@@ -15,7 +15,7 @@ const ImageCss = styled(Image) `
 `;
 class Header extends Component {
   static propTypes = {
-    data: PropTypes.shape.isRequired,
+    data: PropTypes.shape({}).isRequired,
   }
 
   constructor() {
@@ -24,7 +24,8 @@ class Header extends Component {
   }
 
   render() {
-    const { companyName, logo } = this.props.data;
+    const { data } = this.props;
+    const { companyName, logo } = data;
     return (
       <HeadNav>
         <LogoPosition>

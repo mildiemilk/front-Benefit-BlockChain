@@ -18,7 +18,7 @@ class ListHealth extends Component {
     return (
       <DetailList>
         {this.props.HealthList.map((item, index) => (
-          <TextList>
+          <TextList keys={item + index}>
             {item}
             <ButtonDelete onClick={() => this.props.sendDel(index)}>
               <Icon name="delete" />

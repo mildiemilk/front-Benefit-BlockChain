@@ -26,8 +26,8 @@ class ModalWarning extends Component {
     closeWarningModal: PropTypes.func.isRequired,
     warningMessage: PropTypes.string.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modalOpen: false,
       closeOnEscape: false,

@@ -52,23 +52,6 @@ class InsurerSelect extends Component {
   componentDidMount() {
     this.props.getAllInsurer();
     this.props.getSelectInsurer();
-    // if(nextProps.chooseInsurerStatus === "SUCCESS") {
-
-    // const { insurerChecked, insurerList } = this.props
-    // let CheckedinsurerList = this.props.insurerList
-
-    // console.log("insurerChecked ==> ", insurerChecked)
-    // console.log("insurerList ==> ", insurerList)
-    // const result = CheckedinsurerList.map( insurer => {
-    //   let tempInsurer
-    //   const checkedInsurer =_.find(insurerChecked, { 'insurerName': insurer.insurerName });
-    //   tempInsurer = !(_.isNil(checkedInsurer))
-    //   return tempInsurer
-    // })
-    // this.setState({ insurers: CheckedinsurerList })
-    // console.log("CheckedinsurerList ===> ", CheckedinsurerList)
-
-    // }
   }
 
   componentWillReceiveProps(newProps) {

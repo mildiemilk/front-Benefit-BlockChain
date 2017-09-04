@@ -149,18 +149,7 @@ class SettingProfile extends Component {
     }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
-    // let elmnt = document.getElementById("Image")
-    // let width = elmnt.clientWidth;
-    // let height = elmnt.clientHeight;
-    // console.log('pic'+height);
     if (imagePreviewUrl) {
-      // if(height>width){
-      //   $imagePreview =
-      //   (<div className="thumbnail">
-      //     <img id='Image' className="portrait" src={imagePreviewUrl} />
-      //   </div>)}
-      // else{
-
       $imagePreview = (
         <div className="thumbnail">
           <img id="Image" src={imagePreviewUrl} alt="imageCompany" />

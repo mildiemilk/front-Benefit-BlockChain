@@ -58,7 +58,6 @@ class InsurancePlan extends Component {
   // }
 
   renderList = lists => {
-    console.log('list', lists);
     const allList = lists.map((element, index) => (
       <ListBox className="large-4 columns">
         {/* <PlanBoxs

@@ -236,11 +236,14 @@
   border: solid 1px #dddddd;
   padding: 0.5vw;
   margin-bottom: 0.6vw;
+  display: block !important;
 }
 .login-d-icon-input {
   height: 50%;
   margin-right: 6px;
   width: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 .divInput .ui.icon.input input {
   padding: 0px !important;
@@ -292,4 +295,9 @@
 }
 .divInput .required.field .ui.input {
   border: none;
+}
+.ui.left.icon.input.login-d-input-box {
+  input {
+    padding: 0px !important;
+  }
 }

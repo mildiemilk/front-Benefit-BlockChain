@@ -34,7 +34,6 @@ export function endTimeout(end) {
 }
 
 export function chooseFinalInsurer(passwordToConfirm, insurerName, step) {
-  console.log('step', step);
   return dispatch => {
     const options = {
       method: 'post',

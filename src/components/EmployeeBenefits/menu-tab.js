@@ -8,8 +8,8 @@ class MenuTab extends Component {
     handleActiveGroup: PropTypes.func.isRequired,
     groupName: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: '',
     };

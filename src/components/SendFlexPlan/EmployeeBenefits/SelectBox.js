@@ -26,7 +26,6 @@ class SelectBox extends Component {
     this.state = {};
   }
   renderPlan = plans => {
-    console.log('plan', plans);
     const Allplan = plans.map((plan, index) => (
       <div>
         <Plan>{plan}</Plan>

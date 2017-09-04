@@ -73,6 +73,32 @@
       font-size: 2em;
     }
   }
+  .receiptImg{
+    position: absolute;
+    clip: rect(0px,90px,90px,0px);
+    height: 80px;
+  }
+  .left{
+    left: 42%;
+  }
+  .receiptDiv{
+    height: 90px;
+  }
+  .Zoomglass{
+    position: absolute;
+    z-index: 2;
+    top: 385px;
+    left: 30%;
+    height: 20px;
+}
+
+  .modalpic{
+    height: 250px;
+    width: 100%;
+  }
+  .zleft{
+    left:62%;
+  }
 
   .Headpic {
     width: 138px;
@@ -110,5 +136,7 @@
     margin-top: 40px;
     text-align: center;
   }
+
+
 
 }

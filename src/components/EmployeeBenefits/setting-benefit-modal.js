@@ -31,8 +31,8 @@ class SettingBenefitModal extends Component {
     closeModal: PropTypes.func.isRequired,
     openSettingBenefit: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modalOpen: false,
       closeOnEscape: false,

@@ -8,7 +8,7 @@
   "background_color": "#FFFFFF",
   "icons": [
     {
-      "src": "512.png",
+      "src": "benefit_icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }

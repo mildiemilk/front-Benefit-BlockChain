@@ -123,7 +123,7 @@ class App extends Component {
       route = (
         <Switch>
           <Route path="/employeelogin" component={EmployeeLogin} />
-          <Route path="/InsurerLogin" component={InsurerLogin} />
+          <Route path="/insurerlogin" component={InsurerLogin} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />

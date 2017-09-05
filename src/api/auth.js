@@ -56,6 +56,8 @@ export function logout() {
     localStorage.clear();
     if (role === 'Employee') {
       window.location = '/employeelogin';
+    } else if (role === 'Insurer') {
+      window.location = '/insurerlogin';
     } else {
       window.location = '/login';
     }

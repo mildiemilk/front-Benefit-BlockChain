@@ -36,11 +36,11 @@ class EmployeeLoginDesktop extends Component {
             <hr className="login-d-line" />
             <Input className="login-d-input-box" iconPosition="left" placeholder="อีเมล">
               <img className="login-d-icon-input" src={emailIcon} alt="at" />
-              <input type="email" onChange={handleChange} />
+              <input name="email" type="email" onChange={handleChange} />
             </Input>
             <Input className="login-d-input-box" iconPosition="left" placeholder="รหัสผ่าน">
               <img className="login-d-icon-input" src={keyIcon} alt="at" />
-              <input type="password" onChange={handleChange} />
+              <input name="password" type="password" onChange={handleChange} />
             </Input>
             {
               data.error ?

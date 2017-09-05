@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom';
 import { claimData } from '../../api/profile-company';
@@ -22,54 +23,44 @@ import NavInsure from '../NavInsure';
 class Uploadfile extends Component {
   static propTypes = {
     claimData: PropTypes.func.isRequired,
+    haveClaimData: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
     super(props);
     this.state = {
       step: 5,
-      claimData: [],
+      claimData: [''],
       summitBrokerFile: '',
       AmountUploadBlock: 1,
+      next: false,
     };
   }
 
   handleUploadclaimdata(e) {
     e.preventDefault();
     const file = e.target.files[0];
+    const newClaim = this.state.claimData;
+    newClaim[e.target.id] = file;
     this.setState({
-      claimData: this.state.claimData.concat(file),
+      claimData: newClaim,
     });
-    if (this.state.claimData.length >= this.state.AmountUploadBlock) {
-      const add = this.state.AmountUploadBlock + 1;
-      this.setState({
-        AmountUploadBlock: add,
-      });
-    }
   }
-
-  // handleUploadBroker(e) {
-  //   e.preventDefault();
-  //   const file = e.target.files[0];
-  //   this.setState({
-  //     summitBrokerFile: file,
-  //   });
-  // }
 
   handleDelete = e => {
     e.preventDefault();
-    if (this.state.claimData.length <= this.state.AmountUploadBlock - 1) {
+    if (this.state.claimData.length > 1) {
       const newv = this.state.AmountUploadBlock - 1;
+      const claimDatas = this.state.claimData;
+      claimDatas.splice(e.target.id, 1);
       this.setState({
         AmountUploadBlock: newv,
+        claimData: claimDatas,
       });
+    } else {
+      const claimData = [''];
+      this.setState({ claimData });
     }
-
-    const claimDatas = this.state.claimData;
-    claimDatas.splice(e.target.id, 1);
-    this.setState({
-      claimData: claimDatas,
-    });
   }
 
   handleAddAmountUploadBlock = () => {
@@ -77,15 +68,21 @@ class Uploadfile extends Component {
     this.setState({
       AmountUploadBlock: add,
     });
+    this.setState({
+      claimData: this.state.claimData.concat(''),
+    });
   }
 
   handleNextClick = () => {
     const file = this.state.claimData;
-    this.props.claimData(file);
+    const sendFile = file.filter(element => element !== '');
+    if (sendFile.length !== 0) {
+      this.props.claimData(sendFile);
+    } else this.setState({ next: true });
   }
 
   RenderInsideBlock = id => {
-    if (this.state.claimData[id]) {
+    if (this.state.claimData[id] && this.state.claimData[id] !== '') {
       return (
         <p>
           {this.state.claimData[id].name} &nbsp;
@@ -105,7 +102,8 @@ class Uploadfile extends Component {
 
   RenderUploadRow = () => {
     const output = [];
-    for (let i = 1; i < this.state.AmountUploadBlock; i += 1) {
+    const { AmountUploadBlock } = this.state;
+    for (let i = 1; i < AmountUploadBlock; i += 1) {
       output.push(
         <div className="row">
           <div className=" large-offset-4 large-6  columns">
@@ -117,7 +115,7 @@ class Uploadfile extends Component {
             <Uploads>
               <BrowsButton for="uploadfor">
                 <input
-                  id="uploadfor"
+                  id={i}
                   style={{ display: 'none' }}
                   name="name[]"
                   type="file"
@@ -136,7 +134,7 @@ class Uploadfile extends Component {
 
   RenderListclaimData = () => {
     const { claimData } = this.state;
-    if (claimData.length >= 1) {
+    if (claimData.length >= 1 && claimData[0] !== '') {
       return (
         <p>
           {claimData[0].name} &nbsp;
@@ -154,33 +152,12 @@ class Uploadfile extends Component {
     return <p />;
   }
 
-  // handleDeleteBrokerFile = () => {
-  //   this.setState({
-  //     summitBrokerFile: '',
-  //   });
-  // }
-
-  // RendersummitBrokerFile = () => {
-  //   const { summitBrokerFile } = this.state;
-  //   if (summitBrokerFile) {
-  //     return (
-  //       <p>
-  //         {summitBrokerFile.name} &nbsp;
-  //         {(summitBrokerFile.size / 100000).toFixed(2)} MB
-  //         <Icon
-  //           id={1}
-  //           style={{ positon: 'absolute', top: '-25px' }}
-  //           link
-  //           name="close"
-  //           onClick={this.handleDeleteBrokerFile}
-  //         />
-  //       </p>
-  //     );
-  //   }
-  //   return <p />;
-  // }
-
   render() {
+    const { haveClaimData } = this.props;
+    const { next } = this.state;
+    if (haveClaimData || next) {
+      return <Redirect to="/sendrequest" />;
+    }
     return (
       <div>
         <div className="ChooseInsurer">
@@ -193,36 +170,6 @@ class Uploadfile extends Component {
                 (รองรับไฟล์ประเภท .pdf และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
                 <br />
           </TextNormal>
-          {/* <Inner>
-            <div className="row">
-              <div className=" large-12 columns">
-                <div className=" large-4 columns">
-                  <TextNormal>
-                    กรุณาอัพโหลดเอกสารยืนยันโบกเกอร์ :
-                  </TextNormal>
-                </div>
-                <div className=" large-6 columns">
-                  <FileuploadBox>
-                    {this.RendersummitBrokerFile()}
-                  </FileuploadBox>
-                </div>
-                <div className=" large-2 columns">
-                  <Upload>
-                    <BrowsButton for="uploadbrokerfor">
-                      <input
-                        id="uploadbrokerfor"
-                        style={{ display: 'none' }}
-                        type="file"
-                        accept=".xls,.xlsx,.pdf,.docx"
-                        onChange={e => this.handleUploadBroker(e)}
-                      />
-                      เลือกไฟล์
-                    </BrowsButton>
-                  </Upload>
-                </div>
-              </div>
-            </div>
-          </Inner> */}
           <Inner>
             <div className="row">
               <div className="large-4 columns">
@@ -239,7 +186,7 @@ class Uploadfile extends Component {
                 <Upload>
                   <BrowsButton for="uploadfor">
                     <input
-                      id="uploadfor"
+                      id={0}
                       style={{ display: 'none' }}
                       name="file[]"
                       type="file"
@@ -271,4 +218,8 @@ const mapDispatchToProps = dispatch => ({
   claimData: data => dispatch(claimData(data)),
 });
 
-export default connect(null, mapDispatchToProps)(Uploadfile);
+const mapStateToProps = state => ({
+  haveClaimData: state.profile.claimData.length !== 0,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Uploadfile);

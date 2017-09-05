@@ -6,7 +6,6 @@
     background-color: #74cbe1;
     font-size: 180%;
     color: white;
-
     padding-left: 2%;
     height: 70px;
   }
@@ -68,7 +67,10 @@
       padding:30px;
     }
   }
-
-
+  .ui.divider {
+    width: 1116px;
+    height: 2px;
+    border: solid 2px #c4c4c4;
+  }
 
 }

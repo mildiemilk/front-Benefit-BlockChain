@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Modal } from 'semantic-ui-react';
 import NotApprove from '../../image/icons-8-cancelRED.png';
 import considerHead from '../../image/groupConsider.png';
 import approveHead from '../../image/groupApprove.png';
 import rejectHead from '../../image/groupReject.png';
 import NewClaim from './CreateNewclaim';
+import receipt1 from '../../image/receipt.jpg';
+import receipt2 from '../../image/receipt2.jpg';
+import Zoomglass from '../../image/icons-8-zoom-in.png';
 
 class ClaimStatusDetail extends Component {
   static propTypes = {
@@ -177,6 +180,46 @@ class ClaimStatusDetail extends Component {
                   <span className="Detail"> จำนวนเงิน : {claim.AmountMoney} บาท </span>
                   <span className="Detail"> ธนาคาร : {claim.BankName} </span>
                   <span className="Detail"> เลขที่บัญชี : {claim.AccountNumber} </span>
+                </div>
+                <div className="receiptDiv">
+                  <Modal
+                    trigger={
+                      <div>
+                        <img
+                          src={receipt1}
+                          alt="receipt"
+                          className="receiptImg"
+                        />
+                        <img src={Zoomglass} alt="zoom" className="Zoomglass" />
+                      </div>
+                      }
+                    content={
+                      <img
+                        src={receipt1}
+                        alt="receipt"
+                        style={{ height: '250px', width: '100%' }}
+                      />
+                    }
+                  />
+                  <Modal
+                    trigger={
+                      <div>
+                        <img
+                          src={receipt2}
+                          alt="receipt"
+                          className="receiptImg left"
+                        />
+                        <img src={Zoomglass} alt="zoom" className="Zoomglass zleft" />
+                      </div>
+                      }
+                    content={
+                      <img
+                        src={receipt2}
+                        alt="receipt"
+                        className="modalpic"
+                      />
+                    }
+                  />
                 </div>
               </div>
             </div>

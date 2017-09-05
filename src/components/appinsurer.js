@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import { BrowserRouter, Redirect } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/employee-style/main.scss';
 import Header from './Insurer/Header';
@@ -16,7 +16,7 @@ const AppInsurer = () => (
     <div style={{ height: '100%' }}>
       <Header />
       <Switch>
-        <Route path="/idashboard" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/welcome" component={Welcome} />
         <MainLayout>
           <Switch>

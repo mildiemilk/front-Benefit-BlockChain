@@ -40,6 +40,8 @@ import EmployeeLogin from './Employee/employee-login';
 import EmployeeList from './EmployeeList';
 import ViewAllPlan from './ViewAllPlan';
 import ViewYourPlan from './ViewYourPlan';
+import AppInsurer from './appinsurer';
+import InsurerLogin from './Insurer/insurer-login';
 
 class App extends Component {
   static propTypes = {
@@ -112,6 +114,8 @@ class App extends Component {
         );
       } else if (role === 'Employee') {
         route = <Appmobile />;
+      } else if (role === 'Insurer') {
+        route = <AppInsurer />;
       } else {
         route = null;
       }
@@ -119,6 +123,7 @@ class App extends Component {
       route = (
         <Switch>
           <Route path="/employeelogin" component={EmployeeLogin} />
+          <Route path="/InsurerLogin" component={InsurerLogin} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />

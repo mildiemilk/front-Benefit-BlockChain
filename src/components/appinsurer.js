@@ -29,13 +29,9 @@ const AppInsurer = () => (
         <MainLayout>
           <Switch>
             {/* <Route path="/biddinglist" component={BiddingList} /> */}
-<<<<<<< Updated upstream
-            <Route path="/bidding" component={Bidding} />
-=======
             <Route path="/bidding/:companyId" component={Bidding} />
             <Route path="/claim" component={ClaimList} />
             <Route path="/claim:claimId" component={Claim} />
->>>>>>> Stashed changes
           </Switch>
         </MainLayout>
       </Switch>

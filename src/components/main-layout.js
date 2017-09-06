@@ -18,7 +18,7 @@ class MainLayout extends Component {
         </div>
         <div className="large-10 columns">
           <div className="row" style={{ marginTop: 75 }}>
-            <div className="large-12 columns">
+            <div className="large-10 large-offset-1 columns">
               {this.props.children}
             </div>
           </div>

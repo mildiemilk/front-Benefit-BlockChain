@@ -62,6 +62,7 @@ class Bidding extends Component {
               index={this.state.index}
             />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
+            asdfsdafsdafas
           <ShowMasterPlan />
         </div>
       </div>

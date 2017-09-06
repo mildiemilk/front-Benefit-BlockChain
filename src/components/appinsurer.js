@@ -9,19 +9,23 @@ import Header from './Insurer/Header';
 import Welcome from './Insurer/welcome';
 import Dashboard from './Insurer/dashboard-insurer';
 import Bidding from './Insurer/Bidding';
-import BiddingList from './Insurer/bidding-list';
+// import BiddingList from './Insurer/bidding-list';
 import MainLayout from './Insurer/main-layout';
 import Logout from './Auth/logout';
+import InsurerLogin from './Insurer/insurer-login';
+
 const AppInsurer = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
       <Header />
       <Switch>
+        <Route path="/logout" component={Logout} />
+        <Route path="/insurerlogin" component={InsurerLogin} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/welcome" component={Welcome} />
         <MainLayout>
           <Switch>
-            <Route path="/biddinglist" component={BiddingList} />
+            {/* <Route path="/biddinglist" component={BiddingList} /> */}
             <Route path="/bidding" component={Bidding} />
           </Switch>
         </MainLayout>

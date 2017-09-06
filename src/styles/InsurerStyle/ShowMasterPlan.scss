@@ -5,3 +5,105 @@
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
   border: solid 1px #cecece;
 }
+.joinbid-box {
+  display: flex;
+  margin: 2.1vw 5.3vw;
+}
+.joinbid-l {
+  display: inline-block;
+  width: 50%;
+  text-align: left !important;
+  line-height: 2.8vw;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  letter-spacing: 0.2px;
+  color: #6c6c6c;
+}
+.joinbid-r {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  line-height: 1.7vw;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.joinbid-join {
+  width: 11.4vw;
+  height: 3.1vw;
+  border-radius: 20px;
+  background-color: #46b3b8;
+  border: solid 1px #d8d8d8;
+  color: #ffffff;
+  margin-right: 0.6vw;
+}
+.joinbid-cancel {
+  width: 11.4vw;
+  height: 3.1vw;
+  border-radius: 20px;
+  background-color: #f7555f;
+  border: solid 1px #d8d8d8;
+  color: #ffffff;
+}
+.ui.modal.transition.visible.active.joinbid-modalcanceljoin-box {
+  width: 550px;
+  height: auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+  position: fixed;
+  top: 50%;
+  left: calc(50% - 275px);
+  margin: 0px;
+  padding: 0px;
+}
+.joinbid-modalcancel-box-body {
+  display: block;
+  margin: 2.2vw 4.7vw;
+}
+.joinbid-modalcancel-title {
+  display: block;
+  line-height: 2.1vw;
+  font-family: Kanit;
+  font-size: 1.4vw;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 1.1vw;
+}
+.joinbid-modalcancel-description {
+  display: block;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 2.2vw;
+}
+.joinbid-modalcancel-btn-group {
+  display: block;
+  line-height: 1.9vw;
+  font-family: Kanit;
+  font-size: 1.3vw;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+.joinbid-modalcancel-btn-cancel {
+  width: 11.4vw;
+  height: 2.8vw;
+  border-radius: 20px;
+  background-color: #f7555f;
+  color: #ffffff;
+  border: none;
+  margin-right: 1.1vw;
+}
+.joinbid-modalcancel-btn-confirm {
+  width: 11.4vw;
+  height: 2.8vw;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  color: #ffffff;
+  border: none;
+}

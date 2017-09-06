@@ -70,7 +70,6 @@ class InsuranceDetail extends Component {
       ipdPlus: 'insurance-box-title-show small-2 columns',
       ipdRotatePlus: 'insurance-box-title-hide small-2 columns',
     };
-    this.handleClickLife = this.handleClickLife.bind(this);
   }
 
   handleClickLife = () => {

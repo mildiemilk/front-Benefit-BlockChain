@@ -6,15 +6,30 @@ class ShowMasterPlan extends Component {
     super(props);
     this.state = {
       joinbid: true,
+      modalCancelJoin: false,
     };
   }
+
+  handleOnpenModal = name => this.setState({ [name]: true });
+  // handleOnpenModal = nameModal => {
+  //   console.log(nameModal);
+  // }
+
+  handleCloseModal = nameModal => this.setState({ [nameModal]: false });
 
   render() {
     const { joinbid } = this.state;
     return (
       <div className="show-mp-box">
-        asdfaaaa
-        {joinbid ? <JoinBid /> : <div />}
+        {
+          joinbid
+          ? <JoinBid
+            modalCancelJoin={this.state.modalCancelJoin}
+            handleOnpenModal={this.handleOnpenModal}
+            handleCloseModal={this.handleCloseModal}
+          />
+          : <div />
+        }
       </div>
     );
   }

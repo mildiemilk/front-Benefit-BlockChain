@@ -10,12 +10,16 @@ import Welcome from './Insurer/welcome';
 import Dashboard from './Insurer/dashboard-insurer';
 import BiddingList from './Insurer/Bidding';
 import MainLayout from './Insurer/main-layout';
+import Logout from './Auth/logout';
+import InsurerLogin from './Insurer/insurer-login';
 
 const AppInsurer = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
       <Header />
       <Switch>
+        <Route path="/logout" component={Logout} />
+        <Route path="/insurerlogin" component={InsurerLogin} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/welcome" component={Welcome} />
         <MainLayout>

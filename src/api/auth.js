@@ -56,6 +56,8 @@ export function logout() {
     localStorage.clear();
     if (role === 'Employee') {
       window.location = '/employeelogin';
+    } else if (role === 'Insurer') {
+      window.location = '/insurerlogin';
     } else {
       window.location = '/login';
     }
@@ -71,8 +73,6 @@ export function updatePassword(password, confirmPassword) {
     };
     APIRequest(options, true)
       .then(res => {
-        // window.location.href = '/'
-        // console.log('Update Password Success!')
         dispatch(updatePasswordSuccess(res.data));
       })
       .catch(err => {

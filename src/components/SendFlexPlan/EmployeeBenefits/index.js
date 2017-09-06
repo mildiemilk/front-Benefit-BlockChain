@@ -66,7 +66,6 @@ class EmployeeBenefits extends Component {
     }
   }
   render() {
-    console.log('props', this.props);
     return (
       <div className="row">
         <div className="large-3 columns">
@@ -83,6 +82,7 @@ class EmployeeBenefits extends Component {
           ? <SelectBox
             groupName={this.props.groupBenefit[this.state.activeGroup].name}
             planName={this.props.groupBenefit[this.state.activeGroup].plan}
+            numberOfGroup={this.props.groupBenefit[this.state.activeGroup].numberOfGroup}
             type={this.props.groupBenefit[this.state.activeGroup].type}
             default={this.props.groupBenefit[this.state.activeGroup].default}
           />
@@ -90,7 +90,7 @@ class EmployeeBenefits extends Component {
           }
         </div>
       </div>
-    )
+    );
   }
 }
 

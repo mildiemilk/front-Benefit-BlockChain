@@ -33,6 +33,7 @@ class InputDate extends Component {
     const { dateValue } = this.state;
     return (
       <Popup
+        className="inputdate"
         trigger={<Input className={inputClass} type="text" icon="calendar" onChange={() => {}} value={dateValue} />}
         content={<DatePicker inline onChange={this.handleDate} />}
         on="click"

@@ -20,8 +20,8 @@ class SelectOptionPlan extends Component {
     planName: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selectedGroup: '',
       value: '',

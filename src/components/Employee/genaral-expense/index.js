@@ -69,8 +69,9 @@ class GenaralExpense extends Component {
         </span>
 
         <Modal
+          className="plan-modal-info"
           trigger={<div />}
-          open={this.state.lifeModal}
+          open={this.state.modal}
           onClose={this.handleCloseModal}
         >
           <div className="insurance-box-modal">

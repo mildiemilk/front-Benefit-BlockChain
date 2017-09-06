@@ -107,6 +107,7 @@ class ClaimInsurance extends Component {
           />
           {this.rendermainState()}
           <Modal
+            style={{ paddingTop: '25px', textAlign: 'center' }}
             trigger={<SubmitButton> เคลม </SubmitButton>}
             content={<p>
                         รายการของคุณถูกบันทึกแล้ว <br />

@@ -91,7 +91,6 @@ class CountDowns extends Component {
   }
 
   render() {
-    console.log('countdown', this.props);
     const countDown = this.state;
     let $isDay = this.addLeadingZeros(countDown.days);
     let $isHours = this.addLeadingZeros(countDown.hours);

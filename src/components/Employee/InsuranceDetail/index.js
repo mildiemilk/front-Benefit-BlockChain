@@ -279,6 +279,7 @@ class InsuranceDetail extends Component {
         </span>
 
         <Modal
+          className="plan-modal-info"
           trigger={<div />}
           open={this.state.modal}
           onClose={this.handleCloseModal}

@@ -59,7 +59,6 @@ class SelectRealTime extends Component {
     }
   }
   render() {
-    console.log('select', this.props);
     let TypeIcon = null;
     if (!this.state.isPlan) {
       TypeIcon = <Icon name="caret right" />;

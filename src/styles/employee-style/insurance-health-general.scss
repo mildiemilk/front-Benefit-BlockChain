@@ -79,7 +79,7 @@
   width: 100%;
 }
 .xten-box {
-  width: 288px;
+  width: 80%;
   height: 274px;
   border-radius: 5px;
   background-color: #ffffff !important;
@@ -242,7 +242,7 @@
   width: 100%;
 }
 .insurance-box {
-  width: 288px;
+  width: 80%;
   height: 178px;
   border-radius: 5px;
   background-color: #ffffff;
@@ -350,9 +350,9 @@
   display: block;
   margin: 32px 0;
 }
-.ui.modal {
+/*.ui.modal {
   background: none;
-}
+}*/
 .insurance-box-modal {
   width: 256px;
   height: 150.4px;
@@ -425,3 +425,12 @@
 
 }
 
+.ui.modal.transition.visible.active.plan-modal-info {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  display: block;
+  padding: 0px;
+  box-shadow: none;
+  border: none;
+}

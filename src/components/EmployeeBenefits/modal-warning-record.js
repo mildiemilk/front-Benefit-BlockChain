@@ -24,8 +24,8 @@ class ModalWarningRecord extends Component {
     handleSubmit: PropTypes.func.isRequired,
     openModal: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { modalOpen: false };
   }
 

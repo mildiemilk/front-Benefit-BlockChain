@@ -1,4 +1,4 @@
-.ui.top.left.popup.transition.visible {
+.ui.top.left.popup.transition.visible.inputdate {
   background: transparent;
   border: none;
   box-shadow: none;
@@ -7,4 +7,16 @@
 }
 .react-datepicker {
   bottom: -5px;
+}
+.ui.icon.input.profile-pd-input-date input {
+  box-shadow: none;
+  background: transparent;
+  font-family: Kanit;
+  font-size: 1.230em;
+  font-weight: 200;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: black;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }

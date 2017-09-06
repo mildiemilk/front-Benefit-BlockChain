@@ -52,7 +52,6 @@ class Download extends Component {
   }
 
   handleClick = () => {
-    console.log('save', this.state.file);
     this.props.fileEmployee(this.state.file);
   }
 

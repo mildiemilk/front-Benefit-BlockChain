@@ -155,6 +155,7 @@ class employeeBenefits extends Component {
       const { groupBenefit } = this.props;
       const detail = {
         name: groupBenefit[activeGroup].name,
+        numberOfGroup: groupBenefit[activeGroup].numberOfGroup,
         type: plan,
         plan: selectPlan,
         default: defaultPlan,
@@ -260,7 +261,9 @@ class employeeBenefits extends Component {
             </Link>
           </div>
           <div className="large-3 large-offset-4 columns">
-            <button className="next-step-button">ต่อไป</button>
+            <Link to="/sendflexplan">
+              <button className="next-step-button">ต่อไป</button>
+            </Link>
           </div>
           <div className="large-1 columns" />
         </div>

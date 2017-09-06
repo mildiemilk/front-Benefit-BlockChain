@@ -40,7 +40,6 @@ class ChooseInsurancePlan extends Component {
       PlanTemplateState: 1,
       ChooseInsurance: [],
       OurPlan: [],
-      MilkPlan: [],
       SpecialPlan: [
         {
           planName: 'แผนจากบริษัทประกันที่ 1',
@@ -59,11 +58,7 @@ class ChooseInsurancePlan extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.planList !== this.props.planList) {
-      console.log('newprop chooseplan', newProps);
-      console.log('state ==>', this.state);
-      this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans),
-        MilkPlan: this.filterPlan(newProps.planList, newProps.choosePlans),
-      });
+      this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans) });
     }
     if (newProps.choosePlans !== this.props.choosePlans) {
       if (newProps.choosePlans !== undefined) {
@@ -73,12 +68,11 @@ class ChooseInsurancePlan extends Component {
   }
 
   filterPlan = (plans, choosePlan) => {
-    // if (choosePlan !== undefined) {
-    //   const newPlans = plans.filter(plan =>
-    //     choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false));
-    //   return newPlans;
-    // }
-    console.log('ch', choosePlan);
+    if (choosePlan !== undefined) {
+      const newPlans = plans.filter(plan =>
+        choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false) === -1);
+      return newPlans;
+    }
     return plans;
   }
 
@@ -105,7 +99,6 @@ class ChooseInsurancePlan extends Component {
   }
 
   handleDeleteChooseInsurance = (index, Color) => {
-    console.log('index color', index, Color);
     if (Color === 1) {
       const file = this.state.ChooseInsurance[index];
       const ChooseInsurances = this.state.ChooseInsurance;
@@ -134,8 +127,6 @@ class ChooseInsurancePlan extends Component {
   checkColor = plan => {
     const { planList } = this.props;
     const isOurPlan = planList.filter(ourPlan => ourPlan.planId === plan.planId).length !== 0;
-    console.log('eiei', planList.filter(ourPlan => ourPlan.planId === plan.planId));
-    console.log('ourplan plan', planList, plan.planId);
     if (isOurPlan) {
       return 1;
     }

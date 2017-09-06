@@ -19,13 +19,13 @@ class SelectBox extends Component {
     groupName: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     default: PropTypes.number.isRequired,
+    numberOfGroup: PropTypes.number.isRequired,
   }
   constructor() {
     super();
     this.state = {};
   }
   renderPlan = plans => {
-    console.log('plan', plans);
     const Allplan = plans.map((plan, index) => (
       <div>
         <Plan>{plan}</Plan>
@@ -50,7 +50,7 @@ class SelectBox extends Component {
               <TextLine>จำนวนพนักงานในกลุ่มนี้ </TextLine>
             </div>
             <div className="large-7 columns">
-              <List>20 คน</List>
+              <List>{this.props.numberOfGroup} คน</List>
             </div>
           </div>
           <div className="row">

@@ -10,7 +10,7 @@ class AddBenefit extends Component {
   static propTypes = {
     planOption: PropTypes.func.isRequired,
     getOptionPlan: PropTypes.func.isRequired,
-    optionPlan: PropTypes.shape.isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
   }
 
   constructor(props) {

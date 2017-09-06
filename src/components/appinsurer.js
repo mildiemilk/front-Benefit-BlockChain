@@ -31,14 +31,11 @@ const AppInsurer = () => (
     </div>
   </BrowserRouter>
 );
-
 AppInsurer.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
-
 const mapStateToProps = state => ({
   isAuthenticated: state.authReducer.token != null,
 });
-
 const Container = connect(mapStateToProps)(AppInsurer);
 export default Container;

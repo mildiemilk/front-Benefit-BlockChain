@@ -10,8 +10,8 @@ import { chooseFinalInsurer } from '../../api/bidding';
 class Box extends Component {
   static propTypes = {
     chooseFinalInsurer: PropTypes.func.isRequired,
-    end: PropTypes.shape.isRequired,
-    data: PropTypes.shape.isRequired,
+    end: PropTypes.shape({}).isRequired,
+    data: PropTypes.shape({}).isRequired,
     handleClick: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     completeStep: PropTypes.bool.isRequired,

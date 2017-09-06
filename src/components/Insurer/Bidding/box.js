@@ -10,8 +10,8 @@ import { chooseFinalInsurer } from '../../../api/bidding';
 class Box extends Component {
   static propTypes = {
     chooseFinalInsurer: PropTypes.func.isRequired,
-    end: PropTypes.shape.isRequired,
-    data: PropTypes.shape.isRequired,
+    end: PropTypes.shape({}).isRequired,
+    data: PropTypes.shape({}).isRequired,
     handleClick: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     completeStep: PropTypes.bool.isRequired,
@@ -88,7 +88,7 @@ class Box extends Component {
       return <Redirect to="/congrat" />;
     }
     return bids.map((bid, index) => (
-      <div className="boxDetail">
+      <div className="boxDetail" keys={bid._id}>
         <div className={this.boxStyling(status, end.end)}>
           <div className="row">
             <div className="large-3 columns">

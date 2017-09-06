@@ -4,20 +4,18 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
-import '../styles/employee-style/main.scss';
+import '../styles/InsurerStyle/main.scss';
 import Header from './Insurer/Header';
 import Welcome from './Insurer/welcome';
 import Dashboard from './Insurer/dashboard-insurer';
 import BiddingList from './Insurer/Bidding';
 import MainLayout from './Insurer/main-layout';
-import InsurerLogin from './Insurer/insurer-login';
 
 const AppInsurer = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
       <Header />
       <Switch>
-        <Route path="/insurerlogin" component={InsurerLogin} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/welcome" component={Welcome} />
         <MainLayout>

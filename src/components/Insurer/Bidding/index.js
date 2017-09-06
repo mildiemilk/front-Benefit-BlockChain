@@ -7,6 +7,7 @@ import { bidding } from '../../../api/bidding';
 import Details from './details';
 import { getSelectInsurer, getTimeout } from '../../../api/choose-insurer';
 import { getCompleteStep } from '../../../api/profile-company';
+import ShowMasterPlan from '../ShowMasterPlan';
 
 class Bidding extends Component {
   static propTypes = {
@@ -61,6 +62,7 @@ class Bidding extends Component {
               index={this.state.index}
             />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
+          <ShowMasterPlan />
         </div>
       </div>
     );

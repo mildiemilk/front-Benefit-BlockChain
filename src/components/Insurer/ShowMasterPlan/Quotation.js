@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IconPlan from '../../../../assets/insurer/icon_plan@3x.png';
+import IconPlan from '../../../../assets/Insurer/icon_plan@3x.png';
 
 class Quotation extends Component {
   constructor(props) {

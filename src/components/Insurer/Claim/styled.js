@@ -148,8 +148,8 @@ export const TextInsure = styled.div`
 export const Pic = styled.div`
   border-radius: 50%;
   background-color: #5c6879;
-  width: 79px;
-  height: 79px;
+  width: 60px;
+  height: 60px;
   text-align: center;
   padding: 5%;
   margin: 7%;
@@ -157,7 +157,7 @@ export const Pic = styled.div`
 `;
 
 export const Font = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   display: inline-block;
   position: absolute;
   bottom: 62%;

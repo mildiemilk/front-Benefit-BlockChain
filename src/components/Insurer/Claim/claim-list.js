@@ -5,10 +5,6 @@ import '../../../styles/InsurerStyle/Claim.scss';
 // import { Detail } from '../../StyleComponent';
 import {
   Nav,
-  Pic,
-  TextNav,
-  FontAucTime,
-  FontNumAucTime,
   ProfileImg,
 } from './styled';
 
@@ -23,7 +19,7 @@ class ClaimList extends Component {
   render() {
     return (
       <div className="ClaimList">
-        <Head content="แผนสิทธิประโยชน์ของคุณ" />
+        <Head className="insurerheade-text" content="แผนสิทธิประโยชน์ของคุณ" />
         <div className="row">
           <div className="large-6 columns box-left">
             <Nav>

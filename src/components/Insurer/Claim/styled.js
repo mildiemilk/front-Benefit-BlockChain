@@ -242,3 +242,14 @@ export const StyleStatus = styled.div`
   padding-top: 40px;
   padding-left: 20px;
 `;
+export const DivImg = styled.div`
+  width: 39.8px;
+  height: 39.8px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: solid 1px #d7d7d7;
+  display: inline-block;
+  text-align: center;
+  padding-top: 8px;
+  cursor: pointer;
+`;

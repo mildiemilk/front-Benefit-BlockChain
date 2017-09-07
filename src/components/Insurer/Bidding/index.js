@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBidding from './nav-bidding';
-import Box from './box';
+// import Box from './box';
 import { bidding } from '../../../api/bidding';
-import Details from './details';
+// import Details from './details';
 import { getSelectInsurer, getTimeout } from '../../../api/choose-insurer';
 import { getCompleteStep } from '../../../api/profile-company';
 import ShowMasterPlan from '../ShowMasterPlan';
@@ -12,7 +12,7 @@ import ShowMasterPlan from '../ShowMasterPlan';
 class Bidding extends React.Component {
   static propTypes = {
     num: PropTypes.number.isRequired,
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // data: PropTypes.arrayOf(PropTypes.object).isRequired,
     bidding: PropTypes.func.isRequired,
     getSelectInsurer: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
@@ -65,13 +65,6 @@ class Bidding extends React.Component {
       <div className="Bidding">
         <NavBidding num={this.props.num} timeout={this.props.timeout} />
         <div className="BidContent">
-          {this.state.isDetail
-            ? <Details
-              handleClick={this.handleClick}
-              bid={this.state.Detail}
-              index={this.state.index}
-            />
-            : <Box handleClick={this.handleClick} list={this.props.data} />}
           <ShowMasterPlan />
         </div>
       </div>

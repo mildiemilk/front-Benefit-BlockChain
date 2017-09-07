@@ -7,6 +7,7 @@ class JoinBid extends Component {
     modalCancelJoin: PropTypes.bool.isRequired,
     handleOnpenModal: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
+    handleChangeStateQuotation: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -18,13 +19,14 @@ class JoinBid extends Component {
       modalCancelJoin,
       handleOnpenModal,
       handleCloseModal,
+      handleChangeStateQuotation,
     } = this.props;
     return (
       <div>
         <div className="joinbid-box">
           <div className="joinbid-l">คุณจะได้รับข้อมูลเพิ่มเติม เมื่อคุณเข้าร่วมการประมูลราคานี้</div>
           <div className="joinbid-r">
-            <button className="joinbid-join">เข้าร่วม</button>
+            <button className="joinbid-join" onClick={handleChangeStateQuotation}>เข้าร่วม</button>
             <button className="joinbid-cancel" onClick={() => handleOnpenModal('modalCancelJoin')}>ไม่เข้าร่วม</button>
           </div>
         </div>

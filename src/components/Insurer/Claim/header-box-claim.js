@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import moment from 'moment';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Icon } from 'semantic-ui-react';
+import '../../../styles/InsurerStyle/Claim.scss';
 // import { Redirect } from 'react-router-dom';
 import {
   Nav,
@@ -13,9 +15,6 @@ import {
   FontNumAucTime,
  } from './styled';
 // import { chooseFinalInsurer } from '../../../api/bidding';
-import building from '../../../../assets/bidding/icons-8-city.png';
-import time from '../../../../assets/bidding/icons-8-time.png';
-import auction from '../../../../assets/bidding/icons-8-auction.png';
 
 class HeaderBoxClaim extends Component {
   static propTypes = {
@@ -40,7 +39,7 @@ class HeaderBoxClaim extends Component {
         <div className="row">
           <div className="large-3 columns">
             <Nav>
-              <Pic><img src={building} alt="building" /></Pic>
+              <Pic> <Icon name="drivers license outline" size="big" /></Pic>
               <TextNav>
                 <Font>จำนวนการเคลมทั้งหมด</Font><br />
                 <FontNum>44</FontNum>
@@ -49,7 +48,7 @@ class HeaderBoxClaim extends Component {
           </div>
           <div className="large-3 columns">
             <Nav>
-              <Pic><img src={auction} alt="auction" /></Pic>
+              <Pic> <Icon name="checkmark" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่อนุมัติไปแล้ว</FontAucTime><br />
                 <FontNumAucTime>10</FontNumAucTime>
@@ -58,7 +57,7 @@ class HeaderBoxClaim extends Component {
           </div>
           <div className="large-3 columns">
             <Nav>
-              <Pic><img src={time} alt="time" /></Pic>
+              <Pic> <Icon name="search" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่กำลังพิจารณา</FontAucTime><br />
                 <FontNumAucTime>3
@@ -68,9 +67,9 @@ class HeaderBoxClaim extends Component {
           </div>
           <div className="large-3 columns">
             <Nav>
-              <Pic><img src={time} alt="time" /></Pic>
+              <Pic> <Icon name="remove" size="big" color="white" /></Pic>
               <TextNav>
-                <FontAucTime>การเคลมที่ไม่อนุมัต</FontAucTime><br />
+                <FontAucTime>การเคลมที่ไม่อนุมัติ</FontAucTime><br />
                 <FontNumAucTime>4
                 </FontNumAucTime>
               </TextNav>

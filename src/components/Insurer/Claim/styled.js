@@ -148,8 +148,8 @@ export const TextInsure = styled.div`
 export const Pic = styled.div`
   border-radius: 50%;
   background-color: #5c6879;
-  width: 79px;
-  height: 79px;
+  width: 60px;
+  height: 60px;
   text-align: center;
   padding: 5%;
   margin: 7%;
@@ -157,7 +157,7 @@ export const Pic = styled.div`
 `;
 
 export const Font = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   display: inline-block;
   position: absolute;
   bottom: 62%;
@@ -220,4 +220,25 @@ export const ButtonNew = styled.button`
   position: absolute;
   margin-top: 1.5%;
   margin-left: 43%;
+`;
+export const Companies = styled.div`
+  margin-top: 12px;
+  float: left;
+  display: block;
+  height: 110px;
+`;
+export const ProfileImg = styled.div`
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: 10px;
+`;
+export const CompaniesInfo = styled.div`
+  position: relative;
+  display: block;
+`;
+export const StyleStatus = styled.div`
+  padding-top: 40px;
+  padding-left: 20px;
 `;

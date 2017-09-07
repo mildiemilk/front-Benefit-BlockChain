@@ -42,6 +42,8 @@ import ViewAllPlan from './ViewAllPlan';
 import ViewYourPlan from './ViewYourPlan';
 import AppInsurer from './appinsurer';
 import InsurerLogin from './Insurer/insurer-login';
+import AddEmployee from './EmployeeList/AddEmployee';
+import ClaimEmployee from './ClaimEmployee';
 
 class App extends Component {
   static propTypes = {
@@ -106,6 +108,8 @@ class App extends Component {
                   <Route path="/sendflexplan" component={SendFlexPlan} />
                   <Route path="/Summary" component={Summary} />
                   <Route path="/EmployeeList" component={EmployeeList} />
+                  <Route path="/AddEmployee" component={AddEmployee} />
+                  <Route path="/ClaimEmployee" component={ClaimEmployee} />
                   <Route path="/view" component={ViewAllPlan} />
                 </Switch>
               </MainLayout>

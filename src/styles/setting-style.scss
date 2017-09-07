@@ -8,7 +8,13 @@
     border-radius: 50%;
     margin: auto;
     display: block;
-
+    }
+    .thumbnail.addEmployee{
+        width: 135px;
+        height: 135px;
+    }
+    .thumbnail.addEmployee  .hidden{
+        opacity: 0;
     }
     .thumbnail img {
     position: absolute;

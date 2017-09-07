@@ -27,7 +27,7 @@ export default class Sidebar extends Component {
           </Item>
           <Item>
             <Icon name="newspaper" size="large" />&nbsp;
-            <Item.Content verticalAlign="middle">รายการเคลม</Item.Content>
+            <Links to="/ClaimEmployee" ><Item.Content verticalAlign="middle">รายการเคลม</Item.Content></Links>
           </Item>
           <Item>
             <Icon name="checked calendar" size="large" />&nbsp;

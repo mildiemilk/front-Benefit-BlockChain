@@ -51,7 +51,7 @@ class ModalConfirmPassword extends Component {
   static propTypes = {
     handlePost: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
-    data: PropTypes.shape.isRequired,
+    data: PropTypes.shape({}).isRequired,
     content: PropTypes.string.isRequired,
     head: PropTypes.string.isRequired,
     value: PropTypes.string,
@@ -76,7 +76,7 @@ class ModalConfirmPassword extends Component {
       modalOpen: true,
     })
   render() {
-    const { content, head } = this.props;
+    const { content, head, data } = this.props;
     return (
       <Modals
         trigger={
@@ -105,11 +105,11 @@ class ModalConfirmPassword extends Component {
               onChange={this.props.handleChange}
             />
 
-            {this.props.data.error
+            {data.error
               ? <span style={{ color: 'red' }}>
                 <br />
                 <div style={{ marginLeft: '15%', marginTop: '2%' }}>
-                  {this.props.data.message}
+                  {data.message}
                 </div>
               </span>
               : <span />}

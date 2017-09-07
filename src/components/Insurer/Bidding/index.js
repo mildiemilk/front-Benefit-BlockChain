@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBidding from './nav-bidding';
@@ -7,8 +7,9 @@ import { bidding } from '../../../api/bidding';
 import Details from './details';
 import { getSelectInsurer, getTimeout } from '../../../api/choose-insurer';
 import { getCompleteStep } from '../../../api/profile-company';
+import ShowMasterPlan from '../ShowMasterPlan';
 
-class Bidding extends Component {
+class Bidding extends React.Component {
   static propTypes = {
     num: PropTypes.number.isRequired,
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -17,9 +18,19 @@ class Bidding extends Component {
     getTimeout: PropTypes.func.isRequired,
     timeout: PropTypes.string.isRequired,
     getCompleteStep: PropTypes.func.isRequired,
+    match: PropTypes.shape({ params: PropTypes.number }),
+    // getCompleteStep: PropTypes.func.isRequired,
+  }
+  static defaultProps = {
+    match: {
+      params: 0,
+    },
   }
   constructor(props) {
     super(props);
+    console.log('props.match.params.companyId', props.match.params.companyId);
+    // const { isDetail } = this.state;
+    // console.log('props.match.params.isDetail', isDetail);
     this.state = {
       isDetail: false,
       Detail: {},
@@ -61,6 +72,7 @@ class Bidding extends Component {
               index={this.state.index}
             />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
+          <ShowMasterPlan />
         </div>
       </div>
     );

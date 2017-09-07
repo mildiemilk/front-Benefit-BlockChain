@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Divider } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CountDowns from './CountDowns';
+import HeadCompanyInfo from '../header-company-info';
 import {
-  Head,
   Nav,
   Pic,
   Font,
@@ -30,12 +29,7 @@ class Bidding extends Component {
   render() {
     return (
       <div className="NavBid">
-        <div className="row">
-          <div className="large-12 columns">
-            <Head> การเสนอราคาประมูล </Head>
-            <Divider style={{ marginBottom: '30px' }} />
-          </div>
-        </div>
+        <HeadCompanyInfo />
         <div className="row">
           <div className="large-4 columns">
             <Nav>

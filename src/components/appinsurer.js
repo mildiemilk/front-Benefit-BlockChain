@@ -4,12 +4,16 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
-import '../styles/employee-style/main.scss';
+import '../styles/InsurerStyle/main.scss';
 import Header from './Insurer/Header';
 import Welcome from './Insurer/welcome';
 import Dashboard from './Insurer/dashboard-insurer';
-import BiddingList from './Insurer/Bidding';
+import Bidding from './Insurer/Bidding';
+// import BiddingList from './Insurer/bidding-list';
 import MainLayout from './Insurer/main-layout';
+import ClaimList from './Insurer/Claim/claim-list';
+import Claim from './Insurer/Claim';
+import Logout from './Auth/logout';
 import InsurerLogin from './Insurer/insurer-login';
 
 const AppInsurer = () => (
@@ -17,30 +21,28 @@ const AppInsurer = () => (
     <div style={{ height: '100%' }}>
       <Header />
       <Switch>
+        <Route path="/logout" component={Logout} />
         <Route path="/insurerlogin" component={InsurerLogin} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/welcome" component={Welcome} />
+        <Route path="/logout" component={Logout} />
         <MainLayout>
           <Switch>
-            <Route path="/biddinglist" component={BiddingList} />
+            {/* <Route path="/biddinglist" component={BiddingList} /> */}
+            <Route path="/bidding/:companyId" component={Bidding} />
+            <Route path="/claim/:claimId" component={Claim} />
+            <Route path="/claim" component={ClaimList} />
           </Switch>
         </MainLayout>
-        {/* <Route path="/biddinglist" component={BiddingList} />
-        <Route path="/bidding" component={Bidding} />
-        <Route path="/companyclaimlist" component={CompanyClaimList} />
-        <Route path="/viewclaim" component={ViewClaimList} /> */}
       </Switch>
     </div>
   </BrowserRouter>
 );
-
 AppInsurer.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
-
 const mapStateToProps = state => ({
   isAuthenticated: state.authReducer.token != null,
 });
-
 const Container = connect(mapStateToProps)(AppInsurer);
 export default Container;

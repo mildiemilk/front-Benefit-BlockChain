@@ -29,46 +29,49 @@ class EmployeeLoginDesktop extends Component {
       status,
     } = this.props;
 
-    const employeeInsurer = (
-      <div className="login-d-box-r">
-        <span className="login-d-header">เข้าสู่ระบบ</span>
-        <span className="login-d-description">{text}</span>
-        <hr className="login-d-line" />
-        <Input className="login-d-input-box" iconPosition="left" placeholder="อีเมล">
-          <img className="login-d-icon-input" src={emailIcon} alt="at" />
-          <input name="email" type="email" onChange={handleChange} />
-        </Input>
-        <Input className="login-d-input-box" iconPosition="left" placeholder="รหัสผ่าน">
-          <img className="login-d-icon-input" src={keyIcon} alt="at" />
-          <input name="password" type="password" onChange={handleChange} />
-        </Input>
-        {
-          data.error ?
-            <p className="login-d-error-msg">
-              {data.message}
-            </p>
-          : <div />
-        }
-        <a className="login-d-forget">ลืมรหัสผ่าน?</a>
-        <button className="login-d-btn-login" onClick={handleSubmit}>
-          ลงชื่อเข้าใช้
-        </button>
-      </div>
-    );
+    // const employeeInsurer = (
+    //   <div className="login-d-box-r">
+    //     <span className="login-d-header">เข้าสู่ระบบ</span>
+    //     <span className="login-d-description">{text}</span>
+    //     <hr className="login-d-line" />
+    //     <Input className="login-d-input-box" iconPosition="left" placeholder="อีเมล">
+    //       <img className="login-d-icon-input" src={emailIcon} alt="at" />
+    //       <input name="email" type="email" onChange={handleChange} />
+    //     </Input>
+    //     <Input className="login-d-input-box" iconPosition="left" placeholder="รหัสผ่าน">
+    //       <img className="login-d-icon-input" src={keyIcon} alt="at" />
+    //       <input name="password" type="password" onChange={handleChange} />
+    //     </Input>
+    //     {
+    //       data.error ?
+    //         <p className="login-d-error-msg">
+    //           {data.message}
+    //         </p>
+    //       : <div />
+    //     }
+    //     <a className="login-d-forget">ลืมรหัสผ่าน?</a>
+    //     <button className="login-d-btn-login" onClick={handleSubmit}>
+    //       ลงชื่อเข้าใช้
+    //     </button>
+    //   </div>
+    // );
 
-    const hr = (
-      <div className="login-d-box-r-hr">
+
+    const formLogin = (
+      <div className={status === 'hr' ? 'login-d-box-r-hr' : 'login-d-box-r'}>
         <span className="login-d-header">เข้าสู่ระบบ</span>
         <span className="login-d-description">{text}</span>
         <hr className="login-d-line" />
-        <Input className="login-d-input-box" iconPosition="left" placeholder="อีเมล">
-          <img className="login-d-icon-input" src={emailIcon} alt="at" />
-          <input name="email" type="email" onChange={handleChange} />
-        </Input>
-        <Input className="login-d-input-box" iconPosition="left" placeholder="รหัสผ่าน">
-          <img className="login-d-icon-input" src={keyIcon} alt="at" />
-          <input name="password" type="password" onChange={handleChange} />
-        </Input>
+        <form id="formlogin" onSubmit={handleSubmit}>
+          <Input className="login-d-input-box" iconPosition="left" placeholder="อีเมล">
+            <img className="login-d-icon-input" src={emailIcon} alt="at" />
+            <input name="email" type="email" onChange={handleChange} />
+          </Input>
+          <Input className="login-d-input-box" iconPosition="left" placeholder="รหัสผ่าน">
+            <img className="login-d-icon-input" src={keyIcon} alt="at" />
+            <input name="password" type="password" onChange={handleChange} />
+          </Input>
+        </form>
         {
           data.error ?
             <p className="login-d-error-msg">
@@ -77,14 +80,20 @@ class EmployeeLoginDesktop extends Component {
           : <div />
         }
         <a className="login-d-forget">ลืมรหัสผ่าน?</a>
-        <button className="login-d-btn-login" onClick={handleSubmit}>
+        <button type="submit" form="formlogin" className="login-d-btn-login">
           ลงชื่อเข้าใช้
         </button>
-        <span className="login-d-line" />
-        <span className="login-d-title-no-ac">ยังไม่เคยสมัคร ?</span>
-        <Link to="/signup">
-          <button className="login-d-btn-create-ac">สร้างบัญชีใหม่</button>
-        </Link>
+        {
+          status === 'hr'
+          ? <div>
+            <span className="login-d-line" />
+            <span className="login-d-title-no-ac">ยังไม่เคยสมัคร ?</span>
+            <Link to="/signup">
+              <button className="login-d-btn-create-ac">สร้างบัญชีใหม่</button>
+            </Link>
+          </div>
+          : <div />
+        }
       </div>
     );
 
@@ -95,11 +104,7 @@ class EmployeeLoginDesktop extends Component {
           <div className="login-d-box-l">
             <img alt="" src={IconGift} className="login-d-icon-gift" />
           </div>
-          {
-            status !== 'hr'
-            ? employeeInsurer
-            : hr
-          }
+          {formLogin}
         </div>
       </div>
     );

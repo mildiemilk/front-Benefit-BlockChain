@@ -366,3 +366,120 @@
   margin-left: 1.1vw;
   vertical-align: middle;
 }
+.quotation-input-quotation {
+  width: 27.5vw;
+  height: 3.1vw;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #bfbfbf;
+  line-height: 1.7vw;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 2.4vw;
+}
+.quotation-modal-btn-group {
+  display: flex;
+}
+.quotation-btn-group-l {
+  width: 50%;
+  text-align: left;
+  display: inline-block;
+}
+.quotation-btn-group-r {
+  width: 50%;
+  text-align: right;
+  display: inline-block;
+}
+.quotation-detail-group {
+  display: block;
+  margin-bottom: 1.3vw;
+  padding-left: 2.2vw;
+  padding-right: 2vw;
+}
+.quotation-detail-text {
+  display: inline-block;
+  line-height: 1.5vw;
+  font-family: Kanit;
+  font-size: 1vw;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: #979797;
+  width: 33.33333%;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+}
+.sort.descending.icon.quotation-icon-plan-name {
+  line-height: 1.5vw;
+  vertical-align: middle;
+  margin-left: 0.6vw !important;
+}
+.quotation-select-plan-box {
+  display: block;
+  margin-bottom: 2.2vw;
+}
+.quotation-select-plan-active {
+  width: 100%;
+  height: 4.2vw;
+  background-color: #c0ccda;
+  border: solid 1px #3a7bd5;
+  padding: 0.7vw 2.2vw;
+  line-height: 1.7vw;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #515151;
+}
+.quotation-select-plan-deactive {
+  width: 100%;
+  height: 4.2vw;
+  background-color: #fafafa;
+  border: solid 1px #e3e3e3;
+  padding: 0.7vw 2.2vw;
+  line-height: 1.7vw;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #515151;
+}
+.quotation-checkbox-select-plan {
+  font-family: Kanit;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #515151;
+}
+.quotation-input-select-plan {
+  width: 12vw;
+  height: 3.1vw;
+  background-color: #ffffff;
+  border: solid 1px #d8d8d8;
+  line-height: 1.7vw;
+  font-family: Kanit;
+  font-size: 1.1vw;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #515151;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+.ui.modal.transition.visible.active.joinbid-modalcanceljoin-box {
+  width: 860px;
+  left: calc(50% - 430px);
+}
+.quotation-detail-plan-box {
+  width: 33.33333%;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  display: inline-block;
+}
+.grap-detail-select-plan {
+  padding-left: 2.8vw;
+}
+.text-rigth {
+  text-align: right;
+}

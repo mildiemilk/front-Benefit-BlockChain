@@ -9,6 +9,7 @@ class Quotation extends Component {
   static propTypes = {
     masterplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     editplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    handleOnpenModal: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ class Quotation extends Component {
             <span className="quotation-mp-name">Management Plan {index + 1}</span>
           </div>
           <div className="quotation-mp-price-box">
-            <input className="quotation-mp-input-price" placeholder="เสนอราคา" />
+            <input className="quotation-mp-input-price" type="number" placeholder="เสนอราคา" />
             <div className="quotation-circle-icon-view">
               <img alt="" className="quotation-mp-icon-view" src={IconView} />
             </div>
@@ -39,6 +40,7 @@ class Quotation extends Component {
     const {
       masterplan,
       editplan,
+      handleOnpenModal,
     } = this.props;
     return (
       <div>
@@ -64,7 +66,7 @@ class Quotation extends Component {
             <div className="quotation-mp-edit-title-box">
               <span className="quotation-mp-edit-title">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
               <div className="quotation-btn-add-plan-box">
-                <button className="quotation-mp-edit-btn">
+                <button className="quotation-mp-edit-btn" onClick={() => handleOnpenModal('selectInsurerPlan')}>
                   <img alt="" className="quotation-icon-add-plan" src={IconAddPlan} />
                   เพิ่มจากแผนประกันภัยของคุณ
                 </button>

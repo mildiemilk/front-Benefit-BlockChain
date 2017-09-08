@@ -1,21 +1,60 @@
 .insurerheade-text{
   font-size: 24px;
 }
+.inline-link{
+  width: 54px;
+  height: 21px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #4990e2;
+}
+.fontweight{
+  font-weight: 800;
+}
+.text-right{
+  text-align: right;
+}
 .HeaderBoxClaim{
   .icon{
     color: aliceblue;
   }
 }
+.boxDetail{
+    height: 84px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.08);
+    border: solid 1px #cecece;
+    margin:  8px 0px;
+    padding: 3.2% 0%;
+    position: relative;
+    overflow: hidden;
+  }
 .company-heder-info span{
   padding-left: 70px;
 }
-.ClaimDetail{
+.ClaimIndex{
   .filter-claim{
     padding-top: 20px;
   }
   span.external{
     margin:5px;
   }
+}
+.ClaimDetail{
+  .left-box-detail{
+    padding: 30px 50px 0px 50px;
+  }
+  .btn-box-detail{
+    margin: 0;
+    height: 25px;
+    width: 130px;
+    float: right;
+  }
+  .ui.divider {
+  color: #bcbcbc;
+}
 }
 .HeaderCompanyInfo{
   .gfnmYo{

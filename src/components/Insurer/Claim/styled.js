@@ -24,6 +24,13 @@ export const Nav = styled.div`
   border: solid 1px #d3d3d3;
   position: relative;
 `;
+export const NavDetail = styled.div`
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  border: solid 1px #d3d3d3;
+  position: relative;
+`;
 
 export const Card = styled.div`
   height: 84px;

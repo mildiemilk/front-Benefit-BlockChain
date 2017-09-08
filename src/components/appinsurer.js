@@ -13,6 +13,7 @@ import Bidding from './Insurer/Bidding';
 import MainLayout from './Insurer/main-layout';
 import ClaimList from './Insurer/Claim/claim-list';
 import ClaimDetail from './Insurer/Claim/claim-detail';
+import ClaimAnalysis from './Insurer/Claim/claim-analysis';
 import Claim from './Insurer/Claim';
 import Logout from './Auth/logout';
 import InsurerLogin from './Insurer/insurer-login';
@@ -34,6 +35,7 @@ const AppInsurer = () => (
             <Route path="/claim/:companyId" component={Claim} />
             <Route path="/claimdetail/:claimId" component={ClaimDetail} />
             <Route path="/claim" component={ClaimList} />
+            <Route path="/claimanalysis" component={ClaimAnalysis} />
           </Switch>
         </MainLayout>
       </Switch>

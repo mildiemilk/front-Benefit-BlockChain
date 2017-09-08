@@ -73,7 +73,7 @@ class ClaimDetail extends Component {
                   </div>
                   <div className="row">
                     <div className="large-4 columns fontweight">หลักฐานการเคลม </div>
-                    <div className="large-7 columns">1-234-546-8-4 <br /><Divider /></div>
+                    <div className="large-7 columns">XXXรูปภาพXXX <br /><Divider /></div>
                   </div>
                 </div>
               </div>

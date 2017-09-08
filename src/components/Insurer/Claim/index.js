@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Divider, Icon } from 'semantic-ui-react';
 import HeadCompanyInfo from '../header-company-info';
 import HeaderBoxClaim from './header-box-claim';
-import { Detail, Button } from '../../StyleComponent';
+import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
 import { Head, DivImg, TextIn, Text } from './styled';
 import pdf from '../../../../assets/EmployeeList/icons-8-pdf.png';

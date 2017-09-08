@@ -260,3 +260,52 @@ export const DivImg = styled.div`
   padding-top: 8px;
   cursor: pointer;
 `;
+export const FileuploadBox = styled.div`
+  margin-bottom: 10px;
+  margin-top: 19px;
+  padding:8px;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  border: solid 1px rgba(155, 155, 155, 0.64);
+`;
+export const FileuploadBoxs = FileuploadBox.extend`
+  margin-top: 12px;
+`;
+export const Upload = styled.div`
+  margin-left: 8px;
+  width: 100px;
+  margin: -10px;
+`;
+export const BrowsButton = styled.label`
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  background-color: #3a7bd5;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  text-align: center;
+  border-color: #3a7bd5;
+  border-style: solid;
+  color: #ffffff;
+  padding: 4% 20%;
+  cursor: pointer;
+  margin-right: 10px;
+  display: block;
+  width: 100%;
+`;
+export const TextNormal = styled.div`
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #323028;
+  padding-left: 2%;
+  padding-bottom: 2%;
+  padding-top: 27px;
+  margin-left: 19px;
+`;

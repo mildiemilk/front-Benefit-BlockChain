@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Divider, Icon } from 'semantic-ui-react';
 import HeadCompanyInfo from '../header-company-info';
 import HeaderBoxClaim from './header-box-claim';
-import { Detail, Button } from '../../StyleComponent';
+import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
-import { Head, DivImg } from './styled';
+import { Head, DivImg, TextIn, Text } from './styled';
 import pdf from '../../../../assets/EmployeeList/icons-8-pdf.png';
 import print from '../../../../assets/EmployeeList/icons-8-print.png';
 import FilterSearch from '../../FilterSearch';
@@ -34,11 +34,11 @@ class Claim extends Component {
   }
   render() {
     return (
-      <div className="ClaimDetail">
+      <div className="ClaimIndex">
         <HeadCompanyInfo />
         <HeaderBoxClaim />
         <div className="row">
-          <div className="large-4 columns"><Head>การเคลม</Head></div>
+          <div className="large-4 columns"><Head>รายการเคลม</Head></div>
           <div className="large-3 columns"><Button>ภาพรวมการเคลม<span className="external"><Icon name="external" size="lang" /></span></Button></div>
           <div className="filter-claim"><FilterSearch groupBenefit={this.props.groupBenefit} />
             <div className="large-1 columns">
@@ -52,12 +52,57 @@ class Claim extends Component {
           </div>
         </div>
         <Divider />
-        <Detail>
-          <div className="row">
-            <div className="large-6 columns">hh</div>
-            <div className="large-6 columns">hh</div>
+
+        <div className="row">
+          <div className="large-1 columns">
+            <TextIn>เลขที่เคลม <Icon name="sort descending" /></TextIn>
           </div>
-        </Detail>
+          <div className="large-2 columns">
+            <Text>เรื่องที่เคลม</Text>
+          </div>
+          <div className="large-2 columns">
+            <TextIn>วันที่เคลม <Icon name="sort descending" /></TextIn>
+          </div>
+          <div className="large-2 columns">
+            <TextIn>ผู้เคลม <Icon name="sort descending" /></TextIn>
+          </div>
+          <div className="large-2 columns">
+            <TextIn>จำนวนเงิน <Icon name="sort descending" /></TextIn>
+          </div>
+          <div className="large-2 columns">
+            <TextIn>สถานะการเคลม <Icon name="sort descending" /></TextIn>
+          </div>
+          <div className="large-1 columns">
+            <Text>Option</Text>
+          </div>
+        </div>
+        <div className="boxDetail">
+          <div className="">
+            <div className="row">
+              <div className="large-1 columns">
+                <Text>MT0001 </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>IPD</Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>07/07/2560 </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>อิทธิพงศ์ กฤดากร ณ อยุธยา </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>1222 </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>สถานะ </Text>
+              </div>
+              <div className="large-1 columns">
+                <Text>Option</Text>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

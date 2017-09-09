@@ -26,7 +26,12 @@ class Quotation extends Component {
           </div>
           <div className="quotation-mp-price-box">
             <input className="quotation-mp-input-price" type="number" placeholder="เสนอราคา" />
-            <div className="quotation-circle-icon-view">
+            <div
+              className="quotation-circle-icon-view"
+              onClick={() => this.props.handleOnpenModal('editDetailMP')}
+              role="button"
+              aria-hidden
+            >
               <img alt="" className="quotation-mp-icon-view" src={IconView} />
             </div>
             <div className="quotation-circle-icon-download">

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Icon, Checkbox } from 'semantic-ui-react';
+import PlanBoxModal from './ModalPlanBox/planbox-modal';
+// import FormSubmitPlan from './SubmitPlan/FormSubmitPlan';
+// import AllPlan from './SubmitPlan/all-plan';
 
 class ModalInsurer extends Component {
   static propTypes = {
@@ -8,6 +11,7 @@ class ModalInsurer extends Component {
     modalCancelJoin: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     selectInsurerPlan: PropTypes.bool.isRequired,
+    editDetailMP: PropTypes.bool.isRequired,
   }
   constructor(props) {
     super(props);
@@ -20,6 +24,7 @@ class ModalInsurer extends Component {
       modalCancelJoin,
       handleCloseModal,
       selectInsurerPlan,
+      editDetailMP,
     } = this.props;
     return (
       <div>
@@ -145,6 +150,12 @@ class ModalInsurer extends Component {
             </div>
           </div>
         </Modal>
+        <PlanBoxModal
+          modalOpen={editDetailMP}
+          handleCloseModal={handleCloseModal}
+          activePlan={[1, 2, 3]}
+          planList={[1, 2, 3]}
+        />
       </div>
     );
   }

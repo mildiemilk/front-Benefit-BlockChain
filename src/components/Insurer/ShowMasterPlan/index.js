@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+// import { Modal } from 'semantic-ui-react';
+// import styled from 'styled-components';
 import JoinBid from './JoinBid';
 import Quotation from './Quotation';
 import QuotationClaim from './QuotationClaim';
 import ModalInsurer from './ModalInsurer';
+// import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/form-submit-plan';
+// import AllPlan from './SubmitPlan/all-plan';
+// import PlanBoxModal from './ModalPlanBox/planbox-modal';
 import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
 
 class ShowMasterPlan extends Component {
@@ -16,6 +21,7 @@ class ShowMasterPlan extends Component {
       editplan: [],
       claimdata: [1, 2, 3],
       selectInsurerPlan: false,
+      editDetailMP: false,
     };
   }
 
@@ -29,6 +35,14 @@ class ShowMasterPlan extends Component {
       quotation: true,
     });
 
+  changePositionPage = () => {
+    if (this.state.position === 'relative-box') {
+      this.setState({ position: 'fixed-box' });
+    } else {
+      this.setState({ position: 'relative-box' });
+    }
+  }
+
   render() {
     const {
       joinbid,
@@ -38,6 +52,7 @@ class ShowMasterPlan extends Component {
       editplan,
       claimdata,
       selectInsurerPlan,
+      editDetailMP,
     } = this.state;
     return (
       <div>
@@ -86,6 +101,7 @@ class ShowMasterPlan extends Component {
           modalCancelJoin={modalCancelJoin}
           handleCloseModal={this.handleCloseModal}
           selectInsurerPlan={selectInsurerPlan}
+          editDetailMP={editDetailMP}
         />
       </div>
     );

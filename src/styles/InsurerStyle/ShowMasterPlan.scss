@@ -483,3 +483,173 @@
 .text-rigth {
   text-align: right;
 }
+.ui.modal.transition.visible.active.SubmitPlan {
+  width: 800px;
+  height: auto;
+}
+// .ui.modal.transition.visible.active.edit-mp-modal {
+//   width: 776px !important;
+//   height: auto !important;
+//   border-radius: 5px;
+//   background-color: #ffffff;
+//   border: solid 1px #979797;
+// }
+.edit-mp-box {
+  display: block;
+  padding: 32px 30px;
+}
+.edit-mp-title {
+  display: block;
+  line-height: 35px;
+  font-family: Kanit;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: center;
+  color: #323028;
+  margin-bottom: 18px;
+}
+.edit-mp-box-1 {
+  width: 100%;
+  background-color: #5c6879;
+  border-radius: 5px 5px 0px 0px;
+  background-color: #ffffff;
+  border: solid 1px rgba(151, 151, 151, 0.66);
+}
+.formsubmit-head-box {
+  display: block;
+  padding: 32px;
+}
+.formsubmit-1-box {
+  display: block;
+  margin-bottom: 5px;
+}
+.formsubmit-1-l {
+  display: inline-block;
+  width: 30%;
+}
+.formsubmit-1-r {
+  display: inline-block;
+  width: 70%;
+}
+.edit-mp-log-edit {
+  display: block;
+}
+.edit-mp-title-change {
+  display: block;
+  line-height: 27px;
+  font-family: Kanit;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+}
+.edit-mp-subtitle-change {
+  display: inline-block;
+  height: 21px;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+}
+.edit-mp-subtitle-change-b {
+  display: inline-block;
+  height: 21px;
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #000000;
+}
+.edit-mp-detail-change {
+  font-family: Kanit;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #323028;
+}
+.edit-mp-input-price-box {
+  display: block;
+  padding-top: 23px;
+  padding-bottom: 23px;
+}
+.edit-mp-input-price-box-l {
+  display: inline-block;
+  width:  50%;
+  text-align: left;
+  line-height: 35px;
+  font-family: Kanit;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: left;
+  color: #323028;
+}
+.edit-mp-input-price-box-r {
+  display: inline-block;
+  width:  50%;
+  text-align: right;
+}
+.edit-mp-input-price {
+  display: inline-block;
+  width: 170px;
+  height: 51px;
+  border-radius: 3px;
+  line-height: 35px;
+  font-family: Kanit;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  text-align: right;
+  color: #323028;
+}
+.edit-mp-text-r {
+  line-height: 35px;
+  font-family: Kanit;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-align: right;
+  color: #323028;
+}
+.edit-mp-btn-box {
+  display: block;
+  margin-top: 32px;
+}
+.edit-mp-btn-box-l {
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
+.edit-mp-btn-box-r {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+.edit-mp-btn-cancle {
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  border: none;
+  line-height: 27px;
+  font-family: Kanit;
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+}
+.edit-mp-btn-save {
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3a7bd5;
+  border: none;
+  line-height: 27px;
+  font-family: Kanit;
+  font-size: 18px;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+}

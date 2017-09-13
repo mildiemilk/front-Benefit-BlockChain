@@ -36,9 +36,10 @@ export const DefaultImg = styled.div`
 `;
 export const Upload = styled.label`
   position: absolute;
-  top: 45px;
-  left: 23px;
+  top: 50%;
+  transform: translate(0, -50%);
   text-align: center;
+  width: 100%;
 `;
 export const TextUpload = styled.div`
   display: inline-block;

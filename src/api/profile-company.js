@@ -145,6 +145,11 @@ export function employeeDetail() {
         dispatch(employeeDetailSuccess(res.data));
       })
       .catch(err => {
+        console.log('err', err.response.data.error);
+        if (err.response.data.statuscode === 401) {
+          console.log('token invalid');
+          window.location.href = '/logout';
+        }
         dispatch(employeeDetailFailure(err.response.data));
       });
   };

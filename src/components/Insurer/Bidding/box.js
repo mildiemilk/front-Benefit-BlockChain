@@ -118,7 +118,6 @@ class Box extends Component {
                   onClick={() => this.props.handleClick(bid, index)}
                 />
               </Text>
-
             </div>
             <div className="large-2 columns">
               <Text>{this.getStatusModule(bid.insurerName)}</Text>

@@ -11,7 +11,7 @@ class AuthLogin extends Component {
   static propTypes = {
     data: PropTypes.shape({}).isRequired,
     authenticate: PropTypes.func.isRequired,
-    profile: PropTypes.shape.isRequired,
+    profile: PropTypes.shape({}).isRequired,
     text: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
   }
@@ -39,7 +39,7 @@ class AuthLogin extends Component {
       if (approve === true) {
         if (!personalVerify) {
           return <Redirect to={{ pathname: '/employeeverify' }} />;
-        } return <Redirect to={{ pathname: '/flexyplan' }} />;
+        } return <Redirect to={{ pathname: '/plan' }} />;
       }
     } else if (role === 'HR') {
       if (companyName && approve) {

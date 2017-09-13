@@ -9,9 +9,11 @@ import Header from './Insurer/Header';
 import Welcome from './Insurer/welcome';
 import Dashboard from './Insurer/dashboard-insurer';
 import Bidding from './Insurer/Bidding';
-// import BiddingList from './Insurer/bidding-list';
+import BiddingList from './Insurer/Bidding/BiddingList';
 import MainLayout from './Insurer/main-layout';
 import ClaimList from './Insurer/Claim/claim-list';
+import ClaimDetail from './Insurer/Claim/claim-detail';
+import ClaimAnalysis from './Insurer/Claim/claim-analysis';
 import Claim from './Insurer/Claim';
 import Logout from './Auth/logout';
 import InsurerLogin from './Insurer/insurer-login';
@@ -28,10 +30,12 @@ const AppInsurer = () => (
         <Route path="/logout" component={Logout} />
         <MainLayout>
           <Switch>
-            {/* <Route path="/biddinglist" component={BiddingList} /> */}
-            <Route path="/bidding/:companyId" component={Bidding} />
-            <Route path="/claim/:claimId" component={Claim} />
+            <Route path="/biddinglist" component={BiddingList} />
+            <Route path="/biddingdetali/:companyId" component={Bidding} />
+            <Route path="/claim/company" component={Claim} />
+            <Route path="/claimdetail" component={ClaimDetail} />
             <Route path="/claim" component={ClaimList} />
+            <Route path="/claimanalysis" component={ClaimAnalysis} />
           </Switch>
         </MainLayout>
       </Switch>

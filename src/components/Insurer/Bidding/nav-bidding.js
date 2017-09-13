@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CountDowns from './CountDowns';
+import CountDowns from '../../Bidding/CountDowns';
 import HeadCompanyInfo from '../header-company-info';
 import {
   Nav,
@@ -18,8 +18,10 @@ import auction from '../../../../assets/bidding/icons-8-auction.png';
 
 class Bidding extends Component {
   static propTypes = {
-    num: PropTypes.number.isRequired,
+    DataCompany: PropTypes.shape({}).isRequired,
     timeout: PropTypes.string.isRequired,
+    // candidateInsurer: PropTypes.string.isRequired,
+    // minPrice: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -27,16 +29,18 @@ class Bidding extends Component {
   }
 
   render() {
+    const data = this.props.DataCompany;
+    const { candidateInsurer, minPrice } = data;
     return (
       <div className="NavBid">
-        <HeadCompanyInfo />
+        <HeadCompanyInfo DataCompany={data} />
         <div className="row">
           <div className="large-4 columns">
             <Nav>
               <Pic><img src={building} alt="building" /></Pic>
               <TextNav>
                 <Font>จำนวนบริษัทประกัน</Font><br />
-                <FontNum>{this.props.num}</FontNum>
+                <FontNum>{candidateInsurer}</FontNum>
               </TextNav>
             </Nav>
           </div>
@@ -45,7 +49,11 @@ class Bidding extends Component {
               <Pic><img src={auction} alt="auction" /></Pic>
               <TextNav>
                 <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime><br />
-                <FontNumAucTime>10,000,000</FontNumAucTime>
+                <FontNumAucTime>{
+                (minPrice === '')
+                ? minPrice
+                : '0'
+              }</FontNumAucTime>
               </TextNav>
             </Nav>
           </div>

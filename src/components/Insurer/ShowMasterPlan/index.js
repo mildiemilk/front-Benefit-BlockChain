@@ -14,12 +14,20 @@ import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
 
 class ShowMasterPlan extends Component {
   static propTypes = {
-    data: PropTypes.shape({}).isRequired,
+    DataCompany: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
-    const data = this.props.data;
-    const { status, totalPrice, countBidding, updatedAt } = data;
+    console.log('ShowMasterPlan', this.props);
+    const data = this.props.DataCompany;
+    const { status,
+            totalPrice,
+            countBidding,
+            startNewInsurance,
+            updatedAt,
+            expiredOldInsurance,
+            plan,
+          } = data;
     let joinbid;
     let quotation;
     if (status === 'watting') {
@@ -36,15 +44,16 @@ class ShowMasterPlan extends Component {
       joinbid,
       modalCancelJoin: false,
       quotation,
-      masterplan: [1, 2, 3, 4, 5],
+      masterplan: plan.master,
       editplan: [],
       claimdata: [1, 2, 3],
       selectInsurerPlan: false,
       editDetailMP: false,
-      // Insurerplan:,
       totalPrice,
       countBidding,
+      startNewInsurance,
       updatedAt,
+      expiredOldInsurance,
     };
   }
 
@@ -67,6 +76,9 @@ class ShowMasterPlan extends Component {
   }
 
   render() {
+    // this.props.sendToParent({detail:'prim ba'}, 0);
+    // const data = this.props.data;
+    // const { plan } = data;
     const {
       joinbid,
       modalCancelJoin,
@@ -78,8 +90,9 @@ class ShowMasterPlan extends Component {
       editDetailMP,
       totalPrice,
       countBidding,
+      startNewInsurance,
       updatedAt,
-
+      expiredOldInsurance,
     } = this.state;
     return (
       <div>
@@ -95,12 +108,14 @@ class ShowMasterPlan extends Component {
           {
             quotation
             ? <Quotation
-              priceBidding={totalPrice}
               masterplan={masterplan}
               editplan={editplan}
-              handleOnpenModal={this.handleOnpenModal}
+              totalPrice={totalPrice}
               countBidding={countBidding}
+              startNewInsurance={startNewInsurance}
               updatedAt={updatedAt}
+              expiredOldInsurance={expiredOldInsurance}
+              handleOnpenModal={this.handleOnpenModal}
             />
             : <div />
           }

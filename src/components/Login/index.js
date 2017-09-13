@@ -39,7 +39,7 @@ class AuthLogin extends Component {
       if (approve === true) {
         if (!personalVerify) {
           return <Redirect to={{ pathname: '/employeeverify' }} />;
-        } return <Redirect to={{ pathname: '/flexyplan' }} />;
+        } return <Redirect to={{ pathname: '/plan' }} />;
       }
     } else if (role === 'HR') {
       if (companyName && approve) {

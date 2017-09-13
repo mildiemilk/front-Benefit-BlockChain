@@ -34,7 +34,7 @@ class HomeDashboard extends Component {
               กรุณาเลือกแผนปีถัดไปภายในวันที่ 12 เม.ย. 61
             </span>
           </div>
-          <Link to="/flexyplan">
+          <Link to="/plan">
             <button className="hb-alert-flexy-btn">
               เลือกแผนสิทธิประโยชน์สำหรับปีถัดไป
             </button>
@@ -51,7 +51,7 @@ class HomeDashboard extends Component {
               <p className="hb-alert-fix-text">วันที่ 1 พฤษภาคม 2560</p>
             </div>
           </div>
-          <Link to="/flexyplan">
+          <Link to="/plan">
             <button className="hb-alert-fix-btn">
               <img className="hb-alert-fix-icon-view" alt="IconView" src={IconView} />
               ดูแผนของคุณ
@@ -68,10 +68,10 @@ class HomeDashboard extends Component {
               <span>คุณกำลังเลือกแผนที่ 1</span>
             </div>
             <div className="hb-alert-flexy-s-btn-box">
-              <Link to="/flexyplan">
+              <Link to="/plan">
                 <button className="hb-alert-flexy-s-btn-change">เปลี่ยนแผน</button>
               </Link>
-              <Link to="/flexyplan">
+              <Link to="/plan">
                 <button className="hb-alert-flexy-s-btn-view">
                   <img className="hb-alert-flexy-s-icon-view" alt="IconView" src={IconView} />
                   ดูแผนที่เลือก

@@ -15,7 +15,7 @@ export function updatePersonalDetails(personalEmail, phone) {
     };
     APIRequest(options, true)
       .then(res => {
-        window.location.href = '/flexyplan';
+        window.location.href = '/plan';
         dispatch(updatePersonalDetailSuccess(res.data));
       })
       .catch(err => {

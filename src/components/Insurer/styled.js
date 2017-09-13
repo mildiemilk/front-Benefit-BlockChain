@@ -11,7 +11,7 @@ export const Companies = styled.div`
   display: block;
   height: 110px;
 `;
-export const ProfileImg = styled.div`
+export const ProfileImg = styled.img`
   width: 54px;
   height: 54px;
   border-radius: 50%;

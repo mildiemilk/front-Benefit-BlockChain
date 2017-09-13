@@ -2,24 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBidding from './nav-bidding';
-// import Box from './box';
-import { bidding } from '../../../api/bidding';
-// import Details from './details';
-import { getSelectInsurer, getTimeout } from '../../../api/choose-insurer';
-import { getCompleteStep } from '../../../api/profile-company';
+import { getCompanyBidding, getTimeout } from '../../../api/Insurer/bidding';
 import ShowMasterPlan from '../ShowMasterPlan';
 
 class Bidding extends React.Component {
   static propTypes = {
-    num: PropTypes.number.isRequired,
-    // data: PropTypes.arrayOf(PropTypes.object).isRequired,
-    bidding: PropTypes.func.isRequired,
-    getSelectInsurer: PropTypes.func.isRequired,
-    getTimeout: PropTypes.func.isRequired,
+    getCompanyBidding: PropTypes.func.isRequired,
     timeout: PropTypes.string.isRequired,
-    getCompleteStep: PropTypes.func.isRequired,
-    match: PropTypes.shape({ params: PropTypes.number }),
-    // getCompleteStep: PropTypes.func.isRequired,
+    match: PropTypes.shape({ params: PropTypes.companyId }),
+    data: PropTypes.shape({}).isRequired,
   }
   static defaultProps = {
     match: {
@@ -28,26 +19,20 @@ class Bidding extends React.Component {
   }
   constructor(props) {
     super(props);
-    console.log('props.match.params.companyId', props.match.params.companyId);
-    // const { isDetail } = this.state;
-    // console.log('props.match.params.isDetail', isDetail);
     this.state = {
       isDetail: false,
       Detail: {},
       index: '',
+      companyId: props.match.params.companyId,
     };
-    setInterval(() => {
-      props.bidding();
-    }, 2000);
   }
 
-  componentDidMount = () => {
-    this.props.getTimeout();
-    this.props.getSelectInsurer();
-    this.props.getCompleteStep();
+  componentDidMount() {
+    this.props.getCompanyBidding(this.state.companyId);
   }
 
   handleClick = (Detail, index) => {
+    // console.log('call handleClick', Detail);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
@@ -63,9 +48,12 @@ class Bidding extends React.Component {
   render() {
     return (
       <div className="Bidding">
-        <NavBidding num={this.props.num} timeout={this.props.timeout} />
+        <NavBidding
+          DataCompany={this.props.data}
+          timeout={this.props.timeout}
+        />
         <div className="BidContent">
-          <ShowMasterPlan />
+          <ShowMasterPlan data={this.props.data} />
         </div>
       </div>
     );
@@ -79,10 +67,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  bidding: () => dispatch(bidding()),
-  getSelectInsurer: () => dispatch(getSelectInsurer()),
+  // bidding: () => dispatch(bidding()),
+  getCompanyBidding: companyId => dispatch(getCompanyBidding(companyId)),
   getTimeout: () => dispatch(getTimeout()),
-  getCompleteStep: () => dispatch(getCompleteStep()),
+  // getCompleteStep: () => dispatch(getCompleteStep()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bidding);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Modal } from 'semantic-ui-react';
 // import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import JoinBid from './JoinBid';
 import Quotation from './Quotation';
 import QuotationClaim from './QuotationClaim';
@@ -9,19 +10,41 @@ import ModalInsurer from './ModalInsurer';
 // import AllPlan from './SubmitPlan/all-plan';
 // import PlanBoxModal from './ModalPlanBox/planbox-modal';
 import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
+// import {} from ''
 
 class ShowMasterPlan extends Component {
+  static propTypes = {
+    data: PropTypes.shape({}).isRequired,
+  }
   constructor(props) {
     super(props);
+    const data = this.props.data;
+    const { status, totalPrice, countBidding, updatedAt } = data;
+    let joinbid;
+    let quotation;
+    if (status === 'watting') {
+      joinbid = false;
+      quotation = true;
+    } else if (status === 'join') {
+      joinbid = false;
+      quotation = true;
+    } else {
+      joinbid = false;
+      quotation = true;
+    }
     this.state = {
-      joinbid: true,
+      joinbid,
       modalCancelJoin: false,
-      quotation: false,
-      masterplan: [1, 2, 3, 4, 5, 6],
+      quotation,
+      masterplan: [1, 2, 3, 4, 5],
       editplan: [],
       claimdata: [1, 2, 3],
       selectInsurerPlan: false,
       editDetailMP: false,
+      // Insurerplan:,
+      totalPrice,
+      countBidding,
+      updatedAt,
     };
   }
 
@@ -53,6 +76,10 @@ class ShowMasterPlan extends Component {
       claimdata,
       selectInsurerPlan,
       editDetailMP,
+      totalPrice,
+      countBidding,
+      updatedAt,
+
     } = this.state;
     return (
       <div>
@@ -68,9 +95,12 @@ class ShowMasterPlan extends Component {
           {
             quotation
             ? <Quotation
+              priceBidding={totalPrice}
               masterplan={masterplan}
               editplan={editplan}
               handleOnpenModal={this.handleOnpenModal}
+              countBidding={countBidding}
+              updatedAt={updatedAt}
             />
             : <div />
           }

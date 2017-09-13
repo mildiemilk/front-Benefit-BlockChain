@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Divider } from 'semantic-ui-react';
+import moment from 'moment';
 import '../../styles/InsurerStyle/Claim.scss';
 import { Button } from '../StyleComponent';
 import {
@@ -13,27 +14,45 @@ import {
 
 class HeaderCompanyInfo extends Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+    DataCompany: PropTypes.shape({}).isRequired,
   }
   constructor() {
     super();
     this.state = {};
   }
   render() {
+    const data = this.props.DataCompany;
+    moment.locale('th');
+    let styleCss;
+    let textDisplay = '';
+    const { company, numberOfEmployees,
+      expiredOldInsurance, startNewInsurance, logo, status } = data;
+    if (status === 'join') {
+      styleCss = { color: '#2ac294' };
+      textDisplay = '| เข้าร่วมแล้ว';
+    } else if (status === 'waiting') {
+      styleCss = { color: '#3a7bd5' };
+      textDisplay = '| กำลังพิจารณา';
+    } else {
+      styleCss = { color: '#3a7bd5' };
+      textDisplay = '| ไม่เข้ารวมการประมูล';
+    }
     return (
       <div className="HeaderCompanyInfo">
         <div className="row">
           <div className="large-1 columns">
             <Companies>
-              <ProfileImg><img src="" alt="" /></ProfileImg>
+              <ProfileImg src={logo} alt="" />
             </Companies>
           </div>
           <div className="large-8 columns">
             <CompaniesInfo className="company-heder-info">
-              <div style={{ display: 'inline-flex' }}><Head> White Cat Company </Head><StyleStatus style={{ color: 'rgb(58, 123, 213)' }}>| กำลังพิจารณา </StyleStatus> </div><br />
-              จำนวนพนักงาน : 217 คน <br />
-              วันเริ่มกรมธรรม์ใหม่ : 4 มกราคม 2561
-              <span>วันสิ้นสุดกรมธรรม์เก่า : 4 มกราคม 2560</span>
+              <div style={{ display: 'inline-flex' }}><Head>{company} </Head>
+                <StyleStatus style={styleCss} >{textDisplay} </StyleStatus>
+              </div><br />
+              จำนวนพนักงาน : {numberOfEmployees} คน <br />
+              วันเริ่มกรมธรรม์ใหม่ : {moment(startNewInsurance).locale('th').format('DD MMMM YYYY')}
+              <span>วันสิ้นสุดกรมธรรม์เก่า : {moment(expiredOldInsurance).locale('th').format('DD MMMM YYYY')}</span>
             </CompaniesInfo>
           </div>
           <div className="large-3 columns btn-company-info"><Button>ข้อมูลบริษัท</Button></div>

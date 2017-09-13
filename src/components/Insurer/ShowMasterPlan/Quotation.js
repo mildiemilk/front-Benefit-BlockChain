@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import IconPlan from '../../../../assets/Insurer/icon_plan@3x.png';
 import IconDownload from '../../../../assets/Insurer/icon_download@3x.png';
 import IconView from '../../../../assets/Insurer/icon_view@3x.png';
@@ -10,6 +11,9 @@ class Quotation extends Component {
     masterplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     editplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleOnpenModal: PropTypes.func.isRequired,
+    priceBidding: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+    countBidding: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -46,6 +50,9 @@ class Quotation extends Component {
       masterplan,
       editplan,
       handleOnpenModal,
+      priceBidding,
+      updatedAt,
+      countBidding,
     } = this.props;
     return (
       <div>
@@ -53,12 +60,12 @@ class Quotation extends Component {
           <div className="quotation-header-box">
             <div className="quotation-header-l">
               <span className="quotation-l-text">เลขที่ใบเสนอราคา : -</span>
-              <span className="quotation-l-text">เสนอราคาไปแล้ว : 0 ครั้ง</span>
-              <span className="quotation-l-text">วันที่เสนอราคาล่าสุด : -</span>
+              <span className="quotation-l-text">เสนอราคาไปแล้ว : {(countBidding === '') ? '0' : countBidding} ครั้ง</span>
+              <span className="quotation-l-text">วันที่เสนอราคาล่าสุด : {moment(updatedAt).locale('th').format('DD MMMM YYYY')}</span>
             </div>
             <div className="quotation-header-r">
               <span className="quptation-r-text">ราคาที่เสนอไป</span>
-              <span className="quptation-r-price">-</span>
+              <span className="quptation-r-price">{(priceBidding === '') ? '-' : priceBidding}</span>
             </div>
           </div>
         </div>

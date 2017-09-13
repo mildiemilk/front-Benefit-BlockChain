@@ -11,7 +11,7 @@ class AuthLogin extends Component {
   static propTypes = {
     data: PropTypes.shape({}).isRequired,
     authenticate: PropTypes.func.isRequired,
-    profile: PropTypes.shape.isRequired,
+    profile: PropTypes.shape({}).isRequired,
     text: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
   }

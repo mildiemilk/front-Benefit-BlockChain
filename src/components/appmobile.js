@@ -35,7 +35,7 @@ const AppMobile = () => (
           <Route path="/dashboardstart" component={DashboardStart} />
           <Route path="/flexyplan" component={FlexyPlan} />
           <Route path="/findhospital" component={FindHospital} />
-          <Route path="/claiminsurance" component={ClaimInsurance} />
+          <Route path="/claim" component={ClaimInsurance} />
           <Route path="/yourbenefit" component={YourBenefit} />
           <Route path="/claimstatus" component={claimStatus} />
           <Route path="/claimhistory" component={ClaimHistory} />

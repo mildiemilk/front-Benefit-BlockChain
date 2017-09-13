@@ -102,7 +102,7 @@ class HomeDashboard extends Component {
                 <span className="hb-box-item-text">แผนสิทธิประโยชน์</span>
               </div>
             </Link>
-            <Link to="/claiminsurance">
+            <Link to="/claim">
               <div className="hb-box-item">
                 <img className="hb-box-item-img" alt="plan" src={Claim} />
                 <span className="hb-box-item-text">เคลม</span>

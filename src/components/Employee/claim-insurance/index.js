@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 import { Modal, Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { claim } from '../../../api/Employee/claim';
 import { Backgroundiv, TinyText, SubmitButton, SubmitButtonLast } from './styled';
 import InsuranceTemplate from './insurance-template';
 import HealthTemplate from './health-template';
 import GeneralExpenseTemplate from './generalexpense-template';
-import '../../../styles/employee-style/claim-insurance.scss';
 import Footer from '../footer';
+import '../../../styles/employee-style/claim-insurance.scss';
 
 const MainStateOption = [
   { key: 'insurance', text: 'ประกันภัย', value: 'insurance' },
   { key: 'health', text: 'สุขภาพ', value: 'health' },
-  { key: 'generalEx', text: 'ใช้จ่ายทั่วไป', value: 'generalEx' },
+  { key: 'general', text: 'ใช้จ่ายทั่วไป', value: 'general' },
 ];
 const EmployeeNameOption = [
   { key: '1', text: 'นาย จงรักษ์ ขยันเรียน', value: 'นาย จงรักษ์ ขยันเรียน' },
@@ -23,7 +26,7 @@ class ClaimInsurance extends Component {
   constructor() {
     super();
     this.state = {
-      mainState: 'generalEx',
+      mainState: 'general',
       ChooseEmployeeName: '',
       ClaimFile: '',
       InsuranceType: '',
@@ -52,6 +55,16 @@ class ClaimInsurance extends Component {
 
   handleChangeDate = date => {
     this.setState({ date });
+  }
+
+  handleButtonSubmit = () => {
+    const detail = this.state;
+    const files = this.state.ClaimFile;
+    const type = this.state.mainState;
+    delete detail.ClaimFile;
+    delete detail.mainState;
+    console.log('click');
+    claim(detail, files, type)();
   }
 
   rendermainState = () => {
@@ -100,7 +113,7 @@ class ClaimInsurance extends Component {
             placeholder="เลือกประเภทการเคลม"
             fluid
             selection
-            defaultValue="generalEx"
+            defaultValue="general"
             name="mainState"
             options={MainStateOption}
             onChange={this.handleChange}
@@ -109,16 +122,17 @@ class ClaimInsurance extends Component {
           <Modal
             style={{ paddingTop: '25px', textAlign: 'center' }}
             trigger={<SubmitButton> เคลม </SubmitButton>}
-            content={<p>
-                        รายการของคุณถูกบันทึกแล้ว <br />
-                          กรุณารอการพิจารณา
-                    </p>}
+            content={
+              <p>
+                รายการของคุณถูกบันทึกแล้ว
+                <br />
+                กรุณารอการพิจารณา
+              </p>
+            }
             actions={
-              <Link to="/claimstatus">
-                <SubmitButtonLast>
-                  ตกลง
-                </SubmitButtonLast>
-              </Link>
+              <SubmitButtonLast onClick={() => this.handleButtonSubmit()}>
+                ตกลง
+              </SubmitButtonLast>
             }
           />
         </Backgroundiv>

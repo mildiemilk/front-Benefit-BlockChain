@@ -35,7 +35,7 @@ class ConfirmModal extends Component {
   }
 
   handleChangePlan = () => {
-    window.location.href = '/flexyplan';
+    window.location.href = '/plan';
     // this.props.handleCloseModal();
   }
 

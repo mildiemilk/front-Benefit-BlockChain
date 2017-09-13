@@ -90,7 +90,7 @@ class congrat extends Component {
     const listItems = Bidding.map((Bidding, number) => {
       if (Bidding.status === 'reject') {
         return (
-          <Link to="/bidding/1">
+          <Link to={`/bidding/${Bidding.companyId}`}>
             <BiddingElement
               className="rejectBackgroundcolor"
             >
@@ -108,7 +108,7 @@ class congrat extends Component {
         );
       }
       return (
-        <Link to="/bidding/1">
+        <Link to={`/bidding/${Bidding.companyId}`}>
           <BiddingElement>
             <ElementName
               Bidding={Bidding}

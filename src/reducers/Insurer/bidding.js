@@ -5,6 +5,7 @@ const biddingDetail = {
   data: {},
 };
 // const defaultEnd = { end: null };
+const biddingList = [];
 const defaultJoinCompanies = {
   joinCompanies: false,
   message: null,
@@ -20,8 +21,8 @@ const defaultJoinCompanies = {
  */
 const GETBIDDING_REQUEST_SUCCESS = 'GETBIDDING_REQUEST_SUCCESS';
 const GETBIDDING_REQUEST_FAILURE = 'GETBIDDING_REQUEST_FAILURE';
-// const END_REQUEST_SUCCESS = 'END_REQUEST_SUCCESS';
-// const END_REQUEST_FAILURE = 'END_REQUEST_FAILURE';
+const GETBIDDINGLIST_REQUEST_SUCCESS = 'GETBIDDINGLIST_REQUEST_SUCCESS';
+const GETBIDDINGLIST_REQUEST_FAILURE = 'GETBIDDINGLIST_REQUEST_FAILURE';
 const JOIN_BID_SUCCESS = 'JOIN_BID_SUCCESS';
 const JOIN_BID_FAILURE = 'JOIN_BID_FAILURE';
 // const GETTIMEOUT_REQUEST_SUCCESS = 'GETTIMEOUT_REQUEST_SUCCESS';
@@ -38,6 +39,15 @@ export function getCompanyBiddingSuccess(data) {
 
 export function getCompanyBiddingFailure(data) {
   return { type: GETBIDDING_REQUEST_FAILURE, data };
+}
+
+export function getCompanyBiddingListSuccess(data) {
+  console.log('action', data);
+  return { type: GETBIDDINGLIST_REQUEST_SUCCESS, data };
+}
+
+export function getCompanyBiddingListFailure(data) {
+  return { type: GETBIDDINGLIST_REQUEST_FAILURE, data };
 }
 
 export function joinBidSuccess(data) {
@@ -65,8 +75,6 @@ export function joinBidFailure(data) {
  * Reducer
  */
 export function biddingInsurerReducer(state = biddingDetail, action) {
-  console.log('biddingInsurerReducer:state', state);
-  console.log('biddingInsurerReducer:action', action);
   switch (action.type) {
     case GETBIDDING_REQUEST_SUCCESS:
       return Object.assign({}, state, { data: action.data });
@@ -77,16 +85,16 @@ export function biddingInsurerReducer(state = biddingDetail, action) {
   }
 }
 
-// export function endTimeout(state = defaultEnd, action) {
-//   switch (action.type) {
-//     case END_REQUEST_SUCCESS:
-//       return action.data.end;
-//     case END_REQUEST_FAILURE:
-//       return Object.assign({}, state, {});
-//     default:
-//       return state;
-//   }
-// }
+export function biddingListReducer(state = biddingList, action) {
+  switch (action.type) {
+    case GETBIDDINGLIST_REQUEST_SUCCESS:
+      return action.data;
+    case GETBIDDINGLIST_REQUEST_FAILURE:
+      return Object.assign({}, state, {});
+    default:
+      return state;
+  }
+}
 
 export function joinCompanies(state = defaultJoinCompanies, action) {
   switch (action.type) {

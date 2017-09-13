@@ -2,11 +2,16 @@ import { APIRequest } from '../index';
 import {
   getCompanyBiddingSuccess,
   getCompanyBiddingFailure,
+  getCompanyBiddingListSuccess,
+  getCompanyBiddingListFailure,
+  // getTimeoutSuccess,
+  // getTimeoutFailure,
   joinBidSuccess,
   joinBidFailure,
 } from '../../reducers/Insurer/bidding';
 
-// const BIDDING_LIS_URI = '/api/insurer/company-list';
+// const GETTIMEOUT_URI = '../api/getTimeout';
+const BIDDING_LIS_URI = '/api/insurer/company-list';
 const BIDDING_DETAIL_URI = '/api/insurer/bidding-detail';
 const JOIN_BIDDING_URI = '/api/insurer/bidding';
 
@@ -26,6 +31,24 @@ export function getCompanyBidding(companyId) {
       });
   };
 }
+
+export function getCompanyBiddingList() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: BIDDING_LIS_URI,
+    };
+    APIRequest(options, true)
+      .then(res => {
+        console.log('getCompanyBiddingList');
+        dispatch(getCompanyBiddingListSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getCompanyBiddingListFailure(err.response.data));
+      });
+  };
+}
+
 export function joinBidding(databiding) {
   return dispatch => {
     const options = {

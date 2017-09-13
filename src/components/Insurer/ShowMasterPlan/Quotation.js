@@ -26,7 +26,7 @@ class Quotation extends Component {
         <div className="quotation-body-show-mp" keys={index}>
           <div className="quotation-mp-name-box">
             <img alt="" className="quotation-icon-plan" src={IconPlan} />
-            <span className="quotation-mp-name">{plan.plan.planName}</span>
+            <span className="quotation-mp-name">{plan.planDetail.planName}</span>
           </div>
           <div className="quotation-mp-price-box">
             <input className="quotation-mp-input-price" type="number" placeholder="เสนอราคา" value={plan.price} />

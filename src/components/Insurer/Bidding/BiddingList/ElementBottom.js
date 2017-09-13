@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import CountDown from '../../Bidding/CountDowns';
+import CountDowns from '../../../Bidding/CountDowns';
 // import { Link } from 'react-router-dom';
 import {
     ContantBid,
@@ -113,10 +113,10 @@ class ElementBottom extends Component {
                   ระยะเวลาที่เหลือในการประมูล
                 <br />
                   <div className="contentText">
-                    {/* <CountDown
+                    <CountDowns
                       style={{ fontSize: '24px' }}
                       date={Bidding.timeout}
-                    /> */}
+                    />
                   </div>
                 </div>
               </div>

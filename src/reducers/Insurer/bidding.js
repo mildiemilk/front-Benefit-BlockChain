@@ -1,8 +1,8 @@
 /**
  * Default State
  */
+const biddingDetail = [];
 const biddingList = [];
-const defaultEnd = { end: null };
 const defaultJoinCompanies = {
   joinCompanies: false,
   message: null,
@@ -18,6 +18,8 @@ const defaultTimeOut = {
  */
 const GETBIDDING_REQUEST_SUCCESS = 'GETBIDDING_REQUEST_SUCCESS';
 const GETBIDDING_REQUEST_FAILURE = 'GETBIDDING_REQUEST_FAILURE';
+const GETBIDDINGLIST_REQUEST_SUCCESS = 'GETBIDDINGLIST_REQUEST_SUCCESS';
+const GETBIDDINGLIST_REQUEST_FAILURE = 'GETBIDDINGLIST_REQUEST_FAILURE';
 const END_REQUEST_SUCCESS = 'END_REQUEST_SUCCESS';
 const END_REQUEST_FAILURE = 'END_REQUEST_FAILURE';
 const JOIN_BID_SUCCESS = 'JOIN_BID_SUCCESS';
@@ -36,6 +38,15 @@ export function getCompanyBiddingSuccess(data) {
 
 export function getCompanyBiddingFailure(data) {
   return { type: GETBIDDING_REQUEST_FAILURE, data };
+}
+
+export function getCompanyBiddingListSuccess(data) {
+  console.log('action', data);
+  return { type: GETBIDDINGLIST_REQUEST_SUCCESS, data };
+}
+
+export function getCompanyBiddingListFailure(data) {
+  return { type: GETBIDDINGLIST_REQUEST_FAILURE, data };
 }
 
 export function joinBidSuccess(data) {
@@ -62,7 +73,7 @@ export function getTimeoutFailure(data) {
 /**
  * Reducer
  */
-export function biddingReducer(state = biddingList, action) {
+export function biddingReducer(state = biddingDetail, action) {
   switch (action.type) {
     case GETBIDDING_REQUEST_SUCCESS:
       return action.data;
@@ -73,11 +84,14 @@ export function biddingReducer(state = biddingList, action) {
   }
 }
 
-export function endTimeout(state = defaultEnd, action) {
+export function biddingListReducer(state = biddingList, action) {
+  console.log('biddingList')
   switch (action.type) {
-    case END_REQUEST_SUCCESS:
-      return action.data.end;
-    case END_REQUEST_FAILURE:
+    case GETBIDDINGLIST_REQUEST_SUCCESS:
+      console.log('biddinglistreducer');
+      return action.data;
+    case GETBIDDINGLIST_REQUEST_FAILURE:
+      console.log('biddinglistreducerfail');
       return Object.assign({}, state, {});
     default:
       return state;

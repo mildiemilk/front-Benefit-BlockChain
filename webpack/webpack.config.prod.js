@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -68,5 +69,6 @@ module.exports = {
       },
       AppCache: false,
     }),
+    new Dotenv(), // TODO: Need to concern about security. More info -> https://github.com/mrsteele/dotenv-webpack
   ],
 };

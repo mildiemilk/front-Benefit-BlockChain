@@ -1,22 +1,24 @@
 const { NODE_ENV } = process.env;
 
 
-export const APP_CONFIG = () => {
-  switch (NODE_ENV) {
+const APP_CONFIG = () => {
+  switch (NODE_ENV.ENV) {
     case 'production':
       return {};
     case 'development':
       return {
         api: {
-          host: 'http://localhost:8000',
+          host: `${NODE_ENV.API_SERVER_PROTOCOL}://${NODE_ENV.API_SERVER_HOST}:${NODE_ENV.API_SERVER_PORT}`,
         },
       };
     default:
       return {
         api: {
-          host: 'http://localhost:8000',
+          host: `${process.env.API_SERVER_PROTOCOL}://${process.env.API_SERVER_HOST}:${process.env.API_SERVER_PORT}`,
         },
       };
   }
 };
 
+
+export default APP_CONFIG;

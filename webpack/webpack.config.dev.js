@@ -50,6 +50,11 @@ module.exports = {
       title: 'redux-react-starter',
       template: '../webpack/template.html',
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
   ],
   performance: { hints: false },
 };

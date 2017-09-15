@@ -6,14 +6,16 @@ import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
 class Plan extends Component {
   static propTypes = {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    color: PropTypes.string.isRequired,
   }
   renderList = bids => {
+    console.log('planlist', bids);
     const planlists = bids.map(bid => (
-      <List className="large-4 columns">
+      <List color={this.props.color} className="large-4 columns">
         <IconPlan name="add to calendar" size="big" />
         <DetailList>
-          {bid.planName} <br />
-          {bid.priceOfBidding}
+          {bid.plan.planName} <br />
+          {bid.price}
         </DetailList>
         <PopupView
           trigger={
@@ -38,7 +40,10 @@ class Plan extends Component {
   render() {
     return (
       <div>
-        {this.renderList(this.props.planList)}
+        {this.props.planList
+        ? <div>{this.renderList(this.props.planList)}</div>
+        : <div />
+        }
       </div>
     );
   }

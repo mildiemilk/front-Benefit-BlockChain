@@ -21,12 +21,12 @@ import {
 } from './styled';
 import NavBenefit from '../NavBenefit';
 import PlanTemplate from './plantemplate';
-import { getAllPlan } from '../../api/set-plan';
-import { choosePlan, getOptionPlan } from '../../api/benefit-plan';
+// import { getAllPlan } from '../../api/set-plan';
+import { choosePlan, getOptionPlan, getInsurancePlan } from '../../api/benefit-plan';
 
 class ChooseInsurancePlan extends Component {
   static propTypes = {
-    getAllPlan: PropTypes.func.isRequired,
+    getInsurancePlan: PropTypes.func.isRequired,
     getOptionPlan: PropTypes.func.isRequired,
     choosePlan: PropTypes.func.isRequired,
     choosePlans: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -52,11 +52,14 @@ class ChooseInsurancePlan extends Component {
       ],
       closetap: true,
     };
-    props.getAllPlan();
-    props.getOptionPlan();
+  }
+  componentDidMount() {
+    this.props.getInsurancePlan();
+    this.props.getOptionPlan();
   }
 
   componentWillReceiveProps(newProps) {
+    console.log('Newprops', newProps.planList);
     if (newProps.planList !== this.props.planList) {
       this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans) });
     }
@@ -260,13 +263,13 @@ class ChooseInsurancePlan extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
+  getInsurancePlan: () => dispatch(getInsurancePlan()),
   getOptionPlan: () => dispatch(getOptionPlan()),
   choosePlan: plans => dispatch(choosePlan(plans)),
 });
 
 const mapStateToProps = state => ({
-  planList: state.plan.planList,
+  planList: state.choosePlan.insurancePlan,
   choosePlans: state.choosePlan.choosePlan,
 });
 

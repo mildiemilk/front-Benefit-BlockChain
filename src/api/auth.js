@@ -45,6 +45,7 @@ export function register(email, confirmPassword, password, role) {
         window.location.href = '/login';
       })
       .catch(err => {
+        console.log('eiei');
         dispatch(signupFailure(err.response.data));
       });
   };

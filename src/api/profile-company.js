@@ -22,17 +22,17 @@ import {
   setGroupBenefitFailure,
 } from '../reducers/profile';
 
-const PROFILE_URI = '/admin/registerCompany';
-const LOGO_URI = '/admin/set-logo';
-const FILEEMPLOYEE_URI = '/admin/upload-employee';
-const GETTEMPLATE_URI = '/admin/get-template';
-const CLAIMDATA_URI = '/admin/upload-claimdata';
-const GETEMPLOYEEDETAIL_URI = '/admin/get-employee';
-const GETCLAIMDATA_URI = '/admin/get-claim-data';
-const SETCOMPLETESTEP_URI = '/admin/set-complete-step';
-const GETCOMPLETESTEP_URI = '/admin/get-complete-step';
-const GET_GROUPBENEFIT_URI = '/admin/get-group-benefit';
-const SET_GROUPBENEFIT_URI = '/admin/set-group-benefit';
+const PROFILE_URI = '/api/company/register-company';
+const LOGO_URI = '/api/company/set-logo';
+const FILEEMPLOYEE_URI = '/api/company/upload-employee';
+const GETTEMPLATE_URI = '/api/company/get-template';
+const CLAIMDATA_URI = '/api/company/upload-claimdata';
+const GETEMPLOYEEDETAIL_URI = '/api/company/get-employee';
+const GETCLAIMDATA_URI = '/api/company/get-claim-data';
+const SETCOMPLETESTEP_URI = '/api/company/set-complete-step';
+const GETCOMPLETESTEP_URI = '/api/company/get-complete-step';
+const GET_GROUPBENEFIT_URI = '/api/company/get-group-benefit';
+const SET_GROUPBENEFIT_URI = '/api/company/set-group-benefit/{employeeGroupId}';
 
 export function createProfile(profile) {
   return dispatch => {

@@ -1,7 +1,11 @@
 /**
  * Default State
  */
-const biddingList = [];
+const biddingList = {
+  insurers: [],
+  detail: {},
+};
+
 const defaultEnd = { end: null };
 const defaultchooseFinalInsurer = {
   selectFinalInsurer: false,
@@ -14,6 +18,8 @@ const defaultchooseFinalInsurer = {
  */
 const GETBIDDING_REQUEST_SUCCESS = 'GETBIDDING_REQUEST_SUCCESS';
 const GETBIDDING_REQUEST_FAILURE = 'GETBIDDING_REQUEST_FAILURE';
+const GETBIDDINGDETAIL_REQUEST_SUCCESS = 'GETBIDDINGDETAIL_REQUEST_SUCCESS';
+const GETBIDDINGDETAIL_REQUEST_FAILURE = 'GETBIDDINGDETAIL_REQUEST_FAILURE';
 const END_REQUEST_SUCCESS = 'END_REQUEST_SUCCESS';
 const END_REQUEST_FAILURE = 'END_REQUEST_FAILURE';
 const SELECT_FINAL_INSURER_SUCCESS = 'SELECT_FINAL_INSURER_SUCCESS';
@@ -28,6 +34,14 @@ export function getBiddingSuccess(data) {
 
 export function getBiddingFailure(data) {
   return { type: GETBIDDING_REQUEST_FAILURE, data };
+}
+
+export function getBiddingDetailSuccess(data) {
+  return { type: GETBIDDINGDETAIL_REQUEST_SUCCESS, data };
+}
+
+export function getBiddingDetailFailure(data) {
+  return { type: GETBIDDINGDETAIL_REQUEST_FAILURE, data };
 }
 
 export function selectFinalInsurerSuccess(data) {
@@ -51,8 +65,12 @@ export function EndFailure(data) {
 export function biddingReducer(state = biddingList, action) {
   switch (action.type) {
     case GETBIDDING_REQUEST_SUCCESS:
-      return action.data;
+      return Object.assign({}, state, { insurers: action.data });
     case GETBIDDING_REQUEST_FAILURE:
+      return Object.assign({}, state, {});
+    case GETBIDDINGDETAIL_REQUEST_SUCCESS:
+      return Object.assign({}, state, { detail: action.data });
+    case GETBIDDINGDETAIL_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     default:
       return state;
@@ -73,6 +91,7 @@ export function endTimeout(state = defaultEnd, action) {
 export function selectFinalInsurer(state = defaultchooseFinalInsurer, action) {
   switch (action.type) {
     case SELECT_FINAL_INSURER_SUCCESS:
+      console.log('action', action);
       return Object.assign({}, state, {
         selectFinalInsurer: true,
         message: action.data.message,

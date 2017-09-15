@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Icon } from 'semantic-ui-react';
 import NavInsure from '../NavInsure';
-import ModalInsurer from './ModalInsurer';
+// import ModalInsurer from './ModalInsurer';
 import ModalPlanBox from './ModalPlanBox';
 import Insurer from './insurer';
 import '../../styles/send-request.scss';
-import { getSimpleRQ } from '../../api/simple-requirement';
+// import { getSimpleRQ } from '../../api/simple-requirement';
 import { getTimeout } from '../../api/choose-insurer';
 import Postre from './postre';
 import {
@@ -18,6 +19,7 @@ import {
   BoxIndiv,
   Time,
   InsurerDiv,
+  Edit,
 } from './styled';
 import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
 import UploadFile from './upload-file';
@@ -25,7 +27,7 @@ import ModalConfirmPassword from '../ModalConfirmPassword';
 
 class Sendrequest extends Component {
   static propTypes = {
-    getSimpleReq: PropTypes.func.isRequired,
+    // getSimpleReq: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
     timeout: PropTypes.shape.isRequired,
     setCompleteStep: PropTypes.func.isRequired,
@@ -42,7 +44,7 @@ class Sendrequest extends Component {
     };
   }
   componentDidMount() {
-    this.props.getSimpleReq();
+    // this.props.getSimpleReq();
     this.props.getTimeout();
     this.props.getCompleteStep();
   }
@@ -84,7 +86,11 @@ class Sendrequest extends Component {
                   รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
                 </TopicHead>
                 {' '}
-                <ModalInsurer />
+                <Link to="chooseinsurer">
+                  <Edit>
+                    <Icon name="write" />แก้ไข
+                  </Edit>
+                </Link >
               </InsurerDiv>
               <BoxIndiv>
                 บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
@@ -122,15 +128,15 @@ class Sendrequest extends Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  getSimpleReq: () => dispatch(getSimpleRQ()),
+  // getSimpleReq: () => dispatch(getSimpleRQ()),
   getTimeout: () => dispatch(getTimeout()),
   setCompleteStep: (passwordToConfirm, step) =>
   dispatch(setCompleteStep(passwordToConfirm, step)),
   getCompleteStep: () => dispatch(getCompleteStep()),
 });
 const mapStateToProps = state => ({
-  timeout: state.setTimeOut,
-  simpleReq: state.fillsimpleReducer,
+  timeout: state.setTimeOut.timeout,
+  // simpleReq: state.fillsimpleReducer,
   data: state.profile,
   completeStep: state.profile.completeStep[0],
 });

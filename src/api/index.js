@@ -10,8 +10,9 @@ import {
 } from './choose-insurer';
 import { endTimeout, bidding } from './bidding';
 import { menuPlans } from './set-plan';
-import { choosePlan, getOptionPlan, setTimeout } from './benefit-plan';
+import { getInsurancePlan, choosePlan, getOptionPlan, setTimeout } from './benefit-plan';
 import { chooseFinalInsurer } from './bidding';
+import { APP_CONFIG } from '../../config/';
 
 export function APIRequest(options, authenticate = true) {
   const headers = options.headers ? options.headers : {};
@@ -19,7 +20,7 @@ export function APIRequest(options, authenticate = true) {
     ? { Authorization: `${localStorage.getItem('token')}` }
     : {};
   const defaultOption = {
-    baseURL: 'http://localhost:8000',
+    baseURL: APP_CONFIG().api.host,
     headers: Object.assign(
       {},
       { 'Content-Type': 'application/json' },
@@ -47,6 +48,7 @@ export default {
   bidding,
   menuPlans,
   choosePlan,
+  getInsurancePlan,
   getSelectInsurer,
   chooseFinalInsurer,
   getOptionPlan,

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Plan from '../../../../assets/employee/plan.png';
@@ -8,15 +10,45 @@ import FindHospital from '../../../../assets/employee/hospital.png';
 import Profile from '../../../../assets/employee/profile.png';
 import Setting from '../../../../assets/employee/setting.png';
 import IconView from '../../../../assets/employee/icon_view.png';
+import { getAllBenefit, confirmPlan, currentPlan } from '../../../api/Employee/plan';
 
 class HomeDashboard extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    data: PropTypes.shape({}).isRequired,
+    getAllBenefit: PropTypes.func.isRequired,
+    confirmPlan: PropTypes.func.isRequired,
+    currentPlan: PropTypes.func.isRequired,
+  }
+  constructor(props) {
+    super(props);
     this.state = {
       alertFlexyNextPlan: false,
-      alertFlexyNextPlanSelected: true,
+      alertFlexyNextPlanSelected: false,
       alertFixNextPlan: false,
     };
+    props.getAllBenefit();
+    props.confirmPlan();
+    props.currentPlan();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { data } = nextProps;
+    const currentDate = new Date();
+    if (data.currentPlan.effectiveDate < data.allBenefit[0].effectiveDate) { // new plan
+      if (currentDate < data.allBenefit[0].timeout) { // in time
+        if (data.group.type === 'fixed') { // fix
+          this.setState({ alertFixNextPlan: true });
+        } else { // flex
+          if (data.confirm) { // confirm
+            this.setState({ alertFlexyNextPlanSelected: true });
+          } else {
+            this.setState({ alertFlexyNextPlan: true });
+          }
+        }
+      } else {
+        this.setState({ alertFixNextPlan: true });
+      }
+    }
   }
 
   handleShowAlert = () => {
@@ -96,7 +128,7 @@ class HomeDashboard extends Component {
         <span className="hb-header">ยินดีต้อนรับเข้าสู่ BenefiTable</span>
         <div className="hb-box">
           <div className="hb-box-row row">
-            <Link to="/flexyplan">
+            <Link to="/plan">
               <div className="hb-box-item">
                 <img className="hb-box-item-img" alt="plan" src={Plan} />
                 <span className="hb-box-item-text">แผนสิทธิประโยชน์</span>
@@ -143,4 +175,20 @@ class HomeDashboard extends Component {
   }
 }
 
-export default HomeDashboard;
+const mapDispatchToProps = dispatch => ({
+  getAllBenefit: () => dispatch(getAllBenefit()),
+  confirmPlan: () => dispatch(confirmPlan()),
+  currentPlan: () => dispatch(currentPlan()),
+});
+const mapStateToProps = state => ({
+  data: {
+    ...state.getAllBenefitReducer,
+    confirm: state.confirmPlanReducer.confirm,
+    newUser: state.confirmPlanReducer.newUser,
+    ...state.currentPlanReducer,
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeDashboard);
+
+// export default HomeDashboard;

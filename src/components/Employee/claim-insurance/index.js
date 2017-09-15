@@ -63,7 +63,6 @@ class ClaimInsurance extends Component {
     const type = this.state.mainState;
     delete detail.ClaimFile;
     delete detail.mainState;
-    console.log('click');
     claim(detail, files, type)();
   }
 

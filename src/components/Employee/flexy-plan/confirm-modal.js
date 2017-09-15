@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import '../../../styles/submit-plan.scss';
+import { selectBenefit, newUser } from '../../../api/Employee/plan';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -27,18 +29,36 @@ class ConfirmModal extends Component {
     openModal: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     plan: PropTypes.number.isRequired,
+    data: PropTypes.shape({}).isRequired,
+    timeUp: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       closeOnEscape: false,
       closeOnRootNodeClick: true,
+      renderHomeDashboard: false,
+      renderDashboardStart: false,
     };
+    newUser()();
   }
 
   handleSubmit = () => {
-    window.location.href = '/congratselectplan';
-    // this.props.handleCloseModal();
+    const { data, timeUp, plan } = this.props;
+    let _id = null;
+    if (timeUp || data.group.type === 'fixed') {
+      _id = data.group.defaultPlan;
+    } else {
+      _id = data.allBenefit[plan]._id;
+    }
+    selectBenefit(_id)();
+    const currentDate = new Date();
+    if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
+      this.setState({ renderDashboardStart: true });
+    } else {
+      this.setState({ renderHomeDashboard: true });
+    }
+    this.props.handleCloseModal();
   }
 
   handleClose = () => {
@@ -47,6 +67,12 @@ class ConfirmModal extends Component {
 
   render() {
     const { plan } = this.props;
+    const { renderHomeDashboard, renderDashboardStart } = this.state;
+    if (renderHomeDashboard) {
+      return <Redirect to={{ pathname: '/homedashboard' }} />;
+    } else if (renderDashboardStart) {
+      return <Redirect to={{ pathname: '/dashboardstart' }} />;
+    }
     return (
       <Modals
         trigger={<div />}

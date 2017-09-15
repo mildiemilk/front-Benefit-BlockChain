@@ -15,6 +15,7 @@ class IPD1 extends Component {
     ipdLumsumPerYear: PropTypes.string.isRequired,
     ipdLumsumPerTime: PropTypes.string.isRequired,
     ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
+    styletabPrice: PropTypes.string.isRequired,
   }
 
   constructor(props) {
@@ -75,9 +76,10 @@ class IPD1 extends Component {
   }
 
   render() {
+    console.log('this.props.styletabPrice--', this.props);
     return (
       <div>
-        <Form.Group inline>
+        <Form.Group inline >
           <Form.Field>
             <Radio
               label="จำนวนเงิน"
@@ -90,6 +92,7 @@ class IPD1 extends Component {
           {this.state.value === 'firstChoice'
             ? <Form.Input
               type="number"
+              className={this.props.styletabPrice}
               placeholder="จำนวนเงิน"
               name="ipdLumsumPerYear"
               id="ipdLumsumPerYear"
@@ -100,6 +103,7 @@ class IPD1 extends Component {
             />
             : <Form.Input
               type="number"
+              className={this.props.styletabPrice}
               placeholder="จำนวนเงิน"
               name="ipdLumsumPerYear"
               id="ipdLumsumPerYear"
@@ -124,6 +128,7 @@ class IPD1 extends Component {
             ? <div style={{ display: 'inherit' }}>
               <Form.Input
                 type="number"
+                className={this.props.styletabPrice}
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerTime"
                 id="ipdLumsumPerTime"
@@ -135,6 +140,7 @@ class IPD1 extends Component {
               <Form.Input
                 type="number"
                 label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                className={this.props.styletabPrice}
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumTimeNotExceedPerYear"
                 id="ipdLumsumTimeNotExceedPerYear"
@@ -147,6 +153,7 @@ class IPD1 extends Component {
             : <div style={{ display: 'inherit' }}>
               <Form.Input
                 type="number"
+                className={this.props.styletabPrice}
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumPerTime"
                 id="ipdLumsumPerTime"
@@ -158,6 +165,7 @@ class IPD1 extends Component {
               <Form.Input
                 type="number"
                 label="บาท/ครั้ง  ครั้งละไม่เกิน"
+                className={this.props.styletabPrice}
                 placeholder="จำนวนเงิน"
                 name="ipdLumsumTimeNotExceedPerYear"
                 id="ipdLumsumTimeNotExceedPerYear"

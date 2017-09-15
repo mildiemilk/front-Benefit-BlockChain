@@ -17,12 +17,8 @@ import {
   Uploads,
   BrowsButton,
   UploadDiv,
-  DivDownload,
-  AltFile,
-  ImgWithPointer,
 } from './styled';
-import excel from '../../../assets/Download/icons-8-ms-excel.png';
-import DownL from '../../../assets/Download/group-2.png';
+import BoxDownload from '../BoxDownload';
 
 class Download extends Component {
   static propTypes = {
@@ -80,21 +76,7 @@ class Download extends Component {
               </List>
             </Head>
             <Side>
-              <DivDownload>
-                <div className="row">
-                  <div className="large-3 columns">
-                    <img src={excel} alt="excel" />
-                  </div>
-                  <div className="large-6 columns">
-                    <AltFile> Employeedata</AltFile>
-                    <AltFile>Template.xlsx</AltFile>
-                    <AltFile>Filesize: 0.4 Mb</AltFile>
-                  </div>
-                  <div className="large-3 columns">
-                    <ImgWithPointer src={DownL} alt="download" onClick={this.props.getTemplate} role="button" aria-hidden />
-                  </div>
-                </div>
-              </DivDownload>
+              <BoxDownload getTemplate={this.props.getTemplate} />
             </Side>
           </DetailIn>
           <DetailIn>

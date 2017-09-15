@@ -2,6 +2,7 @@
  * Default State
  */
 const defaultPlan = {
+  insurancePlan: {},
   choosePlan: [],
   health: {},
   isHealth: false,
@@ -17,6 +18,8 @@ const defaultBenefitPlan = {
 /**
  * Action Constansts
  */
+const GETINSURANCEPLAN_REQUEST_SUCCESS = 'GETINSURANCEPLAN_REQUEST_SUCCESS';
+const GETINSURANCEPLAN_REQUEST_FAILURE = 'GETINSURANCEPLAN_REQUEST_FAILURE';
 
 const CHOOSEPLAN_REQUEST_SUCCESS = 'CHOOSEPLAN_REQUEST_SUCCESS';
 const CHOOSEPLAN_REQUEST_FAILURE = 'CHOOSEPLAN_REQUEST_FAILURE';
@@ -89,7 +92,12 @@ export function setTimeoutSuccess(data) {
 export function setTimeoutFailure(data) {
   return { type: SETTIMEOUT_REQUEST_FAILURE, data };
 }
-
+export function getInsurancePlanSuccess(data) {
+  return { type: GETINSURANCEPLAN_REQUEST_SUCCESS, data };
+}
+export function getInsurancePlanFailure(data) {
+  return { type: GETINSURANCEPLAN_REQUEST_FAILURE, data };
+}
 
 /**
  * Reducer
@@ -122,6 +130,10 @@ export function choosePlan(state = defaultPlan, action) {
         isExpense: action.data.isExpense,
       });
     case GETOPTIONPLAN_REQUEST_FAILURE:
+      return state;
+    case GETINSURANCEPLAN_REQUEST_SUCCESS:
+      return Object.assign({}, state, { insurancePlan: action.data });
+    case GETINSURANCEPLAN_REQUEST_FAILURE:
       return state;
     default:
       return state;

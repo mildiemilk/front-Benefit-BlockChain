@@ -57,6 +57,7 @@ class IPD extends Component {
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleNextPlan: PropTypes.func.isRequired,
+    styletabPrice: PropTypes.string.isRequired,
   }
 
   constructor() {
@@ -204,6 +205,7 @@ class IPD extends Component {
           <Form>
             {this.props.ipdType === 'Lumsum'
               ? <IPD1
+                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.props.handleVerifyState}
                 handleChange={this.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
@@ -221,6 +223,7 @@ class IPD extends Component {
             {this.props.ipdType === 'R&B Lumsum'
               ? <IPD2
                 handleChange={this.handleChange}
+                styletabPrice={this.props.styletabPrice}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}
@@ -240,6 +243,7 @@ class IPD extends Component {
               : null}
             {this.props.ipdType === 'R&B Schedule'
               ? <IPD3
+                styletabPrice={this.props.styletabPrice}
                 handleChange={this.handleChange}
                 handleNewReset={this.props.handleNewReset}
                 handleChangeToNull={this.props.handleChangeToNull}
@@ -274,6 +278,7 @@ class IPD extends Component {
             />
             {this.props.ipdCoPay
               ? <CoPay
+                styletabPrice={this.props.styletabPrice}
                 handleChange={this.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}

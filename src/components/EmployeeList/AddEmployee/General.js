@@ -12,7 +12,10 @@ const Dropdowns = styled(Dropdown)`
   margin-top: 10px;
 }
 `;
-
+const Img = styled.img`
+  height: 20px;
+  width: 20px;
+`;
 const options = [
   { key: 1, text: 'นาย', value: 1 },
   { key: 2, text: 'นาง', value: 2 },
@@ -60,7 +63,7 @@ class General extends Component {
           }
           <Upload className={this.styleUpload()} for="buttonImg">
             <div>
-              <img src={add} alt="add" width="22" height="22" />
+              <Img src={add} className="no-thumbnail" alt="add" width="22" height="22" />
             </div>
             <div>อัพโหลดรูปภาพ</div>
             <Input

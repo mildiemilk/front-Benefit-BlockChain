@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const HeadList = styled.div`
   font-size: 32px;
   margin: 20px 0px;
+  font-size: ${props => props.fontSize};
 `;
 const Dividers = styled(Divider)`
   height: 2px;
@@ -15,6 +16,7 @@ const Dividers = styled(Divider)`
 class Head extends Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
+    fontSize: PropTypes.number.isRequired,
   }
   constructor() {
     super();
@@ -24,7 +26,7 @@ class Head extends Component {
     const { content } = this.props;
     return (
       <div className="row">
-        <HeadList>
+        <HeadList fontSize={this.props.fontSize}>
           {content}
         </HeadList>
         <Dividers />

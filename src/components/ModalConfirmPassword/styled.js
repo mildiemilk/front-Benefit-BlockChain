@@ -46,6 +46,7 @@ export const ButtonStatusAppove = styled.div`
   background-color: #2ac294;
   color: white;
   margin: 15px 0px;
+  margin: ${props => props.margin};
   display: flex;
   justify-content: center;
   align-items: center;

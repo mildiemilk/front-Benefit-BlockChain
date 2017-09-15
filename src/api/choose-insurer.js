@@ -12,11 +12,11 @@ import {
   getSelectInsurerFailure,
 } from '../reducers/choose-insurer';
 
-const CHOOSEINSURER_URI = '/api/chooseInsurer';
-const SETTIMEOUT_URI = '/api/setTimeout';
-const GETALLINSURER_URI = '/api/getAllInsurer';
-const GETSELECTINSURER_URI = '/api/getSelectInsurer';
-const GETTIMEOUT_URI = '/api/getTimeout';
+const CHOOSEINSURER_URI = '/api/company/choose-insurer';
+const SETTIMEOUT_URI = '/api/company/set-insurer-timeout';
+const GETALLINSURER_URI = '/api/company/get-all-insurer';
+const GETSELECTINSURER_URI = '/api/company/get-select-insurer';
+const GETTIMEOUT_URI = '/api/company/get-insurer-timeout';
 
 export function chooseInsurer(insurers) {
   return dispatch => {
@@ -79,6 +79,7 @@ export function setTimeOut(timeout) {
 
     APIRequest(options, true)
       .then(res => {
+        console.log('res', res);
         dispatch(setTimeOutSuccess(res.data));
       })
       .catch(err => {

@@ -12,6 +12,7 @@ class FormSubmitPlan extends Component {
     activePlan: PropTypes.number.isRequired,
     // handleChange: PropTypes.func.isRequired,
     editPlan: PropTypes.func.isRequired,
+    // styletabPrice: PropTypes.string.isRequired,
     createPlan: PropTypes.func.isRequired,
     handlePlan: PropTypes.func.isRequired,
     handleModalFinish: PropTypes.func,
@@ -19,6 +20,7 @@ class FormSubmitPlan extends Component {
     planName: PropTypes.string.isRequired,
     employeeOfPlan: PropTypes.number.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // DetailMP: PropTypes.shape({}).isRequired,
   }
 
   static defaultProps = {
@@ -57,11 +59,11 @@ class FormSubmitPlan extends Component {
           <div className="formsubmit-head-box">
             <div className="formsubmit-1-box">
               <span className="formsubmit-1-l">ชื่อแพลน</span>
-              <span className="formsubmit-1-r">Management Plan 1</span>
+              <span className="formsubmit-1-r">{this.props.planName}</span>
             </div>
             <div className="formsubmit-1-box">
               <span className="formsubmit-1-l">จำนวนพนักงานในแพลน</span>
-              <span className="formsubmit-1-r">1,200 คน</span>
+              <span className="formsubmit-1-r">{this.props.employeeOfPlan} คน</span>
             </div>
             <div className="formsubmit-1-box">
               <span className="formsubmit-1-l">ราคาต่อคน</span>

@@ -9,11 +9,11 @@ import {
   menuPlanSuccess,
 } from '../reducers/submit-plan';
 
-const CREATE_PLAN_URI = '/api/createPlan';
-const EDIT_PLAN_URI = 'api/editPlan';
-const GET_ALL_PLAN_URI = '/api/getAllPlan';
-const COPY_PLAN_URI = '/api/copyPlan';
-const DELETE_PLAN_URI = '/api/deletePlan';
+const CREATE_PLAN_URI = '/api/company/create-plan';
+const EDIT_PLAN_URI = 'api/company/edit-plan';
+const GET_ALL_PLAN_URI = '/api/company/get-all-plan';
+const COPY_PLAN_URI = '/api/company/copy-plan';
+const DELETE_PLAN_URI = '/api/company/delete-plan';
 
 export function createPlan(profilePlan) {
   return dispatch => {
@@ -37,7 +37,7 @@ export function editPlan(editData, planId, editType) {
   return dispatch => {
     const options = {
       method: 'put',
-      url: `${EDIT_PLAN_URI}/${planId}/${editType}`,
+      url: `/${EDIT_PLAN_URI}/${planId}/${editType}`,
       data: editData,
     };
 
@@ -97,7 +97,6 @@ export function getAllPlan() {
         dispatch(getAllPlanSuccess(res.data));
       })
       .catch(err => {
-        console.log(err);
         dispatch(getAllPlanFailure(err.response.data));
       });
   };

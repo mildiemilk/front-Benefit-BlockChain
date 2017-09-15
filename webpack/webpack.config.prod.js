@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -43,11 +44,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
@@ -68,5 +64,8 @@ module.exports = {
       },
       AppCache: false,
     }),
+    new Dotenv({
+      path: './env/dev',
+    }), // TODO: Need to concern about security. More info -> https://github.com/mrsteele/dotenv-webpack
   ],
 };

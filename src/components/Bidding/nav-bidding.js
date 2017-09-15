@@ -28,6 +28,7 @@ class Bidding extends Component {
   }
 
   render() {
+    console.log('countdown', this.props.timeout.timeout);
     return (
       <div className="NavBid">
         <div className="row">

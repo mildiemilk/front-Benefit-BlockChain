@@ -3,7 +3,6 @@ import { APIRequest } from '../';
 const CREATE_CLAIM_URI = '/api/employee/claim';
 
 export function claim(detail, files, type) {
-  console.log('claim');
   const formData = new FormData();
   formData.append('files', files);
   formData.append('detail', JSON.stringify(detail));

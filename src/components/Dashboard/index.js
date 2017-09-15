@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Image, Container, Icon, Checkbox, Divider } from 'semantic-ui-react';
 import { Head, Bar } from './styled';
-import backgroundpig from '../image/cityscape2.png';
 import artboard1 from '../image/dashboard/artboard-1.png';
 import artboard2 from '../image/dashboard/artboard-2.png';
 import artboard3 from '../image/dashboard/artboard-3.png';
@@ -135,7 +134,6 @@ class Dashboard extends Component {
 
           </Grid.Column>
           <Grid.Column width={3} />
-          <img src={backgroundpig} alt="background" className="bg" />
         </Grid>
 
       </div>

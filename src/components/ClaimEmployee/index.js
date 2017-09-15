@@ -1,52 +1,97 @@
 import React, { Component } from 'react';
 import Head from '../Head';
-import { Box, Pic, Text, Number } from '../StyleComponent';
-import allclaim from '../../../assets/ClaimEmployee/allclaim.png';
-import insurance from '../../../assets/ClaimEmployee/insurance.png';
-import health from '../../../assets/ClaimEmployee/health.png';
-import expense from '../../../assets/ClaimEmployee/expense.png';
 import DetailClaim from './DetailClaim';
+import ExtendClaim from './ExtendClaim';
 
 class ClaimEmployee extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      isHealth: true,
+      isExpense: false,
+      isInsurance: false,
+      isExtend: false,
+    };
+  }
+  handleDetail = () => {
+    const { isExtend } = this.state;
+    this.setState({
+      isExtend: !isExtend,
+    });
+  }
+  handleHealth = () => {
+    const { isHealth } = this.state;
+    if (!isHealth) {
+      this.setState({
+        isHealth: true,
+        isExpense: false,
+        isInsurance: false,
+      });
+    }
+  }
+  handleExpense = () => {
+    const { isExpense } = this.state;
+    if (!isExpense) {
+      this.setState({
+        isHealth: false,
+        isExpense: true,
+        isInsurance: false,
+      });
+    }
+  }
+  handleInsurance = () => {
+    const { isInsurance } = this.state;
+    if (!isInsurance) {
+      this.setState({
+        isHealth: false,
+        isExpense: false,
+        isInsurance: true,
+      });
+    }
+  }
+  styletabHealth = () => {
+    if (this.state.isHealth) {
+      return 'active';
+    }
+    return '';
+  }
+  styletabExpense = () => {
+    if (this.state.isExpense) {
+      return 'active';
+    }
+    return '';
+  }
+  styletabInsurance = () => {
+    if (this.state.isInsurance) {
+      return 'active';
+    }
+    return '';
   }
   render() {
+    const { isExtend } = this.state;
     return (
       <div>
         <Head content="เคลม" />
-        <div className="row">
-          <div className="large-3 columns">
-            <Box>
-              <Pic color="#5c6879"><img src={allclaim} alt="allEmployee" /></Pic>
-              <Text>รายการเคลมทั้งหมด</Text>
-              <Number>1200</Number>
-            </Box>
-          </div>
-          <div className="large-3 columns">
-            <Box>
-              <Pic color="#689be4"><img src={insurance} alt="allEmployee" /></Pic>
-              <Text>รายการเคลมประกันภัย</Text>
-              <Number>1200</Number>
-            </Box>
-          </div>
-          <div className="large-3 columns">
-            <Box>
-              <Pic color="#5daa3f"><img src={health} alt="allEmployee" /></Pic>
-              <Text>รายการเคลมสุขภาพ</Text>
-              <Number>1200</Number>
-            </Box>
-          </div>
-          <div className="large-3 columns">
-            <Box>
-              <Pic color="#ec5769"><img src={expense} alt="allEmployee" /></Pic>
-              <Text>รายการเคลมทั่วไป</Text>
-              <Number>1200</Number>
-            </Box>
-          </div>
-        </div>
-        <DetailClaim />
+        {isExtend
+        ? <ExtendClaim
+          isHealth={this.state.isHealth}
+          isExpense={this.state.isExpense}
+          isInsurance={this.state.isInsurance}
+          handleDetail={this.handleDetail}
+        />
+        : <DetailClaim
+          styletabExpense={this.styletabExpense}
+          styletabHealth={this.styletabHealth}
+          styletabInsurance={this.styletabInsurance}
+          handleExpense={this.handleExpense}
+          handleHealth={this.handleHealth}
+          handleInsurance={this.handleInsurance}
+          handleDetail={this.handleDetail}
+          isHealth={this.state.isHealth}
+          isExpense={this.state.isExpense}
+          isInsurance={this.state.isInsurance}
+        />
+        }
       </div>
     );
   }

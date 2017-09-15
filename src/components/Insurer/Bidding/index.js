@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBidding from './nav-bidding';
-import { getCompanyBidding, getTimeout } from '../../../api/Insurer/bidding';
+import { getCompanyBidding } from '../../../api/Insurer/bidding';
 import ShowMasterPlan from '../ShowMasterPlan';
 
 class Bidding extends React.Component {
@@ -10,14 +10,16 @@ class Bidding extends React.Component {
     getCompanyBidding: PropTypes.func.isRequired,
     timeout: PropTypes.string.isRequired,
     match: PropTypes.shape({ params: PropTypes.companyId }),
-    data: PropTypes.shape({}).isRequired,
+    data: PropTypes.shape({ data: {} }).isRequired,
   }
   static defaultProps = {
     match: {
       params: 0,
     },
   }
+
   constructor(props) {
+    console.log('props.match.params.companyId---->', props.match.params.companyId);
     super(props);
     this.state = {
       isDetail: false,
@@ -25,11 +27,15 @@ class Bidding extends React.Component {
       index: '',
       companyId: props.match.params.companyId,
     };
+    // props.getCompanyBidding(this.state.companyId);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    // console.log('willMount: ', this.state.companyId);
     this.props.getCompanyBidding(this.state.companyId);
   }
+
+  isFetched = false;
 
   handleClick = (Detail, index) => {
     // console.log('call handleClick', Detail);
@@ -46,31 +52,32 @@ class Bidding extends React.Component {
   }
 
   render() {
-    return (
-      <div className="Bidding">
-        <NavBidding
-          DataCompany={this.props.data}
-          timeout={this.props.timeout}
-        />
-        <div className="BidContent">
-          <ShowMasterPlan data={this.props.data} />
+    // console.log('render:this.props', this.props);
+    if (Object.keys(this.props.data.data).length > 0) {
+      return (
+        <div>
+          <NavBidding
+            DataCompany={this.props.data.data}
+            timeout={this.props.timeout}
+          />
+          <div className="BidContent">
+            <ShowMasterPlan DataCompany={this.props.data.data} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return <div />
   }
 }
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
-  data: state.biddingReducer,
+  data: state.biddingInsurerReducer,
   num: state.getSelectInsurer.defaultInsurer.length,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // bidding: () => dispatch(bidding()),
   getCompanyBidding: companyId => dispatch(getCompanyBidding(companyId)),
-  getTimeout: () => dispatch(getTimeout()),
-  // getCompleteStep: () => dispatch(getCompleteStep()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bidding);

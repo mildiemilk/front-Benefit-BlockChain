@@ -1,16 +1,19 @@
 /**
  * Default State
  */
+const biddingDetail = {
+  data: {},
+};
+// const defaultEnd = { end: null };
 const biddingList = [];
-const defaultEnd = { end: null };
 const defaultJoinCompanies = {
   joinCompanies: false,
   message: null,
   error: false,
 };
-const defaultTimeOut = {
-  timeout: null,
-};
+// const defaultTimeOut = {
+//   timeout: null,
+// };
 
 
 /**
@@ -18,14 +21,14 @@ const defaultTimeOut = {
  */
 const GETBIDDING_REQUEST_SUCCESS = 'GETBIDDING_REQUEST_SUCCESS';
 const GETBIDDING_REQUEST_FAILURE = 'GETBIDDING_REQUEST_FAILURE';
-const END_REQUEST_SUCCESS = 'END_REQUEST_SUCCESS';
-const END_REQUEST_FAILURE = 'END_REQUEST_FAILURE';
+const GETBIDDINGLIST_REQUEST_SUCCESS = 'GETBIDDINGLIST_REQUEST_SUCCESS';
+const GETBIDDINGLIST_REQUEST_FAILURE = 'GETBIDDINGLIST_REQUEST_FAILURE';
 const JOIN_BID_SUCCESS = 'JOIN_BID_SUCCESS';
 const JOIN_BID_FAILURE = 'JOIN_BID_FAILURE';
-const GETTIMEOUT_REQUEST_SUCCESS = 'GETTIMEOUT_REQUEST_SUCCESS';
-const GETTIMEOUT_REQUEST_FAILURE = 'GETTIMEOUT_REQUEST_FAILURE';
-const SETTIMEOUT_REQUEST_SUCCESS = 'SETTIMEOUT_REQUEST_SUCCESS';
-const SETTIMEOUT_REQUEST_FAILURE = 'SETTIMEOUT_REQUEST_FAILURE';
+// const GETTIMEOUT_REQUEST_SUCCESS = 'GETTIMEOUT_REQUEST_SUCCESS';
+// const GETTIMEOUT_REQUEST_FAILURE = 'GETTIMEOUT_REQUEST_FAILURE';
+// const SETTIMEOUT_REQUEST_SUCCESS = 'SETTIMEOUT_REQUEST_SUCCESS';
+// const SETTIMEOUT_REQUEST_FAILURE = 'SETTIMEOUT_REQUEST_FAILURE';
 
 /**
  * Actions
@@ -38,6 +41,15 @@ export function getCompanyBiddingFailure(data) {
   return { type: GETBIDDING_REQUEST_FAILURE, data };
 }
 
+export function getCompanyBiddingListSuccess(data) {
+  console.log('action', data);
+  return { type: GETBIDDINGLIST_REQUEST_SUCCESS, data };
+}
+
+export function getCompanyBiddingListFailure(data) {
+  return { type: GETBIDDINGLIST_REQUEST_FAILURE, data };
+}
+
 export function joinBidSuccess(data) {
   return { type: JOIN_BID_SUCCESS, data };
 }
@@ -46,26 +58,26 @@ export function joinBidFailure(data) {
   return { type: JOIN_BID_FAILURE, data };
 }
 
-export function EndSuccess(data) {
-  return { type: END_REQUEST_SUCCESS, data };
-}
+// export function EndSuccess(data) {
+//   return { type: END_REQUEST_SUCCESS, data };
+// }
 
-export function EndFailure(data) {
-  return { type: END_REQUEST_FAILURE, data };
-}
-export function getTimeoutSuccess(data) {
-  return { type: GETTIMEOUT_REQUEST_SUCCESS, data };
-}
-export function getTimeoutFailure(data) {
-  return { type: GETTIMEOUT_REQUEST_FAILURE, data };
-}
+// export function EndFailure(data) {
+//   return { type: END_REQUEST_FAILURE, data };
+// }
+// export function getTimeoutSuccess(data) {
+//   return { type: GETTIMEOUT_REQUEST_SUCCESS, data };
+// }
+// export function getTimeoutFailure(data) {
+//   return { type: GETTIMEOUT_REQUEST_FAILURE, data };
+// }
 /**
  * Reducer
  */
-export function biddingReducer(state = biddingList, action) {
+export function biddingInsurerReducer(state = biddingDetail, action) {
   switch (action.type) {
     case GETBIDDING_REQUEST_SUCCESS:
-      return action.data;
+      return Object.assign({}, state, { data: action.data });
     case GETBIDDING_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     default:
@@ -73,11 +85,11 @@ export function biddingReducer(state = biddingList, action) {
   }
 }
 
-export function endTimeout(state = defaultEnd, action) {
+export function biddingListReducer(state = biddingList, action) {
   switch (action.type) {
-    case END_REQUEST_SUCCESS:
-      return action.data.end;
-    case END_REQUEST_FAILURE:
+    case GETBIDDINGLIST_REQUEST_SUCCESS:
+      return action.data;
+    case GETBIDDINGLIST_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     default:
       return state;
@@ -102,21 +114,21 @@ export function joinCompanies(state = defaultJoinCompanies, action) {
   }
 }
 
-export function setTimeOut(state = defaultTimeOut, action) {
-  switch (action.type) {
-    case SETTIMEOUT_REQUEST_SUCCESS:
-      return Object.assign({}, state, {
-        timeout: action.data,
-      });
-    case SETTIMEOUT_REQUEST_FAILURE:
-      return Object.assign({}, state, {});
-    case GETTIMEOUT_REQUEST_SUCCESS:
-      return Object.assign({}, state, {
-        timeout: action.data,
-      });
-    case GETBIDDING_REQUEST_FAILURE:
-      return Object.assign({}, state, {});
-    default:
-      return state;
-  }
-}
+// export function setTimeOut(state = defaultTimeOut, action) {
+//   switch (action.type) {
+//     case SETTIMEOUT_REQUEST_SUCCESS:
+//       return Object.assign({}, state, {
+//         timeout: action.data,
+//       });
+//     case SETTIMEOUT_REQUEST_FAILURE:
+//       return Object.assign({}, state, {});
+//     case GETTIMEOUT_REQUEST_SUCCESS:
+//       return Object.assign({}, state, {
+//         timeout: action.data,
+//       });
+//     case GETBIDDING_REQUEST_FAILURE:
+//       return Object.assign({}, state, {});
+//     default:
+//       return state;
+//   }
+// }

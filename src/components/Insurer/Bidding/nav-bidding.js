@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CountDowns from './CountDowns';
+import CountDowns from '../../Bidding/CountDowns';
 import HeadCompanyInfo from '../header-company-info';
 import {
   Nav,

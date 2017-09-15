@@ -9,7 +9,7 @@ import Head from '../Head';
 import ModalEditEmployee from './ModalEditEmployee';
 import { getGroupBenefit } from '../../api/profile-company';
 import { getBenefitPlan } from '../../api/benefit-plan';
-import { Box, Pic, Text, Number } from '../StyleComponent';
+import { Box, Pic, TextNav, Number } from '../StyleComponent';
 import { ListPopup, DivFloat, DivImg, TextList, DivHead, TextElip } from './styled';
 import employee from '../../../assets/EmployeeList/icons-8-commercial-development-management.png';
 import promotion from '../../../assets/EmployeeList/icons-8-new-job.png';
@@ -249,7 +249,6 @@ class employeeList extends Component {
     return allGroup;
   }
   render() {
-    console.log('Groupsbenefit', this.props.groupBenefit);
     return (
       <div className="employee-list">
         <Head content="รายชื่อพนักงาน" />
@@ -257,28 +256,28 @@ class employeeList extends Component {
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={employee} alt="allEmployee" /></Pic>
-              <Text>พนักงานทั้งหมด</Text>
+              <TextNav>พนักงานทั้งหมด</TextNav>
               <Number>1200</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={promotion} alt="allEmployee" /></Pic>
-              <Text>ปรับตำแหน่งเดือนนี้</Text>
+              <TextNav>ปรับตำแหน่งเดือนนี้</TextNav>
               <Number>1200</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={newjobs} alt="allEmployee" /></Pic>
-              <Text>เข้าทำงานใหม่เดือนนี้</Text>
+              <TextNav>เข้าทำงานใหม่เดือนนี้</TextNav>
               <Number>1200</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={Exit} alt="allEmployee" /></Pic>
-              <Text>ลาออกเดือนนี้</Text>
+              <TextNav>ลาออกเดือนนี้</TextNav>
               <Number>1200</Number>
             </Box>
           </div>
@@ -286,6 +285,7 @@ class employeeList extends Component {
         <div className="row">
           <FilterSearch
             groupBenefit={this.props.groupBenefit}
+            handleChange={this.handleChange}
           />
           <div className="large-3 columns">
             <DivImg>

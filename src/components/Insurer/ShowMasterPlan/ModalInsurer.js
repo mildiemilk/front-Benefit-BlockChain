@@ -12,6 +12,7 @@ class ModalInsurer extends Component {
     handleCloseModal: PropTypes.func.isRequired,
     selectInsurerPlan: PropTypes.bool.isRequired,
     editDetailMP: PropTypes.bool.isRequired,
+    DetailMP: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
@@ -25,6 +26,7 @@ class ModalInsurer extends Component {
       handleCloseModal,
       selectInsurerPlan,
       editDetailMP,
+      DetailMP,
     } = this.props;
     return (
       <div>
@@ -152,6 +154,7 @@ class ModalInsurer extends Component {
         </Modal>
         <PlanBoxModal
           modalOpen={editDetailMP}
+          DetailMP={DetailMP}
           handleCloseModal={handleCloseModal}
           activePlan={[1, 2, 3]}
           planList={[1, 2, 3]}

@@ -51,6 +51,7 @@ export const BoxDetail = styled.div`
   background-color: #ffffff;
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.08);
   border: solid 1px #cecece;
+  margin-bottom: 10px;
 `;
 export const Back = styled.div`
   font-size: 20px;
@@ -92,14 +93,15 @@ export const List = styled.div`
   width: 296.5px !important;
   height: 70px;
   border-radius: 5px;
-  background-color: #d8d8d8;
+  background-color: ${props => props.color};
   border: solid 1px #979797;
   position: relative;
 `;
 export const IconPlan = styled(Icon)`
   &&&{
-  margin:7% ;
-  display: absolute;
+  position: absolute;
+  top: 19px;
+  left: 21px;
   }
 `;
 
@@ -107,6 +109,7 @@ export const DetailList = styled.div`
   display: inline-block;
   position: absolute;
   top: 16px;
+  left: 60px;
 `;
 
 export const PopupList = styled.div`

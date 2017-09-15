@@ -69,11 +69,13 @@ class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    DetailMP: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
+      // DetailMP: this.props.DetailMP,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
       activePlan: -1,
@@ -123,129 +125,156 @@ class PlanBoxModal extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
+      morePrice: null,
     };
   }
 
-  // componentWillReceiveProps(newProps) {
-  //   const { planList, activePlan } = newProps;
-  //   if (newProps.modalOpen !== this.props.modalOpen) {
-  //     this.handleUpdate(planList, activePlan);
-  //   }
-  // }
+  componentWillReceiveProps(newProps) {
+    const { DetailMP, activePlan } = newProps;
+    if (newProps.modalOpen !== this.props.modalOpen) {
+      this.handleUpdate(DetailMP, activePlan);
+    }
+  }
 
   handlePlan = val => {
     if (val !== -1) {
-      const { planList } = this.props;
+      // const DetailMP = this.props.DetailMP;
+      // const { plan } = DetailMP;
+      const { DetailMP } = this.props;
       this.setState({
         activePlan: val,
-        planName: planList[val].planName,
-        employeeOfPlan: planList[val].employeeOfPlan,
-        dentalPerYear: planList[val].dentalPerYear,
-        lifePerYear: planList[val].lifePerYear,
-        lifeTimeOfSalary: planList[val].lifeTimeOfSalary,
-        lifeNotExceed: planList[val].lifeNotExceed,
-        opdCoPay: planList[val].opdCoPay,
-        opdPerYear: planList[val].opdPerYear,
-        opdPerTime: planList[val].opdPerTime,
-        opdTimeNotExceedPerYear: planList[val]
+        planName: DetailMP.planName,
+        employeeOfPlan: DetailMP.employeeOfPlan,
+        dentalPerYear: DetailMP.dentalPerYear,
+        lifePerYear: DetailMP.lifePerYear,
+        lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
+        lifeNotExceed: DetailMP.lifeNotExceed,
+        opdCoPay: DetailMP.opdCoPay,
+        opdPerYear: DetailMP.opdPerYear,
+        opdPerTime: DetailMP.opdPerTime,
+        opdTimeNotExceedPerYear: DetailMP
           .opdTimeNotExceedPerYear,
-        opdCoPayQuota: planList[val].opdCoPayQuota,
-        opdCoPayDeductable: planList[val].opdCoPayDeductable,
-        opdCoPayMixPercentage: planList[val].opdCoPayMixPercentage,
-        opdCoPayMixNotExceed: planList[val].opdCoPayMixNotExceed,
-        opdCoPayMixYear: planList[val].opdCoPayMixYear,
-        ipdType: planList[val].ipdType,
-        ipdLumsumPerYear: planList[val].ipdLumsumPerYear,
-        ipdLumsumPerTime: planList[val].ipdLumsumPerTime,
-        ipdLumsumTimeNotExceedPerYear: planList[val]
+        opdCoPayQuota: DetailMP.opdCoPayQuota,
+        opdCoPayDeductable: DetailMP.opdCoPayDeductable,
+        opdCoPayMixPercentage: DetailMP.opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: DetailMP.opdCoPayMixNotExceed,
+        opdCoPayMixYear: DetailMP.opdCoPayMixYear,
+        ipdType: DetailMP.ipdType,
+        ipdLumsumPerYear: DetailMP.ipdLumsumPerYear,
+        ipdLumsumPerTime: DetailMP.ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: DetailMP
           .ipdLumsumTimeNotExceedPerYear,
-        rbLumsumRoomPerNight: planList[val].rbLumsumRoomPerNight,
-        rbLumsumNigthNotExceedPerYear: planList[val]
+        rbLumsumRoomPerNight: DetailMP.rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: DetailMP
           .rbLumsumNigthNotExceedPerYear,
-        rbLumsumPayNotExceedPerNight: planList[val]
+        rbLumsumPayNotExceedPerNight: DetailMP
           .rbLumsumPayNotExceedPerNight,
-        rbLumsumPayNotExceedPerYear: planList[val]
+        rbLumsumPayNotExceedPerYear: DetailMP
           .rbLumsumPayNotExceedPerYear,
-        rbSchedulePatient: planList[val].rbSchedulePatient,
-        rbScheduleIntensiveCarePatient: planList[val]
+        rbSchedulePatient: DetailMP.rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: DetailMP
           .rbScheduleIntensiveCarePatient,
-        rbScheduleDoctor: planList[val].rbScheduleDoctor,
-        rbScheduleSurgerySchedule: planList[val]
+        rbScheduleDoctor: DetailMP.rbScheduleDoctor,
+        rbScheduleSurgerySchedule: DetailMP
           .rbScheduleSurgerySchedule,
-        rbScheduleSurgeryNonSchedule: planList[val]
+        rbScheduleSurgeryNonSchedule: DetailMP
           .rbScheduleSurgeryNonSchedule,
-        rbScheduleService: planList[val].rbScheduleService,
-        rbScheduleSmallSurgery: planList[val].rbScheduleSmallSurgery,
-        rbScheduleAdviser: planList[val].rbScheduleAdviser,
-        rbScheduleAmbulance: planList[val].rbScheduleAmbulance,
-        rbScheduleAccident: planList[val].rbScheduleAccident,
-        rbScheduleTreatment: planList[val].rbScheduleTreatment,
-        rbScheduleTransplant: planList[val].rbScheduleTransplant,
-        ipdCoPay: planList[val].ipdCoPay,
-        ipdCoPayQuota: planList[val].ipdCoPayQuota,
-        ipdCoPayDeductable: planList[val].ipdCoPayDeductable,
-        ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
-        ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
-        ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
+        rbScheduleService: DetailMP.rbScheduleService,
+        rbScheduleSmallSurgery: DetailMP.rbScheduleSmallSurgery,
+        rbScheduleAdviser: DetailMP.rbScheduleAdviser,
+        rbScheduleAmbulance: DetailMP.rbScheduleAmbulance,
+        rbScheduleAccident: DetailMP.rbScheduleAccident,
+        rbScheduleTreatment: DetailMP.rbScheduleTreatment,
+        rbScheduleTransplant: DetailMP.rbScheduleTransplant,
+        ipdCoPay: DetailMP.ipdCoPay,
+        ipdCoPayQuota: DetailMP.ipdCoPayQuota,
+        ipdCoPayDeductable: DetailMP.ipdCoPayDeductable,
+        ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
       });
     }
   }
 
-  handleUpdate = (planList, activePlan) => {
+  handleUpdate = DetailMP => {
     this.setState({
-      activePlan,
-      planName: planList[activePlan].planName,
-      employeeOfPlan: planList[activePlan].employeeOfPlan,
-      ipdType: planList[activePlan].ipdType,
-      ipdLumsumPerYear: planList[activePlan].ipdLumsumPerYear,
-      ipdLumsumPerTime: planList[activePlan].ipdLumsumPerTime,
-      ipdLumsumTimeNotExceedPerYear: planList[activePlan]
+      planName: DetailMP.planName,
+      employeeOfPlan: DetailMP.employeeOfPlan,
+      ipdType: DetailMP.ipdType,
+      ipdLumsumPerYear: DetailMP.ipdLumsumPerYear,
+      ipdLumsumPerTime: DetailMP.ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear: DetailMP
         .ipdLumsumTimeNotExceedPerYear,
-      rbLumsumRoomPerNight: planList[activePlan].rbLumsumRoomPerNight,
-      rbLumsumNigthNotExceedPerYear: planList[activePlan]
+      rbLumsumRoomPerNight: DetailMP.rbLumsumRoomPerNight,
+      rbLumsumNigthNotExceedPerYear: DetailMP
         .rbLumsumNigthNotExceedPerYear,
-      rbLumsumPayNotExceedPerNight: planList[activePlan]
+      rbLumsumPayNotExceedPerNight: DetailMP
         .rbLumsumPayNotExceedPerNight,
-      rbLumsumPayNotExceedPerYear: planList[activePlan]
+      rbLumsumPayNotExceedPerYear: DetailMP
         .rbLumsumPayNotExceedPerYear,
-      rbSchedulePatient: planList[activePlan].rbSchedulePatient,
-      rbScheduleIntensiveCarePatient: planList[activePlan]
+      rbSchedulePatient: DetailMP.rbSchedulePatient,
+      rbScheduleIntensiveCarePatient: DetailMP
         .rbScheduleIntensiveCarePatient,
-      rbScheduleDoctor: planList[activePlan].rbScheduleDoctor,
-      rbScheduleSurgerySchedule: planList[activePlan]
+      rbScheduleDoctor: DetailMP.rbScheduleDoctor,
+      rbScheduleSurgerySchedule: DetailMP
         .rbScheduleSurgerySchedule,
-      rbScheduleSurgeryNonSchedule: planList[activePlan]
+      rbScheduleSurgeryNonSchedule: DetailMP
         .rbScheduleSurgeryNonSchedule,
-      rbScheduleService: planList[activePlan].rbScheduleService,
-      rbScheduleSmallSurgery: planList[activePlan].rbScheduleSmallSurgery,
-      rbScheduleAdviser: planList[activePlan].rbScheduleAdviser,
-      rbScheduleAmbulance: planList[activePlan].rbScheduleAmbulance,
-      rbScheduleAccident: planList[activePlan].rbScheduleAmbulance,
-      rbScheduleTreatment: planList[activePlan].rbScheduleTreatment,
-      rbScheduleTransplant: planList[activePlan].rbScheduleTransplant,
-      ipdCoPay: planList[activePlan].ipdCoPay,
-      ipdCoPayQuota: planList[activePlan].ipdCoPayQuota,
-      ipdCoPayDeductable: planList[activePlan].ipdCoPayDeductable,
-      ipdCoPayMixPercentage: planList[activePlan].ipdCoPayMixPercentage,
-      ipdCoPayMixNotExceed: planList[activePlan].ipdCoPayMixNotExceed,
-      ipdCoPayMixYear: planList[activePlan].ipdCoPayMixYear,
-      opdPerYear: planList[activePlan].opdPerYear,
-      opdPerTime: planList[activePlan].opdPerTime,
-      opdTimeNotExceedPerYear: planList[activePlan].opdTimeNotExceedPerYear,
-      opdCoPay: planList[activePlan].opdCoPay,
-      opdCoPayQuota: planList[activePlan].opdCoPayQuota,
-      opdCoPayDeductable: planList[activePlan].opdCoPayDeductable,
-      opdCoPayMixPercentage: planList[activePlan].opdCoPayMixPercentage,
-      opdCoPayMixNotExceed: planList[activePlan].opdCoPayMixNotExceed,
-      opdCoPayMixYear: planList[activePlan].opdCoPayMixYear,
-      dentalPerYear: planList[activePlan].dentalPerYear,
-      lifePerYear: planList[activePlan].lifePerYear,
-      lifeTimeOfSalary: planList[activePlan].lifeTimeOfSalary,
-      lifeNotExceed: planList[activePlan].lifeNotExceed,
+      rbScheduleService: DetailMP.rbScheduleService,
+      rbScheduleSmallSurgery: DetailMP.rbScheduleSmallSurgery,
+      rbScheduleAdviser: DetailMP.rbScheduleAdviser,
+      rbScheduleAmbulance: DetailMP.rbScheduleAmbulance,
+      rbScheduleAccident: DetailMP.rbScheduleAmbulance,
+      rbScheduleTreatment: DetailMP.rbScheduleTreatment,
+      rbScheduleTransplant: DetailMP.rbScheduleTransplant,
+      ipdCoPay: DetailMP.ipdCoPay,
+      ipdCoPayQuota: DetailMP.ipdCoPayQuota,
+      ipdCoPayDeductable: DetailMP.ipdCoPayDeductable,
+      ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
+      ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
+      opdPerYear: DetailMP.opdPerYear,
+      opdPerTime: DetailMP.opdPerTime,
+      opdTimeNotExceedPerYear: DetailMP.opdTimeNotExceedPerYear,
+      opdCoPay: DetailMP.opdCoPay,
+      opdCoPayQuota: DetailMP.opdCoPayQuota,
+      opdCoPayDeductable: DetailMP.opdCoPayDeductable,
+      opdCoPayMixPercentage: DetailMP.opdCoPayMixPercentage,
+      opdCoPayMixNotExceed: DetailMP.opdCoPayMixNotExceed,
+      opdCoPayMixYear: DetailMP.opdCoPayMixYear,
+      dentalPerYear: DetailMP.dentalPerYear,
+      lifePerYear: DetailMP.lifePerYear,
+      lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
+      lifeNotExceed: DetailMP.lifeNotExceed,
     });
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value })
+    if (this.state[name] > value) {
+      console.log('less');
+      this.setState({
+        morePrice: 'pricered',
+      });
+    } else if (this.state[name] < value) {
+      console.log('more');
+      this.setState({
+        morePrice: 'pricegreen',
+      });
+    } else {
+      this.setState({
+        morePrice: '',
+      });
+    }
+  }
+
+  // styletabPrice = () => {
+  //   if (this.state.morePrice ==) {
+  //     return 'active';
+  //   }
+  //   return '';
+  // }
+  // styletabPrice = () => this.state.morePrice;
 
   handleChangeToNull = name => this.setState({ [name]: null })
 
@@ -387,6 +416,7 @@ class PlanBoxModal extends Component {
   }
 
   render() {
+    // console.log('DetailMP--------', this.props);
     return (
       <Modals
         trigger={<div />}
@@ -399,15 +429,18 @@ class PlanBoxModal extends Component {
         </ModalHeaders>
         <ModalContents>
           <FormSubmitPlan
+            styletabPrice={this.state.morePrice}
             activePlan={this.state.activePlan}
             handleChange={this.handleChange}
             planName={this.state.planName}
             employeeOfPlan={this.state.employeeOfPlan}
             handleResetProfilePlan={this.handleResetProfilePlan}
+            DetailMP={this.props.DetailMP}
           />
         </ModalContents>
         <ModalContentsWithBottom>
           <AllPlan
+            styletabPrice={this.state.morePrice}
             activePlan={this.state.activePlan}
             handlePlan={this.handlePlan}
             nextPage={this.state.nextPage}

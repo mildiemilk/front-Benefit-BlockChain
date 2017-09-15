@@ -46,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: './env/dev',
+      path: './env/local',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),

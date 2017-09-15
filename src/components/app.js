@@ -47,6 +47,10 @@ import ClaimEmployee from './ClaimEmployee';
 import ProfileClaim from './ProfileClaim';
 import Profile from './Profile';
 
+const { ENV } = process.env;
+console.log('process.env.NODE_ENV', process.env.ENV);
+console.log('process.env.NODE_ENV', ENV);
+
 class App extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,

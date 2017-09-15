@@ -5,7 +5,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import FormSubmitPlan from './FormSubmitPlan';
 import AllPlan from './all-plan';
 import NavInsure from '../../../NavInsure';
-import { getAllPlan, copyPlan, deletePlan } from '../../../../api/set-plan';
+import { deleteInsurerPlan } from '../../../../api/Insurer/bidding';
 
 import '../../../../styles/submit-plan.scss';
 
@@ -14,7 +14,7 @@ class SubmitPlan extends Component {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     getAllPlan: PropTypes.func.isRequired,
     copyPlan: PropTypes.func.isRequired,
-    deletePlan: PropTypes.func.isRequired,
+    deleteInsurerPlan: PropTypes.func.isRequired,
     havePlan: PropTypes.bool.isRequired,
   }
 
@@ -199,7 +199,7 @@ class SubmitPlan extends Component {
   }
 
   handleDelete = e => {
-    this.props.deletePlan(this.props.planList[e.target.id].planId);
+    this.props.deleteInsurerPlan(this.props.planList[e.target.id].planId);
     this.setState({ activePlan: -1 });
   }
 
@@ -515,9 +515,7 @@ class SubmitPlan extends Component {
 SubmitPlan.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
-  getAllPlan: () => dispatch(getAllPlan()),
-  deletePlan: planId => dispatch(deletePlan(planId)),
-  copyPlan: planId => dispatch(copyPlan(planId)),
+  deleteInsurerPlan: planId => dispatch(deleteInsurerPlan(planId)),
 });
 
 const mapStateToProps = state => ({

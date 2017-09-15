@@ -18,7 +18,7 @@ class ShowMasterPlan extends Component {
   }
   constructor(props) {
     super(props);
-    console.log('ShowMasterPlan', this.props);
+    console.log('ShowMasterPlan', this.props.DataCompany);
     const data = this.props.DataCompany;
     const { status,
             totalPrice,
@@ -45,19 +45,36 @@ class ShowMasterPlan extends Component {
       modalCancelJoin: false,
       quotation,
       masterplan: plan.master,
+      insurerplan: plan.insurer,
       editplan: [],
       claimdata: [1, 2, 3],
       selectInsurerPlan: false,
       editDetailMP: false,
+      DetailMP: {},
       totalPrice,
       countBidding,
       startNewInsurance,
       updatedAt,
       expiredOldInsurance,
+      isDetail: false,
     };
   }
 
-  handleOnpenModal = name => this.setState({ [name]: true });
+  // handleOnpenModal = name => this.setState({ [name]: true });
+  handleOnpenModal = (name, DetailMP) => {
+    console.log('call handleClick', DetailMP);
+    const { isDetail } = this.state;
+    if (!isDetail) {
+      this.setState({
+        isDetail: true,
+        DetailMP,
+        [name]: true,
+      });
+    } else {
+      this.setState({ isDetail: false });
+    }
+  }
+
 
   handleCloseModal = nameModal => this.setState({ [nameModal]: false });
 
@@ -79,11 +96,13 @@ class ShowMasterPlan extends Component {
     // this.props.sendToParent({detail:'prim ba'}, 0);
     // const data = this.props.data;
     // const { plan } = data;
+    console.log('call handleClick----', this.state.DetailMP);
     const {
       joinbid,
       modalCancelJoin,
       quotation,
       masterplan,
+      insurerplan,
       editplan,
       claimdata,
       selectInsurerPlan,
@@ -109,6 +128,7 @@ class ShowMasterPlan extends Component {
             quotation
             ? <Quotation
               masterplan={masterplan}
+              insurerplan={insurerplan}
               editplan={editplan}
               totalPrice={totalPrice}
               countBidding={countBidding}
@@ -147,6 +167,7 @@ class ShowMasterPlan extends Component {
           handleCloseModal={this.handleCloseModal}
           selectInsurerPlan={selectInsurerPlan}
           editDetailMP={editDetailMP}
+          DetailMP={this.state.DetailMP}
         />
       </div>
     );

@@ -8,7 +8,7 @@ const APP_CONFIG = () => {
     case 'development':
       return {
         api: {
-          host: `${NODE_ENV.API_SERVER_PROTOCOL}://${NODE_ENV.API_SERVER_HOST}:${NODE_ENV.API_SERVER_PORT}`,
+          host: `${process.env.API_SERVER_PROTOCOL}://${process.env.API_SERVER_HOST}:${process.env.API_SERVER_PORT}`,
         },
       };
     default:

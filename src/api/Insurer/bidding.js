@@ -14,7 +14,24 @@ import {
 const BIDDING_LIS_URI = '/api/insurer/company-list';
 const BIDDING_DETAIL_URI = '/api/insurer/bidding-detail';
 const JOIN_BIDDING_URI = '/api/insurer/bidding';
+const DELETE_PLAN_URI = '/api/insurer/delete-plan';
 
+export function deleteInsurerPlan(planId) {
+  return () => {
+    const options = {
+      method: 'delete',
+      url: `${DELETE_PLAN_URI}/${planId}`,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
 export function getCompanyBidding(companyId) {
   console.log('api----', companyId);
   return dispatch => {

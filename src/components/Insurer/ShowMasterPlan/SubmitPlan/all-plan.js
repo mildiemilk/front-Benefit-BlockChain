@@ -78,6 +78,7 @@ class AllsetPlan extends Component {
     ipdCoPayMixNotExceed: PropTypes.string,
     ipdCoPayMixYear: PropTypes.string,
     handlePlan: PropTypes.func.isRequired,
+    styletabPrice: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
@@ -488,6 +489,7 @@ class AllsetPlan extends Component {
           <div className="paragraph">
             {this.state.setPlan === 'OPD'
               ? <OPD
+                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -515,6 +517,7 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'IPD'
               ? <IPD
+                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -576,6 +579,7 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Dental'
               ? <Dental
+                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -593,6 +597,7 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Life'
               ? <Life
+                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}

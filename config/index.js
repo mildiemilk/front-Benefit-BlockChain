@@ -1,20 +1,20 @@
-const { NODE_ENV } = process.env;
+// const { NODE_ENV } = process.env;
 
 
-const APP_CONFIG = () => {
-  switch (NODE_ENV.ENV) {
+const APP_CONFIG = function () {
+  switch (process.env.ENV) {
     case 'production':
       return {};
     case 'development':
       return {
         api: {
-          host: `${process.env.API_SERVER_PROTOCOL}://${process.env.API_SERVER_HOST}:${process.env.API_SERVER_PORT}`,
+          host: process.env.API_SERVER_PROTOCOL + '://' + process.env.API_SERVER_HOST + ':' + process.env.API_SERVER_PORT,
         },
       };
     default:
       return {
         api: {
-          host: `${process.env.API_SERVER_PROTOCOL}://${process.env.API_SERVER_HOST}:${process.env.API_SERVER_PORT}`,
+          host: process.env.API_SERVER_PROTOCOL + '://' + process.env.API_SERVER_HOST + ':' + process.env.API_SERVER_PORT,
         },
       };
   }

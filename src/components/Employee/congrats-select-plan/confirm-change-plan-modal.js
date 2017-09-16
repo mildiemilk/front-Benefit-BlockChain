@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Modal } from 'semantic-ui-react';
+import { Redirect, Link } from 'react-router-dom';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -34,10 +35,7 @@ class ConfirmModal extends Component {
     };
   }
 
-  handleChangePlan = () => {
-    window.location.href = '/plan';
-    // this.props.handleCloseModal();
-  }
+  handleChangePlan = () => <Redirect to={{ pathname: '/plan/1' }} />;
 
   handleClose = () => {
     this.props.handleCloseModal();
@@ -62,12 +60,14 @@ class ConfirmModal extends Component {
               >
                 ไม่ใช่
               </button>
-              <button
-                className="select-plan-confirm-model"
-                onClick={() => this.handleChangePlan()}
-              >
-                ใช่
-              </button>
+              <Link to="/plan/1">
+                <button
+                  className="select-plan-confirm-model"
+                  onClick={() => this.handleChangePlan()}
+                >
+                  ใช่
+                </button>
+              </Link>
             </div>
           </div>
         </ModalContents>

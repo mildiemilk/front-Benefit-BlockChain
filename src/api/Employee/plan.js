@@ -43,28 +43,20 @@ export function newUser() {
       dispatch(confirmPlanSuccess(res.data));
     })
     .catch(err => {
-      dispatch(confirmPlanFailure(err));
+      dispatch(confirmPlanFailure(err.response));
     });
   };
 }
 
 export function selectBenefit(_id) {
-  return () => {
-    const options = {
-      method: 'put',
-      url: SELECT_BENEFIT_URL,
-      data: {
-        planId: _id,
-      },
-    };
-    APIRequest(options, true);
-    // .then(res => {
-    //   console.log('res: ', res);
-    // })
-    // .catch(err => {
-    //   console.log('err: ', err);
-    // });
+  const options = {
+    method: 'put',
+    url: SELECT_BENEFIT_URL,
+    data: {
+      planId: _id,
+    },
   };
+  return APIRequest(options, true);
 }
 
 export function confirmPlan() {
@@ -91,7 +83,6 @@ export function getAllBenefit() {
     };
     APIRequest(options, true)
       .then(res => {
-        // console.log('resapi: ', res);
         dispatch(getAllBenefitSuccess(res.data));
       })
       .catch(err => {

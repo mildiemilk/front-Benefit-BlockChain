@@ -44,6 +44,7 @@ class FlexyPlan extends Component {
       slidesToScroll: 1,
       slickGoTo: this.props.plan,
       afterChange: index => this.props.handleChangePlan(index),
+      initialSlide: this.props.plan,
     };
     const { data, timeUp } = this.props;
     return (

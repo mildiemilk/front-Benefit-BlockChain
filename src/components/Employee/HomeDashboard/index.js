@@ -10,14 +10,13 @@ import FindHospital from '../../../../assets/employee/hospital.png';
 import Profile from '../../../../assets/employee/profile.png';
 import Setting from '../../../../assets/employee/setting.png';
 import IconView from '../../../../assets/employee/icon_view.png';
-import { getAllBenefit, confirmPlan, currentPlan } from '../../../api/Employee/plan';
+import { getAllBenefit, confirmPlan } from '../../../api/Employee/plan';
 
 class HomeDashboard extends Component {
   static propTypes = {
     data: PropTypes.shape({}).isRequired,
     getAllBenefit: PropTypes.func.isRequired,
     confirmPlan: PropTypes.func.isRequired,
-    currentPlan: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -28,7 +27,6 @@ class HomeDashboard extends Component {
     };
     props.getAllBenefit();
     props.confirmPlan();
-    props.currentPlan();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -178,14 +176,11 @@ class HomeDashboard extends Component {
 const mapDispatchToProps = dispatch => ({
   getAllBenefit: () => dispatch(getAllBenefit()),
   confirmPlan: () => dispatch(confirmPlan()),
-  currentPlan: () => dispatch(currentPlan()),
 });
 const mapStateToProps = state => ({
   data: {
     ...state.getAllBenefitReducer,
-    confirm: state.confirmPlanReducer.confirm,
-    newUser: state.confirmPlanReducer.newUser,
-    ...state.currentPlanReducer,
+    ...state.confirmPlanReducer,
   },
 });
 

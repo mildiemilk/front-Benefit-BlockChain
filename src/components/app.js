@@ -44,6 +44,7 @@ import AppInsurer from './appinsurer';
 import InsurerLogin from './Insurer/insurer-login';
 import AddEmployee from './EmployeeList/AddEmployee';
 import ClaimEmployee from './ClaimEmployee';
+import Setting from './Setting';
 import ProfileClaim from './ProfileClaim';
 import Profile from './Profile';
 
@@ -95,6 +96,7 @@ class App extends Component {
                   <Route path="/sendrequest" component={Sendrequest} />
                   <Route path="/bidding" component={Bidding} />
                   <Route path="/uploadfile" component={Uploadfile} />
+                  <Route path="/setting" component={Setting} />
                   <Route path="/settingbenefit" component={SettingBenefit} />
                   <Route path="/settingplan" component={SettingPlan} />
                   <Route

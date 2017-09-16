@@ -5,10 +5,9 @@ import styled from 'styled-components';
 import {
   ModalHeader,
   ModalContent,
-  CancleButton,
-  ConfirmButton,
   ButtonStatusAppove,
 } from './styled';
+import { Button } from '../StyleComponent';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
@@ -44,7 +43,6 @@ const Inputs = styled(Input) `
 const Text = styled.div`
   text-align: center;
   margin-top: 25px;
-  margin-bottom: 30px;
 `;
 
 class ModalConfirmPassword extends Component {
@@ -55,6 +53,7 @@ class ModalConfirmPassword extends Component {
     content: PropTypes.string.isRequired,
     head: PropTypes.string.isRequired,
     value: PropTypes.string,
+    margin: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
@@ -76,11 +75,11 @@ class ModalConfirmPassword extends Component {
       modalOpen: true,
     })
   render() {
-    const { content, head, data } = this.props;
+    const { content, head, data, value } = this.props;
     return (
       <Modals
         trigger={
-          <ButtonStatusAppove onClick={this.handleOpen}>
+          <ButtonStatusAppove margin={this.props.margin} onClick={this.handleOpen}>
             {content}
           </ButtonStatusAppove>
         }
@@ -119,14 +118,18 @@ class ModalConfirmPassword extends Component {
             </Text>
 
           </ModalContent>
-          <div style={{ marginLeft: '2%' }}>
-            <CancleButton onClick={this.handleClose}> ยกเลิก </CancleButton>
-            <ConfirmButton
-              value={this.props.value}
-              onClick={this.props.handlePost}
-            >
-              {' '}ยืนยัน{' '}
-            </ConfirmButton>
+          <div className="row">
+            <div className="large-4 large-offset-2 columns">
+              <Button cancle onClick={this.handleClose}> ยกเลิก </Button>
+            </div>
+            <div className="large-4 columns end">
+              <Button
+                value={value}
+                onClick={() => this.props.handlePost(value)}
+              >
+                {' '}ยืนยัน{' '}
+              </Button>
+            </div>
           </div>
         </ModalContents>
 

@@ -1,5 +1,7 @@
 import { APIRequest } from '.';
 import {
+  getInsurancePlanSuccess,
+  getInsurancePlanFailure,
   choosePlanSuccess,
   choosePlanFailure,
   editChoosePlanSuccess,
@@ -16,12 +18,14 @@ import {
   setTimeoutFailure,
 } from '../reducers/benefit-plan';
 
+const GETINSURANCE_PLAN_URI = '/api/company/get-insurance-plan';
 const CHOOSE_PLAN_URI = '/api/benefit-plan';
 const EDITCHOOSE_PLAN_URI = '/api/edit-benefit-plan';
 const GETOPTION_PLAN_URI = '/api/get-option-plan';
 const GETBENEFIT_PLAN_URI = '/api/get-benefit-plan';
 const SETBENEFIT_PLAN_URI = '/api/set-benefit-plan';
 const SETTIMEOUT_PLAN_URI = '/api/set-benefit-timeout';
+
 export function choosePlan(plan) {
   return dispatch => {
     const options = {
@@ -39,7 +43,22 @@ export function choosePlan(plan) {
       });
   };
 }
+export function getInsurancePlan() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GETINSURANCE_PLAN_URI,
+    };
 
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getInsurancePlanSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getInsurancePlanFailure(err));
+      });
+  };
+}
 export function editChoosePlan(plan) {
   return dispatch => {
     const options = {

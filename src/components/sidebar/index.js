@@ -31,11 +31,11 @@ export default class Sidebar extends Component {
           </Item>
           <Item>
             <Icon name="checked calendar" size="large" />&nbsp;
-            <Item.Content verticalAlign="middle">เตือนความจำ</Item.Content>
+            <Link to="/profileclaim" ><Item.Content verticalAlign="middle">ประวัติการเคลม</Item.Content></Link >
           </Item>
           <Item>
             <Icon name="user" size="large" />&nbsp;
-            <Item.Content verticalAlign="middle">โปรไฟล์ของคุณ</Item.Content>
+            <Link to="profile"><Item.Content verticalAlign="middle">โปรไฟล์ของคุณ</Item.Content></Link>
           </Item>
           <Item>
             <Icon name="setting" size="large" />&nbsp;

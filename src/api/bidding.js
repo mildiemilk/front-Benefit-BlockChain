@@ -5,10 +5,13 @@ import {
   EndSuccess,
   selectFinalInsurerFailure,
   selectFinalInsurerSuccess,
+  getBiddingDetailSuccess,
+  getBiddingDetailFailure,
 } from '../reducers/bidding';
 
-const BIDDING_URI = '/api/getbidding';
-const CHOOSEFINALINSURER_URI = '/api/choosefinalinsurer';
+const BIDDING_URI = '/api/company/get-bidding';
+const CHOOSEFINALINSURER_URI = '/api/company/choose-final-insurer';
+const GETDETAIL_URI = '/api/company/bidding-detail';
 
 export function bidding() {
   return dispatch => {
@@ -27,26 +30,44 @@ export function bidding() {
   };
 }
 
+export function biddingDetailForCompany(companyId) {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: `${GETDETAIL_URI}/${companyId}`,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getBiddingDetailSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getBiddingDetailFailure(err.response.data));
+      });
+  };
+}
+
 export function endTimeout(end) {
   return dispatch => {
     dispatch(EndSuccess({ end }));
   };
 }
 
-export function chooseFinalInsurer(passwordToConfirm, insurerName, step) {
+export function chooseFinalInsurer(passwordToConfirm, insurerCompany, step) {
   return dispatch => {
     const options = {
-      method: 'post',
+      method: 'put',
       url: CHOOSEFINALINSURER_URI,
       data: {
         passwordToConfirm,
-        insurerName,
+        insurerCompany,
         step,
       },
     };
 
     APIRequest(options, true)
       .then(res => {
+        console.log('res', res);
         dispatch(selectFinalInsurerSuccess(res.data));
       })
       .catch(err => {

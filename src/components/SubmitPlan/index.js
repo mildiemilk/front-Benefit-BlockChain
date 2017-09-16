@@ -8,7 +8,6 @@ import AllPlan from './all-plan';
 import NavInsure from '../NavInsure';
 import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan';
 
-import '../../styles/submit-plan.scss';
 
 class SubmitPlan extends Component {
   static propTypes = {

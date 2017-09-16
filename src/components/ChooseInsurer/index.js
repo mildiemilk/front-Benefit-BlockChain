@@ -65,9 +65,8 @@ class InsurerSelect extends Component {
 
   handleDefaultCheck = e => {
     const matchedInsurer = _.find(this.state.insurers, {
-      insurerName: e.insurerName,
+      companyName: e.companyName,
     });
-
     if (matchedInsurer !== undefined) {
       return true;
     }
@@ -84,8 +83,8 @@ class InsurerSelect extends Component {
     } else {
       const index = this.state.insurers.findIndex(
         element =>
-          this.props.insurerList[e.target.id].insurerName ===
-          element.insurerName,
+          this.props.insurerList[e.target.id].companyName ===
+          element.companyName,
       );
       const result = this.state.insurers;
       result.splice(index, 1);
@@ -111,7 +110,7 @@ class InsurerSelect extends Component {
           onChange={this.handleCheck}
           checked={this.handleDefaultCheck(insurer)}
         />
-        {insurer.insurerName}
+        {insurer.companyName}
       </Card>
     ));
     return list;

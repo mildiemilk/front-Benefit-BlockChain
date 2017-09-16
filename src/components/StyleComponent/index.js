@@ -6,6 +6,7 @@ export const Detail = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 40px;
+  padding: ${props => props.padding};
 `;
 export const Button = styled.div`
   height: 40px;
@@ -18,6 +19,7 @@ export const Button = styled.div`
   align-items: center;
   margin: 21px 0px;
   cursor: pointer;
+  margin:  ${props => props.margin};
 `;
 export const Box = styled.div`
   height: 110px;
@@ -31,21 +33,21 @@ export const Box = styled.div`
 `;
 export const Pic = styled.div`
   border-radius: 50%;
-  background-color:  ${props => props.color};;
+  background-color:  ${props => props.color};
   width: 60px;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export const Text = styled.div`
+export const TextNav = styled.div`
   font-size: 14px;
   color: #505050;
   position: absolute;
   left: 97px;
   top: 21px;
 `;
-export const Number = Text.extend`
+export const Number = TextNav.extend`
   font-size: 40px;
   top: 52px;
   left: 96px

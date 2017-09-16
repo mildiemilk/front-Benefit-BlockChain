@@ -7,8 +7,8 @@ class CountDowns extends Component {
   static propTypes = {
     endTimeout: PropTypes.shape.isRequired,
   }
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       days: 0,
@@ -16,11 +16,15 @@ class CountDowns extends Component {
       min: 0,
       sec: 0,
     };
+    // this.props.endTimeout(this.state.end);
+  }
+  componentDidMount() {
     this.props.endTimeout(this.state.end);
   }
-
   componentWillReceiveProps(newProps) {
     // update every second
+    console.log('new', newProps);
+    console.log('date', this.props.date);
     if (newProps.date !== this.props.date) {
       this.interval = setInterval(() => {
         const date = this.calculateCountdown(this.props.date);

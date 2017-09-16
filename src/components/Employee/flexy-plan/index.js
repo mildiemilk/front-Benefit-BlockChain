@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Plan from './Plan';
 import InsuranceDetail from '../InsuranceDetail';
 import HealthDetail from '../health-detail';
 import GeneralExpense from '../genaral-expense';
+import { getAllBenefit, confirmPlan } from '../../../api/Employee/plan';
 
 class FlexyPlan extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    getAllBenefit: PropTypes.func.isRequired,
+    data: PropTypes.shape({}).isRequired,
+    confirmPlan: PropTypes.func.isRequired,
+  }
+  constructor(props) {
+    super(props);
+    props.getAllBenefit();
+    props.confirmPlan();
     this.state = {
       flexyPlanDetail: true,
       insuranceDetail: false,
@@ -17,7 +28,55 @@ class FlexyPlan extends Component {
       fixPlanNextYear: false,
       flexyPlan: true,
       flexyPlanNextYear: false,
+      renderHomeDashboard: null,
+      renderDashboardStart: null,
+      renderCongratSelectPlan: null,
+      timeUp: false,
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { data } = nextProps;
+    const currentDate = new Date();
+    if (currentDate.toISOString() > data.allBenefit[0].timeout) { // time is up
+      if (data.confirm) { // confirm
+        if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
+          this.setState({ renderDashboardStart: true });
+        } else {
+          this.setState({ renderHomeDashboard: true });
+        }
+      } else { // user don't confirm and make user confirm plan
+        this.setState({
+          fixPlan: true,
+          flexyPlan: false,
+          timeUp: true,
+        });
+      }
+    } else { // in time
+      if (data.confirm) {
+        if (data.allBenefit.length > 1) { // that's flex
+          this.setState({ renderCongratSelectPlan: true });
+        } else { // that's fix
+          if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
+            this.setState({ renderDashboardStart: true });
+          } else {
+            this.setState({ renderHomeDashboard: true });
+          }
+        }
+      } else {
+        if (data.allBenefit.length > 1) { // that's flex
+          this.setState({
+            fixPlan: false,
+            flexyPlan: true,
+          });
+        } else { // that's fix
+          this.setState({
+            fixPlan: true,
+            flexyPlan: false,
+          });
+        }
+      }
+    }
   }
 
   handleClickInsurance = () => {
@@ -77,52 +136,84 @@ class FlexyPlan extends Component {
       fixPlanNextYear,
       flexyPlan,
       flexyPlanNextYear,
+      renderHomeDashboard,
+      renderDashboardStart,
+      renderCongratSelectPlan,
+      timeUp,
     } = this.state;
-    return (
-      <div>
-        {
-          flexyPlanDetail ?
-            <Plan
-              handleClickInsurance={this.handleClickInsurance}
-              handleClickHealth={this.handleClickHealth}
-              handleClickGeneralExpense={this.handleClickGeneralExpense}
-              handleChangePlan={this.handleChangePlan}
-              handleClickButton={this.handleClickButton}
-              handleClickNextYearSelectPlan={this.handleClickNextYearSelectPlan}
-              plan={plan}
-              fixPlanNextYear={fixPlanNextYear}
-              flexyPlan={flexyPlan}
-              flexyPlanNextYear={flexyPlanNextYear}
-            /> :
-            <div />
-        }
-        {
-          insuranceDetail ?
-            <InsuranceDetail
-              handleClickBack={this.handleClickBack}
-              plan={plan}
-            />
-            : <div />
-        }
-        {
-          healthDetail ?
-            <HealthDetail
-              handleClickBack={this.handleClickBack}
-              plan={plan}
-            />
-            : <div />
-        }
-        {
-          generalExpense ?
-            <GeneralExpense
-              handleClickBack={this.handleClickBack}
-              plan={plan}
-            />
-            : <div />
-        }
-      </div>
-    );
+    const { data } = this.props;
+    if (renderHomeDashboard) {
+      return <Redirect to={{ pathname: '/homedashboard' }} />;
+    } else if (renderDashboardStart) {
+      return <Redirect to={{ pathname: '/dashboardstart' }} />;
+    } else if (renderCongratSelectPlan) {
+      return <Redirect to={{ pathname: '/congratselectplan' }} />;
+    }
+    if (data !== undefined && data.allBenefit.length > 0) {
+      return (
+        <div>
+          {
+            flexyPlanDetail ?
+              <Plan
+                handleClickInsurance={this.handleClickInsurance}
+                handleClickHealth={this.handleClickHealth}
+                handleClickGeneralExpense={this.handleClickGeneralExpense}
+                handleChangePlan={this.handleChangePlan}
+                handleClickButton={this.handleClickButton}
+                handleClickNextYearSelectPlan={this.handleClickNextYearSelectPlan}
+                plan={plan}
+                fixPlanNextYear={fixPlanNextYear}
+                flexyPlan={flexyPlan}
+                flexyPlanNextYear={flexyPlanNextYear}
+                data={this.props.data}
+                timeUp={timeUp}
+              /> :
+              <div />
+          }
+          {
+            insuranceDetail ?
+              <InsuranceDetail
+                handleClickBack={this.handleClickBack}
+                plan={plan}
+                data={this.props.data}
+              />
+              : <div />
+          }
+          {
+            healthDetail ?
+              <HealthDetail
+                handleClickBack={this.handleClickBack}
+                plan={plan}
+                data={this.props.data}
+              />
+              : <div />
+          }
+          {
+            generalExpense ?
+              <GeneralExpense
+                handleClickBack={this.handleClickBack}
+                plan={plan}
+                data={this.props.data}
+              />
+              : <div />
+          }
+        </div>
+      );
+    }
+    return (<div />);
   }
 }
 
-export default FlexyPlan;
+const mapDispatchToProps = dispatch => ({
+  getAllBenefit: () => dispatch(getAllBenefit()),
+  confirmPlan: () => dispatch(confirmPlan()),
+});
+const mapStateToProps = state => ({
+  data: {
+    ...state.getAllBenefitReducer,
+    confirm: state.confirmPlanReducer.confirm,
+    newUser: state.confirmPlanReducer.newUser,
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlexyPlan);

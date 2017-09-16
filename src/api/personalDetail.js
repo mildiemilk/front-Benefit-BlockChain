@@ -4,7 +4,7 @@ import {
   updatePersonalDetailFailure,
 } from '../reducers/user';
 
-const UPDATE_PERSONALDETAIL = '/api/user/updatePersonalDetails';
+const UPDATE_PERSONALDETAIL = '/api/employee/updatePersonalDetails';
 
 export function updatePersonalDetails(personalEmail, phone) {
   return dispatch => {
@@ -19,7 +19,7 @@ export function updatePersonalDetails(personalEmail, phone) {
         dispatch(updatePersonalDetailSuccess(res.data));
       })
       .catch(err => {
-        dispatch(updatePersonalDetailFailure(err.response.data));
+        dispatch(updatePersonalDetailFailure(err));
       });
   };
 }

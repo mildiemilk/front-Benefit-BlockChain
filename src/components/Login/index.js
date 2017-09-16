@@ -15,6 +15,9 @@ class AuthLogin extends Component {
     text: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
   }
+  static defaultProps = {
+    newUser: false,
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -33,14 +36,16 @@ class AuthLogin extends Component {
 
   render() {
     const { data, text, status, profile } = this.props;
-    const { approve, role, personalVerify } = data;
+    const { approve, role, personalVerify, newUser } = data;
     const { companyName } = profile;
     if (role === 'Employee') {
-      if (approve === true) {
-        if (!personalVerify) {
-          return <Redirect to={{ pathname: '/employeeverify' }} />;
-        } return <Redirect to={{ pathname: '/plan' }} />;
+      if (!personalVerify) {
+        return <Redirect to={{ pathname: '/employeeverify' }} />;
       }
+      if (newUser) {
+        return <Redirect to={{ pathname: '/plan' }} />;
+      }
+      return <Redirect to={{ pathname: '/homedashboard' }} />;
     } else if (role === 'HR') {
       if (companyName && approve) {
         return <Redirect to={{ pathname: '/dashboard' }} />;

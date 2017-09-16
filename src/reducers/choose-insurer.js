@@ -94,12 +94,14 @@ export function chooseInsurerReducerStatus(state, action) {
 export function setTimeOut(state = defaultTimeOut, action) {
   switch (action.type) {
     case SETTIMEOUT_REQUEST_SUCCESS:
+      console.log('action', action.data);
       return Object.assign({}, state, {
         timeout: action.data,
       });
     case SETTIMEOUT_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     case GETTIMEOUT_REQUEST_SUCCESS:
+      console.log('action', action.data);
       return Object.assign({}, state, {
         timeout: action.data,
       });

@@ -14,12 +14,20 @@ import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
 
 class ShowMasterPlan extends Component {
   static propTypes = {
-    data: PropTypes.shape({}).isRequired,
+    DataCompany: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
-    const data = this.props.data;
-    const { status, totalPrice, countBidding, updatedAt } = data;
+    console.log('ShowMasterPlan', this.props.DataCompany);
+    const data = this.props.DataCompany;
+    const { status,
+            totalPrice,
+            countBidding,
+            startNewInsurance,
+            updatedAt,
+            expiredOldInsurance,
+            plan,
+          } = data;
     let joinbid;
     let quotation;
     if (status === 'watting') {
@@ -36,19 +44,37 @@ class ShowMasterPlan extends Component {
       joinbid,
       modalCancelJoin: false,
       quotation,
-      masterplan: [1, 2, 3, 4, 5],
+      masterplan: plan.master,
+      insurerplan: plan.insurer,
       editplan: [],
       claimdata: [1, 2, 3],
       selectInsurerPlan: false,
       editDetailMP: false,
-      // Insurerplan:,
+      DetailMP: {},
       totalPrice,
       countBidding,
+      startNewInsurance,
       updatedAt,
+      expiredOldInsurance,
+      isDetail: false,
     };
   }
 
-  handleOnpenModal = name => this.setState({ [name]: true });
+  // handleOnpenModal = name => this.setState({ [name]: true });
+  handleOnpenModal = (name, DetailMP) => {
+    console.log('call handleClick', DetailMP);
+    const { isDetail } = this.state;
+    if (!isDetail) {
+      this.setState({
+        isDetail: true,
+        DetailMP,
+        [name]: true,
+      });
+    } else {
+      this.setState({ isDetail: false });
+    }
+  }
+
 
   handleCloseModal = nameModal => this.setState({ [nameModal]: false });
 
@@ -67,19 +93,25 @@ class ShowMasterPlan extends Component {
   }
 
   render() {
+    // this.props.sendToParent({detail:'prim ba'}, 0);
+    // const data = this.props.data;
+    // const { plan } = data;
+    console.log('call handleClick----', this.state.DetailMP);
     const {
       joinbid,
       modalCancelJoin,
       quotation,
       masterplan,
+      insurerplan,
       editplan,
       claimdata,
       selectInsurerPlan,
       editDetailMP,
       totalPrice,
       countBidding,
+      startNewInsurance,
       updatedAt,
-
+      expiredOldInsurance,
     } = this.state;
     return (
       <div>
@@ -95,12 +127,15 @@ class ShowMasterPlan extends Component {
           {
             quotation
             ? <Quotation
-              priceBidding={totalPrice}
               masterplan={masterplan}
+              insurerplan={insurerplan}
               editplan={editplan}
-              handleOnpenModal={this.handleOnpenModal}
+              totalPrice={totalPrice}
               countBidding={countBidding}
+              startNewInsurance={startNewInsurance}
               updatedAt={updatedAt}
+              expiredOldInsurance={expiredOldInsurance}
+              handleOnpenModal={this.handleOnpenModal}
             />
             : <div />
           }
@@ -132,6 +167,7 @@ class ShowMasterPlan extends Component {
           handleCloseModal={this.handleCloseModal}
           selectInsurerPlan={selectInsurerPlan}
           editDetailMP={editDetailMP}
+          DetailMP={this.state.DetailMP}
         />
       </div>
     );

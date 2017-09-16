@@ -39,21 +39,21 @@ letter-spacing: 0.2px;
 margin-left: 11px;
 display: inline-block;
 `;
-export const DivFloat = styled.div`
+const DivFloat = styled.div`
 float: left !important;
 `;
-export const TextPopup = styled.div`
+const TextPopup = styled.div`
 text-size: 13px;
 cursor: pointer;
 `;
-export const ClearPopup = TextPopup.extend`
+const ClearPopup = TextPopup.extend`
 color: #ee384e;
 `;
-export const CanclePopup = TextPopup.extend`
+const CanclePopup = TextPopup.extend`
 color: #8b8b8b;
 display: inline-block;
 `;
-export const SubmitPopup = TextPopup.extend`
+const SubmitPopup = TextPopup.extend`
 color: #3a7bd5;
 display: inline-block;
 margin-left: 37px;
@@ -61,6 +61,7 @@ margin-left: 37px;
 class FilterSearch extends Component {
   static propTypes = {
     groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleChange: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -91,7 +92,7 @@ class FilterSearch extends Component {
           iconPosition="left"
           placeholder="ค้นหา"
           name="search"
-          onChange={this.handleChange}
+          onChange={this.props.handleChange}
         />
         <Popup
           trigger={

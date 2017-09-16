@@ -39,7 +39,7 @@ export default class Sidebar extends Component {
           </Item>
           <Item>
             <Icon name="setting" size="large" />&nbsp;
-            <Item.Content verticalAlign="middle">ตั้งค่า</Item.Content>
+            <Links to="/setting"><Item.Content verticalAlign="middle">ตั้งค่า</Item.Content></Links>
           </Item>
         </Item.Group>
       </aside>

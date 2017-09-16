@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CountDowns from './CountDowns';
+// import CountDowns from './CountDowns';
 import HeadCompanyInfo from '../header-company-info';
 import {
   Nav,
@@ -19,7 +19,7 @@ import auction from '../../../../assets/bidding/icons-8-auction.png';
 class Bidding extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
-    timeout: PropTypes.string.isRequired,
+    // timeout: PropTypes.string.isRequired,
     // candidateInsurer: PropTypes.string.isRequired,
     // minPrice: PropTypes.number.isRequired,
   }
@@ -63,7 +63,7 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
                 <FontNumAucTime>
-                  <CountDowns date={this.props.timeout.timeout} />
+                  {/* <CountDowns date={this.props.timeout.timeout} /> */}
                 </FontNumAucTime>
               </TextNav>
             </Nav>

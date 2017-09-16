@@ -1,0 +1,35 @@
+.setting{
+  .inline{
+    display: inline-block;
+  }
+
+  .enddata{
+    display: block;
+    color: #4990e2;
+    padding-top: 5px;
+    height: 20px;
+  }
+  .Hover:hover {
+    color: #386cb2;
+  }
+
+   .Summit.ui.button{
+    font-weight: 100;
+    width: 140px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #386cb2;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .left{
+    margin-left: 75%
+  }
+  .incorectPass{
+    color: yellow;
+    font-size: 12px;
+    position: absolute;
+    padding-top: 22px;
+  }
+
+}

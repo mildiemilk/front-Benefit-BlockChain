@@ -28,7 +28,6 @@ class BiddingList extends Component {
 
   componentDidMount() {
     this.props.getCompanyBiddingList();
-    console.log('didmount', this.props.Bidding);
   }
 
   RenderBiddingElement = Bidding => {
@@ -73,7 +72,6 @@ class BiddingList extends Component {
 
   handleSearchBoxChange(keyword) {
     this.setState({ SearchTerm: keyword });
-    console.log(this.state.SearchTerm);
   }
 
   filterBiddingList(list) {
@@ -85,7 +83,6 @@ class BiddingList extends Component {
 
 
   render() {
-    console.log('props', this.props);
     const boderBlue = {
       border: 'solid 1px #3a7bd5',
       color: '#3a7bd5',

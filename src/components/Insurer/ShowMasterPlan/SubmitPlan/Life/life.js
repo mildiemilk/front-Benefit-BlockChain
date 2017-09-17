@@ -222,7 +222,7 @@ class Life extends Component {
               </Form.Group>
             </div>}
           <div className="row">
-            <Button
+            {/* <Button
               style={{
                 marginTop: '3%',
                 textAlign: 'center',
@@ -237,7 +237,7 @@ class Life extends Component {
               type="submit"
             >
               บันทึก
-            </Button>
+            </Button> */}
           </div>
         </Form>
         <LifeModal

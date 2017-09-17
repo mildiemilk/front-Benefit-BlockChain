@@ -294,7 +294,7 @@ class IPD extends Component {
               />
               : null}
             <br />
-            <Button
+            {/* <Button
               style={{
                 marginTop: '3%',
                 textAlign: 'center',
@@ -310,7 +310,7 @@ class IPD extends Component {
               onClick={this.handleClick}
             >
               บันทึก
-            </Button>
+            </Button> */}
           </Form>
           <IpdModal
             openModal={this.props.openModal}

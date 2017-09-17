@@ -6,18 +6,27 @@ import Plan from './Plan';
 import InsuranceDetail from '../InsuranceDetail';
 import HealthDetail from '../health-detail';
 import GeneralExpense from '../genaral-expense';
-import { getAllBenefit, confirmPlan } from '../../../api/Employee/plan';
+import { getAllBenefit, confirmPlan, currentPlan } from '../../../api/Employee/plan';
 
 class FlexyPlan extends Component {
   static propTypes = {
     getAllBenefit: PropTypes.func.isRequired,
     data: PropTypes.shape({}).isRequired,
     confirmPlan: PropTypes.func.isRequired,
+    match: PropTypes.shape({ params: PropTypes.companyId }),
+    currentPlan: PropTypes.func.isRequired,
+    // match: PropTypes.shape({}),
+  }
+  static defaultProps = {
+    match: {
+      params: null,
+    },
   }
   constructor(props) {
     super(props);
     props.getAllBenefit();
     props.confirmPlan();
+    props.currentPlan();
     this.state = {
       flexyPlanDetail: true,
       insuranceDetail: false,
@@ -36,6 +45,7 @@ class FlexyPlan extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { match } = this.props;
     const { data } = nextProps;
     const currentDate = new Date();
     if (currentDate.toISOString() > data.allBenefit[0].timeout) { // time is up
@@ -55,7 +65,19 @@ class FlexyPlan extends Component {
     } else { // in time
       if (data.confirm) {
         if (data.allBenefit.length > 1) { // that's flex
-          this.setState({ renderCongratSelectPlan: true });
+          if (match.params.check) {
+            data.allBenefit.forEach((item, i) => {
+              if (item._id === data.currentSelect) {
+                this.setState({ plan: i });
+              }
+            });
+            this.setState({
+              renderCongratSelectPlan: false,
+              flexyPlan: true,
+            });
+          } else {
+            this.setState({ renderCongratSelectPlan: true });
+          }
         } else { // that's fix
           if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
             this.setState({ renderDashboardStart: true });
@@ -207,12 +229,13 @@ class FlexyPlan extends Component {
 const mapDispatchToProps = dispatch => ({
   getAllBenefit: () => dispatch(getAllBenefit()),
   confirmPlan: () => dispatch(confirmPlan()),
+  currentPlan: () => dispatch(currentPlan()),
 });
 const mapStateToProps = state => ({
   data: {
     ...state.getAllBenefitReducer,
-    confirm: state.confirmPlanReducer.confirm,
-    newUser: state.confirmPlanReducer.newUser,
+    ...state.confirmPlanReducer,
+    ...state.currentPlanReducer,
   },
 });
 

@@ -33,6 +33,7 @@ const AppMobile = () => (
           <Route path="/employeeverify" component={employeeVerify} />
           <Route path="/congratselectplan" component={CongratSelectPlan} />
           <Route path="/dashboardstart" component={DashboardStart} />
+          <Route path="/plan/:check" component={FlexyPlan} />
           <Route path="/plan" component={FlexyPlan} />
           <Route path="/findhospital" component={FindHospital} />
           <Route path="/claim" component={ClaimInsurance} />

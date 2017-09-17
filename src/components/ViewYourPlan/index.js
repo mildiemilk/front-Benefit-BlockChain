@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Head from '../Head';
 import { Detail } from '../StyleComponent';
-import { getGroupBenefit } from '../../api/profile-company';
+import { getGroupBenefit, getSummaryEmployee } from '../../api/profile-company';
 import { getBenefitPlan } from '../../api/benefit-plan';
 import MenuTab from '../EmployeeBenefits/menu-tab';
 import SelectBox from './SelectBox';
@@ -14,7 +14,9 @@ class EmployeeBenefits extends Component {
     getGroupBenefit: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
     groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
-    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.shape({}).isRequired,
+    summaryEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getSummaryEmployee: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -32,10 +34,9 @@ class EmployeeBenefits extends Component {
     props.getGroupBenefit();
     props.getBenefitPlan();
   }
-  // componentDidMount() {
-  //   this.props.getGroupBenefit();
-  //   this.props.getBenefitPlan();
-  // }
+  componentDidMount() {
+    this.props.getSummaryEmployee();
+  }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.activeGroup !== this.state.activeGroup) {
       const { activeGroup } = this.state;
@@ -71,6 +72,16 @@ class EmployeeBenefits extends Component {
     }
   }
   render() {
+    console.log('group', this.props.groupBenefit);
+    console.log('benefit', this.props.benefitPlan);
+    console.log('active', this.state.activeGroup);
+    console.log('summary employee', this.props.summaryEmployee.length);
+    if (this.props.summaryEmployee[this.state.activeGroup]) {
+      console.log('ee', this.props.summaryEmployee[this.state.activeGroup]);
+    }
+    if (this.props.benefitPlan) {
+      console.log('pp', this.props.benefitPlan);
+    }
     return (
       <div>
         <Head content="แผนสิทธิประโยชน์ของคุณ" />
@@ -86,16 +97,17 @@ class EmployeeBenefits extends Component {
               </DivHeight>
             </div>
             <div className="large-9 columns">
-              {this.props.groupBenefit.length !== 0 && this.props.benefitPlan.length !== 0
+              {this.props.summaryEmployee.length > 0 && this.props.benefitPlan
               ? <SelectBox
-                groupName={this.props.groupBenefit[this.state.activeGroup].name}
-                planName={this.props.groupBenefit[this.state.activeGroup].plan}
-                numberOfGroup={this.props.groupBenefit[this.state.activeGroup].numberOfGroup}
+                groupName={this.props.summaryEmployee[this.state.activeGroup].groupName}
+                numberOfGroup={this.props.summaryEmployee[this.state.activeGroup].amount}
                 benefitPlan={this.props.benefitPlan}
-                type={this.props.groupBenefit[this.state.activeGroup].type}
-                default={this.props.groupBenefit[this.state.activeGroup].default}
+                type={this.props.summaryEmployee[this.state.activeGroup].type}
+                default={this.props.summaryEmployee[this.state.activeGroup].defaultPlan}
+                planDetail={this.props.summaryEmployee}
+                summaryEmployee={this.props.summaryEmployee}
               />
-              : null
+              : <div>ertt</div>
               }
             </div>
           </div>
@@ -108,11 +120,13 @@ class EmployeeBenefits extends Component {
 const mapDispatchToProps = dispatch => ({
   getGroupBenefit: () => dispatch(getGroupBenefit()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  getSummaryEmployee: () => dispatch(getSummaryEmployee()),
 });
 
 const mapStateToProps = state => ({
   groupBenefit: state.profile.groupBenefit,
-  benefitPlan: state.benefitPlan.plan,
+  benefitPlan: state.benefitPlan,
+  summaryEmployee: state.profile.summaryEmployee,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmployeeBenefits);

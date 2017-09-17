@@ -20,6 +20,8 @@ import {
   getGroupBenefitFailure,
   setGroupBenefitSuccess,
   setGroupBenefitFailure,
+  getSummaryEmployeeSuccess,
+  getSummaryEmployeeFailure,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/api/company/register-company';
@@ -33,6 +35,7 @@ const SETCOMPLETESTEP_URI = '/api/company/set-complete-step';
 const GETCOMPLETESTEP_URI = '/api/company/get-complete-step';
 const GET_GROUPBENEFIT_URI = '/api/company/get-group-benefit';
 const SET_GROUPBENEFIT_URI = '/api/company/set-group-benefit/{employeeGroupId}';
+const GET_SUMMARYEMPLOYEE_URI = '/api/company/summary-employee-benefit';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -221,7 +224,25 @@ export function getGroupBenefit() {
         dispatch(getGroupBenefitSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getGroupBenefitFailure(err.response.data));
+        dispatch(getGroupBenefitFailure(err));
+      });
+  };
+}
+
+export function getSummaryEmployee() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_SUMMARYEMPLOYEE_URI,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log('res');
+        dispatch(getSummaryEmployeeSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getSummaryEmployeeFailure(err));
       });
   };
 }

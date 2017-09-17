@@ -16,6 +16,7 @@ const defaultProfile = {
   employeeDetail: [],
   completeStep: [],
   groupBenefit: [],
+  summaryEmployee: [],
   message: null,
   error: false,
 };
@@ -44,6 +45,8 @@ const GET_GROUPBENEFIT_REQUEST_FAILURE = 'GET_GROUPBENEFIT_REQUEST_FAILURE';
 const SET_GROUPBENEFIT_REQUEST_SUCCESS = 'SET_GROUPBENEFIT_REQUEST_SUCCESS';
 const SET_GROUPBENEFIT_REQUEST_FAILURE = 'SET_GROUPBENEFIT_REQUEST_FAILURE';
 const SELECT_FINAL_INSURER_SUCCESS = 'SELECT_FINAL_INSURER_SUCCESS';
+const GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS = 'GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS';
+const GET_SUMMARYEMPLOYEE_REQUEST_FAILURE = 'GET_SUMMARYEMPLOYEE_REQUEST_FAILURE';
 
 /**
  * Actions
@@ -107,11 +110,18 @@ export function setGroupBenefitSuccess(data) {
 export function setGroupBenefitFailure(data) {
   return { type: SET_GROUPBENEFIT_REQUEST_FAILURE, data };
 }
+export function getSummaryEmployeeSuccess(data) {
+  return { type: GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS, data };
+}
+export function getSummaryEmployeeFailure(data) {
+  return { type: GET_SUMMARYEMPLOYEE_REQUEST_FAILURE, data };
+}
 /**
  * Reducer
  */
 
 export default function profile(state = defaultProfile, action) {
+  console.log('actiov', action);
   switch (action.type) {
     case PROFILECOMPANY_REQUEST_SUCCESS:
       return Object.assign({}, state, {
@@ -207,6 +217,12 @@ export default function profile(state = defaultProfile, action) {
       return Object.assign({}, state, {
         completeStep: action.data.completeStep,
       });
+    case GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        summaryEmployee: action.data,
+      });
+    case GET_SUMMARYEMPLOYEE_REQUEST_FAILURE:
+      return state;
     default:
       return state;
   }

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import NavBenefit from '../NavBenefit';
 import Detail from './detail';
 import Setting from './setting';
-import { planOption, getOptionPlan } from '../../api/benefit-plan';
+import { setTemplatePlan, getTemplatePlan } from '../../api/benefit-plan';
 
 class AddBenefit extends Component {
   static propTypes = {
-    planOption: PropTypes.func.isRequired,
-    getOptionPlan: PropTypes.func.isRequired,
+    setTemplatePlan: PropTypes.func.isRequired,
+    getTemplatePlan: PropTypes.func.isRequired,
     optionPlan: PropTypes.shape({}).isRequired,
   }
 
@@ -35,7 +35,7 @@ class AddBenefit extends Component {
   }
 
   componentDidMount() {
-    this.props.getOptionPlan();
+    this.props.getTemplatePlan();
   }
 
   componentWillReceiveProps(newProps) {
@@ -183,7 +183,7 @@ class AddBenefit extends Component {
       selectedOptionExpense2,
       selectedOptionExpense3,
     } = this.state;
-    this.props.planOption(
+    this.props.setTemplatePlan(
       isHealth,
       isExpense,
       HealthList,
@@ -257,7 +257,7 @@ const mapDispatchToProps = dispatch => ({
     Setting6,
   ) =>
     dispatch(
-      planOption(
+      setTemplatePlan(
         isHealth,
         isExpense,
         HealthList,
@@ -272,7 +272,7 @@ const mapDispatchToProps = dispatch => ({
         Setting6,
       ),
     ),
-  getOptionPlan: () => dispatch(getOptionPlan()),
+  getTemplatePlan: () => dispatch(getTemplatePlan()),
 });
 
 const mapStateToProps = state => ({

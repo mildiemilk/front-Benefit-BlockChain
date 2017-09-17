@@ -51,7 +51,11 @@ class FlexyPlan extends Component {
     if (currentDate.toISOString() > data.allBenefit[0].timeout) { // time is up
       if (data.confirm) { // confirm
         if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
-          this.setState({ renderDashboardStart: true });
+          if (data.newUser) {
+            this.setState({ renderDashboardStart: true });
+          } else {
+            this.setState({ renderHomeDashboard: true });
+          }
         } else {
           this.setState({ renderHomeDashboard: true });
         }

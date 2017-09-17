@@ -58,14 +58,19 @@ class ConfirmModal extends Component {
     .then(res => {
       if (res) {
         this.props.handleCloseModal();
-        if (!timeUp) {
-          this.setState({ renderCongratSelectPlan: true });
-        } else {
-          if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
-            this.setState({ renderDashboardStart: true });
+        if (data.newUser) {
+          if (!timeUp) {
+            this.setState({ renderCongratSelectPlan: true });
           } else {
-            this.setState({ renderHomeDashboard: true });
+            if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) {
+              // policy don't start
+              this.setState({ renderDashboardStart: true });
+            } else {
+              this.setState({ renderHomeDashboard: true });
+            }
           }
+        } else {
+          this.setState({ renderHomeDashboard: true });
         }
       }
     });

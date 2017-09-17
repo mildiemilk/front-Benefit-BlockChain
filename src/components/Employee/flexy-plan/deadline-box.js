@@ -30,10 +30,10 @@ class DeadlineBox extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(nextProps) {
     // update every second
     this.interval = setInterval(() => {
-      const date = this.calculateCountdown(newProps.timeout);
+      const date = this.calculateCountdown(nextProps.timeout);
       if (date) this.setState(date);
       else {
         this.stop();

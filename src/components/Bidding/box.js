@@ -23,12 +23,11 @@ class Box extends Component {
     };
   }
 
-  getStatusModule = insurerName => {
-    const status = 'Join';
+  getStatusModule = (status, insurerName) => {
     let statusModule = '';
     const { end } = this.props;
     if (end.end === 'Timeout') {
-      if (status === 'Join') {
+      if (status === 'join') {
         statusModule = (
           <ModalConfirmPassword
             handlePost={this.handlePost}
@@ -37,6 +36,7 @@ class Box extends Component {
             value={insurerName}
             content="เลือก"
             head="การเลือกบริษัทประกัน"
+            margin="-8px"
           />
         );
       } else {
@@ -45,9 +45,9 @@ class Box extends Component {
         );
       }
     } else {
-      if (status === 'Join') {
+      if (status === 'join') {
         statusModule = <Text style={{ color: '#2ac294' }}>ร่วมประมูล</Text>;
-      } else if (status === 'Cancel') {
+      } else if (status === 'reject') {
         statusModule = <Text style={{ color: '#f1535d' }}>ไม่ร่วมประมูล</Text>;
       } else {
         statusModule = <Text style={{ color: '#3a7bd5' }}>กำลังพิจารณา</Text>;
@@ -57,71 +57,73 @@ class Box extends Component {
   }
 
   handlePost = e => {
-    e.preventDefault();
+    console.log('e', e);
     const { passwordToConfirm } = this.state;
-    const insurerName = e.target.value;
+    console.log('password', passwordToConfirm);
+    const insurerCompany = e;
     const step = 1;
-    this.props.chooseFinalInsurer(passwordToConfirm, insurerName, step);
+    this.props.chooseFinalInsurer(passwordToConfirm, insurerCompany, step);
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   boxStyling = (status, end) => {
     if (end === 'Timeout') {
-      if (status === 'Join') {
+      if (status === 'join') {
         return 'boxes';
       }
       return 'boxCancelTimeout';
     }
-    if (status === 'Join') {
+    if (status === 'join') {
       return 'boxes';
-    } else if (status === 'Cancel') {
+    } else if (status === 'reject') {
       return 'boxCancel';
     }
     return 'wait';
   }
 
   renderList = bids => {
-    const status = 'Join';
     const { end, completeStep } = this.props;
     if (completeStep) {
       return <Redirect to="/congrat" />;
     }
     return bids.map((bid, index) => (
       <div className="boxDetail">
-        <div className={this.boxStyling(status, end.end)}>
+        <div className={this.boxStyling(bid.status, end.end)}>
           <div className="row">
-            <div className="large-3 columns">
-              <Text>{bid.insurerName}</Text>
+            <div className="large-2 columns">
+              <Text>{bid.insurerCompany.companyName}</Text>
             </div>
             <div className="large-6 columns">
               <div className="row">
-                <div className="large-4 columns">
+                <div className="large-3 columns">
                   <Text>{bid.biddingId}</Text>
                 </div>
-                <div className="large-2 columns">
-                  <Text>{bid.timeOfBidding}</Text>
+                <div className="large-3 columns">
+                  <Text>{bid.countBidding}</Text>
                 </div>
                 <div className="large-2 columns">
                   <Text>{moment(bid.updatedAt).format('L')}</Text>
                 </div>
                 <div className="large-4 columns">
-                  <Text>{bid.priceOfBidding}</Text>
+                  <Text>{bid.totalPrice}</Text>
                 </div>
               </div>
             </div>
-            <div className="large-1 columns">
+            <div className="large-2 columns">
               <Text>
                 <IconPointer
                   name="external"
                   size="big"
-                  onClick={() => this.props.handleClick(bid, index)}
+                  onClick={() => this.props.handleClick(bid.insurerCompany._id, index)}
                 />
               </Text>
 
             </div>
             <div className="large-2 columns">
-              <Text>{this.getStatusModule(bid.insurerName)}</Text>
+              <Text>
+                {this.getStatusModule(bid.status, bid.insurerCompany._id)}
+              </Text>
             </div>
           </div>
         </div>
@@ -134,15 +136,15 @@ class Box extends Component {
       <div className="Box">
         <div className="HeadBidContent">
           <div className="row">
-            <div className="large-3 columns">
+            <div className="large-2 columns">
               <Text>ชื่อบริษัทประกัน</Text>
             </div>
             <div className="large-6 columns">
               <div className="row">
-                <div className="large-4 columns">
+                <div className="large-3 columns">
                   <TextIn>เลขที่ใบเสนอราคา</TextIn>
                 </div>
-                <div className="large-2 columns">
+                <div className="large-3 columns">
                   <TextIn>ครั้งที่เสนอราคา</TextIn>
                 </div>
                 <div className="large-2 columns">
@@ -153,7 +155,7 @@ class Box extends Component {
                 </div>
               </div>
             </div>
-            <div className="large-1 columns">
+            <div className="large-2 columns">
               <Text>ดูแผนประกัน</Text>
             </div>
             <div className="large-2 columns">
@@ -161,7 +163,10 @@ class Box extends Component {
             </div>
           </div>
         </div>
-        {this.renderList(this.props.list)}
+        {this.props.list
+        ? <div>{this.renderList(this.props.list)}</div>
+        : <div />
+        }
       </div>
     );
   }

@@ -9,6 +9,7 @@ const defaultAuth = {
   personalVerify: false,
   message: '',
   error: false,
+  newUser: true,
 };
 
 const defaultSignup = {
@@ -68,6 +69,7 @@ export function authReducer(state = defaultAuth, action) {
         approve: action.data.approve,
         personalVerify: action.data.personalVerify,
         error: false,
+        newUser: action.data.newUser,
       });
     case AUTHENTICATE_REQUEST_FAILURE:
       return Object.assign({}, state, {

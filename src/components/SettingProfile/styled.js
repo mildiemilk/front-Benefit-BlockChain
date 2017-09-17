@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Text = styled.span`
   vertical-align: middle;
   padding: 6px 10px;
-
   font-size: 20px;
   font-weight: 300;
 `;

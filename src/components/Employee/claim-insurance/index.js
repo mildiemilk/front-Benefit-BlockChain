@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
 import { Modal, Dropdown } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { claim } from '../../../api/Employee/claim';
 import { Backgroundiv, TinyText, SubmitButton, SubmitButtonLast } from './styled';
 import InsuranceTemplate from './insurance-template';
@@ -63,7 +63,6 @@ class ClaimInsurance extends Component {
     const type = this.state.mainState;
     delete detail.ClaimFile;
     delete detail.mainState;
-    console.log('click');
     claim(detail, files, type)();
   }
 

@@ -44,11 +44,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
@@ -69,6 +64,8 @@ module.exports = {
       },
       AppCache: false,
     }),
-    new Dotenv(), // TODO: Need to concern about security. More info -> https://github.com/mrsteele/dotenv-webpack
+    new Dotenv({
+      path: './env/dev',
+    }), // TODO: Need to concern about security. More info -> https://github.com/mrsteele/dotenv-webpack
   ],
 };

@@ -1,6 +1,7 @@
 @import 'simple-requirement';
 @import './vendor/foundation/_setting.scss';
 @import 'setting-style';
+@import './setting.scss';
 @import 'nav-insure';
 @import 'choose-insurer';
 @import 'view-all-plan';
@@ -22,6 +23,7 @@
 @import 'claim-employee';
 @import 'profile-claim';
 @import 'profile';
+@import 'submit-plan';
 @font-face {
   font-family: 'kanit';
   font-weight: 400;

@@ -97,3 +97,11 @@ export const DetailFile = styled.div`
   width: 89px;
   margin-left: 12px;
 `;
+export const Edit = styled.div`
+color: #9b9b9b;
+display: inline-block;
+float: right;
+padding-top: 13px;
+padding-bottom: 15px;
+cursor: pointer;
+`;

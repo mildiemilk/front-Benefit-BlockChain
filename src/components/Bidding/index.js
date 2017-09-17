@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBidding from './nav-bidding';
 import Box from './box';
-import { bidding } from '../../api/bidding';
+import { bidding, biddingDetailForCompany } from '../../api/bidding';
 import Details from './details';
 import { getSelectInsurer, getTimeout } from '../../api/choose-insurer';
 import { getCompleteStep } from '../../api/profile-company';
@@ -17,12 +17,13 @@ class Bidding extends Component {
     getTimeout: PropTypes.func.isRequired,
     timeout: PropTypes.string.isRequired,
     getCompleteStep: PropTypes.func.isRequired,
+    biddingDetailForCompany: PropTypes.func.isRequired,
+    detail: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       isDetail: false,
-      Detail: {},
       index: '',
     };
     setInterval(() => {
@@ -36,12 +37,13 @@ class Bidding extends Component {
     this.props.getCompleteStep();
   }
 
-  handleClick = (Detail, index) => {
+  handleClick = (insurerId, index) => {
     const { isDetail } = this.state;
+    this.props.biddingDetailForCompany(insurerId);
+    console.log('insurer', this.props.detail);
     if (!isDetail) {
       this.setState({
         isDetail: true,
-        Detail,
         index,
       });
     } else {
@@ -50,6 +52,8 @@ class Bidding extends Component {
   }
 
   render() {
+    console.log('bid', this.props.detail);
+    console.log('data', this.props.data);
     return (
       <div className="Bidding">
         <NavBidding num={this.props.num} timeout={this.props.timeout} />
@@ -57,7 +61,8 @@ class Bidding extends Component {
           {this.state.isDetail
             ? <Details
               handleClick={this.handleClick}
-              bid={this.state.Detail}
+              bid={this.props.detail}
+              list={this.props.data}
               index={this.state.index}
             />
             : <Box handleClick={this.handleClick} list={this.props.data} />}
@@ -69,7 +74,8 @@ class Bidding extends Component {
 
 const mapStateToProps = state => ({
   timeout: state.setTimeOut,
-  data: state.biddingReducer,
+  data: state.biddingReducer.insurers,
+  detail: state.biddingReducer,
   num: state.getSelectInsurer.defaultInsurer.length,
 });
 
@@ -78,6 +84,7 @@ const mapDispatchToProps = dispatch => ({
   getSelectInsurer: () => dispatch(getSelectInsurer()),
   getTimeout: () => dispatch(getTimeout()),
   getCompleteStep: () => dispatch(getCompleteStep()),
+  biddingDetailForCompany: id => dispatch(biddingDetailForCompany(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bidding);

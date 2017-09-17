@@ -27,6 +27,7 @@ class Timeout extends Component {
 
   handleTimeOut = () => {
     const { date } = this.state;
+    console.log('date', date);
     this.props.setTimeout(date);
   }
 

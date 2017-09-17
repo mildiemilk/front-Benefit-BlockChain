@@ -7,6 +7,20 @@ import FlexyPlanBox from './flexy-plan-box';
 import FlexyPlan from './flexyPlan';
 import FixPlanNextYear from '../../../../assets/employee/icon_gift.png';
 
+const month = [
+  'ม.ค.',
+  'ก.พ.',
+  'มี.ค.',
+  'เม.ย.',
+  'พ.ค.',
+  'มิ.ย.',
+  'ก.ค.',
+  'ส.ค.',
+  'ก.ย.',
+  'ต.ค.',
+  'พ.ย.',
+  'ธ.ค.'];
+
 class Plan extends Component {
   static propTypes = {
     handleClickInsurance: PropTypes.func.isRequired,
@@ -20,6 +34,8 @@ class Plan extends Component {
     fixPlanNextYear: PropTypes.bool.isRequired,
     flexyPlan: PropTypes.bool.isRequired,
     flexyPlanNextYear: PropTypes.bool.isRequired,
+    data: PropTypes.shape({}).isRequired,
+    timeUp: PropTypes.bool.isRequired,
   }
   constructor() {
     super();
@@ -43,12 +59,20 @@ class Plan extends Component {
       fixPlanNextYear,
       flexyPlan,
       flexyPlanNextYear,
+      data,
     } = this.props;
+    const timeout = data.allBenefit[0].timeout;
+    const getDate = new Date(timeout);
+    const d = getDate.getDate();
+    const m = getDate.getMonth();
+    let y = getDate.getFullYear();
+    y += 543;
+    y = y.toString().slice(2);
     if (flexyPlan && !flexyPlanNextYear) {
       return (
         <div className="deadline-box">
-          <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 60</p>
-          <DeadlineBox />
+          <p>กรุณาเลือกแผนของคุณภายในวันที่ {d} {month[m]} {y}</p>
+          <DeadlineBox timeout={timeout} />
         </div>
       );
     } else if (fixPlanNextYear) {
@@ -58,8 +82,8 @@ class Plan extends Component {
     } else if (flexyPlanNextYear && flexyPlan) {
       return (
         <div className="deadline-box">
-          <p>กรุณาเลือกแผนของคุณภายในวันที่ 12 เม.ย. 61</p>
-          <DeadlineBox />
+          <p>กรุณาเลือกแผนของคุณภายในวันที่ {d} {month[m]} {y}</p>
+          <DeadlineBox timeout={timeout} />
         </div>
       );
     }
@@ -70,6 +94,9 @@ class Plan extends Component {
     const {
       flexyPlan,
       flexyPlanNextYear,
+      timeUp,
+      data,
+      plan,
     } = this.props;
     if (flexyPlan) {
       return (
@@ -79,8 +106,10 @@ class Plan extends Component {
           handleClickGeneralExpense={this.props.handleClickGeneralExpense}
           handleChangePlan={this.props.handleChangePlan}
           handleClickButton={this.props.handleClickButton}
-          plan={this.props.plan}
-          flexyPlan={this.props.flexyPlan}
+          plan={plan}
+          flexyPlan={flexyPlan}
+          data={data}
+          timeUp={timeUp}
         />
       );
     } else if (flexyPlanNextYear) {
@@ -99,7 +128,9 @@ class Plan extends Component {
         handleClickInsurance={this.props.handleClickInsurance}
         handleClickHealth={this.props.handleClickHealth}
         handleClickGeneralExpense={this.props.handleClickGeneralExpense}
-        flexyPlan={this.props.flexyPlan}
+        flexyPlan={flexyPlan}
+        data={data}
+        timeUp={timeUp}
       />
     );
   }
@@ -132,35 +163,42 @@ class Plan extends Component {
     const {
       fixPlanNextYear,
       flexyPlanNextYear,
+      plan,
+      data,
+      timeUp,
     } = this.props;
-    return (
-      <div className="flexyPlan">
-        <div className="row">
-          <div className="small-10 small-centered columns">
-            <div className="deadline-flexy-plan">
-              <img src={this.handleImageHeader()} alt="Congrate" />
-              <div className="congrate-text-box">
-                <span className="congrate-text">
-                  { fixPlanNextYear || flexyPlanNextYear ? 'ว้าว! สิทธิประโยชน์ครั้งใหม่' : 'ยินดีด้วย!' }
-                </span>
-                <span className="congrate-text">
-                  { fixPlanNextYear || flexyPlanNextYear ? 'ได้จัดส่งมาถึงมือคุณแล้ว' : 'นี่คือสิทธิประโยชน์ของคุณ' }
-                </span>
+    if (data !== undefined) {
+      return (
+        <div className="flexyPlan">
+          <div className="row">
+            <div className="small-10 small-centered columns">
+              <div className="deadline-flexy-plan">
+                <img src={this.handleImageHeader()} alt="Congrate" />
+                <div className="congrate-text-box">
+                  <span className="congrate-text">
+                    { fixPlanNextYear || flexyPlanNextYear ? 'ว้าว! สิทธิประโยชน์ครั้งใหม่' : 'ยินดีด้วย!' }
+                  </span>
+                  <span className="congrate-text">
+                    { fixPlanNextYear || flexyPlanNextYear ? 'ได้จัดส่งมาถึงมือคุณแล้ว' : 'นี่คือสิทธิประโยชน์ของคุณ' }
+                  </span>
+                </div>
+                { this.handleShowDeadLine() }
               </div>
-              { this.handleShowDeadLine() }
             </div>
+            { this.handleShowPlan() }
+            { this.handleShowBTN() }
           </div>
-          { this.handleShowPlan() }
-          { this.handleShowBTN() }
+          <ConfirmModal
+            openModal={this.state.openModal}
+            handleCloseModal={this.handleCloseModal}
+            plan={plan}
+            data={data}
+            timeUp={timeUp}
+          />
         </div>
-
-        <ConfirmModal
-          openModal={this.state.openModal}
-          handleCloseModal={this.handleCloseModal}
-          plan={this.props.plan}
-        />
-      </div>
-    );
+      );
+    }
+    return (<div />);
   }
 }
 

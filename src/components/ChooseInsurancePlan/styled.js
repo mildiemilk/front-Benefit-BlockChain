@@ -496,7 +496,6 @@ export const IPDDetail = styled.span`
 export const HiddenBox = styled.div`
   color: #323028;
   height: 73px;
-  width: 628px;
   border-bottom: solid 1px #979797;
   border-right: solid 1px #979797;
   border-left: solid 1px #979797;

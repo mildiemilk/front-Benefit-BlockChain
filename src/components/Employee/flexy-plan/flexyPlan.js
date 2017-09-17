@@ -11,10 +11,29 @@ class FlexyPlan extends Component {
     handleChangePlan: PropTypes.func.isRequired,
     plan: PropTypes.number.isRequired,
     flexyPlan: PropTypes.bool.isRequired,
+    data: PropTypes.shape({}).isRequired,
+    timeUp: PropTypes.bool.isRequired,
   }
   constructor() {
     super();
     this.state = {};
+  }
+
+  handleRenderFlexyPlanBox = (data, timeUp) => {
+    const flexy = data.allBenefit.map((ele, index) => (
+      <div keys={index}>
+        <FlexyPlanBox
+          plan={this.props.plan}
+          handleClickInsurance={this.props.handleClickInsurance}
+          handleClickHealth={this.props.handleClickHealth}
+          handleClickGeneralExpense={this.props.handleClickGeneralExpense}
+          flexyPlan={this.props.flexyPlan}
+          data={ele}
+          timeUp={timeUp}
+        />
+      </div>
+    ));
+    return flexy;
   }
 
   render() {
@@ -25,29 +44,18 @@ class FlexyPlan extends Component {
       slidesToScroll: 1,
       slickGoTo: this.props.plan,
       afterChange: index => this.props.handleChangePlan(index),
+      initialSlide: this.props.plan,
     };
+    const { data, timeUp } = this.props;
     return (
       <div>
         <div className="slider">
           <Slider {...settings} >
-            <div>
-              <FlexyPlanBox
-                plan={this.props.plan}
-                handleClickInsurance={this.props.handleClickInsurance}
-                handleClickHealth={this.props.handleClickHealth}
-                handleClickGeneralExpense={this.props.handleClickGeneralExpense}
-                flexyPlan={this.props.flexyPlan}
-              />
-            </div>
-            <div>
-              <FlexyPlanBox
-                plan={this.props.plan}
-                handleClickInsurance={this.props.handleClickInsurance}
-                handleClickHealth={this.props.handleClickHealth}
-                handleClickGeneralExpense={this.props.handleClickGeneralExpense}
-                flexyPlan={this.props.flexyPlan}
-              />
-            </div>
+            {
+              data !== undefined
+              ? this.handleRenderFlexyPlanBox(data, timeUp)
+              : <div />
+            }
           </Slider>
         </div>
       </div>

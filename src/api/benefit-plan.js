@@ -1,13 +1,13 @@
 import { APIRequest } from '.';
 import {
+  getInsurancePlanSuccess,
+  getInsurancePlanFailure,
   choosePlanSuccess,
   choosePlanFailure,
-  editChoosePlanSuccess,
-  editChoosePlanFailure,
-  editOptionSuccess,
-  editOptionFailure,
-  getOptionPlanSuccess,
-  getOptionPlanFailure,
+  setTemplatePlanSuccess,
+  setTemplatePlanFailure,
+  getTemplatePlanSuccess,
+  getTemplatePlanFailure,
   getBenefitPlanSuccess,
   getBenefitPlanFailure,
   setBenefitPlanSuccess,
@@ -16,16 +16,18 @@ import {
   setTimeoutFailure,
 } from '../reducers/benefit-plan';
 
-const CHOOSE_PLAN_URI = '/api/benefit-plan';
-const EDITCHOOSE_PLAN_URI = '/api/edit-benefit-plan';
-const GETOPTION_PLAN_URI = '/api/get-option-plan';
-const GETBENEFIT_PLAN_URI = '/api/get-benefit-plan';
+const GETINSURANCE_PLAN_URI = '/api/company/get-insurance-plan';
+const CHOOSE_PLAN_URI = '/api/company/set-template-plan';
+const SETTEMPLATEBENEFIT_PLAN_URI = '/api/company/set-template-benefit';
+const GETTEMPLATE_PLAN_URI = '/api/company/get-template-plan';
+const GETBENEFIT_PLAN_URI = '/api/company/get-benefit-plan';
 const SETBENEFIT_PLAN_URI = '/api/set-benefit-plan';
 const SETTIMEOUT_PLAN_URI = '/api/set-benefit-timeout';
+
 export function choosePlan(plan) {
   return dispatch => {
     const options = {
-      method: 'post',
+      method: 'put',
       url: CHOOSE_PLAN_URI,
       data: { plan },
     };
@@ -39,26 +41,41 @@ export function choosePlan(plan) {
       });
   };
 }
-
-export function editChoosePlan(plan) {
+export function getInsurancePlan() {
   return dispatch => {
     const options = {
-      method: 'post',
-      url: EDITCHOOSE_PLAN_URI,
-      data: { plan },
+      method: 'get',
+      url: GETINSURANCE_PLAN_URI,
     };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(editChoosePlanSuccess(res.data));
+        dispatch(getInsurancePlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(editChoosePlanFailure(err.response.data));
+        dispatch(getInsurancePlanFailure(err));
       });
   };
 }
+// export function editChoosePlan(plan) {
+//   return dispatch => {
+//     const options = {
+//       method: 'post',
+//       url: EDITCHOOSE_PLAN_URI,
+//       data: { plan },
+//     };
 
-export function planOption(
+//     APIRequest(options, true)
+//       .then(res => {
+//         dispatch(editChoosePlanSuccess(res.data));
+//       })
+//       .catch(err => {
+//         dispatch(editChoosePlanFailure(err.response.data));
+//       });
+//   };
+// }
+
+export function setTemplatePlan(
   isHealth,
   isExpense,
   HealthList,
@@ -73,7 +90,7 @@ export function planOption(
   return dispatch => {
     const options = {
       method: 'post',
-      url: EDITCHOOSE_PLAN_URI,
+      url: SETTEMPLATEBENEFIT_PLAN_URI,
       data: {
         isHealth,
         isExpense,
@@ -90,27 +107,27 @@ export function planOption(
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(editOptionSuccess(res.data));
+        dispatch(setTemplatePlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(editOptionFailure(err.response.data));
+        dispatch(setTemplatePlanFailure(err.response.data));
       });
   };
 }
 
-export function getOptionPlan() {
+export function getTemplatePlan() {
   return dispatch => {
     const options = {
       method: 'get',
-      url: GETOPTION_PLAN_URI,
+      url: GETTEMPLATE_PLAN_URI,
     };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(getOptionPlanSuccess(res.data));
+        dispatch(getTemplatePlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getOptionPlanFailure(err));
+        dispatch(getTemplatePlanFailure(err));
       });
   };
 }
@@ -127,7 +144,7 @@ export function getBenefitPlan() {
         dispatch(getBenefitPlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getBenefitPlanFailure(err.response.data));
+        dispatch(getBenefitPlanFailure(err));
       });
   };
 }

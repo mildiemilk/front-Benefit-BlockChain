@@ -11,7 +11,7 @@ class SelectBox extends Component {
     // selectOption: PropTypes.string.isRequired,
     // selectPlan: PropTypes.arrayOf(PropTypes.string).isRequired,
     // columnsLenght: PropTypes.string.isRequired,
-    planName: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // planName: PropTypes.arrayOf(PropTypes.object).isRequired,
     // handleFixedChange: PropTypes.func.isRequired,
     // handleFlexChange: PropTypes.func.isRequired,
     // handleActivePlan: PropTypes.func.isRequired,
@@ -23,6 +23,7 @@ class SelectBox extends Component {
     default: PropTypes.number.isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     numberOfGroup: PropTypes.number.isRequired,
+    summaryEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
     super();
@@ -30,23 +31,28 @@ class SelectBox extends Component {
   }
   getDetailPlan = planName => {
     const { benefitPlan } = this.props;
-    const detail = benefitPlan.filter(plan => plan.planName === planName);
+    const detail = benefitPlan.plan.filter(plan => plan.plan.benefitPlanName === planName);
     return detail[0];
   }
-  renderPlan = plans => {
-    const Allplan = plans.map((plan, index) => {
-      const detail = this.getDetailPlan(plan);
+  renderPlan = Allplans => {
+    // const { plan } = Allplans;
+    // console.log('plan', plan);
+    // const plans = plan;
+    const Allplan = Allplans.map((plan, index) => {
+      const { confirm } = this.props.summaryEmployee;
+      const detail = this.getDetailPlan(plan.plan[index]);
+      console.log('detail', detail);
       return (<BoxPlan>
         <div className="row">
           <div className="large-7 columns">
-            {plan}
-            {this.props.default === index
+            {plan.benefitPlanName}
+            {this.props.default === plan._id
             ? <ButtonDefault>ค่าเริ่มต้น</ButtonDefault>
             : null
             }
           </div>
           <div className="large-5 columns">
-            <Text>จำนวนพนักงานที่เลือกแผนนี้ ... คน</Text>
+            <Text>จำนวนพนักงานที่เลือกแผนนี้ {confirm[index]} คน</Text>
           </div>
         </div>
         <Divider />
@@ -61,11 +67,11 @@ class SelectBox extends Component {
           </div>
           <div className="large-6 columns">
             <TextBox>
-              {detail.plan}
+              {plan.benefitPlan.plan.planId.planName}
             </TextBox>
           </div>
         </div>
-        {detail.isHealth
+        {plan.benefitPlan.isHealth
         ? <div className="row">
           <div className="large-6 columns">
             <DivList>
@@ -76,14 +82,14 @@ class SelectBox extends Component {
             </DivList>
           </div>
           <div className="large-6 columns">
-            <TextBox>{detail.health}
+            <TextBox>{plan.benefitPlan.health}
               <DivFlex><Unit>บาท/ปี</Unit></DivFlex>
             </TextBox>
           </div>
         </div>
         : null
         }
-        {detail.isExpense
+        {plan.benefitPlan.isExpense
         ? <div className="row">
           <div className="large-6 columns">
             <DivList>
@@ -94,7 +100,7 @@ class SelectBox extends Component {
             </DivList>
           </div>
           <div className="large-6 columns">
-            <TextBox>{detail.expense}
+            <TextBox>{plan.benefitPlan.expense}
               <DivFlex>
                 <Unit>บาท/ปี</Unit>
               </DivFlex>
@@ -108,6 +114,9 @@ class SelectBox extends Component {
     return Allplan;
   }
   render() {
+    console.log('gg', this.props.groupName);
+    console.log('plan', this.props.benefitPlan);
+    console.log('planss', this.props.benefitPlan.plan.length);
     return (
       <Box>
         <Head>
@@ -136,10 +145,10 @@ class SelectBox extends Component {
               <TextLine>แผนของสิทธิประโยชน์ที่เลือกใช้กับกลุ่มนี้</TextLine>
             </div>
             <div className="large-7 columns">
-              <List>{this.props.planName.length}&nbsp; แผน</List>
+              <List>{this.props.benefitPlan.plan.length}&nbsp; แผน</List>
             </div>
           </div>
-          {this.renderPlan(this.props.planName)}
+          {this.renderPlan(this.props.summaryEmployee)}
         </Detail>
       </Box>
     );

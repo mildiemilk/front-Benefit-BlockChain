@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
 import {
   Segment,
   Dropdown,
@@ -17,6 +18,7 @@ import {
   Detail3,
   DefaultImg,
 } from './styled';
+// import InputDate from '../InputDate';
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
@@ -56,15 +58,15 @@ const BusinessTypes = [
 const NumberOfEmployees = [
   {
     text: '1-50',
-    value: '1-50',
+    value: '50',
   },
   {
     text: '51-100',
-    value: '51-100',
+    value: '100',
   },
   {
     text: '101-150',
-    value: '101-150',
+    value: '150',
   },
 ];
 
@@ -83,7 +85,8 @@ class SettingProfile extends Component {
       tel: '',
       typeOfBusiness: '',
       numberOfEmployees: '',
-      companyBroker: '',
+      startInsurance: '',
+      expiredInsurance: '',
       companyInsurer: '',
       file: '',
       imagePreviewUrl: '',
@@ -94,8 +97,6 @@ class SettingProfile extends Component {
   }
 
   _handleImageChange = e => {
-    e.preventDefault();
-
     const reader = new FileReader();
     const file = e.target.files[0];
     reader.onloadend = () => {
@@ -107,6 +108,12 @@ class SettingProfile extends Component {
 
     reader.readAsDataURL(file);
   }
+  handleStartDate = startInsurance => {
+    this.setState({ startInsurance }, () => console.log('set date', this.state.startInsurance._d));
+  }
+  handleExpiredDate = expiredInsurance => {
+    this.setState({ expiredInsurance }, () => console.log('set date end', this.state.expiredInsurance._d));
+  }
   handleSubmit = e => {
     e.preventDefault();
     const {
@@ -114,8 +121,7 @@ class SettingProfile extends Component {
       location: { value: location },
       hrDetail: { value: hrDetail },
       tel: { value: tel },
-      companyBroker: { value: companyBroker },
-      companyInsurer: { value: companyInsurer },
+      // companyInsurer: { value: companyInsurer },
     } = e.target;
 
     this.setState({
@@ -123,20 +129,21 @@ class SettingProfile extends Component {
       location,
       hrDetail,
       tel,
-      companyBroker,
-      companyInsurer,
+      // companyInsurer,
     });
-
-    const { typeOfBusiness, numberOfEmployees } = this.state;
+    const { typeOfBusiness, numberOfEmployees, startInsurance, expiredInsurance } = this.state;
+    console.log('start', startInsurance);
+    console.log('end', expiredInsurance);
     this.props.createProfile({
       companyName,
       location,
-      hrDetail,
-      tel,
       typeOfBusiness,
+      hrDetail,
       numberOfEmployees,
-      companyBroker,
-      companyInsurer,
+      tel,
+      // companyInsurer,
+      startInsurance,
+      expiredInsurance,
     });
   }
   render() {
@@ -243,12 +250,18 @@ class SettingProfile extends Component {
                   options={NumberOfEmployees}
                 />
                 <Detail3>
-                  Broker ที่ใช้ในปัจจุบัน
+                  วันเริ่มอายุกรมธรรม์
                 </Detail3>
-                <Box
-                  name="companyBroker"
-                  size="big"
-                  placeholder="Broker ที่ใช้ในปัจจุบัน"
+                <DatePicker
+                  selected={this.state.startInsurance}
+                  onChange={this.handleStartDate}
+                />
+                <Detail3>
+                  วันหมดอายุกรมธรรม์
+                </Detail3>
+                <DatePicker
+                  selected={this.state.expiredInsurance}
+                  onChange={this.handleExpiredDate}
                 />
                 <Detail3>
                   บริษัทประกันที่ใช้ในปัจจุบัน

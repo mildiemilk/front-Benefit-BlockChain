@@ -17,7 +17,8 @@ class PlanTemplate extends Component {
     handleDeleteSpecialPlan: PropTypes.func,
     index: PropTypes.number.isRequired,
     ourPlan: PropTypes.arrayOf(PropTypes.object),
-    // specialPlans: PropTypes.arrayOf(PropTypes.object),
+    plan: PropTypes.shape({}).isRequired,
+    specialPlan: PropTypes.arrayOf(PropTypes.object),
 
   }
 
@@ -26,6 +27,7 @@ class PlanTemplate extends Component {
     handleDeleteOurplan: () => {},
     handleDeleteSpecialPlan: () => {},
     ourPlan: [],
+    specialPlan: [],
   }
 
   constructor() {
@@ -46,7 +48,7 @@ class PlanTemplate extends Component {
               <Image src={icon1} style={{ width: '25px', height: '30px' }} />
             </td>
             <td style={{ width: '70%' }}>
-              <b>{this.props.id}</b><br />
+              <b>{this.props.plan}</b><br />
               ราคาต่อหัว : {this.props.price} บาท
             </td>
             {this.renderColumnIsCloseTap(colorPlan, id)}
@@ -87,7 +89,7 @@ class PlanTemplate extends Component {
   }
 
   render() {
-    const { id, price, colorPlan } = this.props;
+    const { id, price, colorPlan, plan } = this.props;
     let component = '';
     if (this.props.closetap) {
       if (this.props.colorPlan === 1) {
@@ -132,12 +134,12 @@ class PlanTemplate extends Component {
                   role="button"
                   aria-hidden
                 >
-                  <b>{this.props.id}</b><br />
+                  <b>{plan}</b><br />
                   ราคาต่อหัว : {price} บาท
                 </td>
                 <td>
                   <td style={{ width: '40px' }}>
-                    <ModalPlan plan={this.props.ourPlan[this.props.index]} />
+                    <ModalPlan plan={this.props.ourPlan[this.props.index].plan} />
                   </td>
                   <td
                     style={{ width: '30px', cursor: 'pointer' }}
@@ -181,12 +183,12 @@ class PlanTemplate extends Component {
                   role="button"
                   aria-hidden
                 >
-                  <b>{this.props.id}</b><br />
+                  <b>{this.props.plan}</b><br />
                   ราคาต่อหัว : {price} บาท
                 </td>
                 <td>
                   <td style={{ width: '40px' }}>
-                    {/* <ModalPlan /> */}
+                    <ModalPlan plan={this.props.specialPlan[this.props.index].plan} />
                   </td>
                   <td
                     style={{ width: '30px', cursor: 'pointer' }}

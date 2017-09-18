@@ -28,24 +28,6 @@ const InsuranceTypeOption = [
   },
 ];
 
-const currencyOption = [
-  {
-    key: '1',
-    text: 'บาท',
-    value: 'bath',
-  },
-  {
-    key: '2',
-    text: 'usd',
-    value: 'usd',
-  },
-  {
-    key: '3',
-    text: 'กีบลาว',
-    value: 'Lak',
-  },
-];
-
 const BankOption = [
   {
     key: '1',
@@ -71,19 +53,22 @@ const BankOption = [
 class InsuranceTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
-    EmNameoption: PropTypes.shape.isRequired,
-    date: PropTypes.shape.isRequired,
+    EmNameoption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    date: PropTypes.string.isRequired,
     handleUploadcliamFile: PropTypes.func.isRequired,
-    ClaimFile: PropTypes.shape.isRequired,
+    ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleChangeDate: PropTypes.func.isRequired,
+    // data: PropTypes.shape({}).isRequired,
+    currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
+    const { ClaimFile, currencyOption } = this.props;
     return (
       <div className="InsuranceTemplate">
         <Dropdown
@@ -187,7 +172,7 @@ class InsuranceTemplate extends Component {
         </BrowsButton>
         <NewLine style={{ height: '3px' }} />
         <UploadText>
-          {this.props.ClaimFile.name}
+          {ClaimFile.name}
         </UploadText>
         <NewLine style={{ height: '3px' }} />
 

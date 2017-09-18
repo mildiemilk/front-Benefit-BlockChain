@@ -1,6 +1,13 @@
 import axios from 'axios';
 import auth from './auth';
-import { setLogo, fileEmployee, getTemplate, claimData, getGroupBenefit, employeeDetail } from './profile-company';
+import {
+  setLogo,
+  fileEmployee,
+  getTemplate,
+  claimData,
+  getGroupBenefit,
+  employeeDetail,
+} from './profile-company';
 import {
   chooseInsurer,
   setTimeOut,
@@ -10,7 +17,12 @@ import {
 } from './choose-insurer';
 import { endTimeout, bidding } from './bidding';
 import { menuPlans } from './set-plan';
-import { getInsurancePlan, choosePlan, getOptionPlan, setTimeout } from './benefit-plan';
+import {
+  getInsurancePlan,
+  choosePlan,
+  getOptionPlan,
+  setTimeout,
+} from './benefit-plan';
 import { chooseFinalInsurer } from './bidding';
 import { host, protocol, port } from '../../config/';
 

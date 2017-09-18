@@ -16,6 +16,12 @@ const defaultCurrentPlan = {
   currentPlan: {},
 };
 
+const defaultClaimOption = {
+  claimUser: [],
+  healthList: [],
+  expenseList: [],
+};
+
 /**
  * Action Constansts
  */
@@ -25,6 +31,8 @@ const CONFIRM_PLAN_REQUEST_SUCCESS = 'auth/CONFIRM_PLAN_REQUEST_SUCCESS';
 const CONFIRM_PLAN_REQUEST_FAILURE = 'auth/CONFIRM_PLAN_REQUEST_FAILURE';
 const CURRENT_PLAN_REQUEST_SUCCESS = 'auth/CURRENT_PLAN_REQUEST_SUCCESS';
 const CURRENT_PLAN_REQUEST_FAILURE = 'auth/CURRENT_PLAN_REQUEST_FAILURE';
+const CLAIM_OPTION_REQUEST_SUCCESS = 'auth/CLAIM_OPTION_REQUEST_SUCCESS';
+const CLAIM_OPTION_REQUEST_FAILURE = 'auth/CLAIM_OPTION_REQUEST_FAILURE';
 
 /**
  * Actions
@@ -51,6 +59,29 @@ export function currentPlanSuccess(data) {
 
 export function currentPlanFailure(data) {
   return { type: CURRENT_PLAN_REQUEST_FAILURE, data };
+}
+
+export function claimOptionSuccess(data) {
+  return { type: CLAIM_OPTION_REQUEST_SUCCESS, data };
+}
+
+export function claimOptionFailure(data) {
+  return { type: CLAIM_OPTION_REQUEST_FAILURE, data };
+}
+
+export function claimOptionReducer(state = defaultClaimOption, action) {
+  switch (action.type) {
+    case CLAIM_OPTION_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        claimUser: action.data.claimUser,
+        healthList: action.data.healthList,
+        expenseList: action.data.expenseList,
+      });
+    case CLAIM_OPTION_REQUEST_FAILURE:
+      return state;
+    default:
+      return state;
+  }
 }
 
 export function currentPlanReducer(state = defaultCurrentPlan, action) {

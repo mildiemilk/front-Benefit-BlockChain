@@ -62,6 +62,8 @@ export const SubmitButtonLast = styled.button`
   letter-spacing: 0.3px;
   text-align: center;
   color: #ffffff;
+  margin: 16px auto 0px;
+  display: block;
 `;
 
 export const NewLine = styled.div`

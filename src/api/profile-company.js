@@ -34,7 +34,7 @@ const GETCLAIMDATA_URI = '/api/company/get-claim-data';
 const SETCOMPLETESTEP_URI = '/api/company/set-complete-step';
 const GETCOMPLETESTEP_URI = '/api/company/get-complete-step';
 const GET_GROUPBENEFIT_URI = '/api/company/get-group-benefit';
-const SET_GROUPBENEFIT_URI = '/api/company/set-group-benefit/{employeeGroupId}';
+const SET_GROUPBENEFIT_URI = '/api/company/set-group-benefit';
 const GET_SUMMARYEMPLOYEE_URI = '/api/company/summary-employee-benefit';
 
 export function createProfile(profile) {
@@ -70,10 +70,10 @@ export function setLogo(file) {
       .then(res => {
         localStorage.setItem('logo', res.data.logo);
         dispatch(setLogoSuccess(res.data));
-      })
-      .catch(err => {
-        console.log(err);
       });
+      // .catch(err => {
+      //   console.log(err);
+      // });
   };
 }
 
@@ -92,7 +92,6 @@ export function fileEmployee(file) {
         dispatch(fileEmployeeSuccess(res.data));
       })
       .catch(err => {
-        console.log(err);
         dispatch(fileEmployeeFailure(err.response.data));
       });
   };
@@ -115,7 +114,6 @@ export function claimData(files) {
         dispatch(claimDataSuccess(res.data));
       })
       .catch(err => {
-        console.log(err);
         dispatch(claimDataFailure(err.response.data));
       });
   };
@@ -148,9 +146,7 @@ export function employeeDetail() {
         dispatch(employeeDetailSuccess(res.data));
       })
       .catch(err => {
-        console.log('err', err.response.data.error);
         if (err.response.data.statuscode === 401) {
-          console.log('token invalid');
           window.location.href = '/logout';
         }
         dispatch(employeeDetailFailure(err.response.data));
@@ -170,7 +166,6 @@ export function setCompleteStep(passwordToConfirm, step) {
     };
     APIRequest(options, true)
       .then(res => {
-        console.log('success');
         dispatch(setCompleteStepSuccess(res.data));
       })
       .catch(err => {
@@ -238,7 +233,6 @@ export function getSummaryEmployee() {
 
     APIRequest(options, true)
       .then(res => {
-        console.log('res');
         dispatch(getSummaryEmployeeSuccess(res.data));
       })
       .catch(err => {
@@ -252,9 +246,12 @@ export function setGroupBenefit(groupNumber, detail) {
     const options = {
       method: 'put',
       url: `${SET_GROUPBENEFIT_URI}/${groupNumber}`,
-      data: { detail },
+      data: {
+        type: detail.type,
+        benefitPlan: detail.benefitPlan,
+        defaultPlan: detail.defaultPlan,
+      },
     };
-
     APIRequest(options, true)
       .then(res => {
         dispatch(setGroupBenefitSuccess(res.data));

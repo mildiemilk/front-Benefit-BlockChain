@@ -100,7 +100,9 @@ class Dashboard extends Component {
                     src={artboard1}
                     shape="circular"
                   />
-                  <Container textAlign="center"> สร้างแผนของคุณ </Container>
+                  <Link to="/submitplan" >
+                    <Container textAlign="center"> สร้างแผนของคุณ </Container>
+                  </Link>
                 </Grid.Column>
                 <Grid.Column>
                   <Image
@@ -109,25 +111,35 @@ class Dashboard extends Component {
                     src={artboard3}
                     shape="circular"
                   />
-                  <Container textAlign="center"> อัพเดตจำนวนพนักงาน </Container>
+                  <Link to="/employeelist" >
+                    <Container textAlign="center"> อัพเดตจำนวนพนักงาน </Container>
+                  </Link>
                 </Grid.Column>
                 <Grid.Column>
                   <Image className="block" src={artboard2} shape="circular" />
-                  <Container textAlign="center"> รายการเคลม </Container>
+                  <Link to="/ClaimEmployee" >
+                    <Container textAlign="center"> รายการเคลม </Container>
+                  </Link>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={3}>
                 <Grid.Column>
                   <Image className="block" src={artboard4} shape="circular" />
-                  <Container textAlign="center"> ประวัติการเคลม </Container>
+                  <Link to="/profileclaim" >
+                    <Container textAlign="center"> ประวัติการเคลม </Container>
+                  </Link>
                 </Grid.Column>
                 <Grid.Column>
                   <Image className="block" src={artboard5} shape="circular" />
-                  <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
+                  <Link to="/profile" >
+                    <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
+                  </Link>
                 </Grid.Column>
                 <Grid.Column>
                   <Image className="block" src={artboard6} shape="circular" />
-                  <Container textAlign="center"> ตั้งค่า </Container>
+                  <Link to="/setting" >
+                    <Container textAlign="center"> ตั้งค่า </Container>
+                  </Link>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

@@ -18,8 +18,8 @@ class employeeBenefits extends Component {
     getGroupBenefit: PropTypes.func.isRequired,
     setGroupBenefit: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
-    groupBenefit: PropTypes.shape.isRequired,
-    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    groupBenefit: PropTypes.shape({}).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
 
   constructor(props) {
@@ -58,12 +58,12 @@ class employeeBenefits extends Component {
   handleUpdate = activeGroup => {
     const { groupBenefit } = this.props;
     this.setState({
-      selectPlan: groupBenefit[activeGroup].plan,
+      selectPlan: groupBenefit[activeGroup].benefitPlan,
       plan: groupBenefit[activeGroup].type,
       selectOption: groupBenefit[activeGroup].type,
-      defaultPlan: groupBenefit[activeGroup].default,
+      defaultPlan: groupBenefit[activeGroup].defaultPlan,
     });
-    if (groupBenefit[activeGroup].type === 'Fixed') {
+    if (groupBenefit[activeGroup].type === 'fixed') {
       this.setState({ columnsLenght: 'large-11 columns' });
     } else {
       this.setState({ columnsLenght: 'large-7 columns' });
@@ -77,7 +77,7 @@ class employeeBenefits extends Component {
       this.setState({
         activeGroup: index,
         selectGroup: true,
-        plan: '',
+        // plan: '',
       });
     }
   }
@@ -85,7 +85,10 @@ class employeeBenefits extends Component {
   handleActivePlan = (index, value) => {
     const indexOfSelectPlan = this.state.selectPlan.indexOf(value);
     if (indexOfSelectPlan > -1) {
-      this.setState({ defaultPlan: index });
+      this.setState({
+        defaultPlan: value,
+        verifyChoosePlan: true,
+      });
     }
   }
 
@@ -96,19 +99,19 @@ class employeeBenefits extends Component {
 
     if (value === groupBenefit[activeGroup].type) {
       this.setState({
-        selectPlan: groupBenefit[activeGroup].plan,
-        defaultPlan: groupBenefit[activeGroup].default,
+        selectPlan: groupBenefit[activeGroup].benefitPlan,
+        // defaultPlan: groupBenefit[activeGroup].defaultPlan,
       });
     } else this.setState({ selectPlan: [], defaultPlan: '' });
 
-    if (value === 'Fixed') {
+    if (value === 'fixed') {
       this.setState({
-        selectOption: 'Fixed',
+        selectOption: 'fixed',
         columnsLenght: 'large-11 columns',
       });
     } else {
       this.setState({
-        selectOption: 'Flex',
+        selectOption: 'flex',
         columnsLenght: 'large-7 columns',
       });
     }
@@ -119,48 +122,55 @@ class employeeBenefits extends Component {
       verifyState: false,
       verifyChoosePlan: true,
     });
+    let planId = '';
+    this.props.benefitPlan.forEach(item => {
+      if (item.benefitPlanName === value) {
+        planId = item._id;
+      }
+    });
     if (this.state.selectPlan.length > 0) {
       this.state.selectPlan.pop();
-      this.state.selectPlan.push(value);
+      this.state.selectPlan.push(planId);
     } else {
-      this.state.selectPlan.push(value);
+      this.state.selectPlan.push(planId);
     }
+    this.setState({ defaultPlan: planId });
   }
 
   handleSubmit = () => {
-    if (this.state.verifyChoosePlan === false) {
+    if (this.state.selectOption === 'fixed' && this.state.selectPlan.length === 0) {
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'คุณยังไม่ได้เลือกแผน',
+      });
+    } else if (this.state.verifyChoosePlan === false) {
       this.setState({
         openWarningModal: true,
         warningMessage: 'คุณยังไม่ได้เลือกแผนสิทธิสำหรับกลุ่ม',
       });
-    } else if (
-      this.state.selectOption === 'Flex' &&
-      this.state.defaultPlan === ''
-    ) {
+    } else if (this.state.selectOption === 'flex' && this.state.selectPlan.length < 2) {
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'flex ต้องมีแผนที่เลือกอย่างน้อย 2 แผน',
+      });
+    } else if (this.state.selectOption === 'flex' && this.state.defaultPlan === '') {
       this.setState({
         openWarningModal: true,
         warningMessage: 'คุณยังไม่ได้ตั้งค่าแผนเริ่มต้น',
-      });
-    } else if (
-      this.state.selectOption === 'Flex' &&
-      this.state.selectPlan.length < 2
-    ) {
-      this.setState({
-        openWarningModal: true,
-        warningMessage: 'Flex ต้องมีแผนที่เลือกอย่างน้อย 2 แผน',
       });
     } else {
       this.setState({ verifyState: true });
       const { activeGroup, selectPlan, defaultPlan, plan } = this.state;
       const { groupBenefit } = this.props;
+      const type = plan.toLowerCase();
+      const benefitPlan = selectPlan;
+      const groupId = groupBenefit[activeGroup]._id;
       const detail = {
-        name: groupBenefit[activeGroup].name,
-        numberOfGroup: groupBenefit[activeGroup].numberOfGroup,
-        type: plan,
-        plan: selectPlan,
-        default: defaultPlan,
+        type,
+        benefitPlan,
+        defaultPlan,
       };
-      this.props.setGroupBenefit(activeGroup, detail);
+      this.props.setGroupBenefit(groupId, detail);
     }
   }
 
@@ -181,7 +191,7 @@ class employeeBenefits extends Component {
       const index = this.state.selectPlan.indexOf(value);
       if (index > -1) {
         this.state.selectPlan.splice(index, 1);
-        if (this.state.defaultPlan === index) {
+        if (this.state.defaultPlan === value) {
           this.setState({ defaultPlan: '' });
         }
       } else {

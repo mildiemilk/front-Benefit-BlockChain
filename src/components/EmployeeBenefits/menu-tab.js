@@ -15,7 +15,6 @@ class MenuTab extends Component {
     };
   }
   renderList = list => {
-    console.log('list', list);
     const showList = list.map((element, index) => {
       const isActive = index === this.props.activeGroup ? '-active' : '';
       return (

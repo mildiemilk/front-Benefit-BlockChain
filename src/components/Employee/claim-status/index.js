@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ClaimStatusBox from './claim-status-box';
 import ClaimStatusDetail from './claim-status-detail';
+import { getClaimStatus } from '../../../api/Employee/claim';
 
-class ClamStatus extends Component {
+class ClaimStatus extends Component {
+  static propTypes = {
+    getClaimStatus: PropTypes.func.isRequired,
+    Claimprops: PropTypes.shape({}).isRequired,
+  }
   constructor() {
     super();
     this.state = {
@@ -81,6 +88,11 @@ class ClamStatus extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.getClaimStatus();
+  }
+
+
   handleToggleViewDetail = id => {
     this.setState({
       viewDetail: !this.state.viewDetail,
@@ -124,10 +136,20 @@ class ClamStatus extends Component {
   render() {
     return (
       <div className="claim-status">
+        {this.props.Claimprops}
         {this.checkRenderclaimStatus()}
       </div>
     );
   }
 }
 
-export default ClamStatus;
+const mapStateToProps = state => ({
+  Claimprops: state.getClaimStatusReducer,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getClaimStatus: () => dispatch(getClaimStatus()),
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClaimStatus);

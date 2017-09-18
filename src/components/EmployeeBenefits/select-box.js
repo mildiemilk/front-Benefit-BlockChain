@@ -5,8 +5,8 @@ import '../../styles/employee-benefits.scss';
 import SelectOptionPlan from './select-option-plan';
 
 const planOptions = [
-  { text: 'Fixed', value: 'Fixed' },
-  { text: 'Flex', value: 'Flex' },
+  { text: 'Fixed', value: 'fixed' },
+  { text: 'Flex', value: 'flex' },
 ];
 
 class SelectBox extends Component {

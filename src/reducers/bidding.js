@@ -91,7 +91,6 @@ export function endTimeout(state = defaultEnd, action) {
 export function selectFinalInsurer(state = defaultchooseFinalInsurer, action) {
   switch (action.type) {
     case SELECT_FINAL_INSURER_SUCCESS:
-      console.log('action', action);
       return Object.assign({}, state, {
         selectFinalInsurer: true,
         message: action.data.message,

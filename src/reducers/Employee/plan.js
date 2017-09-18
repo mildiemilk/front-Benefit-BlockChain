@@ -9,6 +9,7 @@ const defaultPlan = {
 const defaultConfirm = {
   confirm: null,
   newUser: null,
+  currentSelect: null,
 };
 
 const defaultCurrentPlan = {
@@ -71,6 +72,7 @@ export function confirmPlanReducer(state = defaultConfirm, action) {
       return Object.assign({}, state, {
         confirm: action.data.confirm,
         newUser: action.data.newUser,
+        currentSelect: action.data.currentSelect,
       });
     case CONFIRM_PLAN_REQUEST_FAILURE:
       return state;

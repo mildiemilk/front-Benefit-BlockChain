@@ -6,28 +6,39 @@ import IconDownload from '../../../../assets/Insurer/icon_download@3x.png';
 import IconView from '../../../../assets/Insurer/icon_view@3x.png';
 import IconAddPlan from '../../../../assets/Insurer/icon_add_plan@3x.png';
 import IconTrash from '../../../../assets/Insurer/icons-8-trash.png';
-import { deleteInsurerPlan } from '../../../api/Insurer/bidding';
+// import { updateBiddingPrice, deleteInsurerPlan } from '../../../api/Insurer/bidding';
 
 class Quotation extends Component {
   static propTypes = {
     masterplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     insurerplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleOnpenModal: PropTypes.func.isRequired,
+    handleOnpenModalPlanDetail: PropTypes.func.isRequired,
+    handleSubmitBidding: PropTypes.func.isRequired,
+    handleChangeInput: PropTypes.func.isRequired,
     totalPrice: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired,
+    styletabPrice: PropTypes.string.isRequired,
     countBidding: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {};
+    // this.handleSubmitBidding = this.handleSubmitButtonModal.bind(this);
   }
 
-  handleDeletePlan = () => {
-    const { activePlan, planList } = this.state;
-    planList.splice(activePlan, 1);
-    deleteInsurerPlan(this.state.planId)();
-    this.handleAddPlan();
-  }
+  // handleDeletePlan = () => {
+  //   const { activePlan, planList } = this.state;
+  //   planList.splice(activePlan, 1);
+  //   deleteInsurerPlan(this.state.planId)();
+  //   this.handleAddPlan();
+  // }
+
+
+  // handleChangeInput = ({ target: { name, value } }) => {
+  //   console.log('000===', value);
+  //   this.setState({ [name]: value });
+  // }
+
   ShowMasterPlan = plans =>
     plans.map(
       (plan, index) =>
@@ -37,12 +48,20 @@ class Quotation extends Component {
             <span className="quotation-mp-name">{plan.planDetail.planName}</span>
           </div>
           <div className="quotation-mp-price-box">
-            <input className="quotation-mp-input-price" type="number" placeholder="เสนอราคา" value={plan.price} />
+            <input
+              className="quotation-mp-input-price"
+              type="number"
+              placeholder="เสนอราคา"
+              name={index}
+              id={`bidding_price_${index}`}
+              value={plan.price}
+              onChange={e => this.props.handleChangeInput('masterplan', e)}
+            />
           </div>
           <div className="quotation-mp-price-box">
             <div
               className="quotation-circle-icon-view"
-              onClick={() => this.props.handleOnpenModal('editDetailMP', plan.planDetail)}
+              onClick={() => this.props.handleOnpenModalPlanDetail('master', plan.planDetail)}
               role="button"
               aria-hidden
             >
@@ -63,7 +82,13 @@ class Quotation extends Component {
             <span className="quotation-mp-name">{plan.planDetail.planName}</span>
           </div>
           <div className="quotation-mp-price-box">
-            <input className="quotation-mp-input-price" type="number" placeholder="เสนอราคา" value={plan.price} />
+            <input
+              className={`quotation-mp-input-price ${this.props.styletabPrice}`}
+              type="number"
+              name={`insuere_price${index + 1}`}
+              id={`insuere_price${index + 1}`} placeholder="เสนอราคา" value={plan.price}
+              onChange={e => this.props.handleChangeInput('insurerplan', e)}
+            />
           </div>
           <div className="quotation-mp-price-box">
             <div
@@ -75,7 +100,7 @@ class Quotation extends Component {
             </div>
             <div
               className="quotation-circle-icon-view"
-              onClick={() => this.props.handleOnpenModal('editDetailMP', plan.planDetail)}
+              onClick={() => this.props.handleOnpenModalPlanDetail('insurer', plan.planDetail)}
               role="button"
               aria-hidden
             >
@@ -92,53 +117,56 @@ class Quotation extends Component {
     const {
       masterplan,
       insurerplan,
-      handleOnpenModal,
+      handleOnpenModalPlanDetail,
       totalPrice,
       updatedAt,
       countBidding,
     } = this.props;
+    console.log('props', this.props.masterplan);
     return (
       <div>
-        <div className="quotation-box quotation-line">
-          <div className="quotation-header-box">
-            <div className="quotation-header-l">
-              <span className="quotation-l-text">เลขที่ใบเสนอราคา : -</span>
-              <span className="quotation-l-text">เสนอราคาไปแล้ว : {(countBidding === '') ? '0' : countBidding} ครั้ง</span>
-              <span className="quotation-l-text">วันที่เสนอราคาล่าสุด : {moment(updatedAt).locale('th').format('DD MMMM YYYY')}</span>
-            </div>
-            <div className="quotation-header-r">
-              <span className="quptation-r-text">ราคาที่เสนอไป</span>
-              <span className="quptation-r-price">{(totalPrice === '') ? '-' : totalPrice}</span>
-            </div>
-          </div>
-        </div>
-        <div className="quotation-box">
-          <div className="quotation-show-mp">
-            <span className="quotation-body-title">รายการแพลนทั้งหมด</span>
-            <div className="quotation-body-show-mp-box">
-              {this.ShowMasterPlan(masterplan)}
-            </div>
-            <div className="quotation-mp-edit-title-box">
-              <span className="quotation-mp-edit-title">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
-              <div className="quotation-btn-add-plan-box">
-                <button className="quotation-mp-edit-btn" onClick={() => handleOnpenModal('selectInsurerPlan', masterplan)}>
-                  <img alt="" className="quotation-icon-add-plan" src={IconAddPlan} />
-                  เพิ่มจากแผนประกันภัยของคุณ
-                </button>
+        <form id="bidding_price" name="bidding_price" onSubmit={e => this.props.handleSubmitBidding(e)}>
+          <div className="quotation-box quotation-line">
+            <div className="quotation-header-box">
+              <div className="quotation-header-l">
+                <span className="quotation-l-text">เลขที่ใบเสนอราคา : -</span>
+                <span className="quotation-l-text">เสนอราคาไปแล้ว : {(countBidding === '') ? '0' : countBidding} ครั้ง</span>
+                <span className="quotation-l-text">วันที่เสนอราคาล่าสุด : {moment(updatedAt).locale('th').format('DD MMMM YYYY')}</span>
+              </div>
+              <div className="quotation-header-r">
+                <span className="quptation-r-text">ราคาที่เสนอไป</span>
+                <span className="quptation-r-price">{(totalPrice === '') ? '-' : totalPrice}</span>
               </div>
             </div>
-            <div className="quotation-body-show-mp-box">
-              {this.ShowInsurerPlan(insurerplan)}
-              {
-                insurerplan.length === 0
-                ? <div className="quotation-mp-edit-noplan">
-                  ยังไม่มีแพลนเพิ่มเติม
+          </div>
+          <div className="quotation-box">
+            <div className="quotation-show-mp">
+              <span className="quotation-body-title">รายการแพลนทั้งหมด</span>
+              <div className="quotation-body-show-mp-box">
+                {this.ShowMasterPlan(masterplan)}
+              </div>
+              <div className="quotation-mp-edit-title-box">
+                <span className="quotation-mp-edit-title">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
+                <div className="quotation-btn-add-plan-box">
+                  <button className="quotation-mp-edit-btn" onClick={() => handleOnpenModalPlanDetail('selectInsurerPlan', masterplan)}>
+                    <img alt="" className="quotation-icon-add-plan" src={IconAddPlan} />
+                    เพิ่มจากแผนประกันภัยของคุณ
+                  </button>
                 </div>
-                : <div />
-              }
+              </div>
+              <div className="quotation-body-show-mp-box">
+                {this.ShowInsurerPlan(insurerplan)}
+                {
+                  insurerplan.length === 0
+                  ? <div className="quotation-mp-edit-noplan">
+                    ยังไม่มีแพลนเพิ่มเติม
+                  </div>
+                  : <div />
+                }
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

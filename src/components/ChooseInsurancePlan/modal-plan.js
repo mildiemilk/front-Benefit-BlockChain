@@ -21,22 +21,33 @@ import icon2 from '../image/icons-8-view-file.png';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
-    max-width: 670px;
+    width: 800px;
+    position: relative;
     margin: 0 auto;
+    text-align: initial;
+    padding: 20px 0px;    
   }
 `;
 
 const Modals = styled(Modal) `
   &&&{
     background: transparent;
+    margin-top: -120px;
+    z-index: 2;
     box-shadow: none;
-    position: absolute;
-    text-align: justify;
     padding: 0px;
     height: auto;
+    position: absolute;
+    left: 55%;
+    top: 40%;
   }
 `;
-
+// background: transparent;
+// box-shadow: none;
+// position: absolute;
+// text-align: justify;
+// padding: 0px;
+// height: auto;
 const Icons = styled(Icon) `
   &&&{
     position: absolute;

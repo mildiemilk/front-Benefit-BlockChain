@@ -15,7 +15,64 @@ const BIDDING_LIS_URI = '/api/insurer/company-list';
 const BIDDING_DETAIL_URI = '/api/insurer/bidding-detail';
 const JOIN_BIDDING_URI = '/api/insurer/bidding';
 const DELETE_PLAN_URI = '/api/insurer/delete-plan';
+const EDIT_PLAN_URL = '/api/insurer/edit-plan';
+const BIDDING_STATUS = '/api/insurer';
 
+export function editPlanDetail(planId, plan) {
+  console.log('Api=====', plan);
+  return () => {
+    const options = {
+      method: 'put',
+      url: `${EDIT_PLAN_URL}/${planId}`,
+      data: plan,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
+
+export function updateBiddingPrice(companyId, databiding) {
+  console.log('Api=====', companyId);
+  return () => {
+    const options = {
+      method: 'post',
+      url: `${JOIN_BIDDING_URI}/${companyId}`,
+      data: databiding,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
+export function updateStatus(status, datastatus) {
+  console.log('Api=====', datastatus);
+  return () => {
+    const options = {
+      method: 'post',
+      url: `${BIDDING_STATUS}/${status}`,
+      data: datastatus,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
 export function deleteInsurerPlan(planId) {
   return () => {
     const options = {

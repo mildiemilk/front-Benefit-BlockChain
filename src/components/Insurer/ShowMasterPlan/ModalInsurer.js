@@ -10,9 +10,18 @@ class ModalInsurer extends Component {
     joinbid: PropTypes.bool.isRequired,
     modalCancelJoin: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
+    // handleSubmitBidding: PropTypes.func.isRequired,
+    handleQuotationIdChange: PropTypes.func.isRequired,
+    handleChangeMasterplan: PropTypes.func.isRequired,
+    handleSubmitEditPlan: PropTypes.func.isRequired,
     selectInsurerPlan: PropTypes.bool.isRequired,
     editDetailMP: PropTypes.bool.isRequired,
+    // Plan: PropTypes.shape({}).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
+    // masterplan: PropTypes.shape({}).isRequired,
+    // insurerplan: PropTypes.shape({}).isRequired,
+    // DataCompany: PropTypes.shape({}).isRequired,
+    planType: PropTypes.string.isRequired,
   }
   constructor(props) {
     super(props);
@@ -25,14 +34,16 @@ class ModalInsurer extends Component {
       modalCancelJoin,
       handleCloseModal,
       selectInsurerPlan,
+      handleSubmitEditPlan,
       editDetailMP,
-      DetailMP,
+      planType,
     } = this.props;
     return (
       <div>
         <Modal
           className="joinbid-modalcanceljoin-box"
           trigger={<div />}
+          // dataBiddingPrice={BiddingPrices}
           open={modalCancelJoin}
           onClose={() => handleCloseModal('modalCancelJoin')}
         >
@@ -50,7 +61,7 @@ class ModalInsurer extends Component {
               หากยืนยันไม่เข้าร่วมแล้วจะไม่สามารถกลับเข้ามาเสนอราคาได้อีก
               คุณแน่ใจที่จะไม่เสนอราคาหรือไม่
             </span>
-              : <input className="quotation-input-quotation" />
+              : <form id="bidding_price" name="bidding_price"><div className="quotation-input-div"> <input className="quotation-input-quotation" value="" onChange={this.props.handleQuotationIdChange} /></div></form>
             }
             <div className="joinbid-modalcancel-btn-group">
               <button
@@ -59,12 +70,15 @@ class ModalInsurer extends Component {
               >
                 ยกเลิก
               </button>
-              <button
-                className="joinbid-modalcancel-btn-confirm"
-                onClick={() => handleCloseModal('modalCancelJoin')}
-              >
-                ยืนยัน
-              </button>
+              {
+                joinbid
+                ? <button className="joinbid-modalcancel-btn-confirm" onClick={() => handleCloseModal('modalConfirmCancelJoin')}>
+                  ยืนยัน
+                </button>
+                : <button type="submit" form="bidding_price" className="joinbid-modalcancel-btn-confirm" onClick={() => handleCloseModal('modalQuotaionJoin')}>
+                  ยืนยัน
+                </button>
+              }
             </div>
           </div>
         </Modal>
@@ -154,8 +168,12 @@ class ModalInsurer extends Component {
         </Modal>
         <PlanBoxModal
           modalOpen={editDetailMP}
-          DetailMP={DetailMP}
+          DetailMP={this.props.DetailMP}
+          handleChangeMasterplan={this.props.handleChangeMasterplan}
+          planType={planType}
+          // pricePerPerson={pricePerPerson}
           handleCloseModal={handleCloseModal}
+          handleSubmitEditPlan={handleSubmitEditPlan}
           activePlan={[1, 2, 3]}
           planList={[1, 2, 3]}
         />

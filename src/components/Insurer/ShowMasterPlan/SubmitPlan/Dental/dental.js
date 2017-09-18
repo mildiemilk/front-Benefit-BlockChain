@@ -89,7 +89,7 @@ class Dental extends Component {
             <p> บาท/ปี</p>
           </Form.Group>
           <div className="row">
-            <Button
+            {/* <Button
               style={{
                 marginTop: '3%',
                 textAlign: 'center',
@@ -104,7 +104,7 @@ class Dental extends Component {
               type="submit"
             >
               บันทึก
-            </Button>
+            </Button> */}
           </div>
         </Form>
         <DentalModal

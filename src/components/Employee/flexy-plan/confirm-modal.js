@@ -37,6 +37,7 @@ class ConfirmModal extends Component {
     this.state = {
       closeOnEscape: false,
       closeOnRootNodeClick: true,
+      renderCongratSelectPlan: false,
       renderHomeDashboard: false,
       renderDashboardStart: false,
     };
@@ -51,14 +52,31 @@ class ConfirmModal extends Component {
     } else {
       _id = data.allBenefit[plan]._id;
     }
-    selectBenefit(_id)();
+
     const currentDate = new Date();
-    if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) { // policy don't start
-      this.setState({ renderDashboardStart: true });
-    } else {
-      this.setState({ renderHomeDashboard: true });
-    }
-    this.props.handleCloseModal();
+    selectBenefit(_id)
+    .then(res => {
+      if (res) {
+        this.props.handleCloseModal();
+        if (data.newUser) {
+          if (!timeUp) {
+            this.setState({ renderCongratSelectPlan: true });
+          } else {
+            if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) {
+              // policy don't start
+              this.setState({ renderDashboardStart: true });
+            } else {
+              this.setState({ renderHomeDashboard: true });
+            }
+          }
+        } else {
+          this.setState({ renderHomeDashboard: true });
+        }
+      }
+    });
+    // .catch(err => {
+    //   console.log('selectBenefit:error', err);
+    // });
   }
 
   handleClose = () => {
@@ -67,11 +85,17 @@ class ConfirmModal extends Component {
 
   render() {
     const { plan } = this.props;
-    const { renderHomeDashboard, renderDashboardStart } = this.state;
+    const {
+      renderHomeDashboard,
+      renderDashboardStart,
+      renderCongratSelectPlan,
+    } = this.state;
     if (renderHomeDashboard) {
       return <Redirect to={{ pathname: '/homedashboard' }} />;
     } else if (renderDashboardStart) {
       return <Redirect to={{ pathname: '/dashboardstart' }} />;
+    } else if (renderCongratSelectPlan) {
+      return <Redirect to={{ pathname: '/congratselectplan' }} />;
     }
     return (
       <Modals

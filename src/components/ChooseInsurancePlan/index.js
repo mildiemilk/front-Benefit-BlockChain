@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Message } from 'semantic-ui-react';
 import {
   Detail,
@@ -22,15 +22,16 @@ import {
 import NavBenefit from '../NavBenefit';
 import PlanTemplate from './plantemplate';
 // import { getAllPlan } from '../../api/set-plan';
-import { choosePlan, getOptionPlan, getInsurancePlan } from '../../api/benefit-plan';
+import { choosePlan, getInsurancePlan, getTemplatePlan } from '../../api/benefit-plan';
 
 class ChooseInsurancePlan extends Component {
   static propTypes = {
     getInsurancePlan: PropTypes.func.isRequired,
-    getOptionPlan: PropTypes.func.isRequired,
+    getTemplatePlan: PropTypes.func.isRequired,
     choosePlan: PropTypes.func.isRequired,
     choosePlans: PropTypes.arrayOf(PropTypes.object).isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    insurerPlanList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -40,28 +41,26 @@ class ChooseInsurancePlan extends Component {
       PlanTemplateState: 1,
       ChooseInsurance: [],
       OurPlan: [],
-      SpecialPlan: [
-        {
-          planName: 'แผนจากบริษัทประกันที่ 1',
-          price: 1563,
-        },
-        {
-          planName: 'แผนจากบริษัทประกันที่ 2',
-          price: 9900,
-        },
-      ],
+      SpecialPlan: [],
       closetap: true,
     };
+    props.getInsurancePlan();
+    props.getTemplatePlan();
   }
-  componentDidMount() {
-    this.props.getInsurancePlan();
-    this.props.getOptionPlan();
-  }
+  // componentDidMount() {
+  //   this.props.getInsurancePlan();
+  //   // this.props.getOptionPlan();
+  // }
 
   componentWillReceiveProps(newProps) {
-    console.log('Newprops', newProps.planList);
+    console.log('Newprops', newProps);
     if (newProps.planList !== this.props.planList) {
-      this.setState({ OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans) });
+      console.log('mm');
+      console.log('choosePlan', newProps.choosePlans);
+      this.setState({
+        OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans),
+        SpecialPlan: this.filterPlan(newProps.insurerPlanList, newProps.choosePlans),
+      });
     }
     if (newProps.choosePlans !== this.props.choosePlans) {
       if (newProps.choosePlans !== undefined) {
@@ -71,7 +70,7 @@ class ChooseInsurancePlan extends Component {
   }
 
   filterPlan = (plans, choosePlan) => {
-    if (choosePlan !== undefined) {
+    if (choosePlan !== undefined && choosePlan.length > 1) {
       const newPlans = plans.filter(plan =>
         choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false) === -1);
       return newPlans;
@@ -83,19 +82,22 @@ class ChooseInsurancePlan extends Component {
     const file = this.state.OurPlan[index];
     let OurPlans = this.state.OurPlan;
     OurPlans = OurPlans.filter((plan, i) => i !== index);
+    console.log('file', file);
+    console.log('ch', this.state.ChooseInsurance);
     this.setState({
-      ChooseInsurance: this.state.ChooseInsurance.concat(file),
+      ChooseInsurance: this.state.ChooseInsurance.master.concat(file),
       OurPlan: OurPlans,
       ChooseColor: this.state.ChooseColor.concat(1),
-    });
+    }, console.log('insure', this.state.ChooseInsurance));
   }
 
   handleDeleteSpecialPlan = index => {
     const file = this.state.SpecialPlan[index];
-    const SpecialPlans = this.state.SpecialPlan;
+    let SpecialPlans = this.state.SpecialPlan;
+    SpecialPlans = SpecialPlans.filter((plan, i) => i !== index);
     SpecialPlans.splice(index, 1);
     this.setState({
-      ChooseInsurance: this.state.ChooseInsurance.concat(file),
+      ChooseInsurance: this.state.ChooseInsurance.insurer.concat(file),
       SpecialPlan: SpecialPlans,
       ChooseColor: this.state.ChooseColor.concat(2),
     });
@@ -129,7 +131,7 @@ class ChooseInsurancePlan extends Component {
 
   checkColor = plan => {
     const { planList } = this.props;
-    const isOurPlan = planList.filter(ourPlan => ourPlan.planId === plan.planId).length !== 0;
+    const isOurPlan = planList.filter(ourPlan => ourPlan.plan._id === plan.plan._id).length !== 0;
     if (isOurPlan) {
       return 1;
     }
@@ -138,11 +140,13 @@ class ChooseInsurancePlan extends Component {
 
   RenderInnerRight = () => {
     if (this.state.ChooseInsurance.length >= 1) {
+      console.log('choos', this.state.ChooseInsurance);
       const listItems = this.state.ChooseInsurance.map((number, i) => (
         <PlanTemplate
           id={number.planName}
           index={i}
           price={number.price}
+          plan={number.plan.planName}
           colorPlan={this.checkColor(number)}
           closetap={this.state.closetap}
           handleDeleteChooseInsurance={this.handleDeleteChooseInsurance}
@@ -164,6 +168,7 @@ class ChooseInsurancePlan extends Component {
           id={number.planName}
           index={i}
           ourPlan={ourPlan}
+          plan={number.plan.planName}
           price={number.price}
           colorPlan={1}
           closetap={false}
@@ -176,11 +181,13 @@ class ChooseInsurancePlan extends Component {
 
   RenderSpecialplan = () => {
     if (this.state.SpecialPlan.length >= 1) {
-      const listItems = this.state.SpecialPlan.map((number, i) => (
+      const listItems = this.state.SpecialPlan.map((number, i, specialPlan) => (
         <PlanTemplate
           id={number.planName}
           index={i}
           price={number.price}
+          plan={number.plan.planName}
+          specialPlan={specialPlan}
           colorPlan={2}
           closetap={false}
           handleDeleteSpecialPlan={this.handleDeleteSpecialPlan}
@@ -190,8 +197,27 @@ class ChooseInsurancePlan extends Component {
     } return '';
   }
 
+  filterTemplatePlan = (choosePlans, originalPlans) => {
+    const plans = choosePlans.filter(choosePlan =>
+      originalPlans.map(plan => plan.plan._id === choosePlan.plan._id).indexOf(true) !== -1);
+    let template = [];
+    if (plans.length > 0) {
+      template = plans.map(plan =>
+        Object.assign({}, {
+          planId: plan.plan._id,
+          price: plan.price,
+        }),
+      );
+    }
+    return template;
+  }
+
   handleNext = () => {
-    this.props.choosePlan(this.state.ChooseInsurance);
+    const { ChooseInsurance } = this.state;
+    const { insurerPlanList, planList } = this.props;
+    const master = this.filterTemplatePlan(ChooseInsurance, planList);
+    const insurer = this.filterTemplatePlan(ChooseInsurance, insurerPlanList);
+    this.props.choosePlan({ master, insurer });
   }
 
   render() {
@@ -223,7 +249,6 @@ class ChooseInsurancePlan extends Component {
         />
       ),
     }));
-
     return (
       <div className="ChooseInsurancePlan">
         <div className="ChooseInsurer">
@@ -249,9 +274,9 @@ class ChooseInsurancePlan extends Component {
                   </InnerHead2>
                   {this.RenderInnerRight()}
                 </InnerRight>
-                <Link to="/addbenefit">
-                  <Submit onClick={this.handleNext}>ต่อไป</Submit>
-                </Link>
+                {/* <Link to="/addbenefit"> */}
+                <Submit onClick={this.handleNext}>ต่อไป</Submit>
+                {/* </Link> */}
               </div>
             </div>
           </Detail>
@@ -264,13 +289,14 @@ class ChooseInsurancePlan extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getInsurancePlan: () => dispatch(getInsurancePlan()),
-  getOptionPlan: () => dispatch(getOptionPlan()),
+  getTemplatePlan: () => dispatch(getTemplatePlan()),
   choosePlan: plans => dispatch(choosePlan(plans)),
 });
 
 const mapStateToProps = state => ({
-  planList: state.choosePlan.insurancePlan,
-  choosePlans: state.choosePlan.choosePlan,
+  planList: state.choosePlan.insurancePlan.plan.master,
+  insurerPlanList: state.choosePlan.insurancePlan.plan.insurer,
+  choosePlans: state.choosePlan.choosePlan || [],
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChooseInsurancePlan);

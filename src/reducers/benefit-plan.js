@@ -157,7 +157,7 @@ export function benefitPlan(state = defaultBenefitPlan, action) {
       return state;
     case SETBENEFITPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, {
-        plan: action.data.benefitPlans,
+        plan: action.data,
       });
     case SETBENEFITPLAN_REQUEST_FAILURE:
       return state;

@@ -43,31 +43,31 @@ class SelectOptionPlan extends Component {
     this.setState({ openSettingBenefit: false });
   }
 
-  isCheck = planName => {
+  isCheck = planId => {
     const { selectPlan } = this.props;
-    return selectPlan.indexOf(planName) !== -1;
+    return selectPlan.indexOf(planId) !== -1;
   }
 
   renderList = list => {
     const lists = list.map((element, index) => {
-      const isActive = index === this.props.defaultPlan ? '-active' : '';
+      const isActive = element._id === this.props.defaultPlan ? '-active' : '';
       return (
         <div className="row">
           <div className="large-1 columns">
             <div className="select-button">
-              {this.props.selectOption === 'Fixed'
+              {this.props.selectOption === 'fixed'
                 ? <Form.Field>
                   <Radio
                     name="planGroup"
-                    value={element.planName}
-                    checked={this.isCheck(element.planName)}
+                    value={element.benefitPlanName}
+                    checked={this.isCheck(element._id)}
                     onChange={this.handleChange}
                   />
                 </Form.Field>
                 : <Form.Field>
                   <Checkbox
-                    value={element.planName}
-                    checked={this.isCheck(element.planName)}
+                    value={element._id}
+                    checked={this.isCheck(element._id)}
                     onChange={this.props.handleFlexChange}
                   />
                 </Form.Field>}
@@ -75,7 +75,7 @@ class SelectOptionPlan extends Component {
           </div>
           <div className={this.props.columnsLenght}>
             <div className="plan-box">
-              {element.planName}
+              {element.benefitPlanName}
               <PopupView
                 trigger={
                   <Icons
@@ -107,12 +107,12 @@ class SelectOptionPlan extends Component {
               closeModal={this.closeModal}
             />
           </div>
-          {this.props.plan === 'Flex'
+          {this.props.plan === 'flex'
             ? <div className="large-4 columns">
               <div
                 className={`basic-status-box${isActive}`}
                 onClick={() =>
-                  this.props.handleActivePlan(index, element.planName)}
+                  this.props.handleActivePlan(index, element._id)}
                 role="button"
                 aria-hidden
               >

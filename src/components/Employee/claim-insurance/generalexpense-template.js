@@ -10,55 +10,40 @@ import {
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
 
-const expenseOption = [
-  {
-    key: '1',
-    text: 'ค่าน้ำมัน',
-    value: 'fuel',
-  },
-  {
-    key: '2',
-    text: 'ค่ากาแฟ',
-    value: 'coffee',
-  },
-  {
-    key: '3',
-    text: 'ค่าอาหาร',
-    value: 'food',
-  },
-];
-const currencyOption = [
-  {
-    key: '1',
-    text: 'บาท',
-    value: 'bath',
-  },
-  {
-    key: '2',
-    text: 'usd',
-    value: 'usd',
-  },
-  {
-    key: '3',
-    text: 'กีบลาว',
-    value: 'Lak',
-  },
-];
 class GeneralExpenseTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
-    EmNameoption: PropTypes.shape.isRequired,
-    date: PropTypes.shape.isRequired,
+    EmNameoption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    date: PropTypes.shape({}).isRequired,
     handleUploadcliamFile: PropTypes.func.isRequired,
-    ClaimFile: PropTypes.shape.isRequired,
+    ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleChangeDate: PropTypes.func.isRequired,
+    // data: PropTypes.shape({}).isRequired,
+    general: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
+  handleShowFileName = () => {
+    const { ClaimFile } = this.props;
+    const showFile = ClaimFile.map((ele, index) => (
+      <span {...this.props} keys={index + 1}>
+        {ele.name}
+      </span>
+    ));
+    // console.log('showfilename: ', showFile);
+    return showFile;
+  }
+
   render() {
+    const {
+      ClaimFile,
+      general,
+      currencyOption,
+    } = this.props;
     return (
       <div className="InsuranceTemplate">
         <Dropdown
@@ -66,7 +51,7 @@ class GeneralExpenseTemplate extends Component {
           fluid
           selection
           name="expenseType"
-          options={expenseOption}
+          options={general}
           onChange={this.props.handleChange}
         />
         <NewLine />
@@ -138,7 +123,13 @@ class GeneralExpenseTemplate extends Component {
         </BrowsButton>
         <NewLine style={{ height: '3px' }} />
         <UploadText>
-          {this.props.ClaimFile.name}
+          {
+            ClaimFile.map((ele, index) => (
+              <span className="claim-show-file-name" keys={index + 1}>
+                {ele.name}
+              </span>
+            ))
+          }
         </UploadText>
         <NewLine style={{ height: '3px' }} />
       </div>

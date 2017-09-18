@@ -14,9 +14,7 @@ import {
 class FirstRightElement extends Component {
   static propTypes = {
     handleTogleSecondTap: PropTypes.func.isRequired,
-    handleTogglebidingNoti: PropTypes.func.isRequired,
-    handleTogglepricebidNoti: PropTypes.func.isRequired,
-    handleTogglenewClaimNoti: PropTypes.func.isRequired,
+    handleToggle: PropTypes.func.isRequired,
     SecondTap: PropTypes.bool.isRequired,
     biddingNoti: PropTypes.bool.isRequired,
     pricebidNoti: PropTypes.bool.isRequired,
@@ -54,11 +52,13 @@ class FirstRightElement extends Component {
               (biddingNoti)
               ? <Checkbox
                 toggle defaultChecked
-                onClick={() => this.props.handleTogglebidingNoti()}
+                name="biddingNoti"
+                onClick={this.props.handleToggle}
               />
               : <Checkbox
                 toggle
-                onClick={() => this.props.handleTogglebidingNoti()}
+                name="biddingNoti"
+                onClick={this.props.handleToggle}
               />
             }
             <SecondDataBox>
@@ -68,11 +68,13 @@ class FirstRightElement extends Component {
               (pricebidNoti)
               ? <Checkbox
                 toggle defaultChecked
-                onClick={() => this.props.handleTogglepricebidNoti()}
+                name="pricebidNoti"
+                onClick={this.props.handleToggle}
               />
               : <Checkbox
                 toggle
-                onClick={() => this.props.handleTogglepricebidNoti()}
+                name="pricebidNoti"
+                onClick={this.props.handleToggle}
               />
             }
             <SecondDataBox>
@@ -82,11 +84,13 @@ class FirstRightElement extends Component {
               (newClaimNoti)
               ? <Checkbox
                 toggle defaultChecked
-                onClick={() => this.props.handleTogglenewClaimNoti()}
+                name="newClaimNoti"
+                onClick={this.props.handleToggle}
               />
               : <Checkbox
                 toggle
-                onClick={() => this.props.handleTogglenewClaimNoti()}
+                name="newClaimNoti"
+                onClick={this.props.handleToggle}
               />
             }
           </div>

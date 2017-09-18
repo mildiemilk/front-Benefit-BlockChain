@@ -44,18 +44,10 @@ class Setting extends Component {
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value });
   }
-  // handleToggle = (e, name) => {
-  //   this.setState({ [name]: !name });
-  //   console.log(name, [name]);
-  // }
-  handleTogglebidingNoti = () => {
-    this.setState({ biddingNoti: !this.state.biddingNoti });
-  }
-  handleTogglepricebidNoti = () => {
-    this.setState({ pricebidNoti: !this.state.pricebidNoti });
-  }
-  handleTogglenewClaimNoti = () => {
-    this.setState({ newClaimNoti: !this.state.newClaimNoti });
+  handleToggle = (e, { name }) => {
+    const newvalue = this.state[name];
+    this.setState({ [name]: !newvalue });
+    console.log(name, !newvalue);
   }
   handleTogleFirstTap = () => {
     this.setState({ FirstTap: !this.state.FirstTap });
@@ -120,9 +112,7 @@ class Setting extends Component {
           <HeadContentBox>
             <SecondRightElement
               handleTogleSecondTap={this.handleTogleSecondTap}
-              handleTogglebidingNoti={this.handleTogglebidingNoti}
-              handleTogglepricebidNoti={this.handleTogglepricebidNoti}
-              handleTogglenewClaimNoti={this.handleTogglenewClaimNoti}
+              handleToggle={this.handleToggle}
               SecondTap={this.state.SecondTap}
               biddingNoti={this.state.biddingNoti}
               pricebidNoti={this.state.pricebidNoti}

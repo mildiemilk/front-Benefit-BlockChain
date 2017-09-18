@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Form, Radio } from 'semantic-ui-react';
+import { Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import LifeModal from './life-modal';

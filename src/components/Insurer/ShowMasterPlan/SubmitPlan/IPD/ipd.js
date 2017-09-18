@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import CoPay from './copay';

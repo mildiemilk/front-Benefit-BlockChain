@@ -47,7 +47,6 @@ class Setting extends Component {
   handleToggle = (e, { name }) => {
     const newvalue = this.state[name];
     this.setState({ [name]: !newvalue });
-    console.log(name, !newvalue);
   }
   handleTogleFirstTap = () => {
     this.setState({ FirstTap: !this.state.FirstTap });

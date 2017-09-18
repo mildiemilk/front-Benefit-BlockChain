@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import DentalModal from './dental-modal';

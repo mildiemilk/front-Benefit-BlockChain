@@ -143,7 +143,10 @@ class SubmitPlan extends Component {
     }
   }
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => {
+    console.log('--handleChange:index.js');
+    this.setState({ [name]: value });
+  }
 
   handleChangeToNull = name => this.setState({ [name]: null })
 
@@ -387,7 +390,7 @@ class SubmitPlan extends Component {
                     <FormSubmitPlan
                       activePlan={this.state.activePlan}
                       handlePlan={this.handlePlan}
-                      handleChange={this.handleChange}
+                      // handleChange={this.handleChangePlan}
                       planName={this.state.planName}
                       employeeOfPlan={this.state.employeeOfPlan}
                       handleResetProfilePlan={this.handleResetProfilePlan}
@@ -404,7 +407,7 @@ class SubmitPlan extends Component {
                         newPlan={this.state.newPlan}
                         handleBuildNewPlan={this.handleBuildNewPlan}
                         handleUnBuildNewPlan={this.handleUnBuildNewPlan}
-                        handleChange={this.handleChange}
+                        handleChange={this.handleChangePlan}
                         handleChangeToNull={this.handleChangeToNull}
                         handleToggleIpdCoPay={this.handleToggleIpdCoPay}
                         handleToggleOpdCoPay={this.handleToggleOpdCoPay}

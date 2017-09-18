@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
-import DentalModal from './dental-modal';
+// import DentalModal from './dental-modal';
 
 class Dental extends Component {
   static propTypes = {
@@ -13,15 +13,15 @@ class Dental extends Component {
     editPlan: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleResetDental: PropTypes.func.isRequired,
-    handleCloseModal: PropTypes.func.isRequired,
+    // handleCloseModal: PropTypes.func.isRequired,
     dentalPerYear: PropTypes.string,
     handleNewReset: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
     setPlan: PropTypes.string.isRequired,
-    openModal: PropTypes.bool.isRequired,
+    // openModal: PropTypes.bool.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     reset: PropTypes.bool.isRequired,
-    handleNextPlan: PropTypes.func.isRequired,
+    // handleNextPlan: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -107,12 +107,12 @@ class Dental extends Component {
             </Button> */}
           </div>
         </Form>
-        <DentalModal
+        {/* <DentalModal
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
           handleNextPlan={this.props.handleNextPlan}
-        />
+        /> */}
       </div>
     );
   }

@@ -30,7 +30,7 @@ class ShowMasterPlan extends Component {
             plan,
             companyId,
           } = data;
-    console.log('quotationId', quotationId);
+    console.log('quotationId---', countBidding);
     let joinbid;
     let quotation;
     let popupQuotationId;
@@ -42,9 +42,9 @@ class ShowMasterPlan extends Component {
       quotation = true;
     } else {
       joinbid = false;
-      quotation = true;
+      quotation = false;
     }
-    if (quotationId === '' && status === 'join') {
+    if (countBidding === 0 && status === 'join') {
       console.log('quotationId false');
       popupQuotationId = true;
     } else {
@@ -64,6 +64,7 @@ class ShowMasterPlan extends Component {
       selectInsurerPlan: false,
       editDetailMP: false,
       DetailMP: {},
+      ipdType: null,
       totalPrice,
       quotationId,
       countBidding,
@@ -78,21 +79,27 @@ class ShowMasterPlan extends Component {
 
   // handleOnpenModal = name => this.setState({ [name]: true });
   handleOnpenModal = (name, DetailMP) => {
-    console.log('call handleClick', name);
-    const { isDetail } = this.state;
-    if (!isDetail) {
+    console.log('call handleClick--name', name);
+    if (!DetailMP) {
       this.setState({
-        isDetail: true,
-        DetailMP,
         [name]: true,
       });
     } else {
-      this.setState({ isDetail: false });
+      const { isDetail } = this.state;
+      if (!isDetail) {
+        this.setState({
+          isDetail: true,
+          DetailMP,
+          [name]: true,
+        });
+      } else {
+        this.setState({ isDetail: false });
+      }
     }
   }
 
   handleOnpenModalPlanDetail = (name, DetailMP) => {
-    console.log('call handleClick', name);
+    // console.log('call handleClick', DetailMP);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
@@ -112,22 +119,19 @@ class ShowMasterPlan extends Component {
       const data = this.props.DataCompany;
       const { companyId,
             } = data;
-      updateStatus('reject', {
-        status: 'reject',
-        companyId,
-      })();
+      updateStatus('reject', companyId)();
       this.setState({
         modalCancelJoin: false,
         joinbid: false,
         quotation: false,
       });
     }
-    if (nameModal === 'modalQuotaionJoin') {
-      if (this.state.quotationId === '') {
-        this.setState({ modalCancelJoin: true });
-      }
-      this.setState({ modalCancelJoin: false });
-    }
+    // if (nameModal === 'modalQuotaionJoin') {
+    //   if (this.state.quotationId === '') {
+    //     this.setState({ modalCancelJoin: true });
+    //   }
+    //   this.setState({ modalCancelJoin: false });
+    // }
     this.setState({ [nameModal]: false });
   }
 
@@ -135,10 +139,7 @@ class ShowMasterPlan extends Component {
     const data = this.props.DataCompany;
     const { companyId,
           } = data;
-    updateStatus('join', {
-      status: 'join',
-      companyId,
-    })();
+    updateStatus('join', companyId)();
     this.setState({
       joinbid: false,
       quotation: true,
@@ -155,6 +156,7 @@ class ShowMasterPlan extends Component {
   handleSubmitEditPlan = e => {
     const { DetailMP } = this.state;
     e.preventDefault();
+    console.log('handleSubmitEditPlanDetailMP---', DetailMP);
     const planId = DetailMP.planId;
     editPlanDetail(planId, {
       planId: DetailMP.planId,
@@ -201,14 +203,25 @@ class ShowMasterPlan extends Component {
       lifeNotExceed: DetailMP.lifeNotExceed,
     })();
   }
+  handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('nameindex', name);
+    this.setState({ [name]: value });
+    const MP = this.state.DetailMP
+    MP[name] = value;
+    console.log('nameindex-value--', this.state);
+  }
   handleQuotationIdChange = e => {
-    const quotationId = e.target.value;
-    this.setState({ quotationId });
-    console.log('quotationId--', quotationId);
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
+    console.log('this.state', this.state);
   }
   handleSubmitBidding = e => {
     e.preventDefault();
-    console.log('ffdfffdfdf--', this.state);
+    console.log('ffdfffdfdf-dddd-', this.state);
     const { masterplan, insurerplan, quotationId } = this.state;
     // const masterPrice = this.state.masterpla
     let sum = 0;
@@ -235,8 +248,6 @@ class ShowMasterPlan extends Component {
         }
       },
     )
-    console.log('master--', master);
-    console.log('insurer--', insurer);
     const data = this.props.DataCompany;
     const { companyId,
           } = data;
@@ -249,13 +260,12 @@ class ShowMasterPlan extends Component {
   }
 
   handleChangeMasterplan = e => {
-    console.log('--this.state--', this.state.DetailMP);
     const name = e.target.name;
     const value = e.target.value;
     const MP = this.state.DetailMP
     MP[name] = parseInt(value, 10);
     this.setState({ DetailMP: MP });
-    console.log('--this.state--', this.state.DetailMP);
+    console.log('--this.state--', this.state);
     if (MP[name] > value) {
       console.log('less');
       this.setState({
@@ -303,7 +313,7 @@ class ShowMasterPlan extends Component {
     // this.props.sendToParent({detail:'prim ba'}, 0);
     // const data = this.props.data;
     // const { plan } = data;
-    console.log('call handleClick----', this.state.companyId);
+    // console.log('call handleClick----', this.state.companyId);
     const {
       joinbid,
       modalCancelJoin,
@@ -317,11 +327,13 @@ class ShowMasterPlan extends Component {
       selectInsurerPlan,
       editDetailMP,
       totalPrice,
+      DetailMP,
       quotationId,
       countBidding,
       startNewInsurance,
       updatedAt,
       popupQuotationId,
+      ipdType,
       expiredOldInsurance,
     } = this.state;
     return (
@@ -387,12 +399,16 @@ class ShowMasterPlan extends Component {
           handleSubmitEditPlan={this.handleSubmitEditPlan}
           selectInsurerPlan={selectInsurerPlan}
           editDetailMP={editDetailMP}
-          DetailMP={this.state.DetailMP}
+          DetailMP={DetailMP}
           quotationId={this.state.quotationId}
+          handleChange={this.handleChange}
           handleChangeMasterplan={this.handleChangeMasterplan}
           insurerplan={insurerplan}
           Plan={plan}
+          ipdType={ipdType}
           handleQuotationIdChange={this.handleQuotationIdChange}
+          handleOnpenModalPlanDetail={this.handleOnpenModalPlanDetail}
+          handleSubmitBidding={this.handleSubmitBidding}
         />
       </div>
     );

@@ -61,7 +61,7 @@ class Quotation extends Component {
           <div className="quotation-mp-price-box">
             <div
               className="quotation-circle-icon-view"
-              onClick={() => this.props.handleOnpenModalPlanDetail('master', plan.planDetail)}
+              onClick={() => this.props.handleOnpenModalPlanDetail('master', plan.planDetail, plan.price)}
               role="button"
               aria-hidden
             >
@@ -100,7 +100,7 @@ class Quotation extends Component {
             </div>
             <div
               className="quotation-circle-icon-view"
-              onClick={() => this.props.handleOnpenModalPlanDetail('insurer', plan.planDetail)}
+              onClick={() => this.props.handleOnpenModalPlanDetail('insurer', plan.planDetail, plan.price)}
               role="button"
               aria-hidden
             >

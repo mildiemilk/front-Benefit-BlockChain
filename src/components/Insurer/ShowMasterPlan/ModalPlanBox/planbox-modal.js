@@ -74,6 +74,7 @@ class PlanBoxModal extends Component {
     modalOpen: PropTypes.bool.isRequired,
     planType: PropTypes.string.isRequired,
     ipdType: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
     // DataCompany: PropTypes.shape({}).isRequired,
@@ -134,12 +135,14 @@ class PlanBoxModal extends Component {
       lifeNotExceed: null,
       morePrice: null,
       pricePerPerson: null,
+      price: this.props.price,
     };
   }
 
   componentWillReceiveProps(newProps) {
-    const { DetailMP, activePlan } = newProps;
+    const { DetailMP, activePlan, price } = newProps;
     this.setState({
+      price,
       planName: DetailMP.planName,
       employeeOfPlan: DetailMP.employeeOfPlan,
       dentalPerYear: DetailMP.dentalPerYear,
@@ -459,8 +462,9 @@ class PlanBoxModal extends Component {
   }
 
   render() {
-    // console.log('--', this.state);
-    // console.log('-Pro-', this.props.DetailMP);
+    console.log('--', this.state);
+    console.log('-Pro-', this.props.DetailMP);
+    // console.log('-Prothis.handleToggleIpdCoPay}-', this.handleToggleIpdCoPay);
     return (
       <Modals
         trigger={<div />}
@@ -476,6 +480,7 @@ class PlanBoxModal extends Component {
             <FormSubmitPlan
               styletabPrice={this.state.morePrice}
               activePlan={this.state.activePlan}
+              price={this.state.price}
               // handleChangeMasterplan={this.props.handleChangeMasterplan}
               planName={this.state.planName}
               employeeOfPlan={this.state.employeeOfPlan}
@@ -575,7 +580,7 @@ class PlanBoxModal extends Component {
           <div className="edit-mp-input-price-box">
             <div className="edit-mp-input-price-box-l">เสนอราคาแพลนนี้</div>
             <div className="edit-mp-input-price-box-r">
-              <input type="number" className="edit-mp-input-price" />
+              <input type="number" name="modalPlanPrice" id="modalPlanPrice" value={this.state.price} className="edit-mp-input-price" />
               <span className="edit-mp-text-r">&nbsp;/&nbsp;คน</span>
             </div>
             <div className="edit-mp-btn-box">
@@ -592,7 +597,7 @@ class PlanBoxModal extends Component {
                   className="edit-mp-btn-save"
                   type="submit"
                   form="modalPlan"
-                  // onClick={() => this.props.handleCloseModal('editDetailMP')}
+                  onClick={() => this.props.handleCloseModal('editDetailMP')}
                 >
                   บันทึก
                 </button>

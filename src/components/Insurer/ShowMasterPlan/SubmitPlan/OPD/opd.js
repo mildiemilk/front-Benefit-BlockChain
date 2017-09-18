@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import CoPay from './copay';
@@ -235,7 +235,7 @@ class OPD extends Component {
               />
               : ''}
             <br />
-            <Button
+            {/* <Button
               style={{
                 marginTop: '20px',
                 textAlign: 'center',
@@ -250,7 +250,7 @@ class OPD extends Component {
               type="submit"
             >
               บันทึก
-            </Button>
+            </Button> */}
           </Form>
           <OpdModal
             openModal={this.props.openModal}

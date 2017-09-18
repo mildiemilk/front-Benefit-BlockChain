@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Form, Radio } from 'semantic-ui-react';
+import { Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import LifeModal from './life-modal';
@@ -222,7 +222,7 @@ class Life extends Component {
               </Form.Group>
             </div>}
           <div className="row">
-            <Button
+            {/* <Button
               style={{
                 marginTop: '3%',
                 textAlign: 'center',
@@ -237,7 +237,7 @@ class Life extends Component {
               type="submit"
             >
               บันทึก
-            </Button>
+            </Button> */}
           </div>
         </Form>
         <LifeModal

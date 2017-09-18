@@ -17,6 +17,7 @@ import ClaimAnalysis from './Insurer/Claim/claim-analysis';
 import Claim from './Insurer/Claim';
 import Logout from './Auth/logout';
 import InsurerLogin from './Insurer/insurer-login';
+import AllCustomer from './Insurer/customer/allcustomer';
 
 const AppInsurer = () => (
   <BrowserRouter>
@@ -36,6 +37,7 @@ const AppInsurer = () => (
             <Route path="/claimdetail" component={ClaimDetail} />
             <Route path="/claim" component={ClaimList} />
             <Route path="/claimanalysis" component={ClaimAnalysis} />
+            <Route part="/allcustomer" component={AllCustomer} />
           </Switch>
         </MainLayout>
       </Switch>

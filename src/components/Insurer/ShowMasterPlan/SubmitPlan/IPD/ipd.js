@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import CoPay from './copay';
@@ -294,7 +294,7 @@ class IPD extends Component {
               />
               : null}
             <br />
-            <Button
+            {/* <Button
               style={{
                 marginTop: '3%',
                 textAlign: 'center',
@@ -310,7 +310,7 @@ class IPD extends Component {
               onClick={this.handleClick}
             >
               บันทึก
-            </Button>
+            </Button> */}
           </Form>
           <IpdModal
             openModal={this.props.openModal}

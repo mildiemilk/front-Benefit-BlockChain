@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import DentalModal from './dental-modal';
@@ -89,7 +89,7 @@ class Dental extends Component {
             <p> บาท/ปี</p>
           </Form.Group>
           <div className="row">
-            <Button
+            {/* <Button
               style={{
                 marginTop: '3%',
                 textAlign: 'center',
@@ -104,7 +104,7 @@ class Dental extends Component {
               type="submit"
             >
               บันทึก
-            </Button>
+            </Button> */}
           </div>
         </Form>
         <DentalModal

@@ -20,7 +20,7 @@ class FormSubmitPlan extends Component {
     planName: PropTypes.string.isRequired,
     employeeOfPlan: PropTypes.number.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    // DetailMP: PropTypes.shape({}).isRequired,
+    // pricePerperson: PropTypes.number.isRequired,
   }
 
   static defaultProps = {

@@ -68,14 +68,19 @@ const CustomHead = styled.div`
 class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
+    handleSubmitEditPlan: PropTypes.func.isRequired,
+    // handleChangeMasterplan: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
+    planType: PropTypes.string.isRequired,
     // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
+    // DataCompany: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
-      // DetailMP: this.props.DetailMP,
+      DetailMP: this.props.DetailMP,
+      planType: this.props.planType,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
       activePlan: -1,
@@ -126,6 +131,7 @@ class PlanBoxModal extends Component {
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
       morePrice: null,
+      pricePerPerson: null,
     };
   }
 
@@ -192,6 +198,7 @@ class PlanBoxModal extends Component {
         ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
         ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
         ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
+        // pricePerPerson:
       });
     }
   }
@@ -247,25 +254,6 @@ class PlanBoxModal extends Component {
       lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
       lifeNotExceed: DetailMP.lifeNotExceed,
     });
-  }
-
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value })
-    if (this.state[name] > value) {
-      console.log('less');
-      this.setState({
-        morePrice: 'pricered',
-      });
-    } else if (this.state[name] < value) {
-      console.log('more');
-      this.setState({
-        morePrice: 'pricegreen',
-      });
-    } else {
-      this.setState({
-        morePrice: '',
-      });
-    }
   }
 
   // styletabPrice = () => {
@@ -416,7 +404,7 @@ class PlanBoxModal extends Component {
   }
 
   render() {
-    // console.log('DetailMP--------', this.props);
+    console.log('state--------', this.props.DetailMP);
     return (
       <Modals
         trigger={<div />}
@@ -427,100 +415,105 @@ class PlanBoxModal extends Component {
         <ModalHeaders>
           <CustomHead>ดูแพลน</CustomHead>
         </ModalHeaders>
-        <ModalContents>
-          <FormSubmitPlan
-            styletabPrice={this.state.morePrice}
-            activePlan={this.state.activePlan}
-            handleChange={this.handleChange}
-            planName={this.state.planName}
-            employeeOfPlan={this.state.employeeOfPlan}
-            handleResetProfilePlan={this.handleResetProfilePlan}
-            DetailMP={this.props.DetailMP}
-          />
-        </ModalContents>
-        <ModalContentsWithBottom>
-          <AllPlan
-            styletabPrice={this.state.morePrice}
-            activePlan={this.state.activePlan}
-            handlePlan={this.handlePlan}
-            nextPage={this.state.nextPage}
-            handleNextPage={this.handleNextPage}
-            handleSetGoToNextPage={this.handleSetGoToNextPage}
-            handleWarningModal={this.handleWarningModal}
-            handleMoveToNextPage={this.handleMoveToNextPage}
-            handleBuildNewPlan={this.handleBuildNewPlan}
-            handleUnBuildNewPlan={this.handleUnBuildNewPlan}
-            handleToggleIpdCoPay={this.handleToggleIpdCoPay}
-            handleToggleOpdCoPay={this.handleToggleOpdCoPay}
-            handleChangeToNull={this.handleChangeToNull}
-            handleChange={this.handleChange}
-            handleResetDental={this.handleResetDental}
-            handleResetLife={this.handleResetLife}
-            handleResetOPD={this.handleResetOPD}
-            handleResetIPD={this.handleResetIPD}
-            ipdType={this.state.ipdType}
-            ipdLumsumPerYear={this.state.ipdLumsumPerYear}
-            ipdLumsumPerTime={this.state.ipdLumsumPerTime}
-            ipdLumsumTimeNotExceedPerYear={
-              this.state.ipdLumsumTimeNotExceedPerYear
-            }
-            rbLumsumRoomPerNight={this.state.rbLumsumRoomPerNight}
-            rbLumsumNigthNotExceedPerYear={
-              this.state.rbLumsumNigthNotExceedPerYear
-            }
-            rbLumsumPayNotExceedPerNight={
-              this.state.rbLumsumPayNotExceedPerNight
-            }
-            rbLumsumPayNotExceedPerYear={this.state.rbLumsumPayNotExceedPerYear}
-            rbSchedulePatient={this.state.rbSchedulePatient}
-            rbScheduleIntensiveCarePatient={
-              this.state.rbScheduleIntensiveCarePatient
-            }
-            rbScheduleDoctor={this.state.rbScheduleDoctor}
-            rbScheduleSurgerySchedule={this.state.rbScheduleSurgerySchedule}
-            rbScheduleSurgeryNonSchedule={
-              this.state.rbScheduleSurgeryNonSchedule
-            }
-            rbScheduleService={this.state.rbScheduleService}
-            rbScheduleSmallSurgery={this.state.rbScheduleSmallSurgery}
-            rbScheduleAdviser={this.state.rbScheduleAdviser}
-            rbScheduleAmbulance={this.state.rbScheduleAmbulance}
-            rbScheduleAccident={this.state.rbScheduleAccident}
-            rbScheduleTreatment={this.state.rbScheduleTreatment}
-            rbScheduleTransplant={this.state.rbScheduleTransplant}
-            ipdCoPay={this.state.ipdCoPay}
-            ipdCoPayQuota={this.state.ipdCoPayQuota}
-            ipdCoPayDeductable={this.state.ipdCoPayDeductable}
-            ipdCoPayMixPercentage={this.state.ipdCoPayMixPercentage}
-            ipdCoPayMixNotExceed={this.state.ipdCoPayMixNotExceed}
-            ipdCoPayMixYear={this.state.ipdCoPayMixYear}
-            opdCoPay={this.state.opdCoPay}
-            opdPerYear={this.state.opdPerYear}
-            opdPerTime={this.state.opdPerTime}
-            opdTimeNotExceedPerYear={this.state.opdTimeNotExceedPerYear}
-            opdCoPayQuota={this.state.opdCoPayQuota}
-            opdCoPayDeductable={this.state.opdCoPayDeductable}
-            opdCoPayMixPercentage={this.state.opdCoPayMixPercentage}
-            opdCoPayMixNotExceed={this.state.opdCoPayMixNotExceed}
-            opdCoPayMixYear={this.state.opdCoPayMixYear}
-            dentalPerYear={this.state.dentalPerYear}
-            lifePerYear={this.state.lifePerYear}
-            lifeTimeOfSalary={this.state.lifeTimeOfSalary}
-            lifeNotExceed={this.state.lifeNotExceed}
-          />
-        </ModalContentsWithBottom>
-        <ModalChange>
-          <span className="edit-mp-title-change">
-            แพลนมีการเปลี่ยนแปลง
-          </span>
-          <span className="edit-mp-subtitle-change">
-            ถ้าเสนอราคาแพลนที่มีการเปลี่ยนแปลง แพลนนี้จะไปอยู่ในหัวข้อ&nbsp;
-            <span className="edit-mp-subtitle-change-b">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
-          </span>
-          <ul className="edit-mp-detail-change">
-            <li>test</li>
-          </ul>
-        </ModalChange>
+        <form id="modalPlan" name="modalPlan" onSubmit={e => this.props.handleSubmitEditPlan(e)}>
+          <ModalContents>
+            <FormSubmitPlan
+              styletabPrice={this.state.morePrice}
+              activePlan={this.state.activePlan}
+              // handleChangeMasterplan={this.props.handleChangeMasterplan}
+              planName={this.state.planName}
+              employeeOfPlan={this.state.employeeOfPlan}
+              handleResetProfilePlan={this.handleResetProfilePlan}
+              DetailMP={this.props.DetailMP}
+              // DataCompany={this.props.DataCompany}
+              planType={this.props.planType}
+            />
+          </ModalContents>
+          <ModalContentsWithBottom>
+            <AllPlan
+              styletabPrice={this.state.morePrice}
+              activePlan={this.state.activePlan}
+              handlePlan={this.handlePlan}
+              nextPage={this.state.nextPage}
+              handleNextPage={this.handleNextPage}
+              handleSetGoToNextPage={this.handleSetGoToNextPage}
+              handleWarningModal={this.handleWarningModal}
+              handleMoveToNextPage={this.handleMoveToNextPage}
+              handleBuildNewPlan={this.handleBuildNewPlan}
+              handleUnBuildNewPlan={this.handleUnBuildNewPlan}
+              handleToggleIpdCoPay={this.handleToggleIpdCoPay}
+              handleToggleOpdCoPay={this.handleToggleOpdCoPay}
+              handleChangeToNull={this.handleChangeToNull}
+              // handleChangeMasterplan={this.props.handleChangeMasterplan}
+              planType={this.props.planType}
+              handleResetDental={this.handleResetDental}
+              handleResetLife={this.handleResetLife}
+              handleResetOPD={this.handleResetOPD}
+              handleResetIPD={this.handleResetIPD}
+              ipdType={this.state.ipdType}
+              ipdLumsumPerYear={this.state.ipdLumsumPerYear}
+              ipdLumsumPerTime={this.state.ipdLumsumPerTime}
+              ipdLumsumTimeNotExceedPerYear={
+                this.state.ipdLumsumTimeNotExceedPerYear
+              }
+              rbLumsumRoomPerNight={this.state.rbLumsumRoomPerNight}
+              rbLumsumNigthNotExceedPerYear={
+                this.state.rbLumsumNigthNotExceedPerYear
+              }
+              rbLumsumPayNotExceedPerNight={
+                this.state.rbLumsumPayNotExceedPerNight
+              }
+              rbLumsumPayNotExceedPerYear={this.state.rbLumsumPayNotExceedPerYear}
+              rbSchedulePatient={this.state.rbSchedulePatient}
+              rbScheduleIntensiveCarePatient={
+                this.state.rbScheduleIntensiveCarePatient
+              }
+              rbScheduleDoctor={this.state.rbScheduleDoctor}
+              rbScheduleSurgerySchedule={this.state.rbScheduleSurgerySchedule}
+              rbScheduleSurgeryNonSchedule={
+                this.state.rbScheduleSurgeryNonSchedule
+              }
+              rbScheduleService={this.state.rbScheduleService}
+              rbScheduleSmallSurgery={this.state.rbScheduleSmallSurgery}
+              rbScheduleAdviser={this.state.rbScheduleAdviser}
+              rbScheduleAmbulance={this.state.rbScheduleAmbulance}
+              rbScheduleAccident={this.state.rbScheduleAccident}
+              rbScheduleTreatment={this.state.rbScheduleTreatment}
+              rbScheduleTransplant={this.state.rbScheduleTransplant}
+              ipdCoPay={this.state.ipdCoPay}
+              ipdCoPayQuota={this.state.ipdCoPayQuota}
+              ipdCoPayDeductable={this.state.ipdCoPayDeductable}
+              ipdCoPayMixPercentage={this.state.ipdCoPayMixPercentage}
+              ipdCoPayMixNotExceed={this.state.ipdCoPayMixNotExceed}
+              ipdCoPayMixYear={this.state.ipdCoPayMixYear}
+              opdCoPay={this.state.opdCoPay}
+              opdPerYear={this.state.opdPerYear}
+              opdPerTime={this.state.opdPerTime}
+              opdTimeNotExceedPerYear={this.state.opdTimeNotExceedPerYear}
+              opdCoPayQuota={this.state.opdCoPayQuota}
+              opdCoPayDeductable={this.state.opdCoPayDeductable}
+              opdCoPayMixPercentage={this.state.opdCoPayMixPercentage}
+              opdCoPayMixNotExceed={this.state.opdCoPayMixNotExceed}
+              opdCoPayMixYear={this.state.opdCoPayMixYear}
+              dentalPerYear={this.state.dentalPerYear}
+              lifePerYear={this.state.lifePerYear}
+              lifeTimeOfSalary={this.state.lifeTimeOfSalary}
+              lifeNotExceed={this.state.lifeNotExceed}
+            />
+          </ModalContentsWithBottom>
+          <ModalChange>
+            <span className="edit-mp-title-change">
+              แพลนมีการเปลี่ยนแปลง
+            </span>
+            <span className="edit-mp-subtitle-change">
+              ถ้าเสนอราคาแพลนที่มีการเปลี่ยนแปลง แพลนนี้จะไปอยู่ในหัวข้อ&nbsp;
+              <span className="edit-mp-subtitle-change-b">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
+            </span>
+            <ul className="edit-mp-detail-change">
+              <li>test</li>
+            </ul>
+          </ModalChange>
+        </form>
         <ModalPriceBox>
           <div className="edit-mp-input-price-box">
             <div className="edit-mp-input-price-box-l">เสนอราคาแพลนนี้</div>
@@ -540,7 +533,9 @@ class PlanBoxModal extends Component {
               <div className="edit-mp-btn-box-r">
                 <button
                   className="edit-mp-btn-save"
-                  onClick={() => this.props.handleCloseModal('editDetailMP')}
+                  type="submit"
+                  form="modalPlan"
+                  // onClick={() => this.props.handleCloseModal('editDetailMP')}
                 >
                   บันทึก
                 </button>

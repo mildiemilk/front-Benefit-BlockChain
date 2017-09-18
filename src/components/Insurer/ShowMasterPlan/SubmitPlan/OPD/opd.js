@@ -6,7 +6,7 @@ import { Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
 import CoPay from './copay';
-import OpdModal from './opd-modal';
+// import OpdModal from './opd-modal';
 
 const Checkboxs = styled(Checkbox)`
   margin-bottom: 15px;
@@ -14,10 +14,8 @@ const Checkboxs = styled(Checkbox)`
 class OPD extends Component {
   static propTypes = {
     handleVerifyState: PropTypes.func.isRequired,
-    handleCloseModal: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleNewReset: PropTypes.func.isRequired,
-    openModal: PropTypes.bool.isRequired,
     handleResetOPD: PropTypes.func.isRequired,
     handleToggle: PropTypes.func.isRequired,
     reset: PropTypes.bool.isRequired,
@@ -36,7 +34,9 @@ class OPD extends Component {
     opdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    handleNextPlan: PropTypes.func.isRequired,
+    // handleNextPlan: PropTypes.func.isRequired,
+    // handleCloseModal: PropTypes.func.isRequired,
+    // openModal: PropTypes.bool.isRequired,
   }
 
   constructor(props) {
@@ -252,12 +252,12 @@ class OPD extends Component {
               บันทึก
             </Button> */}
           </Form>
-          <OpdModal
+          {/* <OpdModal
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
             handleNextPlan={this.props.handleNextPlan}
-          />
+          /> */}
         </div>
       </div>
     );

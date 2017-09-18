@@ -51,9 +51,11 @@ class SettingBenefit extends Component {
   componentDidMount() {
     this.props.getOptionPlan();
     this.props.getBenefitPlan();
+    // console.log('getOptionPlan', this.props.getOptionPlan);
   }
 
   componentWillReceiveProps(newProps) {
+    console.log('getBenefitPlan', newProps);
     if (newProps.benefitPlan.length === 0) {
       this.setState({ emptyPlan: true });
     } else {

@@ -25,6 +25,7 @@ class IPD1 extends Component {
       ipdLumsumPerTime,
       ipdLumsumTimeNotExceedPerYear,
     } = this.props;
+    // console.log('this.props.styletabPrice--', this.props);
     let value;
     if (ipdLumsumPerYear) {
       value = 'firstChoice';
@@ -63,6 +64,7 @@ class IPD1 extends Component {
   }
 
   handleRadio = (e, { value }) => {
+    console.log('handleRadio val--', value);
     this.handleResetdata();
     this.setState({ value });
   }
@@ -76,7 +78,6 @@ class IPD1 extends Component {
   }
 
   render() {
-    console.log('this.props.styletabPrice--', this.props);
     return (
       <div>
         <Form.Group inline >

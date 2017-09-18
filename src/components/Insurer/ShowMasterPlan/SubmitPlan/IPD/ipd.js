@@ -9,7 +9,7 @@ import CoPay from './copay';
 import IPD1 from './ipd1';
 import IPD2 from './ipd2';
 import IPD3 from './ipd3';
-import IpdModal from './ipd-modal';
+// import IpdModal from './ipd-modal';
 
 const Checkboxs = styled(Checkbox)`
   margin-bottom: 15px;
@@ -17,11 +17,12 @@ const Checkboxs = styled(Checkbox)`
 class IPD extends Component {
   static propTypes = {
     handleVerifyState: PropTypes.func.isRequired,
-    handleCloseModal: PropTypes.func.isRequired,
+    // handleCloseModal: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleNewReset: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
+    // openModal: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
+    // handleChangeMasterplan: PropTypes.func.isRequired,
     handleChangeToNull: PropTypes.func.isRequired,
     handleResetIPD: PropTypes.func.isRequired,
     handleToggle: PropTypes.func.isRequired,
@@ -56,7 +57,7 @@ class IPD extends Component {
     ipdCoPayMixYear: PropTypes.string.isRequired,
     editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    handleNextPlan: PropTypes.func.isRequired,
+    // handleNextPlan: PropTypes.func.isRequired,
     styletabPrice: PropTypes.string.isRequired,
   }
 
@@ -72,6 +73,9 @@ class IPD extends Component {
   }
 
   handleRadio = (e, { name, value }) => {
+    console.log('name', name);
+    console.log('value', value);
+    // this.setState({ ipdType: this.state.DetailMP.ipdType })
     this.handleResetdata();
     this.props.handleChange(e, { name, value });
   }
@@ -312,12 +316,12 @@ class IPD extends Component {
               บันทึก
             </Button> */}
           </Form>
-          <IpdModal
+          {/* <IpdModal
             openModal={this.props.openModal}
             handleCloseModal={this.props.handleCloseModal}
             handleClick={this.handleClick}
             handleNextPlan={this.props.handleNextPlan}
-          />
+          /> */}
         </div>
       </div>
     );

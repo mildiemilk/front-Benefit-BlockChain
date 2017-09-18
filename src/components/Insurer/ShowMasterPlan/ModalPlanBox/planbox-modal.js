@@ -69,9 +69,11 @@ class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     handleSubmitEditPlan: PropTypes.func.isRequired,
-    // handleChangeMasterplan: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleChangeMasterplan: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
     planType: PropTypes.string.isRequired,
+    ipdType: PropTypes.string.isRequired,
     // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
     // DataCompany: PropTypes.shape({}).isRequired,
@@ -91,7 +93,7 @@ class PlanBoxModal extends Component {
       canBuildNewPlan: true,
       planName: '',
       employeeOfPlan: '',
-      ipdType: null,
+      ipdType: this.props.ipdType,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -137,6 +139,58 @@ class PlanBoxModal extends Component {
 
   componentWillReceiveProps(newProps) {
     const { DetailMP, activePlan } = newProps;
+    this.setState({
+      planName: DetailMP.planName,
+      employeeOfPlan: DetailMP.employeeOfPlan,
+      dentalPerYear: DetailMP.dentalPerYear,
+      lifePerYear: DetailMP.lifePerYear,
+      lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
+      lifeNotExceed: DetailMP.lifeNotExceed,
+      opdCoPay: DetailMP.opdCoPay,
+      opdPerYear: DetailMP.opdPerYear,
+      opdPerTime: DetailMP.opdPerTime,
+      opdTimeNotExceedPerYear: DetailMP
+        .opdTimeNotExceedPerYear,
+      opdCoPayQuota: DetailMP.opdCoPayQuota,
+      opdCoPayDeductable: DetailMP.opdCoPayDeductable,
+      opdCoPayMixPercentage: DetailMP.opdCoPayMixPercentage,
+      opdCoPayMixNotExceed: DetailMP.opdCoPayMixNotExceed,
+      opdCoPayMixYear: DetailMP.opdCoPayMixYear,
+      ipdType: DetailMP.ipdType,
+      ipdLumsumPerYear: DetailMP.ipdLumsumPerYear,
+      ipdLumsumPerTime: DetailMP.ipdLumsumPerTime,
+      ipdLumsumTimeNotExceedPerYear: DetailMP
+        .ipdLumsumTimeNotExceedPerYear,
+      rbLumsumRoomPerNight: DetailMP.rbLumsumRoomPerNight,
+      rbLumsumNigthNotExceedPerYear: DetailMP
+        .rbLumsumNigthNotExceedPerYear,
+      rbLumsumPayNotExceedPerNight: DetailMP
+        .rbLumsumPayNotExceedPerNight,
+      rbLumsumPayNotExceedPerYear: DetailMP
+        .rbLumsumPayNotExceedPerYear,
+      rbSchedulePatient: DetailMP.rbSchedulePatient,
+      rbScheduleIntensiveCarePatient: DetailMP
+        .rbScheduleIntensiveCarePatient,
+      rbScheduleDoctor: DetailMP.rbScheduleDoctor,
+      rbScheduleSurgerySchedule: DetailMP
+        .rbScheduleSurgerySchedule,
+      rbScheduleSurgeryNonSchedule: DetailMP
+        .rbScheduleSurgeryNonSchedule,
+      rbScheduleService: DetailMP.rbScheduleService,
+      rbScheduleSmallSurgery: DetailMP.rbScheduleSmallSurgery,
+      rbScheduleAdviser: DetailMP.rbScheduleAdviser,
+      rbScheduleAmbulance: DetailMP.rbScheduleAmbulance,
+      rbScheduleAccident: DetailMP.rbScheduleAccident,
+      rbScheduleTreatment: DetailMP.rbScheduleTreatment,
+      rbScheduleTransplant: DetailMP.rbScheduleTransplant,
+      ipdCoPay: DetailMP.ipdCoPay,
+      ipdCoPayQuota: DetailMP.ipdCoPayQuota,
+      ipdCoPayDeductable: DetailMP.ipdCoPayDeductable,
+      ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
+      ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
+      ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
+      // pricePerPerson:
+    });
     if (newProps.modalOpen !== this.props.modalOpen) {
       this.handleUpdate(DetailMP, activePlan);
     }
@@ -144,6 +198,7 @@ class PlanBoxModal extends Component {
 
   handlePlan = val => {
     if (val !== -1) {
+      console.log('this.props.DetailMP----', this.props.DetailMP);
       // const DetailMP = this.props.DetailMP;
       // const { plan } = DetailMP;
       const { DetailMP } = this.props;
@@ -404,7 +459,8 @@ class PlanBoxModal extends Component {
   }
 
   render() {
-    console.log('state--------', this.props.DetailMP);
+    // console.log('--', this.state);
+    // console.log('-Pro-', this.props.DetailMP);
     return (
       <Modals
         trigger={<div />}
@@ -444,7 +500,8 @@ class PlanBoxModal extends Component {
               handleToggleIpdCoPay={this.handleToggleIpdCoPay}
               handleToggleOpdCoPay={this.handleToggleOpdCoPay}
               handleChangeToNull={this.handleChangeToNull}
-              // handleChangeMasterplan={this.props.handleChangeMasterplan}
+              handleChangeMasterplan={this.props.handleChangeMasterplan}
+              handleChange={this.props.handleChange}
               planType={this.props.planType}
               handleResetDental={this.handleResetDental}
               handleResetLife={this.handleResetLife}

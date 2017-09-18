@@ -15,7 +15,12 @@ import {
 import { biddingReducer, endTimeout, selectFinalInsurer } from './bidding';
 import { biddingListReducer } from './Insurer/bidding';
 import { choosePlan, benefitPlan } from './benefit-plan';
-import { getAllBenefitReducer, confirmPlanReducer, currentPlanReducer } from './Employee/plan';
+import {
+  getAllBenefitReducer,
+  confirmPlanReducer,
+  currentPlanReducer,
+  claimOptionReducer,
+} from './Employee/plan';
 import { getClaimStatusReducer } from './Employee/claim';
 import { biddingInsurerReducer } from './Insurer/bidding';
 
@@ -42,6 +47,7 @@ const rootReducer = combineReducers({
   currentPlanReducer,
   biddingInsurerReducer,
   biddingListReducer,
+  claimOptionReducer,
   getClaimStatusReducer,
 });
 

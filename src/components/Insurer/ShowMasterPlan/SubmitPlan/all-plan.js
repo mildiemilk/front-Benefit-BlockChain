@@ -13,6 +13,7 @@ import tooth from '../../../image/icons-8-toot1.jpg';
 import heartRecord from '../../../image/icons-8-like-record.png';
 import heart from '../../../image/icons-8-like1.jpg';
 import heartActive from '../../../image/icons-8-like.jpg';
+import erase from '../../../image/icons-8-erase.png';
 import IPD from './IPD/ipd';
 import Life from './Life/life';
 import OPD from './OPD/opd';
@@ -30,6 +31,7 @@ class AllsetPlan extends Component {
     handleBuildNewPlan: PropTypes.func.isRequired,
     handleUnBuildNewPlan: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
+    handleChangeMasterplan: PropTypes.func.isRequired,
     handleChangeToNull: PropTypes.func.isRequired,
     handleToggleIpdCoPay: PropTypes.func.isRequired,
     handleToggleOpdCoPay: PropTypes.func.isRequired,
@@ -78,7 +80,6 @@ class AllsetPlan extends Component {
     ipdCoPayMixNotExceed: PropTypes.string,
     ipdCoPayMixYear: PropTypes.string,
     handlePlan: PropTypes.func.isRequired,
-    styletabPrice: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
@@ -354,15 +355,25 @@ class AllsetPlan extends Component {
   }
 
   render() {
+    // {console.log('AllPlan:props', this.props)}
     return (
       <div>
         <div className="fillBox2">
           <div className="headBox">
-            <span className="headLogo">ขั้นตอนที่ 2 : รายละเอียดแพลน</span>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <div
+              className="box-in-head-box"
+              onClick={() => this.handleReset()}
+              role="button"
+              aria-hidden
+            >
+              <img src={erase} className="image-erase" alt="erase" />
+              <span className="headLogo">Reset</span>
+            </div>
           </div>
           <div className="row">
             {this.state.setPlan === 'IPD'
-              ? <div className="small-3 columns">
+              ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('IPD')}
@@ -377,7 +388,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textIpdActive}>IPD</span>
                 </div>
               </div>
-              : <div className="small-3 columns">
+              : <div className="large-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('IPD')}
@@ -393,7 +404,7 @@ class AllsetPlan extends Component {
                 </div>
               </div>}
             {this.state.setPlan === 'OPD'
-              ? <div className="small-3 columns">
+              ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('OPD')}
@@ -408,7 +419,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textOpdActive}>OPD</span>
                 </div>
               </div>
-              : <div className="small-3 columns">
+              : <div className="large-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('OPD')}
@@ -424,7 +435,7 @@ class AllsetPlan extends Component {
                 </div>
               </div>}
             {this.state.setPlan === 'Dental'
-              ? <div className="small-3 columns">
+              ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('Dental')}
@@ -439,7 +450,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textDentalActive}>Dental</span>
                 </div>
               </div>
-              : <div className="small-3 columns">
+              : <div className="large-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('Dental')}
@@ -455,7 +466,7 @@ class AllsetPlan extends Component {
                 </div>
               </div>}
             {this.state.setPlan === 'Life'
-              ? <div className="small-3 columns">
+              ? <div className="large-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('Life')}
@@ -470,7 +481,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textLifeActive}>Life</span>
                 </div>
               </div>
-              : <div className="small-3 columns">
+              : <div className="large-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('Life')}
@@ -489,7 +500,6 @@ class AllsetPlan extends Component {
           <div className="paragraph">
             {this.state.setPlan === 'OPD'
               ? <OPD
-                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -503,6 +513,7 @@ class AllsetPlan extends Component {
                 setPlan={this.state.setPlan}
                 activePlan={this.props.activePlan}
                 handleChange={this.props.handleChange}
+                handleChangeMasterplan={this.props.handleChangeMasterplan}
                 handleChangeToNull={this.props.handleChangeToNull}
                 opdCoPay={this.props.opdCoPay}
                 opdPerYear={this.props.opdPerYear}
@@ -517,7 +528,6 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'IPD'
               ? <IPD
-                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -525,6 +535,8 @@ class AllsetPlan extends Component {
                 handleNewReset={this.handleNewReset}
                 openModal={this.state.openModal}
                 handleChange={this.props.handleChange}
+                handleChangeMasterplan={this.props.handleChangeMasterplan}
+                // handleChangeMasterplan={this.props.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleReset={this.handleReset}
                 handleResetIPD={this.props.handleResetIPD}
@@ -579,7 +591,6 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Dental'
               ? <Dental
-                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -597,7 +608,6 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Life'
               ? <Life
-                styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}

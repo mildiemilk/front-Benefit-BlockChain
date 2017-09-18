@@ -121,7 +121,6 @@ export function getSummaryEmployeeFailure(data) {
  */
 
 export default function profile(state = defaultProfile, action) {
-  console.log('actiov', action);
   switch (action.type) {
     case PROFILECOMPANY_REQUEST_SUCCESS:
       return Object.assign({}, state, {

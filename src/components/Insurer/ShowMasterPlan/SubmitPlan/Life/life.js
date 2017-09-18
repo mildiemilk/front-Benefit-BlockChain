@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../../../api/set-plan';
 import '../../../../../styles/submit-plan.scss';
-import LifeModal from './life-modal';
+// import LifeModal from './life-modal';
 
 const options = [{ text: '1', value: 1 }];
 
@@ -19,13 +19,13 @@ class Life extends Component {
     lifeTimeOfSalary: PropTypes.string.isRequired,
     lifeNotExceed: PropTypes.string.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
-    handleCloseModal: PropTypes.func.isRequired,
+    // handleCloseModal: PropTypes.func.isRequired,
     planList: PropTypes.string.isRequired,
     activePlan: PropTypes.string.isRequired,
     setPlan: PropTypes.string.isRequired,
     reset: PropTypes.string.isRequired,
-    openModal: PropTypes.string.isRequired,
-    handleNextPlan: PropTypes.func.isRequired,
+    // openModal: PropTypes.string.isRequired,
+    // handleNextPlan: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -240,12 +240,12 @@ class Life extends Component {
             </Button> */}
           </div>
         </Form>
-        <LifeModal
+        {/* <LifeModal
           openModal={this.props.openModal}
           handleCloseModal={this.props.handleCloseModal}
           handleClick={this.handleClick}
           handleNextPlan={this.props.handleNextPlan}
-        />
+        /> */}
       </div>
     );
   }

@@ -122,9 +122,10 @@ class Quotation extends Component {
       updatedAt,
       countBidding,
     } = this.props;
-    console.log('props', this.props.masterplan);
+    // console.log('props', this.props.masterplan);
     return (
       <div>
+        <br />
         <form id="bidding_price" name="bidding_price" onSubmit={e => this.props.handleSubmitBidding(e)}>
           <div className="quotation-box quotation-line">
             <div className="quotation-header-box">

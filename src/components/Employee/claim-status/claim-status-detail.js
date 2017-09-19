@@ -23,7 +23,7 @@ class ClaimStatusDetail extends Component {
   }
 
   renderHeadpic = () => {
-    if (this.props.claimdata.status === 'consider') {
+    if (this.props.claimdata.status === 'pending') {
       return (
         <img
           className="Headpic"
@@ -51,7 +51,7 @@ class ClaimStatusDetail extends Component {
   }
 
   renderHeadStatus = () => {
-    if (this.props.claimdata.status === 'consider') {
+    if (this.props.claimdata.status === 'pending') {
       return (
         <div>
           <img
@@ -99,11 +99,11 @@ class ClaimStatusDetail extends Component {
         </span>
       );
     }
-    if (claim.type === 'generalEx') {
+    if (claim.type === 'general') {
       list = (
         <span className="Detail">
           <span className="Detail">ประเภทการเคลม : ค่าใช้จ่ายทั่วไป </span>
-          <span className="Detail">เรื่องที่เคลม :{claim.expenseType} </span>
+          <span className="Detail">เรื่องที่เคลม : {claim.expenseType} </span>
         </span>
       );
     }
@@ -175,11 +175,25 @@ class ClaimStatusDetail extends Component {
                 <div className="DivDetail">
                   {this.renderType(claim)}
                   <span className="Detail"> วันที่เคลม : {claim.date} </span>
-                  <span className="Detail"> สถานที่ : {claim.Hospital} </span>
+                  <span className="Detail">
+                    สถานที่ : {
+                      claim.type === 'insurance'
+                      ? claim.Hospital
+                      : claim.HealthPlace
+                    }
+                  </span>
                   <span className="Detail"> ผู้เคลม : {claim.ChooseEmployeeName} </span>
                   <span className="Detail"> จำนวนเงิน : {claim.AmountMoney} บาท </span>
-                  <span className="Detail"> ธนาคาร : {claim.BankName} </span>
-                  <span className="Detail"> เลขที่บัญชี : {claim.AccountNumber} </span>
+                  {
+                    claim.type === 'insurance'
+                    ? <span className="Detail"> ธนาคาร : {claim.BankName} </span>
+                    : <div />
+                  }
+                  {
+                    claim.type === 'insurance'
+                    ? <span className="Detail"> เลขที่บัญชี : {claim.AccountNumber} </span>
+                    : <div />
+                  }
                 </div>
                 <div className="receiptDiv">
                   <Modal

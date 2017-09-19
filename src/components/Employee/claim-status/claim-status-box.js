@@ -69,7 +69,7 @@ class ClaimStatusBox extends Component {
         </div>
       );
     }
-    if (claimdata.status === 'consider') {
+    if (claimdata.status === 'pending') {
       listRender = (
         <div className="blue-claim-box-header">
           <div className="row">
@@ -105,11 +105,11 @@ class ClaimStatusBox extends Component {
         </span>
       );
     }
-    if (claim.type === 'generalEx') {
+    if (claim.type === 'general') {
       list = (
         <span>
           <p>ประเภทการเคลม : ค่าใช้จ่ายทั่วไป </p>
-          <p>เรื่องที่เคลม :{claim.expenseType} </p>
+          <p>เรื่องที่เคลม : {claim.expenseType} </p>
         </span>
       );
     }

@@ -32,11 +32,7 @@ export function claim(detail, files, type) {
   files.map((file, index) => (
     formData.append('files', files[index])
   ));
-  // formData.append('files', files);
   formData.append('detail', JSON.stringify(detail));
-  console.log('api claim detail: ', detail);
-  console.log('api claim files: ', files);
-  console.log('api claim type: ', type);
   const options = {
     method: 'post',
     url: `${CREATE_CLAIM_URI}/${type}`,

@@ -54,11 +54,13 @@ class ChooseInsurancePlan extends Component {
   // }
 
   componentWillReceiveProps(newProps) {
-    console.log('newProps', newProps);
     if (newProps.choosePlans !== this.props.choosePlans ||
       newProps.planList !== this.props.planList) {
       if (newProps.choosePlans !== undefined) {
-        const choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+        let choosePlans = [];
+        if (newProps.choosePlans.length > 0) {
+          choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+        }
         const Allplan = newProps.planList.concat(newProps.insurerPlanList);
         // const AllYourPlan = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
         this.setState({
@@ -71,7 +73,10 @@ class ChooseInsurancePlan extends Component {
     }
     if (newProps.planList !== this.props.planList) {
       const Allplan = newProps.planList.concat(newProps.insurerPlanList);
-      const choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+      let choosePlans = [];
+      if (newProps.choosePlans.length > 0) {
+        choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+      }
       const ChooseInsurance = this.tranformPlan(choosePlans, Allplan);
       this.setState({
         OurPlan: this.filterPlan(newProps.planList, ChooseInsurance),
@@ -114,7 +119,6 @@ class ChooseInsurancePlan extends Component {
     const file = this.state.SpecialPlan[index];
     let SpecialPlans = this.state.SpecialPlan;
     SpecialPlans = SpecialPlans.filter((plan, i) => i !== index);
-    SpecialPlans.splice(index, 1);
     this.setState({
       ChooseInsurance: this.state.ChooseInsurance.concat(file),
       SpecialPlan: SpecialPlans,

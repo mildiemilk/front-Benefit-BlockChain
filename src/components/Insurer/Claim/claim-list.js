@@ -19,7 +19,7 @@ class ClaimList extends Component {
   render() {
     return (
       <div className="ClaimList">
-        <Head className="insurerheade-text" content="แผนสิทธิประโยชน์ของคุณ" />
+        <Head className="insurerheade-text" content="รายการเคลม" />
         <div className="row">
           <div className="large-6 columns box-left">
             <Nav>

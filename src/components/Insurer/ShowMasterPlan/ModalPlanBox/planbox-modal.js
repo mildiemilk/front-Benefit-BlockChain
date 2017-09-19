@@ -465,7 +465,7 @@ class PlanBoxModal extends Component {
   }
 
   render() {
-    console.log('--sdsdd--', this.props.planIndex);
+    console.log('--sdsdd--', this.props);
     console.log('-Pro-', this.props.DetailMP);
     // console.log('-Prothis.handleToggleIpdCoPay}-', this.handleToggleIpdCoPay);
     return (

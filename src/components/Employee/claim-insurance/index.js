@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Modal, Dropdown } from 'semantic-ui-react';
+import { Modal, Dropdown, Icon } from 'semantic-ui-react';
 // import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
-import { Backgroundiv, TinyText, SubmitButton, SubmitButtonLast } from './styled';
+import {
+  Backgroundiv,
+  SubmitButton,
+  SubmitButtonLast,
+  TinyText,
+  BrowsButton,
+  NewLine,
+  UploadText,
+} from './styled';
 import InsuranceTemplate from './insurance-template';
 import HealthTemplate from './health-template';
 import GeneralExpenseTemplate from './generalexpense-template';
@@ -50,6 +58,8 @@ class ClaimInsurance extends Component {
       life: [],
       health: [],
       general: [],
+      MainStateOption: [],
+      modalMsg: '',
     };
     props.claimOption();
   }
@@ -57,9 +67,10 @@ class ClaimInsurance extends Component {
   componentWillReceiveProps(nextProps) {
     const { data } = nextProps;
     const EmNameoption = [];
-    // const life = [];
+    const life = [];
     const health = [];
     const general = [];
+    const MainStateOption = [];
     data.claimUser.forEach((item, i) => {
       EmNameoption.push({
         key: i,
@@ -88,11 +99,21 @@ class ClaimInsurance extends Component {
         value: item,
       });
     });
+    if (life.length > 0) {
+      MainStateOption.push({ key: 'insurance', text: 'ประกันภัย', value: 'insurance' });
+    }
+    if (health.length > 0) {
+      MainStateOption.push({ key: 'health', text: 'สุขภาพ', value: 'health' });
+    }
+    if (general.length > 0) {
+      MainStateOption.push({ key: 'general', text: 'ใช้จ่ายทั่วไป', value: 'general' });
+    }
     this.setState({
       EmNameoption,
-      // life,
+      life,
       health,
       general,
+      MainStateOption,
     });
   }
 
@@ -104,6 +125,12 @@ class ClaimInsurance extends Component {
     // console.log('Claimfile: ', ClaimFile);
   }
 
+  handleClickRemoveFile = index => {
+    const { ClaimFile } = this.state;
+    ClaimFile.splice(index, 1);
+    this.setState({ ClaimFile });
+  }
+
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value });
   }
@@ -113,17 +140,78 @@ class ClaimInsurance extends Component {
   }
 
   handleButtonSubmit = () => {
-    const detail = this.state;
+    const state = this.state;
+    const detail = {};
     const files = this.state.ClaimFile;
     const type = this.state.mainState;
-    delete detail.ClaimFile;
-    delete detail.mainState;
-    claim(detail, files, type)();
+    // delete detail.ClaimFile;
+    // delete detail.mainState;
+    this.setState({ modalMsg: '' });
+    if (
+      state.date !== ''
+      && state.ChooseEmployeeName !== ''
+      && state.AmountMoney !== ''
+      && state.currency !== ''
+      && type !== ''
+      && files.length !== 0
+    ) {
+      detail.date = state.date;
+      detail.name = state.ChooseEmployeeName;
+      detail.amount = state.AmountMoney;
+      detail.currency = state.currency;
+      if (type === 'insurance') {
+        if (state.InsuranceType !== '' && state.Hospital !== '' && state.BankName !== '' && state.AccountNumber !== '') {
+          detail.title = state.InsuranceType;
+          detail.location = state.Hospital;
+          detail.bank = state.BankName;
+          detail.bankAccountNumber = state.AccountNumber;
+        } else {
+          this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
+        }
+      } else if (type === 'health') {
+        if (state.HealthPlace !== '' && state.HealthType !== '') {
+          detail.title = state.HealthType;
+          detail.location = state.HealthPlace;
+        } else {
+          this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
+        }
+      } else {
+        if (state.expenseType !== '' && state.HealthPlace !== '') {
+          detail.title = state.expenseType;
+          detail.location = state.HealthPlace;
+        } else {
+          this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
+        }
+      }
+      if (state.modalMsg === '') {
+        claim(detail, files, type);
+        // .then(() => {
+        //   this.handleOpenModal();
+        // });
+      }
+    } else {
+      this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
+    }
+    this.handleOpenModal();
   }
 
   handleOpenModal = () => this.setState({ openModal: true });
 
   handleCloseModal = () => this.setState({ openModal: false });
+
+  handleMainStateOption = () => {
+    const { life, health, general, MainStateOption } = this.state;
+    if (life.length > 0) {
+      MainStateOption.push({ key: 'insurance', text: 'ประกันภัย', value: 'insurance' });
+    }
+    if (health.length > 0) {
+      MainStateOption.push({ key: 'health', text: 'สุขภาพ', value: 'health' });
+    }
+    if (general.length > 0) {
+      MainStateOption.push({ key: 'general', text: 'ใช้จ่ายทั่วไป', value: 'general' });
+    }
+    this.setState({ MainStateOption });
+  }
 
   rendermainState = () => {
     const { data } = this.props;
@@ -133,26 +221,33 @@ class ClaimInsurance extends Component {
       health,
       general,
       ClaimFile,
+      EmNameoption,
     } = this.state;
-    const { EmNameoption } = this.state;
-    if (this.state.mainState === 'insurance') {
+    const nameOption = [];
+    nameOption.push({
+      key: 0,
+      text: data.claimUser[0],
+      value: data.claimUser[0],
+    });
+    if (this.state.mainState === 'general') {
       return (
-        <InsuranceTemplate
-          EmNameoption={EmNameoption}
+        <GeneralExpenseTemplate
+          EmNameoption={nameOption}
           handleChange={this.handleChange}
           handleUploadcliamFile={this.handleUploadcliamFile}
           ClaimFile={ClaimFile}
           handleChangeDate={this.handleChangeDate}
           date={date}
           data={data}
-          life={life}
+          general={general}
           currencyOption={currencyOption}
+          handleClickRemoveFile={this.handleClickRemoveFile}
         />
       );
     } else if (this.state.mainState === 'health') {
       return (
         <HealthTemplate
-          EmNameoption={EmNameoption}
+          EmNameoption={nameOption}
           handleChange={this.handleChange}
           handleUploadcliamFile={this.handleUploadcliamFile}
           ClaimFile={ClaimFile}
@@ -165,7 +260,7 @@ class ClaimInsurance extends Component {
       );
     }
     return (
-      <GeneralExpenseTemplate
+      <InsuranceTemplate
         EmNameoption={EmNameoption}
         handleChange={this.handleChange}
         handleUploadcliamFile={this.handleUploadcliamFile}
@@ -173,14 +268,20 @@ class ClaimInsurance extends Component {
         handleChangeDate={this.handleChangeDate}
         date={date}
         data={data}
-        general={general}
+        life={life}
         currencyOption={currencyOption}
       />
     );
   }
 
   render() {
-    // console.log('index state: ', this.state);
+    // console.log('>>>', this.state);
+    const {
+      // MainStateOption,
+      openModal,
+      modalMsg,
+      ClaimFile,
+    } = this.state;
     const { data } = this.props;
     if (data.claimUser.length > 0) {
       return (
@@ -200,16 +301,56 @@ class ClaimInsurance extends Component {
             {
               this.rendermainState()
             }
-            <SubmitButton onClick={this.handleOpenModal}> เคลม </SubmitButton>
+            <NewLine />
+            <TinyText>แนบภาพใบเสร็จ (เฉพาะไฟล์ประเภท .pdf .jpg .png)</TinyText>
+            <BrowsButton>
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                accept=".pdf, .jpg, .png"
+                onChange={this.handleUploadcliamFile}
+              />
+              อัพโหลดรูปใบเสร็จ
+            </BrowsButton>
+            <NewLine style={{ height: '3px' }} />
+            <UploadText>
+              {
+                ClaimFile.map((ele, index) => (
+                  <div className="claim-show-file-name-box" key={index.toString()}>
+                    <span className="claim-show-file-name">{ele.name}</span>
+                    <span
+                      className="claim-icon-remove"
+                      onClick={() => this.handleClickRemoveFile(index)}
+                      role="button"
+                      aria-hidden
+                    >
+                      <Icon name="remove" />
+                    </span>
+                  </div>
+                ))
+              }
+            </UploadText>
+            <NewLine style={{ height: '3px' }} />
+            <SubmitButton onClick={() => this.handleButtonSubmit()}> เคลม </SubmitButton>
             <Modal
               trigger={<div />}
-              open={this.state.openModal}
+              open={openModal}
               onClose={this.handleCloseModal}
             >
               <div className="claim-modal-box">
-                <span className="claim-modal-text">รายการของคุณถูกบันทึกแล้ว</span>
-                <span className="claim-modal-text">กรุณารอการพิจารณา</span>
-                <SubmitButtonLast onClick={() => this.handleButtonSubmit()}>
+                <span className="claim-modal-text">
+                  {
+                    modalMsg === ''
+                    ? 'รายการของคุณถูกบันทึกแล้ว'
+                    : modalMsg
+                  }
+                </span>
+                {
+                  modalMsg === ''
+                  ? <span className="claim-modal-text">กรุณารอการพิจารณา</span>
+                  : <div />
+                }
+                <SubmitButtonLast onClick={() => this.handleCloseModal()}>
                   ตกลง
                 </SubmitButtonLast>
               </div>

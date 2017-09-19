@@ -30,6 +30,8 @@ const SETLOGO_REQUEST_SUCCESS = 'SETLOGO_REQUEST_SUCCESS';
 const AUTHENTICATE_REQUEST_SUCCESS = 'auth/AUTHENTICATE_REQUEST_SUCCESS';
 const FILEEMPLOYEE_REQUEST_SUCCESS = 'FILEEMPLOYEE_REQUEST_SUCCESS';
 const FILEEMPLOYEE_REQUEST_FAILURE = 'FILEEMPLOYEE_REQUEST_FAILURE';
+const GET_FILEEMPLOYEE_REQUEST_SUCCESS = 'GET_FILEEMPLOYEE_REQUEST_SUCCESS';
+const GET_FILEEMPLOYEE_REQUEST_FAILURE = 'GET_FILEEMPLOYEE_REQUEST_FAILURE';
 const CLAIMDATA_REQUEST_SUCCESS = 'CLAIMDATA_REQUEST_SUCCESS';
 const CLAIMDATA_REQUEST_FAILURE = 'CLAIMDATA_REQUEST_FAILURE';
 const GETCLAIMDATA_REQUEST_SUCCESS = 'GETCLAIMDATA_REQUEST_SUCCESS';
@@ -67,6 +69,12 @@ export function fileEmployeeSuccess(data) {
 }
 export function fileEmployeeFailure(data) {
   return { type: FILEEMPLOYEE_REQUEST_FAILURE, data };
+}
+export function getFileEmployeeSuccess(data) {
+  return { type: GET_FILEEMPLOYEE_REQUEST_SUCCESS, data };
+}
+export function getFileEmployeeFailure(data) {
+  return { type: GET_FILEEMPLOYEE_REQUEST_FAILURE, data };
 }
 export function claimDataSuccess(data) {
   return { type: CLAIMDATA_REQUEST_SUCCESS, data };
@@ -171,6 +179,11 @@ export default function profile(state = defaultProfile, action) {
         claimData: action.data,
       });
     case GETCLAIMDATA_REQUEST_FAILURE:
+    case GET_FILEEMPLOYEE_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        fileEmployee: action.data,
+      });
+    case GET_FILEEMPLOYEE_REQUEST_FAILURE:
     case GET_GROUPBENEFIT_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         groupBenefit: action.data,

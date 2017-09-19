@@ -99,6 +99,12 @@ class SettingPlan extends Component {
   render() {
     const { handleChange, handleSubmit, planName, plan, optionPlan,
       isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
+    let showExpense = optionPlan.isExpense;
+    let showHealth = optionPlan.isHealth;
+    if (isReadOnly) {
+      showExpense = isExpense;
+      showHealth = isHealth;
+    }
     return (
       <div>
         <FieldsetEdit disabled={handleChange === ''}>
@@ -135,7 +141,7 @@ class SettingPlan extends Component {
                 />
               </PlanBox>
 
-              { optionPlan.isHealth && !isReadOnly
+              { showHealth
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/5.png" />
                   <PlanTopic>
@@ -172,7 +178,7 @@ class SettingPlan extends Component {
                 </PlanBox>
                 : null}
 
-              { optionPlan.isExpense && !isReadOnly
+              { showExpense
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/4.png" />
                   <PlanTopic>

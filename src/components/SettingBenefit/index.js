@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
+import _ from 'lodash';
 import {
   Rec,
   Header,
@@ -23,6 +24,7 @@ import {
   getBenefitPlan,
   setBenefitPlan,
   getInsurancePlan,
+  deletePlan,
 } from '../../api/benefit-plan';
 
 class SettingBenefit extends Component {
@@ -36,6 +38,7 @@ class SettingBenefit extends Component {
     master: PropTypes.arrayOf(PropTypes.object).isRequired,
     insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    deletePlan: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -54,7 +57,9 @@ class SettingBenefit extends Component {
     };
     props.getTemplatePlan();
     props.getInsurancePlan();
-    props.getBenefitPlan();
+    setInterval(() => {
+      props.getBenefitPlan();
+    }, 2000);
   }
 
   componentDidMount() {
@@ -69,26 +74,26 @@ class SettingBenefit extends Component {
       this.setState({ emptyPlan: true });
     } else {
       if (this.state.activePlan === '') {
-        console.log('NewProps', newProps);
-        const planList = newProps.benefitPlan;
-        console.log('planList', planList);
-        const index = 0;
-        this.setState({
-          activePlan: index,
-          planName: planList[index].benefitPlanName,
-          plan: planList[index].benefitPlan.plan.planId._id,
-          isHealth: planList[index].benefitPlan.isHealth,
-          isExpense: planList[index].benefitPlan.isExpense,
-          health: planList[index].benefitPlan.health,
-          expense: planList[index].benefitPlan.expense,
-          emptyPlan: false,
-        }, () => console.log('state', this.state));
+        console.log('newProps-->', newProps.benefitPlan);
+        console.log('thisProps--->', this.props.benefitPlan)
+        if (!_.isEqual(newProps.benefitPlan.sort(), this.props.benefitPlan.sort())) {
+          const planList = newProps.benefitPlan;
+          console.log('newProps', newProps.benefitPlan);
+          console.log('thisProps', this.props.benefitPlan)
+          const index = 0;
+          this.setState({
+            activePlan: index,
+            planName: planList[index].benefitPlanName,
+            plan: planList[index].benefitPlan.plan.planId._id,
+            isHealth: planList[index].benefitPlan.isHealth,
+            isExpense: planList[index].benefitPlan.isExpense,
+            health: planList[index].benefitPlan.health,
+            expense: planList[index].benefitPlan.expense,
+            emptyPlan: false,
+            planList,
+          }, () => console.log('state', this.state));
+        }
       }
-    }
-
-    if (newProps.benefitPlan !== this.props.benefitPlan) {
-      this.setState({ planList: newProps.benefitPlan },
-        () => console.log('planList', this.state.planList));
     }
     if (newProps.masterPlanList !== this.props.masterPlanList) {
       const optionPlan = newProps.masterPlanList.concat(newProps.insurerPlanList);
@@ -142,11 +147,11 @@ class SettingBenefit extends Component {
     });
   }
 
-  handleDeletePlan = () => {
-    const { activePlan, planList } = this.state;
-    planList.splice(activePlan, 1);
-    this.props.setBenefitPlan(this.state.planList);
-    this.handleAddPlan();
+  handleDeletePlan = id => {
+    const { activePlan } = this.state;
+    this.state.planList.splice(activePlan, 1);
+    console.log('id', id);
+    this.props.deletePlan(id);
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -199,6 +204,7 @@ class SettingBenefit extends Component {
   }
   renderOption = (optionPlan, templatePlan) => {
     if (optionPlan !== undefined && optionPlan.length >= 1) {
+      console.log('optionPlan', optionPlan);
       const newplan =
       templatePlan.filter(plan => optionPlan.map(
         option => option.planId === plan.plan._id).indexOf(true) !== -1);
@@ -228,7 +234,8 @@ class SettingBenefit extends Component {
                   ? <AddPlanBar
                     plan={this.state.planList}
                     handleActivePlan={this.handleActivePlan}
-                    handleDeletePlan={this.handleDeletePlan}
+                    handleDeletePlan={() =>
+                    this.handleDeletePlan(this.state.planList[this.state.activePlan]._id)}
                     activePlan={this.state.activePlan}
                   />
                   : null}
@@ -302,6 +309,7 @@ const mapDispatchToProps = dispatch => ({
   getBenefitPlan: () => dispatch(getBenefitPlan()),
   getInsurancePlan: () => dispatch(getInsurancePlan()),
   setBenefitPlan: plan => dispatch(setBenefitPlan(plan)),
+  deletePlan: benefitPlanId => dispatch(deletePlan(benefitPlanId)),
 });
 
 const mapStateToProps = state => ({

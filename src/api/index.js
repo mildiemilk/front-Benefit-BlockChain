@@ -7,6 +7,7 @@ import {
   claimData,
   getGroupBenefit,
   employeeDetail,
+  getFileEmployee,
 } from './profile-company';
 import {
   chooseInsurer,
@@ -67,4 +68,5 @@ export default {
   setTimeout,
   getTemplate,
   getGroupBenefit,
+  getFileEmployee,
 };

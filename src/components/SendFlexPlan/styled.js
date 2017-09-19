@@ -95,3 +95,23 @@ export const Edit = styled.div`
   margin: 2% 0%;
   cursor: pointer;
 `;
+export const ImgFile = styled.img`
+  display: inline-block;
+`;
+export const DivDownload = styled.div`
+  display: inline-block;
+  margin-left: 17px;
+  position: absolute;
+`;
+export const DetailUpload = styled.div`
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  display: inline-block;
+  color: ${props => props.link ? '#3a7bd5' : '#323028'};
+`;
+export const TextUpload = styled.div`
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  color: #323028;
+`;

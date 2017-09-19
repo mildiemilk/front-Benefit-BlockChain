@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
 import NavBenefit from '../NavBenefit';
 import { Detail, Head, Inner, BackButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit } from './styled';
-import Timeout from '../ChooseInsurer/timeout';
-import { setTimeout } from '../../api/benefit-plan';
-import { getOptionPlan, getBenefitPlan } from '../../api/benefit-plan';
+// import Timeout from '../ChooseInsurer/timeout';
+import { setTimeout, getInsurancePlan, getBenefitPlan, getTemplatePlan } from '../../api/benefit-plan';
 import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
 import time from '../../../assets/sendflexplan/icons-8-timer.png';
 import ToggleHealth from '../AddBenefit/toggle-health';
@@ -20,11 +19,15 @@ import EmployeeBenefits from './EmployeeBenefits';
 
 class SendFlexPlan extends Component {
   static propTypes = {
-    setTimeout: PropTypes.func.isRequired,
-    getOptionPlan: PropTypes.func.isRequired,
+    // setTimeout: PropTypes.func.isRequired,
+    getInsurancePlan: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
-    List: PropTypes.arrayOf(PropTypes.object).isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getTemplatePlan: PropTypes.func.isRequired,
+    master: PropTypes.arrayOf(PropTypes.object).isRequired,
+    insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // masterPlanList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // List: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     data: PropTypes.shape.isRequired,
@@ -37,13 +40,28 @@ class SendFlexPlan extends Component {
     this.state = {
       step: 6,
       passwordToConfirm: '',
+      templatePlan: [],
     };
+    props.getTemplatePlan();
+    props.getBenefitPlan();
+    props.getInsurancePlan();
+    props.getCompleteStep();
   }
-  componentDidMount = () => {
-    this.props.getOptionPlan();
-    this.props.getBenefitPlan();
-    this.props.getCompleteStep();
+  // componentDidMount = () => {
+  //   this.props.getBenefitPlan();
+  //   this.props.getCompleteStep();
+  // }
+  componentWillReceiveProps = newProps => {
+    console.log('>>>>>newProps', newProps);
+
+    if (newProps.master !== this.props.master && newProps.insurer !== this.props.insurer) {
+      const templatePlan = newProps.master.concat(newProps.insurer);
+      this.setState({
+        templatePlan,
+      }, () => console.log('template-plan', this.state.templatePlan));
+    }
   }
+
   boxInStyle = state => {
     if (state) return 'BoxLine';
     return '';
@@ -55,8 +73,24 @@ class SendFlexPlan extends Component {
     this.props.setCompleteStep(passwordToConfirm, step);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
+  renderPlan = () => {
+    const { benefitPlan } = this.props;
+    const { templatePlan } = this.state;
+    const planList = benefitPlan;
+    if (planList !== undefined && planList.length >= 1) {
+      console.log('---t', templatePlan);
+      console.log('---p', planList);
+      const newplan =
+      templatePlan.filter(plan => planList.map(
+        option => option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
+      console.log('newww', newplan);
+      return newplan;
+    }
+    return '';
+  }
   render() {
+    console.log('props', this.props);
+    console.log('state2 tem', this.state.templatePlan)
     const { completeStep } = this.props;
     if (completeStep) {
       return <Redirect to="/congratstep3" />;
@@ -74,7 +108,12 @@ class SendFlexPlan extends Component {
               </Edit>
             </Link>
             <Inner>
-              <InsurancePlan planList={this.props.planList} />
+              {this.state.templatePlan.length >= 1
+              ? <InsurancePlan
+                planList={this.renderPlan()}
+              />
+              : <div />
+              }
             </Inner>
             <List>กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ</List>
             <Link to="/addbenefit">
@@ -91,11 +130,11 @@ class SendFlexPlan extends Component {
                         <div className="imagehealth" />
                       </DivImage>
                       <ToggleHealth
-                        boxInStyle={this.boxInStyle} isHealth={this.props.List.isHealth}
+                        boxInStyle={this.boxInStyle} isHealth={this.props.optionPlan.isHealth}
                       />
                     </DivHealth>
                   </div>
-                  <AddBenefit List={this.props.List.health.HealthList} />
+                  <AddBenefit List={this.props.optionPlan.health.healthList} />
                 </div>
               </DivBenefit>
               <br />
@@ -107,11 +146,11 @@ class SendFlexPlan extends Component {
                         <div className="imageExpense" />
                       </DivImage>
                       <ToggleExpense
-                        boxInStyle={this.boxInStyle} isExpense={this.props.List.isExpense}
+                        boxInStyle={this.boxInStyle} isExpense={this.props.optionPlan.isExpense}
                       />
                     </DivHealth>
                   </div>
-                  <AddBenefit List={this.props.List.expense.ExpenseList} />
+                  <AddBenefit List={this.props.optionPlan.expense.expenseList} />
                 </div>
               </DivBenefit>
             </Inner>
@@ -123,10 +162,14 @@ class SendFlexPlan extends Component {
               </Edit>
             </Link>
             <Inner>
-              <SettingBenefit
+              { this.state.templatePlan.length >= 1
+              ? <SettingBenefit
                 plan={this.props.benefitPlan}
                 optionPlan={this.props.optionPlan}
+                templatePlan={this.state.templatePlan}
               />
+              : <div>dsfsg</div>
+              }
             </Inner>
 
             <List>กรุณาตรวจการอัพโหลดไฟล์ของคุณ</List>
@@ -145,7 +188,7 @@ class SendFlexPlan extends Component {
             <Inner>
               <Imgs src={time} alt="time" />
               <Line> พนักงานสามารถเลือกสิทธิประโยชน์ได้ถึง วันที่ </Line>
-              <Timeout setTimeout={this.props.setTimeout} />
+              {/* <Timeout setTimeout={this.props.setTimeout} /> */}
             </Inner>
           </Detail>
           <div style={{ marginTop: '25px' }} className="row">
@@ -170,13 +213,16 @@ class SendFlexPlan extends Component {
 
 const mapDispatchToProps = dispatch => ({
   setTimeout: timeout => dispatch(setTimeout(timeout)),
-  getOptionPlan: () => dispatch(getOptionPlan()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  getInsurancePlan: () => dispatch(getInsurancePlan()),
   setCompleteStep: (passwordToConfirm, step) =>
   dispatch(setCompleteStep(passwordToConfirm, step)),
   getCompleteStep: () => dispatch(getCompleteStep()),
+  getTemplatePlan: () => dispatch(getTemplatePlan()),
 });
 const mapStateToProps = state => ({
+  master: state.choosePlan.insurancePlan.master,
+  insurer: state.choosePlan.insurancePlan.insurer,
   List: state.choosePlan,
   planList: state.choosePlan.choosePlan,
   benefitPlan: state.benefitPlan.plan,

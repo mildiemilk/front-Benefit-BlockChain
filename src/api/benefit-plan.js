@@ -37,7 +37,7 @@ export function choosePlan(plan) {
         dispatch(choosePlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(choosePlanFailure(err.response.data));
+        dispatch(choosePlanFailure(err));
       });
   };
 }
@@ -75,41 +75,21 @@ export function getInsurancePlan() {
 //   };
 // }
 
-export function setTemplatePlan(
-  isHealth,
-  isExpense,
-  HealthList,
-  ExpenseList,
-  selectedOptionHealth1,
-  selectedOptionHealth2,
-  selectedOptionHealth3,
-  selectedOptionExpense1,
-  selectedOptionExpense2,
-  selectedOptionExpense3,
-) {
+export function setTemplatePlan(data) {
   return dispatch => {
     const options = {
-      method: 'post',
+      method: 'put',
       url: SETTEMPLATEBENEFIT_PLAN_URI,
-      data: {
-        isHealth,
-        isExpense,
-        HealthList,
-        ExpenseList,
-        selectedOptionHealth1,
-        selectedOptionHealth2,
-        selectedOptionHealth3,
-        selectedOptionExpense1,
-        selectedOptionExpense2,
-        selectedOptionExpense3,
-      },
+      data,
     };
 
     APIRequest(options, true)
       .then(res => {
+        console.log('data settemplate');
         dispatch(setTemplatePlanSuccess(res.data));
       })
       .catch(err => {
+        console.log('template', err);
         dispatch(setTemplatePlanFailure(err.response.data));
       });
   };
@@ -124,6 +104,7 @@ export function getTemplatePlan() {
 
     APIRequest(options, true)
       .then(res => {
+        console.log('api gettem: ', res);
         dispatch(getTemplatePlanSuccess(res.data));
       })
       .catch(err => {

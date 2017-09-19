@@ -100,7 +100,7 @@ class EmployeeBenefits extends Component {
               {this.props.summaryEmployee.length > 0 && this.props.benefitPlan
               ? <SelectBox
                 groupName={this.props.summaryEmployee[this.state.activeGroup].groupName}
-                numberOfGroup={this.props.summaryEmployee[this.state.activeGroup].amount}
+                numberOfGroup={this.props.summaryEmployee[this.state.activeGroup].amountOfPlan}
                 benefitPlan={this.props.benefitPlan}
                 type={this.props.summaryEmployee[this.state.activeGroup].type}
                 default={this.props.summaryEmployee[this.state.activeGroup].defaultPlan}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Divider } from 'semantic-ui-react';
-import { Box, Head, HeadText, TextLine, Detail, List, ButtonDefault } from '../SendFlexPlan/EmployeeBenefits/styled';
-import { BoxPlan, Img, ImgDetail, DivList, TextBox, Text, Unit, DivFlex } from './styled';
+// import { Divider } from 'semantic-ui-react';
+import { Box, Head, HeadText, TextLine, Detail, List } from '../SendFlexPlan/EmployeeBenefits/styled';
+import { BoxPlan } from './styled';
 
 class SelectBox extends Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class SelectBox extends Component {
     // handleSubmit: PropTypes.func.isRequired,
     groupName: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    default: PropTypes.number.isRequired,
+    // default: PropTypes.number.isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     numberOfGroup: PropTypes.number.isRequired,
     summaryEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -39,11 +39,11 @@ class SelectBox extends Component {
     // console.log('plan', plan);
     // const plans = plan;
     const Allplan = Allplans.map((plan, index) => {
-      const { confirm } = this.props.summaryEmployee;
+      // const { confirm } = this.props.summaryEmployee;
       const detail = this.getDetailPlan(plan.plan[index]);
       console.log('detail', detail);
       return (<BoxPlan>
-        <div className="row">
+        {/* <div className="row">
           <div className="large-7 columns">
             {plan.benefitPlanName}
             {this.props.default === plan._id
@@ -67,11 +67,11 @@ class SelectBox extends Component {
           </div>
           <div className="large-6 columns">
             <TextBox>
-              {plan.benefitPlan.plan.planId.planName}
+              {detail.benefitPlan.plan.planId.planName}
             </TextBox>
           </div>
         </div>
-        {plan.benefitPlan.isHealth
+        {detail.benefitPlan.isHealth
         ? <div className="row">
           <div className="large-6 columns">
             <DivList>
@@ -89,7 +89,7 @@ class SelectBox extends Component {
         </div>
         : null
         }
-        {plan.benefitPlan.isExpense
+        {detail.benefitPlan.isExpense
         ? <div className="row">
           <div className="large-6 columns">
             <DivList>
@@ -100,7 +100,7 @@ class SelectBox extends Component {
             </DivList>
           </div>
           <div className="large-6 columns">
-            <TextBox>{plan.benefitPlan.expense}
+            <TextBox>{detail.benefitPlan.expense}
               <DivFlex>
                 <Unit>บาท/ปี</Unit>
               </DivFlex>
@@ -108,7 +108,8 @@ class SelectBox extends Component {
           </div>
         </div>
         : null
-        }
+        } */}
+      sdfdf
       </BoxPlan>);
     });
     return Allplan;

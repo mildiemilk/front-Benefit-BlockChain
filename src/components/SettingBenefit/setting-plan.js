@@ -46,7 +46,7 @@ const FieldsetEdit = styled.fieldset`
 `;
 class SettingPlan extends Component {
   static propTypes = {
-    optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    option: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func,
     handleToggle: PropTypes.func.isRequired,
@@ -70,29 +70,30 @@ class SettingPlan extends Component {
     };
   }
   componentDidMount() {
-    this.renderOption();
+    this.renderOption(this.props.option);
   }
   componentDidUpdate() {
-    if (this.state.optionPlan.length === 0) {
-      this.renderOption();
+    if (this.props.option.length === 0) {
+      this.renderOption(this.props.option);
     }
   }
 
-  renderOption = () => {
-    const options = this.props.optionPlan.choosePlan;
-    const optionPlan = [];
-    options.map((option, index) => {
-      optionPlan.push({
+  renderOption = option => {
+    console.log('opre', option);
+    const benefitPlan = [];
+    option.map((option, index) => {
+      benefitPlan.push({
         key: index,
-        text: option.planName,
-        value: option.planName,
+        text: option.plan.planName,
+        value: option.plan._id,
       });
       return option;
     });
-    this.setState({ optionPlan });
+    this.setState({ optionPlan: benefitPlan });
   }
 
   render() {
+    console.log('sendflexplan', this.props.plan);
     return (
       <div>
         <FieldsetEdit disabled={this.props.handleChange === ''}>
@@ -129,7 +130,7 @@ class SettingPlan extends Component {
                 />
               </PlanBox>
 
-              {this.props.optionPlan.isHealth
+              {this.props.isHealth
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/5.png" />
                   <PlanTopic>
@@ -166,7 +167,7 @@ class SettingPlan extends Component {
                 </PlanBox>
                 : null}
 
-              {this.props.optionPlan.isExpense
+              {this.props.isExpense
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/4.png" />
                   <PlanTopic>

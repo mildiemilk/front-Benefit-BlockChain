@@ -5,7 +5,7 @@ import { DetailList, ButtonDelete, TextList } from './styled';
 
 class ListHealth extends Component {
   static propTypes = {
-    HealthList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    healthList: PropTypes.arrayOf(PropTypes.string).isRequired,
     sendDel: PropTypes.func.isRequired,
   }
 
@@ -17,7 +17,7 @@ class ListHealth extends Component {
   render() {
     return (
       <DetailList>
-        {this.props.HealthList.map((item, index) => (
+        {this.props.healthList.map((item, index) => (
           <TextList keys={item + index}>
             {item}
             <ButtonDelete onClick={() => this.props.sendDel(index)}>

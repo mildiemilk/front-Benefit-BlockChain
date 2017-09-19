@@ -9,7 +9,8 @@ class SelectBox extends Component {
     // selectOption: PropTypes.string.isRequired,
     // selectPlan: PropTypes.arrayOf(PropTypes.string).isRequired,
     // columnsLenght: PropTypes.string.isRequired,
-    planName: PropTypes.arrayOf(PropTypes.object).isRequired,
+    plan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     // handleFixedChange: PropTypes.func.isRequired,
     // handleFlexChange: PropTypes.func.isRequired,
     // handleActivePlan: PropTypes.func.isRequired,
@@ -23,21 +24,38 @@ class SelectBox extends Component {
   }
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      plan: [],
+    };
+  }
+  renderDetail = (allplan, templatePlan) => {
+    if (allplan !== undefined && allplan.length >= 1) {
+      console.log('allplan==>.', allplan);
+      console.log('templaeplan==>', templatePlan);
+      const plan =
+      allplan.filter(plan => templatePlan.map(
+        option => option === plan._id).indexOf(true) !== -1);
+      console.log('newoption', plan);
+      return plan;
+    }
+    return allplan;
   }
   renderPlan = plans => {
-    const Allplan = plans.map((plan, index) => (
+    console.log('----plan', plans, 'default', this.props.default);
+    const Allplan = plans.map(plan => (
       <div>
-        <Plan>{plan}</Plan>
-        {this.props.default === index
+        <Plan>{plan.benefitPlanName}</Plan>
+        {this.props.default === plan._id
         ? <ButtonDefault>ค่าเริ่มต้น</ButtonDefault>
-        : null
+        : <div />
         }
       </div>
     ));
     return Allplan;
   }
   render() {
+    console.log('planName- select', this.props.plan);
+    console.log('benefitPlan- select', this.props.benefitPlan)
     return (
       <Box>
         <Head>
@@ -62,7 +80,7 @@ class SelectBox extends Component {
             </div>
           </div>
           <TextLine>แผนของสิทธิประโยชน์ที่เลือกใช้กับกลุ่มนี้</TextLine>
-          {this.renderPlan(this.props.planName)}
+          {this.renderPlan(this.renderDetail(this.props.benefitPlan, this.props.plan))}
         </Detail>
       </Box>
     );

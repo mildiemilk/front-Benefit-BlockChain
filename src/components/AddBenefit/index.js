@@ -20,8 +20,8 @@ class AddBenefit extends Component {
       isSetting: false,
       isHealth: false,
       isExpense: false,
-      HealthList: [],
-      ExpenseList: [],
+      healthList: [],
+      expenseList: [],
       TextExpense: '',
       TextHealth: '',
       Types: '',
@@ -44,8 +44,8 @@ class AddBenefit extends Component {
       this.setState({
         isHealth: optionPlan.isHealth,
         isExpense: optionPlan.isExpense,
-        HealthList: optionPlan.health.HealthList,
-        ExpenseList: optionPlan.expense.ExpenseList,
+        healthList: optionPlan.health.healthList,
+        expenseList: optionPlan.expense.expenseList,
         selectedOptionHealth1: optionPlan.health.selectedOptionHealth1,
         selectedOptionHealth2: optionPlan.health.selectedOptionHealth2,
         selectedOptionHealth3: optionPlan.health.selectedOptionHealth3,
@@ -62,7 +62,7 @@ class AddBenefit extends Component {
     } else {
       this.setState({
         isHealth: true,
-        HealthList: [],
+        healthList: [],
       });
     }
   }
@@ -73,7 +73,7 @@ class AddBenefit extends Component {
     } else {
       this.setState({
         isExpense: true,
-        ExpenseList: [],
+        expenseList: [],
       });
     }
   }
@@ -94,31 +94,31 @@ class AddBenefit extends Component {
 
   addTodoExpense = () => {
     this.setState({
-      ExpenseList: this.state.ExpenseList.concat(this.state.TextExpense),
+      expenseList: this.state.expenseList.concat(this.state.TextExpense),
       TextExpense: '',
     });
   }
 
   removeTodoExpense = e => {
-    const result = this.state.ExpenseList;
+    const result = this.state.expenseList;
     result.splice(e, 1);
     this.setState({
-      ExpenseList: result,
+      expenseList: result,
     });
   }
 
   addTodoHealth = () => {
     this.setState({
-      HealthList: this.state.HealthList.concat(this.state.TextHealth),
+      healthList: this.state.healthList.concat(this.state.TextHealth),
       TextHealth: '',
     });
   }
 
   removeTodoHealth = e => {
-    const result = this.state.HealthList;
+    const result = this.state.healthList;
     result.splice(e, 1);
     this.setState({
-      HealthList: result,
+      healthList: result,
     });
   }
 
@@ -172,10 +172,10 @@ class AddBenefit extends Component {
 
   nextButtonHandleclick = () => {
     const {
+      healthList,
       isHealth,
       isExpense,
-      HealthList,
-      ExpenseList,
+      expenseList,
       selectedOptionHealth1,
       selectedOptionHealth2,
       selectedOptionHealth3,
@@ -183,18 +183,18 @@ class AddBenefit extends Component {
       selectedOptionExpense2,
       selectedOptionExpense3,
     } = this.state;
-    this.props.setTemplatePlan(
+    this.props.setTemplatePlan({
+      healthList,
       isHealth,
+      expenseList,
       isExpense,
-      HealthList,
-      ExpenseList,
       selectedOptionHealth1,
       selectedOptionHealth2,
       selectedOptionHealth3,
       selectedOptionExpense1,
       selectedOptionExpense2,
       selectedOptionExpense3,
-    );
+    });
   }
 
   render() {
@@ -220,8 +220,8 @@ class AddBenefit extends Component {
           />
           : <Detail
             handleSetting={this.handleSetting}
-            HealthList={this.state.HealthList}
-            ExpenseList={this.state.ExpenseList}
+            healthList={this.state.healthList}
+            expenseList={this.state.expenseList}
             isHealth={this.state.isHealth}
             isExpense={this.state.isExpense}
             handleToggleHealth={this.handleToggleHealth}
@@ -242,13 +242,11 @@ class AddBenefit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  planOption: (
+  setTemplatePlan: (
+    healthList,
     isHealth,
+    expenseList,
     isExpense,
-    HealthList,
-    ExpenseList,
-    TextExpense,
-    TextHealth,
     Setting1,
     Setting2,
     Setting3,
@@ -258,12 +256,10 @@ const mapDispatchToProps = dispatch => ({
   ) =>
     dispatch(
       setTemplatePlan(
+        healthList,
         isHealth,
+        expenseList,
         isExpense,
-        HealthList,
-        ExpenseList,
-        TextExpense,
-        TextHealth,
         Setting1,
         Setting2,
         Setting3,

@@ -82,7 +82,7 @@ export function fileEmployee(file) {
   formData.append('file', file);
   return dispatch => {
     const options = {
-      method: 'put',
+      method: 'post',
       url: FILEEMPLOYEE_URI,
       data: formData,
     };

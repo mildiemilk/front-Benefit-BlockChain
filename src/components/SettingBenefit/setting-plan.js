@@ -90,6 +90,7 @@ class SettingPlan extends Component {
         text: option.plan.planName,
         value: option.plan._id,
       });
+      console.log('options', option);
       return option;
     });
     this.setState({ optionPlan: benefitPlan });

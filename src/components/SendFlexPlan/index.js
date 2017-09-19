@@ -56,13 +56,11 @@ class SendFlexPlan extends Component {
   //   this.props.getCompleteStep();
   // }
   componentWillReceiveProps = newProps => {
-    console.log('>>>>>newProps', newProps);
-
     if (newProps.master !== this.props.master && newProps.insurer !== this.props.insurer) {
       const templatePlan = newProps.master.concat(newProps.insurer);
       this.setState({
         templatePlan,
-      }, () => console.log('template-plan', this.state.templatePlan));
+      });
     }
   }
 
@@ -82,19 +80,14 @@ class SendFlexPlan extends Component {
     const { templatePlan } = this.state;
     const planList = benefitPlan;
     if (planList !== undefined && planList.length >= 1) {
-      console.log('---t', templatePlan);
-      console.log('---p', planList);
       const newplan =
       templatePlan.filter(plan => planList.map(
         option => option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
-      console.log('newww', newplan);
       return newplan;
     }
     return '';
   }
   render() {
-    console.log('props', this.props);
-    console.log('state2 tem', this.state.templatePlan)
     const { completeStep } = this.props;
     if (completeStep) {
       return <Redirect to="/congratstep3" />;

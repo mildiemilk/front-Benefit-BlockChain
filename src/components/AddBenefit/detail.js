@@ -116,11 +116,11 @@ class Detail extends Component {
             </Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            {/* <Link to="/settingbenefit"> */}
-            <NextButton onClick={this.props.nextButtonHandleclick}>
-              {' '}ต่อไป{' '}
-            </NextButton>
-            {/* </Link> */}
+            <Link to="/settingbenefit">
+              <NextButton onClick={this.props.nextButtonHandleclick}>
+                {' '}ต่อไป{' '}
+              </NextButton>
+            </Link>
           </div>
           <div className="large-1 columns" />
         </div>

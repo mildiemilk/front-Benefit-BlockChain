@@ -18,6 +18,7 @@ class FormSubmitPlan extends Component {
     handleModalFinish: PropTypes.func,
     // handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     employeeOfPlan: PropTypes.number.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     // pricePerperson: PropTypes.number.isRequired,
@@ -67,7 +68,7 @@ class FormSubmitPlan extends Component {
             </div>
             <div className="formsubmit-1-box">
               <span className="formsubmit-1-l">ราคาต่อคน</span>
-              <span className="formsubmit-1-r">12,000 บาท</span>
+              <span className="formsubmit-1-r">{this.props.price} บาท</span>
             </div>
           </div>
         </div>

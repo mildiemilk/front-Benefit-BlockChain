@@ -47,6 +47,7 @@ const FieldsetEdit = styled.fieldset`
 class SettingPlan extends Component {
   static propTypes = {
     option: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func,
     handleToggle: PropTypes.func.isRequired,
@@ -57,10 +58,12 @@ class SettingPlan extends Component {
     isExpense: PropTypes.bool.isRequired,
     expense: PropTypes.string.isRequired,
     handleSave: PropTypes.func.isRequired,
+    isReadOnly: PropTypes.bool,
   }
 
   static defaultProps = {
     handleChange: '',
+    isReadOnly: false,
   }
 
   constructor() {
@@ -93,12 +96,13 @@ class SettingPlan extends Component {
   }
 
   render() {
-    console.log('sendflexplan', this.props.plan);
+    const { handleChange, handleSubmit, planName, plan, optionPlan,
+      isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
     return (
       <div>
-        <FieldsetEdit disabled={this.props.handleChange === ''}>
+        <FieldsetEdit disabled={handleChange === ''}>
           <Blogs>
-            <form onSubmit={this.props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <PlanName>
                 ชื่อแผนสิทธิประโยชน์
               </PlanName>
@@ -106,9 +110,9 @@ class SettingPlan extends Component {
                 required
                 type="text"
                 name="planName"
-                value={this.props.planName}
+                value={planName}
                 placeholder="แผนสิทธิประโยชน์"
-                onChange={this.props.handleChange}
+                onChange={handleChange}
               />
               <Line />
               <PlanContent>
@@ -121,16 +125,16 @@ class SettingPlan extends Component {
                 </PlanTopic>
                 <Selects
                   required
-                  disabled={this.props.handleChange === ''}
+                  disabled={handleChange === ''}
                   name="plan"
                   options={this.state.optionPlan}
-                  value={this.props.plan}
+                  value={plan}
                   placeholder="เลือกแพลนที่ต้องการ"
-                  onChange={this.props.handleChange}
+                  onChange={handleChange}
                 />
               </PlanBox>
 
-              {this.props.isHealth
+              { optionPlan.isHealth && !isReadOnly
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/5.png" />
                   <PlanTopic>
@@ -140,21 +144,21 @@ class SettingPlan extends Component {
                     <ToggleBox>
                       <Checkbox
                         name="isHealth"
-                        checked={this.props.isHealth}
+                        checked={isHealth}
                         toggle
-                        onClick={this.props.handleToggle}
+                        onClick={handleToggle}
                       />
                     </ToggleBox>
                   </div>
-                  {this.props.isHealth
+                  { isHealth
                     ? <Inputs
                       required
                       type="number"
                       name="health"
-                      value={this.props.health}
+                      value={health}
                       action="บาท/ปี"
                       placeholder="จำนวนเงิน"
-                      onChange={this.props.handleChange}
+                      onChange={handleChange}
                     />
                     : <Inputs
                       type="number"
@@ -167,7 +171,7 @@ class SettingPlan extends Component {
                 </PlanBox>
                 : null}
 
-              {this.props.isExpense
+              { optionPlan.isExpense && !isReadOnly
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/4.png" />
                   <PlanTopic>
@@ -177,21 +181,21 @@ class SettingPlan extends Component {
                     <ToggleBox>
                       <Checkbox
                         name="isExpense"
-                        checked={this.props.isExpense}
+                        checked={isExpense}
                         toggle
-                        onClick={this.props.handleToggle}
+                        onClick={handleToggle}
                       />
                     </ToggleBox>
                   </div>
-                  {this.props.isExpense
+                  { isExpense
                     ? <Inputs
                       required
                       type="text"
                       name="expense"
-                      value={this.props.expense}
+                      value={expense}
                       action="บาท/ปี"
                       placeholder="จำนวนเงิน"
-                      onChange={this.props.handleChange}
+                      onChange={handleChange}
                     />
                     : <Inputs
                       type="number"
@@ -204,7 +208,7 @@ class SettingPlan extends Component {
                 </PlanBox>
                 : null}
 
-              <SaveButton className={this.props.handleSave} type="submit">
+              <SaveButton className={handleSave} type="submit">
                 บันทึก
               </SaveButton>
             </form>

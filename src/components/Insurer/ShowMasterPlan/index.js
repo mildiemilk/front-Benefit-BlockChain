@@ -79,8 +79,9 @@ class ShowMasterPlan extends Component {
 
   // handleOnpenModal = name => this.setState({ [name]: true });
   handleOnpenModal = (name, DetailMP) => {
-    console.log('call handleClick--name', name);
+    console.log('call handleClick--name', DetailMP);
     if (!DetailMP) {
+      console.log('call handle');
       this.setState({
         [name]: true,
       });
@@ -98,13 +99,14 @@ class ShowMasterPlan extends Component {
     }
   }
 
-  handleOnpenModalPlanDetail = (name, DetailMP) => {
-    // console.log('call handleClick', DetailMP);
+  handleOnpenModalPlanDetail = (name, DetailMP, price) => {
+    console.log('call handleClick', DetailMP);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
         isDetail: true,
         DetailMP,
+        price,
         editDetailMP: true,
       });
     } else {
@@ -203,9 +205,9 @@ class ShowMasterPlan extends Component {
       lifeNotExceed: DetailMP.lifeNotExceed,
     })();
   }
-  handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
+  handleChange =(e, { name, value }) => {
+    // const name = e.target.name;
+    // const value = e.target.value;
     console.log('nameindex', name);
     this.setState({ [name]: value });
     const MP = this.state.DetailMP
@@ -334,6 +336,7 @@ class ShowMasterPlan extends Component {
       updatedAt,
       popupQuotationId,
       ipdType,
+      price,
       expiredOldInsurance,
     } = this.state;
     return (
@@ -399,6 +402,7 @@ class ShowMasterPlan extends Component {
           handleSubmitEditPlan={this.handleSubmitEditPlan}
           selectInsurerPlan={selectInsurerPlan}
           editDetailMP={editDetailMP}
+          price={price}
           DetailMP={DetailMP}
           quotationId={this.state.quotationId}
           handleChange={this.handleChange}

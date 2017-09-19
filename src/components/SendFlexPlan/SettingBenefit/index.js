@@ -79,7 +79,9 @@ class SettingBenefit extends Component {
     }
     return '';
   }
+
   render() {
+    const isReadOnly = true;
     console.log('statebe', this.state);
     console.log('props-setting', this.props);
     console.log('optionPlan', this.props.optionPlan, 'template', this.props.templatePlan)
@@ -96,6 +98,7 @@ class SettingBenefit extends Component {
           {this.props.templatePlan.length >= 1
           ? <SettingPlan
             option={this.renderOption(this.props.optionPlan, this.props.templatePlan)}
+            optionPlan={this.props.optionPlan}
             planName={this.state.planName}
             plan={this.state.plan}
             isHealth={this.state.isHealth}
@@ -103,6 +106,7 @@ class SettingBenefit extends Component {
             health={this.state.health}
             expense={this.state.expense}
             handleSave={'none-DisplaySave'}
+            isReadOnly={isReadOnly}
           />
           : <div>fdgfh</div>
           }

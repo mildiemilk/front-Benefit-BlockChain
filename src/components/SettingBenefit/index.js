@@ -35,6 +35,7 @@ class SettingBenefit extends Component {
     masterPlanList: PropTypes.arrayOf(PropTypes.object).isRequired,
     master: PropTypes.arrayOf(PropTypes.object).isRequired,
     insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -164,11 +165,13 @@ class SettingBenefit extends Component {
     }
     this.setState({ planList: updatePlan }, () =>
       this.props.setBenefitPlan(this.state.planList),
+      // console.log('planList', this.state.planList),
     );
   }
 
   handleActivePlan = index => {
     const { planList } = this.state;
+    console.log('plnnnn', planList);
     this.setState({
       activePlan: index,
       planName: planList[index].benefitPlanName,
@@ -190,7 +193,7 @@ class SettingBenefit extends Component {
   }
 
   render() {
-    console.log('state plan', this.state.plan);
+    console.log('state plan', this.props);
     return (
       <div className="SettingBenefit">
         <NavBenefit step={this.state.step} />
@@ -228,6 +231,7 @@ class SettingBenefit extends Component {
                 {!this.state.emptyPlan
                   ? <SettingPlan
                     option={this.renderOption(this.state.optionPlan, this.state.templatePlan)}
+                    optionPlan={this.props.optionPlan}
                     handleChange={this.handleChange}
                     handleToggle={this.handleToggle}
                     handleSubmit={this.handleSubmit}
@@ -286,6 +290,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
+  optionPlan: state.choosePlan,
   masterPlanList: state.choosePlan.choosePlan.master,
   insurerPlanList: state.choosePlan.choosePlan.insurer,
   master: state.choosePlan.insurancePlan.master,

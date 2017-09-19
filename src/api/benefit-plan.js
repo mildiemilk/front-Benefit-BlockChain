@@ -21,8 +21,8 @@ const CHOOSE_PLAN_URI = '/api/company/set-template-plan';
 const SETTEMPLATEBENEFIT_PLAN_URI = '/api/company/set-template-benefit';
 const GETTEMPLATE_PLAN_URI = '/api/company/get-template-plan';
 const GETBENEFIT_PLAN_URI = '/api/company/get-benefit-plan';
-const SETBENEFIT_PLAN_URI = '/api/set-benefit-plan';
-const SETTIMEOUT_PLAN_URI = '/api/set-benefit-timeout';
+const SETBENEFIT_PLAN_URI = '/api/company/set-benefit-plan';
+const SETTIMEOUT_PLAN_URI = '/api/company/set-benefit-plan';
 
 export function choosePlan(plan) {
   return dispatch => {

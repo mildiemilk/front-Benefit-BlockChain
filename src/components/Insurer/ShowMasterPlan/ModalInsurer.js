@@ -25,6 +25,7 @@ class ModalInsurer extends Component {
     // DataCompany: PropTypes.shape({}).isRequired,
     planType: PropTypes.string.isRequired,
     ipdType: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -41,6 +42,7 @@ class ModalInsurer extends Component {
       handleSubmitEditPlan,
       editDetailMP,
       DetailMP,
+      price,
       planType,
     } = this.props;
     return (
@@ -179,6 +181,7 @@ class ModalInsurer extends Component {
           planType={planType}
           ipdType={this.props.ipdType}
           // pricePerPerson={pricePerPerson}
+          price={price}
           handleCloseModal={handleCloseModal}
           handleSubmitEditPlan={handleSubmitEditPlan}
           activePlan={[1, 2, 3]}

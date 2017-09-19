@@ -4,9 +4,7 @@ import { Dropdown, Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {
   TinyText,
-  BrowsButton,
   NewLine,
-  UploadText,
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
 
@@ -15,32 +13,21 @@ class GeneralExpenseTemplate extends Component {
     handleChange: PropTypes.func.isRequired,
     EmNameoption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     date: PropTypes.shape({}).isRequired,
-    handleUploadcliamFile: PropTypes.func.isRequired,
-    ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    // handleUploadcliamFile: PropTypes.func.isRequired,
+    // ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleChangeDate: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     general: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    // handleClickRemoveFile: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  handleShowFileName = () => {
-    const { ClaimFile } = this.props;
-    const showFile = ClaimFile.map((ele, index) => (
-      <span {...this.props} keys={index + 1}>
-        {ele.name}
-      </span>
-    ));
-    // console.log('showfilename: ', showFile);
-    return showFile;
-  }
-
   render() {
     const {
-      ClaimFile,
       general,
       currencyOption,
     } = this.props;
@@ -110,28 +97,6 @@ class GeneralExpenseTemplate extends Component {
             />
           </div>
         </Form>
-        <NewLine />
-        <TinyText>แนบภาพใบเสร็จ (เฉพาะไฟล์ประเภท .pdf .jpg .png)</TinyText>
-        <BrowsButton>
-          <input
-            style={{ display: 'none' }}
-            type="file"
-            accept=".pdf, .jpg, .png"
-            onChange={this.props.handleUploadcliamFile}
-          />
-          อัพโหลดรูปใบเสร็จ
-        </BrowsButton>
-        <NewLine style={{ height: '3px' }} />
-        <UploadText>
-          {
-            ClaimFile.map((ele, index) => (
-              <span className="claim-show-file-name" keys={index + 1}>
-                {ele.name}
-              </span>
-            ))
-          }
-        </UploadText>
-        <NewLine style={{ height: '3px' }} />
       </div>
     );
   }

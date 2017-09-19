@@ -4,9 +4,7 @@ import { Dropdown, Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {
   TinyText,
-  BrowsButton,
   NewLine,
-  UploadText,
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
 
@@ -32,9 +30,9 @@ class HealthTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
     EmNameoption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    date: PropTypes.string.isRequired,
-    handleUploadcliamFile: PropTypes.func.isRequired,
-    ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    date: PropTypes.shape({}).isRequired,
+    // handleUploadcliamFile: PropTypes.func.isRequired,
+    // ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleChangeDate: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -46,7 +44,7 @@ class HealthTemplate extends Component {
   }
 
   render() {
-    const { ClaimFile, currencyOption } = this.props;
+    const { currencyOption } = this.props;
     return (
       <div className="InsuranceTemplate">
         <Dropdown
@@ -113,22 +111,6 @@ class HealthTemplate extends Component {
             />
           </div>
         </Form>
-        <NewLine />
-        <TinyText>แนบภาพใบเสร็จ (เฉพาะไฟล์ประเภท .pdf .jpg .png)</TinyText>
-        <BrowsButton>
-          <input
-            style={{ display: 'none' }}
-            type="file"
-            accept=".pdf, .jpg, .png"
-            onChange={this.props.handleUploadcliamFile}
-          />
-          อัพโหลดรูปใบเสร็จ
-        </BrowsButton>
-        <NewLine style={{ height: '3px' }} />
-        <UploadText>
-          {ClaimFile.name}
-        </UploadText>
-        <NewLine style={{ height: '3px' }} />
       </div>
     );
   }

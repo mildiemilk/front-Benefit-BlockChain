@@ -274,12 +274,14 @@ class IPD extends Component {
                 rbScheduleTransplant={this.props.rbScheduleTransplant}
               />
               : null}
-            <Checkboxs
-              toggle
-              label="Co-Pay"
-              checked={this.props.ipdCoPay}
-              onChange={this.props.handleToggle}
-            />
+            <div>
+              <Checkboxs
+                toggle
+                label="Co-Pay"
+                checked={this.props.ipdCoPay}
+                onClick={this.props.handleToggle}
+              />
+            </div>
             {this.props.ipdCoPay
               ? <CoPay
                 styletabPrice={this.props.styletabPrice}

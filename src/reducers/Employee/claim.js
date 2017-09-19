@@ -18,7 +18,6 @@ const GETCLAIM_STATUS_FAILURE = 'GETCLAIM_STATUS_FAILURE';
  */
 
 export function getClaimStatusSuccess(data) {
-  console.log('action', data);
   return { type: GETCLAIM_STATUS_SUCCESS, data };
 }
 

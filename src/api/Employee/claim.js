@@ -18,7 +18,6 @@ export function getClaimStatus() {
     };
     APIRequest(options, true)
       .then(res => {
-        console.log('getClaimStatus');
         dispatch(getClaimStatusSuccess(res.data));
       })
       .catch(err => {
@@ -30,24 +29,18 @@ export function getClaimStatus() {
 
 export function claim(detail, files, type) {
   const formData = new FormData();
-  formData.append('files', files);
+  files.map((file, index) => (
+    formData.append('files', files[index])
+  ));
+  // formData.append('files', files);
   formData.append('detail', JSON.stringify(detail));
-  console.log(detail);
-  return () => {
-    const options = {
-      method: 'post',
-      url: `${CREATE_CLAIM_URI}/${type}`,
-      data: formData,
-    };
-    console.log('return');
-    APIRequest(options, true)
-    .then(res => {
-      // dispatch(updatePasswordSuccess(res.data));
-      console.log('res: ', res);
-    })
-    .catch(err => {
-      // dispatch(updatePasswordFailure(err.response.data));
-      console.log('err: ', err);
-    });
+  console.log('api claim detail: ', detail);
+  console.log('api claim files: ', files);
+  console.log('api claim type: ', type);
+  const options = {
+    method: 'post',
+    url: `${CREATE_CLAIM_URI}/${type}`,
+    data: formData,
   };
+  return APIRequest(options, true);
 }

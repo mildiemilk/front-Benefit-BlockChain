@@ -75,6 +75,19 @@
   text-align: center;
   color: #4a4a4a;
 }
-.claim-show-file-name {
+.claim-show-file-name-box {
   display: block;
+  margin-bottom: 5px;
+}
+.claim-show-file-name {
+  display: inline-block;
+  width: 80%;
+  text-align: left;
+  padding-left: 5px;
+}
+.claim-icon-remove {
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+  padding-right: 5px;
 }

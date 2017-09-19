@@ -135,7 +135,7 @@ export function setBenefitPlan(benefitPlans) {
     const options = {
       method: 'post',
       url: SETBENEFIT_PLAN_URI,
-      data: { benefitPlans },
+      data: benefitPlans,
     };
 
     APIRequest(options, true)

@@ -53,8 +53,8 @@ class SettingBenefit extends Component {
       optionPlan: [],
     };
     props.getTemplatePlan();
-    props.getBenefitPlan();
     props.getInsurancePlan();
+    props.getBenefitPlan();
   }
 
   componentDidMount() {
@@ -113,6 +113,22 @@ class SettingBenefit extends Component {
     }
     return '';
   }
+
+  getPlan = plan => {
+    const { master } = this.props.optionPlan.choosePlan;
+    const isMaster = master.some(element => element.planId === plan);
+    if (isMaster) {
+      return Object.assign({}, {
+        planId: plan,
+        type: 'MasterPlan',
+      });
+    }
+    return Object.assign({}, {
+      planId: plan,
+      type: 'InsurerPlan',
+    });
+  }
+
   handleAddPlan = () => {
     this.setState({
       activePlan: '',
@@ -146,27 +162,26 @@ class SettingBenefit extends Component {
     e.preventDefault();
     const {
       planName,
-      plan,
       isHealth,
       isExpense,
       health,
       expense,
       activePlan,
-      planList,
     } = this.state;
-    const newPlan = { planName, plan, isHealth, isExpense, health, expense };
-    let updatePlan;
-    if (activePlan === '') {
-      updatePlan = planList.concat(newPlan);
-      this.setState({ activePlan: planList.length });
-    } else {
-      updatePlan = planList;
-      updatePlan[activePlan] = newPlan;
+    const plan = this.getPlan(this.state.plan);
+    const benefitPlan = { plan, isHealth, isExpense, health, expense };
+    let benefitPlanId = null;
+    if (activePlan !== '') {
+      const { benefitPlan } = this.props;
+      benefitPlanId = benefitPlan[activePlan]._id;
     }
-    this.setState({ planList: updatePlan }, () =>
-      this.props.setBenefitPlan(this.state.planList),
-      // console.log('planList', this.state.planList),
-    );
+    const setPlan = {
+      benefitPlanId,
+      planName,
+      benefitPlan,
+    }
+    this.props.setBenefitPlan(setPlan);
+    console.log('submit', setPlan);
   }
 
   handleActivePlan = index => {

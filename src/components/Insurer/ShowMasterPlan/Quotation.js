@@ -59,7 +59,7 @@ class Quotation extends Component {
               onChange={e => this.props.handleChangeInput('masterplan', e)}
             />
           </div>
-          <div className="quotation-mp-price-box">
+          <div className={`quotation-mp-price-box ${this.props.styletabPrice}`}>
             <div
               className="quotation-circle-icon-view"
               onClick={() => this.props.handleOnpenModalPlanDetail('master', plan.planDetail, plan.price, index)}
@@ -82,12 +82,14 @@ class Quotation extends Component {
             <img alt="" className="quotation-icon-plan" src={IconPlan} />
             <span className="quotation-mp-name">{plan.planDetail.planName}</span>
           </div>
-          <div className="quotation-mp-price-box">
+          <div className={`quotation-mp-price-box ${this.props.styletabPrice}`}>
             <input
               className={`quotation-mp-input-price ${this.props.styletabPrice}`}
               type="number"
-              name={`insuere_price${index + 1}`}
-              id={`insuere_price${index + 1}`} placeholder="เสนอราคา" value={plan.price}
+              placeholder="เสนอราคา"
+              name={index}
+              id={`bidding_price_${index}`}
+              value={plan.price}
               onChange={e => this.props.handleChangeInput('insurerplan', e)}
             />
           </div>

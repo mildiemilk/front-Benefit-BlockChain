@@ -14,6 +14,7 @@ class Quotation extends Component {
     insurerplan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleOnpenModalPlanDetail: PropTypes.func.isRequired,
     handleSubmitBidding: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     handleChangeInput: PropTypes.func.isRequired,
     totalPrice: PropTypes.string.isRequired,
     updatedAt: PropTypes.string.isRequired,
@@ -61,7 +62,7 @@ class Quotation extends Component {
           <div className="quotation-mp-price-box">
             <div
               className="quotation-circle-icon-view"
-              onClick={() => this.props.handleOnpenModalPlanDetail('master', plan.planDetail, plan.price)}
+              onClick={() => this.props.handleOnpenModalPlanDetail('master', plan.planDetail, plan.price, index)}
               role="button"
               aria-hidden
             >
@@ -92,6 +93,8 @@ class Quotation extends Component {
           </div>
           <div className="quotation-mp-price-box">
             <div
+              id={plan.planDetail.planId}
+              onClick={this.props.handleDelete}
               className="quotation-circle-icon-view"
               role="button"
               aria-hidden

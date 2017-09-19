@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import { Input, Divider } from 'semantic-ui-react';
 import {
@@ -11,75 +11,25 @@ import {
   DisplaySide,
   DisplayOption,
 } from './styled';
-
+import { getCustomer } from '../../../../api/Insurer/customer';
 
 class AllCustomer extends Component {
   static propTypes = {
-    // getCompanyBiddingList: PropTypes.func.isRequired,
-    // Bidding: PropTypes.shape({}).isRequired,
+    getCustomer: PropTypes.func.isRequired,
+    customer: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       SearchTerm: '',
       Searchstatus: '',
-      customer: [
-        {
-          companyName: 'Benefitable',
-          logo: 'https://image.freepik.com/free-icon/apple-logo_318-40184.jpg',
-          numberOfEmployees: 50,
-          expiredOldInsurance: '2018-01-02T01:49:22.765Z',
-          startNewInsurance: '2018-01-02T01:49:22.765Z',
-          status: 'waiting',
-        },
-        {
-          companyName: 'Moneytable',
-          logo: 'https://dashboard.moneytable.com/assets/images/logos/mt-logo.png',
-          numberOfEmployees: 80,
-          expiredOldInsurance: '2018-01-02T01:49:22.765Z',
-          startNewInsurance: '2018-01-02T01:49:22.765Z',
-          status: 'pending',
-        },
-        {
-          companyName: 'HRtable',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png',
-          numberOfEmployees: 450,
-          expiredOldInsurance: '2018-01-02T01:49:22.765Z',
-          startNewInsurance: '2018-01-02T01:49:22.765Z',
-          status: 'active',
-        },
-        {
-          companyName: 'HRtable2',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png',
-          numberOfEmployees: 450,
-          expiredOldInsurance: '2018-01-02T01:49:22.765Z',
-          startNewInsurance: '2018-01-02T01:49:22.765Z',
-          status: 'active',
-        },
-        {
-          companyName: 'HRtable3',
-          logo: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png',
-          numberOfEmployees: 450,
-          expiredOldInsurance: '2018-01-02T01:49:22.765Z',
-          startNewInsurance: '2018-01-02T01:49:22.765Z',
-          status: 'active',
-        },
-        {
-          companyName: 'Paystaytion',
-          logo: 'https://image.freepik.com/free-vector/abstract-logo-in-flame-shape_1043-44.jpg',
-          numberOfEmployees: 2000,
-          expiredOldInsurance: '2018-01-02T01:49:22.765Z',
-          startNewInsurance: '2018-01-02T01:49:22.765Z',
-          status: 'inactive',
-        },
-      ],
-
+      customer: [],
     };
   }
 
-  // componentDidMount() {
-  //   this.props.getCompanyBiddingList();
-  // }
+  componentDidMount() {
+    this.props.getCustomer();
+  }
 
   handleSearchBoxChange(event) {
     this.setState({ SearchTerm: event.target.value });
@@ -169,6 +119,7 @@ class AllCustomer extends Component {
       border: 'solid 1px  #bfbfbf',
       color: '#bfbfbf',
     };
+    const { customer } = this.props;
     return (
       <div className="ClaimList">
         <div className="row">
@@ -229,29 +180,32 @@ class AllCustomer extends Component {
             </DisplayOption>
             <DisplayOption
               style={
-              (this.state.Searchstatus === 'inactive')
+              (this.state.Searchstatus === 'inActive')
               ? boderBlue
               : boderGray
               }
-              onClick={() => this.handleClickChangeSearchTerm('inactive')}
+              onClick={() => this.handleClickChangeSearchTerm('inActive')}
             >
               สิ้นสุดการคุ้มครอง
             </DisplayOption>
           </div>
         </div>
-        {this.renderElement(this.filterCustomer(this.state.customer))}
+        {customer.length >= 0
+        ? this.renderElement(this.filterCustomer(customer))
+        : null
+        }
       </div>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   Bidding: state.biddingListReducer,
-// });
+const mapStateToProps = state => ({
+  customer: state.customerReducer.customer,
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   getCompanyBiddingList: () => dispatch(getCompanyBiddingList()),
+const mapDispatchToProps = dispatch => ({
+  getCustomer: () => dispatch(getCustomer()),
 
-// });
+});
 
-export default AllCustomer;
+export default connect(mapStateToProps, mapDispatchToProps)(AllCustomer);

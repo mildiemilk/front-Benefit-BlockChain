@@ -20,27 +20,27 @@ export default class Sidebar extends Component {
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-conference" />
-            <Links to="/allcustomer" ><Item.Content verticalAlign="middle">ลูกค้าของคุณ</Item.Content></Links>
+            <Links to="/employeelist" ><Item.Content verticalAlign="middle">ลูกค้าของคุณ</Item.Content></Links>
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-purchase" />
-            <Links to="/employeelist" ><Item.Content verticalAlign="middle">การเสนอราคา</Item.Content></Links>
+            <Links to="/biddinglist" ><Item.Content verticalAlign="middle">การเสนอราคา</Item.Content></Links>
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-overview" />
-            <Links to="/employeelist" ><Item.Content verticalAlign="middle">รายการเคลม</Item.Content></Links>
+            <Links to="/claim" ><Item.Content verticalAlign="middle">รายการเคลม</Item.Content></Links>
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-sell" />
-            <Item.Content verticalAlign="middle">แผนประกันภัย</Item.Content>
+            <Links to="/insurerplan" ><Item.Content verticalAlign="middle">แผนประกันภัย</Item.Content></Links>
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-administrator" />
-            <Item.Content verticalAlign="middle">โปรไฟล์ของคุณ</Item.Content>
+            <Links to="/profile" ><Item.Content verticalAlign="middle">โปรไฟล์ของคุณ</Item.Content></Links>
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-services" />
-            <Item.Content verticalAlign="middle">ตั้งค่า</Item.Content>
+            <Links to="/sitting" ><Item.Content verticalAlign="middle">ตั้งค่า</Item.Content></Links>
           </Item>
         </Item.Group>
       </aside>

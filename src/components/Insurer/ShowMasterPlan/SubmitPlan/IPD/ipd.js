@@ -75,9 +75,9 @@ class IPD extends Component {
   handleRadio = (e, { name, value }) => {
     console.log('name', name);
     console.log('value', value);
-    // this.setState({ ipdType: this.state.DetailMP.ipdType })
-    this.handleResetdata();
+    console.log(this.state);
     this.props.handleChange(e, { name, value });
+    this.handleResetdata();
   }
 
   handleChange = (e, { name, value }) => {
@@ -274,16 +274,18 @@ class IPD extends Component {
                 rbScheduleTransplant={this.props.rbScheduleTransplant}
               />
               : null}
-            <Checkboxs
-              toggle
-              label="Co-Pay"
-              checked={this.props.ipdCoPay}
-              onClick={this.props.handleToggle}
-            />
+            <div>
+              <Checkboxs
+                toggle
+                label="Co-Pay"
+                checked={this.props.ipdCoPay}
+                onClick={this.props.handleToggle}
+              />
+            </div>
             {this.props.ipdCoPay
               ? <CoPay
                 styletabPrice={this.props.styletabPrice}
-                handleChange={this.handleChange}
+                // handleChange={this.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}

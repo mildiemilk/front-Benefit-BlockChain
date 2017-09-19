@@ -10,7 +10,7 @@ import ModalInsurer from './ModalInsurer';
 // import AllPlan from './SubmitPlan/all-plan';
 // import PlanBoxModal from './ModalPlanBox/planbox-modal';
 import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
-import { updateBiddingPrice, editPlanDetail, updateStatus } from '../../../api/Insurer/bidding';
+import { updateBiddingPrice, editPlanDetail, updateStatus, deletePlan } from '../../../api/Insurer/bidding';
 // import {} from ''
 
 class ShowMasterPlan extends Component {
@@ -73,14 +73,16 @@ class ShowMasterPlan extends Component {
       expiredOldInsurance,
       isDetail: false,
       companyId,
+      planType: '',
       plan,
     };
   }
 
   // handleOnpenModal = name => this.setState({ [name]: true });
   handleOnpenModal = (name, DetailMP) => {
-    console.log('call handleClick--name', name);
+    console.log('call handleClick--name', DetailMP);
     if (!DetailMP) {
+      console.log('call handle');
       this.setState({
         [name]: true,
       });
@@ -98,13 +100,16 @@ class ShowMasterPlan extends Component {
     }
   }
 
-  handleOnpenModalPlanDetail = (name, DetailMP) => {
-    // console.log('call handleClick', DetailMP);
+  handleOnpenModalPlanDetail = (name, DetailMP, price, index) => {
+    console.log('call handleClick', index);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
         isDetail: true,
         DetailMP,
+        price,
+        planIndex: index,
+        planType: name,
         editDetailMP: true,
       });
     } else {
@@ -114,7 +119,7 @@ class ShowMasterPlan extends Component {
 
 
   handleCloseModal = nameModal => {
-    console.log('nameModal-xxx--', nameModal)
+    console.log('nameModal-xxsssx--', nameModal)
     if (nameModal === 'modalConfirmCancelJoin') {
       const data = this.props.DataCompany;
       const { companyId,
@@ -133,6 +138,7 @@ class ShowMasterPlan extends Component {
     //   this.setState({ modalCancelJoin: false });
     // }
     this.setState({ [nameModal]: false });
+    console.log('--', this.state);
   }
 
   handleChangeStateQuotation = () => {
@@ -145,7 +151,12 @@ class ShowMasterPlan extends Component {
       quotation: true,
     });
   }
-
+  handleDelete = e => {
+    // const name = e.target.id;
+    console.log('deletePlan', e.target.id);
+    deletePlan([e.target.id])();
+    this.setState({ activePlan: -1 });
+  }
   changePositionPage = () => {
     if (this.state.position === 'relative-box') {
       this.setState({ position: 'fixed-box' });
@@ -202,10 +213,11 @@ class ShowMasterPlan extends Component {
       lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
       lifeNotExceed: DetailMP.lifeNotExceed,
     })();
+    this.handleCloseModal('editDetailMP');
   }
-  handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
+  handleChange =(e, { name, value }) => {
+    // const name = e.target.name;
+    // const value = e.target.value;
     console.log('nameindex', name);
     this.setState({ [name]: value });
     const MP = this.state.DetailMP
@@ -230,6 +242,7 @@ class ShowMasterPlan extends Component {
       data => {
         console.log('data--', parseInt(data.price, 10));
         sum1 = parseInt(data.price, 10);
+        if (isNaN(sum1)) sum1 = 0;
         sum += sum1;
         return {
           planId: data.planDetail._id,
@@ -241,6 +254,7 @@ class ShowMasterPlan extends Component {
       data => {
         console.log('data--', parseInt(data.price, 10));
         sum1 = parseInt(data.price, 10);
+        if (isNaN(sum1)) sum1 = 0;
         sum += sum1;
         return {
           planId: data.planDetail._id,
@@ -251,12 +265,12 @@ class ShowMasterPlan extends Component {
     const data = this.props.DataCompany;
     const { companyId,
           } = data;
-    console.log('sumf--', companyId);
     updateBiddingPrice(companyId, {
       totalPrice: sum,
       plan: { master, insurer },
       quotationId,
     })();
+    this.handleCloseModal('modalCancelJoin');
   }
 
   handleChangeMasterplan = e => {
@@ -285,14 +299,12 @@ class ShowMasterPlan extends Component {
   handleChangeInput = (planType, e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log('name--->', name);
     const plans = this.state[planType];
-    console.log('value--->', this.state[planType][name].price);
     const oldPrice = this.state[planType][name].price;
-    plans[name].price = value;
-    console.log('new value--->', plans[name]);
-    // this.setState({ [planType]: plans }, () => console.log('--->', plans[name].price));
-    this.setState({ [planType]: plans });
+    plans[name].price = parseInt(value, 10);
+    this.setState({
+      [planType]: plans,
+      price: plans[name].price });
     if (oldPrice > plans[name].price) {
       console.log('less');
       this.setState({
@@ -313,7 +325,7 @@ class ShowMasterPlan extends Component {
     // this.props.sendToParent({detail:'prim ba'}, 0);
     // const data = this.props.data;
     // const { plan } = data;
-    // console.log('call handleClick----', this.state.companyId);
+    // console.log('call handleClick----', this.state);
     const {
       joinbid,
       modalCancelJoin,
@@ -334,6 +346,9 @@ class ShowMasterPlan extends Component {
       updatedAt,
       popupQuotationId,
       ipdType,
+      price,
+      planType,
+      planIndex,
       expiredOldInsurance,
     } = this.state;
     return (
@@ -354,6 +369,7 @@ class ShowMasterPlan extends Component {
               insurerplan={insurerplan}
               editplan={editplan}
               totalPrice={totalPrice}
+              handleDelete={this.handleDelete}
               quotationId={quotationId}
               countBidding={countBidding}
               startNewInsurance={startNewInsurance}
@@ -399,6 +415,7 @@ class ShowMasterPlan extends Component {
           handleSubmitEditPlan={this.handleSubmitEditPlan}
           selectInsurerPlan={selectInsurerPlan}
           editDetailMP={editDetailMP}
+          price={price}
           DetailMP={DetailMP}
           quotationId={this.state.quotationId}
           handleChange={this.handleChange}
@@ -406,6 +423,9 @@ class ShowMasterPlan extends Component {
           insurerplan={insurerplan}
           Plan={plan}
           ipdType={ipdType}
+          planType={planType}
+          planIndex={planIndex}
+          handleChangeInput={this.handleChangeInput}
           handleQuotationIdChange={this.handleQuotationIdChange}
           handleOnpenModalPlanDetail={this.handleOnpenModalPlanDetail}
           handleSubmitBidding={this.handleSubmitBidding}

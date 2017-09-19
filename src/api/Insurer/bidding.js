@@ -18,6 +18,7 @@ const DELETE_PLAN_URI = '/api/insurer/delete-plan';
 const EXTEND_PLAN_URL = '/api/insurer/extended-plan';
 const BIDDING_STATUS = '/api/insurer';
 
+
 export function editPlanDetail(planId, plan) {
   console.log('Api=====', plan);
   return () => {
@@ -36,7 +37,22 @@ export function editPlanDetail(planId, plan) {
       });
   };
 }
+export function deletePlan(planId) {
+  return () => {
+    const options = {
+      method: 'delete',
+      url: `${DELETE_PLAN_URI}/${planId}`,
+    };
 
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
 export function updateBiddingPrice(companyId, databiding) {
   console.log('Api=====', databiding);
   return () => {

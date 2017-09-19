@@ -28,16 +28,16 @@ const ModalHeaders = styled(Modal.Header) `
     padding-right: 4%;
   }
 `;
-const ModalChange = styled(Modal.Header) `
-&&&{
-  width: 800px;
-  position: relative;
-  margin: 0;
-  border: none;
-  padding: 32px 40px;
-  background-color: #c0ccda;
-}
-`;
+// const ModalChange = styled(Modal.Header) `
+// &&&{
+//   width: 800px;
+//   position: relative;
+//   margin: 0;
+//   border: none;
+//   padding: 32px 40px;
+//   background-color: #c0ccda;
+// }
+// `;
 const ModalPriceBox = styled(Modal.Header) `
 &&&{
   width: 800px;
@@ -74,6 +74,9 @@ class PlanBoxModal extends Component {
     modalOpen: PropTypes.bool.isRequired,
     planType: PropTypes.string.isRequired,
     ipdType: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    planIndex: PropTypes.number.isRequired,
+    handleChangeInput: PropTypes.func.isRequired,
     // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
     // DataCompany: PropTypes.shape({}).isRequired,
@@ -83,6 +86,7 @@ class PlanBoxModal extends Component {
     this.state = {
       DetailMP: this.props.DetailMP,
       planType: this.props.planType,
+      planIndex: this.props.planIndex,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
       activePlan: -1,
@@ -134,12 +138,14 @@ class PlanBoxModal extends Component {
       lifeNotExceed: null,
       morePrice: null,
       pricePerPerson: null,
+      price: this.props.price,
     };
   }
 
   componentWillReceiveProps(newProps) {
-    const { DetailMP, activePlan } = newProps;
+    const { DetailMP, activePlan, price } = newProps;
     this.setState({
+      price,
       planName: DetailMP.planName,
       employeeOfPlan: DetailMP.employeeOfPlan,
       dentalPerYear: DetailMP.dentalPerYear,
@@ -459,8 +465,9 @@ class PlanBoxModal extends Component {
   }
 
   render() {
-    // console.log('--', this.state);
-    // console.log('-Pro-', this.props.DetailMP);
+    console.log('--sdsdd--', this.props.planIndex);
+    console.log('-Pro-', this.props.DetailMP);
+    // console.log('-Prothis.handleToggleIpdCoPay}-', this.handleToggleIpdCoPay);
     return (
       <Modals
         trigger={<div />}
@@ -476,6 +483,7 @@ class PlanBoxModal extends Component {
             <FormSubmitPlan
               styletabPrice={this.state.morePrice}
               activePlan={this.state.activePlan}
+              price={this.state.price}
               // handleChangeMasterplan={this.props.handleChangeMasterplan}
               planName={this.state.planName}
               employeeOfPlan={this.state.employeeOfPlan}
@@ -558,7 +566,7 @@ class PlanBoxModal extends Component {
               lifeNotExceed={this.state.lifeNotExceed}
             />
           </ModalContentsWithBottom>
-          <ModalChange>
+          {/* <ModalChange>
             <span className="edit-mp-title-change">
               แพลนมีการเปลี่ยนแปลง
             </span>
@@ -569,13 +577,13 @@ class PlanBoxModal extends Component {
             <ul className="edit-mp-detail-change">
               <li>test</li>
             </ul>
-          </ModalChange>
+          </ModalChange> */}
         </form>
         <ModalPriceBox>
           <div className="edit-mp-input-price-box">
             <div className="edit-mp-input-price-box-l">เสนอราคาแพลนนี้</div>
             <div className="edit-mp-input-price-box-r">
-              <input type="number" className="edit-mp-input-price" />
+              <input type="number" name={this.props.planIndex} id="modalPlanPrice" value={this.state.price} className="edit-mp-input-price" onChange={e => this.props.handleChangeInput(`${this.props.planType}plan`, e)} />
               <span className="edit-mp-text-r">&nbsp;/&nbsp;คน</span>
             </div>
             <div className="edit-mp-btn-box">

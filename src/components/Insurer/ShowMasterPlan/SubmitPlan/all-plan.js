@@ -13,7 +13,6 @@ import tooth from '../../../image/icons-8-toot1.jpg';
 import heartRecord from '../../../image/icons-8-like-record.png';
 import heart from '../../../image/icons-8-like1.jpg';
 import heartActive from '../../../image/icons-8-like.jpg';
-import erase from '../../../image/icons-8-erase.png';
 import IPD from './IPD/ipd';
 import Life from './Life/life';
 import OPD from './OPD/opd';
@@ -159,6 +158,16 @@ class AllsetPlan extends Component {
   handleDidUpdate = () => {
     const { isChange, changeToRecord, ipdRecord, opdRecord,
       dentalRecord, lifeRecord, setPlan, verifyState } = this.state;
+      // console.log('isChange--', this.state);
+    // if (isChange && setPlan === 'IPD') {
+    //   this.setState({});
+    // } else if (isChange && setPlan === 'OPD') {
+    //   this.setState({});
+    // } else if (isChange && setPlan === 'Dental') {
+    //   this.setState({});
+    // } else if (isChange && setPlan === 'Life') {
+    //   this.setState({});
+    // }
     if (isChange) {
       if (changeToRecord) {
         if (ipdRecord && setPlan === 'IPD') {
@@ -192,11 +201,13 @@ class AllsetPlan extends Component {
     if (this.props.nextPage && verifyState === false) {
       this.handleOpenModalNextPage();
       this.props.handleNextPage();
+      console('f');
     }
 
     if (this.props.newPlan && verifyState === false) {
       this.handleOpenModal();
       this.props.handleResetPlan();
+      console('3');
     }
   }
 
@@ -240,8 +251,9 @@ class AllsetPlan extends Component {
   }
 
   handleVerifyState = name => {
+    console.log('--verifyState->', name);
     this.setState({
-      verifyState: false,
+      verifyState: true,
       changeToRecord: false,
       isChange: true,
       [name]: false,
@@ -303,6 +315,7 @@ class AllsetPlan extends Component {
 
   handleImageActive = value => {
     if (value === 'IPD') {
+      console.log('ipdRecord--', this.state.ipdRecord);
       if (this.state.ipdRecord) return bedRecord;
       return bedActive;
     }
@@ -311,6 +324,7 @@ class AllsetPlan extends Component {
       return stethoscopeActive;
     }
     if (value === 'Dental') {
+      console.log('dentalRecord--', this.state.dentalRecord);
       if (this.state.dentalRecord) return toothRecord;
       return toothActive;
     }
@@ -355,21 +369,12 @@ class AllsetPlan extends Component {
   }
 
   render() {
-    // {console.log('AllPlan:props', this.props)}
+    console.log('AllPlan:props', this.state)
     return (
       <div>
         <div className="fillBox2">
           <div className="headBox">
             <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
-            <div
-              className="box-in-head-box"
-              onClick={() => this.handleReset()}
-              role="button"
-              aria-hidden
-            >
-              <img src={erase} className="image-erase" alt="erase" />
-              <span className="headLogo">Reset</span>
-            </div>
           </div>
           <div className="row">
             {this.state.setPlan === 'IPD'
@@ -401,6 +406,7 @@ class AllsetPlan extends Component {
                     alt="Menu"
                   />
                   <span className={this.state.textIpd}>IPD</span>
+                  <span className={this.state.point}>.</span>
                 </div>
               </div>}
             {this.state.setPlan === 'OPD'

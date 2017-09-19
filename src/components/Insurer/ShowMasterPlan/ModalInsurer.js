@@ -10,10 +10,11 @@ class ModalInsurer extends Component {
     joinbid: PropTypes.bool.isRequired,
     modalCancelJoin: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
-    // handleSubmitQuotaionId: PropTypes.func.isRequired,
+    // handleDelete: PropTypes.func.isRequired,
     handleQuotationIdChange: PropTypes.func.isRequired,
     handleChangeMasterplan: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
+    handleChangeInput: PropTypes.func.isRequired,
     handleSubmitBidding: PropTypes.func.isRequired,
     handleSubmitEditPlan: PropTypes.func.isRequired,
     selectInsurerPlan: PropTypes.bool.isRequired,
@@ -25,6 +26,8 @@ class ModalInsurer extends Component {
     // DataCompany: PropTypes.shape({}).isRequired,
     planType: PropTypes.string.isRequired,
     ipdType: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    planIndex: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -32,16 +35,18 @@ class ModalInsurer extends Component {
   }
 
   render() {
-    console.log('ipdTypeModal', this.props.ipdType);
+    console.log('ipdTypeModal--ggg--', this.props);
     const {
       joinbid,
       modalCancelJoin,
       handleCloseModal,
       selectInsurerPlan,
       handleSubmitEditPlan,
+      handleSubmitBidding,
+      handleChangeInput,
       editDetailMP,
       DetailMP,
-      planType,
+      price,
     } = this.props;
     return (
       <div>
@@ -80,7 +85,7 @@ class ModalInsurer extends Component {
                 ? <button className="joinbid-modalcancel-btn-confirm" onClick={() => handleCloseModal('modalConfirmCancelJoin')}>
                   ยืนยัน
                 </button>
-                : <button type="submit" form="bidding_price" className="joinbid-modalcancel-btn-confirm" onClick={() => handleCloseModal('modalCancelJoin')}>
+                : <button type="submit" form="bidding_price" className="joinbid-modalcancel-btn-confirm">
                   ยืนยัน
                 </button>
               }
@@ -176,11 +181,14 @@ class ModalInsurer extends Component {
           DetailMP={DetailMP}
           handleChange={this.props.handleChange}
           handleChangeMasterplan={this.props.handleChangeMasterplan}
-          planType={planType}
+          planType={this.props.planType}
+          planIndex={this.props.planIndex}
           ipdType={this.props.ipdType}
-          // pricePerPerson={pricePerPerson}
+          handleChangeInput={handleChangeInput}
+          price={price}
           handleCloseModal={handleCloseModal}
           handleSubmitEditPlan={handleSubmitEditPlan}
+          handleSubmitBidding={handleSubmitBidding}
           activePlan={[1, 2, 3]}
           planList={[1, 2, 3]}
         />

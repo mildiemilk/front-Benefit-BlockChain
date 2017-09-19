@@ -242,6 +242,7 @@ class ShowMasterPlan extends Component {
       data => {
         console.log('data--', parseInt(data.price, 10));
         sum1 = parseInt(data.price, 10);
+        if (isNaN(sum1)) sum1 = 0;
         sum += sum1;
         return {
           planId: data.planDetail._id,

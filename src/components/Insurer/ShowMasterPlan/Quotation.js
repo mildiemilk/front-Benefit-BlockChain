@@ -105,7 +105,7 @@ class Quotation extends Component {
             </div>
             <div
               className="quotation-circle-icon-view"
-              onClick={() => this.props.handleOnpenModalPlanDetail('insurer', plan.planDetail, plan.price)}
+              onClick={() => this.props.handleOnpenModalPlanDetail('insurer', plan.planDetail, plan.price, index)}
               role="button"
               aria-hidden
             >

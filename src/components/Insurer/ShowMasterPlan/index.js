@@ -101,7 +101,7 @@ class ShowMasterPlan extends Component {
   }
 
   handleOnpenModalPlanDetail = (name, DetailMP, price, index) => {
-    console.log('call handleClick', index);
+    console.log('call handleClick--', index);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
@@ -298,6 +298,8 @@ class ShowMasterPlan extends Component {
   }
   handleChangeInput = (planType, e) => {
     const name = e.target.name;
+    console.log('name', this.state);
+    console.log('price', this.state[planType][name].price);
     const value = e.target.value;
     const plans = this.state[planType];
     const oldPrice = this.state[planType][name].price;

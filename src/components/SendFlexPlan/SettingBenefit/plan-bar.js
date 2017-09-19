@@ -23,7 +23,7 @@ class PlanBar extends Component {
           role="button"
           aria-hidden
         >
-          <AddTopic> {element.planName} </AddTopic>
+          <AddTopic> {element.benefitPlanName} </AddTopic>
         </div>
       );
     });
@@ -31,6 +31,7 @@ class PlanBar extends Component {
   }
 
   render() {
+    console.log('planbar', this.props.plan);
     if (this.props.plan) {
       return (
         <div >

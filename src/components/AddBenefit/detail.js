@@ -22,8 +22,8 @@ import ToggleExpense from './toggle-expense';
 class Detail extends Component {
   static propTypes = {
     handleSetting: PropTypes.func.isRequired,
-    HealthList: PropTypes.arrayOf(PropTypes.string).isRequired,
-    ExpenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    healthList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    expenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
     isHealth: PropTypes.bool.isRequired,
     isExpense: PropTypes.bool.isRequired,
     handleToggleHealth: PropTypes.func.isRequired,
@@ -64,11 +64,11 @@ class Detail extends Component {
                     boxInStyle={this.boxInStyle} isHealth={this.props.isHealth}
                     handleToggleHealth={this.props.handleToggleHealth}
                   />
-                  {this.props.isHealth
+                  {this.props.isHealth && this.props.healthList !== []
                     ? <HealthBenefit
                       removeTodoHealth={this.props.removeTodoHealth}
                       addTodoHealth={this.props.addTodoHealth}
-                      HealthList={this.props.HealthList}
+                      healthList={this.props.healthList}
                       TextHealth={this.props.TextHealth}
                       handleTextChangeHealth={
                         this.props.handleTextChangeHealth
@@ -93,9 +93,9 @@ class Detail extends Component {
                     isExpense={this.props.isExpense}
                     handleToggleExpense={this.props.handleToggleExpense}
                   />
-                  {this.props.isExpense
+                  {this.props.isExpense && this.props.expenseList !== []
                     ? <ExpenseBenefit
-                      ExpenseList={this.props.ExpenseList}
+                      expenseList={this.props.expenseList}
                       removeTodoExpense={this.props.removeTodoExpense}
                       addTodoExpense={this.props.addTodoExpense}
                       TextExpense={this.props.TextExpense}
@@ -116,9 +116,11 @@ class Detail extends Component {
             </Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <Link to="/settingbenefit"><NextButton onClick={this.props.nextButtonHandleclick}>
-              {' '}ต่อไป{' '}
-            </NextButton></Link>
+            <Link to="/settingbenefit">
+              <NextButton onClick={this.props.nextButtonHandleclick}>
+                {' '}ต่อไป{' '}
+              </NextButton>
+            </Link>
           </div>
           <div className="large-1 columns" />
         </div>

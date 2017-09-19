@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Message } from 'semantic-ui-react';
 import {
   Detail,
@@ -43,6 +43,7 @@ class ChooseInsurancePlan extends Component {
       OurPlan: [],
       SpecialPlan: [],
       closetap: true,
+      planList: [],
     };
     props.getInsurancePlan();
     props.getTemplatePlan();
@@ -53,26 +54,51 @@ class ChooseInsurancePlan extends Component {
   // }
 
   componentWillReceiveProps(newProps) {
-    console.log('Newprops', newProps);
-    if (newProps.planList !== this.props.planList) {
-      console.log('mm');
-      console.log('choosePlan', newProps.choosePlans);
-      this.setState({
-        OurPlan: this.filterPlan(newProps.planList, newProps.choosePlans),
-        SpecialPlan: this.filterPlan(newProps.insurerPlanList, newProps.choosePlans),
-      });
-    }
-    if (newProps.choosePlans !== this.props.choosePlans) {
+    if (newProps.choosePlans !== this.props.choosePlans ||
+      newProps.planList !== this.props.planList) {
       if (newProps.choosePlans !== undefined) {
-        this.setState({ ChooseInsurance: newProps.choosePlans });
+        let choosePlans = [];
+        if (newProps.choosePlans.length > 0) {
+          choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+        }
+        const Allplan = newProps.planList.concat(newProps.insurerPlanList);
+        // const AllYourPlan = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+        this.setState({
+          ChooseInsurance: this.tranformPlan(choosePlans, Allplan),
+          planList: newProps.planList,
+          // OurPlan: this.filterPlan(newProps.planList, AllYourPlan),
+          // SpecialPlan: this.filterPlan(newProps.insurerPlanList, AllYourPlan),
+        });
       }
+    }
+    if (newProps.planList !== this.props.planList) {
+      const Allplan = newProps.planList.concat(newProps.insurerPlanList);
+      let choosePlans = [];
+      if (newProps.choosePlans.length > 0) {
+        choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
+      }
+      const ChooseInsurance = this.tranformPlan(choosePlans, Allplan);
+      this.setState({
+        OurPlan: this.filterPlan(newProps.planList, ChooseInsurance),
+        SpecialPlan: this.filterPlan(newProps.insurerPlanList, ChooseInsurance),
+      });
     }
   }
 
+  tranformPlan = (choosePlans, Allplan) => {
+    if (choosePlans !== undefined && choosePlans.length >= 1) {
+      const newplan =
+      Allplan.filter(plan => choosePlans.map(
+        choose => choose.planId === plan.plan._id).indexOf(true) !== -1);
+      return newplan;
+    }
+    return [];
+  }
+
   filterPlan = (plans, choosePlan) => {
-    if (choosePlan !== undefined && choosePlan.length > 1) {
+    if (choosePlan !== undefined && choosePlan.length >= 1) {
       const newPlans = plans.filter(plan =>
-        choosePlan.map(choose => choose.planId !== plan.planId).indexOf(false) === -1);
+        choosePlan.map(choose => choose.plan._id !== plan.plan._id).indexOf(false) === -1);
       return newPlans;
     }
     return plans;
@@ -82,22 +108,19 @@ class ChooseInsurancePlan extends Component {
     const file = this.state.OurPlan[index];
     let OurPlans = this.state.OurPlan;
     OurPlans = OurPlans.filter((plan, i) => i !== index);
-    console.log('file', file);
-    console.log('ch', this.state.ChooseInsurance);
     this.setState({
-      ChooseInsurance: this.state.ChooseInsurance.master.concat(file),
+      ChooseInsurance: this.state.ChooseInsurance.concat(file),
       OurPlan: OurPlans,
       ChooseColor: this.state.ChooseColor.concat(1),
-    }, console.log('insure', this.state.ChooseInsurance));
+    });
   }
 
   handleDeleteSpecialPlan = index => {
     const file = this.state.SpecialPlan[index];
     let SpecialPlans = this.state.SpecialPlan;
     SpecialPlans = SpecialPlans.filter((plan, i) => i !== index);
-    SpecialPlans.splice(index, 1);
     this.setState({
-      ChooseInsurance: this.state.ChooseInsurance.insurer.concat(file),
+      ChooseInsurance: this.state.ChooseInsurance.concat(file),
       SpecialPlan: SpecialPlans,
       ChooseColor: this.state.ChooseColor.concat(2),
     });
@@ -129,9 +152,9 @@ class ChooseInsurancePlan extends Component {
     }
   }
 
-  checkColor = plan => {
-    const { planList } = this.props;
-    const isOurPlan = planList.filter(ourPlan => ourPlan.plan._id === plan.plan._id).length !== 0;
+  checkColor = planId => {
+    const { planList } = this.state;
+    const isOurPlan = planList.filter(ourPlan => ourPlan.plan._id === planId).length !== 0;
     if (isOurPlan) {
       return 1;
     }
@@ -140,14 +163,12 @@ class ChooseInsurancePlan extends Component {
 
   RenderInnerRight = () => {
     if (this.state.ChooseInsurance.length >= 1) {
-      console.log('choos', this.state.ChooseInsurance);
       const listItems = this.state.ChooseInsurance.map((number, i) => (
         <PlanTemplate
-          id={number.planName}
           index={i}
           price={number.price}
           plan={number.plan.planName}
-          colorPlan={this.checkColor(number)}
+          colorPlan={this.checkColor(number.plan._id)}
           closetap={this.state.closetap}
           handleDeleteChooseInsurance={this.handleDeleteChooseInsurance}
         />
@@ -274,9 +295,9 @@ class ChooseInsurancePlan extends Component {
                   </InnerHead2>
                   {this.RenderInnerRight()}
                 </InnerRight>
-                {/* <Link to="/addbenefit"> */}
-                <Submit onClick={this.handleNext}>ต่อไป</Submit>
-                {/* </Link> */}
+                <Link to="/addbenefit">
+                  <Submit onClick={this.handleNext}>ต่อไป</Submit>
+                </Link>
               </div>
             </div>
           </Detail>
@@ -294,8 +315,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  planList: state.choosePlan.insurancePlan.plan.master,
-  insurerPlanList: state.choosePlan.insurancePlan.plan.insurer,
+  planList: state.choosePlan.insurancePlan.master,
+  insurerPlanList: state.choosePlan.insurancePlan.insurer,
   choosePlans: state.choosePlan.choosePlan || [],
 });
 

@@ -15,6 +15,7 @@ class SettingBenefit extends Component {
     // getOptionPlan: PropTypes.func.isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    templatePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
     super();
@@ -39,12 +40,12 @@ class SettingBenefit extends Component {
         const index = 0;
         this.setState({
           activePlan: index,
-          planName: planList[index].planName,
-          plan: planList[index].plan,
-          isHealth: planList[index].isHealth,
-          isExpense: planList[index].isExpense,
-          health: planList[index].health,
-          expense: planList[index].expense,
+          planName: planList[index].benefitPlanName,
+          plan: planList[index].benefitPlan.plan.planId._id,
+          isHealth: planList[index].benefitPlan.isHealth,
+          isExpense: planList[index].benefitPlan.isExpense,
+          health: planList[index].benefitPlan.health,
+          expense: planList[index].benefitPlan.expense,
         });
       }
     }
@@ -57,16 +58,33 @@ class SettingBenefit extends Component {
     const { planList } = this.state;
     this.setState({
       activePlan: index,
-      planName: planList[index].planName,
-      plan: planList[index].plan,
-      isHealth: planList[index].isHealth,
-      isExpense: planList[index].isExpense,
-      health: planList[index].health,
-      expense: planList[index].expense,
+      planName: planList[index].benefitPlanName,
+      plan: planList[index].benefitPlan.plan.planId._id,
+      isHealth: planList[index].benefitPlan.isHealth,
+      isExpense: planList[index].benefitPlan.isExpense,
+      health: planList[index].benefitPlan.health,
+      expense: planList[index].benefitPlan.expense,
     });
+  }
+  renderOption = (optionPlan, templatePlan) => {
+    const allplan = optionPlan.choosePlan.insurer.concat(optionPlan.choosePlan.master);
+    if (allplan !== undefined && allplan.length >= 1) {
+      console.log('allplanfilter', allplan);
+      console.log('templateplan==', templatePlan);
+      const newplan =
+      templatePlan.filter(plan => allplan.map(
+        option => option.planId === plan.plan._id).indexOf(true) !== -1);
+      console.log('newoption', newplan);
+      return newplan;
+    }
+    return '';
   }
 
   render() {
+    const isReadOnly = true;
+    console.log('statebe', this.state);
+    console.log('props-setting', this.props);
+    console.log('optionPlan', this.props.optionPlan, 'template', this.props.templatePlan)
     return (
       <div className="row SettingBenefit">
         <div className="large-3 columns">
@@ -77,7 +95,9 @@ class SettingBenefit extends Component {
           />
         </div>
         <div className="large-9 columns">
-          <SettingPlan
+          {this.props.templatePlan.length >= 1
+          ? <SettingPlan
+            option={this.renderOption(this.props.optionPlan, this.props.templatePlan)}
             optionPlan={this.props.optionPlan}
             planName={this.state.planName}
             plan={this.state.plan}
@@ -86,7 +106,11 @@ class SettingBenefit extends Component {
             health={this.state.health}
             expense={this.state.expense}
             handleSave={'none-DisplaySave'}
+            isReadOnly={isReadOnly}
           />
+          : <div>fdgfh</div>
+          }
+          {/* {this.renderOption(this.props.optionPlan, this.props.templatePlan)} */}
         </div>
       </div>
     );

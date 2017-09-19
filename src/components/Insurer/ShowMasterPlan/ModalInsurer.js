@@ -35,7 +35,7 @@ class ModalInsurer extends Component {
   }
 
   render() {
-    console.log('ipdTypeModal--ggg--', this.props);
+    console.log('ipdTypeModal--ggg--', this.props.planIndex);
     const {
       joinbid,
       modalCancelJoin,

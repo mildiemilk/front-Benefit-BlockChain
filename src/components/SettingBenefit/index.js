@@ -19,21 +19,26 @@ import NavBenefit from '../NavBenefit';
 import SettingPlan from './setting-plan';
 import AddPlanBar from './add-planbar';
 import {
-  getOptionPlan,
+  getTemplatePlan,
   getBenefitPlan,
   setBenefitPlan,
+  getInsurancePlan,
 } from '../../api/benefit-plan';
 
 class SettingBenefit extends Component {
   static propTypes = {
     getBenefitPlan: PropTypes.func.isRequired,
-    getOptionPlan: PropTypes.func.isRequired,
+    getInsurancePlan: PropTypes.func.isRequired,
+    getTemplatePlan: PropTypes.func.isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     setBenefitPlan: PropTypes.func.isRequired,
+    masterPlanList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    master: PropTypes.arrayOf(PropTypes.object).isRequired,
+    insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       step: 3,
       activePlan: '',
@@ -45,39 +50,83 @@ class SettingBenefit extends Component {
       health: '',
       expense: '',
       planList: [],
+      optionPlan: [],
     };
+    props.getTemplatePlan();
+    props.getInsurancePlan();
+    props.getBenefitPlan();
   }
 
   componentDidMount() {
-    this.props.getOptionPlan();
-    this.props.getBenefitPlan();
-    // console.log('getOptionPlan', this.props.getOptionPlan);
+    // this.props.getBenefitPlan();
   }
 
   componentWillReceiveProps(newProps) {
-    console.log('getBenefitPlan', newProps);
+    console.log('getState', this.state)
+    console.log('SettingBenefit', this.props, newProps);
+
     if (newProps.benefitPlan.length === 0) {
       this.setState({ emptyPlan: true });
     } else {
       if (this.state.activePlan === '') {
+        console.log('NewProps', newProps);
         const planList = newProps.benefitPlan;
+        console.log('planList', planList);
         const index = 0;
         this.setState({
           activePlan: index,
-          planName: planList[index].planName,
-          plan: planList[index].plan,
-          isHealth: planList[index].isHealth,
-          isExpense: planList[index].isExpense,
-          health: planList[index].health,
-          expense: planList[index].expense,
-        });
+          planName: planList[index].benefitPlanName,
+          plan: planList[index].benefitPlan.plan.planId._id,
+          isHealth: planList[index].benefitPlan.isHealth,
+          isExpense: planList[index].benefitPlan.isExpense,
+          health: planList[index].benefitPlan.health,
+          expense: planList[index].benefitPlan.expense,
+          emptyPlan: false,
+        }, () => console.log('state', this.state));
       }
-      this.setState({ emptyPlan: false });
     }
 
     if (newProps.benefitPlan !== this.props.benefitPlan) {
-      this.setState({ planList: newProps.benefitPlan });
+      this.setState({ planList: newProps.benefitPlan },
+        () => console.log('planList', this.state.planList));
     }
+    if (newProps.masterPlanList !== this.props.masterPlanList) {
+      const optionPlan = newProps.masterPlanList.concat(newProps.insurerPlanList);
+      this.setState({
+        optionPlan,
+      }, () => console.log('option-plan', this.state.optionPlan));
+    }
+    if (newProps.master !== this.props.master && newProps.insurer !== this.props.insurer) {
+      const templatePlan = newProps.master.concat(newProps.insurer);
+      this.setState({
+        templatePlan,
+      }, () => console.log('template-plan', this.state.templatePlan));
+    }
+  }
+  getPlanName = planId => {
+    const { templatePlan } = this.state;
+    if (templatePlan !== undefined && templatePlan.length >= 1) {
+      const result = templatePlan.filter(plan => plan.plan._id === planId);
+      console.log('ttem', templatePlan, 'planID', planId);
+      console.log('result', result);
+      // return result[0].plan.planName;
+    }
+    return '';
+  }
+
+  getPlan = plan => {
+    const { master } = this.props.optionPlan.choosePlan;
+    const isMaster = master.some(element => element.planId === plan);
+    if (isMaster) {
+      return Object.assign({}, {
+        planId: plan,
+        type: 'MasterPlan',
+      });
+    }
+    return Object.assign({}, {
+      planId: plan,
+      type: 'InsurerPlan',
+    });
   }
 
   handleAddPlan = () => {
@@ -113,42 +162,53 @@ class SettingBenefit extends Component {
     e.preventDefault();
     const {
       planName,
-      plan,
       isHealth,
       isExpense,
       health,
       expense,
       activePlan,
-      planList,
     } = this.state;
-    const newPlan = { planName, plan, isHealth, isExpense, health, expense };
-    let updatePlan;
-    if (activePlan === '') {
-      updatePlan = planList.concat(newPlan);
-      this.setState({ activePlan: planList.length });
-    } else {
-      updatePlan = planList;
-      updatePlan[activePlan] = newPlan;
+    const plan = this.getPlan(this.state.plan);
+    const benefitPlan = { plan, isHealth, isExpense, health, expense };
+    let benefitPlanId = null;
+    if (activePlan !== '') {
+      const { benefitPlan } = this.props;
+      benefitPlanId = benefitPlan[activePlan]._id;
     }
-    this.setState({ planList: updatePlan }, () =>
-      this.props.setBenefitPlan(this.state.planList),
-    );
+    const setPlan = {
+      benefitPlanId,
+      planName,
+      benefitPlan,
+    }
+    this.props.setBenefitPlan(setPlan);
+    console.log('submit', setPlan);
   }
 
   handleActivePlan = index => {
     const { planList } = this.state;
+    console.log('plnnnn', planList);
     this.setState({
       activePlan: index,
-      planName: planList[index].planName,
-      plan: planList[index].plan,
-      isHealth: planList[index].isHealth,
-      isExpense: planList[index].isExpense,
-      health: planList[index].health,
-      expense: planList[index].expense,
+      planName: planList[index].benefitPlanName,
+      plan: planList[index].benefitPlan.plan.planId._id,
+      isHealth: planList[index].benefitPlan.isHealth,
+      isExpense: planList[index].benefitPlan.isExpense,
+      health: planList[index].benefitPlan.health,
+      expense: planList[index].benefitPlan.expense,
     });
+  }
+  renderOption = (optionPlan, templatePlan) => {
+    if (optionPlan !== undefined && optionPlan.length >= 1) {
+      const newplan =
+      templatePlan.filter(plan => optionPlan.map(
+        option => option.planId === plan.plan._id).indexOf(true) !== -1);
+      return newplan;
+    }
+    return '';
   }
 
   render() {
+    console.log('state plan', this.props);
     return (
       <div className="SettingBenefit">
         <NavBenefit step={this.state.step} />
@@ -185,6 +245,7 @@ class SettingBenefit extends Component {
               <div className="large-8 columns">
                 {!this.state.emptyPlan
                   ? <SettingPlan
+                    option={this.renderOption(this.state.optionPlan, this.state.templatePlan)}
                     optionPlan={this.props.optionPlan}
                     handleChange={this.handleChange}
                     handleToggle={this.handleToggle}
@@ -237,13 +298,18 @@ class SettingBenefit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getOptionPlan: () => dispatch(getOptionPlan()),
+  getTemplatePlan: () => dispatch(getTemplatePlan()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  getInsurancePlan: () => dispatch(getInsurancePlan()),
   setBenefitPlan: plan => dispatch(setBenefitPlan(plan)),
 });
 
 const mapStateToProps = state => ({
   optionPlan: state.choosePlan,
+  masterPlanList: state.choosePlan.choosePlan.master,
+  insurerPlanList: state.choosePlan.choosePlan.insurer,
+  master: state.choosePlan.insurancePlan.master,
+  insurer: state.choosePlan.insurancePlan.insurer,
   benefitPlan: state.benefitPlan.plan,
 });
 

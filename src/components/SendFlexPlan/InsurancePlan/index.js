@@ -77,7 +77,7 @@ class InsurancePlan extends Component {
         /> */}
         <PlanBoxs
           id={index}
-          plan={element}
+          plan={element.plan}
         />
 
       </ListBox>
@@ -86,6 +86,7 @@ class InsurancePlan extends Component {
   }
 
   render() {
+    console.log('planList', this.props.planList);
     if (this.props.planList) {
       return (
         <div className="row">

@@ -22,7 +22,7 @@ class Dashboard extends Component {
     super();
     this.state = {
       path: [
-        '/simplerequirement',
+        '/submitplan',
         '/bidding',
         '/chooseinsuranceplan',
         '/selectrealtime',

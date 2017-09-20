@@ -19,14 +19,13 @@ import HealthTemplate from './health-template';
 import GeneralExpenseTemplate from './generalexpense-template';
 import Footer from '../footer';
 import '../../../styles/employee-style/claim-insurance.scss';
-import { claimOption } from '../../../api/Employee/plan';
-import { claim } from '../../../api/Employee/claim';
+import { claimOption, claim } from '../../../api/Employee/claim';
 
-const MainStateOption = [
-  { key: 'insurance', text: 'ประกันภัย', value: 'insurance' },
-  { key: 'health', text: 'สุขภาพ', value: 'health' },
-  { key: 'general', text: 'ใช้จ่ายทั่วไป', value: 'general' },
-];
+// const MainStateOption = [
+//   { key: 'insurance', text: 'ประกันภัย', value: 'insurance' },
+//   { key: 'health', text: 'สุขภาพ', value: 'health' },
+//   { key: 'general', text: 'ใช้จ่ายทั่วไป', value: 'general' },
+// ];
 const currencyOption = [
   { key: '1', text: 'บาท', value: 'bath' },
   { key: '2', text: 'USD', value: 'usd' },
@@ -78,13 +77,13 @@ class ClaimInsurance extends Component {
         value: item,
       });
     });
-    // data.healthList.forEach((item, i) => {
-    //   life.push({
-    //     key: i,
-    //     text: item,
-    //     value: item,
-    //   });
-    // });
+    data.insuranceList.forEach((item, i) => {
+      life.push({
+        key: i,
+        text: item,
+        value: item,
+      });
+    });
     data.healthList.forEach((item, i) => {
       health.push({
         key: i,
@@ -144,8 +143,6 @@ class ClaimInsurance extends Component {
     const detail = {};
     const files = this.state.ClaimFile;
     const type = this.state.mainState;
-    // delete detail.ClaimFile;
-    // delete detail.mainState;
     this.setState({ modalMsg: '' });
     if (
       state.date !== ''
@@ -277,7 +274,7 @@ class ClaimInsurance extends Component {
   render() {
     // console.log('>>>', this.state);
     const {
-      // MainStateOption,
+      MainStateOption,
       openModal,
       modalMsg,
       ClaimFile,
@@ -369,9 +366,7 @@ const mapDispatchToProps = dispatch => ({
   claimOption: () => dispatch(claimOption()),
 });
 const mapStateToProps = state => ({
-  data: {
-    ...state.claimOptionReducer,
-  },
+  data: state.claimOptionReducer,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClaimInsurance);

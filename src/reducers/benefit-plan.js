@@ -67,7 +67,6 @@ export function setTemplatePlanFailure(data) {
 }
 
 export function getTemplatePlanSuccess(data) {
-  console.log('getTemplatePlanSuccess', data);
   return { type: GETTEMPLATEPLAN_REQUEST_SUCCESS, data };
 }
 
@@ -107,7 +106,6 @@ export function getInsurancePlanFailure(data) {
  * Reducer
  */
 export function choosePlan(state = defaultPlan, action) {
-  console.log('reducer choosePlan:', action.data);
   switch (action.type) {
     case CHOOSEPLAN_REQUEST_SUCCESS:
       return Object.assign({}, state, { choosePlan: action.data.plan });
@@ -118,7 +116,6 @@ export function choosePlan(state = defaultPlan, action) {
     // case EDITCHOOSEPLAN_REQUEST_FAILURE:
     //   return state;
     case SETEMPLATEPLAN_REQUEST_SUCCESS:
-      console.log('action', action.data);
       return Object.assign({}, state, {
         health: action.data.health,
         isHealth: action.data.isHealth,
@@ -126,11 +123,9 @@ export function choosePlan(state = defaultPlan, action) {
         isExpense: action.data.isExpense,
       });
     case SETEMPLATEPLAN_REQUEST_FAILURE:
-      console.log('set error', action.data);
       return state;
     case GETTEMPLATEPLAN_REQUEST_SUCCESS:
       // const choosePlan = action.data.plan.master.concat(action.data.plan.insurer);
-      console.log('GETTEMPLATEPLAN_REQUEST_SUCCESS', action);
       return Object.assign({}, state, {
         choosePlan: action.data.plan,
         health: action.data.health,

@@ -6,15 +6,17 @@ import Hourglass from '../../image/hourglass.png';
 
 class ClaimStatusBox extends Component {
   static propTypes = {
-    claimdata: PropTypes.shape.isRequired,
+    claimdata: PropTypes.shape({}).isRequired,
     id: PropTypes.number.isRequired,
     handleToggleViewDetail: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
-  renderStatusHead = claimdata => {
+
+  renderStatusHead = () => {
+    const { claimdata } = this.props;
     let listRender;
     const style = {
       paddingLeft: '0px',
@@ -95,29 +97,31 @@ class ClaimStatusBox extends Component {
     }
     return listRender;
   }
-  renderType = claim => {
+
+  renderType = () => {
+    const { claimdata } = this.props;
     let list;
-    if (claim.type === 'insurance') {
+    if (claimdata.type === 'insurance') {
       list = (
         <span>
           <p>ประเภทการเคลม : ประกันภัย </p>
-          <p>เรื่องที่เคลม : {claim.InsuranceType}</p>
+          <p>เรื่องที่เคลม : {claimdata.InsuranceType}</p>
         </span>
       );
     }
-    if (claim.type === 'general') {
+    if (claimdata.type === 'general') {
       list = (
         <span>
           <p>ประเภทการเคลม : ค่าใช้จ่ายทั่วไป </p>
-          <p>เรื่องที่เคลม : {claim.expenseType} </p>
+          <p>เรื่องที่เคลม : {claimdata.expenseType} </p>
         </span>
       );
     }
-    if (claim.type === 'health') {
+    if (claimdata.type === 'health') {
       list = (
         <span>
           <p>ประเภทการเคลม : สุขภาพ </p>
-          <p>เรื่องที่เคลม : {claim.HealthType}</p>
+          <p>เรื่องที่เคลม : {claimdata.HealthType}</p>
         </span>
       );
     }
@@ -125,13 +129,13 @@ class ClaimStatusBox extends Component {
   }
 
   render() {
-    const claimdata = this.props.claimdata;
+    const { claimdata } = this.props;
     return (
       <div className="claim-status">
         <div className="claim-box">
-          {this.renderStatusHead(claimdata)}
+          {this.renderStatusHead()}
           <div className="claim-box-detail">
-            {this.renderType(claimdata)}
+            {this.renderType()}
             <p>วันที่เคลม : {claimdata.date}</p>
             <p>ผู้เคลม : {claimdata.ChooseEmployeeName}</p>
             <span>จำนวนเงิน : {claimdata.AmountMoney} บาท </span>

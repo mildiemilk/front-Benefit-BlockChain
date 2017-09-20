@@ -4,9 +4,19 @@
   box-shadow: none;
   margin: 0px;
   padding: 0px;
+  .react-datepicker {
+    bottom: -5px;
+  }
 }
-.react-datepicker {
-  bottom: -5px;
+.ui.bottom.right.popup.transition.visible.inputdate {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0px;
+  padding: 0px;
+}
+.ui.bottom.popup.transition.visible.inputdate:before {
+  background: #f0f0f0 !important;
 }
 .ui.icon.input.profile-pd-input-date input {
   box-shadow: none;

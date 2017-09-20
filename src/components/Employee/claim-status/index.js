@@ -8,7 +8,7 @@ import { getClaimStatus } from '../../../api/Employee/claim';
 class ClaimStatus extends Component {
   static propTypes = {
     getClaimStatus: PropTypes.func.isRequired,
-    Claimprops: PropTypes.shape({}).isRequired,
+    data: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
@@ -16,87 +16,14 @@ class ClaimStatus extends Component {
       viewDetail: false,
       chooseID: 1,
       claimData: [],
-      // claimData: [
-      //   {
-      //     number: '001',
-      //     status: 'consider',
-      //     type: 'insurance',
-      //     ChooseEmployeeName: 'นายจงขยัน รักเรียน',
-      //     ClaimFile: '',
-      //     InsuranceType: 'IPD',
-      //     date: '01/12/2017',
-      //     Hospital: 'โรงพยาบาลพญาไท',
-      //     AmountMoney: 5780,
-      //     currency: '',
-      //     BankName: 'ทหารไทย',
-      //     AccountNumber: '146784521',
-      //     HealthType: '',
-      //     HealthPlace: '',
-      //     expenseType: '',
-      //   },
-      //   {
-      //     number: '002',
-      //     status: 'approve',
-      //     type: 'health',
-      //     ChooseEmployeeName: 'นายจงเรียน ขยันรักษ์',
-      //     ClaimFile: '',
-      //     InsuranceType: '',
-      //     date: '30/5/2017',
-      //     Hospital: 'ร้านแว่นกรุงไทย',
-      //     AmountMoney: 102000,
-      //     currency: '',
-      //     BankName: 'ไทยพานิชย์',
-      //     AccountNumber: '22779453',
-      //     HealthType: 'แว่น',
-      //     HealthPlace: '',
-      //     expenseType: '',
-      //   },
-      //   {
-      //     number: '003',
-      //     status: 'reject',
-      //     type: 'generalEx',
-      //     ChooseEmployeeName: 'นายจงรักษ์ ขยันเรียน',
-      //     ClaimFile: '',
-      //     InsuranceType: '',
-      //     date: '06/2/2017',
-      //     Hospital: 'starbuck',
-      //     AmountMoney: 58000,
-      //     currency: '',
-      //     BankName: 'กรุงไทย',
-      //     AccountNumber: '992245687',
-      //     HealthType: '',
-      //     HealthPlace: '',
-      //     expenseType: 'ค่ากาแฟ',
-      //   },
-      //   {
-      //     number: '004',
-      //     status: 'reject',
-      //     type: 'insurance',
-      //     ChooseEmployeeName: 'นางคงทน ขยันมาก',
-      //     ClaimFile: '',
-      //     InsuranceType: 'IPD',
-      //     date: '01/12/2017',
-      //     Hospital: 'โรงพยาบาลพญาไท',
-      //     AmountMoney: 5780,
-      //     currency: '',
-      //     BankName: 'SCB',
-      //     AccountNumber: '146784521',
-      //     HealthType: '',
-      //     HealthPlace: '',
-      //     expenseType: '',
-      //   },
-      // ],
     };
     props.getClaimStatus();
   }
 
-  // componentDidMount() {
-  //   this.props.getClaimStatus();
-  // }
   componentWillReceiveProps(nextProps) {
-    const { Claimprops } = nextProps;
+    const { data } = nextProps;
     const claimData = [];
-    Claimprops.forEach(item => {
+    data.claimData.forEach(item => {
       let InsuranceType = '';
       let HealthType = '';
       let expenseType = '';
@@ -182,11 +109,9 @@ class ClaimStatus extends Component {
   }
 
   render() {
-    console.log('>>>render state:', this.state);
     const { claimData } = this.state;
     return (
       <div className="claim-status">
-        {/* {this.props.Claimprops} */}
         {this.checkRenderclaimStatus(claimData)}
       </div>
     );
@@ -194,9 +119,8 @@ class ClaimStatus extends Component {
 }
 
 const mapStateToProps = state => ({
-  Claimprops: state.getClaimStatusReducer,
+  data: state.getClaimStatusReducer,
 });
-
 const mapDispatchToProps = dispatch => ({
   getClaimStatus: () => dispatch(getClaimStatus()),
 

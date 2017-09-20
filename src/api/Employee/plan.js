@@ -6,8 +6,6 @@ import {
   confirmPlanFailure,
   currentPlanSuccess,
   currentPlanFailure,
-  claimOptionSuccess,
-  claimOptionFailure,
 } from '../../reducers/Employee/plan';
 
 const GET_ALL_BENEFIT_URI = '/api/employee/get-all-benefit';
@@ -15,25 +13,6 @@ const CONFIRM_PLAN_URI = '/api/employee/confirm-plan';
 const SELECT_BENEFIT_URL = '/api/employee/select-benefit';
 const NEW_USER_URL = '/api/employee/new-user';
 const CURRENT_PLAN_URL = '/api/employee/current-plan';
-const CLAIM_OPTION_URL = '/api/employee/claim-option';
-
-export function claimOption() {
-  return dispatch => {
-    const options = {
-      method: 'get',
-      url: CLAIM_OPTION_URL,
-    };
-    APIRequest(options, true)
-      .then(res => {
-        // console.log('resapi: ', res);
-        dispatch(claimOptionSuccess(res.data));
-      })
-      .catch(err => {
-        // console.log('errapi: ', err);
-        dispatch(claimOptionFailure(err));
-      });
-  };
-}
 
 export function currentPlan() {
   return dispatch => {

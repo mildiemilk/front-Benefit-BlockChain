@@ -6,6 +6,8 @@ import {
   setLogoSuccess,
   fileEmployeeSuccess,
   fileEmployeeFailure,
+  getFileEmployeeSuccess,
+  getFileEmployeeFailure,
   claimDataSuccess,
   claimDataFailure,
   getClaimDataSuccess,
@@ -27,6 +29,7 @@ import {
 const PROFILE_URI = '/api/company/register-company';
 const LOGO_URI = '/api/company/set-logo';
 const FILEEMPLOYEE_URI = '/api/company/upload-employee';
+const GET_FILEEMPLOYEE_URI = '/api/company/get-file-employee';
 const GETTEMPLATE_URI = '/api/company/get-template';
 const CLAIMDATA_URI = '/api/company/upload-claimdata';
 const GETEMPLOYEEDETAIL_URI = '/api/company/get-employee';
@@ -82,7 +85,7 @@ export function fileEmployee(file) {
   formData.append('file', file);
   return dispatch => {
     const options = {
-      method: 'put',
+      method: 'post',
       url: FILEEMPLOYEE_URI,
       data: formData,
     };
@@ -96,7 +99,22 @@ export function fileEmployee(file) {
       });
   };
 }
+export function getClaimData() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GETCLAIMDATA_URI,
+    };
 
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getClaimDataSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getClaimDataFailure(err.response.data));
+      });
+  };
+}
 export function claimData(files) {
   const formData = new FormData();
   files.map((file, index) => (
@@ -119,19 +137,19 @@ export function claimData(files) {
   };
 }
 
-export function getClaimData() {
+export function getFileEmployee() {
   return dispatch => {
     const options = {
       method: 'get',
-      url: GETCLAIMDATA_URI,
+      url: GET_FILEEMPLOYEE_URI,
     };
 
     APIRequest(options, true)
       .then(res => {
-        dispatch(getClaimDataSuccess(res.data));
+        dispatch(getFileEmployeeSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getClaimDataFailure(err.response.data));
+        dispatch(getFileEmployeeFailure(err.response.data));
       });
   };
 }

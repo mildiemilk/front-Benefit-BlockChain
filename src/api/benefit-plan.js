@@ -22,7 +22,8 @@ const SETTEMPLATEBENEFIT_PLAN_URI = '/api/company/set-template-benefit';
 const GETTEMPLATE_PLAN_URI = '/api/company/get-template-plan';
 const GETBENEFIT_PLAN_URI = '/api/company/get-benefit-plan';
 const SETBENEFIT_PLAN_URI = '/api/company/set-benefit-plan';
-const SETTIMEOUT_PLAN_URI = '/api/company/set-benefit-plan';
+const SETTIMEOUT_PLAN_URI = '/api/company/set-timeout';
+const DELETE_PLAN_URI = '/api/company/delete-benefit-plan';
 
 export function choosePlan(plan) {
   return dispatch => {
@@ -147,10 +148,27 @@ export function setBenefitPlan(benefitPlans) {
       });
   };
 }
+export function deletePlan(benefitPlanId) {
+  return () => {
+    const options = {
+      method: 'delete',
+      url: DELETE_PLAN_URI,
+      data: { benefitPlanId },
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
 export function setTimeout(timeout) {
   return dispatch => {
     const options = {
-      method: 'post',
+      method: 'put',
       url: SETTIMEOUT_PLAN_URI,
       data: { timeout },
     };

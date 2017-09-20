@@ -21,7 +21,7 @@ import {
   InsurerDiv,
   Edit,
 } from './styled';
-import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
+import { setCompleteStep, getCompleteStep, getClaimData } from '../../api/profile-company';
 import UploadFile from './upload-file';
 import ModalConfirmPassword from '../ModalConfirmPassword';
 
@@ -34,6 +34,8 @@ class Sendrequest extends Component {
     data: PropTypes.shape.isRequired,
     completeStep: PropTypes.bool.isRequired,
     getCompleteStep: PropTypes.func.isRequired,
+    getClaimData: PropTypes.func.isRequired,
+    files: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -47,6 +49,7 @@ class Sendrequest extends Component {
     // this.props.getSimpleReq();
     this.props.getTimeout();
     this.props.getCompleteStep();
+    this.props.getClaimData();
   }
   changePositionPage = () => {
     if (this.state.position === 'relative-box') {
@@ -107,7 +110,7 @@ class Sendrequest extends Component {
               </BoxIndiv>
               <TopicHead>อัพโหลดไฟล์</TopicHead>
               <BoxIndiv>
-                <UploadFile />
+                <UploadFile files={this.props.files} />
               </BoxIndiv>
             </div>
           </div>
@@ -133,10 +136,12 @@ const mapDispatchToProps = dispatch => ({
   setCompleteStep: (passwordToConfirm, step) =>
   dispatch(setCompleteStep(passwordToConfirm, step)),
   getCompleteStep: () => dispatch(getCompleteStep()),
+  getClaimData: () => dispatch(getClaimData()),
 });
 const mapStateToProps = state => ({
   timeout: state.setTimeOut.timeout,
   // simpleReq: state.fillsimpleReducer,
+  files: state.profile.claimData,
   data: state.profile,
   completeStep: state.profile.completeStep[0],
 });

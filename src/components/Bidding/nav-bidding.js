@@ -12,6 +12,7 @@ import {
   TextNav,
   FontAucTime,
   FontNumAucTime,
+  FontTime,
 } from './styled';
 import building from '../../../assets/bidding/icons-8-city.png';
 import time from '../../../assets/bidding/icons-8-time.png';
@@ -21,6 +22,7 @@ class Bidding extends Component {
   static propTypes = {
     num: PropTypes.number.isRequired,
     timeout: PropTypes.string.isRequired,
+    notiTimeout: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -28,7 +30,6 @@ class Bidding extends Component {
   }
 
   render() {
-    console.log('countdown', this.props.timeout.timeout);
     return (
       <div className="NavBid">
         <div className="row">
@@ -61,9 +62,11 @@ class Bidding extends Component {
               <Pic><img src={time} alt="time" /></Pic>
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
-                <FontNumAucTime>
-                  <CountDowns date={this.props.timeout.timeout} />
-                </FontNumAucTime>
+                <FontTime>
+                  <CountDowns
+                    date={this.props.timeout.timeout} notiTimeout={this.props.notiTimeout}
+                  />
+                </FontTime>
               </TextNav>
             </Nav>
           </div>

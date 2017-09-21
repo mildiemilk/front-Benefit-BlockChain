@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Modal } from 'semantic-ui-react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Button } from '../../StyleComponent';
 import { ListDetail } from '../ExtendClaim/styled';
+import { companyClaim } from '../../../api/profile-company';
 import cancelIcon from '../../../../assets/ClaimEmployee/cancelIcon.png';
 // import Add from '../../../../assets/EmployeeList/icons-8-checked.png';
 
@@ -41,16 +43,32 @@ const Text = styled.div`
 `;
 
 class ModalReject extends Component {
+  static propTypes = {
+    claimId: PropTypes.string.isRequired,
+  }
   constructor() {
     super();
     this.state = {
       modalOpen: false,
+      reason: '',
     };
   }
   handleModal = () =>
   this.setState({
     modalOpen: !this.state.modalOpen,
   })
+  handleChange = e => {
+    this.setState({
+      reason: e.target.value,
+    });
+  }
+  handleReject = () => {
+    const { claimId } = this.props;
+    const { reason } = this.state;
+    companyClaim('reject', claimId, reason)
+    .then(() => this.handleModal());
+  }
+
   render() {
     return (
       <Modals
@@ -66,13 +84,13 @@ class ModalReject extends Component {
           <ListDetail>
             ระบบจะทำการส่ง Email เพื่อแจ้งเตือนผลการพิจารณาแก่พิจารณาโดยอัตโนมัติ
           </ListDetail>
-          <Inputs placeholder="เหตุผลที่ไม่อนุมัติการเคลม" />
+          <Inputs value={this.state.reason} onChange={this.handleChange} placeholder="เหตุผลที่ไม่อนุมัติการเคลม" />
           <div className="row">
             <div className="large-6 columns">
               <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
             </div>
             <div className="large-6 columns">
-              <Button>ยืนยัน</Button>
+              <Button onClick={this.handleReject}>ยืนยัน</Button>
             </div>
           </div>
         </ModalContents>

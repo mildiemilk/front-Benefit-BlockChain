@@ -12,18 +12,18 @@ import Zoomglass from '../../image/icons-8-zoom-in.png';
 
 class ClaimStatusDetail extends Component {
   static propTypes = {
-    claimdata: PropTypes.shape.isRequired,
+    claimdata: PropTypes.shape({}).isRequired,
     id: PropTypes.number.isRequired,
     handleToggleViewDetail: PropTypes.func.isRequired,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   renderHeadpic = () => {
-    if (this.props.claimdata.status === 'consider') {
+    const { claimdata } = this.props;
+    if (claimdata.status === 'pending') {
       return (
         <img
           className="Headpic"
@@ -32,7 +32,7 @@ class ClaimStatusDetail extends Component {
         />
       );
     }
-    if (this.props.claimdata.status === 'approve') {
+    if (claimdata.status === 'approve') {
       return (
         <img
           className="Headpic"
@@ -51,7 +51,8 @@ class ClaimStatusDetail extends Component {
   }
 
   renderHeadStatus = () => {
-    if (this.props.claimdata.status === 'consider') {
+    const { claimdata } = this.props;
+    if (claimdata.status === 'pending') {
       return (
         <div>
           <img
@@ -63,7 +64,7 @@ class ClaimStatusDetail extends Component {
         </div>
       );
     }
-    if (this.props.claimdata.status === 'approve') {
+    if (claimdata.status === 'approve') {
       return (
         <div>
           <Icon
@@ -88,38 +89,39 @@ class ClaimStatusDetail extends Component {
     );
   }
 
-
-  renderType = claim => {
+  renderType = () => {
+    const { claimdata } = this.props;
     let list;
-    if (claim.type === 'insurance') {
+    if (claimdata.type === 'insurance') {
       list = (
         <span className="Detail">
           <span className="Detail">ประเภทการเคลม : ประกันภัย </span>
-          <span className="Detail">เรื่องที่เคลม : {claim.InsuranceType}</span>
+          <span className="Detail">เรื่องที่เคลม : {claimdata.InsuranceType}</span>
         </span>
       );
     }
-    if (claim.type === 'generalEx') {
+    if (claimdata.type === 'general') {
       list = (
         <span className="Detail">
           <span className="Detail">ประเภทการเคลม : ค่าใช้จ่ายทั่วไป </span>
-          <span className="Detail">เรื่องที่เคลม :{claim.expenseType} </span>
+          <span className="Detail">เรื่องที่เคลม : {claimdata.expenseType} </span>
         </span>
       );
     }
-    if (claim.type === 'health') {
+    if (claimdata.type === 'health') {
       list = (
         <span className="Detail">
           <span className="Detail">ประเภทการเคลม : สุขภาพ </span>
-          <span className="Detail">เรื่องที่เคลม : {claim.HealthType}</span>
+          <span className="Detail">เรื่องที่เคลม : {claimdata.HealthType}</span>
         </span>
       );
     }
     return list;
   }
 
-  renderRejectReason = claim => {
-    if (claim.status === 'reject') {
+  renderRejectReason = () => {
+    const { claimdata } = this.props;
+    if (claimdata.status === 'reject') {
       return (
         <div>
           <div className="BodyDiv margin">
@@ -130,21 +132,23 @@ class ClaimStatusDetail extends Component {
               <li>Milk48</li>
             </ul>
           </div>
-          {this.renderNewclaim(claim)}
+          {this.renderNewclaim()}
         </div>
       );
     }
     return '';
   }
-  renderNewclaim = claim => {
-    if (claim.type === 'insurance') {
+
+  renderNewclaim = () => {
+    const { claimdata } = this.props;
+    if (claimdata.type === 'insurance') {
       return (
         <div>
           <div className="BodyDiv margin">
             <h className="HeadReason black">เคลมอีกครั้ง</h>
           </div>
           <NewClaim
-            oldClaimData={this.props.claimdata}
+            oldClaimData={claimdata}
           />
         </div>
       );
@@ -153,14 +157,14 @@ class ClaimStatusDetail extends Component {
   }
 
   render() {
-    const claim = this.props.claimdata;
+    const { claimdata, id } = this.props;
     return (
       <div className="ClaimStatusDetail">
         <div className="MarginDiv">
           <div className="row">
             <div className="small-10 small-centered columns">
               <p className="ClaimNumber">
-                {' '}สถานะการเคลม &gt; เลขที่ {claim.number}{' '}
+                {' '}สถานะการเคลม &gt; เลขที่ {claimdata.number}{' '}
               </p>
             </div>
           </div>
@@ -173,13 +177,27 @@ class ClaimStatusDetail extends Component {
                 </div>
 
                 <div className="DivDetail">
-                  {this.renderType(claim)}
-                  <span className="Detail"> วันที่เคลม : {claim.date} </span>
-                  <span className="Detail"> สถานที่ : {claim.Hospital} </span>
-                  <span className="Detail"> ผู้เคลม : {claim.ChooseEmployeeName} </span>
-                  <span className="Detail"> จำนวนเงิน : {claim.AmountMoney} บาท </span>
-                  <span className="Detail"> ธนาคาร : {claim.BankName} </span>
-                  <span className="Detail"> เลขที่บัญชี : {claim.AccountNumber} </span>
+                  {this.renderType()}
+                  <span className="Detail"> วันที่เคลม : {claimdata.date} </span>
+                  <span className="Detail">
+                    สถานที่ : {
+                      claimdata.type === 'insurance'
+                      ? claimdata.Hospital
+                      : claimdata.HealthPlace
+                    }
+                  </span>
+                  <span className="Detail"> ผู้เคลม : {claimdata.ChooseEmployeeName} </span>
+                  <span className="Detail"> จำนวนเงิน : {claimdata.AmountMoney} บาท </span>
+                  {
+                    claimdata.type === 'insurance'
+                    ? <span className="Detail"> ธนาคาร : {claimdata.BankName} </span>
+                    : <div />
+                  }
+                  {
+                    claimdata.type === 'insurance'
+                    ? <span className="Detail"> เลขที่บัญชี : {claimdata.AccountNumber} </span>
+                    : <div />
+                  }
                 </div>
                 <div className="receiptDiv">
                   <Modal
@@ -224,14 +242,14 @@ class ClaimStatusDetail extends Component {
               </div>
             </div>
           </div>
-          {this.renderRejectReason(claim)}
+          {this.renderRejectReason()}
           <div className="DivBack">
             <u
               className="BackButton"
               role="button"
               aria-hidden
               onClick={() =>
-              this.props.handleToggleViewDetail(this.props.id)}
+              this.props.handleToggleViewDetail(id)}
             >
               &lt; ย้อนกลับ
             </u>
@@ -241,7 +259,5 @@ class ClaimStatusDetail extends Component {
     );
   }
 }
-
-ClaimStatusDetail.propTypes = {};
 
 export default ClaimStatusDetail;

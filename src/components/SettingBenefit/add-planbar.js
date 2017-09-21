@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Icon, Popup, List } from 'semantic-ui-react';
 import { AddTopic } from './styled';
@@ -61,7 +60,7 @@ class AddPlanBar extends Component {
             position="bottom center"
           />
 
-          <AddTopic> {element.planName} </AddTopic>
+          <AddTopic> {element.benefitPlanName} </AddTopic>
         </div>
       );
     });
@@ -69,16 +68,15 @@ class AddPlanBar extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.renderList(this.props.plan)}
-      </div>
-    );
+    if (this.props.plan.length >= 1) {
+      return (
+        <div>
+          {this.renderList(this.props.plan)}
+        </div>
+      );
+    }
+    return <div />;
   }
 }
 
-const mapStateToProps = state => ({
-  planList: state.plan.planList,
-});
-
-export default connect(mapStateToProps)(AddPlanBar);
+export default AddPlanBar;

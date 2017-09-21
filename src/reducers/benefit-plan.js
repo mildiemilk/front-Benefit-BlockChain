@@ -3,12 +3,10 @@
  */
 const defaultPlan = {
   insurancePlan: {
-    plan: {
-      master: [],
-      insurer: [],
-    },
+    master: [],
+    insurer: [],
   },
-  choosePlan: [],
+  choosePlan: {},
   health: {},
   isHealth: false,
   expense: {},
@@ -138,7 +136,7 @@ export function choosePlan(state = defaultPlan, action) {
     case GETTEMPLATEPLAN_REQUEST_FAILURE:
       return state;
     case GETINSURANCEPLAN_REQUEST_SUCCESS:
-      return Object.assign({}, state, { insurancePlan: action.data });
+      return Object.assign({}, state, { insurancePlan: action.data.plan });
     case GETINSURANCEPLAN_REQUEST_FAILURE:
       return state;
     default:

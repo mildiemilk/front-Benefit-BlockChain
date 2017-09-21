@@ -11,3 +11,10 @@ export const Status = styled.div`
   color: white;
   background-color: ${props => props.color};
 `;
+export const StatusTag = styled.div`
+  border-radius: 6px;
+  color: white;
+  background-color: ${props => props.color};
+  width: 80%;
+  text-align: center;
+`;

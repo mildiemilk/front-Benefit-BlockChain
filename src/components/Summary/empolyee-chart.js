@@ -1,46 +1,75 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { RadialChart } from 'react-vis';
+import PropTypes from 'prop-types';
 import '../../styles/chart-box.scss';
 
 const graphData = [];
-const myPlan = [
-  { group: 'A', number: 10 },
-  { group: 'B', number: 20 },
-  { group: 'C', number: 5 },
-  { group: 'D', number: 20 },
-  { group: 'E', number: 30 },
-];
-const graphColor = ['#FF991F', '#DA70BF', '#125C77', '#00441b', '#c7e9c0'];
+// const myPlan = [
+//   { group: 'A', number: 10 },
+//   { group: 'B', number: 20 },
+//   { group: 'C', number: 5 },
+//   { group: 'D', number: 20 },
+//   { group: 'E', number: 30 },
+// ];
+const graphColor = ['#458cdc', '#39b7af', '#45a1d9', '#7ab7c6'];
 
 class Empolyeechart extends Component {
+  static propTypes = {
+    summaryGroup: PropTypes.shape({}).isRequired,
+  }
   constructor() {
     super();
     this.state = {};
   }
-
-  renderList = list => {
-    const lists = list.map((element, index) => {
-      graphData.push({
-        angle: element.number,
-        style: { stroke: graphColor[index], fill: graphColor[index] },
+  renderGroup = Group => {
+    const allGroup = Group.groups;
+    console.log('aaa->', allGroup);
+    if (allGroup !== undefined && allGroup.length >= 1) {
+      const companyGroup = [];
+      allGroup.map(element => {
+        companyGroup.push({
+          group: element.groupName,
+          number: element.count,
+        });
+        console.log('companyGroup', companyGroup);
+        return companyGroup;
       });
-      return (
-        <div className="rv-discrete-color-legend-item vertical">
-          <span
-            className="rv-discrete-color-legend-item__color"
-            style={{ background: graphColor[index], height: '3.5px' }}
-          />
-          <span className="rv-discrete-color-legend-item__title">
-            กลุ่ม {element.group} {element.number} คน
-          </span>
-        </div>
-      );
-    });
-    return lists;
+      return companyGroup;
+    }
+    return '';
+  }
+  renderList = list => {
+    if (list.length >= 1) {
+      // const graphData = [];
+      // console.log('graph11', graphData.length);
+      // console.log('graph12', graphData)
+      const lists = list.map((element, index) => {
+        console.log('element', element);
+        graphData.push({
+          angle: element.number,
+          style: { stroke: graphColor[index], fill: graphColor[index] },
+        });
+        console.log('graph', graphData);
+        return (
+          <div className="rv-discrete-color-legend-item vertical">
+            <span
+              className="rv-discrete-color-legend-item__color"
+              style={{ background: graphColor[index], height: '3.5px' }}
+            />
+            <span className="rv-discrete-color-legend-item__title">
+              กลุ่ม {element.group} {element.number} คน
+            </span>
+          </div>
+        );
+      });
+      return lists;
+    }
+    return '';
   }
 
   render() {
+    console.log('props--employee', this.props);
+    const { summaryGroup } = this.props;
     return (
       <div>
         <div className="chart-main-box">
@@ -58,7 +87,7 @@ class Empolyeechart extends Component {
                     marginTop: '50px',
                   }}
                 >
-                  <p className="chart-radial-sum">129</p>
+                  <p className="chart-radial-sum">{summaryGroup.total}</p>
                   <p className="chart-radial-text">คน</p>
                 </div>
                 <RadialChart
@@ -78,7 +107,7 @@ class Empolyeechart extends Component {
                   className="rv-discrete-color-legend vertical "
                   style={{ width: '300px' }}
                 >
-                  {this.renderList(myPlan)}
+                  {this.renderList(this.renderGroup(summaryGroup))}
                 </div>
               </div>
             </div>
@@ -89,4 +118,4 @@ class Empolyeechart extends Component {
   }
 }
 
-export default connect(null, null)(Empolyeechart);
+export default Empolyeechart;

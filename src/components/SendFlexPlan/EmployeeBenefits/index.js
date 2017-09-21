@@ -12,6 +12,7 @@ class EmployeeBenefits extends Component {
     getGroupBenefit: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
     groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -66,27 +67,33 @@ class EmployeeBenefits extends Component {
     }
   }
   render() {
+    console.log('======>> state', this.state);
+    console.log('====>> props', this.props);
     return (
       <div className="row">
         <div className="large-3 columns">
           <DivHeight>
-            <MenuTab
+            {this.props.groupBenefit.length >= 1
+            ? <MenuTab
               groupName={this.props.groupBenefit}
               handleActiveGroup={this.handleActiveGroup}
               activeGroup={this.state.activeGroup}
             />
+            : <div>dgfdfg</div>
+            }
           </DivHeight>
         </div>
         <div className="large-9 columns">
-          {this.props.groupBenefit.length !== 0
+          {this.props.groupBenefit.length !== 0 && this.props.benefitPlan.length !== 0
           ? <SelectBox
-            groupName={this.props.groupBenefit[this.state.activeGroup].name}
-            planName={this.props.groupBenefit[this.state.activeGroup].plan}
-            numberOfGroup={this.props.groupBenefit[this.state.activeGroup].numberOfGroup}
+            groupName={this.props.groupBenefit[this.state.activeGroup].groupName}
+            plan={this.props.groupBenefit[this.state.activeGroup].benefitPlan}
+            benefitPlan={this.props.benefitPlan}
+            numberOfGroup={this.props.groupBenefit[this.state.activeGroup].amount}
             type={this.props.groupBenefit[this.state.activeGroup].type}
-            default={this.props.groupBenefit[this.state.activeGroup].default}
+            default={this.props.groupBenefit[this.state.activeGroup].defaultPlan}
           />
-          : null
+          : <div>saddd</div>
           }
         </div>
       </div>

@@ -19,10 +19,12 @@ import {
   getAllBenefitReducer,
   confirmPlanReducer,
   currentPlanReducer,
-  claimOptionReducer,
 } from './Employee/plan';
-import { getClaimStatusReducer } from './Employee/claim';
-import { claimReducer } from './Insurer/claim';
+import {
+  getClaimStatusReducer,
+  getClaimHistoryReducer,
+  claimOptionReducer,
+} from './Employee/claim';
 import { biddingInsurerReducer } from './Insurer/bidding';
 import { customerReducer } from './Insurer/customer';
 
@@ -52,7 +54,7 @@ const rootReducer = combineReducers({
   claimOptionReducer,
   getClaimStatusReducer,
   customerReducer,
-  claimReducer,
+  getClaimHistoryReducer,
 });
 
 export default rootReducer;

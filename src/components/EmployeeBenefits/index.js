@@ -203,6 +203,7 @@ class employeeBenefits extends Component {
   }
 
   render() {
+    console.log('employeename', this.props);
     return (
       <div>
         <NavBenefit step={this.state.step} />
@@ -227,7 +228,7 @@ class employeeBenefits extends Component {
                       ? <SelectBox
                         planName={this.props.benefitPlan}
                         plan={this.state.plan}
-                        groupName={this.props.groupBenefit[this.state.activeGroup].name}
+                        groupName={this.props.groupBenefit[this.state.activeGroup].groupName}
                         selectPlan={this.state.selectPlan}
                         selectOption={this.state.selectOption}
                         columnsLenght={this.state.columnsLenght}

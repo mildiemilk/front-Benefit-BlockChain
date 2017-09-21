@@ -5,7 +5,7 @@ import { DetailList, ButtonDelete, TextList } from './styled';
 
 class ListExpense extends Component {
   static propTypes = {
-    ExpenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    expenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
     sendDel: PropTypes.func.isRequired,
   }
 
@@ -17,7 +17,7 @@ class ListExpense extends Component {
   render() {
     return (
       <DetailList>
-        {this.props.ExpenseList.map((item, index) => (
+        {this.props.expenseList.map((item, index) => (
           <TextList>
             {item}
             <ButtonDelete onClick={() => this.props.sendDel(index)}>

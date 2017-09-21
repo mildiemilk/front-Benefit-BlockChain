@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
 import NavBenefit from '../NavBenefit';
-import { Detail, Head, Inner, BackButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit } from './styled';
+import { Detail, Head, Inner, BackButton, List, Line, Imgs, DivHealth, DivImage, DivBenefit, Edit, TextUpload, DetailUpload, DivDownload } from './styled';
 import Timeout from '../ChooseInsurer/timeout';
-import { setTimeout } from '../../api/benefit-plan';
-import { getOptionPlan, getBenefitPlan } from '../../api/benefit-plan';
-import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
+import { setTimeout, getInsurancePlan, getBenefitPlan, getTemplatePlan } from '../../api/benefit-plan';
+import { setCompleteStep, getCompleteStep, getFileEmployee } from '../../api/profile-company';
 import time from '../../../assets/sendflexplan/icons-8-timer.png';
 import ToggleHealth from '../AddBenefit/toggle-health';
 import ToggleExpense from '../AddBenefit/toggle-expense';
@@ -17,50 +16,83 @@ import InsurancePlan from './InsurancePlan';
 import SettingBenefit from './SettingBenefit';
 import ModalConfirmPassword from '../ModalConfirmPassword';
 import EmployeeBenefits from './EmployeeBenefits';
+import excel from '../../../assets/Download/icons-8-ms-excel@2x.png';
 
 class SendFlexPlan extends Component {
   static propTypes = {
     setTimeout: PropTypes.func.isRequired,
-    getOptionPlan: PropTypes.func.isRequired,
+    getInsurancePlan: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
-    List: PropTypes.arrayOf(PropTypes.object).isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getTemplatePlan: PropTypes.func.isRequired,
+    master: PropTypes.arrayOf(PropTypes.object).isRequired,
+    insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // masterPlanList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // List: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     data: PropTypes.shape.isRequired,
     setCompleteStep: PropTypes.func.isRequired,
     completeStep: PropTypes.bool.isRequired,
     getCompleteStep: PropTypes.func.isRequired,
+    getFileEmployee: PropTypes.func.isRequired,
+    file: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       step: 6,
       passwordToConfirm: '',
+      templatePlan: [],
     };
+    props.getTemplatePlan();
+    props.getBenefitPlan();
+    props.getInsurancePlan();
+    props.getCompleteStep();
+    props.getFileEmployee();
   }
-  componentDidMount = () => {
-    this.props.getOptionPlan();
-    this.props.getBenefitPlan();
-    this.props.getCompleteStep();
+  // componentDidMount = () => {
+  //   this.props.getBenefitPlan();
+  //   this.props.getCompleteStep();
+  // }
+  componentWillReceiveProps = newProps => {
+    if (newProps.master !== this.props.master && newProps.insurer !== this.props.insurer) {
+      const templatePlan = newProps.master.concat(newProps.insurer);
+      this.setState({
+        templatePlan,
+      });
+    }
   }
+
   boxInStyle = state => {
     if (state) return 'BoxLine';
     return '';
   }
-  handlePost = e => {
-    e.preventDefault();
+  handlePost = () => {
     const { passwordToConfirm } = this.state;
     const step = 2;
+    console.log('pass step', passwordToConfirm, step);
     this.props.setCompleteStep(passwordToConfirm, step);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
+  renderPlan = () => {
+    const { benefitPlan } = this.props;
+    const { templatePlan } = this.state;
+    const planList = benefitPlan;
+    if (planList !== undefined && planList.length >= 1) {
+      const newplan =
+      templatePlan.filter(plan => planList.map(
+        option => option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
+      return newplan;
+    }
+    return '';
+  }
   render() {
     const { completeStep } = this.props;
     if (completeStep) {
       return <Redirect to="/congratstep3" />;
     }
+    const { file } = this.props;
     return (
       <div>
         <NavBenefit step={this.state.step} />
@@ -74,7 +106,12 @@ class SendFlexPlan extends Component {
               </Edit>
             </Link>
             <Inner>
-              <InsurancePlan planList={this.props.planList} />
+              {this.state.templatePlan.length >= 1
+              ? <InsurancePlan
+                planList={this.renderPlan()}
+              />
+              : <div />
+              }
             </Inner>
             <List>กรุณาตรวจสอบสิทธิประโยชน์ที่ต้องการ</List>
             <Link to="/addbenefit">
@@ -91,11 +128,11 @@ class SendFlexPlan extends Component {
                         <div className="imagehealth" />
                       </DivImage>
                       <ToggleHealth
-                        boxInStyle={this.boxInStyle} isHealth={this.props.List.isHealth}
+                        boxInStyle={this.boxInStyle} isHealth={this.props.optionPlan.isHealth}
                       />
                     </DivHealth>
                   </div>
-                  <AddBenefit List={this.props.List.health.HealthList} />
+                  <AddBenefit List={this.props.optionPlan.health.healthList} />
                 </div>
               </DivBenefit>
               <br />
@@ -107,11 +144,11 @@ class SendFlexPlan extends Component {
                         <div className="imageExpense" />
                       </DivImage>
                       <ToggleExpense
-                        boxInStyle={this.boxInStyle} isExpense={this.props.List.isExpense}
+                        boxInStyle={this.boxInStyle} isExpense={this.props.optionPlan.isExpense}
                       />
                     </DivHealth>
                   </div>
-                  <AddBenefit List={this.props.List.expense.ExpenseList} />
+                  <AddBenefit List={this.props.optionPlan.expense.expenseList} />
                 </div>
               </DivBenefit>
             </Inner>
@@ -123,20 +160,25 @@ class SendFlexPlan extends Component {
               </Edit>
             </Link>
             <Inner>
-              <SettingBenefit
+              { this.state.templatePlan.length >= 1
+              ? <SettingBenefit
                 plan={this.props.benefitPlan}
                 optionPlan={this.props.optionPlan}
+                templatePlan={this.state.templatePlan}
               />
+              : <div />
+              }
             </Inner>
 
             <List>กรุณาตรวจการอัพโหลดไฟล์ของคุณ</List>
-            <Inner
-              style={{
-                height: '80px',
-              }}
-              className="large-12 "
-            />
-
+            <Inner>
+              <img src={excel} alt="excel" width="43.5px" height="43.5px" />
+              <DivDownload>
+                <TextUpload>ไฟล์ที่คุณอัพโหลด : {file.filename}</TextUpload>
+                <DetailUpload>กรุณาตรวจสอบข้อมูลพนักงานของคุณที่</DetailUpload>
+                <DetailUpload link>&lsquo;อัพเดทจำนวนพนักงาน&lsquo;</DetailUpload>
+              </DivDownload>
+            </Inner>
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
             <Inner>
               <EmployeeBenefits />
@@ -170,18 +212,23 @@ class SendFlexPlan extends Component {
 
 const mapDispatchToProps = dispatch => ({
   setTimeout: timeout => dispatch(setTimeout(timeout)),
-  getOptionPlan: () => dispatch(getOptionPlan()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  getInsurancePlan: () => dispatch(getInsurancePlan()),
   setCompleteStep: (passwordToConfirm, step) =>
   dispatch(setCompleteStep(passwordToConfirm, step)),
   getCompleteStep: () => dispatch(getCompleteStep()),
+  getTemplatePlan: () => dispatch(getTemplatePlan()),
+  getFileEmployee: () => dispatch(getFileEmployee()),
 });
 const mapStateToProps = state => ({
+  master: state.choosePlan.insurancePlan.master,
+  insurer: state.choosePlan.insurancePlan.insurer,
   List: state.choosePlan,
   planList: state.choosePlan.choosePlan,
   benefitPlan: state.benefitPlan.plan,
   optionPlan: state.choosePlan,
   data: state.profile,
+  file: state.profile.fileEmployee,
   completeStep: state.profile.completeStep[2],
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SendFlexPlan);

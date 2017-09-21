@@ -46,7 +46,8 @@ const FieldsetEdit = styled.fieldset`
 `;
 class SettingPlan extends Component {
   static propTypes = {
-    optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    option: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func,
     handleToggle: PropTypes.func.isRequired,
@@ -72,31 +73,38 @@ class SettingPlan extends Component {
     };
   }
   componentDidMount() {
-    this.renderOption();
+    this.renderOption(this.props.option);
   }
   componentDidUpdate() {
-    if (this.state.optionPlan.length === 0) {
-      this.renderOption();
+    if (this.props.option.length === 0) {
+      this.renderOption(this.props.option);
     }
   }
 
-  renderOption = () => {
-    const options = this.props.optionPlan.choosePlan;
-    const optionPlan = [];
-    options.map((option, index) => {
-      optionPlan.push({
+  renderOption = option => {
+    console.log('opre', option);
+    const benefitPlan = [];
+    option.map((option, index) => {
+      benefitPlan.push({
         key: index,
-        text: option.planName,
-        value: option.planName,
+        text: option.plan.planName,
+        value: option.plan._id,
       });
+      console.log('options', option);
       return option;
     });
-    this.setState({ optionPlan });
+    this.setState({ optionPlan: benefitPlan });
   }
 
   render() {
     const { handleChange, handleSubmit, planName, plan, optionPlan,
       isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
+    let showExpense = optionPlan.isExpense;
+    let showHealth = optionPlan.isHealth;
+    if (isReadOnly) {
+      showExpense = isExpense;
+      showHealth = isHealth;
+    }
     return (
       <div>
         <FieldsetEdit disabled={handleChange === ''}>
@@ -133,7 +141,7 @@ class SettingPlan extends Component {
                 />
               </PlanBox>
 
-              {optionPlan.isHealth
+              { showHealth
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/5.png" />
                   <PlanTopic>
@@ -149,7 +157,7 @@ class SettingPlan extends Component {
                       />
                     </ToggleBox>
                   </div>
-                  { isHealth && !isReadOnly
+                  { isHealth
                     ? <Inputs
                       required
                       type="number"
@@ -170,7 +178,7 @@ class SettingPlan extends Component {
                 </PlanBox>
                 : null}
 
-              {optionPlan.isExpense
+              { showExpense
                 ? <PlanBox>
                   <PlanImg src="../../../setbenefit/4.png" />
                   <PlanTopic>
@@ -186,7 +194,7 @@ class SettingPlan extends Component {
                       />
                     </ToggleBox>
                   </div>
-                  { isExpense && !isReadOnly
+                  { isExpense
                     ? <Inputs
                       required
                       type="text"

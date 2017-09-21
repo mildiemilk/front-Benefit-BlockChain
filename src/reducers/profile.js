@@ -17,6 +17,8 @@ const defaultProfile = {
   completeStep: [],
   groupBenefit: [],
   summaryEmployee: [],
+  summaryGroup: [],
+  claimList: [],
   message: null,
   error: false,
 };
@@ -30,6 +32,8 @@ const SETLOGO_REQUEST_SUCCESS = 'SETLOGO_REQUEST_SUCCESS';
 const AUTHENTICATE_REQUEST_SUCCESS = 'auth/AUTHENTICATE_REQUEST_SUCCESS';
 const FILEEMPLOYEE_REQUEST_SUCCESS = 'FILEEMPLOYEE_REQUEST_SUCCESS';
 const FILEEMPLOYEE_REQUEST_FAILURE = 'FILEEMPLOYEE_REQUEST_FAILURE';
+const GET_FILEEMPLOYEE_REQUEST_SUCCESS = 'GET_FILEEMPLOYEE_REQUEST_SUCCESS';
+const GET_FILEEMPLOYEE_REQUEST_FAILURE = 'GET_FILEEMPLOYEE_REQUEST_FAILURE';
 const CLAIMDATA_REQUEST_SUCCESS = 'CLAIMDATA_REQUEST_SUCCESS';
 const CLAIMDATA_REQUEST_FAILURE = 'CLAIMDATA_REQUEST_FAILURE';
 const GETCLAIMDATA_REQUEST_SUCCESS = 'GETCLAIMDATA_REQUEST_SUCCESS';
@@ -47,6 +51,10 @@ const SET_GROUPBENEFIT_REQUEST_FAILURE = 'SET_GROUPBENEFIT_REQUEST_FAILURE';
 const SELECT_FINAL_INSURER_SUCCESS = 'SELECT_FINAL_INSURER_SUCCESS';
 const GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS = 'GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS';
 const GET_SUMMARYEMPLOYEE_REQUEST_FAILURE = 'GET_SUMMARYEMPLOYEE_REQUEST_FAILURE';
+const GET_SUMMARYGROUP_REQUEST_SUCCESS = 'GET_SUMMARYGROUP_REQUEST_SUCCESS';
+const GET_SUMMARYGROUP_REQUEST_FAILURE = 'GET_SUMMARYGROUP_REQUEST_FAILURE';
+const GET_CLAIMLIST_REQUEST_SUCCESS = 'GET_CLAIMLIST_REQUEST_SUCCESS';
+const GET_CLAIMLIST_REQUEST_FAILURE = 'GET_CLAIMLIST_REQUEST_FAILURE';
 
 /**
  * Actions
@@ -67,6 +75,12 @@ export function fileEmployeeSuccess(data) {
 }
 export function fileEmployeeFailure(data) {
   return { type: FILEEMPLOYEE_REQUEST_FAILURE, data };
+}
+export function getFileEmployeeSuccess(data) {
+  return { type: GET_FILEEMPLOYEE_REQUEST_SUCCESS, data };
+}
+export function getFileEmployeeFailure(data) {
+  return { type: GET_FILEEMPLOYEE_REQUEST_FAILURE, data };
 }
 export function claimDataSuccess(data) {
   return { type: CLAIMDATA_REQUEST_SUCCESS, data };
@@ -115,6 +129,18 @@ export function getSummaryEmployeeSuccess(data) {
 }
 export function getSummaryEmployeeFailure(data) {
   return { type: GET_SUMMARYEMPLOYEE_REQUEST_FAILURE, data };
+}
+export function getSummaryGroupSuccess(data) {
+  return { type: GET_SUMMARYGROUP_REQUEST_SUCCESS, data };
+}
+export function getSummaryGroupFailure(data) {
+  return { type: GET_SUMMARYGROUP_REQUEST_FAILURE, data };
+}
+export function getClaimListSuccess(data) {
+  return { type: GET_CLAIMLIST_REQUEST_SUCCESS, data };
+}
+export function getClaimListFailure(data) {
+  return { type: GET_CLAIMLIST_REQUEST_FAILURE, data };
 }
 /**
  * Reducer
@@ -171,6 +197,11 @@ export default function profile(state = defaultProfile, action) {
         claimData: action.data,
       });
     case GETCLAIMDATA_REQUEST_FAILURE:
+    case GET_FILEEMPLOYEE_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        fileEmployee: action.data,
+      });
+    case GET_FILEEMPLOYEE_REQUEST_FAILURE:
     case GET_GROUPBENEFIT_REQUEST_SUCCESS:
       return Object.assign({}, state, {
         groupBenefit: action.data,
@@ -221,6 +252,18 @@ export default function profile(state = defaultProfile, action) {
         summaryEmployee: action.data,
       });
     case GET_SUMMARYEMPLOYEE_REQUEST_FAILURE:
+      return state;
+    case GET_SUMMARYGROUP_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        summaryGroup: action.data,
+      });
+    case GET_SUMMARYGROUP_REQUEST_FAILURE:
+      return state;
+    case GET_CLAIMLIST_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        claimList: action.data,
+      });
+    case GET_CLAIMLIST_REQUEST_FAILURE:
       return state;
     default:
       return state;

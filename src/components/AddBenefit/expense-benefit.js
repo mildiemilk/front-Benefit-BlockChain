@@ -9,7 +9,7 @@ class ExpenseBenefit extends Component {
     addTodoExpense: PropTypes.func.isRequired,
     removeTodoExpense: PropTypes.func.isRequired,
     TextExpense: PropTypes.string.isRequired,
-    ExpenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
+    expenseList: PropTypes.arrayOf(PropTypes.string).isRequired,
   }
 
   constructor(props) {
@@ -35,7 +35,7 @@ class ExpenseBenefit extends Component {
           onKeyPress={this.addTodoEnter}
         />
         <ListExpense
-          ExpenseList={this.props.ExpenseList}
+          expenseList={this.props.expenseList}
           sendDel={this.props.removeTodoExpense}
         />
       </div>

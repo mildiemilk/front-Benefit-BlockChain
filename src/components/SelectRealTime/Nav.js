@@ -17,12 +17,15 @@ const DividerStyle = styled(Divider)`
 class NavSelectRealTime extends Component {
   static propTypes = {
     timeout: PropTypes.string.isRequired,
+    summaryGroup: PropTypes.arrayOf(PropTypes.object).isRequired,
+    notiTimeout: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
+    console.log('Nav', this.props.timeout);
     return (
       <div>
         <div className="row">
@@ -33,8 +36,9 @@ class NavSelectRealTime extends Component {
         </div>
         <div className="row">
           <div className="large-4 columns">
-            <EmpolyeeChart />
-
+            <EmpolyeeChart
+              summaryGroup={this.props.summaryGroup}
+            />
           </div>
           <div className="large-4 columns">
             <PlanChart />
@@ -45,7 +49,7 @@ class NavSelectRealTime extends Component {
               <DividerStyle />
               <NavTimeout>
                 <Pic><img src={time} alt="time" /></Pic>
-                <CountDown date={this.props.timeout} />
+                <CountDown date={this.props.timeout} notiTimeout={this.props.notiTimeout} />
               </NavTimeout>
             </Box>
           </div>

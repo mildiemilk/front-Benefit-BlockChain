@@ -8,7 +8,7 @@ import ModalPlan from './modal-plan';
 class PlanTemplate extends Component {
   static propTypes = {
     // onClick: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
+    // id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     closetap: PropTypes.bool.isRequired,
     colorPlan: PropTypes.number.isRequired,
@@ -39,7 +39,7 @@ class PlanTemplate extends Component {
     this.props.onClick();
   } */
 
-  RenderTable = (colorPlan, id) => {
+  RenderTable = colorPlan => {
     const RenderTables = (
       <p>
         <table style={{ width: '100%' }}>
@@ -51,7 +51,7 @@ class PlanTemplate extends Component {
               <b>{this.props.plan}</b><br />
               ราคาต่อหัว : {this.props.price} บาท
             </td>
-            {this.renderColumnIsCloseTap(colorPlan, id)}
+            {this.renderColumnIsCloseTap(colorPlan)}
           </tr>
         </table>
       </p>
@@ -89,14 +89,14 @@ class PlanTemplate extends Component {
   }
 
   render() {
-    const { id, price, colorPlan, plan } = this.props;
+    const { price, colorPlan, plan } = this.props;
     let component = '';
     if (this.props.closetap) {
       if (this.props.colorPlan === 1) {
         component = (
           <div>
             <ManagePlan>
-              {this.RenderTable(colorPlan, id)}
+              {this.RenderTable(colorPlan)}
             </ManagePlan>
           </div>
         );
@@ -104,7 +104,7 @@ class PlanTemplate extends Component {
         component = (
           <div>
             <ManagePlan style={{ backgroundColor: '#c0ccda' }}>
-              {this.RenderTable(colorPlan, id)}
+              {this.RenderTable(colorPlan)}
             </ManagePlan>
           </div>
         );

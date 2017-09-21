@@ -40,7 +40,7 @@ class ClaimList extends Component {
   renderElement = claim => {
     const list = claim.map((claim, id) => (
       <Nav id={id} >
-        <Link to={`/claim/${claim.companyId}`}>
+        <Link to={`/claimlist/${claim.companyId}`}>
           <div className="text-main">
             <ImageCompany
               src={claim.logo}
@@ -73,7 +73,7 @@ class ClaimList extends Component {
   }
   render() {
     const { claim } = this.props;
-    console.log('claim--', this.props.claim);
+    // console.log('claim--', this.props.claim);
     return (
       <div className="ClaimList">
         <Head className="insurerheade-text" content="รายการเคลม" />
@@ -82,7 +82,7 @@ class ClaimList extends Component {
             {claim.length > 0
             ? this.renderElement(claim)
             : null
-            }
+          }
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@ class ClaimList extends Component {
   }
 }
 const mapStateToProps = state => ({
-  claim: state.claimReducer.claim,
+  claim: state.claimListReducer.claim,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -28,11 +28,12 @@ export function getCompanyClaim() {
       });
   };
 }
-export function getClaim() {
+export function getClaim(companyId) {
+  console.log('companyId==', companyId);
   return dispatch => {
     const options = {
       method: 'get',
-      url: CLAIM_URI,
+      url: `${CLAIM_URI}/59af536b6933f11d9f6b7394`,
     };
     APIRequest(options, true)
       .then(res => {

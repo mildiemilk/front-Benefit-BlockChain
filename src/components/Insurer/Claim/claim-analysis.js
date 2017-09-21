@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 import { Divider, Icon } from 'semantic-ui-react';
 // import HeadCompanyInfo from '../header-company-info';
 import HeaderBoxClaim from './header-box-claim';
 import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
-import { getGroupBenefit } from '../../../api/profile-company';
+// import { getGroupBenefit } from '../../../api/profile-company';
 import {
   FileuploadBoxs,
   // BrowsButton,
@@ -20,7 +20,7 @@ class ClaimAnalysis extends Component {
     // children: PropTypes.element.isRequired,
     // match: PropTypes.shape({ params: PropTypes.claimId }),
     // groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
-    getGroupBenefit: PropTypes.func.isRequired,
+    // getGroupBenefit: PropTypes.func.isRequired,
     // getBenefitPlan: PropTypes.func.isRequired,
   }
   static defaultProps = {
@@ -33,7 +33,7 @@ class ClaimAnalysis extends Component {
     this.state = {};
   }
   componentDidMount() {
-    this.props.getGroupBenefit();
+    // this.props.getGroupBenefit();
   }
   render() {
     return (
@@ -91,15 +91,16 @@ class ClaimAnalysis extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  // employeeDetail: () => dispatch(employeeDetail()),
-  getGroupBenefit: () => dispatch(getGroupBenefit()),
-  // getBenefitPlan: () => dispatch(getBenefitPlan()),
-});
+// const mapDispatchToProps = dispatch => ({
+//   // employeeDetail: () => dispatch(employeeDetail()),
+//   // getGroupBenefit: () => dispatch(getGroupBenefit()),
+//   // getBenefitPlan: () => dispatch(getBenefitPlan()),
+// });
 
-const mapStateToProps = state => ({
-  data: state.profile.employeeDetail,
-  groupBenefit: state.profile.groupBenefit,
-  benefitPlan: state.benefitPlan.plan,
-});
-export default connect(mapStateToProps, mapDispatchToProps)(ClaimAnalysis);
+// const mapStateToProps = state => ({
+//   data: state.profile.employeeDetail,
+//   groupBenefit: state.profile.groupBenefit,
+//   benefitPlan: state.benefitPlan.plan,
+// });
+// export default connect(mapStateToProps, mapDispatchToProps)(ClaimAnalysis);
+export default ClaimAnalysis;

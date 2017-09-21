@@ -249,6 +249,7 @@ class employeeList extends Component {
     return allGroup;
   }
   render() {
+    console.log('props', this.props);
     return (
       <div className="employee-list">
         <Head content="รายชื่อพนักงาน" />

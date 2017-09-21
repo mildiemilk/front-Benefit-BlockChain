@@ -32,14 +32,13 @@ export const DetailDiv = styled.div`
 `;
 
 export const NextButton = styled.button`
-  width: 164px;
-  height: 100%;
+  width: 100%;
+  height: 40px;
   border-radius: 20px;
   background-color: #46b3b8;
   color: white;
   border-color: #46b3b8;
   border-style: solid;
-  margin-top: 25px;
 `;
 
 export const HeadDetail = styled.div`
@@ -120,9 +119,10 @@ export const ListR = styled.div`
   padding-top: 2%;
 `;
 
-export const DetailIn = styled.table`
+export const DetailIn = styled.div`
   height: 100%;
   padding: 1%;
+  position: relative;
 `;
 export const BoxIn = styled.div`
 
@@ -158,4 +158,18 @@ export const Pic = styled.div`
 
 export const NavTimeout = styled.div`
   text-align: center;
+`;
+export const Default = styled.div`
+  width: 79.9px;
+  height: 30px;
+  color: white;
+  border-radius: 5px;
+  background-color: #42bc69;
+  display: inline-block;
+  margin-left: 12px;
+  text-align: center;
+  padding-top: 5px;
+`;
+export const HeadPlan = styled.div`
+  display: inline-block;
 `;

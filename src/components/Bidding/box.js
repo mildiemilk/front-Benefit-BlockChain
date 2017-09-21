@@ -10,11 +10,12 @@ import { chooseFinalInsurer } from '../../api/bidding';
 class Box extends Component {
   static propTypes = {
     chooseFinalInsurer: PropTypes.func.isRequired,
-    end: PropTypes.shape({}).isRequired,
     data: PropTypes.shape({}).isRequired,
     handleClick: PropTypes.func.isRequired,
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     completeStep: PropTypes.bool.isRequired,
+    end: PropTypes.bool.isRequired,
+    updatedAt: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -26,7 +27,7 @@ class Box extends Component {
   getStatusModule = (status, insurerName) => {
     let statusModule = '';
     const { end } = this.props;
-    if (end.end === 'Timeout') {
+    if (end) {
       if (status === 'join') {
         statusModule = (
           <ModalConfirmPassword
@@ -57,9 +58,7 @@ class Box extends Component {
   }
 
   handlePost = e => {
-    console.log('e', e);
     const { passwordToConfirm } = this.state;
-    console.log('password', passwordToConfirm);
     const insurerCompany = e;
     const step = 1;
     this.props.chooseFinalInsurer(passwordToConfirm, insurerCompany, step);
@@ -68,7 +67,7 @@ class Box extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   boxStyling = (status, end) => {
-    if (end === 'Timeout') {
+    if (end) {
       if (status === 'join') {
         return 'boxes';
       }
@@ -83,13 +82,14 @@ class Box extends Component {
   }
 
   renderList = bids => {
-    const { end, completeStep } = this.props;
+    const { completeStep } = this.props;
     if (completeStep) {
       return <Redirect to="/congrat" />;
     }
+    console.log('bids', bids);
     return bids.map((bid, index) => (
       <div className="boxDetail">
-        <div className={this.boxStyling(bid.status, end.end)}>
+        <div className={this.boxStyling(bid.status, this.props.end)}>
           <div className="row">
             <div className="large-2 columns">
               <Text>{bid.insurerCompany.companyName}</Text>
@@ -97,13 +97,28 @@ class Box extends Component {
             <div className="large-6 columns">
               <div className="row">
                 <div className="large-3 columns">
-                  <Text>{bid.biddingId}</Text>
+                  <Text>
+                    {bid.biddingId !== null
+                    ? bid.biddingId
+                    : <p>-</p>
+                    }
+                  </Text>
                 </div>
                 <div className="large-3 columns">
-                  <Text>{bid.countBidding}</Text>
+                  <Text>
+                    {bid.countBidding !== 0
+                    ? bid.countBidding
+                    : <p>-</p>
+                    }
+                  </Text>
                 </div>
                 <div className="large-2 columns">
-                  <Text>{moment(bid.updatedAt).format('L')}</Text>
+                  <Text>
+                    {moment(bid.updatedAt).format('L') !== 'Invalid date'
+                    ? moment(bid.updatedAt).format('L')
+                    : <p>-</p>
+                    }
+                  </Text>
                 </div>
                 <div className="large-4 columns">
                   <Text>{bid.totalPrice}</Text>
@@ -132,6 +147,8 @@ class Box extends Component {
   }
 
   render() {
+    console.log('<---Props--->', this.props.list);
+    console.log('--timeout--', this.props.updatedAt);
     return (
       <div className="Box">
         <div className="HeadBidContent">
@@ -173,7 +190,6 @@ class Box extends Component {
 }
 
 const mapStateToProps = state => ({
-  end: state.endTimeout,
   data: state.selectFinalInsurer,
   completeStep: state.profile.completeStep[1],
 });

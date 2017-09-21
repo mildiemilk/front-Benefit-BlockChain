@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Modal } from 'semantic-ui-react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Button } from '../../StyleComponent';
 import Add from '../../../../assets/EmployeeList/icons-8-checked.png';
 import { ListDetail } from '../ExtendClaim/styled';
+import { companyClaim } from '../../../api/profile-company';
 
 const ModalContents = styled(Modal.Content) `
 &&&{
@@ -32,6 +34,9 @@ const Text = styled.div`
 `;
 
 class ModalApprove extends Component {
+  static propTypes = {
+    claimId: PropTypes.string.isRequired,
+  }
   constructor() {
     super();
     this.state = {
@@ -42,6 +47,11 @@ class ModalApprove extends Component {
   this.setState({
     modalOpen: !this.state.modalOpen,
   })
+  handleApprove = () => {
+    const { claimId } = this.props;
+    companyClaim('reject', claimId, null)
+    .then(() => this.handleModal());
+  }
   render() {
     return (
       <Modals
@@ -62,7 +72,7 @@ class ModalApprove extends Component {
               <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
             </div>
             <div className="large-6 columns">
-              <Button>ยืนยัน</Button>
+              <Button onClick={this.handleApprove}>ยืนยัน</Button>
             </div>
           </div>
         </ModalContents>

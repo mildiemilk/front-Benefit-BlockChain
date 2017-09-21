@@ -1,11 +1,12 @@
 import React, { PropTypes, Component } from 'react';
-import { connect } from 'react-redux';
-import { endTimeout } from '../../../api/bidding';
+// import { connect } from 'react-redux';
+// import { endTimeout } from '../../../api/bidding';
 import { CountTime, DisplayTime, DisplayTimeout } from '../styled';
 
 class CountDowns extends Component {
   static propTypes = {
-    endTimeout: PropTypes.shape.isRequired,
+    // endTimeout: PropTypes.shape.isRequired,
+    notiTimeout: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -16,26 +17,13 @@ class CountDowns extends Component {
       min: 0,
       sec: 0,
     };
-    // this.props.endTimeout(this.state.end);
-  }
-  componentDidMount() {
-    this.props.endTimeout(this.state.end);
-  }
-  componentWillReceiveProps(newProps) {
-    // update every second
-    console.log('new', newProps);
-    console.log('date', this.props.date);
-    if (newProps.date !== this.props.date) {
-      this.interval = setInterval(() => {
-        const date = this.calculateCountdown(this.props.date);
-        if (date) this.setState(date);
-        else {
-          this.stop();
-          this.setState({ end: 'Timeout' });
-          this.props.endTimeout(this.state.end);
-        }
-      }, 1000);
-    }
+    this.interval = setInterval(() => {
+      const date = this.calculateCountdown(this.props.date);
+      if (date) this.setState(date);
+      else {
+        this.stop();
+      }
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -78,12 +66,12 @@ class CountDowns extends Component {
       diff -= timeLeft.min * 60;
     }
     timeLeft.sec = diff;
-
     return timeLeft;
   }
 
   stop() {
     clearInterval(this.interval);
+    this.props.notiTimeout();
   }
 
   addLeadingZeros = value => {
@@ -100,7 +88,6 @@ class CountDowns extends Component {
     let $isHours = this.addLeadingZeros(countDown.hours);
     let $isMin = this.addLeadingZeros(countDown.min);
     let $isSec = this.addLeadingZeros(countDown.sec);
-
     if (
       $isDay === '00' &&
       $isHours === '00' &&
@@ -155,11 +142,4 @@ CountDowns.defaultProps = {
   date: new Date(),
 };
 
-const mapDispatchToProps = dispatch => ({
-  endTimeout: end => dispatch(endTimeout({ end })),
-});
-const mapStateToProps = state => ({
-  end: state.endTimeout,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountDowns);
+export default CountDowns;

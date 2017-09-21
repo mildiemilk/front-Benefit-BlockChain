@@ -6,7 +6,8 @@ import { Table } from 'semantic-ui-react';
 import '../../styles/chart-box.scss';
 import EmpolyeeChart from './empolyee-chart';
 import PlanChart from './plan-chart';
-import { setCompleteStep, getCompleteStep } from '../../api/profile-company';
+import { getBenefitPlan } from '../../api/benefit-plan';
+import { setCompleteStep, getCompleteStep, getSummaryEmployee, getSummaryGroup } from '../../api/profile-company';
 import ModalConfirmPassword from '../ModalConfirmPassword';
 
 class Piechart extends Component {
@@ -15,6 +16,12 @@ class Piechart extends Component {
     setCompleteStep: PropTypes.func.isRequired,
     completeStep: PropTypes.bool.isRequired,
     getCompleteStep: PropTypes.func.isRequired,
+    summaryGroup: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    summaryEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getSummaryEmployee: PropTypes.func.isRequired,
+    getBenefitPlan: PropTypes.func.isRequired,
+    getSummaryGroup: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -24,6 +31,9 @@ class Piechart extends Component {
   }
   componentDidMount = () => {
     this.props.getCompleteStep();
+    this.props.getSummaryEmployee();
+    this.props.getSummaryGroup();
+    this.props.getBenefitPlan();
   }
   handlePost = e => {
     e.preventDefault();
@@ -33,16 +43,59 @@ class Piechart extends Component {
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
+  renderHead = allPlan => {
+    console.log('all', allPlan);
+    if (allPlan !== undefined && allPlan.length >= 1) {
+      const plan = allPlan.map(allGroup => (
+        <Table.HeaderCell
+          rowSpan="2"
+          textAlign="center"
+          style={{
+            backgroundColor: '#3a7bd5',
+            color: 'white',
+            height: '80px',
+          }}
+        >
+          {allGroup.benefitPlanName}
+        </Table.HeaderCell>
+      ));
+      return plan;
+    }
+    return '';
+  }
+  renderRow = employee => {
+    // console.log('all', allGroups);
+    // if (allGroups !== undefined && allGroups.length >= 1) {
+    //   const group = allGroups.map(allGroup => (
+    //     <Table.Row>
+    //       {/* <Table.Cell textAlign="center" style={{ height: '60px' }}>
+    //         Alpha Team
+    //       </Table.Cell>
+    //       <Table.Cell textAlign="center" style={{ height: '60px' }}>
+    //         50
+    //       </Table.Cell>
+    //       <Table.Cell textAlign="center" style={{ height: '60px' }}>
+    //         24
+    //       </Table.Cell> */}
+    //     </Table.Row>
+    //     ));
+    //   return group;
+    // }
+    // return '';
+    console.log('employee', employee);
+    return (<div>gdgfg</div>);
+  }
   render() {
-    const { completeStep } = this.props;
+    const { completeStep, benefitPlan, summaryEmployee } = this.props;
     if (completeStep) {
       return <Redirect to="/dashboard" />;
     }
+    console.log('props-->', this.props);
     return (
       <div>
         <div className="row">
           <div className="large-6 columns">
-            <EmpolyeeChart />
+            <EmpolyeeChart summaryGroup={this.props.summaryGroup} />
           </div>
           <div className="large-6 columns">
             <PlanChart />
@@ -66,31 +119,10 @@ class Piechart extends Component {
                     >
                       กลุ่มพนักงาน
                     </Table.HeaderCell>
-                    <Table.HeaderCell
-                      rowSpan="2"
-                      textAlign="center"
-                      style={{
-                        backgroundColor: '#3a7bd5',
-                        color: 'white',
-                        height: '80px',
-                      }}
-                    >
-                      แผนสิทธิประโยชน์ 1
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      rowSpan="2"
-                      textAlign="center"
-                      style={{
-                        backgroundColor: '#3a7bd5',
-                        color: 'white',
-                        height: '80px',
-                      }}
-                    >
-                      แผนสิทธิประโยชน์ 2
-                    </Table.HeaderCell>
+                    {this.renderHead(benefitPlan)}
                   </Table.Row>
                 </Table.Header>
-
+                {this.renderRow(summaryEmployee)}
                 <Table.Body>
                   <Table.Row>
                     <Table.Cell textAlign="center" style={{ height: '60px' }}>
@@ -140,7 +172,7 @@ class Piechart extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="large-11 columns">
+          <div className="large-3 large-offset-9 columns">
             <ModalConfirmPassword
               handlePost={this.handlePost}
               handleChange={this.handleChange}
@@ -158,10 +190,16 @@ const mapDispatchToProps = dispatch => ({
   setCompleteStep: (passwordToConfirm, step) =>
   dispatch(setCompleteStep(passwordToConfirm, step)),
   getCompleteStep: () => dispatch(getCompleteStep()),
+  getSummaryEmployee: () => dispatch(getSummaryEmployee()),
+  getSummaryGroup: () => dispatch(getSummaryGroup()),
+  getBenefitPlan: () => dispatch(getBenefitPlan()),
 });
 const mapStateToProps = state => ({
+  benefitPlan: state.benefitPlan.plan,
   data: state.profile,
   completeStep: state.profile.completeStep[3],
+  summaryEmployee: state.profile.summaryEmployee,
+  summaryGroup: state.profile.summaryGroup,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Piechart);

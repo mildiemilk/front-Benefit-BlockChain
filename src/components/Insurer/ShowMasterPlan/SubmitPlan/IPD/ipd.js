@@ -61,9 +61,11 @@ class IPD extends Component {
     styletabPrice: PropTypes.string.isRequired,
   }
 
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      ipdType: this.props.ipdType,
+    }
   }
 
   componentDidUpdate() {
@@ -75,7 +77,7 @@ class IPD extends Component {
   handleRadio = (e, { name, value }) => {
     console.log('name', name);
     console.log('value', value);
-    console.log(this.state);
+    console.log('--gfgf0---', this.state);
     this.props.handleChange(e, { name, value });
     this.handleResetdata();
   }
@@ -156,6 +158,7 @@ class IPD extends Component {
   }
 
   render() {
+    // console.log('', this.state);
     return (
       <div>
         <br />
@@ -176,7 +179,7 @@ class IPD extends Component {
                     name="ipdType"
                     value="Lumsum"
                     checked={this.props.ipdType === 'Lumsum'}
-                    onChange={this.handleRadio}
+                    onClick={this.handleRadio}
                   />
                 </Form.Field>
               </div>
@@ -187,7 +190,7 @@ class IPD extends Component {
                     name="ipdType"
                     value="R&B Lumsum"
                     checked={this.props.ipdType === 'R&B Lumsum'}
-                    onChange={this.handleRadio}
+                    onClick={this.handleRadio}
                   />
                 </Form.Field>
               </div>
@@ -198,7 +201,7 @@ class IPD extends Component {
                     name="ipdType"
                     value="R&B Schedule"
                     checked={this.props.ipdType === 'R&B Schedule'}
-                    onChange={this.handleRadio}
+                    onClick={this.handleRadio}
                   />
                 </Form.Field>
               </div>
@@ -211,7 +214,7 @@ class IPD extends Component {
               ? <IPD1
                 styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.props.handleVerifyState}
-                handleChange={this.handleChange}
+                handleChange={this.props.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}
@@ -226,7 +229,7 @@ class IPD extends Component {
               : null}
             {this.props.ipdType === 'R&B Lumsum'
               ? <IPD2
-                handleChange={this.handleChange}
+                handleChange={this.props.handleChange}
                 styletabPrice={this.props.styletabPrice}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
@@ -248,7 +251,7 @@ class IPD extends Component {
             {this.props.ipdType === 'R&B Schedule'
               ? <IPD3
                 styletabPrice={this.props.styletabPrice}
-                handleChange={this.handleChange}
+                handleChange={this.props.handleChange}
                 handleNewReset={this.props.handleNewReset}
                 handleChangeToNull={this.props.handleChangeToNull}
                 reset={this.props.reset}
@@ -278,8 +281,11 @@ class IPD extends Component {
               <Checkboxs
                 toggle
                 label="Co-Pay"
-                checked={this.props.ipdCoPay}
+                checked={this.props.ipdCoPay === true}
                 onClick={this.props.handleToggle}
+                value={this.props.ipdCoPay}
+                name="ipdCoPay"
+                // onChange={this.props.handleChange}
               />
             </div>
             {this.props.ipdCoPay

@@ -17,6 +17,8 @@ const defaultProfile = {
   completeStep: [],
   groupBenefit: [],
   summaryEmployee: [],
+  summaryGroup: [],
+  claimList: [],
   message: null,
   error: false,
 };
@@ -49,6 +51,10 @@ const SET_GROUPBENEFIT_REQUEST_FAILURE = 'SET_GROUPBENEFIT_REQUEST_FAILURE';
 const SELECT_FINAL_INSURER_SUCCESS = 'SELECT_FINAL_INSURER_SUCCESS';
 const GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS = 'GET_SUMMARYEMPLOYEE_REQUEST_SUCCESS';
 const GET_SUMMARYEMPLOYEE_REQUEST_FAILURE = 'GET_SUMMARYEMPLOYEE_REQUEST_FAILURE';
+const GET_SUMMARYGROUP_REQUEST_SUCCESS = 'GET_SUMMARYGROUP_REQUEST_SUCCESS';
+const GET_SUMMARYGROUP_REQUEST_FAILURE = 'GET_SUMMARYGROUP_REQUEST_FAILURE';
+const GET_CLAIMLIST_REQUEST_SUCCESS = 'GET_CLAIMLIST_REQUEST_SUCCESS';
+const GET_CLAIMLIST_REQUEST_FAILURE = 'GET_CLAIMLIST_REQUEST_FAILURE';
 
 /**
  * Actions
@@ -123,6 +129,18 @@ export function getSummaryEmployeeSuccess(data) {
 }
 export function getSummaryEmployeeFailure(data) {
   return { type: GET_SUMMARYEMPLOYEE_REQUEST_FAILURE, data };
+}
+export function getSummaryGroupSuccess(data) {
+  return { type: GET_SUMMARYGROUP_REQUEST_SUCCESS, data };
+}
+export function getSummaryGroupFailure(data) {
+  return { type: GET_SUMMARYGROUP_REQUEST_FAILURE, data };
+}
+export function getClaimListSuccess(data) {
+  return { type: GET_CLAIMLIST_REQUEST_SUCCESS, data };
+}
+export function getClaimListFailure(data) {
+  return { type: GET_CLAIMLIST_REQUEST_FAILURE, data };
 }
 /**
  * Reducer
@@ -234,6 +252,18 @@ export default function profile(state = defaultProfile, action) {
         summaryEmployee: action.data,
       });
     case GET_SUMMARYEMPLOYEE_REQUEST_FAILURE:
+      return state;
+    case GET_SUMMARYGROUP_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        summaryGroup: action.data,
+      });
+    case GET_SUMMARYGROUP_REQUEST_FAILURE:
+      return state;
+    case GET_CLAIMLIST_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        claimList: action.data,
+      });
+    case GET_CLAIMLIST_REQUEST_FAILURE:
       return state;
     default:
       return state;

@@ -1,4 +1,4 @@
-import { Icon, Popup } from 'semantic-ui-react';
+import { Icon, Popup, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 export const Head = styled.p`
@@ -18,6 +18,14 @@ export const TextIn = styled.div`
 
 export const Nav = styled.div`
   height: 200px;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  border: solid 1px #d3d3d3;
+  position: relative;
+`;
+export const NavClaim = styled.div`
+  height: 150px;
   border-radius: 6px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
@@ -308,4 +316,40 @@ export const TextNormal = styled.div`
   padding-bottom: 2%;
   padding-top: 27px;
   margin-left: 19px;
+`;
+
+export const Headtext = styled.div`
+  padding-top: 20px;
+  display: inline-block;
+  font-size: 32px;
+`;
+
+export const DisplayOption = styled.div`
+  height: 40px;
+  border-radius: 8px;
+  border: solid 1px #bfbfbf;
+  display:inline-block;
+  margin: 0px 4px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+`;
+
+export const DisplaySide = styled.div`
+  height: 40px;
+  display:inline-block;
+  margin: 0px 4px;
+  padding: 10px;
+  text-align: center;
+`;
+
+export const ImageCompany = styled(Image)`
+  &&& {
+  height: 54px;
+  width: 54px;
+  margin-right: 10px;
+  float: left;
+  border-radius: 50%;
+  }
 `;

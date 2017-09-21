@@ -24,6 +24,10 @@ import {
   setGroupBenefitFailure,
   getSummaryEmployeeSuccess,
   getSummaryEmployeeFailure,
+  getSummaryGroupSuccess,
+  getSummaryGroupFailure,
+  getClaimListSuccess,
+  getClaimListFailure,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/api/company/register-company';
@@ -38,7 +42,10 @@ const SETCOMPLETESTEP_URI = '/api/company/set-complete-step';
 const GETCOMPLETESTEP_URI = '/api/company/get-complete-step';
 const GET_GROUPBENEFIT_URI = '/api/company/get-group-benefit';
 const SET_GROUPBENEFIT_URI = '/api/company/set-group-benefit';
+const GET_SUMMARYGROUP_URI = '/api/company/summary-group';
 const GET_SUMMARYEMPLOYEE_URI = '/api/company/summary-employee-benefit';
+const GET_CLAIMLIST_URI = 'api/company/get-claim-list';
+const COMPANY_CLAIM_URI = 'api/company/claim';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -184,6 +191,7 @@ export function setCompleteStep(passwordToConfirm, step) {
     };
     APIRequest(options, true)
       .then(res => {
+        console.log('Data step', res.data);
         dispatch(setCompleteStepSuccess(res.data));
       })
       .catch(err => {
@@ -259,6 +267,23 @@ export function getSummaryEmployee() {
   };
 }
 
+export function getSummaryGroup() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_SUMMARYGROUP_URI,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getSummaryGroupSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getSummaryGroupFailure(err));
+      });
+  };
+}
+
 export function setGroupBenefit(groupNumber, detail) {
   return dispatch => {
     const options = {
@@ -279,7 +304,31 @@ export function setGroupBenefit(groupNumber, detail) {
       });
   };
 }
-
+export function getClaimList() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_CLAIMLIST_URI,
+    };
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getClaimListSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getClaimListFailure(err.response.data));
+      });
+  };
+}
+export function companyClaim(status, claimId, reason) {
+  const options = {
+    method: 'put',
+    url: `${COMPANY_CLAIM_URI}/${status}/${claimId}`,
+    data: {
+      reason,
+    },
+  };
+  return APIRequest(options, true);
+}
 export default {
   createProfile,
 };

@@ -19,13 +19,14 @@ class Bidding extends React.Component {
   }
 
   constructor(props) {
-    console.log('props.match.params.companyId---->', props.match.params.companyId);
+    // console.log('props.match.params.companyId---->', props.match.params.companyId);
     super(props);
     this.state = {
       isDetail: false,
       Detail: {},
       index: '',
       companyId: props.match.params.companyId,
+      end: false,
     };
     // props.getCompanyBidding(this.state.companyId);
   }
@@ -36,7 +37,11 @@ class Bidding extends React.Component {
   }
 
   isFetched = false;
-
+  notiTimeout = () => {
+    this.setState({
+      end: true,
+    });
+  }
   handleClick = (Detail, index) => {
     // console.log('call handleClick', Detail);
     const { isDetail } = this.state;
@@ -59,6 +64,7 @@ class Bidding extends React.Component {
           <NavBidding
             DataCompany={this.props.data.data}
             timeout={this.props.timeout}
+            noti={this.notiTimeout}
           />
           <div className="BidContent">
             <ShowMasterPlan DataCompany={this.props.data.data} />

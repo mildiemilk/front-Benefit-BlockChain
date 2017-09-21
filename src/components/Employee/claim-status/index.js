@@ -111,10 +111,9 @@ class ClaimStatus extends Component {
   }
 
   render() {
-    const { claimData } = this.state;
     return (
       <div className="claim-status">
-        {this.checkRenderclaimStatus(claimData)}
+        {this.checkRenderclaimStatus()}
       </div>
     );
   }

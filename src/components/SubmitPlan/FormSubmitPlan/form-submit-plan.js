@@ -32,11 +32,14 @@ class FormSubmitPlan extends Component {
   }
 
   handleClick = () => {
-    const { planName, employeeOfPlan } = this.props;
+    const { planName, employeeOfPlan, activePlan } = this.props;
+    console.log('planName', planName, 'activePlan', activePlan);
     const numberOfPlan = parseInt(employeeOfPlan, 10);
     if (this.props.activePlan === -1) {
+      const employeeOfPlan = numberOfPlan
+      console.log('planName-->1', planName, 'number', numberOfPlan);
       this.props.handleModalFinish();
-      this.props.createPlan({ planName, numberOfPlan });
+      this.props.createPlan({ planName, employeeOfPlan });
       setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000);
     } else {
       this.props.editPlan(

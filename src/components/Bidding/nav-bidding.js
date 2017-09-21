@@ -23,6 +23,7 @@ class Bidding extends Component {
     num: PropTypes.number.isRequired,
     timeout: PropTypes.string.isRequired,
     notiTimeout: PropTypes.func.isRequired,
+    minPrice: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -53,7 +54,7 @@ class Bidding extends Component {
               <Pic><img src={auction} alt="auction" /></Pic>
               <TextNav>
                 <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime><br />
-                <FontNumAucTime>10,000,000</FontNumAucTime>
+                <FontNumAucTime>{this.props.minPrice}</FontNumAucTime>
               </TextNav>
             </Nav>
           </div>

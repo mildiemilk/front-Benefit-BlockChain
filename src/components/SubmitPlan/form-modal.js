@@ -8,7 +8,6 @@ import FormSubmitPlan from './FormSubmitPlan/form-submit-plan';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
-    width: 680px;
     position: relative;
     margin: 0 auto;
     padding: 0px;

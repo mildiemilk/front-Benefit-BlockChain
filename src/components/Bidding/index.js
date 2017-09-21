@@ -19,6 +19,7 @@ class Bidding extends Component {
     getCompleteStep: PropTypes.func.isRequired,
     biddingDetailForCompany: PropTypes.func.isRequired,
     detail: PropTypes.shape({}).isRequired,
+    minPrice: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -59,7 +60,10 @@ class Bidding extends Component {
     return (
       <div className="Bidding">
         <NavBidding
-          num={this.props.num} timeout={this.props.timeout} notiTimeout={this.notiTimeout}
+          num={this.props.num}
+          timeout={this.props.timeout}
+          notiTimeout={this.notiTimeout}
+          minPrice={this.props.minPrice}
         />
         <div className="BidContent">
           {this.state.isDetail
@@ -81,6 +85,7 @@ const mapStateToProps = state => ({
   data: state.biddingReducer.insurers,
   detail: state.biddingReducer,
   num: state.getSelectInsurer.defaultInsurer.length,
+  minPrice: state.biddingReducer.minPrice,
 });
 
 const mapDispatchToProps = dispatch => ({

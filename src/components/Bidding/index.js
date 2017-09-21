@@ -54,6 +54,7 @@ class Bidding extends Component {
   render() {
     console.log('bid', this.props.detail);
     console.log('data', this.props.data);
+    console.log('time-bid', this.props.timeout);
     return (
       <div className="Bidding">
         <NavBidding num={this.props.num} timeout={this.props.timeout} />

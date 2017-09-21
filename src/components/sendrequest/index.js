@@ -58,8 +58,7 @@ class Sendrequest extends Component {
       this.setState({ position: 'relative-box' });
     }
   }
-  handlePost = e => {
-    e.preventDefault();
+  handlePost = () => {
     const { passwordToConfirm } = this.state;
     const step = 0;
     this.props.setCompleteStep(passwordToConfirm, step);

@@ -20,13 +20,15 @@ class Box extends Component {
     super();
     this.state = {
       passwordToConfirm: '',
+      end: false,
     };
   }
 
   getStatusModule = (status, insurerName) => {
     let statusModule = '';
     const { end } = this.props;
-    if (end.end === 'Timeout') {
+    console.log('end-->', end);
+    if (end) {
       if (status === 'join') {
         statusModule = (
           <ModalConfirmPassword
@@ -66,9 +68,13 @@ class Box extends Component {
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-
+  notiTimeout = () => {
+    this.setState({
+      end: true,
+    });
+  }
   boxStyling = (status, end) => {
-    if (end === 'Timeout') {
+    if (end) {
       if (status === 'join') {
         return 'boxes';
       }
@@ -83,13 +89,13 @@ class Box extends Component {
   }
 
   renderList = bids => {
-    const { end, completeStep } = this.props;
+    const { completeStep } = this.props;
     if (completeStep) {
       return <Redirect to="/congrat" />;
     }
     return bids.map((bid, index) => (
       <div className="boxDetail">
-        <div className={this.boxStyling(bid.status, end.end)}>
+        <div className={this.boxStyling(bid.status, this.state.timeout)}>
           <div className="row">
             <div className="large-2 columns">
               <Text>{bid.insurerCompany.companyName}</Text>

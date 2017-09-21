@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Popup, List, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Detail, Text } from '../../EmployeeList/AddEmployee/styled';
 import { Box, Pic, TextNav, Number } from '../../StyleComponent';
 import { TextList, DivHead } from '../../EmployeeList/styled';
@@ -10,7 +11,7 @@ import { getGroupBenefit } from '../../../api/profile-company';
 import { getBenefitPlan } from '../../../api/benefit-plan';
 import { employeeDetail } from '../../../api/profile-company';
 import { DivImg } from '../../EmployeeList/styled';
-import { DivClaim } from '../styled';
+import { DivClaim, StatusTag } from '../styled';
 import excel from '../../../../assets/EmployeeList/icons-8-ms-excel.png';
 import pdf from '../../../../assets/EmployeeList/icons-8-pdf.png';
 import print from '../../../../assets/EmployeeList/icons-8-print.png';
@@ -45,10 +46,13 @@ class DetailClaim extends Component {
     handleHealth: PropTypes.func.isRequired,
     handleInsurance: PropTypes.func.isRequired,
     handleDetail: PropTypes.func.isRequired,
+    claimList: PropTypes.shape({}).isRequired,
+    index: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
   componentDidMount() {
     this.props.employeeDetail();
@@ -56,59 +60,84 @@ class DetailClaim extends Component {
     this.props.getGroupBenefit();
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  renderListEmployee = () => (
+  renderListEmployee = (claimList, index) => {
+    console.log('--> ClaimList', claimList);
+    const allList = claimList.claims;
     // const searchData = this.renderSearch(data);
     // const showData = searchData.filter(
     //   (data, index) =>
     //     index >= this.state.minList && index <= this.state.maxList,
     // );
     // return showData.map(element => (
-    <div className="employee-list">
-      <div className="employee-list-box">
-        <div className="row">
-          <div className="large-4 columns">
-            <div className="large-5 columns">
-              <div className="list-box-in-list">
-                <p>011020202</p>
-              </div>
-            </div>
-            <div className="large-7 columns">
-              <div className="list-box-in-list">
-                <p>ฉีดวัคซีน</p>
+    if (allList !== undefined && allList.length >= 1) {
+      console.log('all--->', allList);
+      console.log('index', index);
+      console.log('all.claim--->', allList[index].claims);
+      if (allList[index].claims !== undefined && allList[index].claims.length >= 1) {
+        const allLists = allList[index].claims;
+        const result = allLists.map((list, i) => {
+          let tag;
+          if (list.status === 'pending') {
+            tag = <StatusTag color="#3a7bd5">รอพิจารณา</StatusTag>
+          } else if (list.status === 'approve') {
+            tag = <StatusTag color="#46b3b8">อนุมัติ</StatusTag>
+          } else {
+            tag = <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>
+          }
+          return (<div className="employee-list">
+            <div className="employee-list-box">
+              <div className="row">
+                <div className="large-4 columns">
+                  <div className="large-5 columns">
+                    <div className="list-box-in-list">
+                      <p>{list.claimNumber}</p>
+                    </div>
+                  </div>
+                  <div className="large-7 columns">
+                    <div className="list-box-in-list">
+                      <p>{list.detail.title}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="large-2 columns">
+                  <div className="list-box-in-list">
+                    <p>{moment(list.detail.date)
+                      .locale('th')
+                      .format('DD MMMM YYYY')}</p>
+                  </div>
+                </div>
+                <div className="large-5 columns">
+                  <div className="large-5 columns">
+                    <div className="list-box-in-list">
+                      <p>{list.name}</p>
+                    </div>
+                  </div>
+                  <div className="large-3 columns">
+                    <div className="list-box-in-list">
+                      <p>{list.detail.amount} {list.detail.currency}</p>
+                    </div>
+                  </div>
+                  <div className="large-4 columns">
+                    <div className="list-box-in-list">
+                      <p>{tag}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="large-1 columns">
+                  <div className="edit-employee-list">
+                    <Icon name="edit" onClick={() => this.props.handleDetail(i)} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="large-2 columns">
-            <div className="list-box-in-list">
-              <p>0110202</p>
-            </div>
-          </div>
-          <div className="large-5 columns">
-            <div className="large-4 columns">
-              <div className="list-box-in-list">
-                <p>สมศรี มีเงิน</p>
-              </div>
-            </div>
-            <div className="large-3 columns">
-              <div className="list-box-in-list">
-                <p>890</p>
-              </div>
-            </div>
-            <div className="large-5 columns">
-              <div className="list-box-in-list">
-                <p>รอพิจารณา</p>
-              </div>
-            </div>
-          </div>
-          <div className="large-1 columns">
-            <div className="edit-employee-list">
-              <Icon name="edit" onClick={this.props.handleDetail} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+          );
+        });
+        return result;
+      }
+    }
+    return '';
+  }
   render() {
     // const { isHealth, isExpense, isInsurance } = this.state;
     console.log('H', this.props.styletabHealth());
@@ -287,7 +316,7 @@ class DetailClaim extends Component {
                     </DivHead>
                   </div>
                   <div className="large-5 columns">
-                    <div className="large-4 columns">
+                    <div className="large-5 columns">
                       <DivHead>
                         <TextLists>ผู้เคลม</TextLists>
                         <Popups
@@ -355,7 +384,7 @@ class DetailClaim extends Component {
                         />
                       </DivHead>
                     </div>
-                    <div className="large-5 columns">
+                    <div className="large-4 columns">
                       <DivHead>
                         <TextLists>สถานะการเคลม</TextLists>
                         <Popups
@@ -396,7 +425,10 @@ class DetailClaim extends Component {
                 </div>
               </div>
             </div>
-            {this.renderListEmployee()}
+            {this.props.claimList !== undefined && this.props.index !== undefined
+            ? this.renderListEmployee(this.props.claimList, this.props.index)
+            : <div />
+            }
           </DivClaim>
 
           {/* {isHealth

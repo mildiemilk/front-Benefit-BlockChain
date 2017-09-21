@@ -15,7 +15,7 @@ class Bidding extends Component {
     bidding: PropTypes.func.isRequired,
     getSelectInsurer: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
-    timeout: PropTypes.string.isRequired,
+    timeout: PropTypes.shape({}).isRequired,
     getCompleteStep: PropTypes.func.isRequired,
     biddingDetailForCompany: PropTypes.func.isRequired,
     detail: PropTypes.shape({}).isRequired,
@@ -57,6 +57,7 @@ class Bidding extends Component {
     });
   }
   render() {
+    console.log('Props-->', this.props);
     return (
       <div className="Bidding">
         <NavBidding

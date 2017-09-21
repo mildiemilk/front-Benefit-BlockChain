@@ -145,6 +145,7 @@ class Box extends Component {
   }
 
   render() {
+    console.log('<---Props--->', this.props);
     return (
       <div className="Box">
         <div className="HeadBidContent">

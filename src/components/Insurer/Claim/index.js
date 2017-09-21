@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Divider, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 // import HeadCompanyInfo from '../header-company-info';
 import HeaderBoxClaim from './header-box-claim';
 import { Button } from '../../StyleComponent';
@@ -11,6 +12,7 @@ import pdf from '../../../../assets/EmployeeList/icons-8-pdf.png';
 import print from '../../../../assets/EmployeeList/icons-8-print.png';
 // import FilterSearch from '../../FilterSearch';
 import { getClaim } from '../../../api/Insurer/claim';
+// import ClaimDetail from './claim-detail';
 
 class Claim extends Component {
   static propTypes = {
@@ -39,38 +41,39 @@ class Claim extends Component {
   renderElement = claim => {
     const list = claim.map(claim => (
       <div className="boxDetail">
-        <div className="">
-          <div className="row">
-            <div className="large-1 columns">
-              <Text>{claim.claimNumber} </Text>
-            </div>
-            <div className="large-2 columns">
-              <Text>IPD</Text>
-            </div>
-            <div className="large-2 columns">
-              <Text>07/07/2560 </Text>
-            </div>
-            <div className="large-2 columns">
-              <Text>อิทธิพงศ์ กฤดากร ณ อยุธยา </Text>
-            </div>
-            <div className="large-2 columns">
-              <Text>1222 </Text>
-            </div>
-            <div className="large-2 columns">
-              <Text>สถานะ </Text>
-            </div>
-            <div className="large-1 columns">
-              <Text>Option</Text>
+        <Link to={`/claimlist/${claim.companyId}`}>
+          <div className="">
+            <div className="row">
+              <div className="large-1 columns">
+                <Text>{claim.claimNumber} </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>IPD</Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>07/07/2560 </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>อิทธิพงศ์ กฤดากร ณ อยุธยา </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>1222 </Text>
+              </div>
+              <div className="large-2 columns">
+                <Text>สถานะ </Text>
+              </div>
+              <div className="large-1 columns">
+                <Text>Option</Text>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     ));
     return list;
   }
   render() {
     const { claim } = this.props;
-    console.log('claim77', this.props);
     return (
       <div className="ClaimIndex">
         {/* <HeadCompanyInfo /> */}

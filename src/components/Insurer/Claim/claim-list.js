@@ -40,7 +40,7 @@ class ClaimList extends Component {
   renderElement = claim => {
     const list = claim.map((claim, id) => (
       <Nav id={id} >
-        <Link to={`/claim/${claim.companyId}`}>
+        <Link to={`/claimlist/${claim.companyId}`}>
           <div className="text-main">
             <ImageCompany
               src={claim.logo}
@@ -82,7 +82,7 @@ class ClaimList extends Component {
             {claim.length > 0
             ? this.renderElement(claim)
             : null
-            }
+          }
           </div>
         </div>
       </div>

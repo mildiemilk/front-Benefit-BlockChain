@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Form } from 'semantic-ui-react';
+import { Form, Popup } from 'semantic-ui-react';
 import logo from '../image/logo.png';
 import '../../styles/signup.scss';
 import { register } from '../../api/auth';
@@ -34,13 +34,13 @@ class SignUp extends Component {
       <div className="signupStyle">
         <div className="box">
           <img src={logo} alt="logo" style={{ maxWidth: '30%' }} />
-          <div className="large-9 large-centered columns">
+          <div className="large-8 large-centered columns">
             <div className="boxForm">
               <h2 className="header"> สร้างบัญชีผู้ใช้ </h2>
               <div className="row" />
               <div className="boxCenter">
                 <div className="row">
-                  <div className="large-5 large-offset-4 columns">
+                  <div className="large-5 large-centered columns">
                     <Form onSubmit={this.handleSubmit}>
                       <Form.Field>
                         <div className="divInput">
@@ -65,12 +65,19 @@ class SignUp extends Component {
                             alt="iconPassword"
                             src="../../../login/icons8-password.png"
                           />
-                          <Form.Input
-                            placeholder="พาสเวิร์ด"
-                            name="password"
-                            type="password"
-                            onChange={this.handleChange}
-                            required
+                          <Popup
+                            trigger={
+                              <Form.Input
+                                placeholder="พาสเวิร์ด"
+                                name="password"
+                                type="password"
+                                onChange={this.handleChange}
+                                required
+                              />
+                            }
+                            header="คำแนะนำ:"
+                            content="รหัสผ่านควรมีความยาว 8-20 ตัวอักษรและประกอบด้วยตัวอักษรพิมพ์เล็ก, พิมพ์ใหญ่ และตัวเลข"
+                            on="click"
                           />
                         </div>
                       </Form.Field>

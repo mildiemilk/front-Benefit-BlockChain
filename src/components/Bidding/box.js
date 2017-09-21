@@ -15,6 +15,7 @@ class Box extends Component {
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     completeStep: PropTypes.bool.isRequired,
     end: PropTypes.bool.isRequired,
+    updatedAt: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -85,6 +86,7 @@ class Box extends Component {
     if (completeStep) {
       return <Redirect to="/congrat" />;
     }
+    console.log('bids', bids);
     return bids.map((bid, index) => (
       <div className="boxDetail">
         <div className={this.boxStyling(bid.status, this.props.end)}>
@@ -145,7 +147,8 @@ class Box extends Component {
   }
 
   render() {
-    console.log('<---Props--->', this.props);
+    console.log('<---Props--->', this.props.list);
+    console.log('--timeout--', this.props.updatedAt);
     return (
       <div className="Box">
         <div className="HeadBidContent">

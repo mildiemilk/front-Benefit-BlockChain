@@ -94,50 +94,50 @@ class Dashboard extends Component {
             <Grid>
               <Grid.Row columns={3}>
                 <Grid.Column>
-                  <Image
-                    className="block"
-                    centered
-                    src={artboard1}
-                    shape="circular"
-                  />
                   <Link to="/submitplan" >
+                    <Image
+                      className="block"
+                      centered
+                      src={artboard1}
+                      shape="circular"
+                    />
                     <Container textAlign="center"> สร้างแผนของคุณ </Container>
                   </Link>
                 </Grid.Column>
                 <Grid.Column>
-                  <Image
-                    className="block"
-                    centered
-                    src={artboard3}
-                    shape="circular"
-                  />
                   <Link to="/employeelist" >
+                    <Image
+                      className="block"
+                      centered
+                      src={artboard3}
+                      shape="circular"
+                    />
                     <Container textAlign="center"> อัพเดตจำนวนพนักงาน </Container>
                   </Link>
                 </Grid.Column>
                 <Grid.Column>
-                  <Image className="block" src={artboard2} shape="circular" />
                   <Link to="/ClaimEmployee" >
+                    <Image className="block" src={artboard2} shape="circular" />
                     <Container textAlign="center"> รายการเคลม </Container>
                   </Link>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={3}>
                 <Grid.Column>
-                  <Image className="block" src={artboard4} shape="circular" />
                   <Link to="/profileclaim" >
+                    <Image className="block" src={artboard4} shape="circular" />
                     <Container textAlign="center"> ประวัติการเคลม </Container>
                   </Link>
                 </Grid.Column>
                 <Grid.Column>
-                  <Image className="block" src={artboard5} shape="circular" />
                   <Link to="/profile" >
+                    <Image className="block" src={artboard5} shape="circular" />
                     <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
                   </Link>
                 </Grid.Column>
                 <Grid.Column>
-                  <Image className="block" src={artboard6} shape="circular" />
                   <Link to="/setting" >
+                    <Image className="block" src={artboard6} shape="circular" />
                     <Container textAlign="center"> ตั้งค่า </Container>
                   </Link>
                 </Grid.Column>

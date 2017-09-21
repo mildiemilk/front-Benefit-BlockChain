@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Divider, Icon } from 'semantic-ui-react';
-import HeadCompanyInfo from '../header-company-info';
+// import HeadCompanyInfo from '../header-company-info';
 import HeaderBoxClaim from './header-box-claim';
 import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
@@ -35,7 +35,7 @@ class Claim extends Component {
   render() {
     return (
       <div className="ClaimIndex">
-        <HeadCompanyInfo />
+        {/* <HeadCompanyInfo /> */}
         <HeaderBoxClaim />
         <div className="row">
           <div className="large-4 columns"><Head>รายการเคลม</Head></div>

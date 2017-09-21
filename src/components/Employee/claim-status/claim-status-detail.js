@@ -6,8 +6,8 @@ import considerHead from '../../image/groupConsider.png';
 import approveHead from '../../image/groupApprove.png';
 import rejectHead from '../../image/groupReject.png';
 import NewClaim from './CreateNewclaim';
-import receipt1 from '../../image/receipt.jpg';
-import receipt2 from '../../image/receipt2.jpg';
+// import receipt1 from '../../image/receipt.jpg';
+// import receipt2 from '../../image/receipt2.jpg';
 import Zoomglass from '../../image/icons-8-zoom-in.png';
 
 class ClaimStatusDetail extends Component {
@@ -19,6 +19,33 @@ class ClaimStatusDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  handleViewImg = () => {
+    const { claimdata } = this.props;
+    const image = claimdata.ClaimFile.urlImg.map((item, i) => (
+      <Modal
+        key={i.toString()}
+        trigger={
+          <div>
+            <img
+              src={item}
+              alt="receipt"
+              className="receiptImg"
+            />
+            <img src={Zoomglass} alt="zoom" className="Zoomglass" />
+          </div>
+          }
+        content={
+          <img
+            src={item}
+            alt="receipt"
+            style={{ height: '250px', width: '100%' }}
+          />
+        }
+      />
+    ));
+    return image;
   }
 
   renderHeadpic = () => {
@@ -140,20 +167,18 @@ class ClaimStatusDetail extends Component {
   }
 
   renderNewclaim = () => {
-    const { claimdata } = this.props;
-    if (claimdata.type === 'insurance') {
-      return (
-        <div>
-          <div className="BodyDiv margin">
-            <h className="HeadReason black">เคลมอีกครั้ง</h>
-          </div>
-          <NewClaim
-            oldClaimData={claimdata}
-          />
+    const { claimdata, handleToggleViewDetail } = this.props;
+    return (
+      <div>
+        <div className="BodyDiv margin">
+          <h className="HeadReason black">เคลมอีกครั้ง</h>
         </div>
-      );
-    }
-    return '';
+        <NewClaim
+          claimdata={claimdata}
+          handleToggleViewDetail={handleToggleViewDetail}
+        />
+      </div>
+    );
   }
 
   render() {
@@ -200,44 +225,7 @@ class ClaimStatusDetail extends Component {
                   }
                 </div>
                 <div className="receiptDiv">
-                  <Modal
-                    trigger={
-                      <div>
-                        <img
-                          src={receipt1}
-                          alt="receipt"
-                          className="receiptImg"
-                        />
-                        <img src={Zoomglass} alt="zoom" className="Zoomglass" />
-                      </div>
-                      }
-                    content={
-                      <img
-                        src={receipt1}
-                        alt="receipt"
-                        style={{ height: '250px', width: '100%' }}
-                      />
-                    }
-                  />
-                  <Modal
-                    trigger={
-                      <div>
-                        <img
-                          src={receipt2}
-                          alt="receipt"
-                          className="receiptImg left"
-                        />
-                        <img src={Zoomglass} alt="zoom" className="Zoomglass zleft" />
-                      </div>
-                      }
-                    content={
-                      <img
-                        src={receipt2}
-                        alt="receipt"
-                        className="modalpic"
-                      />
-                    }
-                  />
+                  {this.handleViewImg()}
                 </div>
               </div>
             </div>

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // import moment from 'moment';
 // import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 import '../../../styles/InsurerStyle/Claim.scss';
+// import { getGroupBenefit } from '../../../api/profile-company';
 // import { Redirect } from 'react-router-dom';
 import {
-  Nav,
+  NavClaim,
   Pic,
   Font,
   FontNum,
@@ -18,9 +19,9 @@ import {
 
 class HeaderBoxClaim extends Component {
   static propTypes = {
-    // chooseFinalInsurer: PropTypes.func.isRequired,
+    // getGroupBenefit: PropTypes.func.isRequired,
     // end: PropTypes.shape({}).isRequired,
-    data: PropTypes.shape({}).isRequired,
+    // data: PropTypes.shape({}).isRequired,
     // handleClick: PropTypes.func.isRequired,
     // list: PropTypes.arrayOf(PropTypes.object).isRequired,
     // completeStep: PropTypes.bool.isRequired,
@@ -31,54 +32,66 @@ class HeaderBoxClaim extends Component {
       passwordToConfirm: '',
     };
   }
-
+  componentDidMount() {
+    // this.props.getGroupBenefit();
+  }
 
   render() {
     return (
       <div className="HeaderBoxClaim">
         <div className="row">
           <div className="large-3 columns">
-            <Nav>
+            <NavClaim>
               <Pic> <Icon name="drivers license outline" size="big" /></Pic>
               <TextNav>
                 <Font>จำนวนการเคลมทั้งหมด</Font><br />
                 <FontNum>44</FontNum>
               </TextNav>
-            </Nav>
+            </NavClaim>
           </div>
           <div className="large-3 columns">
-            <Nav>
+            <NavClaim>
               <Pic> <Icon name="checkmark" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่อนุมัติไปแล้ว</FontAucTime><br />
                 <FontNumAucTime>10</FontNumAucTime>
               </TextNav>
-            </Nav>
+            </NavClaim>
           </div>
           <div className="large-3 columns">
-            <Nav>
+            <NavClaim>
               <Pic> <Icon name="search" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่กำลังพิจารณา</FontAucTime><br />
                 <FontNumAucTime>3
                 </FontNumAucTime>
               </TextNav>
-            </Nav>
+            </NavClaim>
           </div>
           <div className="large-3 columns">
-            <Nav>
+            <NavClaim>
               <Pic> <Icon name="remove" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่ไม่อนุมัติ</FontAucTime><br />
                 <FontNumAucTime>4
                 </FontNumAucTime>
               </TextNav>
-            </Nav>
+            </NavClaim>
           </div>
         </div>
       </div>
     );
   }
 }
+// const mapDispatchToProps = dispatch => ({
+//   getGroupBenefit: () => dispatch(getGroupBenefit()),
+// });
+//
+// const mapStateToProps = state => ({
+//   // claim: state.claimReducer.claim,
+//   getGroupBenefit: state.profile.getGroupBenefit,
+//   // benefitPlan: state.benefitPlan.plan,
+// });
+// export default connect(mapStateToProps, mapDispatchToProps)(HeaderBoxClaim);
 
 export default HeaderBoxClaim;

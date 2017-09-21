@@ -73,7 +73,7 @@ class ClaimList extends Component {
   }
   render() {
     const { claim } = this.props;
-    console.log('claim--', this.props.claim);
+    // console.log('claim--', this.props.claim);
     return (
       <div className="ClaimList">
         <Head className="insurerheade-text" content="รายการเคลม" />
@@ -90,7 +90,7 @@ class ClaimList extends Component {
   }
 }
 const mapStateToProps = state => ({
-  claim: state.claimReducer.claim,
+  claim: state.claimListReducer.claim,
 });
 
 const mapDispatchToProps = dispatch => ({

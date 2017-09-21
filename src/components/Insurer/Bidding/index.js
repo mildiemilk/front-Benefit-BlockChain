@@ -19,7 +19,7 @@ class Bidding extends React.Component {
   }
 
   constructor(props) {
-    console.log('props.match.params.companyId---->', props.match.params.companyId);
+    // console.log('props.match.params.companyId---->', props.match.params.companyId);
     super(props);
     this.state = {
       isDetail: false,

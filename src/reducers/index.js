@@ -26,6 +26,8 @@ import {
   claimOptionReducer,
 } from './Employee/claim';
 import { biddingInsurerReducer } from './Insurer/bidding';
+import { claimListReducer } from './Insurer/claim';
+import { claimReducer } from './Insurer/claim';
 import { customerReducer } from './Insurer/customer';
 
 const rootReducer = combineReducers({
@@ -55,6 +57,8 @@ const rootReducer = combineReducers({
   getClaimStatusReducer,
   customerReducer,
   getClaimHistoryReducer,
+  claimListReducer,
+  claimReducer,
 });
 
 export default rootReducer;

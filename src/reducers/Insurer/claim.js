@@ -3,6 +3,7 @@
  */
 const defaultClaim = {
   claim: [],
+  total: 0,
 };
 
 /**
@@ -32,10 +33,10 @@ export function getCompanyClaimFailure(data) {
 }
 
 export function claimReducer(state = defaultClaim, action) {
-  console.log('action--', action);
+  console.log('action-11-', action);
   switch (action.type) {
     case CLAIM_REQUEST_SUCCESS:
-      return Object.assign({}, state, { claim: action.data });
+      return Object.assign({}, state, { claim: action.data.claims, total: action.data.total });
     case CLAIM_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     default:
@@ -43,7 +44,7 @@ export function claimReducer(state = defaultClaim, action) {
   }
 }
 export function claimListReducer(state = defaultClaim, action) {
-  console.log('action--', action);
+  console.log('action-555-', action);
   switch (action.type) {
     case CLAIM_COMPANY_REQUEST_SUCCESS:
       return Object.assign({}, state, { claim: action.data });

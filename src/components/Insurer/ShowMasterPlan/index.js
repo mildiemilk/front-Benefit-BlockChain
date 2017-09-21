@@ -30,7 +30,7 @@ class ShowMasterPlan extends Component {
             plan,
             companyId,
           } = data;
-    console.log('quotationId---', countBidding);
+    // console.log('quotationId---', countBidding);
     let joinbid;
     let quotation;
     let popupQuotationId;
@@ -45,7 +45,7 @@ class ShowMasterPlan extends Component {
       quotation = false;
     }
     if (countBidding === 0 && status === 'join') {
-      console.log('quotationId false');
+      // console.log('quotationId false');
       popupQuotationId = true;
     } else {
       console.log('quotationId false');
@@ -101,7 +101,7 @@ class ShowMasterPlan extends Component {
   }
 
   handleOnpenModalPlanDetail = (name, DetailMP, price, index) => {
-    console.log('call handleClick--', index);
+    // console.log('call handleClick--', index);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
@@ -119,7 +119,7 @@ class ShowMasterPlan extends Component {
 
 
   handleCloseModal = nameModal => {
-    console.log('nameModal-xxsssx--', nameModal)
+    // console.log('nameModal-xxsssx--', nameModal)
     if (nameModal === 'modalConfirmCancelJoin') {
       const data = this.props.DataCompany;
       const { companyId,

@@ -63,45 +63,54 @@ class ExtendClaim extends Component {
     }
     return '';
   }
-  resultClaim = (cost, currency) => (
-    <div>
-      <DivClaim padding="30px 10px">
+  resultClaim = (cost, currency) => {
+    const { claimList, index, indexDetail } = this.props;
+    const result = (
+      <div>
+        <DivClaim padding="30px 10px">
+          <div className="row">
+            <div className="large-8 columns">
+              <ListDetail>จำนวนเงินคงเหลือที่เคลมได้</ListDetail>
+            </div>
+            <div className="large-4 columns">
+              <List>11000 บาท</List>
+            </div>
+          </div>
+          <div className="row">
+            <div className="large-8 columns">
+              <ListDetail>จำนวนเงินที่ขอเคลม</ListDetail>
+            </div>
+            <div className="large-4 columns">
+              <List> {cost} {currency}</List>
+            </div>
+          </div>
+          <Divider />
+          <div className="row">
+            <div className="large-8 columns">
+              <ListDetail>จำนวนเงินที่เคลมได้</ListDetail>
+            </div>
+            <div className="large-4 columns">
+              <List>4000 บาท</List>
+            </div>
+          </div>
+        </DivClaim>
         <div className="row">
-          <div className="large-8 columns">
-            <ListDetail>จำนวนเงินคงเหลือที่เคลมได้</ListDetail>
+          <div className="large-6 columns">
+            <ModalReject
+              claimId={claimList.claims[index].claims[indexDetail].claimId}
+            />
           </div>
-          <div className="large-4 columns">
-            <List>11000 บาท</List>
+          <div className="large-6 columns">
+            <ModalApprove
+              claimId={claimList.claims[index].claims[indexDetail].claimId}
+            />
           </div>
-        </div>
-        <div className="row">
-          <div className="large-8 columns">
-            <ListDetail>จำนวนเงินที่ขอเคลม</ListDetail>
-          </div>
-          <div className="large-4 columns">
-            <List> {cost} {currency}</List>
-          </div>
-        </div>
-        <Divider />
-        <div className="row">
-          <div className="large-8 columns">
-            <ListDetail>จำนวนเงินที่เคลมได้</ListDetail>
-          </div>
-          <div className="large-4 columns">
-            <List>4000 บาท</List>
-          </div>
-        </div>
-      </DivClaim>
-      <div className="row">
-        <div className="large-6 columns">
-          <ModalReject />
-        </div>
-        <div className="large-6 columns">
-          <ModalApprove />
         </div>
       </div>
-    </div>
-  )
+    );
+    return result;
+  }
+
   resultInsurance = () => (
     <div>
       <DivInsurance>

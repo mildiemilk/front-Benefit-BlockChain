@@ -23,27 +23,8 @@ class ClaimEmployee extends Component {
     };
     props.getClaimList();
   }
-  // componentDidMount() {
-  //   this.setIndex();
-  // }
-  // setIndex = () => {
-  //   const { isHealth, isExpense, isInsurance } = this.state;
-  //   if (isHealth) {
-  //     this.setState({
-  //       index: 1,
-  //     });
-  //   } else if (isExpense) {
-  //     this.setState({
-  //       index: 0,
-  //     })
-  //   } else if (isInsurance) {
-  //     this.setState({
-  //       index: 2,
-  //     });
-  //   }
-  // }
+
   handleDetail = index => {
-    console.log('dfdfd');
     const { isExtend } = this.state;
     this.setState({
       isExtend: !isExtend,
@@ -103,8 +84,6 @@ class ClaimEmployee extends Component {
   }
   render() {
     const { isExtend } = this.state;
-    console.log('props===>Claim', this.props);
-    console.log('state--', this.state.index);
     return (
       <div>
         <Head content="เคลม" />

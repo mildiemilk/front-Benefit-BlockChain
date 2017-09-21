@@ -45,6 +45,7 @@ const SET_GROUPBENEFIT_URI = '/api/company/set-group-benefit';
 const GET_SUMMARYGROUP_URI = '/api/company/summary-group';
 const GET_SUMMARYEMPLOYEE_URI = '/api/company/summary-employee-benefit';
 const GET_CLAIMLIST_URI = 'api/company/get-claim-list';
+const COMPANY_CLAIM_URI = 'api/company/claim';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -317,6 +318,16 @@ export function getClaimList() {
         dispatch(getClaimListFailure(err.response.data));
       });
   };
+}
+export function companyClaim(status, claimId, reason) {
+  const options = {
+    method: 'put',
+    url: `${COMPANY_CLAIM_URI}/${status}/${claimId}`,
+    data: {
+      reason,
+    },
+  };
+  return APIRequest(options, true);
 }
 export default {
   createProfile,

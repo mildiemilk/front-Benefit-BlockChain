@@ -61,7 +61,6 @@ class DetailClaim extends Component {
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   renderListEmployee = (claimList, index) => {
-    console.log('--> ClaimList', claimList);
     const allList = claimList.claims;
     // const searchData = this.renderSearch(data);
     // const showData = searchData.filter(
@@ -70,9 +69,6 @@ class DetailClaim extends Component {
     // );
     // return showData.map(element => (
     if (allList !== undefined && allList.length >= 1) {
-      console.log('all--->', allList);
-      console.log('index', index);
-      console.log('all.claim--->', allList[index].claims);
       if (allList[index].claims !== undefined && allList[index].claims.length >= 1) {
         const allLists = allList[index].claims;
         const result = allLists.map((list, i) => {
@@ -139,42 +135,44 @@ class DetailClaim extends Component {
     return '';
   }
   render() {
-    // const { isHealth, isExpense, isInsurance } = this.state;
-    console.log('H', this.props.styletabHealth());
-    console.log('E', this.props.styletabExpense());
-    console.log('I', this.props.styletabInsurance());
+    const { claimList } = this.props;
+    console.log('thisProps', this.props.claimList);
     return (
       <div>
-        <div className="row">
+        {claimList.claims !== undefined && claimList.claims.length >= 1
+        ? <div className="row">
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={allclaim} alt="allEmployee" /></Pic>
               <TextNav>รายการเคลมทั้งหมด</TextNav>
-              <Number>1200</Number>
+              <Number>{ claimList.total}</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#689be4"><img src={insurance} alt="allEmployee" /></Pic>
               <TextNav>รายการเคลมประกันภัย</TextNav>
-              <Number>1200</Number>
+              <Number>{claimList.claims[2].amountOfClaim}</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5daa3f"><img src={health} alt="allEmployee" /></Pic>
               <TextNav>รายการเคลมสุขภาพ</TextNav>
-              <Number>1200</Number>
+              <Number>{claimList.claims[1].amountOfClaim}</Number>
             </Box>
           </div>
+
           <div className="large-3 columns">
             <Box>
               <Pic color="#ec5769"><img src={expense} alt="allEmployee" /></Pic>
               <TextNav>รายการเคลมทั่วไป</TextNav>
-              <Number>1200</Number>
+              <Number>{claimList.claims[0].amountOfClaim}</Number>
             </Box>
           </div>
         </div>
+        : null
+        }
         <Detail>
           <div className="tab">
             <Text

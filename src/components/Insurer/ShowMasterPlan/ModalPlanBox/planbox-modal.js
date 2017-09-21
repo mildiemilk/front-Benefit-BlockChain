@@ -73,7 +73,7 @@ class PlanBoxModal extends Component {
     handleChangeMasterplan: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
     planType: PropTypes.string.isRequired,
-    ipdType: PropTypes.string.isRequired,
+    // ipdType: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     planIndex: PropTypes.number.isRequired,
     handleChangeInput: PropTypes.func.isRequired,
@@ -97,7 +97,7 @@ class PlanBoxModal extends Component {
       canBuildNewPlan: true,
       planName: '',
       employeeOfPlan: '',
-      ipdType: this.props.ipdType,
+      ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
       ipdLumsumTimeNotExceedPerYear: null,
@@ -117,7 +117,7 @@ class PlanBoxModal extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-      ipdCoPay: false,
+      ipdCoPay: true,
       ipdCoPayQuota: null,
       ipdCoPayDeductable: null,
       ipdCoPayMixPercentage: null,
@@ -379,7 +379,7 @@ class PlanBoxModal extends Component {
       rbScheduleAccident: null,
       rbScheduleTreatment: null,
       rbScheduleTransplant: null,
-      ipdCoPay: false,
+      ipdCoPay: true,
       ipdCoPayQuota: null,
       ipdCoPayDeductable: null,
       ipdCoPayMixPercentage: null,
@@ -402,17 +402,34 @@ class PlanBoxModal extends Component {
   }
 
   handleToggleIpdCoPay = () => {
-    if (this.state.ipdCoPay) {
+    console.log('handleToggleOpdCoPay modal', this.state);
+    if (this.state.ipdCoPay === true) {
       this.setState({
-        ipdCoPay: !this.state.ipdCoPay,
+        DetailMP: this.props.DetailMP,
+        ipdCoPay: false,
         ipdCoPayQuota: null,
         ipdCoPayDeductable: null,
         ipdCoPayMixPercentage: null,
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
       });
-    } else {
-      this.setState({ ipdCoPay: !this.state.ipdCoPay });
+      console.log('before modal', this.state.DetailMP);
+      const MP = this.state.DetailMP
+      MP.ipdCoPay = false;
+      this.state = {
+        DetailMP: MP,
+        ipdType: MP.ipdType,
+      };
+      console.log('after modal', this.state.DetailMP);
+    }
+    if (this.state.ipdCoPay === false) {
+      this.setState({ ipdCoPay: true });
+      const MP = this.state.DetailMP
+      MP.ipdCoPay = true;
+      this.state = {
+        DetailMP: MP,
+        ipdType: MP.ipdType,
+      };
     }
   }
 
@@ -426,8 +443,19 @@ class PlanBoxModal extends Component {
         opdCoPayMixNotExceed: null,
         opdCoPayMixYear: null,
       });
+      this.state = {
+        DetailMP: this.props.DetailMP,
+        ipdType: this.state.ipdType,
+      };
+      const MP = this.state.DetailMP
+      MP.opdCoPay = true;
     } else {
       this.setState({ opdCoPay: !this.state.opdCoPay });
+      this.state = {
+        DetailMP: this.props.DetailMP,
+      };
+      const MP = this.state.DetailMP
+      MP.opdCoPay = true;
     }
   }
 
@@ -468,6 +496,7 @@ class PlanBoxModal extends Component {
     console.log('--sdsdd--', this.props);
     console.log('-Pro-', this.props.DetailMP);
     // console.log('-Prothis.handleToggleIpdCoPay}-', this.handleToggleIpdCoPay);
+    const { DetailMP } = this.props;
     return (
       <Modals
         trigger={<div />}
@@ -515,7 +544,7 @@ class PlanBoxModal extends Component {
               handleResetLife={this.handleResetLife}
               handleResetOPD={this.handleResetOPD}
               handleResetIPD={this.handleResetIPD}
-              ipdType={this.state.ipdType}
+              ipdType={DetailMP.ipdType}
               ipdLumsumPerYear={this.state.ipdLumsumPerYear}
               ipdLumsumPerTime={this.state.ipdLumsumPerTime}
               ipdLumsumTimeNotExceedPerYear={
@@ -564,6 +593,7 @@ class PlanBoxModal extends Component {
               lifePerYear={this.state.lifePerYear}
               lifeTimeOfSalary={this.state.lifeTimeOfSalary}
               lifeNotExceed={this.state.lifeNotExceed}
+              DetailMP={this.state.DetailMP}
             />
           </ModalContentsWithBottom>
           {/* <ModalChange>

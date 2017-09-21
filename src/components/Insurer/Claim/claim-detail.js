@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Divider, Icon } from 'semantic-ui-react';
 import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
 import { Head, NavDetail } from './styled';
+import { getClaim } from '../../../api/Insurer/claim';
 
 class ClaimDetail extends Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+    // children: PropTypes.element.isRequired,
+    getClaim: PropTypes.func.isRequired,
+    // claim: PropTypes.shape({}).isRequired,
   }
   static defaultProps = {
     match: {
       params: 0,
     },
   }
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      claim: [],
+    };
   }
   componentDidMount() {
+    this.props.getClaim();
   }
   render() {
     return (
@@ -135,5 +141,12 @@ class ClaimDetail extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  claim: state.claimReducer.claim,
+});
 
-export default ClaimDetail;
+const mapDispatchToProps = dispatch => ({
+  getClaim: () => dispatch(getClaim()),
+
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ClaimDetail);

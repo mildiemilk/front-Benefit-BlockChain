@@ -153,6 +153,7 @@ class SubmitPlan extends Component {
   handleToggle = () => { }
 
   handleToggleOpdCoPay = () => {
+    console.log('handleToggleOpdCoPay index');
     if (this.state.opdCoPay) {
       this.setState({
         opdCoPay: !this.state.opdCoPay,

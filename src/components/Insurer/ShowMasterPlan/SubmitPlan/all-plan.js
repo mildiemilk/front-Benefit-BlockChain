@@ -79,6 +79,7 @@ class AllsetPlan extends Component {
     ipdCoPayMixNotExceed: PropTypes.string,
     ipdCoPayMixYear: PropTypes.string,
     handlePlan: PropTypes.func.isRequired,
+    DetailMP: PropTypes.shape({}).isRequired,
   }
 
   static defaultProps = {
@@ -201,13 +202,11 @@ class AllsetPlan extends Component {
     if (this.props.nextPage && verifyState === false) {
       this.handleOpenModalNextPage();
       this.props.handleNextPage();
-      console('f');
     }
 
     if (this.props.newPlan && verifyState === false) {
       this.handleOpenModal();
       this.props.handleResetPlan();
-      console('3');
     }
   }
 
@@ -369,7 +368,8 @@ class AllsetPlan extends Component {
   }
 
   render() {
-    console.log('AllPlan:props', this.state)
+    console.log('AllPlan:state', this.state)
+    console.log('AllPlan:props', this.props)
     return (
       <div>
         <div className="fillBox2">
@@ -593,6 +593,7 @@ class AllsetPlan extends Component {
                 ipdCoPayMixPercentage={this.props.ipdCoPayMixPercentage}
                 ipdCoPayMixNotExceed={this.props.ipdCoPayMixNotExceed}
                 ipdCoPayMixYear={this.props.ipdCoPayMixYear}
+                DetailMP={this.props.DetailMP}
               />
               : null}
             {this.state.setPlan === 'Dental'

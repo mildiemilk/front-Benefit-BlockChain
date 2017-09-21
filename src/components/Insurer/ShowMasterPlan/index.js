@@ -218,7 +218,7 @@ class ShowMasterPlan extends Component {
   handleChange =(e, { name, value }) => {
     // const name = e.target.name;
     // const value = e.target.value;
-    console.log('nameindex', name);
+    console.log('nameindex==', name);
     this.setState({ [name]: value });
     const MP = this.state.DetailMP
     MP[name] = value;

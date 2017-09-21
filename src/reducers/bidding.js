@@ -4,6 +4,7 @@
 const biddingList = {
   insurers: [],
   detail: {},
+  minPrice: 0,
 };
 
 const defaultEnd = { end: null };
@@ -65,7 +66,9 @@ export function EndFailure(data) {
 export function biddingReducer(state = biddingList, action) {
   switch (action.type) {
     case GETBIDDING_REQUEST_SUCCESS:
-      return Object.assign({}, state, { insurers: action.data });
+      return Object.assign({}, state, {
+        insurers: action.data.biddingDetail,
+        minPrice: action.data.minPrice });
     case GETBIDDING_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     case GETBIDDINGDETAIL_REQUEST_SUCCESS:

@@ -7,7 +7,6 @@ import { createPlan, editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import erase from '../../image/icons-8-erase.png';
 
-const moneyOptions = [{ text: '100', value: 100 }, { text: '200', value: 200 }];
 
 class FormSubmitPlan extends Component {
   static propTypes = {
@@ -34,9 +33,10 @@ class FormSubmitPlan extends Component {
 
   handleClick = () => {
     const { planName, employeeOfPlan } = this.props;
+    const numberOfPlan = parseInt(employeeOfPlan, 10);
     if (this.props.activePlan === -1) {
       this.props.handleModalFinish();
-      this.props.createPlan({ planName, employeeOfPlan });
+      this.props.createPlan({ planName, numberOfPlan });
       setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000);
     } else {
       this.props.editPlan(
@@ -91,9 +91,8 @@ class FormSubmitPlan extends Component {
                     <br />
                   </Form.Group>
                   <Form.Group widths="equal">
-                    <Form.Select
-                      placeholder="เท่า"
-                      options={moneyOptions}
+                    <Form.Input
+                      placeholder="ระบุจำนวนพนักงาน"
                       value={this.props.employeeOfPlan}
                       name="employeeOfPlan"
                       id="employeeOfPlan"

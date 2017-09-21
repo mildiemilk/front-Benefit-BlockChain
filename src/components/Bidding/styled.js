@@ -184,6 +184,12 @@ export const FontNumAucTime = styled(FontNum)`
   color: #505050;
   }
 `;
+export const FontTime = styled(FontNum)`
+&&& {
+font-size: 30px;
+color: #505050;
+}
+`;
 export const TextNav = styled.div`
   margin-top: 1%;
 `;

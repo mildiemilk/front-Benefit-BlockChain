@@ -15,16 +15,18 @@ class Bidding extends Component {
     bidding: PropTypes.func.isRequired,
     getSelectInsurer: PropTypes.func.isRequired,
     getTimeout: PropTypes.func.isRequired,
-    timeout: PropTypes.string.isRequired,
+    timeout: PropTypes.shape({}).isRequired,
     getCompleteStep: PropTypes.func.isRequired,
     biddingDetailForCompany: PropTypes.func.isRequired,
     detail: PropTypes.shape({}).isRequired,
+    minPrice: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
     this.state = {
       isDetail: false,
       index: '',
+      end: false,
     };
     setInterval(() => {
       props.bidding();
@@ -40,7 +42,6 @@ class Bidding extends Component {
   handleClick = (insurerId, index) => {
     const { isDetail } = this.state;
     this.props.biddingDetailForCompany(insurerId);
-    console.log('insurer', this.props.detail);
     if (!isDetail) {
       this.setState({
         isDetail: true,
@@ -50,14 +51,21 @@ class Bidding extends Component {
       this.setState({ isDetail: false });
     }
   }
-
+  notiTimeout = () => {
+    this.setState({
+      end: true,
+    });
+  }
   render() {
-    console.log('bid', this.props.detail);
-    console.log('data', this.props.data);
-    console.log('time-bid', this.props.timeout);
+    console.log('Props-->', this.props);
     return (
       <div className="Bidding">
-        <NavBidding num={this.props.num} timeout={this.props.timeout} />
+        <NavBidding
+          num={this.props.num}
+          timeout={this.props.timeout}
+          notiTimeout={this.notiTimeout}
+          minPrice={this.props.minPrice}
+        />
         <div className="BidContent">
           {this.state.isDetail
             ? <Details
@@ -66,7 +74,7 @@ class Bidding extends Component {
               list={this.props.data}
               index={this.state.index}
             />
-            : <Box handleClick={this.handleClick} list={this.props.data} />}
+            : <Box handleClick={this.handleClick} list={this.props.data} end={this.state.end} />}
         </div>
       </div>
     );
@@ -78,6 +86,7 @@ const mapStateToProps = state => ({
   data: state.biddingReducer.insurers,
   detail: state.biddingReducer,
   num: state.getSelectInsurer.defaultInsurer.length,
+  minPrice: state.biddingReducer.minPrice,
 });
 
 const mapDispatchToProps = dispatch => ({

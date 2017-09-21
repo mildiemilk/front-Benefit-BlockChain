@@ -11,7 +11,7 @@ import Insurer from './insurer';
 import '../../styles/send-request.scss';
 // import { getSimpleRQ } from '../../api/simple-requirement';
 import { getTimeout } from '../../api/choose-insurer';
-import Postre from './postre';
+// import Postre from './postre';
 import {
   Detail,
   Head,
@@ -77,8 +77,8 @@ class Sendrequest extends Component {
           <div className="row">
             <div className="large-12 columns">
               <Head>ส่งคำขอและรอการเสนอราคา</Head>
-              <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
-              <Postre data={this.props} />
+              {/* <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
+              <Postre data={this.props} /> */}
               <TopicHead>กรุณาตรวจสอบแพลนของคุณ</TopicHead>
               <BoxIndiv>
                 <ModalPlanBox changePositionPage={this.changePositionPage} />

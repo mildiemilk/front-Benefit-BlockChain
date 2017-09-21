@@ -8,23 +8,23 @@ import {
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
 
-const InsuranceTypeOption = [
-  {
-    key: '1',
-    text: 'IPD',
-    value: 'IPD',
-  },
-  {
-    key: '2',
-    text: 'OPD',
-    value: 'OPD',
-  },
-  {
-    key: '3',
-    text: 'Dental',
-    value: 'Dental',
-  },
-];
+// const InsuranceTypeOption = [
+//   {
+//     key: '1',
+//     text: 'IPD',
+//     value: 'IPD',
+//   },
+//   {
+//     key: '2',
+//     text: 'OPD',
+//     value: 'OPD',
+//   },
+//   {
+//     key: '3',
+//     text: 'Dental',
+//     value: 'Dental',
+//   },
+// ];
 
 const BankOption = [
   {
@@ -58,6 +58,7 @@ class InsuranceTemplate extends Component {
     handleChangeDate: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    life: PropTypes.shape({}).isRequired,
   }
 
   constructor(props) {
@@ -66,7 +67,10 @@ class InsuranceTemplate extends Component {
   }
 
   render() {
-    const { currencyOption } = this.props;
+    const {
+      currencyOption,
+      life,
+    } = this.props;
     return (
       <div className="InsuranceTemplate">
         <Dropdown
@@ -74,7 +78,7 @@ class InsuranceTemplate extends Component {
           fluid
           selection
           name="InsuranceType"
-          options={InsuranceTypeOption}
+          options={life}
           onChange={this.props.handleChange}
         />
         <NewLine />

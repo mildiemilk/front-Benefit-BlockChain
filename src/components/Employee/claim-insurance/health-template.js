@@ -8,23 +8,23 @@ import {
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
 
-const HealthOption = [
-  {
-    key: '1',
-    text: 'แว่น',
-    value: 'glass',
-  },
-  {
-    key: '2',
-    text: 'ยิม',
-    value: 'gym',
-  },
-  {
-    key: '3',
-    text: 'ตรวจสุขภาพประจำปี',
-    value: 'bodycheck',
-  },
-];
+// const HealthOption = [
+//   {
+//     key: '1',
+//     text: 'แว่น',
+//     value: 'glass',
+//   },
+//   {
+//     key: '2',
+//     text: 'ยิม',
+//     value: 'gym',
+//   },
+//   {
+//     key: '3',
+//     text: 'ตรวจสุขภาพประจำปี',
+//     value: 'bodycheck',
+//   },
+// ];
 
 class HealthTemplate extends Component {
   static propTypes = {
@@ -36,6 +36,7 @@ class HealthTemplate extends Component {
     handleChangeDate: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    health: PropTypes.shape({}).isRequired,
   }
 
   constructor(props) {
@@ -44,7 +45,10 @@ class HealthTemplate extends Component {
   }
 
   render() {
-    const { currencyOption } = this.props;
+    const {
+      currencyOption,
+      health,
+    } = this.props;
     return (
       <div className="InsuranceTemplate">
         <Dropdown
@@ -52,7 +56,7 @@ class HealthTemplate extends Component {
           fluid
           selection
           name="HealthType"
-          options={HealthOption}
+          options={health}
           onChange={this.props.handleChange}
         />
         <NewLine />

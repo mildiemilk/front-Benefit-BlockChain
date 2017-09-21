@@ -182,7 +182,6 @@ class NewClaim extends Component {
         }
       }
       if (state.modalMsg === '') {
-        console.log('++++', _id, detail, files, type);
         reClaim(_id, detail, files, type)
         .then(() => {
           this.setState({

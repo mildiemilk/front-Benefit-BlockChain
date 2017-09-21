@@ -21,7 +21,6 @@ export function reClaim(claimId, detail, files, type) {
   ));
   formData.append('detail', JSON.stringify(detail));
   formData.append('type', JSON.stringify(type));
-  console.log(formData);
   const options = {
     method: 'put',
     url: `${RECLAIM_URL}/${claimId}`,

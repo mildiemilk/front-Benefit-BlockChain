@@ -157,12 +157,12 @@ class ClaimInsurance extends Component {
       detail.name = state.ChooseEmployeeName;
       detail.amount = state.AmountMoney;
       detail.currency = state.currency;
+      detail.bank = state.BankName;
+      detail.bankAccountNumber = state.AccountNumber;
       if (type === 'insurance') {
         if (state.InsuranceType !== '' && state.Hospital !== '' && state.BankName !== '' && state.AccountNumber !== '') {
           detail.title = state.InsuranceType;
           detail.location = state.Hospital;
-          detail.bank = state.BankName;
-          detail.bankAccountNumber = state.AccountNumber;
         } else {
           this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
         }
@@ -183,8 +183,7 @@ class ClaimInsurance extends Component {
       }
       if (state.modalMsg === '') {
         claim(detail, files, type)
-        .then(res => {
-          console.log(res);
+        .then(() => {
           this.setState({
             renderClaimStatus: true,
             openModal: true,

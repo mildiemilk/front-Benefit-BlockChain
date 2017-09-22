@@ -53,7 +53,7 @@ class SettingBenefit extends Component {
       health: '',
       expense: '',
       planList: [],
-      optionPlan: [],
+      selectPlan: [],
       templatePlan: [],
     };
     props.getTemplatePlan();
@@ -95,10 +95,10 @@ class SettingBenefit extends Component {
       }
     }
     if (newProps.masterPlanList !== this.props.masterPlanList) {
-      const optionPlan = newProps.masterPlanList.concat(newProps.insurerPlanList);
+      const selectPlan = newProps.masterPlanList.concat(newProps.insurerPlanList);
       this.setState({
-        optionPlan,
-      }, () => console.log('option-plan', this.state.optionPlan));
+        selectPlan,
+      }, () => console.log('option-plan', this.state.selectPlan));
     }
     if (newProps.master !== this.props.master && newProps.insurer !== this.props.insurer) {
       const templatePlan = newProps.master.concat(newProps.insurer);
@@ -201,7 +201,6 @@ class SettingBenefit extends Component {
 
   handleActivePlan = index => {
     const { planList } = this.state;
-    console.log('plnnnn', planList);
     this.setState({
       activePlan: index,
       planName: planList[index].benefitPlanName,
@@ -215,6 +214,7 @@ class SettingBenefit extends Component {
   renderOption = (optionPlan, templatePlan) => {
     if (optionPlan !== undefined && optionPlan.length >= 1) {
       console.log('optionPlan', optionPlan);
+      console.log('templatePlan', templatePlan);
       const newplan =
       templatePlan.filter(plan => optionPlan.map(
         option => option.planId === plan.plan._id).indexOf(true) !== -1);
@@ -262,7 +262,7 @@ class SettingBenefit extends Component {
               <div className="large-8 columns">
                 {!this.state.emptyPlan
                   ? <SettingPlan
-                    option={this.renderOption(this.state.optionPlan, this.state.templatePlan)}
+                    option={this.renderOption(this.state.selectPlan, this.state.templatePlan)}
                     optionPlan={this.props.optionPlan}
                     handleChange={this.handleChange}
                     handleToggle={this.handleToggle}

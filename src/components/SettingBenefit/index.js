@@ -57,9 +57,7 @@ class SettingBenefit extends Component {
     };
     props.getTemplatePlan();
     props.getInsurancePlan();
-    setInterval(() => {
-      props.getBenefitPlan();
-    }, 2000);
+    props.getBenefitPlan();
   }
 
   componentDidMount() {

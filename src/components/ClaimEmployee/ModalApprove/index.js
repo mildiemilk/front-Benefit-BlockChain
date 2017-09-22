@@ -49,7 +49,7 @@ class ModalApprove extends Component {
   })
   handleApprove = () => {
     const { claimId } = this.props;
-    companyClaim('reject', claimId, null)
+    companyClaim('approve', claimId, null)
     .then(() => this.handleModal());
   }
   render() {

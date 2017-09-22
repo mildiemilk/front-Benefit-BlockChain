@@ -36,7 +36,7 @@ class HealthTemplate extends Component {
     handleChangeDate: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    health: PropTypes.shape({}).isRequired,
+    health: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
 
   constructor(props) {

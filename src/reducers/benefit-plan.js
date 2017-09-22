@@ -6,6 +6,7 @@ const defaultPlan = {
     master: [],
     insurer: [],
   },
+  detailPlan: '',
   choosePlan: {},
   health: {},
   isHealth: false,
@@ -127,6 +128,7 @@ export function choosePlan(state = defaultPlan, action) {
     case GETTEMPLATEPLAN_REQUEST_SUCCESS:
       // const choosePlan = action.data.plan.master.concat(action.data.plan.insurer);
       return Object.assign({}, state, {
+        detailPlan: action.data._id,
         choosePlan: action.data.plan,
         health: action.data.health,
         isHealth: action.data.isHealth,

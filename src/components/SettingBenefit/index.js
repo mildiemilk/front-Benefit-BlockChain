@@ -54,6 +54,7 @@ class SettingBenefit extends Component {
       expense: '',
       planList: [],
       optionPlan: [],
+      templatePlan: [],
     };
     props.getTemplatePlan();
     props.getInsurancePlan();
@@ -172,11 +173,22 @@ class SettingBenefit extends Component {
       activePlan,
     } = this.state;
     const plan = this.getPlan(this.state.plan);
-    const benefitPlan = { plan, isHealth, isExpense, health, expense };
+    const { detailPlan } = this.props.optionPlan;
+    const benefitPlan = { plan, isHealth, isExpense, health, expense, detailPlan };
     let benefitPlanId = null;
     if (activePlan !== '') {
       const { benefitPlan } = this.props;
       benefitPlanId = benefitPlan[activePlan]._id;
+      // this.setState({
+      //   planName: benefitPlan[activePlan].benefitPlanName,
+      //   plan: benefitPlan[activePlan].benefitPlan.plan.planId._id,
+      //   isHealth: benefitPlan[activePlan].benefitPlan.isHealth,
+      //   isExpense: benefitPlan[activePlan].benefitPlan.isExpense,
+      //   health: benefitPlan[activePlan].benefitPlan.health,
+      //   expense: benefitPlan[activePlan].benefitPlan.expense,
+      //   emptyPlan: false,
+      //   planList: benefitPlan,
+      // });
     }
     const setPlan = {
       benefitPlanId,

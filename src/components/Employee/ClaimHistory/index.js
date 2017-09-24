@@ -63,6 +63,7 @@ class ClamHistory extends Component {
         HealthType,
         HealthPlace,
         expenseType,
+        _id: item._id,
       });
     });
     this.setState({ claimData });
@@ -98,18 +99,14 @@ class ClamHistory extends Component {
   }
 
   renderClaimStatus = claimData => {
-    const listItems = claimData.map((claim, number) => {
-      if (claim.status !== 'consider') {
-        return (
-          <ClaimStatusBox
-            claimdata={claim}
-            id={number}
-            handleToggleViewDetail={this.handleToggleViewDetail}
-          />
-        );
-      }
-      return '';
-    });
+    const listItems = claimData.map((claim, number) => (
+      <ClaimStatusBox
+        key={number.toString()}
+        claimdata={claim}
+        id={number}
+        handleToggleViewDetail={this.handleToggleViewDetail}
+      />
+    ));
     return listItems;
   }
 

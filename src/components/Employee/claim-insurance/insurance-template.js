@@ -58,7 +58,7 @@ class InsuranceTemplate extends Component {
     handleChangeDate: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    life: PropTypes.shape({}).isRequired,
+    life: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
 
   constructor(props) {

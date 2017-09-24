@@ -99,6 +99,8 @@ class DeadlineBox extends Component {
 
   render() {
     const countDown = this.state;
+    console.log('>>>>>>>>>>', this.state);
+    console.log('++++++++++', this.props);
     const $isDay = this.addLeadingZeros(countDown.days);
     const $isHours = this.addLeadingZeros(countDown.hours);
     const $isMin = this.addLeadingZeros(countDown.min);

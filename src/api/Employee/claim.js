@@ -12,6 +12,23 @@ const CREATE_CLAIM_URI = '/api/employee/claim';
 const GET_CLAIM_STATUS_URI = '/api/employee/get-claim-status';
 const GET_CLAIM_HISTORY_URI = '/api/employee/get-claim-history';
 const CLAIM_OPTION_URL = '/api/employee/claim-option';
+const RECLAIM_URL = '/api/employee/re-claim';
+
+export function reClaim(claimId, detail, files, type) {
+  const formData = new FormData();
+  files.map((file, index) => (
+    formData.append('files', files[index])
+  ));
+  formData.append('detail', JSON.stringify(detail));
+  formData.append('type', JSON.stringify(type));
+  const options = {
+    method: 'put',
+    url: `${RECLAIM_URL}/${claimId}`,
+    data: formData,
+  };
+  return APIRequest(options, true);
+}
+
 
 export function claimOption() {
   return dispatch => {

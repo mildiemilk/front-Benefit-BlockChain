@@ -63,6 +63,7 @@ class ClaimStatus extends Component {
         HealthType,
         HealthPlace,
         expenseType,
+        _id: item._id,
       });
     });
     this.setState({ claimData });
@@ -100,6 +101,7 @@ class ClaimStatus extends Component {
   renderClaimStatus = claimData => {
     const listItems = claimData.map((claim, number) => (
       <ClaimStatusBox
+        key={number.toString()}
         claimdata={claim}
         id={number}
         handleToggleViewDetail={this.handleToggleViewDetail}
@@ -109,10 +111,9 @@ class ClaimStatus extends Component {
   }
 
   render() {
-    const { claimData } = this.state;
     return (
       <div className="claim-status">
-        {this.checkRenderclaimStatus(claimData)}
+        {this.checkRenderclaimStatus()}
       </div>
     );
   }

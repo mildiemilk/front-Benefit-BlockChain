@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Modal, Dropdown, Icon } from 'semantic-ui-react';
 // import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   Backgroundiv,
   SubmitButton,
@@ -59,6 +59,7 @@ class ClaimInsurance extends Component {
       general: [],
       MainStateOption: [],
       modalMsg: '',
+      renderClaimStatus: false,
     };
     props.claimOption();
   }
@@ -156,12 +157,12 @@ class ClaimInsurance extends Component {
       detail.name = state.ChooseEmployeeName;
       detail.amount = state.AmountMoney;
       detail.currency = state.currency;
+      detail.bank = state.BankName;
+      detail.bankAccountNumber = state.AccountNumber;
       if (type === 'insurance') {
         if (state.InsuranceType !== '' && state.Hospital !== '' && state.BankName !== '' && state.AccountNumber !== '') {
           detail.title = state.InsuranceType;
           detail.location = state.Hospital;
-          detail.bank = state.BankName;
-          detail.bankAccountNumber = state.AccountNumber;
         } else {
           this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
         }
@@ -181,15 +182,20 @@ class ClaimInsurance extends Component {
         }
       }
       if (state.modalMsg === '') {
-        claim(detail, files, type);
-        // .then(() => {
-        //   this.handleOpenModal();
-        // });
+        claim(detail, files, type)
+        .then(() => {
+          this.setState({
+            renderClaimStatus: true,
+            openModal: true,
+          });
+        });
       }
     } else {
-      this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
+      this.setState({
+        modalMsg: 'กรุณากรอกข้อมูลให้ครบ',
+        openModal: true,
+      });
     }
-    this.handleOpenModal();
   }
 
   handleOpenModal = () => this.setState({ openModal: true });
@@ -278,8 +284,12 @@ class ClaimInsurance extends Component {
       openModal,
       modalMsg,
       ClaimFile,
+      renderClaimStatus,
     } = this.state;
     const { data } = this.props;
+    if (renderClaimStatus) {
+      return <Redirect to={{ pathname: '/claimstatus' }} />;
+    }
     if (data.claimUser.length > 0) {
       return (
         <div className="InsuranceTemplate">

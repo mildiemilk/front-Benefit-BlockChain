@@ -1,49 +1,17 @@
 import React, { Component } from 'react';
+// import moment from 'moment';
 import { Dropdown, Form } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import {
   TinyText,
-  BrowsButton,
   NewLine,
-  UploadText,
 } from './styled';
 import '../../../../styles/employee-style/claim-insurance.scss';
 
-const InsuranceTypeOption = [
-  {
-    key: '1',
-    text: 'IPD',
-    value: 'IPD',
-  },
-  {
-    key: '2',
-    text: 'OPD',
-    value: 'OPD',
-  },
-  {
-    key: '3',
-    text: 'Dental',
-    value: 'Dental',
-  },
-];
-
 const currencyOption = [
-  {
-    key: 'บาท',
-    text: 'บาท',
-    value: 'bath',
-  },
-  {
-    key: 'usd',
-    text: 'usd',
-    value: 'usd',
-  },
-  {
-    key: 'กีบลาว',
-    text: 'กีบลาว',
-    value: 'Lak',
-  },
+  { key: '1', text: 'บาท', value: 'bath' },
+  { key: '2', text: 'USD', value: 'usd' },
 ];
 
 const BankOption = [
@@ -70,40 +38,71 @@ const BankOption = [
 ];
 class InsuranceTemplate extends Component {
   static propTypes = {
+    EmNameoption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleChange: PropTypes.func.isRequired,
-    EmNameoption: PropTypes.shape.isRequired,
-    date: PropTypes.shape.isRequired,
-    handleUploadcliamFile: PropTypes.func.isRequired,
-    ClaimFile: PropTypes.shape.isRequired,
     handleChangeDate: PropTypes.func.isRequired,
-    oldClaimData: PropTypes.shape.isRequired,
+    claimdata: PropTypes.shape({}).isRequired,
+    life: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    health: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    general: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
-    const oldClaim = this.props.oldClaimData;
+    const {
+      claimdata,
+      life,
+      handleChange,
+      handleChangeDate,
+      EmNameoption,
+      general,
+      health,
+    } = this.props;
+    let location;
+    let typeOption;
+    let type;
+    let nameLocation;
+    let nameType;
+    if (claimdata.mainState === 'insurance') {
+      location = claimdata.Hospital;
+      typeOption = life;
+      type = claimdata.InsuranceType;
+      nameType = 'InsuranceType';
+      nameLocation = 'Hospital';
+    } else if (claimdata.mainState === 'general') {
+      location = claimdata.HealthPlace;
+      typeOption = general;
+      type = claimdata.expenseType;
+      nameType = 'expenseType';
+      nameLocation = 'HealthPlace';
+    } else {
+      location = claimdata.HealthPlace;
+      typeOption = health;
+      type = claimdata.HealthType;
+      nameType = 'HealthType';
+      nameLocation = 'HealthPlace';
+    }
     return (
       <div className="InsuranceTemplate">
         <Dropdown
           placeholder="เลือกชนิดของประกัน"
           fluid
           selection
-          defaultValue={oldClaim.InsuranceType}
-          name="InsuranceType"
-          options={InsuranceTypeOption}
-          onChange={this.props.handleChange}
+          defaultValue={type}
+          name={nameType}
+          options={typeOption}
+          onChange={handleChange}
         />
         <NewLine />
         <TinyText>วันที่ในใบเสร็จ</TinyText>
         <div className="Datebox">
           <DatePicker
             placeholderText="DD/MM/YY"
-            selected={this.props.date}
-            onChange={this.props.handleChangeDate}
+            selected={claimdata.date}
+            onChange={handleChangeDate}
           />
         </div>
         <NewLine />
@@ -112,10 +111,10 @@ class InsuranceTemplate extends Component {
           <Form.Field>
             <Form.Input
               placeholder="กรอกชื่อโรงพยาบาล"
-              name="Hospital"
-              defaultValue={oldClaim.Hospital}
+              name={nameLocation}
+              defaultValue={location}
               type="text"
-              onChange={this.props.handleChange}
+              onChange={handleChange}
               required
             />
           </Form.Field>
@@ -127,9 +126,9 @@ class InsuranceTemplate extends Component {
           fluid
           selection
           name="ChooseEmployeeName"
-          defaultValue={oldClaim.ChooseEmployeeName}
-          options={this.props.EmNameoption}
-          onChange={this.props.handleChange}
+          defaultValue={claimdata.ChooseEmployeeName}
+          options={EmNameoption}
+          onChange={handleChange}
         />
         <NewLine />
         <TinyText>จำนวนเงิน</TinyText>
@@ -139,8 +138,8 @@ class InsuranceTemplate extends Component {
               placeholder="กรอกจำนวนเงิน"
               name="AmountMoney"
               type="number"
-              defaultValue={oldClaim.AmountMoney}
-              onChange={this.props.handleChange}
+              defaultValue={claimdata.AmountMoney}
+              onChange={handleChange}
               required
             />
           </Form.Field>
@@ -150,56 +149,45 @@ class InsuranceTemplate extends Component {
               placeholder="สกุล"
               fluid
               selection
-              defaultValue="บาท"
+              defaultValue={claimdata.currency}
               name="currency"
               options={currencyOption}
-              onChange={this.props.handleChange}
+              onChange={handleChange}
             />
           </div>
         </Form>
-
-        <TinyText>ธนาคาร</TinyText>
-        <Dropdown
-          className="moneyDropDown"
-          placeholder="เลือกธนาคาร"
-          fluid
-          selection
-          name="BankName"
-          defaultValue={oldClaim.BankName}
-          options={BankOption}
-          onChange={this.props.handleChange}
-        />
-        <NewLine />
-        <TinyText>เลขที่บัญชีที่จะรับเงิน</TinyText>
-        <Form>
-          <Form.Field>
-            <Form.Input
-              placeholder="กรอกเลขที่บัญชี"
-              name="AccountNumber"
-              type="number"
-              defaultValue={oldClaim.AccountNumber}
-              onChange={this.props.handleChange}
-              required
+        {
+          type === 'insurance'
+          ? <div>
+            <TinyText>ธนาคาร</TinyText>
+            <Dropdown
+              className="moneyDropDown"
+              placeholder="เลือกธนาคาร"
+              fluid
+              selection
+              name="BankName"
+              defaultValue={claimdata.BankName}
+              options={BankOption}
+              onChange={handleChange}
             />
-          </Form.Field>
-        </Form>
+            <NewLine />
+            <TinyText>เลขที่บัญชีที่จะรับเงิน</TinyText>
+            <Form>
+              <Form.Field>
+                <Form.Input
+                  placeholder="กรอกเลขที่บัญชี"
+                  name="AccountNumber"
+                  type="number"
+                  defaultValue={claimdata.AccountNumber}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Field>
+            </Form>
+          </div>
+          : <div />
+        }
         <NewLine />
-        <TinyText>แนบภาพใบเสร็จ (เฉพาะไฟล์ประเภท .pdf .jpg .png)</TinyText>
-        <BrowsButton>
-          <input
-            style={{ display: 'none' }}
-            type="file"
-            accept=".pdf, .jpg, .png"
-            onChange={this.props.handleUploadcliamFile}
-          />
-          อัพโหลดรูปใบเสร็จ
-        </BrowsButton>
-        <NewLine style={{ height: '3px' }} />
-        <UploadText>
-          {this.props.ClaimFile.name}
-        </UploadText>
-        <NewLine style={{ height: '3px' }} />
-
       </div>
     );
   }

@@ -19,8 +19,8 @@ const defaultClaimOption = {
 /**
  * Action Constansts
  */
-const GETCLAIM_STATUS_SUCCESS = 'GETCLAIM_STATUS_SUCCESS';
-const GETCLAIM_STATUS_FAILURE = 'GETCLAIM_STATUS_FAILURE';
+const GET_CLAIM_STATUS_SUCCESS = 'GET_CLAIM_STATUS_SUCCESS';
+const GET_CLAIM_STATUS_FAILURE = 'GET_CLAIM_STATUS_FAILURE';
 const GET_CLAIM_HISTORY_SUCCESS = 'GET_CLAIM_HISTORY_SUCCESS';
 const GET_CLAIM_HISTORY_FAILURE = 'GET_CLAIM_HISTORY_FAILURE';
 const CLAIM_OPTION_REQUEST_SUCCESS = 'auth/CLAIM_OPTION_REQUEST_SUCCESS';
@@ -30,11 +30,11 @@ const CLAIM_OPTION_REQUEST_FAILURE = 'auth/CLAIM_OPTION_REQUEST_FAILURE';
  * Actions
  */
 export function getClaimStatusSuccess(data) {
-  return { type: GETCLAIM_STATUS_SUCCESS, data };
+  return { type: GET_CLAIM_STATUS_SUCCESS, data };
 }
 
 export function getClaimStatusFailure(data) {
-  return { type: GETCLAIM_STATUS_FAILURE, data };
+  return { type: GET_CLAIM_STATUS_FAILURE, data };
 }
 
 export function getClaimHistorySuccess(data) {
@@ -60,6 +60,7 @@ export function claimOptionReducer(state = defaultClaimOption, action) {
         claimUser: action.data.claimUser,
         healthList: action.data.healthList,
         expenseList: action.data.expenseList,
+        insuranceList: action.data.insuranceList,
       });
     case CLAIM_OPTION_REQUEST_FAILURE:
       return state;
@@ -83,11 +84,11 @@ export function getClaimHistoryReducer(state = defaultLogClaim, action) {
 
 export function getClaimStatusReducer(state = defaultClaimData, action) {
   switch (action.type) {
-    case GETCLAIM_STATUS_SUCCESS:
+    case GET_CLAIM_STATUS_SUCCESS:
       return Object.assign({}, state, {
         claimData: action.data,
       });
-    case GETCLAIM_STATUS_FAILURE:
+    case GET_CLAIM_STATUS_FAILURE:
       return state;
     default:
       return state;

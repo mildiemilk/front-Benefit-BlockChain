@@ -83,7 +83,9 @@ class SideBar extends React.Component {
     return '';
   }
 
-  closeSidebar = () => this.setState({ closeSidebar: false });
+  closeSidebar = () => {
+    this.setState({ closeSidebar: false });
+  }
 
   render() {
     return (

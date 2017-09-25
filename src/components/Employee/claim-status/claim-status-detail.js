@@ -6,9 +6,8 @@ import considerHead from '../../image/groupConsider.png';
 import approveHead from '../../image/groupApprove.png';
 import rejectHead from '../../image/groupReject.png';
 import NewClaim from './CreateNewclaim';
-// import receipt1 from '../../image/receipt.jpg';
-// import receipt2 from '../../image/receipt2.jpg';
-import Zoomglass from '../../image/icons-8-zoom-in.png';
+// import Zoomglass from '../../image/icons-8-zoom-in.png';
+import IconZoom from '../../../../assets/employee/icon_zoom.png';
 
 class ClaimStatusDetail extends Component {
   static propTypes = {
@@ -18,35 +17,40 @@ class ClaimStatusDetail extends Component {
   }
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      openModal: false,
+      modalImg: '',
+    };
   }
 
   handleViewImg = () => {
     const { claimdata } = this.props;
     const image = claimdata.ClaimFile.urlImg.map((item, i) => (
-      <Modal
+      <div
+        className="claim-img-block"
         key={i.toString()}
-        trigger={
-          <div>
-            <img
-              src={item}
-              alt="receipt"
-              className="receiptImg"
-            />
-            <img src={Zoomglass} alt="zoom" className="Zoomglass" />
-          </div>
-          }
-        content={
-          <img
-            src={item}
-            alt="receipt"
-            style={{ height: '250px', width: '100%' }}
-          />
-        }
-      />
+        onClick={() => this.handleOpenModal(item)}
+        role="button"
+        aria-hidden
+      >
+        <img alt="" src={item} className="claim-img" />
+        <img alt="" src={IconZoom} className="calim-img-icon-zoom" />
+      </div>
     ));
     return image;
   }
+
+  handleOpenModal = item => this.setState({ openModal: true, modalImg: item });
+
+  handleCloseModal = () => this.setState({ openModal: false, modalImg: '' });
+
+  // handleModalViewImg = () =>
+  //   <Modal
+  //     open={this.state.openModal}
+  //     onClose={this.handleCloseModal}
+  //   >
+  //     <img alt="" className="claim-img-modal-img" src={this.state.modalImg} />
+  //   </Modal>
 
   renderHeadpic = () => {
     const { claimdata } = this.props;
@@ -243,6 +247,13 @@ class ClaimStatusDetail extends Component {
             </u>
           </div>
         </div>
+        <Modal
+          open={this.state.openModal}
+          onClose={this.handleCloseModal}
+          className="claim-modal-box"
+        >
+          <img alt="" className="claim-img-modal-img" src={this.state.modalImg} />
+        </Modal>
       </div>
     );
   }

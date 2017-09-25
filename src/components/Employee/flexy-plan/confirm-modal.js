@@ -84,7 +84,7 @@ class ConfirmModal extends Component {
   }
 
   render() {
-    const { plan } = this.props;
+    const { plan, data, timeUp } = this.props;
     const {
       renderHomeDashboard,
       renderDashboardStart,
@@ -107,6 +107,11 @@ class ConfirmModal extends Component {
       >
         <ModalContents>
           <div>
+            {
+              timeUp || data.group.type === 'fixed'
+              ? <span className="flexy-header-confirm">คุณเลือกแผน {plan + 1}</span>
+              : <div />
+            }
             <span className="flexy-header-confirm">คุณเลือกแผน {plan + 1}</span>
             <p className="flexy-text-confirm">กดยืนยันการเลือกของคุณ</p>
             <button

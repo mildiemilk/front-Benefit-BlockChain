@@ -7,7 +7,6 @@ import '../../../styles/submit-plan.scss';
 import LifeModal from './life-modal';
 import about from '../../image/icons-8-about.png';
 
-const options = [{ text: '1', value: 1 }];
 
 class Life extends Component {
   static propTypes = {
@@ -138,16 +137,15 @@ class Life extends Component {
               />
             </Form.Field>
             {this.state.value === 'secondLifeChoice'
-              ? <Form.Select
+              ? <Form.Input
                 placeholder="เท่า"
                 name="lifeTimeOfSalary"
                 id="lifeTimeOfSalary"
                 value={this.props.lifeTimeOfSalary}
-                options={options}
                 onChange={this.handleChange}
                 required
               />
-              : <Form.Select
+              : <Form.Input
                 placeholder="เท่า"
                 name="lifeTimeOfSalary"
                 id="lifeTimeOfSalary"
@@ -169,9 +167,8 @@ class Life extends Component {
             </Form.Field>
             {this.state.value === 'thirdLifeChoice'
               ? <div style={{ display: '-webkit-box' }}>
-                <Form.Select
-                  placeholder="เท่า"
-                  options={options}
+                <Form.Input
+                  placeholder="จำนวนเท่า"
                   name="lifeTimeOfSalary"
                   id="lifeTimeOfSalary"
                   value={this.props.lifeTimeOfSalary}
@@ -180,9 +177,8 @@ class Life extends Component {
                 />
               </div>
               : <div style={{ display: '-webkit-box' }}>
-                <Form.Select
-                  placeholder="เท่า"
-                  options={1}
+                <Form.Input
+                  placeholder="จำนวนเท่า"
                   onChange={this.handleChange}
                   name="lifeTimeOfSalary"
                   id="lifeTimeOfSalary"
@@ -190,7 +186,7 @@ class Life extends Component {
                   style={{ width: '150px' }}
                 />
               </div>}
-            <p> บาท</p>
+            <p> เท่า</p>
           </Form.Group>
           {this.state.value === 'thirdLifeChoice'
             ? <div style={{ marginLeft: '5.5%' }}>

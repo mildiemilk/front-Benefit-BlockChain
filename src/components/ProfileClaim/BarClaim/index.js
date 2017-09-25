@@ -3,10 +3,10 @@ import { Divider } from 'semantic-ui-react';
 import { Box, Pic, TextNav, Number, Detail } from '../../StyleComponent';
 import { DivImg } from '../../EmployeeList/styled';
 import { Head, DivType, TextType, DivFill, Input, DivList, CircleStatus, DivPic } from '../styled';
-import allclaim from '../../../../assets/ProfileClaim/icons-8-documents.png';
-import confirm from '../../../../assets/ProfileClaim/icons-8-checked.png';
+import allclaim from '../../../../assets/ProfileClaim/icons-8-documents@2x.png';
+import confirm from '../../../../assets/ProfileClaim/icons-8-checked@2x.png';
 import waiting from '../../../../assets/ProfileClaim/icons-8-search-filled.png';
-import reject from '../../../../assets/ProfileClaim/icons-8-cancel.png';
+import reject from '../../../../assets/ProfileClaim/icons-8-cancel@2x.png';
 import pdf from '../../../../assets/EmployeeList/icons-8-pdf.png';
 import print from '../../../../assets/EmployeeList/icons-8-print.png';
 import Bar from './Bar';
@@ -54,21 +54,21 @@ class BarClaim extends Component {
         <div className="row">
           <div className="large-3 columns">
             <Box>
-              <Pic color="#5c6879"><img src={allclaim} alt="allEmployee" /></Pic>
+              <Pic color="#5c6879"><img src={allclaim} alt="allEmployee" width="29px" height="29px" /></Pic>
               <TextNav>จำนวนการเคลมทั้งหมด</TextNav>
               <Number>1200</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
-              <Pic color="#5c6879"><img src={confirm} alt="allEmployee" /></Pic>
+              <Pic color="#5c6879"><img src={confirm} alt="allEmployee" width="29px" height="29px" /></Pic>
               <TextNav>อนุมัติไปแล้ว</TextNav>
               <Number>1200</Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
-              <Pic color="#5c6879"><img src={waiting} alt="allEmployee" /></Pic>
+              <Pic color="#5c6879"><img src={waiting} alt="allEmployee" width="29px" height="29px" /></Pic>
               <TextNav>กำลังพิจารณา</TextNav>
               <Number>1200</Number>
             </Box>

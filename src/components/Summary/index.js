@@ -35,10 +35,10 @@ class Piechart extends Component {
     this.props.getSummaryGroup();
     this.props.getBenefitPlan();
   }
-  handlePost = e => {
-    e.preventDefault();
+  handlePost = () => {
     const { passwordToConfirm } = this.state;
     const step = 3;
+    console.log('step', step);
     this.props.setCompleteStep(passwordToConfirm, step);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })

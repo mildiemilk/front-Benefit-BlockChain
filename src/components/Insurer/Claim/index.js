@@ -50,7 +50,7 @@ class Claim extends Component {
           <div className="">
             <div className="row">
               <div className="large-1 columns">
-                <Text>{claim.claimNumber}</Text>
+                <Text>{index + 1 }</Text>
               </div>
               <div className="large-2 columns">
                 {(claim.detail.title)
@@ -70,17 +70,17 @@ class Claim extends Component {
               <div className="large-2 columns">
                 {
                 (claim.status === 'pending')
-                ? <StatusTag color="#3a7bd5"><Icon name="hourglass two" />รอพิจารณา</StatusTag>
+                ? <StatusTag color="#3a7bd5"><Icon name="hourglass two" /> รอพิจารณา</StatusTag>
                 : ''
                 }
                 {
                 (claim.status === 'approve')
-                ? <StatusTag color="#46b3b8"><Icon name="hourglass two" />อนุมัติ</StatusTag>
+                ? <StatusTag color="#46b3b8"><Icon name="checkmark two" /> อนุมัติ</StatusTag>
                 : ''
                 }
                 {
                 (claim.status === 'reject')
-                ? <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>
+                ? <StatusTag color="#f7555f"><Icon name="remove two" /> ไม่อนุมัติ</StatusTag>
                 : ''
                 }
               </div>

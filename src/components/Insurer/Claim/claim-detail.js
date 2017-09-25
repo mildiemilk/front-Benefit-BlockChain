@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Divider, Icon } from 'semantic-ui-react';
 // import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
+import '../../../styles/main_icon.scss';
 import { Head, NavDetail } from './styled';
 import { getClaim } from '../../../api/Insurer/claim';
 import ModalApprove from './ModalApprove';
@@ -52,9 +53,9 @@ class ClaimDetail extends Component {
       if (claim.status === 'pending') {
         tag = <StatusTag color="#3a7bd5"><Icon name="hourglass two" />รอพิจารณา</StatusTag>;
       } else if (claim.status === 'approve') {
-        tag = <StatusTag color="#46b3b8">อนุมัติ</StatusTag>;
+        tag = <StatusTag color="#46b3b8"><Icon name="checkmark two" />อนุมัติ</StatusTag>;
       } else {
-        tag = <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>;
+        tag = <StatusTag color="#f7555f"><Icon name="remove two" />ไม่อนุมัติ</StatusTag>;
       }
       return (
         <div className="ClaimDetail">
@@ -175,12 +176,12 @@ class ClaimDetail extends Component {
                   }
                   {
                   (claim[index].status === 'approve')
-                  ? <div className="row"><div className="large-6 columns">อนุมัติ</div></div>
+                  ? <div className="row"><div className="large-12 columns status-icon"><i aria-hidden="true" className="icon-checked" />อนุมัติ</div></div>
                   : ''
                   }
                   {
                   (claim[index].status === 'reject')
-                  ? <div className="row"><div className="large-6 columns">ไม่อนุมัติ</div></div>
+                  ? <div className="row"><div className="large-12 columns status-icon"><i aria-hidden="true" className="icon-cancel" />ไม่อนุมัติ</div></div>
                   : ''
                   }
                 </div>

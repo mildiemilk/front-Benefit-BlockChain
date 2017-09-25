@@ -15,6 +15,7 @@ import {
 class HeaderCompanyInfo extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
+    // Company: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
     super();
@@ -25,17 +26,19 @@ class HeaderCompanyInfo extends Component {
     moment.locale('th');
     let styleCss;
     let textDisplay = '';
-    const { company, numberOfEmployees,
-      expiredOldInsurance, startNewInsurance, logo, status } = data;
+    const { numberOfEmployees,
+      expiredOldInsurance, startNewInsurance, logo, status, companyName } = data;
     if (status === 'join') {
       styleCss = { color: '#2ac294' };
       textDisplay = '| เข้าร่วมแล้ว';
     } else if (status === 'waiting') {
       styleCss = { color: '#3a7bd5' };
       textDisplay = '| กำลังพิจารณา';
-    } else {
+    } else if (status === 'reject') {
       styleCss = { color: '#3a7bd5' };
       textDisplay = '| ไม่เข้ารวมการประมูล';
+    } else {
+      textDisplay = ' ';
     }
     return (
       <div className="HeaderCompanyInfo">
@@ -47,7 +50,7 @@ class HeaderCompanyInfo extends Component {
           </div>
           <div className="large-8 columns">
             <CompaniesInfo className="company-heder-info">
-              <div style={{ display: 'inline-flex' }}><Head>{company} </Head>
+              <div style={{ display: 'inline-flex' }}><Head>{companyName} </Head>
                 <StyleStatus style={styleCss} >{textDisplay} </StyleStatus>
               </div><br />
               จำนวนพนักงาน : {numberOfEmployees} คน <br />

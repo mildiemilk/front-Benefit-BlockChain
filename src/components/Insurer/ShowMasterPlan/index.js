@@ -216,13 +216,9 @@ class ShowMasterPlan extends Component {
     this.handleCloseModal('editDetailMP');
   }
   handleChange =(e, { name, value }) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    console.log('nameindex==', name);
     this.setState({ [name]: value });
     const MP = this.state.DetailMP
     MP[name] = value;
-    console.log('nameindex-value--', this.state);
   }
   handleQuotationIdChange = e => {
     e.preventDefault();
@@ -233,14 +229,12 @@ class ShowMasterPlan extends Component {
   }
   handleSubmitBidding = e => {
     e.preventDefault();
-    console.log('ffdfffdfdf-dddd-', this.state);
     const { masterplan, insurerplan, quotationId } = this.state;
     // const masterPrice = this.state.masterpla
     let sum = 0;
     let sum1;
     const master = masterplan.map(
       data => {
-        console.log('data--', parseInt(data.price, 10));
         sum1 = parseInt(data.price, 10);
         if (isNaN(sum1)) sum1 = 0;
         sum += sum1;
@@ -252,7 +246,6 @@ class ShowMasterPlan extends Component {
     )
     const insurer = insurerplan.map(
       data => {
-        console.log('data--', parseInt(data.price, 10));
         sum1 = parseInt(data.price, 10);
         if (isNaN(sum1)) sum1 = 0;
         sum += sum1;
@@ -279,14 +272,12 @@ class ShowMasterPlan extends Component {
     const MP = this.state.DetailMP
     MP[name] = parseInt(value, 10);
     this.setState({ DetailMP: MP });
-    console.log('--this.state--', this.state);
     if (MP[name] > value) {
       console.log('less');
       this.setState({
         morePrice: 'pricered',
       });
     } else if (MP[name] < value) {
-      console.log('more');
       this.setState({
         morePrice: 'pricegreen',
       });
@@ -298,8 +289,6 @@ class ShowMasterPlan extends Component {
   }
   handleChangeInput = (planType, e) => {
     const name = e.target.name;
-    console.log('name', this.state);
-    console.log('price', this.state[planType][name].price);
     const value = e.target.value;
     const plans = this.state[planType];
     const oldPrice = this.state[planType][name].price;
@@ -308,7 +297,6 @@ class ShowMasterPlan extends Component {
       [planType]: plans,
       price: plans[name].price });
     if (oldPrice > plans[name].price) {
-      console.log('less');
       this.setState({
         morePrice: 'pricered',
       });

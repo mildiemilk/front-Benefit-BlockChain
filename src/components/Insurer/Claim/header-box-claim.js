@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import moment from 'moment';
 // import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 import '../../../styles/InsurerStyle/Claim.scss';
 // import { getGroupBenefit } from '../../../api/profile-company';
@@ -21,7 +21,7 @@ class HeaderBoxClaim extends Component {
   static propTypes = {
     // getGroupBenefit: PropTypes.func.isRequired,
     // end: PropTypes.shape({}).isRequired,
-    // data: PropTypes.shape({}).isRequired,
+    Count: PropTypes.shape({}).isRequired,
     // handleClick: PropTypes.func.isRequired,
     // list: PropTypes.arrayOf(PropTypes.object).isRequired,
     // completeStep: PropTypes.bool.isRequired,
@@ -37,6 +37,8 @@ class HeaderBoxClaim extends Component {
   }
 
   render() {
+    console.log('Count', this.props.Count);
+    const { Count } = this.props;
     return (
       <div className="HeaderBoxClaim">
         <div className="row">
@@ -45,7 +47,7 @@ class HeaderBoxClaim extends Component {
               <Pic> <Icon name="drivers license outline" size="big" /></Pic>
               <TextNav>
                 <Font>จำนวนการเคลมทั้งหมด</Font><br />
-                <FontNum>44</FontNum>
+                <FontNum>{Count.total}</FontNum>
               </TextNav>
             </NavClaim>
           </div>
@@ -54,7 +56,7 @@ class HeaderBoxClaim extends Component {
               <Pic> <Icon name="checkmark" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่อนุมัติไปแล้ว</FontAucTime><br />
-                <FontNumAucTime>10</FontNumAucTime>
+                <FontNumAucTime>{Count.approve}</FontNumAucTime>
               </TextNav>
             </NavClaim>
           </div>
@@ -63,8 +65,7 @@ class HeaderBoxClaim extends Component {
               <Pic> <Icon name="search" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่กำลังพิจารณา</FontAucTime><br />
-                <FontNumAucTime>3
-                </FontNumAucTime>
+                <FontNumAucTime>{Count.pending}</FontNumAucTime>
               </TextNav>
             </NavClaim>
           </div>
@@ -73,8 +74,7 @@ class HeaderBoxClaim extends Component {
               <Pic> <Icon name="remove" size="big" color="white" /></Pic>
               <TextNav>
                 <FontAucTime>การเคลมที่ไม่อนุมัติ</FontAucTime><br />
-                <FontNumAucTime>4
-                </FontNumAucTime>
+                <FontNumAucTime>{Count.reject}</FontNumAucTime>
               </TextNav>
             </NavClaim>
           </div>

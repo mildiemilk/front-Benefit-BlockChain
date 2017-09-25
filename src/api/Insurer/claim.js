@@ -10,7 +10,24 @@ import {
 
 const ALL_CLAIM_URI = 'api/insurer/claim-all-company';
 const CLAIM_URI = 'api/insurer/get-claim';
+const CLAIM_UPDATE_STATUS_URI = '/api/insurer/claim';
 
+export function updateStatusClaim(status, claimId) {
+  console.log('claimId', claimId);
+  return () => {
+    const options = {
+      method: 'put',
+      url: `${CLAIM_UPDATE_STATUS_URI}/${status}/${claimId}`,
+    };
+    APIRequest(options, true)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+}
 export function getCompanyClaim() {
   return dispatch => {
     const options = {

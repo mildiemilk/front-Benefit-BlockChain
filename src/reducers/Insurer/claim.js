@@ -3,7 +3,8 @@
  */
 const defaultClaim = {
   claim: [],
-  total: 0,
+  company: {},
+  count: {},
 };
 
 /**
@@ -35,7 +36,10 @@ export function getCompanyClaimFailure(data) {
 export function claimReducer(state = defaultClaim, action) {
   switch (action.type) {
     case CLAIM_REQUEST_SUCCESS:
-      return Object.assign({}, state, { claim: action.data.claims, total: action.data.total });
+      return Object.assign({}, state, {
+        claim: action.data.claims,
+        company: action.data.company,
+        count: action.data.count });
     case CLAIM_REQUEST_FAILURE:
       return Object.assign({}, state, {});
     default:

@@ -21,11 +21,6 @@ import Footer from '../footer';
 import '../../../styles/employee-style/claim-insurance.scss';
 import { claimOption, claim } from '../../../api/Employee/claim';
 
-// const MainStateOption = [
-//   { key: 'insurance', text: 'ประกันภัย', value: 'insurance' },
-//   { key: 'health', text: 'สุขภาพ', value: 'health' },
-//   { key: 'general', text: 'ใช้จ่ายทั่วไป', value: 'general' },
-// ];
 const currencyOption = [
   { key: '1', text: 'บาท', value: 'bath' },
   { key: '2', text: 'USD', value: 'usd' },
@@ -159,36 +154,49 @@ class ClaimInsurance extends Component {
       detail.currency = state.currency;
       detail.bank = state.BankName;
       detail.bankAccountNumber = state.AccountNumber;
+      detail.location = state.Hospital ? state.Hospital : state.HealthPlace;
       if (type === 'insurance') {
-        if (state.InsuranceType !== '' && state.Hospital !== '' && state.BankName !== '' && state.AccountNumber !== '') {
+        if (state.InsuranceType !== '' && detail.location !== '' && state.BankName !== '' && state.AccountNumber !== '') {
           detail.title = state.InsuranceType;
           detail.location = state.Hospital;
+          claim(detail, files, type)
+          .then(() => {
+            this.setState({
+              renderClaimStatus: true,
+              openModal: true,
+            });
+          });
         } else {
           this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
         }
       } else if (type === 'health') {
-        if (state.HealthPlace !== '' && state.HealthType !== '') {
+        if (state.HealthPlace !== '' && detail.location !== '') {
           detail.title = state.HealthType;
           detail.location = state.HealthPlace;
+          claim(detail, files, type)
+          .then(() => {
+            this.setState({
+              renderClaimStatus: true,
+              openModal: true,
+            });
+          });
         } else {
           this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
         }
       } else {
-        if (state.expenseType !== '' && state.HealthPlace !== '') {
+        if (state.expenseType !== '' && detail.location !== '') {
           detail.title = state.expenseType;
           detail.location = state.HealthPlace;
+          claim(detail, files, type)
+          .then(() => {
+            this.setState({
+              renderClaimStatus: true,
+              openModal: true,
+            });
+          });
         } else {
           this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
         }
-      }
-      if (state.modalMsg === '') {
-        claim(detail, files, type)
-        .then(() => {
-          this.setState({
-            renderClaimStatus: true,
-            openModal: true,
-          });
-        });
       }
     } else {
       this.setState({

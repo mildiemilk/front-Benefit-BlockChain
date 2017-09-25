@@ -23,6 +23,7 @@ class NewClaim extends Component {
     claimOption: PropTypes.func.isRequired,
     data: PropTypes.shape({}).isRequired,
     handleToggleViewDetail: PropTypes.func.isRequired,
+    handleUpdateClaim: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -159,36 +160,61 @@ class NewClaim extends Component {
       detail.currency = state.currency;
       detail.bank = state.BankName;
       detail.bankAccountNumber = state.AccountNumber;
+      detail.location = state.Hospital ? state.Hospital : state.HealthPlace;
       if (type === 'insurance') {
-        if (state.InsuranceType !== '' && state.Hospital !== '' && state.BankName !== '' && state.AccountNumber !== '') {
+        if (state.InsuranceType !== '' && detail.location !== '' && state.BankName !== '' && state.AccountNumber !== '') {
           detail.title = state.InsuranceType;
           detail.location = state.Hospital;
+          reClaim(_id, detail, files, type)
+          .then(() => {
+            this.props.handleUpdateClaim();
+            this.setState({
+              renderClaimStatus: true,
+              openModal: true,
+            });
+          });
         } else {
-          this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
-        }
-      } else if (type === 'health') {
-        if (state.HealthPlace !== '' && state.HealthType !== '') {
-          detail.title = state.HealthType;
-          detail.location = state.HealthPlace;
-        } else {
-          this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
-        }
-      } else {
-        if (state.expenseType !== '' && state.HealthPlace !== '') {
-          detail.title = state.expenseType;
-          detail.location = state.HealthPlace;
-        } else {
-          this.setState({ modalMsg: 'กรุณากรอกข้อมูลให้ครบ' });
-        }
-      }
-      if (state.modalMsg === '') {
-        reClaim(_id, detail, files, type)
-        .then(() => {
           this.setState({
-            renderClaimStatus: true,
+            modalMsg: 'กรุณากรอกข้อมูลให้ครบ',
             openModal: true,
           });
-        });
+        }
+      } else if (type === 'health') {
+        if (state.HealthPlace !== '' && detail.location !== '') {
+          detail.title = state.HealthType;
+          detail.location = state.HealthPlace;
+          reClaim(_id, detail, files, type)
+          .then(() => {
+            this.props.handleUpdateClaim();
+            this.setState({
+              renderClaimStatus: true,
+              openModal: true,
+            });
+          });
+        } else {
+          this.setState({
+            modalMsg: 'กรุณากรอกข้อมูลให้ครบ',
+            openModal: true,
+          });
+        }
+      } else {
+        if (state.expenseType !== '' && detail.location !== '') {
+          detail.title = state.expenseType;
+          detail.location = state.HealthPlace;
+          reClaim(_id, detail, files, type)
+          .then(() => {
+            this.props.handleUpdateClaim();
+            this.setState({
+              renderClaimStatus: true,
+              openModal: true,
+            });
+          });
+        } else {
+          this.setState({
+            modalMsg: 'กรุณากรอกข้อมูลให้ครบ',
+            openModal: true,
+          });
+        }
       }
     } else {
       this.setState({

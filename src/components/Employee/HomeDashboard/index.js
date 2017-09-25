@@ -254,7 +254,7 @@ class HomeDashboard extends Component {
             <Link to="/claimstatus">
               <div className="hb-box-item">
                 <img className="hb-box-item-img" alt="plan" src={StatusClaim} />
-                <span className="hb-box-item-text">สถานะการเคม</span>
+                <span className="hb-box-item-text">สถานะการเคลม</span>
               </div>
             </Link>
             <Link to="/findhospital">

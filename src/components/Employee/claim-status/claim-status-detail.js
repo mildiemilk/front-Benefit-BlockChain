@@ -8,6 +8,7 @@ import rejectHead from '../../image/groupReject.png';
 import NewClaim from './CreateNewclaim';
 // import Zoomglass from '../../image/icons-8-zoom-in.png';
 import IconZoom from '../../../../assets/employee/icon_zoom.png';
+import IconPending from '../../../../assets/employee/claimdetail/icons-8-hourglass@2x.png';
 
 class ClaimStatusDetail extends Component {
   static propTypes = {
@@ -43,14 +44,6 @@ class ClaimStatusDetail extends Component {
   handleOpenModal = item => this.setState({ openModal: true, modalImg: item });
 
   handleCloseModal = () => this.setState({ openModal: false, modalImg: '' });
-
-  // handleModalViewImg = () =>
-  //   <Modal
-  //     open={this.state.openModal}
-  //     onClose={this.handleCloseModal}
-  //   >
-  //     <img alt="" className="claim-img-modal-img" src={this.state.modalImg} />
-  //   </Modal>
 
   renderHeadpic = () => {
     const { claimdata } = this.props;
@@ -88,7 +81,7 @@ class ClaimStatusDetail extends Component {
         <div>
           <img
             className="StatusImg"
-            src="../../../../employee/claimdetail/icons-8-hourglass@2x.png"
+            src={IconPending}
             alt="Hourglass Icon"
           />
           <span className="Header Blue"> กำลังพิจารณา </span>

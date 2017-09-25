@@ -76,13 +76,12 @@ class SettingPlan extends Component {
     this.renderOption(this.props.option);
   }
   componentDidUpdate() {
-    if (this.props.option.length === 0) {
+    if (this.state.optionPlan.length === 0) {
       this.renderOption(this.props.option);
     }
   }
 
   renderOption = option => {
-    console.log('opre', option);
     const benefitPlan = [];
     option.map((option, index) => {
       benefitPlan.push({
@@ -90,7 +89,6 @@ class SettingPlan extends Component {
         text: option.plan.planName,
         value: option.plan._id,
       });
-      console.log('options', option);
       return option;
     });
     this.setState({ optionPlan: benefitPlan });

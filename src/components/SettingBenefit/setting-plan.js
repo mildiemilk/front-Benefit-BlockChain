@@ -73,10 +73,14 @@ class SettingPlan extends Component {
     };
   }
   componentDidMount() {
-    this.renderOption(this.props.option);
+    console.log('--opiton1--', this.props.option);
+    if (this.props.option.length >= 1) {
+      console.log('--opiton--', this.props.option);
+      this.renderOption(this.props.option);
+    }
   }
   componentDidUpdate() {
-    if (this.props.option.length === 0) {
+    if (this.props.option.length >= 1) {
       this.renderOption(this.props.option);
     }
   }
@@ -97,6 +101,7 @@ class SettingPlan extends Component {
   }
 
   render() {
+    console.log('PropsOption', this.props.option);
     const { handleChange, handleSubmit, planName, plan, optionPlan,
       isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
     let showExpense = optionPlan.isExpense;

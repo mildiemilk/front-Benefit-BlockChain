@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
 import 'rc-time-picker/assets/index.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import _ from 'lodash';
-import 'react-toastify/dist/ReactToastify.min.css';
+// import 'react-toastify/dist/ReactToastify.min.css';
 import {
   setTimeOut,
   chooseInsurer,
@@ -22,11 +22,14 @@ import {
   SideIn,
   Card,
   HeadIn,
-  SubmitInsure,
+  // SubmitInsure,
   Next,
   Check,
+  Logo,
 } from './styled';
 import Timeout from './timeout';
+import Toastify from '../Tostify';
+import ToastifyContent from '../ToastifyContent';
 
 class InsurerSelect extends Component {
   static propTypes = {
@@ -45,7 +48,7 @@ class InsurerSelect extends Component {
       step: 4,
       num: nums !== undefined ? nums : 0,
       insurers: [],
-      hideProgressBar: true,
+      // hideProgressBar: true,
     };
   }
 
@@ -97,7 +100,7 @@ class InsurerSelect extends Component {
   }
 
   handleSubmit = () => {
-    toast(<div>Done!</div>);
+    toast(<ToastifyContent />);
     this.props.chooseInsurer(this.state.insurers);
   }
 
@@ -111,6 +114,7 @@ class InsurerSelect extends Component {
           checked={this.handleDefaultCheck(insurer)}
         />
         {insurer.companyName}
+        <Logo src={insurer.logo.link} alt="logo" />
       </Card>
     ));
     return list;
@@ -133,9 +137,10 @@ class InsurerSelect extends Component {
                   <span>
                     {' '}จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
                   </span>
-                  <SubmitInsure onClick={this.handleSubmit}>
+                  {/* <SubmitInsure onClick={this.handleSubmit}>
                     บันทึก
-                  </SubmitInsure>
+                  </SubmitInsure> */}
+                  <Toastify handleSubmit={this.handleSubmit} />
                 </HeadIn>
                 <div className="row">
                   {this.renderList(this.props.insurerList)}
@@ -151,12 +156,6 @@ class InsurerSelect extends Component {
             </div>
           </Detail>
           <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
-          <ToastContainer
-            hideProgressBar={this.state.hideProgressBar}
-            autoClose={1500}
-            position={toast.POSITION.TOP_RIGHT}
-            style={{ zIndex: '30' }}
-          />
 
         </div>
       </div>

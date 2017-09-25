@@ -218,6 +218,7 @@ class SettingBenefit extends Component {
       const newplan =
       templatePlan.filter(plan => optionPlan.map(
         option => option.planId === plan.plan._id).indexOf(true) !== -1);
+      console.log('newplan', newplan);
       return newplan;
     }
     return '';

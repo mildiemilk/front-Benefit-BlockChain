@@ -6,11 +6,12 @@ import PropTypes from 'prop-types';
 import logoBenefit from './logo_white.png';
 import { HeadNav, LogoPosition, SpanStyle } from './styled';
 
-const ImageCss = styled(Image) `
+const ImageCss = styled.img `
   &&&{
   position: absolute;
-   right: 3%;
-   top: 20px;
+   right: 39px;
+   top: 8px;
+   border-radius: 50%;
   }
 `;
 class Header extends Component {
@@ -39,7 +40,7 @@ class Header extends Component {
               <SpanStyle>
                 {companyName}
               </SpanStyle>
-              <ImageCss src={logo} avatar size="mini" />
+              <ImageCss src={logo} alt="logo" width="50px" height="50px" />
             </div>
             : <div />}
         </Menu.Item>

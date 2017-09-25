@@ -39,51 +39,48 @@ class ClaimList extends Component {
   }
   renderElement = claim => {
     const list = claim.map((claim, id) => (
-      <div className="large-6 columns box-left">
-        <Nav id={id} >
-          <Link to={`/claimlist/${claim.companyId}`}>
-            <div className="text-main">
-              <ImageCompany
-                src={claim.logo}
-                alt="time"
-              />
-              {/* <ProfileImg><img src={claim.logo} alt="time" avatar /> </ProfileImg> */}
-              <div className="insurertext2">
-                <span>{claim.companyName}</span><br />
-                จำนวนพนักงาน : &nbsp;{claim.numberOfEmployees} คน<br />
-                วันเริ่มกรมธรรม์ใหม่ :&nbsp;
-                {moment(claim.startNewInsurance)
-                .locale('th')
-                .format('DD MMMM YYYY')} <br />
-                วันสิ้นสุดกรมธรรม์เก่า :&nbsp;
-                {moment(claim.expiredOldInsurance)
-                .locale('th')
-                .format('DD MMMM YYYY')}
-              </div>
-              <div className="insurertext3">
-                <input type="button" name="" value="" />
-              </div>
+      <Nav id={id} >
+        <Link to={`/claimlist/${claim.companyId}`}>
+          <div className="text-main">
+            <ImageCompany
+              src={claim.logo}
+              alt="time"
+            />
+            {/* <ProfileImg><img src={claim.logo} alt="time" avatar /> </ProfileImg> */}
+            <div className="insurertext2">
+              <span>{claim.companyName}</span><br />
+              จำนวนพนักงาน : &nbsp;{claim.numberOfEmployees} คน<br />
+              วันเริ่มกรมธรรม์ใหม่ :&nbsp;
+              {moment(claim.startNewInsurance)
+              .locale('th')
+              .format('DD MMMM YYYY')} <br />
+              วันสิ้นสุดกรมธรรม์เก่า :&nbsp;
+              {moment(claim.expiredOldInsurance)
+              .locale('th')
+              .format('DD MMMM YYYY')}
             </div>
-            <div className="insurertext4">
-              <div className="status-text">กำลังพิจารณา <span> {claim.amount} </span></div>
+            <div className="insurertext3">
+              <input type="button" name="" value="" />
             </div>
-          </Link>
-        </Nav>
-      </div>
+          </div>
+          <div className="insurertext4">
+            <div className="status-text">กำลังพิจารณา <span> {claim.amount} </span></div>
+          </div>
+        </Link>
+      </Nav>
     ));
     return list;
   }
   render() {
     const { claim } = this.props;
+    console.log('this.props--', this.props);
     return (
       <div className="ClaimList">
         <Head className="insurerheade-text" content="รายการเคลม" />
-        <div className="row">
-          {claim.length > 0
-          ? this.renderElement(claim)
-          : null
-        }
-        </div>
+        {claim.length > 0
+        ? this.renderElement(claim)
+        : null
+      }
       </div>
     );
   }

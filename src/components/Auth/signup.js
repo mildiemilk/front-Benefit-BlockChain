@@ -6,6 +6,9 @@ import logo from '../image/logo.png';
 import '../../styles/signup.scss';
 import { register } from '../../api/auth';
 
+const passwordPattern = /^(?=.*\d)(?=.*[A-Z]).{8,20}/;
+const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 class SignUp extends Component {
   constructor() {
     super();
@@ -14,6 +17,7 @@ class SignUp extends Component {
       password: '',
       confirmPassword: '',
       role: 'HR',
+      error: null,
     };
   }
 
@@ -24,7 +28,24 @@ class SignUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { email, password, confirmPassword, role } = this.state;
-    this.props.register(email, password, confirmPassword, role);
+    const checkEmail = emailPattern.test(email);
+    const checkPassword = passwordPattern.test(password);
+    if (!checkEmail) {
+      this.setState({ error: 'กรุณากรอกอีเมลให้ถูกต้องด้วยค่ะ' });
+    } else if (password.length >= 8 && password.length <= 20) {
+      if (!checkPassword) {
+        this.setState({ error: 'พาสเวิร์ดควรมีตัวอักษรพิมพ์เล็กพิมพ์ใหญ่และตัวเลข' });
+      } else {
+        if (password === confirmPassword) {
+          this.props.register(email, password, confirmPassword, role);
+          this.setState({ error: null });
+        } else {
+          this.setState({ error: 'พาสเวิร์ดไม่ตรงกัน' });
+        }
+      }
+    } else {
+      this.setState({ error: 'พาสเวิร์ดควรมีความยาว 8-20 ตัวอักษร' });
+    }
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -97,6 +118,7 @@ class SignUp extends Component {
                           />
                         </div>
                       </Form.Field>
+                      <p style={{ color: 'red' }}>{ this.state.error }</p>
                       <button className="signUpButton">
                         สมัครสมาชิก
                       </button>

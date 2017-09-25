@@ -73,9 +73,7 @@ class SettingPlan extends Component {
     };
   }
   componentDidMount() {
-    console.log('--opiton1--', this.props.option);
     if (this.props.option.length >= 1) {
-      console.log('--opiton--', this.props.option);
       this.renderOption(this.props.option);
     }
   }
@@ -86,7 +84,6 @@ class SettingPlan extends Component {
   }
 
   renderOption = option => {
-    console.log('opre', option);
     const benefitPlan = [];
     option.map((option, index) => {
       benefitPlan.push({
@@ -94,14 +91,12 @@ class SettingPlan extends Component {
         text: option.plan.planName,
         value: option.plan._id,
       });
-      console.log('options', option);
       return option;
     });
     this.setState({ optionPlan: benefitPlan });
   }
 
   render() {
-    console.log('PropsOption', this.props.option);
     const { handleChange, handleSubmit, planName, plan, optionPlan,
       isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
     let showExpense = optionPlan.isExpense;

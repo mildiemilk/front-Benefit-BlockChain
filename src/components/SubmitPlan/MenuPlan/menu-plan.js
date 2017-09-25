@@ -10,7 +10,6 @@ import { menuPlans } from '../../../api/set-plan';
 class MenuPlan extends Component {
   static propTypes = {
     menuPlans: PropTypes.func.isRequired,
-    handleEdit: PropTypes.func.isRequired,
     handleCopy: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     activePlan: PropTypes.number.isRequired,
@@ -77,8 +76,9 @@ class MenuPlan extends Component {
   renderList = list => {
     const output = [];
     for (let i = 0; i < list.length; i += 1) {
+      const isActive = i === this.props.activePlan ? '-active' : '';
       output.push(
-        <div className="menu-select-plan">
+        <div className={`menu-select-plan${isActive}`} onClick={() => this.props.handlePlan(i)} role="button" aria-hidden>
           <div className="row">
             <div className="large-2 columns">
               <input
@@ -99,18 +99,6 @@ class MenuPlan extends Component {
                 }
                 content={
                   <List divided relaxed style={{ cursor: 'pointer' }}>
-                    <List.Item>
-                      <List.Content>
-                        <p
-                          id={i}
-                          onClick={this.props.handleEdit}
-                          role="button"
-                          aria-hidden
-                        >
-                          <Icon name="edit" />แก้ไขแพลน
-                        </p>
-                      </List.Content>
-                    </List.Item>
                     <List.Item>
                       <List.Content>
                         <p

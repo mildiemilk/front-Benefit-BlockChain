@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Divider, Icon } from 'semantic-ui-react';
-import { Button } from '../../StyleComponent';
+// import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
+import '../../../styles/main_icon.scss';
 import { Head, NavDetail } from './styled';
 import { getClaim } from '../../../api/Insurer/claim';
 import ModalApprove from './ModalApprove';
 import ModalReject from './ModalReject';
+import { StatusTag } from './styled';
 
 class ClaimDetail extends Component {
   static propTypes = {
@@ -45,9 +47,16 @@ class ClaimDetail extends Component {
   // }
   render() {
     const { claim } = this.props;
-    const { index } = this.state;
-    // console.log('ddd--state', claim[index]._id);
+    const { index, companyId } = this.state;
     if (claim.length > 0) {
+      let tag;
+      if (claim.status === 'pending') {
+        tag = <StatusTag color="#3a7bd5"><Icon name="hourglass two" />รอพิจารณา</StatusTag>;
+      } else if (claim.status === 'approve') {
+        tag = <StatusTag color="#46b3b8"><Icon name="checkmark two" />อนุมัติ</StatusTag>;
+      } else {
+        tag = <StatusTag color="#f7555f"><Icon name="remove two" />ไม่อนุมัติ</StatusTag>;
+      }
       return (
         <div className="ClaimDetail">
           <div className="row">
@@ -61,7 +70,7 @@ class ClaimDetail extends Component {
                   <div className="left-box-detail">
                     <div className="row">
                       <div className="large-7 columns fontweight">เลขที่อ้างอิง : 000213453 </div>
-                      <div className="large-5 columns"><Button className="btn-box-detail"><Icon name="hourglass two" />รอการพิจารณา</Button></div> <br />
+                      <div className="large-5 columns">{tag}</div> <br />
                     </div>
                     <Divider />
                     <div className="row">
@@ -148,18 +157,33 @@ class ClaimDetail extends Component {
                     <div className="large-6 columns text-right">3,000 บาท / ปี</div>
                   </div>
                   <Divider />
-                  <div className="row">
-                    <div className="large-6 columns">
-                      <ModalReject
-                        claimId={claim[index]._id}
-                      />
+                  {(claim[index].status === 'pending')
+                    ? <div className="row">
+                      <div className="large-6 columns">
+                        <ModalReject
+                          claimId={claim[index]._id}
+                          companyId={companyId}
+                        />
+                      </div>
+                      <div className="large-6 columns">
+                        <ModalApprove
+                          claimId={claim[index]._id}
+                          companyId={companyId}
+                        />
+                      </div>
                     </div>
-                    <div className="large-6 columns">
-                      <ModalApprove
-                        claimId={claim[index]._id}
-                      />
-                    </div>
-                  </div>
+                    : ''
+                  }
+                  {
+                  (claim[index].status === 'approve')
+                  ? <div className="row"><div className="large-12 columns status-icon"><i aria-hidden="true" className="icon-checked" />อนุมัติ</div></div>
+                  : ''
+                  }
+                  {
+                  (claim[index].status === 'reject')
+                  ? <div className="row"><div className="large-12 columns status-icon"><i aria-hidden="true" className="icon-cancel" />ไม่อนุมัติ</div></div>
+                  : ''
+                  }
                 </div>
               </NavDetail>
             </div>

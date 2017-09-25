@@ -63,6 +63,7 @@ class CoPay extends Component {
   }
 
   render() {
+    console.log('value', this.state.value);
     return (
       <div>
         <div className="copayParagraph">
@@ -191,12 +192,12 @@ class CoPay extends Component {
                 <Form.Field>
                   <Form.Input
                     type="number"
-                    style={{ width: '70px' }}
+                    style={{ width: '105px' }}
                     label=" ต่อ"
                     placeholder="ปี"
                     name="opdCoPayMixYear"
                     id="opdCoPayMixYear"
-                    value=""
+                    value={this.props.opdCoPayMixYear}
                     onChange={this.props.handleChange}
                     required
                   />

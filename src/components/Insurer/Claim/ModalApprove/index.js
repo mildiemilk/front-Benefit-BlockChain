@@ -37,6 +37,7 @@ const Text = styled.div`
 class ModalApprove extends Component {
   static propTypes = {
     claimId: PropTypes.string.isRequired,
+    companyId: PropTypes.string.isRequired,
     // updateStatusClaim: PropTypes.func.isRequired,
   }
   constructor() {
@@ -50,9 +51,13 @@ class ModalApprove extends Component {
     modalOpen: !this.state.modalOpen,
   })
   handleApprove = () => {
-    // console.log('approve--', this.state)
-    const { claimId } = this.props;
-    updateStatusClaim('approve', claimId, null).then(() => this.handleModal());
+    console.log('approve--', this.props)
+    const { claimId, companyId } = this.props;
+    updateStatusClaim('approve', claimId, null)
+    .then(() => {
+      this.handleModal();
+      window.location.href = `/claimlist/${companyId}`;
+    });
   }
   render() {
     return (

@@ -12,21 +12,16 @@ const ALL_CLAIM_URI = 'api/insurer/claim-all-company';
 const CLAIM_URI = 'api/insurer/get-claim';
 const CLAIM_UPDATE_STATUS_URI = '/api/insurer/claim';
 
-export function updateStatusClaim(status, claimId) {
+export function updateStatusClaim(status, claimId, reason) {
   console.log('claimId', claimId);
-  return () => {
-    const options = {
-      method: 'put',
-      url: `${CLAIM_UPDATE_STATUS_URI}/${status}/${claimId}`,
-    };
-    APIRequest(options, true)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+  const options = {
+    method: 'put',
+    url: `${CLAIM_UPDATE_STATUS_URI}/${status}/${claimId}`,
+    data: {
+      reason,
+    },
   };
+  return APIRequest(options, true);
 }
 export function getCompanyClaim() {
   return dispatch => {
@@ -50,12 +45,10 @@ export function getClaim(companyId) {
   return dispatch => {
     const options = {
       method: 'get',
-      url: `${CLAIM_URI}/59af536b6933f11d9f6b7394`,
+      url: `${CLAIM_URI}/${companyId}`,
     };
     APIRequest(options, true)
       .then(res => {
-        console.log()
-        console.log('-res--', res);
         dispatch(getClaimSuccess(res.data));
       })
       .catch(err => {

@@ -45,9 +45,10 @@ class ClaimDetail extends Component {
   // }
   render() {
     const { claim } = this.props;
-    const { index } = this.state;
-    // console.log('ddd--state', claim[index]._id);
+    const { index, companyId } = this.state;
+    console.log('ddd--state', this.props);
     if (claim.length > 0) {
+      // if (claim.status === 'pending')
       return (
         <div className="ClaimDetail">
           <div className="row">
@@ -148,18 +149,37 @@ class ClaimDetail extends Component {
                     <div className="large-6 columns text-right">3,000 บาท / ปี</div>
                   </div>
                   <Divider />
-                  <div className="row">
+                  {(claim[index].status === 'pending')
+                    ? <div className="row">
+                      <div className="large-6 columns">
+                        <ModalReject
+                          claimId={claim[index]._id}
+                          companyId={companyId}
+                        />
+                      </div>
+                      <div className="large-6 columns">
+                        <ModalApprove
+                          claimId={claim[index]._id}
+                          companyId={companyId}
+                        />
+                      </div>
+                    </div>
+                    : <div className="row">อนุมัติ</div>
+                  }
+                  {/* <div className="row">
                     <div className="large-6 columns">
                       <ModalReject
                         claimId={claim[index]._id}
+                        companyId={companyId}
                       />
                     </div>
                     <div className="large-6 columns">
                       <ModalApprove
                         claimId={claim[index]._id}
+                        companyId={companyId}
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </NavDetail>
             </div>

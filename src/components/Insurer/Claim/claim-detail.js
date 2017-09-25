@@ -6,7 +6,9 @@ import { Divider, Icon } from 'semantic-ui-react';
 import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
 import { Head, NavDetail } from './styled';
-import { getClaim, updateStatusClaim } from '../../../api/Insurer/claim';
+import { getClaim } from '../../../api/Insurer/claim';
+import ModalApprove from './ModalApprove';
+import ModalReject from './ModalReject';
 
 class ClaimDetail extends Component {
   static propTypes = {
@@ -30,6 +32,7 @@ class ClaimDetail extends Component {
     this.state = {
       companyId: props.match.params.companyId,
       index: props.match.params.index,
+      // ClaimID: props.match.params.index,
     };
     // props.getCompanyBidding(this.state.companyId);
   }
@@ -37,15 +40,15 @@ class ClaimDetail extends Component {
     this.props.getClaim(this.state.companyId);
   }
 
-  handleClickchangeStatus = (statusClaim, claimId) => {
-    updateStatusClaim(statusClaim, claimId)();
-  }
+  // handleClickchangeStatus = (statusClaim, claimId) => {
+  //   updateStatusClaim(statusClaim, claimId, null)();
+  // }
   render() {
-    // console.log('ddd--state--4', this.state);
-    // console.log('ddd--state', this.props);
     const { claim } = this.props;
-    const { index } = this.state;
+    const { index, companyId } = this.state;
+    console.log('ddd--state', this.props);
     if (claim.length > 0) {
+      // if (claim.status === 'pending')
       return (
         <div className="ClaimDetail">
           <div className="row">
@@ -80,19 +83,19 @@ class ClaimDetail extends Component {
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">จำนวนเงินที่เคลม </div>
-                      <div className="large-7 columns">540 บาท<br /><Divider /></div>
+                      <div className="large-7 columns">{claim[index].detail.amount} บาท<br /><Divider /></div>
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">ผู้เคลม </div>
-                      <div className="large-7 columns">540 บาท <br /><Divider /></div>
+                      <div className="large-7 columns">{claim[index].detail.name} <br /><Divider /></div>
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">ธนาคาร </div>
-                      <div className="large-7 columns">ธนาคารกสิกรไทย <br /><Divider /></div>
+                      <div className="large-7 columns">{claim[index].detail.bank} <br /><Divider /></div>
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">เลขที่บัญชี </div>
-                      <div className="large-7 columns">1-234-546-8-4 <br /><Divider /></div>
+                      <div className="large-7 columns">{claim[index].detail.bankAccountNumber}<br /><Divider /></div>
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">หลักฐานการเคลม </div>
@@ -146,10 +149,37 @@ class ClaimDetail extends Component {
                     <div className="large-6 columns text-right">3,000 บาท / ปี</div>
                   </div>
                   <Divider />
-                  <div className="row">
-                    <div className="large-6 columns"><Button cancle onClick={() => this.handleClickchangeStatus('reject', claim[index]._id)}>ไม่อนุมัติ</Button> </div>
-                    <div className="large-6 columns"><Button onClick={() => this.handleClickchangeStatus('approve', claim[index]._id)}>อนุมัติ</Button></div><br />
-                  </div>
+                  {(claim[index].status === 'pending')
+                    ? <div className="row">
+                      <div className="large-6 columns">
+                        <ModalReject
+                          claimId={claim[index]._id}
+                          companyId={companyId}
+                        />
+                      </div>
+                      <div className="large-6 columns">
+                        <ModalApprove
+                          claimId={claim[index]._id}
+                          companyId={companyId}
+                        />
+                      </div>
+                    </div>
+                    : <div className="row">อนุมัติ</div>
+                  }
+                  {/* <div className="row">
+                    <div className="large-6 columns">
+                      <ModalReject
+                        claimId={claim[index]._id}
+                        companyId={companyId}
+                      />
+                    </div>
+                    <div className="large-6 columns">
+                      <ModalApprove
+                        claimId={claim[index]._id}
+                        companyId={companyId}
+                      />
+                    </div>
+                  </div> */}
                 </div>
               </NavDetail>
             </div>
@@ -161,7 +191,7 @@ class ClaimDetail extends Component {
   }
   }
 const mapDispatchToProps = dispatch => ({
-  getClaim: () => dispatch(getClaim()),
+  getClaim: companyId => dispatch(getClaim(companyId)),
   // getGroupBenefit: () => dispatch(getGroupBenefit()),
   // getBenefitPlan: () => dispatch(getBenefitPlan()),
 });

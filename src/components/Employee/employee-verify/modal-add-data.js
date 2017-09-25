@@ -11,6 +11,9 @@ import {
   ConfirmButton,
   SpaceImg,
 } from './styled';
+import ImgGift from '../../../../assets/employee/untitled-2@3x.png';
+import IconEmail from '../../../../assets/employee/icons-8-message@3x.png';
+import IconPhone from '../../../../assets/employee/icons-8-phone@3x.png';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
@@ -52,7 +55,7 @@ class ModalAddData extends Component {
         <ModalContents>
           <div className="AddData">
             <SpaceImg>
-              <AddDataImg src="../../../../employee/untitled-2.png" />
+              <AddDataImg src={ImgGift} />
             </SpaceImg>
             <SpaceHeader>
               <Header>
@@ -71,7 +74,7 @@ class ModalAddData extends Component {
                 <div className="divInput">
                   <img
                     className="iconLetter"
-                    src="../../../../employee/icons-8-message@3x.png"
+                    src={IconEmail}
                     alt="letter"
                   />
                   <Form.Input
@@ -85,7 +88,7 @@ class ModalAddData extends Component {
                 <div className="divInput">
                   <img
                     className="iconTel"
-                    src="../../../../employee/icons-8-phone@3x.png"
+                    src={IconPhone}
                     alt="phone"
                   />
                   <Form.Input

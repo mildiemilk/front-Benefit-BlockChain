@@ -360,3 +360,10 @@ export const StatusTag = styled.div`
   width: 80%;
   text-align: center;
 `;
+export const ListDetail = styled.div`
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #323028;
+  color: ${props => props.color};
+  font-size: ${props => props.fontSize};
+`;

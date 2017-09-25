@@ -40,40 +40,49 @@ class Claim extends Component {
     };
     // props.getCompanyBidding(this.state.companyId);
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.getClaim(this.state.companyId);
-    console.log('00', this.state);
   }
   renderElement = claim => {
     const list = claim.map((claim, index) => (
-      <div className="boxDetail">
-        <Link to={`/claimdetail/${this.state.companyId}/${index}`}>
+      <div className="boxDetail" key={index.toString()}>
+        <Link to={`/claimdetail/${this.state.companyId}/${index}/${claim._id}`}>
           <div className="">
             <div className="row">
               <div className="large-1 columns">
-                <Text>00</Text>
+                <Text>{claim.claimNumber}</Text>
               </div>
               <div className="large-2 columns">
-                <Text>55</Text>
+                {(claim.detail.title)
+                ? <Text>{claim.detail.title}</Text>
+                : ''
+                }
               </div>
               <div className="large-2 columns">
-                <Text>07/07/2560 </Text>
+                <Text>{claim.detail.date}</Text>
               </div>
               <div className="large-2 columns">
-                <Text>อิทธิพงศ์ กฤดากร ณ อยุธยา </Text>
+                <Text>{claim.detail.name}</Text>
               </div>
               <div className="large-2 columns">
-                <Text>1222 </Text>
+                <Text>{claim.detail.amount} </Text>
               </div>
               <div className="large-2 columns">
-                <StatusTag color="#3a7bd5"><Icon name="hourglass two" />รอพิจารณา</StatusTag>
-                {/* if (claim.status === 'pending') {
-                  <StatusTag color="#3a7bd5">รอพิจารณา</StatusTag>
-                } else if (list.status === 'approve') {
-                  <StatusTag color="#46b3b8">อนุมัติ</StatusTag>
-                } else {
-                  <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>
-                } */}
+                {
+                (claim.status === 'pending')
+                ? <StatusTag color="#3a7bd5"><Icon name="hourglass two" />รอพิจารณา</StatusTag>
+                : ''
+                }
+                {
+                (claim.status === 'approve')
+                ? <StatusTag color="#46b3b8"><Icon name="hourglass two" />อนุมัติ</StatusTag>
+                : ''
+                }
+                {
+                (claim.status === 'reject')
+                ? <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>
+                : ''
+                }
               </div>
               <div className="large-1 columns">
                 <Icon name="edit" />
@@ -156,7 +165,7 @@ class Claim extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  getClaim: () => dispatch(getClaim()),
+  getClaim: companyId => dispatch(getClaim(companyId)),
   // getGroupBenefit: () => dispatch(getGroupBenefit()),
   // getBenefitPlan: () => dispatch(getBenefitPlan()),
 });

@@ -82,3 +82,14 @@ export const Check = styled.input`
   height: 20px;
   margin-top:5%;
 `;
+
+export const Logo = styled.img`
+  width: 76.1px;
+  height: 76.1px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  background-color: var(--white-two);
+  border: solid 1px #ebebeb;
+  margin-top: 11px;
+  margin-left: 14px;
+`;

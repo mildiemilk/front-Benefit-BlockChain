@@ -74,6 +74,7 @@
     }
   }
   .receiptImg{
+    display: block;
     position: absolute;
     clip: rect(0px,90px,90px,0px);
     height: 80px;
@@ -136,7 +137,27 @@
     margin-top: 40px;
     text-align: center;
   }
-
-
-
+}
+.claim-img-block {
+  display: inline-block;
+  position: relative;
+  margin-right: 9px;
+}
+.claim-img {
+  height: 80px;
+}
+.calim-img-icon-zoom {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.ui.modal.transition.visible.active.claim-modal-box{
+  background-color: transparent;
+  box-shadow: none;
+}
+.claim-img-modal-img {
+  display: block;
+  margin: auto;
 }

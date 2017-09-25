@@ -237,7 +237,7 @@ class HomeDashboard extends Component {
         <span className="hb-header">ยินดีต้อนรับเข้าสู่ BenefiTable</span>
         <div className="hb-box">
           <div className="hb-box-row row">
-            <Link to="/plan">
+            <Link to="/yourbenefit">
               <div className="hb-box-item">
                 <img className="hb-box-item-img" alt="plan" src={Plan} />
                 <span className="hb-box-item-text">แผนสิทธิประโยชน์</span>

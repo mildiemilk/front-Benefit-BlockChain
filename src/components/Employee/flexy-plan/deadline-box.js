@@ -15,10 +15,15 @@ class DeadlineBox extends Component {
       hours: 0,
       min: 0,
       sec: 0,
+      timeout: props.timeout,
     };
   }
 
   componentWillMount() {
+    clearInterval(this.interval);
+  }
+
+  componentDidMount() {
     if (this.props.timeout !== undefined) {
       this.interval = setInterval(() => {
         const date = this.calculateCountdown(this.props.timeout);
@@ -30,19 +35,8 @@ class DeadlineBox extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    // update every second
-    this.interval = setInterval(() => {
-      const date = this.calculateCountdown(nextProps.timeout);
-      if (date) this.setState(date);
-      else {
-        this.stop();
-      }
-    }, 1000);
-  }
-
   componentWillUnmount() {
-    this.stop();
+    clearInterval(this.interval);
   }
 
   calculateCountdown = endDate => {
@@ -85,10 +79,6 @@ class DeadlineBox extends Component {
     return timeLeft;
   }
 
-  stop() {
-    clearInterval(this.interval);
-  }
-
   addLeadingZeros = value => {
     let values = String(value);
     while (values.length < 2) {
@@ -99,8 +89,6 @@ class DeadlineBox extends Component {
 
   render() {
     const countDown = this.state;
-    console.log('>>>>>>>>>>', this.state);
-    console.log('++++++++++', this.props);
     const $isDay = this.addLeadingZeros(countDown.days);
     const $isHours = this.addLeadingZeros(countDown.hours);
     const $isMin = this.addLeadingZeros(countDown.min);

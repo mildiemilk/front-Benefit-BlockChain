@@ -21,7 +21,7 @@ class FlexyPlan extends Component {
 
   handleRenderFlexyPlanBox = (data, timeUp) => {
     const flexy = data.allBenefit.map((ele, index) => (
-      <div keys={index}>
+      <div key={index.toString()}>
         <FlexyPlanBox
           plan={this.props.plan}
           handleClickInsurance={this.props.handleClickInsurance}

@@ -11,7 +11,7 @@ import FlexyPlan from './Employee/flexy-plan';
 import ClaimInsurance from './Employee/claim-insurance';
 import ClaimHistory from './Employee/ClaimHistory';
 import CongratSelectPlan from './Employee/congrats-select-plan';
-import HeadLayout from './head-layout-mobile';
+import HeadLayout from './Employee/head-layout-employee';
 import YourBenefit from './Employee/YourBenefit';
 import FindHospital from './Employee/find-hospital';
 import Logout from './Auth/logout';

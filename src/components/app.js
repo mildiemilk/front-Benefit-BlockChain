@@ -35,7 +35,7 @@ import ChooseInsuranceplan from './ChooseInsurancePlan';
 import Summary from './Summary';
 import SelectRealTime from './SelectRealTime';
 import SendFlexPlan from './SendFlexPlan';
-import Appmobile from './appmobile';
+import AppEmployee from './app-employee';
 import EmployeeLogin from './Employee/employee-login';
 import EmployeeList from './EmployeeList';
 import ViewAllPlan from './ViewAllPlan';
@@ -90,7 +90,7 @@ class App extends Component {
                   <Route
                     path="/simplerequirement"
                     component={simpleRQ}
-                  />
+                  />AppEmploye
                   <Route path="/submitplan" component={SubmitPlan} />
                   <Route path="/ipd" component={IPD} />
                   <Route path="/sendrequest" component={Sendrequest} />
@@ -123,7 +123,7 @@ class App extends Component {
           </NavLayout>
         );
       } else if (role === 'Employee') {
-        route = <Appmobile />;
+        route = <AppEmployee />;
       } else if (role === 'Insurer') {
         route = <AppInsurer />;
       } else {

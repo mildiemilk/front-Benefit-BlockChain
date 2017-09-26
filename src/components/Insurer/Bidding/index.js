@@ -71,6 +71,7 @@ class Bidding extends React.Component {
   }
 
   render() {
+    // console.log('>>>renderIndex', this.state);
     if (this.state.DataCompany !== null) {
       return (
         <div>

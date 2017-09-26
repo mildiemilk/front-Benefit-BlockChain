@@ -192,12 +192,6 @@ class ShowMasterPlan extends Component {
         quotation: false,
       });
     }
-    // if (nameModal === 'modalQuotaionJoin') {
-    //   if (this.state.quotationId === '') {
-    //     this.setState({ modalCancelJoin: true });
-    //   }
-    //   this.setState({ modalCancelJoin: false });
-    // }
     this.setState({ [nameModal]: false });
     console.log('--', this.state);
   }
@@ -227,7 +221,6 @@ class ShowMasterPlan extends Component {
   handleSubmitEditPlan = e => {
     const { DetailMP } = this.state;
     e.preventDefault();
-    console.log('handleSubmitEditPlanDetailMP---', DetailMP);
     const planId = DetailMP.planId;
     editPlanDetail(planId, {
       planId: DetailMP.planId,
@@ -278,6 +271,7 @@ class ShowMasterPlan extends Component {
       this.props.handleUpdateBiding();
       this.handleCloseModal('editDetailMP');
     });
+    this.props.handleUpdateBiding();
     this.handleCloseModal('editDetailMP');
   }
   handleChange =(e, { name, value }) => {
@@ -351,6 +345,7 @@ class ShowMasterPlan extends Component {
         morePrice: '',
       });
     }
+    this.props.handleUpdateBiding();
   }
 
   handleChangeInput = (planType, e) => {
@@ -376,8 +371,13 @@ class ShowMasterPlan extends Component {
         morePrice: '',
       });
     }
+    console.log('>>>handleChangeInput', this.state);
   }
   render() {
+    // this.props.sendToParent({detail:'prim ba'}, 0);
+    // const data = this.props.data;
+    // const { plan } = data;
+    console.log('>>>render ShowMasterPlan', this.props.DataCompany);
     const {
       joinbid,
       modalCancelJoin,

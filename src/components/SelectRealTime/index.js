@@ -143,6 +143,7 @@ class SelectRealTime extends Component {
   }
   render() {
     const { benefitPlan, summaryGroup } = this.props;
+    console.log('Propsss==>', this.props);
     return (
       <div className="SelectRealTime">
         {benefitPlan.length >= 1

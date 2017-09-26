@@ -22,7 +22,7 @@ class Dashboard extends Component {
     super();
     this.state = {
       path: [
-        '/submitplan',
+        '/submitplan/0',
         '/bidding',
         '/chooseinsuranceplan',
         '/selectrealtime',
@@ -94,7 +94,7 @@ class Dashboard extends Component {
             <Grid>
               <Grid.Row columns={3}>
                 <Grid.Column>
-                  <Link to="/submitplan" >
+                  <Link to="/submitplan/0" >
                     <Image
                       className="block"
                       centered

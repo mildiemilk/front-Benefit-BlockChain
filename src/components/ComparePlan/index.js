@@ -18,6 +18,10 @@ import {
 } from './styled';
 import NavInsure from '../NavInsure';
 import IPDDropBox from './ipd-dropbox';
+import life from '../../../assets/compare/4.png';
+import dental from '../../../assets/compare/1.png';
+import opd from '../../../assets/compare/3.png';
+import ipd from '../../../assets/compare/2.png';
 
 const Icons = styled(Icon) `
   &&&{
@@ -196,7 +200,7 @@ class ComparePlan extends Component {
             <div className="row">
               <div className="large-5 large-offset-1 columns">
                 <CompareHeader> เปรียบเทียบแผนประกันภัย </CompareHeader>
-                <Link to="/submitplan">
+                <Link to="/submitplan/0">
                   <BackHome>&lt; กลับหน้าหลัก </BackHome>
                 </Link>
               </div>
@@ -233,7 +237,7 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src="../../../compare/4.png" />
+                        <CompareImg src={life} />
                         <LifeTopic> ประกันชีวิต (Life) </LifeTopic>
                         <Icons
                           onClick={this.handleToggleLife}
@@ -260,7 +264,7 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src="../../../compare/1.png" />
+                        <CompareImg src={dental} />
                         <LifeTopic> ค่ารักษาทันตกรรม (Dental) </LifeTopic>
                         <Icons
                           onClick={this.handleToggleDental}
@@ -287,7 +291,7 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src="../../../compare/3.png" />
+                        <CompareImg src={opd} />
                         <OPDTopic>
                           {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยนอก <br />
                           (Out Patient Department : OPD){' '}
@@ -317,7 +321,7 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src="../../../compare/2.png" />
+                        <CompareImg src={ipd} />
                         <OPDTopic>
                           {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยใน <br />
                           (In-Patient Department : IPD){' '}

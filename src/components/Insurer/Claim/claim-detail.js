@@ -50,9 +50,9 @@ class ClaimDetail extends Component {
     const { index, companyId } = this.state;
     if (claim.length > 0) {
       let tag;
-      if (claim.status === 'pending') {
+      if (claim[index].status === 'pending') {
         tag = <StatusTag color="#3a7bd5"><Icon name="hourglass two" />รอพิจารณา</StatusTag>;
-      } else if (claim.status === 'approve') {
+      } else if (claim[index].status === 'approve') {
         tag = <StatusTag color="#46b3b8"><Icon name="checkmark two" />อนุมัติ</StatusTag>;
       } else {
         tag = <StatusTag color="#f7555f"><Icon name="remove two" />ไม่อนุมัติ</StatusTag>;

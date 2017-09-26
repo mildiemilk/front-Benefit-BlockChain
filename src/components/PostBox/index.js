@@ -59,7 +59,7 @@ class PostBox extends Component {
     const { selectBroker } = this.props;
 
     if (selectBroker) {
-      return <Redirect to="/submitplan" />;
+      return <Redirect to="/submitplan/0" />;
     }
 
     return (

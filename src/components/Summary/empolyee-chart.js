@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { RadialChart } from 'react-vis';
+// import { RadialChart } from 'react-vis';
 import PropTypes from 'prop-types';
-import '../../styles/chart-box.scss';
+import { PieChart, Pie, Cell } from 'recharts';
 
-const graphData = [];
 // const myPlan = [
 //   { group: 'A', number: 10 },
 //   { group: 'B', number: 20 },
@@ -13,6 +12,12 @@ const graphData = [];
 // ];
 const graphColor = ['#458cdc', '#39b7af', '#45a1d9', '#7ab7c6'];
 
+const data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
+{ name: 'Group C', value: 300 }, { name: 'Group D', value: 200 }];
+// const data2 = [{ name: 'Group A', value: 300 }, { name: 'Group B', value: 300 },
+// { name: 'Group C', value: 500 }, { name: 'Group D', value: 200 }];
+// const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
 class Empolyeechart extends Component {
   static propTypes = {
     summaryGroup: PropTypes.shape({}).isRequired,
@@ -21,52 +26,37 @@ class Empolyeechart extends Component {
     super();
     this.state = {};
   }
-  renderGroup = Group => {
+  renderGroup = () => {
+    const Group = this.props.summaryGroup;
     const allGroup = Group.groups;
     console.log('aaa->', allGroup);
     if (allGroup !== undefined && allGroup.length >= 1) {
-      const companyGroup = [];
-      allGroup.map(element => {
-        companyGroup.push({
-          group: element.groupName,
-          number: element.count,
-        });
-        console.log('companyGroup', companyGroup);
-        return companyGroup;
-      });
-      return companyGroup;
+      return allGroup.map(element => Object.assign({}, {
+        name: element.groupName,
+        value: element.count,
+      }));
     }
     return '';
   }
-  renderList = list => {
-    if (list.length >= 1) {
-      // const graphData = [];
-      // console.log('graph11', graphData.length);
-      // console.log('graph12', graphData)
-      const lists = list.map((element, index) => {
-        console.log('element', element);
-        graphData.push({
-          angle: element.number,
-          style: { stroke: graphColor[index], fill: graphColor[index] },
-        });
-        console.log('graph', graphData);
-        return (
-          <div className="rv-discrete-color-legend-item vertical">
-            <span
-              className="rv-discrete-color-legend-item__color"
-              style={{ background: graphColor[index], height: '3.5px' }}
-            />
-            <span className="rv-discrete-color-legend-item__title">
-              กลุ่ม {element.group} {element.number} คน
-            </span>
-          </div>
-        );
-      });
-      return lists;
+  renderList = () => {
+    const list = this.renderGroup();
+    console.log('list', list);
+    if (list !== undefined && list.length >= 1) {
+      console.log('sdfs');
+      return list.map((element, index) => (
+        <div>
+          <span
+            className="rv-discrete-color-legend-item__color"
+            style={{ background: graphColor[index], height: '3.5px' }}
+          />
+          <span className="rv-discrete-color-legend-item__title">
+            กลุ่ม {element.name} {element.value} คน
+          </span>
+        </div>
+      ));
     }
     return '';
   }
-
   render() {
     console.log('props--employee', this.props);
     const { summaryGroup } = this.props;
@@ -77,43 +67,34 @@ class Empolyeechart extends Component {
             <p>จำนวนพนักงานทั้งหมด</p>
           </div>
           <div className="row">
-            <div className="large-6 columns">
-              <div className="chart-pie-box">
-                <div
-                  style={{
-                    position: 'absolute',
-                    zIndex: 10,
-                    marginLeft: '55px',
-                    marginTop: '50px',
-                  }}
-                >
-                  <p className="chart-radial-sum">{summaryGroup.total}</p>
-                  <p className="chart-radial-text">คน</p>
-                </div>
-                <RadialChart
-                  innerRadius={68}
-                  radius={50}
-                  data={graphData}
-                  width={150}
-                  height={150}
-                  colorType="category"
-                  colorRange={graphColor}
-                />
+            <div className="large-7 columns">
+              <div className="chart-text-style">
+                <p className="chart-radial-sum">{summaryGroup.total}</p>
+                <p>คน</p>
               </div>
+              <PieChart width={300} height={200}>
+                <Pie
+                  data={this.renderGroup()}
+                  innerRadius={40}
+                  outerRadius={65}
+                  cy={90}
+                  cx={100}
+                  fill="#8884d8"
+                >
+                  {
+                    data.map((entry, index) =>
+                      <Cell fill={graphColor[index % graphColor.length]} />)
+                  }
+                </Pie>
+              </PieChart>
             </div>
-            <div className="large-6 columns">
-              <div className="chart-data-box">
-                <div
-                  className="rv-discrete-color-legend vertical "
-                  style={{ width: '300px' }}
-                >
-                  {this.renderList(this.renderGroup(summaryGroup))}
-                </div>
-              </div>
+            <div className="large-5 columns">
+              <div className="chart-list">{this.renderList()}</div>
             </div>
           </div>
         </div>
       </div>
+      // </div>
     );
   }
 }

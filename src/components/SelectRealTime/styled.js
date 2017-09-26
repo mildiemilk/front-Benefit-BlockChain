@@ -105,7 +105,7 @@ export const ListL = styled.div`
 `;
 export const ListTime = styled.div`
   padding-top: 4.5%;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   padding: 13px 0px 2px 15px;
 
@@ -150,14 +150,18 @@ export const Pic = styled.div`
   background-color: #5c6879;
   width: 79px;
   height: 79px;
-  text-align: center;
   padding: 5%;
   margin: 7%;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const NavTimeout = styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 export const Default = styled.div`
   width: 79.9px;

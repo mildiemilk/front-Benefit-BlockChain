@@ -164,7 +164,9 @@ class NewClaim extends Component {
       if (type === 'insurance') {
         if (state.InsuranceType !== '' && detail.location !== '' && state.BankName !== '' && state.AccountNumber !== '') {
           detail.title = state.InsuranceType;
-          detail.location = state.Hospital;
+          if (state.Hospital !== '') {
+            detail.location = state.Hospital;
+          }
           reClaim(_id, detail, files, type)
           .then(() => {
             this.props.handleUpdateClaim();
@@ -182,7 +184,9 @@ class NewClaim extends Component {
       } else if (type === 'health') {
         if (state.HealthPlace !== '' && detail.location !== '') {
           detail.title = state.HealthType;
-          detail.location = state.HealthPlace;
+          if (state.HealthPlace !== '') {
+            detail.location = state.HealthPlace;
+          }
           reClaim(_id, detail, files, type)
           .then(() => {
             this.props.handleUpdateClaim();
@@ -200,7 +204,9 @@ class NewClaim extends Component {
       } else {
         if (state.expenseType !== '' && detail.location !== '') {
           detail.title = state.expenseType;
-          detail.location = state.HealthPlace;
+          if (state.HealthPlace !== '') {
+            detail.location = state.HealthPlace;
+          }
           reClaim(_id, detail, files, type)
           .then(() => {
             this.props.handleUpdateClaim();

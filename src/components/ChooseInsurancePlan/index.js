@@ -57,10 +57,7 @@ class ChooseInsurancePlan extends Component {
     if (newProps.choosePlans !== this.props.choosePlans ||
       newProps.planList !== this.props.planList) {
       if (newProps.choosePlans !== undefined) {
-        let choosePlans = [];
-        if (newProps.choosePlans.length > 0) {
-          choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
-        }
+        const choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
         const Allplan = newProps.planList.concat(newProps.insurerPlanList);
         // const AllYourPlan = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
         this.setState({
@@ -73,10 +70,7 @@ class ChooseInsurancePlan extends Component {
     }
     if (newProps.planList !== this.props.planList) {
       const Allplan = newProps.planList.concat(newProps.insurerPlanList);
-      let choosePlans = [];
-      if (newProps.choosePlans.length > 0) {
-        choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
-      }
+      const choosePlans = newProps.choosePlans.master.concat(newProps.choosePlans.insurer);
       const ChooseInsurance = this.tranformPlan(choosePlans, Allplan);
       this.setState({
         OurPlan: this.filterPlan(newProps.planList, ChooseInsurance),
@@ -90,6 +84,7 @@ class ChooseInsurancePlan extends Component {
       const newplan =
       Allplan.filter(plan => choosePlans.map(
         choose => choose.planId === plan.plan._id).indexOf(true) !== -1);
+
       return newplan;
     }
     return [];

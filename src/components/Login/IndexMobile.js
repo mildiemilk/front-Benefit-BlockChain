@@ -5,7 +5,7 @@ import '../../styles/employee-style/login-verify.scss';
 import gift from '../image/gigift-mobile.png';
 import emailIcon from '../image/icons-8-message.png';
 import keyIcon from '../image/icons-8-key-copy.png';
-import Header from '../Employee/header';
+import Header from '../Employee/header/HeaderMobile';
 import Footer from '../Employee/footer';
 
 class EmployeeLoginMobile extends Component {

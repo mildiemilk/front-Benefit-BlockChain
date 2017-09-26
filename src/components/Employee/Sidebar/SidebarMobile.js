@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { push as Menu } from 'react-burger-menu';
 import styled from 'styled-components';
 import { Divider, Image } from 'semantic-ui-react';
-import User from '../../assets/employee/user.png';
+import User from '../../../../assets/employee/user.png';
 
 const List = styled.div`
   padding-left: 6%;

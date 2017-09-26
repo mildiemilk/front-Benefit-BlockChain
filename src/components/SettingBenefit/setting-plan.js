@@ -78,7 +78,7 @@ class SettingPlan extends Component {
     }
   }
   componentDidUpdate() {
-    if (this.props.option.length >= 1) {
+    if (this.state.optionPlan.length === 0) {
       this.renderOption(this.props.option);
     }
   }

@@ -17,12 +17,15 @@ export const TextIn = styled.div`
 `;
 
 export const Nav = styled.div`
-  height: 200px;
+height: 200px;
   border-radius: 6px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
   border: solid 1px #d3d3d3;
-  position: relative;
+  /* position: relative; */
+  display: inline-block;
+  width: 48%;
+  margin: 5px;
 `;
 export const NavClaim = styled.div`
   height: 150px;

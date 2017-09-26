@@ -135,3 +135,70 @@
     color: #ffffff;
   }
 }
+.customerList{
+  .text-main{
+    position: relative;
+    margin: 20px;
+    height: 110px;
+  }
+  .text-main::before,
+  .text-main::after{
+    display: table;
+    content: "";
+  }
+  .text-main::after{
+    clear: both;
+  }
+  .insurertext1{
+    float: left;
+  }
+  .insurertext2{
+    float: left;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  .insurertext2 span{
+    font-size: 24px;
+    font-weight: 500;
+    margin-top:10px;
+    color: #505050;
+  }
+  .insurertext3{
+    float: right;
+    width: 54px;
+    height: 50px;
+    border-radius: 6px;
+    background-color: #3a7bd5;
+    border: solid 1px #d3d3d3;
+  }
+  .insurertext3 input {
+    background:url('../../../assets/Insurer/icon-chat.png');
+    background-repeat: no-repeat;
+    cursor:pointer;
+    width: 24px;
+    height: 24px;
+    border: none;
+    clear: both;
+    margin: 14px;
+  }
+  .insurertext4 {
+    font-weight: 600;
+    text-align: center;
+    border-top: solid 1px #c4c4c4;
+    color: #3a7bd5;
+    height: 50px;
+    padding: 10px 10px;
+  }
+  .status-text{
+    margin-top: 3px ;
+    font-size: 16px;
+  }
+  .status-text span {
+    margin: 2px;
+    border-radius: 10px;
+    background-color: #f7555f;
+    font-size: 13px;
+    padding: 3px 8px;
+    color: #ffffff;
+  }
+}

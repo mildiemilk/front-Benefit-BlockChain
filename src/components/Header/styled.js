@@ -17,8 +17,7 @@ export const LogoPosition = styled.div`
 export const SpanStyle = styled.span`
   font-family: Kanit;
   position: absolute;
-  right: 9%;
+  right: 12%;
   top: 24px;
-  font-size: 120%;
   color: white;
 `;

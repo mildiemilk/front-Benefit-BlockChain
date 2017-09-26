@@ -35,9 +35,11 @@ class FormSubmitPlan extends Component {
     const { planName, employeeOfPlan } = this.props;
     const numberOfPlan = parseInt(employeeOfPlan, 10);
     if (this.props.activePlan === -1) {
-      const employeeOfPlan = numberOfPlan
+      const employeeOfPlan = numberOfPlan;
       this.props.handleModalFinish();
+      console.log('plan', planName, 'em', employeeOfPlan);
       this.props.createPlan({ planName, employeeOfPlan });
+      // console.log('thisPlanList', this.props.planList.length);
       setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000);
     } else {
       this.props.editPlan(

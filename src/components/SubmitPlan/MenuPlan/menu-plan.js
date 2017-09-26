@@ -76,7 +76,8 @@ class MenuPlan extends Component {
   renderList = list => {
     const output = [];
     for (let i = 0; i < list.length; i += 1) {
-      const isActive = i === this.props.activePlan ? '-active' : '';
+      const isActive = i === parseInt(this.props.activePlan, 10) ? '-active' : '';
+      console.log('iiiiee==>', i, 'propActive', this.props.activePlan, 'active', isActive);
       output.push(
         <div className={`menu-select-plan${isActive}`} onClick={() => this.props.handlePlan(i)} role="button" aria-hidden>
           <div className="row">

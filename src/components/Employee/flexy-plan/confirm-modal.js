@@ -60,7 +60,11 @@ class ConfirmModal extends Component {
         this.props.handleCloseModal();
         if (data.newUser) {
           if (!timeUp) {
-            this.setState({ renderCongratSelectPlan: true });
+            if (data.group.type === 'fixed') {
+              this.setState({ renderDashboardStart: true });
+            } else {
+              this.setState({ renderCongratSelectPlan: true });
+            }
           } else {
             if (currentDate.toISOString() < data.allBenefit[0].effectiveDate) {
               // policy don't start
@@ -108,11 +112,10 @@ class ConfirmModal extends Component {
         <ModalContents>
           <div>
             {
-              timeUp || data.group.type === 'fixed'
+              timeUp || data.group.type !== 'fixed'
               ? <span className="flexy-header-confirm">คุณเลือกแผน {plan + 1}</span>
               : <div />
             }
-            <span className="flexy-header-confirm">คุณเลือกแผน {plan + 1}</span>
             <p className="flexy-text-confirm">กดยืนยันการเลือกของคุณ</p>
             <button
               className="flexy-modal-cancel-btn"

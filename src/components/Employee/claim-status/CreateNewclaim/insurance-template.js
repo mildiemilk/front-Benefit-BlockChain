@@ -106,7 +106,13 @@ class InsuranceTemplate extends Component {
           />
         </div>
         <NewLine />
-        <TinyText>โรงพยาบาล</TinyText>
+        <TinyText>
+          {
+            claimdata.mainState === 'insurance'
+            ? 'โรงพยาบาล'
+            : 'สถานที่'
+          }
+        </TinyText>
         <Form>
           <Form.Field>
             <Form.Input
@@ -157,7 +163,7 @@ class InsuranceTemplate extends Component {
           </div>
         </Form>
         {
-          type === 'insurance'
+          claimdata.mainState === 'insurance'
           ? <div>
             <TinyText>ธนาคาร</TinyText>
             <Dropdown

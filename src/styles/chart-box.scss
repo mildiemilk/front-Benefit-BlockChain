@@ -1,11 +1,16 @@
 .chart-main-box{
-  height: 250px;
+  position: relative;
+  height: 260px;
   width: 100%;
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 0 4px 0 rgba(124, 123, 123, 0.5);
 }
-
+.chart-text-style{
+  position: absolute;
+  left: 97px;
+  top: 110px;
+}
 .chart-head-box{
   height: 50px;
   width: 100%;
@@ -17,7 +22,9 @@
   padding-top: 2.5%;
    padding-left: 5%;
 }
-
+.chart-list {
+  margin-top: 40px;
+}
 .chart-data-box{
   padding-left: 10%;
   padding-top: 4%;

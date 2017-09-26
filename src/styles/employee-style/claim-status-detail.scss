@@ -150,8 +150,8 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 6px;
+  right: 6px;
 }
 .ui.modal.transition.visible.active.claim-modal-box{
   background-color: transparent;
@@ -160,4 +160,5 @@
 .claim-img-modal-img {
   display: block;
   margin: auto;
+  width: 90%;
 }

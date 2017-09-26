@@ -15,6 +15,7 @@ class ClaimStatusDetail extends Component {
     claimdata: PropTypes.shape({}).isRequired,
     id: PropTypes.number.isRequired,
     handleToggleViewDetail: PropTypes.func.isRequired,
+    handleUpdateClaim: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -151,9 +152,7 @@ class ClaimStatusDetail extends Component {
           <div className="BodyDiv margin">
             <h className="HeadReason">เหตุผลที่ไม่ผ่านการอนุมัติ</h>
             <ul className="Reasontext">
-              <li>จำนวนเงินเกินกว่าที่จะเคลมได้</li>
-              <li>ไม่อนุญาติให้ผู้ถือประกันได้สิทธ์ในการคุ้มครอง</li>
-              <li>Milk48</li>
+              <li>{claimdata.reason}</li>
             </ul>
           </div>
           {this.renderNewclaim()}
@@ -164,7 +163,7 @@ class ClaimStatusDetail extends Component {
   }
 
   renderNewclaim = () => {
-    const { claimdata, handleToggleViewDetail } = this.props;
+    const { claimdata, handleToggleViewDetail, handleUpdateClaim } = this.props;
     return (
       <div>
         <div className="BodyDiv margin">
@@ -173,6 +172,7 @@ class ClaimStatusDetail extends Component {
         <NewClaim
           claimdata={claimdata}
           handleToggleViewDetail={handleToggleViewDetail}
+          handleUpdateClaim={handleUpdateClaim}
         />
       </div>
     );

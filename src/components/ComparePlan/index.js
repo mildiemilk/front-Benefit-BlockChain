@@ -200,7 +200,7 @@ class ComparePlan extends Component {
             <div className="row">
               <div className="large-5 large-offset-1 columns">
                 <CompareHeader> เปรียบเทียบแผนประกันภัย </CompareHeader>
-                <Link to="/submitplan">
+                <Link to="/submitplan/0">
                   <BackHome>&lt; กลับหน้าหลัก </BackHome>
                 </Link>
               </div>

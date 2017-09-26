@@ -86,7 +86,7 @@ class SubmitPlan extends Component {
       const val = this.props.match.params.index;
       const { planList } = newProps;
       this.setState({
-        activePlan: 0,
+        activePlan: val,
         planName: planList[val].planName,
         employeeOfPlan: planList[val].employeeOfPlan,
         dentalPerYear: planList[val].dentalPerYear,
@@ -147,9 +147,6 @@ class SubmitPlan extends Component {
       window.location.href = '/chooseinsurer';
     }
   }
-  // componentWiiMount = () => {
-  //   this.handlePlan(this.props.index)
-  // }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleChangeToNull = name => this.setState({ [name]: null })
@@ -276,6 +273,7 @@ class SubmitPlan extends Component {
   handlePlan = val => {
     if (val !== -1) {
       const { planList } = this.props;
+      console.log('planList', planList);
       this.setState({
         activePlan: val,
         planName: planList[val].planName,

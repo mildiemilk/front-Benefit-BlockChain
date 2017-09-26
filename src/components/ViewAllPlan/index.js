@@ -48,7 +48,7 @@ class ViewAllPlan extends Component {
             <div className="row">
               <div className="large-3 large-offset-1 columns">
                 <ViewHeader> แพลนทั้งหมด </ViewHeader>
-                <Link to="/submitplan">
+                <Link to="/submitplan/0">
                   <BackHome>&lt; กลับหน้าหลัก </BackHome>
                 </Link>
               </div>

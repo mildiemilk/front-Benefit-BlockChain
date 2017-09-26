@@ -5,6 +5,8 @@ import { Form, Popup } from 'semantic-ui-react';
 import logo from '../image/logo.png';
 import '../../styles/signup.scss';
 import { register } from '../../api/auth';
+import user from '../../../assets/login/icons8-user.png';
+import password from '../../../assets/login/icons8-password.png';
 
 const passwordPattern = /^(?=.*\d)(?=.*[A-Z]).{8,20}/;
 const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -68,7 +70,7 @@ class SignUp extends Component {
                           <img
                             className="iconUser"
                             alt="iconUser"
-                            src="../../../login/icons8-user.png"
+                            src={user}
                           />
                           <Form.Input
                             placeholder="อีเมลของคุณ"
@@ -84,7 +86,7 @@ class SignUp extends Component {
                           <img
                             className="iconPassword"
                             alt="iconPassword"
-                            src="../../../login/icons8-password.png"
+                            src={password}
                           />
                           <Popup
                             trigger={
@@ -107,7 +109,7 @@ class SignUp extends Component {
                           <img
                             className="iconPassword"
                             alt="iconPassword"
-                            src="../../../login/icons8-password.png"
+                            src={password}
                           />
                           <Form.Input
                             placeholder="ยืนยันพาสเวิร์ด"

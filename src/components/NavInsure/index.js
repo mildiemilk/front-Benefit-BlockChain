@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Step, Divider } from 'semantic-ui-react';
-import { Head, Step1, StepRadius, Step6 } from './styled';
+import { Head, Step1, StepRadius, Step4 } from './styled';
 
 class NavInsure extends Component {
   static propTypes = {
@@ -15,6 +15,7 @@ class NavInsure extends Component {
   }
 
   render() {
+    console.log('Step', this.state.step);
     return (
       <div className="NavInsure">
         <div className="row">
@@ -28,29 +29,22 @@ class NavInsure extends Component {
             <Step1
               completed={this.props.step > 1}
               active={this.props.step === 1}
-              description="ระบุความต้องการ"
+              description="จัดแผนประกัน"
             />
             <Step
               completed={this.props.step > 2}
               active={this.props.step === 2}
-              description="เลือกโบรกเกอร์"
+              description="เลือกบริษัทประกัน"
             />
             <Step
               completed={this.props.step > 3}
               active={this.props.step === 3}
-              description="จัดแผนประกัน"
+              description="อัปโหลดไฟล์"
             />
-            <Step
-              completed={this.props.step > 4}
+            <Step4
               active={this.props.step === 4}
-              description="เลือกบริษัทประกัน"
+              description="ส่งข้อมูล"
             />
-            <Step
-              completed={this.props.step > 5}
-              active={this.props.step === 5}
-              description="อัพโหลดไฟล์"
-            />
-            <Step6 active={this.props.step === 6} description="ส่งคำขอ" />
           </StepRadius>
         </div>
       </div>

@@ -212,7 +212,10 @@ class ShowMasterPlan extends Component {
       lifePerYear: DetailMP.lifePerYear,
       lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
       lifeNotExceed: DetailMP.lifeNotExceed,
-    })();
+    }).then(() => {
+      window.location.href = `/biddingdetali/${this.state.companyId}`;
+      this.handleCloseModal('editDetailMP');
+    });
     this.handleCloseModal('editDetailMP');
   }
   handleChange =(e, { name, value }) => {

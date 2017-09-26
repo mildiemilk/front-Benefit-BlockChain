@@ -20,21 +20,13 @@ const BIDDING_STATUS = '/api/insurer';
 
 
 export function editPlanDetail(planId, plan) {
-  return () => {
-    const options = {
-      method: 'post',
-      url: `${EXTEND_PLAN_URL}/${planId}`,
-      data: plan,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+  const options = {
+    method: 'post',
+    url: `${EXTEND_PLAN_URL}/${planId}`,
+    data: plan,
   };
+
+  return APIRequest(options, true);
 }
 export function deletePlan(planId) {
   return () => {

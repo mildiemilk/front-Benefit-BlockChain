@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { Divider, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import HeadCompanyInfo from '../header-company-info';
@@ -59,7 +60,7 @@ class Claim extends Component {
                 }
               </div>
               <div className="large-2 columns">
-                <Text>{claim.detail.date}</Text>
+                <Text>{moment(claim.detail.date).format('L')}</Text>
               </div>
               <div className="large-2 columns">
                 <Text>{claim.detail.name}</Text>

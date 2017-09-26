@@ -611,11 +611,14 @@ class PlanBoxModal extends Component {
         </form>
         <ModalPriceBox>
           <div className="edit-mp-input-price-box">
-            <div className="edit-mp-input-price-box-l">เสนอราคาแพลนนี้</div>
-            <div className="edit-mp-input-price-box-r">
-              <input type="number" name={this.props.planIndex} id="modalPlanPrice" value={this.state.price} className="edit-mp-input-price" onChange={e => this.props.handleChangeInput(`${this.props.planType}plan`, e)} />
+            {/* <div className="edit-mp-input-price-box-l">เสนอราคาแพลนนี้</div> */}
+            {/* <div className="edit-mp-input-price-box-r">
+              <input type="number" name={this.props.planIndex}
+              id="modalPlanPrice" value={this.state.price}
+              className="edit-mp-input-price"
+              onChange={e => this.props.handleChangeInput(`${this.props.planType}plan`, e)} />
               <span className="edit-mp-text-r">&nbsp;/&nbsp;คน</span>
-            </div>
+            </div> */}
             <div className="edit-mp-btn-box">
               <div className="edit-mp-btn-box-l">
                 <button

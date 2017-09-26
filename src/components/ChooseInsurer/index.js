@@ -45,9 +45,10 @@ class InsurerSelect extends Component {
     const { nums } = this.props;
 
     this.state = {
-      step: 4,
+      step: 2,
       num: nums !== undefined ? nums : 0,
       insurers: [],
+      isSave: false,
       // hideProgressBar: true,
     };
   }
@@ -58,7 +59,7 @@ class InsurerSelect extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.insurerChecked !== this.state.insurers) {
+    if (newProps.insurerChecked !== this.state.insurers && !this.state.isSave) {
       this.setState({
         insurers: newProps.insurerChecked,
         num: newProps.nums !== undefined ? newProps.nums : 0,
@@ -89,8 +90,8 @@ class InsurerSelect extends Component {
           this.props.insurerList[e.target.id].companyName ===
           element.companyName,
       );
-      const result = this.state.insurers;
-      result.splice(index, 1);
+      let result = this.state.insurers;
+      result = result.filter((insurer, i) => i !== index);
 
       this.setState({
         num: this.state.num - 1,
@@ -101,11 +102,16 @@ class InsurerSelect extends Component {
 
   handleSubmit = () => {
     toast(<ToastifyContent />);
+    console.log('insurers', this.state.insurers);
+    this.setState({
+      isSave: true,
+    })
     this.props.chooseInsurer(this.state.insurers);
   }
 
-  renderList = insurers => {
-    const list = insurers.map((insurer, index) => (
+  renderList = () => {
+    const { insurerList } = this.props;
+    const list = insurerList.map((insurer, index) => (
       <Card className="large-2 columns">
         <Check
           type="checkbox"
@@ -143,7 +149,7 @@ class InsurerSelect extends Component {
                   <Toastify handleSubmit={this.handleSubmit} />
                 </HeadIn>
                 <div className="row">
-                  {this.renderList(this.props.insurerList)}
+                  {this.renderList()}
                 </div>
               </SideIn>
               <SideIn>
@@ -155,7 +161,9 @@ class InsurerSelect extends Component {
               </SideIn>
             </div>
           </Detail>
-          <Link to="/uploadfile"><Next>ต่อไป</Next></Link>
+          <Link to="/uploadfile">
+            <Next>ต่อไป</Next>
+          </Link>
 
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
 import MenuPlan from './MenuPlan/menu-plan';
 import FormSubmitPlan from './FormSubmitPlan/form-submit-plan';
@@ -26,7 +27,7 @@ class SubmitPlan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 3,
+      step: 1,
       activePlan: -1,
       nextPage: false,
       canGoToNextPage: true,
@@ -140,12 +141,12 @@ class SubmitPlan extends Component {
     }
   }
 
-  onClickhandler = e => {
+  onClickhandler = () => {
     this.setState({ nextPage: true });
     if (this.state.canGoToNextPage) {
-      e.preventDefault();
       window.location.href = '/chooseinsurer';
     }
+    return '';
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -347,9 +348,9 @@ class SubmitPlan extends Component {
         warningModal: false,
       });
       window.location.href = '/chooseinsurer';
-    } else {
-      this.setState({ canGoToNextPage: true });
     }
+    this.setState({ canGoToNextPage: true });
+    return '';
   }
 
   handleWarningModal = () => {

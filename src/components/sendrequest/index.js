@@ -40,7 +40,7 @@ class Sendrequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 6,
+      step: 4,
       position: 'relative-box',
       passwordToConfirm: '',
     };
@@ -60,6 +60,7 @@ class Sendrequest extends Component {
   }
   handlePost = () => {
     const { passwordToConfirm } = this.state;
+    console.log('dd');
     const step = 0;
     this.props.setCompleteStep(passwordToConfirm, step);
   }

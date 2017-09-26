@@ -5,7 +5,8 @@ import { Image, Input } from 'semantic-ui-react';
 export const BackgroundWhite = styled.div`
     height: 100%;
     width: 100%;
-    background-color: #f9f9f9;
+    padding: 30px;
+    background-color: White;
 `;
 
 export const Head = styled.div`
@@ -14,6 +15,13 @@ export const Head = styled.div`
   font-weight: 500;
   text-align: center;
   color: #4a4a4a;
+`;
+
+export const HeadDesk = styled.div`
+  font-size: 32px;
+  font-weight: 500;
+  text-align: left;
+  margin: 30px 0px 10px 0px;
 `;
 
 export const HeadInBox = styled.div`
@@ -32,6 +40,7 @@ export const ElementBackground = styled.div`
   margin: 2px 0px;
   padding: 16px 40px;
   background-color: #ffffff;
+  cursor: pointer;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
 `;
 export const BoxSearch = styled.div`
@@ -51,6 +60,15 @@ export const BackToIndex = styled.div`
   padding-top: 36px;
   color:#3a7bd5;
   font-size: 14px;
+`;
+
+export const ImageStyle = styled(Image)`
+&&&{
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  margin-right: 10px;
+  }
 `;
 
 export const ImageInbox = styled(Image)`

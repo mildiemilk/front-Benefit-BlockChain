@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Divider } from 'semantic-ui-react';
+import MediaQuery from 'react-responsive';
 import SearchBox from './search-box';
 import HopitalMap from './hospital-map';
 import {
@@ -7,7 +8,11 @@ import {
   ElementBackground,
   HeadInBox,
   BackToIndex,
+  HeadDesk,
+  BackgroundWhite,
+  ImageStyle,
 } from './styled';
+import Hospital from '../../../../assets/employee/sidebar/hospitalPic.png';
 
 class FindHospital extends Component {
   constructor() {
@@ -74,6 +79,7 @@ class FindHospital extends Component {
   renderFiledHospital = hosList => {
     const listItems = hosList.map((number, i) => (
       <ElementBackground
+        className="colorMedia"
         keys={i}
         index={i}
         onClick={() => this.handleIsChoose(
@@ -94,27 +100,63 @@ class FindHospital extends Component {
     if (this.state.isChoose === false) {
       return (
         <div>
-          <Head>ค้นหาโรงพยาบาลในเครือข่าย</Head>
-          <ElementBackground style={{ marginBottom: '8px' }}>
-            <SearchBox
-              callback={
-              keyword => this.handleSearchBoxChange(keyword)}
-            />
-          </ElementBackground>
-          <ElementBackground>
-            <HeadInBox>
-              รายชื่อโรงพยาบาลในเครือข่าย
-            </HeadInBox>
-          </ElementBackground>
-          {this.renderFiledHospital(
-            this.filterHospital(
-              this.state.hospital))}
+          {/* --------------- Mobile ---------------------*/}
+          <MediaQuery query="(max-width: 767px)">
+            <Head> โรงพยาบาลในเครือข่าย </Head>
+            <ElementBackground style={{ marginBottom: '8px' }}>
+              <SearchBox
+                callback={
+                keyword => this.handleSearchBoxChange(keyword)}
+              />
+            </ElementBackground>
+            <ElementBackground>
+              <HeadInBox>
+                รายชื่อโรงพยาบาลในเครือข่าย
+              </HeadInBox>
+            </ElementBackground>
+            {this.renderFiledHospital(
+              this.filterHospital(
+                this.state.hospital))}
+          </MediaQuery>
+          {/* --------------- Desktop ---------------------*/}
+          <MediaQuery query="(min-width: 768px)">
+            <HeadDesk> โรงพยาบาลในเครือข่าย </HeadDesk>
+            <Divider style={{ marginBottom: '20px' }} />
+            <BackgroundWhite>
+              <div
+                className="row"
+                style={{ marginBottom: 15 }}
+              >
+                <div
+                  className="large-8 columns"
+                  style={{ fontSize: '16px' }}
+                >
+                  <ImageStyle src={Hospital} />
+                  รายชื่อโรงพยาบาลในเครือข่าย
+                </div>
+                <SearchBox
+                  className="large-4 columns"
+                  callback={
+                  keyword => this.handleSearchBoxChange(keyword)}
+                />
+              </div>
+              {this.renderFiledHospital(
+                this.filterHospital(
+                  this.state.hospital))}
+            </BackgroundWhite>
+          </MediaQuery>
         </div>
       );
     }
     return (
       <div>
-        <Head> ค้นหาโรงพยาบาล &gt; {this.state.SearchTerm} </Head>
+        <MediaQuery query="(max-width: 767px)">
+          <Head> ค้นหาโรงพยาบาล &gt; {this.state.SearchTerm} </Head>
+        </MediaQuery>
+        <MediaQuery query="(min-width: 768px)">
+          <HeadDesk> ค้นหาโรงพยาบาล &gt; {this.state.SearchTerm} </HeadDesk>
+          <Divider />
+        </MediaQuery>
         {this.renderFiledHospital(
           this.filterHospital(
             this.state.hospital))}

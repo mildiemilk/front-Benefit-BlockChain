@@ -78,7 +78,7 @@ class Bidding extends React.Component {
           <NavBidding
             DataCompany={this.state.DataCompany}
             timeout={this.props.timeout}
-            noti={this.notiTimeout}
+            notiTimeout={this.notiTimeout}
           />
           <div className="BidContent">
             <ShowMasterPlan

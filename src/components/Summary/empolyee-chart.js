@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import { RadialChart } from 'react-vis';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, Cell } from 'recharts';
-import '../../styles/chart-box.scss';
 
 // const myPlan = [
 //   { group: 'A', number: 10 },
@@ -73,7 +72,7 @@ class Empolyeechart extends Component {
                 <p className="chart-radial-sum">{summaryGroup.total}</p>
                 <p>คน</p>
               </div>
-              <PieChart width={350} height={250}>
+              <PieChart width={300} height={200}>
                 <Pie
                   data={this.renderGroup()}
                   innerRadius={40}

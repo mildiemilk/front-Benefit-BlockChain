@@ -91,7 +91,7 @@ class App extends Component {
                     path="/simplerequirement"
                     component={simpleRQ}
                   />
-                  <Route path="/submitplan" component={SubmitPlan} />
+                  <Route path="/submitplan/:index" component={SubmitPlan} />
                   <Route path="/ipd" component={IPD} />
                   <Route path="/sendrequest" component={Sendrequest} />
                   <Route path="/bidding" component={Bidding} />

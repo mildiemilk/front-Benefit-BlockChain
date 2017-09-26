@@ -16,8 +16,13 @@ class SubmitPlan extends Component {
     copyPlan: PropTypes.func.isRequired,
     deletePlan: PropTypes.func.isRequired,
     havePlan: PropTypes.bool.isRequired,
+    match: PropTypes.shape({ params: PropTypes.index }),
   }
-
+  static defaultProps = {
+    match: {
+      params: 0,
+    },
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -70,18 +75,18 @@ class SubmitPlan extends Component {
       lifePerYear: null,
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
+      val: props.match.params.index,
     };
     setInterval(() => {
       props.getAllPlan();
     }, 2000);
   }
-
   componentWillReceiveProps(newProps) {
     if (newProps.havePlan && (this.state.activePlan === -1) && !this.state.newPlan) {
-      const val = 0;
+      const val = this.props.match.params.index;
       const { planList } = newProps;
       this.setState({
-        activePlan: val,
+        activePlan: 0,
         planName: planList[val].planName,
         employeeOfPlan: planList[val].employeeOfPlan,
         dentalPerYear: planList[val].dentalPerYear,
@@ -142,7 +147,9 @@ class SubmitPlan extends Component {
       window.location.href = '/chooseinsurer';
     }
   }
-
+  // componentWiiMount = () => {
+  //   this.handlePlan(this.props.index)
+  // }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleChangeToNull = name => this.setState({ [name]: null })

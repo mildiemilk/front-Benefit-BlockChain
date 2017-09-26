@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { Icon, Checkbox, Popup } from 'semantic-ui-react';
 import ModalView from './modal-view';
@@ -27,7 +28,7 @@ class ViewPlanBox extends Component {
   }
 
   renderList = list => {
-    const plans = list.map(element => (
+    const plans = list.map((element, index) => (
       <tr>
         <td>
           <Checkbox />
@@ -37,13 +38,15 @@ class ViewPlanBox extends Component {
         <td> {moment(element.updatedAt).locale('th')
                   .format('DD MMMM YYYY')} </td>
         <td>
-          <Popup
-            trigger={<Icon disabled name="edit" size="large" />}
-            content="แก้ไขแผน"
-            position="bottom left"
-            size="mini"
-            basic
-          />
+          <Link to={`/submitplan/${index}`}>
+            <Popup
+              trigger={<Icon disabled name="edit" size="large" />}
+              content="แก้ไขแผน"
+              position="bottom left"
+              size="mini"
+              basic
+            />
+          </Link>
 
           <Popup
             trigger={

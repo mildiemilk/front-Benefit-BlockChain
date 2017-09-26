@@ -67,14 +67,13 @@ class FilterSearch extends Component {
     super();
     this.state = {
       isOpen: false,
-    }
+    };
   }
   handlePopup = () => {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
   renderGroupPopup = Groups => {
-    console.log('Groups', Groups);
     const allGroup = Groups.map(Group => (
       <DivFloat className="large-4 columns">
         <input type="checkbox" value="group" />
@@ -160,7 +159,7 @@ class FilterSearch extends Component {
           position="bottom center"
         />
       </div>
-    )
+    );
   }
 }
 

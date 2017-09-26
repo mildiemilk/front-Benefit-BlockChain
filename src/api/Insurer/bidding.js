@@ -20,7 +20,6 @@ const BIDDING_STATUS = '/api/insurer';
 
 
 export function editPlanDetail(planId, plan) {
-  console.log('Api=====', plan);
   return () => {
     const options = {
       method: 'post',

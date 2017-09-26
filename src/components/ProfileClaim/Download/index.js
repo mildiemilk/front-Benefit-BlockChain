@@ -3,7 +3,7 @@ import { Divider } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Detail } from '../../StyleComponent';
 import { Head, DivPic, TextClaim } from '../styled';
-import doc from '../../../../assets/ProfileClaim/icons-8-documents.png';
+import doc from '../../../../assets/ProfileClaim/icons-8-documents@2x.png';
 import BoxDownload from '../../BoxDownload';
 
 class Download extends Component {

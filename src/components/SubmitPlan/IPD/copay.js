@@ -99,6 +99,7 @@ class CoPay extends Component {
       ipdCoPayDeductable,
       ipdCoPayMixNotExceed,
       ipdCoPayMixPercentage,
+      ipdCoPayMixYear,
       ipdCoPayQuota,
     } = this.props;
     return (
@@ -233,9 +234,9 @@ class CoPay extends Component {
                     style={{ width: '70px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="opdCoPayMixYear"
+                    name="ipdCoPayMixYear"
                     id="ipdCoPayMixYear"
-                    value=""
+                    value={ipdCoPayMixYear}
                     onChange={this.props.handleChange}
                     required
                   />
@@ -250,7 +251,7 @@ class CoPay extends Component {
                     style={{ width: '70px' }}
                     label=" ต่อ"
                     placeholder="ปี"
-                    name="opdCoPayMixYear"
+                    name="ipdCoPayMixYear"
                     id="ipdCoPayMixYear"
                     value=""
                     onChange={this.props.handleChange}

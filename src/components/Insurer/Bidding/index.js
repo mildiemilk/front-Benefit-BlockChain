@@ -31,7 +31,7 @@ class Bidding extends React.Component {
     // props.getCompanyBidding(this.state.companyId);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // console.log('willMount: ', this.state.companyId);
     this.props.getCompanyBidding(this.state.companyId);
   }

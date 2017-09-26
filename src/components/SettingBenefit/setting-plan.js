@@ -73,7 +73,9 @@ class SettingPlan extends Component {
     };
   }
   componentDidMount() {
-    this.renderOption(this.props.option);
+    if (this.props.option.length >= 1) {
+      this.renderOption(this.props.option);
+    }
   }
   componentDidUpdate() {
     if (this.state.optionPlan.length === 0) {

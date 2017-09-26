@@ -22,6 +22,7 @@ class BiddingList extends Component {
     super(props);
     this.state = {
       SearchTerm: '',
+      bgColor: '',
     };
     // props.getCompanyBiddingList();
   }
@@ -33,27 +34,15 @@ class BiddingList extends Component {
   RenderBiddingElement = Bidding => {
     const listItems = Bidding.map((Bidding, number) => {
       if (Bidding.status === 'reject') {
-        return (
-          <Link to={`/biddingdetali/${Bidding.companyId}`}>
-            <BiddingElement
-              className="rejectBackgroundcolor"
-            >
-              <ElementName
-                Bidding={Bidding}
-                id={number}
-              />
-              <Divider className="DividerStyle" />
-              <ElementBottom
-                Bidding={Bidding}
-                id={number}
-              />
-            </BiddingElement>
-          </Link>
-        );
+        this.state = {
+          bgColor: 'rejectBackgroundcolor',
+        };
       }
       return (
         <Link to={`/biddingdetali/${Bidding.companyId}`}>
-          <BiddingElement>
+          <BiddingElement
+            className={this.state.bgColor}
+          >
             <ElementName
               Bidding={Bidding}
               id={number}

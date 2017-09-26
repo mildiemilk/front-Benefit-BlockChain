@@ -34,7 +34,7 @@ const AppInsurer = () => (
             <Route path="/biddinglist" component={BiddingList} />
             <Route path="/biddingdetali/:companyId" component={Bidding} />
             <Route path="/claimlist/:companyId" component={Claim} />
-            <Route path="/claimdetail" component={ClaimDetail} />
+            <Route path="/claimdetail/:companyId/:index" component={ClaimDetail} />
             <Route path="/claim" component={ClaimList} />
             <Route path="/claimanalysis" component={ClaimAnalysis} />
             <Route part="/allcustomer" component={AllCustomer} />

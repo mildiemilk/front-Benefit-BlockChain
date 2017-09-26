@@ -16,6 +16,7 @@ class ClaimStatus extends Component {
       viewDetail: false,
       chooseID: 1,
       claimData: [],
+      updateClaim: false,
     };
     props.getClaimStatus();
   }
@@ -69,6 +70,13 @@ class ClaimStatus extends Component {
     this.setState({ claimData });
   }
 
+  componentWillUpdate() {
+    if (this.state.updateClaim) {
+      this.setState({ updateClaim: false });
+      this.props.getClaimStatus();
+    }
+  }
+
   handleToggleViewDetail = id => {
     this.setState({
       viewDetail: !this.state.viewDetail,
@@ -76,12 +84,14 @@ class ClaimStatus extends Component {
     });
   }
 
+  handleUpdateClaim = () => this.setState({ updateClaim: true });
+
   checkRenderclaimStatus = () => {
     if (this.state.viewDetail === false) {
       return (
         <div>
           <p className="claim-header">สถานะการเคลม</p>
-          {this.renderClaimStatus(this.state.claimData)}
+          {this.renderClaimStatus()}
         </div>
       );
     }
@@ -94,11 +104,13 @@ class ClaimStatus extends Component {
           }
         id={this.state.chooseID}
         handleToggleViewDetail={this.handleToggleViewDetail}
+        handleUpdateClaim={this.handleUpdateClaim}
       />
     );
   }
 
-  renderClaimStatus = claimData => {
+  renderClaimStatus = () => {
+    const { claimData } = this.state;
     const listItems = claimData.map((claim, number) => (
       <ClaimStatusBox
         key={number.toString()}

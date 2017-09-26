@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import CountDowns from '../../Bidding/CountDowns';
+import CountDowns from '../../Bidding/CountDowns';
 import HeadCompanyInfo from '../header-company-info';
 import {
   Nav,
@@ -30,7 +30,7 @@ class Bidding extends Component {
 
   render() {
     const data = this.props.DataCompany;
-    const { candidateInsurer, minPrice } = data;
+    const { candidateInsurer, minPrice, timeout } = data;
     return (
       <div className="NavBid">
         <HeadCompanyInfo DataCompany={data} />
@@ -63,7 +63,7 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
                 <FontNumAucTime>
-                  {/* <CountDowns date={this.props.timeout.timeout} /> */}
+                  <CountDowns date={timeout} />
                 </FontNumAucTime>
               </TextNav>
             </Nav>

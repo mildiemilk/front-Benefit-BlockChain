@@ -39,6 +39,7 @@ class ExtendClaim extends Component {
       isHealth: props.isHealth,
       isExpense: props.isExpense,
       isInsurance: props.isInsurance,
+      isResult: false,
     };
   }
   handleImage = () => {
@@ -119,36 +120,41 @@ class ExtendClaim extends Component {
       </DivInsurance>
     </div>
   )
-  showProcess = (cost, currency) => (
-    <div className="large-4 columns">
-      <div className="row">
-        <Box>
-          <img src={this.handleImage()} alt="claim" />
-          <DivList>
-            <List>การเคลมค่าใช้จ่ายสุขภาพ</List>
-            <ListDetail>วงเงิน 4000/15000</ListDetail>
-          </DivList>
-          <div className="Bar">
-            <ProgressStyle size="small" percent={68} className={this.handleBar()} />
+  showProcess = (cost, currency, status) => {
+    if (status === 'pending') {
+      return (
+        <div className="large-4 columns">
+          <div className="row">
+            <Box>
+              <img src={this.handleImage()} alt="claim" />
+              <DivList>
+                <List>การเคลมค่าใช้จ่ายสุขภาพ</List>
+                <ListDetail>วงเงิน 4000/15000</ListDetail>
+              </DivList>
+              <div className="Bar">
+                <ProgressStyle size="small" percent={68} className={this.handleBar()} />
+              </div>
+              {this.state.isInsurance
+              ? <ListDetail fontSize="12px">*ยังไม่รวมการเคลมกับโรงพยาบาลในเครือข่าย</ListDetail>
+              : null
+              }
+            </Box>
           </div>
-          {this.state.isInsurance
-          ? <ListDetail fontSize="12px">*ยังไม่รวมการเคลมกับโรงพยาบาลในเครือข่าย</ListDetail>
-          : null
-          }
-        </Box>
-      </div>
-      <div className="row">
-        <Box>
-          <Head>การพิจารณาการเคลมนี้</Head>
-          <Divider />
-          {this.state.isInsurance
-          ? this.resultInsurance()
-          : this.resultClaim(cost, currency)
-          }
-        </Box>
-      </div>
-    </div>
-  )
+          <div className="row">
+            <Box>
+              <Head>การพิจารณาการเคลมนี้</Head>
+              <Divider />
+              {this.state.isInsurance
+              ? this.resultInsurance()
+              : this.resultClaim(cost, currency)
+              }
+            </Box>
+          </div>
+        </div>
+      );
+    }
+    return '';
+  }
   renderDetail() {
     const { isInsurance } = this.state;
     const { claimList, index, indexDetail } = this.props;
@@ -274,7 +280,7 @@ class ExtendClaim extends Component {
                 </DivClaim>
               </Detail>
             </div>
-            {this.showProcess(claim.detail.amount, claim.detail.currency)}
+            {this.showProcess(claim.detail.amount, claim.detail.currency, claim.status)}
           </div>
         </div>
       );

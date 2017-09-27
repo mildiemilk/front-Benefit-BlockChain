@@ -51,7 +51,6 @@ class ModalApprove extends Component {
     modalOpen: !this.state.modalOpen,
   })
   handleApprove = () => {
-    console.log('approve--', this.props)
     const { claimId, companyId } = this.props;
     updateStatusClaim('approve', claimId, null)
     .then(() => {

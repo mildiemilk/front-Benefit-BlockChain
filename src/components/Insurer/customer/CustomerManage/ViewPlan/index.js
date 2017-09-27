@@ -24,10 +24,9 @@ class ViewPlan extends Component {
     const data = this.props.customer;
     return (
       <div>
-        {data.map(data => (
-          <HeaderCompanyInfo DataCompany={data} />
-        ))
-      }
+
+        <HeaderCompanyInfo DataCompany={data[0]} />
+
       </div>
     );
   }

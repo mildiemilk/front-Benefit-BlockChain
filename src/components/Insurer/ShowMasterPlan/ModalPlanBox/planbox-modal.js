@@ -73,12 +73,9 @@ class PlanBoxModal extends Component {
     handleChangeMasterplan: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
     planType: PropTypes.string.isRequired,
-    // ipdType: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     planIndex: PropTypes.number.isRequired,
-    // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
-    // DataCompany: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
@@ -203,9 +200,6 @@ class PlanBoxModal extends Component {
 
   handlePlan = val => {
     if (val !== -1) {
-      console.log('this.props.DetailMP----', this.props.DetailMP);
-      // const DetailMP = this.props.DetailMP;
-      // const { plan } = DetailMP;
       const { DetailMP } = this.props;
       this.setState({
         activePlan: val,
@@ -401,7 +395,6 @@ class PlanBoxModal extends Component {
   }
 
   handleToggleIpdCoPay = () => {
-    console.log('handleToggleOpdCoPay modal', this.state);
     if (this.state.ipdCoPay === true) {
       this.setState({
         DetailMP: this.props.DetailMP,
@@ -412,14 +405,12 @@ class PlanBoxModal extends Component {
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
       });
-      console.log('before modal', this.state.DetailMP);
       const MP = this.state.DetailMP
       MP.ipdCoPay = false;
       this.state = {
         DetailMP: MP,
         ipdType: MP.ipdType,
       };
-      console.log('after modal', this.state.DetailMP);
     }
     if (this.state.ipdCoPay === false) {
       this.setState({ ipdCoPay: true });

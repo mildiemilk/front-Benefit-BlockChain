@@ -144,7 +144,6 @@ class SubmitPlan extends Component {
   }
 
   handleChange = (e, { name, value }) => {
-    console.log('--handleChange:index.js');
     this.setState({ [name]: value });
   }
 
@@ -153,7 +152,6 @@ class SubmitPlan extends Component {
   handleToggle = () => { }
 
   handleToggleOpdCoPay = () => {
-    console.log('handleToggleOpdCoPay index');
     if (this.state.opdCoPay) {
       this.setState({
         opdCoPay: !this.state.opdCoPay,

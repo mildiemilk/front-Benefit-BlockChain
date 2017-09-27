@@ -76,7 +76,7 @@ class PlanBoxModal extends Component {
     // ipdType: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     planIndex: PropTypes.number.isRequired,
-    handleChangeInput: PropTypes.func.isRequired,
+    // handleChangeInput: PropTypes.func.isRequired,
     // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
     // DataCompany: PropTypes.shape({}).isRequired,

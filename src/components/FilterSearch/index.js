@@ -77,7 +77,7 @@ class FilterSearch extends Component {
     const allGroup = Groups.map(Group => (
       <DivFloat className="large-4 columns">
         <input type="checkbox" value="group" />
-        <ListPopup>{Group.name}</ListPopup>
+        <ListPopup>{Group.groupName}</ListPopup>
       </DivFloat>
     ));
     return allGroup;

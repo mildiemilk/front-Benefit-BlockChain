@@ -46,6 +46,9 @@ const GET_SUMMARYGROUP_URI = '/api/company/summary-group';
 const GET_SUMMARYEMPLOYEE_URI = '/api/company/summary-employee-benefit';
 const GET_CLAIMLIST_URI = 'api/company/get-claim-list';
 const COMPANY_CLAIM_URI = 'api/company/claim';
+const ADD_EMPLOYEE_URI = 'api/company/add-employee';
+const DELETE_EMPLOYEE_URI = 'api/company/delete-employee';
+const MANAGE_EMPLOYEE_URI = 'api/company/manage-employee';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -332,3 +335,34 @@ export function companyClaim(status, claimId, reason) {
 export default {
   createProfile,
 };
+
+export function addEmployee(profile) {
+  const options = {
+    method: 'post',
+    url: ADD_EMPLOYEE_URI,
+    data: {
+      profile,
+    },
+  };
+  return APIRequest(options, true);
+}
+
+export function deleteEmployee(employeeId) {
+  const options = {
+    method: 'delete',
+    url: DELETE_EMPLOYEE_URI,
+    data: { employeeId },
+  };
+  return APIRequest(options, true);
+}
+
+export function manageEmployee(detail) {
+  const options = {
+    method: 'post',
+    url: MANAGE_EMPLOYEE_URI,
+    data: {
+      detail,
+    },
+  };
+  return APIRequest(options, true);
+}

@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { employeeDetail } from '../../api/profile-company';
 import Head from '../Head';
 import ModalEditEmployee from './ModalEditEmployee';
-import { getGroupBenefit } from '../../api/profile-company';
+import { getGroupBenefit, deleteEmployee } from '../../api/profile-company';
 import { getBenefitPlan } from '../../api/benefit-plan';
 import { Box, Pic, TextNav, Number } from '../StyleComponent';
 import { ListPopup, DivFloat, DivImg, TextList, DivHead, TextElip } from './styled';
@@ -31,6 +32,7 @@ class employeeList extends Component {
     groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
     getGroupBenefit: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -39,23 +41,54 @@ class employeeList extends Component {
       minList: 0,
       maxList: 7,
       pageNumber: 1,
-      data: [],
+      data: props.data,
+      checkDelete: false,
+      optionGroupBenefit: [],
+      optionTypeEmployee: [],
+      optionDepartment: [],
+      optionTitles: [],
     };
+    props.employeeDetail();
+    props.getBenefitPlan();
+    props.getGroupBenefit();
   }
-  componentDidMount() {
-    this.props.employeeDetail();
-    this.props.getBenefitPlan();
-    this.props.getGroupBenefit();
-  }
-
+  // componentWillMount() {
+  //   console.log('>>>willMount');
+  //   this.renderGroup();
+  //   this.renderDepartment();
+  //   this.renderTitle();
+  // }
   componentWillReceiveProps(newProps) {
     if (this.state.data !== newProps.data) {
       this.setState({
         data: newProps.data,
       });
     }
+    this.renderGroup();
+    this.renderDepartment(newProps.data);
+    this.renderTitle(newProps.data);
   }
-
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.checkDelete) {
+      this.setState({
+        checkDelete: false,
+      });
+      this.props.employeeDetail();
+    }
+    // console.log('data>', this.state.data, 'nextData>', nextState.data);
+    // if (this.state.data !== nextState.data) {
+    //   this.setState({
+    //     data: nextProps.data,
+    //   })
+    //   this.renderDepartment();
+    //   this.renderTitle();
+    // }
+  }
+  checkStateDelete = () => {
+    this.setState({
+      checkDelete: true,
+    });
+  }
   plusLimitChange = () => {
     if (this.state.maxList <= this.renderSearch().length) {
       const { data } = this.state;
@@ -169,7 +202,57 @@ class employeeList extends Component {
     );
     return list;
   }
-
+  renderGroup = () => {
+    const options = this.props.groupBenefit;
+    const optionGroupBenefit = [];
+    if (options !== undefined && options.length >= 1) {
+      options.map((option, index) => {
+        optionGroupBenefit.push({
+          key: index,
+          text: option.groupName,
+          value: option.groupName,
+        });
+        return option;
+      });
+    }
+    this.setState({ optionGroupBenefit });
+  }
+  renderTitle = options => {
+    // const options = this.props.data;
+    const optionTitles = [];
+    if (options !== undefined && options.length >= 1) {
+      options.map((option, index) => {
+        const exist = optionTitles.findIndex(d => d.text === option.detail.title) !== -1;
+        if (!exist) {
+          optionTitles.push({
+            key: index,
+            text: option.detail.title,
+            value: option.detail.title,
+          });
+        }
+        return option;
+      });
+    }
+    this.setState({ optionTitles });
+  }
+  renderDepartment = options => {
+    // const options = this.props.data;
+    const departments = [];
+    if (options !== undefined && options.length >= 1) {
+      options.map((option, index) => {
+        const exist = departments.findIndex(d => d.text === option.detail.department) !== -1;
+        if (!exist) {
+          departments.push({
+            key: index,
+            text: option.detail.department,
+            value: option.detail.department,
+          });
+        }
+        return option;
+      });
+    }
+    this.setState({ optionDepartment: departments });
+  }
   renderListEmployee = data => {
     const searchData = this.renderSearch(data);
     const showData = searchData.filter(
@@ -216,7 +299,11 @@ class employeeList extends Component {
           <div className="large-2 columns">
             <div className="large-6 columns">
               <div className="list-box-in-list group">
-                -
+                {element.detail.effectiveDate === '-'
+                ? element.detail.effectiveDate
+                : moment(element.detail.effectiveDate)
+                .format('DD MMMM YYYY')
+                }
               </div>
             </div>
             <div className="large-6 columns">
@@ -225,12 +312,21 @@ class employeeList extends Component {
                   <Icon name="search" />
                 </div>
                 <div className="edit-employee-list">
-                  <ModalEditEmployee
-                    groupBenefit={this.props.groupBenefit}
-                    employeeDetail={this.state.data}
-                  />
+                  {
+                    this.props.data !== undefined && this.props.data.length >= 1
+                    ? <ModalEditEmployee
+                      optionGroupBenefit={this.state.optionGroupBenefit}
+                      optionDepartment={this.state.optionDepartment}
+                      optionTitles={this.state.optionTitles}
+                    />
+                  : <div />
+                  }
                 </div>
-                <ModalDelete />
+                <ModalDelete
+                  deleteEmployee={deleteEmployee}
+                  checkStateDelete={this.checkStateDelete}
+                  idEmployee={element._id}
+                />
               </div>
             </div>
           </div>
@@ -239,17 +335,15 @@ class employeeList extends Component {
     ));
   }
   renderGroupPopup = Groups => {
-    console.log('Groups', Groups);
     const allGroup = Groups.map(Group => (
       <DivFloat className="large-4 columns">
         <input type="checkbox" value="group" />
-        <ListPopup>{Group.name}</ListPopup>
+        <ListPopup>{Group.GroupName}</ListPopup>
       </DivFloat>
     ));
     return allGroup;
   }
   render() {
-    console.log('props', this.props);
     return (
       <div className="employee-list">
         <Head content="รายชื่อพนักงาน" />

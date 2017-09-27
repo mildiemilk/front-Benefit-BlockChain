@@ -60,7 +60,6 @@ class Sendrequest extends Component {
   }
   handlePost = () => {
     const { passwordToConfirm } = this.state;
-    console.log('dd');
     const step = 0;
     this.props.setCompleteStep(passwordToConfirm, step);
   }

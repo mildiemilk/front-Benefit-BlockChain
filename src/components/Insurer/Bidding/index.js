@@ -89,7 +89,7 @@ class Bidding extends React.Component {
         </div>
       );
     }
-    return <div />
+    return <div />;
   }
 }
 

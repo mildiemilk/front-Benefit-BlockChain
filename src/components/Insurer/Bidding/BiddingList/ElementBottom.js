@@ -15,6 +15,7 @@ import auction from '../../../../../assets/bidding/icons-8-auction.png';
 class ElementBottom extends Component {
   static propTypes = {
     Bidding: PropTypes.shape.isRequired,
+    notiTimeout: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -116,6 +117,7 @@ class ElementBottom extends Component {
                     <CountDowns
                       style={{ fontSize: '24px' }}
                       date={Bidding.timeout}
+                      notiTimeout={this.props.notiTimeout}
                     />
                   </div>
                 </div>

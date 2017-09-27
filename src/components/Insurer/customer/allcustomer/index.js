@@ -18,18 +18,26 @@ class AllCustomer extends Component {
       SearchTerm: '',
       Searchstatus: '',
       customer: [],
+      isAllPlan: false,
+      status: '',
     };
     props.getCustomer();
   }
-
-  // componentDidMount() {
-  //   this.props.getCustomer();
-  // }
-
+  handleDetail = (index, status) => {
+    const { isExtend } = this.state;
+    this.setState({
+      isAllPlan: !isExtend,
+      indexDetail: index,
+      status,
+    });
+  }
   render() {
     const { customer } = this.props;
     return (
-      <Customerlist customer={customer} />
+      <Customerlist
+        customer={customer}
+        handleDetail={this.handleDetail}
+      />
     );
   }
 }

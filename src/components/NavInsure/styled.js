@@ -25,7 +25,7 @@ export const Step1 = styled(Step)`
     border-bottom-left-radius: 40px !important;
   }
 `;
-export const Step6 = styled(Step)`
+export const Step4 = styled(Step)`
   &&&{
     border-top-right-radius: 40px !important;
     border-bottom-right-radius: 40px !important;

@@ -19,6 +19,7 @@ import auction from '../../../../assets/bidding/icons-8-auction.png';
 class Bidding extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
+    notiTimeout: PropTypes.func.isRequired,
     // timeout: PropTypes.string.isRequired,
     // candidateInsurer: PropTypes.string.isRequired,
     // minPrice: PropTypes.number.isRequired,
@@ -63,7 +64,7 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
                 <FontNumAucTime>
-                  <CountDowns date={timeout} />
+                  <CountDowns date={timeout} notiTimeout={this.props.notiTimeout} />
                 </FontNumAucTime>
               </TextNav>
             </Nav>

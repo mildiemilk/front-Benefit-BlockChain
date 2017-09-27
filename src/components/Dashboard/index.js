@@ -47,7 +47,7 @@ class Dashboard extends Component {
       const canGo = completeStep.lastIndexOf(true) + 1 === number;
       if (canGo) {
         return (
-          <div className="large-3 columns">
+          <div className="large-3 columns" key={number.toString()}>
             <Link to={{ pathname: path[number] }} >
               <Checkbox keys={number} label={label[number]} checked={step} />
             </Link>
@@ -55,7 +55,7 @@ class Dashboard extends Component {
         );
       }
       return (
-        <div className="large-3 columns">
+        <div className="large-3 columns" key={number.toString()}>
           <Checkbox keys={number} label={label[number]} checked={step} />
         </div>
       );

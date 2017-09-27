@@ -1,42 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { Icon, Checkbox, Popup } from 'semantic-ui-react';
-import ModalView from './modal-view';
-import { copyPlan, deletePlan } from '../../api/set-plan';
+import { Icon, Popup } from 'semantic-ui-react';
 
 class ViewPlanBox extends Component {
   static propTypes = {
-    copyPlan: PropTypes.func.isRequired,
-    deletePlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    handleCopy: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleOpen: PropTypes.func.isRequired,
   }
-
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  handleCopy = planId => {
-    this.props.copyPlan(planId);
-  }
-
-  handleDelete = planId => {
-    this.props.deletePlan(planId);
-  }
-
-  renderList = list => {
-    const plans = list.map((element, index) => (
-      <tr>
+  renderList = () => {
+    const {
+      planList,
+      handleCopy,
+      handleChange,
+      handleOpen,
+    } = this.props;
+    const plans = planList.map((element, index) => (
+      <tr key={index.toString()}>
         <td>
-          <Checkbox />
+          <input
+            className="view-checkbox-list-plan"
+            type="checkbox"
+            name="selectPlan"
+            value={element.planId}
+            onChange={handleChange}
+          />
         </td>
-        <td singleLine> {element.planName} </td>
+        <td> {element.planName} </td>
         <td> {element.updateBy} </td>
-        <td> {moment(element.updatedAt).locale('th')
-                  .format('DD MMMM YYYY')} </td>
+        <td>
+          {
+            moment(element.updatedAt)
+            .locale('th')
+            .format('DD MMMM YYYY')
+          }
+        </td>
         <td>
           <Link to={`/submitplan/${index}`}>
             <Popup
@@ -54,7 +60,7 @@ class ViewPlanBox extends Component {
                 disabled
                 name="paste"
                 size="large"
-                onClick={() => this.handleCopy(element.planId)}
+                onClick={() => handleCopy(element.planId)}
               />
             }
             content="คัดลอกแผน"
@@ -62,11 +68,19 @@ class ViewPlanBox extends Component {
             size="mini"
             basic
           />
-
-          <ModalView
-            planId={element.planId}
-            list={list}
-            handleDelete={this.handleDelete}
+          <Popup
+            trigger={
+              <Icon
+                disabled
+                name="trash"
+                size="large"
+                onClick={() => handleOpen(element.planId)}
+              />
+            }
+            content="ลบแผน"
+            position="bottom left"
+            size="mini"
+            basic
           />
         </td>
       </tr>
@@ -77,17 +91,19 @@ class ViewPlanBox extends Component {
   render() {
     return (
       <table>
-        {this.renderList(this.props.planList)}
+        <tbody>
+          {this.renderList()}
+        </tbody>
       </table>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  deletePlan: planId => dispatch(deletePlan(planId)),
-  copyPlan: planId => dispatch(copyPlan(planId)),
-});
+export default ViewPlanBox;
+// const mapDispatchToProps = dispatch => ({
+//   deletePlan: planId => dispatch(deletePlan(planId)),
+// });
 
-const mapStateToProps = () => ({});
+// const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox);
+// export default connect(mapStateToProps, mapDispatchToProps)(ViewPlanBox);

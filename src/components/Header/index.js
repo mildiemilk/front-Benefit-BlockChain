@@ -60,7 +60,8 @@ class Header extends Component {
           </div>
         </LogoPosition>
         <Menu.Item style={{ width: '20%' }} position="right">
-          {companyName !== ''
+          {
+            companyName !== ''
             ? <div>
               <SpanStyle>
                 {companyName}
@@ -76,7 +77,8 @@ class Header extends Component {
               />
               <ImageCss src={logo} alt="logo" width="50px" height="50px" />
             </div>
-            : <div />}
+            : <div />
+          }
         </Menu.Item>
       </HeadNav>
     );

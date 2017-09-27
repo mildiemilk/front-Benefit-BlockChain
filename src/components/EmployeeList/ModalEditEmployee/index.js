@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Modal, Divider, Dropdown, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 import {
   ModalHeader,
 } from '../../ModalConfirmPassword/styled';
 import { DivContent, Text, ButtonPopup, TextDetail, Input } from './styled';
-import InputDate from '../../InputDate';
+// import InputDate from '../../InputDate';
 import { Button } from '../../StyleComponent';
 
 const ModalContents = styled(Modal.Content) `
@@ -27,10 +29,13 @@ const Modals = styled(Modal) `
   }
 `;
 
-const Inputs = styled(InputDate) `
+const Inputs = styled(DatePicker) `
   &&&{
     height: 40px;
     padding-left: 10px;
+    border-radius: 4px;
+    width: 100%;
+    border: solid 1px #dddddd;
   }
 `;
 const Dropdowns = styled(Dropdown)`
@@ -40,16 +45,24 @@ const Dropdowns = styled(Dropdown)`
     margin-bottom: 10px;
   }
 `;
+const ModalHeaders = styled(ModalHeader)`
+  &&&{
+    margin-top: 24px;
+  }
+`;
 const options = [
-  { key: 1, text: 'Choice 1', value: 1 },
-  { key: 2, text: 'Choice 2', value: 2 },
-  { key: 3, text: 'Choice 3', value: 3 },
+  { key: 1, text: 'full-time', value: 'full-time' },
+  { key: 2, text: 'part-time', value: 'part-time' },
+  { key: 3, text: 'out-source', value: 'out-source' },
 ];
 
 class ModalEditEmployee extends Component {
   static propTypes = {
-    groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
-    employeeDetail: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // employeeDetail: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionGroupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionTitles: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionDepartment: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   static defaultProps = {
@@ -62,23 +75,22 @@ class ModalEditEmployee extends Component {
       modalOpen: false,
       isPromotion: true,
       isExit: false,
-      groupBenefit: [],
-      typeEmployee: [],
-      // department: [],
+      effective: '',
     };
   }
-  componentDidMount() {
-    this.renderGroup();
-    this.renderDepartment();
-  }
-  componentDidUpdate() {
-    if (this.state.groupBenefit.length === 0) {
-      this.renderGroup();
-    }
-    if (this.state.department.length === 0) {
-      this.renderDepartment();
-    }
-  }
+  // componentDidMount() {
+  //   this.renderGroup();
+  //   this.renderDepartment();
+  //   this.renderTitle();
+  // }
+  // componentDidUpdate() {
+  //   if (this.state.groupBenefit.length === 0) {
+  //     this.renderGroup();
+  //   }
+  //   if (this.state.department.length === 0) {
+  //     this.renderDepartment();
+  //   }
+  // }
   handleModal = () =>
     this.setState({
       modalOpen: !this.state.modalOpen,
@@ -99,6 +111,9 @@ class ModalEditEmployee extends Component {
       });
     }
   }
+  handleEffective = effective => {
+    this.setState({ effective }, () => console.log('set date', this.state.effective));
+  }
   stylePopupExit = () => {
     if (this.state.isExit) {
       return 'active';
@@ -111,69 +126,9 @@ class ModalEditEmployee extends Component {
     }
     return '';
   }
-  renderGroup = () => {
-    const options = this.props.groupBenefit;
-    const groupBenefit = [];
-    options.map((option, index) => {
-      groupBenefit.push({
-        key: index,
-        text: option.name,
-        value: option.name,
-      });
-      return option;
-    });
-    this.setState({ groupBenefit });
-  }
-  // renderType = () => {
-  //   const options = this.props.groupBenefit;
-  //   const groupBenefit = [];
-  //   options.map((option, index) => {
-  //     groupBenefit.push({
-  //       key: index,
-  //       text: option.name,
-  //       value: option.name,
-  //     });
-  //     return option;
-  //   });
-  //   this.setState({ groupBenefit });
-  // }
-  renderDepartment = () => {
-    const options = this.props.employeeDetail;
-    const departments = [];
-    options.map((option, index) => {
-      departments.push({
-        key: index,
-        text: option.detail.department,
-        value: option.detail.department,
-      });
-      return option;
-    });
-    console.log('de', departments);
-    // const department = [];
-    // const it = [...new Set(departments.map((item, index) => item.text
-    //   if (index <= -1) {
-    //     department.push({ key: item.key, text: item.text, value: item.value });
-    //   }
-    // )];
-
-    // TODO: should use let instead
-    // const department = [];
-    // departments.filter = item => {
-    //   const i = department.findIndex(x => x.text === item.text);
-    //   console.log('-->', i)
-    //   if (i <= -1) {
-    //     department.push(item);
-    //   }
-    // };
-
-    // const uniqueItems = Array.from(new Set(departments.text));
-    // console.log('it', uniqueItems);
-    this.setState({ department: departments });
-    // console.log()
-    // this.setState({ department });
-  }
   render() {
-    const { isExit, groupBenefit } = this.state;
+    const { isExit } = this.state;
+    const { optionGroupBenefit, optionDepartment, optionTitles } = this.props;
     return (
       <Modals
         trigger={
@@ -183,12 +138,10 @@ class ModalEditEmployee extends Component {
         onClose={this.handleModal}
       >
 
-        <ModalContents>
-          <ModalHeader>
-            {' '}
+        <ModalContents className="editEmployee">
+          <ModalHeaders>
             <div>แก้ไขสถานะของพนักงาน</div>
-            {' '}
-          </ModalHeader>
+          </ModalHeaders>
           <DivContent padding="6px 15px">
             <div className="row">
               <div className="large-4 columns">
@@ -223,7 +176,18 @@ class ModalEditEmployee extends Component {
                 <div className="large-6 columns">
                   <TextDetail>วันที่มีผล :</TextDetail>
                   <div className="input-date">
-                    <Inputs />
+                    <Inputs
+                      selected={this.state.effective}
+                      onChange={this.handleEffective}
+                      minDate={moment()}
+                      fixedHeight
+                      dateFormat="DD/MM/YYYY"
+                      locale="th"
+                      showYearDropdown
+                      dateFormatCalendar="MMMM"
+                      scrollableYearDropdown
+                      yearDropdownItemNumber={8}
+                    />
                   </div>
                 </div>
               </div>
@@ -236,31 +200,53 @@ class ModalEditEmployee extends Component {
                   <div className="large-6 columns">
                     <TextDetail>แผนก :</TextDetail>
                     <div className="input-date">
-                      <Dropdowns placeholder="Choose" options={options} compact selection />
+                      <Dropdowns placeholder="department" options={optionDepartment} compact selection />
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="large-6 columns">
                     <TextDetail>ตำแหน่ง :</TextDetail>
-                    <Dropdowns placeholder="Choose" options={options} compact selection />
+                    <Dropdowns placeholder="title" options={optionTitles} compact selection />
                   </div>
                   <div className="large-6 columns">
-                    <TextDetail>วันที่มีผล :</TextDetail>
-                    <div className="input-date">
-                      <Inputs />
-                    </div>
+                    <TextDetail>กลุ่มสิทธิประโยชน์ :</TextDetail>
+                    <Dropdowns placeholder="groupbenefits" options={optionGroupBenefit} compact selection />
                   </div>
                 </div>
                 <div className="row">
                   <div className="large-6 columns">
-                    <TextDetail>กลุ่มสิทธิประโยชน์ :</TextDetail>
-                    <Dropdowns placeholder="Choose" options={groupBenefit} compact selection />
+                    <TextDetail>วันที่มีผล :</TextDetail>
+                    <div className="input-date">
+                      <Inputs
+                        selected={this.state.effective}
+                        onChange={this.handleEffective}
+                        minDate={moment()}
+                        fixedHeight
+                        dateFormat="DD/MM/YYYY"
+                        locale="th"
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        yearDropdownItemNumber={8}
+                      />
+                    </div>
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>ตั้งเวลาในการเลือกแผนสิทธิประโยชน์ :</TextDetail>
                     <div className="input-date">
-                      <Inputs />
+                      <Inputs
+                        selected={this.state.effective}
+                        onChange={this.handleEffective}
+                        minDate={moment()}
+                        fixedHeight
+                        dateFormat="DD/MM/YYYY"
+                        locale="th"
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        yearDropdownItemNumber={8}
+                      />
                     </div>
                   </div>
                 </div>

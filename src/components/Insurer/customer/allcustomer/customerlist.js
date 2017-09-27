@@ -16,6 +16,7 @@ import {
 class customerList extends Component {
   static propTypes = {
     // getCustomer: PropTypes.func.isRequired,
+    handleDetail: PropTypes.func.isRequired,
     customer: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
@@ -60,7 +61,7 @@ class customerList extends Component {
 
   renderElement = customer => {
     const list = customer.map((customer, id) => (
-      <Nav id={id} >
+      <Nav id={id} onClick={() => this.props.handleDetail(id, customer.status)} key={id.toString()}>
         <div className="text-main">
           <ImageCompany
             avatar
@@ -116,7 +117,6 @@ class customerList extends Component {
       color: '#bfbfbf',
     };
     const { customer } = this.props;
-    console.log('fff', this.props);
     return (
       <div className="customerList">
         <div className="row">

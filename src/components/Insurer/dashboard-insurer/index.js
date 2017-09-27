@@ -95,7 +95,7 @@ class Dashboard extends Component {
             <Grid>
               <Grid.Row columns={3}>
                 <Grid.Column>
-                  <Link to="/dashboard" >
+                  <Link to="/allcustomer" >
                     <Image
                       className="block"
                       centered

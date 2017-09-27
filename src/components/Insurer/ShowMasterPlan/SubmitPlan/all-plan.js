@@ -314,7 +314,6 @@ class AllsetPlan extends Component {
 
   handleImageActive = value => {
     if (value === 'IPD') {
-      console.log('ipdRecord--', this.state.ipdRecord);
       if (this.state.ipdRecord) return bedRecord;
       return bedActive;
     }
@@ -323,7 +322,6 @@ class AllsetPlan extends Component {
       return stethoscopeActive;
     }
     if (value === 'Dental') {
-      console.log('dentalRecord--', this.state.dentalRecord);
       if (this.state.dentalRecord) return toothRecord;
       return toothActive;
     }
@@ -368,8 +366,6 @@ class AllsetPlan extends Component {
   }
 
   render() {
-    console.log('AllPlan:state', this.state)
-    console.log('AllPlan:props', this.props)
     return (
       <div>
         <div className="fillBox2">

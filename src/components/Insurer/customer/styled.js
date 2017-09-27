@@ -30,3 +30,15 @@ export const Special = styled.div`
   padding: 0% 3%;
   margin-left: 4%;
 `;
+export const Font = styled.div`
+  font-size: 16px;
+  display: inline-block;
+  position: absolute;
+  bottom: 62%;
+  left: 36%;
+`;
+export const FontAucTime = styled(Font)`
+  &&& {
+  font-size: 16px;
+  }
+`;

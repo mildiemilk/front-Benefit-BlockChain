@@ -73,7 +73,6 @@ class ClaimList extends Component {
   }
   render() {
     const { claim } = this.props;
-    console.log('this.props--', this.props);
     return (
       <div className="ClaimList">
         <Head className="insurerheade-text" content="รายการเคลม" />

@@ -48,6 +48,7 @@ class Timeout extends Component {
             selected={this.state.date}
             onChange={this.handleDate}
             minDate={moment()}
+            fixedHeight
           />
           <span>&nbsp;เวลา&nbsp;</span>
           <TimePicker onChange={this.handleTime} showSecond={false} />

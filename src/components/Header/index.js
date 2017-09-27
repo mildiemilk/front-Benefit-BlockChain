@@ -50,8 +50,9 @@ class Header extends Component {
     </div>
 
   render() {
-    const { data } = this.props;
-    const { companyName, logo } = data;
+    const { data: { companyName, logo } } = this.props;
+    // const checkCompanyName = JSON.parse(companyName);
+    // console.log('data', checkCompanyName);
     return (
       <HeadNav>
         <LogoPosition>

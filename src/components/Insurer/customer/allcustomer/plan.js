@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { NextButton, grayButton } from '../../../StyleComponent';
 import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
 
 class Plan extends Component {
@@ -44,6 +46,12 @@ class Plan extends Component {
         ? <div>{this.renderList(this.props.planList)}</div>
         : <div />
         }
+        <Link to="/uploadfile">
+          <NextButton>เริ่มดำเนินการ</NextButton>
+        </Link>
+        <Link to="/uploadfile">
+          <grayButton>เริ่มดำเนินการ</grayButton>
+        </Link>
       </div>
     );
   }

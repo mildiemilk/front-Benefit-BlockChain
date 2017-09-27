@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Button } from '../../StyleComponent';
 
 const ModalContents = styled(Modal.Content) `
@@ -30,8 +31,13 @@ const Text = styled.div`
 `;
 
 class ModalDelete extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    deleteEmployee: PropTypes.func.isRequired,
+    checkStateDelete: PropTypes.func.isRequired,
+    idEmployee: PropTypes.number.isRequired,
+  }
+  constructor(props) {
+    super(props);
     this.state = {
       modalOpen: false,
     };
@@ -40,6 +46,18 @@ class ModalDelete extends Component {
   this.setState({
     modalOpen: !this.state.modalOpen,
   })
+
+  handleDelete = () => {
+    console.log('id', this.props.idEmployee);
+    this.props.deleteEmployee(this.props.idEmployee)
+    .then(() => {
+      this.props.checkStateDelete();
+    });
+    this.setState({
+      modalOpen: !this.state.modalOpen,
+    });
+  }
+
   render() {
     return (
       <Modals
@@ -58,7 +76,7 @@ class ModalDelete extends Component {
               <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
             </div>
             <div className="large-6 columns">
-              <Button>ลบ</Button>
+              <Button onClick={this.handleDelete}>ลบ</Button>
             </div>
           </div>
         </ModalContents>

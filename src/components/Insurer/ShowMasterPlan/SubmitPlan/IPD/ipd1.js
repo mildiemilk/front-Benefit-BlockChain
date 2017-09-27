@@ -64,7 +64,6 @@ class IPD1 extends Component {
   }
 
   handleRadio = (e, { value }) => {
-    console.log('handleRadio val--', value);
     this.handleResetdata();
     this.setState({ value });
   }

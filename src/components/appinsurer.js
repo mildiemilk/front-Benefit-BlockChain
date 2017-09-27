@@ -17,8 +17,9 @@ import ClaimAnalysis from './Insurer/Claim/claim-analysis';
 import Claim from './Insurer/Claim';
 import Logout from './Auth/logout';
 import InsurerLogin from './Insurer/insurer-login';
+import manageEmployee from './Insurer/customer/allcustomer/manageEmployee';
 import AllCustomer from './Insurer/customer/allcustomer';
-import EmpManage from './Insurer/customer/allcustomer/manageEmployee';
+
 // import waitingSendData from './Insurer/customer/waitingSendData';
 
 const AppInsurer = () => (
@@ -39,8 +40,8 @@ const AppInsurer = () => (
             <Route path="/claimdetail/:companyId/:index" component={ClaimDetail} />
             <Route path="/claim" component={ClaimList} />
             <Route path="/claimanalysis" component={ClaimAnalysis} />
-            <Route part="/allcustomer" component={AllCustomer} />
-            <Route part="/empmanagement/:status/:index" component={EmpManage} />
+            <Route path="/allcustomer" component={AllCustomer} />
+            <Route path="/empmanagement/:status/:index" component={manageEmployee} />
           </Switch>
         </MainLayout>
       </Switch>

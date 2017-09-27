@@ -29,6 +29,7 @@ class manageEmployee extends Component {
     // props.getCustomer();
   }
   render() {
+    console.log('render empmanagement', this.state);
     return (
       <div className="manageEmployee">
         <div className="breadcrumbs">ลูกค้า</div>

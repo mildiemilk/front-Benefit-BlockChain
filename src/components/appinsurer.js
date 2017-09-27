@@ -19,6 +19,7 @@ import Logout from './Auth/logout';
 import InsurerLogin from './Insurer/insurer-login';
 import AllCustomer from './Insurer/customer/allcustomer';
 import WaitingData from './Insurer/customer/waitingData';
+import CustomerManageViewPlan from './Insurer/customer/CustomerManage/ViewPlan';
 // import waitingSendData from './Insurer/customer/waitingSendData';
 
 const AppInsurer = () => (
@@ -41,6 +42,7 @@ const AppInsurer = () => (
             <Route path="/claimanalysis" component={ClaimAnalysis} />
             <Route part="/allcustomer" component={AllCustomer} />
             <Route part="/waiting" component={WaitingData} />
+            <Route part="/customermanage/viewplan" component={CustomerManageViewPlan} />
           </Switch>
         </MainLayout>
       </Switch>

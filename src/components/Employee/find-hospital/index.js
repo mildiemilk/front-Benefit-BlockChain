@@ -150,24 +150,39 @@ class FindHospital extends Component {
     }
     return (
       <div>
+        {/* --------------- Mobile ---------------------*/}
         <MediaQuery query="(max-width: 767px)">
           <Head> ค้นหาโรงพยาบาล &gt; {this.state.SearchTerm} </Head>
+          {this.renderFiledHospital(
+            this.filterHospital(
+              this.state.hospital))}
+          <HopitalMap
+            latlong={this.state.isChooselatlong}
+          />
+          <BackToIndex
+            onClick={() => this.handleBacktoindex()}
+          >
+            &lt; ย้อนกลับ
+          </BackToIndex>
         </MediaQuery>
+        {/* --------------- Desktop ---------------------*/}
         <MediaQuery query="(min-width: 768px)">
           <HeadDesk> ค้นหาโรงพยาบาล &gt; {this.state.SearchTerm} </HeadDesk>
           <Divider />
+          <BackgroundWhite>
+            {this.renderFiledHospital(
+              this.filterHospital(
+                this.state.hospital))}
+            <HopitalMap
+              latlong={this.state.isChooselatlong}
+            />
+            <BackToIndex
+              onClick={() => this.handleBacktoindex()}
+            >
+              &lt; ย้อนกลับ
+            </BackToIndex>
+          </BackgroundWhite>
         </MediaQuery>
-        {this.renderFiledHospital(
-          this.filterHospital(
-            this.state.hospital))}
-        <HopitalMap
-          latlong={this.state.isChooselatlong}
-        />
-        <BackToIndex
-          onClick={() => this.handleBacktoindex()}
-        >
-          &lt; ย้อนกลับ
-        </BackToIndex>
       </div>
     );
   }

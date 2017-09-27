@@ -16,10 +16,11 @@ import { updateBiddingPrice, editPlanDetail, updateStatus, deletePlan } from '..
 class ShowMasterPlan extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
+    handleUpdateBiding: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
-    const data = this.props.DataCompany;
+    const { DataCompany } = props;
     const { status,
             totalPrice,
             quotationId,
@@ -29,7 +30,7 @@ class ShowMasterPlan extends Component {
             expiredOldInsurance,
             plan,
             companyId,
-          } = data;
+          } = DataCompany;
     // console.log('quotationId---', countBidding);
     let joinbid;
     let quotation;
@@ -48,7 +49,6 @@ class ShowMasterPlan extends Component {
       // console.log('quotationId false');
       popupQuotationId = true;
     } else {
-      console.log('quotationId false');
       popupQuotationId = false;
     }
     this.state = {
@@ -77,7 +77,68 @@ class ShowMasterPlan extends Component {
       plan,
     };
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log('>>>willReceieve ShowMasterPlan: ', nextProps);
+    const {
+      DataCompany: {
+        status,
+        totalPrice,
+        quotationId,
+        countBidding,
+        startNewInsurance,
+        updatedAt,
+        expiredOldInsurance,
+        plan,
+        companyId,
+      },
+    } = nextProps;
+    let joinbid;
+    let quotation;
+    let popupQuotationId;
+    if (status === 'waiting') {
+      joinbid = true;
+      quotation = false;
+    } else if (status === 'join') {
+      joinbid = false;
+      quotation = true;
+    } else {
+      joinbid = false;
+      quotation = false;
+    }
+    if (countBidding === 0 && status === 'join') {
+      // console.log('quotationId false');
+      popupQuotationId = true;
+    } else {
+      console.log('quotationId false');
+      popupQuotationId = false;
+    }
+    this.setState({
+      joinbid,
+      modalCancelJoin: false,
+      modalConfirmCancelJoin: false,
+      quotation,
+      popupQuotationId,
+      masterplan: plan.master,
+      insurerplan: plan.insurer,
+      editplan: [],
+      claimdata: [1, 2, 3],
+      selectInsurerPlan: false,
+      editDetailMP: false,
+      DetailMP: {},
+      ipdType: null,
+      totalPrice,
+      quotationId,
+      countBidding,
+      startNewInsurance,
+      updatedAt,
+      expiredOldInsurance,
+      isDetail: false,
+      companyId,
+      planType: '',
+      plan,
+    });
+    // this.props.getCompanyBidding(this.state.companyId);
+  }
   // handleOnpenModal = name => this.setState({ [name]: true });
   handleOnpenModal = (name, DetailMP) => {
     console.log('call handleClick--name', DetailMP);
@@ -131,12 +192,6 @@ class ShowMasterPlan extends Component {
         quotation: false,
       });
     }
-    // if (nameModal === 'modalQuotaionJoin') {
-    //   if (this.state.quotationId === '') {
-    //     this.setState({ modalCancelJoin: true });
-    //   }
-    //   this.setState({ modalCancelJoin: false });
-    // }
     this.setState({ [nameModal]: false });
     console.log('--', this.state);
   }
@@ -152,9 +207,8 @@ class ShowMasterPlan extends Component {
     });
   }
   handleDelete = e => {
-    // const name = e.target.id;
-    console.log('deletePlan', e.target.id);
     deletePlan([e.target.id])();
+    this.props.handleUpdateBiding();
     this.setState({ activePlan: -1 });
   }
   changePositionPage = () => {
@@ -167,7 +221,6 @@ class ShowMasterPlan extends Component {
   handleSubmitEditPlan = e => {
     const { DetailMP } = this.state;
     e.preventDefault();
-    console.log('handleSubmitEditPlanDetailMP---', DetailMP);
     const planId = DetailMP.planId;
     editPlanDetail(planId, {
       planId: DetailMP.planId,
@@ -213,9 +266,12 @@ class ShowMasterPlan extends Component {
       lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
       lifeNotExceed: DetailMP.lifeNotExceed,
     }).then(() => {
-      window.location.href = `/biddingdetali/${this.state.companyId}`;
+      // console.log('res', res);
+      // window.location.href = `/biddingdetali/${this.state.companyId}`;
+      this.props.handleUpdateBiding();
       this.handleCloseModal('editDetailMP');
     });
+    this.props.handleUpdateBiding();
     this.handleCloseModal('editDetailMP');
   }
   handleChange =(e, { name, value }) => {
@@ -289,7 +345,9 @@ class ShowMasterPlan extends Component {
         morePrice: '',
       });
     }
+    this.props.handleUpdateBiding();
   }
+
   handleChangeInput = (planType, e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -313,12 +371,13 @@ class ShowMasterPlan extends Component {
         morePrice: '',
       });
     }
+    console.log('>>>handleChangeInput', this.state);
   }
   render() {
     // this.props.sendToParent({detail:'prim ba'}, 0);
     // const data = this.props.data;
     // const { plan } = data;
-    // console.log('call handleClick----', this.state);
+    console.log('>>>render ShowMasterPlan', this.props.DataCompany);
     const {
       joinbid,
       modalCancelJoin,

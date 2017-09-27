@@ -17,7 +17,6 @@ class Bidding extends React.Component {
       params: 0,
     },
   }
-
   constructor(props) {
     // console.log('props.match.params.companyId---->', props.match.params.companyId);
     super(props);
@@ -27,13 +26,28 @@ class Bidding extends React.Component {
       index: '',
       companyId: props.match.params.companyId,
       end: false,
+      updateBiding: false,
+      DataCompany: null,
     };
-    // props.getCompanyBidding(this.state.companyId);
+    props.getCompanyBidding(this.state.companyId);
   }
 
-  componentDidMount() {
-    // console.log('willMount: ', this.state.companyId);
-    this.props.getCompanyBidding(this.state.companyId);
+  componentWillReceiveProps(nextProps) {
+    const { data } = nextProps.data;
+    this.setState({ DataCompany: data });
+  }
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.updateBiding) {
+      this.props.getCompanyBidding(this.state.companyId);
+    }
+    if (this.state.updateBiding) {
+      this.setState({ updateBiding: false });
+      this.props.getCompanyBidding(this.state.companyId);
+      console.log('sddddd----ss', this.props.data.data);
+    }
+  }
+  handleUpdateBiding = () => {
+    this.setState({ updateBiding: true }, () => console.log('>>>callbackChangeState'));
   }
 
   isFetched = false;
@@ -57,17 +71,20 @@ class Bidding extends React.Component {
   }
 
   render() {
-    // console.log('render:this.props', this.props);
-    if (Object.keys(this.props.data.data).length > 0) {
+    // console.log('>>>renderIndex', this.state);
+    if (this.state.DataCompany !== null) {
       return (
         <div>
           <NavBidding
-            DataCompany={this.props.data.data}
+            DataCompany={this.state.DataCompany}
             timeout={this.props.timeout}
-            noti={this.notiTimeout}
+            notiTimeout={this.notiTimeout}
           />
           <div className="BidContent">
-            <ShowMasterPlan DataCompany={this.props.data.data} />
+            <ShowMasterPlan
+              DataCompany={this.state.DataCompany}
+              handleUpdateBiding={this.handleUpdateBiding}
+            />
           </div>
         </div>
       );

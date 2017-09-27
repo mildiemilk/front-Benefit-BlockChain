@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card } from './styled';
 import { getSelectInsurer } from '../../api/choose-insurer';
+import { Logo } from '../ChooseInsurer/styled';
 
 class Insurer extends React.Component {
   static propTypes = {
@@ -19,6 +20,7 @@ class Insurer extends React.Component {
     const list = insurers.map(insurer => (
       <Card className="large-2 columns">
         {insurer.companyName}
+        <Logo src={insurer.logo.link} alt="logo" />
       </Card>
     ));
     return list;

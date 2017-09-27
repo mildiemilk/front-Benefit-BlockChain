@@ -51,38 +51,22 @@ export function editPlan(editData, planId, editType) {
   };
 }
 
-export function deletePlan(planId) {
-  return () => {
-    const options = {
-      method: 'delete',
-      url: `${DELETE_PLAN_URI}/${planId}`,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+export function deletePlan(plans) {
+  const options = {
+    method: 'delete',
+    url: DELETE_PLAN_URI,
+    data: plans,
   };
+  return APIRequest(options, true);
 }
 
-export function copyPlan(planId) {
-  return () => {
-    const options = {
-      method: 'post',
-      url: `${COPY_PLAN_URI}/${planId}`,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+export function copyPlan(plans) {
+  const options = {
+    method: 'post',
+    url: COPY_PLAN_URI,
+    data: plans,
   };
+  return APIRequest(options, true);
 }
 
 export function getAllPlan() {

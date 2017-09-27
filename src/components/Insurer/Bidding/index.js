@@ -47,7 +47,7 @@ class Bidding extends React.Component {
     }
   }
   handleUpdateBiding = () => {
-    this.setState({ updateBiding: true }, () => console.log('>>>callbackChangeState'));
+    this.setState({ updateBiding: true });
   }
 
   isFetched = false;
@@ -71,6 +71,7 @@ class Bidding extends React.Component {
   }
 
   render() {
+    // console.log('>>>renderIndex', this.state);
     if (this.state.DataCompany !== null) {
       return (
         <div>

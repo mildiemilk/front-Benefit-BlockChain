@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { Modal, Icon, Popup } from 'semantic-ui-react';
+import { Modal } from 'semantic-ui-react';
 import {
   ModalHeader,
   ModalContent,
@@ -28,46 +27,23 @@ const Modals = styled(Modal)`
 
 class ModalView extends Component {
   static propTypes = {
+    modalOpen: PropTypes.bool.isRequired,
+    handleClose: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
-    planId: PropTypes.number.isRequired,
   }
-  constructor() {
-    super();
-    this.state = { modalOpen: false };
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  handleClose = () =>
-    this.setState({
-      modalOpen: false,
-    })
-
-  handleOpen = () =>
-    this.setState({
-      modalOpen: true,
-    })
   render() {
+    const { modalOpen, handleClose, handleDelete } = this.props;
     return (
       <Modals
-        trigger={
-          <Popup
-            trigger={
-              <Icon
-                disabled
-                name="trash"
-                size="large"
-                onClick={this.handleOpen}
-              />
-            }
-            content="ลบแผน"
-            position="bottom left"
-            size="mini"
-            basic
-          />
-        }
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
+        trigger={<div />}
+        open={modalOpen}
+        onClose={handleClose}
       >
-
         <ModalContents>
           <ModalHeader>
             ยืนยันการลบแพลน <br />
@@ -76,9 +52,9 @@ class ModalView extends Component {
             เมื่อยืนยันแล้ว คุณจะไม่สามารถเข้าถึงหรือแก้ไขแพลนนี้ได้อีก
           </ModalContent>
           <div style={{ marginLeft: '2%', marginTop: '5%' }}>
-            <CancleButton> ยกเลิก </CancleButton>
+            <CancleButton onClick={handleClose}> ยกเลิก </CancleButton>
             <ConfirmButton
-              onClick={() => this.props.handleDelete(this.props.planId)}
+              onClick={() => handleDelete()}
             >
               {' '}ลบ{' '}
             </ConfirmButton>
@@ -89,8 +65,9 @@ class ModalView extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  data: state.postBoxReducer,
-});
+export default ModalView;
+// const mapStateToProps = state => ({
+//   data: state.postBoxReducer,
+// });
 
-export default connect(mapStateToProps, null)(ModalView);
+// export default connect(mapStateToProps, null)(ModalView);

@@ -46,21 +46,12 @@ export function deletePlan(planId) {
 }
 export function updateBiddingPrice(companyId, databiding) {
   console.log('Api=====', databiding);
-  return () => {
-    const options = {
-      method: 'post',
-      url: `${JOIN_BIDDING_URI}/${companyId}`,
-      data: databiding,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+  const options = {
+    method: 'post',
+    url: `${JOIN_BIDDING_URI}/${companyId}`,
+    data: databiding,
   };
+  return APIRequest(options, true);
 }
 export function updateStatus(status, companyId) {
   console.log('Api=====', companyId);

@@ -15,6 +15,7 @@ import {
 class HeaderCompanyInfo extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
+    // pageName: PropTypes.string.isRequired,
     // Company: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
@@ -34,9 +35,23 @@ class HeaderCompanyInfo extends Component {
     } else if (status === 'waiting') {
       styleCss = { color: '#3a7bd5' };
       textDisplay = '| กำลังพิจารณา';
+      // if (this.props.pageName === 'customer') {
+      //   textDisplay = '| รอบริษัทส่งข้อมูลพนักงาน';
+      // } else {
+      //   textDisplay = '| กำลังพิจารณา';
+      // }
     } else if (status === 'reject') {
       styleCss = { color: '#3a7bd5' };
       textDisplay = '| ไม่เข้ารวมการประมูล';
+    } else if (status === 'active') {
+      styleCss = { color: '#3a7bd5' };
+      textDisplay = '| อยู่ระหว่างการคุ้มครอง';
+    } else if (status === 'inactive') {
+      styleCss = { color: '#3a7bd5' };
+      textDisplay = '| สิ้นสุดการคุ้มครอง';
+    } else if (status === 'pending') {
+      styleCss = { color: '#3a7bd5' };
+      textDisplay = '| ระหว่างดำเนินการ';
     } else {
       textDisplay = ' ';
     }

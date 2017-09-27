@@ -37,7 +37,6 @@ class HeaderBoxClaim extends Component {
   }
 
   render() {
-    console.log('Count', this.props.Count);
     const { Count } = this.props;
     return (
       <div className="HeaderBoxClaim">

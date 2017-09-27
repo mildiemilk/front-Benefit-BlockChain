@@ -20,7 +20,7 @@ export default class Sidebar extends Component {
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-conference" />
-            <Links to="/employeelist" ><Item.Content verticalAlign="middle">ลูกค้าของคุณ</Item.Content></Links>
+            <Links to="/allcustomer" ><Item.Content verticalAlign="middle">ลูกค้าของคุณ</Item.Content></Links>
           </Item>
           <Item>
             <i aria-hidden="true" className="icon-purchase" />

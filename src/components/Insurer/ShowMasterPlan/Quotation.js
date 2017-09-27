@@ -27,19 +27,6 @@ class Quotation extends Component {
     // this.handleSubmitBidding = this.handleSubmitButtonModal.bind(this);
   }
 
-  // handleDeletePlan = () => {
-  //   const { activePlan, planList } = this.state;
-  //   planList.splice(activePlan, 1);
-  //   deleteInsurerPlan(this.state.planId)();
-  //   this.handleAddPlan();
-  // }
-
-
-  // handleChangeInput = ({ target: { name, value } }) => {
-  //   console.log('000===', value);
-  //   this.setState({ [name]: value });
-  // }
-
   ShowMasterPlan = plans =>
     plans.map(
       (plan, index) =>

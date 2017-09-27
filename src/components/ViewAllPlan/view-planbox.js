@@ -30,6 +30,8 @@ class ViewPlanBox extends Component {
             className="view-checkbox-list-plan"
             type="checkbox"
             name="selectPlan"
+            data-tag={index}
+            ref={index}
             value={element.planId}
             onChange={handleChange}
           />
@@ -53,7 +55,6 @@ class ViewPlanBox extends Component {
               basic
             />
           </Link>
-
           <Popup
             trigger={
               <Icon

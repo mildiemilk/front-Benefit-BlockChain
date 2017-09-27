@@ -52,3 +52,27 @@ export const Number = TextNav.extend`
   top: 52px;
   left: 96px
 `;
+export const nextButton = styled.button`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  padding: 1%;
+  color: white;
+  display:inline-block;
+  float:right;
+  border-color: #F1F1F1;
+  margin: 3%;
+`;
+export const grayButton = styled.button`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #d8d8d8;
+  padding: 1%;
+  color: white;
+  display:inline-block;
+  float:right;
+  border-color: #d8d8d8;
+  margin: 3%;
+`;

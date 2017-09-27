@@ -266,8 +266,6 @@ class ShowMasterPlan extends Component {
       lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
       lifeNotExceed: DetailMP.lifeNotExceed,
     }).then(() => {
-      // console.log('res', res);
-      // window.location.href = `/biddingdetali/${this.state.companyId}`;
       this.props.handleUpdateBiding();
       this.handleCloseModal('editDetailMP');
     });
@@ -321,7 +319,12 @@ class ShowMasterPlan extends Component {
       totalPrice: sum,
       plan: { master, insurer },
       quotationId,
-    })();
+    }).then(() => {
+      this.props.handleUpdateBiding();
+      window.location.reload();
+    });
+    window.location.reload();
+    this.props.handleUpdateBiding();
     this.handleCloseModal('modalCancelJoin');
   }
 

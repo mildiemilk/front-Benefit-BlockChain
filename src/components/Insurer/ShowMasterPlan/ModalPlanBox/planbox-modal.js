@@ -73,13 +73,9 @@ class PlanBoxModal extends Component {
     handleChangeMasterplan: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
     planType: PropTypes.string.isRequired,
-    // ipdType: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     planIndex: PropTypes.number.isRequired,
-    handleChangeInput: PropTypes.func.isRequired,
-    // DetailMP: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     DetailMP: PropTypes.shape({}).isRequired,
-    // DataCompany: PropTypes.shape({}).isRequired,
   }
   constructor(props) {
     super(props);
@@ -204,9 +200,6 @@ class PlanBoxModal extends Component {
 
   handlePlan = val => {
     if (val !== -1) {
-      console.log('this.props.DetailMP----', this.props.DetailMP);
-      // const DetailMP = this.props.DetailMP;
-      // const { plan } = DetailMP;
       const { DetailMP } = this.props;
       this.setState({
         activePlan: val,

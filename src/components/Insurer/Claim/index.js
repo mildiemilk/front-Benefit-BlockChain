@@ -95,15 +95,9 @@ class Claim extends Component {
     ));
     return list;
   }
-  // renderElementCompany = company => {
-  //   const companyDetail = company.map(company => (
-  //     // console.log(company.companyName);
-  //   ));
-  //   return companyDetail;
-  // }
+
   render() {
     const { claim, company, count } = this.props;
-    console.log('count', count);
     // setState
     return (
       <div className="ClaimIndex">

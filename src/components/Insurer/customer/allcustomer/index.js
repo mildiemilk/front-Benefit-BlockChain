@@ -40,7 +40,6 @@ class AllCustomer extends Component {
   render() {
     const { customer } = this.props;
     const { isAllPlan, index } = this.state;
-    console.log(isAllPlan);
     return (
       <div className="allcustomer">
         { isAllPlan

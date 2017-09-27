@@ -75,9 +75,6 @@ class IPD extends Component {
   }
 
   handleRadio = (e, { name, value }) => {
-    console.log('name', name);
-    console.log('value', value);
-    console.log('--gfgf0---', this.state);
     this.props.handleChange(e, { name, value });
     this.handleResetdata();
   }

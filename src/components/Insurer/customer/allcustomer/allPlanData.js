@@ -27,7 +27,6 @@ class AllCustomer extends Component {
   }
   render() {
     const { customer, index } = this.props;
-    console.log('render all', customer[index]);
     return (
       <div className="allStatusData">
         <HeadCompanyInfo DataCompany={customer[index]} />

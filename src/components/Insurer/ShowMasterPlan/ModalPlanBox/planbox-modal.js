@@ -395,7 +395,6 @@ class PlanBoxModal extends Component {
   }
 
   handleToggleIpdCoPay = () => {
-    console.log('handleToggleOpdCoPay modal', this.state);
     if (this.state.ipdCoPay === true) {
       this.setState({
         DetailMP: this.props.DetailMP,
@@ -406,14 +405,12 @@ class PlanBoxModal extends Component {
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
       });
-      console.log('before modal', this.state.DetailMP);
       const MP = this.state.DetailMP
       MP.ipdCoPay = false;
       this.state = {
         DetailMP: MP,
         ipdType: MP.ipdType,
       };
-      console.log('after modal', this.state.DetailMP);
     }
     if (this.state.ipdCoPay === false) {
       this.setState({ ipdCoPay: true });

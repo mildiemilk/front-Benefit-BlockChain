@@ -31,7 +31,6 @@ class ShowMasterPlan extends Component {
             plan,
             companyId,
           } = DataCompany;
-    // console.log('quotationId---', countBidding);
     let joinbid;
     let quotation;
     let popupQuotationId;
@@ -46,7 +45,6 @@ class ShowMasterPlan extends Component {
       quotation = false;
     }
     if (countBidding === 0 && status === 'join') {
-      // console.log('quotationId false');
       popupQuotationId = true;
     } else {
       popupQuotationId = false;
@@ -78,7 +76,6 @@ class ShowMasterPlan extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
-    console.log('>>>willReceieve ShowMasterPlan: ', nextProps);
     const {
       DataCompany: {
         status,
@@ -106,10 +103,8 @@ class ShowMasterPlan extends Component {
       quotation = false;
     }
     if (countBidding === 0 && status === 'join') {
-      // console.log('quotationId false');
       popupQuotationId = true;
     } else {
-      console.log('quotationId false');
       popupQuotationId = false;
     }
     this.setState({
@@ -141,9 +136,7 @@ class ShowMasterPlan extends Component {
   }
   // handleOnpenModal = name => this.setState({ [name]: true });
   handleOnpenModal = (name, DetailMP) => {
-    console.log('call handleClick--name', DetailMP);
     if (!DetailMP) {
-      console.log('call handle');
       this.setState({
         [name]: true,
       });
@@ -162,7 +155,6 @@ class ShowMasterPlan extends Component {
   }
 
   handleOnpenModalPlanDetail = (name, DetailMP, price, index) => {
-    // console.log('call handleClick--', index);
     const { isDetail } = this.state;
     if (!isDetail) {
       this.setState({
@@ -180,7 +172,6 @@ class ShowMasterPlan extends Component {
 
 
   handleCloseModal = nameModal => {
-    // console.log('nameModal-xxsssx--', nameModal)
     if (nameModal === 'modalConfirmCancelJoin') {
       const data = this.props.DataCompany;
       const { companyId,
@@ -193,7 +184,6 @@ class ShowMasterPlan extends Component {
       });
     }
     this.setState({ [nameModal]: false });
-    console.log('--', this.state);
   }
 
   handleChangeStateQuotation = () => {
@@ -282,7 +272,6 @@ class ShowMasterPlan extends Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({ [name]: value });
-    console.log('this.state', this.state);
   }
   handleSubmitBidding = e => {
     e.preventDefault();
@@ -335,7 +324,6 @@ class ShowMasterPlan extends Component {
     MP[name] = parseInt(value, 10);
     this.setState({ DetailMP: MP });
     if (MP[name] > value) {
-      console.log('less');
       this.setState({
         morePrice: 'pricered',
       });
@@ -365,7 +353,6 @@ class ShowMasterPlan extends Component {
         morePrice: 'pricered',
       });
     } else if (oldPrice < plans[name].price) {
-      console.log('more');
       this.setState({
         morePrice: 'pricegreen',
       });
@@ -374,13 +361,8 @@ class ShowMasterPlan extends Component {
         morePrice: '',
       });
     }
-    console.log('>>>handleChangeInput', this.state);
   }
   render() {
-    // this.props.sendToParent({detail:'prim ba'}, 0);
-    // const data = this.props.data;
-    // const { plan } = data;
-    console.log('>>>render ShowMasterPlan', this.props.DataCompany);
     const {
       joinbid,
       modalCancelJoin,

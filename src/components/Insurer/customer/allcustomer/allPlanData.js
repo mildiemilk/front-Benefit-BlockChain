@@ -29,7 +29,7 @@ class AllCustomer extends Component {
     const { customer, index } = this.props;
     return (
       <div className="allStatusData">
-        <HeadCompanyInfo DataCompany={customer[index]} />
+        <HeadCompanyInfo DataCompany={customer[index]} PageName="allcustomer" />
         <div className="breadcrumbs">ลูกค้า</div>
         <manageEmployee />
         {/* {(customer[index].status === 'active' || customer[index].status === 'inactive')

@@ -11,7 +11,7 @@ import { getCustomer } from '../../../../api/Insurer/customer';
 
 class manageEmployee extends Component {
   static propTypes = {
-    getCustomer: PropTypes.func.isRequired,
+    getCustomerPlan: PropTypes.func.isRequired,
     // index: PropTypes.number.isRequired,
     customer: PropTypes.arrayOf(PropTypes.object).isRequired,
     match: PropTypes.shape({ params: PropTypes }),
@@ -25,10 +25,10 @@ class manageEmployee extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: props.match.params.status,
-      index: props.match.params.index,
+      // status: props.match.params.status,
+      companyId: props.match.params.companyId,
     };
-    props.getCustomer();
+    props.getCustomerPlan(this.state.companyId);
   }
   render() {
     console.log('render empmanagement', this.props);

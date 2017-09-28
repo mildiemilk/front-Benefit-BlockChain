@@ -22,7 +22,7 @@ export function getCustomer() {
         dispatch(getCustomerSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getCustomerFailure(err.response.data));
+        dispatch(getCustomerFailure(err));
       });
   };
 }
@@ -37,7 +37,7 @@ export function getCustomerPlan(companyId) {
         dispatch(getCustomerPlanSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getCustomerPlanFailure(err.response.data));
+        dispatch(getCustomerPlanFailure(err));
       });
   };
 }

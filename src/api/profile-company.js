@@ -336,13 +336,14 @@ export default {
   createProfile,
 };
 
-export function addEmployee(profile) {
+export function addEmployee(profile, file) {
+  const formData = new FormData();
+  formData.append('file', file)
+  formData.append('detail', JSON.stringify(profile));
   const options = {
     method: 'post',
     url: ADD_EMPLOYEE_URI,
-    data: {
-      profile,
-    },
+    data: formData,
   };
   return APIRequest(options, true);
 }
@@ -356,10 +357,10 @@ export function deleteEmployee(employeeId) {
   return APIRequest(options, true);
 }
 
-export function manageEmployee(detail) {
+export function manageEmployee(detail, status) {
   const options = {
     method: 'post',
-    url: MANAGE_EMPLOYEE_URI,
+    url: `${MANAGE_EMPLOYEE_URI}/${status}`,
     data: {
       detail,
     },

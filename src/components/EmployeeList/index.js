@@ -5,13 +5,12 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { employeeDetail } from '../../api/profile-company';
 import Head from '../Head';
 import ModalEditEmployee from './ModalEditEmployee';
-import { getGroupBenefit, deleteEmployee } from '../../api/profile-company';
+import { getGroupBenefit, deleteEmployee, employeeDetail, manageEmployee } from '../../api/profile-company';
 import { getBenefitPlan } from '../../api/benefit-plan';
 import { Box, Pic, TextNav, Number } from '../StyleComponent';
-import { ListPopup, DivFloat, DivImg, TextList, DivHead, TextElip } from './styled';
+import { ListPopup, DivFloat, DivImg, TextList, DivHead, TextElip, StatusTag } from './styled';
 import employee from '../../../assets/EmployeeList/icons-8-commercial-development-management.png';
 import promotion from '../../../assets/EmployeeList/icons-8-new-job.png';
 import newjobs from '../../../assets/EmployeeList/icons-8-permanent-job.png';
@@ -39,14 +38,20 @@ class employeeList extends Component {
     this.state = {
       search: '',
       minList: 0,
-      maxList: 7,
+      maxList: 10,
       pageNumber: 1,
       data: props.data,
       checkDelete: false,
+      checkManage: false,
       optionGroupBenefit: [],
-      optionTypeEmployee: [],
+      optionTypeEmployee: [
+        { key: 1, text: 'full-time', value: 'full-time' },
+        { key: 2, text: 'part-time', value: 'part-time' },
+        { key: 3, text: 'out-source', value: 'out-source' },
+      ],
       optionDepartment: [],
       optionTitles: [],
+      optionBenefitPlan: [],
     };
     props.employeeDetail();
     props.getBenefitPlan();
@@ -67,6 +72,7 @@ class employeeList extends Component {
     this.renderGroup();
     this.renderDepartment(newProps.data);
     this.renderTitle(newProps.data);
+    this.renderBenefitPlan(newProps.benefitPlan);
   }
   componentWillUpdate(nextProps, nextState) {
     if (nextState.checkDelete) {
@@ -75,18 +81,21 @@ class employeeList extends Component {
       });
       this.props.employeeDetail();
     }
-    // console.log('data>', this.state.data, 'nextData>', nextState.data);
-    // if (this.state.data !== nextState.data) {
-    //   this.setState({
-    //     data: nextProps.data,
-    //   })
-    //   this.renderDepartment();
-    //   this.renderTitle();
-    // }
+    if (nextState.checkManage) {
+      this.setState({
+        checkManage: false,
+      });
+      this.props.employeeDetail();
+    }
   }
   checkStateDelete = () => {
     this.setState({
       checkDelete: true,
+    });
+  }
+  checkStateManage = () => {
+    this.setState({
+      checkManage: true,
     });
   }
   plusLimitChange = () => {
@@ -187,7 +196,6 @@ class employeeList extends Component {
       });
     }
   }
-
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   renderSearch = data => {
@@ -216,6 +224,21 @@ class employeeList extends Component {
       });
     }
     this.setState({ optionGroupBenefit });
+  }
+  renderBenefitPlan = options => {
+    // const options = this.props.b;
+    const optionBenefitPlan = [];
+    if (options !== undefined && options.length >= 1) {
+      options.map((option, index) => {
+        optionBenefitPlan.push({
+          key: index,
+          text: option.benefitPlanName,
+          value: option.benefitPlanName,
+        });
+        return option;
+      });
+    }
+    this.setState({ optionBenefitPlan });
   }
   renderTitle = options => {
     // const options = this.props.data;
@@ -255,17 +278,27 @@ class employeeList extends Component {
   }
   renderListEmployee = data => {
     const searchData = this.renderSearch(data);
-    const showData = searchData.filter(
+    let showData = searchData.filter(
       (data, index) =>
         index >= this.state.minList && index <= this.state.maxList,
     );
-    return showData.map(element => (
-      <div className="employee-list-box">
+    showData = showData.map(element => {
+      let tag;
+      if (element.detail.status === 'พนักงาน') {
+        tag = <StatusTag color="#5fb34f">{element.detail.status}</StatusTag>;
+      } else if (element.detail.status === 'ลาออก') {
+        tag = <StatusTag color="#e43e3e">{element.detail.status}</StatusTag>;
+      } else if (element.detail.status === 'ปรับตำแหน่ง') {
+        tag = <StatusTag color="#109f94">{element.detail.status}</StatusTag>;
+      } else if (element.detail.status === 'พนักงานใหม่') {
+        tag = <StatusTag color="#3a7bd5">{element.detail.status}</StatusTag>;
+      }
+      return (<div className="employee-list-box">
         <div className="row">
           <div className="large-3 columns">
             <div className="large-5 columns">
               <div className="list-box-in-list">
-                <p>{element.detail.employee_code}</p>
+                <p>{element.detail.employeeCode}</p>
               </div>
             </div>
             <div className="large-7 columns">
@@ -282,17 +315,17 @@ class employeeList extends Component {
           <div className="large-5 columns">
             <div className="large-4 columns">
               <div className="list-box-in-list group">
-                <p>{element.detail.benefit_group}</p>
+                <p>{element.detail.benefitGroup}</p>
               </div>
             </div>
             <div className="large-4 columns">
               <div className="list-box-in-list group">
-                <p>{element.detail.benefit_plan}</p>
+                <p>{element.detail.benefitPlan}</p>
               </div>
             </div>
             <div className="large-4 columns">
               <div className="list-box-in-list group">
-                <p>{element.detail.type_of_employee}</p>
+                <p>{tag}</p>
               </div>
             </div>
           </div>
@@ -318,6 +351,10 @@ class employeeList extends Component {
                       optionGroupBenefit={this.state.optionGroupBenefit}
                       optionDepartment={this.state.optionDepartment}
                       optionTitles={this.state.optionTitles}
+                      optionTypeEmployee={this.state.optionTypeEmployee}
+                      manageEmployee={manageEmployee}
+                      checkStatePromote={this.checkStatePromote}
+                      optionBenefitPlan={this.state.optionBenefitPlan}
                     />
                   : <div />
                   }
@@ -332,7 +369,9 @@ class employeeList extends Component {
           </div>
         </div>
       </div>
-    ));
+      );
+    });
+    return showData;
   }
   renderGroupPopup = Groups => {
     const allGroup = Groups.map(Group => (
@@ -394,7 +433,7 @@ class employeeList extends Component {
             </DivImg>
           </div>
           <div className="large-5 columns">
-            <Link to="/AddEmployee">
+            <Link to="/addemployee">
               <button className="add-employee-button">
               เพิ่มพนักงานใหม่
               </button>

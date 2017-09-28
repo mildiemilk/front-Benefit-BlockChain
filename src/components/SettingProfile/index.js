@@ -228,7 +228,7 @@ class SettingProfile extends Component {
                 <Detail3>
                   ที่อยู่บริษัท
                 </Detail3>
-                <Box name="hrDetail" size="big" placeholder="ที่อยู่บริษัท" />
+                <Box name="lo" size="big" placeholder="ที่อยู่บริษัท" />
                 <Detail3>
                   บุคคลติดต่อหลัก
                 </Detail3>

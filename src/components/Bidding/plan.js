@@ -14,7 +14,7 @@ class Plan extends Component {
       <List color={this.props.color} className="large-4 columns">
         <IconPlan name="add to calendar" size="big" />
         <DetailList>
-          {bid.plan.planName} <br />
+          {bid.planDetail.planName} <br />
           {bid.price}
         </DetailList>
         <PopupView

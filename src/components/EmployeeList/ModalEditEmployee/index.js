@@ -25,7 +25,7 @@ const Modals = styled(Modal) `
     width: 550px !important;
     position: absolute;
     left: 62%;
-    top: 40%;
+    top: 20%;
   }
 `;
 
@@ -50,19 +50,17 @@ const ModalHeaders = styled(ModalHeader)`
     margin-top: 24px;
   }
 `;
-const options = [
-  { key: 1, text: 'full-time', value: 'full-time' },
-  { key: 2, text: 'part-time', value: 'part-time' },
-  { key: 3, text: 'out-source', value: 'out-source' },
-];
+
 
 class ModalEditEmployee extends Component {
   static propTypes = {
-    // groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
-    // employeeDetail: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionGroupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionTitles: PropTypes.arrayOf(PropTypes.object).isRequired,
     optionDepartment: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionTypeEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
+    optionBenefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    manageEmployee: PropTypes.func.isRequired,
+    checkStateManage: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -76,21 +74,13 @@ class ModalEditEmployee extends Component {
       isPromotion: true,
       isExit: false,
       effective: '',
+      typeEmployee: '',
+      department: '',
+      title: '',
+      groupBenefit: '',
+      plan: '',
     };
   }
-  // componentDidMount() {
-  //   this.renderGroup();
-  //   this.renderDepartment();
-  //   this.renderTitle();
-  // }
-  // componentDidUpdate() {
-  //   if (this.state.groupBenefit.length === 0) {
-  //     this.renderGroup();
-  //   }
-  //   if (this.state.department.length === 0) {
-  //     this.renderDepartment();
-  //   }
-  // }
   handleModal = () =>
     this.setState({
       modalOpen: !this.state.modalOpen,
@@ -103,6 +93,27 @@ class ModalEditEmployee extends Component {
       });
     }
   }
+  handleSubmit = () => {
+    const {
+      isPromotion, typeEmployee, department, title, groupBenefit, plan, reason, effective,
+    } = this.state;
+    let status;
+    let detail;
+    if (isPromotion) {
+      status = 'promote';
+      detail = { typeEmployee, department, title, groupBenefit, plan };
+    } else {
+      status = 'resign';
+      detail = { reason, effective };
+    }
+    this.props.manageEmployee(detail, status)
+    .then(() => {
+      this.props.checkStateManage();
+    });
+    this.setState({
+      modalOpen: !this.state.modalOpen,
+    });
+  }
   handleExit = () => {
     if (!this.state.isExit) {
       this.setState({
@@ -114,6 +125,7 @@ class ModalEditEmployee extends Component {
   handleEffective = effective => {
     this.setState({ effective }, () => console.log('set date', this.state.effective));
   }
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
   stylePopupExit = () => {
     if (this.state.isExit) {
       return 'active';
@@ -128,7 +140,8 @@ class ModalEditEmployee extends Component {
   }
   render() {
     const { isExit } = this.state;
-    const { optionGroupBenefit, optionDepartment, optionTitles } = this.props;
+    const { optionGroupBenefit, optionDepartment,
+      optionTitles, optionTypeEmployee, optionBenefitPlan } = this.props;
     return (
       <Modals
         trigger={
@@ -171,7 +184,11 @@ class ModalEditEmployee extends Component {
               ? <div className="row">
                 <div className="large-6 columns">
                   <TextDetail>สาเหตุที่ลาออก :</TextDetail>
-                  <Input />
+                  <Input
+                    value={this.state.reason}
+                    onChange={this.handleChange}
+                    name="reason"
+                  />
                 </div>
                 <div className="large-6 columns">
                   <TextDetail>วันที่มีผล :</TextDetail>
@@ -195,12 +212,18 @@ class ModalEditEmployee extends Component {
                 <div className="row">
                   <div className="large-6 columns">
                     <TextDetail>ประเภทของพนักงาน :</TextDetail>
-                    <Dropdowns placeholder="Choose" options={options} compact selection />
+                    <Dropdowns
+                      placeholder="TypeEmployee" options={optionTypeEmployee} compact selection
+                      onChange={this.handleChange} name="typeEmployee"
+                    />
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>แผนก :</TextDetail>
                     <div className="input-date">
-                      <Dropdowns placeholder="department" options={optionDepartment} compact selection />
+                      <Dropdowns
+                        placeholder="department" options={optionDepartment} compact selection
+                        onChange={this.handleChange} name="department"
+                      />
                     </div>
                   </div>
                 </div>
@@ -211,7 +234,10 @@ class ModalEditEmployee extends Component {
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>กลุ่มสิทธิประโยชน์ :</TextDetail>
-                    <Dropdowns placeholder="groupbenefits" options={optionGroupBenefit} compact selection />
+                    <Dropdowns
+                      placeholder="groupbenefits" options={optionGroupBenefit} compact selection
+                      name="groupBenefit" onChange={this.handleChange}
+                    />
                   </div>
                 </div>
                 <div className="row">
@@ -233,19 +259,11 @@ class ModalEditEmployee extends Component {
                     </div>
                   </div>
                   <div className="large-6 columns">
-                    <TextDetail>ตั้งเวลาในการเลือกแผนสิทธิประโยชน์ :</TextDetail>
+                    <TextDetail>แผนสิทธิประโยชน์ :</TextDetail>
                     <div className="input-date">
-                      <Inputs
-                        selected={this.state.effective}
-                        onChange={this.handleEffective}
-                        minDate={moment()}
-                        fixedHeight
-                        dateFormat="DD/MM/YYYY"
-                        locale="th"
-                        showYearDropdown
-                        dateFormatCalendar="MMMM"
-                        scrollableYearDropdown
-                        yearDropdownItemNumber={8}
+                      <Dropdowns
+                        placeholder="benefitPlan" options={optionBenefitPlan} compact selection
+                        name="benefitPlan" onChange={this.handleChange}
                       />
                     </div>
                   </div>
@@ -258,7 +276,7 @@ class ModalEditEmployee extends Component {
                   <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
                 </div>
                 <div className="large-6 columns">
-                  <Button>บันทึก</Button>
+                  <Button onClick={this.handleSubmit}>บันทึก</Button>
                 </div>
               </div>
             </div>

@@ -1,25 +1,35 @@
-.DownloadText{
-  line-height: 1.7vw;
-  font-size: 1.1vw;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  text-align: left;
-  color: #323028;
-}
-.circelBlue{
-    display: inline-block;
-    border-radius: 50%;
-    width: 51px;
-    padding: 5px;
-    height: 51px;
-    background-color: #3a7bd5;
-    line-height: 2.8vw;
-    text-align: center;
+.Download{
+  .DownloadText{
+    line-height: 1.7vw;
+    font-size: 1.1vw;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-align: left;
+    color: #323028;
+  }
+  .circelBlue{
+      display: inline-block;
+      border-radius: 50%;
+      width: 51px;
+      padding: 5px;
+      height: 51px;
+      background-color: #3a7bd5;
+      line-height: 2.8vw;
+      text-align: center;
+      vertical-align: middle;
+      margin-left: 0.5vw;
+      cursor: pointer;
+  }
+  .imageStyle-download{
+    width: 30px;
+    height: 30px;
     vertical-align: middle;
-    margin-left: 0.5vw;
-}
-.imageStyle-download{
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
+  }
+  .PicStyle{
+    width: 44px;
+    height: 44px;
+  }
+  .padTop{
+    padding-top: 15px
+  }
 }

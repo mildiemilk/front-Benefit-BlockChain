@@ -22,6 +22,7 @@ import AllCustomer from './Insurer/customer/allcustomer';
 import AllPlanData from './Insurer/customer/allcustomer/allPlanData';
 import ViewPlan from './Insurer/customer/CustomerManage/ViewPlan';
 import Download from './Insurer/customer/CustomerManage/DownloadEmployeeData';
+import Upload from './Insurer/customer/CustomerManage/UploadPolicyNumber';
 // import waitingSendData from './Insurer/customer/waitingSendData';
 
 const AppInsurer = () => (
@@ -47,7 +48,9 @@ const AppInsurer = () => (
             <Route path="/empmanagement/:index/:companyId" component={manageEmployee} />
             <Route path="/customerplan/:index/:companyId" component={AllPlanData} />
             <Route path="/customermanage/download/:index" component={Download} />
-
+            <Route path="/customermanage/upload/:index" component={Upload} />
+            <Route path="/empmanagement/:companyId" component={manageEmployee} />
+            <Route path="/customerplan/:companyId" component={AllPlanData} />
           </Switch>
         </MainLayout>
       </Switch>

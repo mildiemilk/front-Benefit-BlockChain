@@ -12,13 +12,13 @@ const ListContent = styled(List.Content)`
 
 class AddPlanBar extends Component {
   static propTypes = {
-    plan: PropTypes.string.isRequired,
-    activePlan: PropTypes.string.isRequired,
+    plan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    activePlan: PropTypes.number.isRequired,
     handleActivePlan: PropTypes.func.isRequired,
     handleDeletePlan: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -27,6 +27,7 @@ class AddPlanBar extends Component {
       const isActive = index === this.props.activePlan ? 'active' : '';
       return (
         <div
+          key={index.toString()}
           className={`addBox ${isActive}`}
           onClick={() => this.props.handleActivePlan(index)}
           role="button"

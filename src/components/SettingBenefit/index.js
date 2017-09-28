@@ -22,8 +22,8 @@ import AddPlanBar from './add-planbar';
 import {
   getTemplatePlan,
   getBenefitPlan,
-  setBenefitPlan,
   getInsurancePlan,
+  setBenefitPlan,
   deletePlan,
 } from '../../api/benefit-plan';
 
@@ -32,13 +32,16 @@ class SettingBenefit extends Component {
     getBenefitPlan: PropTypes.func.isRequired,
     getInsurancePlan: PropTypes.func.isRequired,
     getTemplatePlan: PropTypes.func.isRequired,
-    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
-    setBenefitPlan: PropTypes.func.isRequired,
-    masterPlanList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    master: PropTypes.arrayOf(PropTypes.object).isRequired,
-    insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
-    optionPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
-    deletePlan: PropTypes.func.isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    // setBenefitPlan: PropTypes.func.isRequired,
+    masterPlanList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    master: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    insurer: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
+    // deletePlan: PropTypes.func.isRequired,
+  }
+  static defaultProps = {
+    masterPlanList: [],
   }
   constructor(props) {
     super(props);
@@ -55,14 +58,11 @@ class SettingBenefit extends Component {
       planList: [],
       selectPlan: [],
       templatePlan: [],
+      updateResult: false,
     };
     props.getTemplatePlan();
     props.getInsurancePlan();
     props.getBenefitPlan();
-  }
-
-  componentDidMount() {
-    // this.props.getBenefitPlan();
   }
 
   componentWillReceiveProps(newProps) {
@@ -79,12 +79,26 @@ class SettingBenefit extends Component {
             plan: planList[index].benefitPlan.plan.planId._id,
             isHealth: planList[index].benefitPlan.isHealth,
             isExpense: planList[index].benefitPlan.isExpense,
-            health: planList[index].benefitPlan.health,
-            expense: planList[index].benefitPlan.expense,
+            health: planList[index].benefitPlan.health ? planList[index].benefitPlan.health : -1,
+            expense: planList[index].benefitPlan.expense ? planList[index].benefitPlan.expense : -1,
             emptyPlan: false,
             planList,
           });
         }
+      } else {
+        const planList = newProps.benefitPlan;
+        const index = 0;
+        this.setState({
+          activePlan: index,
+          planName: planList[index].benefitPlanName,
+          plan: planList[index].benefitPlan.plan.planId._id,
+          isHealth: planList[index].benefitPlan.isHealth,
+          isExpense: planList[index].benefitPlan.isExpense,
+          health: planList[index].benefitPlan.health ? planList[index].benefitPlan.health : -1,
+          expense: planList[index].benefitPlan.expense ? planList[index].benefitPlan.expense : -1,
+          emptyPlan: false,
+          planList,
+        });
       }
     }
     if (newProps.masterPlanList !== this.props.masterPlanList) {
@@ -100,19 +114,27 @@ class SettingBenefit extends Component {
       });
     }
   }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.updateResult) {
+      this.setState({ updateResult: false });
+      this.props.getTemplatePlan();
+      this.props.getInsurancePlan();
+      this.props.getBenefitPlan();
+    }
+  }
+
   getPlanName = planId => {
     const { templatePlan } = this.state;
     if (templatePlan !== undefined && templatePlan.length >= 1) {
-      const result = templatePlan.filter(plan => plan.plan._id === planId);
-      console.log('ttem', templatePlan, 'planID', planId);
-      console.log('result', result);
-      // return result[0].plan.planName;
+      templatePlan.filter(plan => plan.plan._id === planId);
+      // const result = templatePlan.filter(plan => plan.plan._id === planId);
     }
     return '';
   }
 
   getPlan = plan => {
-    const { master } = this.props.optionPlan.choosePlan;
+    const { optionPlan: { choosePlan: { master } } } = this.props;
     const isMaster = master.some(element => element.planId === plan);
     if (isMaster) {
       return Object.assign({}, {
@@ -142,7 +164,10 @@ class SettingBenefit extends Component {
   handleDeletePlan = id => {
     const { activePlan } = this.state;
     this.state.planList.splice(activePlan, 1);
-    this.props.deletePlan(id);
+    deletePlan(id)
+    .then(() => {
+      this.handleUpdateResult();
+    });
   }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -165,7 +190,7 @@ class SettingBenefit extends Component {
       activePlan,
     } = this.state;
     const plan = this.getPlan(this.state.plan);
-    const { detailPlan } = this.props.optionPlan;
+    const { optionPlan: { detailPlan } } = this.props;
     const benefitPlan = { plan, isHealth, isExpense, health, expense, detailPlan };
     let benefitPlanId = null;
     if (activePlan !== '') {
@@ -187,7 +212,10 @@ class SettingBenefit extends Component {
       planName,
       benefitPlan,
     };
-    this.props.setBenefitPlan(setPlan);
+    setBenefitPlan(setPlan)
+    .then(() => {
+      this.handleUpdateResult();
+    });
   }
 
   handleActivePlan = index => {
@@ -202,12 +230,14 @@ class SettingBenefit extends Component {
       expense: planList[index].benefitPlan.expense,
     });
   }
+
+  handleUpdateResult = () => this.setState({ updateResult: true });
+
   renderOption = (optionPlan, templatePlan) => {
     if (optionPlan !== undefined && optionPlan.length >= 1) {
       const newplan =
       templatePlan.filter(plan => optionPlan.map(
         option => option.planId === plan.plan._id).indexOf(true) !== -1);
-      console.log('newplan', newplan);
       return newplan;
     }
     return [];
@@ -237,7 +267,7 @@ class SettingBenefit extends Component {
                     this.handleDeletePlan(this.state.planList[this.state.activePlan]._id)}
                     activePlan={this.state.activePlan}
                   />
-                  : null}
+                  : <div />}
 
                 <AddPlan onClick={this.handleAddPlan}>
                   <AddContent>
@@ -262,6 +292,7 @@ class SettingBenefit extends Component {
                     isExpense={this.state.isExpense}
                     health={this.state.health}
                     expense={this.state.expense}
+                    handleSave={''}
                   />
                   : <Blog>
                     <BlogImg src="../../../setbenefit/icons-8-form.png" />

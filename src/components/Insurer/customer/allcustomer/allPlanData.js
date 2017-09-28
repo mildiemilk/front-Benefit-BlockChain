@@ -5,31 +5,39 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 // import { Divider } from 'semantic-ui-react';
 // import { nextButton, grayButton } from '../../../StyleComponent';
-import HeadCompanyInfo from '../../header-company-info';
+// import HeadCompanyInfo from '../../header-company-info';
 // import Plan from './plan';
 import manageEmployee from './manageEmployee';
-import { getCustomer } from '../../../../api/Insurer/customer';
+import { getCustomerPlan } from '../../../../api/Insurer/customer';
 
 class AllCustomer extends Component {
   static propTypes = {
-    // getCustomer: PropTypes.func.isRequired,
-    index: PropTypes.number.isRequired,
-    customer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getCustomerPlan: PropTypes.func.isRequired,
+    // index: PropTypes.number.isRequired,
+    // customer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    match: PropTypes.shape({ params: PropTypes }),
+  }
+  static defaultProps = {
+    match: {
+      params: 0,
+    },
   }
   constructor(props) {
     super(props);
     this.state = {
       // customer: [],
+      companyId: props.match.params.companyId,
       isAllPlan: false,
       status: '',
     };
-    // props.getCustomer();
+    props.getCustomerPlan(this.state.companyId);
   }
   render() {
-    const { customer, index } = this.props;
+    console.log('>>>render', this.props);
+    // const { customer, index } = this.props;
     return (
       <div className="allStatusData">
-        <HeadCompanyInfo DataCompany={customer[index]} />
+        {/* <HeadCompanyInfo DataCompany={customer[index]} PageName="allcustomer" /> */}
         <div className="breadcrumbs">ลูกค้า</div>
         <manageEmployee />
         {/* {(customer[index].status === 'active' || customer[index].status === 'inactive')
@@ -42,11 +50,11 @@ class AllCustomer extends Component {
 }
 
 const mapStateToProps = state => ({
-  customer: state.customerReducer.customer,
+  customerPlan: state.customerPlanReducer.customerPlan,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCustomer: () => dispatch(getCustomer()),
+  getCustomerPlan: companyId => dispatch(getCustomerPlan(companyId)),
 
 });
 

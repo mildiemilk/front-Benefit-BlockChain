@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Icon, Checkbox } from 'semantic-ui-react';
-import PlanBoxModal from './ModalPlanBox/planbox-modal';
+// import PlanBoxModal from './ModalPlanBox/planbox-modal';
 // import FormSubmitPlan from './SubmitPlan/FormSubmitPlan';
 // import AllPlan from './SubmitPlan/all-plan';
 
@@ -10,24 +10,17 @@ class ModalInsurer extends Component {
     joinbid: PropTypes.bool.isRequired,
     modalCancelJoin: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
-    // handleDelete: PropTypes.func.isRequired,
     handleQuotationIdChange: PropTypes.func.isRequired,
-    handleChangeMasterplan: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
-    handleChangeInput: PropTypes.func.isRequired,
+    // handleChangeInput: PropTypes.func.isRequired,
     handleSubmitBidding: PropTypes.func.isRequired,
-    handleSubmitEditPlan: PropTypes.func.isRequired,
+    // handleSubmitEditPlan: PropTypes.func.isRequired,
     selectInsurerPlan: PropTypes.bool.isRequired,
-    editDetailMP: PropTypes.bool.isRequired,
-    // Plan: PropTypes.shape({}).isRequired,
-    DetailMP: PropTypes.shape({}).isRequired,
-    // masterplan: PropTypes.shape({}).isRequired,
-    // insurerplan: PropTypes.shape({}).isRequired,
-    // DataCompany: PropTypes.shape({}).isRequired,
-    planType: PropTypes.string.isRequired,
-    ipdType: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    planIndex: PropTypes.number.isRequired,
+    // editDetailMP: PropTypes.bool.isRequired,
+    // DetailMP: PropTypes.shape({}).isRequired,
+    // planType: PropTypes.string.isRequired,
+    // ipdType: PropTypes.string.isRequired,
+    // price: PropTypes.number.isRequired,
+    // planIndex: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -40,12 +33,12 @@ class ModalInsurer extends Component {
       modalCancelJoin,
       handleCloseModal,
       selectInsurerPlan,
-      handleSubmitEditPlan,
-      handleSubmitBidding,
-      handleChangeInput,
-      editDetailMP,
-      DetailMP,
-      price,
+      // handleSubmitEditPlan,
+      // handleSubmitBidding,
+      // handleChangeInput,
+      // editDetailMP,
+      // DetailMP,
+      // price,
     } = this.props;
     return (
       <div>
@@ -175,7 +168,7 @@ class ModalInsurer extends Component {
             </div>
           </div>
         </Modal>
-        <PlanBoxModal
+        {/* <PlanBoxModal
           modalOpen={editDetailMP}
           DetailMP={DetailMP}
           handleChange={this.props.handleChange}
@@ -190,7 +183,7 @@ class ModalInsurer extends Component {
           handleSubmitBidding={handleSubmitBidding}
           activePlan={[1, 2, 3]}
           planList={[1, 2, 3]}
-        />
+        /> */}
       </div>
     );
   }

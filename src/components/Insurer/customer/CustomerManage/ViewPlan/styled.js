@@ -23,3 +23,31 @@ export const HeadSecondDiv = styled.div`
   padding: 15px 0px;
   text-align: left;
 `;
+
+export const NextButton = styled.div`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #46b3b8;
+  text-align: center;
+  float: right;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 12px;
+  margin: 30px;
+  cursor: pointer;
+`;
+
+export const BackButton = styled.div`
+  width: 164px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #f7555f;
+  text-align: center;
+  float: left;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 12px;
+  margin: 30px;
+  cursor: pointer;
+`;

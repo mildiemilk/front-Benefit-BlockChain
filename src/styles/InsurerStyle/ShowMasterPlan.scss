@@ -152,7 +152,7 @@
 }
 .quotation-show-mp {
   display: block;
-  margin: 2.2vw 5.5vw 4.5vw;;
+  margin: 2.2vw 5.5vw 4.5vw;
 }
 .quotation-body-title {
   display: block;
@@ -168,6 +168,15 @@
 .quotation-body-show-mp-box {
   display: block;
   height: 26.4vw;
+  border-radius: 3px;
+  background-color: #fafafa;
+  border: solid 1px #d8d8d8;
+  padding: 1.1vw 2.2vw 0px;
+  overflow: auto;
+}
+.quotation-Height100{
+  display: block;
+  height: 100%;
   border-radius: 3px;
   background-color: #fafafa;
   border: solid 1px #d8d8d8;
@@ -662,4 +671,10 @@
   letter-spacing: 0.4px;
   text-align: center;
   color: #ffffff;
+}
+.manageEmployee {
+  .quotation-show-mp {
+    display: block;
+      margin: 0;
+  }
 }

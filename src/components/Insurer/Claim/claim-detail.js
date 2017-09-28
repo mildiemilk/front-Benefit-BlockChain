@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Divider, Icon } from 'semantic-ui-react';
+import { Divider, Icon, Modal } from 'semantic-ui-react';
 // import { Button } from '../../StyleComponent';
 import '../../../styles/InsurerStyle/Claim.scss';
 import '../../../styles/main_icon.scss';
@@ -11,6 +11,9 @@ import { getClaim } from '../../../api/Insurer/claim';
 import ModalApprove from './ModalApprove';
 import ModalReject from './ModalReject';
 import { StatusTag } from './styled';
+import reject from '../../../../assets/Insurer/redcancel@2x.png';
+import confirm from '../../../../assets/Insurer/greenchecked@2x.png';
+import IconZoom from '../../../../assets/employee/icon_zoom.png';
 
 class ClaimDetail extends Component {
   static propTypes = {
@@ -35,19 +38,43 @@ class ClaimDetail extends Component {
       companyId: props.match.params.companyId,
       index: props.match.params.index,
       // ClaimID: props.match.params.index,
+      openModal: false,
+      modalImg: '',
     };
     // props.getCompanyBidding(this.state.companyId);
   }
   componentWillMount() {
     this.props.getClaim(this.state.companyId);
   }
+  handleViewImg = () => {
+    const { index } = this.state;
+    const { claim } = this.props;
+    // console.log('>>>handleViewImg', id);
+    console.log('>>>handleViewImg--', claim[index].detail.imageClaimFile.urlImg);
+    const image = claim[index].detail.imageClaimFile.urlImg.map((item, i) => (
+      <div
+        className="claim-img-block"
+        key={i.toString()}
+        onClick={() => this.handleOpenModal(item)}
+        role="button"
+        aria-hidden
+      >
+        <img alt="" src={item} className="claim-img" />
+        <img alt="" src={IconZoom} className="calim-img-icon-zoom" />
+      </div>
+    ));
+    return image;
+  }
+  handleOpenModal = item => this.setState({ openModal: true, modalImg: item });
 
+  handleCloseModal = () => this.setState({ openModal: false, modalImg: '' });
   // handleClickchangeStatus = (statusClaim, claimId) => {
   //   updateStatusClaim(statusClaim, claimId, null)();
   // }
   render() {
     const { claim } = this.props;
     const { index, companyId } = this.state;
+    console.log('>>>handleViewImg', claim);
     if (claim.length > 0) {
       let tag;
       if (claim[index].status === 'pending') {
@@ -107,7 +134,9 @@ class ClaimDetail extends Component {
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">หลักฐานการเคลม </div>
-                      <div className="large-7 columns">XXXรูปภาพXXX <br /><Divider /></div>
+                      <div className="receiptDiv">
+                        {this.handleViewImg(claim[index])}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -176,18 +205,25 @@ class ClaimDetail extends Component {
                   }
                   {
                   (claim[index].status === 'approve')
-                  ? <div className="row"><div className="large-12 columns status-icon"><i aria-hidden="true" className="icon-checked" />อนุมัติ</div></div>
+                  ? <div className="row"><div className="large-12 columns status-icon"><img src={confirm} alt="allEmployee" width="29px" height="29px" />อนุมัติ</div></div>
                   : ''
                   }
                   {
                   (claim[index].status === 'reject')
-                  ? <div className="row"><div className="large-12 columns status-icon"><i aria-hidden="true" className="icon-cancel" />ไม่อนุมัติ</div></div>
+                  ? <div className="row"><div className="large-12 columns status-icon"><img src={reject} alt="allEmployee" width="29px" height="29px" />ไม่อนุมัติ</div></div>
                   : ''
                   }
                 </div>
               </NavDetail>
             </div>
           </div>
+          <Modal
+            open={this.state.openModal}
+            onClose={this.handleCloseModal}
+            className="claim-modal-box"
+          >
+            <img alt="" className="claim-img-modal-img" src={this.state.modalImg} />
+          </Modal>
         </div>
       );
     }

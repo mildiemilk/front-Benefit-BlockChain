@@ -12,6 +12,8 @@ import {
 CustomerName,
 WhiteBackGround,
 HeadSecondDiv,
+NextButton,
+BackButton,
 } from './styled';
 
 class ViewPlan extends Component {
@@ -44,6 +46,7 @@ class ViewPlan extends Component {
     props.getCustomer();
   }
 
+
   ShowMasterPlan = Plans =>
     Plans.map(
       (Plans, index) =>
@@ -56,8 +59,8 @@ class ViewPlan extends Component {
             <div
               className="quotation-circle-icon-view"
               // onClick={
-              //   () => this.props.handleOnpenModalPlanDetail(
-              //     'master', plan.planDetail, plan.price, index)}
+              //   () => this.handleOnpenModalPlanDetail(
+              //     'master', Plans.planDetail, Plans.price, index)}
               role="button"
               aria-hidden
             >
@@ -73,31 +76,38 @@ class ViewPlan extends Component {
   render() {
     const { customer } = this.props;
     const { CustomerIndex } = this.state;
-    if (customer.length > 0) {
+    if (customer.length === 0) {
       return (
-        <div style={{ padding: 15 }}>
-          <HeaderCompanyInfo DataCompany={customer[CustomerIndex]} />
-          <CustomerName>
-            ลูกค้าของคุณ &nbsp; /&nbsp;{customer[CustomerIndex].companyName}
-          </CustomerName>
-          <NavStep step={1} />
-          <WhiteBackGround>
-            <HeadSecondDiv>
-              ดูแผนประกันภัยที่เลือก
-            </HeadSecondDiv>
-            <div className="quotation-box">
-              <div className="quotation-body-show-mp-box">
-                {this.ShowMasterPlan(this.state.Plans)}
-              </div>
-            </div>
-          </WhiteBackGround>
+        <div>
+          Empty
         </div>
       );
     }
     return (
-      <div>
-        empty
+      <div style={{ padding: 15 }}>
+        <HeaderCompanyInfo DataCompany={customer[CustomerIndex]} />
+        <CustomerName>
+          ลูกค้าของคุณ &nbsp; /&nbsp;{customer[CustomerIndex].companyName}
+        </CustomerName>
+        <NavStep step={1} />
+        <WhiteBackGround>
+          <HeadSecondDiv>
+            ดูแผนประกันภัยที่เลือก
+          </HeadSecondDiv>
+          <div className="quotation-box">
+            <div className="quotation-Height100">
+              {this.ShowMasterPlan(this.state.Plans)}
+            </div>
+          </div>
+        </WhiteBackGround>
+        <BackButton>
+          กลับ
+        </BackButton>
+        <NextButton>
+          ต่อไป
+        </NextButton>
       </div>
+
     );
   }
 }
@@ -108,7 +118,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCustomer: () => dispatch(getCustomer()),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewPlan);

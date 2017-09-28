@@ -4,12 +4,12 @@ import { APIRequest } from '../';
 import {
   getCustomerSuccess,
   getCustomerPlanSuccess,
-  getCustomerEMPSuccess,
+  getCustomerEmployeeSuccess,
   getCustomerSelectPlanSuccess,
   getCustomerFileSuccess,
   getCustomerFailure,
   getCustomerPlanFailure,
-  getCustomerEMPFailure,
+  getCustomerEmployeeFailure,
   getCustomerFileFailure,
   getCustomerSelectPlanFailure,
 } from '../../reducers/Insurer/customer';
@@ -58,10 +58,10 @@ export function getCustomerEmployee(companyId) {
     };
     APIRequest(options, true)
       .then(res => {
-        dispatch(getCustomerEMPSuccess(res.data));
+        dispatch(getCustomerEmployeeSuccess(res.data));
       })
       .catch(err => {
-        dispatch(getCustomerEMPFailure(err));
+        dispatch(getCustomerEmployeeFailure(err));
       });
   };
 }

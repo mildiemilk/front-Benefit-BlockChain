@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-// import moment from 'moment';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Divider, Icon } from 'semantic-ui-react';
 import HeadCompanyInfo from '../../header-company-info';
 // import { DivImg } from 'react-router-dom';
-import { Navmanage, Pic, TextNav, FontNum, Font, Head, TextIn } from './styled';
+import { Navmanage, Pic, TextNav, FontNum, Font, Head, TextIn, displayTag, StatusTag } from './styled';
 import '../../../../styles/main_icon.scss';
-import { getCustomer } from '../../../../api/Insurer/customer';
+import { getCustomer, getCustomerEmployee, getCustomerSelectPlan } from '../../../../api/Insurer/customer';
+import IconPlan from '../../../../../assets/Insurer/icon_plan@3x.png';
+// import IconDownload from '../../../../../assets/Insurer/icon_download@3x.png';
+// import IconView from '../../../../../assets/Insurer/icon_view@3x.png';
 
 class manageEmployee extends Component {
   static propTypes = {
-    getCustomerPlan: PropTypes.func.isRequired,
-    // index: PropTypes.number.isRequired,
+    getCustomerEmployee: PropTypes.func.isRequired,
+    getCustomerSelectPlan: PropTypes.func.isRequired,
+    getCustomer: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
     customer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    customerSelectPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    customerEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
     match: PropTypes.shape({ params: PropTypes }),
-    // match1: PropTypes.shape({ params: PropTypes.index }),
   }
   static defaultProps = {
     match: {
@@ -25,14 +31,78 @@ class manageEmployee extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // status: props.match.params.status,
       companyId: props.match.params.companyId,
+      index: props.match.params.index,
     };
-    props.getCustomerPlan(this.state.companyId);
+    props.getCustomerEmployee(this.state.companyId);
+    props.getCustomerSelectPlan(this.state.companyId);
+    props.getCustomer();
+  }
+  ShowPlan = plans =>
+    plans.map(
+      (plan, index) =>
+        <div className="quotation-body-show-mp" keys={index}>
+          <div className="quotation-mp-name-box">
+            <img alt="" className="quotation-icon-plan" src={IconPlan} />
+            <span className="quotation-mp-name">{plan.planId.planName}</span>
+          </div>
+          <displayTag color="#fafafa">ดูไฟล์ที่คุณส่งให้ลูกค้า</displayTag>
+        </div>,
+    );
+  renderElement = EMPlist => {
+    const list = EMPlist.map((EMPlist, index) => (
+      <div className="boxDetail" key={index.toString()}>
+        <div className="">
+          <div className="row">
+            <div className="large-1 columns">
+              <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+            </div>
+            <div className="large-2 columns">
+              {EMPlist.detail.name
+              ? <TextIn>{EMPlist.detail.name} {EMPlist.detail.lastname}</TextIn>
+              : ''
+              }
+            </div>
+            <div className="large-2 columns">
+              <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+            </div>
+            <div className="large-2 columns">
+              <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+            </div>
+            <div className="large-2 columns">
+              <TextIn>{EMPlist.detail.amount} </TextIn>
+            </div>
+            <div className="large-2 columns">
+              {
+              (EMPlist.detail.status === 'พนักงาน')
+              ? <StatusTag color="#3a7bd5"><Icon name="hourglass two" /> พนักงาน</StatusTag>
+              : ''
+              }
+              {
+              (EMPlist.detail.status === 'approve')
+              ? <StatusTag color="#46b3b8"><Icon name="checkmark two" /> อนุมัติ</StatusTag>
+              : ''
+              }
+              {
+              (EMPlist.detail.status === 'reject')
+              ? <StatusTag color="#f7555f"><Icon name="remove two" /> ไม่อนุมัติ</StatusTag>
+              : ''
+              }
+            </div>
+            <div className="large-2 columns">
+              <TextIn>{moment(EMPlist.detail.startDate).format('L')}</TextIn>
+            </div>
+            <div className="large-1 columns">
+              <Icon name="edit" />
+            </div>
+          </div>
+        </div>
+      </div>
+    ));
+    return list;
   }
   render() {
-    console.log('render empmanagement', this.props);
-    const { customer } = this.props;
+    const { customer, customerSelectPlan, customerEmployee } = this.props;
     const { index } = this.state;
     if (customer.length > 0) {
       return (
@@ -109,13 +179,28 @@ class manageEmployee extends Component {
               <TextIn>option <Icon name="sort descending" /></TextIn>
             </div>
           </div>
+          {customerEmployee.employees.length > 0
+          ? this.renderElement(customerEmployee.employees)
+          : null
+          }
           <div className="quotation-box">
             <div className="quotation-show-mp">
               <Head>แผนประกันภัย</Head>
               <Divider />
               <div className="quotation-body-show-mp-box">
-                <div className="quotation-mp-edit-noplan">
-                  ยังไม่มีแพลนเพิ่มเติม
+                <div className="quotation-body-show-mp-box">
+                  {/* <div className="large-2 columns">
+                    <TextIn>แผนประกันภัยทั้งหมดที่บริษัทนี้กำลังใช้งาน</TextIn>
+                  <div/>
+                    <div className="large-10 columns">
+                      <TextIn>เลขกรมธรรม์</TextIn>
+                    <div/> */}
+                  {customerSelectPlan.length > 0
+                    ? this.ShowPlan(customerSelectPlan)
+                    : <div className="quotation-mp-edit-noplan">
+                      ยังไม่มีแพลนเพิ่มเติม
+                      </div>
+                    }
                 </div>
               </div>
             </div>
@@ -129,10 +214,14 @@ class manageEmployee extends Component {
 
 const mapStateToProps = state => ({
   customer: state.customerReducer.customer,
+  customerEmployee: state.customerEmployeeReducer.customerEmployee,
+  customerSelectPlan: state.customerSelectPlanReducer.customerSelectPlan,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCustomer: () => dispatch(getCustomer()),
+  getCustomerSelectPlan: companyId => dispatch(getCustomerSelectPlan(companyId)),
+  getCustomerEmployee: companyId => dispatch(getCustomerEmployee(companyId)),
 
 });
 

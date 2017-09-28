@@ -49,14 +49,14 @@ class Dashboard extends Component {
         return (
           <div className="large-3 columns" key={number.toString()}>
             <Link to={{ pathname: path[number] }} >
-              <Checkbox keys={number} label={label[number]} checked={step} />
+              <Checkbox label={label[number]} checked={step} />
             </Link>
           </div>
         );
       }
       return (
         <div className="large-3 columns" key={number.toString()}>
-          <Checkbox keys={number} label={label[number]} checked={step} />
+          <Checkbox label={label[number]} checked={step} />
         </div>
       );
     });

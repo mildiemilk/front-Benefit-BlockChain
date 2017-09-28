@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import {
   Segment,
@@ -8,6 +8,7 @@ import {
 } from 'semantic-ui-react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { createProfile, setLogo } from '../../api/profile-company';
 import {
   Box,
@@ -23,9 +24,16 @@ import {
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 611px;
+    min-height: 678px;
     box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
   }
+`;
+const DatePickers = styled(DatePicker)`
+width: 100%;
+height: 38px;
+border-radius: 4px;
+border: solid 1px #d9d9d9;
+font-size: 16px
 `;
 const NextButton = styled.button`
     width: 85%;
@@ -74,7 +82,7 @@ class SettingProfile extends Component {
   static propTypes = {
     profile: PropTypes.shape.isRequired,
     createProfile: PropTypes.func.isRequired,
-    setLogo: PropTypes.func.isRequired,
+    // setLogo: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -132,8 +140,10 @@ class SettingProfile extends Component {
       // companyInsurer,
     });
     const { typeOfBusiness, numberOfEmployees, startInsurance, expiredInsurance } = this.state;
+    const x = startInsurance.setDate(startInsurance.getDate() + 365);
     console.log('start', startInsurance);
     console.log('end', expiredInsurance);
+    console.log('end---', x);
     this.props.createProfile({
       companyName,
       location,
@@ -147,12 +157,19 @@ class SettingProfile extends Component {
     });
   }
   render() {
-    const { companyName, logo, error, message } = this.props.profile;
-    if (companyName) {
-      if (logo) {
-        return <Redirect to={{ pathname: '/confirm_identity' }} />;
-      }
-      this.props.setLogo(this.state.file);
+    const { error, message } = this.props.profile;
+    // if (companyName) {
+    //   if (logo) {
+    //     return <Redirect to={{ pathname: '/confirm_identity' }} />;
+    //   }
+    //   this.props.setLogo(this.state.file);
+    // }
+    if (this.state.startInsurance !== '') {
+      const start = new Date(this.state.startInsurance);
+      const x = start.setDate(start.getDate() + 365);
+      console.log('start', this.state.startInsurance);
+      console.log('end', this.state.expiredInsurance);
+      console.log('end---', x);
     }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
@@ -211,7 +228,7 @@ class SettingProfile extends Component {
                 <Detail3>
                   ที่อยู่บริษัท
                 </Detail3>
-                <Box name="location" size="big" placeholder="ที่อยู่บริษัท" />
+                <Box name="hrDetail" size="big" placeholder="ที่อยู่บริษัท" />
                 <Detail3>
                   บุคคลติดต่อหลัก
                 </Detail3>
@@ -252,16 +269,32 @@ class SettingProfile extends Component {
                 <Detail3>
                   วันเริ่มอายุกรมธรรม์
                 </Detail3>
-                <DatePicker
+                <DatePickers
                   selected={this.state.startInsurance}
                   onChange={this.handleStartDate}
+                  minDate={moment()}
+                  fixedHeight
+                  dateFormat="DD/MM/YYYY"
+                  locale="th"
+                  showYearDropdown
+                  dateFormatCalendar="MMMM"
+                  scrollableYearDropdown
+                  yearDropdownItemNumber={8}
                 />
                 <Detail3>
                   วันหมดอายุกรมธรรม์
                 </Detail3>
-                <DatePicker
+                <DatePickers
                   selected={this.state.expiredInsurance}
                   onChange={this.handleExpiredDate}
+                  minDate={moment()}
+                  fixedHeight
+                  dateFormat="DD/MM/YYYY"
+                  locale="th"
+                  showYearDropdown
+                  dateFormatCalendar="MMMM"
+                  scrollableYearDropdown
+                  yearDropdownItemNumber={8}
                 />
                 <Detail3>
                   บริษัทประกันที่ใช้ในปัจจุบัน

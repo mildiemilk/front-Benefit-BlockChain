@@ -13,7 +13,7 @@ export const WhiteBackGround = styled.div`
   height: 100%;
   border-radius: 5px;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  padding: 50px;
+  padding: 30px 50px;
 `;
 
 export const HeadSecondDiv = styled.div`

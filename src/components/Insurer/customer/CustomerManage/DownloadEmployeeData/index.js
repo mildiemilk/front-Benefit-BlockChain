@@ -51,7 +51,7 @@ class ViewPlan extends Component {
       );
     }
     return (
-      <div style={{ padding: 15 }}>
+      <div className="Download">
         <HeaderCompanyInfo DataCompany={customer[CustomerIndex]} />
         <CustomerName>
           ลูกค้าของคุณ &nbsp; /&nbsp;{customer[CustomerIndex].companyName}
@@ -82,7 +82,7 @@ class ViewPlan extends Component {
         <Link to="/customermanage/viewplan/0">
           <BackButton>กลับ</BackButton>
         </Link>
-        <Link to="/customermanage/viewplan/0">
+        <Link to="/customermanage/upload/0">
           <NextButton>ต่อไป</NextButton>
         </Link>
       </div>

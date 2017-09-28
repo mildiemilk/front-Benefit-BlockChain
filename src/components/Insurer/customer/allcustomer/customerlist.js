@@ -61,7 +61,11 @@ class customerList extends Component {
 
   renderElement = customer => {
     const list = customer.map((customer, id) => (
-      <Nav id={id} onClick={() => this.props.handleDetail(id, customer.status)} key={id.toString()}>
+      <Nav
+        id={id}
+        onClick={() => this.props.handleDetail(customer.companyId)}
+        key={id.toString()}
+      >
         <div className="text-main">
           <ImageCompany
             avatar

@@ -15,7 +15,7 @@ import {
 class HeaderCompanyInfo extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
-    // pageName: PropTypes.string.isRequired,
+    PageName: PropTypes.string.isRequired,
     // Company: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor() {
@@ -24,6 +24,7 @@ class HeaderCompanyInfo extends Component {
   }
   render() {
     const data = this.props.DataCompany;
+    console.log('data---', this.props);
     moment.locale('th');
     let styleCss;
     let textDisplay = '';
@@ -33,13 +34,13 @@ class HeaderCompanyInfo extends Component {
       styleCss = { color: '#2ac294' };
       textDisplay = '| เข้าร่วมแล้ว';
     } else if (status === 'waiting') {
-      styleCss = { color: '#3a7bd5' };
-      textDisplay = '| กำลังพิจารณา';
-      // if (this.props.pageName === 'customer') {
-      //   textDisplay = '| รอบริษัทส่งข้อมูลพนักงาน';
-      // } else {
-      //   textDisplay = '| กำลังพิจารณา';
-      // }
+      if (this.props.PageName === 'allcustomer') {
+        styleCss = { color: '#6c6c6c' };
+        textDisplay = '| รอบริษัทส่งข้อมูลพนักงาน';
+      } else {
+        styleCss = { color: '#3a7bd5' };
+        textDisplay = '| กำลังพิจารณา';
+      }
     } else if (status === 'reject') {
       styleCss = { color: '#3a7bd5' };
       textDisplay = '| ไม่เข้ารวมการประมูล';

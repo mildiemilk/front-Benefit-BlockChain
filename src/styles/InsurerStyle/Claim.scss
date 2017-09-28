@@ -18,6 +18,33 @@
 .graphBox{
   margin: 20px;
 }
+.claim-img-block {
+  display: inline-block;
+  position: relative;
+  margin-right: 9px;
+}
+.claim-img {
+  height: 80px;
+}
+.calim-img-icon-zoom {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+.ui.modal.transition.visible.active.claim-modal-box{
+  background-color: transparent;
+  box-shadow: none;
+}
+.claim-img-modal-img {
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+.receiptDiv{
+  height: 90px;
+}
 .HeaderBoxClaim{
   .icon{
     color: aliceblue;

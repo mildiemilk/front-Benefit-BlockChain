@@ -24,11 +24,12 @@ class AllCustomer extends Component {
     };
     props.getCustomer();
   }
-  handleDetail = companyId => {
+  handleDetail = (index, companyId) => {
     if (status === 'active' || status === 'inactive') {
-      window.location = `/empmanagement/${companyId}`;
+      // window.location = `/empmanagement/${index}/${companyId}`;
+      window.location = `/customerplan/${index}/${companyId}`;
     } else {
-      window.location = `/customerplan/${companyId}`;
+      window.location = `/customerplan/${index}/${companyId}`;
       // const { isAllPlan } = this.state;
       // this.setState({
       //   isAllPlan: !isAllPlan,

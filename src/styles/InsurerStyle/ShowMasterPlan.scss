@@ -174,6 +174,15 @@
   padding: 1.1vw 2.2vw 0px;
   overflow: auto;
 }
+.quotation-Height100{
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background-color: #fafafa;
+  border: solid 1px #d8d8d8;
+  padding: 1.1vw 2.2vw 0px;
+  overflow: auto;
+}
 .quotation-body-show-mp {
   display: block;
   width: 100%;
@@ -188,6 +197,11 @@
 .quotation-mp-name-box {
   display: inline-block;
   width: 50%;
+  text-align: left;
+}
+.quotation72width {
+  display: inline-block;
+  width: 72%;
   text-align: left;
 }
 .quotation-icon-plan {
@@ -232,7 +246,8 @@
   line-height: 2.8vw;
   text-align: center;
   vertical-align: middle;
-  margin-left: 0.5vw;;
+  margin-left: 0.5vw;
+  cursor: pointer;
 }
 .quotation-mp-icon-view {
   width: 1.2vw;

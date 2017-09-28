@@ -1,0 +1,54 @@
+.NavManageCustomerStep{
+    margin-bottom: 30px;
+    padding: 0px 15px;
+    .steps{
+        height: 60px;
+    }
+    .steps > .step{
+        padding: 8px;
+        width: 16.666667%;
+    }
+    .steps > .step::before{
+        position: absolute !important;
+        left: 21px;
+    }
+    .steps > .step.active{
+        padding-left: 8px;
+        background-color:#3a7bd5;
+    }
+    .ui.ordered.steps .step.completed:before, .ui.steps .step.completed > .icon:before{
+        color: #545454;
+        font-size: 16px;
+    }
+    .ui.ordered.steps .step.completed:before, .ui.steps .step.completed{
+        background-color: #f5f5f5;
+    }
+    .ui.ordered.steps .step.active:before, .ui.steps .active.step .icon{
+        color:white;
+    }
+    .ui.steps .step.completed:after{
+        visibility: hidden;
+    }
+    .steps > .step .content {
+        padding-left: 20px;
+        line-height: 1.4;
+    }
+    .steps > .step .content .description{
+        font-size: 16px;
+        word-wrap: break-word;
+
+    }
+    .steps > .step.active .content .description{
+        color: white;
+    }
+    .ui.steps .step .description{
+        color: #6c6c6c;
+    }
+    .ui.steps .step.active:after{
+        background-color:#3a7bd5;
+    }
+    .ui.ordered.steps .step:before{
+        font-size: 15px !important;
+    }
+
+}

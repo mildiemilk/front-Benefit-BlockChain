@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { NextButton, grayButton } from '../../../StyleComponent';
+// import { Link } from 'react-router-dom';
+// import { NextButton, grayButton } from '../../../StyleComponent';
 import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
 
 class Plan extends Component {
   static propTypes = {
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    color: PropTypes.string.isRequired,
+    customerPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // color: PropTypes.string.isRequired,
   }
-  renderList = bids => {
-    console.log('planlist', bids);
-    const planlists = bids.map(bid => (
-      <List color={this.props.color} className="large-4 columns">
+  renderList = master => {
+    console.log('planlist', master);
+    const planlists = master.map(plan => (
+      <List>
         <IconPlan name="add to calendar" size="big" />
         <DetailList>
-          {bid.plan.planName} <br />
-          {bid.price}
+          {plan.planId.planName} <br />
+          {plan.price}
         </DetailList>
         <PopupView
           trigger={
@@ -40,18 +40,13 @@ class Plan extends Component {
   }
 
   render() {
+    const { customerPlan } = this.props;
     return (
       <div>
-        {this.props.planList
-        ? <div>{this.renderList(this.props.planList)}</div>
+        {(customerPlan.length > 0)
+        ? <div>{this.renderList(customerPlan)}</div>
         : <div />
         }
-        <Link to="/uploadfile">
-          <NextButton>เริ่มดำเนินการ</NextButton>
-        </Link>
-        <Link to="/uploadfile">
-          <grayButton>เริ่มดำเนินการ</grayButton>
-        </Link>
       </div>
     );
   }

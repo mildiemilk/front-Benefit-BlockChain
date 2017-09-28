@@ -51,3 +51,12 @@ export const BackButton = styled.div`
   margin: 30px;
   cursor: pointer;
 `;
+
+export const DownloadDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  padding: 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+`;

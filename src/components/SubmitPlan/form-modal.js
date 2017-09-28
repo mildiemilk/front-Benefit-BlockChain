@@ -35,8 +35,8 @@ class FormModal extends Component {
     employeeOfPlan: PropTypes.number.isRequired,
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modalOpen: false,
       closeOnEscape: false,

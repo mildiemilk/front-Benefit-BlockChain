@@ -58,9 +58,6 @@ class ViewPlan extends Component {
           <div className={'quotation-mp-price-box pricered'}>
             <div
               className="quotation-circle-icon-view"
-              // onClick={
-              //   () => this.handleOnpenModalPlanDetail(
-              //     'master', Plans.planDetail, Plans.price, index)}
               role="button"
               aria-hidden
             >

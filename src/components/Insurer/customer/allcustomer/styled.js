@@ -178,7 +178,12 @@ export const ButtonPlan = styled.div`
   float: right;
   margin:  ${props => props.margin};
 `;
-
+export const CustomerName = styled.div`
+  margin: 0px 20px;
+  display: inline-block;
+  font-size: 16px;
+  text-align: left;
+`;
 export const PopupView = styled(Popup)`
   &&&{
   cursor: pointer;

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Icon, Checkbox } from 'semantic-ui-react';
-// import PlanBoxModal from './ModalPlanBox/planbox-modal';
-// import FormSubmitPlan from './SubmitPlan/FormSubmitPlan';
-// import AllPlan from './SubmitPlan/all-plan';
 
 class ModalInsurer extends Component {
   static propTypes = {
@@ -11,16 +8,8 @@ class ModalInsurer extends Component {
     modalCancelJoin: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     handleQuotationIdChange: PropTypes.func.isRequired,
-    // handleChangeInput: PropTypes.func.isRequired,
     handleSubmitBidding: PropTypes.func.isRequired,
-    // handleSubmitEditPlan: PropTypes.func.isRequired,
     selectInsurerPlan: PropTypes.bool.isRequired,
-    // editDetailMP: PropTypes.bool.isRequired,
-    // DetailMP: PropTypes.shape({}).isRequired,
-    // planType: PropTypes.string.isRequired,
-    // ipdType: PropTypes.string.isRequired,
-    // price: PropTypes.number.isRequired,
-    // planIndex: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -33,19 +22,12 @@ class ModalInsurer extends Component {
       modalCancelJoin,
       handleCloseModal,
       selectInsurerPlan,
-      // handleSubmitEditPlan,
-      // handleSubmitBidding,
-      // handleChangeInput,
-      // editDetailMP,
-      // DetailMP,
-      // price,
     } = this.props;
     return (
       <div>
         <Modal
           className="joinbid-modalcanceljoin-box"
           trigger={<div />}
-          // dataBiddingPrice={BiddingPrices}
           open={modalCancelJoin}
           onClose={() => handleCloseModal('modalCancelJoin')}
         >

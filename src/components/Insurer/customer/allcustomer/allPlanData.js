@@ -9,7 +9,7 @@ import HeadCompanyInfo from '../../header-company-info';
 import Plan from './plan';
 // import manageEmployee from './manageEmployee';
 import { getCustomerPlan, getCustomer } from '../../../../api/Insurer/customer';
-import { InSide, TextLine, TextInsure, BoxDetail, ButtonPlan } from './styled';
+import { InSide, TextLine, TextInsure, BoxDetail, ButtonPlan, CustomerName } from './styled';
 
 class AllCustomer extends Component {
   static propTypes = {
@@ -40,12 +40,11 @@ class AllCustomer extends Component {
   render() {
     const { customer, customerPlan } = this.props;
     const { index } = this.state;
-    console.log('>>>render', customerPlan);
     if (customer.length > 0) {
       return (
         <div className="allStatusData">
           <HeadCompanyInfo DataCompany={customer[index]} PageName="allcustomer" />
-          <div className="breadcrumbs">ลูกค้า</div>
+          <CustomerName>ลูกค้า / {customer[index].companyName}</CustomerName>
           <BoxDetail>
             <InSide>
               <div className="row">
@@ -69,10 +68,11 @@ class AllCustomer extends Component {
               </div>
             </InSide>
           </BoxDetail>
-          <Link to={`/claimlist/${customerPlan.insurer}`}>
-            <ButtonPlan> เริ่มดำเนินการ </ButtonPlan>
-          </Link>
-          <ButtonPlan next> เริ่มดำเนินการ </ButtonPlan>
+          {(customer[index].status === 'padding')
+            ? <Link to={`/stepmanagement/${index}/${this.state.companyId}`}><ButtonPlan next> เริ่มดำเนินการ </ButtonPlan></Link>
+            : <ButtonPlan disabled> เริ่มดำเนินการ </ButtonPlan>
+          }
+          <Link to={`/stepmanagement/${index}/${this.state.companyId}`}><ButtonPlan next> เริ่มดำเนินการ </ButtonPlan></Link>
         </div>
       );
     }

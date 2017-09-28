@@ -190,6 +190,11 @@
   width: 50%;
   text-align: left;
 }
+.quotation72width {
+  display: inline-block;
+  width: 72%;
+  text-align: left;
+}
 .quotation-icon-plan {
   height: 2.2vw;
   width: 2.2vw;
@@ -232,7 +237,8 @@
   line-height: 2.8vw;
   text-align: center;
   vertical-align: middle;
-  margin-left: 0.5vw;;
+  margin-left: 0.5vw;
+  cursor: pointer;
 }
 .quotation-mp-icon-view {
   width: 1.2vw;

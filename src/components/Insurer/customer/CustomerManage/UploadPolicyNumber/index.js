@@ -55,7 +55,7 @@ class UploadPolicyNumber extends Component {
         <CustomerName>
           ลูกค้าของคุณ &nbsp; /&nbsp;{customer[CustomerIndex].companyName}
         </CustomerName>
-        <NavStep step={2} />
+        <NavStep step={3} />
         <WhiteBackGround>
           <HeadSecondDiv>
             อัปโหลดเลขกรมธรรม์

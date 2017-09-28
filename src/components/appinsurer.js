@@ -43,8 +43,8 @@ const AppInsurer = () => (
             <Route path="/claimanalysis" component={ClaimAnalysis} />
             <Route path="/allcustomer" component={AllCustomer} />
             <Route path="/customermanage/viewplan" component={ViewPlan} />
-            <Route path="/empmanagement/:companyId" component={manageEmployee} />
-            <Route path="/customerplan/:companyId" component={AllPlanData} />
+            <Route path="/empmanagement/:index/:companyId" component={manageEmployee} />
+            <Route path="/customerplan/:index/:companyId" component={AllPlanData} />
           </Switch>
         </MainLayout>
       </Switch>

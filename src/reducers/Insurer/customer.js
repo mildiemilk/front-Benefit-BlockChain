@@ -3,7 +3,7 @@
  */
 const defaultCustomer = {
   customer: [],
-  customerPlan: {},
+  customerPlan: { master: [], insurer: [] },
 };
 
 /**

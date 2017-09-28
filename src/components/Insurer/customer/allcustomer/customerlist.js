@@ -63,7 +63,7 @@ class customerList extends Component {
     const list = customer.map((customer, id) => (
       <Nav
         id={id}
-        onClick={() => this.props.handleDetail(customer.companyId)}
+        onClick={() => this.props.handleDetail(id, customer.companyId)}
         key={id.toString()}
       >
         <div className="text-main">

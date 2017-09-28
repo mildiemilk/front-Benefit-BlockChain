@@ -2,20 +2,23 @@ import React, { Component } from 'react';
 // import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { Divider } from 'semantic-ui-react';
 // import { nextButton, grayButton } from '../../../StyleComponent';
-// import HeadCompanyInfo from '../../header-company-info';
-// import Plan from './plan';
-import manageEmployee from './manageEmployee';
-import { getCustomerPlan } from '../../../../api/Insurer/customer';
+import HeadCompanyInfo from '../../header-company-info';
+import Plan from './plan';
+// import manageEmployee from './manageEmployee';
+import { getCustomerPlan, getCustomer } from '../../../../api/Insurer/customer';
+import { InSide, TextLine, TextInsure, BoxDetail, ButtonPlan } from './styled';
 
 class AllCustomer extends Component {
   static propTypes = {
     getCustomerPlan: PropTypes.func.isRequired,
     // index: PropTypes.number.isRequired,
-    // customer: PropTypes.arrayOf(PropTypes.object).isRequired,
+    getCustomer: PropTypes.func.isRequired,
+    customer: PropTypes.arrayOf(PropTypes.object).isRequired,
     match: PropTypes.shape({ params: PropTypes }),
+    customerPlan: PropTypes.shape({}).isRequired,
   }
   static defaultProps = {
     match: {
@@ -25,36 +28,66 @@ class AllCustomer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // customer: [],
+      customer: [],
       companyId: props.match.params.companyId,
       isAllPlan: false,
       status: '',
+      index: props.match.params.index,
     };
+    props.getCustomer();
     props.getCustomerPlan(this.state.companyId);
   }
   render() {
-    console.log('>>>render', this.props);
-    // const { customer, index } = this.props;
-    return (
-      <div className="allStatusData">
-        {/* <HeadCompanyInfo DataCompany={customer[index]} PageName="allcustomer" /> */}
-        <div className="breadcrumbs">ลูกค้า</div>
-        <manageEmployee />
-        {/* {(customer[index].status === 'active' || customer[index].status === 'inactive')
-          ? <ManageEmp customer={customer[index]} />
-          : <Plan customer={customer[index]} />
-        } */}
-      </div>
-    );
+    const { customer, customerPlan } = this.props;
+    const { index } = this.state;
+    console.log('>>>render', customerPlan);
+    if (customer.length > 0) {
+      return (
+        <div className="allStatusData">
+          <HeadCompanyInfo DataCompany={customer[index]} PageName="allcustomer" />
+          <div className="breadcrumbs">ลูกค้า</div>
+          <BoxDetail>
+            <InSide>
+              <div className="row">
+                <div className="large-3 columns">
+                  <TextLine>รายการแพลนของคุณ</TextLine>
+                </div>
+              </div>
+              <div className="row">
+                <Plan customerPlan={customerPlan.master} />
+              </div>
+            </InSide>
+            <InSide>
+              <div className="row">
+                <div className="large-6 columns">
+                  <TextInsure>ข้อเสนอจากบริษัทประกัน</TextInsure>
+                  {' '}
+                </div>
+              </div>
+              <div className="row">
+                <Plan customerPlan={customerPlan.insurer} />
+              </div>
+            </InSide>
+          </BoxDetail>
+          <Link to={`/claimlist/${customerPlan.insurer}`}>
+            <ButtonPlan> เริ่มดำเนินการ </ButtonPlan>
+          </Link>
+          <ButtonPlan next> เริ่มดำเนินการ </ButtonPlan>
+        </div>
+      );
+    }
+    return <div />
   }
-}
+  }
 
 const mapStateToProps = state => ({
   customerPlan: state.customerPlanReducer.customerPlan,
+  customer: state.customerReducer.customer,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCustomerPlan: companyId => dispatch(getCustomerPlan(companyId)),
+  getCustomer: () => dispatch(getCustomer()),
 
 });
 

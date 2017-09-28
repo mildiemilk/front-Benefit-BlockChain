@@ -10,8 +10,6 @@ import {
   getTemplatePlanFailure,
   getBenefitPlanSuccess,
   getBenefitPlanFailure,
-  setBenefitPlanSuccess,
-  setBenefitPlanFailure,
   setTimeoutSuccess,
   setTimeoutFailure,
 } from '../reducers/benefit-plan';
@@ -86,11 +84,9 @@ export function setTemplatePlan(data) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log('data settemplate');
         dispatch(setTemplatePlanSuccess(res.data));
       })
       .catch(err => {
-        console.log('template', err);
         dispatch(setTemplatePlanFailure(err.response.data));
       });
   };
@@ -105,7 +101,6 @@ export function getTemplatePlan() {
 
     APIRequest(options, true)
       .then(res => {
-        console.log('api gettem: ', res);
         dispatch(getTemplatePlanSuccess(res.data));
       })
       .catch(err => {
@@ -132,38 +127,20 @@ export function getBenefitPlan() {
 }
 
 export function setBenefitPlan(benefitPlans) {
-  return dispatch => {
-    const options = {
-      method: 'post',
-      url: SETBENEFIT_PLAN_URI,
-      data: benefitPlans,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        dispatch(setBenefitPlanSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(setBenefitPlanFailure(err.response.data));
-      });
+  const options = {
+    method: 'post',
+    url: SETBENEFIT_PLAN_URI,
+    data: benefitPlans,
   };
+  return APIRequest(options, true);
 }
 export function deletePlan(benefitPlanId) {
-  return () => {
-    const options = {
-      method: 'delete',
-      url: DELETE_PLAN_URI,
-      data: { benefitPlanId },
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err.response);
-      });
+  const options = {
+    method: 'delete',
+    url: DELETE_PLAN_URI,
+    data: { benefitPlanId },
   };
+  return APIRequest(options, true);
 }
 export function setTimeout(timeout) {
   return dispatch => {

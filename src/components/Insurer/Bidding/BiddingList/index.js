@@ -23,7 +23,6 @@ class BiddingList extends Component {
     this.state = {
       SearchTerm: '',
       bgColor: '',
-      end: false,
     };
     // props.getCompanyBiddingList();
   }
@@ -52,7 +51,6 @@ class BiddingList extends Component {
             <ElementBottom
               Bidding={Bidding}
               id={number}
-              notiTimeout={this.notiTimeout}
             />
           </BiddingElement>
         </Link>
@@ -71,11 +69,7 @@ class BiddingList extends Component {
         .indexOf(this.state.SearchTerm.toLowerCase()) >= 0,
     );
   }
-  notiTimeout = () => {
-    this.setState({
-      end: true,
-    });
-  }
+
 
   render() {
     const boderBlue = {

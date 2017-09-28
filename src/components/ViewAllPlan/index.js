@@ -23,6 +23,7 @@ class ViewAllPlan extends Component {
       SearchTerm: '',
       checkUpdate: false,
       selectPlan: [],
+      checkedIndex: [],
       modalOpen: false,
     };
     props.getAllPlan();
@@ -30,13 +31,13 @@ class ViewAllPlan extends Component {
 
   componentWillUpdate(nextProps, nextState) {
     if (nextState.checkUpdate) {
-      this.setState({ checkUpdate: false });
+      this.setState({ checkUpdate: false, selectPlan: [], checkedIndex: [] });
       this.props.getAllPlan();
     }
   }
 
   handleCopy = planId => {
-    const { selectPlan } = this.state;
+    const { selectPlan, checkedIndex } = this.state;
     if (selectPlan.length === 0) {
       selectPlan.push(planId);
     } else {
@@ -47,32 +48,40 @@ class ViewAllPlan extends Component {
     }
     copyPlan(selectPlan)
     .then(() => {
+      checkedIndex.forEach(item => {
+        document.getElementsByName('selectPlan')[item].checked = false;
+      });
       this.handleCheckUpdate();
     });
   }
 
   handleDelete = () => {
-    const { selectPlan } = this.state;
+    const { selectPlan, checkedIndex } = this.state;
     this.handleClose();
     deletePlan(selectPlan)
     .then(() => {
+      checkedIndex.forEach(item => {
+        document.getElementsByName('selectPlan')[item].checked = false;
+      });
       this.handleCheckUpdate();
     });
   }
 
-  handleChange = ({ target: { value, checked } }) => {
-    const { selectPlan } = this.state;
+  handleChange = ({ target: { value, checked, dataset: { tag } } }) => {
+    const { selectPlan, checkedIndex } = this.state;
     const check = selectPlan.indexOf(parseInt(value, 10));
     if (checked) {
       if (check === -1) {
         selectPlan.push(parseInt(value, 10));
+        checkedIndex.push(parseInt(tag, 10));
       }
     } else {
       if (check > -1) {
         selectPlan.splice(check, 1);
+        checkedIndex.splice(tag, 1);
       }
     }
-    this.setState({ selectPlan });
+    this.setState({ selectPlan, checkedIndex });
   }
 
   handleCheckUpdate = () => this.setState({ checkUpdate: true });
@@ -81,8 +90,9 @@ class ViewAllPlan extends Component {
     this.setState({ SearchTerm: keyword });
   }
 
-  filterPlan(list) {
-    return list.filter(
+  filterPlan() {
+    const { planList } = this.props;
+    return planList.filter(
       plan =>
         plan.planName
         .toLowerCase()
@@ -109,6 +119,7 @@ class ViewAllPlan extends Component {
 
   render() {
     const { modalOpen, step } = this.state;
+    const { planList } = this.props;
     return (
       <div className="ViewAllPlan">
         <NavInsure step={step} />
@@ -158,12 +169,16 @@ class ViewAllPlan extends Component {
                     </tr>
                   </tbody>
                 </table>
-                <ViewPlanBox
-                  planList={this.filterPlan(this.props.planList)}
-                  handleCopy={this.handleCopy}
-                  handleChange={this.handleChange}
-                  handleOpen={this.handleOpen}
-                />
+                {
+                  planList.length > 0
+                  ? <ViewPlanBox
+                    planList={this.filterPlan()}
+                    handleCopy={this.handleCopy}
+                    handleChange={this.handleChange}
+                    handleOpen={this.handleOpen}
+                  />
+                  : <div />
+                }
               </div>
             </div>
           </RecViewAllPlan>

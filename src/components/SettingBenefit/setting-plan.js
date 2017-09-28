@@ -54,20 +54,18 @@ class SettingPlan extends Component {
     planName: PropTypes.string.isRequired,
     plan: PropTypes.string.isRequired,
     isHealth: PropTypes.bool.isRequired,
-    health: PropTypes.string.isRequired,
+    health: PropTypes.number.isRequired,
     isExpense: PropTypes.bool.isRequired,
-    expense: PropTypes.string.isRequired,
-    handleSave: PropTypes.func.isRequired,
+    expense: PropTypes.number.isRequired,
+    handleSave: PropTypes.string.isRequired,
     isReadOnly: PropTypes.bool,
   }
-
   static defaultProps = {
     handleChange: '',
     isReadOnly: false,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       optionPlan: [],
     };
@@ -162,7 +160,7 @@ class SettingPlan extends Component {
                       required
                       type="number"
                       name="health"
-                      value={health}
+                      value={health !== -1 ? health : ''}
                       action="บาท/ปี"
                       placeholder="จำนวนเงิน"
                       onChange={handleChange}
@@ -199,7 +197,7 @@ class SettingPlan extends Component {
                       required
                       type="text"
                       name="expense"
-                      value={expense}
+                      value={expense !== -1 ? expense : ''}
                       action="บาท/ปี"
                       placeholder="จำนวนเงิน"
                       onChange={handleChange}
@@ -213,8 +211,7 @@ class SettingPlan extends Component {
                       readOnly
                     />}
                 </PlanBox>
-                : null}
-
+                : <div />}
               <SaveButton className={handleSave} type="submit">
                 บันทึก
               </SaveButton>

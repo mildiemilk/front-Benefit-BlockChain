@@ -8,7 +8,7 @@ export const Detail = styled.div`
   margin-bottom: 40px;
   padding: ${props => props.padding};
 `;
-export const Button = styled.div`
+export const Button = styled.button`
   height: 40px;
   width: 100%;
   color: white;

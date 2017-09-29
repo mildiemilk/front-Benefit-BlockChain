@@ -51,7 +51,6 @@ class Header extends Component {
 
   render() {
     const { data: { companyName, logo } } = this.props;
-    const checkCompanyName = JSON.parse(companyName);
     return (
       <HeadNav>
         <LogoPosition>
@@ -61,10 +60,10 @@ class Header extends Component {
         </LogoPosition>
         <Menu.Item style={{ width: '20%' }} position="right">
           {
-            checkCompanyName !== null
+            companyName !== 'null' && companyName !== null
             ? <div>
               <SpanStyle>
-                {checkCompanyName}
+                {companyName}
               </SpanStyle>
               <Popup
                 trigger={<Icon className="navbar-header-icon" name="caret down" />}

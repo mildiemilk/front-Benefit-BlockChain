@@ -28,6 +28,8 @@ import {
   getSummaryGroupFailure,
   getClaimListSuccess,
   getClaimListFailure,
+  getSummaryInsurancePlanSuccess,
+  getSummaryInsuranceFailure,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/api/company/register-company';
@@ -49,6 +51,7 @@ const COMPANY_CLAIM_URI = 'api/company/claim';
 const ADD_EMPLOYEE_URI = 'api/company/add-employee';
 const DELETE_EMPLOYEE_URI = 'api/company/delete-employee';
 const MANAGE_EMPLOYEE_URI = 'api/company/manage-employee';
+const GET_SUMMARY_INSURANCE_PLAN_URI = 'api/company/summary-insurance-plan';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -307,6 +310,22 @@ export function setGroupBenefit(groupNumber, detail) {
       });
   };
 }
+export function summaryInsurancePlan() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_SUMMARY_INSURANCE_PLAN_URI,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getSummaryInsurancePlanSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getSummaryInsuranceFailure(err));
+      });
+  };
+}
 export function getClaimList() {
   return dispatch => {
     const options = {
@@ -336,13 +355,14 @@ export default {
   createProfile,
 };
 
-export function addEmployee(profile) {
+export function addEmployee(profile, file) {
+  const formData = new FormData();
+  formData.append('file', file)
+  formData.append('detail', JSON.stringify(profile));
   const options = {
     method: 'post',
     url: ADD_EMPLOYEE_URI,
-    data: {
-      profile,
-    },
+    data: formData,
   };
   return APIRequest(options, true);
 }
@@ -356,13 +376,11 @@ export function deleteEmployee(employeeId) {
   return APIRequest(options, true);
 }
 
-export function manageEmployee(detail) {
+export function manageEmployee(detail, status) {
   const options = {
     method: 'post',
-    url: MANAGE_EMPLOYEE_URI,
-    data: {
-      detail,
-    },
+    url: `${MANAGE_EMPLOYEE_URI}/${status}`,
+    data: detail,
   };
   return APIRequest(options, true);
 }

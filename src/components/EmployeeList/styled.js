@@ -25,3 +25,10 @@ export const TextElip = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
 `;
+export const StatusTag = styled.div`
+  border-radius: 6px;
+  width: 100%;
+  height: 20px;
+  color: white;
+  background-color:${props => props.color};
+`;

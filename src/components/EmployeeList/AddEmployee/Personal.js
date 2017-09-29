@@ -76,7 +76,7 @@ class Personal extends Component {
   }
 
   render() {
-    const { data } = this.props
+    const { data } = this.props;
     return (
       <PersonalDiv>
         <div className="row">
@@ -103,6 +103,7 @@ class Personal extends Component {
             <Dropdowns
               placeholder="สถานะ" options={status} compact selection
               onChange={this.props.handleChange} name="marriageStatus"
+              value={data.marriageStatus}
             />
           </div>
           <div className="large-6 columns">

@@ -62,6 +62,7 @@ class ModalEditEmployee extends Component {
     manageEmployee: PropTypes.func.isRequired,
     checkStateManage: PropTypes.func.isRequired,
     employeeId: PropTypes.string.isRequired,
+    log: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   static defaultProps = {
@@ -70,6 +71,7 @@ class ModalEditEmployee extends Component {
 
   constructor(props) {
     super(props);
+    // const { log } = this.props;
     this.state = {
       modalOpen: false,
       isPromotion: true,
@@ -80,8 +82,14 @@ class ModalEditEmployee extends Component {
       title: '',
       groupBenefit: '',
       plan: '',
+      reason: '',
     };
   }
+  // componentWillReceiveProps(NewProps) {
+  //   if (NewProps.effectiveDate !== this.state.effective) {
+  //     this.setState({ effective: NewProps.effectiveDate });
+  //   }
+  // }
   handleModal = () =>
     this.setState({
       modalOpen: !this.state.modalOpen,
@@ -153,10 +161,19 @@ class ModalEditEmployee extends Component {
     return '';
   }
   render() {
-    console.log('state', this.props.employeeId);
-    const { isExit } = this.state;
+    // console.log('effective', this.state.effective);
+    const {
+      typeEmployee, department, title, groupBenefit, plan, reason, effective, isExit,
+    } = this.state;
     const { optionGroupBenefit, optionDepartment,
-      optionTitles, optionTypeEmployee, optionBenefitPlan } = this.props;
+      optionTitles, optionTypeEmployee, optionBenefitPlan, log } = this.props;
+    // console.log('effective2', log.effectiveDate);
+    // let value;
+    // if (log.status === 'resign' || log.status === 'promote') {
+    //   value = log;
+    // } else {
+    //   value = this.state;
+    // }
     return (
       <Modals
         trigger={
@@ -199,17 +216,25 @@ class ModalEditEmployee extends Component {
               ? <div className="row">
                 <div className="large-6 columns">
                   <TextDetail>สาเหตุที่ลาออก :</TextDetail>
-                  <Input
-                    value={this.state.reason}
+                  {log !== null && log.status === 'resign'
+                  ? <Input
+                    value={log.reason}
                     onChange={this.handleInputChange}
                     name="reason"
                   />
+                  : <Input
+                    value={reason}
+                    onChange={this.handleInputChange}
+                    name="reason"
+                  />
+                  }
                 </div>
                 <div className="large-6 columns">
                   <TextDetail>วันที่มีผล :</TextDetail>
                   <div className="input-date">
-                    <Inputs
-                      selected={this.state.effective}
+                    {log !== null && log.status === reason
+                    ? <Inputs
+                      selected={effective}
                       onChange={this.handleEffective}
                       minDate={moment()}
                       fixedHeight
@@ -220,6 +245,19 @@ class ModalEditEmployee extends Component {
                       scrollableYearDropdown
                       yearDropdownItemNumber={8}
                     />
+                    : <Inputs
+                      selected={effective}
+                      onChange={this.handleEffective}
+                      minDate={moment()}
+                      fixedHeight
+                      dateFormat="DD/MM/YYYY"
+                      locale="th"
+                      showYearDropdown
+                      dateFormatCalendar="MMMM"
+                      scrollableYearDropdown
+                      yearDropdownItemNumber={8}
+                    />
+                    }
                   </div>
                 </div>
               </div>
@@ -227,43 +265,68 @@ class ModalEditEmployee extends Component {
                 <div className="row">
                   <div className="large-6 columns">
                     <TextDetail>ประเภทของพนักงาน :</TextDetail>
-                    <Dropdowns
+                    {log !== null && log.status === 'promote'
+                    ? <Dropdowns
                       placeholder="TypeEmployee" options={optionTypeEmployee} compact selection
-                      onChange={this.handleChange} name="typeEmployee" value={this.state.typeEmployee}
+                      onChange={this.handleChange} name="typeEmployee" value={log.typeOfEmployee}
                     />
+                    : <Dropdowns
+                      placeholder="TypeEmployee" options={optionTypeEmployee} compact selection
+                      onChange={this.handleChange} name="typeEmployee" value={typeEmployee}
+                    />
+                    }
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>แผนก :</TextDetail>
                     <div className="input-date">
-                      <Dropdowns
+                      {log !== null && log.status === 'promote'
+                      ? <Dropdowns
                         placeholder="department" options={optionDepartment} compact selection
-                        onChange={this.handleChange} name="department" value={this.state.department}
+                        onChange={this.handleChange} name="department" value={log.department}
                       />
+                      : <Dropdowns
+                        placeholder="department" options={optionDepartment} compact selection
+                        onChange={this.handleChange} name="department" value={department}
+                      />
+                      }
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="large-6 columns">
                     <TextDetail>ตำแหน่ง :</TextDetail>
-                    <Dropdowns
+                    {log !== null && log.status === 'promote'
+                    ? <Dropdowns
                       placeholder="title" options={optionTitles} compact selection
-                      onChange={this.handleChange} name="title" value={this.state.title}
+                      onChange={this.handleChange} name="title" value={log.title}
                     />
+                    : <Dropdowns
+                      placeholder="title" options={optionTitles} compact selection
+                      onChange={this.handleChange} name="title" value={title}
+                    />
+                    }
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>กลุ่มสิทธิประโยชน์ :</TextDetail>
-                    <Dropdowns
+                    {log !== null && log.status === 'promote'
+                    ? <Dropdowns
                       placeholder="groupbenefits" options={optionGroupBenefit} compact selection
-                      name="groupBenefit" onChange={this.handleChange} value={this.state.groupBenefit}
+                      name="groupBenefit" onChange={this.handleChange} value={log.benefitGroup}
                     />
+                    : <Dropdowns
+                      placeholder="groupbenefits" options={optionGroupBenefit} compact selection
+                      name="groupBenefit" onChange={this.handleChange} value={groupBenefit}
+                    />
+                    }
                   </div>
                 </div>
                 <div className="row">
                   <div className="large-6 columns">
                     <TextDetail>วันที่มีผล :</TextDetail>
                     <div className="input-date">
-                      <Inputs
-                        selected={this.state.effective}
+                      {log !== null && log.status === 'promote'
+                      ? <Inputs
+                        selected={effective}
                         onChange={this.handleEffective}
                         minDate={moment()}
                         fixedHeight
@@ -273,15 +336,33 @@ class ModalEditEmployee extends Component {
                         scrollableYearDropdown
                         yearDropdownItemNumber={8}
                       />
+                      : <Inputs
+                        selected={effective}
+                        onChange={this.handleEffective}
+                        minDate={moment()}
+                        fixedHeight
+                        locale="th"
+                        showYearDropdown
+                        dateFormatCalendar="MMMM"
+                        scrollableYearDropdown
+                        yearDropdownItemNumber={8}
+                      />
+                      }
                     </div>
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>แผนสิทธิประโยชน์ :</TextDetail>
                     <div className="input-date">
-                      <Dropdowns
+                      {log !== null && log.status === 'promote'
+                      ? <Dropdowns
                         placeholder="benefitPlan" options={optionBenefitPlan} compact selection
-                        name="plan" onChange={this.handleChange} value={this.state.plan}
+                        name="plan" onChange={this.handleChange} value={log.benefitPlan}
                       />
+                      : <Dropdowns
+                        placeholder="benefitPlan" options={optionBenefitPlan} compact selection
+                        name="plan" onChange={this.handleChange} value={plan}
+                      />
+                      }
                     </div>
                   </div>
                 </div>

@@ -19,6 +19,7 @@ const defaultProfile = {
   summaryEmployee: [],
   summaryGroup: [],
   claimList: [],
+  summaryTotalEmployee: '',
   summaryInsurancePlan: [],
   message: null,
   error: false,
@@ -58,7 +59,8 @@ const GET_CLAIMLIST_REQUEST_SUCCESS = 'GET_CLAIMLIST_REQUEST_SUCCESS';
 const GET_CLAIMLIST_REQUEST_FAILURE = 'GET_CLAIMLIST_REQUEST_FAILURE';
 const GET_SUMMARYINSURANCEPLAN_REQUEST_SUCCESS = 'GET_SUMMARYINSURANCEPLAN_REQUEST_SUCCESS';
 const GET_SUMMARYINSURANCEPLAN_REQUEST_FAILURE = 'GET_SUMMARYINSURANCEPLAN_REQUEST_FAILURE';
-
+const GET_SUMMARYTOTALEMPLOYEE_REQUEST_SUCCESS = 'GET_SUMMARYTOTALEMPLOYEE_REQUEST_SUCCESS';
+const GET_SUMMARYTOTALEMPLOYEE_REQUEST_FAILURE = 'GET_SUMMARYTOTALEMPLOYEE_REQUEST_FAILURE';
 /**
  * Actions
  */
@@ -144,6 +146,12 @@ export function getSummaryInsurancePlanSuccess(data) {
 }
 export function getSummaryInsurancePlanFailure(data) {
   return { type: GET_SUMMARYINSURANCEPLAN_REQUEST_FAILURE, data };
+}
+export function getSummaryTotalEmployeeSuccess(data) {
+  return { type: GET_SUMMARYTOTALEMPLOYEE_REQUEST_SUCCESS, data };
+}
+export function getSummaryTotalEmployeeFailure(data) {
+  return { type: GET_SUMMARYTOTALEMPLOYEE_REQUEST_FAILURE, data };
 }
 export function getClaimListSuccess(data) {
   return { type: GET_CLAIMLIST_REQUEST_SUCCESS, data };
@@ -273,6 +281,12 @@ export default function profile(state = defaultProfile, action) {
         summaryInsurancePlan: action.data,
       });
     case GET_SUMMARYINSURANCEPLAN_REQUEST_FAILURE:
+      return state;
+    case GET_SUMMARYTOTALEMPLOYEE_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        summaryTotalEmployee: action.data,
+      });
+    case GET_SUMMARYTOTALEMPLOYEE_REQUEST_FAILURE:
       return state;
     case GET_CLAIMLIST_REQUEST_SUCCESS:
       return Object.assign({}, state, {

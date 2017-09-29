@@ -80,12 +80,12 @@ const NumberOfEmployees = [
 
 class SettingProfile extends Component {
   static propTypes = {
-    profile: PropTypes.shape.isRequired,
+    profile: PropTypes.shape({}).isRequired,
     createProfile: PropTypes.func.isRequired,
     // setLogo: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       companyName: '',
       location: '',
@@ -117,10 +117,10 @@ class SettingProfile extends Component {
     reader.readAsDataURL(file);
   }
   handleStartDate = startInsurance => {
-    this.setState({ startInsurance }, () => console.log('set date', this.state.startInsurance._d));
+    this.setState({ startInsurance });
   }
   handleExpiredDate = expiredInsurance => {
-    this.setState({ expiredInsurance }, () => console.log('set date end', this.state.expiredInsurance._d));
+    this.setState({ expiredInsurance });
   }
   handleSubmit = e => {
     e.preventDefault();
@@ -131,7 +131,6 @@ class SettingProfile extends Component {
       tel: { value: tel },
       // companyInsurer: { value: companyInsurer },
     } = e.target;
-
     this.setState({
       companyName,
       location,
@@ -140,10 +139,6 @@ class SettingProfile extends Component {
       // companyInsurer,
     });
     const { typeOfBusiness, numberOfEmployees, startInsurance, expiredInsurance } = this.state;
-    const x = startInsurance.setDate(startInsurance.getDate() + 365);
-    console.log('start', startInsurance);
-    console.log('end', expiredInsurance);
-    console.log('end---', x);
     this.props.createProfile({
       companyName,
       location,
@@ -157,20 +152,13 @@ class SettingProfile extends Component {
     });
   }
   render() {
-    const { error, message } = this.props.profile;
+    const { profile: { error, message } } = this.props;
     // if (companyName) {
     //   if (logo) {
     //     return <Redirect to={{ pathname: '/confirm_identity' }} />;
     //   }
     //   this.props.setLogo(this.state.file);
     // }
-    if (this.state.startInsurance !== '') {
-      const start = new Date(this.state.startInsurance);
-      const x = start.setDate(start.getDate() + 365);
-      console.log('start', this.state.startInsurance);
-      console.log('end', this.state.expiredInsurance);
-      console.log('end---', x);
-    }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
@@ -228,7 +216,7 @@ class SettingProfile extends Component {
                 <Detail3>
                   ที่อยู่บริษัท
                 </Detail3>
-                <Box name="lo" size="big" placeholder="ที่อยู่บริษัท" />
+                <Box name="location" size="big" placeholder="ที่อยู่บริษัท" />
                 <Detail3>
                   บุคคลติดต่อหลัก
                 </Detail3>
@@ -272,7 +260,6 @@ class SettingProfile extends Component {
                 <DatePickers
                   selected={this.state.startInsurance}
                   onChange={this.handleStartDate}
-                  minDate={moment()}
                   fixedHeight
                   dateFormat="DD/MM/YYYY"
                   locale="th"

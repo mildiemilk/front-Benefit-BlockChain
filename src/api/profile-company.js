@@ -67,7 +67,7 @@ export function createProfile(profile) {
         dispatch(createProfileSuccess(res.data));
       })
       .catch(err => {
-        dispatch(createProfileFailure(err.response.data));
+        dispatch(createProfileFailure(err));
       });
   };
 }

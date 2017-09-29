@@ -178,7 +178,28 @@ export const ButtonPlan = styled.div`
   float: right;
   margin:  ${props => props.margin};
 `;
-
+export const CustomerName = styled.div`
+  margin: 0px 20px;
+  display: inline-block;
+  font-size: 16px;
+  text-align: left;
+`;
+export const displayTag = styled.div`
+border-radius: 50px;
+color: white;
+background-color: ${props => props.color};
+width: 80%;
+height: 20px
+text-align: center;
+border: solid 1px #d8d8d8;
+`;
+export const StatusTag = styled.div`
+  border-radius: 6px;
+  color: white;
+  background-color: ${props => props.color};
+  width: 80%;
+  text-align: center;
+`;
 export const PopupView = styled(Popup)`
   &&&{
   cursor: pointer;

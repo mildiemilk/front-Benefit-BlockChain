@@ -51,3 +51,43 @@ export const BackButton = styled.div`
   margin: 30px;
   cursor: pointer;
 `;
+
+export const DownloadDiv = styled.div`
+  width: 100%;
+  height: 100px;
+  padding: 15px 30px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+`;
+
+export const DivHeadBackcolor = styled.div`
+  height: 50px;
+  width: 100%;
+  color: white;
+  padding:15px;
+  border-radius: 5px 5px 0px 0px ;
+  background-color: #5c6879;
+  border: solid 1px rgba(151, 151, 151, 0.66);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+`;
+export const DivContent = styled.div`
+  height: 150px;
+  width: 100%;
+  padding:15px;
+  border-radius: 0px 0px 5px 5px  ;
+  border: solid 1px rgba(151, 151, 151, 0.66);
+  padding: 2% 30%;
+  margin-bottom:15px;
+`;
+export const UploadDiv = styled.div`
+  height: 40px;
+  width: 40%;
+  border-radius: 6px;
+  background-color: #d8d8d8;
+  border: solid 1px #d8d8d8;
+  color: #505050;
+  padding:10px;
+`;

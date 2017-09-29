@@ -200,6 +200,10 @@ export const StatusTag = styled.div`
   width: 80%;
   text-align: center;
 `;
+export const TextElip = styled.div`
+  text-overflow: ellipsis;
+  overflow: hidden;
+`;
 export const PopupView = styled(Popup)`
   &&&{
   cursor: pointer;

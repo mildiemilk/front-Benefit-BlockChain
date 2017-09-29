@@ -49,8 +49,8 @@ const AppInsurer = () => (
             <Route path="/customerplan/:index/:companyId" component={AllPlanData} />
             <Route path="/customermanage/download/:index" component={Download} />
             <Route path="/customermanage/upload/:index" component={Upload} />
-            <Route path="/empmanagement/:companyId" component={manageEmployee} />
-            <Route path="/customerplan/:companyId" component={AllPlanData} />
+            {/* <Route path="/empmanagement/:companyId" component={manageEmployee} />
+            <Route path="/customerplan/:companyId" component={AllPlanData} /> */}
           </Switch>
         </MainLayout>
       </Switch>

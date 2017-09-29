@@ -17,10 +17,10 @@ class manageEmployee extends Component {
     getCustomerEmployee: PropTypes.func.isRequired,
     getCustomerSelectPlan: PropTypes.func.isRequired,
     getCustomer: PropTypes.func.isRequired,
-    index: PropTypes.number.isRequired,
+    // index: PropTypes.number.isRequired,
     customer: PropTypes.arrayOf(PropTypes.object).isRequired,
     customerSelectPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
-    customerEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
+    customerEmployee: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     match: PropTypes.shape({ params: PropTypes }),
   }
   static defaultProps = {
@@ -67,27 +67,13 @@ class manageEmployee extends Component {
               <TextIn>{EMPlist.detail.employeeCode}</TextIn>
             </div>
             <div className="large-2 columns">
-              <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+              <TextIn>{EMPlist.detail.benefitGroup}</TextIn>
             </div>
             <div className="large-2 columns">
               <TextIn>{EMPlist.detail.amount} </TextIn>
             </div>
             <div className="large-2 columns">
-              {
-              (EMPlist.detail.status === 'พนักงาน')
-              ? <StatusTag color="#3a7bd5"><Icon name="hourglass two" /> พนักงาน</StatusTag>
-              : ''
-              }
-              {
-              (EMPlist.detail.status === 'approve')
-              ? <StatusTag color="#46b3b8"><Icon name="checkmark two" /> อนุมัติ</StatusTag>
-              : ''
-              }
-              {
-              (EMPlist.detail.status === 'reject')
-              ? <StatusTag color="#f7555f"><Icon name="remove two" /> ไม่อนุมัติ</StatusTag>
-              : ''
-              }
+              <StatusTag color="#46b3b8"> {EMPlist.detail.typeOfEmployee}</StatusTag>
             </div>
             <div className="large-2 columns">
               <TextIn>{moment(EMPlist.detail.startDate).format('L')}</TextIn>
@@ -104,6 +90,7 @@ class manageEmployee extends Component {
   render() {
     const { customer, customerSelectPlan, customerEmployee } = this.props;
     const { index } = this.state;
+    console.log('rendercustomerEmployee', customerEmployee.employees);
     if (customer.length > 0) {
       return (
         <div className="manageEmployee">
@@ -116,7 +103,7 @@ class manageEmployee extends Component {
                 <Pic> <i aria-hidden="true" className="icon-city" /></Pic>
                 <TextNav>
                   <Font>พนักงานทัั้งหมด</Font><br />
-                  <FontNum>2</FontNum>
+                  <FontNum>{customerEmployee.employees.length}</FontNum>
                 </TextNav>
               </Navmanage>
             </div>
@@ -125,7 +112,7 @@ class manageEmployee extends Component {
                 <Pic> <i aria-hidden="true" className="icon-empPlus" /></Pic>
                 <TextNav>
                   <Font>พนักงานเข้าใหม่</Font><br />
-                  <FontNum>2</FontNum>
+                  <FontNum>{customerEmployee.summary.new}</FontNum>
                 </TextNav>
               </Navmanage>
             </div>
@@ -134,7 +121,7 @@ class manageEmployee extends Component {
                 <Pic> <i aria-hidden="true" className="icon-empDelete" /></Pic>
                 <TextNav>
                   <Font>พนักงานลาออก</Font><br />
-                  <FontNum>2</FontNum>
+                  <FontNum>{customerEmployee.summary.promote}</FontNum>
                 </TextNav>
               </Navmanage>
             </div>
@@ -143,7 +130,7 @@ class manageEmployee extends Component {
                 <Pic> <i aria-hidden="true" className="icon-quality" /></Pic>
                 <TextNav>
                   <Font>พนักงานปรับตำแหน่ง</Font><br />
-                  <FontNum>2</FontNum>
+                  <FontNum>{customerEmployee.summary.resign}</FontNum>
                 </TextNav>
               </Navmanage>
             </div>
@@ -157,13 +144,13 @@ class manageEmployee extends Component {
           </div>
           <Divider />
           <div className="row">
-            <div className="large-2 columns">
+            <div className="large-1 columns">
               <TextIn>รหัสพนักงาน <Icon name="sort descending" /></TextIn>
             </div>
             <div className="large-2 columns">
               <TextIn>ชื่อ-นามสกุล <Icon name="sort descending" /></TextIn>
             </div>
-            <div className="large-1 columns">
+            <div className="large-2 columns">
               <TextIn>เลขสมาชิก <Icon name="sort descending" /></TextIn>
             </div>
             <div className="large-2 columns">
@@ -179,7 +166,7 @@ class manageEmployee extends Component {
               <TextIn>option <Icon name="sort descending" /></TextIn>
             </div>
           </div>
-          {customerEmployee.employees.length > 0
+          {customerEmployee
           ? this.renderElement(customerEmployee.employees)
           : null
           }
@@ -188,20 +175,12 @@ class manageEmployee extends Component {
               <Head>แผนประกันภัย</Head>
               <Divider />
               <div className="quotation-body-show-mp-box">
-                <div className="quotation-body-show-mp-box">
-                  {/* <div className="large-2 columns">
-                    <TextIn>แผนประกันภัยทั้งหมดที่บริษัทนี้กำลังใช้งาน</TextIn>
-                  <div/>
-                    <div className="large-10 columns">
-                      <TextIn>เลขกรมธรรม์</TextIn>
-                    <div/> */}
-                  {customerSelectPlan.length > 0
-                    ? this.ShowPlan(customerSelectPlan)
-                    : <div className="quotation-mp-edit-noplan">
-                      ยังไม่มีแพลนเพิ่มเติม
-                      </div>
-                    }
-                </div>
+                {customerSelectPlan.length > 0
+                  ? this.ShowPlan(customerSelectPlan)
+                  : <div className="quotation-mp-edit-noplan">
+                    ยังไม่มีแพลนเพิ่มเติม
+                    </div>
+                  }
               </div>
             </div>
           </div>

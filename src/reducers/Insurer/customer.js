@@ -5,7 +5,7 @@ const defaultCustomer = {
   customer: [],
   customerPlan: { master: [], insurer: [] },
   customerSelectPlan: [],
-  customerEmployee: [],
+  customerEmployee: { employees: [], summary: null },
 };
 
 /**

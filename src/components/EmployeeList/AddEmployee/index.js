@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Icon } from 'semantic-ui-react';
+// import { Icon } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import Head from '../../Head';
 import { Detail, Text } from './styled';
@@ -30,9 +30,9 @@ class AddEmployee extends Component {
     const { dataDetail } = this.props;
     let data;
     let dataIndex = props.match.params.index;
-    console.log('dataDEtailll->', dataDetail);
     if (dataIndex === 'new') {
       data = {
+        profilePic: '',
         prefix: '',
         name: '',
         lastname: '',
@@ -62,6 +62,8 @@ class AddEmployee extends Component {
     } else {
       dataIndex = parseInt(props.match.params.index, 10);
       data = {
+        profilePic: dataDetail[dataIndex].detail.profilePic.link,
+        imagePreviewUrl: dataDetail[dataIndex].detail.profilePic,
         prefix: dataDetail[dataIndex].detail.prefix,
         name: dataDetail[dataIndex].detail.name,
         lastname: dataDetail[dataIndex].detail.lastname,
@@ -101,8 +103,8 @@ class AddEmployee extends Component {
       ],
       optionDepartment: [],
       optionTitles: [],
-      profilePic: '',
-      imagePreviewUrl: '',
+      profilePic: data.profilePic,
+      imagePreviewUrl: data.imagePreviewUrl,
       prefix: data.prefix,
       name: data.name,
       lastname: data.lastname,
@@ -365,7 +367,7 @@ class AddEmployee extends Component {
               onClick={this.handleClaim}
               last
             >ประวัติการเคลม</Text>
-            <Icon name="write" />แก้ไข
+            {/* <Icon name="write" />แก้ไข */}
           </div>
           {isGeneral
           ? <General

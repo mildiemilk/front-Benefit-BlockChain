@@ -76,7 +76,7 @@ class General extends Component {
       <div className="setting-profile">
         <div className="thumbnail addEmployee">
           {data.imagePreviewUrl
-          ? <img src={data.imagePreviewUrl} alt="imageCompany" />
+          ? <img src={data.imagePreviewUrl.link} alt="imageCompany" />
           : <DefaultImg />
           }
           <Upload className={this.styleUpload()} for="buttonImg">

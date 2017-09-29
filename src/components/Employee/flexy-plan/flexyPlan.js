@@ -38,7 +38,7 @@ class FlexyPlan extends Component {
 
   render() {
     const settings = {
-      customPaging: i => <span>เลือกแผนที่ {i + 1}</span>,
+      customPaging: i => <span>แผนที่ {i + 1}</span>,
       dots: true,
       slidesToShow: 1,
       slidesToScroll: 1,

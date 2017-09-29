@@ -35,7 +35,7 @@ class DashboardStart extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { data } = nextProps;
-    const timeout = data.allBenefit[0].timeout;
+    const timeout = data.allBenefit[0].effectiveDate;
     const getDate = new Date(timeout);
     const date = getDate.getDate();
     const month = getDate.getMonth();

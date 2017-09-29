@@ -67,7 +67,10 @@ class Details extends Component {
                 </div>
               </div>
               <div className="row">
-                <Plan planList={bid.detail.plan.master} color="#d8d8d8" />
+                {bid.detail.plan.master.length > 0
+                ? <Plan planList={bid.detail.plan.master} color="#d8d8d8" />
+                : <div />
+                }
               </div>
             </InSide>
             <InSide>
@@ -79,7 +82,10 @@ class Details extends Component {
                 </div>
               </div>
               <div className="row">
-                <Plan planList={bid.detail.plan.insurer} color="#c0ccda" />
+                {bid.detail.plan.insurer.length > 0
+                ? <Plan planList={bid.detail.plan.insurer} color="#c0ccda" />
+                : <div />
+                }
               </div>
             </InSide>
           </BoxDetail>

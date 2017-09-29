@@ -16,6 +16,7 @@ const defaultPlan = {
 
 const defaultBenefitPlan = {
   plan: [],
+  summaryBenefitPlan: [],
   timeout: null,
 };
 
@@ -39,7 +40,8 @@ const SETBENEFITPLAN_REQUEST_SUCCESS = 'SETBENEFITPLAN_REQUEST_SUCCESS';
 const SETBENEFITPLAN_REQUEST_FAILURE = 'SETBENEFITPLAN_REQUEST_FAILURE';
 const SETTIMEOUT_REQUEST_SUCCESS = 'SETTIMEOUT_REQUEST_SUCCESS';
 const SETTIMEOUT_REQUEST_FAILURE = 'SETTIMEOUT_REQUEST_FAILURE';
-
+const GETSUMMARYBENEFITPLAN_REQUEST_SUCCESS = 'GETSUMMARYBENEFITPLAN_REQUEST_SUCCESS';
+const GETSUMMARYBENEFITPLAN_REQUEST_FAILURE = 'GETSUMMARYBENEFITPLAN_REQUEST_FAILURE';
 /**
  * Actions
  */
@@ -102,7 +104,12 @@ export function getInsurancePlanSuccess(data) {
 export function getInsurancePlanFailure(data) {
   return { type: GETINSURANCEPLAN_REQUEST_FAILURE, data };
 }
-
+export function getSummaryBenefitPlanSuccess(data) {
+  return { type: GETSUMMARYBENEFITPLAN_REQUEST_SUCCESS, data };
+}
+export function getSummaryBenefitPlanFailure(data) {
+  return { type: GETSUMMARYBENEFITPLAN_REQUEST_FAILURE, data };
+}
 /**
  * Reducer
  */
@@ -160,6 +167,12 @@ export function benefitPlan(state = defaultBenefitPlan, action) {
         plan: action.data,
       });
     case SETBENEFITPLAN_REQUEST_FAILURE:
+      return state;
+    case GETSUMMARYBENEFITPLAN_REQUEST_SUCCESS:
+      return Object.assign({}, state, {
+        summaryBenefitPlan: action.data,
+      });
+    case GETSUMMARYBENEFITPLAN_REQUEST_FAILURE:
       return state;
     case SETTIMEOUT_REQUEST_SUCCESS:
       return Object.assign({}, state, {

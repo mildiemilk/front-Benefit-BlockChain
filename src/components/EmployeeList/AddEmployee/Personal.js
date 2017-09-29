@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { PersonalDiv, TextProfile, InputBox, HeadProfile, AddDetail } from './styled';
 import InputDate from '../../InputDate';
 
@@ -24,6 +25,11 @@ const prefix = [
 ];
 
 class Personal extends Component {
+  static propTypes = {
+    data: PropTypes.shape({}).isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -70,26 +76,42 @@ class Personal extends Component {
   }
 
   render() {
+    const { data } = this.props
     return (
       <PersonalDiv>
         <div className="row">
           <div className="large-6 columns">
             <TextProfile>ที่อยู่ปัจจุบัน</TextProfile>
-            <InputBox />
+            <InputBox
+              name="address"
+              required
+              onChange={this.props.handleInputChange} value={data.address}
+            />
           </div>
           <div className="large-6 columns">
             <TextProfile>E-mail ส่วนตัว</TextProfile>
-            <InputBox />
+            <InputBox
+              name="personalEmail"
+              required
+              onChange={this.props.handleInputChange} value={data.personalEmail}
+            />
           </div>
         </div>
         <div className="row">
           <div className="large-6 columns">
             <TextProfile>สถานภาพสมรส</TextProfile>
-            <Dropdowns placeholder="คำนำหน้า" options={status} compact selection />
+            <Dropdowns
+              placeholder="สถานะ" options={status} compact selection
+              onChange={this.props.handleChange} name="marriageStatus"
+            />
           </div>
           <div className="large-6 columns">
             <TextProfile>เบอร์โทรศัพท์ส่วนตัว</TextProfile>
-            <InputBox />
+            <InputBox
+              name="phoneNumber"
+              required
+              onChange={this.props.handleInputChange} value={data.phoneNumber}
+            />
           </div>
         </div>
         <HeadProfile>สมาชิกในครอบครัว</HeadProfile>

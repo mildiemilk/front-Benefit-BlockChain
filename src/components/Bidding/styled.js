@@ -70,7 +70,6 @@ export const InSide = styled.div`
   margin-left: 40px;
 `;
 export const TextSide = styled.div`
-  padding-left: 16%;
   text-align: center;
   font-size: 16px;
 `;

@@ -12,6 +12,8 @@ import {
   getBenefitPlanFailure,
   setTimeoutSuccess,
   setTimeoutFailure,
+  getSummaryBenefitPlanSuccess,
+  getSummaryBenefitPlanFailure,
 } from '../reducers/benefit-plan';
 
 const GETINSURANCE_PLAN_URI = '/api/company/get-insurance-plan';
@@ -22,6 +24,7 @@ const GETBENEFIT_PLAN_URI = '/api/company/get-benefit-plan';
 const SETBENEFIT_PLAN_URI = '/api/company/set-benefit-plan';
 const SETTIMEOUT_PLAN_URI = '/api/company/set-timeout';
 const DELETE_PLAN_URI = '/api/company/delete-benefit-plan';
+const GET_SUMMARY_BENEFIT_PLAN_URI = 'api/company/summary-benefit-plan';
 
 export function choosePlan(plan) {
   return dispatch => {
@@ -156,5 +159,22 @@ export function setTimeout(timeout) {
     .catch(err => {
       dispatch(setTimeoutFailure(err.response.data));
     });
+  };
+}
+
+export function getSummaryBenefitPlan() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_SUMMARY_BENEFIT_PLAN_URI,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getSummaryBenefitPlanSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getSummaryBenefitPlanFailure(err));
+      });
   };
 }

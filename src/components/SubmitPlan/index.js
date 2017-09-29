@@ -14,8 +14,8 @@ class SubmitPlan extends Component {
   static propTypes = {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     getAllPlan: PropTypes.func.isRequired,
-    copyPlan: PropTypes.func.isRequired,
-    deletePlan: PropTypes.func.isRequired,
+    // copyPlan: PropTypes.func.isRequired,
+    // deletePlan: PropTypes.func.isRequired,
     havePlan: PropTypes.bool.isRequired,
     match: PropTypes.shape({ params: PropTypes.index }),
   }
@@ -200,11 +200,11 @@ class SubmitPlan extends Component {
 
   handleCopy = e => {
     this.handlePlan(e.target.id);
-    this.props.copyPlan(this.props.planList[e.target.id].planId);
+    copyPlan([this.props.planList[e.target.id].planId]);
   }
 
   handleDelete = e => {
-    this.props.deletePlan(this.props.planList[e.target.id].planId);
+    deletePlan([this.props.planList[e.target.id].planId]);
     this.setState({ activePlan: -1 });
   }
 
@@ -540,8 +540,6 @@ SubmitPlan.propTypes = {};
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
-  deletePlan: planId => dispatch(deletePlan(planId)),
-  copyPlan: planId => dispatch(copyPlan(planId)),
 });
 
 const mapStateToProps = state => ({

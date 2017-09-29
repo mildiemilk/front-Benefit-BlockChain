@@ -9,9 +9,11 @@ class GenaralExpense extends Component {
   static propTypes = {
     handleClickBack: PropTypes.func.isRequired,
     plan: PropTypes.number.isRequired,
+    data: PropTypes.shape({}).isRequired,
+    timeUp: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modal: false,
     };
@@ -25,17 +27,23 @@ class GenaralExpense extends Component {
     this.setState({ modal: false });
   }
 
+  handleShowSelectPlan = () => {
+    const { data, timeUp, plan } = this.props;
+    if (!timeUp) {
+      if (data.group.type !== 'fixed') {
+        return <span className="insurance-plan">( แผนที่ {plan + 1} )</span>;
+      }
+    }
+    return <span />;
+  }
+
   render() {
     const { plan } = this.props;
     const alt = plan + 1;
     return (
       <div>
         <span className="xten-header">การใช้จ่ายทั่วไป</span>
-        {
-          (plan + 1) ?
-            <span className="insurance-plan">( แผนที่ {plan + 1} )</span>
-            : <span />
-        }
+        { this.handleShowSelectPlan() }
         <div className="xten-box">
           <div className="xten-box-header">
             <img

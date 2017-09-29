@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import {
   Segment,
@@ -82,7 +82,7 @@ class SettingProfile extends Component {
   static propTypes = {
     profile: PropTypes.shape({}).isRequired,
     createProfile: PropTypes.func.isRequired,
-    // setLogo: PropTypes.func.isRequired,
+    setLogo: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -152,13 +152,13 @@ class SettingProfile extends Component {
     });
   }
   render() {
-    const { profile: { error, message } } = this.props;
-    // if (companyName) {
-    //   if (logo) {
-    //     return <Redirect to={{ pathname: '/confirm_identity' }} />;
-    //   }
-    //   this.props.setLogo(this.state.file);
-    // }
+    const { profile: { error, message, companyName, logo } } = this.props;
+    if (companyName) {
+      if (logo) {
+        return <Redirect to={{ pathname: '/confirm_identity' }} />;
+      }
+      this.props.setLogo(this.state.file);
+    }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {

@@ -11,13 +11,13 @@ class HeadLayoutMobile extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
+    const check = window.location.pathname;
     return (
       <div>
         <MediaQuery query="(max-width: 767px)">
@@ -34,11 +34,19 @@ class HeadLayoutMobile extends Component {
         </MediaQuery>
         <MediaQuery query="(min-width: 768px)">
           <div>
-            <HeaderDesktop />
+            {
+              check !== '/employeeverify'
+              ? <HeaderDesktop />
+              : <div />
+            }
             <div>
               <div className="row">
                 <div className="large-2 columns">
-                  <SidebarDesktop />
+                  {
+                    check !== '/employeeverify'
+                    ? <SidebarDesktop />
+                    : <div />
+                  }
                 </div>
                 <div className="large-10 columns">
                   <div className="row" style={{ marginTop: 75 }}>

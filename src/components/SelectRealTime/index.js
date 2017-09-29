@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Progress, Icon } from 'semantic-ui-react';
 import Nav from './Nav';
-import { getBenefitPlan } from '../../api/benefit-plan';
+import { getBenefitPlan, getSummaryBenefitPlan } from '../../api/benefit-plan';
 import { getSummaryEmployee, getSummaryGroup } from '../../api/profile-company';
 import {
   DetailDiv,
@@ -39,11 +39,13 @@ const ProgressStyle = styled(Progress) `
 class SelectRealTime extends Component {
   static propTypes = {
     getBenefitPlan: PropTypes.func.isRequired,
+    getSummaryBenefitPlan: PropTypes.func.isRequired,
     getSummaryEmployee: PropTypes.func.isRequired,
     getSummaryGroup: PropTypes.func.isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     summaryEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
     summaryGroup: PropTypes.shape({}).isRequired,
+    summaryBenefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -51,6 +53,7 @@ class SelectRealTime extends Component {
       isPlan: true,
       timeout: false,
     };
+    props.getSummaryBenefitPlan();
   }
   componentDidMount() {
     this.props.getBenefitPlan();
@@ -69,6 +72,12 @@ class SelectRealTime extends Component {
       });
     }
   }
+  handleBar = number => {
+    if (number === 0) {
+      return 'none';
+    }
+    return 'yellow';
+  }
   notiTimeout = () => {
     this.setState({
       timeout: true,
@@ -76,6 +85,7 @@ class SelectRealTime extends Component {
   }
   renderDetailPlan = allPlan => {
     console.log('allplan---<before', allPlan);
+    // const { summaryBenefitPlan } = this.props;
     if (allPlan !== undefined && allPlan.plan.length >= 1) {
       console.log('allplan===>', allPlan);
       const result = allPlan.plan.map((plan, index) => (
@@ -88,8 +98,10 @@ class SelectRealTime extends Component {
               : null
               }
             </div>
-            <div className="large-7 columns">
-              <ProgressStyle percent={allPlan.confirm[index]} color="yellow" />
+            <div className="large-7 columns Bar">
+              <ProgressStyle
+                percent={allPlan.confirm[index]} className={this.handleBar(allPlan.confirm[index])}
+              />
               <Number>
                 {allPlan.confirm[index]} คน
                 </Number>
@@ -142,7 +154,7 @@ class SelectRealTime extends Component {
     return '';
   }
   render() {
-    const { benefitPlan, summaryGroup } = this.props;
+    const { benefitPlan, summaryGroup, summaryBenefitPlan } = this.props;
     console.log('Propsss==>', this.props);
     return (
       <div className="SelectRealTime">
@@ -151,6 +163,7 @@ class SelectRealTime extends Component {
           timeout={benefitPlan[0].timeout}
           summaryGroup={summaryGroup}
           notiTimeout={this.notiTimeout}
+          summaryBenefitPlan={summaryBenefitPlan}
         />
         : <div />
         }
@@ -179,11 +192,13 @@ const mapDispatchToProps = dispatch => ({
   getBenefitPlan: () => dispatch(getBenefitPlan()),
   getSummaryEmployee: () => dispatch(getSummaryEmployee()),
   getSummaryGroup: () => dispatch(getSummaryGroup()),
+  getSummaryBenefitPlan: () => dispatch(getSummaryBenefitPlan()),
 });
 const mapStateToProps = state => ({
   benefitPlan: state.benefitPlan.plan,
   summaryEmployee: state.profile.summaryEmployee,
   summaryGroup: state.profile.summaryGroup,
+  summaryBenefitPlan: state.benefitPlan.summaryBenefitPlan,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectRealTime);

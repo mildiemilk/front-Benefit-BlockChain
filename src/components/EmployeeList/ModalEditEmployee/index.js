@@ -61,6 +61,7 @@ class ModalEditEmployee extends Component {
     optionBenefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     manageEmployee: PropTypes.func.isRequired,
     checkStateManage: PropTypes.func.isRequired,
+    employeeId: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
@@ -97,14 +98,24 @@ class ModalEditEmployee extends Component {
     const {
       isPromotion, typeEmployee, department, title, groupBenefit, plan, reason, effective,
     } = this.state;
+    const {
+      employeeId,
+    } = this.props;
     let status;
     let detail;
     if (isPromotion) {
       status = 'promote';
-      detail = { typeEmployee, department, title, groupBenefit, plan };
+      detail = {
+        typeOfEmployee: typeEmployee,
+        department,
+        title,
+        benefitGroup: groupBenefit,
+        benefitPlan: plan,
+        employeeId,
+        effectiveDate: effective };
     } else {
       status = 'resign';
-      detail = { reason, effective };
+      detail = { reason, effectiveDate: effective, employeeId };
     }
     this.props.manageEmployee(detail, status)
     .then(() => {
@@ -126,6 +137,9 @@ class ModalEditEmployee extends Component {
     this.setState({ effective }, () => console.log('set date', this.state.effective));
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleInputChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  }
   stylePopupExit = () => {
     if (this.state.isExit) {
       return 'active';
@@ -139,6 +153,7 @@ class ModalEditEmployee extends Component {
     return '';
   }
   render() {
+    console.log('state', this.props.employeeId);
     const { isExit } = this.state;
     const { optionGroupBenefit, optionDepartment,
       optionTitles, optionTypeEmployee, optionBenefitPlan } = this.props;
@@ -186,7 +201,7 @@ class ModalEditEmployee extends Component {
                   <TextDetail>สาเหตุที่ลาออก :</TextDetail>
                   <Input
                     value={this.state.reason}
-                    onChange={this.handleChange}
+                    onChange={this.handleInputChange}
                     name="reason"
                   />
                 </div>
@@ -214,7 +229,7 @@ class ModalEditEmployee extends Component {
                     <TextDetail>ประเภทของพนักงาน :</TextDetail>
                     <Dropdowns
                       placeholder="TypeEmployee" options={optionTypeEmployee} compact selection
-                      onChange={this.handleChange} name="typeEmployee"
+                      onChange={this.handleChange} name="typeEmployee" value={this.state.typeEmployee}
                     />
                   </div>
                   <div className="large-6 columns">
@@ -222,7 +237,7 @@ class ModalEditEmployee extends Component {
                     <div className="input-date">
                       <Dropdowns
                         placeholder="department" options={optionDepartment} compact selection
-                        onChange={this.handleChange} name="department"
+                        onChange={this.handleChange} name="department" value={this.state.department}
                       />
                     </div>
                   </div>
@@ -230,13 +245,16 @@ class ModalEditEmployee extends Component {
                 <div className="row">
                   <div className="large-6 columns">
                     <TextDetail>ตำแหน่ง :</TextDetail>
-                    <Dropdowns placeholder="title" options={optionTitles} compact selection />
+                    <Dropdowns
+                      placeholder="title" options={optionTitles} compact selection
+                      onChange={this.handleChange} name="title" value={this.state.title}
+                    />
                   </div>
                   <div className="large-6 columns">
                     <TextDetail>กลุ่มสิทธิประโยชน์ :</TextDetail>
                     <Dropdowns
                       placeholder="groupbenefits" options={optionGroupBenefit} compact selection
-                      name="groupBenefit" onChange={this.handleChange}
+                      name="groupBenefit" onChange={this.handleChange} value={this.state.groupBenefit}
                     />
                   </div>
                 </div>
@@ -249,7 +267,6 @@ class ModalEditEmployee extends Component {
                         onChange={this.handleEffective}
                         minDate={moment()}
                         fixedHeight
-                        dateFormat="DD/MM/YYYY"
                         locale="th"
                         showYearDropdown
                         dateFormatCalendar="MMMM"
@@ -263,7 +280,7 @@ class ModalEditEmployee extends Component {
                     <div className="input-date">
                       <Dropdowns
                         placeholder="benefitPlan" options={optionBenefitPlan} compact selection
-                        name="benefitPlan" onChange={this.handleChange}
+                        name="plan" onChange={this.handleChange} value={this.state.plan}
                       />
                     </div>
                   </div>

@@ -335,7 +335,7 @@ class employeeList extends Component {
                 {element.detail.effectiveDate === '-'
                 ? element.detail.effectiveDate
                 : moment(element.detail.effectiveDate)
-                .format('DD MMMM YYYY')
+                .format('L')
                 }
               </div>
             </div>
@@ -353,8 +353,9 @@ class employeeList extends Component {
                       optionTitles={this.state.optionTitles}
                       optionTypeEmployee={this.state.optionTypeEmployee}
                       manageEmployee={manageEmployee}
-                      checkStatePromote={this.checkStatePromote}
+                      checkStateManage={this.checkStateManage}
                       optionBenefitPlan={this.state.optionBenefitPlan}
+                      employeeId={element._id}
                     />
                   : <div />
                   }

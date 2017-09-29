@@ -13,6 +13,9 @@ import {
   PlanTopic,
   ToggleBox,
 } from './styled';
+import insurance from '../../../assets/setbenefit/3.png';
+import general from '../../../assets/setbenefit/4.png';
+import imgHealth from '../../../assets/setbenefit/5.png';
 
 const Selects = styled(Select) `
     &&&{
@@ -124,7 +127,7 @@ class SettingPlan extends Component {
                 กรุณาระบุสิทธิประโยชน์ที่ต้องการ
               </PlanContent>
               <PlanBox>
-                <PlanImg src="../../../setbenefit/3.png" />
+                <PlanImg src={insurance} />
                 <PlanTopic>
                   แผนประกันภัย (Insurance)
                 </PlanTopic>
@@ -141,7 +144,7 @@ class SettingPlan extends Component {
 
               { showHealth
                 ? <PlanBox>
-                  <PlanImg src="../../../setbenefit/5.png" />
+                  <PlanImg src={imgHealth} />
                   <PlanTopic>
                     ค่าใช้จ่ายสุขภาพ (Health)
                   </PlanTopic>
@@ -178,7 +181,7 @@ class SettingPlan extends Component {
 
               { showExpense
                 ? <PlanBox>
-                  <PlanImg src="../../../setbenefit/4.png" />
+                  <PlanImg src={general} />
                   <PlanTopic>
                     ค่าใช้จ่ายทั่วไป (General Expense)
                     </PlanTopic>

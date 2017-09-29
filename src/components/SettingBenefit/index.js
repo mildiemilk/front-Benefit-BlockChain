@@ -19,6 +19,7 @@ import {
 import NavBenefit from '../NavBenefit';
 import SettingPlan from './setting-plan';
 import AddPlanBar from './add-planbar';
+import noPlan from '../../../assets/setbenefit/icons-8-form.png';
 import {
   getTemplatePlan,
   getBenefitPlan,
@@ -295,7 +296,7 @@ class SettingBenefit extends Component {
                     handleSave={''}
                   />
                   : <Blog>
-                    <BlogImg src="../../../setbenefit/icons-8-form.png" />
+                    <BlogImg src={noPlan} />
                     <BlogContent>
                       {' '}ยังไม่มีการสร้างแผนสิทธิประโยชน์{' '}
                     </BlogContent>

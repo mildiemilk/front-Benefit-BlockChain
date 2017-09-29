@@ -9,6 +9,7 @@ import {
   employeeDetail,
   getFileEmployee,
   deleteEmployee,
+  summaryInsurancePlan,
 } from './profile-company';
 import {
   chooseInsurer,
@@ -71,4 +72,5 @@ export default {
   getGroupBenefit,
   getFileEmployee,
   deleteEmployee,
+  summaryInsurancePlan,
 };

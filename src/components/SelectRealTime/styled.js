@@ -8,7 +8,7 @@ export const Head = styled.div`
 
 export const Box = styled.div`
   width: 100%;
-  height: 250px;
+  height: 260px;
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 0 4px 0 rgba(124, 123, 123, 0.5);

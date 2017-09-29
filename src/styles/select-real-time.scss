@@ -26,5 +26,10 @@
         border-radius: 100px;
         height: 15px;
     }
+    .Bar {
+        .none .bar{
+            background: none;
+        }
+    }
     
 }

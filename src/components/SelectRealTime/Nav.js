@@ -18,6 +18,7 @@ class NavSelectRealTime extends Component {
   static propTypes = {
     timeout: PropTypes.string.isRequired,
     summaryGroup: PropTypes.arrayOf(PropTypes.object).isRequired,
+    summaryBenefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
     notiTimeout: PropTypes.func.isRequired,
   }
   constructor(props) {
@@ -25,7 +26,7 @@ class NavSelectRealTime extends Component {
     this.state = {};
   }
   render() {
-    console.log('Nav', this.props.timeout);
+    console.log('Nav', this.props);
     return (
       <div>
         <div className="row">
@@ -41,7 +42,7 @@ class NavSelectRealTime extends Component {
             />
           </div>
           <div className="large-4 columns">
-            <PlanChart />
+            <PlanChart summaryBenefitPlan={this.props.summaryBenefitPlan} />
           </div>
           <div className="large-4 columns">
             <Box>

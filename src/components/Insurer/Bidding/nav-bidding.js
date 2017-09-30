@@ -51,7 +51,7 @@ class Bidding extends Component {
               <TextNav>
                 <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime><br />
                 <FontNumAucTime>{
-                (minPrice === '')
+                (minPrice !== '')
                 ? minPrice
                 : '0'
               }</FontNumAucTime>

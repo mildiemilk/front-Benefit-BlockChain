@@ -17,6 +17,7 @@ class ShowMasterPlan extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
     handleUpdateBiding: PropTypes.func.isRequired,
+    end: PropTypes.bool.isRequired,
   }
   constructor(props) {
     super(props);
@@ -396,6 +397,7 @@ class ShowMasterPlan extends Component {
             ? <JoinBid
               handleOnpenModal={this.handleOnpenModal}
               handleChangeStateQuotation={this.handleChangeStateQuotation}
+              end={this.props.end}
             />
             : <div />
           }

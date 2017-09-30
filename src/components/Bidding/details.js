@@ -93,7 +93,7 @@ class Details extends Component {
         </div>
       );
     }
-    return <div>lkl</div>;
+    return null;
   }
 }
 

@@ -357,7 +357,7 @@ export default {
 
 export function addEmployee(profile, file) {
   const formData = new FormData();
-  formData.append('file', file)
+  formData.append('file', file);
   formData.append('detail', JSON.stringify(profile));
   const options = {
     method: 'post',

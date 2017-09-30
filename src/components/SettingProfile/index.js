@@ -19,12 +19,26 @@ import {
   Detail3,
   DefaultImg,
 } from './styled';
-// import InputDate from '../InputDate';
+// import BusinessTypes from './OptionType';
+const BusinessTypes = [
+  {
+    text: 'ประเภท 1',
+    value: 'Type 1',
+  },
+  {
+    text: 'ประเภท 2',
+    value: 'Type 2',
+  },
+  {
+    text: 'ประเภท 3',
+    value: 'Type 3',
+  },
+];
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
     height: 100%;
-    min-height: 678px;
+    min-height: 611px;
     box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
   }
 `;
@@ -48,35 +62,6 @@ const NextButton = styled.button`
     text-align:center;
     padding: 0.5%;
     `;
-
-const BusinessTypes = [
-  {
-    text: 'ประเภท 1',
-    value: 'Type 1',
-  },
-  {
-    text: 'ประเภท 2',
-    value: 'Type 2',
-  },
-  {
-    text: 'ประเภท 3',
-    value: 'Type 3',
-  },
-];
-const NumberOfEmployees = [
-  {
-    text: '1-50',
-    value: '50',
-  },
-  {
-    text: '51-100',
-    value: '100',
-  },
-  {
-    text: '101-150',
-    value: '150',
-  },
-];
 
 class SettingProfile extends Component {
   static propTypes = {
@@ -125,6 +110,7 @@ class SettingProfile extends Component {
       location: { value: location },
       hrDetail: { value: hrDetail },
       tel: { value: tel },
+      numberOfEmployees: { value: numberOfEmployees },
       // companyInsurer: { value: companyInsurer },
     } = e.target;
     this.setState({
@@ -132,9 +118,10 @@ class SettingProfile extends Component {
       location,
       hrDetail,
       tel,
+      numberOfEmployees,
       // companyInsurer,
     });
-    const { typeOfBusiness, numberOfEmployees, expiredInsurance } = this.state;
+    const { typeOfBusiness, expiredInsurance } = this.state;
     this.props.createProfile({
       companyName,
       location,
@@ -148,8 +135,9 @@ class SettingProfile extends Component {
   }
   render() {
     const { profile: { error, message, companyName, logo } } = this.props;
-    if (companyName) {
-      if (logo) {
+    console.log('company', companyName, 'logo', logo);
+    if (companyName !== null && companyName !== 'null') {
+      if (logo !== null && logo !== 'null') {
         return <Redirect to={{ pathname: '/confirm_identity' }} />;
       }
       this.props.setLogo(this.state.file);
@@ -223,7 +211,6 @@ class SettingProfile extends Component {
                   name="tel"
                   size="big"
                   placeholder="เบอร์โทร"
-                  type="number"
                 />
                 <Detail3>
                   ประเภทธุรกิจ
@@ -240,30 +227,28 @@ class SettingProfile extends Component {
                 <Detail3>
                   จำนวนพนักงาน
                 </Detail3>
-                <Dropdown
+                <Box
                   placeholder="จำนวนพนักงาน"
-                  onChange={(n, data) =>
-                    this.onInputChange(data.value, 'numberOfEmployees')}
                   name="numberOfEmployees"
-                  fluid
-                  selection
-                  options={NumberOfEmployees}
+                  type="number"
                 />
                 <Detail3>
                   วันหมดอายุกรมธรรม์
                 </Detail3>
-                <DatePickers
-                  selected={this.state.expiredInsurance}
-                  onChange={this.handleExpiredDate}
-                  minDate={moment()}
-                  fixedHeight
-                  dateFormat="DD/MM/YYYY"
-                  locale="th"
-                  showYearDropdown
-                  dateFormatCalendar="MMMM"
-                  scrollableYearDropdown
-                  yearDropdownItemNumber={8}
-                />
+                <div className="input-date">
+                  <DatePickers
+                    selected={this.state.expiredInsurance}
+                    onChange={this.handleExpiredDate}
+                    minDate={moment()}
+                    fixedHeight
+                    dateFormat="DD/MM/YYYY"
+                    locale="th"
+                    showYearDropdown
+                    dateFormatCalendar="MMMM"
+                    scrollableYearDropdown
+                    yearDropdownItemNumber={8}
+                  />
+                </div>
                 <Detail3>
                   บริษัทประกันที่ใช้ในปัจจุบัน
                 </Detail3>

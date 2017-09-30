@@ -30,6 +30,7 @@ class Details extends Component {
 
   render() {
     const { bid, list, index } = this.props;
+    console.log('biddd', bid.detail.plan);
     if (bid.detail.plan) {
       return (
         <div className="Bidding">
@@ -92,7 +93,7 @@ class Details extends Component {
         </div>
       );
     }
-    return null;
+    return <div>lkl</div>;
   }
 }
 

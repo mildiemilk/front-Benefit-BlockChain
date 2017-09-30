@@ -68,12 +68,15 @@ class General extends Component {
   render() {
     const { data } = this.props;
     // const { imagePreviewUrl } = this.props;
+    console.log('propData', data);
+    console.log('propss', this.props);
+    // console.log('--data--', data[dataIndex]);
     let $imagePreview = null;
     $imagePreview = (
       <div className="setting-profile">
         <div className="thumbnail addEmployee">
           {data.imagePreviewUrl
-          ? <img src={data.imagePreviewUrl} alt="imageCompany" />
+          ? <img src={data.imagePreviewUrl.link} alt="imageCompany" />
           : <DefaultImg />
           }
           <Upload className={this.styleUpload()} for="buttonImg">
@@ -127,16 +130,16 @@ class General extends Component {
                   <TextProfile>เพศ</TextProfile>
                   <div className="large-6 columns">
                     <InputForm
-                      type="radio" value="male"
+                      type="radio" value="ชาย"
                       onClick={this.props.handleOptionGender}
-                      checked={data.gender === 'male'}
+                      checked={data.gender === 'ชาย'}
                     /> ชาย
                   </div>
                   <div className="large-6 columns">
                     <InputForm
-                      type="radio" value="female"
+                      type="radio" value="ผู้หญิง"
                       onClick={this.props.handleOptionGender}
-                      checked={data.gender === 'female'}
+                      checked={data.gender === 'ผู้หญิง'}
                     /> หญิง
                   </div>
                 </div>
@@ -146,7 +149,8 @@ class General extends Component {
                   <TextProfile>เลขบัตรประชาชน/หนังสือเดินทาง</TextProfile>
                   <InputBox
                     name="citizenId"
-                    onChange={this.props.handleInputChange} value={data.citizenId}
+                    onChange={this.props.handleInputChange}
+                    value={data.citizenId}
                     required
                   />
                 </div>
@@ -154,7 +158,8 @@ class General extends Component {
                   <TextProfile>สัญชาติ</TextProfile>
                   <InputBox
                     name="nationality"
-                    onChange={this.props.handleInputChange} value={data.nationality}
+                    onChange={this.props.handleInputChange}
+                    value={data.nationality}
                     required
                   />
                 </div>
@@ -216,7 +221,8 @@ class General extends Component {
                   <InputBox
                     name="benefitPlan"
                     required
-                    onChange={this.props.handleInputChange} value={data.benefitPlan}
+                    onChange={this.props.handleInputChange}
+                    value={data.benefitPlan}
                   />
                 </div>
               </div>
@@ -262,7 +268,8 @@ class General extends Component {
                   <InputBox
                     name="accountNumber"
                     required
-                    onChange={this.props.handleInputChange} value={data.accountNumber}
+                    onChange={this.props.handleInputChange}
+                    value={data.accountNumber}
                   />
                 </div>
                 <div className="large-6 columns">
@@ -270,7 +277,8 @@ class General extends Component {
                   <InputBox
                     name="bankName"
                     required
-                    onChange={this.props.handleInputChange} value={data.bankName}
+                    onChange={this.props.handleInputChange}
+                    value={data.bankName}
                   />
                 </div>
               </div>

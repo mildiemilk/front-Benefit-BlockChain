@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Head from '../Head';
 import ModalEditEmployee from './ModalEditEmployee';
-import { getGroupBenefit, deleteEmployee, employeeDetail, manageEmployee } from '../../api/profile-company';
+import { getGroupBenefit, deleteEmployee, employeeDetail, manageEmployee, getSummaryTotalEmployee } from '../../api/profile-company';
 import { getBenefitPlan } from '../../api/benefit-plan';
 import { Box, Pic, TextNav, Number } from '../StyleComponent';
 import { ListPopup, DivFloat, DivImg, TextList, DivHead, TextElip, StatusTag } from './styled';
@@ -32,6 +32,8 @@ class employeeList extends Component {
     getGroupBenefit: PropTypes.func.isRequired,
     getBenefitPlan: PropTypes.func.isRequired,
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    totalEmployee: PropTypes.shape({}).isRequired,
+    getSummaryTotalEmployee: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -56,6 +58,7 @@ class employeeList extends Component {
     props.employeeDetail();
     props.getBenefitPlan();
     props.getGroupBenefit();
+    props.getSummaryTotalEmployee();
   }
   // componentWillMount() {
   //   console.log('>>>willMount');
@@ -282,7 +285,7 @@ class employeeList extends Component {
       (data, index) =>
         index >= this.state.minList && index <= this.state.maxList,
     );
-    showData = showData.map(element => {
+    showData = showData.map((element, index) => {
       let tag;
       if (element.detail.status === 'พนักงาน') {
         tag = <StatusTag color="#5fb34f">{element.detail.status}</StatusTag>;
@@ -342,7 +345,9 @@ class employeeList extends Component {
             <div className="large-6 columns">
               <div className="list-box-in-list">
                 <div className="edit-employee-list">
-                  <Icon name="search" />
+                  <Link to={`/addemployee/${index}`}>
+                    <Icon name="search" />
+                  </Link>
                 </div>
                 <div className="edit-employee-list">
                   {
@@ -356,6 +361,7 @@ class employeeList extends Component {
                       checkStateManage={this.checkStateManage}
                       optionBenefitPlan={this.state.optionBenefitPlan}
                       employeeId={element._id}
+                      log={element.log}
                     />
                   : <div />
                   }
@@ -384,6 +390,8 @@ class employeeList extends Component {
     return allGroup;
   }
   render() {
+    const { data, totalEmployee } = this.props;
+    console.log('summary', totalEmployee);
     return (
       <div className="employee-list">
         <Head content="รายชื่อพนักงาน" />
@@ -392,28 +400,45 @@ class employeeList extends Component {
             <Box>
               <Pic color="#5c6879"><img src={employee} alt="allEmployee" /></Pic>
               <TextNav>พนักงานทั้งหมด</TextNav>
-              <Number>1200</Number>
+              <Number>
+                {data.length}
+              </Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={promotion} alt="allEmployee" /></Pic>
               <TextNav>ปรับตำแหน่งเดือนนี้</TextNav>
-              <Number>1200</Number>
+              <Number>
+                { totalEmployee !== ''
+                ? totalEmployee.promote
+                : <div />
+                }
+              </Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={newjobs} alt="allEmployee" /></Pic>
               <TextNav>เข้าทำงานใหม่เดือนนี้</TextNav>
-              <Number>1200</Number>
+              <Number>
+                { totalEmployee !== ''
+                ? totalEmployee.new
+                : <div />
+                }
+              </Number>
             </Box>
           </div>
           <div className="large-3 columns">
             <Box>
               <Pic color="#5c6879"><img src={Exit} alt="allEmployee" /></Pic>
               <TextNav>ลาออกเดือนนี้</TextNav>
-              <Number>1200</Number>
+              <Number>
+                { totalEmployee !== ''
+                ? totalEmployee.resign
+                : <div />
+                }
+              </Number>
             </Box>
           </div>
         </div>
@@ -434,7 +459,7 @@ class employeeList extends Component {
             </DivImg>
           </div>
           <div className="large-5 columns">
-            <Link to="/addemployee">
+            <Link to="/addemployee/new">
               <button className="add-employee-button">
               เพิ่มพนักงานใหม่
               </button>
@@ -723,10 +748,12 @@ const mapDispatchToProps = dispatch => ({
   employeeDetail: () => dispatch(employeeDetail()),
   getGroupBenefit: () => dispatch(getGroupBenefit()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  getSummaryTotalEmployee: () => dispatch(getSummaryTotalEmployee()),
 });
 
 const mapStateToProps = state => ({
   data: state.profile.employeeDetail,
+  totalEmployee: state.profile.summaryTotalEmployee,
   groupBenefit: state.profile.groupBenefit,
   benefitPlan: state.benefitPlan.plan,
 });

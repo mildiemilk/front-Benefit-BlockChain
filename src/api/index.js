@@ -10,6 +10,7 @@ import {
   getFileEmployee,
   deleteEmployee,
   summaryInsurancePlan,
+  editEmployee,
 } from './profile-company';
 import {
   chooseInsurer,
@@ -73,4 +74,5 @@ export default {
   getFileEmployee,
   deleteEmployee,
   summaryInsurancePlan,
+  editEmployee,
 };

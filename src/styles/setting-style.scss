@@ -51,4 +51,9 @@
         display: none;
         position: absolute;
     }
+    .input-date {
+        .react-datepicker__input-container{
+            width: 100%;
+          }
+    }
 }

@@ -17,6 +17,7 @@ class ShowMasterPlan extends Component {
   static propTypes = {
     DataCompany: PropTypes.shape({}).isRequired,
     handleUpdateBiding: PropTypes.func.isRequired,
+    end: PropTypes.bool.isRequired,
   }
   constructor(props) {
     super(props);
@@ -396,6 +397,7 @@ class ShowMasterPlan extends Component {
             ? <JoinBid
               handleOnpenModal={this.handleOnpenModal}
               handleChangeStateQuotation={this.handleChangeStateQuotation}
+              end={this.props.end}
             />
             : <div />
           }
@@ -426,7 +428,9 @@ class ShowMasterPlan extends Component {
             <QuotationClaim
               claimdata={claimdata}
             />
-            <div className="quotation-btn-price-box">
+            {this.props.end
+            ? <div />
+            : <div className="quotation-btn-price-box">
               {
                 popupQuotationId
                 ? <button className="quotation-btn-price" onClick={() => this.handleOnpenModal('modalCancelJoin')}>
@@ -437,6 +441,7 @@ class ShowMasterPlan extends Component {
                   </button>
               }
             </div>
+            }
             <div className="quotation-chat-box">
               <img alt="" src={IconChat} className="quotation-icon-chat" />
               แชทกับ White Cat Company

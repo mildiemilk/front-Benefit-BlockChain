@@ -84,6 +84,7 @@ class Bidding extends React.Component {
             <ShowMasterPlan
               DataCompany={this.state.DataCompany}
               handleUpdateBiding={this.handleUpdateBiding}
+              end={this.state.end}
             />
           </div>
         </div>

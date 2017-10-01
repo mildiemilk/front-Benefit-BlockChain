@@ -69,7 +69,6 @@ class Benefits extends Component {
   //   }
   // }
   handleClick = (id, name) => {
-    console.log('>>name', name);
     this.setState({ isClickPlan: true,
       namePlan: name,
       idPlan: id });

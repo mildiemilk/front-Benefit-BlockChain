@@ -43,7 +43,7 @@ class Bidding extends React.Component {
     if (this.state.updateBiding) {
       this.setState({ updateBiding: false });
       this.props.getCompanyBidding(this.state.companyId);
-      console.log('sddddd----ss', this.props.data.data);
+      console.log(this.props.data.data);
     }
   }
   handleUpdateBiding = () => {

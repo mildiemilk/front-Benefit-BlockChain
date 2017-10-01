@@ -242,10 +242,8 @@ class manageEmployee extends Component {
 //   </div>
 // </div>
   render() {
-    console.log('renderPro', this.props);
     const { customer, customerSelectPlan, customerEmployee } = this.props;
     const { index } = this.state;
-    console.log('rendercustomerEmployee', customerEmployee.employees);
     if (customer.length > 0) {
       return (
         <div className="employee-list">

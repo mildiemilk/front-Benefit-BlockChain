@@ -264,7 +264,7 @@ class ShowMasterPlan extends Component {
   }
   handleChange =(e, { name, value }) => {
     this.setState({ [name]: value });
-    const MP = this.state.DetailMP
+    const MP = this.state.DetailMP;
     MP[name] = value;
   }
   handleQuotationIdChange = e => {
@@ -287,9 +287,9 @@ class ShowMasterPlan extends Component {
         return {
           planId: data.planDetail._id,
           price: parseInt(data.price, 10),
-        }
+        };
       },
-    )
+    );
     const insurer = insurerplan.map(
       data => {
         sum1 = parseInt(data.price, 10);
@@ -298,9 +298,9 @@ class ShowMasterPlan extends Component {
         return {
           planId: data.planDetail._id,
           price: parseInt(data.price, 10),
-        }
+        };
       },
-    )
+    );
     const data = this.props.DataCompany;
     const { companyId,
           } = data;
@@ -312,7 +312,7 @@ class ShowMasterPlan extends Component {
       this.props.handleUpdateBiding();
       window.location.reload();
     });
-    window.location.reload();
+    // window.location.reload();
     this.props.handleUpdateBiding();
     this.handleCloseModal('modalCancelJoin');
   }
@@ -320,7 +320,7 @@ class ShowMasterPlan extends Component {
   handleChangeMasterplan = e => {
     const name = e.target.name;
     const value = e.target.value;
-    const MP = this.state.DetailMP
+    const MP = this.state.DetailMP;
     MP[name] = parseInt(value, 10);
     this.setState({ DetailMP: MP });
     if (MP[name] > value) {

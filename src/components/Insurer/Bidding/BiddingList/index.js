@@ -23,14 +23,18 @@ class BiddingList extends Component {
     this.state = {
       SearchTerm: '',
       bgColor: '',
+      end: false,
     };
     // props.getCompanyBiddingList();
   }
-
   componentDidMount() {
     this.props.getCompanyBiddingList();
   }
-
+  notiTimeout = () => {
+    this.setState({
+      end: true,
+    });
+  }
   RenderBiddingElement = Bidding => {
     const listItems = Bidding.map((Bidding, number) => {
       if (Bidding.status === 'reject') {
@@ -51,6 +55,7 @@ class BiddingList extends Component {
             <ElementBottom
               Bidding={Bidding}
               id={number}
+              notiTimeout={this.notiTimeout}
             />
           </BiddingElement>
         </Link>

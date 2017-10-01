@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import { Icon } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import Head from '../../Head';
 import { Detail, Text } from './styled';
 import General from './General';
 import Personal from './Personal';
 import Claim from './Claim';
-import { getGroupBenefit, employeeDetail, addEmployee } from '../../../api/profile-company';
+import { getGroupBenefit, employeeDetail, addEmployee, editEmployee } from '../../../api/profile-company';
 import ModalAddEmployee from './ModalAddEmployee';
 
 class AddEmployee extends Component {
@@ -16,10 +17,80 @@ class AddEmployee extends Component {
     groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
     getGroupBenefit: PropTypes.func.isRequired,
     // getBenefitPlan: PropTypes.func.isRequired,
-    // data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    dataDetail: PropTypes.arrayOf(PropTypes.object).isRequired,
+    match: PropTypes.shape({ params: PropTypes.index }),
+  }
+  static defaultProps = {
+    match: {
+      params: 0,
+    },
   }
   constructor(props) {
     super(props);
+    const { dataDetail } = this.props;
+    let data;
+    let dataIndex = props.match.params.index;
+    if (dataIndex === 'new') {
+      data = {
+        profilePic: '',
+        prefix: '',
+        name: '',
+        lastname: '',
+        gender: '',
+        citizenId: '',
+        nationality: '',
+        dateOfBirth: '',
+        employeeCode: '',
+        policyNumber: '',
+        memberNumber: '',
+        benefitGroup: '',
+        benefitPlan: '',
+        title: '',
+        department: '',
+        typeOfEmployee: '',
+        email: '',
+        personalEmail: '',
+        accountNumber: '',
+        bankName: '',
+        startDate: '',
+        endDate: '',
+        phoneNumber: '',
+        address: '',
+        marriageStatus: '',
+        employeeId: '',
+      }
+    } else {
+      dataIndex = parseInt(props.match.params.index, 10);
+      data = {
+        profilePic: dataDetail[dataIndex].detail.profilePic.link,
+        imagePreviewUrl: dataDetail[dataIndex].detail.profilePic,
+        prefix: dataDetail[dataIndex].detail.prefix,
+        name: dataDetail[dataIndex].detail.name,
+        lastname: dataDetail[dataIndex].detail.lastname,
+        gender: dataDetail[dataIndex].detail.gender,
+        citizenId: dataDetail[dataIndex].detail.citizenId,
+        nationality: dataDetail[dataIndex].detail.nationality,
+        dateOfBirth: '',
+        employeeCode: dataDetail[dataIndex].detail.employeeCode,
+        policyNumber: dataDetail[dataIndex].detail.policyNumber,
+        memberNumber: dataDetail[dataIndex].detail.memberNumber,
+        benefitGroup: dataDetail[dataIndex].detail.benefitGroup,
+        benefitPlan: dataDetail[dataIndex].detail.benefitPlan,
+        title: dataDetail[dataIndex].detail.title,
+        department: dataDetail[dataIndex].detail.department,
+        typeOfEmployee: dataDetail[dataIndex].detail.typeOfEmployee,
+        email: dataDetail[dataIndex].email,
+        personalEmail: dataDetail[dataIndex].detail.personalEmail,
+        accountNumber: dataDetail[dataIndex].detail.accountNumber,
+        bankName: dataDetail[dataIndex].detail.bankName,
+        startDate: '',
+        endDate: '',
+        phoneNumber: dataDetail[dataIndex].detail.phoneNumber,
+        address: dataDetail[dataIndex].detail.address,
+        marriageStatus: dataDetail[dataIndex].detail.marriageStatus,
+        employeeId: dataDetail[dataIndex]._id,
+      }
+    }
     this.state = {
       isGeneral: true,
       isPersonal: false,
@@ -32,59 +103,50 @@ class AddEmployee extends Component {
       ],
       optionDepartment: [],
       optionTitles: [],
-      profilePic: '',
-      imagePreviewUrl: '',
-      prefix: '',
-      name: '',
-      lastname: '',
-      gender: '',
-      citizenId: '',
-      nationality: '',
+      profilePic: data.profilePic,
+      imagePreviewUrl: data.imagePreviewUrl,
+      prefix: data.prefix,
+      name: data.name,
+      lastname: data.lastname,
+      gender: data.gender,
+      citizenId: data.citizenId,
+      nationality: data.nationality,
       dateOfBirth: '',
-      employeeCode: '',
-      policyNumber: '',
-      memberNumber: '',
-      benefitGroup: '',
-      benefitPlan: '',
-      title: '',
-      department: '',
-      typeOfEmployee: '',
-      email: '',
-      personalEmail: '',
-      bankAccount: '',
-      bankName: '',
+      employeeCode: data.employeeCode,
+      policyNumber: data.policyNumber,
+      memberNumber: data.memberNumber,
+      benefitGroup: data.benefitGroup,
+      benefitPlan: data.benefitPlan,
+      title: data.title,
+      department: data.department,
+      typeOfEmployee: data.typeOfEmployee,
+      email: data.email,
+      personalEmail: data.personalEmail,
+      accountNumber: data.accountNumber,
+      bankName: data.bankName,
       startDate: '',
       endDate: '',
-      phoneNumber: '',
-      address: '',
-      marriageStatus: '',
+      phoneNumber: data.phoneNumber,
+      address: data.address,
+      marriageStatus: data.marriageStatus,
+      employeeId: data.employeeId,
       isSuccess: false,
+      dataIndex,
     };
     props.employeeDetail();
     // props.getBenefitPlan();
     props.getGroupBenefit();
   }
   componentWillReceiveProps(newProps) {
-    // if (this.state.data !== newProps.data) {
+    // if (newProps !== newProps.data) {
     //   this.setState({
     //     data: newProps.data,
     //   });
     // }
     this.renderGroup();
-    this.renderDepartment(newProps.data);
-    this.renderTitle(newProps.data);
+    this.renderDepartment(newProps.dataDetail);
+    this.renderTitle(newProps.dataDetail);
   }
-  // componentWillUpdate(nextProps, nextState) {
-  //   if (nextState.isSuccess) {
-  //     this.setState({
-  //       isSuccess: false,
-  //     });
-  //     console.log('eiei');
-  //     <Redirect to="/employeelist" />
-  //   }
-  //   return '';
-  // }
-
   _handleImageChange = e => {
     const reader = new FileReader();
     const profilePic = e.target.files[0];
@@ -172,8 +234,10 @@ class AddEmployee extends Component {
       phoneNumber,
       address,
       marriageStatus,
+      employeeId,
+      dataIndex,
     } = this.state
-    return addEmployee({
+    const detail = {
       prefix,
       name,
       lastname,
@@ -198,7 +262,14 @@ class AddEmployee extends Component {
       phoneNumber,
       address,
       marriageStatus,
-    }, profilePic).then(() => this.setState({ isSuccess: true }));
+      employeeId,
+    }
+    console.log('dataIndex---->>>>', dataIndex);
+    if (dataIndex === 'new') {
+      addEmployee(detail, profilePic).then(() => this.setState({ isSuccess: true }));
+    } else {
+      editEmployee(detail, profilePic).then(() => this.setState({ isSuccess: true }));
+    }
   }
   styletabGeneral = () => {
     if (this.state.isGeneral) {
@@ -246,6 +317,7 @@ class AddEmployee extends Component {
             value: option.detail.title,
           });
         }
+        console.log('Title', options);
         return option;
       });
     }
@@ -264,6 +336,7 @@ class AddEmployee extends Component {
             value: option.detail.department,
           });
         }
+        console.log('Department', options);
         return option;
       });
     }
@@ -275,6 +348,7 @@ class AddEmployee extends Component {
     }
     const { isGeneral, isPersonal, isClaim } = this.state;
     console.log('allstate', this.state);
+    console.log('props-->-->', this.props.dataDetail[this.state.dataIndex]);
     return (
       <div>
         <Head content="ข้อมูลพนักงาน" />
@@ -293,10 +367,12 @@ class AddEmployee extends Component {
               onClick={this.handleClaim}
               last
             >ประวัติการเคลม</Text>
+            {/* <Icon name="write" />แก้ไข */}
           </div>
           {isGeneral
           ? <General
             data={this.state}
+            dataIndex={this.state.dataIndex}
             _handleImageChange={this._handleImageChange}
             handleStartDate={this.handleStartDate}
             handleBirthDate={this.handleBirthDate}
@@ -310,6 +386,7 @@ class AddEmployee extends Component {
           ? <Personal
             handleChange={this.handleChange}
             data={this.state}
+            dataIndex={this.state.dataIndex}
             handleInputChange={this.handleInputChange}
           />
           : null
@@ -336,9 +413,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  data: state.profile.employeeDetail,
+  dataDetail: state.profile.employeeDetail,
   groupBenefit: state.profile.groupBenefit,
   benefitPlan: state.benefitPlan.plan,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEmployee);
+

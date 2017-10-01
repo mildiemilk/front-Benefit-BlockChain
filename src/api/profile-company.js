@@ -30,6 +30,8 @@ import {
   getClaimListFailure,
   getSummaryInsurancePlanSuccess,
   getSummaryInsuranceFailure,
+  getSummaryTotalEmployeeSuccess,
+  getSummaryTotalEmployeeFailure,
 } from '../reducers/profile';
 
 const PROFILE_URI = '/api/company/register-company';
@@ -49,9 +51,11 @@ const GET_SUMMARYEMPLOYEE_URI = '/api/company/summary-employee-benefit';
 const GET_CLAIMLIST_URI = 'api/company/get-claim-list';
 const COMPANY_CLAIM_URI = 'api/company/claim';
 const ADD_EMPLOYEE_URI = 'api/company/add-employee';
+const EDIT_EMPLOYEE_URI = 'api/company/edit-employee';
 const DELETE_EMPLOYEE_URI = 'api/company/delete-employee';
 const MANAGE_EMPLOYEE_URI = 'api/company/manage-employee';
 const GET_SUMMARY_INSURANCE_PLAN_URI = 'api/company/summary-insurance-plan';
+const GET_SUMMARY_EMPLOYEE_URI = 'api/company/summary-employee';
 
 export function createProfile(profile) {
   return dispatch => {
@@ -357,7 +361,7 @@ export default {
 
 export function addEmployee(profile, file) {
   const formData = new FormData();
-  formData.append('file', file)
+  formData.append('file', file);
   formData.append('detail', JSON.stringify(profile));
   const options = {
     method: 'post',
@@ -366,7 +370,18 @@ export function addEmployee(profile, file) {
   };
   return APIRequest(options, true);
 }
-
+export function editEmployee(profile, file) {
+  const formData = new FormData();
+  formData.append('file', file)
+  formData.append('detail', JSON.stringify(profile));
+  console.log('profile===>', profile);
+  const options = {
+    method: 'put',
+    url: EDIT_EMPLOYEE_URI,
+    data: formData,
+  };
+  return APIRequest(options, true);
+}
 export function deleteEmployee(employeeId) {
   const options = {
     method: 'delete',
@@ -383,4 +398,20 @@ export function manageEmployee(detail, status) {
     data: detail,
   };
   return APIRequest(options, true);
+}
+export function getSummaryTotalEmployee() {
+  return dispatch => {
+    const options = {
+      method: 'get',
+      url: GET_SUMMARY_EMPLOYEE_URI,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(getSummaryTotalEmployeeSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(getSummaryTotalEmployeeFailure(err));
+      });
+  };
 }

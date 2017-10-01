@@ -202,6 +202,7 @@ class FlexyPlan extends Component {
                 handleClickBack={this.handleClickBack}
                 plan={plan}
                 data={this.props.data}
+                timeUp={timeUp}
               />
               : <div />
           }
@@ -211,6 +212,7 @@ class FlexyPlan extends Component {
                 handleClickBack={this.handleClickBack}
                 plan={plan}
                 data={this.props.data}
+                timeUp={timeUp}
               />
               : <div />
           }
@@ -220,6 +222,7 @@ class FlexyPlan extends Component {
                 handleClickBack={this.handleClickBack}
                 plan={plan}
                 data={this.props.data}
+                timeUp={timeUp}
               />
               : <div />
           }

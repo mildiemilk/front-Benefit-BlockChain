@@ -114,7 +114,7 @@ class App extends Component {
                   <Route path="/sendflexplan" component={SendFlexPlan} />
                   <Route path="/Summary" component={Summary} />
                   <Route path="/EmployeeList" component={EmployeeList} />
-                  <Route path="/AddEmployee" component={AddEmployee} />
+                  <Route path="/addEmployee/:index" component={AddEmployee} />
                   <Route path="/ClaimEmployee" component={ClaimEmployee} />
                   <Route path="/view" component={ViewAllPlan} />
                 </Switch>

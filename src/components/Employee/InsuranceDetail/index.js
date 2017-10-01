@@ -52,9 +52,11 @@ class InsuranceDetail extends Component {
   static propTypes = {
     handleClickBack: PropTypes.func.isRequired,
     plan: PropTypes.number.isRequired,
+    data: PropTypes.shape({}).isRequired,
+    timeUp: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modal: false,
       life: 'insurance-box',
@@ -140,6 +142,16 @@ class InsuranceDetail extends Component {
     this.setState({ modal: false });
   }
 
+  handleShowSelectPlan = () => {
+    const { data, timeUp, plan } = this.props;
+    if (!timeUp) {
+      if (data.group.type !== 'fixed') {
+        return <span className="insurance-plan">( แผนที่ {plan + 1} )</span>;
+      }
+    }
+    return <span />;
+  }
+
   render() {
     const {
       life,
@@ -160,11 +172,7 @@ class InsuranceDetail extends Component {
     return (
       <div>
         <span className="insurance-header">แผนประกันภัย</span>
-        {
-          (plan + 1) ?
-            <span className="insurance-plan">( แผนที่ {plan + 1} )</span>
-            : <span />
-        }
+        { this.handleShowSelectPlan() }
         <div className={life}>
           <div className="insurance-box-header">
             <img

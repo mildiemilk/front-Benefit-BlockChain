@@ -111,7 +111,7 @@ class SideBar extends React.Component {
               </Link>
             </List>
             <List onClick={this.closeSidebar}>
-              <Link to="/plan">
+              <Link to="/yourbenefit">
                 แผนสิทธิประโยชน์
               </Link>
             </List>

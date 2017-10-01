@@ -93,7 +93,6 @@ class SettingProfile extends Component {
       tel: '',
       typeOfBusiness: '',
       numberOfEmployees: '',
-      startInsurance: '',
       expiredInsurance: '',
       companyInsurer: '',
       file: '',
@@ -116,9 +115,6 @@ class SettingProfile extends Component {
 
     reader.readAsDataURL(file);
   }
-  handleStartDate = startInsurance => {
-    this.setState({ startInsurance });
-  }
   handleExpiredDate = expiredInsurance => {
     this.setState({ expiredInsurance });
   }
@@ -138,7 +134,7 @@ class SettingProfile extends Component {
       tel,
       // companyInsurer,
     });
-    const { typeOfBusiness, numberOfEmployees, startInsurance, expiredInsurance } = this.state;
+    const { typeOfBusiness, numberOfEmployees, expiredInsurance } = this.state;
     this.props.createProfile({
       companyName,
       location,
@@ -147,7 +143,6 @@ class SettingProfile extends Component {
       numberOfEmployees,
       tel,
       // companyInsurer,
-      startInsurance,
       expiredInsurance,
     });
   }
@@ -253,20 +248,6 @@ class SettingProfile extends Component {
                   fluid
                   selection
                   options={NumberOfEmployees}
-                />
-                <Detail3>
-                  วันเริ่มอายุกรมธรรม์
-                </Detail3>
-                <DatePickers
-                  selected={this.state.startInsurance}
-                  onChange={this.handleStartDate}
-                  fixedHeight
-                  dateFormat="DD/MM/YYYY"
-                  locale="th"
-                  showYearDropdown
-                  dateFormatCalendar="MMMM"
-                  scrollableYearDropdown
-                  yearDropdownItemNumber={8}
                 />
                 <Detail3>
                   วันหมดอายุกรมธรรม์

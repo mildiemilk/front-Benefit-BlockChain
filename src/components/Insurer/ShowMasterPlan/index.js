@@ -428,7 +428,9 @@ class ShowMasterPlan extends Component {
             <QuotationClaim
               claimdata={claimdata}
             />
-            <div className="quotation-btn-price-box">
+            {this.props.end
+            ? <div />
+            : <div className="quotation-btn-price-box">
               {
                 popupQuotationId
                 ? <button className="quotation-btn-price" onClick={() => this.handleOnpenModal('modalCancelJoin')}>
@@ -439,6 +441,7 @@ class ShowMasterPlan extends Component {
                   </button>
               }
             </div>
+            }
             <div className="quotation-chat-box">
               <img alt="" src={IconChat} className="quotation-icon-chat" />
               แชทกับ White Cat Company

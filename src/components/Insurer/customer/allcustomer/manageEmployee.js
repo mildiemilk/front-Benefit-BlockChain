@@ -173,7 +173,7 @@ class manageEmployee extends Component {
               }
             </div>
             <div className="large-2 columns">
-              <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+              <TextIn>{EMPlist.detail.memberNumber}</TextIn>
             </div>
             <div className="large-2 columns">
               <TextIn>{EMPlist.detail.benefitGroup}</TextIn>

@@ -24,7 +24,6 @@ class HeaderCompanyInfo extends Component {
   }
   render() {
     const data = this.props.DataCompany;
-    console.log('data---', this.props);
     moment.locale('th');
     let styleCss;
     let textDisplay = '';

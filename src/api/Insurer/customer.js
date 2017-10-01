@@ -1,16 +1,16 @@
+import FileSaver from 'file-saver';
 import { APIRequest } from '../';
-
 
 import {
   getCustomerSuccess,
   getCustomerPlanSuccess,
   getCustomerEmployeeSuccess,
   getCustomerSelectPlanSuccess,
-  getCustomerFileSuccess,
+  putEmpDataSuccess,
   getCustomerFailure,
   getCustomerPlanFailure,
   getCustomerEmployeeFailure,
-  getCustomerFileFailure,
+  putEmpDataFailure,
   getCustomerSelectPlanFailure,
 } from '../../reducers/Insurer/customer';
 
@@ -19,6 +19,7 @@ const CUSTOMER_PLAN_URI = '/api/insurer/customer-plan';
 const CUSTOMER_EMP_URI = '/api/insurer/customer-employee';
 const CUSTOMER_SELECT_PLAM_URI = '/api/insurer/customer-select-plan';
 const CUSTOMER_FILE_URI = '/api/insurer/customer-file';
+const CUSTOMER_UPFILE_URI = '/api/insurer/customer-upload-file';
 // { method: 'PUT', path: '/insurer/customer-upload-file/{companyId}'
 // { method: 'PUT', path: '/insurer/customer-upload-file-detail'
 
@@ -34,6 +35,27 @@ export function getCustomer() {
       })
       .catch(err => {
         dispatch(getCustomerFailure(err));
+      });
+  };
+}
+
+export function putUploadEmpData(file, companyId) {
+  console.log('>>putUploadEmpData api', companyId);
+  const formData = new FormData();
+  formData.append('file', file);
+  return dispatch => {
+    const options = {
+      method: 'put',
+      url: `${CUSTOMER_UPFILE_URI}/${companyId}`,
+      data: formData,
+    };
+
+    APIRequest(options, true)
+      .then(res => {
+        dispatch(putEmpDataSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(putEmpDataFailure(err.response.message));
       });
   };
 }
@@ -67,18 +89,34 @@ export function getCustomerEmployee(companyId) {
       });
   };
 }
+// export function getCustomerFile(companyId) {
+//   return dispatch => {
+//     const options = {
+//       method: 'get',
+//       url: `${CUSTOMER_FILE_URI}/${companyId}`,
+//     };
+//     APIRequest(options, true)
+//       .then(res => {
+//         dispatch(getCustomerFileSuccess(res.data));
+//       })
+//       .catch(err => {
+//         dispatch(getCustomerFileFailure(err));
+//       });
+//   };
+// }
 export function getCustomerFile(companyId) {
-  return dispatch => {
+  return () => {
     const options = {
       method: 'get',
       url: `${CUSTOMER_FILE_URI}/${companyId}`,
+      responseType: 'blob',
     };
     APIRequest(options, true)
       .then(res => {
-        dispatch(getCustomerFileSuccess(res.data));
+        FileSaver.saveAs(res.data, 'EmployeeData.xlsx');
       })
       .catch(err => {
-        dispatch(getCustomerFileFailure(err));
+        console.log(err);
       });
   };
 }

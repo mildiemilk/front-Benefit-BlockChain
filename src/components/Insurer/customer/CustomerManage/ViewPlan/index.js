@@ -89,10 +89,10 @@ class ViewPlan extends Component {
               </div>
             </div>
           </WhiteBackGround>
-          <Link to="/customermanage/viewplan/0">
+          <Link to={`/customerplan/${index}/${customer[index].companyId}`}>
             <BackButton>กลับ</BackButton>
           </Link>
-          <Link to="/customermanage/download/0">
+          <Link to={`/stepdownload/${index}/${customer[index].companyId}`}>
             <NextButton>ต่อไป</NextButton>
           </Link>
         </div>

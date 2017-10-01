@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getCustomer } from '../../../../../api/Insurer/customer';
+import { getCustomer, getCustomerFile } from '../../../../../api/Insurer/customer';
 import HeaderCompanyInfo from '../../../header-company-info';
 import excelpic from '../../../../../../assets/Insurer/excel.png';
 import IconDownload from '../../../../../../assets/Insurer/icon_download@3x.png';
@@ -19,6 +19,7 @@ DownloadDiv,
 class ViewPlan extends Component {
   static propTypes = {
     getCustomer: PropTypes.func.isRequired,
+    getCustomerFile: PropTypes.func.isRequired,
     customer: PropTypes.arrayOf(PropTypes.object).isRequired,
     match: PropTypes.shape({ params: PropTypes.index }),
   }
@@ -30,73 +31,75 @@ class ViewPlan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      CustomerIndex: props.match.params.index,
+      companyId: props.match.params.companyId,
+      index: props.match.params.index,
     };
     props.getCustomer();
+    // props.getCustomerFile(this.state.companyId);
   }
 
-
+  handleClickDownload = () => {
+    this.props.getCustomerFile(this.state.companyId);
+  }
   render() {
     const { customer } = this.props;
-    const { CustomerIndex } = this.state;
+    const { index } = this.state;
     const PicStyle = {
       width: '44px',
       height: '44px',
     };
-    if (customer.length === 0) {
+    if (customer.length > 0) {
       return (
-        <div>
-          Empty
-        </div>
-      );
-    }
-    return (
-      <div className="Download">
-        <HeaderCompanyInfo DataCompany={customer[CustomerIndex]} />
-        <CustomerName>
-          ลูกค้าของคุณ &nbsp; /&nbsp;{customer[CustomerIndex].companyName}
-        </CustomerName>
-        <NavStep step={2} />
-        <WhiteBackGround>
-          <HeadSecondDiv>
-            ดาวน์โหลดข้อมูลพนักงาน
-          </HeadSecondDiv>
-          <DownloadDiv>
-            <div className="row">
-              <div className="large-1 columns">
-                <img alt="" style={PicStyle} src={excelpic} />
-              </div>
-              <div className="large-10 columns">
-                <span className="DownloadText">Employee Data Template.xlsx</span>
-                <br />
-                <span className="DownloadText">File size : 0.4 Mb</span>
-              </div>
-              <div className="large-1 columns">
-                <div className="circelBlue">
-                  <img alt="" className="imageStyle-download" src={IconDownload} />
+        <div className="Download">
+          <HeaderCompanyInfo DataCompany={customer[index]} PageName="allcustomer" />
+          <CustomerName>
+            ลูกค้าของคุณ &nbsp; /&nbsp;{customer[index].companyName}
+          </CustomerName>
+          <NavStep step={2} />
+          <WhiteBackGround>
+            <HeadSecondDiv>
+              ดาวน์โหลดข้อมูลพนักงาน
+            </HeadSecondDiv>
+            <DownloadDiv>
+              <div className="row">
+                <div className="large-1 columns">
+                  <img alt="" style={PicStyle} src={excelpic} />
+                </div>
+                <div className="large-10 columns">
+                  <span className="DownloadText">Employee Data Template.xlsx</span>
+                  <br />
+                  <span className="DownloadText">File size : 0.4 Mb</span>
+                </div>
+                <div className="large-1 columns">
+                  <div className="circelBlue" >
+                    <img className="imageStyle-download" alt="download" role="button" aria-hidden src={IconDownload} onClick={this.handleClickDownload} />
+                  </div>
                 </div>
               </div>
-            </div>
-          </DownloadDiv>
-        </WhiteBackGround>
-        <Link to="/customermanage/viewplan/0">
-          <BackButton>กลับ</BackButton>
-        </Link>
-        <Link to="/customermanage/upload/0">
-          <NextButton>ต่อไป</NextButton>
-        </Link>
-      </div>
+            </DownloadDiv>
+          </WhiteBackGround>
+          <Link to={`/stepmanagement/download/${index}/${customer[index].companyId}`}>
+            <BackButton>กลับ</BackButton>
+          </Link>
+          <Link to={`/stepupload/${index}/${customer[index].companyId}`}>
+            <NextButton>ต่อไป</NextButton>
+          </Link>
+        </div>
 
-    );
+      );
+    }
+    return <div />
   }
 }
 
 const mapStateToProps = state => ({
   customer: state.customerReducer.customer,
+  customerFile: state.customerFileReducer.customerFile,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCustomer: () => dispatch(getCustomer()),
+  getCustomerFile: companyId => dispatch(getCustomerFile(companyId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewPlan);

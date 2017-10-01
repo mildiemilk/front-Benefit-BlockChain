@@ -122,16 +122,16 @@ class ModalEditEmployee extends Component {
           <DivContent padding="6px 15px">
             <div className="row">
               <div className="large-6 columns">
-                <Input />
+                <Input value="" placeholder="กรุณากรอกเลขสมาชิก" />
               </div>
               <div className="large-6 columns">
-                <Input />
+                <Input value="" placeholder="กรุณากรอกเลขกรมธรรม์" />
               </div>
             </div>
           </DivContent>
           <DivContent padding="0px 15px">
             <div className="row">
-              <div className="large-6 columns">
+              <div className="large-12 columns">
                 <div className="large-6 columns">
                   <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
                 </div>

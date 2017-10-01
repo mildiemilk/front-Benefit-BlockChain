@@ -33,7 +33,7 @@ class NavStep extends Component {
             <Step
               completed={this.props.step > 3}
               active={this.props.step === 3}
-              description="อัปโหลดกรมธรรม"
+              description="อัปโหลดเลขกรมธรรม์"
             />
             <Step4 active={this.props.step === 4}>
             อัปโหลดรายละเอียด<br />แผนประกันภัย

@@ -184,14 +184,16 @@ export const CustomerName = styled.div`
   font-size: 16px;
   text-align: left;
 `;
-export const displayTag = styled.div`
+export const DisplayTag = styled.div`
 border-radius: 50px;
-color: white;
 background-color: ${props => props.color};
-width: 80%;
-height: 20px
+width: 100%;
+height: 30px;
 text-align: center;
 border: solid 1px #d8d8d8;
+`;
+export const TextP = styled.p`
+padding-top: 4px;
 `;
 export const StatusTag = styled.div`
   border-radius: 6px;
@@ -199,6 +201,20 @@ export const StatusTag = styled.div`
   background-color: ${props => props.color};
   width: 80%;
   text-align: center;
+`;
+export const TextList = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: #a9a9a9;
+  display: inline-block;
+  margin-right: 4px;
+`;
+export const DivHead = styled.div`
+  position: relative;
+`;
+export const TextElip = styled.div`
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 export const PopupView = styled(Popup)`
   &&&{

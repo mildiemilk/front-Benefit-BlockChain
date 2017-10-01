@@ -19,6 +19,8 @@ const CUSTOMER_PLAN_URI = '/api/insurer/customer-plan';
 const CUSTOMER_EMP_URI = '/api/insurer/customer-employee';
 const CUSTOMER_SELECT_PLAM_URI = '/api/insurer/customer-select-plan';
 const CUSTOMER_FILE_URI = '/api/insurer/customer-file';
+// { method: 'PUT', path: '/insurer/customer-upload-file/{companyId}'
+// { method: 'PUT', path: '/insurer/customer-upload-file-detail'
 
 export function getCustomer() {
   return dispatch => {

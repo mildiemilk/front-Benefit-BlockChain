@@ -34,6 +34,7 @@ class ViewPlan extends Component {
     this.state = {
       companyId: props.match.params.companyId,
       index: props.match.params.index,
+      step: 2,
     };
     props.getCustomer();
     // props.getCustomerFile(this.state.companyId);

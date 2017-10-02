@@ -131,11 +131,11 @@ class BiddingList extends Component {
             </DisplayOption>
             <DisplayOption
               style={
-              (this.state.SearchTerm === 'select')
+              (this.state.SearchTerm === 'selected')
               ? boderBlue
               : boderGray
               }
-              onClick={() => this.handleSearchBoxChange('select')}
+              onClick={() => this.handleSearchBoxChange('selected')}
             >
               ถูกเลือก
             </DisplayOption>

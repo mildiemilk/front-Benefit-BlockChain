@@ -42,7 +42,7 @@ class ElementName extends Component {
         </div>
       );
     }
-    if (Bidding.status === 'select') {
+    if (Bidding.status === 'selected') {
       return (
         <div>
           <StatusDiv className="textstatus gray">

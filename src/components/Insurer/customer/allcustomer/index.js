@@ -25,9 +25,10 @@ class AllCustomer extends Component {
     props.getCustomer();
   }
   handleDetail = (index, companyId) => {
-    if (status === 'active' || status === 'inactive') {
+    const { customer } = this.props;
+    if (customer[index].status === 'active' || customer[index] === 'inactive') {
       // window.location = `/empmanagement/${index}/${companyId}`;
-      window.location = `/customerplan/${index}/${companyId}`;
+      window.location = `/empmanagement/${index}/${companyId}`;
     } else {
       window.location = `/customerplan/${index}/${companyId}`;
       // const { isAllPlan } = this.state;

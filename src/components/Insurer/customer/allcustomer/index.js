@@ -43,21 +43,23 @@ class AllCustomer extends Component {
   render() {
     const { customer } = this.props;
     const { isAllPlan, index } = this.state;
-    return (
-      <div className="allcustomer">
-        { isAllPlan
-          ? <AllPlanData
-            customer={customer}
-            index={index}
-          />
-          : <Customerlist
-            customer={customer}
-            index={index}
-            handleDetail={this.handleDetail}
-          />
-        }
-      </div>
-    );
+    if (customer.length > 0) {
+      return (
+        <div className="allcustomer">
+          { isAllPlan
+            ? <AllPlanData
+              customer={customer}
+              index={index}
+            />
+            : <Customerlist
+              customer={customer}
+              index={index}
+              handleDetail={this.handleDetail}
+            />
+          }
+        </div>
+      );
+    } return <div />
   }
 }
 

@@ -45,7 +45,7 @@ class ShowMasterPlan extends Component {
       joinbid = false;
       quotation = false;
     }
-    if (joinbid === true && status === 'join') {
+    if (countBidding === 0) {
       popupQuotationId = true;
     } else {
       popupQuotationId = false;
@@ -103,7 +103,7 @@ class ShowMasterPlan extends Component {
       joinbid = false;
       quotation = false;
     }
-    if (joinbid === true && status === 'join') {
+    if (countBidding === 0) {
       popupQuotationId = true;
     } else {
       popupQuotationId = false;

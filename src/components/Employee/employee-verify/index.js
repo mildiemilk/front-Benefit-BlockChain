@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Form, Popup } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import MediaQuery from 'react-responsive';
 import { updatePassword } from '../../../api/auth';
 import { updatePersonalDetails } from '../../../api/personalDetail';
 import ModalAddData from './modal-add-data';
 import '../../../styles/employee-style/login-verify.scss';
 import key from '../../image/key.png';
 import keyIcon from '../../image/icons-8-key-copy.png';
+import Logo from '../../../../assets/employee/logo@3x.png';
 
 const passwordPattern = /^(?=.*\d)(?=.*[A-Z]).{8,20}/;
 const phonePattern = /^[+]?[(]?[0-9]{2,3}[)]?[-\\.]?[0-9]{3}[-\\.]?[0-9]{4,6}$/im;
@@ -84,63 +86,76 @@ class EmployeeVerify extends Component {
     this.setState({ showModal: false });
   }
 
-  render() {
-    return (
-      <div className="white-background">
-        <div className="row">
-          <div className="small-10 small-centered columns">
-            <div className="form-key-box">
-              <img src={key} alt="key" />
-              <p>ตั้งรหัสผ่านบัญชีผู้ใช้</p>
-              <Form onSubmit={this.handleSubmitButton}>
-                <Form.Field>
-                  <div className="divInput">
-                    <img className="iconImage" alt="keyIcon" src={keyIcon} />
-                    <Popup
-                      trigger={
-                        <Form.Input
-                          placeholder="รหัสผ่าน"
-                          type="password"
-                          name="password"
-                          defaultValue={this.state.password}
-                          onChange={e => this.handleChangeInput(e)}
-                          required
-                        />
-                      }
-                      header="คำแนะนำ:"
-                      content="รหัสผ่านควรมีความยาว 8-20 ตัวอักษรและประกอบด้วยตัวอักษรพิมพ์เล็ก, พิมพ์ใหญ่ และตัวเลข"
-                      on="click"
-                    />
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="divInput">
-                    <img className="iconImage" alt="keyIcon" src={keyIcon} />
-                    <Form.Input
-                      placeholder="กรอกรหัสผ่านอีกครั้ง"
-                      type="password"
-                      name="confirmPassword"
-                      defaultValue={this.state.confirmPassword}
-                      onChange={this.handleChangeInput}
-                      required
-                    />
-                  </div>
-                </Form.Field>
-                <p style={{ color: 'red' }}>{ this.state.error }</p>
-                <button className="button-submit-key" type="submit">
-                  ตั้งรหัสผ่านสำหรับใช้งาน
-                </button>
-                <ModalAddData
-                  error={this.state.error}
-                  showModal={this.state.showModal}
-                  handleChangeInput={this.handleChangeInput}
-                  handleSubmitButtonModal={this.handleSubmitButtonModal}
-                  handleHideModel={this.handleHideModel}
-                />
-              </Form>
-            </div>
+  handleRenderMobile = () =>
+    <div className="white-background">
+      <div className="row">
+        <div className="small-10 small-centered columns">
+          <div className="form-key-box">
+            <img src={key} alt="key" />
+            <p>ตั้งรหัสผ่านบัญชีผู้ใช้</p>
+            <Form onSubmit={this.handleSubmitButton}>
+              <Form.Field>
+                <div className="divInput">
+                  <img className="iconImage" alt="keyIcon" src={keyIcon} />
+                  <Popup
+                    trigger={
+                      <Form.Input
+                        placeholder="รหัสผ่าน"
+                        type="password"
+                        name="password"
+                        defaultValue={this.state.password}
+                        onChange={e => this.handleChangeInput(e)}
+                        required
+                      />
+                    }
+                    header="คำแนะนำ:"
+                    content="รหัสผ่านควรมีความยาว 8-20 ตัวอักษรและประกอบด้วยตัวอักษรพิมพ์เล็ก, พิมพ์ใหญ่ และตัวเลข"
+                    on="click"
+                  />
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="divInput">
+                  <img className="iconImage" alt="keyIcon" src={keyIcon} />
+                  <Form.Input
+                    placeholder="กรอกรหัสผ่านอีกครั้ง"
+                    type="password"
+                    name="confirmPassword"
+                    defaultValue={this.state.confirmPassword}
+                    onChange={this.handleChangeInput}
+                    required
+                  />
+                </div>
+              </Form.Field>
+              <p style={{ color: 'red' }}>{ this.state.error }</p>
+              <button className="button-submit-key" type="submit">
+                ตั้งรหัสผ่านสำหรับใช้งาน
+              </button>
+              <ModalAddData
+                error={this.state.error}
+                showModal={this.state.showModal}
+                handleChangeInput={this.handleChangeInput}
+                handleSubmitButtonModal={this.handleSubmitButtonModal}
+                handleHideModel={this.handleHideModel}
+              />
+            </Form>
           </div>
         </div>
+      </div>
+    </div>;
+
+  render() {
+    return (
+      <div>
+        <MediaQuery query="(max-width: 767px)">
+          { this.handleRenderMobile() }
+        </MediaQuery>
+        <MediaQuery query="(min-width: 768px)">
+          <img className="login-d-logo" alt="" src={Logo} />
+          <div className="emp-verify-box">
+            eiei
+          </div>
+        </MediaQuery>
       </div>
     );
   }

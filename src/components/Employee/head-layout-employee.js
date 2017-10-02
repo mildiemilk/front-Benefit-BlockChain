@@ -41,20 +41,22 @@ class HeadLayoutMobile extends Component {
             }
             <div>
               <div className="row">
-                <div className="large-2 columns">
-                  {
-                    check !== '/employeeverify'
-                    ? <SidebarDesktop />
-                    : <div />
-                  }
-                </div>
-                <div className="large-10 columns">
-                  <div className="row" style={{ marginTop: 75 }}>
-                    <div className="large-12 columns" style={{ padding: '0px 30px' }}>
-                      {this.props.children}
+                {
+                  check === '/employeeverify'
+                  ? this.props.children
+                  : <div>
+                    <div className="large-2 columns">
+                      <SidebarDesktop />
+                    </div>
+                    <div className="large-10 columns">
+                      <div className="row" style={{ marginTop: 75 }}>
+                        <div className="large-12 columns" style={{ padding: '0px 30px' }}>
+                          {this.props.children}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                }
               </div>
             </div>
           </div>

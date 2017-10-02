@@ -136,9 +136,16 @@ class SelectRealTime extends Component {
       const group = allGroups.map((allGroup, index) => {
         let sum;
         console.log('---summary---', this.props.summaryEmployee[index]);
-        if (this.props.summaryEmployee[index] !== undefined &&
-          this.props.summaryEmployee[index].confirm.length >= 1) {
-          sum = this.props.summaryEmployee[index].confirm.reduce((a, b) => a + b, 0);
+        if (this.state.timeout) {
+          if (this.props.summaryEmployee[index] !== undefined &&
+            this.props.summaryEmployee[index].amountOfPlan.length >= 1) {
+            sum = this.props.summaryEmployee[index].amountOfPlan.reduce((a, b) => a + b, 0);
+          }
+        } else {
+          if (this.props.summaryEmployee[index] !== undefined &&
+            this.props.summaryEmployee[index].confirm.length >= 1) {
+            sum = this.props.summaryEmployee[index].confirm.reduce((a, b) => a + b, 0);
+          }
         }
         return (<BoxDetail>
           <HeadList>

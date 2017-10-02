@@ -32,8 +32,6 @@ const PROFILECOMPANY_REQUEST_SUCCESS = 'PROFILECOMPANY_REQUEST_SUCCESS';
 const PROFILECOMPANY_REQUEST_FAILURE = 'PROFILECOMPANY_REQUEST_FAILURE';
 const SETLOGO_REQUEST_SUCCESS = 'SETLOGO_REQUEST_SUCCESS';
 const AUTHENTICATE_REQUEST_SUCCESS = 'auth/AUTHENTICATE_REQUEST_SUCCESS';
-const FILEEMPLOYEE_REQUEST_SUCCESS = 'FILEEMPLOYEE_REQUEST_SUCCESS';
-const FILEEMPLOYEE_REQUEST_FAILURE = 'FILEEMPLOYEE_REQUEST_FAILURE';
 const GET_FILEEMPLOYEE_REQUEST_SUCCESS = 'GET_FILEEMPLOYEE_REQUEST_SUCCESS';
 const GET_FILEEMPLOYEE_REQUEST_FAILURE = 'GET_FILEEMPLOYEE_REQUEST_FAILURE';
 const CLAIMDATA_REQUEST_SUCCESS = 'CLAIMDATA_REQUEST_SUCCESS';
@@ -74,12 +72,6 @@ export function createProfileFailure(data) {
 
 export function setLogoSuccess(data) {
   return { type: SETLOGO_REQUEST_SUCCESS, data };
-}
-export function fileEmployeeSuccess(data) {
-  return { type: FILEEMPLOYEE_REQUEST_SUCCESS, data };
-}
-export function fileEmployeeFailure(data) {
-  return { type: FILEEMPLOYEE_REQUEST_FAILURE, data };
 }
 export function getFileEmployeeSuccess(data) {
   return { type: GET_FILEEMPLOYEE_REQUEST_SUCCESS, data };
@@ -190,15 +182,6 @@ export default function profile(state = defaultProfile, action) {
       return Object.assign({}, state, {
         companyName: action.data.companyName,
         logo: action.data.logo,
-      });
-    case FILEEMPLOYEE_REQUEST_SUCCESS:
-      return Object.assign({}, state, {
-        fileEmployee: action.data.fileEmployee,
-      });
-    case FILEEMPLOYEE_REQUEST_FAILURE:
-      return Object.assign({}, state, {
-        message: action.data.message,
-        error: true,
       });
     case CLAIMDATA_REQUEST_SUCCESS:
       return Object.assign({}, state, {

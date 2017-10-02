@@ -24,6 +24,9 @@ class SelectBox extends Component {
     valueFixed: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     groupName: PropTypes.string.isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    templatePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -31,6 +34,7 @@ class SelectBox extends Component {
   }
 
   render() {
+    console.log('optionPlan===>selectBox', this.props.optionPlan);
     return (
       <div className="employeeBenefits-select-box">
         <div className="employeeBenefits-select-head-box">
@@ -64,6 +68,9 @@ class SelectBox extends Component {
               defaultPlan={this.props.defaultPlan}
               valueFixed={this.props.valueFixed}
               handleSubmit={this.props.handleSubmit}
+              optionPlan={this.props.optionPlan}
+              benefitPlan={this.props.benefitPlan}
+              templatePlan={this.props.templatePlan}
             />
             : null}
         </div>

@@ -19,6 +19,9 @@ class SelectOptionPlan extends Component {
     handleActivePlan: PropTypes.func.isRequired,
     planName: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
+    templatePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -49,7 +52,10 @@ class SelectOptionPlan extends Component {
   }
 
   renderList = list => {
+    console.log('optionPlan===>selectOptionPlanl', this.props.optionPlan);
+    console.log('selectOption==>', this.props.selectOption);
     const lists = list.map((element, index) => {
+      console.log('index==>', index);
       const isActive = element._id === this.props.defaultPlan ? '-active' : '';
       return (
         <div className="row">
@@ -105,6 +111,10 @@ class SelectOptionPlan extends Component {
             <SettingBenefitModal
               openSettingBenefit={this.state.openSettingBenefit}
               closeModal={this.closeModal}
+              optionPlan={this.props.optionPlan}
+              benefitPlan={this.props.benefitPlan}
+              templatePlan={this.props.templatePlan}
+              index={index}
             />
           </div>
           {this.props.plan === 'flex'

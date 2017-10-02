@@ -30,6 +30,10 @@ class SettingBenefitModal extends Component {
   static propTypes = {
     closeModal: PropTypes.func.isRequired,
     openSettingBenefit: PropTypes.func.isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
+    templatePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    index: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -37,14 +41,58 @@ class SettingBenefitModal extends Component {
       modalOpen: false,
       closeOnEscape: false,
       closeOnRootNodeClick: true,
+      activePlan: '',
+      planName: '',
+      plan: '',
+      isHealth: false,
+      isExpense: false,
+      health: '',
+      expense: '',
     };
   }
+  componentWillReceiveProps(newProps) {
+    if (newProps.benefitPlan.length !== 0) {
+      console.log('benefitPlan==>settingBenefitModal', newProps.benefitPlan);
+      if (this.state.activePlan === '') {
+        const planList = newProps.benefitPlan;
+        const index = this.props.index;
+        this.setState({
+          activePlan: index,
+          planName: planList[index].benefitPlanName,
+          plan: planList[index].benefitPlan.plan.planId._id,
+          isHealth: planList[index].benefitPlan.isHealth,
+          isExpense: planList[index].benefitPlan.isExpense,
+          health: planList[index].benefitPlan.health,
+          expense: planList[index].benefitPlan.expense,
+        }, () => console.log('aftersetState->', this.state));
+      }
+    }
 
+    if (newProps.benefitPlan !== this.props.benefitPlan) {
+      this.setState({ planList: newProps.benefitPlan });
+    }
+  }
   handleClose = () => {
     this.props.closeModal();
   }
 
+  renderOption = (optionPlan, templatePlan) => {
+    const allplan = optionPlan.choosePlan.insurer.concat(optionPlan.choosePlan.master);
+    if (allplan !== undefined && allplan.length >= 1) {
+      console.log('allplanfilter', allplan);
+      console.log('templateplan==', templatePlan);
+      const newplan =
+      templatePlan.filter(plan => allplan.map(
+        option => option.planId === plan.plan._id).indexOf(true) !== -1);
+      console.log('newoption', newplan);
+      return newplan;
+    }
+    return '';
+  }
   render() {
+    const isReadOnly = true;
+    console.log('optionPlan===>settingBenefitModal', this.props.optionPlan);
+    console.log('state==>settingBenefitModal', this.state);
     return (
       <Modals
         trigger={<div />}
@@ -54,7 +102,19 @@ class SettingBenefitModal extends Component {
         onClose={this.handleClose}
       >
         <ModalContents>
-          <SettingPlans />
+          <SettingPlans
+            option={this.renderOption(this.props.optionPlan, this.props.templatePlan)}
+            optionPlan={this.props.optionPlan}
+            planName={this.state.planName}
+            plan={this.state.plan}
+            isHealth={this.state.isHealth}
+            isExpense={this.state.isExpense}
+            health={this.state.health}
+            templatePlan={this.props.templatePlan}
+            expense={this.state.expense}
+            handleSave={'none-DisplaySave'}
+            isReadOnly={isReadOnly}
+          />
         </ModalContents>
         <ModalContents>
           <div className="row">

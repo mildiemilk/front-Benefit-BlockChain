@@ -100,7 +100,10 @@ class SettingPlan extends Component {
   render() {
     const { handleChange, handleSubmit, planName, plan, optionPlan,
       isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
+    console.log('PropSettingPlan===>', this.props);
+    console.log('optionPlan-->', optionPlan);
     let showExpense = optionPlan.isExpense;
+    console.log('sgowWxpense->', showExpense);
     let showHealth = optionPlan.isHealth;
     if (isReadOnly) {
       showExpense = isExpense;

@@ -220,6 +220,7 @@ class employeeBenefits extends Component {
   render() {
     console.log('employeename', this.props);
     console.log('optionPlan===>EmployeeBenefit', this.props.optionPlan);
+    console.log('GroupName index==>', this.props.groupBenefit);
     return (
       <div>
         <NavBenefit step={this.state.step} />

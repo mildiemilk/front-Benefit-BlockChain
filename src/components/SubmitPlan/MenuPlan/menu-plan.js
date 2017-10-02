@@ -129,7 +129,7 @@ class MenuPlan extends Component {
                 hideOnScroll
                 position="bottom center"
               />
-              <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
+              <p>แก้ไขครั้งล่าสุดโดย {list[i].company.hrDetail}</p>
             </div>
           </div>
         </div>,

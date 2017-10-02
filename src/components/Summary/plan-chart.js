@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, Cell } from 'recharts';
 
-const graphColor = ['#e9a62a', '#fcc928', '#e28329'];
+const graphColor = ['#e9a62a', '#fcc928', '#e28329', '#f5e054'];
 
 const data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
 { name: 'Group C', value: 300 }, { name: 'Group D', value: 200 }];

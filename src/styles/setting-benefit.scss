@@ -49,13 +49,13 @@
     border-style: solid;
     color: #ffffff;
   }
-  .none-DisplaySave {
-    display: none;
-  }
   .ui.disabled  {
     opacity: inherit;
     .dropdown.icon {
       display: none;
     }
   }
+}
+.none-DisplaySave {
+  display: none;
 }

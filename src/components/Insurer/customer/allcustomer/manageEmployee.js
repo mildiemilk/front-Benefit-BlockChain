@@ -172,8 +172,11 @@ class manageEmployee extends Component {
               : ''
               }
             </div>
-            <div className="large-2 columns">
-              <TextIn>{EMPlist.detail.memberNumber}</TextIn>
+            <div className="large-1 columns">
+              {EMPlist.detail.memberNumber
+              ? <TextIn>{EMPlist.detail.memberNumber}</TextIn>
+              : '-'
+              }
             </div>
             <div className="large-2 columns">
               <TextIn>{EMPlist.detail.benefitGroup}</TextIn>
@@ -299,76 +302,74 @@ class manageEmployee extends Component {
           <div className="list-employee-box">
             <div className="list-header">
               <div className="row">
-                <div className="large-3 columns">
-                  <div className="large-5 columns">
-                    <DivHead>
-                      <TextList>รหัสพนักงาน</TextList>
-                      <Popups
-                        trigger={
-                          <Icon
-                            name="sort descending"
-                          />
-                        }
-                        content={
-                          <List divided relaxed style={{ cursor: 'pointer' }}>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByCode('respect')}
-                              >
-                                <p>Increase</p>
-                              </List.Content>
-                            </List.Item>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByCode('reverse')}
-                              >
-                                <p>Decrease</p>
-                              </List.Content>
-                            </List.Item>
-                          </List>
-                        }
-                        on="click"
-                        hideOnScroll
-                        position="bottom center"
-                      />
-                    </DivHead>
-                  </div>
-                  <div className="large-7 columns">
-                    <DivHead>
-                      <TextList>ชื่อ-นามสกุล</TextList>
-                      <Popups
-                        trigger={
-                          <Icon
-                            name="sort descending"
-                            style={{ cursor: 'pointer' }}
-                          />
-                        }
-                        content={
-                          <List divided relaxed style={{ cursor: 'pointer' }}>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('respect')}
-                              >
-                                <p>A -&gt; Z</p>
-                              </List.Content>
-                            </List.Item>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('reverse')}
-                              >
-                                <p>Z -&gt; A</p>
-                              </List.Content>
-                            </List.Item>
-                          </List>
-                        }
-                        on="click"
-                        hideOnScroll
-                        position="bottom center"
-                      />
-                    </DivHead>
-                  </div>
+                <div className="large-1 columns">
+                  <DivHead>
+                    <TextList>รหัสพนักงาน</TextList>
+                    <Popups
+                      trigger={
+                        <Icon
+                          name="sort descending"
+                        />
+                      }
+                      content={
+                        <List divided relaxed style={{ cursor: 'pointer' }}>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByCode('respect')}
+                            >
+                              <p>Increase</p>
+                            </List.Content>
+                          </List.Item>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByCode('reverse')}
+                            >
+                              <p>Decrease</p>
+                            </List.Content>
+                          </List.Item>
+                        </List>
+                      }
+                      on="click"
+                      hideOnScroll
+                      position="bottom center"
+                    />
+                  </DivHead>
                 </div>
                 <div className="large-2 columns">
+                  <DivHead>
+                    <TextList>ชื่อ-นามสกุล</TextList>
+                    <Popups
+                      trigger={
+                        <Icon
+                          name="sort descending"
+                          style={{ cursor: 'pointer' }}
+                        />
+                      }
+                      content={
+                        <List divided relaxed style={{ cursor: 'pointer' }}>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('respect')}
+                            >
+                              <p>A -&gt; Z</p>
+                            </List.Content>
+                          </List.Item>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('reverse')}
+                            >
+                              <p>Z -&gt; A</p>
+                            </List.Content>
+                          </List.Item>
+                        </List>
+                      }
+                      on="click"
+                      hideOnScroll
+                      position="bottom center"
+                    />
+                  </DivHead>
+                </div>
+                <div className="large-1 columns">
                   <DivHead>
                     <TextList>เลขสมาชิก</TextList>
                     <Popups
@@ -402,114 +403,110 @@ class manageEmployee extends Component {
                     />
                   </DivHead>
                 </div>
-                <div className="large-5 columns">
-                  <div className="large-4 columns">
-                    <DivHead>
-                      <TextList>แผนประกัน</TextList>
-                      <Popups
-                        trigger={
-                          <Icon
-                            name="sort descending"
-                            style={{ cursor: 'pointer' }}
-                          />
-                        }
-                        content={
-                          <List divided relaxed style={{ cursor: 'pointer' }}>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('respect')}
-                              >
-                                <p>A -&gt; Z</p>
-                              </List.Content>
-                            </List.Item>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('reverse')}
-                              >
-                                <p>Z -&gt; A</p>
-                              </List.Content>
-                            </List.Item>
-                          </List>
-                        }
-                        on="click"
-                        hideOnScroll
-                        position="bottom center"
-                      />
-                    </DivHead>
-                  </div>
-                  <div className="large-4 columns">
-                    <DivHead>
-                      <TextList>สถานะพนักงาน</TextList>
-                      <Popups
-                        trigger={
-                          <Icon
-                            name="sort descending"
-                            style={{ cursor: 'pointer' }}
-                          />
-                        }
-                        content={
-                          <List divided relaxed style={{ cursor: 'pointer' }}>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('respect')}
-                              >
-                                <p>A -&gt; Z</p>
-                              </List.Content>
-                            </List.Item>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('reverse')}
-                              >
-                                <p>Z -&gt; A</p>
-                              </List.Content>
-                            </List.Item>
-                          </List>
-                        }
-                        on="click"
-                        hideOnScroll
-                        position="bottom center"
-                      />
-                    </DivHead>
-                  </div>
+                <div className="large-2 columns">
+                  <DivHead>
+                    <TextList>แผนประกัน</TextList>
+                    <Popups
+                      trigger={
+                        <Icon
+                          name="sort descending"
+                          style={{ cursor: 'pointer' }}
+                        />
+                      }
+                      content={
+                        <List divided relaxed style={{ cursor: 'pointer' }}>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('respect')}
+                            >
+                              <p>A -&gt; Z</p>
+                            </List.Content>
+                          </List.Item>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('reverse')}
+                            >
+                              <p>Z -&gt; A</p>
+                            </List.Content>
+                          </List.Item>
+                        </List>
+                      }
+                      on="click"
+                      hideOnScroll
+                      position="bottom center"
+                    />
+                  </DivHead>
                 </div>
                 <div className="large-2 columns">
-                  <div className="large-6 columns">
-                    <DivHead>
-                      <TextList>วันที่มีผล</TextList>
-                      <Popups
-                        trigger={
-                          <Icon
-                            name="sort descending"
-                            style={{ cursor: 'pointer' }}
-                          />
-                        }
-                        content={
-                          <List divided relaxed style={{ cursor: 'pointer' }}>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('respect')}
-                              >
-                                <p>A -&gt; Z</p>
-                              </List.Content>
-                            </List.Item>
-                            <List.Item>
-                              <List.Content
-                                onClick={() => this.sortByName('reverse')}
-                              >
-                                <p>Z -&gt; A</p>
-                              </List.Content>
-                            </List.Item>
-                          </List>
-                        }
-                        on="click"
-                        hideOnScroll
-                        position="bottom center"
-                      />
-                    </DivHead>
-                  </div>
-                  <div className="large-6 columns">
-                    <TextList>Option</TextList>
-                  </div>
+                  <DivHead>
+                    <TextList>สถานะพนักงาน</TextList>
+                    <Popups
+                      trigger={
+                        <Icon
+                          name="sort descending"
+                          style={{ cursor: 'pointer' }}
+                        />
+                      }
+                      content={
+                        <List divided relaxed style={{ cursor: 'pointer' }}>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('respect')}
+                            >
+                              <p>A -&gt; Z</p>
+                            </List.Content>
+                          </List.Item>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('reverse')}
+                            >
+                              <p>Z -&gt; A</p>
+                            </List.Content>
+                          </List.Item>
+                        </List>
+                      }
+                      on="click"
+                      hideOnScroll
+                      position="bottom center"
+                    />
+                  </DivHead>
+                </div>
+                <div className="large-2 columns">
+                  <DivHead>
+                    <TextList>วันที่มีผล</TextList>
+                    <Popups
+                      trigger={
+                        <Icon
+                          name="sort descending"
+                          style={{ cursor: 'pointer' }}
+                        />
+                      }
+                      content={
+                        <List divided relaxed style={{ cursor: 'pointer' }}>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('respect')}
+                            >
+                              <p>A -&gt; Z</p>
+                            </List.Content>
+                          </List.Item>
+                          <List.Item>
+                            <List.Content
+                              onClick={() => this.sortByName('reverse')}
+                            >
+                              <p>Z -&gt; A</p>
+                            </List.Content>
+                          </List.Item>
+                        </List>
+                      }
+                      on="click"
+                      hideOnScroll
+                      position="bottom center"
+                    />
+                  </DivHead>
+                </div>
+                <div className="large-1 columns">
+                  <TextList>Option</TextList>
                 </div>
               </div>
             </div>

@@ -211,6 +211,7 @@ export const TextList = styled.div`
 `;
 export const DivHead = styled.div`
   position: relative;
+  text-align: center;
 `;
 export const TextElip = styled.div`
   text-overflow: ellipsis;

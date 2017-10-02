@@ -173,7 +173,7 @@ class Benefits extends Component {
           <Link to={`/customerplan/${index}/${customer[index].companyId}`}>
             <BackButton>กลับ</BackButton>
           </Link>
-          <Link to="/dashboard">
+          <Link to="/allcustomer">
             <NextButton>บันทึก</NextButton>
           </Link>
         </div>

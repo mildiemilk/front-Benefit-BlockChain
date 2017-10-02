@@ -76,13 +76,16 @@ class SendFlexPlan extends Component {
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   renderPlan = () => {
+    console.log('template', this.state.templatePlan);
+    console.log('bnefitPlan', this.props.benefitPlan);
     const { benefitPlan } = this.props;
     const { templatePlan } = this.state;
     const planList = benefitPlan;
     if (planList !== undefined && planList.length >= 1) {
       const newplan =
-      templatePlan.filter(plan => planList.map(
-        option => option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
+      planList.filter(plan => templatePlan.map(
+        option => option.plan.plan._id === plan.benefitPlan.plan.planId._id).indexOf(true) !== -1);
+      console.log('newePlan', newplan);
       return newplan;
     }
     return '';
@@ -108,7 +111,7 @@ class SendFlexPlan extends Component {
             <Inner>
               {this.state.templatePlan.length >= 1
               ? <InsurancePlan
-                planList={this.renderPlan()}
+                planList={this.state.templatePlan}
               />
               : <div />
               }

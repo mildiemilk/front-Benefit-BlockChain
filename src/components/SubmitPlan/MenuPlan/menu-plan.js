@@ -24,10 +24,10 @@ class MenuPlan extends Component {
     handleNewPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
-    handleUpdateData: PropTypes.func.isRequired,
   }
-  constructor(props) {
-    super(props);
+
+  constructor() {
+    super();
     this.state = {
       step: 6,
       isOpen: false,
@@ -175,8 +175,6 @@ class MenuPlan extends Component {
           handleChange={this.props.handleChange}
           planName={this.props.planName}
           employeeOfPlan={this.props.employeeOfPlan}
-          handleUpdateData={this.props.handleUpdateData}
-          planList={this.props.planList}
         />
         <div className="menu-add-plan">
           <p onClick={this.props.handleNewPlan} role="button" aria-hidden>

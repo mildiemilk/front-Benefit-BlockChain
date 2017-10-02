@@ -81,6 +81,19 @@ export const DivContent = styled.div`
   padding: 2% 30%;
   margin-bottom:15px;
 `;
+export const CircelBlue = styled.div`
+  display: inline-block;
+  border-radius: 50%;
+  width: 51px;
+  padding: 5px;
+  height: 51px;
+  background-color: #3a7bd5;
+  line-height: 2.8vw;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 0.5vw;
+  cursor: pointer;
+`;
 export const BrowsButton = styled.label`
   border-radius: 20px;
   -webkit-border-radius: 20px;

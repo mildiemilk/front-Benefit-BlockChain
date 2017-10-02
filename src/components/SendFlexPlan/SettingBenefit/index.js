@@ -108,7 +108,7 @@ class SettingBenefit extends Component {
             handleSave={'none-DisplaySave'}
             isReadOnly={isReadOnly}
           />
-          : <div>fdgfh</div>
+          : <div />
           }
           {/* {this.renderOption(this.props.optionPlan, this.props.templatePlan)} */}
         </div>

@@ -14,6 +14,7 @@ HeadSecondDiv,
 NextButton,
 BackButton,
 DownloadDiv,
+CircelBlue,
 } from './styled';
 
 class ViewPlan extends Component {
@@ -33,6 +34,7 @@ class ViewPlan extends Component {
     this.state = {
       companyId: props.match.params.companyId,
       index: props.match.params.index,
+      step: 2,
     };
     props.getCustomer();
     // props.getCustomerFile(this.state.companyId);
@@ -71,9 +73,9 @@ class ViewPlan extends Component {
                   <span className="DownloadText">File size : 0.4 Mb</span>
                 </div>
                 <div className="large-1 columns">
-                  <div className="circelBlue" >
+                  <CircelBlue onClick={this.handleClickDownload}>
                     <img className="imageStyle-download" alt="download" role="button" aria-hidden src={IconDownload} onClick={this.handleClickDownload} />
-                  </div>
+                  </CircelBlue>
                 </div>
               </div>
             </DownloadDiv>

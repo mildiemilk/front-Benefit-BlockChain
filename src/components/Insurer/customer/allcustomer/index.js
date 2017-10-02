@@ -25,9 +25,10 @@ class AllCustomer extends Component {
     props.getCustomer();
   }
   handleDetail = (index, companyId) => {
-    if (status === 'active' || status === 'inactive') {
+    const { customer } = this.props;
+    if (customer[index].status === 'active' || customer[index] === 'inactive') {
       // window.location = `/empmanagement/${index}/${companyId}`;
-      window.location = `/customerplan/${index}/${companyId}`;
+      window.location = `/empmanagement/${index}/${companyId}`;
     } else {
       window.location = `/customerplan/${index}/${companyId}`;
       // const { isAllPlan } = this.state;
@@ -42,21 +43,23 @@ class AllCustomer extends Component {
   render() {
     const { customer } = this.props;
     const { isAllPlan, index } = this.state;
-    return (
-      <div className="allcustomer">
-        { isAllPlan
-          ? <AllPlanData
-            customer={customer}
-            index={index}
-          />
-          : <Customerlist
-            customer={customer}
-            index={index}
-            handleDetail={this.handleDetail}
-          />
-        }
-      </div>
-    );
+    if (customer.length > 0) {
+      return (
+        <div className="allcustomer">
+          { isAllPlan
+            ? <AllPlanData
+              customer={customer}
+              index={index}
+            />
+            : <Customerlist
+              customer={customer}
+              index={index}
+              handleDetail={this.handleDetail}
+            />
+          }
+        </div>
+      );
+    } return <div />
   }
 }
 

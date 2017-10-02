@@ -61,9 +61,18 @@ class AddEmployee extends Component {
       }
     } else {
       dataIndex = parseInt(props.match.params.index, 10);
+      console.log('dataLink', dataDetail[dataIndex]);
+      if (dataDetail[dataIndex].detail.profilePic !== null) {
+        data = { profilePic: dataDetail[dataIndex].detail.profilePic.link,
+          imagePreviewUrl: dataDetail[dataIndex].detail.profilePic.link,
+        };
+      } else {
+        data = { profilePic: '',
+          imagePreviewUrl: '',
+        };
+      }
       data = {
-        profilePic: dataDetail[dataIndex].detail.profilePic.link,
-        imagePreviewUrl: dataDetail[dataIndex].detail.profilePic,
+        ...data,
         prefix: dataDetail[dataIndex].detail.prefix,
         name: dataDetail[dataIndex].detail.name,
         lastname: dataDetail[dataIndex].detail.lastname,

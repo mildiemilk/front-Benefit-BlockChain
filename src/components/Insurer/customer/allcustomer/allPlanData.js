@@ -68,11 +68,10 @@ class AllCustomer extends Component {
               </div>
             </InSide>
           </BoxDetail>
-          {(customer[index].status === 'padding')
+          {(customer[index].status === 'pending')
             ? <Link to={`/stepmanagement/${index}/${this.state.companyId}`}><ButtonPlan next> เริ่มดำเนินการ </ButtonPlan></Link>
             : <ButtonPlan disabled> เริ่มดำเนินการ </ButtonPlan>
           }
-          <Link to={`/stepmanagement/${index}/${this.state.companyId}`}><ButtonPlan next> เริ่มดำเนินการ </ButtonPlan></Link>
         </div>
       );
     }

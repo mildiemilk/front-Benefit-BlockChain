@@ -19,6 +19,9 @@ class SelectOptionPlan extends Component {
     handleActivePlan: PropTypes.func.isRequired,
     planName: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
+    templatePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -27,6 +30,7 @@ class SelectOptionPlan extends Component {
       value: '',
       plan: '',
       openSettingBenefit: false,
+      indexPlan: '',
     };
   }
 
@@ -35,8 +39,12 @@ class SelectOptionPlan extends Component {
     this.props.handleFixedChange(value);
   }
 
-  handleModal = () => {
-    this.setState({ openSettingBenefit: true });
+  handleModal = indexPlan => {
+    console.log('indexPlan', indexPlan);
+    this.setState({
+      openSettingBenefit: true,
+      indexPlan,
+    });
   }
 
   closeModal = () => {
@@ -49,7 +57,11 @@ class SelectOptionPlan extends Component {
   }
 
   renderList = list => {
+    console.log('optionPlan===>selectOptionPlanl', this.props.optionPlan);
+    console.log('selectOption==>', this.props.selectOption);
     const lists = list.map((element, index) => {
+      console.log('index==>', index);
+      console.log('elementId==>', element._id);
       const isActive = element._id === this.props.defaultPlan ? '-active' : '';
       return (
         <div className="row">
@@ -86,7 +98,7 @@ class SelectOptionPlan extends Component {
                 content={
                   <List divided relaxed>
                     <List.Item>
-                      <List.Content onClick={() => this.handleModal()}>
+                      <List.Content onClick={() => this.handleModal(index)}>
                         <p><Icon name="file text outline" />ดูแพลน</p>
                       </List.Content>
                     </List.Item>
@@ -105,6 +117,10 @@ class SelectOptionPlan extends Component {
             <SettingBenefitModal
               openSettingBenefit={this.state.openSettingBenefit}
               closeModal={this.closeModal}
+              optionPlan={this.props.optionPlan}
+              benefitPlan={this.props.benefitPlan}
+              templatePlan={this.props.templatePlan}
+              index={this.state.indexPlan}
             />
           </div>
           {this.props.plan === 'flex'

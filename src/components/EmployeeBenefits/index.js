@@ -11,7 +11,7 @@ import ModalWarningRecord from './modal-warning-record';
 import ModalWarning from './modal-warning';
 import NavBenefit from '../NavBenefit/';
 import { getGroupBenefit, setGroupBenefit } from '../../api/profile-company';
-import { getBenefitPlan } from '../../api/benefit-plan';
+import { getBenefitPlan, getTemplatePlan, getInsurancePlan } from '../../api/benefit-plan';
 
 class employeeBenefits extends Component {
   static propTypes = {
@@ -20,6 +20,11 @@ class employeeBenefits extends Component {
     getBenefitPlan: PropTypes.func.isRequired,
     groupBenefit: PropTypes.shape({}).isRequired,
     benefitPlan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    getTemplatePlan: PropTypes.func.isRequired,
+    getInsurancePlan: PropTypes.func.isRequired,
+    optionPlan: PropTypes.shape({}).isRequired,
+    master: PropTypes.arrayOf(PropTypes.object).isRequired,
+    insurer: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
 
   constructor(props) {
@@ -41,11 +46,21 @@ class employeeBenefits extends Component {
       openWarningModal: false,
       warningMessage: '',
       step: 5,
+      templatePlan: '',
     };
+    props.getInsurancePlan();
     props.getGroupBenefit();
     props.getBenefitPlan();
+    props.getTemplatePlan();
   }
-
+  componentWillReceiveProps = newProps => {
+    if (newProps.master !== this.props.master && newProps.insurer !== this.props.insurer) {
+      const templatePlan = newProps.master.concat(newProps.insurer);
+      this.setState({
+        templatePlan,
+      });
+    }
+  }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.activeGroup !== this.state.activeGroup) {
       const { activeGroup } = this.state;
@@ -204,6 +219,7 @@ class employeeBenefits extends Component {
 
   render() {
     console.log('employeename', this.props);
+    console.log('optionPlan===>EmployeeBenefit', this.props.optionPlan);
     return (
       <div>
         <NavBenefit step={this.state.step} />
@@ -240,6 +256,9 @@ class employeeBenefits extends Component {
                         value={this.state.value}
                         valueFixed={this.state.valueFixed}
                         handleSubmit={this.handleSubmit}
+                        optionPlan={this.props.optionPlan}
+                        benefitPlan={this.props.benefitPlan}
+                        templatePlan={this.state.templatePlan}
                       />
                       : <div className="employeeBenefits-Start-box">
                         <div className="employeeBenefits-center-in-box">
@@ -284,14 +303,19 @@ class employeeBenefits extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+  getTemplatePlan: () => dispatch(getTemplatePlan()),
   getGroupBenefit: () => dispatch(getGroupBenefit()),
   getBenefitPlan: () => dispatch(getBenefitPlan()),
+  getInsurancePlan: () => dispatch(getInsurancePlan()),
   setGroupBenefit: (num, detail) => dispatch(setGroupBenefit(num, detail)),
 });
 
 const mapStateToProps = state => ({
+  optionPlan: state.choosePlan,
   groupBenefit: state.profile.groupBenefit,
   benefitPlan: state.benefitPlan.plan,
+  master: state.choosePlan.insurancePlan.master,
+  insurer: state.choosePlan.insurancePlan.insurer,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(employeeBenefits);

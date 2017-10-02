@@ -52,7 +52,7 @@ class customerList extends Component {
     if (status === 'waiting') {
       return <p style={{ color: 'black' }} >รอบริษัทส่งข้อมูลพนักงาน </p>;
     } else if (status === 'pending') {
-      return <p style={{ color: 'green' }} >ระหว่างดำเนินการ </p>;
+      return <p style={{ color: '#46b3b8' }} >ระหว่างดำเนินการ </p>;
     } else if (status === 'active') {
       return <p style={{ color: 'blue' }} >อยู่ระหว่างการคุ้มครอง </p>;
     }

@@ -53,19 +53,21 @@ class SettingBenefitModal extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.benefitPlan.length !== 0) {
       console.log('benefitPlan==>settingBenefitModal', newProps.benefitPlan);
-      if (this.state.activePlan === '') {
-        const planList = newProps.benefitPlan;
-        const index = this.props.index;
-        this.setState({
-          activePlan: index,
-          planName: planList[index].benefitPlanName,
-          plan: planList[index].benefitPlan.plan.planId._id,
-          isHealth: planList[index].benefitPlan.isHealth,
-          isExpense: planList[index].benefitPlan.isExpense,
-          health: planList[index].benefitPlan.health,
-          expense: planList[index].benefitPlan.expense,
-        }, () => console.log('aftersetState->', this.state));
-      }
+      console.log('index--> settingBenefitModal', this.props.index, 'new', newProps.index);
+      console.log('active-->', this.state.activePlan);
+      const planList = newProps.benefitPlan;
+      console.log('index--->settingBenefitModal After', newProps.index);
+      const index = newProps.index;
+      console.log('index setstate', index);
+      this.setState({
+        activePlan: index,
+        planName: planList[index].benefitPlanName,
+        plan: planList[index].benefitPlan.plan.planId._id,
+        isHealth: planList[index].benefitPlan.isHealth,
+        isExpense: planList[index].benefitPlan.isExpense,
+        health: planList[index].benefitPlan.health,
+        expense: planList[index].benefitPlan.expense,
+      }, () => console.log('aftersetState->', this.state));
     }
 
     if (newProps.benefitPlan !== this.props.benefitPlan) {

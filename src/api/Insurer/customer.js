@@ -20,8 +20,23 @@ const CUSTOMER_EMP_URI = '/api/insurer/customer-employee';
 const CUSTOMER_SELECT_PLAM_URI = '/api/insurer/customer-select-plan';
 const CUSTOMER_FILE_URI = '/api/insurer/customer-file';
 const CUSTOMER_UPFILE_URI = '/api/insurer/customer-upload-file';
+const CUSTOMER_UPFILE_DETAIL_URI = 'api/insurer/customer-upload-file-detail';
 // { method: 'PUT', path: '/insurer/customer-upload-file/{companyId}'
-// { method: 'PUT', path: '/insurer/customer-upload-file-detail'
+
+export function uploadFileDetail(files, type, planId) {
+  const formData = new FormData();
+  files.map((file, index) => (
+    formData.append('file', files[index])
+  ));
+  formData.append('planId', JSON.stringify(planId));
+  formData.append('type', JSON.stringify(type));
+  const options = {
+    method: 'put',
+    url: CUSTOMER_UPFILE_DETAIL_URI,
+    data: formData,
+  };
+  return APIRequest(options, true);
+}
 
 export function getCustomer() {
   return dispatch => {
@@ -40,7 +55,6 @@ export function getCustomer() {
 }
 
 export function putUploadEmpData(file, companyId) {
-  console.log('>>putUploadEmpData api', companyId);
   const formData = new FormData();
   formData.append('file', file);
   return dispatch => {

@@ -10,7 +10,7 @@ import { Head, NavDetail } from './styled';
 import { getClaim } from '../../../api/Insurer/claim';
 import ModalApprove from './ModalApprove';
 import ModalReject from './ModalReject';
-import { StatusTag } from './styled';
+import { StatusTag, Text } from './styled';
 import reject from '../../../../assets/Insurer/redcancel@2x.png';
 import confirm from '../../../../assets/Insurer/greenchecked@2x.png';
 import IconZoom from '../../../../assets/employee/icon_zoom.png';
@@ -114,7 +114,7 @@ class ClaimDetail extends Component {
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">ผู้เคลม </div>
-                      <div className="large-7 columns">สมศรี ช่างสงสัย <Link to="/claimprofile"><span className="inline-link">ดูโปรไฟล์</span></Link><br /><Divider /></div>
+                      <div className="large-7 columns">{claim[index].detail.name} <Link to="/claimprofile"><span className="inline-link">ดูโปรไฟล์</span></Link><br /><Divider /></div>
                     </div>
                     <div className="row">
                       <div className="large-4 columns fontweight">จำนวนเงินที่เคลม </div>
@@ -214,6 +214,10 @@ class ClaimDetail extends Component {
                   : ''
                   }
                 </div>
+                {(claim[index].status === 'reject')
+                ? <div className="row"><div className="large-12 columns status-icon"><Text>{claim[index].reason}</Text></div></div>
+                : ''
+                }
               </NavDetail>
             </div>
           </div>

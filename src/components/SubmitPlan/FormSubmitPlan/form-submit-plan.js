@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
 import { createPlan, editPlan } from '../../../api/set-plan';
 
@@ -12,24 +12,23 @@ class FormSubmitPlan extends Component {
   static propTypes = {
     activePlan: PropTypes.number.isRequired,
     handleChange: PropTypes.func.isRequired,
-    // editPlan: PropTypes.func.isRequired,
-    // createPlan: PropTypes.func.isRequired,
-    // handlePlan: PropTypes.func.isRequired,
+    editPlan: PropTypes.func.isRequired,
+    createPlan: PropTypes.func.isRequired,
+    handlePlan: PropTypes.func.isRequired,
     handleModalFinish: PropTypes.func,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
     employeeOfPlan: PropTypes.number.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleUpdateData: PropTypes.func,
+    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
+
   static defaultProps = {
     handleModalFinish: null,
-    handleUpdateData: null,
   }
-  constructor(props) {
-    super(props);
+
+  constructor() {
+    super();
     this.state = {};
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
@@ -38,21 +37,16 @@ class FormSubmitPlan extends Component {
     if (this.props.activePlan === -1) {
       const employeeOfPlan = numberOfPlan;
       this.props.handleModalFinish();
-      createPlan({ planName, employeeOfPlan })
-      .then(() => {
-        this.props.handleModalFinish();
-      });
+      console.log('plan', planName, 'em', employeeOfPlan);
+      this.props.createPlan({ planName, employeeOfPlan });
       // console.log('thisPlanList', this.props.planList.length);
-      // setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000);
+      setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000);
     } else {
-      editPlan(
+      this.props.editPlan(
         { planName, employeeOfPlan },
         this.props.planList[this.props.activePlan].planId,
         'profilePlan',
-      )
-      .then(() => {
-        this.props.handleUpdateData();
-      });
+      );
     }
   }
 
@@ -87,7 +81,7 @@ class FormSubmitPlan extends Component {
                 </div>
               </div>
               <div className="large-8 columns">
-                <Form onSubmit={() => this.handleClick()}>
+                <Form onSubmit={this.handleClick}>
                   <Form.Group widths="equal">
                     <Form.Input
                       placeholder="ชื่อแพลน"
@@ -135,13 +129,13 @@ class FormSubmitPlan extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//   editPlan: (editData, planId, editType) =>
-//     dispatch(editPlan(editData, planId, editType)),
-// });
-// const mapStateToProps = state => ({
-//   planList: state.plan.planList,
-// });
+const mapDispatchToProps = dispatch => ({
+  createPlan: data => dispatch(createPlan(data)),
+  editPlan: (editData, planId, editType) =>
+    dispatch(editPlan(editData, planId, editType)),
+});
+const mapStateToProps = state => ({
+  planList: state.plan.planList,
+});
 
-// export default connect(mapStateToProps, mapDispatchToProps)(FormSubmitPlan);
-export default FormSubmitPlan;
+export default connect(mapStateToProps, mapDispatchToProps)(FormSubmitPlan);

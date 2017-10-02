@@ -15,6 +15,19 @@ export const WhiteBackGround = styled.div`
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   padding: 30px 50px;
 `;
+export const CircelBlue = styled.div`
+  display: inline-block;
+  border-radius: 50%;
+  width: 51px;
+  padding: 5px;
+  height: 51px;
+  background-color: #3a7bd5;
+  line-height: 2.8vw;
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 0.5vw;
+  cursor: pointer;
+`;
 
 export const HeadSecondDiv = styled.div`
   font-size: 20px;

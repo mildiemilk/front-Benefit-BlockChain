@@ -18,6 +18,7 @@ DivHeadBackcolor,
 DivContent,
 UploadDiv,
 BrowsButton,
+CircelBlue,
 } from './styled';
 // import BoxDownload from '../../../../BoxDownload';
 
@@ -66,7 +67,6 @@ class UploadPolicyNumber extends Component {
   }
 
   render() {
-    console.log('this.state--', this.state);
     const { filePreviewUrl } = this.state;
     let $filePreview = null;
     if (filePreviewUrl) {
@@ -110,10 +110,10 @@ class UploadPolicyNumber extends Component {
                   </div>
                   <div className="large-3 columns padTop">
                     {/* <BoxDownload getTemplate={this.props.getCustomerFile} /> */}
-                    <div className="circelBlue">
+                    <CircelBlue onClick={this.handleClickDownload}>
                       <img className="imageStyle-download" alt="download" role="button" aria-hidden src={IconDownload} onClick={this.handleClickDownload} />
                       {/* onClick={getCustomerFile(this.state.companyId)} */}
-                    </div>
+                    </CircelBlue>
                   </div>
                 </div>
               </DownloadDiv>

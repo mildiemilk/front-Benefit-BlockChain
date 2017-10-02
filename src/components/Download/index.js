@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NavBenefit from '../NavBenefit';
@@ -22,7 +22,6 @@ import BoxDownload from '../BoxDownload';
 
 class Download extends Component {
   static propTypes = {
-    fileEmployee: PropTypes.func.isRequired,
     getTemplate: PropTypes.func.isRequired,
   }
   constructor(props) {
@@ -31,6 +30,7 @@ class Download extends Component {
       step: 5,
       file: null,
       filePreviewUrl: '',
+      isComplete: false,
     };
   }
 
@@ -48,10 +48,13 @@ class Download extends Component {
   }
 
   handleClick = () => {
-    this.props.fileEmployee(this.state.file);
+    fileEmployee(this.state.file).then(() => this.setState({ isComplete: true }));
   }
 
   render() {
+    if (this.state.isComplete) {
+      return <Redirect to="/employeebenefits" />;
+    }
     const { filePreviewUrl } = this.state;
     let $filePreview = null;
     if (filePreviewUrl) {
@@ -112,7 +115,7 @@ class Download extends Component {
             <Link to="settingbenefit"><BackButton> กลับ </BackButton></Link>
           </div>
           <div className="large-2 large-offset-5 columns">
-            <Link to="/employeebenefits"><NextButton onClick={this.handleClick}> ต่อไป </NextButton></Link>
+            <NextButton onClick={this.handleClick}> ต่อไป </NextButton>
           </div>
           <div className="large-1 columns" />
         </div>
@@ -122,7 +125,6 @@ class Download extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fileEmployee: data => dispatch(fileEmployee(data)),
   getTemplate: () => dispatch(getTemplate()),
 });
 

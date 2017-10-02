@@ -35,6 +35,7 @@ class SelectBox extends Component {
 
   render() {
     console.log('optionPlan===>selectBox', this.props.optionPlan);
+    console.log('PropPlan', this.props.plan);
     return (
       <div className="employeeBenefits-select-box">
         <div className="employeeBenefits-select-head-box">

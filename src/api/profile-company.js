@@ -4,8 +4,6 @@ import {
   createProfileSuccess,
   createProfileFailure,
   setLogoSuccess,
-  fileEmployeeSuccess,
-  fileEmployeeFailure,
   getFileEmployeeSuccess,
   getFileEmployeeFailure,
   claimDataSuccess,
@@ -100,21 +98,13 @@ export function setLogo(file) {
 export function fileEmployee(file) {
   const formData = new FormData();
   formData.append('file', file);
-  return dispatch => {
-    const options = {
-      method: 'post',
-      url: FILEEMPLOYEE_URI,
-      data: formData,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        dispatch(fileEmployeeSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(fileEmployeeFailure(err.response.data));
-      });
+  const options = {
+    method: 'post',
+    url: FILEEMPLOYEE_URI,
+    data: formData,
   };
+
+  return APIRequest(options, true);
 }
 export function getClaimData() {
   return dispatch => {

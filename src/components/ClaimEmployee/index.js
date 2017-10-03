@@ -20,10 +20,21 @@ class ClaimEmployee extends Component {
       isExtend: false,
       index: 1,
       indexDetail: '',
+      isResult: false,
     };
     props.getClaimList();
   }
-
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.isResult) {
+      this.setState({ isResult: false });
+      this.props.getClaimList();
+    }
+  }
+  checkResult = () => {
+    this.setState({
+      isResult: 'true',
+    })
+  }
   handleDetail = index => {
     const { isExtend } = this.state;
     this.setState({
@@ -96,6 +107,7 @@ class ClaimEmployee extends Component {
           claimList={this.props.claimList}
           index={this.state.index}
           indexDetail={this.state.indexDetail}
+          checkResult={this.checkResult}
         />
         : <DetailClaim
           styletabExpense={this.styletabExpense}

@@ -13,6 +13,7 @@ import {
   chooseInsurer,
   getAllInsurer,
   getSelectInsurer,
+  getTimeout,
 } from '../../api/choose-insurer';
 import NavInsure from '../NavInsure';
 import {
@@ -39,6 +40,8 @@ class InsurerSelect extends Component {
     setTimeOut: PropTypes.func.isRequired,
     insurerList: PropTypes.arrayOf(PropTypes.object).isRequired,
     chooseInsurer: PropTypes.func.isRequired,
+    timeout: PropTypes.string.isRequired,
+    getTimeout: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -51,6 +54,7 @@ class InsurerSelect extends Component {
       isSave: false,
       // hideProgressBar: true,
     };
+    props.getTimeout();
   }
 
   componentDidMount() {
@@ -157,7 +161,7 @@ class InsurerSelect extends Component {
                 <p className="insure">
                   บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
                 </p>
-                <Timeout setTimeout={this.props.setTimeOut} />
+                <Timeout setTimeout={this.props.setTimeOut} timeout={this.props.timeout} />
               </SideIn>
             </div>
           </Detail>
@@ -173,6 +177,7 @@ class InsurerSelect extends Component {
 
 const mapDispatchToProps = dispatch => ({
   setTimeOut: timeout => dispatch(setTimeOut(timeout)),
+  getTimeout: () => dispatch(getTimeout()),
   chooseInsurer: insurers => dispatch(chooseInsurer(insurers)),
   getAllInsurer: () => dispatch(getAllInsurer()),
   getSelectInsurer: () => dispatch(getSelectInsurer()),

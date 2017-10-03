@@ -36,6 +36,7 @@ const Text = styled.div`
 class ModalApprove extends Component {
   static propTypes = {
     claimId: PropTypes.string.isRequired,
+    checkResult: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -49,8 +50,9 @@ class ModalApprove extends Component {
   })
   handleApprove = () => {
     const { claimId } = this.props;
+    this.handleModal();
     companyClaim('approve', claimId, null)
-    .then(() => this.handleModal());
+    .then(() => { this.props.checkResult() });
   }
   render() {
     return (

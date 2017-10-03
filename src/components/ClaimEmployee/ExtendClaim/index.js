@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { Detail } from '../../StyleComponent';
 import { Status } from '../styled';
-import { DivClaim, Head, NumRef, List, ListDetail, Box, DivList, HeadLink, DivInsurance } from './styled';
+import { DivClaim, Head, NumRef, List, ListDetail, Box, DivList, HeadLink, DivInsurance, DisPlayResult } from './styled';
 import health from '../../../../assets/ClaimEmployee/groupHealth.png';
 import insurance from '../../../../assets/ClaimEmployee/groupInsurance.png';
 import expense from '../../../../assets/ClaimEmployee/groupExpense.png';
@@ -35,6 +35,7 @@ class ExtendClaim extends Component {
     claimList: PropTypes.shape({}).isRequired,
     index: PropTypes.number.isRequired,
     indexDetail: PropTypes.number.isRequired,
+    checkResult: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -116,34 +117,38 @@ class ExtendClaim extends Component {
             </div>
           </div>
         </DivClaim>
-        {status === 'pending'
-        ? <div className="row">
-          <div className="large-6 columns">
-            <ModalReject
-              claimId={claimList.claims[index].claims[indexDetail].claimId}
-            />
+        <DisPlayResult>
+          {status === 'pending'
+          ? <div className="row">
+            <div className="large-6 columns">
+              <ModalReject
+                claimId={claimList.claims[index].claims[indexDetail].claimId}
+                checkResult={this.props.checkResult}
+              />
+            </div>
+            <div className="large-6 columns">
+              <ModalApprove
+                claimId={claimList.claims[index].claims[indexDetail].claimId}
+                checkResult={this.props.checkResult}
+              />
+            </div>
           </div>
-          <div className="large-6 columns">
-            <ModalApprove
-              claimId={claimList.claims[index].claims[indexDetail].claimId}
-            />
+          : null
+          }
+          {status === 'approve'
+          ? <div><img src={approve} alt="form" />
+            <ListDetail color="#9b9b9b">อนุมัติแล้ว</ListDetail>
           </div>
-        </div>
-        : null
-        }
-        {status === 'approve'
-        ? <div><img src={approve} alt="form" />
-          <ListDetail color="#9b9b9b">อนุมัติแล้ว</ListDetail>
-        </div>
-        : null
-        }
-        {status === 'reject'
-        ? <div><img src={reject} alt="form" />
-          <ListDetail color="#9b9b9b">ไม่อนุมัติ</ListDetail>
-          <div>เหตุผล {reason}</div>
-        </div>
-        : null
-        }
+          : null
+          }
+          {status === 'reject'
+          ? <div><img src={reject} alt="form" />
+            <ListDetail color="#9b9b9b">ไม่อนุมัติ</ListDetail>
+            <div>เหตุผล {reason}</div>
+          </div>
+          : null
+          }
+        </DisPlayResult>
       </div>
     );
     return result;

@@ -137,9 +137,9 @@ class General extends Component {
                   </div>
                   <div className="large-6 columns">
                     <InputForm
-                      type="radio" value="ผู้หญิง"
+                      type="radio" value="หญิง"
                       onClick={this.props.handleOptionGender}
-                      checked={data.gender === 'ผู้หญิง'}
+                      checked={data.gender === 'หญิง'}
                     /> หญิง
                   </div>
                 </div>

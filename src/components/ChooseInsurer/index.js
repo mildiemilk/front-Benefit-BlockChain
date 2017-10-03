@@ -131,6 +131,11 @@ class InsurerSelect extends Component {
   }
 
   render() {
+    const { timeout } = this.props;
+    let time = '';
+    if (timeout !== '') {
+      time = timeout;
+    }
     return (
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
@@ -161,7 +166,7 @@ class InsurerSelect extends Component {
                 <p className="insure">
                   บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
                 </p>
-                <Timeout setTimeout={this.props.setTimeOut} timeout={this.props.timeout} />
+                <Timeout setTimeout={this.props.setTimeOut} timeout={time} />
               </SideIn>
             </div>
           </Detail>

@@ -23,7 +23,7 @@ import { Navmanage,
 } from './styled';
 import '../../../../styles/main_icon.scss';
 import { getCustomer,
-  getCustomerEmployee, getCustomerSelectPlan } from '../../../../api/Insurer/customer';
+  getCustomerEmployee, getCustomerSelectPlan, editPolicy } from '../../../../api/Insurer/customer';
 import IconPlan from '../../../../../assets/Insurer/icon_plan@3x.png';
 import Icity from '../../../../../assets/Insurer/icons-8-city@2x.png';
 import IempPlus from '../../../../../assets/Insurer/group-copy@2x.png';
@@ -41,10 +41,10 @@ class manageEmployee extends Component {
     getCustomerEmployee: PropTypes.func.isRequired,
     getCustomerSelectPlan: PropTypes.func.isRequired,
     getCustomer: PropTypes.func.isRequired,
-    // index: PropTypes.number.isRequired,
+    // editPolicy: PropTypes.func.isRequired,
     customer: PropTypes.arrayOf(PropTypes.object).isRequired,
     customerSelectPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
-    customerEmployee: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    customerEmployee: PropTypes.shape({}).isRequired,
     match: PropTypes.shape({ params: PropTypes }),
   }
   static defaultProps = {
@@ -61,11 +61,37 @@ class manageEmployee extends Component {
       minList: 0,
       maxList: 10,
       pageNumber: 1,
-      employees: props.customerEmployee.employees,
+      employees: props.customerEmployee,
+      updateNewEmp: false,
     };
     props.getCustomerEmployee(this.state.companyId);
     props.getCustomerSelectPlan(this.state.companyId);
     props.getCustomer();
+  }
+  componentWillUpdate() {
+    if (this.state.updateNewEmp) {
+      console.log('componentWillUpdate');
+      this.setState({ updateNewEmp: false });
+      this.props.getCustomerEmployee(this.state.companyId);
+    }
+  }
+  handleUpdatePolicy = () => {
+    this.setState({ updateNewEmp: true });
+  }
+  handleSubmitPolicy = (e, employeeId) => {
+    e.preventDefault();
+    const { memberNumber, policyNumber } = this.state;
+    console.log('>>handleSubmitPolicy employeeId', employeeId);
+    editPolicy(employeeId, policyNumber, memberNumber).then(() => {
+      this.handleUpdatePolicy();
+      window.location.reload();
+    });
+  }
+  handleDataChange = e => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({ [name]: value });
   }
   ShowPlan = plans =>
     plans.map(
@@ -197,14 +223,10 @@ class manageEmployee extends Component {
                 </div>
                 <div className="edit-employee-list">
                   <ModalEditEmployee
-                    optionGroupBenefit={this.state.optionGroupBenefit}
-                    optionDepartment={this.state.optionDepartment}
-                    optionTitles={this.state.optionTitles}
-                    optionTypeEmployee={this.state.optionTypeEmployee}
-                    manageEmployee={manageEmployee}
-                    checkStateManage={this.checkStateManage}
-                    optionBenefitPlan={this.state.optionBenefitPlan}
-                    employeeId={this.state._id}
+                    handleSubmitPolicy={this.handleSubmitPolicy}
+                    handleDataChange={this.handleDataChange}
+                    employeeId={EMPlist._id}
+                    modalOpen={this.state.modalOpen}
                   />
                 </div>
               </div>

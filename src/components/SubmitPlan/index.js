@@ -437,6 +437,8 @@ class SubmitPlan extends Component {
                     />
                     <div className="fillBox">
                       <AllPlan
+                        handleUpdateData={this.handleUpdateData}
+                        planList={this.props.planList}
                         activePlan={this.state.activePlan}
                         handlePlan={this.handlePlan}
                         nextPage={this.state.nextPage}

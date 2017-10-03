@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
@@ -11,7 +11,7 @@ class Dental extends Component {
   static propTypes = {
     handleVerifyState: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
-    editPlan: PropTypes.func.isRequired,
+    // editPlan: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleResetDental: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
@@ -20,15 +20,14 @@ class Dental extends Component {
     activePlan: PropTypes.number.isRequired,
     setPlan: PropTypes.string.isRequired,
     openModal: PropTypes.bool.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    handleUpdateData: PropTypes.func.isRequired,
     reset: PropTypes.bool.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
   }
-
   static defaultProps = {
     dentalPerYear: null,
   }
-
   constructor(props) {
     super(props);
     this.state = {};
@@ -50,11 +49,14 @@ class Dental extends Component {
     if (dentalPerYear === '') {
       dentalPerYear = null;
     }
-    this.props.editPlan(
+    editPlan(
       { dentalPerYear },
       this.props.planList[this.props.activePlan].planId,
       'dental',
-    );
+    )
+    .then(() => {
+      this.props.handleUpdateData();
+    });
     this.props.handleRecordVerifyState('dentalRecord');
   }
 
@@ -122,12 +124,13 @@ class Dental extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  editPlan: (editData, planId, editType) =>
-    dispatch(editPlan(editData, planId, editType)),
-});
-const mapStateToProps = state => ({
-  planList: state.plan.planList,
-});
+// const mapDispatchToProps = dispatch => ({
+//   editPlan: (editData, planId, editType) =>
+//     dispatch(editPlan(editData, planId, editType)),
+// });
+// const mapStateToProps = state => ({
+//   planList: state.plan.planList,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dental);
+// export default connect(mapStateToProps, mapDispatchToProps)(Dental);
+export default Dental;

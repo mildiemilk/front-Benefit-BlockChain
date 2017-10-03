@@ -86,7 +86,7 @@ export function getClaimStatusReducer(state = defaultClaimData, action) {
   switch (action.type) {
     case GET_CLAIM_STATUS_SUCCESS:
       return Object.assign({}, state, {
-        claimData: action.data,
+        claimData: [...action.data],
       });
     case GET_CLAIM_STATUS_FAILURE:
       return state;

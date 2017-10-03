@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
@@ -14,6 +14,7 @@ const Checkboxs = styled(Checkbox)`
 `;
 class OPD extends Component {
   static propTypes = {
+    handleUpdateData: PropTypes.func.isRequired,
     handleVerifyState: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
@@ -35,8 +36,8 @@ class OPD extends Component {
     opdCoPayMixPercentage: PropTypes.string.isRequired,
     opdCoPayMixNotExceed: PropTypes.string.isRequired,
     opdCoPayMixYear: PropTypes.string.isRequired,
-    editPlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // editPlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleNextPlan: PropTypes.func.isRequired,
   }
 
@@ -74,7 +75,7 @@ class OPD extends Component {
       opdCoPayMixNotExceed,
       opdCoPayMixYear,
     } = this.props;
-    this.props.editPlan(
+    editPlan(
       {
         opdCoPay,
         opdPerYear,
@@ -88,7 +89,10 @@ class OPD extends Component {
       },
       this.props.planList[this.props.activePlan].planId,
       'opd',
-    );
+    )
+    .then(() => {
+      this.props.handleUpdateData();
+    });
     this.props.handleRecordVerifyState('opdRecord');
   }
 
@@ -274,14 +278,15 @@ class OPD extends Component {
   }
 }
 
-OPD.propTypes = {};
+// OPD.propTypes = {};
 
-const mapDispatchToProps = dispatch => ({
-  editPlan: (editData, planId, editType) =>
-    dispatch(editPlan(editData, planId, editType)),
-});
-const mapStateToProps = state => ({
-  planList: state.plan.planList,
-});
+// const mapDispatchToProps = dispatch => ({
+//   editPlan: (editData, planId, editType) =>
+//     dispatch(editPlan(editData, planId, editType)),
+// });
+// const mapStateToProps = state => ({
+//   planList: state.plan.planList,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(OPD);
+// export default connect(mapStateToProps, mapDispatchToProps)(OPD);
+export default OPD;

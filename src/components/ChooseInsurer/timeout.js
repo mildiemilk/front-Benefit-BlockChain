@@ -29,7 +29,10 @@ class Timeout extends Component {
   componentWillReceiveProps(nextProps) {
     console.log('nextPRops', nextProps.timeout);
     console.log('PRops', this.props.timeout);
-    this.setState({ date: moment(nextProps.timeout) }, () => console.log('date WillRecie--->', this.state.date));
+    if (this.props.timeout !== null && this.props.timeout !== '') {
+      console.log('PRops Inif', this.props.timeout);
+      this.setState({ date: moment(nextProps.timeout) }, () => console.log('date WillRecie--->', this.state.date));
+    }
   }
   componentWillUpdate(nextProps, nextState) {
     console.log('NextState', nextState);
@@ -59,7 +62,7 @@ class Timeout extends Component {
       <div style={{ display: 'inline-block' }} >
         <div>
           <DatePickers
-            selected={moment(this.props.timeout)}
+            selected={this.state.date}
             onChange={this.handleDate}
             minDate={moment()}
             fixedHeight
@@ -69,7 +72,9 @@ class Timeout extends Component {
           ? <TimePicker
             onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
           />
-          : <div />
+          : <TimePicker
+            onChange={this.handleTime} showSecond={false}
+          />
           }
         </div>
         <div className="clearfix">

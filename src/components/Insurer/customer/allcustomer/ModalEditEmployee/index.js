@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Modal, Icon } from 'semantic-ui-react';
+import { Modal, Icon, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   ModalHeader,
 } from '../../../../ModalConfirmPassword/styled';
-import { DivContent, Input } from './styled';
+import { DivContent } from './styled';
 // import InputDate from '../../InputDate';
 import { Button } from '../../../../StyleComponent';
 
@@ -35,11 +35,10 @@ const ModalHeaders = styled(ModalHeader)`
 
 class ModalEditEmployee extends Component {
   static propTypes = {
-    // groupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
-    // employeeDetail: PropTypes.arrayOf(PropTypes.object).isRequired,
-    optionGroupBenefit: PropTypes.arrayOf(PropTypes.object).isRequired,
-    optionTitles: PropTypes.arrayOf(PropTypes.object).isRequired,
-    optionDepartment: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleSubmitPolicy: PropTypes.func.isRequired,
+    handleDataChange: PropTypes.func.isRequired,
+    employeeId: PropTypes.string.isRequired,
+    modalOpen: PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
@@ -71,6 +70,10 @@ class ModalEditEmployee extends Component {
   handleModal = () =>
     this.setState({
       modalOpen: !this.state.modalOpen,
+    })
+  handleModalSave = () =>
+    this.setState({
+      modalOpen: this.props.modalOpen,
     })
   handlePromotion = () => {
     if (!this.state.isPromotion) {
@@ -112,31 +115,34 @@ class ModalEditEmployee extends Component {
           <Icon name="edit" onClick={this.handleModal} />
         }
         open={this.state.modalOpen}
-        onClose={this.handleModal}
+        // onClose={this.handleModal}
       >
 
         <ModalContents className="editEmployee">
           <ModalHeaders>
             <div>แก้ไขเลขสมาชิก</div>
           </ModalHeaders>
-          <DivContent padding="6px 15px">
-            <div className="row">
-              <div className="large-6 columns">
-                <Input value="" placeholder="กรุณากรอกเลขสมาชิก" />
-              </div>
-              <div className="large-6 columns">
-                <Input value="" placeholder="กรุณากรอกเลขกรมธรรม์" />
+          <DivContent padding="6px 0px">
+            <form id="policyNumber" name="policyNumber" onSubmit={e => this.props.handleSubmitPolicy(e, this.props.employeeId)}><div className="quotation-input-div">
+              <div className="row">
+                <div className="large-6 columns">
+                  <Input value={this.state.memberNumber} name="memberNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขสมาชิก" />
+                </div>
+                <div className="large-6 columns">
+                  <Input value={this.state.policyNumber} name="policyNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขกรมธรรม์" />
+                </div>
               </div>
             </div>
+            </form>
           </DivContent>
-          <DivContent padding="0px 15px">
+          <DivContent >
             <div className="row">
               <div className="large-12 columns">
                 <div className="large-6 columns">
                   <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
                 </div>
                 <div className="large-6 columns">
-                  <Button>บันทึก</Button>
+                  <Button type="submit" form="policyNumber">บันทึก</Button>
                 </div>
               </div>
             </div>

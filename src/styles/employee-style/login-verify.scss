@@ -402,6 +402,11 @@
   margin: auto;
   display: block;
 }
-.divInput .required.field .ui.input input {
-  padding-left: 2.2vw;
+@media (min-width: 768px) {
+  .divInput .required.field .ui.input input {
+    padding-left: 2.2vw;
+  }
+}
+.emp-verify-icon-key-mobile {
+  width: 136px;
 }

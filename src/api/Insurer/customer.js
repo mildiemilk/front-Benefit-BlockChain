@@ -20,8 +20,8 @@ const CUSTOMER_EMP_URI = '/api/insurer/customer-employee';
 const CUSTOMER_SELECT_PLAM_URI = '/api/insurer/customer-select-plan';
 const CUSTOMER_FILE_URI = '/api/insurer/customer-file';
 const CUSTOMER_UPFILE_URI = '/api/insurer/customer-upload-file';
+const CUSTOMER_EDIT_POLICY_URI = '/api/insurer/customer-edit-policy';
 const CUSTOMER_UPFILE_DETAIL_URI = 'api/insurer/customer-upload-file-detail';
-// { method: 'PUT', path: '/insurer/customer-upload-file/{companyId}'
 
 export function uploadFileDetail(files, type, planId) {
   const formData = new FormData();
@@ -37,7 +37,14 @@ export function uploadFileDetail(files, type, planId) {
   };
   return APIRequest(options, true);
 }
-
+export function editPolicy(employeeId, policyNumber, memberNumber) {
+  const options = {
+    method: 'put',
+    url: CUSTOMER_EDIT_POLICY_URI,
+    data: { employeeId, policyNumber, memberNumber },
+  };
+  return APIRequest(options, true);
+}
 export function getCustomer() {
   return dispatch => {
     const options = {
@@ -103,21 +110,6 @@ export function getCustomerEmployee(companyId) {
       });
   };
 }
-// export function getCustomerFile(companyId) {
-//   return dispatch => {
-//     const options = {
-//       method: 'get',
-//       url: `${CUSTOMER_FILE_URI}/${companyId}`,
-//     };
-//     APIRequest(options, true)
-//       .then(res => {
-//         dispatch(getCustomerFileSuccess(res.data));
-//       })
-//       .catch(err => {
-//         dispatch(getCustomerFileFailure(err));
-//       });
-//   };
-// }
 export function getCustomerFile(companyId) {
   return () => {
     const options = {

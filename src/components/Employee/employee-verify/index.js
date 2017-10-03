@@ -20,8 +20,8 @@ class EmployeeVerify extends Component {
     updatePassword: PropTypes.func.isRequired,
     updatePersonalDetails: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       password: '',
       confirmPassword: '',
@@ -30,17 +30,13 @@ class EmployeeVerify extends Component {
       showModal: false,
       error: null,
     };
-    this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.handleSubmitButton = this.handleSubmitButton.bind(this);
-    this.handleSubmitButtonModal = this.handleSubmitButtonModal.bind(this);
-    this.handleHideModel = this.handleHideModel.bind(this);
   }
 
   handleChangeInput = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   }
 
-  handleSubmitButton() {
+  handleSubmitButton = () => {
     this.setState({ error: null });
     const { password, confirmPassword } = this.state;
     const checkPassword = passwordPattern.test(password);
@@ -60,7 +56,7 @@ class EmployeeVerify extends Component {
     }
   }
 
-  handleSubmitButtonModal() {
+  handleSubmitButtonModal = () => {
     const { email, phone } = this.state;
     const checkEmail = emailPattern.test(email);
     const checkPhone = phonePattern.test(phone);
@@ -82,78 +78,86 @@ class EmployeeVerify extends Component {
     }
   }
 
-  handleHideModel() {
+  handleHideModel = () => {
     this.setState({ showModal: false });
   }
 
-  handleRenderMobile = () =>
-    <div className="white-background">
-      <div className="row">
-        <div className="small-10 small-centered columns">
-          <div className="form-key-box">
-            <img src={key} alt="key" />
-            <p>ตั้งรหัสผ่านบัญชีผู้ใช้</p>
-            <Form onSubmit={this.handleSubmitButton}>
-              <Form.Field>
-                <div className="divInput">
-                  <img className="iconImage" alt="keyIcon" src={keyIcon} />
-                  <Popup
-                    trigger={
-                      <Form.Input
-                        placeholder="รหัสผ่าน"
-                        type="password"
-                        name="password"
-                        defaultValue={this.state.password}
-                        onChange={e => this.handleChangeInput(e)}
-                        required
-                      />
-                    }
-                    header="คำแนะนำ:"
-                    content="รหัสผ่านควรมีความยาว 8-20 ตัวอักษรและประกอบด้วยตัวอักษรพิมพ์เล็ก, พิมพ์ใหญ่ และตัวเลข"
-                    on="click"
-                  />
-                </div>
-              </Form.Field>
-              <Form.Field>
-                <div className="divInput">
-                  <img className="iconImage" alt="keyIcon" src={keyIcon} />
-                  <Form.Input
-                    placeholder="กรอกรหัสผ่านอีกครั้ง"
-                    type="password"
-                    name="confirmPassword"
-                    defaultValue={this.state.confirmPassword}
-                    onChange={this.handleChangeInput}
-                    required
-                  />
-                </div>
-              </Form.Field>
-              <p style={{ color: 'red' }}>{ this.state.error }</p>
-              <button className="button-submit-key" type="submit">
-                ตั้งรหัสผ่านสำหรับใช้งาน
-              </button>
-              <ModalAddData
-                error={this.state.error}
-                showModal={this.state.showModal}
-                handleChangeInput={this.handleChangeInput}
-                handleSubmitButtonModal={this.handleSubmitButtonModal}
-                handleHideModel={this.handleHideModel}
+  handleRenderForm = () =>
+    <Form onSubmit={this.handleSubmitButton}>
+      <Form.Field>
+        <div className="divInput">
+          <img className="iconImage" alt="keyIcon" src={keyIcon} />
+          <Popup
+            trigger={
+              <Form.Input
+                placeholder="รหัสผ่าน"
+                type="password"
+                name="password"
+                defaultValue={this.state.password}
+                onChange={e => this.handleChangeInput(e)}
+                required
               />
-            </Form>
-          </div>
+            }
+            header="คำแนะนำ:"
+            content="รหัสผ่านควรมีความยาว 8-20 ตัวอักษรและประกอบด้วยตัวอักษรพิมพ์เล็ก, พิมพ์ใหญ่ และตัวเลข"
+            on="click"
+          />
         </div>
-      </div>
-    </div>;
+      </Form.Field>
+      <Form.Field>
+        <div className="divInput">
+          <img className="iconImage" alt="keyIcon" src={keyIcon} />
+          <Form.Input
+            placeholder="กรอกรหัสผ่านอีกครั้ง"
+            type="password"
+            name="confirmPassword"
+            defaultValue={this.state.confirmPassword}
+            onChange={this.handleChangeInput}
+            required
+          />
+        </div>
+      </Form.Field>
+      <p style={{ color: 'red' }}>{ this.state.error }</p>
+      <button className="button-submit-key" type="submit">
+        ตั้งรหัสผ่านสำหรับใช้งาน
+      </button>
+      <ModalAddData
+        error={this.state.error}
+        showModal={this.state.showModal}
+        handleChangeInput={this.handleChangeInput}
+        handleSubmitButtonModal={this.handleSubmitButtonModal}
+        handleHideModel={this.handleHideModel}
+      />
+    </Form>
 
   render() {
     return (
       <div>
         <MediaQuery query="(max-width: 767px)">
-          { this.handleRenderMobile() }
+          <div className="white-background">
+            <div className="row">
+              <div className="small-10 small-centered columns">
+                <div className="form-key-box">
+                  <img className="emp-verify-icon-key-mobile" src={key} alt="key" />
+                  <p>ตั้งรหัสผ่านบัญชีผู้ใช้</p>
+                  {this.handleRenderForm()}
+                </div>
+              </div>
+            </div>
+          </div>
         </MediaQuery>
         <MediaQuery query="(min-width: 768px)">
           <img className="login-d-logo" alt="" src={Logo} />
-          <div className="emp-verify-box">
-            eiei
+          <div className="login-d-box">
+            <div className="login-d-box-l">
+              <img alt="" src={key} className="login-d-icon-gift" />
+            </div>
+            <div className="login-d-box-r">
+              <span className="login-d-header">ตั้งรหัสผ่านบัญชีผู้ใช้</span>
+              <span className="login-d-description">ตั้งรหัสผ่านเพื่อเข้าสู่ระบบในครั้งต่อไป</span>
+              <hr className="login-d-line" />
+              {this.handleRenderForm()}
+            </div>
           </div>
         </MediaQuery>
       </div>

@@ -498,37 +498,6 @@ class AllsetPlan extends Component {
                   <span className={this.state.textLife}>Life</span>
                 </div>
               </div>}
-            {/* {this.state.setPlan === 'Life'
-              ? <div className="large-3 columns">
-                <div
-                  className="x-tab-active"
-                  onClick={() => this.handleClick('Life')}
-                  role="button"
-                  aria-hidden
-                >
-                  <img
-                    src={this.handleImageActive('Life')}
-                    className="imageMenu"
-                    alt="Menu"
-                  />
-                  <span className={this.state.textLifeActive}>Life</span>
-                </div>
-              </div>
-              : <div className="large-3 columns">
-                <div
-                  className="x-tab"
-                  onClick={() => this.handleClick('Life')}
-                  role="button"
-                  aria-hidden
-                >
-                  <img
-                    src={this.handleImage('Life')}
-                    className="imageMenu"
-                    alt="Menu"
-                  />
-                  <span className={this.state.textLife}>Life</span>
-                </div>
-              </div>} */}
           </div>
           <div className="paragraph">
             {this.state.setPlan === 'OPD'

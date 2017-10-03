@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import { Icon } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 import Head from '../../Head';
 import { Detail, Text } from './styled';
 import General from './General';
@@ -79,7 +80,7 @@ class AddEmployee extends Component {
         gender: dataDetail[dataIndex].detail.gender,
         citizenId: dataDetail[dataIndex].detail.citizenId,
         nationality: dataDetail[dataIndex].detail.nationality,
-        dateOfBirth: '',
+        dateOfBirth: moment(dataDetail[dataIndex].detail.dateOfBirth),
         employeeCode: dataDetail[dataIndex].detail.employeeCode,
         policyNumber: dataDetail[dataIndex].detail.policyNumber,
         memberNumber: dataDetail[dataIndex].detail.memberNumber,
@@ -92,8 +93,8 @@ class AddEmployee extends Component {
         personalEmail: dataDetail[dataIndex].detail.personalEmail,
         accountNumber: dataDetail[dataIndex].detail.accountNumber,
         bankName: dataDetail[dataIndex].detail.bankName,
-        startDate: '',
-        endDate: '',
+        startDate: moment(dataDetail[dataIndex].detail.startDate),
+        endDate: moment(dataDetail[dataIndex].detail.endDate),
         phoneNumber: dataDetail[dataIndex].detail.phoneNumber,
         address: dataDetail[dataIndex].detail.address,
         marriageStatus: dataDetail[dataIndex].detail.marriageStatus,
@@ -120,7 +121,7 @@ class AddEmployee extends Component {
       gender: data.gender,
       citizenId: data.citizenId,
       nationality: data.nationality,
-      dateOfBirth: '',
+      dateOfBirth: data.dateOfBirth,
       employeeCode: data.employeeCode,
       policyNumber: data.policyNumber,
       memberNumber: data.memberNumber,
@@ -133,8 +134,8 @@ class AddEmployee extends Component {
       personalEmail: data.personalEmail,
       accountNumber: data.accountNumber,
       bankName: data.bankName,
-      startDate: '',
-      endDate: '',
+      startDate: data.startDate,
+      endDate: data.endDate,
       phoneNumber: data.phoneNumber,
       address: data.address,
       marriageStatus: data.marriageStatus,

@@ -22,9 +22,9 @@ class MenuPlan extends Component {
     openModalForm: PropTypes.func.isRequired,
     handlePlan: PropTypes.func.isRequired,
     handleNewPlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
-    comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
+    comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
     super(props);
@@ -129,7 +129,7 @@ class MenuPlan extends Component {
                 hideOnScroll
                 position="bottom center"
               />
-              <p>แก้ไขครั้งล่าสุดโดย {list[i].updateBy}</p>
+              <p>แก้ไขครั้งล่าสุดโดย {list[i].company.hrDetail}</p>
             </div>
           </div>
         </div>,
@@ -166,6 +166,8 @@ class MenuPlan extends Component {
           />
         </div>
         <FormModal
+          planList={this.props.planList}
+          handleUpdateData={this.props.handleUpdateData}
           activePlan={this.props.activePlan}
           handlePlan={this.props.handlePlan}
           openModalForm={this.props.openModalForm}
@@ -175,8 +177,6 @@ class MenuPlan extends Component {
           handleChange={this.props.handleChange}
           planName={this.props.planName}
           employeeOfPlan={this.props.employeeOfPlan}
-          handleUpdateData={this.props.handleUpdateData}
-          planList={this.props.planList}
         />
         <div className="menu-add-plan">
           <p onClick={this.props.handleNewPlan} role="button" aria-hidden>

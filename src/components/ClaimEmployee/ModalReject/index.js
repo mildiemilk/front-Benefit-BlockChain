@@ -45,6 +45,7 @@ const Text = styled.div`
 class ModalReject extends Component {
   static propTypes = {
     claimId: PropTypes.string.isRequired,
+    checkResult: PropTypes.func.isRequired,
   }
   constructor() {
     super();
@@ -66,7 +67,8 @@ class ModalReject extends Component {
     const { claimId } = this.props;
     const { reason } = this.state;
     companyClaim('reject', claimId, reason)
-    .then(() => this.handleModal());
+    .then(() => { this.props.checkResult() });
+    this.handleModal();
   }
 
   render() {

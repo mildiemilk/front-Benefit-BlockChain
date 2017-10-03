@@ -67,7 +67,6 @@ export const UploadDiv = styled.div`
   height: 40px;
   width: 100%;
   border-radius: 6px;
-  background-color: #d8d8d8;
   border: solid 1px #d8d8d8;
   color: #505050;
   padding:10px;

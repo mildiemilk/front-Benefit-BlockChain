@@ -98,14 +98,25 @@ class SelectRealTime extends Component {
               : null
               }
             </div>
-            <div className="large-7 columns Bar">
+            {this.state.timeout
+            ? <div className="large-7 columns Bar">
+              <ProgressStyle
+                percent={allPlan.amountOfPlan[index]}
+                className={this.handleBar(allPlan.amountOfPlan[index])}
+              />
+              <Number>
+                {allPlan.amountOfPlan[index]} คน
+              </Number>
+            </div>
+            : <div className="large-7 columns Bar">
               <ProgressStyle
                 percent={allPlan.confirm[index]} className={this.handleBar(allPlan.confirm[index])}
               />
               <Number>
                 {allPlan.confirm[index]} คน
-                </Number>
+              </Number>
             </div>
+            }
           </div>
         </DetailIn>
       ))
@@ -125,9 +136,16 @@ class SelectRealTime extends Component {
       const group = allGroups.map((allGroup, index) => {
         let sum;
         console.log('---summary---', this.props.summaryEmployee[index]);
-        if (this.props.summaryEmployee[index] !== undefined &&
-          this.props.summaryEmployee[index].confirm.length >= 1) {
-          sum = this.props.summaryEmployee[index].confirm.reduce((a, b) => a + b, 0);
+        if (this.state.timeout) {
+          if (this.props.summaryEmployee[index] !== undefined &&
+            this.props.summaryEmployee[index].amountOfPlan.length >= 1) {
+            sum = this.props.summaryEmployee[index].amountOfPlan.reduce((a, b) => a + b, 0);
+          }
+        } else {
+          if (this.props.summaryEmployee[index] !== undefined &&
+            this.props.summaryEmployee[index].confirm.length >= 1) {
+            sum = this.props.summaryEmployee[index].confirm.reduce((a, b) => a + b, 0);
+          }
         }
         return (<BoxDetail>
           <HeadList>

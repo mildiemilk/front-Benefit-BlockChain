@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import { Divider, Progress } from 'semantic-ui-react';
+import { Divider, Progress, Modal } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import moment from 'moment';
 import { Detail } from '../../StyleComponent';
 import { Status } from '../styled';
-import { DivClaim, Head, NumRef, List, ListDetail, Box, DivList, HeadLink, DivInsurance } from './styled';
+import { DivClaim, Head, NumRef, List, ListDetail, Box, DivList, HeadLink, DivInsurance, DisPlayResult } from './styled';
 import health from '../../../../assets/ClaimEmployee/groupHealth.png';
 import insurance from '../../../../assets/ClaimEmployee/groupInsurance.png';
 import expense from '../../../../assets/ClaimEmployee/groupExpense.png';
 import form from '../../../../assets/ClaimEmployee/icons-8-form.png';
 import ModalApprove from '../ModalApprove';
 import ModalReject from '../ModalReject';
+import IconZoom from '../../../../assets/employee/icon_zoom.png';
+import approve from '../../../../assets/ProfileClaim/icons-8-approve@2x.png';
+import reject from '../../../../assets/ProfileClaim/icons-8-reject@2x.png';
 
 const ProgressStyle = styled(Progress) `
 &&&{
@@ -32,6 +35,7 @@ class ExtendClaim extends Component {
     claimList: PropTypes.shape({}).isRequired,
     index: PropTypes.number.isRequired,
     indexDetail: PropTypes.number.isRequired,
+    checkResult: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -40,6 +44,7 @@ class ExtendClaim extends Component {
       isExpense: props.isExpense,
       isInsurance: props.isInsurance,
       isResult: false,
+      modalImg: '',
     };
   }
   handleImage = () => {
@@ -53,6 +58,23 @@ class ExtendClaim extends Component {
     }
     return '';
   }
+  handleViewImg = claimdata => {
+    const image = claimdata.imageClaimFile.urlImg.map((item, i) => (
+      <div
+        className="claim-img-block"
+        key={i.toString()}
+        onClick={() => this.handleOpenModal(item)}
+        role="button"
+        aria-hidden
+      >
+        <img alt="" src={item} className="claim-img" />
+        <img alt="" src={IconZoom} className="calim-img-icon-zoom" />
+      </div>
+    ));
+    return image;
+  }
+  handleOpenModal = item => this.setState({ openModal: true, modalImg: item });
+  handleCloseModal = () => this.setState({ openModal: false, modalImg: '' });
   handleBar = () => {
     const { isHealth, isExpense, isInsurance } = this.state;
     if (isHealth) {
@@ -64,11 +86,11 @@ class ExtendClaim extends Component {
     }
     return '';
   }
-  resultClaim = (cost, currency) => {
+  resultClaim = (cost, currency, status, reason) => {
     const { claimList, index, indexDetail } = this.props;
     const result = (
       <div>
-        <DivClaim padding="30px 10px">
+        <DivClaim padding="30px 10px" >
           <div className="row">
             <div className="large-8 columns">
               <ListDetail>จำนวนเงินคงเหลือที่เคลมได้</ListDetail>
@@ -95,66 +117,98 @@ class ExtendClaim extends Component {
             </div>
           </div>
         </DivClaim>
-        <div className="row">
-          <div className="large-6 columns">
-            <ModalReject
-              claimId={claimList.claims[index].claims[indexDetail].claimId}
-            />
+        <DisPlayResult>
+          {status === 'pending'
+          ? <div className="row">
+            <div className="large-6 columns">
+              <ModalReject
+                claimId={claimList.claims[index].claims[indexDetail].claimId}
+                checkResult={this.props.checkResult}
+              />
+            </div>
+            <div className="large-6 columns">
+              <ModalApprove
+                claimId={claimList.claims[index].claims[indexDetail].claimId}
+                checkResult={this.props.checkResult}
+              />
+            </div>
           </div>
-          <div className="large-6 columns">
-            <ModalApprove
-              claimId={claimList.claims[index].claims[indexDetail].claimId}
-            />
+          : null
+          }
+          {status === 'approve'
+          ? <div><img src={approve} alt="form" />
+            <ListDetail color="#9b9b9b">อนุมัติแล้ว</ListDetail>
           </div>
-        </div>
+          : null
+          }
+          {status === 'reject'
+          ? <div><img src={reject} alt="form" />
+            <ListDetail color="#9b9b9b">ไม่อนุมัติ</ListDetail>
+            <div>เหตุผล {reason}</div>
+          </div>
+          : null
+          }
+        </DisPlayResult>
       </div>
     );
     return result;
   }
 
-  resultInsurance = () => (
+  resultInsurance = (status, reason) => (
     <div>
       <DivInsurance>
-        <img src={form} alt="form" />
-        <ListDetail color="#9b9b9b">ไม่สามารถอนุมัติคำขอนี้ได้</ListDetail>
+        {status === 'pending'
+        ? <div><img src={form} alt="form" />
+          <ListDetail color="#9b9b9b">ไม่สามารถอนุมัติคำขอนี้ได้</ListDetail>
+        </div>
+        : null
+        }
+        {status === 'approve'
+        ? <div><img src={approve} alt="form" />
+          <ListDetail color="#9b9b9b">อนุมัติแล้ว</ListDetail>
+        </div>
+        : null
+        }
+        {status === 'reject'
+        ? <div><img src={reject} alt="form" />
+          <ListDetail color="#9b9b9b">ไม่อนุมัติ</ListDetail>
+          <div>เหตุผล {reason}</div>
+        </div>
+        : null
+        }
       </DivInsurance>
     </div>
   )
-  showProcess = (cost, currency, status) => {
-    if (status === 'pending') {
-      return (
-        <div className="large-4 columns">
-          <div className="row">
-            <Box>
-              <img src={this.handleImage()} alt="claim" />
-              <DivList>
-                <List>การเคลมค่าใช้จ่ายสุขภาพ</List>
-                <ListDetail>วงเงิน 4000/15000</ListDetail>
-              </DivList>
-              <div className="Bar">
-                <ProgressStyle size="small" percent={68} className={this.handleBar()} />
-              </div>
-              {this.state.isInsurance
-              ? <ListDetail fontSize="12px">*ยังไม่รวมการเคลมกับโรงพยาบาลในเครือข่าย</ListDetail>
-              : null
-              }
-            </Box>
+  showProcess = (cost, currency, status, reason) => (
+    <div className="large-4 columns">
+      <div className="row">
+        <Box>
+          <img src={this.handleImage()} alt="claim" />
+          <DivList>
+            <List>การเคลมค่าใช้จ่ายสุขภาพ</List>
+            <ListDetail>วงเงิน 4000/15000</ListDetail>
+          </DivList>
+          <div className="Bar">
+            <ProgressStyle size="small" percent={68} className={this.handleBar()} />
           </div>
-          <div className="row">
-            <Box>
-              <Head>การพิจารณาการเคลมนี้</Head>
-              <Divider />
-              {this.state.isInsurance
-              ? this.resultInsurance()
-              : this.resultClaim(cost, currency)
-              }
-            </Box>
-          </div>
-        </div>
-      );
-    }
-    return '';
-  }
+          {this.state.isInsurance
+          ? <ListDetail fontSize="12px">*ยังไม่รวมการเคลมกับโรงพยาบาลในเครือข่าย</ListDetail>
+          : null
+          }
+        </Box>
+      </div>
+      <div className="row">
+        <Box style={{ minHeight: '417px' }}>
+          <Head>การพิจารณาการเคลมนี้</Head>
+          <Divider />
+          {this.state.isInsurance
+          ? this.resultInsurance(status, reason)
+          : this.resultClaim(cost, currency, status, reason)
+          }
+        </Box>
+      </div>
+    </div>
+  )
   renderDetail() {
     const { isInsurance } = this.state;
     const { claimList, index, indexDetail } = this.props;
@@ -163,7 +217,6 @@ class ExtendClaim extends Component {
       console.log('claim', claimList.claims[index].claims[indexDetail], 'indexDetail', indexDetail);
       const claim = claimList.claims[index].claims[indexDetail];
       let type;
-      console.log('///index', index);
       if (index === 0) {
         type = 'ค่าใช้จ่ายทั่วไป';
       } else if (index === 1) {
@@ -273,14 +326,17 @@ class ExtendClaim extends Component {
                       <List>หลักฐานการเคลม</List>
                     </div>
                     <div className="large-9 columns">
-                      <ListDetail>รูปๆๆ</ListDetail>
+                      <ListDetail>
+                        {this.handleViewImg(claim.detail)}
+                      </ListDetail>
                       <Divider />
                     </div>
                   </div>
                 </DivClaim>
               </Detail>
             </div>
-            {this.showProcess(claim.detail.amount, claim.detail.currency, claim.status)}
+            {this.showProcess(claim.detail.amount,
+            claim.detail.currency, claim.status, claim.reason)}
           </div>
         </div>
       );
@@ -291,6 +347,13 @@ class ExtendClaim extends Component {
     return (
       <div>
         {this.renderDetail()};
+        <Modal
+          open={this.state.openModal}
+          onClose={this.handleCloseModal}
+          className="claim-modal-box"
+        >
+          <img alt="" className="claim-img-modal-img" src={this.state.modalImg} />
+        </Modal>
       </div>
     );
   }

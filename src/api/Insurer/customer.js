@@ -21,7 +21,22 @@ const CUSTOMER_SELECT_PLAM_URI = '/api/insurer/customer-select-plan';
 const CUSTOMER_FILE_URI = '/api/insurer/customer-file';
 const CUSTOMER_UPFILE_URI = '/api/insurer/customer-upload-file';
 const CUSTOMER_EDIT_POLICY_URI = '/api/insurer/customer-edit-policy';
+const CUSTOMER_UPFILE_DETAIL_URI = 'api/insurer/customer-upload-file-detail';
 
+export function uploadFileDetail(files, type, planId) {
+  const formData = new FormData();
+  files.map((file, index) => (
+    formData.append('file', files[index])
+  ));
+  formData.append('planId', JSON.stringify(planId));
+  formData.append('type', JSON.stringify(type));
+  const options = {
+    method: 'put',
+    url: CUSTOMER_UPFILE_DETAIL_URI,
+    data: formData,
+  };
+  return APIRequest(options, true);
+}
 export function editPolicy(employeeId, policyNumber, memberNumber) {
   const options = {
     method: 'put',

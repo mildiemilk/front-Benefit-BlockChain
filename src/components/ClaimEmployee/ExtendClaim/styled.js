@@ -53,3 +53,7 @@ export const DivInsurance = DivClaim.extend`
   align-items: center;
   flex-direction: column;
 `;
+export const DisPlayResult = styled.div`
+  text-align: center;
+  margin-top: 20px;
+`;

@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
 import { createPlan, editPlan } from '../../../api/set-plan';
-
 import '../../../styles/submit-plan.scss';
 import erase from '../../image/icons-8-erase.png';
-
 
 class FormSubmitPlan extends Component {
   static propTypes = {
@@ -18,18 +16,16 @@ class FormSubmitPlan extends Component {
     handleModalFinish: PropTypes.func,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
-    employeeOfPlan: PropTypes.number.isRequired,
+    employeeOfPlan: PropTypes.string.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleUpdateData: PropTypes.func,
+    handleUpdateData: PropTypes.func.isRequired,
   }
   static defaultProps = {
     handleModalFinish: null,
-    handleUpdateData: null,
   }
   constructor(props) {
     super(props);
     this.state = {};
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
@@ -37,10 +33,10 @@ class FormSubmitPlan extends Component {
     const numberOfPlan = parseInt(employeeOfPlan, 10);
     if (this.props.activePlan === -1) {
       const employeeOfPlan = numberOfPlan;
-      this.props.handleModalFinish();
       createPlan({ planName, employeeOfPlan })
       .then(() => {
         this.props.handleModalFinish();
+        // this.props.handlePlan(this.props.planList.length);
       });
       // console.log('thisPlanList', this.props.planList.length);
       // setTimeout(() => this.props.handlePlan(this.props.planList.length), 2000);
@@ -87,7 +83,7 @@ class FormSubmitPlan extends Component {
                 </div>
               </div>
               <div className="large-8 columns">
-                <Form onSubmit={() => this.handleClick()}>
+                <Form onSubmit={this.handleClick}>
                   <Form.Group widths="equal">
                     <Form.Input
                       placeholder="ชื่อแพลน"
@@ -136,8 +132,7 @@ class FormSubmitPlan extends Component {
 }
 
 // const mapDispatchToProps = dispatch => ({
-//   editPlan: (editData, planId, editType) =>
-//     dispatch(editPlan(editData, planId, editType)),
+//   createPlan: data => dispatch(createPlan(data)),
 // });
 // const mapStateToProps = state => ({
 //   planList: state.plan.planList,

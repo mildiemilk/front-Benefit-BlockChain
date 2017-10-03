@@ -11,8 +11,8 @@ import toothRecord from '../image/icons-8-tooth-record.png';
 import toothActive from '../image/icons-8-tooth.jpg';
 import tooth from '../image/icons-8-toot1.jpg';
 import heartRecord from '../image/icons-8-like-record.png';
-import heart from '../image/icons-8-like1.jpg';
 import heartActive from '../image/icons-8-like.jpg';
+import heart from '../image/icons-8-like1.jpg';
 import erase from '../image/icons-8-erase.png';
 import IPD from './IPD/ipd';
 import Life from './Life/life';
@@ -21,6 +21,8 @@ import Dental from './Dental/dental';
 
 class AllsetPlan extends Component {
   static propTypes = {
+    handleUpdateData: PropTypes.func.isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     activePlan: PropTypes.number.isRequired,
     nextPage: PropTypes.bool.isRequired,
     handleNextPage: PropTypes.func.isRequired,
@@ -80,7 +82,6 @@ class AllsetPlan extends Component {
     ipdCoPayMixYear: PropTypes.string,
     handlePlan: PropTypes.func.isRequired,
   }
-
   static defaultProps = {
     opdPerYear: null,
     opdPerTime: null,
@@ -121,8 +122,8 @@ class AllsetPlan extends Component {
     ipdCoPayMixYear: null,
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       value: '',
       setPlan: 'IPD',
@@ -313,8 +314,11 @@ class AllsetPlan extends Component {
       if (this.state.dentalRecord) return toothRecord;
       return toothActive;
     }
-    if (this.state.lifeRecord) return heartRecord;
-    return heartActive;
+    if (value === 'Life') {
+      if (this.state.lifeRecord) return heartRecord;
+      return heartActive;
+    }
+    return null;
   }
 
   handleImage = value => {
@@ -330,7 +334,7 @@ class AllsetPlan extends Component {
       if (this.state.dentalRecord) return toothRecord;
       return tooth;
     }
-    if (this.lifeRecord) {
+    if (this.state.lifeRecord) {
       return heartRecord;
     }
     return heart;
@@ -498,6 +502,8 @@ class AllsetPlan extends Component {
           <div className="paragraph">
             {this.state.setPlan === 'OPD'
               ? <OPD
+                handleUpdateData={this.props.handleUpdateData}
+                planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -525,6 +531,8 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'IPD'
               ? <IPD
+                handleUpdateData={this.props.handleUpdateData}
+                planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -586,6 +594,8 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Dental'
               ? <Dental
+                handleUpdateData={this.props.handleUpdateData}
+                planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}
@@ -603,6 +613,8 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Life'
               ? <Life
+                handleUpdateData={this.props.handleUpdateData}
+                planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
                 handleRecordVerifyState={this.handleRecordVerifyState}

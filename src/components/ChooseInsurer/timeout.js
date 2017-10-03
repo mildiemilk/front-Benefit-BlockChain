@@ -16,15 +16,27 @@ const DatePickers = styled(DatePicker)`
 class Timeout extends Component {
   static propTypes = {
     setTimeout: PropTypes.func.isRequired,
+    timeout: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props);
+    console.log('PRopConstaruct===>', props.timeout);
     this.state = {
-      date: null,
+      date: '',
     };
   }
-
+  componentWillReceiveProps(nextProps) {
+    console.log('nextPRops', nextProps.timeout);
+    console.log('PRops', this.props.timeout);
+    if (this.props.timeout !== null && this.props.timeout !== '') {
+      console.log('PRops Inif', this.props.timeout);
+      this.setState({ date: moment(nextProps.timeout) }, () => console.log('date WillRecie--->', this.state.date));
+    }
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('NextState', nextState);
+  }
   handleTimeOut = () => {
     const { date } = this.state;
     console.log('date', date);
@@ -32,15 +44,20 @@ class Timeout extends Component {
   }
 
   handleDate = date => {
+    console.log('date--->', date);
     this.setState({ date });
   }
 
   handleTime = time => {
+    console.log('time', time);
     time._d.setDate(this.state.date._d.getDate());
     this.state.date._d.setTime(time._d.getTime());
   }
 
   render() {
+    console.log('timeout', this.props.timeout);
+    console.log('timeout-->state', moment(this.props.timeout));
+    console.log('stateDate', this.state.date);
     return (
       <div style={{ display: 'inline-block' }} >
         <div>
@@ -51,7 +68,14 @@ class Timeout extends Component {
             fixedHeight
           />
           <span>&nbsp;เวลา&nbsp;</span>
-          <TimePicker onChange={this.handleTime} showSecond={false} />
+          {this.state.date !== ''
+          ? <TimePicker
+            onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
+          />
+          : <TimePicker
+            onChange={this.handleTime} showSecond={false}
+          />
+          }
         </div>
         <div className="clearfix">
           <Submit onClick={this.handleTimeOut}>บันทึก</Submit>

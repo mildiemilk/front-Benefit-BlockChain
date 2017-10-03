@@ -75,18 +75,22 @@ class SendFlexPlan extends Component {
     this.props.setCompleteStep(passwordToConfirm, step);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  renderPlan = () => {
-    const { benefitPlan } = this.props;
-    const { templatePlan } = this.state;
-    const planList = benefitPlan;
-    if (planList !== undefined && planList.length >= 1) {
-      const newplan =
-      templatePlan.filter(plan => planList.map(
-        option => option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
-      return newplan;
-    }
-    return '';
-  }
+  // renderPlan = () => {
+  //   console.log('template', this.state.templatePlan);
+  //   console.log('bnefitPlan', this.props.benefitPlan);
+  //   const { benefitPlan } = this.props;
+  //   const { templatePlan } = this.state;
+  //   const planList = benefitPlan;
+  //   if (planList !== undefined && planList.length >= 1) {
+  //     const newplan =
+  //     planList.filter(plan => templatePlan.map(
+  //       option =>
+            // option.plan.plan._id === plan.benefitPlan.plan.planId._id).indexOf(true) !== -1);
+  //     console.log('newePlan', newplan);
+  //     return newplan;
+  //   }
+  //   return '';
+  // }
   render() {
     const { completeStep } = this.props;
     if (completeStep) {
@@ -108,7 +112,7 @@ class SendFlexPlan extends Component {
             <Inner>
               {this.state.templatePlan.length >= 1
               ? <InsurancePlan
-                planList={this.renderPlan()}
+                planList={this.state.templatePlan}
               />
               : <div />
               }

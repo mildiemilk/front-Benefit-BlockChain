@@ -78,6 +78,7 @@ class SubmitPlan extends Component {
       lifeNotExceed: null,
       val: props.match.params.index,
       checkUpdate: false,
+      newActivePlan: -1,
     };
     props.getAllPlan();
     // setInterval(() => {
@@ -86,7 +87,62 @@ class SubmitPlan extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.havePlan && (this.state.activePlan === -1) && !this.state.newPlan) {
+    if (this.state.newActivePlan !== -1) {
+      const val = this.state.newActivePlan;
+      const { planList } = newProps;
+      this.setState({
+        activePlan: val,
+        planName: planList[val].planName,
+        employeeOfPlan: planList[val].employeeOfPlan,
+        dentalPerYear: planList[val].dentalPerYear,
+        lifePerYear: planList[val].lifePerYear,
+        lifeTimeOfSalary: planList[val].lifeTimeOfSalary,
+        lifeNotExceed: planList[val].lifeNotExceed,
+        opdCoPay: planList[val].opdCoPay,
+        opdPerYear: planList[val].opdPerYear,
+        opdPerTime: planList[val].opdPerTime,
+        opdTimeNotExceedPerYear: planList[val]
+          .opdTimeNotExceedPerYear,
+        opdCoPayQuota: planList[val].opdCoPayQuota,
+        opdCoPayDeductable: planList[val].opdCoPayDeductable,
+        opdCoPayMixPercentage: planList[val].opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: planList[val].opdCoPayMixNotExceed,
+        opdCoPayMixYear: planList[val].opdCoPayMixYear,
+        ipdType: planList[val].ipdType,
+        ipdLumsumPerYear: planList[val].ipdLumsumPerYear,
+        ipdLumsumPerTime: planList[val].ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: planList[val]
+          .ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight: planList[val].rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: planList[val]
+          .rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight: planList[val]
+          .rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear: planList[val]
+          .rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient: planList[val].rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: planList[val]
+          .rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor: planList[val].rbScheduleDoctor,
+        rbScheduleSurgerySchedule: planList[val]
+          .rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule: planList[val]
+          .rbScheduleSurgeryNonSchedule,
+        rbScheduleService: planList[val].rbScheduleService,
+        rbScheduleSmallSurgery: planList[val].rbScheduleSmallSurgery,
+        rbScheduleAdviser: planList[val].rbScheduleAdviser,
+        rbScheduleAmbulance: planList[val].rbScheduleAmbulance,
+        rbScheduleAccident: planList[val].rbScheduleAccident,
+        rbScheduleTreatment: planList[val].rbScheduleTreatment,
+        rbScheduleTransplant: planList[val].rbScheduleTransplant,
+        ipdCoPay: planList[val].ipdCoPay,
+        ipdCoPayQuota: planList[val].ipdCoPayQuota,
+        ipdCoPayDeductable: planList[val].ipdCoPayDeductable,
+        ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
+      });
+    } else {
       const val = this.props.match.params.index;
       const { planList } = newProps;
       this.setState({
@@ -146,9 +202,18 @@ class SubmitPlan extends Component {
 
   componentWillUpdate(nextProps, nextState) {
     if (nextState.checkUpdate) {
-      this.setState({ checkUpdate: false });
+      this.setState({
+        checkUpdate: false,
+        // newActivePlan: nextProps.planList.length + 1,
+      });
       this.props.getAllPlan();
     }
+    // if (!this.state.checkUpdate && this.state.newActivePlan !== -1) {
+    //   this.setState({
+    //     activePlan: this.state.newActivePlan,
+    //     newActivePlan: -1,
+    //   });
+    // }
   }
 
   onClickhandler = () => {
@@ -378,10 +443,12 @@ class SubmitPlan extends Component {
   }
 
   handleModalFinish = () => {
+    const { planList } = this.props;
     this.setState({
       openModalForm: false,
       newPlan: false,
       checkUpdate: true,
+      newActivePlan: planList.length,
     });
   }
 
@@ -417,6 +484,7 @@ class SubmitPlan extends Component {
                   handleCopy={this.handleCopy}
                   handleDelete={this.handleDelete}
                   handleChange={this.handleChange}
+                  handleUpdateData={this.handleUpdateData}
                   planList={this.props.planList}
                   planName={this.state.planName}
                   employeeOfPlan={this.state.employeeOfPlan}
@@ -437,6 +505,8 @@ class SubmitPlan extends Component {
                     />
                     <div className="fillBox">
                       <AllPlan
+                        handleUpdateData={this.handleUpdateData}
+                        planList={this.props.planList}
                         activePlan={this.state.activePlan}
                         handlePlan={this.handlePlan}
                         nextPage={this.state.nextPage}

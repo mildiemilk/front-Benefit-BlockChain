@@ -70,7 +70,6 @@ class manageEmployee extends Component {
   }
   componentWillUpdate() {
     if (this.state.updateNewEmp) {
-      console.log('componentWillUpdate');
       this.setState({ updateNewEmp: false });
       this.props.getCustomerEmployee(this.state.companyId);
     }
@@ -195,13 +194,13 @@ class manageEmployee extends Component {
             <div className="large-2 columns">
               {EMPlist.detail.name
               ? <TextIn>{EMPlist.detail.name} {EMPlist.detail.lastname}</TextIn>
-              : ''
+              : <TextIn>-</TextIn>
               }
             </div>
             <div className="large-1 columns">
               {EMPlist.detail.memberNumber
               ? <TextIn>{EMPlist.detail.memberNumber}</TextIn>
-              : '-'
+              : <TextIn>-</TextIn>
               }
             </div>
             <div className="large-2 columns">
@@ -214,7 +213,10 @@ class manageEmployee extends Component {
               {tag}
             </div>
             <div className="large-2 columns">
-              <TextIn>{moment(EMPlist.detail.startDate).format('L')}</TextIn>
+              {(EMPlist.detail.effectiveDate === '-')
+              ? <TextIn>-</TextIn>
+              : <TextIn>{moment(EMPlist.detail.effectiveDate).format('L')}</TextIn>
+              }
             </div>
             <div className="large-1 columns">
               <div className="list-box-in-list">

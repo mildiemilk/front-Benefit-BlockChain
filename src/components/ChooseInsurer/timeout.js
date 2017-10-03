@@ -26,6 +26,8 @@ class Timeout extends Component {
     };
   }
   componentwillReceiveProps(nextProps) {
+    console.log('nextPRops', nextProps.timeout);
+    console.log('PRops', this.props.timeout);
     if (nextProps.timeout !== this.props.timeout) {
       console.log('yayay');
       this.setState({ date: moment(nextProps.timeout) });
@@ -63,7 +65,7 @@ class Timeout extends Component {
           />
           <span>&nbsp;เวลา&nbsp;</span>
           <TimePicker
-            onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
+            onChange={this.handleTime} showSecond={false} defaultValue={moment(this.props.timeout)}
           />
         </div>
         <div className="clearfix">

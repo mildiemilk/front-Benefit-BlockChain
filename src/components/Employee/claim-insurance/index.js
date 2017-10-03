@@ -292,7 +292,6 @@ class ClaimInsurance extends Component {
   }
 
   render() {
-    // console.log('>>>', this.state);
     const {
       MainStateOption,
       openModal,

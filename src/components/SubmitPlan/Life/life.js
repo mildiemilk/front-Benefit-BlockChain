@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
@@ -12,7 +12,7 @@ class Life extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
     handleVerifyState: PropTypes.func.isRequired,
-    editPlan: PropTypes.string.isRequired,
+    // editPlan: PropTypes.string.isRequired,
     handleResetLife: PropTypes.func.isRequired,
     handleNewReset: PropTypes.func.isRequired,
     lifePerYear: PropTypes.string.isRequired,
@@ -20,7 +20,8 @@ class Life extends Component {
     lifeNotExceed: PropTypes.string.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
-    planList: PropTypes.string.isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    handleUpdateData: PropTypes.func.isRequired,
     activePlan: PropTypes.string.isRequired,
     setPlan: PropTypes.string.isRequired,
     reset: PropTypes.string.isRequired,
@@ -64,11 +65,14 @@ class Life extends Component {
   handleClick = () => {
     const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.props;
     this.props.handleRecordVerifyState('lifeRecord');
-    this.props.editPlan(
+    editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
       this.props.planList[this.props.activePlan].planId,
       'life',
-    );
+    )
+    .then(() => {
+      this.props.handleUpdateData();
+    });
   }
 
   handleResetData = () => {
@@ -251,14 +255,15 @@ class Life extends Component {
   }
 }
 
-Life.propTypes = {};
+// Life.propTypes = {};
 
-const mapDispatchToProps = dispatch => ({
-  editPlan: (editData, planId, editType) =>
-    dispatch(editPlan(editData, planId, editType)),
-});
-const mapStateToProps = state => ({
-  planList: state.plan.planList,
-});
+// const mapDispatchToProps = dispatch => ({
+//   editPlan: (editData, planId, editType) =>
+//     dispatch(editPlan(editData, planId, editType)),
+// });
+// const mapStateToProps = state => ({
+//   planList: state.plan.planList,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Life);
+// export default connect(mapStateToProps, mapDispatchToProps)(Life);
+export default Life;

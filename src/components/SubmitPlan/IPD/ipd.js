@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
@@ -55,13 +55,13 @@ class IPD extends Component {
     ipdCoPayMixPercentage: PropTypes.string.isRequired,
     ipdCoPayMixNotExceed: PropTypes.string.isRequired,
     ipdCoPayMixYear: PropTypes.string.isRequired,
-    editPlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // editPlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    handleUpdateData: PropTypes.func.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -111,7 +111,7 @@ class IPD extends Component {
       ipdCoPayMixNotExceed,
       ipdCoPayMixYear,
     } = this.props;
-    this.props.editPlan(
+    editPlan(
       {
         ipdCoPay,
         ipdType,
@@ -142,7 +142,10 @@ class IPD extends Component {
       },
       this.props.planList[this.props.activePlan].planId,
       'ipd',
-    );
+    )
+    .then(() => {
+      this.props.handleUpdateData();
+    });
   }
 
   handleResetdata = () => {
@@ -330,14 +333,15 @@ class IPD extends Component {
   }
 }
 
-IPD.propTypes = {};
+// IPD.propTypes = {};
 
-const mapDispatchToProps = dispatch => ({
-  editPlan: (editData, planId, editType) =>
-    dispatch(editPlan(editData, planId, editType)),
-});
-const mapStateToProps = state => ({
-  planList: state.plan.planList,
-});
+// const mapDispatchToProps = dispatch => ({
+//   editPlan: (editData, planId, editType) =>
+//     dispatch(editPlan(editData, planId, editType)),
+// });
+// const mapStateToProps = state => ({
+//   planList: state.plan.planList,
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(IPD);
+// export default connect(mapStateToProps, mapDispatchToProps)(IPD);
+export default IPD;

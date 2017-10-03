@@ -65,6 +65,7 @@ class ClaimStatus extends Component {
         HealthPlace,
         expenseType,
         _id: item._id,
+        reason: item.reason,
       });
     });
     this.setState({ claimData });
@@ -136,7 +137,6 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   getClaimStatus: () => dispatch(getClaimStatus()),
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClaimStatus);

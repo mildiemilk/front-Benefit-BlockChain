@@ -22,12 +22,12 @@ class MenuPlan extends Component {
     openModalForm: PropTypes.func.isRequired,
     handlePlan: PropTypes.func.isRequired,
     handleNewPlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    handleUpdateData: PropTypes.func.isRequired,
     comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       step: 6,
       isOpen: false,
@@ -166,6 +166,8 @@ class MenuPlan extends Component {
           />
         </div>
         <FormModal
+          planList={this.props.planList}
+          handleUpdateData={this.props.handleUpdateData}
           activePlan={this.props.activePlan}
           handlePlan={this.props.handlePlan}
           openModalForm={this.props.openModalForm}

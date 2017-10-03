@@ -29,8 +29,8 @@ class IPD extends Component {
     reset: PropTypes.string.isRequired,
     setPlan: PropTypes.string.isRequired,
     activePlan: PropTypes.number.isRequired,
-    ipdType: PropTypes.string.isRequired,
-    ipdLumsumPerYear: PropTypes.string.isRequired,
+    ipdType: PropTypes.string,
+    ipdLumsumPerYear: PropTypes.string,
     ipdLumsumPerTime: PropTypes.string.isRequired,
     ipdLumsumTimeNotExceedPerYear: PropTypes.string.isRequired,
     rbLumsumRoomPerNight: PropTypes.string.isRequired,
@@ -51,7 +51,7 @@ class IPD extends Component {
     rbScheduleTransplant: PropTypes.string.isRequired,
     ipdCoPay: PropTypes.bool.isRequired,
     ipdCoPayQuota: PropTypes.string.isRequired,
-    ipdCoPayDeductable: PropTypes.string.isRequired,
+    ipdCoPayDeductable: PropTypes.string,
     ipdCoPayMixPercentage: PropTypes.string.isRequired,
     ipdCoPayMixNotExceed: PropTypes.string.isRequired,
     ipdCoPayMixYear: PropTypes.string.isRequired,
@@ -59,6 +59,11 @@ class IPD extends Component {
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
+  }
+  static defaultProps = {
+    ipdType: '',
+    ipdLumsumPerYear: '',
+    ipdCoPayDeductable: '',
   }
   constructor(props) {
     super(props);

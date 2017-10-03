@@ -20,6 +20,7 @@ class Quotation extends Component {
     updatedAt: PropTypes.string.isRequired,
     styletabPrice: PropTypes.string.isRequired,
     countBidding: PropTypes.number.isRequired,
+    quotationId: PropTypes.number.isRequired,
   }
   constructor(props) {
     super(props);
@@ -113,6 +114,7 @@ class Quotation extends Component {
       totalPrice,
       updatedAt,
       countBidding,
+      quotationId,
     } = this.props;
     // console.log('props', this.props.masterplan);
     return (
@@ -122,7 +124,7 @@ class Quotation extends Component {
           <div className="quotation-box quotation-line">
             <div className="quotation-header-box">
               <div className="quotation-header-l">
-                <span className="quotation-l-text">เลขที่ใบเสนอราคา : -</span>
+                <span className="quotation-l-text">เลขที่ใบเสนอราคา : {(quotationId === '') ? '-' : quotationId}</span>
                 <span className="quotation-l-text">เสนอราคาไปแล้ว : {(countBidding === '') ? '0' : countBidding} ครั้ง</span>
                 <span className="quotation-l-text">วันที่เสนอราคาล่าสุด : {moment(updatedAt).locale('th').format('DD MMMM YYYY')}</span>
               </div>

@@ -77,14 +77,11 @@ class SubmitPlan extends Component {
       lifeTimeOfSalary: null,
       lifeNotExceed: null,
       val: props.match.params.index,
-      checkUpdate: false,
     };
-    props.getAllPlan();
-    // setInterval(() => {
-    //   props.getAllPlan();
-    // }, 2000);
+    setInterval(() => {
+      props.getAllPlan();
+    }, 2000);
   }
-
   componentWillReceiveProps(newProps) {
     if (newProps.havePlan && (this.state.activePlan === -1) && !this.state.newPlan) {
       const val = this.props.match.params.index;
@@ -144,13 +141,6 @@ class SubmitPlan extends Component {
     }
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (nextState.checkUpdate) {
-      this.setState({ checkUpdate: false });
-      this.props.getAllPlan();
-    }
-  }
-
   onClickhandler = () => {
     this.setState({ nextPage: true });
     if (this.state.canGoToNextPage) {
@@ -158,10 +148,11 @@ class SubmitPlan extends Component {
     }
     return '';
   }
-
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleChangeToNull = name => this.setState({ [name]: null })
+
+  handleToggle = () => { }
 
   handleToggleOpdCoPay = () => {
     if (this.state.opdCoPay) {
@@ -207,21 +198,13 @@ class SubmitPlan extends Component {
     this.handlePlan(e.target.id);
   }
 
-  handleUpdateData = () => this.setState({ checkUpdate: true });
-
   handleCopy = e => {
     this.handlePlan(e.target.id);
-    copyPlan([this.props.planList[e.target.id].planId])
-    .then(() => {
-      this.handleUpdateData();
-    });
+    copyPlan([this.props.planList[e.target.id].planId]);
   }
 
   handleDelete = e => {
-    deletePlan([this.props.planList[e.target.id].planId])
-    .then(() => {
-      this.handleUpdateData();
-    });
+    deletePlan([this.props.planList[e.target.id].planId]);
     this.setState({ activePlan: -1 });
   }
 
@@ -291,6 +274,7 @@ class SubmitPlan extends Component {
   handlePlan = val => {
     if (val !== -1) {
       const { planList } = this.props;
+      console.log('planList', planList);
       this.setState({
         activePlan: val,
         planName: planList[val].planName,
@@ -381,7 +365,6 @@ class SubmitPlan extends Component {
     this.setState({
       openModalForm: false,
       newPlan: false,
-      checkUpdate: true,
     });
   }
 
@@ -432,8 +415,6 @@ class SubmitPlan extends Component {
                       planName={this.state.planName}
                       employeeOfPlan={this.state.employeeOfPlan}
                       handleResetProfilePlan={this.handleResetProfilePlan}
-                      handleUpdateData={this.handleUpdateData}
-                      planList={this.props.planList}
                     />
                     <div className="fillBox">
                       <AllPlan

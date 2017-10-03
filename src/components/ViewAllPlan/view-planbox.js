@@ -37,7 +37,7 @@ class ViewPlanBox extends Component {
           />
         </td>
         <td> {element.planName} </td>
-        <td> {element.updateBy} </td>
+        <td> {element.company.hrDetail} </td>
         <td>
           {
             moment(element.updatedAt)

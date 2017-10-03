@@ -163,10 +163,12 @@
     }
 }
 .login-d-logo {
-  width: 363px;
-  height: 85px;
+  width: 25.2vw;
+  height: 5.9vw;
   margin: 6vw auto 3vw;
   display: block;
+  max-height: 85px;
+  max-width: 363px;
 }
 .login-d-box {
   display: flex;
@@ -399,4 +401,7 @@
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   margin: auto;
   display: block;
+}
+.divInput .required.field .ui.input input {
+  padding-left: 2.2vw;
 }

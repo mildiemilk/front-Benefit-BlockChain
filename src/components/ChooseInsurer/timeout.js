@@ -21,17 +21,18 @@ class Timeout extends Component {
 
   constructor(props) {
     super(props);
+    console.log('PRopConstaruct===>', props.timeout);
     this.state = {
-      date: moment(props.timeout),
+      date: '',
     };
   }
-  componentwillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log('nextPRops', nextProps.timeout);
     console.log('PRops', this.props.timeout);
-    if (nextProps.timeout !== this.props.timeout) {
-      console.log('yayay');
-      this.setState({ date: moment(nextProps.timeout) });
-    }
+    this.setState({ date: moment(nextProps.timeout) }, () => console.log('date WillRecie--->', this.state.date));
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('NextState', nextState);
   }
   handleTimeOut = () => {
     const { date } = this.state;
@@ -53,7 +54,7 @@ class Timeout extends Component {
   render() {
     console.log('timeout', this.props.timeout);
     console.log('timeout-->state', moment(this.props.timeout));
-    console.log('state', this.state.date);
+    console.log('stateDate', this.state.date);
     return (
       <div style={{ display: 'inline-block' }} >
         <div>
@@ -64,9 +65,12 @@ class Timeout extends Component {
             fixedHeight
           />
           <span>&nbsp;เวลา&nbsp;</span>
-          <TimePicker
-            onChange={this.handleTime} showSecond={false} defaultValue={moment(this.props.timeout)}
+          {this.state.date !== ''
+          ? <TimePicker
+            onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
           />
+          : <div />
+          }
         </div>
         <div className="clearfix">
           <Submit onClick={this.handleTimeOut}>บันทึก</Submit>

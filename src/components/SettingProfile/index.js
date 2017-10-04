@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { createProfile, setLogo } from '../../api/profile-company';
+import ModalWarning from './modal-warning';
 import {
   Box,
   Head,
@@ -19,21 +20,7 @@ import {
   Detail3,
   DefaultImg,
 } from './styled';
-// import BusinessTypes from './OptionType';
-const BusinessTypes = [
-  {
-    text: 'ประเภท 1',
-    value: 'Type 1',
-  },
-  {
-    text: 'ประเภท 2',
-    value: 'Type 2',
-  },
-  {
-    text: 'ประเภท 3',
-    value: 'Type 3',
-  },
-];
+import { OptionTypes, OptionInsurer } from './Option';
 
 const SegmentWithHeight = styled(Segment)`
   &&&{
@@ -79,9 +66,11 @@ class SettingProfile extends Component {
       typeOfBusiness: '',
       numberOfEmployees: '',
       expiredInsurance: '',
-      companyInsurer: '',
+      currentInsurer: '',
       file: '',
       imagePreviewUrl: '',
+      openWarning: '',
+      warningMessage: '',
     };
   }
   onInputChange(value, stateName) {
@@ -103,15 +92,29 @@ class SettingProfile extends Component {
   handleExpiredDate = expiredInsurance => {
     this.setState({ expiredInsurance });
   }
+  closeWarningModal = () => {
+    this.setState({ openWarningModal: false });
+  }
   handleSubmit = e => {
     e.preventDefault();
+    console.log('complete');
+    if (this.state.typeOfBusiness === '') {
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'คุณยังไม่ได้เลือกประเภทธุรกิจ',
+      });
+    } else if (this.state.currentInsurer === '') {
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'คุณยังไม่ได้เลือกบริษัทประกันที่ใช้ในปัจจุบัน',
+      });
+    }
     const {
       companyName: { value: companyName },
       location: { value: location },
       hrDetail: { value: hrDetail },
       tel: { value: tel },
       numberOfEmployees: { value: numberOfEmployees },
-      // companyInsurer: { value: companyInsurer },
     } = e.target;
     this.setState({
       companyName,
@@ -119,9 +122,8 @@ class SettingProfile extends Component {
       hrDetail,
       tel,
       numberOfEmployees,
-      // companyInsurer,
     });
-    const { typeOfBusiness, expiredInsurance } = this.state;
+    const { typeOfBusiness, expiredInsurance, currentInsurer } = this.state;
     this.props.createProfile({
       companyName,
       location,
@@ -129,7 +131,7 @@ class SettingProfile extends Component {
       hrDetail,
       numberOfEmployees,
       tel,
-      // companyInsurer,
+      currentInsurer,
       expiredInsurance,
     });
   }
@@ -199,11 +201,11 @@ class SettingProfile extends Component {
                 <Detail3>
                   ที่อยู่บริษัท
                 </Detail3>
-                <Box name="location" size="big" placeholder="ที่อยู่บริษัท" />
+                <Box name="location" size="big" placeholder="ที่อยู่บริษัท" required />
                 <Detail3>
                   บุคคลติดต่อหลัก
                 </Detail3>
-                <Box name="hrDetail" size="big" placeholder="บุคคลติดต่อหลัก" />
+                <Box name="hrDetail" size="big" placeholder="บุคคลติดต่อหลัก" required />
                 <Detail3>
                   เบอร์โทร
                 </Detail3>
@@ -211,6 +213,7 @@ class SettingProfile extends Component {
                   name="tel"
                   size="big"
                   placeholder="เบอร์โทร"
+                  required
                 />
                 <Detail3>
                   ประเภทธุรกิจ
@@ -221,8 +224,10 @@ class SettingProfile extends Component {
                     this.onInputChange(data.value, 'typeOfBusiness')}
                   name="typeOfBusiness"
                   fluid
+                  search
                   selection
-                  options={BusinessTypes}
+                  options={OptionTypes}
+                  required
                 />
                 <Detail3>
                   จำนวนพนักงาน
@@ -231,6 +236,7 @@ class SettingProfile extends Component {
                   placeholder="จำนวนพนักงาน"
                   name="numberOfEmployees"
                   type="number"
+                  required
                 />
                 <Detail3>
                   วันหมดอายุกรมธรรม์
@@ -247,15 +253,22 @@ class SettingProfile extends Component {
                     dateFormatCalendar="MMMM"
                     scrollableYearDropdown
                     yearDropdownItemNumber={8}
+                    required
                   />
                 </div>
                 <Detail3>
                   บริษัทประกันที่ใช้ในปัจจุบัน
                 </Detail3>
-                <Box
-                  name="companyInsurer"
-                  size="big"
+                <Dropdown
+                  name="currentInsurer"
+                  onChange={(t, data) =>
+                    this.onInputChange(data.value, 'currentInsurer')}
                   placeholder="บริษัทประกันที่ใช้ในปัจจุบัน"
+                  search
+                  fluid
+                  selection
+                  options={OptionInsurer}
+                  required
                 />
                 {error
                   ? <span style={{ color: 'red' }}>
@@ -271,6 +284,11 @@ class SettingProfile extends Component {
             </div>
           </form>
         </div>
+        <ModalWarning
+          openWarningModal={this.state.openWarningModal}
+          warningMessage={this.state.warningMessage}
+          closeWarningModal={this.closeWarningModal}
+        />
       </div>
     );
   }

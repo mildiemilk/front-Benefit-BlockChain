@@ -68,12 +68,10 @@ class Timeout extends Component {
             fixedHeight
           />
           <span>&nbsp;เวลา&nbsp;</span>
-          {this.state.date !== ''
-          ? <TimePicker
-            onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
-          />
+          {this.state.date === ''
+          ? <div>fsdf</div>
           : <TimePicker
-            onChange={this.handleTime} showSecond={false}
+            onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
           />
           }
         </div>

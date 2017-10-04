@@ -135,6 +135,7 @@ class InsurerSelect extends Component {
     let time = '';
     if (timeout !== '') {
       time = timeout;
+      console.log('time->choose', time);
     }
     return (
       <div className="ChooseInsurer">

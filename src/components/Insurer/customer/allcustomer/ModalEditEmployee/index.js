@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Icon, Input } from 'semantic-ui-react';
+import { Modal, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
@@ -126,27 +126,25 @@ class ModalEditEmployee extends Component {
             <form id="policyNumber" name="policyNumber" onSubmit={e => this.props.handleSubmitPolicy(e, this.props.employeeId)}><div className="quotation-input-div">
               <div className="row">
                 <div className="large-6 columns">
-                  <Input value={this.state.memberNumber} name="memberNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขสมาชิก" />
+                  <input className="input-data" value={this.state.memberNumber} name="memberNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขสมาชิก" />
                 </div>
                 <div className="large-6 columns">
-                  <Input value={this.state.policyNumber} name="policyNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขกรมธรรม์" />
+                  <input className="input-data" value={this.state.policyNumber} name="policyNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขกรมธรรม์" />
                 </div>
               </div>
             </div>
             </form>
           </DivContent>
-          <DivContent >
-            <div className="row">
-              <div className="large-12 columns">
-                <div className="large-6 columns">
-                  <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
-                </div>
-                <div className="large-6 columns">
-                  <Button type="submit" form="policyNumber">บันทึก</Button>
-                </div>
+          <div className="row">
+            <div className="large-12 columns">
+              <div className="large-6 columns">
+                <Button cancle onClick={this.handleModal}>ยกเลิก</Button>
+              </div>
+              <div className="large-6 columns">
+                <Button type="submit" form="policyNumber">บันทึก</Button>
               </div>
             </div>
-          </DivContent>
+          </div>
         </ModalContents>
       </Modals>
     );

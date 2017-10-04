@@ -15,7 +15,6 @@ class NavInsure extends Component {
   }
 
   render() {
-    console.log('Step', this.state.step);
     return (
       <div className="NavInsure">
         <div className="row">

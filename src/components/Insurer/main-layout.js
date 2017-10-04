@@ -5,16 +5,20 @@ import Sidebar from './sidebar';
 class MainLayout extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
+    location: PropTypes.shape({}).isRequired,
   }
   constructor() {
     super();
     this.state = {};
   }
   render() {
+    const { location } = this.props;
     return (
       <div className="row">
         <div className="large-2 columns">
-          <Sidebar />
+          <Sidebar
+            Location={location}
+          />
         </div>
         <div className="large-10 columns">
           <div className="row" style={{ marginTop: 75 }}>

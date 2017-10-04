@@ -30,3 +30,6 @@ export const Input = styled.input`
   width: 100%;
   margin: bottom: 10px;
 `;
+export const TextCenter = styled.div`
+  margin-left: 20px;
+`;

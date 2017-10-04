@@ -90,7 +90,7 @@ class Dashboard extends Component {
         <Divider />
 
         <Grid className="dash">
-          <Grid.Column width={3} />
+          <Grid.Column width={2} />
           <Grid.Column width={12}>
             <Grid>
               <Grid.Row columns={3}>
@@ -126,19 +126,24 @@ class Dashboard extends Component {
               <Grid.Row columns={3}>
                 <Grid.Column>
                   <Link to="/plan" >
-                    <Image className="block" src={artboard1} shape="circular" />
+                    <Image
+                      className="block"
+                      src={artboard1}
+                      shape="circular"
+                      centered
+                    />
                   </Link>
                   <Container textAlign="center"> แผนประกันภัย </Container>
                 </Grid.Column>
                 <Grid.Column>
                   <Link to="/profile" >
-                    <Image className="block" src={artboard5} shape="circular" />
+                    <Image className="block" src={artboard5} shape="circular" centered />
                   </Link>
                   <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
                 </Grid.Column>
                 <Grid.Column>
                   <Link to="/setting" >
-                    <Image className="block" src={artboard6} shape="circular" />
+                    <Image className="block" src={artboard6} shape="circular" centered />
                   </Link>
                   <Container textAlign="center"> ตั้งค่า </Container>
                 </Grid.Column>

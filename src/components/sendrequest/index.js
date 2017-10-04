@@ -79,7 +79,7 @@ class Sendrequest extends Component {
               <Head>ส่งคำขอและรอการเสนอราคา</Head>
               {/* <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
               <Postre data={this.props} /> */}
-              <TopicHead>กรุณาตรวจสอบแพลนของคุณ</TopicHead>
+              <TopicHead>กรุณาตรวจสอบแผนของคุณ</TopicHead>
               <BoxIndiv>
                 <ModalPlanBox changePositionPage={this.changePositionPage} />
               </BoxIndiv>

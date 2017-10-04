@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Radio, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import CoPay from './copay';
@@ -10,7 +10,7 @@ import IPD1 from './ipd1';
 import IPD2 from './ipd2';
 import IPD3 from './ipd3';
 import IpdModal from './ipd-modal';
-import about from '../../image/icons-8-about.png';
+// import about from '../../image/icons-8-about.png';
 
 const Checkboxs = styled(Checkbox)`
   margin-bottom: 15px;
@@ -167,15 +167,15 @@ class IPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยใน (In-Patient Department : IPD)
           </u>
-          <span>
-            <img src={about} alt="about" />
+          <span className="submit-plan-icom-infomation">
+            <Icon name="info circle" />
           </span>
         </p>
         <br />
         <p className="head">เลือกแผนที่ต้องการ
-          <span>
-            <img src={about} alt="about" />
-          </span>
+        <span className="submit-plan-icom-infomation">
+          <Icon name="info circle" />
+        </span>
         </p>
         <div className="row">
           <Form>
@@ -288,8 +288,8 @@ class IPD extends Component {
               checked={this.props.ipdCoPay}
               onClick={this.props.handleToggle}
             />
-            <span>
-              <img src={about} alt="about" />
+            <span className="submit-plan-icom-infomation">
+              <Icon name="info circle" />
             </span>
             {this.props.ipdCoPay
               ? <CoPay

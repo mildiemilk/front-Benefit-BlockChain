@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Popup, Icon, List } from 'semantic-ui-react';
 import '../../../styles/submit-plan.scss';
 import FormModal from '../form-modal';
@@ -36,13 +36,9 @@ class MenuPlan extends Component {
     };
   }
 
-  handleOpen = () => {
-    this.setState({ isOpen: true });
-  }
+  handleOpen = () => this.setState({ isOpen: true });
 
-  handleClose = () => {
-    this.setState({ isOpen: false });
-  }
+  handleClose = () => this.setState({ isOpen: false });
 
   handleOpenModal = () =>
     this.setState({
@@ -107,7 +103,7 @@ class MenuPlan extends Component {
                           role="button"
                           aria-hidden
                         >
-                          <Icon name="copy" />คัดลอกแพลน
+                          <Icon name="copy" />คัดลอกแผน
                         </p>
                       </List.Content>
                     </List.Item>
@@ -119,7 +115,7 @@ class MenuPlan extends Component {
                           role="button"
                           aria-hidden
                         >
-                          <Icon name="trash outline" />ลบแพลน
+                          <Icon name="trash outline" />ลบแผน
                         </p>
                       </List.Content>
                     </List.Item>
@@ -128,6 +124,9 @@ class MenuPlan extends Component {
                 on="click"
                 hideOnScroll
                 position="bottom center"
+                open={this.state.isOpen}
+                onOpen={this.handleOpen}
+                onClose={this.handleClose}
               />
               <p>แก้ไขครั้งล่าสุดโดย {list[i].company.hrDetail}</p>
             </div>
@@ -144,14 +143,12 @@ class MenuPlan extends Component {
     }
     return (
       <div className="menu-box">
-        <p className="menu-header">จัดแผนประกันภัย</p>
-        <Link to="/view"><span className="menu-text">ดูแพลนทั้งหมด</span></Link>
         <div className="menu-bar">
-          <span>รายการแพลน</span>
+          <span>รายการแผน</span>
           <Popup
             trigger={
               <div style={{ float: 'right' }}>
-                <span>ชื่อ</span>
+                <span>ชื่อ </span>
                 <Icon
                   name="caret down"
                   size="small"
@@ -179,8 +176,8 @@ class MenuPlan extends Component {
           employeeOfPlan={this.props.employeeOfPlan}
         />
         <div className="menu-add-plan">
-          <p onClick={this.props.handleNewPlan} role="button" aria-hidden>
-            <Icon name="add circle" size="big" />สร้างแพลนใหม่
+          <p onClick={this.props.handleNewPlan} role="button" aria-hidden className="menu-add-plan-text">
+            <Icon name="add circle" size="big" className="submit-plan-icon-add-plan" />สร้างแผนใหม่
           </p>
         </div>
         {this.renderList(this.props.planList)}
@@ -190,7 +187,7 @@ class MenuPlan extends Component {
           role="button"
           aria-hidden
         >
-          เปรียบเทียบแพลน
+          เปรียบเทียบแผน
         </div>
       </div>
     );

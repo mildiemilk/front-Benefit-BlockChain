@@ -60,12 +60,12 @@ class OpdModal extends Component {
         <ModalContents>
           <Modal.Header>
             <p style={{ textAlign: 'center' }}>
-              คุณต้องการบันทึกรายละเอียดแพลนของคุณหรือไม่ ?
+              คุณต้องการบันทึกรายละเอียดแผนของคุณหรือไม่ ?
             </p>
           </Modal.Header>
           <Modal.Content>
             <p style={{ textAlign: 'center' }}>
-              คุณได้เปลี่ยนแปลงรายละเอียดแพลนโดยไม่ได้ทำการบันทึก
+              คุณได้เปลี่ยนแปลงรายละเอียดแผนโดยไม่ได้ทำการบันทึก
             </p>
           </Modal.Content>
           <Modal.Content style={{ marginTop: '7%' }}>

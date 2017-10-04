@@ -119,7 +119,7 @@ class manageEmployee extends Component {
                 }
                 content={
                   <p>
-                    <Icon name="edit" />ดูแพลน
+                    <Icon name="edit" />ดูแผน
                   </p>
                 }
                 on="click"
@@ -558,7 +558,7 @@ class manageEmployee extends Component {
           {customerSelectPlan.length > 0
             ? this.ShowPlan(customerSelectPlan)
             : <div className="quotation-mp-edit-noplan">
-              ยังไม่มีแพลนเพิ่มเติม
+              ยังไม่มีแผนเพิ่มเติม
               </div>
             }
         </div>

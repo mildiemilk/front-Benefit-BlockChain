@@ -140,7 +140,7 @@ class SettingPlan extends Component {
                   name="plan"
                   options={this.state.optionPlan}
                   value={plan}
-                  placeholder="เลือกแพลนที่ต้องการ"
+                  placeholder="เลือกแผนที่ต้องการ"
                   onChange={handleChange}
                 />
               </PlanBox>

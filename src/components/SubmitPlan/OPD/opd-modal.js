@@ -15,7 +15,7 @@ const ModalContents = styled(Modal.Content)`
 
 const Modals = styled(Modal)`
   &&&{
-    background: transparent;
+    background: transparent !important;
     margin-top: -120px;
     box-shadow: none;
   }
@@ -28,8 +28,8 @@ class OpdModal extends Component {
     handleClick: PropTypes.func.isRequired,
     openModal: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { modalOpen: false };
   }
 
@@ -60,15 +60,15 @@ class OpdModal extends Component {
         <ModalContents>
           <Modal.Header>
             <p style={{ textAlign: 'center' }}>
-              คุณต้องการบันทึกรายละเอียดแพลนของคุณหรือไม่ ?
+              คุณต้องการบันทึกรายละเอียดแผนของคุณหรือไม่ ?
             </p>
           </Modal.Header>
           <Modal.Content>
             <p style={{ textAlign: 'center' }}>
-              คุณได้เปลี่ยนแปลงรายละเอียดแพลนโดยไม่ได้ทำการบันทึก
+              คุณได้เปลี่ยนแปลงรายละเอียดแผนโดยไม่ได้ทำการบันทึก
             </p>
           </Modal.Content>
-          <Modal.Content style={{ marginTop: '7%' }}>
+          <Modal.Content style={{ marginTop: '3%' }}>
             <Button
               style={{
                 textAlign: 'center',

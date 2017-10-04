@@ -16,6 +16,7 @@ float:right;
 border-color: white;
 margin-right:2.5%;
 cursor: pointer;
+border: none;
 `;
 class Tostify extends Component {
   static propTypes = {

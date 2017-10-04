@@ -3,16 +3,25 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 import TimePicker from 'rc-time-picker';
-import { Submit } from './styled';
+import Toastify from '../Tostify';
+import ToastifyContent from '../ToastifyContent';
+// import { Submit } from './styled';
 
 const DatePickers = styled(DatePicker)`
   width: 276.5px;
   height: 26px;
   border-radius: 6px;
   border: solid 1px #d9d9d9;
-  font-size: 16px
 `;
+const TimePickers = styled(TimePicker)`
+  width: 276.5px;
+  height: 26px;
+  border-radius: 6px;
+  border: solid 1px #d9d9d9;
+`;
+
 class Timeout extends Component {
   static propTypes = {
     setTimeout: PropTypes.func.isRequired,
@@ -40,6 +49,7 @@ class Timeout extends Component {
   handleTimeOut = () => {
     const { date } = this.state;
     console.log('date', date);
+    toast(<ToastifyContent />);
     this.props.setTimeout(date);
   }
 
@@ -59,7 +69,7 @@ class Timeout extends Component {
     console.log('timeout-->state', moment(this.props.timeout));
     console.log('stateDate', this.state.date);
     return (
-      <div style={{ display: 'inline-block' }} >
+      <div style={{ display: 'inline-block', width: '100%' }} >
         <div>
           <DatePickers
             selected={this.state.date}
@@ -69,14 +79,16 @@ class Timeout extends Component {
           />
           <span>&nbsp;เวลา&nbsp;</span>
           {this.state.date === ''
-          ? <div>fsdf</div>
-          : <TimePicker
+          ? <TimePickers
+            onChange={this.handleTime} showSecond={false}
+          />
+          : <TimePickers
             onChange={this.handleTime} showSecond={false} defaultValue={this.state.date}
           />
           }
         </div>
         <div className="clearfix">
-          <Submit onClick={this.handleTimeOut}>บันทึก</Submit>
+          <Toastify handleSubmit={this.handleTimeOut} />
         </div>
       </div>
     );

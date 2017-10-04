@@ -25,10 +25,8 @@ export const TextNormal = styled.div`
   letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
-  padding-left: 2%;
   padding-bottom: 2%;
   padding-top: 27px;
-  margin-left: 19px;
 `;
 export const Inner = styled.div`
   border-radius: 8px;
@@ -40,6 +38,7 @@ export const Inner = styled.div`
   border: solid 1px rgba(151, 151, 151, 0.66);
   margin-bottom: 15px;
   padding-bottom: 17px;
+  padding: 20px;
 `;
 export const FileuploadBox = styled.div`
   margin-bottom: 10px;
@@ -58,11 +57,11 @@ export const FileuploadBoxs = FileuploadBox.extend`
   margin-top: 12px;
 `;
 export const Upload = styled.div`
-  margin-top: 26px;
+  margin-top: 19px;
   margin-left: 8px;
 `;
 export const Uploads = styled.div`
-  margin-top: 27px;
+  margin-top: 15px;
   margin-left: 8px;
 `;
 export const BrowsButton = styled.label`
@@ -80,7 +79,7 @@ export const BrowsButton = styled.label`
   cursor: pointer;
   margin-right: 10px;
   display: block;
-  width: 100%;
+  width: 140px;
 `;
 export const AddBlockButton = styled.div`
   position: relative;
@@ -100,13 +99,13 @@ export const AddBlockButton = styled.div`
   border-style: solid;
   color: #ffffff;
   cursor:pointer;
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const Submit = styled.button`
-  position: relative;
-  right: -700px;
-  height: 40px;
-  width: 164px;
+  height: 35px;
+  width: 140px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -115,7 +114,8 @@ export const Submit = styled.button`
   background-color: #f7555f;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   text-align: center;
-  border-style: solid;
+  border: none;
+  margin-left: -5%;
 `;
 export const inputStyle = styled.input`
   opacity: 0;

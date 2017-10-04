@@ -23,7 +23,7 @@ import {
   SideIn,
   Card,
   HeadIn,
-  // SubmitInsure,
+  HeadList,
   Next,
   Check,
   Logo,
@@ -163,11 +163,11 @@ class InsurerSelect extends Component {
                 </div>
               </SideIn>
               <SideIn>
-                <p>ตั้งระยะเวลาการเสนอราคาของประกัน</p>
+                <HeadList>ตั้งระยะเวลาการเสนอราคาของประกัน</HeadList>
                 <p className="insure">
-                  บริษัทประกันสามารถเสนอราคาได้ภายในวันที่ &nbsp;
+                  บริษัทประกันสามารถเสนอราคาได้ภายใน
                 </p>
-                <Timeout setTimeout={this.props.setTimeOut} timeout={time} />
+                วันที่ &nbsp;<Timeout setTimeout={this.props.setTimeOut} timeout={time} />
               </SideIn>
             </div>
           </Detail>

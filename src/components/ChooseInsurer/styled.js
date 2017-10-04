@@ -25,7 +25,8 @@ export const SideIn = styled.div`
 `;
 export const HeadIn = styled.div`
     margin: 2%;
-    padding-left: 1% ;
+    padding-left: 1%;
+    padidng-right: 1%;
 `;
 export const Card = styled.div`
   width: 123px !important;
@@ -52,18 +53,18 @@ export const Submit = styled.div`
   display: block;
   margin-top: 39px;
 `;
-export const SubmitInsure = styled.button`
-  width: 164px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: #3a7bd5;
-  padding: 1%;
-  color: white;
-  display:inline-block;
-  float:right;
-  border-color: white;
-  margin-right:2.5%;
-`;
+// export const SubmitInsure = styled.button`
+//   width: 164px;
+//   height: 40px;
+//   border-radius: 20px;
+//   background-color: #3a7bd5;
+//   padding: 1%;
+//   color: white;
+//   display:inline-block;
+//   float:right;
+//   border-color: white;
+//   margin-right:2.5%;
+// `;
 export const Next = styled.button`
   width: 164px;
   height: 40px;
@@ -74,7 +75,8 @@ export const Next = styled.button`
   display:inline-block;
   float:right;
   border-color: #F1F1F1;
-  margin: 3%;
+  margin: 3% 9% 0%;
+  border: none;
 `;
 export const Check = styled.input`
   float:right;
@@ -92,4 +94,7 @@ export const Logo = styled.img`
   border: solid 1px #ebebeb;
   margin-top: 11px;
   margin-left: 14px;
+`;
+export const HeadList = styled.p`
+  font-weight: 900;
 `;

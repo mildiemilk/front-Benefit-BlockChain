@@ -105,30 +105,11 @@ class CountDowns extends Component {
       $isSec = <CountTime>{this.addLeadingZeros(countDown.sec)}</CountTime>;
     }
     return (
-      <div className="Countdown">
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{$isDay}</strong>
-          </span>
-        </span>
-
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{$isHours}</strong>
-          </span>
-        </span>
-
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{$isMin}</strong>
-          </span>
-        </span>
-
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{$isSec}</strong>
-          </span>
-        </span>
+      <div>
+        {$isDay}
+        {$isHours}
+        {$isMin}
+        {$isSec}
       </div>
     );
   }

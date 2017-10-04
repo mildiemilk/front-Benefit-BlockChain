@@ -46,7 +46,7 @@ class ViewPlanBox extends Component {
           }
         </td>
         <td>
-          <Link to={`/submitplan/${index}`}>
+          <Link className="view-plan-box-icon-menu" to={`/submitplan/${index}`}>
             <Popup
               trigger={<Icon disabled name="edit" size="large" />}
               content="แก้ไขแผน"
@@ -58,6 +58,7 @@ class ViewPlanBox extends Component {
           <Popup
             trigger={
               <Icon
+                className="view-plan-box-icon-menu"
                 disabled
                 name="paste"
                 size="large"

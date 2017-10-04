@@ -46,10 +46,10 @@ class ModalView extends Component {
       >
         <ModalContents>
           <ModalHeader>
-            ยืนยันการลบแพลน <br />
+            ยืนยันการลบแผน <br />
           </ModalHeader>
           <ModalContent>
-            เมื่อยืนยันแล้ว คุณจะไม่สามารถเข้าถึงหรือแก้ไขแพลนนี้ได้อีก
+            เมื่อยืนยันแล้ว คุณจะไม่สามารถเข้าถึงหรือแก้ไขแผนนี้ได้อีก
           </ModalContent>
           <div style={{ marginLeft: '2%', marginTop: '5%' }}>
             <CancleButton onClick={handleClose}> ยกเลิก </CancleButton>

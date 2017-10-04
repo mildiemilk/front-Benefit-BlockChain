@@ -23,7 +23,7 @@ class Plan extends Component {
           }
           content={
             <p>
-              <Icon name="edit" />ดูแพลน
+              <Icon name="edit" />ดูแผน
             </p>
           }
           on="click"

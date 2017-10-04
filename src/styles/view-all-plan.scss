@@ -35,24 +35,35 @@
   tr:nth-child(odd){background-color: #f5f5f5;}
   tr:nth-child(even){background-color: rgba(246, 247, 249, 0.7);}
 
-  .ui.button{
-    background: #ffffff;
-    border: solid 1px #dddddd;
-    padding: 1em 1em;
-    font-family: Kanit;
-  }
+  // .ui.button{
+  //   background: #ffffff;
+  //   border: solid 1px #dddddd;
+  //   padding: 1em 1em;
+  //   font-family: Kanit;
+  // }
 
-  .ui.input {
-    width: 120%;
-  }
+  // .ui.input {
+  //   width: 120%;
+  // }
 
-  .ui.input input{
-    font-family: Kanit;
-    margin-left: 5%;
-  }
+  // .ui.input input{
+  //   font-family: Kanit;
+  //   margin-left: 5%;
+  // }
 
 }
 .view-checkbox-list-plan {
   width: 17px;
   height: 17px;
+}
+.ui.action.input.view-allplan-input-search > button {
+  background-color: #ffffff;
+  border-left: solid 1px #dddddd;
+  color: #323028;
+}
+.view-plan-box-icon-menu{
+  margin-right: 5px;
+}
+.paste.large.disabled.icon.view-plan-box-icon-menu {
+  margin-right: 5px !important;
 }

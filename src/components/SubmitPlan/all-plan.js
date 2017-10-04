@@ -362,7 +362,7 @@ class AllsetPlan extends Component {
       <div>
         <div className="fillBox2">
           <div className="headBox">
-            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแผน</span>
             <div
               className="box-in-head-box"
               onClick={() => this.handleReset()}

@@ -127,12 +127,11 @@ class ViewAllPlan extends Component {
           <RecViewAllPlan>
             <div className="row">
               <div className="large-3 large-offset-1 columns">
-                <ViewHeader> แพลนทั้งหมด </ViewHeader>
+                <ViewHeader> แผนทั้งหมด </ViewHeader>
                 <Link to="/submitplan/0">
                   <BackHome>&lt; กลับหน้าหลัก </BackHome>
                 </Link>
               </div>
-
               <div className="large-2 large-offset-4 columns">
                 <SearchBox
                   callback={keyword => this.handleSearchBoxChange(keyword)}
@@ -162,7 +161,7 @@ class ViewAllPlan extends Component {
                           basic
                         />
                       </td>
-                      <td> ชื่อแพลน </td>
+                      <td> ชื่อแผน </td>
                       <td> แก้ไขครั้งล่าสุดโดย </td>
                       <td> วันที่ </td>
                       <td> Action </td>

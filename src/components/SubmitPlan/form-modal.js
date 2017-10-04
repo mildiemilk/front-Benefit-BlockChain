@@ -56,12 +56,11 @@ class FormModal extends Component {
         trigger={<div />}
         open={this.props.openModalForm}
         onClose={this.handleClose}
-        closeOnEscape={this.state.closeOnEscape}
-        closeOnRootNodeClick={this.state.closeOnRootNodeClick}
         className="SubmitPlan"
       >
         <ModalContents>
           <FormSubmitPlan
+            handleClose={this.handleClose}
             planList={this.props.planList}
             handleUpdateData={this.props.handleUpdateData}
             activePlan={this.props.activePlan}
@@ -71,6 +70,7 @@ class FormModal extends Component {
             handleResetProfilePlan={this.props.handleResetProfilePlan}
             planName={this.props.planName}
             employeeOfPlan={this.props.employeeOfPlan}
+            btnCancle
           />
         </ModalContents>
       </Modals>

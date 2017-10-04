@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Input } from 'semantic-ui-react';
 import { createPlan, editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import erase from '../../image/icons-8-erase.png';
@@ -19,9 +19,13 @@ class FormSubmitPlan extends Component {
     employeeOfPlan: PropTypes.string.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
+    btnCancle: PropTypes.bool,
+    handleClose: PropTypes.func,
   }
   static defaultProps = {
     handleModalFinish: null,
+    btnCancle: false,
+    handleClose: null,
   }
   constructor(props) {
     super(props);
@@ -58,7 +62,7 @@ class FormSubmitPlan extends Component {
         <div className="fillBox1">
           <div className="headBox step1">
             <span className="headLogo">
-              ขั้นตอนที่ 1 : Choose High Level Plan{' '}
+              ขั้นตอนที่ 1 : ตั้งชื่อแผนประกัน
             </span>
             <div className="box-in-head-box">
               <span role="button" aria-hidden onClick={() => this.props.handleResetProfilePlan()}>
@@ -75,54 +79,61 @@ class FormSubmitPlan extends Component {
           </div>
           <div className="set-padding">
             <div className="row">
-              <div className="large-4 columns">
-                <div className="paragraph-step1">
-                  <p className="p-in-modal">ชื่อแพลน</p>
-                  <br />
-                  <p className="p-in-modal">จำนวนพนักงานในแพลน</p>
-                </div>
-              </div>
-              <div className="large-8 columns">
-                <Form onSubmit={this.handleClick}>
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      placeholder="ชื่อแพลน"
-                      name="planName"
-                      value={this.props.planName}
-                      onChange={this.props.handleChange}
-                      style={{ marginTop: '7%', paddingLeft: '0px' }}
-                      required
-                    />
-                    <br />
-                  </Form.Group>
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      placeholder="ระบุจำนวนพนักงาน"
-                      value={this.props.employeeOfPlan}
-                      name="employeeOfPlan"
-                      id="employeeOfPlan"
-                      onChange={this.props.handleChange}
-                    />
-                    <br />
-                  </Form.Group>
-                  <Button
-                    style={{
-                      marginTop: '3%',
-                      textAlign: 'center',
-                      width: '164px',
-                      height: '40px',
-                      backgroundColor: '#3A7BD5',
-                      color: 'white',
-                      float: 'right',
-                      borderRadius: '20px',
-                      marginBottom: '3%',
-                    }}
-                    type="submit"
-                  >
-                    บันทึก
+              <Form className="submit-plan-form-create-plan">
+                <Form.Field inline>
+                  <label className="submit-plan-label-create-plan" htmlFor="planName">ชื่อแผน</label>
+                  <Input
+                    className="submit-plan-input-create-plan"
+                    placeholder="ชื่อแผน"
+                    name="planName"
+                    value={this.props.planName}
+                    onChange={this.props.handleChange}
+                    required
+                  />
+                </Form.Field>
+                <Form.Field inline>
+                  <label className="submit-plan-label-create-plan" htmlFor="planName">จำนวนพนักงานในแผน</label>
+                  <Input
+                    className="submit-plan-input-create-plan"
+                    placeholder="ระบุจำนวนพนักงาน"
+                    value={this.props.employeeOfPlan}
+                    name="employeeOfPlan"
+                    id="employeeOfPlan"
+                    onChange={this.props.handleChange}
+                  />
+                </Form.Field>
+              </Form>
+              {
+                this.props.btnCancle
+                ? <Button
+                  style={{
+                    width: '164px',
+                    height: '40px',
+                    borderRadius: '20px',
+                    color: '#ffffff',
+                    backgroundColor: '#f7555f',
+                  }}
+                  onClick={this.props.handleClose}
+                >
+                  ยกเลิก
                 </Button>
-                </Form>
-              </div>
+                : <div />
+              }
+              <Button
+                style={{
+                  textAlign: 'center',
+                  width: '164px',
+                  height: '40px',
+                  backgroundColor: '#3A7BD5',
+                  color: 'white',
+                  float: 'right',
+                  borderRadius: '20px',
+                  marginBottom: '3%',
+                }}
+                type="submit"
+              >
+                บันทึก
+            </Button>
             </div>
           </div>
         </div>

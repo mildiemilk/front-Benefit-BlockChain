@@ -493,7 +493,7 @@ class PlanBoxModal extends Component {
         className="SubmitPlan"
       >
         <ModalHeaders>
-          <CustomHead>ดูแพลน</CustomHead>
+          <CustomHead>ดูแผน</CustomHead>
         </ModalHeaders>
         <form id="modalPlan" name="modalPlan" onSubmit={e => this.props.handleSubmitEditPlan(e)}>
           <ModalContents>
@@ -586,11 +586,11 @@ class PlanBoxModal extends Component {
           </ModalContentsWithBottom>
           {/* <ModalChange>
             <span className="edit-mp-title-change">
-              แพลนมีการเปลี่ยนแปลง
+              แผนมีการเปลี่ยนแปลง
             </span>
             <span className="edit-mp-subtitle-change">
-              ถ้าเสนอราคาแพลนที่มีการเปลี่ยนแปลง แพลนนี้จะไปอยู่ในหัวข้อ&nbsp;
-              <span className="edit-mp-subtitle-change-b">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
+              ถ้าเสนอราคาแผนที่มีการเปลี่ยนแปลง แผนนี้จะไปอยู่ในหัวข้อ&nbsp;
+              <span className="edit-mp-subtitle-change-b">รายการแผนที่คุณเสนอเพิ่มเติม</span>
             </span>
             <ul className="edit-mp-detail-change">
               <li>test</li>
@@ -599,7 +599,7 @@ class PlanBoxModal extends Component {
         </form>
         <ModalPriceBox>
           <div className="edit-mp-input-price-box">
-            {/* <div className="edit-mp-input-price-box-l">เสนอราคาแพลนนี้</div> */}
+            {/* <div className="edit-mp-input-price-box-l">เสนอราคาแผนนี้</div> */}
             {/* <div className="edit-mp-input-price-box-r">
               <input type="number" name={this.props.planIndex}
               id="modalPlanPrice" value={this.state.price}

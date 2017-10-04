@@ -119,7 +119,7 @@ class manageEmployee extends Component {
                 }
                 content={
                   <p>
-                    <Icon name="edit" />ดูแพลน
+                    <Icon name="edit" />ดูแผน
                   </p>
                 }
                 on="click"
@@ -228,6 +228,8 @@ class manageEmployee extends Component {
                     handleSubmitPolicy={this.handleSubmitPolicy}
                     handleDataChange={this.handleDataChange}
                     employeeId={EMPlist._id}
+                    policyNumber={EMPlist.detail.policyNumber}
+                    memberNumber={EMPlist.detail.memberNumber}
                     modalOpen={this.state.modalOpen}
                   />
                 </div>
@@ -558,7 +560,7 @@ class manageEmployee extends Component {
           {customerSelectPlan.length > 0
             ? this.ShowPlan(customerSelectPlan)
             : <div className="quotation-mp-edit-noplan">
-              ยังไม่มีแพลนเพิ่มเติม
+              ยังไม่มีแผนเพิ่มเติม
               </div>
             }
         </div>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import DentalModal from './dental-modal';
-import about from '../../image/icons-8-about.png';
+// import about from '../../image/icons-8-about.png';
 
 class Dental extends Component {
   static propTypes = {
@@ -75,8 +75,8 @@ class Dental extends Component {
           <u>
             ค่ารักษาทันตกรรม (Dental)
           </u>
-          <span>
-            <img src={about} alt="about" />
+          <span className="submit-plan-icom-infomation">
+            <Icon name="info circle" />
           </span>
         </p>
         <br />

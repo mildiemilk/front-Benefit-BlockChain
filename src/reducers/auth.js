@@ -6,6 +6,9 @@ const defaultAuth = {
   token: localStorage.getItem('token'),
   role: localStorage.getItem('role'),
   approve: localStorage.getItem('approve'),
+  employeeName: localStorage.getItem('employeeName'),
+  employeeCode: localStorage.getItem('employeeCode'),
+  employeeProfilePic: localStorage.getItem('employeeProfilePic'),
   personalVerify: false,
   message: '',
   error: false,
@@ -70,6 +73,9 @@ export function authReducer(state = defaultAuth, action) {
         personalVerify: action.data.personalVerify,
         error: false,
         newUser: action.data.newUser,
+        employeeName: action.data.employeeName,
+        employeeCode: action.data.employeeCode,
+        employeeProfilePic: action.data.employeeProfilePic,
       });
     case AUTHENTICATE_REQUEST_FAILURE:
       return Object.assign({}, state, {

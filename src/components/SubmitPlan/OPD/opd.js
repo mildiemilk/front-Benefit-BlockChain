@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import { connect } from 'react-redux';
-import { Button, Checkbox, Form, Radio } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Radio, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import CoPay from './copay';
 import OpdModal from './opd-modal';
-import about from '../../image/icons-8-about.png';
+// import about from '../../image/icons-8-about.png';
 
 const Checkboxs = styled(Checkbox)`
   margin-bottom: 15px;
@@ -124,15 +124,15 @@ class OPD extends Component {
           <u>
             ค่ารักษาพยาบาลกรณีผู้ป่วยนอก (Out Patient Department : OPD)
           </u>
-          <span>
-            <img src={about} alt="about" />
+          <span className="submit-plan-icom-infomation">
+            <Icon name="info circle" />
           </span>
         </p>
         <br />
         <p className="head"> ระบุรูปแบบประกันที่ต้องการ
-          <span>
-            <img src={about} alt="about" />
-          </span>
+        <span className="submit-plan-icom-infomation">
+          <Icon name="info circle" />
+        </span>
         </p>
         <div className="row">
           <Form onSubmit={this.handleClick}>
@@ -230,8 +230,8 @@ class OPD extends Component {
               checked={this.props.opdCoPay}
               onClick={this.props.handleToggle}
             />
-            <span>
-              <img src={about} alt="about" />
+            <span className="submit-plan-icom-infomation">
+              <Icon name="info circle" />
             </span>
             {this.props.opdCoPay
               ? <CoPay

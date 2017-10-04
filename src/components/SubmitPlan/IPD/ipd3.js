@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Form, Radio } from 'semantic-ui-react';
-import about from '../../image/icons-8-about.png';
+import { Form, Radio, Icon } from 'semantic-ui-react';
+// import about from '../../image/icons-8-about.png';
 
 class IPD3 extends Component {
   static propTypes = {
@@ -190,9 +190,9 @@ class IPD3 extends Component {
 
             </div>
             <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ
-              <span>
-                <img src={about} alt="about" />
-              </span>
+            <span className="submit-plan-icom-infomation">
+              <Icon name="info circle" />
+            </span>
             </p>
             <div className="large-9 columns">
               <div className="paragraph">

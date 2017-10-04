@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Button, Icon, Modal } from 'semantic-ui-react';
+import styled from 'styled-components';
 import MenuPlan from './MenuPlan/menu-plan';
 import FormSubmitPlan from './FormSubmitPlan/form-submit-plan';
 import AllPlan from './all-plan';
 import NavInsure from '../NavInsure';
 import { getAllPlan, copyPlan, deletePlan } from '../../api/set-plan';
 
+const ModalContents = styled(Modal.Content)`
+&&&{
+  max-width: 550px;
+  margin: 0 auto;
+  padding-left: 4%;
+}
+`;
+
+const Modals = styled(Modal)`
+&&&{
+  background: transparent !important;
+  margin-top: -120px;
+  box-shadow: none;
+}
+`;
 
 class SubmitPlan extends Component {
   static propTypes = {
@@ -79,6 +95,7 @@ class SubmitPlan extends Component {
       val: props.match.params.index,
       checkUpdate: false,
       newActivePlan: -1,
+      showModalConfirm: false,
     };
     props.getAllPlan();
     // setInterval(() => {
@@ -223,6 +240,10 @@ class SubmitPlan extends Component {
     }
     return '';
   }
+
+  handleOpenModalConfirm = () => this.setState({ showModalConfirm: true });
+
+  handleCloseModalConfirm = () => this.setState({ showModalConfirm: false });
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -471,7 +492,11 @@ class SubmitPlan extends Component {
         <div className="big-box">
           <div className="small-10 small-centered columns">
             <div className="row">
-              <div className="large-3 columns">
+              <div className="submit-plan-header-box">
+                <p className="menu-header">จัดแผนประกันภัย</p>
+                <Link to="/view"><span className="menu-text">ดูแผนทั้งหมด</span></Link>
+              </div>
+              <div className="large-3 columns submit-plan-delete-padding-left">
                 <MenuPlan
                   activePlan={this.state.activePlan}
                   handlePlan={this.handlePlan}
@@ -589,22 +614,22 @@ class SubmitPlan extends Component {
                         ipdCoPayMixYear={this.state.ipdCoPayMixYear}
                       />
                     </div>
-
-                    <Button
-                      style={{
-                        marginLeft: '70%',
-                        marginTop: '5%',
-                        marginBottom: '5%',
-                        width: '164px',
-                        height: '40px',
-                        borderRadius: '20px',
-                        color: '#ffffff',
-                        backgroundColor: '#f7555f',
-                      }}
-                      onClick={this.onClickhandler}
-                    >
-                      {' '}ต่อไป
-                    </Button>
+                    <div className="submit-plan-next-step-btn">
+                      <div className="row">
+                        <Button
+                          style={{
+                            width: '164px',
+                            height: '40px',
+                            borderRadius: '20px',
+                            color: '#ffffff',
+                            backgroundColor: '#f7555f',
+                          }}
+                          onClick={this.handleOpenModalConfirm}
+                        >
+                          ขั้นตอนถัดไป
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                   : <div className="start-box">
                     <div className="box-in-start-box">
@@ -612,14 +637,54 @@ class SubmitPlan extends Component {
                         name="calendar plus"
                         size="huge"
                         style={{ marginLeft: '9%' }}
+                        onClick={this.handleNewPlan}
                       />
-                      <p>ยังไม่มีการสร้างแพลนใหม่</p>
+                      <p className="submit-plan-text-new-plan">สร้างแผนใหม่</p>
                     </div>
                   </div>}
               </div>
             </div>
           </div>
         </div>
+        <Modals trigger={<div />} open={this.state.showModalConfirm}>
+          <ModalContents>
+            <Modal.Header>
+              <p style={{ textAlign: 'center' }}>
+                คุณจัดแผนประกันเสร็จแล้วและต้องการเลือกบริษัทประกันใช่หรือไม่ ?
+              </p>
+            </Modal.Header>
+            <Modal.Content style={{ marginTop: '3%' }}>
+              <Button
+                style={{
+                  textAlign: 'center',
+                  width: '232px',
+                  height: '40px',
+                  borderRadius: '20px',
+                  color: '#ffffff',
+                  backgroundColor: '#f7555f',
+                  marginLeft: '0.7%',
+                }}
+                onClick={this.handleCloseModalConfirm}
+              >
+                ยกเลิก
+              </Button>
+              <Button
+                style={{
+                  textAlign: 'center',
+                  width: '232px',
+                  height: '40px',
+                  backgroundColor: '#3A7BD5',
+                  color: 'white',
+                  borderRadius: '20px',
+                }}
+                onClick={this.onClickhandler}
+                type="submit"
+              >
+                ยืนยัน
+              </Button>
+            </Modal.Content>
+          </ModalContents>
+        </Modals>
       </div>
     );
   }

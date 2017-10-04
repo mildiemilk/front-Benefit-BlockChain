@@ -378,7 +378,7 @@ class PlanBoxModal extends Component {
         className="SubmitPlan"
       >
         <ModalHeaders>
-          <CustomHead>ดูแพลน</CustomHead>
+          <CustomHead>ดูแผน</CustomHead>
         </ModalHeaders>
         <ModalContents>
           <FormSubmitPlan

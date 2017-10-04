@@ -502,7 +502,7 @@ class SubmitPlan extends Component {
                         size="huge"
                         style={{ marginLeft: '9%' }}
                       />
-                      <p>ยังไม่มีการสร้างแพลนใหม่</p>
+                      <p>ยังไม่มีการสร้างแผนใหม่</p>
                     </div>
                   </div>}
               </div>

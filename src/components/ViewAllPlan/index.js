@@ -18,7 +18,7 @@ class ViewAllPlan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 3,
+      step: 1,
       passwordToConfirm: '',
       SearchTerm: '',
       checkUpdate: false,
@@ -127,7 +127,7 @@ class ViewAllPlan extends Component {
           <RecViewAllPlan>
             <div className="row">
               <div className="large-3 large-offset-1 columns">
-                <ViewHeader> แพลนทั้งหมด </ViewHeader>
+                <ViewHeader> แผนทั้งหมด </ViewHeader>
                 <Link to="/submitplan/0">
                   <BackHome>&lt; กลับหน้าหลัก </BackHome>
                 </Link>
@@ -162,7 +162,7 @@ class ViewAllPlan extends Component {
                           basic
                         />
                       </td>
-                      <td> ชื่อแพลน </td>
+                      <td> ชื่อแผน </td>
                       <td> แก้ไขครั้งล่าสุดโดย </td>
                       <td> วันที่ </td>
                       <td> Action </td>

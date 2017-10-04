@@ -205,7 +205,7 @@ class ModalPlanListBidding extends Component {
       <div>
         <div className="fillBox">
           <div className="headBox">
-            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแพลน</span>
+            <span className="headLogo">ขั้นตอนที่ 2 : กรอกรายละเอียดแผน</span>
           </div>
           <div className="row">
             {this.state.setPlan === 'IPD'

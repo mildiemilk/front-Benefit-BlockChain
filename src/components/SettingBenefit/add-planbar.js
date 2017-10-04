@@ -50,7 +50,7 @@ class AddPlanBar extends Component {
                       role="button"
                       aria-hidden
                     >
-                      <Icon name="trash outline" />ลบแพลน
+                      <Icon name="trash outline" />ลบแผน
                     </p>
                   </ListContent>
                 </List.Item>

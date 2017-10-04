@@ -136,12 +136,12 @@ class Quotation extends Component {
           </div>
           <div className="quotation-box">
             <div className="quotation-show-mp">
-              <span className="quotation-body-title">รายการแพลนทั้งหมด</span>
+              <span className="quotation-body-title">รายการแผนทั้งหมด</span>
               <div className="quotation-body-show-mp-box">
                 {this.ShowMasterPlan(masterplan)}
               </div>
               <div className="quotation-mp-edit-title-box">
-                <span className="quotation-mp-edit-title">รายการแพลนที่คุณเสนอเพิ่มเติม</span>
+                <span className="quotation-mp-edit-title">รายการแผนที่คุณเสนอเพิ่มเติม</span>
                 <div className="quotation-btn-add-plan-box">
                   <button className="quotation-mp-edit-btn" onClick={() => handleOnpenModalPlanDetail('selectInsurerPlan', masterplan)}>
                     <img alt="" className="quotation-icon-add-plan" src={IconAddPlan} />
@@ -154,7 +154,7 @@ class Quotation extends Component {
                 {
                   insurerplan.length === 0
                   ? <div className="quotation-mp-edit-noplan">
-                    ยังไม่มีแพลนเพิ่มเติม
+                    ยังไม่มีแผนเพิ่มเติม
                   </div>
                   : <div />
                 }

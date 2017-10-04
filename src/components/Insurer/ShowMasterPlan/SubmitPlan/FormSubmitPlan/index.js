@@ -59,11 +59,11 @@ class FormSubmitPlan extends Component {
           </div>
           <div className="formsubmit-head-box">
             <div className="formsubmit-1-box">
-              <span className="formsubmit-1-l">ชื่อแพลน</span>
+              <span className="formsubmit-1-l">ชื่อแผน</span>
               <span className="formsubmit-1-r">{this.props.planName}</span>
             </div>
             <div className="formsubmit-1-box">
-              <span className="formsubmit-1-l">จำนวนพนักงานในแพลน</span>
+              <span className="formsubmit-1-l">จำนวนพนักงานในแผน</span>
               <span className="formsubmit-1-r">{this.props.employeeOfPlan} คน</span>
             </div>
             <div className="formsubmit-1-box">

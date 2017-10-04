@@ -37,7 +37,7 @@ export default class PlanBoxs extends Component {
               <List.Item>
                 <List.Content onClick={e => this.props.handleModal(e)}>
                   <p id={this.props.id}>
-                    <Icon name="file text outline" />ดูแพลน
+                    <Icon name="file text outline" />ดูแผน
                   </p>
                 </List.Content>
               </List.Item>

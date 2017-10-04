@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Form, Radio } from 'semantic-ui-react';
+import { Button, Form, Radio, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import LifeModal from './life-modal';
-import about from '../../image/icons-8-about.png';
+// import about from '../../image/icons-8-about.png';
 
 
 class Life extends Component {
@@ -93,8 +93,8 @@ class Life extends Component {
           <u>
             ประกันชีวิต (Life)
           </u>
-          <span>
-            <img src={about} alt="about" />
+          <span className="submit-plan-icom-infomation">
+            <Icon name="info circle" />
           </span>
         </p>
         <br />

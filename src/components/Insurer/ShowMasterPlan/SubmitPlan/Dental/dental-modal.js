@@ -60,12 +60,12 @@ class DentalModal extends Component {
         <ModalContents>
           <ModalContents>
             <p style={{ textAlign: 'center' }}>
-              คุณต้องการบันทึกรายละเอียดแพลนของคุณหรือไม่ ?
+              คุณต้องการบันทึกรายละเอียดแผนของคุณหรือไม่ ?
             </p>
           </ModalContents>
           <ModalContents>
             <p style={{ textAlign: 'center' }}>
-              คุณได้เปลี่ยนแปลงรายละเอียดแพลนโดยไม่ได้ทำการบันทึก
+              คุณได้เปลี่ยนแปลงรายละเอียดแผนโดยไม่ได้ทำการบันทึก
             </p>
           </ModalContents>
           <ModalContents style={{ marginTop: '7%' }}>

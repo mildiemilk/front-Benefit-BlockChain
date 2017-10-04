@@ -101,7 +101,7 @@ class Dashboard extends Component {
                       src={artboard1}
                       shape="circular"
                     />
-                    <Container textAlign="center"> สร้างแผนของคุณ </Container>
+                    <Container textAlign="center"> แผนของคุณ </Container>
                   </Link>
                 </Grid.Column>
                 <Grid.Column>

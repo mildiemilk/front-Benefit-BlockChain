@@ -127,7 +127,7 @@ class ModalModalExample extends Component {
             <div className="row">
               <div className="large-4 columns">
                 <ModalTopic>
-                  จำนวนพนักงานในแพลน :
+                  จำนวนพนักงานในแผน :
                 </ModalTopic>
                 <ModalTopic>
                   ราคาต่อหัว :

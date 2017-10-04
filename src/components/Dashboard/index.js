@@ -94,15 +94,13 @@ class Dashboard extends Component {
             <Grid>
               <Grid.Row columns={3}>
                 <Grid.Column>
-                  <Link to="/submitplan/0" >
-                    <Image
-                      className="block"
-                      centered
-                      src={artboard1}
-                      shape="circular"
-                    />
-                    <Container textAlign="center"> แผนของคุณ </Container>
-                  </Link>
+                  <Image
+                    className="block"
+                    centered
+                    src={artboard1}
+                    shape="circular"
+                  />
+                  <Container textAlign="center"> แผนของคุณ </Container>
                 </Grid.Column>
                 <Grid.Column>
                   <Link to="/employeelist" >

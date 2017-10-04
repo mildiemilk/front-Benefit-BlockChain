@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Image, Container, Icon, Checkbox, Divider } from 'semantic-ui-react';
@@ -11,6 +11,7 @@ import artboard4 from '../../../assets/Dashboard/history.png';
 import artboard5 from '../image/dashboard/artboard-5.png';
 import artboard6 from '../image/dashboard/artboard-6.png';
 import { getCompleteStep } from '../../api/profile-company';
+import ModalWarning from '../ModalWarning';
 
 class Dashboard extends Component {
   static propTypes = {
@@ -33,6 +34,16 @@ class Dashboard extends Component {
         '3. จัดแผนสิทธิประโยชน์',
         '4. สรุปจำนวนพนักงาน',
       ],
+      way: [
+        'viewyourplan',
+        'employeelist',
+        'ClaimEmployee',
+        'profileclaim',
+        'profile',
+        'setting',
+      ],
+      openWarning: '',
+      warningMessage: '',
     };
   }
 
@@ -62,7 +73,24 @@ class Dashboard extends Component {
     });
     return allStep;
   }
+  closeWarningModal = () => {
+    this.setState({ openWarningModal: false });
+  }
+  checkStep = number => {
+    const { completeStep } = this.props;
+    const { way } = this.state;
+    console.log('propComplete', completeStep);
+    const canGo = completeStep.indexOf(false) === -1;
+    if (canGo) {
+      return (<Redirect to={{ pathname: way[number] }} />);
+    }
+    this.setState({
+      openWarningModal: true,
+      warningMessage: 'คุณยังสร้างแผนประกันภัยไม่สำเร็จ',
+    });
 
+    return '';
+  }
   render() {
     const { completeStep } = this.props;
     let step = '';
@@ -93,7 +121,7 @@ class Dashboard extends Component {
           <Grid.Column width={10}>
             <Grid>
               <Grid.Row columns={3}>
-                <Grid.Column>
+                <Grid.Column onClick={() => this.checkStep(0)}>
                   <Image
                     className="block"
                     centered
@@ -102,42 +130,32 @@ class Dashboard extends Component {
                   />
                   <Container textAlign="center"> แผนของคุณ </Container>
                 </Grid.Column>
-                <Grid.Column>
-                  <Link to="/employeelist" >
-                    <Image
-                      className="block"
-                      centered
-                      src={artboard3}
-                      shape="circular"
-                    />
-                    <Container textAlign="center"> อัพเดตจำนวนพนักงาน </Container>
-                  </Link>
+                <Grid.Column onClick={() => this.checkStep(1)}>
+                  <Image
+                    className="block"
+                    centered
+                    src={artboard3}
+                    shape="circular"
+                  />
+                  <Container textAlign="center"> อัพเดตจำนวนพนักงาน </Container>
                 </Grid.Column>
-                <Grid.Column>
-                  <Link to="/ClaimEmployee" >
-                    <Image className="block" src={artboard2} shape="circular" />
-                    <Container textAlign="center"> รายการเคลม </Container>
-                  </Link>
+                <Grid.Column onClick={() => this.checkStep(2)}>
+                  <Image className="block" src={artboard2} shape="circular" />
+                  <Container textAlign="center"> รายการเคลม </Container>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={3}>
-                <Grid.Column>
-                  <Link to="/profileclaim" >
-                    <Image className="block" src={artboard4} shape="circular" />
-                    <Container textAlign="center"> ประวัติการเคลม </Container>
-                  </Link>
+                <Grid.Column onClick={() => this.checkStep(3)}>
+                  <Image className="block" src={artboard4} shape="circular" />
+                  <Container textAlign="center"> ประวัติการเคลม </Container>
                 </Grid.Column>
-                <Grid.Column>
-                  <Link to="/profile" >
-                    <Image className="block" src={artboard5} shape="circular" />
-                    <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
-                  </Link>
+                <Grid.Column onClick={() => this.checkStep(4)}>
+                  <Image className="block" src={artboard5} shape="circular" />
+                  <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
                 </Grid.Column>
-                <Grid.Column>
-                  <Link to="/setting" >
-                    <Image className="block" src={artboard6} shape="circular" />
-                    <Container textAlign="center"> ตั้งค่า </Container>
-                  </Link>
+                <Grid.Column onClick={() => this.checkStep(5)}>
+                  <Image className="block" src={artboard6} shape="circular" />
+                  <Container textAlign="center"> ตั้งค่า </Container>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -145,7 +163,11 @@ class Dashboard extends Component {
           </Grid.Column>
           <Grid.Column width={3} />
         </Grid>
-
+        <ModalWarning
+          openWarningModal={this.state.openWarningModal}
+          warningMessage={this.state.warningMessage}
+          closeWarningModal={this.closeWarningModal}
+        />
       </div>
     );
   }

@@ -8,7 +8,7 @@ export const Head = styled.div`
 
 export const Bar = styled.div`
   height: 64px;
-  background-color: #edf2f6;
+  background-color: #d7dfe2;
   padding-top: 27px;
   padding-left: 60px;
 `;

@@ -50,7 +50,7 @@ class HeaderCompanyInfo extends Component {
       styleCss = { color: '#3a7bd5' };
       textDisplay = '| สิ้นสุดการคุ้มครอง';
     } else if (status === 'pending') {
-      styleCss = { color: '#3a7bd5' };
+      styleCss = { color: '#46b3b8' };
       textDisplay = '| ระหว่างดำเนินการ';
     } else {
       textDisplay = ' ';

@@ -17,10 +17,8 @@ class MainLayout extends Component {
           <Sidebar />
         </div>
         <div className="large-10 columns">
-          <div className="row" style={{ marginTop: 75 }}>
-            <div className="large-10 large-offset-1 columns">
-              {this.props.children}
-            </div>
+          <div className="row" style={{ margin: '75px 40px 40px 20px' }} >
+            {this.props.children}
           </div>
         </div>
       </div>

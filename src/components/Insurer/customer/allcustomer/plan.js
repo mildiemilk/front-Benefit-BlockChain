@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 // import { NextButton, grayButton } from '../../../StyleComponent';
+// import ModalInsurer from '../../ShowMasterPlan/ModalInsurer';
 import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
 
 class Plan extends Component {

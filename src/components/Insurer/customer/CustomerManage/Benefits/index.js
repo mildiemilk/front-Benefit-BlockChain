@@ -41,6 +41,7 @@ class Benefits extends Component {
       companyId: props.match.params.companyId,
       index: props.match.params.index,
       namePlan: '',
+      indexPlan: '',
       idPlan: '',
       isClickPlan: false,
       step: 4,
@@ -83,23 +84,44 @@ class Benefits extends Component {
     });
   }
 
-  ShowPlan = () => {
-    const { customerSelectPlan } = this.props;
-    const plans = customerSelectPlan.map(
-      (Plans, index) =>
+  ShowPlan = list => {
+    const showList = list.map((element, index) => {
+      console.log('>>', showList);
+      const isActive = index === this.state.i ? '-active' : '';
+      return (
         <PlanBlock
           onClick={() => this.handleClick(index)}
           key={index.toString()}
         >
-          <div className="quotation-body-show-mp">
+          <div className={`quotation-body-show-mp${isActive}`}>
             <div className="quotation72width">
-              <span className="quotation-mp-name">{Plans.planId.planName}</span>
+              <span className={`quotation-mp-name${isActive}`}>{element.planId.planName}</span>
             </div>
           </div>
-        </PlanBlock>,
-    );
-    return plans;
+        </PlanBlock>
+      );
+    });
+    return showList;
   }
+  // ShowPlan = () => {
+  //   const { customerSelectPlan } = this.props;
+  //   // const isActive = index === this.props.activeGroup ? '-active' : '';
+  //   const plans = customerSelectPlan.map(
+  //     (Plans, index) =>
+  //     const isActive = index === this.props.activeGroup ? '-active' : '';
+  //       <PlanBlock
+  //         onClick={() => this.handleClick(index)}
+  //         key={index.toString()}
+  //       >
+  //         <div className="quotation-body-show-mp">
+  //           <div className="quotation72width">
+  //             <span className="quotation-mp-name">{Plans.planId.planName}</span>
+  //           </div>
+  //         </div>
+  //       </PlanBlock>,
+  //   );
+  //   return plans;
+  // }
 
   handleUploadFile = ({ target: { files } }) => {
     const { file, i } = this.state;
@@ -143,7 +165,7 @@ class Benefits extends Component {
                   <div className="quotation-show-mp">
                     <div className="quotation-body-show-mp-box">
                       {customerSelectPlan.length > 0
-                        ? this.ShowPlan()
+                        ? this.ShowPlan(customerSelectPlan)
                         : <div className="quotation-mp-edit-noplan">
                           ยังไม่มีแพลนเพิ่มเติม
                           </div>

@@ -29,5 +29,6 @@ export const Step4 = styled(Step)`
   &&&{
     border-top-right-radius: 40px !important;
     border-bottom-right-radius: 40px !important;
+    color: #6c6c6c;
   }
 `;

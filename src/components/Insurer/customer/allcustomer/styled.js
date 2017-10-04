@@ -11,6 +11,7 @@ export const Nav = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
   border: solid 1px #d3d3d3;
   position: relative;
+  cursor: pointer;
 `;
 export const Navmanage = styled.div`
   margin: 10px 15px;
@@ -200,6 +201,7 @@ export const StatusTag = styled.div`
   color: white;
   background-color: ${props => props.color};
   width: 80%;
+  float: right;
   text-align: center;
 `;
 export const TextList = styled.div`

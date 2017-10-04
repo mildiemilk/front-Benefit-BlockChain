@@ -228,6 +228,8 @@ class manageEmployee extends Component {
                     handleSubmitPolicy={this.handleSubmitPolicy}
                     handleDataChange={this.handleDataChange}
                     employeeId={EMPlist._id}
+                    policyNumber={EMPlist.detail.policyNumber}
+                    memberNumber={EMPlist.detail.memberNumber}
                     modalOpen={this.state.modalOpen}
                   />
                 </div>

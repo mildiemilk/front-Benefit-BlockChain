@@ -204,7 +204,7 @@ export const DisplayTime = styled.div`
 `;
 export const DisplayTimeout = styled.div`
   color: #f7555f;
-  font-size: 45px;
+  font-size: 24px;
 `;
 export const ButtonStatusCancle = styled.div`
   width: 80%;
@@ -229,4 +229,3 @@ export const ButtonNew = styled.button`
   margin-top: 1.5%;
   margin-left: 43%;
 `;
-

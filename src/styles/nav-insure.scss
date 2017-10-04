@@ -8,16 +8,15 @@
         width: 16.666667%;
     }
     .steps > .step::before{
-        position: absolute !important;
-        left: 21px;
+
     }
     .steps > .step.active{
         padding-left: 8px;
         background-color:#3a7bd5;
     }
     .ui.ordered.steps .step.completed:before, .ui.steps .step.completed > .icon:before{
-        color: #545454;
-        font-size: 16px;
+        color: #6c6c6c;
+        font-size: 20px;
     }
     .ui.ordered.steps .step.completed:before, .ui.steps .step.completed{
         background-color: #f5f5f5;
@@ -29,11 +28,11 @@
         visibility: hidden;
     }
     .steps > .step .content {
-        padding-left: 20px;
         line-height: 1.4;
     }
     .steps > .step .content .description{
-        font-size: 16px;
+        font-size: 20px;
+        margin-top: 20px;
         word-wrap: break-word;
 
     }
@@ -41,13 +40,14 @@
         color: white;
     }
     .ui.steps .step .description{
-        color: #6c6c6c;
+
     }
     .ui.steps .step.active:after{
         background-color:#3a7bd5;
     }
     .ui.ordered.steps .step:before{
-        font-size: 15px !important;
+        font-size: 20px !important;
+        margin-right: 7px;
     }
 
 }

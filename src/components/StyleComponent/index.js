@@ -20,6 +20,7 @@ export const Button = styled.button`
   margin: 21px 0px;
   cursor: pointer;
   margin:  ${props => props.margin};
+  border: none;
 `;
 export const Box = styled.div`
   height: 110px;

@@ -35,13 +35,18 @@ class Header extends Component {
         <Icon name="file text outline" />
         <span className="navbar-header-menu-text">คู่มือการใช้งาน</span>
       </div>
-      <div className="navbar-header-menu-box" onClick={this.handlePopup} role="button" aria-hidden >
+      <div
+        className="navbar-header-menu-box"
+        onClick={this.handlePopup}
+        role="button" aria-hidden
+        style={{ cursor: 'pointer' }}
+      >
         <Link to="/setting" >
           <Icon name="setting" />
           <span className="navbar-header-menu-text">ตั้งค่า</span>
         </Link>
       </div>
-      <div className="navbar-header-menu-box">
+      <div className="navbar-header-menu-box" style={{ cursor: 'pointer' }}>
         <Link to="/logout" >
           <Icon name="log out" />
           <span className="navbar-header-menu-text">ออกจากระบบ</span>
@@ -66,7 +71,15 @@ class Header extends Component {
                 {companyName}
               </SpanStyle>
               <Popup
-                trigger={<Icon className="navbar-header-icon" name="caret down" />}
+                trigger={
+                  <Icon
+                    className="navbar-header-icon"
+                    name="caret down"
+                    role="button"
+                    aria-hidden
+                    style={{ cursor: 'pointer' }}
+                  />
+                }
                 content={this.renderMenuPopup()}
                 on="click"
                 position="bottom center"

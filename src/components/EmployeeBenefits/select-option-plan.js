@@ -99,7 +99,7 @@ class SelectOptionPlan extends Component {
                   <List divided relaxed>
                     <List.Item>
                       <List.Content onClick={() => this.handleModal(index)}>
-                        <p><Icon name="file text outline" />ดูแพลน</p>
+                        <p><Icon name="file text outline" />ดูแผน</p>
                       </List.Content>
                     </List.Item>
                   </List>

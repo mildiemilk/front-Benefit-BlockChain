@@ -64,7 +64,7 @@ class Details extends Component {
             <InSide>
               <div className="row">
                 <div className="large-3 columns">
-                  <TextLine>รายการแพลนของคุณ</TextLine>
+                  <TextLine>รายการแผนของคุณ</TextLine>
                 </div>
               </div>
               <div className="row">

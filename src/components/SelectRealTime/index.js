@@ -101,7 +101,7 @@ class SelectRealTime extends Component {
             {this.state.timeout
             ? <div className="large-7 columns Bar">
               <ProgressStyle
-                percent={allPlan.amountOfPlan[index]}
+                percent={(allPlan.amountOfPlan[index] / allPlan.totalOfGroup) * 100}
                 className={this.handleBar(allPlan.amountOfPlan[index])}
               />
               <Number>
@@ -110,7 +110,8 @@ class SelectRealTime extends Component {
             </div>
             : <div className="large-7 columns Bar">
               <ProgressStyle
-                percent={allPlan.confirm[index]} className={this.handleBar(allPlan.confirm[index])}
+                percent={(allPlan.confirm[index] / allPlan.totalOfGroup) * 100}
+                className={this.handleBar(allPlan.confirm[index])}
               />
               <Number>
                 {allPlan.confirm[index]} คน
@@ -119,7 +120,7 @@ class SelectRealTime extends Component {
             }
           </div>
         </DetailIn>
-      ))
+      ));
       return result;
     }
     return '';

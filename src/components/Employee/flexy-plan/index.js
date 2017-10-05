@@ -60,10 +60,12 @@ class FlexyPlan extends Component {
           this.setState({ renderHomeDashboard: true });
         }
       } else { // user don't confirm and make user confirm plan
+        const plan = data.group.benefitPlan.indexOf(data.group.defaultPlan);
         this.setState({
           fixPlan: true,
           flexyPlan: false,
           timeUp: true,
+          plan,
         });
       }
     } else { // in time

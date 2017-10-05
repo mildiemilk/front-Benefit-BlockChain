@@ -55,17 +55,23 @@ const MANAGE_EMPLOYEE_URI = 'api/company/manage-employee';
 const GET_SUMMARY_INSURANCE_PLAN_URI = 'api/company/summary-insurance-plan';
 const GET_SUMMARY_EMPLOYEE_URI = 'api/company/summary-employee';
 
-export function createProfile(profile) {
+export function createProfile(file, profile) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('detail', JSON.stringify(profile));
   return dispatch => {
     const options = {
       method: 'post',
       url: PROFILE_URI,
-      data: profile,
+      data: formData,
     };
 
     APIRequest(options, true)
       .then(res => {
         localStorage.setItem('companyName', res.data.profile.companyName);
+        if (file) {
+          localStorage.setItem('logo', res.data.profile.logo.link);
+        }
         dispatch(createProfileSuccess(res.data));
       })
       .catch(err => {
@@ -191,7 +197,6 @@ export function setCompleteStep(passwordToConfirm, step) {
     };
     APIRequest(options, true)
       .then(res => {
-        console.log('Data step', res.data);
         dispatch(setCompleteStepSuccess(res.data));
       })
       .catch(err => {
@@ -362,9 +367,8 @@ export function addEmployee(profile, file) {
 }
 export function editEmployee(profile, file) {
   const formData = new FormData();
-  formData.append('file', file)
+  formData.append('file', file);
   formData.append('detail', JSON.stringify(profile));
-  console.log('profile===>', profile);
   const options = {
     method: 'put',
     url: EDIT_EMPLOYEE_URI,

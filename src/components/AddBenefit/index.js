@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NavBenefit from '../NavBenefit';
 import Detail from './detail';
 import Setting from './setting';
+import ModalWarning from '../ModalWarning';
 import { setTemplatePlan, getTemplatePlan } from '../../api/benefit-plan';
 
 class AddBenefit extends Component {
   static propTypes = {
-    setTemplatePlan: PropTypes.func.isRequired,
     getTemplatePlan: PropTypes.func.isRequired,
     optionPlan: PropTypes.shape({}).isRequired,
   }
@@ -31,6 +32,9 @@ class AddBenefit extends Component {
       selectedOptionExpense1: 'full',
       selectedOptionExpense2: 'full',
       selectedOptionExpense3: 'full',
+      openWarning: '',
+      warningMessage: '',
+      redirect: false,
     };
   }
 
@@ -169,7 +173,9 @@ class AddBenefit extends Component {
       selectedOptionExpense3: changeEvent.target.value,
     });
   }
-
+  closeWarningModal = () => {
+    this.setState({ openWarningModal: false });
+  }
   nextButtonHandleclick = () => {
     const {
       healthList,
@@ -183,7 +189,25 @@ class AddBenefit extends Component {
       selectedOptionExpense2,
       selectedOptionExpense3,
     } = this.state;
-    this.props.setTemplatePlan({
+    if (isHealth) {
+      if (healthList.length === 0) {
+        this.setState({
+          openWarningModal: true,
+          warningMessage: 'กรุณาระบุรายละเอียดด้านค่าใช้จ่ายสุขภาพ',
+        });
+        return '';
+      }
+    }
+    if (isExpense) {
+      if (expenseList.length === 0) {
+        this.setState({
+          openWarningModal: true,
+          warningMessage: 'กรุณาระบุรายละเอียดด้านค่าใช้จ่ายทั่วไป',
+        });
+        return '';
+      }
+    }
+    setTemplatePlan({
       healthList,
       isHealth,
       expenseList,
@@ -194,10 +218,17 @@ class AddBenefit extends Component {
       selectedOptionExpense1,
       selectedOptionExpense2,
       selectedOptionExpense3,
-    });
+    })
+    .then(() => this.setState({ redirect: true }));
+    return '';
   }
 
   render() {
+    const { redirect } = this.state;
+    if (redirect) {
+      this.setState({ redirect: false });
+      return <Redirect to="/settingbenefit" />;
+    }
     return (
       <div className="AddBenefit">
         <NavBenefit step={this.state.step} />
@@ -236,38 +267,17 @@ class AddBenefit extends Component {
             TextHealth={this.state.TextHealth}
             TextExpense={this.state.TextExpense}
           />}
+        <ModalWarning
+          openWarningModal={this.state.openWarningModal}
+          warningMessage={this.state.warningMessage}
+          closeWarningModal={this.closeWarningModal}
+        />
       </div>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  setTemplatePlan: (
-    healthList,
-    isHealth,
-    expenseList,
-    isExpense,
-    Setting1,
-    Setting2,
-    Setting3,
-    Setting4,
-    Setting5,
-    Setting6,
-  ) =>
-    dispatch(
-      setTemplatePlan(
-        healthList,
-        isHealth,
-        expenseList,
-        isExpense,
-        Setting1,
-        Setting2,
-        Setting3,
-        Setting4,
-        Setting5,
-        Setting6,
-      ),
-    ),
   getTemplatePlan: () => dispatch(getTemplatePlan()),
 });
 

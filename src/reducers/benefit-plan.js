@@ -30,8 +30,6 @@ const CHOOSEPLAN_REQUEST_SUCCESS = 'CHOOSEPLAN_REQUEST_SUCCESS';
 const CHOOSEPLAN_REQUEST_FAILURE = 'CHOOSEPLAN_REQUEST_FAILURE';
 // const EDITCHOOSEPLAN_REQUEST_SUCCESS = 'EDITCHOOSEPLAN_REQUEST_SUCCESS';
 // const EDITCHOOSEPLAN_REQUEST_FAILURE = 'EDITCHOOSEPLAN_REQUEST_FAILURE';
-const SETEMPLATEPLAN_REQUEST_SUCCESS = 'SETEMPLATEPLAN_REQUEST_SUCCESS';
-const SETEMPLATEPLAN_REQUEST_FAILURE = 'SETEMPLATEPLAN_REQUEST_FAILURE';
 const GETTEMPLATEPLAN_REQUEST_SUCCESS = 'GETTEMPLATEPLAN_REQUEST_SUCCESS';
 const GETTEMPLATEPLAN_REQUEST_FAILURE = 'GETTEMPLATEPLAN_REQUEST_FAILURE';
 const GETBENEFITPLAN_REQUEST_SUCCESS = 'GETBENEFITPLAN_REQUEST_SUCCESS';
@@ -60,14 +58,6 @@ export function choosePlanFailure(data) {
 // export function editChoosePlanFailure(data) {
 //   return { type: EDITCHOOSEPLAN_REQUEST_FAILURE, data };
 // }
-
-export function setTemplatePlanSuccess(data) {
-  return { type: SETEMPLATEPLAN_REQUEST_SUCCESS, data };
-}
-
-export function setTemplatePlanFailure(data) {
-  return { type: SETEMPLATEPLAN_REQUEST_FAILURE, data };
-}
 
 export function getTemplatePlanSuccess(data) {
   return { type: GETTEMPLATEPLAN_REQUEST_SUCCESS, data };
@@ -123,15 +113,6 @@ export function choosePlan(state = defaultPlan, action) {
     //   return Object.assign({}, state, { choosePlan: action.data.plan });
     // case EDITCHOOSEPLAN_REQUEST_FAILURE:
     //   return state;
-    case SETEMPLATEPLAN_REQUEST_SUCCESS:
-      return Object.assign({}, state, {
-        health: action.data.health,
-        isHealth: action.data.isHealth,
-        expense: action.data.expense,
-        isExpense: action.data.isExpense,
-      });
-    case SETEMPLATEPLAN_REQUEST_FAILURE:
-      return state;
     case GETTEMPLATEPLAN_REQUEST_SUCCESS:
       // const choosePlan = action.data.plan.master.concat(action.data.plan.insurer);
       return Object.assign({}, state, {

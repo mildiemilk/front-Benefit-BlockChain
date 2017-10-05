@@ -12,14 +12,13 @@ import {
   HeaderSpace,
   Blog,
   BlogImg,
-  BlogContent,
   BackButton,
   NextButton,
 } from './styled';
 import NavBenefit from '../NavBenefit';
 import SettingPlan from './setting-plan';
 import AddPlanBar from './add-planbar';
-import noPlan from '../../../assets/setbenefit/icons-8-form.png';
+// import noPlan from '../../../assets/setbenefit/icons-8-form.png';
 import {
   getTemplatePlan,
   getBenefitPlan,
@@ -272,7 +271,7 @@ class SettingBenefit extends Component {
 
                 <AddPlan onClick={this.handleAddPlan}>
                   <AddContent>
-                    <Icon disabled name="add circle" />
+                    <Icon disabled name="add circle" size="large" />
                     เพิ่มแผนสิทธิประโยชน์
                   </AddContent>
                 </AddPlan>
@@ -296,10 +295,12 @@ class SettingBenefit extends Component {
                     handleSave={''}
                   />
                   : <Blog>
-                    <BlogImg src={noPlan} />
-                    <BlogContent>
-                      {' '}ยังไม่มีการสร้างแผนสิทธิประโยชน์{' '}
-                    </BlogContent>
+                    <BlogImg onClick={this.handleAddPlan}>
+                      <Icon disabled name="add circle" size="huge" />
+                      <div>
+                        {' '}สร้างแผนสิทธิประโยชน์{' '}
+                      </div>
+                    </BlogImg>
                   </Blog>}
 
               </div>

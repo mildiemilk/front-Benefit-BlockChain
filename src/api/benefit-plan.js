@@ -4,8 +4,6 @@ import {
   getInsurancePlanFailure,
   choosePlanSuccess,
   choosePlanFailure,
-  setTemplatePlanSuccess,
-  setTemplatePlanFailure,
   getTemplatePlanSuccess,
   getTemplatePlanFailure,
   getBenefitPlanSuccess,
@@ -78,22 +76,14 @@ export function getInsurancePlan() {
 // }
 
 export function setTemplatePlan(data) {
-  return dispatch => {
-    const options = {
-      method: 'put',
-      url: SETTEMPLATEBENEFIT_PLAN_URI,
-      data,
-    };
-
-    APIRequest(options, true)
-      .then(res => {
-        dispatch(setTemplatePlanSuccess(res.data));
-      })
-      .catch(err => {
-        dispatch(setTemplatePlanFailure(err.response.data));
-      });
+  const options = {
+    method: 'put',
+    url: SETTEMPLATEBENEFIT_PLAN_URI,
+    data,
   };
+  return APIRequest(options, true)
 }
+
 
 export function getTemplatePlan() {
   return dispatch => {

@@ -20,4 +20,5 @@ export const SpanStyle = styled.span`
   right: 12%;
   top: 24px;
   color: white;
+  margin-right: 10px;
 `;

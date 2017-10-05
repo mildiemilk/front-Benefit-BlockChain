@@ -11,10 +11,11 @@ class MainLayout extends Component {
     this.state = {};
   }
   render() {
+    const Location = this.props;
     return (
       <div className="row">
         <div className="large-2 columns">
-          <Sidebar />
+          <Sidebar Location={Location} />
         </div>
         <div className="large-10 columns">
           <div className="row" style={{ margin: '75px 40px 40px 20px' }} >

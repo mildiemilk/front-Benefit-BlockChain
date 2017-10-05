@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import _ from 'lodash';
 import {
@@ -14,7 +14,9 @@ import {
   BlogImg,
   BackButton,
   NextButton,
+  DivContent,
 } from './styled';
+import ModalWarning from '../ModalWarning';
 import NavBenefit from '../NavBenefit';
 import SettingPlan from './setting-plan';
 import AddPlanBar from './add-planbar';
@@ -59,6 +61,9 @@ class SettingBenefit extends Component {
       selectPlan: [],
       templatePlan: [],
       updateResult: false,
+      openWarning: '',
+      warningMessage: '',
+      redirect: false,
     };
     props.getTemplatePlan();
     props.getInsurancePlan();
@@ -217,7 +222,18 @@ class SettingBenefit extends Component {
       this.handleUpdateResult();
     });
   }
-
+  handleNext = () => {
+    console.log('benefitPlan', this.state.plan);
+    if (this.state.plan === '') {
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'กรุณาสร้างแผนสิทธิประโยชน์',
+      });
+      return '';
+    }
+    this.setState({ redirect: true });
+    return '';
+  }
   handleActivePlan = index => {
     const { planList } = this.state;
     this.setState({
@@ -230,7 +246,9 @@ class SettingBenefit extends Component {
       expense: planList[index].benefitPlan.expense,
     });
   }
-
+  closeWarningModal = () => {
+    this.setState({ openWarningModal: false });
+  }
   handleUpdateResult = () => this.setState({ updateResult: true });
 
   renderOption = (optionPlan, templatePlan) => {
@@ -244,97 +262,86 @@ class SettingBenefit extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
+    if (redirect) {
+      this.setState({ redirect: false });
+      return <Redirect to="/Download" />;
+    }
     return (
       <div className="SettingBenefit">
         <NavBenefit step={this.state.step} />
+        <Rec>
+          <HeaderSpace>
+            <Header>
+              จัดแผนสิทธิประโยชน์ที่ต้องการ
+            </Header>
+          </HeaderSpace>
+          <DivContent>
+            {!this.state.emptyPlan
+              ? <AddPlanBar
+                plan={this.state.planList}
+                handleActivePlan={this.handleActivePlan}
+                handleDeletePlan={() =>
+                this.handleDeletePlan(this.state.planList[this.state.activePlan]._id)}
+                activePlan={this.state.activePlan}
+              />
+              : <div />}
+            <AddPlan onClick={this.handleAddPlan}>
+              <AddContent>
+                <Icon disabled name="add circle" size="large" />
+                เพิ่มแผนสิทธิประโยชน์
+              </AddContent>
+            </AddPlan>
+          </DivContent>
+          {!this.state.emptyPlan
+            ? <SettingPlan
+              option={this.renderOption(this.state.selectPlan, this.state.templatePlan)}
+              optionPlan={this.props.optionPlan}
+              handleChange={this.handleChange}
+              handleToggle={this.handleToggle}
+              handleSubmit={this.handleSubmit}
+              planName={this.state.planName}
+              plan={this.state.plan}
+              isHealth={this.state.isHealth}
+              isExpense={this.state.isExpense}
+              health={this.state.health}
+              expense={this.state.expense}
+              handleSave={''}
+            />
+            : <Blog>
+              <BlogImg onClick={this.handleAddPlan}>
+                <Icon disabled name="add circle" size="huge" />
+                <div>
+                  {' '}สร้างแผนสิทธิประโยชน์{' '}
+                </div>
+              </BlogImg>
+            </Blog>}
+        </Rec>
+
         <div className="row">
-          <Rec>
-            <HeaderSpace className="row">
-              <div className="large-4 large-offset-1 columns">
-                <Header>
-                  จัดแผนสิทธิประโยชน์ที่ต้องการ
-                </Header>
-              </div>
-            </HeaderSpace>
-
-            <div className="row">
-              <div className="large-2 large-offset-1 columns">
-                {!this.state.emptyPlan
-                  ? <AddPlanBar
-                    plan={this.state.planList}
-                    handleActivePlan={this.handleActivePlan}
-                    handleDeletePlan={() =>
-                    this.handleDeletePlan(this.state.planList[this.state.activePlan]._id)}
-                    activePlan={this.state.activePlan}
-                  />
-                  : <div />}
-
-                <AddPlan onClick={this.handleAddPlan}>
-                  <AddContent>
-                    <Icon disabled name="add circle" size="large" />
-                    เพิ่มแผนสิทธิประโยชน์
-                  </AddContent>
-                </AddPlan>
-
-              </div>
-
-              <div className="large-8 columns">
-                {!this.state.emptyPlan
-                  ? <SettingPlan
-                    option={this.renderOption(this.state.selectPlan, this.state.templatePlan)}
-                    optionPlan={this.props.optionPlan}
-                    handleChange={this.handleChange}
-                    handleToggle={this.handleToggle}
-                    handleSubmit={this.handleSubmit}
-                    planName={this.state.planName}
-                    plan={this.state.plan}
-                    isHealth={this.state.isHealth}
-                    isExpense={this.state.isExpense}
-                    health={this.state.health}
-                    expense={this.state.expense}
-                    handleSave={''}
-                  />
-                  : <Blog>
-                    <BlogImg onClick={this.handleAddPlan}>
-                      <Icon disabled name="add circle" size="huge" />
-                      <div>
-                        {' '}สร้างแผนสิทธิประโยชน์{' '}
-                      </div>
-                    </BlogImg>
-                  </Blog>}
-
-              </div>
-
-              <div className="large-1 columns" />
-
-            </div>
-          </Rec>
-
-          <div className="row">
-            <div className="large-3 large-offset-1 columns">
-              <Link to="/addbenefit">
-                <BackButton>
-                  กลับ
-                </BackButton>
-              </Link>
-            </div>
-
-            <div className="large-2 large-offset-5 columns">
-              <Link to="/download">
-                <NextButton>
-                  ต่อไป
-                </NextButton>
-              </Link>
-            </div>
-
-            <div className="large-1 columns" />
-
+          <div className="large-2 large-offset-1 columns">
+            <Link to="/addbenefit">
+              <BackButton>
+                กลับ
+              </BackButton>
+            </Link>
+          </div>
+          <div className="large-2 large-offset-5 end columns">
+            <NextButton onClick={this.handleNext} >
+              ต่อไป
+            </NextButton>
           </div>
         </div>
+        <ModalWarning
+          openWarningModal={this.state.openWarningModal}
+          warningMessage={this.state.warningMessage}
+          closeWarningModal={this.closeWarningModal}
+        />
       </div>
     );
   }
 }
+
 
 const mapDispatchToProps = dispatch => ({
   getTemplatePlan: () => dispatch(getTemplatePlan()),

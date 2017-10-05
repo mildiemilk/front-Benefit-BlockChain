@@ -8,7 +8,7 @@ import MenuTab from './menu-tab';
 import form from '../image/icons-8-form.png';
 import SelectBox from './select-box';
 import ModalWarningRecord from './modal-warning-record';
-import ModalWarning from './modal-warning';
+import ModalWarning from '../ModalWarning';
 import NavBenefit from '../NavBenefit/';
 import { getGroupBenefit, setGroupBenefit } from '../../api/profile-company';
 import { getBenefitPlan, getTemplatePlan, getInsurancePlan } from '../../api/benefit-plan';

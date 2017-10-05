@@ -14,25 +14,25 @@ export const HeaderSpace = styled.div`
   margin-top: 15px;
   margin-bottom: 30px;
 `;
-
+export const DivContent = styled.div`
+  float: left;
+`;
+export const DivDetail = styled.div`
+`;
 export const Rec = styled.div`
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  padding-top: 3%;
-  padding-bottom: 5%;
+  padding: 41px;
+  position: relative;
 `;
 
 export const Blog = styled.div`
-  width: 100%;
-  height: 209.9px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  margin-left: 140px;
+  width: 85%;
+  border-radius: 5px;
   background-color: #ffffff;
-  background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  border: solid 1px #979797;
 `;
 
 export const Blogs = styled.div`
@@ -41,25 +41,24 @@ export const Blogs = styled.div`
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: #ffffff;
-  background-color: var(--white-two);
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
   padding: 14px;
 `;
 
-export const PlanName = styled.span`
-  width: 149px;
+export const PlanName = styled.div`
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
+  margin-top: 11px;
 `;
 
 export const BlogImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 200px;
   width: 100%;
   flex-direction: column;
   opacity: 0.5;
@@ -67,7 +66,6 @@ export const BlogImg = styled.div`
 `;
 
 export const AddPlan = styled.div`
-  width: 110%;
   height: 50px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -101,8 +99,8 @@ export const AddTopic = styled.span`
 `;
 
 export const BackButton = styled.button`
-  width: 164px;
   height: 40px;
+  width: 100%;
   border-radius: 20px;
   background-color: #f7555f;
   color: #ffffff;
@@ -112,26 +110,26 @@ export const BackButton = styled.button`
 `;
 
 export const NextButton = styled.button`
-  width: 164px;
   height: 40px;
+  width: 100%;
   border-radius: 20px;
   background-color: #46b3b8;
   color: white;
   border-color: #46b3b8;
   border-style: solid;
   margin-top: 25px;
+  margin-left: 109px;
 `;
 
 export const SaveButton = styled.button`
-  width: 164px;
+  width: 174px;
   height: 40px;
   border-radius: 20px;
   background-color: #3a7bd5;
   color: #ffffff;
   border-color: #3a7bd5;
   border-style: solid;
-  margin-top: 3%;
-  margin-left: 72%;
+  margin-top: 20px;
 `;
 
 export const Line = styled.hr`
@@ -185,8 +183,8 @@ export const PlanTopic = styled.span`
   text-align: left;
   color: #4a4a4a;
   position: absolute;
-  margin-left: 14%;
-  margin-top: 4.5%;
+  left: 97px;
+  top: 31px;
 `;
 
 export const ToggleBox = styled.div`
@@ -194,10 +192,10 @@ export const ToggleBox = styled.div`
   height: 38px;
   border-radius: 5px;
   background-color: #ececec;
-  margin-left: 53%;
   margin-top: 18px;
   padding-top: 8px;
   padding-left: 6px;
+  float: left;
 `;
 
 export const ModalHeader = styled.p`

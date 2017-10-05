@@ -6,7 +6,6 @@ import { Redirect, Link } from 'react-router-dom';
 
 const ModalContents = styled(Modal.Content)`
   &&&{
-    width: 288px;
     height: 149px;
     border-radius: 5px;
     background-color: #ffffff;

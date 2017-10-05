@@ -28,7 +28,7 @@ const Modals = styled(Modal)`
 
 class SubmitPlan extends Component {
   static propTypes = {
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     getAllPlan: PropTypes.func.isRequired,
     // copyPlan: PropTypes.func.isRequired,
     // deletePlan: PropTypes.func.isRequired,
@@ -98,9 +98,6 @@ class SubmitPlan extends Component {
       showModalConfirm: false,
     };
     props.getAllPlan();
-    // setInterval(() => {
-    //   props.getAllPlan();
-    // }, 2000);
   }
 
   componentWillReceiveProps(newProps) {
@@ -221,16 +218,9 @@ class SubmitPlan extends Component {
     if (nextState.checkUpdate) {
       this.setState({
         checkUpdate: false,
-        // newActivePlan: nextProps.planList.length + 1,
       });
       this.props.getAllPlan();
     }
-    // if (!this.state.checkUpdate && this.state.newActivePlan !== -1) {
-    //   this.setState({
-    //     activePlan: this.state.newActivePlan,
-    //     newActivePlan: -1,
-    //   });
-    // }
   }
 
   onClickhandler = () => {
@@ -306,7 +296,7 @@ class SubmitPlan extends Component {
   handleDelete = e => {
     deletePlan([this.props.planList[e.target.id].planId])
     .then(() => {
-      this.handleUpdateData();
+      this.setState({ checkUpdate: true, newActivePlan: -1 });
     });
     this.setState({ activePlan: -1 });
   }

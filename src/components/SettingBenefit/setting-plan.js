@@ -19,28 +19,28 @@ import imgHealth from '../../../assets/setbenefit/5.png';
 
 const Selects = styled(Select) `
     &&&{
-      margin-left: 51%;
-      margin-top: 3.5%;
-      width: 47.5%;
+      margin: 22px 10px 0px 0px;
+      width: 94%;  
     }
 `;
 
 const Inputs = styled(Input) `
     &&&{
-      position: absolute;
-      top: 25%;
-      margin-left: 62.5%;
+      height: 46px;
+      margin-top: 14px;
+      margin-left: 12px;
+      width: 80%;
+      color: transparent;
       color: transparent;
     }
 `;
 
 const NameInput = styled(Input) `
     &&&{
-      margin-left: 10px;
       height: 40px;
       background-color: #ffffff;
       padding: 1%;
-      width: 451px !important;
+      width: 100% !important;
     }
 `;
 const FieldsetEdit = styled.fieldset`
@@ -100,57 +100,69 @@ class SettingPlan extends Component {
   render() {
     const { handleChange, handleSubmit, planName, plan, optionPlan,
       isHealth, handleToggle, health, isExpense, expense, handleSave, isReadOnly } = this.props;
-    console.log('PropSettingPlan===>', this.props);
-    console.log('optionPlan-->', optionPlan);
     let showExpense = optionPlan.isExpense;
-    console.log('sgowWxpense->', showExpense);
     let showHealth = optionPlan.isHealth;
     if (isReadOnly) {
       showExpense = isExpense;
       showHealth = isHealth;
     }
     return (
-      <div>
-        <FieldsetEdit disabled={handleChange === ''}>
-          <Blogs>
-            <form onSubmit={handleSubmit}>
-              <PlanName>
-                ชื่อแผนสิทธิประโยชน์
-              </PlanName>
-              <NameInput
-                required
-                type="text"
-                name="planName"
-                value={planName}
-                placeholder="แผนสิทธิประโยชน์"
-                onChange={handleChange}
-              />
-              <Line />
-              <PlanContent>
-                กรุณาระบุสิทธิประโยชน์ที่ต้องการ
-              </PlanContent>
-              <PlanBox>
-                <PlanImg src={insurance} />
-                <PlanTopic>
-                  แผนประกันภัย (Insurance)
-                </PlanTopic>
-                <Selects
+      <FieldsetEdit disabled={handleChange === ''}>
+        <Blogs>
+          <form onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="large-2 columns">
+                <PlanName>
+                  ชื่อแผนสิทธิประโยชน์
+                </PlanName>
+              </div>
+              <div className="large-10 columns">
+                <NameInput
                   required
-                  disabled={handleChange === ''}
-                  name="plan"
-                  options={this.state.optionPlan}
-                  value={plan}
-                  placeholder="เลือกแผนที่ต้องการ"
+                  type="text"
+                  name="planName"
+                  value={planName}
+                  placeholder="แผนสิทธิประโยชน์"
                   onChange={handleChange}
                 />
-              </PlanBox>
-
-              { showHealth
-                ? <PlanBox>
+              </div>
+            </div>
+            <Line />
+            <PlanContent>
+              กรุณาระบุสิทธิประโยชน์ที่ต้องการ
+            </PlanContent>
+            <PlanBox>
+              <div className="row">
+                <div className="large-6 columns">
+                  <PlanImg src={insurance} />
+                  <PlanTopic>
+                    แผนประกันภัย (Insurance)
+                  </PlanTopic>
+                </div>
+                <div className="large-6 columns">
+                  <Selects
+                    required
+                    disabled={handleChange === ''}
+                    name="plan"
+                    options={this.state.optionPlan}
+                    value={plan}
+                    placeholder="เลือกแผนที่ต้องการ"
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+            </PlanBox>
+            <PlanBox>
+              <div className="row">
+                { showHealth
+              ? <div>
+                <div className="large-6 columns">
                   <PlanImg src={imgHealth} />
                   <PlanTopic>
                     ค่าใช้จ่ายสุขภาพ (Health)
                   </PlanTopic>
+                </div>
+                <div className="large-6 columns">
                   <div className="toggle">
                     <ToggleBox>
                       <Checkbox
@@ -162,32 +174,41 @@ class SettingPlan extends Component {
                     </ToggleBox>
                   </div>
                   { isHealth
-                    ? <Inputs
-                      required
-                      type="number"
-                      name="health"
-                      value={health !== -1 ? health : ''}
-                      action="บาท/ปี"
-                      placeholder="จำนวนเงิน"
-                      onChange={handleChange}
-                    />
-                    : <Inputs
-                      type="number"
-                      name="health"
-                      value=""
-                      action="บาท/ปี"
-                      placeholder="จำนวนเงิน"
-                      readOnly
-                    />}
-                </PlanBox>
-                : null}
-
-              { showExpense
-                ? <PlanBox>
+                  ? <Inputs
+                    required
+                    type="number"
+                    name="health"
+                    value={health !== -1 ? health : ''}
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    onChange={handleChange}
+                  />
+                  : <Inputs
+                    type="number"
+                    name="health"
+                    value=""
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    readOnly
+                  />
+                  }
+                </div>
+              </div>
+              : null
+              }
+              </div>
+            </PlanBox>
+            <PlanBox>
+              <div className="row">
+                { showExpense
+              ? <div>
+                <div className="large-6 columns">
                   <PlanImg src={general} />
                   <PlanTopic>
                     ค่าใช้จ่ายทั่วไป (General Expense)
-                    </PlanTopic>
+                  </PlanTopic>
+                </div>
+                <div className="large-6 columns">
                   <div className="toggle">
                     <ToggleBox>
                       <Checkbox
@@ -199,32 +220,40 @@ class SettingPlan extends Component {
                     </ToggleBox>
                   </div>
                   { isExpense
-                    ? <Inputs
-                      required
-                      type="text"
-                      name="expense"
-                      value={expense !== -1 ? expense : ''}
-                      action="บาท/ปี"
-                      placeholder="จำนวนเงิน"
-                      onChange={handleChange}
-                    />
-                    : <Inputs
-                      type="number"
-                      name="expense"
-                      value=""
-                      action="บาท/ปี"
-                      placeholder="จำนวนเงิน"
-                      readOnly
-                    />}
-                </PlanBox>
-                : <div />}
-              <SaveButton className={handleSave} type="submit">
-                บันทึก
-              </SaveButton>
-            </form>
-          </Blogs>
-        </FieldsetEdit>
-      </div>
+                  ? <Inputs
+                    required
+                    type="number"
+                    name="expense"
+                    value={expense !== -1 ? expense : ''}
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    onChange={handleChange}
+                  />
+                  : <Inputs
+                    type="number"
+                    name="expense"
+                    value=""
+                    action="บาท/ปี"
+                    placeholder="จำนวนเงิน"
+                    readOnly
+                  />
+                  }
+                </div>
+              </div>
+              : null
+              }
+              </div>
+            </PlanBox>
+            <div className="row">
+              <div className="large-2 large-offset-9 end columns">
+                <SaveButton className={handleSave} type="submit">
+                  บันทึก
+                </SaveButton>
+              </div>
+            </div>
+          </form>
+        </Blogs>
+      </FieldsetEdit>
     );
   }
 }

@@ -199,7 +199,6 @@ class AddBenefit extends Component {
       }
     }
     if (isExpense) {
-      console.log('ISEXPENSE==>', expenseList.length);
       if (expenseList.length === 0) {
         this.setState({
           openWarningModal: true,
@@ -208,7 +207,6 @@ class AddBenefit extends Component {
         return '';
       }
     }
-    console.log('ISEXPENSE==>ISHEALTH', expenseList, healthList);
     setTemplatePlan({
       healthList,
       isHealth,
@@ -228,7 +226,7 @@ class AddBenefit extends Component {
   render() {
     const { redirect } = this.state;
     if (redirect) {
-      this.setState({ redirect: false })
+      this.setState({ redirect: false });
       return <Redirect to="/settingbenefit" />;
     }
     return (

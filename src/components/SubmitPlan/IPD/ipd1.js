@@ -134,8 +134,8 @@ class IPD1 extends Component {
               />
               <Form.Input
                 type="number"
-                label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                placeholder="จำนวนเงิน"
+                label="บาท/ครั้ง  ปีละไม่เกิน"
+                placeholder="จำนวนครั้ง"
                 name="ipdLumsumTimeNotExceedPerYear"
                 id="ipdLumsumTimeNotExceedPerYear"
                 value={this.props.ipdLumsumTimeNotExceedPerYear}
@@ -157,8 +157,8 @@ class IPD1 extends Component {
               />
               <Form.Input
                 type="number"
-                label="บาท/ครั้ง  ครั้งละไม่เกิน"
-                placeholder="จำนวนเงิน"
+                label="บาท/ครั้ง  ปีละไม่เกิน"
+                placeholder="จำนวนครั้ง"
                 name="ipdLumsumTimeNotExceedPerYear"
                 id="ipdLumsumTimeNotExceedPerYear"
                 value=""
@@ -167,7 +167,7 @@ class IPD1 extends Component {
                 readOnly
               />
             </div>}
-          <p> บาท/ปี</p>
+          <p> ครั้ง/ปี</p>
         </Form.Group>
       </div>
     );

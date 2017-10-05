@@ -7,6 +7,7 @@ import { AddTopic } from './styled';
 const ListContent = styled(List.Content)`
     &&&{
       font-size: 12px;
+      cursor: pointer;
     }
 `;
 
@@ -19,9 +20,11 @@ class AddPlanBar extends Component {
   }
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isClose: [false, false, false],
+    };
   }
-
+  handlePopup = () => this.setState({ isClose: !this.state.isClose });
   renderList = list => {
     const lists = list.map((element, index) => {
       const isActive = index === this.props.activePlan ? 'active' : '';
@@ -59,6 +62,9 @@ class AddPlanBar extends Component {
             on="click"
             hideOnScroll
             position="bottom center"
+            open={this.state.isClose}
+            onOpen={this.handlePopup}
+            onClose={this.handlePopup}
           />
 
           <AddTopic> {element.benefitPlanName} </AddTopic>

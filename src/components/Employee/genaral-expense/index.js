@@ -38,7 +38,7 @@ class GenaralExpense extends Component {
   }
 
   render() {
-    const { plan } = this.props;
+    const { plan, data } = this.props;
     const alt = plan + 1;
     return (
       <div>
@@ -58,13 +58,21 @@ class GenaralExpense extends Component {
             <span className="xten-box-header-text">GENERAL EXPENSE</span>
           </div>
           <div className="xten-box-title">
-            <span className="xten-box-title-text">วงเงินทั้งหมด 1,200 บาท/ปี</span>
+            <span className="xten-box-title-text">
+              วงเงินทั้งหมด {data.allBenefit[plan].benefitPlan.expense.toLocaleString()} บาท/ปี
+            </span>
           </div>
           <div className="xten-box-description">
             <ul className="xten-box-description-text">
               <li>รายละเอียด</li>
-              <li>ค่ารถ ค่าเติมน้ำมัน 1,000 บาท</li>
-              <li>ค่าของใช้ 200 บาท</li>
+              {
+                data.allBenefit[plan].benefitPlan.detailPlan.expense.expenseList
+                .map((item, index) => (
+                  <li key={index.toString()}>
+                    {item}
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>

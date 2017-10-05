@@ -35,13 +35,17 @@ class FlexyPlanBox extends Component {
     const { data, plan } = this.props;
     const ipd = data.allBenefit[plan].benefitPlan.plan.planId;
     if (ipd.ipdLumsumPerYear) {
-      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.ipdLumsumPerYear} บาท/ปี</li>;
+      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.ipdLumsumPerYear.toLocaleString()} บาท/ปี</li>;
     } else if (ipd.ipdLumsumPerTime) {
-      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.ipdLumsumPerTime} บาท/ครั้ง</li>;
+      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.ipdLumsumPerTime.toLocaleString()} บาท/ครั้ง</li>;
     } else if (ipd.rbLumsumNigthNotExceedPerYear) {
-      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.rbLumsumNigthNotExceedPerYear} บาท/คืน</li>;
+      return (
+        <li>
+          IPD คุ้มครองสูงสุดไม่เกิน {ipd.rbLumsumNigthNotExceedPerYear.toLocaleString()} บาท/คืน
+        </li>
+      );
     } else if (ipd.rbSchedulePatient) {
-      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.rbSchedulePatient} บาท/คืน</li>;
+      return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.rbSchedulePatient.toLocaleString()} บาท/คืน</li>;
     }
     return <div />;
   }
@@ -50,9 +54,9 @@ class FlexyPlanBox extends Component {
     const { data, plan } = this.props;
     const opd = data.allBenefit[plan].benefitPlan.plan.planId;
     if (opd.opdPerYear) {
-      return <li>OPD คุ้มครองสูงสุดไม่เกิน {opd.opdPerYear} บาท/ปี</li>;
+      return <li>OPD คุ้มครองสูงสุดไม่เกิน {opd.opdPerYear.toLocaleString()} บาท/ปี</li>;
     } else if (opd.opdPerTime) {
-      return <li>OPD คุ้มครองสูงสุดไม่เกิน {opd.opdPerTime} บาท/ครั้ง</li>;
+      return <li>OPD คุ้มครองสูงสุดไม่เกิน {opd.opdPerTime.toLocaleString()} บาท/ครั้ง</li>;
     }
     return <div />;
   }
@@ -61,7 +65,7 @@ class FlexyPlanBox extends Component {
     const { data, plan } = this.props;
     const dental = data.allBenefit[plan].benefitPlan.plan.planId;
     if (dental.dentalPerYear) {
-      return <li>Dental ใช้บริการได้ครั้งละ {dental.dentalPerYear} บาท</li>;
+      return <li>Dental ใช้บริการได้ครั้งละ {dental.dentalPerYear.toLocaleString()} บาท</li>;
     }
     return <div />;
   }
@@ -70,9 +74,9 @@ class FlexyPlanBox extends Component {
     const { data, plan } = this.props;
     const life = data.allBenefit[plan].benefitPlan.plan.planId;
     if (life.lifePerYear) {
-      return <li>Life จำนวนเงิน {life.lifePerYear} บาท</li>;
+      return <li>Life จำนวนเงิน {life.lifePerYear.toLocaleString()} บาท</li>;
     } else if (life.lifeTimeOfSalary) {
-      return <li>Life คูณอัตราเงินเดือน {life.lifeTimeOfSalary} บาท</li>;
+      return <li>Life คูณอัตราเงินเดือน {life.lifeTimeOfSalary.toLocaleString()} เท่า</li>;
     }
     return <div />;
   }

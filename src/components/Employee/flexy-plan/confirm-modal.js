@@ -41,7 +41,7 @@ class ConfirmModal extends Component {
       renderHomeDashboard: false,
       renderDashboardStart: false,
     };
-    newUser()();
+    newUser();
   }
 
   handleSubmit = () => {

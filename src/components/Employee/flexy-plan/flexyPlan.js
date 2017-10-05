@@ -14,12 +14,13 @@ class FlexyPlan extends Component {
     data: PropTypes.shape({}).isRequired,
     timeUp: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
-  handleRenderFlexyPlanBox = (data, timeUp) => {
+  handleRenderFlexyPlanBox = () => {
+    const { data, timeUp } = this.props;
     const flexy = data.allBenefit.map((ele, index) => (
       <div key={index.toString()}>
         <FlexyPlanBox
@@ -28,7 +29,7 @@ class FlexyPlan extends Component {
           handleClickHealth={this.props.handleClickHealth}
           handleClickGeneralExpense={this.props.handleClickGeneralExpense}
           flexyPlan={this.props.flexyPlan}
-          data={ele}
+          data={data}
           timeUp={timeUp}
         />
       </div>
@@ -38,7 +39,7 @@ class FlexyPlan extends Component {
 
   render() {
     const settings = {
-      customPaging: i => <span>แผนที่ {i + 1}</span>,
+      customPaging: i => <span className="flexyplan-btn-slider-page">แผนที่ {i + 1}</span>,
       dots: true,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -46,14 +47,14 @@ class FlexyPlan extends Component {
       afterChange: index => this.props.handleChangePlan(index),
       initialSlide: this.props.plan,
     };
-    const { data, timeUp } = this.props;
+    const { data } = this.props;
     return (
       <div>
         <div className="slider">
           <Slider {...settings} >
             {
               data !== undefined
-              ? this.handleRenderFlexyPlanBox(data, timeUp)
+              ? this.handleRenderFlexyPlanBox()
               : <div />
             }
           </Slider>

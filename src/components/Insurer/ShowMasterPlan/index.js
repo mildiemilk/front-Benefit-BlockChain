@@ -9,7 +9,7 @@ import ModalInsurer from './ModalInsurer';
 // import FormSubmitPlan from './SubmitPlan/FormSubmitPlan/form-submit-plan';
 // import AllPlan from './SubmitPlan/all-plan';
 // import PlanBoxModal from './ModalPlanBox/planbox-modal';
-import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
+// import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
 import { updateBiddingPrice, editPlanDetail, updateStatus, deletePlan } from '../../../api/Insurer/bidding';
 // import {} from ''
 
@@ -442,10 +442,10 @@ class ShowMasterPlan extends Component {
               }
             </div>
             }
-            <div className="quotation-chat-box">
+            {/* <div className="quotation-chat-box">
               <img alt="" src={IconChat} className="quotation-icon-chat" />
               แชทกับ White Cat Company
-            </div>
+            </div> */}
           </div>
           : <div />
         }

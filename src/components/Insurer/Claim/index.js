@@ -68,7 +68,7 @@ class Claim extends Component {
               <div className="large-2 columns">
                 <Text>{claim.detail.amount} </Text>
               </div>
-              <div className="large-2 columns">
+              <div className="large-2 columns text-center">
                 {
                 (claim.status === 'pending')
                 ? <StatusTag color="#3a7bd5"><Icon name="hourglass two" /> รอพิจารณา</StatusTag>
@@ -85,7 +85,7 @@ class Claim extends Component {
                 : ''
                 }
               </div>
-              <div className="large-1 columns">
+              <div className="large-1 columns text-center">
                 <Icon name="edit" />
               </div>
             </div>

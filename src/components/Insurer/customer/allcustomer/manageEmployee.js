@@ -98,10 +98,10 @@ class manageEmployee extends Component {
         <div className="employee-list-box" keys={index}>
           <div className="row">
             <div className="large-5 columns">
-              <div className="large-2 columns">
+              <div className="large-3 columns">
                 <TextIn>
                   <img alt="" src={IconPlan} width="30" height="30" />
-                  <span>{plan.planId.planName}</span>
+                  <Font>{plan.planId.planName}</Font>
                 </TextIn>
               </div>
             </div>
@@ -548,11 +548,6 @@ class manageEmployee extends Component {
             <div className="row">
               <div className="large-5 columns">
                 <TextList>แผนประกันภัยทั้งหมดที่บริษัทนี้กำลังใช้งาน</TextList>
-              </div>
-              <div className="large-7 columns">
-                <div className="large-2 columns">
-                  <TextList>เลขกรมธรรม์</TextList>
-                </div>
               </div>
             </div>
           </div>

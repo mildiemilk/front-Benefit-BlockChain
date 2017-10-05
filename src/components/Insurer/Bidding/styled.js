@@ -187,7 +187,7 @@ export const TextNav = styled.div`
 
 export const CountTime = styled.div`
   display: inline-block;
-  font-size: 35px;
+  font-size: 24px;
   color: #323028;
 `;
 

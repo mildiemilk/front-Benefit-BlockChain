@@ -390,13 +390,16 @@
   .menu-add-plan-text {
     text-align: center;
   }
+  .ui.input input {
+    border: none !important;
+  }
 }
 .submit-plan-header-box {
   display: block;
   margin-bottom: 2%;
 }
 .submit-plan-delete-padding-left {
-  padding-left: 0px;
+  padding-left: 0px !important;
 }
 .submit-plan-text-new-plan {
   margin-top: 5px;
@@ -427,4 +430,10 @@ div.submit-plan-form-create-plan > input {
   font-size: 16px;
   margin-left: 5px;
   color: #3a7bd5;
+}
+.submit-plan-grap-l {
+  margin-left: 10px;
+}
+.submit-plan-rnb-lumsum-form {
+  margin-bottom: 10px;
 }

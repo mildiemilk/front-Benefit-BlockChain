@@ -9,7 +9,7 @@ import {
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { createProfile, setLogo } from '../../api/profile-company';
+import { createProfile } from '../../api/profile-company';
 import ModalWarning from '../ModalWarning';
 import {
   Box,
@@ -54,7 +54,6 @@ class SettingProfile extends Component {
   static propTypes = {
     profile: PropTypes.shape({}).isRequired,
     createProfile: PropTypes.func.isRequired,
-    setLogo: PropTypes.func.isRequired,
   }
   constructor(props) {
     super(props);
@@ -67,7 +66,7 @@ class SettingProfile extends Component {
       numberOfEmployees: '',
       expiredInsurance: '',
       currentInsurer: '',
-      file: '',
+      file: null,
       imagePreviewUrl: '',
       openWarning: '',
       warningMessage: '',
@@ -97,7 +96,6 @@ class SettingProfile extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    console.log('complete');
     if (this.state.typeOfBusiness === '') {
       this.setState({
         openWarningModal: true,
@@ -123,8 +121,8 @@ class SettingProfile extends Component {
       tel,
       numberOfEmployees,
     });
-    const { typeOfBusiness, expiredInsurance, currentInsurer } = this.state;
-    this.props.createProfile({
+    const { typeOfBusiness, expiredInsurance, currentInsurer, file } = this.state;
+    this.props.createProfile(file, {
       companyName,
       location,
       typeOfBusiness,
@@ -137,12 +135,13 @@ class SettingProfile extends Component {
   }
   render() {
     const { profile: { error, message, companyName, logo } } = this.props;
-    console.log('company', companyName, 'logo', logo);
-    if (companyName !== null && companyName !== 'null') {
-      if (logo !== null && logo !== 'null') {
-        return <Redirect to={{ pathname: '/confirm_identity' }} />;
-      }
-      this.props.setLogo(this.state.file);
+    const { file } = this.state;
+    if (companyName) {
+      if (file) {
+        if (logo) {
+          return <Redirect to={{ pathname: '/confirm_identity' }} />;
+        }
+      } else return <Redirect to={{ pathname: '/confirm_identity' }} />;
     }
     const { imagePreviewUrl } = this.state;
     let $imagePreview = null;
@@ -295,8 +294,7 @@ class SettingProfile extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createProfile: data => dispatch(createProfile(data)),
-  setLogo: data => dispatch(setLogo(data)),
+  createProfile: (file, data) => dispatch(createProfile(file, data)),
 });
 
 const mapStateToProps = state => ({

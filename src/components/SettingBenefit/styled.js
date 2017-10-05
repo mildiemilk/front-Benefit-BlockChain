@@ -55,26 +55,15 @@ export const PlanName = styled.span`
   color: #323028;
 `;
 
-export const BlogImg = styled.img`
-  width: 70px;
-  height: 70px;
+export const BlogImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
   opacity: 0.5;
-  position: absolute;
-  left: 62%;
-  margin-top: 65px;
-`;
-
-export const BlogContent = styled.span`
-  width: 200px;
-  height: 21px;
-  opacity: 0.5;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  text-align: center;
-  color: #9b9b9b;
-  position: absolute;
-  margin-left: 192px;
-  margin-top: 11.5%;
+  cursor: pointer;
 `;
 
 export const AddPlan = styled.div`

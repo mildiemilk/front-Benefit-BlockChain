@@ -157,7 +157,11 @@ export function getClaimListFailure(data) {
 
 export default function profile(state = defaultProfile, action) {
   switch (action.type) {
-    case PROFILECOMPANY_REQUEST_SUCCESS:
+    case PROFILECOMPANY_REQUEST_SUCCESS: {
+      let logo = state.logo;
+      if (action.data.profile.logo !== undefined) {
+        logo = action.data.profile.logo.link;
+      }
       return Object.assign({}, state, {
         companyName: action.data.profile.companyName,
         location: action.data.profile.location,
@@ -166,9 +170,11 @@ export default function profile(state = defaultProfile, action) {
         numberOfEmployees: action.data.profile.numberOfEmployees,
         companyBroker: action.data.profile.companyBroker,
         companyInsurer: action.data.profile.companyInsurer,
+        logo,
         message: action.data.message,
         error: false,
       });
+    }
     case PROFILECOMPANY_REQUEST_FAILURE:
       return Object.assign({}, state, {
         message: action.data.message,

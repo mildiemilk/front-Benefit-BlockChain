@@ -23,7 +23,7 @@ class NavInsure extends Component {
             <Divider />
           </div>
         </div>
-        <div className="row">
+        <div className="row NavBenefit">
           <StepRadius ordered>
             <Step1
               completed={this.props.step > 1}

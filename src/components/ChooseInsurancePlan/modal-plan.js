@@ -18,6 +18,10 @@ import {
 } from './styled';
 import IPDDropBox from './ipd-dropbox';
 import icon2 from '../image/icons-8-view-file.png';
+import life from '../../../assets/compare/life.png';
+import dental from '../../../assets/compare/1.png';
+import opd from '../../../assets/compare/opd.png';
+import ipd from '../../../assets/compare/2.png';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
@@ -172,7 +176,7 @@ class ModalModalExample extends Component {
                 <table>
                   <tr>
                     <th>
-                      <Img src="../../../compare/4.png" />
+                      <Img src={life} />
                       <LifeTopic>
                         ประกันชีวิต (Life)
                       </LifeTopic>
@@ -210,7 +214,7 @@ class ModalModalExample extends Component {
                 <table>
                   <tr>
                     <th>
-                      <Img src="../../../compare/1.png" />
+                      <Img src={dental} />
                       <LifeTopic>
                         ค่ารักษาทันตกรรม (Dental)
                       </LifeTopic>
@@ -246,7 +250,7 @@ class ModalModalExample extends Component {
                 <table>
                   <tr>
                     <th>
-                      <Img src="../../../compare/3.png" />
+                      <Img src={opd} />
                       <OPDTopic>
                         {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยนอก
                         <br />
@@ -300,7 +304,7 @@ class ModalModalExample extends Component {
                 <table>
                   <tr>
                     <th>
-                      <Img src="../../../compare/2.png" />
+                      <Img src={ipd} />
                       <OPDTopic>
                         ค่ารักษาพยาบาลกรณีผู้ป่วยใน
                         <br />

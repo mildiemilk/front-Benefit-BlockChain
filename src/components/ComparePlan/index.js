@@ -18,16 +18,17 @@ import {
 } from './styled';
 import NavInsure from '../NavInsure';
 import IPDDropBox from './ipd-dropbox';
-import life from '../../../assets/compare/4.png';
+import life from '../../../assets/compare/life.png';
 import dental from '../../../assets/compare/1.png';
-import opd from '../../../assets/compare/3.png';
+import opd from '../../../assets/compare/opd.png';
 import ipd from '../../../assets/compare/2.png';
 
 const Icons = styled(Icon) `
   &&&{
     position: absolute;
-    margin-left: -1.5%;
-    margin-top: 2.5%;
+    font-size: 18px;
+    margin-top: 33px;
+    margin-left: -17px;
   }
 `;
 

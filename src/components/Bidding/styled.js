@@ -159,7 +159,7 @@ export const Pic = styled.div`
 `;
 
 export const Font = styled.div`
-  font-size: 20px;
+  font-size: 16px;
   display: inline-block;
   position: absolute;
   bottom: 62%;
@@ -171,7 +171,7 @@ export const FontAucTime = styled(Font)`
   }
 `;
 export const FontNum = styled.div`
-  font-size: 40px;
+  font-size: 35px;
   display: inline-block;
   position: absolute;
   bottom: 37%;
@@ -184,13 +184,15 @@ export const FontNumAucTime = styled(FontNum)`
   }
 `;
 export const FontTime = styled(FontNum)`
-&&& {
-font-size: 30px;
-color: #505050;
-}
+  &&& {
+  font-size: 35px;
+  color: #505050;
+  bottom: ${props => props.bottom};
+  }
 `;
 export const TextNav = styled.div`
   margin-top: 1%;
+  display: inline-block;
 `;
 
 export const CountTime = styled.div`
@@ -207,12 +209,12 @@ export const DisplayTimeout = styled.div`
   font-size: 24px;
 `;
 export const ButtonStatusCancle = styled.div`
-  width: 80%;
+  width: 100%;
   height: 41px;
   border-radius: 30px;
   background-color: #9b9b9b;
   color: white;
-  margin-left: 12%;
+  margin-left: -10px;
   margin-top: -7%;
   padding: 7%;
 `;
@@ -228,4 +230,10 @@ export const ButtonNew = styled.button`
   position: absolute;
   margin-top: 1.5%;
   margin-left: 43%;
+`;
+
+export const Unit = styled.div`
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 11px;
 `;

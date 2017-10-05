@@ -166,9 +166,9 @@ class Uploadfile extends Component {
         <Detail>
           <Head>อัพโหลดไฟล์</Head>
           <TextNormal>
-                กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
-                (รองรับไฟล์ประเภท .pdf และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
-                <br />
+            กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
+            (รองรับไฟล์ประเภท .pdf และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
+            <br />
           </TextNormal>
           <Inner>
             <div className="row">
@@ -206,7 +206,13 @@ class Uploadfile extends Component {
             </AddBlockButton>
           </Inner>
           {/* <Link to="/sendrequest"> */}
-          <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
+          <div className="row">
+            <div className="large-2 large-offset-10 columns">
+              <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
+            </div>
+
+          </div>
+
           {/* </Link> */}
         </Detail>
       </div>

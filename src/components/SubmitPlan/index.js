@@ -680,7 +680,7 @@ class SubmitPlan extends Component {
                 onClick={this.onClickhandler}
                 type="submit"
               >
-                บันทึก
+                ยืนยัน
               </Button>
             </Modal.Content>
           </ModalContents>

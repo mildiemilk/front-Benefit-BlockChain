@@ -25,6 +25,9 @@ export function authenticate(email, password) {
         localStorage.setItem('companyName', res.data.companyName);
         localStorage.setItem('logo', res.data.logo);
         localStorage.setItem('approve', res.data.approve);
+        localStorage.setItem('employeeName', res.data.employeeName);
+        localStorage.setItem('employeeCode', res.data.employeeCode);
+        localStorage.setItem('employeeProfilePic', res.data.employeeProfilePic);
         dispatch(authenticateSuccess(res.data));
       })
       .catch(err => {

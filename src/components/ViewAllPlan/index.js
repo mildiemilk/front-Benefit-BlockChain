@@ -132,7 +132,6 @@ class ViewAllPlan extends Component {
                   <BackHome>&lt; กลับหน้าหลัก </BackHome>
                 </Link>
               </div>
-
               <div className="large-2 large-offset-4 columns">
                 <SearchBox
                   callback={keyword => this.handleSearchBoxChange(keyword)}

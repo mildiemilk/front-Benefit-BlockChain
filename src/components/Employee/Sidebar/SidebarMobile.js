@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { push as Menu } from 'react-burger-menu';
 import styled from 'styled-components';
@@ -56,8 +58,11 @@ const LinkEdit = styled(Link)`
   }
 `;
 class SideBar extends React.Component {
-  constructor() {
-    super();
+  static propTypes = {
+    data: PropTypes.shape({}).isRequired,
+  }
+  constructor(props) {
+    super(props);
     this.state = {
       isClosed: true,
       closeSidebar: false,
@@ -87,7 +92,16 @@ class SideBar extends React.Component {
     this.setState({ closeSidebar: false });
   }
 
+  handleProfilePic = () => {
+    const { data } = this.props;
+    if (data.employeeProfilePic !== 'null') {
+      return data.employeeProfilePic;
+    }
+    return User;
+  }
+
   render() {
+    const { data } = this.props;
     return (
       <div>
         <Menu
@@ -99,9 +113,9 @@ class SideBar extends React.Component {
           isOpen={this.state.closeSidebar}
         >
           <HeadDiv>
-            <Image src={User} shape="circular" />
-            <Head>สมศรี ช่างสงสัย</Head>
-            <Number>เลขพนักงาน : 0000001</Number>
+            <Image src={this.handleProfilePic()} shape="circular" />
+            <Head>{data.employeeName}</Head>
+            <Number>เลขพนักงาน : {data.employeeCode}</Number>
           </HeadDiv>
           <Dividers />
           <div>
@@ -159,4 +173,9 @@ class SideBar extends React.Component {
   }
 }
 
-export default SideBar;
+// export default SideBar;
+const mapStateToProps = state => ({
+  data: state.authReducer,
+});
+
+export default connect(mapStateToProps, null)(SideBar);

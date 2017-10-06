@@ -83,23 +83,24 @@ class manageEmployee extends Component {
   handleUpdatePolicy = () => {
     this.setState({ updateNewEmp: true });
   }
-  handleSubmitPolicy = (e, employeeId, index) => {
-    e.preventDefault('handleSubmitPolicy', this.state);
+  handleSubmitPolicy = (e, employeeId) => {
+    e.preventDefault();
+    console.log('e--', e);
     // const id = e.target.id;
-    const { memberNumber, policyNumber, Employees } = this.state;
-    const oldmemberNumber = Employees[index].memberNumber;
-    const oldpolicyNumber = Employees[index].policyNumber;
-    if (oldmemberNumber === '' && oldpolicyNumber === '') {
-      editPolicy(employeeId, policyNumber, memberNumber).then(() => {
-        this.handleUpdatePolicy();
-        window.location.reload();
-      });
-    }
+    const { memberNumber, policyNumber } = this.state;
+    // const oldmemberNumber = Employees[index].memberNumber;
+    // const oldpolicyNumber = Employees[index].policyNumber;
+    editPolicy(employeeId, policyNumber, memberNumber).then(() => {
+      this.handleUpdatePolicy();
+      window.location.reload();
+    });
   }
   handleChange = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
+    const id = e.target.id;
+    console.log('>>id', id);
     this.setState({ [name]: value });
   }
   ShowPlan = plans =>

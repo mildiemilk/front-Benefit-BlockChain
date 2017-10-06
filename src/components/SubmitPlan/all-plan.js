@@ -21,7 +21,7 @@ import Dental from './Dental/dental';
 
 class AllsetPlan extends Component {
   static propTypes = {
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     activePlan: PropTypes.number.isRequired,
     nextPage: PropTypes.bool.isRequired,
@@ -502,7 +502,7 @@ class AllsetPlan extends Component {
           <div className="paragraph">
             {this.state.setPlan === 'OPD'
               ? <OPD
-                handleUpdateData={this.props.handleUpdateData}
+                handleUpdateEditData={this.props.handleUpdateEditData}
                 planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
@@ -531,7 +531,7 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'IPD'
               ? <IPD
-                handleUpdateData={this.props.handleUpdateData}
+                handleUpdateEditData={this.props.handleUpdateEditData}
                 planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
@@ -594,7 +594,7 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Dental'
               ? <Dental
-                handleUpdateData={this.props.handleUpdateData}
+                handleUpdateEditData={this.props.handleUpdateEditData}
                 planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}
@@ -613,7 +613,7 @@ class AllsetPlan extends Component {
               : null}
             {this.state.setPlan === 'Life'
               ? <Life
-                handleUpdateData={this.props.handleUpdateData}
+                handleUpdateEditData={this.props.handleUpdateEditData}
                 planList={this.props.planList}
                 handleVerifyState={this.handleVerifyState}
                 handleCloseModal={this.handleCloseModal}

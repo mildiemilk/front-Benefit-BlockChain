@@ -104,11 +104,10 @@ export const ListL = styled.div`
   padding-top: 2%;
 `;
 export const ListTime = styled.div`
-  padding-top: 4.5%;
+  padding-top: 16px;
+  padding-left: 16px;
   font-size: 15px;
   font-weight: 500;
-  padding: 13px 0px 2px 15px;
-
 `;
 export const ListR = styled.div`
   float: right;

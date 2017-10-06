@@ -10,7 +10,13 @@ export const DivBox = styled.div`
   margin-bottom: 29px;
 `;
 export const Icons = styled(Icon)`
-  position: absolute;
-  left: 276px;
-  top: 12px;
+  float: right;
+`;
+export const Warning = styled.div`
+  margin-bottom: 32px;
+  background-color: #e0e3e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px;
 `;

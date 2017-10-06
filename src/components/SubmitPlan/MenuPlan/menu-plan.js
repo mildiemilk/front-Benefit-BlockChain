@@ -24,6 +24,7 @@ class MenuPlan extends Component {
     handleNewPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
@@ -178,6 +179,7 @@ class MenuPlan extends Component {
           />
         </div>
         <FormModal
+          handleUpdateEditData={this.props.handleUpdateEditData}
           planList={this.props.planList}
           handleUpdateData={this.props.handleUpdateData}
           activePlan={this.props.activePlan}

@@ -118,7 +118,7 @@ class Dashboard extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <Link to="/claim" >
-                    <Image className="block" src={artboard2} shape="circular" />
+                    <Image className="block" src={artboard2} shape="circular" centered />
                   </Link>
                   <Container textAlign="center"> รายการเคลม </Container>
                 </Grid.Column>

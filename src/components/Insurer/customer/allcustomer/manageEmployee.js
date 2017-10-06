@@ -85,7 +85,6 @@ class manageEmployee extends Component {
   }
   handleSubmitPolicy = (e, employeeId) => {
     e.preventDefault();
-    console.log('e--', e);
     // const id = e.target.id;
     const { memberNumber, policyNumber } = this.state;
     // const oldmemberNumber = Employees[index].memberNumber;
@@ -94,13 +93,13 @@ class manageEmployee extends Component {
       this.handleUpdatePolicy();
       window.location.reload();
     });
+    // window.location.reload();
   }
   handleChange = e => {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
-    const id = e.target.id;
-    console.log('>>id', id);
+    // const id = e.target.id;
     this.setState({ [name]: value });
   }
   ShowPlan = plans =>
@@ -229,11 +228,13 @@ class manageEmployee extends Component {
             </div>
             <div className="large-1 columns">
               <div className="list-box-in-list">
-                <div className="edit-employee-list">
+                {/* <div className="edit-employee-list">
                   <Icon name="search" />
-                </div>
+                </div> */}
                 <div className="edit-employee-list">
-                  <ModalEditEmployee
+                  {(EMPlist.detail.status === 'ลาออก')
+                  ? ''
+                  : <ModalEditEmployee
                     handleSubmitPolicy={this.handleSubmitPolicy}
                     handleChange={this.handleChange}
                     employeeId={EMPlist._id}
@@ -242,6 +243,7 @@ class manageEmployee extends Component {
                     modalOpen={this.state.modalOpen}
                     index={index}
                   />
+                }
                 </div>
               </div>
             </div>

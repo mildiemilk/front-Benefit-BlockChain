@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { Submit, ImageStyle, Head, Space } from './styled';
 import pic from '../image/gifts.png';
@@ -9,6 +8,11 @@ class congrat extends Component {
     super();
     this.state = {};
   }
+
+  handleClick = () => {
+    window.location.href = '/chooseinsuranceplan';
+  }
+
   render() {
     return (
       <Container>
@@ -21,11 +25,9 @@ class congrat extends Component {
             คุณได้จัดแผนประกันภัยเรียบร้อยแล้ว <br />
             กรุณากด ‘ต่อไป’ เพื่อไปยังขั้นตอนจัดแผนสิทธิประโยชน์ <br />
           </p>
-          <Link to="/chooseinsuranceplan">
-            <Submit>
-              ต่อไป
-            </Submit>
-          </Link>
+          <Submit onClick={this.handleClick} >
+            ต่อไป
+          </Submit>
         </Space>
       </Container>
     );

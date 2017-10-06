@@ -37,7 +37,7 @@ export default class Sidebar extends Component {
               <Links to="/allcustomer" ><Item.Content verticalAlign="middle">ลูกค้าของคุณ</Item.Content></Links>
             </Item>
           }
-          {url === 'biddinglist'
+          {url === 'biddinglist' || url === 'biddingdetali'
             ? <Item>
               <i aria-hidden="true" className="icon-purchase-active" />&nbsp;
               <Links to="/biddinglist" ><Item.Content verticalAlign="middle"><p className="text-active">การเสนอราคา</p></Item.Content></Links>
@@ -47,7 +47,7 @@ export default class Sidebar extends Component {
               <Links to="/biddinglist" ><Item.Content verticalAlign="middle">การเสนอราคา</Item.Content></Links>
             </Item>
           }
-          {url === 'claim'
+          {url === 'claim' || url === 'claimlist' || url === 'claimdetail' || url === 'claimanalysis'
             ? <Item>
               <i aria-hidden="true" className="icon-overview-active" />&nbsp;
               <Links to="/claim" ><Item.Content verticalAlign="middle"><p className="text-active">รายการเคลม</p></Item.Content></Links>

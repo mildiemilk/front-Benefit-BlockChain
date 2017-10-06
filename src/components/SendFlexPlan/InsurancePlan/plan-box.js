@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Popup, List } from 'semantic-ui-react';
+// import { Icon, Popup, List } from 'semantic-ui-react';
 import { PlanBox } from './styled';
 // import PlanBoxModal from './planbox-modal';
 
 export default class PlanBoxs extends Component {
   static propTypes = {
     // modalOpen: PropTypes.bool.isRequired,
-    handleModal: PropTypes.func.isRequired,
+    // handleModal: PropTypes.func.isRequired,
     // handleCloseModal: PropTypes.func.isRequired,
     // planList: PropTypes.arrayOf(PropTypes.object).isRequired,
     plan: PropTypes.shape.isRequired,
     // activePlan: PropTypes.number.isRequired,
-    id: PropTypes.number.isRequired,
+    // id: PropTypes.number.isRequired,
   }
 
   constructor(props) {
@@ -24,7 +24,7 @@ export default class PlanBoxs extends Component {
     return (
       <PlanBox>
         <span> {this.props.plan.planName} </span>
-        <Popup
+        {/* <Popup
           trigger={
             <Icon
               name="ellipsis vertical"
@@ -46,7 +46,7 @@ export default class PlanBoxs extends Component {
           on="click"
           position="bottom center"
           style={{ zIndex: '1' }}
-        />
+        /> */}
         {/* <PlanBoxModal
           modalOpen={this.props.modalOpen}
           handleCloseModal={this.props.handleCloseModal}

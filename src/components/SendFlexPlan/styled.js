@@ -58,6 +58,7 @@ export const Line = styled.div`
   display: inline-block;
   margin-left: 50px;
   margin-right: 10px;
+  margin-bottom: 20px;
 `;
 export const Imgs = styled.img`
   position: absolute;

@@ -43,7 +43,7 @@ class SelectBox extends Component {
   renderPlan = plans => {
     console.log('----plan', plans, 'default', this.props.default);
     const Allplan = plans.map(plan => (
-      <div>
+      <div style={{ display: 'flex' }}>
         <Plan>{plan.benefitPlanName}</Plan>
         {this.props.default === plan._id
         ? <ButtonDefault>ค่าเริ่มต้น</ButtonDefault>

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, Cell } from 'recharts';
+import { DivChart } from './styled';
 
 const graphColor = ['#458cdc', '#39b7af', '#45a1d9', '#7ab7c6'];
 
 const data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
 { name: 'Group C', value: 300 }, { name: 'Group D', value: 200 }];
 
-class Empolyeechart extends Component {
+class EmpolyeeChart extends Component {
   static propTypes = {
     summaryGroup: PropTypes.shape({}).isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
   renderGroup = () => {
@@ -48,7 +51,8 @@ class Empolyeechart extends Component {
   }
   render() {
     console.log('props--employee', this.props);
-    const { summaryGroup } = this.props;
+    const { summaryGroup, width, height } = this.props;
+    console.log('w,h', width, height);
     return (
       <div>
         <div className="chart-main-box">
@@ -57,25 +61,25 @@ class Empolyeechart extends Component {
           </div>
           <div className="row">
             <div className="large-6 columns">
-              <div className="chart-text-style">
-                <p className="chart-radial-sum">{summaryGroup.total}</p>
-                <p>คน</p>
-              </div>
-              <PieChart width={300} height={200}>
-                <Pie
-                  data={this.renderGroup()}
-                  innerRadius={40}
-                  outerRadius={65}
-                  cy={90}
-                  cx={100}
-                  fill="#8884d8"
-                >
-                  {
-                    data.map((entry, index) =>
-                      <Cell fill={graphColor[index % graphColor.length]} />)
-                  }
-                </Pie>
-              </PieChart>
+              <DivChart width={width} height={height} >
+                <div>{summaryGroup.total}</div>
+                <div className="chart-radial-sum">คน</div>
+                <PieChart width={width} height={height}>
+                  <Pie
+                    data={this.renderGroup()}
+                    innerRadius={60}
+                    outerRadius={80}
+                    cy="50%"
+                    cx="50%"
+                    fill="#8884d8"
+                  >
+                    {
+                      data.map((entry, index) =>
+                        <Cell fill={graphColor[index % graphColor.length]} />)
+                    }
+                  </Pie>
+                </PieChart>
+              </DivChart>
             </div>
             <div className="large-6 columns">
               <div className="chart-list">{this.renderList()}</div>
@@ -87,4 +91,4 @@ class Empolyeechart extends Component {
   }
 }
 
-export default Empolyeechart;
+export default EmpolyeeChart;

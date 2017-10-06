@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown } from 'semantic-ui-react';
-import '../../styles/employee-benefits.scss';
 import SelectOptionPlan from './select-option-plan';
+import { Warning } from './styled';
 
 const planOptions = [
   { text: 'Fixed', value: 'fixed' },
@@ -47,6 +47,7 @@ class SelectBox extends Component {
             placeholder="Fixed/Flex"
             selection
             options={planOptions}
+            defaultValue="Flex"
             name="plan"
             value={this.props.plan}
             style={{ marginLeft: '5%' }}
@@ -56,7 +57,7 @@ class SelectBox extends Component {
           <br />
           <p>แผนสิทธิประโยชน์ที่เลือกใช้กับกลุ่มนี้</p>
           <br />
-          {this.props.plan !== ''
+          {this.props.plan !== null
             ? <SelectOptionPlan
               plan={this.props.plan}
               selectPlan={this.props.selectPlan}
@@ -73,7 +74,7 @@ class SelectBox extends Component {
               benefitPlan={this.props.benefitPlan}
               templatePlan={this.props.templatePlan}
             />
-            : null}
+            : <Warning>ยังไม่ได้เลือกรูปแบบของแผนสิทธิประโยชน์</Warning>}
         </div>
       </div>
     );

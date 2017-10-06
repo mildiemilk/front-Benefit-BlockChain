@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import bedRecord from '../image/icons-8-single-bed-record.png';
+// import bedRecord from '../image/icons-8-single-bed-record.png';
 import bedActive from '../image/icons-8-single-bed.jpg';
 import bed from '../image/icons-8-single-bed1.jpg';
-import stethoscopeRecord from '../image/icons-8-stethoscope-record.png';
+// import stethoscopeRecord from '../image/icons-8-stethoscope-record.png';
 import stethoscope from '../image/icons-8-stethoscope1.jpg';
 import stethoscopeActive from '../image/icons-8-stethoscope.jpg';
-import toothRecord from '../image/icons-8-tooth-record.png';
+// import toothRecord from '../image/icons-8-tooth-record.png';
 import toothActive from '../image/icons-8-tooth.jpg';
 import tooth from '../image/icons-8-toot1.jpg';
-import heartRecord from '../image/icons-8-like-record.png';
+// import heartRecord from '../image/icons-8-like-record.png';
 import heartActive from '../image/icons-8-like.jpg';
 import heart from '../image/icons-8-like1.jpg';
 import erase from '../image/icons-8-erase.png';
@@ -163,26 +163,26 @@ class AllsetPlan extends Component {
       if (changeToRecord) {
         if (ipdRecord && setPlan === 'IPD') {
           this.setState({
-            textIpd: 'text-menu-record',
-            textIpdActive: 'text-menu-record',
+            // textIpd: 'text-menu-record',
+            // textIpdActive: 'text-menu-record',
             isChange: false,
           });
         } else if (opdRecord && setPlan === 'OPD') {
           this.setState({
-            textOpd: 'text-menu-record',
-            textOpdActive: 'text-menu-record',
+            // textOpd: 'text-menu-record',
+            // textOpdActive: 'text-menu-record',
             isChange: false,
           });
         } else if (dentalRecord && setPlan === 'Dental') {
           this.setState({
-            textDental: 'text-menu-record',
-            textDentalActive: 'text-menu-record',
+            // textDental: 'text-menu-record',
+            // textDentalActive: 'text-menu-record',
             isChange: false,
           });
         } else if (lifeRecord && setPlan === 'Life') {
           this.setState({
-            textLife: 'text-menu-record',
-            textLifeActive: 'text-menu-record',
+            // textLife: 'text-menu-record',
+            // textLifeActive: 'text-menu-record',
             isChange: false,
           });
         }
@@ -303,19 +303,19 @@ class AllsetPlan extends Component {
 
   handleImageActive = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord;
+      // if (this.state.ipdRecord) return bedRecord;
       return bedActive;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord;
+      // if (this.state.opdRecord) return stethoscopeRecord;
       return stethoscopeActive;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord;
+      // if (this.state.dentalRecord) return toothRecord;
       return toothActive;
     }
     if (value === 'Life') {
-      if (this.state.lifeRecord) return heartRecord;
+      // if (this.state.lifeRecord) return heartRecord;
       return heartActive;
     }
     return null;
@@ -323,19 +323,19 @@ class AllsetPlan extends Component {
 
   handleImage = value => {
     if (value === 'IPD') {
-      if (this.state.ipdRecord) return bedRecord;
+      // if (this.state.ipdRecord) return bedRecord;
       return bed;
     }
     if (value === 'OPD') {
-      if (this.state.opdRecord) return stethoscopeRecord;
+      // if (this.state.opdRecord) return stethoscopeRecord;
       return stethoscope;
     }
     if (value === 'Dental') {
-      if (this.state.dentalRecord) return toothRecord;
+      // if (this.state.dentalRecord) return toothRecord;
       return tooth;
     }
     if (this.state.lifeRecord) {
-      return heartRecord;
+      // return heartRecord;
     }
     return heart;
   }

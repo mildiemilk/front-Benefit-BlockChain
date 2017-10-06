@@ -349,10 +349,12 @@ class SubmitPlan extends Component {
   handleUpdateData = () => this.setState({ checkUpdate: true });
 
   handleCopy = e => {
+    const { planList } = this.props;
     this.handlePlan(e.target.id);
     copyPlan([this.props.planList[e.target.id].planId])
     .then(() => {
-      this.handleUpdateData();
+      // this.handleUpdateData();
+      this.setState({ checkUpdate: true, newActivePlan: planList.length });
     });
   }
 
@@ -686,12 +688,17 @@ class SubmitPlan extends Component {
                       </div>
                     </div>
                   </div>
-                  : <div className="start-box">
+                  : <div
+                    style={{ cursor: 'pointer' }}
+                    className="start-box"
+                    role="button"
+                    aria-hidden
+                    onClick={this.handleNewPlan}
+                  >
                     <div className="box-in-start-box">
                       <Icon
                         name="calendar plus"
                         size="huge"
-                        onClick={this.handleNewPlan}
                       />
                       <p className="submit-plan-text-new-plan">สร้างแผนใหม่</p>
                     </div>

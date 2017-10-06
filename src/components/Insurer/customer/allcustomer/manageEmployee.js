@@ -229,11 +229,13 @@ class manageEmployee extends Component {
             </div>
             <div className="large-1 columns">
               <div className="list-box-in-list">
-                <div className="edit-employee-list">
+                {/* <div className="edit-employee-list">
                   <Icon name="search" />
-                </div>
+                </div> */}
                 <div className="edit-employee-list">
-                  <ModalEditEmployee
+                  {(EMPlist.detail.status === 'ลาออก')
+                  ? ''
+                  : <ModalEditEmployee
                     handleSubmitPolicy={this.handleSubmitPolicy}
                     handleChange={this.handleChange}
                     employeeId={EMPlist._id}
@@ -242,6 +244,7 @@ class manageEmployee extends Component {
                     modalOpen={this.state.modalOpen}
                     index={index}
                   />
+                }
                 </div>
               </div>
             </div>

@@ -66,6 +66,7 @@ export const Font = styled.div`
   font-size: 16px;
   display: inline-block;
   position: absolute;
+  margin-top: 10px;
 `;
 export const FontAucTime = styled(Font)`
   &&& {

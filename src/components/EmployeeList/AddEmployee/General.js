@@ -188,6 +188,7 @@ class General extends Component {
                     name="employeeCode"
                     required
                     onChange={this.props.handleInputChange} value={data.employeeCode}
+                    disabled
                   />
                 </div>
               </div>
@@ -197,6 +198,7 @@ class General extends Component {
                   <InputBox
                     name="policyNumber"
                     onChange={this.props.handleInputChange} value={data.policyNumber}
+                    disabled
                   />
                 </div>
                 <div className="large-6 columns">
@@ -313,6 +315,7 @@ class General extends Component {
                       dateFormatCalendar="MMMM"
                       scrollableYearDropdown
                       yearDropdownItemNumber={8}
+                      disabled
                     />
                   </div>
                 </div>

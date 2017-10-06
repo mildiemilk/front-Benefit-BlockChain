@@ -34,7 +34,7 @@ export default class Sidebar extends Component {
               <Links to="/viewplanflex" ><Item.Content verticalAlign="middle">แผนของคุณ</Item.Content></Links>
             </Item>
         }
-          { url === 'employeelist'
+          { url === 'employeelist' || 'addemployee'
           ? <Item>
             <i aria-hidden="true" className="group large icon icon-active" />&nbsp;
             <Links to="/employeelist" ><Item.Content verticalAlign="middle"><p className="text-active">อัพเดทจำนวนพนักงาน</p></Item.Content></Links>

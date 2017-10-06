@@ -27,7 +27,7 @@ export default class Sidebar extends Component {
             <i aria-hidden="true" className="icon-home" />&nbsp;
             <Links to="/dashboard" ><Item.Content verticalAlign="middle">Dashboard</Item.Content></Links>
           </Item>
-          {url === 'allcustomer' || url === 'customerplan' || url === 'stepmanagement' || url === 'stepdownload' || url === 'stepupload' || url === 'stepbenefits'
+          {url === 'allcustomer' || url === 'customerplan' || url === 'stepmanagement' || url === 'stepdownload' || url === 'stepupload' || url === 'stepbenefits' || url === 'empmanagement'
             ? <Item>
               <i aria-hidden="true" className="icon-conference-active" />&nbsp;
               <Links to="/allcustomer" ><Item.Content verticalAlign="middle"><p className="text-active">ลูกค้าของคุณ</p></Item.Content></Links>

@@ -43,6 +43,7 @@ import ViewYourPlan from './ViewYourPlan';
 import AppInsurer from './appinsurer';
 import InsurerLogin from './Insurer/insurer-login';
 import AddEmployee from './EmployeeList/AddEmployee';
+import AddEmployeeGroup from './EmployeeList/AddEmployeeGroup';
 import ClaimEmployee from './ClaimEmployee';
 import Setting from './Setting';
 import ProfileClaim from './ProfileClaim';
@@ -114,6 +115,7 @@ class App extends Component {
                   <Route path="/sendflexplan" component={SendFlexPlan} />
                   <Route path="/Summary" component={Summary} />
                   <Route path="/EmployeeList" component={EmployeeList} />
+                  <Route path="/addEmployee/group" component={AddEmployeeGroup} />
                   <Route path="/addEmployee/:index" component={AddEmployee} />
                   <Route path="/ClaimEmployee" component={ClaimEmployee} />
                   <Route path="/view" component={ViewAllPlan} />

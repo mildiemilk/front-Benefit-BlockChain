@@ -37,8 +37,8 @@ class Plan extends Component {
     data: PropTypes.shape({}).isRequired,
     timeUp: PropTypes.bool.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       openModal: false,
     };

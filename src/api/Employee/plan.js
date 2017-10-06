@@ -33,19 +33,11 @@ export function currentPlan() {
 }
 
 export function newUser() {
-  return dispatch => {
-    const options = {
-      method: 'get',
-      url: NEW_USER_URL,
-    };
-    APIRequest(options, true)
-    .then(res => {
-      dispatch(confirmPlanSuccess(res.data));
-    })
-    .catch(err => {
-      dispatch(confirmPlanFailure(err.response));
-    });
+  const options = {
+    method: 'get',
+    url: NEW_USER_URL,
   };
+  return APIRequest(options, true);
 }
 
 export function selectBenefit(_id) {

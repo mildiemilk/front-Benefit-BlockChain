@@ -19,6 +19,7 @@ import { Navmanage,
   TextList,
   DivHead,
   TextP,
+  Fonttext,
   // PopupList,
 } from './styled';
 import '../../../../styles/main_icon.scss';
@@ -61,35 +62,45 @@ class manageEmployee extends Component {
       minList: 0,
       maxList: 10,
       pageNumber: 1,
-      employees: props.customerEmployee,
-      updateNewEmp: false,
+      customerEmployee: props.customerEmployee,
     };
     props.getCustomerEmployee(this.state.companyId);
     props.getCustomerSelectPlan(this.state.companyId);
     props.getCustomer();
   }
-  componentWillUpdate() {
-    if (this.state.updateNewEmp) {
-      this.setState({ updateNewEmp: false });
-      this.props.getCustomerEmployee(this.state.companyId);
+  componentWillReceiveProps(newProps) {
+    if (this.state.customerEmployee !== newProps.customerEmployee) {
+      this.setState({
+        Employees: newProps.customerEmployee.employees,
+        Summary: newProps.customerEmployee.summary,
+      });
     }
+    // this.renderGroup();
+    // this.renderElement(newProps.data);
+    // this.renderTitle(newProps.data);
+    // this.renderBenefitPlan(newProps.benefitPlan);
   }
   handleUpdatePolicy = () => {
     this.setState({ updateNewEmp: true });
   }
   handleSubmitPolicy = (e, employeeId) => {
     e.preventDefault();
+    console.log('e--', e);
+    // const id = e.target.id;
     const { memberNumber, policyNumber } = this.state;
-    console.log('>>handleSubmitPolicy employeeId', employeeId);
+    // const oldmemberNumber = Employees[index].memberNumber;
+    // const oldpolicyNumber = Employees[index].policyNumber;
     editPolicy(employeeId, policyNumber, memberNumber).then(() => {
       this.handleUpdatePolicy();
       window.location.reload();
     });
   }
-  handleDataChange = e => {
+  handleChange = e => {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
+    const id = e.target.id;
+    console.log('>>id', id);
     this.setState({ [name]: value });
   }
   ShowPlan = plans =>
@@ -101,18 +112,15 @@ class manageEmployee extends Component {
               <div className="large-3 columns">
                 <TextIn>
                   <img alt="" src={IconPlan} width="30" height="30" />
-                  <Font>{plan.planId.planName}</Font>
+                  &nbsp;<Font>{plan.planId.planName}</Font>
                 </TextIn>
               </div>
-            </div>
-            <div className="large-3 columns">
-              <span>{plan.planId.planName}</span>
             </div>
             <div className="large-2 columns">
               <DisplayTag color="#fafafa">
                 <TextP>ดูไฟล์ที่คุณส่งให้ลูกค้า</TextP></DisplayTag>
             </div>
-            <div className="large-2 columns">
+            <div className="large-5 columns">
               <Popups
                 trigger={
                   <Icon name="ellipsis vertical" size="large" />
@@ -170,6 +178,7 @@ class manageEmployee extends Component {
   }
   renderElement = EMPlist => {
     const searchData = this.renderSearch(EMPlist);
+    // const employees = this.state
     let list = searchData.filter(
       (EMPlist, index) =>
         index >= this.state.minList && index <= this.state.maxList,
@@ -197,7 +206,7 @@ class manageEmployee extends Component {
               : <TextIn>-</TextIn>
               }
             </div>
-            <div className="large-1 columns">
+            <div className="large-2 columns">
               {EMPlist.detail.memberNumber
               ? <TextIn>{EMPlist.detail.memberNumber}</TextIn>
               : <TextIn>-</TextIn>
@@ -220,18 +229,22 @@ class manageEmployee extends Component {
             </div>
             <div className="large-1 columns">
               <div className="list-box-in-list">
-                <div className="edit-employee-list">
+                {/* <div className="edit-employee-list">
                   <Icon name="search" />
-                </div>
+                </div> */}
                 <div className="edit-employee-list">
-                  <ModalEditEmployee
+                  {(EMPlist.detail.status === 'ลาออก')
+                  ? ''
+                  : <ModalEditEmployee
                     handleSubmitPolicy={this.handleSubmitPolicy}
-                    handleDataChange={this.handleDataChange}
+                    handleChange={this.handleChange}
                     employeeId={EMPlist._id}
                     policyNumber={EMPlist.detail.policyNumber}
                     memberNumber={EMPlist.detail.memberNumber}
                     modalOpen={this.state.modalOpen}
+                    index={index}
                   />
+                }
                 </div>
               </div>
             </div>
@@ -270,9 +283,11 @@ class manageEmployee extends Component {
 //     </div>
 //   </div>
 // </div>
+
   render() {
     const { customer, customerSelectPlan, customerEmployee } = this.props;
-    const { index } = this.state;
+    const { index, Employees } = this.state;
+    // console.log('>>this.customerEmployee', this.state);
     if (customer.length > 0) {
       return (
         <div className="employee-list">
@@ -284,7 +299,7 @@ class manageEmployee extends Component {
               <Navmanage>
                 <Pic> <img alt="" src={Icity} width="40" height="40" /></Pic>
                 <TextNav>
-                  <Font>พนักงานทัั้งหมด</Font><br />
+                  <Fonttext>พนักงานทัั้งหมด</Fonttext><br />
                   <FontNum>{customerEmployee.employees.length}</FontNum>
                 </TextNav>
               </Navmanage>
@@ -293,7 +308,7 @@ class manageEmployee extends Component {
               <Navmanage>
                 <Pic><img alt="" src={IempPlus} width="40" height="40" /></Pic>
                 <TextNav>
-                  <Font>พนักงานเข้าใหม่</Font><br />
+                  <Fonttext>พนักงานเข้าใหม่</Fonttext><br />
                   <FontNum>{customerEmployee.summary.new}</FontNum>
                 </TextNav>
               </Navmanage>
@@ -302,7 +317,7 @@ class manageEmployee extends Component {
               <Navmanage>
                 <Pic> <img alt="" src={IempDelete} width="40" height="40" /></Pic>
                 <TextNav>
-                  <Font>พนักงานลาออก</Font><br />
+                  <Fonttext>พนักงานลาออก</Fonttext><br />
                   <FontNum>{customerEmployee.summary.promote}</FontNum>
                 </TextNav>
               </Navmanage>
@@ -311,7 +326,7 @@ class manageEmployee extends Component {
               <Navmanage>
                 <Pic><img alt="" src={Iquality} width="40" height="40" /></Pic>
                 <TextNav>
-                  <Font>พนักงานปรับตำแหน่ง</Font><br />
+                  <Fonttext>พนักงานปรับตำแหน่ง</Fonttext><br />
                   <FontNum>{customerEmployee.summary.resign}</FontNum>
                 </TextNav>
               </Navmanage>
@@ -395,7 +410,7 @@ class manageEmployee extends Component {
                     />
                   </DivHead>
                 </div>
-                <div className="large-1 columns">
+                <div className="large-2 columns">
                   <DivHead>
                     <TextList>เลขสมาชิก</TextList>
                     <Popups
@@ -537,7 +552,7 @@ class manageEmployee extends Component {
               </div>
             </div>
             {customerEmployee
-            ? this.renderElement(customerEmployee.employees)
+            ? this.renderElement(Employees)
               // this.renderElement(customerEmployee.employees);
             : null
             }

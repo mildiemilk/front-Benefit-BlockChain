@@ -14,7 +14,7 @@ const Checkboxs = styled(Checkbox)`
 `;
 class OPD extends Component {
   static propTypes = {
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     handleVerifyState: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
@@ -74,6 +74,8 @@ class OPD extends Component {
       opdCoPayMixPercentage,
       opdCoPayMixNotExceed,
       opdCoPayMixYear,
+      planList,
+      activePlan,
     } = this.props;
     editPlan(
       {
@@ -87,11 +89,11 @@ class OPD extends Component {
         opdCoPayMixNotExceed,
         opdCoPayMixYear,
       },
-      this.props.planList[this.props.activePlan].planId,
+      planList[activePlan].planId,
       'opd',
     )
     .then(() => {
-      this.props.handleUpdateData();
+      this.props.handleUpdateEditData(activePlan);
     });
     this.props.handleRecordVerifyState('opdRecord');
   }
@@ -191,7 +193,7 @@ class OPD extends Component {
                   />
                   <Form.Input
                     type="number"
-                    label="บาท/ครั้ง ครั้งละไม่เกิน"
+                    label="บาท/ครั้ง ปีละไม่เกิน"
                     placeholder="จำนวนเงิน"
                     name="opdTimeNotExceedPerYear"
                     id="opdTimeNotExceedPerYear"
@@ -222,7 +224,7 @@ class OPD extends Component {
                     readOnly
                   />
                 </div>}
-              <p className="selectText"> บาท/ปี</p>
+              <p className="selectText"> ครั้ง/ปี</p>
             </Form.Group>
             <Checkboxs
               toggle

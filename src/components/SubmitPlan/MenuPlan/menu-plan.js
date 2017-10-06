@@ -24,6 +24,7 @@ class MenuPlan extends Component {
     handleNewPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     comparePlan: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
   constructor(props) {
@@ -33,12 +34,19 @@ class MenuPlan extends Component {
       isOpen: false,
       modalOpen: false,
       comparePlan: [],
+      popup: -1,
     };
   }
 
-  handleOpen = () => this.setState({ isOpen: true });
+  componentWillReceiveProps() {
+    this.setState({ popup: -1 });
+  }
 
-  handleClose = () => this.setState({ isOpen: false });
+  handleOpen = i => this.setState({ isOpen: true, popup: i });
+
+  handleClose = () => {
+    this.setState({ isOpen: false, popup: -1 });
+  }
 
   handleOpenModal = () =>
     this.setState({
@@ -69,28 +77,37 @@ class MenuPlan extends Component {
     this.props.menuPlans(comparePlan);
   }
 
-  renderList = list => {
+  renderList = () => {
+    const { planList } = this.props;
     const output = [];
-    for (let i = 0; i < list.length; i += 1) {
+    for (let i = 0; i < planList.length; i += 1) {
       const isActive = i === parseInt(this.props.activePlan, 10) ? '-active' : '';
       output.push(
-        <div className={`menu-select-plan${isActive}`} onClick={() => this.props.handlePlan(i)} role="button" aria-hidden>
+        <div
+          className={`menu-select-plan${isActive}`}
+          onClick={() => this.props.handlePlan(i)}
+          role="button"
+          aria-hidden
+          key={i.toString()}
+        >
           <div className="row">
             <div className="large-2 columns">
               <input
                 type="checkbox"
                 id={i}
-                onChange={e => this.handleChange(e, list)}
+                onChange={e => this.handleChange(e, planList)}
               />
             </div>
             <div className="large-10 columns">
-              <span>{list[i].planName}</span>
+              <span>{planList[i].planName}</span>
               <Popup
+                key={i.toString()}
                 trigger={
                   <Icon
                     style={{ float: 'right', cursor: 'pointer' }}
                     name="ellipsis vertical"
                     size="large"
+                    onClick={() => this.handleOpen(i)}
                   />
                 }
                 content={
@@ -124,11 +141,10 @@ class MenuPlan extends Component {
                 on="click"
                 hideOnScroll
                 position="bottom center"
-                open={this.state.isOpen}
-                onOpen={this.handleOpen}
+                open={this.state.popup === i}
                 onClose={this.handleClose}
               />
-              <p>แก้ไขครั้งล่าสุดโดย {list[i].company.hrDetail}</p>
+              <p>แก้ไขครั้งล่าสุดโดย {planList[i].company.hrDetail}</p>
             </div>
           </div>
         </div>,
@@ -163,6 +179,7 @@ class MenuPlan extends Component {
           />
         </div>
         <FormModal
+          handleUpdateEditData={this.props.handleUpdateEditData}
           planList={this.props.planList}
           handleUpdateData={this.props.handleUpdateData}
           activePlan={this.props.activePlan}
@@ -180,7 +197,7 @@ class MenuPlan extends Component {
             <Icon name="add circle" size="big" className="submit-plan-icon-add-plan" />สร้างแผนใหม่
           </p>
         </div>
-        {this.renderList(this.props.planList)}
+        {this.renderList()}
         <div
           className="menu-compare-plan"
           onClick={this.handleSelectPlan}

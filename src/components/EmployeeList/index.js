@@ -54,6 +54,7 @@ class employeeList extends Component {
       optionDepartment: [],
       optionTitles: [],
       optionBenefitPlan: [],
+      popup: false,
     };
     props.employeeDetail();
     props.getBenefitPlan();
@@ -100,6 +101,9 @@ class employeeList extends Component {
     this.setState({
       checkManage: true,
     });
+  }
+  handleClose = () => {
+    this.setState({ popup: !this.state.popup });
   }
   plusLimitChange = () => {
     if (this.state.maxList <= this.renderSearch().length) {
@@ -459,11 +463,44 @@ class employeeList extends Component {
             </DivImg>
           </div>
           <div className="large-5 columns">
-            <Link to="/addemployee/new">
-              <button className="add-employee-button">
-              เพิ่มพนักงานใหม่
-              </button>
-            </Link>
+            {/* <Link to="/addemployee/new"> */}
+            {/* <button className="add-employee-button">
+            เพิ่มพนักงานใหม่
+            </button> */}
+            <Popup
+              trigger={
+                <button className="add-employee-button" onClick={() => this.handleClose()}>
+                  เพิ่มพนักงานใหม่
+                </button>
+              }
+              content={
+                <List divided relaxed style={{ cursor: 'pointer' }}>
+                  <List.Item>
+                    <Link to="/addemployee/new">
+                      <List.Content>
+                        <p>
+                          เพิ่มพนักงานรายบุคคล
+                        </p>
+                      </List.Content>
+                    </Link>
+                  </List.Item>
+                  <List.Item>
+                    <Link to="/addemployee/group">
+                      <List.Content>
+                        <p>
+                        เพิ่มพนักงานเป็นกลุ่ม
+                        </p>
+                      </List.Content>
+                    </Link>
+                  </List.Item>
+                </List>
+              }
+              on="click"
+              position="bottom center"
+              open={this.state.popup}
+              onClose={this.handleClose}
+            />
+            {/* </Link> */}
           </div>
         </div>
         <div className="list-employee-box">

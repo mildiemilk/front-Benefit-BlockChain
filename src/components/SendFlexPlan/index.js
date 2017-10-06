@@ -96,7 +96,12 @@ class SendFlexPlan extends Component {
     return '';
   }
   render() {
-    const { completeStep } = this.props;
+    const { completeStep, benefitPlan } = this.props;
+    let timeout = '';
+    if (benefitPlan[0] !== undefined) {
+      timeout = benefitPlan[0].timeout;
+      console.log('time->choose', time);
+    }
     if (completeStep) {
       return <Redirect to="/congratstep3" />;
     }
@@ -195,7 +200,7 @@ class SendFlexPlan extends Component {
             <Inner>
               <Imgs src={time} alt="time" />
               <Line> พนักงานสามารถเลือกสิทธิประโยชน์ได้ถึง วันที่ </Line>
-              <Timeout setTimeout={this.props.setTimeout} />
+              <Timeout setTimeout={this.props.setTimeout} timeout={timeout} />
             </Inner>
           </Detail>
           <div style={{ marginTop: '25px' }} className="row">

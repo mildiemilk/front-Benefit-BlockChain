@@ -252,7 +252,7 @@
   transition: all 400ms;
 }
 .show-description {
-  height: 364.5px;
+  height: auto;
 }
 .insurance-box-header {
   position: relative;
@@ -292,7 +292,7 @@
 }
 .insurance-box-title-text {
   font-family: Kanit;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: bold;
   letter-spacing: 0.3px;
   text-align: left;
@@ -325,6 +325,9 @@
   color: #323028;
   padding: 0;
   list-style: none;
+}
+.insurance-box-description-text {
+  padding: 0 31px;
 }
 .insurance-box-description-left {
   display: inline-block;

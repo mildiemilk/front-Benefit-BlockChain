@@ -177,7 +177,7 @@ class FlexyPlan extends Component {
     } else if (renderCongratSelectPlan) {
       return <Redirect to={{ pathname: '/congratselectplan' }} />;
     }
-    if (data !== undefined && data.allBenefit.length > 0) {
+    if (data.allBenefit.length > 0) {
       return (
         <div>
           {

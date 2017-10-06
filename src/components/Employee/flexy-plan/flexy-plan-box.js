@@ -215,46 +215,40 @@ class FlexyPlanBox extends Component {
   }
 
   render() {
-    const {
-      flexyPlan,
-      data,
-    } = this.props;
-    if (data !== undefined) {
-      return (
-        <div>
-          <div className={flexyPlan === true ? 'box-box' : ''}>
-            {this.handleShowInsurance()}
-            {this.handleShowHealth()}
-            {this.handleShowGeneral()}
-          </div>
-          <Modal
-            className="plan-modal-info"
-            trigger={<div />}
-            open={this.state.modal}
-            onClose={this.handleCloseModal}
-          >
-            <div className="insurance-box-modal">
-              <span
-                className="insurance-modal-cancel-box"
-                onClick={this.handleCloseModal}
-                role="button"
-                aria-hidden
-              >
-                <Icon className="insurance-modal-cancel" name="plus" />
-              </span>
-              <span className="insurance-modal-text-header">
-                User Tips!
-              </span>
-              <p className="insurance-modal-text">
-                สิทธิประโยชน์ด้านค่าใช้จ่ายทั่วไปที่คุณจะได้รับในแต่ละปี
-                 โดยขอบเขตและเงื่อนไขในการเคลมนั้นเป็นไปตามที่ HR ระบุไว้
-              </p>
-            </div>
-          </Modal>
+    const { flexyPlan } = this.props;
+    return (
+      <div>
+        <div className={flexyPlan === true ? 'box-box' : ''}>
+          {this.handleShowInsurance()}
+          {this.handleShowHealth()}
+          {this.handleShowGeneral()}
         </div>
-      );
-    }
-    return (<div />);
+        <Modal
+          className="plan-modal-info"
+          trigger={<div />}
+          open={this.state.modal}
+          onClose={this.handleCloseModal}
+        >
+          <div className="insurance-box-modal">
+            <span
+              className="insurance-modal-cancel-box"
+              onClick={this.handleCloseModal}
+              role="button"
+              aria-hidden
+            >
+              <Icon className="insurance-modal-cancel" name="plus" />
+            </span>
+            <span className="insurance-modal-text-header">
+              User Tips!
+            </span>
+            <p className="insurance-modal-text">
+              สิทธิประโยชน์ด้านค่าใช้จ่ายทั่วไปที่คุณจะได้รับในแต่ละปี
+                โดยขอบเขตและเงื่อนไขในการเคลมนั้นเป็นไปตามที่ HR ระบุไว้
+            </p>
+          </div>
+        </Modal>
+      </div>
+    );
   }
 }
 

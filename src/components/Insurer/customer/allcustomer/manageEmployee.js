@@ -231,20 +231,20 @@ class manageEmployee extends Component {
                 {/* <div className="edit-employee-list">
                   <Icon name="search" />
                 </div> */}
-                <div className="edit-employee-list">
-                  {(EMPlist.detail.status === 'ลาออก')
-                  ? ''
-                  : <ModalEditEmployee
-                    handleSubmitPolicy={this.handleSubmitPolicy}
-                    handleChange={this.handleChange}
-                    employeeId={EMPlist._id}
-                    policyNumber={EMPlist.detail.policyNumber}
-                    memberNumber={EMPlist.detail.memberNumber}
-                    modalOpen={this.state.modalOpen}
-                    index={index}
-                  />
-                }
+                {/* <div className="edit-employee-list"> */}
+                {(EMPlist.detail.status === 'ลาออก')
+                ? ''
+                : <div className="edit-employee-list"> <ModalEditEmployee
+                  handleSubmitPolicy={this.handleSubmitPolicy}
+                  handleChange={this.handleChange}
+                  employeeId={EMPlist._id}
+                  policyNumber={EMPlist.detail.policyNumber}
+                  memberNumber={EMPlist.detail.memberNumber}
+                  modalOpen={this.state.modalOpen}
+                  index={index}
+                />
                 </div>
+              }
               </div>
             </div>
           </div>

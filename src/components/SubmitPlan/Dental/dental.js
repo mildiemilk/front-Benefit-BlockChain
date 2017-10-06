@@ -21,7 +21,7 @@ class Dental extends Component {
     setPlan: PropTypes.string.isRequired,
     openModal: PropTypes.bool.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     reset: PropTypes.bool.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
   }
@@ -46,16 +46,17 @@ class Dental extends Component {
 
   handleClick = () => {
     let { dentalPerYear } = this.props;
+    const { activePlan, planList } = this.props;
     if (dentalPerYear === '') {
       dentalPerYear = null;
     }
     editPlan(
       { dentalPerYear },
-      this.props.planList[this.props.activePlan].planId,
+      planList[activePlan].planId,
       'dental',
     )
     .then(() => {
-      this.props.handleUpdateData();
+      this.props.handleUpdateEditData(activePlan);
     });
     this.props.handleRecordVerifyState('dentalRecord');
   }

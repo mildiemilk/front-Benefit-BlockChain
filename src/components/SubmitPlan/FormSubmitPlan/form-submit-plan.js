@@ -18,7 +18,7 @@ class FormSubmitPlan extends Component {
     planName: PropTypes.string.isRequired,
     employeeOfPlan: PropTypes.string.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     btnCancle: PropTypes.bool,
     handleClose: PropTypes.func,
   }
@@ -33,7 +33,7 @@ class FormSubmitPlan extends Component {
   }
 
   handleClick = () => {
-    const { planName, employeeOfPlan } = this.props;
+    const { planName, employeeOfPlan, activePlan, planList } = this.props;
     const numberOfPlan = parseInt(employeeOfPlan, 10);
     if (this.props.activePlan === -1) {
       const employeeOfPlan = numberOfPlan;
@@ -44,11 +44,11 @@ class FormSubmitPlan extends Component {
     } else {
       editPlan(
         { planName, employeeOfPlan },
-        this.props.planList[this.props.activePlan].planId,
+        planList[activePlan].planId,
         'profilePlan',
       )
       .then(() => {
-        this.props.handleUpdateData();
+        this.props.handleUpdateEditData(activePlan);
       });
     }
   }

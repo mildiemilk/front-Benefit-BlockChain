@@ -16,7 +16,7 @@ class Download extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      step: 5,
+      step: 4,
       file: null,
       filePreviewUrl: '',
       isComplete: false,

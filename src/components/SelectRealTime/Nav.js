@@ -39,10 +39,16 @@ class NavSelectRealTime extends Component {
           <div className="large-4 columns">
             <EmpolyeeChart
               summaryGroup={this.props.summaryGroup}
+              width={186}
+              height={200}
             />
           </div>
           <div className="large-4 columns">
-            <PlanChart summaryBenefitPlan={this.props.summaryBenefitPlan} />
+            <PlanChart
+              summaryBenefitPlan={this.props.summaryBenefitPlan}
+              width={186}
+              height={200}
+            />
           </div>
           <div className="large-4 columns">
             <Box>

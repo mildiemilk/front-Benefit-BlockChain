@@ -21,7 +21,7 @@ class Life extends Component {
     handleRecordVerifyState: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     activePlan: PropTypes.string.isRequired,
     setPlan: PropTypes.string.isRequired,
     reset: PropTypes.string.isRequired,
@@ -63,15 +63,15 @@ class Life extends Component {
   }
 
   handleClick = () => {
-    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed } = this.props;
+    const { lifePerYear, lifeTimeOfSalary, lifeNotExceed, activePlan, planList } = this.props;
     this.props.handleRecordVerifyState('lifeRecord');
     editPlan(
       { lifePerYear, lifeTimeOfSalary, lifeNotExceed },
-      this.props.planList[this.props.activePlan].planId,
+      planList[activePlan].planId,
       'life',
     )
     .then(() => {
-      this.props.handleUpdateData();
+      this.props.handleUpdateEditData(activePlan);
     });
   }
 

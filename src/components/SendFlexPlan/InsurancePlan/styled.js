@@ -6,7 +6,9 @@ height: 60px;
 border-radius: 5px;
 background-color: #eaeaea;
 border: solid 1px rgba(151, 151, 151, 0.39);
-padding: 8% 8%;
+display: flex;
+align-items: center;
+padding-left: 10px;
 `;
 
 export const ListBox = styled.div`

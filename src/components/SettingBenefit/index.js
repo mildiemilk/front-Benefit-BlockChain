@@ -307,6 +307,7 @@ class SettingBenefit extends Component {
               health={this.state.health}
               expense={this.state.expense}
               handleSave={''}
+              width="80%"
             />
             : <Blog>
               <BlogImg onClick={this.handleAddPlan}>

@@ -35,6 +35,7 @@ class FormModal extends Component {
     employeeOfPlan: PropTypes.string.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -60,6 +61,7 @@ class FormModal extends Component {
       >
         <ModalContents>
           <FormSubmitPlan
+            handleUpdateEditData={this.props.handleUpdateEditData}
             handleClose={this.handleClose}
             planList={this.props.planList}
             handleUpdateData={this.props.handleUpdateData}

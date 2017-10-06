@@ -29,7 +29,7 @@ const Inputs = styled(Input) `
       height: 46px;
       margin-top: 14px;
       margin-left: 12px;
-      width: 80%;
+      width: ${props => props.width};
       color: transparent;
       color: transparent;
     }
@@ -62,10 +62,12 @@ class SettingPlan extends Component {
     expense: PropTypes.number.isRequired,
     handleSave: PropTypes.string.isRequired,
     isReadOnly: PropTypes.bool,
+    width: PropTypes.number,
   }
   static defaultProps = {
     handleChange: '',
     isReadOnly: false,
+    width: '',
   }
   constructor(props) {
     super(props);
@@ -175,6 +177,7 @@ class SettingPlan extends Component {
                   </div>
                   { isHealth
                   ? <Inputs
+                    width={this.props.width}
                     required
                     type="number"
                     name="health"
@@ -184,6 +187,7 @@ class SettingPlan extends Component {
                     onChange={handleChange}
                   />
                   : <Inputs
+                    width={this.props.width}
                     type="number"
                     name="health"
                     value=""
@@ -221,6 +225,7 @@ class SettingPlan extends Component {
                   </div>
                   { isExpense
                   ? <Inputs
+                    width={this.props.width}
                     required
                     type="number"
                     name="expense"
@@ -230,6 +235,7 @@ class SettingPlan extends Component {
                     onChange={handleChange}
                   />
                   : <Inputs
+                    width={this.props.width}
                     type="number"
                     name="expense"
                     value=""

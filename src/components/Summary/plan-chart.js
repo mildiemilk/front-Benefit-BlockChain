@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, Cell } from 'recharts';
+import { DivChart } from './styled';
 
 const graphColor = ['#e9a62a', '#fcc928', '#e28329', '#f5e054'];
 
@@ -10,6 +11,10 @@ const data = [{ name: 'Group A', value: 400 }, { name: 'Group B', value: 300 },
 class PlanChart extends Component {
   static propTypes = {
     summaryBenefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    cx: PropTypes.string.isRequired,
+    cy: PropTypes.string.isRequired,
   }
   constructor() {
     super();
@@ -62,6 +67,7 @@ class PlanChart extends Component {
   render() {
     console.log('props--employee', this.props);
     // const { summaryBenefitPlan } = this.props;
+    const { width, height, cx, cy } = this.props;
     return (
       <div>
         <div className="chart-main-box">
@@ -70,25 +76,25 @@ class PlanChart extends Component {
           </div>
           <div className="row">
             <div className="large-6 columns">
-              <div className="chart-text-style">
-                <p className="chart-radial-sum">{this.sumAllEmployee()}</p>
-                <p>คน</p>
-              </div>
-              <PieChart width={300} height={200}>
-                <Pie
-                  data={this.renderGroup()}
-                  innerRadius={40}
-                  outerRadius={65}
-                  cy={90}
-                  cx={100}
-                  fill="#8884d8"
-                >
-                  {
-                    data.map((entry, index) =>
-                      <Cell fill={graphColor[index % graphColor.length]} />)
-                  }
-                </Pie>
-              </PieChart>
+              <DivChart width={width} height={height} >
+                <div>{this.sumAllEmployee()}</div>
+                <div className="chart-radial-sum">คน</div>
+                <PieChart width={width} height={height}>
+                  <Pie
+                    data={this.renderGroup()}
+                    innerRadius={60}
+                    outerRadius={80}
+                    cy={cx}
+                    cx={cy}
+                    fill="#8884d8"
+                  >
+                    {
+                      data.map((entry, index) =>
+                        <Cell fill={graphColor[index % graphColor.length]} />)
+                    }
+                  </Pie>
+                </PieChart>
+              </DivChart>
             </div>
             <div className="large-6 columns">
               <div className="chart-list">{this.renderList()}</div>

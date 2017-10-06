@@ -155,6 +155,63 @@ class SubmitPlan extends Component {
         ipdCoPayMixPercentage: planList[val].ipdCoPayMixPercentage,
         ipdCoPayMixNotExceed: planList[val].ipdCoPayMixNotExceed,
         ipdCoPayMixYear: planList[val].ipdCoPayMixYear,
+        newActivePlan: -1,
+      });
+    } else if (newProps.planList.length === 0) {
+      this.setState({
+        step: 1,
+        activePlan: -1,
+        nextPage: false,
+        canGoToNextPage: true,
+        warningModal: false,
+        openModalForm: false,
+        newPlan: false,
+        canBuildNewPlan: true,
+        planName: '',
+        employeeOfPlan: '',
+        ipdType: null,
+        ipdLumsumPerYear: null,
+        ipdLumsumPerTime: null,
+        ipdLumsumTimeNotExceedPerYear: null,
+        rbLumsumRoomPerNight: null,
+        rbLumsumNigthNotExceedPerYear: null,
+        rbLumsumPayNotExceedPerNight: null,
+        rbLumsumPayNotExceedPerYear: null,
+        rbSchedulePatient: null,
+        rbScheduleIntensiveCarePatient: null,
+        rbScheduleDoctor: null,
+        rbScheduleSurgerySchedule: null,
+        rbScheduleSurgeryNonSchedule: null,
+        rbScheduleService: null,
+        rbScheduleSmallSurgery: null,
+        rbScheduleAdviser: null,
+        rbScheduleAmbulance: null,
+        rbScheduleAccident: null,
+        rbScheduleTreatment: null,
+        rbScheduleTransplant: null,
+        ipdCoPay: false,
+        ipdCoPayQuota: null,
+        ipdCoPayDeductable: null,
+        ipdCoPayMixPercentage: null,
+        ipdCoPayMixNotExceed: null,
+        ipdCoPayMixYear: null,
+        opdPerYear: null,
+        opdPerTime: null,
+        opdTimeNotExceedPerYear: null,
+        opdCoPay: false,
+        opdCoPayQuota: null,
+        opdCoPayDeductable: null,
+        opdCoPayMixPercentage: null,
+        opdCoPayMixNotExceed: null,
+        opdCoPayMixYear: null,
+        dentalPerYear: null,
+        lifePerYear: null,
+        lifeTimeOfSalary: null,
+        lifeNotExceed: null,
+        val: this.props.match.params.index,
+        checkUpdate: false,
+        newActivePlan: -1,
+        showModalConfirm: false,
       });
     } else {
       const val = this.props.match.params.index;
@@ -282,6 +339,12 @@ class SubmitPlan extends Component {
   handleEdit = e => {
     this.handlePlan(e.target.id);
   }
+
+  handleUpdateEditData = newActivePlan =>
+    this.setState({
+      checkUpdate: true,
+      newActivePlan,
+    });
 
   handleUpdateData = () => this.setState({ checkUpdate: true });
 
@@ -488,6 +551,7 @@ class SubmitPlan extends Component {
               </div>
               <div className="large-3 columns submit-plan-delete-padding-left">
                 <MenuPlan
+                  handleUpdateEditData={this.handleUpdateEditData}
                   activePlan={this.state.activePlan}
                   handlePlan={this.handlePlan}
                   handleNewPlan={this.handleNewPlan}
@@ -509,6 +573,7 @@ class SubmitPlan extends Component {
                 {this.props.havePlan
                   ? <div>
                     <FormSubmitPlan
+                      handleUpdateEditData={this.handleUpdateEditData}
                       activePlan={this.state.activePlan}
                       handlePlan={this.handlePlan}
                       handleChange={this.handleChange}
@@ -520,7 +585,7 @@ class SubmitPlan extends Component {
                     />
                     <div className="fillBox">
                       <AllPlan
-                        handleUpdateData={this.handleUpdateData}
+                        handleUpdateEditData={this.handleUpdateEditData}
                         planList={this.props.planList}
                         activePlan={this.state.activePlan}
                         handlePlan={this.handlePlan}
@@ -626,7 +691,6 @@ class SubmitPlan extends Component {
                       <Icon
                         name="calendar plus"
                         size="huge"
-                        style={{ marginLeft: '9%' }}
                         onClick={this.handleNewPlan}
                       />
                       <p className="submit-plan-text-new-plan">สร้างแผนใหม่</p>

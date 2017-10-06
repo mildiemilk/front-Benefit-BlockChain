@@ -57,7 +57,7 @@ class IPD extends Component {
     ipdCoPayMixYear: PropTypes.string.isRequired,
     // editPlan: PropTypes.func.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     handleNextPlan: PropTypes.func.isRequired,
   }
   static defaultProps = {
@@ -115,6 +115,8 @@ class IPD extends Component {
       ipdCoPayMixPercentage,
       ipdCoPayMixNotExceed,
       ipdCoPayMixYear,
+      planList,
+      activePlan,
     } = this.props;
     editPlan(
       {
@@ -145,11 +147,11 @@ class IPD extends Component {
         ipdCoPayMixNotExceed,
         ipdCoPayMixYear,
       },
-      this.props.planList[this.props.activePlan].planId,
+      planList[activePlan].planId,
       'ipd',
     )
     .then(() => {
-      this.props.handleUpdateData();
+      this.props.handleUpdateEditData(activePlan);
     });
   }
 

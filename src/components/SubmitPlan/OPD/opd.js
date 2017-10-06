@@ -14,7 +14,7 @@ const Checkboxs = styled(Checkbox)`
 `;
 class OPD extends Component {
   static propTypes = {
-    handleUpdateData: PropTypes.func.isRequired,
+    handleUpdateEditData: PropTypes.func.isRequired,
     handleVerifyState: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     handleRecordVerifyState: PropTypes.func.isRequired,
@@ -74,6 +74,8 @@ class OPD extends Component {
       opdCoPayMixPercentage,
       opdCoPayMixNotExceed,
       opdCoPayMixYear,
+      planList,
+      activePlan,
     } = this.props;
     editPlan(
       {
@@ -87,11 +89,11 @@ class OPD extends Component {
         opdCoPayMixNotExceed,
         opdCoPayMixYear,
       },
-      this.props.planList[this.props.activePlan].planId,
+      planList[activePlan].planId,
       'opd',
     )
     .then(() => {
-      this.props.handleUpdateData();
+      this.props.handleUpdateEditData(activePlan);
     });
     this.props.handleRecordVerifyState('opdRecord');
   }

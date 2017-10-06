@@ -11,43 +11,6 @@ import IPD from '../../../../assets/employee/insurance_ipd.png';
 const boxHide = 'insurance-box';
 const boxShow = 'insurance-box show-description';
 
-const Description = () => (
-  <ul className="insurance-box-description">
-    <li>
-      <div className="insurance-box-description-left">Lumsum</div>
-      <div className="insurance-box-description-right">1,200 บาท/ปี</div>
-    </li>
-    <li>
-      <div className="insurance-box-description-left">Co-Pay</div>
-      <div className="insurance-box-description-right" />
-    </li>
-    <li className="sub-description">
-      <div className="insurance-box-description-left">Quota Share</div>
-      <div className="insurance-box-description-right">10%</div>
-    </li>
-    <li>
-      <div className="insurance-box-description-left">Detail 1</div>
-      <div className="insurance-box-description-right">400บาท</div>
-    </li>
-    <li>
-      <div className="insurance-box-description-left">Detail 2</div>
-      <div className="insurance-box-description-right" />
-    </li>
-    <li className="sub-description">
-      <div className="insurance-box-description-left">Detail 2.1</div>
-      <div className="insurance-box-description-right">200 บาท/ครั้ง</div>
-    </li>
-    <li className="sub-description">
-      <div className="insurance-box-description-left">Detail 2.2</div>
-      <div className="insurance-box-description-right">500 บาท</div>
-    </li>
-    <li>
-      <div className="insurance-box-description-left">Detail 3</div>
-      <div className="insurance-box-description-right">300 บาท</div>
-    </li>
-  </ul>
-);
-
 class InsuranceDetail extends Component {
   static propTypes = {
     handleClickBack: PropTypes.func.isRequired,
@@ -57,6 +20,40 @@ class InsuranceDetail extends Component {
   }
   constructor(props) {
     super(props);
+    const { data, plan } = props;
+    const check = data.allBenefit[plan].benefitPlan.plan.planId;
+    let showIPD = false;
+    let showOPD = false;
+    let showLife = false;
+    let showDental = false;
+    let showDescriptionIPD = false;
+    let showDescriptionOPD = false;
+    if (check.ipdLumsumPerYear) {
+      showIPD = true;
+    } else if (check.ipdLumsumPerTime) {
+      showIPD = true;
+      showDescriptionIPD = true;
+    } else if (check.rbLumsumNigthNotExceedPerYear) {
+      showIPD = true;
+      showDescriptionIPD = true;
+    } else if (check.rbSchedulePatient) {
+      showIPD = true;
+      showDescriptionIPD = true;
+    }
+    if (check.opdPerYear) {
+      showOPD = true;
+    } else if (check.opdPerTime) {
+      showOPD = true;
+      showDescriptionOPD = true;
+    }
+    if (check.lifePerYear) {
+      showLife = true;
+    } else if (check.lifeTimeOfSalary) {
+      showLife = true;
+    }
+    if (check.dentalPerYear) {
+      showDental = true;
+    }
     this.state = {
       modal: false,
       life: 'insurance-box',
@@ -71,6 +68,12 @@ class InsuranceDetail extends Component {
       ipd: 'insurance-box',
       ipdPlus: 'insurance-box-title-show small-2 columns',
       ipdRotatePlus: 'insurance-box-title-hide small-2 columns',
+      showIPD,
+      showOPD,
+      showLife,
+      showDental,
+      showDescriptionIPD,
+      showDescriptionOPD,
     };
   }
 
@@ -152,20 +155,137 @@ class InsuranceDetail extends Component {
     return <span />;
   }
 
+  handleShowDescription = item => (
+    <ul className="insurance-box-description">
+      {item === 'opd' ? this.handleShowDescriptionOPD() : <div />}
+      {item === 'ipd' ? this.handleShowDescriptionIPD() : <di />}
+    </ul>
+  );
+
+  handleShowDescriptionOPD = () => {
+    const { data, plan } = this.props;
+    const opd = data.allBenefit[plan].benefitPlan.plan.planId;
+    if (opd.opdPerTime) {
+      return (
+        <li className="insurance-box-description-text">
+          ปีละไม่เกิน {opd.opdTimeNotExceedPerYear.toLocaleString()} บาท
+        </li>
+      );
+    }
+    return <div />;
+  }
+
+  handleShowDescriptionIPD = () => {
+    const { data, plan } = this.props;
+    const ipd = data.allBenefit[plan].benefitPlan.plan.planId;
+    if (ipd.ipdLumsumPerTime) {
+      return (
+        <li className="insurance-box-description-text">
+          ปีละไม่เกิน {ipd.ipdLumsumTimeNotExceedPerYear.toLocaleString()} ครั้ง
+          </li>
+      );
+    } else if (ipd.rbLumsumNigthNotExceedPerYear) {
+      return (
+        <li className="insurance-box-description-text">
+          ค่ารักษาพยาบาลสูงสุดไม่เกิน {ipd.rbLumsumPayNotExceedPerNight.toLocaleString()} บาท/ปี
+        </li>
+      );
+    } else if (ipd.rbSchedulePatient) {
+      let sum = 0;
+      if (ipd.rbScheduleService) {
+        sum += ipd.rbScheduleService;
+      }
+      if (ipd.rbScheduleSmallSurgery) {
+        sum += ipd.rbScheduleSmallSurgery;
+      }
+      if (ipd.rbScheduleAdviser) {
+        sum += ipd.rbScheduleAdviser;
+      }
+      if (ipd.rbScheduleAmbulance) {
+        sum += ipd.rbScheduleAmbulance;
+      }
+      if (ipd.rbScheduleAccident) {
+        sum += ipd.rbScheduleAccident;
+      }
+      if (ipd.rbScheduleTreatment) {
+        sum += ipd.rbScheduleTreatment;
+      }
+      return (
+        <div>
+          <li className="insurance-box-description-text">
+            ค่าแพทย์เยี่ยมไข้ {ipd.rbScheduleDoctor.toLocaleString()} บาท/คืน
+          </li>
+          <li className="insurance-box-description-text">
+            ค่ารักษาพยาบาล {sum.toLocaleString()} บาท
+          </li>
+        </div>
+      );
+    }
+    return <div />;
+  }
+
+  handleShowIPD = () => {
+    const { data, plan } = this.props;
+    const ipd = data.allBenefit[plan].benefitPlan.plan.planId;
+    if (ipd.ipdLumsumPerYear) {
+      return `สูงสุดไม่เกิน ${ipd.ipdLumsumPerYear.toLocaleString()} บาท/ปี`;
+    } else if (ipd.ipdLumsumPerTime) {
+      return `สูงสุดไม่เกิน ${ipd.ipdLumsumPerTime.toLocaleString()} บาท/ครั้ง`;
+    } else if (ipd.rbLumsumRoomPerNight) {
+      return `ค่าห้องและอาหารไม่เกิน ${ipd.rbLumsumRoomPerNight.toLocaleString()} บาท/คืน`;
+    } else if (ipd.rbSchedulePatient) {
+      return `สูงสุดไม่เกิน ${ipd.rbSchedulePatient.toLocaleString()} บาท/คืน`;
+    }
+    return <div />;
+  }
+
+  handleShowLife = () => {
+    const { data, plan } = this.props;
+    const life = data.allBenefit[plan].benefitPlan.plan.planId;
+    if (life.lifePerYear) {
+      return `จำนวนเงิน ${life.lifePerYear.toLocaleString()} บาท`;
+    } else if (life.lifeTimeOfSalary) {
+      return `คูณอัตราเงินเดือน ${life.lifeTimeOfSalary.toLocaleString()} เท่า`;
+    }
+    return <div />;
+  }
+
+  handleShowDental = () => {
+    const { data, plan } = this.props;
+    const dental = data.allBenefit[plan].benefitPlan.plan.planId;
+    if (dental.dentalPerYear) {
+      return `ใช้บริการได้ครั้งละ ${dental.dentalPerYear.toLocaleString()} บาท`;
+    }
+    return <div />;
+  }
+
+  handleShowOPD = () => {
+    const { data, plan } = this.props;
+    const opd = data.allBenefit[plan].benefitPlan.plan.planId;
+    if (opd.opdPerYear) {
+      return `สูงสุดไม่เกิน ${opd.opdPerYear.toLocaleString()} บาท/ปี`;
+    } else if (opd.opdPerTime) {
+      return `สูงสุดไม่เกิน ${opd.opdPerTime.toLocaleString()} บาท/ครั้ง`;
+    }
+    return <div />;
+  }
+
   render() {
     const {
       life,
-      lifePlus,
-      lifeRotatePlus,
       opd,
       opdPlus,
       opdRotatePlus,
       dental,
-      dentalPlus,
-      dentalRotatePlus,
       ipd,
       ipdPlus,
       ipdRotatePlus,
+      showIPD,
+      showOPD,
+      showLife,
+      showDental,
+      showDescriptionOPD,
+      showDescriptionIPD,
     } = this.state;
     const { plan } = this.props;
     const alt = plan + 1;
@@ -173,110 +293,133 @@ class InsuranceDetail extends Component {
       <div>
         <span className="insurance-header">แผนประกันภัย</span>
         { this.handleShowSelectPlan() }
-        <div className={life}>
-          <div className="insurance-box-header">
-            <img
-              className="insurance-info"
-              src={Info}
-              alt={alt}
-              onClick={this.handleOpenModal}
-              role="button"
-              aria-hidden
-            />
-            <img className="insurance-box-header-img" src={Life} alt={alt} />
-            <span className="insurance-box-header-text">LIFE</span>
+        {
+          showLife
+          ? <div className={life}>
+            <div className="insurance-box-header">
+              <img
+                className="insurance-info"
+                src={Info}
+                alt={alt}
+                onClick={this.handleOpenModal}
+                role="button"
+                aria-hidden
+              />
+              <img className="insurance-box-header-img" src={Life} alt={alt} />
+              <span className="insurance-box-header-text">LIFE</span>
+            </div>
+            <div className="insurance-box-title">
+              <div>
+                <span className="insurance-box-title-text small-10 columns">
+                  {this.handleShowLife()}
+                </span>
+              </div>
+            </div>
+            {life === boxShow ? this.handleShowDescription() : <div />}
           </div>
-          <div className="insurance-box-title">
-            <div onClick={this.handleClickLife} role="button" aria-hidden>
-              <span className="insurance-box-title-text small-10 columns">
-                วงเงินทั้งหมด 1,200 บาท/ปี
-              </span>
-              <span className={lifePlus}><Icon name="plus" /></span>
-              <span className={lifeRotatePlus}>
-                <Icon className="insurance-rotate-plus" name="plus" />
-              </span>
+          : <div />
+        }
+        {
+          showOPD
+          ? <div className={opd}>
+            <div className="insurance-box-header">
+              <img
+                className="insurance-info"
+                src={Info}
+                alt={alt}
+                onClick={this.handleOpenModal}
+                role="button"
+                aria-hidden
+              />
+              <img className="insurance-box-header-img" src={OPD} alt={alt} />
+              <span className="insurance-box-header-text">OPD</span>
+            </div>
+            <div className="insurance-box-title">
+              <div onClick={showDescriptionOPD ? this.handleClickOPD : ''} role="button" aria-hidden>
+                <span className="insurance-box-title-text small-10 columns">
+                  {this.handleShowOPD()}
+                </span>
+                {
+                  showDescriptionOPD
+                  ? <span className={opdPlus}><Icon name="plus" /></span>
+                  : <span />
+                }
+                {
+                  showDescriptionOPD
+                  ? <span className={opdRotatePlus}>
+                    <Icon className="insurance-rotate-plus" name="plus" />
+                  </span>
+                  : <span />
+                }
+              </div>
+            </div>
+            {opd === boxShow ? this.handleShowDescription('opd') : <div />}
+          </div>
+          : <div />
+        }
+        {
+          showDental
+          ? <div className={dental}>
+            <div className="insurance-box-header">
+              <img
+                className="insurance-info"
+                src={Info}
+                alt={alt}
+                onClick={this.handleOpenModal}
+                role="button"
+                aria-hidden
+              />
+              <img className="insurance-box-header-img" src={Dental} alt={alt} />
+              <span className="insurance-box-header-text">Dental</span>
+            </div>
+            <div className="insurance-box-title">
+              <div>
+                <span className="insurance-box-title-text small-10 columns">
+                  {this.handleShowDental()}
+                </span>
+              </div>
             </div>
           </div>
-          {life === boxShow ? Description() : <div />}
-        </div>
-        <div className={opd}>
-          <div className="insurance-box-header">
-            <img
-              className="insurance-info"
-              src={Info}
-              alt={alt}
-              onClick={this.handleOpenModal}
-              role="button"
-              aria-hidden
-            />
-            <img className="insurance-box-header-img" src={OPD} alt={alt} />
-            <span className="insurance-box-header-text">OPD</span>
-          </div>
-          <div className="insurance-box-title">
-            <div onClick={this.handleClickOPD} role="button" aria-hidden>
-              <span className="insurance-box-title-text small-10 columns">
-                ค่ารักษาครั้งละ 2,000 บาท
-              </span>
-              <span className={opdPlus}><Icon name="plus" /></span>
-              <span className={opdRotatePlus}>
-                <Icon className="insurance-rotate-plus" name="plus" />
-              </span>
+          : <div />
+        }
+        {
+          showIPD
+          ? <div className={ipd}>
+            <div className="insurance-box-header">
+              <img
+                className="insurance-info"
+                src={Info}
+                alt={alt}
+                onClick={this.handleOpenModal}
+                role="button"
+                aria-hidden
+              />
+              <img className="insurance-box-header-img" src={IPD} alt={alt} />
+              <span className="insurance-box-header-text">IPD</span>
             </div>
-          </div>
-          {opd === boxShow ? Description() : <div />}
-        </div>
-        <div className={dental}>
-          <div className="insurance-box-header">
-            <img
-              className="insurance-info"
-              src={Info}
-              alt={alt}
-              onClick={this.handleOpenModal}
-              role="button"
-              aria-hidden
-            />
-            <img className="insurance-box-header-img" src={Dental} alt={alt} />
-            <span className="insurance-box-header-text">Dental</span>
-          </div>
-          <div className="insurance-box-title">
-            <div onClick={this.handleClickDental} role="button" aria-hidden>
-              <span className="insurance-box-title-text small-10 columns">
-                ค่ารักษา 4,000 บาท/ปี
-              </span>
-              <span className={dentalPlus}><Icon name="plus" /></span>
-              <span className={dentalRotatePlus}>
-                <Icon className="insurance-rotate-plus" name="plus" />
-              </span>
+            <div className="insurance-box-title">
+              <div onClick={showDescriptionIPD ? this.handleClickIPD : ''} role="button" aria-hidden>
+                <span className="insurance-box-title-text small-10 columns">
+                  {this.handleShowIPD()}
+                </span>
+                {
+                  showDescriptionIPD
+                  ? <span className={ipdPlus}><Icon name="plus" /></span>
+                  : <span />
+                }
+                {
+                  showDescriptionIPD
+                  ? <span className={ipdRotatePlus}>
+                    <Icon className="insurance-rotate-plus" name="plus" />
+                  </span>
+                  : <span />
+                }
+              </div>
             </div>
+            {ipd === boxShow ? this.handleShowDescription('ipd') : <div />}
           </div>
-          {dental === boxShow ? Description() : <div />}
-        </div>
-        <div className={ipd}>
-          <div className="insurance-box-header">
-            <img
-              className="insurance-info"
-              src={Info}
-              alt={alt}
-              onClick={this.handleOpenModal}
-              role="button"
-              aria-hidden
-            />
-            <img className="insurance-box-header-img" src={IPD} alt={alt} />
-            <span className="insurance-box-header-text">IPD</span>
-          </div>
-          <div className="insurance-box-title">
-            <div onClick={this.handleClickIPD} role="button" aria-hidden>
-              <span className="insurance-box-title-text small-10 columns">
-                คุ้มครองสูงสุด 20,000 บาท
-              </span>
-              <span className={ipdPlus}><Icon name="plus" /></span>
-              <span className={ipdRotatePlus}>
-                <Icon className="insurance-rotate-plus" name="plus" />
-              </span>
-            </div>
-          </div>
-          {ipd === boxShow ? Description() : <div />}
-        </div>
+          : <div />
+        }
         <span
           className="xten-back-btn"
           onClick={this.props.handleClickBack}

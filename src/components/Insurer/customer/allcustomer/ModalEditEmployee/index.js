@@ -63,6 +63,10 @@ class ModalEditEmployee extends Component {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
+    // const id = e.target.id;
+    // const employees = this.state.customerEmployee.employees;
+    // const summary = this.state.summary;
+    // const addEmployee = oldEmp.employees[id].detail[name];
     if (value !== '') {
       this.setState({ [name]: value });
     }
@@ -144,7 +148,7 @@ class ModalEditEmployee extends Component {
                 <TextCenter>กรุณากรอกเลขกรมธรรม์</TextCenter>
               </div>
             </div>
-            <form name="policyNumber" id={this.props.index} onSubmit={e => this.props.handleSubmitPolicy(e, this.props.employeeId, this.props.index)}><div className="quotation-input-div">
+            <form name={this.props.index} id="policyNumber" onSubmit={e => this.props.handleSubmitPolicy(e, this.props.employeeId)}><div className="quotation-input-div">
               <div className="row">
                 <div className="large-6 columns">
                   <input className="input-data" value={memberNumber} name="memberNumber" id={this.props.index} onChange={e => this.handleDataChange(e)} placeholder="กรุณากรอกเลขสมาชิก" />

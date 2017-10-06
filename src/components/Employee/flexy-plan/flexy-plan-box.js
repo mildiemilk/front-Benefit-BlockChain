@@ -38,10 +38,10 @@ class FlexyPlanBox extends Component {
       return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.ipdLumsumPerYear.toLocaleString()} บาท/ปี</li>;
     } else if (ipd.ipdLumsumPerTime) {
       return <li>IPD คุ้มครองสูงสุดไม่เกิน {ipd.ipdLumsumPerTime.toLocaleString()} บาท/ครั้ง</li>;
-    } else if (ipd.rbLumsumNigthNotExceedPerYear) {
+    } else if (ipd.rbLumsumRoomPerNight) {
       return (
         <li>
-          IPD คุ้มครองสูงสุดไม่เกิน {ipd.rbLumsumNigthNotExceedPerYear.toLocaleString()} บาท/คืน
+          IPD คุ้มครองสูงสุดไม่เกิน {ipd.rbLumsumRoomPerNight.toLocaleString()} บาท/คืน
         </li>
       );
     } else if (ipd.rbSchedulePatient) {
@@ -113,8 +113,6 @@ class FlexyPlanBox extends Component {
               <li>ผลประโยชน์และความคุ้มครอง</li>
               {this.handleShowIPD()}
               {this.handleShowOPD()}
-              {this.handleShowDental()}
-              {this.handleShowLife()}
             </ul>
           </div>
         </div>

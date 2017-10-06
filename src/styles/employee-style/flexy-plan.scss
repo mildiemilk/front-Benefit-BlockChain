@@ -173,9 +173,9 @@
     line-height: 40px;
   }
   .flexy-text-tail {
-    padding: 0;
+    // padding: 0;
     list-style: none;
-    margin-left: 33px;
+    padding: 0 33px;
     li:first-child {
       font-family: Kanit;
       font-size: 12px;

@@ -40,7 +40,7 @@ class employeeList extends Component {
     this.state = {
       search: '',
       minList: 0,
-      maxList: 10,
+      maxList: 20,
       pageNumber: 1,
       data: props.data,
       checkDelete: false,
@@ -327,14 +327,14 @@ class employeeList extends Component {
               </div>
             </div>
             <div className="large-4 columns">
-              <div className="list-box-in-list group">
+              <div className="list-box group">
                 <p>{tag}</p>
               </div>
             </div>
           </div>
           <div className="large-2 columns">
             <div className="large-6 columns">
-              <div className="list-box-in-list group">
+              <div className="list-box group">
                 {element.detail.effectiveDate === '-'
                 ? element.detail.effectiveDate
                 : moment(element.detail.effectiveDate)
@@ -343,7 +343,7 @@ class employeeList extends Component {
               </div>
             </div>
             <div className="large-6 columns">
-              <div className="list-box-in-list">
+              <div className="list-box-in-list list-box-in-list-action">
                 <div className="edit-employee-list">
                   <Link to={`/addemployee/${index}`}>
                     <Icon name="search" />
@@ -719,7 +719,7 @@ class employeeList extends Component {
           </div>
           {this.renderListEmployee(this.state.data)}
         </div>
-        <div className="list-change-level">
+        {/* <div className="list-change-level">
           <div
             className="list-change-level-box"
             onClick={this.minusLimitChange}
@@ -738,8 +738,8 @@ class employeeList extends Component {
             aria-hidden
           >
             <Icon name="caret right" size="large" />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     );
   }

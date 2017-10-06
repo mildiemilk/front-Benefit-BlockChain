@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Checkbox, Form, Radio, List, button, Icon } from 'semantic-ui-react';
 import { PopupView } from '../Bidding/styled';
 import { Icons } from './styled';
-import '../../styles/employee-benefits.scss';
-import '../../styles/popup-color.scss';
 import SettingBenefitModal from './setting-benefit-modal';
 
 class SelectOptionPlan extends Component {
@@ -53,7 +51,10 @@ class SelectOptionPlan extends Component {
 
   isCheck = planId => {
     const { selectPlan } = this.props;
-    return selectPlan.indexOf(planId) !== -1;
+    if (selectPlan !== null) {
+      return selectPlan.indexOf(planId) !== -1;
+    }
+    return false;
   }
 
   renderList = list => {
@@ -86,7 +87,7 @@ class SelectOptionPlan extends Component {
             </div>
           </div>
           <div className={this.props.columnsLenght}>
-            <div className="plan-box">
+            <div className="plan-box clearfix">
               {element.benefitPlanName}
               <PopupView
                 trigger={

@@ -5,6 +5,9 @@
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 0 4px 0 rgba(124, 123, 123, 0.5);
+  .recharts-wrapper{
+    position: absolute !important;
+  }
 }
 .chart-text-style{
   position: absolute;
@@ -23,8 +26,8 @@
   font-weight: 500;
   text-align: left;
   color: #4a4a4a;
-  padding-top: 2.5%;
-   padding-left: 5%;
+  padding-top: 16px;
+  padding-left: 16px;
 }
 .chart-list {
   margin-top: 40px;
@@ -57,7 +60,7 @@
 }
 
 .chart-radial-sum{
-  font-size: 32px;
+  font-size: 15px;
   margin-bottom: 0px;
 }
 

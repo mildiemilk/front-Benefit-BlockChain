@@ -98,10 +98,18 @@ class Piechart extends Component {
       <div>
         <div className="row">
           <div className="large-6 columns">
-            <EmpolyeeChart summaryGroup={this.props.summaryGroup} />
+            <EmpolyeeChart
+              summaryGroup={this.props.summaryGroup}
+              width={265}
+              height={200}
+            />
           </div>
           <div className="large-6 columns">
-            <PlanChart summaryBenefitPlan={this.props.summaryBenefitPlan} />
+            <PlanChart
+              summaryBenefitPlan={this.props.summaryBenefitPlan}
+              width={265}
+              height={200}
+            />
           </div>
         </div>
         <div className="table-chart-box">
@@ -143,7 +151,7 @@ class Piechart extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="large-3 large-offset-9 columns">
+          <div className="large-2 large-offset-9 columns">
             <ModalConfirmPassword
               handlePost={this.handlePost}
               handleChange={this.handleChange}

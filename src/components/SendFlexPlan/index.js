@@ -75,22 +75,26 @@ class SendFlexPlan extends Component {
     this.props.setCompleteStep(passwordToConfirm, step);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
-  // renderPlan = () => {
-  //   console.log('template', this.state.templatePlan);
-  //   console.log('bnefitPlan', this.props.benefitPlan);
-  //   const { benefitPlan } = this.props;
-  //   const { templatePlan } = this.state;
-  //   const planList = benefitPlan;
-  //   if (planList !== undefined && planList.length >= 1) {
-  //     const newplan =
-  //     planList.filter(plan => templatePlan.map(
-  //       option =>
-            // option.plan.plan._id === plan.benefitPlan.plan.planId._id).indexOf(true) !== -1);
-  //     console.log('newePlan', newplan);
-  //     return newplan;
-  //   }
-  //   return '';
-  // }
+
+  renderPlan = () => {
+    console.log('template', this.state.templatePlan);
+    console.log('bnefitPlan===>', this.props.benefitPlan);
+    const { benefitPlan } = this.props;
+    const { templatePlan } = this.state;
+    const planList = benefitPlan;
+    console.log('planList', planList);
+    if (planList !== undefined && planList.length >= 1) {
+      console.log('ppp=>', planList);
+      console.log('tttt-->', templatePlan);
+      const newplan =
+      templatePlan.filter(plan => planList.map(
+        option =>
+            option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
+      console.log('newePlan', newplan);
+      return newplan;
+    }
+    return '';
+  }
   render() {
     const { completeStep } = this.props;
     if (completeStep) {
@@ -112,7 +116,7 @@ class SendFlexPlan extends Component {
             <Inner>
               {this.state.templatePlan.length >= 1
               ? <InsurancePlan
-                planList={this.state.templatePlan}
+                planList={this.renderPlan()}
               />
               : <div />
               }
@@ -180,7 +184,7 @@ class SendFlexPlan extends Component {
               <DivDownload>
                 <TextUpload>ไฟล์ที่คุณอัพโหลด : {file.filename}</TextUpload>
                 <DetailUpload>กรุณาตรวจสอบข้อมูลพนักงานของคุณที่</DetailUpload>
-                <DetailUpload link>&lsquo;อัพเดทจำนวนพนักงาน&lsquo;</DetailUpload>
+                <Link to="/employeelist"><DetailUpload link>&lsquo;อัพเดทจำนวนพนักงาน&lsquo;</DetailUpload></Link>
               </DivDownload>
             </Inner>
             <List>กรุณาตรวจสอบแผนสิทธิประโยชน์ของคุณ</List>
@@ -198,7 +202,7 @@ class SendFlexPlan extends Component {
             <div className="large-9 columns">
               <BackButton>กลับ</BackButton>
             </div>
-            <div className="large-3 columns">
+            <div className="large-2 end columns">
               <ModalConfirmPassword
                 handlePost={this.handlePost}
                 handleChange={this.handleChange}

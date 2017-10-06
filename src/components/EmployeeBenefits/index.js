@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import '../../styles/employee-benefits.scss';
@@ -45,8 +45,11 @@ class employeeBenefits extends Component {
       verifyChoosePlan: false,
       openWarningModal: false,
       warningMessage: '',
+      openWarningModalSubmit: false,
+      warningMessageSubmit: '',
       step: 5,
       templatePlan: '',
+      redirect: false,
     };
     props.getInsurancePlan();
     props.getGroupBenefit();
@@ -188,7 +191,21 @@ class employeeBenefits extends Component {
       this.props.setGroupBenefit(groupId, detail);
     }
   }
-
+  handleNext = () => {
+    const { groupBenefit } = this.props;
+    console.log('selectplan', this.props.groupBenefit);
+    const check = groupBenefit.findIndex(group => group.type !== null) !== -1;
+    console.log('check', check);
+    if (!check) {
+      this.setState({
+        openWarningModal: true,
+        warningMessage: 'กรุณาจัดแผนสิทธิประโยชน์สำหรับพนักงาน',
+      });
+      return '';
+    }
+    this.setState({ redirect: true });
+    return '';
+  }
   handleCloseModal = () => {
     this.setState({ openModal: false });
   }
@@ -196,7 +213,9 @@ class employeeBenefits extends Component {
   closeWarningModal = () => {
     this.setState({ openWarningModal: false });
   }
-
+  closeWarningModalSubmit = () => {
+    this.setState({ openWarningModalSubmit: false });
+  }
   handleFlexChange = (e, { value }) => {
     this.setState({
       verifyState: false,
@@ -218,9 +237,11 @@ class employeeBenefits extends Component {
   }
 
   render() {
-    console.log('employeename', this.props);
-    console.log('optionPlan===>EmployeeBenefit', this.props.optionPlan);
-    console.log('GroupName index==>', this.props.groupBenefit);
+    const { redirect } = this.state;
+    if (redirect) {
+      this.setState({ redirect: false });
+      return <Redirect to="/sendflexplan" />;
+    }
     return (
       <div>
         <NavBenefit step={this.state.step} />
@@ -231,7 +252,7 @@ class employeeBenefits extends Component {
                 <div className="employeeBenefits-head-text">
                   จัดแผนสิทธิประโยชน์ให้พนักงานแต่ละกลุ่ม
                 </div>
-                <p>กรุณากดที่ชื่อกลุ่มของพนักงานเพื่อทำการจัดแผนสิทธประโยชน์</p>
+                <p>กรุณากดที่ชื่อกลุ่มของพนักงานเพื่อทำการจัดแผนสิทธิประโยชน์</p>
                 <div className="row">
                   <div className="large-3 columns">
                     <MenuTab
@@ -283,6 +304,11 @@ class employeeBenefits extends Component {
               warningMessage={this.state.warningMessage}
               closeWarningModal={this.closeWarningModal}
             />
+            <ModalWarning
+              openWarningModal={this.state.openWarningModalSubmit}
+              warningMessage={this.state.warningMessageSubmit}
+              closeWarningModal={this.closeWarningModalSubmit}
+            />
           </Container>
         </div>
         <div className="row">
@@ -292,9 +318,7 @@ class employeeBenefits extends Component {
             </Link>
           </div>
           <div className="large-3 large-offset-4 columns">
-            <Link to="/sendflexplan">
-              <button className="next-step-button">ต่อไป</button>
-            </Link>
+            <button className="next-step-button" onClick={this.handleNext}>ต่อไป</button>
           </div>
           <div className="large-1 columns" />
         </div>

@@ -37,8 +37,9 @@ export const Plan = styled.div`
   background-color: #f2f2f2;
   border: solid 1px #d9d9d9;
   margin-top: 14px;
-  padding: 10px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 `;
 export const Detail = styled.div`
   padding: 32px;
@@ -55,7 +56,8 @@ export const ButtonDefault = styled.div`
   background-color: #42bc69;
   text-align: center;
   padding-top: 6px;
-  margin-left: 20px;  
+  margin-left: 20px;
+  margin-top: 20px;
   display: inline-block;
 `;
 export const DivHeight = styled.div`

@@ -36,10 +36,11 @@ const ModalHeaders = styled(ModalHeader)`
 class ModalEditEmployee extends Component {
   static propTypes = {
     handleSubmitPolicy: PropTypes.func.isRequired,
-    handleDataChange: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
     employeeId: PropTypes.string.isRequired,
     memberNumber: PropTypes.string.isRequired,
     policyNumber: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     modalOpen: PropTypes.bool.isRequired,
   }
 
@@ -54,7 +55,18 @@ class ModalEditEmployee extends Component {
       isPromotion: true,
       isExit: false,
       effective: '',
+      policyNumber: this.props.policyNumber,
+      memberNumber: this.props.memberNumber,
     };
+  }
+  handleDataChange = e => {
+    e.preventDefault();
+    const name = e.target.name;
+    const value = e.target.value;
+    if (value !== '') {
+      this.setState({ [name]: value });
+    }
+    this.props.handleChange(e, { name, value });
   }
   // componentDidMount() {
   //   this.renderGroup();
@@ -109,8 +121,7 @@ class ModalEditEmployee extends Component {
     return '';
   }
   render() {
-    console.log('>>this', this.props);
-    // const { isExit } = this.state;
+    const { memberNumber, policyNumber } = this.state;
     // const { optionGroupBenefit, optionDepartment, optionTitles } = this.props;
     return (
       <Modals
@@ -133,13 +144,13 @@ class ModalEditEmployee extends Component {
                 <TextCenter>กรุณากรอกเลขกรมธรรม์</TextCenter>
               </div>
             </div>
-            <form id="policyNumber" name="policyNumber" onSubmit={e => this.props.handleSubmitPolicy(e, this.props.employeeId)}><div className="quotation-input-div">
+            <form name="policyNumber" id={this.props.index} onSubmit={e => this.props.handleSubmitPolicy(e, this.props.employeeId, this.props.index)}><div className="quotation-input-div">
               <div className="row">
                 <div className="large-6 columns">
-                  <input className="input-data" value={this.props.memberNumber} name="memberNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขสมาชิก" />
+                  <input className="input-data" value={memberNumber} name="memberNumber" id={this.props.index} onChange={e => this.handleDataChange(e)} placeholder="กรุณากรอกเลขสมาชิก" />
                 </div>
                 <div className="large-6 columns">
-                  <input className="input-data" value={this.props.policyNumber} name="policyNumber" onChange={e => this.props.handleDataChange(e)} placeholder="กรุณากรอกเลขกรมธรรม์" />
+                  <input className="input-data" value={policyNumber} name="policyNumber" id={this.props.index} onChange={e => this.handleDataChange(e)} placeholder="กรุณากรอกเลขกรมธรรม์" />
                 </div>
               </div>
             </div>

@@ -38,7 +38,7 @@ class HealthDetail extends Component {
   }
 
   render() {
-    const { plan } = this.props;
+    const { plan, data } = this.props;
     const alt = plan + 1;
     return (
       <div>
@@ -58,13 +58,21 @@ class HealthDetail extends Component {
             <span className="xten-box-header-text">HEALTH</span>
           </div>
           <div className="xten-box-title">
-            <span className="xten-box-title-text">วงเงินทั้งหมด 1,200 บาท/ปี</span>
+            <span className="xten-box-title-text">
+              วงเงินทั้งหมด {data.allBenefit[plan].benefitPlan.health.toLocaleString()} บาท/ปี
+            </span>
           </div>
           <div className="xten-box-description">
             <ul className="xten-box-description-text">
               <li>รายละเอียด</li>
-              <li>ซื้อสินค้า 400 บาท</li>
-              <li>บริการด้านสุขภาพ 800 บาท</li>
+              {
+                data.allBenefit[plan].benefitPlan.detailPlan.health.healthList
+                .map((item, index) => (
+                  <li key={index.toString()}>
+                    {item}
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>

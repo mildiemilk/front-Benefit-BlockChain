@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Radio } from 'semantic-ui-react';
+import { Form, Radio, Input } from 'semantic-ui-react';
 
 class IPD2 extends Component {
   static propTypes = {
@@ -15,22 +15,22 @@ class IPD2 extends Component {
     handleVerifyState: PropTypes.func.isRequired,
     rbLumsumNigthNotExceedPerYear: PropTypes.string.isRequired,
     rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
-    rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
+    // rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
   }
 
   constructor(props) {
     super(props);
     const {
-      rbLumsumRoomPerNight,
-      rbLumsumPayNotExceedPerYear,
-      rbLumsumPayNotExceedPerNight,
+      // rbLumsumRoomPerNight,
+      // rbLumsumPayNotExceedPerYear,
+      // rbLumsumPayNotExceedPerNight,
       rbLumsumNigthNotExceedPerYear,
     } = this.props;
     let value;
-    if (rbLumsumRoomPerNight && rbLumsumNigthNotExceedPerYear) {
+    if (rbLumsumNigthNotExceedPerYear === 365) {
+      value = '365';
+    } else if (rbLumsumNigthNotExceedPerYear !== 365 && rbLumsumNigthNotExceedPerYear !== null) {
       value = 'firstChoice';
-    } else if (rbLumsumPayNotExceedPerNight && rbLumsumPayNotExceedPerYear) {
-      value = 'secondChoice';
     } else {
       value = '';
     }
@@ -39,16 +39,13 @@ class IPD2 extends Component {
 
   componentWillReceiveProps(newProps) {
     const {
-      rbLumsumRoomPerNight,
-      rbLumsumPayNotExceedPerYear,
-      rbLumsumPayNotExceedPerNight,
       rbLumsumNigthNotExceedPerYear,
     } = newProps;
     let value;
-    if (rbLumsumRoomPerNight && rbLumsumNigthNotExceedPerYear) {
+    if (rbLumsumNigthNotExceedPerYear !== '365' && rbLumsumNigthNotExceedPerYear !== null) {
       value = 'firstChoice';
-    } else if (rbLumsumPayNotExceedPerNight && rbLumsumPayNotExceedPerYear) {
-      value = 'secondChoice';
+    } else if (rbLumsumNigthNotExceedPerYear === '365') {
+      value = '365';
     } else {
       value = '';
     }
@@ -70,7 +67,7 @@ class IPD2 extends Component {
   }
 
   handleResetdata = () => {
-    document.getElementById('rbLumsumPayNotExceedPerNight').value = '';
+    // document.getElementById('rbLumsumPayNotExceedPerNight').value = '';
     this.props.handleChangeToNull('rbLumsumPayNotExceedPerNight');
     this.props.handleChangeToNull('rbLumsumPayNotExceedPerYear');
     document.getElementById('rbLumsumRoomPerNight').value = '';
@@ -86,80 +83,65 @@ class IPD2 extends Component {
     this.props.handleVerifyState();
   }
 
+  handleClickRedioBTN = (e, { name, value }) => {
+    // this.handleResetdata();
+    this.props.handleChange(e, { name, value });
+    this.setState({ value });
+  }
+
   render() {
     return (
-      <div>
-        <Form.Group inline>
-          <Form.Field>
+      <div className="submit-plan-rnb-lumsum-form">
+        <Form>
+          <Form.Field inline>
+            <label htmlFor="roomNfood">ค่าห้องและค่าอาหาร</label>
+            <Input
+              type="number"
+              placeholder="จำนวนเงิน"
+              name="rbLumsumRoomPerNight"
+              id="rbLumsumRoomPerNight"
+              value={this.props.rbLumsumRoomPerNight}
+              onChange={this.props.handleChange}
+              required
+            />
+            <span className="submit-plan-grap-l">บาท/คืน</span>
+          </Form.Field>
+          <Form.Field inline>
             <Radio
-              name="IPD2Group"
+              label="ปีละไม่เกิน"
+              name="rbLumsumNigthNotExceedPerYear"
               value="firstChoice"
               checked={this.state.value === 'firstChoice'}
-              onChange={this.handleRadio}
+              onChange={this.handleClickRedioBTN}
             />
+            <Input
+              type="number"
+              placeholder="จำนวนคืน"
+              name="rbLumsumNigthNotExceedPerYear"
+              id="rbLumsumNigthNotExceedPerYear"
+              value={
+                this.state.value === 'firstChoice'
+                ? this.props.rbLumsumNigthNotExceedPerYear
+                : ''
+              }
+              readOnly={this.state.value !== 'firstChoice'}
+              onChange={this.props.handleChange}
+              required
+            />
+            <span className="submit-plan-grap-l">คืน/ปี</span>
           </Form.Field>
-          <span>ค่าห้องและค่าอาหาร</span>
-          {this.state.value === 'firstChoice'
-            ? <div style={{ display: '-webkit-box' }}>
-              <Form.Input
-                type="number"
-                placeholder="จำนวนเงิน"
-                name="rbLumsumRoomPerNight"
-                id="rbLumsumRoomPerNight"
-                value={this.props.rbLumsumRoomPerNight}
-                onChange={this.props.handleChange}
-                required
-                style={{ width: '90px', marginLeft: '5%' }}
-              />
-              <Form.Input
-                type="number"
-                label="บาท/คืน ไม่เกินปีล่ะ"
-                placeholder="จำนวนเงิน"
-                name="rbLumsumNigthNotExceedPerYear"
-                id="rbLumsumNigthNotExceedPerYear"
-                value={this.props.rbLumsumNigthNotExceedPerYear}
-                onChange={this.props.handleChange}
-                required
-                style={{ width: '110px' }}
-              />
-            </div>
-            : <div style={{ display: '-webkit-box' }}>
-              <Form.Input
-                type="number"
-                placeholder="จำนวนเงิน"
-                name="rbLumsumRoomPerNight"
-                id="rbLumsumRoomPerNight"
-                value=""
-                onChange={this.props.handleChange}
-                readOnly
-                style={{ width: '90px', marginLeft: '5%' }}
-              />
-              <Form.Input
-                type="number"
-                label="บาท/คืน ไม่เกินปีล่ะ"
-                placeholder="จำนวนเงิน"
-                name="rbLumsumNigthNotExceedPerYear"
-                id="rbLumsumNigthNotExceedPerYear"
-                value=""
-                onChange={this.props.handleChange}
-                readOnly
-                style={{ width: '110px' }}
-              />
-            </div>}
-          <p> คืน</p>
-        </Form.Group>
-        <Form.Group inline>
-          <Form.Field>
+          <Form.Field inline>
             <Radio
-              label="ค่ารักษาพยาบาลกรณีผู้ป่วยในจ่ายตามจริงไม่เกิน"
-              name="IPD2Group"
-              value="secondChoice"
-              checked={this.state.value === 'secondChoice'}
-              onChange={this.handleRadio}
+              label="ไม่จำกัด"
+              name="rbLumsumNigthNotExceedPerYear"
+              value="365"
+              checked={this.state.value === '365'}
+              onChange={this.handleClickRedioBTN}
             />
           </Form.Field>
-          {this.state.value === 'secondChoice'
-            ? <Form.Input
+          <Form.Field inline>
+            <label htmlFor="roomNfood">ค่ารักษาพยาบาลกรณีผู้ป่วยในจ่ายตามจริงไม่เกิน</label>
+            <Input
               type="number"
               placeholder="จำนวนเงิน"
               name="rbLumsumPayNotExceedPerNight"
@@ -167,46 +149,10 @@ class IPD2 extends Component {
               value={this.props.rbLumsumPayNotExceedPerNight}
               onChange={this.props.handleChange}
               required
-              style={{ width: '120px' }}
             />
-            : <Form.Input
-              type="number"
-              placeholder="จำนวนเงิน"
-              name="rbLumsumPayNotExceedPerNight"
-              id="rbLumsumPayNotExceedPerNight"
-              value=""
-              onChange={this.props.handleChange}
-              readOnly
-              style={{ width: '120px' }}
-            />}
-          <p> บาท/คืน</p>
-        </Form.Group>
-        <Form.Group inline style={{ marginLeft: '25px' }}>
-          {this.state.value === 'secondChoice'
-            ? <Form.Input
-              type="number"
-              label="และจ่ายไม่เกิน"
-              placeholder="จำนวนเงิน"
-              name="rbLumsumPayNotExceedPerYear"
-              id="rbLumsumPayNotExceedPerYear"
-              value={this.props.rbLumsumPayNotExceedPerYear}
-              onChange={this.props.handleChange}
-              required
-              style={{ width: '140px' }}
-            />
-            : <Form.Input
-              type="number"
-              label="และจ่ายไม่เกิน"
-              placeholder="จำนวนเงิน"
-              name=" rbLumsumPayNotExceedPerYear"
-              id=" rbLumsumPayNotExceedPerYear"
-              value=""
-              onChange={this.props.handleChange}
-              style={{ width: '140px' }}
-            />}
-          <p> คืน</p>
-        </Form.Group>
-
+            <span className="submit-plan-grap-l">บาท/คืน</span>
+          </Form.Field>
+        </Form>
       </div>
     );
   }

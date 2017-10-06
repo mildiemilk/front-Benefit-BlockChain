@@ -193,7 +193,13 @@ class MenuPlan extends Component {
           employeeOfPlan={this.props.employeeOfPlan}
         />
         <div className="menu-add-plan">
-          <p onClick={this.props.handleNewPlan} role="button" aria-hidden className="menu-add-plan-text">
+          <p
+            onClick={this.props.handleNewPlan}
+            role="button"
+            aria-hidden
+            className="menu-add-plan-text"
+            style={{ cursor: 'pointer' }}
+          >
             <Icon name="add circle" size="big" className="submit-plan-icon-add-plan" />สร้างแผนใหม่
           </p>
         </div>

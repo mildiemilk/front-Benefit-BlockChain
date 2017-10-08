@@ -754,8 +754,8 @@ class employeeList extends Component {
               </div>
             </div>
           </div>
-          {this.renderListEmployee(this.state.data)}
         </div>
+        {this.renderListEmployee(this.state.data)}
         {/* <div className="list-change-level">
           <div
             className="list-change-level-box"

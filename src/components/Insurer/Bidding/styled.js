@@ -177,8 +177,14 @@ export const FontNum = styled.div`
 `;
 export const FontNumAucTime = styled(FontNum)`
   &&& {
-  font-size: 35px;
+  font-size: 25px;
   color: #505050;
+  }
+`;
+export const FontNumAucTime1 = styled(FontNum)`
+  &&& {
+    bottom: 17%;
+    left: 36%;
   }
 `;
 export const TextNav = styled.div`

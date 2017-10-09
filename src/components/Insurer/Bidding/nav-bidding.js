@@ -11,6 +11,7 @@ import {
   TextNav,
   FontAucTime,
   FontNumAucTime,
+  FontNumAucTime1,
 } from './styled';
 import building from '../../../../assets/bidding/icons-8-city.png';
 import time from '../../../../assets/bidding/icons-8-time.png';
@@ -49,7 +50,8 @@ class Bidding extends Component {
             <Nav>
               <Pic><img src={auction} alt="auction" /></Pic>
               <TextNav>
-                <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime><br />
+                <FontAucTime>ราคาต่ำสุดในการประมูล</FontAucTime>
+                <br />
                 <FontNumAucTime>{
                 (minPrice !== '')
                 ? minPrice
@@ -63,9 +65,9 @@ class Bidding extends Component {
               <Pic><img src={time} alt="time" /></Pic>
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
-                <FontNumAucTime>
+                <FontNumAucTime1>
                   <CountDowns date={timeout} notiTimeout={this.props.notiTimeout} />
-                </FontNumAucTime>
+                </FontNumAucTime1>
               </TextNav>
             </Nav>
           </div>

@@ -16,9 +16,19 @@ const BIDDING_DETAIL_URI = '/api/insurer/bidding-detail';
 const JOIN_BIDDING_URI = '/api/insurer/bidding';
 const DELETE_PLAN_URI = '/api/insurer/delete-plan';
 const EXTEND_PLAN_URL = '/api/insurer/extended-plan';
+const EDIT_PLAN_URL = '/api/insurer/edit-plan';
 const BIDDING_STATUS = '/api/insurer';
 
 
+export function editInsurerPlanDetail(planId, plan) {
+  const options = {
+    method: 'put',
+    url: `${EDIT_PLAN_URL}/${planId}`,
+    data: plan,
+  };
+
+  return APIRequest(options, true);
+}
 export function editPlanDetail(planId, plan) {
   const options = {
     method: 'post',

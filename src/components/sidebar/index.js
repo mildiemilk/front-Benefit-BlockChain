@@ -24,14 +24,14 @@ export default class Sidebar extends Component {
             <Icon name="home" size="large" />&nbsp;
             <Links to="/dashboard" ><Item.Content verticalAlign="middle">Dashboard</Item.Content></Links>
           </Item>
-          {url === 'viewplanflex'
+          {url === 'viewyourplan'
             ? <Item>
               <i aria-hidden="true" className="book large icon icon-active" />&nbsp;
-              <Links to="/viewplanflex" ><Item.Content verticalAlign="middle"><p className="text-active">แผนของคุณ</p></Item.Content></Links>
+              <Links to="/viewyourplan" ><Item.Content verticalAlign="middle"><p className="text-active">แผนของคุณ</p></Item.Content></Links>
             </Item>
             : <Item>
               <Icon name="book" size="large" />&nbsp;
-              <Links to="/viewplanflex" ><Item.Content verticalAlign="middle">แผนของคุณ</Item.Content></Links>
+              <Links to="/viewyourplan" ><Item.Content verticalAlign="middle">แผนของคุณ</Item.Content></Links>
             </Item>
         }
           { url === 'employeelist' || url === 'addemployee'

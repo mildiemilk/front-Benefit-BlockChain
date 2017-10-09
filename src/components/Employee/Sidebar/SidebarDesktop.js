@@ -22,44 +22,109 @@ export default class SidebarDesktop extends Component {
   state = { activeItem: 'home' }
 
   render() {
+    const pathname = window.location.pathname.split('/')[1].toLowerCase();
+    console.log('>>>url ', pathname);
     return (
       <aside className="sidebar">
         <Item.Group className="sidebarstyle" relaxed>
           <Item>
-            <Icon name="home" size="large" />&nbsp;
-            <Links to="/homedashboard" ><Item.Content verticalAlign="middle">หน้าหลัก</Item.Content></Links>
+            <Icon name="home" size="large" className={pathname === 'homedashboard' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/homedashboard" >
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'homedashboard' ? 'text-active' : ''}>
+                  หน้าหลัก
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
           <Item>
-            <ImageStyle src={Plan} />&nbsp;
-            <Links to="/plan" ><Item.Content verticalAlign="middle">แผนสิทธิประโยชน์</Item.Content></Links>
+            <Icon name="browser" size="large" className={pathname === 'yourbenefit' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/yourbenefit" >
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'yourbenefit' ? 'text-active' : ''}>
+                  แผนสิทธิประโยชน์
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
           <Item>
-            <ImageStyle src={Cliam} />&nbsp;
-            <Links to="/claim" ><Item.Content verticalAlign="middle">เคลม</Item.Content></Links>
+            <Icon name="id card outline" size="large" className={pathname === 'claim' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/claim" >
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'claim' ? 'text-active' : ''}>
+                  เคลม
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
           <Item>
-            <ImageStyle src={ClaimStatus} />&nbsp;
-            <Links to="/claimstatus" ><Item.Content verticalAlign="middle">สถานะการเคลม</Item.Content></Links>
+            <Icon name="archive" size="large" className={pathname === 'claimstatus' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/claimstatus" >
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'claimstatus' ? 'text-active' : ''}>
+                  สถานะการเคลม
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
           <Item>
-            <ImageStyle src={ClaimHistory} />&nbsp;
-            <Link to="/claimhistory" ><Item.Content verticalAlign="middle">ประวัติการเคลม</Item.Content></Link >
+            <Icon name="book" size="large" className={pathname === 'claimhistory' ? 'icon-active' : ''} />
+            &nbsp;
+            <Link to="/claimhistory" >
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'claimhistory' ? 'text-active' : ''}>
+                  ประวัติการเคลม
+                </p>
+              </Item.Content>
+            </Link >
           </Item>
           <Item>
-            <ImageStyle src={Hospital} />&nbsp;
-            <Link to="/findhospital"><Item.Content verticalAlign="middle">ค้นหาโรงพยาบาล</Item.Content></Link>
+            <Icon name="search" size="large" className={pathname === 'findhospital' ? 'icon-active' : ''} />
+            &nbsp;
+            <Link to="/findhospital">
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'findhospital' ? 'text-active' : ''}>
+                  ค้นหาโรงพยาบาล
+                </p>
+              </Item.Content>
+            </Link>
           </Item>
           <Item>
-            <Icon name="user" size="large" />&nbsp;
-            <Links to="/profile"><Item.Content verticalAlign="middle">โปรไฟล์</Item.Content></Links>
+            <Icon name="user" size="large" className={pathname === 'profile' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/profile">
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'profile' ? 'text-active' : ''}>
+                  โปรไฟล์
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
           <Item>
-            <Icon name="setting" size="large" />&nbsp;
-            <Links to="/setting"><Item.Content verticalAlign="middle">ตั้งค่า</Item.Content></Links>
+            <Icon name="setting" size="large" className={pathname === 'setting' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/setting">
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'setting' ? 'text-active' : ''}>
+                  ตั้งค่า
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
           <Item>
-            <ImageStyle src={logout} />&nbsp;
-            <Links to="/logout"><Item.Content verticalAlign="middle">ออกจากระบบ</Item.Content></Links>
+            <Icon name="log out" size="large" className={pathname === 'logout' ? 'icon-active' : ''} />
+            &nbsp;
+            <Links to="/logout">
+              <Item.Content verticalAlign="middle">
+                <p className={pathname === 'logout' ? 'text-active' : ''}>
+                  ออกจากระบบ
+                </p>
+              </Item.Content>
+            </Links>
           </Item>
         </Item.Group>
       </aside>

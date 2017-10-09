@@ -163,11 +163,7 @@ export const NavTimeout = styled.div`
   align-items: center;
 `;
 export const Default = styled.div`
-  width: 79.9px;
-  height: 30px;
-  color: white;
-  border-radius: 5px;
-  background-color: #42bc69;
+  color: #42bc69;
   display: inline-block;
   margin-left: 12px;
   text-align: center;

@@ -88,17 +88,15 @@ class SelectRealTime extends Component {
     });
   }
   renderDetailPlan = allPlan => {
-    console.log('allplan---<before', allPlan);
     // const { summaryBenefitPlan } = this.props;
     if (allPlan !== undefined && allPlan.plan.length >= 1) {
-      console.log('allplan===>', allPlan);
       const result = allPlan.plan.map((plan, index) => (
         <DetailIn>
           <div className="row">
             <div className="large-5 columns">
               <HeadPlan>{plan}</HeadPlan>
               {allPlan.defaultPlan === plan
-              ? <Default>ค่าเริิ่มต้น</Default>
+              ? <Default>แผนเริิ่มต้น</Default>
               : null
               }
             </div>
@@ -136,11 +134,9 @@ class SelectRealTime extends Component {
     } else {
       TypeIcon = <Icon name="caret down" />;
     }
-    console.log('all', allGroups);
     if (allGroups !== undefined && allGroups.length >= 1) {
       const group = allGroups.map((allGroup, index) => {
         let sum;
-        console.log('---summary---', this.props.summaryEmployee[index]);
         if (this.state.timeout) {
           if (this.props.summaryEmployee[index] !== undefined &&
             this.props.summaryEmployee[index].amountOfPlan.length >= 1) {
@@ -170,7 +166,7 @@ class SelectRealTime extends Component {
             ? this.renderDetailPlan(this.props.summaryEmployee[index])
             : null}
         </BoxDetail>
-        )
+        );
       });
       return group;
     }
@@ -178,7 +174,6 @@ class SelectRealTime extends Component {
   }
   render() {
     const { benefitPlan, summaryGroup, summaryBenefitPlan } = this.props;
-    console.log('Propsss==>', this.props);
     return (
       <div className="SelectRealTime">
         {benefitPlan.length >= 1

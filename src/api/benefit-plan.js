@@ -81,7 +81,7 @@ export function setTemplatePlan(data) {
     url: SETTEMPLATEBENEFIT_PLAN_URI,
     data,
   };
-  return APIRequest(options, true)
+  return APIRequest(options, true);
 }
 
 

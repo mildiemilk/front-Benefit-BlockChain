@@ -107,6 +107,7 @@ class SettingBenefit extends Component {
             expense={this.state.expense}
             handleSave={'none-DisplaySave'}
             isReadOnly={isReadOnly}
+            width="51%"
           />
           : <div />
           }

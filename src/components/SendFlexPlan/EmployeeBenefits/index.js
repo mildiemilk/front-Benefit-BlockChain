@@ -93,7 +93,7 @@ class EmployeeBenefits extends Component {
             type={this.props.groupBenefit[this.state.activeGroup].type}
             default={this.props.groupBenefit[this.state.activeGroup].defaultPlan}
           />
-          : <div>saddd</div>
+          : <div />
           }
         </div>
       </div>

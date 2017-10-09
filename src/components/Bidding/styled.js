@@ -187,7 +187,8 @@ export const FontTime = styled(FontNum)`
   &&& {
   font-size: 35px;
   color: #505050;
-  bottom: ${props => props.bottom};
+  top: ${props => props.top};
+  position: absolute;
   }
 `;
 export const TextNav = styled.div`
@@ -200,7 +201,10 @@ export const CountTime = styled.div`
   font-size: 35px;
   color: #323028;
 `;
-
+export const DivCountDown = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export const DisplayTime = styled.div`
   display: none;
 `;
@@ -234,6 +238,7 @@ export const ButtonNew = styled.button`
 
 export const Unit = styled.div`
   font-size: 14px;
-  display: inline-block;
-  margin-left: 11px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 `;

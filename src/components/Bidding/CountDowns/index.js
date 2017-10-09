@@ -1,12 +1,16 @@
 import React, { PropTypes, Component } from 'react';
 // import { connect } from 'react-redux';
 // import { endTimeout } from '../../../api/bidding';
-import { CountTime, DisplayTime, DisplayTimeout } from '../styled';
+import { CountTime, DisplayTime, DisplayTimeout, Unit } from '../styled';
 
 class CountDowns extends Component {
   static propTypes = {
     // endTimeout: PropTypes.shape.isRequired,
     notiTimeout: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    date: null,
   }
   constructor() {
     super();
@@ -16,11 +20,13 @@ class CountDowns extends Component {
       hours: 0,
       min: 0,
       sec: 0,
+      isSet: false,
     };
     this.interval = setInterval(() => {
       const date = this.calculateCountdown(this.props.date);
-      if (date) this.setState(date);
-      else {
+      if (date) {
+        this.setState({ ...date, isSet: true });
+      } else {
         this.stop();
       }
     }, 1000);
@@ -88,24 +94,54 @@ class CountDowns extends Component {
     let $isHours = this.addLeadingZeros(countDown.hours);
     let $isMin = this.addLeadingZeros(countDown.min);
     let $isSec = this.addLeadingZeros(countDown.sec);
+    console.log('Date', this.props.date);
+    console.log('d,h,m,s', $isDay, $isHours, $isMin, $isSec);
+    console.log('eiei-->', Date.parse(new Date(this.props.date)) - Date.parse(new Date()));
     if (
-      $isDay === '00' &&
-      $isHours === '00' &&
-      $isMin === '00' &&
-      $isSec <= '01'
-    ) {
-      $isDay = <DisplayTime />;
-      $isHours = <DisplayTimeout>หมดเวลา</DisplayTimeout>;
-      $isMin = <DisplayTime />;
-      $isSec = <DisplayTime />;
+        $isDay === '00' &&
+        $isHours === '00' &&
+        $isMin === '00' &&
+        $isSec <= '00') {
+      if (!this.state.isSet && this.props.date === null) {
+        $isDay = <CountTime>--:</CountTime>;
+        $isHours = <CountTime>--:</CountTime>;
+        $isMin = <CountTime>--:</CountTime>;
+        $isSec = <CountTime>--</CountTime>;
+      } else {
+        $isDay = <DisplayTime />;
+        $isHours = <DisplayTimeout>หมดเวลา</DisplayTimeout>;
+        $isMin = <DisplayTime />;
+        $isSec = <DisplayTime />;
+      }
     } else {
-      $isDay = <CountTime>{this.addLeadingZeros(countDown.days)}:</CountTime>;
-      $isHours = <CountTime>{this.addLeadingZeros(countDown.hours)}:</CountTime>;
-      $isMin = <CountTime>{this.addLeadingZeros(countDown.min)}:</CountTime>;
-      $isSec = <CountTime>{this.addLeadingZeros(countDown.sec)}</CountTime>;
+      if (
+        $isDay === '00' &&
+        $isHours === '00' &&
+        $isMin === '00' &&
+        $isSec <= '01'
+      ) {
+        console.log('3');
+        $isDay = <DisplayTime />;
+        $isHours = <DisplayTimeout>หมดเวลา</DisplayTimeout>;
+        $isMin = <DisplayTime />;
+        $isSec = <DisplayTime />;
+      } else {
+        $isDay = (<div>
+          <CountTime>{this.addLeadingZeros(countDown.days)}:</CountTime><Unit>วัน</Unit>
+        </div>);
+        $isHours = (<div>
+          <CountTime>{this.addLeadingZeros(countDown.hours)}:</CountTime><Unit>ชั่วโมง</Unit>
+        </div>);
+        $isMin = (<div>
+          <CountTime>{this.addLeadingZeros(countDown.min)}:</CountTime><Unit>นาที</Unit>
+        </div>);
+        $isSec = (<div>
+          <CountTime>{this.addLeadingZeros(countDown.sec)}</CountTime><Unit>วินาที</Unit>
+        </div>);
+      }
     }
     return (
-      <div>
+      <div style={{ display: 'flex' }}>
         {$isDay}
         {$isHours}
         {$isMin}

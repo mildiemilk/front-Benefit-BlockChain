@@ -154,102 +154,102 @@ class SettingPlan extends Component {
                 </div>
               </div>
             </PlanBox>
-            <PlanBox>
-              <div className="row">
-                { showHealth
-              ? <div>
-                <div className="large-6 columns">
-                  <PlanImg src={imgHealth} />
-                  <PlanTopic>
-                    ค่าใช้จ่ายสุขภาพ (Health)
-                  </PlanTopic>
-                </div>
-                <div className="large-6 columns">
-                  <div className="toggle">
-                    <ToggleBox>
-                      <Checkbox
-                        name="isHealth"
-                        checked={isHealth}
-                        toggle
-                        onClick={handleToggle}
+            { showHealth
+              ? <PlanBox>
+                <div className="row">
+                  <div>
+                    <div className="large-6 columns">
+                      <PlanImg src={imgHealth} />
+                      <PlanTopic>
+                        ค่าใช้จ่ายสุขภาพ (Health)
+                      </PlanTopic>
+                    </div>
+                    <div className="large-6 columns">
+                      <div className="toggle">
+                        <ToggleBox>
+                          <Checkbox
+                            name="isHealth"
+                            checked={isHealth}
+                            toggle
+                            onClick={handleToggle}
+                          />
+                        </ToggleBox>
+                      </div>
+                      { isHealth
+                      ? <Inputs
+                        width={this.props.width}
+                        required
+                        type="number"
+                        name="health"
+                        value={health !== -1 ? health : ''}
+                        action="บาท/ปี"
+                        placeholder="จำนวนเงิน"
+                        onChange={handleChange}
                       />
-                    </ToggleBox>
+                      : <Inputs
+                        width={this.props.width}
+                        type="number"
+                        name="health"
+                        value=""
+                        action="บาท/ปี"
+                        placeholder="จำนวนเงิน"
+                        readOnly
+                      />
+                      }
+                    </div>
                   </div>
-                  { isHealth
-                  ? <Inputs
-                    width={this.props.width}
-                    required
-                    type="number"
-                    name="health"
-                    value={health !== -1 ? health : ''}
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    onChange={handleChange}
-                  />
-                  : <Inputs
-                    width={this.props.width}
-                    type="number"
-                    name="health"
-                    value=""
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    readOnly
-                  />
-                  }
                 </div>
-              </div>
+              </PlanBox>
               : null
               }
-              </div>
-            </PlanBox>
-            <PlanBox>
-              <div className="row">
-                { showExpense
-              ? <div>
-                <div className="large-6 columns">
-                  <PlanImg src={general} />
-                  <PlanTopic>
-                    ค่าใช้จ่ายทั่วไป (General Expense)
-                  </PlanTopic>
-                </div>
-                <div className="large-6 columns">
-                  <div className="toggle">
-                    <ToggleBox>
-                      <Checkbox
-                        name="isExpense"
-                        checked={isExpense}
-                        toggle
-                        onClick={handleToggle}
+            { showExpense
+              ? <PlanBox>
+                <div className="row">
+                  <div>
+                    <div className="large-6 columns">
+                      <PlanImg src={general} />
+                      <PlanTopic>
+                        ค่าใช้จ่ายทั่วไป (General Expense)
+                      </PlanTopic>
+                    </div>
+                    <div className="large-6 columns">
+                      <div className="toggle">
+                        <ToggleBox>
+                          <Checkbox
+                            name="isExpense"
+                            checked={isExpense}
+                            toggle
+                            onClick={handleToggle}
+                          />
+                        </ToggleBox>
+                      </div>
+                      { isExpense
+                      ? <Inputs
+                        width={this.props.width}
+                        required
+                        type="number"
+                        name="expense"
+                        value={expense !== -1 ? expense : ''}
+                        action="บาท/ปี"
+                        placeholder="จำนวนเงิน"
+                        onChange={handleChange}
                       />
-                    </ToggleBox>
+                      : <Inputs
+                        width={this.props.width}
+                        type="number"
+                        name="expense"
+                        value=""
+                        action="บาท/ปี"
+                        placeholder="จำนวนเงิน"
+                        readOnly
+                      />
+                      }
+                    </div>
                   </div>
-                  { isExpense
-                  ? <Inputs
-                    width={this.props.width}
-                    required
-                    type="number"
-                    name="expense"
-                    value={expense !== -1 ? expense : ''}
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    onChange={handleChange}
-                  />
-                  : <Inputs
-                    width={this.props.width}
-                    type="number"
-                    name="expense"
-                    value=""
-                    action="บาท/ปี"
-                    placeholder="จำนวนเงิน"
-                    readOnly
-                  />
-                  }
                 </div>
-              </div>
+              </PlanBox>
               : null
               }
-              </div>
-            </PlanBox>
             <div className="row">
               <div className="large-2 large-offset-9 end columns">
                 <SaveButton className={handleSave} type="submit">

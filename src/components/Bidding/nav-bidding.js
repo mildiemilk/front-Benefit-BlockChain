@@ -13,7 +13,6 @@ import {
   FontAucTime,
   FontNumAucTime,
   FontTime,
-  Unit,
 } from './styled';
 import building from '../../../assets/bidding/icons-8-city.png';
 import time from '../../../assets/bidding/icons-8-time.png';
@@ -25,7 +24,6 @@ class Bidding extends Component {
     timeout: PropTypes.string.isRequired,
     notiTimeout: PropTypes.func.isRequired,
     minPrice: PropTypes.number.isRequired,
-    end: PropTypes.bool.isRequired,
   }
   constructor(props) {
     super(props);
@@ -65,22 +63,11 @@ class Bidding extends Component {
               <Pic><img src={time} alt="time" /></Pic>
               <TextNav>
                 <FontAucTime>ระยะเวลาที่เหลือในการประมูล</FontAucTime><br />
-                {this.props.end
-                ? <FontTime bottom="37%">
+                <FontTime top="60px">
                   <CountDowns
                     date={this.props.timeout.timeout} notiTimeout={this.props.notiTimeout}
                   />
                 </FontTime>
-                : <FontTime bottom="20%">
-                  <CountDowns
-                    date={this.props.timeout.timeout} notiTimeout={this.props.notiTimeout}
-                  />
-                  <Unit>วัน</Unit>
-                  <Unit>ชั่วโมง</Unit>
-                  <Unit>นาที</Unit>
-                  <Unit>วินาที</Unit>
-                </FontTime>
-                }
               </TextNav>
             </Nav>
           </div>

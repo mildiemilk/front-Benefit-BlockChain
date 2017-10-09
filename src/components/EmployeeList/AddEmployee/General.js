@@ -188,7 +188,6 @@ class General extends Component {
                     name="employeeCode"
                     required
                     onChange={this.props.handleInputChange} value={data.employeeCode}
-                    disabled
                   />
                 </div>
               </div>
@@ -206,6 +205,7 @@ class General extends Component {
                   <InputBox
                     name="memberNumber"
                     onChange={this.props.handleInputChange} value={data.memberNumber}
+                    disabled
                   />
                 </div>
               </div>

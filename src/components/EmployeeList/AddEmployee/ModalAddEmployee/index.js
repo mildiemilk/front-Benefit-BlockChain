@@ -19,8 +19,8 @@ const Modals = styled(Modal) `
   background: transparent;
   width: 550px !important;
   position: absolute;
-  left: 62%;
-  top: 40%;
+  top: calc(50% - 118px);
+  left: calc(50% + 168px);
 }
 `;
 const Text = styled.div`

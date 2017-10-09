@@ -14,14 +14,19 @@ export const BiddingElement = styled.div`
 
 export const ContantBid = styled.div`
     width: 100%;
-    height: 70px;
+    height: 85px;
     border-radius: 6px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
     border: solid 1px #d3d3d3;
     padding:10px;
 `;
-
+export const FontNumAucTime1 = styled.div`
+  &&& {
+    bottom: 17%;
+    left: 36%;
+  }
+`
 export const Pic = styled.div`
     border-radius: 50%;
     background-color: #5c6879;

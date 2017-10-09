@@ -54,10 +54,14 @@ class SelectRealTime extends Component {
       timeout: false,
     };
     props.getSummaryBenefitPlan();
+    setInterval(() => {
+      props.getBenefitPlan();
+      props.getSummaryEmployee();
+    }, 2000);
   }
   componentDidMount() {
-    this.props.getBenefitPlan();
-    this.props.getSummaryEmployee();
+    // this.props.getBenefitPlan();
+    // this.props.getSummaryEmployee();
     this.props.getSummaryGroup();
   }
   handlePlan = () => {

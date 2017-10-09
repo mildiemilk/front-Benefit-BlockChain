@@ -65,7 +65,6 @@ class Bidding extends Component {
           timeout={this.props.timeout}
           notiTimeout={this.notiTimeout}
           minPrice={this.props.minPrice}
-          end={this.state.end}
         />
         <div className="BidContent">
           {this.state.isDetail

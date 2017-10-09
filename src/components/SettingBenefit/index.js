@@ -64,6 +64,7 @@ class SettingBenefit extends Component {
       openWarning: '',
       warningMessage: '',
       redirect: false,
+      newBenefitPlan: -1,
     };
     props.getTemplatePlan();
     props.getInsurancePlan();
@@ -77,7 +78,10 @@ class SettingBenefit extends Component {
       if (this.state.activePlan === '') {
         if (!_.isEqual(newProps.benefitPlan.sort(), this.props.benefitPlan.sort())) {
           const planList = newProps.benefitPlan;
-          const index = 0;
+          let index = 0;
+          if (this.state.newBenefitPlan !== -1) {
+            index = this.state.newBenefitPlan;
+          }
           this.setState({
             activePlan: index,
             planName: planList[index].benefitPlanName,
@@ -88,6 +92,7 @@ class SettingBenefit extends Component {
             expense: planList[index].benefitPlan.expense ? planList[index].benefitPlan.expense : -1,
             emptyPlan: false,
             planList,
+            newBenefitPlan: -1,
           });
         }
       } else {
@@ -201,16 +206,6 @@ class SettingBenefit extends Component {
     if (activePlan !== '') {
       const { benefitPlan } = this.props;
       benefitPlanId = benefitPlan[activePlan]._id;
-      // this.setState({
-      //   planName: benefitPlan[activePlan].benefitPlanName,
-      //   plan: benefitPlan[activePlan].benefitPlan.plan.planId._id,
-      //   isHealth: benefitPlan[activePlan].benefitPlan.isHealth,
-      //   isExpense: benefitPlan[activePlan].benefitPlan.isExpense,
-      //   health: benefitPlan[activePlan].benefitPlan.health,
-      //   expense: benefitPlan[activePlan].benefitPlan.expense,
-      //   emptyPlan: false,
-      //   planList: benefitPlan,
-      // });
     }
     const setPlan = {
       benefitPlanId,
@@ -219,11 +214,10 @@ class SettingBenefit extends Component {
     };
     setBenefitPlan(setPlan)
     .then(() => {
-      this.handleUpdateResult();
+      this.setState({ updateResult: true, newBenefitPlan: this.props.benefitPlan.length });
     });
   }
   handleNext = () => {
-    console.log('benefitPlan', this.state.plan);
     if (this.state.plan === '') {
       this.setState({
         openWarningModal: true,

@@ -22,17 +22,31 @@ class AddPlanBar extends Component {
     super(props);
     this.state = {
       isClose: [false, false, false],
+      popup: -1,
     };
   }
-  handlePopup = () => this.setState({ isClose: !this.state.isClose });
+
+  handleClickPlan = index => {
+    this.setState({ popup: index });
+    this.props.handleActivePlan(index);
+  }
+
+  handlePopup = () => this.setState({ isClose: !this.state.isClose, popup: -1 });
+
+  handleDeletePlan = () => {
+    this.setState({ popup: -1 });
+    this.props.handleDeletePlan();
+  }
+
   renderList = list => {
+    const { popup } = this.state;
     const lists = list.map((element, index) => {
       const isActive = index === this.props.activePlan ? 'active' : '';
       return (
         <div
           key={index.toString()}
           className={`addBox ${isActive}`}
-          onClick={() => this.props.handleActivePlan(index)}
+          onClick={() => this.handleClickPlan(index)}
           role="button"
           aria-hidden
         >
@@ -49,7 +63,7 @@ class AddPlanBar extends Component {
                 <List.Item>
                   <ListContent>
                     <p
-                      onClick={this.props.handleDeletePlan}
+                      onClick={this.handleDeletePlan}
                       role="button"
                       aria-hidden
                     >
@@ -62,8 +76,7 @@ class AddPlanBar extends Component {
             on="click"
             hideOnScroll
             position="bottom center"
-            open={this.state.isClose}
-            onOpen={this.handlePopup}
+            open={popup === index}
             onClose={this.handlePopup}
           />
 

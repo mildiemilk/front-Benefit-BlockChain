@@ -63,6 +63,8 @@ export const NextButton = styled.button`
 `;
 export const Upload = styled.div`
   margin: 4%;
+  display: flex;
+  align-items: center;
 `;
 
 export const UploadDiv = styled.div`
@@ -83,9 +85,10 @@ export const BrowsButton = styled.label`
   background-color: #3a7bd5;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   color: #ffffff;
-  padding: 1.5% 7%;
-  display: inline-block;
-  margin-left: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
   cursor: pointer;
 
 `;

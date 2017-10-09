@@ -27,7 +27,6 @@ const Popups = styled(Popup)`
   display: inline-block;
 `;
 const TextLists = styled(TextList)`
-  margin-top: 25px;
 `;
 const Icons = styled(Icon)`
   position: absolute;
@@ -114,14 +113,16 @@ class DetailClaim extends Component {
                     </div>
                   </div>
                   <div className="large-4 columns">
-                    <div className="list-box-in-list">
+                    <div className="list-box group">
                       <p>{tag}</p>
                     </div>
                   </div>
                 </div>
                 <div className="large-1 columns">
-                  <div className="edit-employee-list">
-                    <Icon name="edit" onClick={() => this.props.handleDetail(i)} />
+                  <div className="list-box-in-list list-box-in-list-action">
+                    <div className="edit-employee-list">
+                      <Icon name="edit" onClick={() => this.props.handleDetail(i)} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -189,7 +190,7 @@ class DetailClaim extends Component {
               last
             >รายการเคลมประกันภัย</Text>
           </div>
-          <DivClaim>
+          <DivClaim className="employee-list">
             <div className="row">
               <FilterSearch
                 groupBenefit={this.props.groupBenefit}

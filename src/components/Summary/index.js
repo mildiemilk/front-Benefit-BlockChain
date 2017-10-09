@@ -47,6 +47,7 @@ class Piechart extends Component {
     const step = 3;
     console.log('step', step);
     this.props.setCompleteStep(passwordToConfirm, step);
+    window.location.href = '/dashboard';
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 

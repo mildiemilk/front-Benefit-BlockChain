@@ -10,7 +10,7 @@ import ModalInsurer from './ModalInsurer';
 // import AllPlan from './SubmitPlan/all-plan';
 // import PlanBoxModal from './ModalPlanBox/planbox-modal';
 // import IconChat from '../../../../assets/Insurer/icon_chat@3x.png';
-import { updateBiddingPrice, editPlanDetail, updateStatus, deletePlan } from '../../../api/Insurer/bidding';
+import { updateBiddingPrice, editPlanDetail, updateStatus, deletePlan, editInsurerPlanDetail } from '../../../api/Insurer/bidding';
 // import {} from ''
 
 class ShowMasterPlan extends Component {
@@ -210,56 +210,106 @@ class ShowMasterPlan extends Component {
     }
   }
   handleSubmitEditPlan = e => {
-    const { DetailMP } = this.state;
+    const { DetailMP, planType } = this.state;
     e.preventDefault();
     const planId = DetailMP.planId;
-    editPlanDetail(planId, {
-      planId: DetailMP.planId,
-      planName: DetailMP.planName,
-      employeeOfPlan: DetailMP.employeeOfPlan,
-      ipdType: DetailMP.ipdType,
-      ipdLumsumPerYear: DetailMP.ipdLumsumPerYear,
-      ipdLumsumPerTime: DetailMP.ipdLumsumPerTime,
-      ipdLumsumTimeNotExceedPerYear: DetailMP.ipdLumsumTimeNotExceedPerYear,
-      rbLumsumRoomPerNight: DetailMP.rbLumsumRoomPerNight,
-      rbLumsumNigthNotExceedPerYear: DetailMP.rbLumsumNigthNotExceedPerYear,
-      rbLumsumPayNotExceedPerNight: DetailMP.rbLumsumPayNotExceedPerNight,
-      rbLumsumPayNotExceedPerYear: DetailMP.rbLumsumPayNotExceedPerYear,
-      rbSchedulePatient: DetailMP.rbSchedulePatient,
-      rbScheduleIntensiveCarePatient: DetailMP.rbScheduleIntensiveCarePatient,
-      rbScheduleDoctor: DetailMP.rbScheduleDoctor,
-      rbScheduleSurgerySchedule: DetailMP.rbScheduleSurgerySchedule,
-      rbScheduleSurgeryNonSchedule: DetailMP.rbScheduleSurgeryNonSchedule,
-      rbScheduleService: DetailMP.rbScheduleService,
-      rbScheduleSmallSurgery: DetailMP.rbScheduleSmallSurgery,
-      rbScheduleAdviser: DetailMP.rbScheduleAdviser,
-      rbScheduleAmbulance: DetailMP.rbScheduleAmbulance,
-      rbScheduleAccident: DetailMP.rbScheduleAccident,
-      rbScheduleTreatment: DetailMP.rbScheduleTreatment,
-      rbScheduleTransplant: DetailMP.rbScheduleTransplant,
-      ipdCoPay: DetailMP.ipdCoPay,
-      ipdCoPayQuota: DetailMP.ipdCoPayQuota,
-      ipdCoPayDeductable: DetailMP.ipdCoPayDeductable,
-      ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
-      ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
-      ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
-      opdPerYear: DetailMP.opdPerYear,
-      opdPerTime: DetailMP.opdPerTime,
-      opdTimeNotExceedPerYear: DetailMP.opdTimeNotExceedPerYear,
-      opdCoPay: DetailMP.opdCoPay,
-      opdCoPayQuota: DetailMP.opdCoPayQuota,
-      opdCoPayDeductable: DetailMP.opdCoPayDeductable,
-      opdCoPayMixPercentage: DetailMP.opdCoPayMixPercentage,
-      opdCoPayMixNotExceed: DetailMP.opdCoPayMixNotExceed,
-      opdCoPayMixYear: DetailMP.opdCoPayMixYear,
-      dentalPerYear: DetailMP.dentalPerYear,
-      lifePerYear: DetailMP.lifePerYear,
-      lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
-      lifeNotExceed: DetailMP.lifeNotExceed,
-    }).then(() => {
-      this.props.handleUpdateBiding();
-      this.handleCloseModal('editDetailMP');
-    });
+    if (planType === 'master') {
+      editPlanDetail(planId, {
+        planId: DetailMP.planId,
+        planName: DetailMP.planName,
+        employeeOfPlan: DetailMP.employeeOfPlan,
+        ipdType: DetailMP.ipdType,
+        ipdLumsumPerYear: DetailMP.ipdLumsumPerYear,
+        ipdLumsumPerTime: DetailMP.ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: DetailMP.ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight: DetailMP.rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: DetailMP.rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight: DetailMP.rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear: DetailMP.rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient: DetailMP.rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: DetailMP.rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor: DetailMP.rbScheduleDoctor,
+        rbScheduleSurgerySchedule: DetailMP.rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule: DetailMP.rbScheduleSurgeryNonSchedule,
+        rbScheduleService: DetailMP.rbScheduleService,
+        rbScheduleSmallSurgery: DetailMP.rbScheduleSmallSurgery,
+        rbScheduleAdviser: DetailMP.rbScheduleAdviser,
+        rbScheduleAmbulance: DetailMP.rbScheduleAmbulance,
+        rbScheduleAccident: DetailMP.rbScheduleAccident,
+        rbScheduleTreatment: DetailMP.rbScheduleTreatment,
+        rbScheduleTransplant: DetailMP.rbScheduleTransplant,
+        ipdCoPay: DetailMP.ipdCoPay,
+        ipdCoPayQuota: DetailMP.ipdCoPayQuota,
+        ipdCoPayDeductable: DetailMP.ipdCoPayDeductable,
+        ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
+        opdPerYear: DetailMP.opdPerYear,
+        opdPerTime: DetailMP.opdPerTime,
+        opdTimeNotExceedPerYear: DetailMP.opdTimeNotExceedPerYear,
+        opdCoPay: DetailMP.opdCoPay,
+        opdCoPayQuota: DetailMP.opdCoPayQuota,
+        opdCoPayDeductable: DetailMP.opdCoPayDeductable,
+        opdCoPayMixPercentage: DetailMP.opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: DetailMP.opdCoPayMixNotExceed,
+        opdCoPayMixYear: DetailMP.opdCoPayMixYear,
+        dentalPerYear: DetailMP.dentalPerYear,
+        lifePerYear: DetailMP.lifePerYear,
+        lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
+        lifeNotExceed: DetailMP.lifeNotExceed,
+      }).then(() => {
+        this.props.handleUpdateBiding();
+        this.handleCloseModal('editDetailMP');
+      });
+    } else {
+      editInsurerPlanDetail(planId, {
+        planId: DetailMP.planId,
+        planName: DetailMP.planName,
+        employeeOfPlan: DetailMP.employeeOfPlan,
+        ipdType: DetailMP.ipdType,
+        ipdLumsumPerYear: DetailMP.ipdLumsumPerYear,
+        ipdLumsumPerTime: DetailMP.ipdLumsumPerTime,
+        ipdLumsumTimeNotExceedPerYear: DetailMP.ipdLumsumTimeNotExceedPerYear,
+        rbLumsumRoomPerNight: DetailMP.rbLumsumRoomPerNight,
+        rbLumsumNigthNotExceedPerYear: DetailMP.rbLumsumNigthNotExceedPerYear,
+        rbLumsumPayNotExceedPerNight: DetailMP.rbLumsumPayNotExceedPerNight,
+        rbLumsumPayNotExceedPerYear: DetailMP.rbLumsumPayNotExceedPerYear,
+        rbSchedulePatient: DetailMP.rbSchedulePatient,
+        rbScheduleIntensiveCarePatient: DetailMP.rbScheduleIntensiveCarePatient,
+        rbScheduleDoctor: DetailMP.rbScheduleDoctor,
+        rbScheduleSurgerySchedule: DetailMP.rbScheduleSurgerySchedule,
+        rbScheduleSurgeryNonSchedule: DetailMP.rbScheduleSurgeryNonSchedule,
+        rbScheduleService: DetailMP.rbScheduleService,
+        rbScheduleSmallSurgery: DetailMP.rbScheduleSmallSurgery,
+        rbScheduleAdviser: DetailMP.rbScheduleAdviser,
+        rbScheduleAmbulance: DetailMP.rbScheduleAmbulance,
+        rbScheduleAccident: DetailMP.rbScheduleAccident,
+        rbScheduleTreatment: DetailMP.rbScheduleTreatment,
+        rbScheduleTransplant: DetailMP.rbScheduleTransplant,
+        ipdCoPay: DetailMP.ipdCoPay,
+        ipdCoPayQuota: DetailMP.ipdCoPayQuota,
+        ipdCoPayDeductable: DetailMP.ipdCoPayDeductable,
+        ipdCoPayMixPercentage: DetailMP.ipdCoPayMixPercentage,
+        ipdCoPayMixNotExceed: DetailMP.ipdCoPayMixNotExceed,
+        ipdCoPayMixYear: DetailMP.ipdCoPayMixYear,
+        opdPerYear: DetailMP.opdPerYear,
+        opdPerTime: DetailMP.opdPerTime,
+        opdTimeNotExceedPerYear: DetailMP.opdTimeNotExceedPerYear,
+        opdCoPay: DetailMP.opdCoPay,
+        opdCoPayQuota: DetailMP.opdCoPayQuota,
+        opdCoPayDeductable: DetailMP.opdCoPayDeductable,
+        opdCoPayMixPercentage: DetailMP.opdCoPayMixPercentage,
+        opdCoPayMixNotExceed: DetailMP.opdCoPayMixNotExceed,
+        opdCoPayMixYear: DetailMP.opdCoPayMixYear,
+        dentalPerYear: DetailMP.dentalPerYear,
+        lifePerYear: DetailMP.lifePerYear,
+        lifeTimeOfSalary: DetailMP.lifeTimeOfSalary,
+        lifeNotExceed: DetailMP.lifeNotExceed,
+      }).then(() => {
+        this.props.handleUpdateBiding();
+        this.handleCloseModal('editDetailMP');
+      });
+    }
     this.props.handleUpdateBiding();
     this.handleCloseModal('editDetailMP');
   }

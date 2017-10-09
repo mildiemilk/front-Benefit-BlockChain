@@ -30,14 +30,16 @@ class EmployeeLoginMobile extends Component {
         <Header />
         <div className="login-m-box">
           <img alt="" className="login-m-img-gift" src={gift} />
-          <Input className="login-m-input-box" iconPosition="left" placeholder="อีเมล">
-            <img className="login-m-icon-input" src={emailIcon} alt="at" />
-            <input name="email" type="email" onChange={handleChange} />
-          </Input>
-          <Input className="login-m-input-box" iconPosition="left" placeholder="รหัสผ่าน">
-            <img className="login-m-icon-input" src={keyIcon} alt="at" />
-            <input name="password" type="password" onChange={handleChange} />
-          </Input>
+          <form id="formlogin" onSubmit={handleSubmit}>
+            <Input className="login-m-input-box" iconPosition="left" placeholder="อีเมล">
+              <img className="login-m-icon-input" src={emailIcon} alt="at" />
+              <input name="email" type="email" onChange={handleChange} />
+            </Input>
+            <Input className="login-m-input-box" iconPosition="left" placeholder="รหัสผ่าน">
+              <img className="login-m-icon-input" src={keyIcon} alt="at" />
+              <input name="password" type="password" onChange={handleChange} />
+            </Input>
+          </form>
           {
             data.error ?
               <p className="login-m-error-msg">
@@ -46,7 +48,7 @@ class EmployeeLoginMobile extends Component {
             : <div />
           }
           <a className="login-m-forget">ลืมรหัสผ่าน?</a>
-          <button className="login-m-btn-login" onClick={handleSubmit}>
+          <button type="submit" form="formlogin" className="login-m-btn-login">
             ลงชื่อเข้าใช้
           </button>
         </div>

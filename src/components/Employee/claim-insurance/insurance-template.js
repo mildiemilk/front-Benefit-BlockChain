@@ -34,7 +34,7 @@ const BankOption = [
   },
   {
     key: '2',
-    text: 'ไทยพานิชย์',
+    text: 'ไทยพาณิชย์',
     value: 'SCB',
   },
   {

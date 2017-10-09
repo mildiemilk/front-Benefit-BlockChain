@@ -28,7 +28,7 @@ class AddPlanBar extends Component {
 
   handleClickPlan = index => {
     this.setState({ popup: index });
-    this.props.handleActivePlan(index)
+    this.props.handleActivePlan(index);
   }
 
   handlePopup = () => this.setState({ isClose: !this.state.isClose, popup: -1 });
@@ -39,6 +39,7 @@ class AddPlanBar extends Component {
   }
 
   renderList = list => {
+    const { popup } = this.state;
     const lists = list.map((element, index) => {
       const isActive = index === this.props.activePlan ? 'active' : '';
       return (
@@ -75,7 +76,7 @@ class AddPlanBar extends Component {
             on="click"
             hideOnScroll
             position="bottom center"
-            open={this.state.popup === index}
+            open={popup === index}
             onClose={this.handlePopup}
           />
 

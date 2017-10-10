@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Image, Icon, Popup } from 'semantic-ui-react';
-import styled from 'styled-components';
+import { Icon, Popup } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import logoBenefit from './logo_white.png';
-import { HeadNav, LogoPosition, SpanStyle } from './styled';
+import { HeadNav } from './styled';
 
-const ImageCss = styled(Image) `
-  &&&{
-    position: absolute;
-    right: 39px;
-    top: 8px;
-    border-radius: 50%;
-  }
-`;
 class Header extends Component {
   static propTypes = {
     data: PropTypes.shape({}).isRequired,
@@ -59,40 +50,41 @@ class Header extends Component {
     const { companyName, logo } = data;
     return (
       <HeadNav>
-        <LogoPosition>
-          <div>
-            <Image src={logoBenefit} size="small" />
+        <div className="nav-header-box">
+          <div className="nav-header-box-l">
+            <img className="nav-header-img-logo-bt" alt="" src={logoBenefit} size="small" />
           </div>
-        </LogoPosition>
-        <Menu.Item style={{ width: '20%' }} position="right">
-          {
-            companyName !== ''
-            ? <div>
-              <SpanStyle>
-                {companyName}
-              </SpanStyle>
-              <Popup
-                trigger={
-                  <Icon
-                    className="navbar-header-icon"
-                    name="caret down"
-                    role="button"
-                    aria-hidden
-                    style={{ cursor: 'pointer' }}
-                  />
-                }
-                content={this.renderMenuPopup()}
-                on="click"
-                position="bottom center"
-                open={this.state.isClose}
-                onOpen={this.handlePopup}
-                onClose={this.handlePopup}
-              />
-              <ImageCss src={logo} alt="logo" width="50px" height="50px" />
-            </div>
-            : <div />
-          }
-        </Menu.Item>
+          <div className="nav-header-box-r">
+            {
+              companyName !== ''
+              ? <div>
+                <span>
+                  {companyName}
+                </span>
+                <Popup
+                  trigger={
+                    <Icon
+                      className="nav-header-icon-dropdown"
+                      name="caret down"
+                      role="button"
+                      aria-hidden
+                      style={{ cursor: 'pointer' }}
+                    />
+                  }
+                  content={this.renderMenuPopup()}
+                  on="click"
+                  position="bottom center"
+                  className="nav-header-menu-dropdown"
+                  open={this.state.isClose}
+                  onOpen={this.handlePopup}
+                  onClose={this.handlePopup}
+                />
+                <img className="nav-header-img-user" src={logo} alt="logo" />
+              </div>
+              : <div />
+            }
+          </div>
+        </div>
       </HeadNav>
     );
   }

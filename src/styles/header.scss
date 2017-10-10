@@ -20,3 +20,42 @@
 .navbar-header-menu-box {
   line-height: 30px;
 }
+.nav-header-box {
+  display: flex;
+  width: 100%;
+  padding-left: 29px;
+  padding-right: 29px;
+}
+.nav-header-box-l {
+  display: inline-block;
+  width: 50%;
+}
+.nav-header-img-logo-bt {
+  height: 36px;
+  position: absolute;
+  top: calc(50% - 18px);
+}
+.nav-header-box-r {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  padding-right: 50px;
+  color: white;
+  line-height: 65px;
+}
+.nav-header-img-user {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 25px);
+  right: 29px;
+  display: inline-block;
+}
+.caret.down.icon.nav-header-icon-dropdown {
+  margin-left: 21px;
+  margin-right: 21px;
+}
+.ui.bottom.center.popup.transition.visible.nav-header-menu-dropdown {
+  top: 35px !important;
+}

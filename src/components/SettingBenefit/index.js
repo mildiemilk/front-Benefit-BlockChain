@@ -72,6 +72,7 @@ class SettingBenefit extends Component {
   }
 
   componentWillReceiveProps(newProps) {
+    console.log('>>>willReceicve ', this.state.activePlan, this.state.newBenefitPlan);
     if (newProps.benefitPlan.length === 0) {
       this.setState({ emptyPlan: true });
     } else {
@@ -92,12 +93,17 @@ class SettingBenefit extends Component {
             expense: planList[index].benefitPlan.expense ? planList[index].benefitPlan.expense : -1,
             emptyPlan: false,
             planList,
-            newBenefitPlan: -1,
           });
         }
       } else {
         const planList = newProps.benefitPlan;
-        const index = 0;
+        let index = 0;
+        if (this.state.newBenefitPlan !== -1) {
+          index = this.state.newBenefitPlan;
+        } else if (this.state.activePlan !== '') {
+          index = this.state.activePlan;
+        }
+        console.log('>>>else ', index);
         this.setState({
           activePlan: index,
           planName: planList[index].benefitPlanName,
@@ -108,6 +114,7 @@ class SettingBenefit extends Component {
           expense: planList[index].benefitPlan.expense ? planList[index].benefitPlan.expense : -1,
           emptyPlan: false,
           planList,
+          newBenefitPlan: -1,
         });
       }
     }
@@ -176,7 +183,7 @@ class SettingBenefit extends Component {
     this.state.planList.splice(activePlan, 1);
     deletePlan(id)
     .then(() => {
-      this.handleUpdateResult();
+      this.setState({ updateResult: true, newBenefitPlan: -1 });
     });
   }
 
@@ -203,9 +210,11 @@ class SettingBenefit extends Component {
     const { optionPlan: { detailPlan } } = this.props;
     const benefitPlan = { plan, isHealth, isExpense, health, expense, detailPlan };
     let benefitPlanId = null;
+    let newBenefitPlan = this.props.benefitPlan.length;
     if (activePlan !== '') {
       const { benefitPlan } = this.props;
       benefitPlanId = benefitPlan[activePlan]._id;
+      newBenefitPlan = activePlan;
     }
     const setPlan = {
       benefitPlanId,
@@ -214,7 +223,7 @@ class SettingBenefit extends Component {
     };
     setBenefitPlan(setPlan)
     .then(() => {
-      this.setState({ updateResult: true, newBenefitPlan: this.props.benefitPlan.length });
+      this.setState({ updateResult: true, newBenefitPlan });
     });
   }
   handleNext = () => {
@@ -238,6 +247,7 @@ class SettingBenefit extends Component {
       isExpense: planList[index].benefitPlan.isExpense,
       health: planList[index].benefitPlan.health,
       expense: planList[index].benefitPlan.expense,
+      newBenefitPlan: -1,
     });
   }
   closeWarningModal = () => {
@@ -261,6 +271,7 @@ class SettingBenefit extends Component {
       this.setState({ redirect: false });
       return <Redirect to="/Download" />;
     }
+    console.log('>>>render ', this.state.activePlan, this.state.newBenefitPlan);
     return (
       <div className="SettingBenefit">
         <NavBenefit step={this.state.step} />
@@ -271,6 +282,7 @@ class SettingBenefit extends Component {
             </Header>
           </HeaderSpace>
           <DivContent>
+            +++{this.state.activePlan}+++
             {!this.state.emptyPlan
               ? <AddPlanBar
                 plan={this.state.planList}

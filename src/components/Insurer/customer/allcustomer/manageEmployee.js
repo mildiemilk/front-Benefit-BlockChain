@@ -197,7 +197,10 @@ class manageEmployee extends Component {
         <div className="employee-list-box" key={index.toString()}>
           <div className="row">
             <div className="large-1 columns">
-              <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+              {EMPlist.detail.employeeCode
+              ? <TextIn>{EMPlist.detail.employeeCode}</TextIn>
+              : <TextIn>-</TextIn>
+              }
             </div>
             <div className="large-2 columns">
               {EMPlist.detail.name

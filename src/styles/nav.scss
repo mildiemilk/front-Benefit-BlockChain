@@ -7,9 +7,9 @@
         padding: 8px;
         width: 16.666667%;
     }
-    .steps > .step::before{
+    // .steps > .step::before{
 
-    }
+    // }
     .steps > .step.active{
         padding-left: 8px;
         background-color:#3a7bd5;
@@ -45,9 +45,9 @@
     .steps > .step.active .content .description{
         color: white;
     }
-    .ui.steps .step .description{
+    // .ui.steps .step .description{
 
-    }
+    // }
     .ui.steps .step.active:after{
         background-color:#3a7bd5;
     }

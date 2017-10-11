@@ -81,8 +81,8 @@ class ComparePlan extends Component {
 
   renderPlanName = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.planName}
       </th>
     ));
@@ -90,8 +90,8 @@ class ComparePlan extends Component {
 
   renderLife = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed === 0
           ? '-'
           : plan.lifePerYear + plan.lifeTimeOfSalary + plan.lifeNotExceed}
@@ -101,8 +101,8 @@ class ComparePlan extends Component {
 
   renderDental = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.dentalPerYear === null ? '-' : plan.dentalPerYear}
       </th>
     ));
@@ -110,8 +110,8 @@ class ComparePlan extends Component {
 
   renderOPD = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.opdPerYear +
           plan.opdPerTime +
           plan.opdTimeNotExceedPerYear +
@@ -136,8 +136,8 @@ class ComparePlan extends Component {
 
   renderIPD = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.ipdLumsumPerYear +
           plan.ipdLumsumPerTime +
           plan.ipdLumsumTimeNotExceedPerYear +
@@ -219,14 +219,16 @@ class ComparePlan extends Component {
               <div className="large-10 large-offset-1 columns">
                 <div className="CompareHead">
                   <table>
-                    <tr>
-                      <th>
-                        <TopicCompareTable>
-                          ผลประโยชน์ความคุ้มครอง (Benefits)
-                        </TopicCompareTable>
-                      </th>
-                      {this.renderPlanName()}
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>
+                          <TopicCompareTable>
+                            ผลประโยชน์ความคุ้มครอง (Benefits)
+                          </TopicCompareTable>
+                        </th>
+                        {this.renderPlanName()}
+                      </tr>
+                    </thead>
                   </table>
                 </div>
               </div>

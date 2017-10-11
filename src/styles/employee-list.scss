@@ -89,17 +89,15 @@
     align-items: center;
   }
   }
-  .bin-employee-list{
+  .bin-employee-list-hr{
+    display: inline-block;
     background-color: #e74c3c;
     border-radius: 3px;
     height: 20px;
     width: 20px;
-    cursor:pointer;
+    padding-left: 1%;
+    cursor: pointer;
     color: white;
-    display: flex;
-    padding-left: 2px;
-    align-items: center;
-    margin: 0px;
   }
 
   .profile-employee-box{

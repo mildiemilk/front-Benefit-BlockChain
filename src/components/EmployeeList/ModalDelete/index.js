@@ -62,7 +62,7 @@ class ModalDelete extends Component {
     return (
       <Modals
         trigger={
-          <div className="bin-employee-list" onClick={this.handleModal} role="button" aria-hidden>
+          <div className="bin-employee-list-hr" onClick={this.handleModal} role="button" aria-hidden>
             <Icon name="trash" />
           </div>}
         open={this.state.modalOpen}

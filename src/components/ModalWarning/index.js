@@ -17,6 +17,7 @@ const Modals = styled(Modal)`
     margin: 0 auto;
     width: 300px;
     text-align: center;
+    left: calc(50% - 150px);
   }
 `;
 

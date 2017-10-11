@@ -119,7 +119,7 @@ export function getCustomerFile(companyId) {
     };
     APIRequest(options, true)
       .then(res => {
-        FileSaver.saveAs(res.data, 'EmployeeData.xlsx');
+        FileSaver.saveAs(res.data, 'EmployeeData.csv');
       })
       .catch(err => {
         console.log(err);

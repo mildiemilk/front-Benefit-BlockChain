@@ -33,7 +33,7 @@ class ClaimEmployee extends Component {
   checkResult = () => {
     this.setState({
       isResult: 'true',
-    })
+    });
   }
   handleDetail = index => {
     const { isExtend } = this.state;

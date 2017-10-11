@@ -177,7 +177,6 @@ class Life extends Component {
                   id="lifeTimeOfSalary"
                   value={this.props.lifeTimeOfSalary}
                   onChange={this.handleChange}
-                  style={{ width: '100px' }}
                 />
               </div>
               : <div style={{ display: '-webkit-box' }}>
@@ -187,7 +186,6 @@ class Life extends Component {
                   name="lifeTimeOfSalary"
                   id="lifeTimeOfSalary"
                   disabled
-                  style={{ width: '150px' }}
                 />
               </div>}
             <p> เท่า</p>
@@ -198,7 +196,7 @@ class Life extends Component {
                 <Form.Field>
                   <Form.Input
                     type="number"
-                    label="เท่า แต่ไม่เกิน"
+                    label="แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
                     name="lifeNotExceed"
                     id="lifeNotExceed"
@@ -214,7 +212,7 @@ class Life extends Component {
                 <Form.Field>
                   <Form.Input
                     type="number"
-                    label="เท่า แต่ไม่เกิน"
+                    label="แต่ไม่เกิน"
                     placeholder="จำนวนบาท"
                     name="lifeNotExceed"
                     id="lifeNotExceed"

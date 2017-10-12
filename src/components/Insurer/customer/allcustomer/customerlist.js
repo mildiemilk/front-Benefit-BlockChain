@@ -61,38 +61,40 @@ class customerList extends Component {
 
   renderElement = customer => {
     const list = customer.map((customer, id) => (
-      <Nav
-        id={id}
-        onClick={() => this.props.handleDetail(id, customer.companyId)}
-        key={id.toString()}
-      >
-        <div className="text-main">
-          <ImageCompany
-            avatar
-            src={customer.logo}
-          />
-          <div className="insurertext2">
-            <span>{customer.companyName}</span><br />
-            จำนวนพนักงาน : &nbsp;{customer.numberOfEmployees} คน<br />
-            วันเริ่มกรมธรรม์ใหม่ :&nbsp;
-            {moment(customer.startNewInsurance)
-            .locale('th')
-            .format('DD MMMM YYYY')} <br />
-            วันสิ้นสุดกรมธรรม์เก่า :&nbsp;
-            {moment(customer.expiredOldInsurance)
-            .locale('th')
-            .format('DD MMMM YYYY')}
+      <div className="large-6 columns">
+        <Nav
+          id={id}
+          onClick={() => this.props.handleDetail(id, customer.companyId)}
+          key={id.toString()}
+        >
+          <div className="text-main">
+            <ImageCompany
+              avatar
+              src={customer.logo}
+            />
+            <div className="insurertext2">
+              <span>{customer.companyName}</span><br />
+              จำนวนพนักงาน : &nbsp;{customer.numberOfEmployees} คน<br />
+              วันเริ่มกรมธรรม์ใหม่ :&nbsp;
+              {moment(customer.startNewInsurance)
+              .locale('th')
+              .format('DD MMMM YYYY')} <br />
+              วันสิ้นสุดกรมธรรม์เก่า :&nbsp;
+              {moment(customer.expiredOldInsurance)
+              .locale('th')
+              .format('DD MMMM YYYY')}
+            </div>
+            <div className="insurertext3">
+              <input type="button" name="" value="" />
+            </div>
           </div>
-          <div className="insurertext3">
-            <input type="button" name="" value="" />
+          <div className="insurertext4">
+            <div className="status-text">
+              {this.renderCustomerStatus(customer.status)}
+            </div>
           </div>
-        </div>
-        <div className="insurertext4">
-          <div className="status-text">
-            {this.renderCustomerStatus(customer.status)}
-          </div>
-        </div>
-      </Nav>
+        </Nav>
+      </div>
     ));
     return list;
   }

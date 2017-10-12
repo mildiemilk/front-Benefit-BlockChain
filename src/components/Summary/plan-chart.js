@@ -16,25 +16,24 @@ class PlanChart extends Component {
     cx: PropTypes.string.isRequired,
     cy: PropTypes.string.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
+
   sumAllEmployee = () => {
     const allEmployee = this.props.summaryBenefitPlan;
-    console.log('allEmployee', allEmployee);
     let sum = 0;
     if (allEmployee !== undefined && allEmployee.length >= 1) {
-      const summary = allEmployee.map(em => {
-        console.log('em', em.amount);
+      allEmployee.map(em => {
         sum += em.amount;
-        return 'test'
-      })
-      console.log('summary', summary);
-      return sum
+        return 'test';
+      });
+      return sum;
     }
     return '';
   }
+
   renderGroup = () => {
     const Group = this.props.summaryBenefitPlan;
     if (Group !== undefined && Group.length >= 1) {
@@ -45,13 +44,12 @@ class PlanChart extends Component {
     }
     return '';
   }
+
   renderList = () => {
     const list = this.renderGroup();
-    console.log('list', list);
     if (list !== undefined && list.length >= 1) {
-      console.log('sdfs');
       return list.map((element, index) => (
-        <div className="tag-color-chart">
+        <div className="tag-color-chart" key={index.toString()}>
           <span
             className="rv-discrete-color-legend-item__color"
             style={{ background: graphColor[index], height: '7.5px', width: '7.5px', borderRadius: '50%' }}
@@ -64,9 +62,8 @@ class PlanChart extends Component {
     }
     return '';
   }
+
   render() {
-    console.log('props--employee', this.props);
-    // const { summaryBenefitPlan } = this.props;
     const { width, height, cx, cy } = this.props;
     return (
       <div>
@@ -81,6 +78,7 @@ class PlanChart extends Component {
                 <div className="chart-radial-sum">คน</div>
                 <PieChart width={width} height={height}>
                   <Pie
+                    dataKey="value"
                     data={this.renderGroup()}
                     innerRadius={60}
                     outerRadius={80}
@@ -90,7 +88,11 @@ class PlanChart extends Component {
                   >
                     {
                       data.map((entry, index) =>
-                        <Cell fill={graphColor[index % graphColor.length]} />)
+                        <Cell
+                          key={index.toString()}
+                          fill={graphColor[index % graphColor.length]}
+                        />,
+                      )
                     }
                   </Pie>
                 </PieChart>

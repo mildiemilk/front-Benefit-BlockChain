@@ -26,7 +26,6 @@ class NavSelectRealTime extends Component {
     this.state = {};
   }
   render() {
-    console.log('Nav', this.props);
     return (
       <div>
         <div className="row">

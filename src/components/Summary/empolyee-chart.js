@@ -21,7 +21,6 @@ class EmpolyeeChart extends Component {
   renderGroup = () => {
     const Group = this.props.summaryGroup;
     const allGroup = Group.groups;
-    console.log('aaa->', allGroup);
     if (allGroup !== undefined && allGroup.length >= 1) {
       return allGroup.map(element => Object.assign({}, {
         name: element.groupName,
@@ -32,11 +31,9 @@ class EmpolyeeChart extends Component {
   }
   renderList = () => {
     const list = this.renderGroup();
-    console.log('list', list);
     if (list !== undefined && list.length >= 1) {
-      console.log('sdfs');
       return list.map((element, index) => (
-        <div className="tag-color-chart">
+        <div className="tag-color-chart" key={index.toString()}>
           <span
             className="rv-discrete-color-legend-item__color"
             style={{ background: graphColor[index], height: '7.5px', width: '7.5px', borderRadius: '50%' }}
@@ -50,9 +47,7 @@ class EmpolyeeChart extends Component {
     return '';
   }
   render() {
-    console.log('props--employee', this.props);
     const { summaryGroup, width, height } = this.props;
-    console.log('w,h', width, height);
     return (
       <div>
         <div className="chart-main-box">
@@ -66,6 +61,7 @@ class EmpolyeeChart extends Component {
                 <div className="chart-radial-sum">คน</div>
                 <PieChart width={width} height={height}>
                   <Pie
+                    dataKey="value"
                     data={this.renderGroup()}
                     innerRadius={60}
                     outerRadius={80}
@@ -75,7 +71,11 @@ class EmpolyeeChart extends Component {
                   >
                     {
                       data.map((entry, index) =>
-                        <Cell fill={graphColor[index % graphColor.length]} />)
+                        <Cell
+                          key={index.toString()}
+                          fill={graphColor[index % graphColor.length]}
+                        />,
+                      )
                     }
                   </Pie>
                 </PieChart>

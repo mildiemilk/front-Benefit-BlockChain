@@ -7,9 +7,9 @@
         padding: 8px;
         width: 16.666667%;
     }
-    .steps > .step::before{
+    // .steps > .step::before{
 
-    }
+    // }
     .steps > .step.active{
         padding-left: 8px;
         background-color:#3a7bd5;
@@ -32,22 +32,22 @@
     }
     .steps > .step .content .description{
         font-size: 20px;
-        margin-top: 20px;
+        // margin-top: 20px;
         word-wrap: break-word;
     }
     .NavBenefit {
         .steps > .step .content .description{
             font-size: 16px;
-            margin-top: 20px;
+            // margin-top: 20px;
             word-wrap: break-word;
         }
     }
     .steps > .step.active .content .description{
         color: white;
     }
-    .ui.steps .step .description{
+    // .ui.steps .step .description{
 
-    }
+    // }
     .ui.steps .step.active:after{
         background-color:#3a7bd5;
     }

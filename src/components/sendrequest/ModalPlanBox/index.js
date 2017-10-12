@@ -9,8 +9,8 @@ class ModalPlanBox extends Component {
   static propTypes = {
     getAllPlan: PropTypes.func.isRequired,
     changePositionPage: PropTypes.func.isRequired,
-    deletePlan: PropTypes.func.isRequired,
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    // deletePlan: PropTypes.func.isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
   constructor(props) {
     super(props);
@@ -19,9 +19,18 @@ class ModalPlanBox extends Component {
       isOpen: false,
       modalOpen: false,
       activePlan: -1,
+      updateData: false,
     };
-    const { getAllPlan } = props;
-    setInterval(getAllPlan, 2000);
+    props.getAllPlan();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.updateData) {
+      this.setState({
+        updateData: false,
+      });
+      this.props.getAllPlan();
+    }
   }
 
   handleOpen = () => {
@@ -56,17 +65,22 @@ class ModalPlanBox extends Component {
   }
 
   handleDelete = e => {
-    this.props.deletePlan(this.props.planList[e.target.id].planId);
+    const { planList } = this.props;
+    deletePlan([planList[e.target.id].planId])
+    .then(() => {
+      this.setState({ updateData: true });
+    });
   }
 
-  renderList = list => {
-    const lists = list.map((element, index) => (
-      <ListBox className="large-4 columns">
+  renderList = () => {
+    const { planList } = this.props;
+    const lists = planList.map((element, index) => (
+      <ListBox className="large-4 columns" key={index.toString()}>
         <PlanBoxs
           changePositionPage={this.props.changePositionPage}
           id={index}
           activePlan={this.state.activePlan}
-          planList={this.props.planList}
+          planList={planList}
           isOpen={this.state.isOpen}
           modalOpen={this.state.modalOpen}
           handleOpen={this.handleOpen}
@@ -86,7 +100,7 @@ class ModalPlanBox extends Component {
     return (
       <div>
         <div className="row">
-          {this.renderList(this.props.planList)}
+          {this.renderList()}
         </div>
       </div>
     );
@@ -95,7 +109,6 @@ class ModalPlanBox extends Component {
 
 const mapDispatchToProps = dispatch => ({
   getAllPlan: () => dispatch(getAllPlan()),
-  deletePlan: planId => dispatch(deletePlan(planId)),
 });
 
 const mapStateToProps = state => ({

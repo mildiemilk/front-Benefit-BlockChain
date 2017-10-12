@@ -17,8 +17,8 @@ class Insurer extends React.Component {
   }
 
   renderList = insurers => {
-    const list = insurers.map(insurer => (
-      <Card className="large-2 columns">
+    const list = insurers.map((insurer, i) => (
+      <Card className="large-2 columns" key={i.toString()}>
         {insurer.companyName}
         <Logo src={insurer.logo.link} alt="logo" />
       </Card>

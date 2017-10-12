@@ -94,9 +94,6 @@ class CountDowns extends Component {
     let $isHours = this.addLeadingZeros(countDown.hours);
     let $isMin = this.addLeadingZeros(countDown.min);
     let $isSec = this.addLeadingZeros(countDown.sec);
-    console.log('Date', this.props.date);
-    console.log('d,h,m,s', $isDay, $isHours, $isMin, $isSec);
-    console.log('eiei-->', Date.parse(new Date(this.props.date)) - Date.parse(new Date()));
     if (
         $isDay === '00' &&
         $isHours === '00' &&
@@ -120,7 +117,6 @@ class CountDowns extends Component {
         $isMin === '00' &&
         $isSec <= '01'
       ) {
-        console.log('3');
         $isDay = <DisplayTime />;
         $isHours = <DisplayTimeout>หมดเวลา</DisplayTimeout>;
         $isMin = <DisplayTime />;

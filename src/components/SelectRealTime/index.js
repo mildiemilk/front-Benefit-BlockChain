@@ -42,16 +42,17 @@ class SelectRealTime extends Component {
     getSummaryBenefitPlan: PropTypes.func.isRequired,
     getSummaryEmployee: PropTypes.func.isRequired,
     getSummaryGroup: PropTypes.func.isRequired,
-    benefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
-    summaryEmployee: PropTypes.arrayOf(PropTypes.object).isRequired,
+    benefitPlan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    summaryEmployee: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     summaryGroup: PropTypes.shape({}).isRequired,
-    summaryBenefitPlan: PropTypes.arrayOf(PropTypes.object).isRequired,
+    summaryBenefitPlan: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
   constructor(props) {
     super(props);
+    const showDetail = [];
     this.state = {
-      isPlan: true,
       timeout: false,
+      showDetail,
     };
     props.getSummaryBenefitPlan();
     setInterval(() => {
@@ -59,66 +60,74 @@ class SelectRealTime extends Component {
       props.getSummaryEmployee();
     }, 2000);
   }
+
   componentDidMount() {
-    // this.props.getBenefitPlan();
-    // this.props.getSummaryEmployee();
     this.props.getSummaryGroup();
   }
-  handlePlan = () => {
-    const { isPlan } = this.state;
-    if (!isPlan) {
-      this.setState({
-        isPlan: true,
-      });
-    } else {
-      this.setState({
-        isPlan: false,
-      });
+
+  componentWillReceiveProps(nextProps) {
+    const { summaryGroup } = nextProps;
+    if (summaryGroup.groups.length !== this.state.showDetail.length) {
+      const showDetail = [];
+      for (let i = 0; i < summaryGroup.groups.length; i += 1) {
+        showDetail.push(true);
+      }
+      this.setState({ showDetail });
     }
   }
+
   handleBar = number => {
     if (number === 0) {
       return 'none';
     }
     return 'yellow';
   }
+
   notiTimeout = () => {
     this.setState({
       timeout: true,
     });
   }
+
+  handleeShowDetail = index => {
+    const { showDetail } = this.state;
+    showDetail[index] = !showDetail[index];
+    this.setState({ showDetail });
+  }
+
   renderDetailPlan = allPlan => {
-    // const { summaryBenefitPlan } = this.props;
     if (allPlan !== undefined && allPlan.plan.length >= 1) {
       const result = allPlan.plan.map((plan, index) => (
-        <DetailIn>
+        <DetailIn key={index.toString()}>
           <div className="row">
             <div className="large-5 columns">
               <HeadPlan>{plan}</HeadPlan>
-              {allPlan.defaultPlan === plan
-              ? <Default>แผนเริิ่มต้น</Default>
-              : null
+              {
+                allPlan.defaultPlan === plan
+                ? <Default>แผนเริิ่มต้น</Default>
+                : <div />
               }
             </div>
-            {this.state.timeout
-            ? <div className="large-7 columns Bar">
-              <ProgressStyle
-                percent={(allPlan.amountOfPlan[index] / allPlan.totalOfGroup) * 100}
-                className={this.handleBar(allPlan.amountOfPlan[index])}
-              />
-              <Number>
-                {allPlan.amountOfPlan[index]} คน
-              </Number>
-            </div>
-            : <div className="large-7 columns Bar">
-              <ProgressStyle
-                percent={(allPlan.confirm[index] / allPlan.totalOfGroup) * 100}
-                className={this.handleBar(allPlan.confirm[index])}
-              />
-              <Number>
-                {allPlan.confirm[index]} คน
-              </Number>
-            </div>
+            {
+              this.state.timeout
+              ? <div className="large-7 columns Bar">
+                <ProgressStyle
+                  percent={(allPlan.amountOfPlan[index] / allPlan.totalOfGroup) * 100}
+                  className={this.handleBar(allPlan.amountOfPlan[index])}
+                />
+                <Number>
+                  {allPlan.amountOfPlan[index]} คน
+                </Number>
+              </div>
+              : <div className="large-7 columns Bar">
+                <ProgressStyle
+                  percent={(allPlan.confirm[index] / allPlan.totalOfGroup) * 100}
+                  className={this.handleBar(allPlan.confirm[index])}
+                />
+                <Number>
+                  {allPlan.confirm[index]} คน
+                </Number>
+              </div>
             }
           </div>
         </DetailIn>
@@ -127,28 +136,31 @@ class SelectRealTime extends Component {
     }
     return '';
   }
+
   renderBox = allGroups => {
-    let TypeIcon = null;
-    if (!this.state.isPlan) {
-      TypeIcon = <Icon name="caret right" />;
-    } else {
-      TypeIcon = <Icon name="caret down" />;
-    }
+    const { summaryEmployee } = this.props;
+    const { showDetail } = this.state;
     if (allGroups !== undefined && allGroups.length >= 1) {
       const group = allGroups.map((allGroup, index) => {
-        let sum;
+        let sum = 0;
+        let TypeIcon = null;
+        if (!showDetail[index]) {
+          TypeIcon = <Icon name="caret right" />;
+        } else {
+          TypeIcon = <Icon name="caret down" />;
+        }
         if (this.state.timeout) {
-          if (this.props.summaryEmployee[index] !== undefined &&
-            this.props.summaryEmployee[index].amountOfPlan.length >= 1) {
-            sum = this.props.summaryEmployee[index].amountOfPlan.reduce((a, b) => a + b, 0);
+          if (summaryEmployee[index] !== undefined &&
+            summaryEmployee[index].amountOfPlan.length >= 1) {
+            sum = summaryEmployee[index].amountOfPlan.reduce((a, b) => a + b, 0);
           }
         } else {
-          if (this.props.summaryEmployee[index] !== undefined &&
-            this.props.summaryEmployee[index].confirm.length >= 1) {
-            sum = this.props.summaryEmployee[index].confirm.reduce((a, b) => a + b, 0);
+          if (summaryEmployee[index] !== undefined &&
+            summaryEmployee[index].confirm.length >= 1) {
+            sum = summaryEmployee[index].confirm.reduce((a, b) => a + b, 0);
           }
         }
-        return (<BoxDetail>
+        return (<BoxDetail key={index.toString()}>
           <HeadList>
             <TextL>พนักงานกลุ่ม {allGroup.groupName} </TextL>
             <TextR>
@@ -157,14 +169,16 @@ class SelectRealTime extends Component {
             </TextR>
           </HeadList>
           <BoxList>
-            <Lists onClick={this.handlePlan}>
+            <Lists onClick={() => this.handleeShowDetail(index)}>
               <ListL> แผนสิทธิประโยชน์ที่เลือก </ListL>
               <ListR>{TypeIcon}</ListR>
             </Lists>
           </BoxList>
-          {this.state.isPlan
+          {
+            showDetail[index]
             ? this.renderDetailPlan(this.props.summaryEmployee[index])
-            : null}
+            : <div />
+          }
         </BoxDetail>
         );
       });
@@ -172,18 +186,20 @@ class SelectRealTime extends Component {
     }
     return '';
   }
+
   render() {
     const { benefitPlan, summaryGroup, summaryBenefitPlan } = this.props;
     return (
       <div className="SelectRealTime">
-        {benefitPlan.length >= 1
-        ? <Nav
-          timeout={benefitPlan[0].timeout}
-          summaryGroup={summaryGroup}
-          notiTimeout={this.notiTimeout}
-          summaryBenefitPlan={summaryBenefitPlan}
-        />
-        : <div />
+        {
+          benefitPlan.length >= 1
+          ? <Nav
+            timeout={benefitPlan[0].timeout}
+            summaryGroup={summaryGroup}
+            notiTimeout={this.notiTimeout}
+            summaryBenefitPlan={summaryBenefitPlan}
+          />
+          : <div />
         }
         <DetailDiv>
           <HeadDetail>
@@ -193,9 +209,10 @@ class SelectRealTime extends Component {
         </DetailDiv>
         <div className="row">
           <div className="large-2 large-offset-10 columns">
-            { this.state.timeout
-            ? <Link to="/summary"><NextButton>ต่อไป</NextButton></Link>
-            : <div />
+            {
+              this.state.timeout
+              ? <Link to="/summary"><NextButton>ต่อไป</NextButton></Link>
+              : <div />
             }
           </div>
 

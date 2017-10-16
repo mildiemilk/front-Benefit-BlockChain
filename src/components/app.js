@@ -54,15 +54,19 @@ class App extends Component {
     isAuthenticated: PropTypes.bool.isRequired,
     role: PropTypes.string,
   };
-
   static defaultProps = {
     role: '',
   };
-
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      hamburgerMenu: false,
+    };
   }
+
+  handleHamburgerMenu = () => this.setState({ hamburgerMenu: !this.state.hamburgerMenu });
+
+  handleCloseHamburgerMenu = () => this.setState({ hamburgerMenu: false });
 
   render() {
     const { isAuthenticated, role } = this.props;
@@ -70,7 +74,9 @@ class App extends Component {
     if (isAuthenticated) {
       if (role === 'HR') {
         route = (
-          <NavLayout>
+          <NavLayout
+            handleHamburgerMenu={this.handleHamburgerMenu}
+          >
             <Switch>
               <Route path="/confirm_identity" component={confirmIdentity} />
               <Route path="/welcome" component={welcomePage} />
@@ -78,7 +84,10 @@ class App extends Component {
               <Route path="/logout" component={Logout} />
               <Route path="/login" component={Login} />
               <Route path="/dashboard" component={Dashboard} />
-              <MainLayout>
+              <MainLayout
+                hamburgerMenu={this.state.hamburgerMenu}
+                handleCloseHamburgerMenu={this.handleCloseHamburgerMenu}
+              >
                 <Switch>
                   <Route path="/congrat" component={Congrat} />
                   <Route path="/congratstep3" component={CongratStep3} />

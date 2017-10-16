@@ -1,0 +1,5 @@
+.custom-grid-width-100 {
+  @media screen and (max-width: 1328px) and (min-width: 1024px) {
+    width: 100% !important;
+  }
+}

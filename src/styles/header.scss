@@ -35,6 +35,11 @@
   position: absolute;
   top: calc(50% - 18px);
 }
+.menu-active {
+  @media screen and (max-width: 1328px) {
+    margin-left: 55px;
+  }
+}
 .nav-header-box-r {
   display: inline-block;
   width: 50%;
@@ -59,4 +64,13 @@
 .ui.bottom.center.popup.transition.visible.nav-header-menu-dropdown {
   top: 35px !important;
   position: fixed !important;
+}
+.nav-header-icon-menu {
+  @media screen and (min-width: 1329px) {
+    display: none;
+  }
+  top: calc(50% - 20px);
+  position: absolute;
+  width: 40px;
+  
 }

@@ -3,7 +3,7 @@ import { Image, Icon, Popup } from 'semantic-ui-react';
 
 export const Nav = styled.div`
   margin: 10px 15px;
-  width: 45%;
+  width: 100%;
   display: inline-block;
   height: 199px;
   border-radius: 6px;

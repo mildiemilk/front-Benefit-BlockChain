@@ -24,7 +24,7 @@ height: 200px;
   border: solid 1px #d3d3d3;
   /* position: relative; */
   display: inline-block;
-  width: 48%;
+  width: 100%;
   margin: 5px;
 `;
 export const NavClaim = styled.div`

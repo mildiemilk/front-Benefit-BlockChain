@@ -125,44 +125,56 @@ class Dashboard extends Component {
               <Grid.Row columns={3}>
                 <Grid.Column onClick={() => this.checkStep(0)}>
                   <Image
-                    className="block"
+                    className="block cursor"
                     centered
                     src={artboard1}
                     shape="circular"
                   />
-                  <Container textAlign="center"> ลูกค้าของคุณ </Container>
+                  <Container textAlign="center" className="cursor">
+                    ลูกค้าของคุณ
+                  </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(1)}>
                   <Image
-                    className="block"
+                    className="block cursor"
                     centered
                     src={artboard3}
                     shape="circular"
                   />
-                  <Container textAlign="center"> การเสนอราคา</Container>
+                  <Container textAlign="center" className="cursor">
+                    การเสนอราคา
+                  </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(2)}>
-                  <Image className="block" src={artboard2} shape="circular" centered />
-                  <Container textAlign="center"> รายการเคลม </Container>
+                  <Image className="block cursor" src={artboard2} shape="circular" centered />
+                  <Container textAlign="center" className="cursor">
+                    รายการเคลม
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={3}>
                 <Grid.Column onClick={() => this.checkStep(3)}>
                   <Image
-                    className="block"
+                    className="block cursor"
                     src={artboard4}
                     shape="circular"
                     centered
                   />
-                  <Container textAlign="center"> แผนประกันภัย </Container>
+                  <Container textAlign="center" className="cursor">
+                    แผนประกันภัย
+                  </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(4)}>
-                  <Image className="block" src={artboard5} shape="circular" centered />
-                  <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
+                  <Image className="block cursor" src={artboard5} shape="circular" centered />
+                  <Container textAlign="center" className="cursor">
+                    โปรไฟล์ของคุณ
+                  </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(5)}>
-                  <Image className="block" src={artboard6} shape="circular" centered />
-                  <Container textAlign="center"> ตั้งค่า </Container>
+                  <Image className="block cursor" src={artboard6} shape="circular" centered />
+                  <Container textAlign="center" className="cursor">
+                    ตั้งค่า
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

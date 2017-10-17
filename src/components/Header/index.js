@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
 import logoBenefit from './logo_white.png';
-import IconMenu from '../../../dist/images/icon_menu.png';
+import IconMenu from '../../../assets/icon_menu.png';
 import { HeadNav } from './styled';
 
 class Header extends Component {

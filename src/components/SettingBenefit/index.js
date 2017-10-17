@@ -72,7 +72,6 @@ class SettingBenefit extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log('>>>willReceicve ', this.state.activePlan, this.state.newBenefitPlan);
     if (newProps.benefitPlan.length === 0) {
       this.setState({ emptyPlan: true });
     } else {
@@ -103,7 +102,6 @@ class SettingBenefit extends Component {
         } else if (this.state.activePlan !== '') {
           index = this.state.activePlan;
         }
-        console.log('>>>else ', index);
         this.setState({
           activePlan: index,
           planName: planList[index].benefitPlanName,
@@ -271,7 +269,6 @@ class SettingBenefit extends Component {
       this.setState({ redirect: false });
       return <Redirect to="/Download" />;
     }
-    console.log('>>>render ', this.state.activePlan, this.state.newBenefitPlan);
     return (
       <div className="SettingBenefit">
         <NavBenefit step={this.state.step} />

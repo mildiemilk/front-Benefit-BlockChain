@@ -67,7 +67,6 @@ export function chooseFinalInsurer(passwordToConfirm, insurerCompany, step) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log('res', res);
         dispatch(selectFinalInsurerSuccess(res.data));
       })
       .catch(err => {

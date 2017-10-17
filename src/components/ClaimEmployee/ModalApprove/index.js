@@ -52,7 +52,7 @@ class ModalApprove extends Component {
     const { claimId } = this.props;
     this.handleModal();
     companyClaim('approve', claimId, null)
-    .then(() => { this.props.checkResult() });
+    .then(() => { this.props.checkResult(); });
   }
   render() {
     return (

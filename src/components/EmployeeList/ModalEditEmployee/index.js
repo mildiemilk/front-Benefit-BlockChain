@@ -142,7 +142,7 @@ class ModalEditEmployee extends Component {
     }
   }
   handleEffective = effective => {
-    this.setState({ effective }, () => console.log('set date', this.state.effective));
+    this.setState({ effective });
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleInputChange = ({ target: { name, value } }) => {

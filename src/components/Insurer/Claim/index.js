@@ -155,7 +155,7 @@ class Claim extends Component {
         : null
         }
       </div>
-    )
+    );
   }
 }
 

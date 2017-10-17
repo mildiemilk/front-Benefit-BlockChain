@@ -32,7 +32,6 @@ class MenuTab extends Component {
   }
 
   render() {
-    console.log('GroupName====>', this.props.groupName);
     return (
       <DivHeight>
         <div className="employeeBenefits-Menu-Tab-head-box">

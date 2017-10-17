@@ -250,7 +250,6 @@ class AllsetPlan extends Component {
   }
 
   handleVerifyState = name => {
-    console.log('--verifyState->', name);
     this.setState({
       verifyState: true,
       changeToRecord: false,

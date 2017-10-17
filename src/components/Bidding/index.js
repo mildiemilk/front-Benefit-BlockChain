@@ -57,7 +57,6 @@ class Bidding extends Component {
     });
   }
   render() {
-    console.log('Props-->', this.props);
     return (
       <div className="Bidding">
         <NavBidding

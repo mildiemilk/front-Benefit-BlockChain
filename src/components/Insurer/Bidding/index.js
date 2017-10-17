@@ -10,7 +10,7 @@ class Bidding extends React.Component {
     getCompanyBidding: PropTypes.func.isRequired,
     timeout: PropTypes.string.isRequired,
     match: PropTypes.shape({ params: PropTypes.companyId }),
-    data: PropTypes.shape({ data: {} }).isRequired,
+    data: PropTypes.shape({}).isRequired,
   }
   static defaultProps = {
     match: {
@@ -33,7 +33,7 @@ class Bidding extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { data } = nextProps.data;
+    const { data: { data } } = nextProps;
     this.setState({ DataCompany: data });
   }
   componentWillUpdate(nextProps, nextState) {
@@ -43,7 +43,6 @@ class Bidding extends React.Component {
     if (this.state.updateBiding) {
       this.setState({ updateBiding: false });
       this.props.getCompanyBidding(this.state.companyId);
-      console.log(this.props.data.data);
     }
   }
   handleUpdateBiding = () => {

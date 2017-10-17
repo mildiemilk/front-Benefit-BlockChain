@@ -42,7 +42,6 @@ export function getCompanyBiddingFailure(data) {
 }
 
 export function getCompanyBiddingListSuccess(data) {
-  console.log('action', data);
   return { type: GETBIDDINGLIST_REQUEST_SUCCESS, data };
 }
 

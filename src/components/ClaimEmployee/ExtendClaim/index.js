@@ -212,9 +212,7 @@ class ExtendClaim extends Component {
   renderDetail() {
     const { isInsurance } = this.state;
     const { claimList, index, indexDetail } = this.props;
-    console.log('props--//', this.props.claimList);
     if (claimList.claims !== undefined && claimList.claims.length >= 1) {
-      console.log('claim', claimList.claims[index].claims[indexDetail], 'indexDetail', indexDetail);
       const claim = claimList.claims[index].claims[indexDetail];
       let type;
       if (index === 0) {
@@ -232,7 +230,6 @@ class ExtendClaim extends Component {
       } else {
         tag = <Status color="#f7555f">ไม่อนุมัติ</Status>;
       }
-      console.log('<---claim--->', claim);
       return (
         <div>
           <HeadLink onClick={this.props.handleDetail}>เคลม/ </HeadLink>

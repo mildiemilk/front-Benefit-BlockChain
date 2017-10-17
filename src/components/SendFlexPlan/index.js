@@ -71,26 +71,19 @@ class SendFlexPlan extends Component {
   handlePost = () => {
     const { passwordToConfirm } = this.state;
     const step = 2;
-    console.log('pass step', passwordToConfirm, step);
     this.props.setCompleteStep(passwordToConfirm, step);
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   renderPlan = () => {
-    console.log('template', this.state.templatePlan);
-    console.log('bnefitPlan===>', this.props.benefitPlan);
     const { benefitPlan } = this.props;
     const { templatePlan } = this.state;
     const planList = benefitPlan;
-    console.log('planList', planList);
     if (planList !== undefined && planList.length >= 1) {
-      console.log('ppp=>', planList);
-      console.log('tttt-->', templatePlan);
       const newplan =
       templatePlan.filter(plan => planList.map(
         option =>
             option.benefitPlan.plan.planId._id === plan.plan._id).indexOf(true) !== -1);
-      console.log('newePlan', newplan);
       return newplan;
     }
     return '';
@@ -100,7 +93,6 @@ class SendFlexPlan extends Component {
     let timeout = '';
     if (benefitPlan[0] !== undefined) {
       timeout = benefitPlan[0].timeout;
-      console.log('time->choose', time);
     }
     if (completeStep) {
       return <Redirect to="/congratstep3" />;

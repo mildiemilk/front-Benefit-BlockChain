@@ -45,7 +45,6 @@ class Piechart extends Component {
   handlePost = () => {
     const { passwordToConfirm } = this.state;
     const step = 3;
-    console.log('step', step);
     this.props.setCompleteStep(passwordToConfirm, step);
     window.location.href = '/dashboard';
   }
@@ -94,7 +93,6 @@ class Piechart extends Component {
     if (completeStep) {
       return <Redirect to="/dashboard" />;
     }
-    console.log('props-->', this.props);
     return (
       <div>
         <div className="row">

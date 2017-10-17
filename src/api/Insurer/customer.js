@@ -122,8 +122,7 @@ export function getCustomerFile(companyId) {
         const blob = new Blob([res.data], { type: 'text/csv;charset=utf-8;' });
         FileSaver.saveAs(blob, 'EmployeeData.csv');
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
       });
   };
 }

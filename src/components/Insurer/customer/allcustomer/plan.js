@@ -12,7 +12,6 @@ class Plan extends Component {
     // color: PropTypes.string.isRequired,
   }
   renderList = master => {
-    console.log('planlist', master);
     const planlists = master.map(plan => (
       <List>
         <IconPlan name="add to calendar" size="big" />

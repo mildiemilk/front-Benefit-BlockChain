@@ -30,18 +30,14 @@ class SelectBox extends Component {
   }
   renderDetail = (allplan, templatePlan) => {
     if (allplan !== undefined && allplan.length >= 1) {
-      console.log('allplan==>.', allplan);
-      console.log('templaeplan==>', templatePlan);
       const plan =
       allplan.filter(plan => templatePlan.map(
         option => option === plan._id).indexOf(true) !== -1);
-      console.log('newoption', plan);
       return plan;
     }
     return allplan;
   }
   renderPlan = plans => {
-    console.log('----plan', plans, 'default', this.props.default);
     const Allplan = plans.map(plan => (
       <div style={{ display: 'flex' }}>
         <Plan>{plan.benefitPlanName}</Plan>
@@ -54,8 +50,6 @@ class SelectBox extends Component {
     return Allplan;
   }
   render() {
-    console.log('planName- select', this.props.plan);
-    console.log('benefitPlan- select', this.props.benefitPlan)
     return (
       <Box>
         <Head>

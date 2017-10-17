@@ -67,8 +67,6 @@ class EmployeeBenefits extends Component {
     }
   }
   render() {
-    console.log('======>> state', this.state);
-    console.log('====>> props', this.props);
     return (
       <div className="row">
         <div className="large-3 columns">

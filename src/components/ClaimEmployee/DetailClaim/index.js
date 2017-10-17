@@ -73,11 +73,11 @@ class DetailClaim extends Component {
         const result = allLists.map((list, i) => {
           let tag;
           if (list.status === 'pending') {
-            tag = <StatusTag color="#3a7bd5">รอพิจารณา</StatusTag>
+            tag = <StatusTag color="#3a7bd5">รอพิจารณา</StatusTag>;
           } else if (list.status === 'approve') {
-            tag = <StatusTag color="#46b3b8">อนุมัติ</StatusTag>
+            tag = <StatusTag color="#46b3b8">อนุมัติ</StatusTag>;
           } else {
-            tag = <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>
+            tag = <StatusTag color="#f7555f">ไม่อนุมัติ</StatusTag>;
           }
           return (<div className="employee-list">
             <div className="employee-list-box">
@@ -137,7 +137,6 @@ class DetailClaim extends Component {
   }
   render() {
     const { claimList } = this.props;
-    console.log('thisProps', this.props.claimList);
     return (
       <div>
         {claimList.claims !== undefined && claimList.claims.length >= 1

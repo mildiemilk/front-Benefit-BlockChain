@@ -22,11 +22,11 @@ class Tostify extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       hideProgressBar: true,
-    }
+    };
   }
   render() {
     return (

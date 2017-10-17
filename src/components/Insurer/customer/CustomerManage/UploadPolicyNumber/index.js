@@ -155,7 +155,7 @@ class UploadPolicyNumber extends Component {
 
       );
     }
-    return <div />
+    return <div />;
   }
 }
 

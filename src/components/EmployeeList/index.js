@@ -385,8 +385,8 @@ class employeeList extends Component {
     return showData;
   }
   renderGroupPopup = Groups => {
-    const allGroup = Groups.map(Group => (
-      <DivFloat className="large-4 columns">
+    const allGroup = Groups.map((Group, i) => (
+      <DivFloat key={i.toString()} className="large-4 columns">
         <input type="checkbox" value="group" />
         <ListPopup>{Group.GroupName}</ListPopup>
       </DivFloat>
@@ -395,7 +395,6 @@ class employeeList extends Component {
   }
   render() {
     const { data, totalEmployee } = this.props;
-    console.log('summary', totalEmployee);
     return (
       <div className="employee-list">
         <Head content="รายชื่อพนักงาน" />

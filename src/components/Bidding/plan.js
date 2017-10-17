@@ -10,9 +10,8 @@ class Plan extends Component {
     color: PropTypes.string.isRequired,
   }
   renderList = bids => {
-    console.log('planlist', bids);
-    const planlists = bids.map(bid => (
-      <List color={this.props.color} className="large-4 columns">
+    const planlists = bids.map((bid, i) => (
+      <List key={i.toString()} color={this.props.color} className="large-4 columns">
         <IconPlan name="add to calendar" size="big" />
         <DetailList>
           {bid.planDetail.planName} <br />

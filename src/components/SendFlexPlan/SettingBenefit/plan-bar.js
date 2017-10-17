@@ -31,7 +31,6 @@ class PlanBar extends Component {
   }
 
   render() {
-    console.log('planbar', this.props.plan);
     if (this.props.plan) {
       return (
         <div >

@@ -46,16 +46,13 @@ export function deletePlan(planId) {
     };
 
     APIRequest(options, true)
-      .then(res => {
-        console.log(res);
+      .then(() => {
       })
-      .catch(err => {
-        console.log(err.response);
+      .catch(() => {
       });
   };
 }
 export function updateBiddingPrice(companyId, databiding) {
-  console.log('Api=====', databiding);
   const options = {
     method: 'post',
     url: `${JOIN_BIDDING_URI}/${companyId}`,
@@ -64,7 +61,6 @@ export function updateBiddingPrice(companyId, databiding) {
   return APIRequest(options, true);
 }
 export function updateStatus(status, companyId) {
-  console.log('Api=====', companyId);
   return () => {
     const options = {
       method: 'put',
@@ -73,11 +69,9 @@ export function updateStatus(status, companyId) {
     };
 
     APIRequest(options, true)
-      .then(res => {
-        console.log(res);
+      .then(() => {
       })
-      .catch(err => {
-        console.log(err.response);
+      .catch(() => {
       });
   };
 }
@@ -89,16 +83,13 @@ export function deleteInsurerPlan(planId) {
     };
 
     APIRequest(options, true)
-      .then(res => {
-        console.log(res);
+      .then(() => {
       })
-      .catch(err => {
-        console.log(err.response);
+      .catch(() => {
       });
   };
 }
 export function getCompanyBidding(companyId) {
-  console.log('api----', companyId);
   return dispatch => {
     const options = {
       method: 'get',
@@ -122,7 +113,6 @@ export function getCompanyBiddingList() {
     };
     APIRequest(options, true)
       .then(res => {
-        console.log('getCompanyBiddingList');
         dispatch(getCompanyBiddingListSuccess(res.data));
       })
       .catch(err => {

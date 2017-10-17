@@ -329,6 +329,10 @@
   .box-in-start-box {
     display: block;
     text-align: center;
+    font-size: 0.9vw;
+    @media screen and (min-width: 1440px) {
+      font-size: 12px;
+    }
   }
 
   .p-in-modal{

@@ -65,7 +65,6 @@ class Header extends Component {
                 onClick={this.props.handleHamburgerMenu}
                 role="button"
                 aria-hidden
-                style={{ cursor: 'pointer' }}
               />
               : <div />
             }

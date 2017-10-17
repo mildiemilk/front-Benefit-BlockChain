@@ -50,7 +50,6 @@ class ClaimDetail extends Component {
     const { index } = this.state;
     const { claim } = this.props;
     // console.log('>>>handleViewImg', id);
-    console.log('>>>handleViewImg--', claim[index].detail.imageClaimFile.urlImg);
     const image = claim[index].detail.imageClaimFile.urlImg.map((item, i) => (
       <div
         className="claim-img-block"
@@ -74,7 +73,6 @@ class ClaimDetail extends Component {
   render() {
     const { claim } = this.props;
     const { index, companyId } = this.state;
-    console.log('>>>handleViewImg', claim);
     if (claim.length > 0) {
       let tag;
       if (claim[index].status === 'pending') {
@@ -231,7 +229,7 @@ class ClaimDetail extends Component {
         </div>
       );
     }
-    return <div />
+    return <div />;
   }
   }
 const mapDispatchToProps = dispatch => ({

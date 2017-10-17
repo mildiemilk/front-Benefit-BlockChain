@@ -19,7 +19,6 @@ class CoPay extends Component {
 
   constructor(props) {
     super(props);
-
     const {
       opdCoPayQuota,
       opdCoPayDeductable,
@@ -63,7 +62,6 @@ class CoPay extends Component {
   }
 
   render() {
-    console.log('value', this.state.value);
     return (
       <div>
         <div className="copayParagraph">

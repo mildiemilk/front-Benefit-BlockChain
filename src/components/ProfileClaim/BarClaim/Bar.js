@@ -17,21 +17,11 @@ class BarDetail extends Component {
     this.state = {};
   }
 
-  customTooltip = (data, name) => {
-    // const { active } = this.props;
-    // if (active) {
-    //   return (
-    //     <BoxTooltip>
-    //     </BoxTooltip>
-    //   );
-    // }
-    // return null;
-    console.log('dd', data);
-    console.log('nn', name);
-    return (<BoxTooltip>
+  customTooltip = data => (
+    <BoxTooltip>
       {data[0].name}
-    </BoxTooltip>);
-  };
+    </BoxTooltip>
+  );
 
   render() {
     const data = [
@@ -58,7 +48,6 @@ class BarDetail extends Component {
       { name: ' J', expense: 3390, insurance: 6800, health: 3500 },
       { name: ' K', expense: 2490, insurance: 6300, health: 3100 },
     ];
-    console.log('');
     return (
       <div>
         <AllClaimText>จำนวนการเคลมทั้งหมด 211 รายการ</AllClaimText>

@@ -67,7 +67,7 @@ class ModalReject extends Component {
     const { claimId } = this.props;
     const { reason } = this.state;
     companyClaim('reject', claimId, reason)
-    .then(() => { this.props.checkResult() });
+    .then(() => { this.props.checkResult(); });
     this.handleModal();
   }
 

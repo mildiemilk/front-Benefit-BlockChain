@@ -86,7 +86,6 @@ class InsurancePlan extends Component {
   }
 
   render() {
-    console.log('planList', this.props.planList);
     if (this.props.planList) {
       return (
         <div className="row">

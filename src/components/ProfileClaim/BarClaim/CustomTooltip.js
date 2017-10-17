@@ -50,7 +50,6 @@ class CustomTooltip extends Component {
     const { active } = this.props;
     if (active) {
       const { payload, label } = this.props;
-      console.log('payload', payload);
       return (
         <BoxTooltip>
           <div className="row">

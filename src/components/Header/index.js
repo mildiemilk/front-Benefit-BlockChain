@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
 import logoBenefit from './logo_white.png';
+import IconMenu from '../../../assets/icon_menu.png';
 import { HeadNav } from './styled';
 
 class Header extends Component {
   static propTypes = {
     data: PropTypes.shape({}).isRequired,
+    // hamburgerMenu: PropTypes.bool.isRequired,
+    // handleCloseHamburgerMenu: PropTypes.func.isRequired,
+    handleHamburgerMenu: PropTypes.func.isRequired,
+    check: PropTypes.string.isRequired,
   }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +33,8 @@ class Header extends Component {
       <div
         className="navbar-header-menu-box"
         onClick={this.handlePopup}
-        role="button" aria-hidden
+        role="button"
+        aria-hidden
         style={{ cursor: 'pointer' }}
       >
         <Link to="/setting" >
@@ -46,12 +51,33 @@ class Header extends Component {
     </div>
 
   render() {
-    const { data: { companyName, logo } } = this.props;
+    const { check, data: { companyName, logo } } = this.props;
     return (
       <HeadNav>
         <div className="nav-header-box">
           <div className="nav-header-box-l">
-            <img className="nav-header-img-logo-bt" alt="" src={logoBenefit} size="small" />
+            {
+              check !== 'dashboard' && check !== 'login'
+              ? <img
+                className="nav-header-icon-menu"
+                alt=""
+                src={IconMenu}
+                onClick={this.props.handleHamburgerMenu}
+                role="button"
+                aria-hidden
+              />
+              : <div />
+            }
+            <img
+              className={
+                check !== 'dashboard' && check !== 'login'
+                ? 'nav-header-img-logo-bt menu-active'
+                : 'nav-header-img-logo-bt'
+              }
+              alt=""
+              src={logoBenefit}
+              size="small"
+            />
           </div>
           <div className="nav-header-box-r">
             {

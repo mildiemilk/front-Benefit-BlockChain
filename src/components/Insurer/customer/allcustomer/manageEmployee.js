@@ -252,7 +252,7 @@ class manageEmployee extends Component {
             </div>
           </div>
         </div>
-      )
+      );
     });
     return list;
   }
@@ -578,7 +578,7 @@ class manageEmployee extends Component {
         </div>
       );
     }
-    return <div />
+    return <div />;
   }
   }
 

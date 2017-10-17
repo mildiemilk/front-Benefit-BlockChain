@@ -23,7 +23,6 @@ export default class SidebarDesktop extends Component {
 
   render() {
     const pathname = window.location.pathname.split('/')[1].toLowerCase();
-    console.log('>>>url ', pathname);
     return (
       <aside className="sidebar">
         <Item.Group className="sidebarstyle" relaxed>

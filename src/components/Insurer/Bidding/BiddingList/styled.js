@@ -26,7 +26,7 @@ export const FontNumAucTime1 = styled.div`
     bottom: 17%;
     left: 36%;
   }
-`
+`;
 export const Pic = styled.div`
     border-radius: 50%;
     background-color: #5c6879;

@@ -232,8 +232,7 @@ export function getTemplate() {
       .then(res => {
         FileSaver.saveAs(res.data, 'EmployeedataTemplate.xlsx');
       })
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
       });
   };
 }

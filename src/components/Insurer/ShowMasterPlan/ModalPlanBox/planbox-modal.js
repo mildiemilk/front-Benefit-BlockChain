@@ -405,7 +405,7 @@ class PlanBoxModal extends Component {
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
       });
-      const MP = this.state.DetailMP
+      const MP = this.state.DetailMP;
       MP.ipdCoPay = false;
       this.state = {
         DetailMP: MP,
@@ -414,7 +414,7 @@ class PlanBoxModal extends Component {
     }
     if (this.state.ipdCoPay === false) {
       this.setState({ ipdCoPay: true });
-      const MP = this.state.DetailMP
+      const MP = this.state.DetailMP;
       MP.ipdCoPay = true;
       this.state = {
         DetailMP: MP,
@@ -437,14 +437,14 @@ class PlanBoxModal extends Component {
         DetailMP: this.props.DetailMP,
         ipdType: this.state.ipdType,
       };
-      const MP = this.state.DetailMP
+      const MP = this.state.DetailMP;
       MP.opdCoPay = true;
     } else {
       this.setState({ opdCoPay: !this.state.opdCoPay });
       this.state = {
         DetailMP: this.props.DetailMP,
       };
-      const MP = this.state.DetailMP
+      const MP = this.state.DetailMP;
       MP.opdCoPay = true;
     }
   }

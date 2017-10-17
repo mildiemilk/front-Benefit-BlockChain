@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Head = styled.p`
   margin-bottom: 0px;
   padding-top:24px;
-  font-size: 30px;
+  font-size: 2.1vw;
 `;
 
 export const Grid = styled.div`

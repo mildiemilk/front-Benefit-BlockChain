@@ -38,11 +38,10 @@ class SelectBox extends Component {
     // const { plan } = Allplans;
     // console.log('plan', plan);
     // const plans = plan;
-    const Allplan = Allplans.map((plan, index) => {
+    const Allplan = Allplans.map((plan, index) => (
       // const { confirm } = this.props.summaryEmployee;
-      const detail = this.getDetailPlan(plan.plan[index]);
-      console.log('detail', detail);
-      return (<BoxPlan>
+      // const detail = this.getDetailPlan(plan.plan[index]);
+      <BoxPlan key={index.toString()}>
         {/* <div className="row">
           <div className="large-7 columns">
             {plan.benefitPlanName}
@@ -109,15 +108,12 @@ class SelectBox extends Component {
         </div>
         : null
         } */}
-      sdfdf
-      </BoxPlan>);
-    });
+        sdfdf
+      </BoxPlan>
+    ));
     return Allplan;
   }
   render() {
-    console.log('gg', this.props.groupName);
-    console.log('plan', this.props.benefitPlan);
-    console.log('planss', this.props.benefitPlan.plan.length);
     return (
       <Box>
         <Head>

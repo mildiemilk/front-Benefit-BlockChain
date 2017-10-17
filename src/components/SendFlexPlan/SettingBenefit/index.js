@@ -69,12 +69,9 @@ class SettingBenefit extends Component {
   renderOption = (optionPlan, templatePlan) => {
     const allplan = optionPlan.choosePlan.insurer.concat(optionPlan.choosePlan.master);
     if (allplan !== undefined && allplan.length >= 1) {
-      console.log('allplanfilter', allplan);
-      console.log('templateplan==', templatePlan);
       const newplan =
       templatePlan.filter(plan => allplan.map(
         option => option.planId === plan.plan._id).indexOf(true) !== -1);
-      console.log('newoption', newplan);
       return newplan;
     }
     return '';
@@ -82,9 +79,6 @@ class SettingBenefit extends Component {
 
   render() {
     const isReadOnly = true;
-    console.log('statebe', this.state);
-    console.log('props-setting', this.props);
-    console.log('optionPlan', this.props.optionPlan, 'template', this.props.templatePlan)
     return (
       <div className="row SettingBenefit">
         <div className="large-3 columns">

@@ -86,7 +86,6 @@ class Benefits extends Component {
 
   ShowPlan = list => {
     const showList = list.map((element, index) => {
-      console.log('>>', showList);
       const isActive = index === this.state.i ? '-active' : '';
       return (
         <PlanBlock

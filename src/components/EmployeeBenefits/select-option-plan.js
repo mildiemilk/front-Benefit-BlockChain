@@ -38,7 +38,6 @@ class SelectOptionPlan extends Component {
   }
 
   handleModal = indexPlan => {
-    console.log('indexPlan', indexPlan);
     this.setState({
       openSettingBenefit: true,
       indexPlan,
@@ -58,11 +57,7 @@ class SelectOptionPlan extends Component {
   }
 
   renderList = list => {
-    console.log('optionPlan===>selectOptionPlanl', this.props.optionPlan);
-    console.log('selectOption==>', this.props.selectOption);
     const lists = list.map((element, index) => {
-      console.log('index==>', index);
-      console.log('elementId==>', element._id);
       const isActive = element._id === this.props.defaultPlan ? '-active' : '';
       return (
         <div className="row">

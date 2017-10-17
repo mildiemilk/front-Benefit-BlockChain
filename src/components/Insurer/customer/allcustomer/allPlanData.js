@@ -75,7 +75,7 @@ class AllCustomer extends Component {
         </div>
       );
     }
-    return <div />
+    return <div />;
   }
   }
 

@@ -68,8 +68,6 @@ class General extends Component {
   render() {
     const { data } = this.props;
     // const { imagePreviewUrl } = this.props;
-    console.log('propData', data);
-    console.log('propss', this.props);
     // console.log('--data--', data[dataIndex]);
     let $imagePreview = null;
     $imagePreview = (

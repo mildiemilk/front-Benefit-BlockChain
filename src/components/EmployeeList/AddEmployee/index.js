@@ -59,10 +59,9 @@ class AddEmployee extends Component {
         address: '',
         marriageStatus: '',
         employeeId: '',
-      }
+      };
     } else {
       dataIndex = parseInt(props.match.params.index, 10);
-      console.log('dataLink', dataDetail[dataIndex]);
       if (dataDetail[dataIndex].detail.profilePic !== null) {
         data = { profilePic: dataDetail[dataIndex].detail.profilePic.link,
           imagePreviewUrl: dataDetail[dataIndex].detail.profilePic.link,
@@ -99,7 +98,7 @@ class AddEmployee extends Component {
         address: dataDetail[dataIndex].detail.address,
         marriageStatus: dataDetail[dataIndex].detail.marriageStatus,
         employeeId: dataDetail[dataIndex]._id,
-      }
+      };
     }
     this.state = {
       isGeneral: true,
@@ -217,7 +216,6 @@ class AddEmployee extends Component {
     });
   }
   handleSubmit = () => {
-    console.log('ee');
     const {
       profilePic,
       prefix,
@@ -246,7 +244,7 @@ class AddEmployee extends Component {
       marriageStatus,
       employeeId,
       dataIndex,
-    } = this.state
+    } = this.state;
     const detail = {
       prefix,
       name,
@@ -273,8 +271,7 @@ class AddEmployee extends Component {
       address,
       marriageStatus,
       employeeId,
-    }
-    console.log('dataIndex---->>>>', dataIndex);
+    };
     if (dataIndex === 'new') {
       addEmployee(detail, profilePic).then(() => this.setState({ isSuccess: true }));
     } else {
@@ -327,7 +324,6 @@ class AddEmployee extends Component {
             value: option.detail.title,
           });
         }
-        console.log('Title', options);
         return option;
       });
     }
@@ -346,7 +342,6 @@ class AddEmployee extends Component {
             value: option.detail.department,
           });
         }
-        console.log('Department', options);
         return option;
       });
     }
@@ -357,8 +352,6 @@ class AddEmployee extends Component {
       return <Redirect to="/employeelist" />;
     }
     const { isGeneral, isPersonal, isClaim } = this.state;
-    console.log('allstate', this.state);
-    console.log('props-->-->', this.props.dataDetail[this.state.dataIndex]);
     return (
       <div>
         <Head content="ข้อมูลพนักงาน" />
@@ -412,7 +405,7 @@ class AddEmployee extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

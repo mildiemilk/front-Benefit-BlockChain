@@ -375,7 +375,7 @@ class AllsetPlan extends Component {
           </div>
           <div className="row">
             {this.state.setPlan === 'IPD'
-              ? <div className="large-3 columns">
+              ? <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('IPD')}
@@ -390,7 +390,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textIpdActive}>IPD</span>
                 </div>
               </div>
-              : <div className="large-3 columns">
+              : <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('IPD')}
@@ -406,7 +406,7 @@ class AllsetPlan extends Component {
                 </div>
               </div>}
             {this.state.setPlan === 'OPD'
-              ? <div className="large-3 columns">
+              ? <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('OPD')}
@@ -421,7 +421,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textOpdActive}>OPD</span>
                 </div>
               </div>
-              : <div className="large-3 columns">
+              : <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('OPD')}
@@ -437,7 +437,7 @@ class AllsetPlan extends Component {
                 </div>
               </div>}
             {this.state.setPlan === 'Dental'
-              ? <div className="large-3 columns">
+              ? <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('Dental')}
@@ -452,7 +452,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textDentalActive}>Dental</span>
                 </div>
               </div>
-              : <div className="large-3 columns">
+              : <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('Dental')}
@@ -468,7 +468,7 @@ class AllsetPlan extends Component {
                 </div>
               </div>}
             {this.state.setPlan === 'Life'
-              ? <div className="large-3 columns">
+              ? <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab-active"
                   onClick={() => this.handleClick('Life')}
@@ -483,7 +483,7 @@ class AllsetPlan extends Component {
                   <span className={this.state.textLifeActive}>Life</span>
                 </div>
               </div>
-              : <div className="large-3 columns">
+              : <div className="large-3 medium-3 small-3 columns">
                 <div
                   className="x-tab"
                   onClick={() => this.handleClick('Life')}

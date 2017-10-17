@@ -15,7 +15,6 @@ class NavStep extends Component {
   }
 
   render() {
-    console.log('Step', this.state.step);
     return (
       <div className="NavManageCustomerStep">
         <div className="row">

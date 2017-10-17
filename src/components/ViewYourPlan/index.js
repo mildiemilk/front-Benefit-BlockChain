@@ -72,16 +72,12 @@ class EmployeeBenefits extends Component {
     }
   }
   render() {
-    console.log('group', this.props.groupBenefit);
-    console.log('benefit', this.props.benefitPlan);
-    console.log('active', this.state.activeGroup);
-    console.log('summary employee', this.props.summaryEmployee.length);
-    if (this.props.summaryEmployee[this.state.activeGroup]) {
-      console.log('ee', this.props.summaryEmployee[this.state.activeGroup]);
-    }
-    if (this.props.benefitPlan) {
-      console.log('pp', this.props.benefitPlan);
-    }
+    // if (this.props.summaryEmployee[this.state.activeGroup]) {
+    //   console.log('ee', this.props.summaryEmployee[this.state.activeGroup]);
+    // }
+    // if (this.props.benefitPlan) {
+    //   console.log('pp', this.props.benefitPlan);
+    // }
     return (
       <div>
         <Head content="แผนสิทธิประโยชน์ของคุณ" />

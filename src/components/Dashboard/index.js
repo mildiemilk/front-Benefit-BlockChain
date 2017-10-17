@@ -18,9 +18,8 @@ class Dashboard extends Component {
     getCompleteStep: PropTypes.func.isRequired,
     completeStep: PropTypes.arrayOf(PropTypes.bool).isRequired,
   }
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       path: [
         '/submitplan/0',
@@ -59,7 +58,7 @@ class Dashboard extends Component {
       const canGo = completeStep.lastIndexOf(true) + 1 === number;
       if (canGo) {
         return (
-          <div className="large-3 columns" key={number.toString()}>
+          <div className="large-3 mediam-3 small-3 columns" key={number.toString()}>
             <Link to={{ pathname: path[number] }} >
               <Checkbox label={label[number]} checked={step} />
             </Link>
@@ -67,16 +66,18 @@ class Dashboard extends Component {
         );
       }
       return (
-        <div className="large-3 columns" key={number.toString()}>
+        <div className="large-3 mediam-3 small-3 columns" key={number.toString()}>
           <Checkbox label={label[number]} checked={step} />
         </div>
       );
     });
     return allStep;
   }
+
   closeWarningModal = () => {
     this.setState({ openWarningModal: false });
   }
+
   checkStep = number => {
     const { completeStep } = this.props;
     const { way } = this.state;
@@ -89,6 +90,7 @@ class Dashboard extends Component {
       warningMessage: 'คุณยังสร้างแผนประกันภัยไม่สำเร็จ',
     });
   }
+
   render() {
     const { completeStep } = this.props;
     const { nextPage } = this.state;
@@ -100,7 +102,7 @@ class Dashboard extends Component {
       step = (
         <div>
           <div className="navTop">
-            <Icon name="warning sign" size="big" inverted />
+            <Icon name="warning sign" className="navIn-icon-warning" />
             ดำเนินขั้นตอนต่อไปนี้เพื่อใช้งาน BenefiTable
           </div>
           <Bar className="row">
@@ -109,7 +111,6 @@ class Dashboard extends Component {
         </div>
       );
     }
-
     return (
       <div className="dashboard">
         {step}
@@ -117,47 +118,63 @@ class Dashboard extends Component {
           ยินดีต้อนรับเข้าสู่ BenefiTable
         </Head>
         <Divider />
-
         <Grid className="dash">
-          <Grid.Column width={3} />
-          <Grid.Column width={10}>
+          <Grid.Column width={2} />
+          <Grid.Column width={12}>
             <Grid>
               <Grid.Row columns={3}>
-                <Grid.Column className="cursor" onClick={() => this.checkStep(0)}>
+                <Grid.Column onClick={() => this.checkStep(0)}>
                   <Image
-                    className="block"
+                    className="block cursor"
                     centered
                     src={artboard1}
                     shape="circular"
                   />
-                  <Container textAlign="center"> แผนของคุณ </Container>
+                  <Container textAlign="center" className="cursor">
+                    ลูกค้าของคุณ
+                  </Container>
                 </Grid.Column>
-                <Grid.Column className="cursor" onClick={() => this.checkStep(1)}>
+                <Grid.Column onClick={() => this.checkStep(1)}>
                   <Image
-                    className="block"
+                    className="block cursor"
                     centered
                     src={artboard3}
                     shape="circular"
                   />
-                  <Container textAlign="center"> อัพเดตจำนวนพนักงาน </Container>
+                  <Container textAlign="center" className="cursor">
+                    การเสนอราคา
+                  </Container>
                 </Grid.Column>
-                <Grid.Column className="cursor" onClick={() => this.checkStep(2)}>
-                  <Image className="block" src={artboard2} shape="circular" />
-                  <Container textAlign="center"> รายการเคลม </Container>
+                <Grid.Column onClick={() => this.checkStep(2)}>
+                  <Image className="block cursor" src={artboard2} shape="circular" centered />
+                  <Container textAlign="center" className="cursor">
+                    รายการเคลม
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={3}>
-                <Grid.Column className="cursor" onClick={() => this.checkStep(3)}>
-                  <Image className="block" src={artboard4} shape="circular" />
-                  <Container textAlign="center"> ประวัติการเคลม </Container>
+                <Grid.Column onClick={() => this.checkStep(3)}>
+                  <Image
+                    className="block cursor"
+                    src={artboard4}
+                    shape="circular"
+                    centered
+                  />
+                  <Container textAlign="center" className="cursor">
+                    แผนประกันภัย
+                  </Container>
                 </Grid.Column>
-                <Grid.Column className="cursor" onClick={() => this.checkStep(4)}>
-                  <Image className="block" src={artboard5} shape="circular" />
-                  <Container textAlign="center"> โปรไฟล์ของคุณ </Container>
+                <Grid.Column onClick={() => this.checkStep(4)}>
+                  <Image className="block cursor" src={artboard5} shape="circular" centered />
+                  <Container textAlign="center" className="cursor">
+                    โปรไฟล์ของคุณ
+                  </Container>
                 </Grid.Column>
-                <Grid.Column className="cursor" onClick={() => this.checkStep(5)}>
-                  <Image className="block" src={artboard6} shape="circular" />
-                  <Container textAlign="center"> ตั้งค่า </Container>
+                <Grid.Column onClick={() => this.checkStep(5)}>
+                  <Image className="block cursor" src={artboard6} shape="circular" centered />
+                  <Container textAlign="center" className="cursor">
+                    ตั้งค่า
+                  </Container>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

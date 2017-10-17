@@ -79,7 +79,6 @@ export function setTimeOut(timeout) {
 
     APIRequest(options, true)
       .then(res => {
-        console.log('res', res);
         dispatch(setTimeOutSuccess(res.data));
       })
       .catch(err => {

@@ -2,12 +2,27 @@
   padding: 65px 100px 0px 100px;
   .navTop {
     position: relative;
-    padding-top: 10px;
     background-color: #74CBF7;
-    font-size: 180%;
+    font-size: 3.1vw;
     color: white;
     padding-left: 2%;
     height: 70px;
+    line-height: 70px;
+    @media screen and (min-width: 1440px) {
+      font-size: 26px;
+    }
+  }
+  .navIn-icon-warning {
+    font-size: 3.1vw;
+    @media screen and (min-width: 1440px) {
+      font-size: 26px;
+    }
+  }
+  .ui.checkbox label {
+    font-size: 1.3vw;
+    @media screen and (min-width: 1440px) {
+      font-size: 18px;
+    }
   }
   .ui.checkbox {
     font-size: 18px;

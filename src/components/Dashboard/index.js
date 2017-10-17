@@ -58,7 +58,7 @@ class Dashboard extends Component {
       const canGo = completeStep.lastIndexOf(true) + 1 === number;
       if (canGo) {
         return (
-          <div className="large-3 columns" key={number.toString()}>
+          <div className="large-3 mediam-3 small-3 columns" key={number.toString()}>
             <Link to={{ pathname: path[number] }} >
               <Checkbox label={label[number]} checked={step} />
             </Link>
@@ -66,7 +66,7 @@ class Dashboard extends Component {
         );
       }
       return (
-        <div className="large-3 columns" key={number.toString()}>
+        <div className="large-3 mediam-3 small-3 columns" key={number.toString()}>
           <Checkbox label={label[number]} checked={step} />
         </div>
       );
@@ -102,7 +102,7 @@ class Dashboard extends Component {
       step = (
         <div>
           <div className="navTop">
-            <Icon name="warning sign" size="big" inverted />
+            <Icon name="warning sign" className="navIn-icon-warning" />
             ดำเนินขั้นตอนต่อไปนี้เพื่อใช้งาน BenefiTable
           </div>
           <Bar className="row">

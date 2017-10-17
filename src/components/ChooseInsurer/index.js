@@ -46,13 +46,11 @@ class InsurerSelect extends Component {
   constructor(props) {
     super(props);
     const { nums } = this.props;
-
     this.state = {
       step: 2,
       num: nums !== undefined ? nums : 0,
       insurers: [],
       isSave: false,
-      // hideProgressBar: true,
     };
     props.getTimeout();
   }
@@ -106,17 +104,16 @@ class InsurerSelect extends Component {
 
   handleSubmit = () => {
     toast(<ToastifyContent />);
-    console.log('insurers', this.state.insurers);
     this.setState({
       isSave: true,
-    })
+    });
     this.props.chooseInsurer(this.state.insurers);
   }
 
   renderList = () => {
     const { insurerList } = this.props;
     const list = insurerList.map((insurer, index) => (
-      <Card className="large-2 columns">
+      <Card className="large-2 columns" key={index.toString()}>
         <Check
           type="checkbox"
           id={index}
@@ -135,7 +132,6 @@ class InsurerSelect extends Component {
     let time = '';
     if (timeout !== '') {
       time = timeout;
-      console.log('time->choose', time);
     }
     return (
       <div className="ChooseInsurer">

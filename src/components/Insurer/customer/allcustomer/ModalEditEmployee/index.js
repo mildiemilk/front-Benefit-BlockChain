@@ -110,7 +110,7 @@ class ModalEditEmployee extends Component {
     }
   }
   handleEffective = effective => {
-    this.setState({ effective }, () => console.log('set date', this.state.effective));
+    this.setState({ effective });
   }
   stylePopupExit = () => {
     if (this.state.isExit) {

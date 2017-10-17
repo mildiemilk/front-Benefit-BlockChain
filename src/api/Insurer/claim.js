@@ -13,7 +13,6 @@ const CLAIM_URI = 'api/insurer/get-claim';
 const CLAIM_UPDATE_STATUS_URI = '/api/insurer/claim';
 
 export function updateStatusClaim(status, claimId, reason) {
-  console.log('claimId', claimId);
   const options = {
     method: 'put',
     url: `${CLAIM_UPDATE_STATUS_URI}/${status}/${claimId}`,
@@ -31,8 +30,6 @@ export function getCompanyClaim() {
     };
     APIRequest(options, true)
       .then(res => {
-        console.log()
-        console.log('-res--', res);
         dispatch(getCompanyClaimSuccess(res.data));
       })
       .catch(err => {
@@ -41,7 +38,6 @@ export function getCompanyClaim() {
   };
 }
 export function getClaim(companyId) {
-  console.log('companyId==', companyId);
   return dispatch => {
     const options = {
       method: 'get',

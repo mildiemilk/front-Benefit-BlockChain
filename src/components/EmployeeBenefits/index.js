@@ -193,9 +193,7 @@ class employeeBenefits extends Component {
   }
   handleNext = () => {
     const { groupBenefit } = this.props;
-    console.log('selectplan', this.props.groupBenefit);
     const check = groupBenefit.findIndex(group => group.type !== null) !== -1;
-    console.log('check', check);
     if (!check) {
       this.setState({
         openWarningModal: true,

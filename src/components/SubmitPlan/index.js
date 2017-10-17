@@ -551,7 +551,7 @@ class SubmitPlan extends Component {
                 <p className="menu-header">จัดแผนประกันภัย</p>
                 <Link to="/view"><span className="menu-text">ดูแผนทั้งหมด</span></Link>
               </div>
-              <div className="large-3 columns submit-plan-delete-padding-left">
+              <div className="large-3 medium-3 small-3 columns submit-plan-delete-padding-left">
                 <MenuPlan
                   handleUpdateEditData={this.handleUpdateEditData}
                   activePlan={this.state.activePlan}
@@ -571,7 +571,7 @@ class SubmitPlan extends Component {
                   employeeOfPlan={this.state.employeeOfPlan}
                 />
               </div>
-              <div className="large-9 columns">
+              <div className="large-9 medium-9 small-9 columns">
                 {this.props.havePlan
                   ? <div>
                     <FormSubmitPlan

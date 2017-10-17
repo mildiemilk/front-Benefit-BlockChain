@@ -197,8 +197,8 @@ class ShowMasterPlan extends Component {
       quotation: true,
     });
   }
-  handleDelete = e => {
-    deletePlan([e.target.id])();
+  handleDelete = id => {
+    deletePlan([id])();
     this.props.handleUpdateBiding();
     this.setState({ activePlan: -1 });
   }

@@ -131,7 +131,7 @@ class Dashboard extends Component {
                     shape="circular"
                   />
                   <Container textAlign="center" className="cursor">
-                    ดูแผนองคุณ
+                    ดูแผนของคุณ
                   </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(1)}>

@@ -64,6 +64,9 @@
       font-size: 20px !important;
     }
   }
+  .ui.steps:not(.unstackable) .step {
+    padding: 0px;
+  }
   // @media screen and (min-width: 1440px) {
   //   .ui.ordered.steps .step:before{
   //     font-size: 20px;
@@ -79,9 +82,10 @@
       flex-direction: unset;
     }
     .ui.ordered.steps:not(.unstackable) .step:before, .ui.steps:not(.unstackable) .step > .icon {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      // position: relative;
+      // top: 50%;
+      // transform: translateY(-50%);
+      margin: 0px 7px 0 0;
     }
   }
 }

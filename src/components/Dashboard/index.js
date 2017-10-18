@@ -131,7 +131,7 @@ class Dashboard extends Component {
                     shape="circular"
                   />
                   <Container textAlign="center" className="cursor">
-                    ลูกค้าของคุณ
+                    ดูแผนองคุณ
                   </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(1)}>
@@ -142,7 +142,7 @@ class Dashboard extends Component {
                     shape="circular"
                   />
                   <Container textAlign="center" className="cursor">
-                    การเสนอราคา
+                    อัพเดตจำนวนพนักงาน
                   </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(2)}>
@@ -161,7 +161,7 @@ class Dashboard extends Component {
                     centered
                   />
                   <Container textAlign="center" className="cursor">
-                    แผนประกันภัย
+                    ประวัติการเคลม
                   </Container>
                 </Grid.Column>
                 <Grid.Column onClick={() => this.checkStep(4)}>

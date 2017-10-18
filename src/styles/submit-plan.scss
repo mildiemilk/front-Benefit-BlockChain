@@ -129,18 +129,22 @@
     letter-spacing: 0.3px;
     text-align: left;
     color: #ffffff;
-    line-height: 50px;
+    line-height: 3.5vw;
     @media screen and (min-width: 1440px) {
       font-size: 18px;
+      line-height: 50px;
     }
   }
 
   .headBox{
     width: 100%;
-    height: 50px;
+    height: 3.5vw;
     background-color: #5c6879;
     padding-left: 3%;
     padding-right: 3%;
+    @media screen and (min-width: 1440px) {
+      height: 50px;
+    }
   }
 
   .text-menu-active{
@@ -262,40 +266,53 @@
 
   .menu-bar{
     width: 100%;
-    padding: 20px 30px;
+    padding: 20px;
+    margin: auto;
     position: relative;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     background-color: #f6f7f9;
     border: solid 1px #c1c1c1;
+    font-size: 1vw;
+    @media screen and (min-width: 1440px) {
+      font-size: 12px;
+    }
   }
 
   .menu-add-plan{
     width: 100%;
-    padding: 20px 30px;
+    padding: 20px;
     position: relative;
-    // background-color: #ffffff;
     color: #ffffff;
     background-color: #3a7bd5;
     border: solid 1px #c1c1c1;
+    margin: auto;
   }
 
   .menu-select-plan{
     width: 100%;
     position: relative;
-    padding: 20px 20px;
+    padding: 20px 0.5vw;
     background-color: #ffffff;
     border: solid 1px #c1c1c1;
     cursor: pointer;
+    overflow: hidden;
+    @media screen and (min-width: 1440px) {
+      padding: 20px 20px;
+    }
   }
   .menu-select-plan-active{
     color: #3a7bd5;
     width: 100%;
     border: solid 1px #c1c1c1;
     position: relative;
-    padding: 20px 20px;
+    padding: 20px 0.5vw;
     background-color: #ffffff;
     cursor: pointer;
+    overflow: hidden;
+    @media screen and (min-width: 1440px) {
+      padding: 20px 20px;
+    }
   }
 
   .header-modal{
@@ -353,8 +370,12 @@
     border: solid 1px #c1c1c1;
     background-color: #f6f7f9;
     text-align: center;
-    padding-top: 6%;
     cursor: pointer;
+    font-size: 1vw;
+    line-height: 50px;
+    @media screen and (min-width: 1440px) {
+      font-size: 12px;
+    }
   }
 
   .ui.form .field .ui.input input, .ui.form .fields .field .ui.input input {
@@ -363,17 +384,26 @@
 
   font-size: 12px;
     .ui.form {
-      font-size: 13px;
+      font-size: 0.9vw;
       font-weight: normal;
+      @media screen and (min-width: 1440px) {
+        font-size: 13px;
+      }
     }
     .ui.checkbox label {
-      font-size: 13px;
+      font-size: 0.9vw;
       font-weight: normal;
+      @media screen and (min-width: 1440px) {
+        font-size: 13px;
+      }
     }
 
     .ui.form .inline.field > label, .ui.form .inline.field > p, .ui.form .inline.fields .field > label, .ui.form .inline.fields .field > p, .ui.form .inline.fields > label{
-      font-size: 13px;
+      font-size: 0.9vw;
       font-weight: normal;
+      @media screen and (min-width: 1440px) {
+        font-size: 13px;
+      }
     }
 
 
@@ -400,9 +430,16 @@
   }
   .menu-add-plan-text {
     text-align: center;
+    font-size: 1vw;
+    @media screen and (min-width: 1440px) {
+      font-size: 12px;
+    }
   }
   .ui.input input {
     border: none !important;
+  }
+  .ui.steps:not(.unstackable) .step:first-child {
+    padding: 0px;
   }
 }
 .submit-plan-header-box {
@@ -447,4 +484,11 @@ div.submit-plan-form-create-plan > input {
 }
 .submit-plan-rnb-lumsum-form {
   margin-bottom: 10px;
+}
+.submit-plan-menu-plan-box {
+  display: block;
+  font-size: 1vw;
+  @media screen and (min-width: 1440px) {
+    font-size: 12px;
+  }
 }

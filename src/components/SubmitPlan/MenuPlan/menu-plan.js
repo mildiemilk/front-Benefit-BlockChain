@@ -90,15 +90,15 @@ class MenuPlan extends Component {
           aria-hidden
           key={i.toString()}
         >
-          <div className="row">
-            <div className="large-2 columns">
+          <div className="submit-plan-menu-plan-box">
+            <div className="large-2 mediam-2 small-2 columns">
               <input
                 type="checkbox"
                 id={i}
                 onChange={e => this.handleChange(e, planList)}
               />
             </div>
-            <div className="large-10 columns">
+            <div className="large-10 mediam-10 small-10 columns end">
               <span>{planList[i].planName}</span>
               <Popup
                 key={i.toString()}
@@ -144,6 +144,8 @@ class MenuPlan extends Component {
                 open={this.state.popup === i}
                 onClose={this.handleClose}
               />
+            </div>
+            <div className="large-10 mediam-10 small-10 columns">
               <p>แก้ไขครั้งล่าสุดโดย {planList[i].company.hrDetail}</p>
             </div>
           </div>

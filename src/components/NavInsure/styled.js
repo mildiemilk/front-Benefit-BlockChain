@@ -16,6 +16,10 @@ export const StepRadius = styled(Step.Group)`
       border-radius: 40px;
       width: 100%;
       margin-top: 14.5px;
+      height: 4.1vw;
+      @media screen and (min-width: 1440px) {
+        height: 58px;
+      }
     }
 `;
 

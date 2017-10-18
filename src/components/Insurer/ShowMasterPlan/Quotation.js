@@ -84,7 +84,8 @@ class Quotation extends Component {
           <div className="quotation-mp-price-box">
             <div
               id={plan.planDetail.planId}
-              onClick={this.props.handleDelete}
+              onClick={() => this.props.handleDelete(plan.planDetail.planId)}
+              // onClick={this.props.handleDelete}
               className="quotation-circle-icon-view"
               role="button"
               aria-hidden

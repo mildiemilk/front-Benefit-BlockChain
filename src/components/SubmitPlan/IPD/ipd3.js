@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Form, Radio, Icon } from 'semantic-ui-react';
+import { Form, Icon } from 'semantic-ui-react';
 // import about from '../../image/icons-8-about.png';
 
 class IPD3 extends Component {
@@ -26,7 +26,6 @@ class IPD3 extends Component {
     rbScheduleAccident: PropTypes.string.isRequired,
     rbScheduleTransplant: PropTypes.string.isRequired,
   }
-
   constructor(props) {
     super(props);
     const {
@@ -34,7 +33,6 @@ class IPD3 extends Component {
       rbScheduleSurgeryNonSchedule,
     } = this.props;
     let value;
-
     if (rbScheduleSurgerySchedule) {
       value = 'Schedule';
     } else if (rbScheduleSurgeryNonSchedule) {
@@ -42,14 +40,12 @@ class IPD3 extends Component {
     } else {
       value = '';
     }
-
     this.state = { value };
   }
 
   componentWillReceiveProps(newProps) {
     const { rbScheduleSurgerySchedule, rbScheduleSurgeryNonSchedule } = newProps;
     let value;
-
     if (rbScheduleSurgerySchedule) {
       value = 'Schedule';
     } else if (rbScheduleSurgeryNonSchedule) {
@@ -57,7 +53,6 @@ class IPD3 extends Component {
     } else {
       value = '';
     }
-
     if (newProps.activePlan !== this.props.activePlan) {
       this.setState({ value });
     }
@@ -98,7 +93,11 @@ class IPD3 extends Component {
     this.props.handleVerifyState();
   }
 
-  handleRadio = (e, { value }) => {
+  handleRadio = e => {
+    let value = e.value;
+    if (!e.value) {
+      value = e.target.value;
+    }
     this.setState({ value });
     if (this.state.value === 'Non-Schedule') {
       document.getElementById('rbScheduleSurgeryNonSchedule').value = '';
@@ -114,21 +113,18 @@ class IPD3 extends Component {
           <div className="ipd3">
             <p>ระบุรูปแบบที่ต้องการ</p>
             <p>1. ค่าห้อง ค่าอาหาร และค่าบริการ</p>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>
                   1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา (สูงสุดต่อวัน)
               </p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbSchedulePatient"
                   value={this.props.rbSchedulePatient}
@@ -137,23 +133,19 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>
                   1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก (สูงสุดต่อวัน)
                 </p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline >
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleIntensiveCarePatient"
                   value={this.props.rbScheduleIntensiveCarePatient}
@@ -162,23 +154,19 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>
                   2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน
                 </p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleDoctor"
                   value={this.props.rbScheduleDoctor}
@@ -187,35 +175,40 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <p>3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ
-            <span className="submit-plan-icom-infomation">
-              <Icon name="info circle" />
-            </span>
+            <p className="large-12 mediam-12 small-12 columns">
+              3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ
+              <span className="submit-plan-icom-infomation">
+                <Icon name="info circle" />
+              </span>
             </p>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
-                <Form.Field>
-                  <Radio
+                <Form.Group inline>
+                  <input
+                    type="radio"
+                    name="IPD3Group"
+                    value="Non-Schedule"
+                    checked={this.state.value === 'Non-Schedule'}
+                    onChange={this.handleRadio}
+                  />
+                  <label htmlFor="3.1 Non-Schedule">3.1 Non-Schedule</label>
+                  {/* <Radio
                     name="IPD3Group"
                     value="Non-Schedule"
                     label="3.1 Non-Schedule"
                     checked={this.state.value === 'Non-Schedule'}
                     onChange={this.handleRadio}
-                  />
-                </Form.Field>
+                  /> */}
+                </Form.Group>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 {this.state.value === 'Non-Schedule'
                   ? <Form.Input
                     type="number"
-                    style={{ height: '27px', width: '90px' }}
+                    style={{ maxHeight: '27px' }}
                     placeholder="จำนวนเงิน"
                     name="rbScheduleSurgeryNonSchedule"
                     value={this.props.rbScheduleSurgeryNonSchedule}
@@ -225,7 +218,7 @@ class IPD3 extends Component {
                   />
                   : <Form.Input
                     type="number"
-                    style={{ height: '27px', width: '90px' }}
+                    style={{ maxHeight: '27px' }}
                     placeholder="จำนวนเงิน"
                     name="rbScheduleSurgeryNonSchedule"
                     onChange={this.props.handleChange}
@@ -235,30 +228,34 @@ class IPD3 extends Component {
                   />}
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
-                <Form.Field>
-                  <Radio
+                <Form.Group inline>
+                  <input
+                    type="radio"
+                    name="IPD3Group"
+                    value="Schedule"
+                    checked={this.state.value === 'Schedule'}
+                    onChange={this.handleRadio}
+                  />
+                  <label htmlFor="3.2 Schedule">3.2 Schedule</label>
+                  {/* <Radio
                     name="IPD3Group"
                     value="Schedule"
                     label="3.2 Schedule"
                     checked={this.state.value === 'Schedule'}
                     onChange={this.handleRadio}
-                  />
-                </Form.Field>
+                  /> */}
+                </Form.Group>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 {this.state.value === 'Schedule'
                   ? <Form.Input
                     type="number"
-                    style={{ height: '27px', width: '90px' }}
+                    style={{ maxHeight: '27px' }}
                     placeholder="จำนวนเงิน"
                     name="rbScheduleSurgerySchedule"
                     value={this.props.rbScheduleSurgerySchedule}
@@ -268,7 +265,7 @@ class IPD3 extends Component {
                   />
                   : <Form.Input
                     type="number"
-                    style={{ height: '27px', width: '90px' }}
+                    style={{ maxHeight: '27px' }}
                     placeholder="จำนวนเงิน"
                     name="rbScheduleSurgerySchedule"
                     value=""
@@ -278,10 +275,11 @@ class IPD3 extends Component {
                   />}
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <p>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป </p>
-            <div className="large-9 columns">
+            <p className="large-12 mediam-12 small-12 columns">
+              4. ค่ารักษาพยาบาลและค่าบริการทั่วไป
+            </p>
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>
                   4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิตและส่วนประกอบ
@@ -298,14 +296,11 @@ class IPD3 extends Component {
                 </div>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleService"
                   value={this.props.rbScheduleService}
@@ -314,21 +309,17 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง</p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleSmallSurgery"
                   value={this.props.rbScheduleSmallSurgery}
@@ -337,21 +328,17 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการผ่าตัดต่อครั้ง</p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAdviser"
                   value={this.props.rbScheduleAdviser}
@@ -360,21 +347,17 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>4.4 ค่าบริการรถพยาบาลต่อครั้ง</p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAmbulance"
                   value={this.props.rbScheduleAmbulance}
@@ -383,21 +366,17 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24 ช.ม.หลังเกิดอุบัติเหตุต่อครั้ง</p>
               </div>
             </div>
-            <div className="large-3 columns">
-
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleAccident"
                   value={this.props.rbScheduleAccident}
@@ -406,9 +385,8 @@ class IPD3 extends Component {
                 />
                 <p> บาท</p>
               </Form.Group>
-
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>
                   4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภายหลังจากการออกจาก
@@ -420,13 +398,11 @@ class IPD3 extends Component {
                 <br />
               </div>
             </div>
-            <div className="large-3 columns">
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTreatment"
                   value={this.props.rbScheduleTreatment}
@@ -436,7 +412,7 @@ class IPD3 extends Component {
                 <p> บาท</p>
               </Form.Group>
             </div>
-            <div className="large-9 columns">
+            <div className="large-8 mediam-8 small-8 columns">
               <p>
                 5. ค่ารักษากรณี ปลูกถ่ายไขกระดูก,เปลี่ยนถ่ายอวัยวะ, การฟอกไต(ไม่รวมค่า
               </p>
@@ -444,13 +420,11 @@ class IPD3 extends Component {
                 <p>ใช้จ่ายของผู้บริจาคอวัยวะ) (ปีล่ะไม่เกิน)</p>
               </div>
             </div>
-            <div className="large-3 columns">
-              <Form.Group
-                inline
-              >
+            <div className="large-4 mediam-4 small-4 columns">
+              <Form.Group inline>
                 <Form.Input
                   type="number"
-                  style={{ height: '27px', width: '90px' }}
+                  style={{ maxHeight: '27px' }}
                   placeholder="จำนวนเงิน"
                   name="rbScheduleTransplant"
                   value={this.props.rbScheduleTransplant}

@@ -27,15 +27,15 @@
   .ui.steps .step.completed:after{
     visibility: hidden;
   }
-  .steps > .step .content {
-    line-height: 1.4;
-  }
+  // .steps > .step .content {
+  //   line-height: 1.4;
+  // }
   .steps > .step .content .description{
     // font-size: 20px;
     font-size: 1.5vw;
     // margin-top: 20px;
     word-wrap: break-word;
-    line-height: 1.8vw;
+    line-height: unset;
     @media screen and (min-width: 1440px) {
       font-size: 20px;
     }

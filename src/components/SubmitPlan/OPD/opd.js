@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // import { connect } from 'react-redux';
-import { Button, Checkbox, Form, Radio, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import CoPay from './copay';
@@ -10,7 +10,10 @@ import OpdModal from './opd-modal';
 // import about from '../../image/icons-8-about.png';
 
 const Checkboxs = styled(Checkbox)`
-  margin-bottom: 15px;
+  margin-bottom: 1vw;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 15px;
+  }
 `;
 class OPD extends Component {
   static propTypes = {
@@ -45,7 +48,6 @@ class OPD extends Component {
     super(props);
     const { opdPerYear, opdPerTime, opdTimeNotExceedPerYear } = this.props;
     let value;
-
     if (opdPerYear) {
       value = 'firstChoice';
     } else if (opdPerTime && opdTimeNotExceedPerYear) {
@@ -53,7 +55,6 @@ class OPD extends Component {
     } else {
       value = '';
     }
-
     this.state = { value };
   }
 
@@ -98,7 +99,11 @@ class OPD extends Component {
     this.props.handleRecordVerifyState('opdRecord');
   }
 
-  handleRadio = (e, { value }) => {
+  handleRadio = e => {
+    let value = e.value;
+    if (!e.value) {
+      value = e.target.value;
+    }
     this.handleResetdata();
     this.setState({ value });
   }
@@ -139,7 +144,15 @@ class OPD extends Component {
         <div className="row">
           <Form onSubmit={this.handleClick}>
             <Form.Group inline>
-              <Form.Field>
+              <input
+                type="radio"
+                name="OPDGroup"
+                value="firstChoice"
+                checked={this.state.value === 'firstChoice'}
+                onChange={this.handleRadio}
+              />
+              <label htmlFor="จำนวนเงิน">จำนวนเงิน</label>
+              {/* <Form.Field>
                 <Radio
                   label="จำนวนเงิน"
                   name="OPDGroup"
@@ -147,7 +160,7 @@ class OPD extends Component {
                   checked={this.state.value === 'firstChoice'}
                   onChange={this.handleRadio}
                 />
-              </Form.Field>
+              </Form.Field> */}
               {this.state.value === 'firstChoice'
                 ? <Form.Input
                   type="number"
@@ -170,7 +183,15 @@ class OPD extends Component {
               <p className="selectText"> บาท/ปี</p>
             </Form.Group>
             <Form.Group inline>
-              <Form.Field>
+              <input
+                type="radio"
+                name="OPDGroup"
+                value="secondChoice"
+                checked={this.state.value === 'secondChoice'}
+                onChange={this.handleRadio}
+              />
+              <label htmlFor="จำนวนเงิน">จำนวนเงิน</label>
+              {/* <Form.Field>
                 <Radio
                   label="จำนวนเงิน"
                   name="OPDGroup"
@@ -178,7 +199,7 @@ class OPD extends Component {
                   checked={this.state.value === 'secondChoice'}
                   onChange={this.handleRadio}
                 />
-              </Form.Field>
+              </Form.Field> */}
               {this.state.value === 'secondChoice'
                 ? <div style={{ display: 'inherit' }}>
                   <Form.Input
@@ -252,16 +273,10 @@ class OPD extends Component {
               : ''}
             <br />
             <Button
+              className="submit-plan-btn-form-submit-plan btn-blue"
               style={{
-                marginTop: '20px',
-                textAlign: 'center',
-                width: '164px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
                 float: 'right',
-                borderRadius: '20px',
-                marginBottom: '3%',
+                marginBottom: '20px',
               }}
               type="submit"
             >

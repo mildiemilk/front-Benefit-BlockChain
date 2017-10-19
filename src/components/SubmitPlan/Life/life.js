@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Form, Radio, Icon } from 'semantic-ui-react';
+import { Button, Form, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import LifeModal from './life-modal';
@@ -30,9 +30,8 @@ class Life extends Component {
   }
   constructor(props) {
     super(props);
-    const { lifePerYear, lifeNotExceed, lifeTimeOfSalary } = this.props;
+    const { lifePerYear, lifeNotExceed, lifeTimeOfSalary } = props;
     let value;
-
     if (lifePerYear) {
       value = 'firstLifeChoice';
     } else if (lifeNotExceed) {
@@ -42,7 +41,6 @@ class Life extends Component {
     } else {
       value = '';
     }
-
     this.state = { value };
   }
 
@@ -52,7 +50,11 @@ class Life extends Component {
     }
   }
 
-  handleRadio = (e, { value }) => {
+  handleRadio = e => {
+    let value = e.value;
+    if (!e.value) {
+      value = e.target.value;
+    }
     this.handleResetData();
     this.setState({ value });
   }
@@ -101,7 +103,15 @@ class Life extends Component {
         <p className="head">ระบุรูปแบบประกันที่ต้องการ</p>
         <Form onSubmit={this.handleClick}>
           <Form.Group inline>
-            <Form.Field>
+            <input
+              type="radio"
+              name="lifeGroup"
+              value="firstLifeChoice"
+              checked={this.state.value === 'firstLifeChoice'}
+              onChange={this.handleRadio}
+            />
+            <label htmlFor="จำนวนเงิน">จำนวนเงิน</label>
+            {/* <Form.Field>
               <Radio
                 label="จำนวนเงิน"
                 name="lifeGroup"
@@ -109,7 +119,7 @@ class Life extends Component {
                 checked={this.state.value === 'firstLifeChoice'}
                 onChange={this.handleRadio}
               />
-            </Form.Field>
+            </Form.Field> */}
             {this.state.value === 'firstLifeChoice'
               ? <Form.Input
                 type="number"
@@ -131,7 +141,15 @@ class Life extends Component {
             <p> บาท</p>
           </Form.Group>
           <Form.Group inline>
-            <Form.Field>
+            <input
+              type="radio"
+              name="lifeGroup"
+              value="secondLifeChoice"
+              checked={this.state.value === 'secondLifeChoice'}
+              onChange={this.handleRadio}
+            />
+            <label htmlFor="คูณอัตราเงินเดือน">คูณอัตราเงินเดือน</label>
+            {/* <Form.Field>
               <Radio
                 label="คูณอัตราเงินเดือน"
                 name="lifeGroup"
@@ -139,7 +157,7 @@ class Life extends Component {
                 checked={this.state.value === 'secondLifeChoice'}
                 onChange={this.handleRadio}
               />
-            </Form.Field>
+            </Form.Field> */}
             {this.state.value === 'secondLifeChoice'
               ? <Form.Input
                 placeholder="เท่า"
@@ -160,7 +178,15 @@ class Life extends Component {
             <p> เท่า</p>
           </Form.Group>
           <Form.Group inline>
-            <Form.Field>
+            <input
+              type="radio"
+              name="lifeGroup"
+              value="thirdLifeChoice"
+              checked={this.state.value === 'thirdLifeChoice'}
+              onChange={this.handleRadio}
+            />
+            <label htmlFor="คูณอัตราเงินเดือน">คูณอัตราเงินเดือน</label>
+            {/* <Form.Field>
               <Radio
                 label="คูณอัตราเงินเดือน"
                 name="lifeGroup"
@@ -168,7 +194,7 @@ class Life extends Component {
                 checked={this.state.value === 'thirdLifeChoice'}
                 onChange={this.handleRadio}
               />
-            </Form.Field>
+            </Form.Field> */}
             {this.state.value === 'thirdLifeChoice'
               ? <div style={{ display: '-webkit-box' }}>
                 <Form.Input
@@ -191,7 +217,7 @@ class Life extends Component {
             <p> เท่า</p>
           </Form.Group>
           {this.state.value === 'thirdLifeChoice'
-            ? <div style={{ marginLeft: '5.5%' }}>
+            ? <div className="submit-plan-grap-tab-on-form">
               <Form.Group inline>
                 <Form.Field>
                   <Form.Input
@@ -200,6 +226,7 @@ class Life extends Component {
                     placeholder="จำนวนบาท"
                     name="lifeNotExceed"
                     id="lifeNotExceed"
+                    value={this.props.lifeNotExceed}
                     onChange={this.handleChange}
                     required
                   />
@@ -207,7 +234,7 @@ class Life extends Component {
                 <p>บาท</p>
               </Form.Group>
             </div>
-            : <div style={{ marginLeft: '5.5%' }}>
+            : <div className="submit-plan-grap-tab-on-form">
               <Form.Group inline>
                 <Form.Field>
                   <Form.Input
@@ -225,16 +252,10 @@ class Life extends Component {
             </div>}
           <div className="row">
             <Button
+              className="submit-plan-btn-form-submit-plan btn-blue"
               style={{
-                marginTop: '3%',
-                textAlign: 'center',
-                width: '164px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
                 float: 'right',
-                borderRadius: '20px',
-                marginBottom: '3%',
+                marginBottom: '20px',
               }}
               type="submit"
             >

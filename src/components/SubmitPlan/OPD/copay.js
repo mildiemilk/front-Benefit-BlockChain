@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Radio } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import '../../../styles/submit-plan.scss';
 
 class CoPay extends Component {
@@ -16,7 +16,6 @@ class CoPay extends Component {
     opdCoPayMixNotExceed: PropTypes.string.isRequired,
     opdCoPayMixYear: PropTypes.string.isRequired,
   }
-
   constructor(props) {
     super(props);
     const {
@@ -25,10 +24,8 @@ class CoPay extends Component {
       opdCoPayMixYear,
       opdCoPayMixPercentage,
       opdCoPayMixNotExceed,
-    } = this.props;
-
+    } = props;
     let value;
-
     if (opdCoPayQuota) {
       value = 'Quota Share';
     } else if (opdCoPayDeductable) {
@@ -36,7 +33,6 @@ class CoPay extends Component {
     } else if (opdCoPayMixYear && opdCoPayMixPercentage && opdCoPayMixNotExceed) {
       value = 'Quota Share + Deductable';
     } else value = '';
-
     this.state = { value };
   }
 
@@ -46,7 +42,11 @@ class CoPay extends Component {
     }
   }
 
-  handleRadio = (e, { value }) => {
+  handleRadio = e => {
+    let value = e.value;
+    if (!e.value) {
+      value = e.target.value;
+    }
     this.handleResetdata();
     this.setState({ value });
   }
@@ -66,7 +66,15 @@ class CoPay extends Component {
       <div>
         <div className="copayParagraph">
           <Form.Group inline>
-            <Form.Field>
+            <input
+              type="radio"
+              name="CoPayGroup"
+              value="Quota Share"
+              checked={this.state.value === 'Quota Share'}
+              onChange={this.handleRadio}
+            />
+            <label htmlFor="Quota Share">Quota Share</label>
+            {/* <Form.Field>
               <Radio
                 label="Quota Share"
                 name="CoPayGroup"
@@ -74,7 +82,7 @@ class CoPay extends Component {
                 checked={this.state.value === 'Quota Share'}
                 onChange={this.handleRadio}
               />
-            </Form.Field>
+            </Form.Field> */}
             {this.state.value === 'Quota Share' ?
               <Form.Input
                 type="number"
@@ -96,7 +104,15 @@ class CoPay extends Component {
             <p className="selectText"> %</p>
           </Form.Group>
           <Form.Group inline>
-            <Form.Field>
+            <input
+              type="radio"
+              name="CoPayGroup"
+              value="Deductable"
+              checked={this.state.value === 'Deductable'}
+              onChange={this.handleRadio}
+            />
+            <label htmlFor="Deductable">Deductable</label>
+            {/* <Form.Field>
               <Radio
                 label="Deductable"
                 name="CoPayGroup"
@@ -104,7 +120,7 @@ class CoPay extends Component {
                 checked={this.state.value === 'Deductable'}
                 onChange={this.handleRadio}
               />
-            </Form.Field>
+            </Form.Field> */}
             {this.state.value === 'Deductable'
               ? <Form.Input
                 type="number"
@@ -127,7 +143,15 @@ class CoPay extends Component {
             <p className="selectText"> บาท</p>
           </Form.Group>
           <Form.Group inline>
-            <Form.Field>
+            <input
+              type="radio"
+              name="CoPayGroup"
+              value="Quota Share + Deductable"
+              checked={this.state.value === 'Quota Share + Deductable'}
+              onChange={this.handleRadio}
+            />
+            <label htmlFor="Quota Share + Deductable">Quota Share + Deductable</label>
+            {/* <Form.Field>
               <Radio
                 label="Quota Share + Deductable"
                 name="CoPayGroup"
@@ -135,7 +159,7 @@ class CoPay extends Component {
                 checked={this.state.value === 'Quota Share + Deductable'}
                 onChange={this.handleRadio}
               />
-            </Form.Field>
+            </Form.Field> */}
             {this.state.value === 'Quota Share + Deductable'
               ? <div style={{ display: 'inherit' }}>
                 <Form.Input
@@ -185,7 +209,7 @@ class CoPay extends Component {
               </div>}
           </Form.Group>
           {this.state.value === 'Quota Share + Deductable'
-            ? <div style={{ marginLeft: '5.5%' }}>
+            ? <div className="submit-plan-grap-tab-on-form">
               <Form.Group inline>
                 <Form.Field>
                   <Form.Input
@@ -202,7 +226,7 @@ class CoPay extends Component {
                 </Form.Field>
               </Form.Group>
             </div>
-            : <div style={{ marginLeft: '5.5%' }}>
+            : <div className="submit-plan-grap-tab-on-form">
               <Form.Group inline>
                 <Form.Field>
                   <Form.Input

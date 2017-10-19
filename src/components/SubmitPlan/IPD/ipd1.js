@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Radio } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import '../../../styles/submit-plan.scss';
 
 class IPD1 extends Component {
@@ -23,7 +23,7 @@ class IPD1 extends Component {
       ipdLumsumPerYear,
       ipdLumsumPerTime,
       ipdLumsumTimeNotExceedPerYear,
-    } = this.props;
+    } = props;
     let value;
     if (ipdLumsumPerYear) {
       value = 'firstChoice';
@@ -32,7 +32,6 @@ class IPD1 extends Component {
     } else {
       value = '';
     }
-
     this.state = { value };
   }
 
@@ -41,7 +40,7 @@ class IPD1 extends Component {
       ipdLumsumPerYear,
       ipdLumsumPerTime,
       ipdLumsumTimeNotExceedPerYear,
-    } = this.props;
+    } = newProps;
     let value;
     if (ipdLumsumPerYear) {
       value = 'firstChoice';
@@ -51,7 +50,7 @@ class IPD1 extends Component {
       value = '';
     }
     if (newProps.activePlan !== this.props.activePlan) {
-      this.state = { value };
+      this.setState({ value });
     }
   }
 
@@ -61,9 +60,15 @@ class IPD1 extends Component {
     }
   }
 
-  handleRadio = (e, { value }) => {
+  handleRadio = e => {
     this.handleResetdata();
-    this.setState({ value });
+    if (e.value) {
+      const value = e.value;
+      this.setState({ value });
+    } else {
+      const value = e.target.value;
+      this.setState({ value });
+    }
   }
 
   handleResetdata = () => {
@@ -79,13 +84,21 @@ class IPD1 extends Component {
       <div>
         <Form.Group inline>
           <Form.Field>
-            <Radio
-              label="จำนวนเงิน"
+            <input
+              type="radio"
               name="IPD1Group"
               value="firstChoice"
               checked={this.state.value === 'firstChoice'}
               onChange={this.handleRadio}
             />
+            <label htmlFor="จำนวนเงิน">จำนวนเงิน</label>
+            {/* <Radio
+              label="จำนวนเงิน"
+              name="IPD1Group"
+              value="firstChoice"
+              checked={this.state.value === 'firstChoice'}
+              onChange={this.handleRadio}
+            /> */}
           </Form.Field>
           {this.state.value === 'firstChoice'
             ? <Form.Input
@@ -112,13 +125,21 @@ class IPD1 extends Component {
         </Form.Group>
         <Form.Group inline>
           <Form.Field>
-            <Radio
-              label="จำนวนเงิน"
+            <input
+              type="radio"
               name="IPD1Group"
               value="secondChoice"
               checked={this.state.value === 'secondChoice'}
               onChange={this.handleRadio}
             />
+            <label htmlFor="จำนวนเงิน">จำนวนเงิน</label>
+            {/* <Radio
+              label="จำนวนเงิน"
+              name="IPD1Group"
+              value="secondChoice"
+              checked={this.state.value === 'secondChoice'}
+              onChange={this.handleRadio}
+            /> */}
           </Form.Field>
           {this.state.value === 'secondChoice'
             ? <div style={{ display: 'inherit' }}>

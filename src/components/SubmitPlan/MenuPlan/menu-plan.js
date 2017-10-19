@@ -104,7 +104,7 @@ class MenuPlan extends Component {
                 key={i.toString()}
                 trigger={
                   <Icon
-                    style={{ float: 'right', cursor: 'pointer' }}
+                    style={{ float: 'right', cursor: 'pointer', lineHeight: 'unset' }}
                     name="ellipsis vertical"
                     size="large"
                     onClick={() => this.handleOpen(i)}

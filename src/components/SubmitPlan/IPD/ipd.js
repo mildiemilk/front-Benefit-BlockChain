@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Checkbox, Form, Radio, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Icon } from 'semantic-ui-react';
 import { editPlan } from '../../../api/set-plan';
 import '../../../styles/submit-plan.scss';
 import CoPay from './copay';
@@ -13,7 +13,10 @@ import IpdModal from './ipd-modal';
 // import about from '../../image/icons-8-about.png';
 
 const Checkboxs = styled(Checkbox)`
-  margin-bottom: 15px;
+  margin-bottom: 1vw;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 15px;
+  }
 `;
 class IPD extends Component {
   static propTypes = {
@@ -76,9 +79,17 @@ class IPD extends Component {
     }
   }
 
-  handleRadio = (e, { name, value }) => {
+  handleRadio = e => {
     this.handleResetdata();
-    this.props.handleChange(e, { name, value });
+    if (e.name) {
+      const name = e.name;
+      const value = e.value;
+      this.props.handleChange(e, { name, value });
+    } else {
+      const name = e.target.name;
+      const value = e.target.value;
+      this.props.handleChange(e, { name, value });
+    }
   }
 
   handleChange = (e, { name, value }) => {
@@ -182,37 +193,62 @@ class IPD extends Component {
         <div className="row">
           <Form>
             <Form.Group inline>
-              <div className="large-4 columns">
+              <div className="large-4 mediam-4 small-4 columns">
                 <Form.Field>
-                  <Radio
+                  {/* <Radio
+                    size="small"
                     label="Lumsum"
                     name="ipdType"
                     value="Lumsum"
                     checked={this.props.ipdType === 'Lumsum'}
                     onChange={this.handleRadio}
+                  /> */}
+                  <input
+                    type="radio"
+                    name="ipdType"
+                    value="Lumsum"
+                    checked={this.props.ipdType === 'Lumsum'}
+                    onChange={this.handleRadio}
                   />
+                  <label htmlFor="Lumsum">Lumsum</label>
                 </Form.Field>
               </div>
-              <div className="large-4 columns">
+              <div className="large-4 mediam-4 small-4 columns">
                 <Form.Field>
-                  <Radio
-                    label="R&B Lumsum"
+                  <input
+                    type="radio"
                     name="ipdType"
                     value="R&B Lumsum"
                     checked={this.props.ipdType === 'R&B Lumsum'}
                     onChange={this.handleRadio}
                   />
+                  <label htmlFor="R&B Lumsum">R&B Lumsum</label>
+                  {/* <Radio
+                    label="R&B Lumsum"
+                    name="ipdType"
+                    value="R&B Lumsum"
+                    checked={this.props.ipdType === 'R&B Lumsum'}
+                    onChange={this.handleRadio}
+                  /> */}
                 </Form.Field>
               </div>
-              <div className="large-4 columns">
+              <div className="large-4 mediam-4 small-4 columns">
                 <Form.Field>
-                  <Radio
-                    label="R&B Schedule"
+                  <input
+                    type="radio"
                     name="ipdType"
                     value="R&B Schedule"
                     checked={this.props.ipdType === 'R&B Schedule'}
                     onChange={this.handleRadio}
                   />
+                  <label htmlFor="R&B Schedule">R&B Schedule</label>
+                  {/* <Radio
+                    label="R&B Schedule"
+                    name="ipdType"
+                    value="R&B Schedule"
+                    checked={this.props.ipdType === 'R&B Schedule'}
+                    onChange={this.handleRadio}
+                  /> */}
                 </Form.Field>
               </div>
             </Form.Group>
@@ -311,16 +347,10 @@ class IPD extends Component {
               : null}
             <br />
             <Button
+              className="submit-plan-btn-form-submit-plan btn-blue"
               style={{
-                marginTop: '3%',
-                textAlign: 'center',
-                width: '164px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
                 float: 'right',
-                borderRadius: '20px',
-                marginBottom: '3%',
+                marginBottom: '20px',
               }}
               type="submit"
               onClick={this.handleClick}

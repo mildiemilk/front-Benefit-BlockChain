@@ -65,7 +65,7 @@ class IPD extends Component {
     super(props);
     this.state = {
       ipdType: this.props.ipdType,
-    }
+    };
   }
 
   componentDidUpdate() {

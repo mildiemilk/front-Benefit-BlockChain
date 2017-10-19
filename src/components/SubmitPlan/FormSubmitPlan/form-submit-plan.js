@@ -102,13 +102,7 @@ class FormSubmitPlan extends Component {
                 {
                   this.props.btnCancle
                   ? <Button
-                    style={{
-                      width: '164px',
-                      height: '40px',
-                      borderRadius: '20px',
-                      color: '#ffffff',
-                      backgroundColor: '#f7555f',
-                    }}
+                    className="submit-plan-btn-form-submit-plan btn-red"
                     onClick={this.props.handleClose}
                   >
                     ยกเลิก
@@ -116,15 +110,10 @@ class FormSubmitPlan extends Component {
                   : <div />
                 }
                 <Button
+                  className="submit-plan-btn-form-submit-plan btn-blue grap-bottom"
                   style={{
-                    textAlign: 'center',
-                    width: '164px',
-                    height: '40px',
-                    backgroundColor: '#3A7BD5',
-                    color: 'white',
                     float: 'right',
-                    borderRadius: '20px',
-                    marginBottom: '3%',
+                    marginBottom: '1.4vw',
                   }}
                   type="submit"
                 >

@@ -97,16 +97,10 @@ class Dental extends Component {
           </Form.Group>
           <div className="row">
             <Button
+              className="submit-plan-btn-form-submit-plan btn-blue"
               style={{
-                marginTop: '3%',
-                textAlign: 'center',
-                width: '164px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
                 float: 'right',
-                borderRadius: '20px',
-                marginBottom: '3%',
+                marginBottom: '20px',
               }}
               type="submit"
             >

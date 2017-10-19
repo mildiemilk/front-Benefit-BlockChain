@@ -292,9 +292,11 @@ class SubmitPlan extends Component {
 
   handleCloseModalConfirm = () => this.setState({ showModalConfirm: false });
 
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
-  handleChangeToNull = name => this.setState({ [name]: null })
+  // handleChangeTarget = (e, { name, value }) => this.setState({ [name]: value });
+
+  handleChangeToNull = name => this.setState({ [name]: null });
 
   handleToggleOpdCoPay = () => {
     if (this.state.opdCoPay) {
@@ -674,13 +676,7 @@ class SubmitPlan extends Component {
                     <div className="submit-plan-next-step-btn">
                       <div className="row">
                         <Button
-                          style={{
-                            width: '164px',
-                            height: '40px',
-                            borderRadius: '20px',
-                            color: '#ffffff',
-                            backgroundColor: '#f7555f',
-                          }}
+                          className="submit-plan-btn-form-submit-plan btn-red"
                           onClick={this.handleOpenModalConfirm}
                         >
                           ขั้นตอนถัดไป
@@ -707,37 +703,26 @@ class SubmitPlan extends Component {
             </div>
           </div>
         </div>
-        <Modals trigger={<div />} open={this.state.showModalConfirm}>
+        <Modals
+          trigger={<div />}
+          open={this.state.showModalConfirm}
+          onClose={this.handleCloseModalConfirm}
+        >
           <ModalContents>
             <Modal.Header>
               <p style={{ textAlign: 'center' }}>
                 คุณจัดแผนประกันเสร็จแล้วและต้องการเลือกบริษัทประกันใช่หรือไม่ ?
               </p>
             </Modal.Header>
-            <Modal.Content style={{ marginTop: '3%' }}>
+            <Modal.Content className="submit-plan-btn-box-modal">
               <Button
-                style={{
-                  textAlign: 'center',
-                  width: '232px',
-                  height: '40px',
-                  borderRadius: '20px',
-                  color: '#ffffff',
-                  backgroundColor: '#f7555f',
-                  marginLeft: '0.7%',
-                }}
+                className="submit-plan-btn-form-submit-plan btn-red"
                 onClick={this.handleCloseModalConfirm}
               >
                 ยกเลิก
               </Button>
               <Button
-                style={{
-                  textAlign: 'center',
-                  width: '232px',
-                  height: '40px',
-                  backgroundColor: '#3A7BD5',
-                  color: 'white',
-                  borderRadius: '20px',
-                }}
+                className="submit-plan-btn-form-submit-plan btn-blue"
                 onClick={this.onClickhandler}
                 type="submit"
               >

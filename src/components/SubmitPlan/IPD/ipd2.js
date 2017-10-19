@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Radio, Input } from 'semantic-ui-react';
+import { Form, Input } from 'semantic-ui-react';
 
 class IPD2 extends Component {
   static propTypes = {
@@ -17,7 +17,6 @@ class IPD2 extends Component {
     rbLumsumPayNotExceedPerNight: PropTypes.string.isRequired,
     // rbLumsumPayNotExceedPerYear: PropTypes.string.isRequired,
   }
-
   constructor(props) {
     super(props);
     const {
@@ -61,9 +60,15 @@ class IPD2 extends Component {
     }
   }
 
-  handleRadio = (e, { value }) => {
+  handleRadio = e => {
     this.handleResetdata();
-    this.setState({ value });
+    if (e.value) {
+      const value = e.value;
+      this.setState({ value });
+    } else {
+      const value = e.target.value;
+      this.setState({ value });
+    }
   }
 
   handleResetdata = () => {
@@ -83,10 +88,19 @@ class IPD2 extends Component {
     this.props.handleVerifyState();
   }
 
-  handleClickRedioBTN = (e, { name, value }) => {
+  handleClickRedioBTN = e => {
     // this.handleResetdata();
-    this.props.handleChange(e, { name, value });
-    this.setState({ value });
+    if (e.value) {
+      const name = e.name;
+      const value = e.value;
+      this.props.handleChange(e, { name, value });
+      this.setState({ value });
+    } else {
+      const name = e.target.name;
+      const value = e.target.value;
+      this.props.handleChange(e, { name, value });
+      this.setState({ value });
+    }
   }
 
   render() {
@@ -107,13 +121,21 @@ class IPD2 extends Component {
             <span className="submit-plan-grap-l">บาท/คืน</span>
           </Form.Field>
           <Form.Field inline>
-            <Radio
-              label="ปีละไม่เกิน"
+            <input
+              type="radio"
               name="rbLumsumNigthNotExceedPerYear"
               value="firstChoice"
               checked={this.state.value === 'firstChoice'}
               onChange={this.handleClickRedioBTN}
             />
+            <label htmlFor="ปีละไม่เกิน" className="submit-plan-grap-r">ปีละไม่เกิน</label>
+            {/* <Radio
+              label="ปีละไม่เกิน"
+              name="rbLumsumNigthNotExceedPerYear"
+              value="firstChoice"
+              checked={this.state.value === 'firstChoice'}
+              onChange={this.handleClickRedioBTN}
+            /> */}
             <Input
               type="number"
               placeholder="จำนวนคืน"
@@ -131,13 +153,21 @@ class IPD2 extends Component {
             <span className="submit-plan-grap-l">คืน/ปี</span>
           </Form.Field>
           <Form.Field inline>
-            <Radio
-              label="ไม่จำกัด"
+            <input
+              type="radio"
               name="rbLumsumNigthNotExceedPerYear"
               value="365"
               checked={this.state.value === '365'}
               onChange={this.handleClickRedioBTN}
             />
+            <label htmlFor="ไม่จำกัด">ไม่จำกัด</label>
+            {/* <Radio
+              label="ไม่จำกัด"
+              name="rbLumsumNigthNotExceedPerYear"
+              value="365"
+              checked={this.state.value === '365'}
+              onChange={this.handleClickRedioBTN}
+            /> */}
           </Form.Field>
           <Form.Field inline>
             <label htmlFor="roomNfood">ค่ารักษาพยาบาลกรณีผู้ป่วยในจ่ายตามจริงไม่เกิน</label>

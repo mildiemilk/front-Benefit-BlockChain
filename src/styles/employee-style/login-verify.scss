@@ -235,11 +235,15 @@
   display: block !important;
 }
 .login-d-icon-input {
-  height: 50%;
+  height: 1vw;
   margin-right: 6px;
-  width: auto;
   display: inline-block;
-  vertical-align: middle;
+  position: relative;
+  top: 50%;
+  transform: translateY(-25%);
+  @media screen and (min-width: 1440px) {
+    height: 15px;
+  }
 }
 .divInput .ui.icon.input input {
   padding: 0px !important;

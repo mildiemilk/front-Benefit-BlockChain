@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Item } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import '../../../styles/main_icon.scss';
@@ -10,20 +10,21 @@ const Links = styled(Link)`
 `;
 export default class Sidebar extends Component {
   static propTypes = {
-    Location: PropTypes.shape({}).isRequired,
+    // Location: PropTypes.shape({}).isRequired,
+    handleCloseHamburgerMenu: PropTypes.func.isRequired,
+    mobile: PropTypes.bool,
   }
-  constructor() {
-    super();
-    this.state = { activeItem: 'home' };
+  static defaultProps = {
+    mobile: false,
   }
   state = { activeItem: 'home' }
   render() {
-    const pathname = this.props.Location;
-    const url = pathname.pathname.split('/')[1];
+    const url = window.location.pathname.split('/')[1];
+    const { mobile, handleCloseHamburgerMenu } = this.props;
     return (
-      <aside className="sidebar">
+      <aside className={mobile ? 'siderbar-mobile-active' : 'sidebar'}>
         <Item.Group className="sidebarstyle" relaxed>
-          <Item>
+          <Item onClick={handleCloseHamburgerMenu}>
             <i aria-hidden="true" className="icon-home" />&nbsp;
             <Links to="/dashboard" ><Item.Content verticalAlign="middle">Dashboard</Item.Content></Links>
           </Item>

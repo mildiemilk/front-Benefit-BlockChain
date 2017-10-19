@@ -317,6 +317,9 @@ class ShowMasterPlan extends Component {
     this.setState({ [name]: value });
     const MP = this.state.DetailMP;
     MP[name] = value;
+    console.log('>>this.state.DetailMP', this.state.DetailMP)
+    console.log('>>this.state', this.state)
+    console.log('>>this.props', this.props)
   }
   handleQuotationIdChange = e => {
     e.preventDefault();

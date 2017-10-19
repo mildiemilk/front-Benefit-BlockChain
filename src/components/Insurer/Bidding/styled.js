@@ -151,9 +151,11 @@ export const Pic = styled.div`
   width: 79px;
   height: 79px;
   text-align: center;
-  padding: 5%;
-  margin: 7%;
+  line-height: 110px;
   display: inline-block;
+  margin-left: 4%;
+  margin-top: 8%;
+}
 `;
 
 export const Font = styled.div`

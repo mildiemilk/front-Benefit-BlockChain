@@ -46,6 +46,7 @@ class Header extends Component {
     </div>
 
   render() {
+    // console.log('>>this.props', this.props);
     const { data } = this.props;
     const { companyName, logo } = data;
     return (

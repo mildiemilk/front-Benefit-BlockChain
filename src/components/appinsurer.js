@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/InsurerStyle/main.scss';
-import Header from './Insurer/Header';
+// import Header from './Insurer/Header';
 import Welcome from './Insurer/welcome';
 import Dashboard from './Insurer/dashboard-insurer';
 import Bidding from './Insurer/Bidding';
@@ -25,19 +25,21 @@ import Download from './Insurer/customer/CustomerManage/DownloadEmployeeData';
 import Upload from './Insurer/customer/CustomerManage/UploadPolicyNumber';
 import Benefits from './Insurer/customer/CustomerManage/Benefits';
 // import waitingSendData from './Insurer/customer/waitingSendData';
-
+// const hamburgerMen = false;
+// const handleHamburgerMenu = () => this.setState({ hamburgerMenu: !hamburgerMen });
+// const handleCloseHamburgerMenu = () => this.setState({ hamburgerMenu: false });
 const AppInsurer = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
-      <Header />
       <Switch>
         <Route path="/logout" component={Logout} />
         <Route path="/insurerlogin" component={InsurerLogin} />
-        <Route path="/dashboard" component={Dashboard} />
         <Route path="/welcome" component={Welcome} />
         <Route path="/logout" component={Logout} />
+        {/* <Route path="/dashboard" component={Dashboard} /> */}
         <MainLayout>
           <Switch>
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/biddinglist" component={BiddingList} />
             <Route path="/biddingdetali/:companyId" component={Bidding} />
             <Route path="/claimlist/:companyId" component={Claim} />

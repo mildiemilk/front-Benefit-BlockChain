@@ -80,6 +80,9 @@ class IPD extends Component {
   }
 
   handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+    const MP = this.state.DetailMP;
+    MP[name] = value;
     this.props.handleChange(e, { name, value });
     this.props.handleVerifyState('ipdRecord');
   }
@@ -211,7 +214,7 @@ class IPD extends Component {
               ? <IPD1
                 styletabPrice={this.props.styletabPrice}
                 handleVerifyState={this.props.handleVerifyState}
-                handleChange={this.props.handleChange}
+                handleChange={this.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}
@@ -282,13 +285,13 @@ class IPD extends Component {
                 onClick={this.props.handleToggle}
                 value={this.props.ipdCoPay}
                 name="ipdCoPay"
-                // onChange={this.props.handleChange}
+                onChange={this.handleChange}
               />
             </div>
             {this.props.ipdCoPay
               ? <CoPay
                 styletabPrice={this.props.styletabPrice}
-                // handleChange={this.handleChange}
+                handleChange={this.handleChange}
                 handleChangeToNull={this.props.handleChangeToNull}
                 handleNewReset={this.props.handleNewReset}
                 reset={this.props.reset}

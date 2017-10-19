@@ -6,10 +6,8 @@ export const Head = styled.p`
   font-size: 30px;
 `;
 export const Companies = styled.div`
-  margin-top: 15px;
   float: left;
   display: block;
-  height: 110px;
 `;
 export const ProfileImg = styled.img`
   width: 54px;

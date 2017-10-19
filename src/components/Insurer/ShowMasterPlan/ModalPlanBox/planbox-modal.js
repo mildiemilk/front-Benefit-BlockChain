@@ -396,30 +396,29 @@ class PlanBoxModal extends Component {
 
   handleToggleIpdCoPay = () => {
     if (this.state.ipdCoPay === true) {
+      const MP = this.state.DetailMP;
+      MP.ipdCoPay = this.state.ipdCoPay;
       this.setState({
-        DetailMP: this.props.DetailMP,
+        // DetailMP: this.props.DetailMP,
         ipdCoPay: false,
         ipdCoPayQuota: null,
         ipdCoPayDeductable: null,
         ipdCoPayMixPercentage: null,
         ipdCoPayMixNotExceed: null,
         ipdCoPayMixYear: null,
-      });
-      const MP = this.state.DetailMP;
-      MP.ipdCoPay = false;
-      this.state = {
-        DetailMP: MP,
         ipdType: MP.ipdType,
-      };
+        reset: true,
+      });
     }
     if (this.state.ipdCoPay === false) {
       this.setState({ ipdCoPay: true });
       const MP = this.state.DetailMP;
-      MP.ipdCoPay = true;
-      this.state = {
+      MP.ipdCoPay = this.state.ipdCoPay;
+      this.setState({
         DetailMP: MP,
         ipdType: MP.ipdType,
-      };
+        reset: true,
+      });
     }
   }
 

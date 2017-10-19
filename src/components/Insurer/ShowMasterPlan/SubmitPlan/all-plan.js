@@ -606,6 +606,7 @@ class AllsetPlan extends Component {
                 dentalPerYear={this.props.dentalPerYear}
                 handleChange={this.props.handleChange}
                 handleResetDental={this.props.handleResetDental}
+                DetailMP={this.props.DetailMP}
               />
               : null}
             {this.state.setPlan === 'Life'
@@ -625,6 +626,7 @@ class AllsetPlan extends Component {
                 lifeTimeOfSalary={this.props.lifeTimeOfSalary}
                 lifeNotExceed={this.props.lifeNotExceed}
                 handleResetLife={this.props.handleResetLife}
+                DetailMP={this.props.DetailMP}
               />
               : null}
           </div>

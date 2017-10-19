@@ -49,7 +49,7 @@ class MainLayout extends Component {
             </div>
             : <div className="large-10 columns">
               <div className="row" style={{ marginTop: 75 }}>
-                <div className="large-12 columns" style={{ padding: '0px 10px' }}>
+                <div className="large-12 columns" style={{ padding: '0px 30px' }}>
                   {children}
                 </div>
               </div>

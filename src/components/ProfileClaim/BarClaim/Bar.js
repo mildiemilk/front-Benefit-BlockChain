@@ -52,8 +52,8 @@ class BarDetail extends Component {
       <div>
         <AllClaimText>จำนวนการเคลมทั้งหมด 211 รายการ</AllClaimText>
         <BarChart
-          width={600} height={300} data={data}
-          margin={{ top: 20, right: 50, left: 20, bottom: 5 }}
+          width={500} height={300} data={data}
+          margin={{ top: 20, right: 50, left: 10, bottom: 5 }}
         >
           <XAxis dataKey="name" />
           <YAxis />

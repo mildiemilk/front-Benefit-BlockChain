@@ -52,7 +52,7 @@ class SubmitPlan extends Component {
       newPlan: false,
       canBuildNewPlan: true,
       planName: '',
-      employeeOfPlan: '',
+      employeeOfPlan: 0,
       ipdType: null,
       ipdLumsumPerYear: null,
       ipdLumsumPerTime: null,
@@ -543,6 +543,7 @@ class SubmitPlan extends Component {
   }
 
   render() {
+    const activePlan = parseInt(this.state.activePlan, 10);
     return (
       <div className="SubmitPlan">
         <NavInsure step={this.state.step} />
@@ -556,7 +557,7 @@ class SubmitPlan extends Component {
               <div className="large-3 medium-3 small-3 columns submit-plan-delete-padding-left">
                 <MenuPlan
                   handleUpdateEditData={this.handleUpdateEditData}
-                  activePlan={this.state.activePlan}
+                  activePlan={activePlan}
                   handlePlan={this.handlePlan}
                   handleNewPlan={this.handleNewPlan}
                   openModalForm={this.state.openModalForm}
@@ -578,7 +579,7 @@ class SubmitPlan extends Component {
                   ? <div>
                     <FormSubmitPlan
                       handleUpdateEditData={this.handleUpdateEditData}
-                      activePlan={this.state.activePlan}
+                      activePlan={activePlan}
                       handlePlan={this.handlePlan}
                       handleChange={this.handleChange}
                       planName={this.state.planName}
@@ -591,7 +592,7 @@ class SubmitPlan extends Component {
                       <AllPlan
                         handleUpdateEditData={this.handleUpdateEditData}
                         planList={this.props.planList}
-                        activePlan={this.state.activePlan}
+                        activePlan={activePlan}
                         handlePlan={this.handlePlan}
                         nextPage={this.state.nextPage}
                         handleNextPage={this.handleNextPage}

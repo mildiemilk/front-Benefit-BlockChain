@@ -10,7 +10,7 @@ const ModalContents = styled(Modal.Content) `
   &&&{
     position: relative;
     margin: 0 auto;
-    padding: 0px;
+    padding: 0px !important;
   }
 `;
 
@@ -32,7 +32,7 @@ class FormModal extends Component {
     handleChange: PropTypes.func.isRequired,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateData: PropTypes.func.isRequired,
     handleUpdateEditData: PropTypes.func.isRequired,
@@ -65,7 +65,7 @@ class FormModal extends Component {
             handleClose={this.handleClose}
             planList={this.props.planList}
             handleUpdateData={this.props.handleUpdateData}
-            activePlan={this.props.activePlan}
+            activePlan={`${this.props.activePlan}`}
             handlePlan={this.props.handlePlan}
             handleModalFinish={this.props.handleModalFinish}
             handleChange={this.props.handleChange}

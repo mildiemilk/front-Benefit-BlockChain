@@ -19,7 +19,6 @@ class MainLayout extends Component {
     this.state = {};
   }
   render() {
-    console.log('main-layout', this.props);
     const { location, children } = this.props;
     return (
       <div>

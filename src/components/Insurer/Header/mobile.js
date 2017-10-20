@@ -6,6 +6,7 @@ import { push as Menu } from 'react-burger-menu';
 import styled from 'styled-components';
 import { Divider, Image } from 'semantic-ui-react';
 import User from '../../../../assets/employee/user.png';
+import '../../../styles/main_icon.scss';
 
 const List = styled.div`
   padding-left: 6%;
@@ -124,39 +125,39 @@ class Mobile extends React.Component {
             <Dividers />
             <div>
               <List onClick={this.closeSidebar}>
-                <Link to="/dashboard">
+                <i aria-hidden="true" className="icon-home" />&nbsp;<Link to="/dashboard">
                   Dashboard
                 </Link>
               </List>
               <List onClick={this.closeSidebar}>
-                <Link to="/allcustomer">
+                <i aria-hidden="true" className="icon-conference" />&nbsp;<Link to="/allcustomer">
                   ลูกค้าของคุณ
                 </Link>
               </List>
               <List onClick={this.closeSidebar}>
-                <Link to="/biddinglist">
+                <i aria-hidden="true" className="icon-purchase" />&nbsp;<Link to="/biddinglist">
                   การเสนอราคา
                 </Link>
               </List>
               <List onClick={this.closeSidebar}>
-                <Link to="/claim">
+                <i aria-hidden="true" className="icon-overview" />&nbsp;<Link to="/claim">
                   รายการเคลม
                 </Link>
               </List>
               <List onClick={this.closeSidebar}>
-                <Link to="/insurerplan">
+                <i aria-hidden="true" className="icon-sell" />&nbsp;<Link to="/insurerplan">
                   แผนประกันภัย
                 </Link>
               </List>
               <List onClick={this.closeSidebar}>
-                <Link to="/profile">
+                <i aria-hidden="true" className="icon-administrator" />&nbsp;<Link to="/profile">
                   โปรไฟล์ของคุณ
                 </Link>
               </List>
             </div>
             <SettingDiv>
               <List onClick={this.closeSidebar}>
-                <Link to="/setting">
+                <i aria-hidden="true" className="icon-services" />&nbsp;<Link to="/setting">
                   ตั้งค่า
                 </Link>
               </List>

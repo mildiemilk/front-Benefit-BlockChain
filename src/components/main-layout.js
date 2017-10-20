@@ -20,7 +20,10 @@ class MainLayout extends Component {
       <div className="row">
         <MediaQuery query="(min-width: 1329px)">
           <div className="large-2 columns">
-            <Sidebar Location={children} />
+            <Sidebar
+              Location={children}
+              handleCloseHamburgerMenu={handleCloseHamburgerMenu}
+            />
           </div>
         </MediaQuery>
         <HamburgerMenu

@@ -22,16 +22,17 @@ class ShowMasterPlan extends Component {
   constructor(props) {
     super(props);
     const { DataCompany } = props;
-    const { status,
-            totalPrice,
-            quotationId,
-            countBidding,
-            startNewInsurance,
-            updatedAt,
-            expiredOldInsurance,
-            plan,
-            companyId,
-          } = DataCompany;
+    const {
+      status,
+      totalPrice,
+      quotationId,
+      countBidding,
+      startNewInsurance,
+      updatedAt,
+      expiredOldInsurance,
+      plan,
+      companyId,
+    } = DataCompany;
     let joinbid;
     let quotation;
     let popupQuotationId;
@@ -317,9 +318,6 @@ class ShowMasterPlan extends Component {
     this.setState({ [name]: value });
     const MP = this.state.DetailMP;
     MP[name] = value;
-    console.log('>>this.state.DetailMP', this.state.DetailMP)
-    console.log('>>this.state', this.state)
-    console.log('>>this.props', this.props)
   }
   handleQuotationIdChange = e => {
     e.preventDefault();

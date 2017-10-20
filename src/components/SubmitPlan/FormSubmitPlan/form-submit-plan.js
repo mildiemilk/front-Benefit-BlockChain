@@ -8,7 +8,7 @@ import erase from '../../image/icons-8-erase.png';
 
 class FormSubmitPlan extends Component {
   static propTypes = {
-    activePlan: PropTypes.number.isRequired,
+    activePlan: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     // editPlan: PropTypes.func.isRequired,
     // createPlan: PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ class FormSubmitPlan extends Component {
     handleModalFinish: PropTypes.func,
     handleResetProfilePlan: PropTypes.func.isRequired,
     planName: PropTypes.string.isRequired,
-    employeeOfPlan: PropTypes.string.isRequired,
+    employeeOfPlan: PropTypes.number.isRequired,
     planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleUpdateEditData: PropTypes.func.isRequired,
     btnCancle: PropTypes.bool,
@@ -93,7 +93,7 @@ class FormSubmitPlan extends Component {
                   <Input
                     className="submit-plan-input-create-plan"
                     placeholder="ระบุจำนวนพนักงาน"
-                    value={this.props.employeeOfPlan}
+                    value={this.props.employeeOfPlan === 0 ? '' : this.props.employeeOfPlan}
                     name="employeeOfPlan"
                     id="employeeOfPlan"
                     onChange={this.props.handleChange}

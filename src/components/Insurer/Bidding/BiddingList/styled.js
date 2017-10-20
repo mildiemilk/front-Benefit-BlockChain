@@ -3,7 +3,6 @@ import { Image } from 'semantic-ui-react';
 
 export const BiddingElement = styled.div`
   width: 100%;
-  height: 216px;
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.09);
@@ -14,7 +13,7 @@ export const BiddingElement = styled.div`
 
 export const ContantBid = styled.div`
     width: 100%;
-    height: 85px;
+    min-height: 85px;
     border-radius: 6px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);

@@ -560,3 +560,10 @@ div.submit-plan-form-create-plan > input {
     margin-left: 18px;
   }
 }
+.submit-plan-comfirm-modal-header {
+  text-align: center;
+  font-size: 1.2vw;
+  @media screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
+}

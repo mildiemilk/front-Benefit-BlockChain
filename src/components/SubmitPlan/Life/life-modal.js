@@ -9,7 +9,8 @@ const ModalContents = styled(Modal.Content)`
   &&&{
     max-width: 550px;
     margin: 0 auto;
-    padding-left: 4%;
+    text-align: center;
+    width: 38.7vw;
   }
 `;
 
@@ -60,39 +61,24 @@ class LifeModal extends Component {
 
         <ModalContents>
           <Modal.Header>
-            <p style={{ textAlign: 'center' }}>
+            <p className="submit-plan-comfirm-modal-header">
               คุณต้องการบันทึกรายละเอียดแผนของคุณหรือไม่ ?
             </p>
           </Modal.Header>
           <Modal.Content>
-            <p style={{ textAlign: 'center' }}>
+            <p className="submit-plan-comfirm-modal-header">
               คุณได้เปลี่ยนแปลงรายละเอียดแผนโดยไม่ได้ทำการบันทึก
             </p>
           </Modal.Content>
           <Modal.Content style={{ marginTop: '3%' }}>
             <Button
-              style={{
-                textAlign: 'center',
-                width: '232px',
-                height: '40px',
-                borderRadius: '20px',
-                color: '#ffffff',
-                backgroundColor: '#f7555f',
-                marginLeft: '0.7%',
-              }}
+              className="submit-plan-btn-form-submit-plan btn-red"
               onClick={this.handleCancel}
             >
               ยกเลิก
             </Button>
             <Button
-              style={{
-                textAlign: 'center',
-                width: '232px',
-                height: '40px',
-                backgroundColor: '#3A7BD5',
-                color: 'white',
-                borderRadius: '20px',
-              }}
+              className="submit-plan-btn-form-submit-plan btn-blue"
               onClick={this.handleSubmit}
               type="submit"
             >

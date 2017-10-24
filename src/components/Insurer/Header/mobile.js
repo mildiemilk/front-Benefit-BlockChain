@@ -103,7 +103,6 @@ class Mobile extends React.Component {
 
   render() {
     const { data } = this.props;
-    console.log('>>data', this.props);
     const { companyName } = data;
     return (
       <div>

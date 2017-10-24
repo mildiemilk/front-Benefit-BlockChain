@@ -5,15 +5,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import {
-  BackHome,
   RecComparePlan,
-  CompareHeader,
-  ViewButton,
   TopicCompareTable,
-  CompareImg,
-  HiddenBox,
   LifeTopic,
-  OPDTopic,
   Note,
 } from './styled';
 import NavInsure from '../NavInsure';
@@ -25,16 +19,20 @@ import ipd from '../../../assets/compare/2.png';
 
 const Icons = styled(Icon) `
   &&&{
+    font-size: 1.2vw;
     position: absolute;
-    font-size: 18px;
-    margin-top: 33px;
-    margin-left: -17px;
+    right: 1vw;
+    transform: translateY(-50%);
+    @media screen and (min-width: 1440px) {
+      font-size: 18px;
+      right: 15px;
+    }
   }
 `;
 
 class ComparePlan extends Component {
   static propTypes = {
-    planList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    planList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
   constructor(props) {
     super(props);
@@ -82,7 +80,7 @@ class ComparePlan extends Component {
   renderPlanName = () => {
     const plans = this.props.planList;
     return plans.map((plan, i) => (
-      <th key={i.toString()}>
+      <th className="compare-plan-name" key={i.toString()}>
         {plan.planName}
       </th>
     ));
@@ -112,15 +110,15 @@ class ComparePlan extends Component {
     const plans = this.props.planList;
     return plans.map((plan, i) => (
       <th key={i.toString()}>
-        {plan.opdPerYear +
+        {
+          plan.opdPerYear +
           plan.opdPerTime +
           plan.opdTimeNotExceedPerYear +
           plan.opdCoPayQuota +
           plan.opdCoPayDeductable +
           plan.opdCoPayMixPercentage +
           plan.opdCoPayMixNotExceed +
-          plan.opdCoPayMixYear ===
-          0
+          plan.opdCoPayMixYear === 0
           ? '-'
           : plan.opdPerYear +
           plan.opdPerTime +
@@ -199,24 +197,30 @@ class ComparePlan extends Component {
         <div className="row">
           <RecComparePlan>
             <div className="row">
-              <div className="large-5 large-offset-1 columns">
-                <CompareHeader> เปรียบเทียบแผนประกันภัย </CompareHeader>
-                <Link to="/submitplan/0">
-                  <BackHome>&lt; กลับหน้าหลัก </BackHome>
-                </Link>
+              <div
+                className="large-10 large-crntered mediam-10 mediam-centered small-10 small-centered columns"
+              >
+                <div className="menu-header"> เปรียบเทียบแผนประกันภัย </div>
               </div>
-              <div className="large-3 large-offset-1 columns">
-                <Link to="/view">
-                  <ViewButton>
+              <div
+                className="compare-grap-top-menu large-10 large-crntered mediam-10 mediam-centered small-10 small-centered columns"
+              >
+                <div className="header-box-l">
+                  <Link to="/submitplan/0">
+                    <div className="menu-text menu-header-color-gray">&lt; กลับหน้าหลัก </div>
+                  </Link>
+                </div>
+                <div className="menu-text header-box-r">
+                  <Link to="/view">
                     <Icon disabled name="add to calendar" />
                     ดูแผนทั้งหมด
-                  </ViewButton>
-                </Link>
+                  </Link>
+                </div>
               </div>
             </div>
 
             <div style={{ marginTop: '2%' }} className="row">
-              <div className="large-10 large-offset-1 columns">
+              <div className="large-10 large-crntered mediam-10 mediam-centered small-10 small-centered columns">
                 <div className="CompareHead">
                   <table>
                     <thead>
@@ -235,31 +239,42 @@ class ComparePlan extends Component {
             </div>
 
             <div className="row">
-              <div className="large-10 large-offset-1 columns">
+              <div className="large-10 large-crntered mediam-10 mediam-centered small-10 small-centered columns">
                 <div style={{ marginTop: '2%' }} className="CompareLife">
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src={life} />
-                        <LifeTopic> ประกันชีวิต (Life) </LifeTopic>
-                        <Icons
-                          onClick={this.handleToggleLife}
-                          disabled
-                          name="caret down"
-                        />
+                        <div className="compare-title-box-l">
+                          <img className="compare-img-title" alt="" src={life} />
+                        </div>
+                        <div className="compare-title-box-r">
+                          <LifeTopic> ประกันชีวิต (Life) </LifeTopic>
+                          <Icons
+                            onClick={this.handleToggleLife}
+                            disabled
+                            name="caret down"
+                          />
+                        </div>
                       </th>
                       {this.renderLife()}
                     </tr>
-                    {this.state.lifeBox
-                      ? <HiddenBox>
-                        <br />
-                        &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
-                          {' '}
-                        <br />
-                        &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
-                          (วันละ 1 ครั้ง <br />&nbsp; ไม่เกิน 30 ต่อปี)
-                        </HiddenBox>
-                      : null}
+                    {
+                      this.state.lifeBox
+                      ? <tr>
+                        <th className="compare-rm-border-r">
+                          <p className="compare-txt-description">
+                            ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ
+                            ค่าใช้จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
+                            (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
+                          </p>
+                        </th>
+                        <th
+                          className="compare-rm-border-l"
+                          colSpan={this.props.planList.length}
+                        />
+                      </tr>
+                      : <div />
+                    }
                   </table>
                 </div>
 
@@ -267,26 +282,37 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src={dental} />
-                        <LifeTopic> ค่ารักษาทันตกรรม (Dental) </LifeTopic>
-                        <Icons
-                          onClick={this.handleToggleDental}
-                          disabled
-                          name="caret down"
-                        />
+                        <div className="compare-title-box-l">
+                          <img className="compare-img-title" alt="" src={dental} />
+                        </div>
+                        <div className="compare-title-box-r">
+                          <LifeTopic> ค่ารักษาทันตกรรม (Dental) </LifeTopic>
+                          <Icons
+                            onClick={this.handleToggleDental}
+                            disabled
+                            name="caret down"
+                          />
+                        </div>
                       </th>
                       {this.renderDental()}
                     </tr>
-                    {this.state.dentalBox
-                      ? <HiddenBox>
-                        <br />
-                        &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
-                          {' '}
-                        <br />
-                        &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
-                          (วันละ 1 ครั้ง <br />&nbsp; ไม่เกิน 30 ต่อปี)
-                        </HiddenBox>
-                      : null}
+                    {
+                      this.state.dentalBox
+                      ? <tr>
+                        <th className="compare-rm-border-r">
+                          <p className="compare-txt-description">
+                          ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ
+                          ค่าใช้จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
+                          (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
+                          </p>
+                        </th>
+                        <th
+                          className="compare-rm-border-l"
+                          colSpan={this.props.planList.length}
+                        />
+                      </tr>
+                      : <div />
+                    }
                   </table>
                 </div>
 
@@ -294,29 +320,40 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src={opd} />
-                        <OPDTopic>
-                          {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยนอก <br />
-                          (Out Patient Department : OPD){' '}
-                        </OPDTopic>
-                        <Icons
-                          onClick={this.handleToggleOPD}
-                          disabled
-                          name="caret down"
-                        />
+                        <div className="compare-title-box-l">
+                          <img className="compare-img-title" alt="" src={opd} />
+                        </div>
+                        <div className="compare-title-box-r">
+                          <LifeTopic>
+                            ค่ารักษาพยาบาลกรณีผู้ป่วยนอก
+                            (Out Patient Department : OPD)
+                          </LifeTopic>
+                          <Icons
+                            onClick={this.handleToggleOPD}
+                            disabled
+                            name="caret down"
+                          />
+                        </div>
                       </th>
                       {this.renderOPD()}
                     </tr>
-                    {this.state.OPDBox
-                      ? <HiddenBox>
-                        <br />
-                        &nbsp;&nbsp;ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ ค่าใช้
-                          {' '}
-                        <br />
-                        &nbsp;&nbsp;จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
-                          (วันละ 1 ครั้ง <br />&nbsp; ไม่เกิน 30 ต่อปี)
-                        </HiddenBox>
-                      : null}
+                    {
+                      this.state.OPDBox
+                      ? <tr>
+                        <th className="compare-rm-border-r">
+                          <p className="compare-txt-description">
+                          ค่าแพทย์ ค่ายา ค่าบริการที่โรงพยาบาลเรียกเก็บ
+                          ค่าใช้จ่ายสำหรับการตรวจทางห้องปฏิบัติการ
+                          (วันละ 1 ครั้ง ไม่เกิน 30 ต่อปี)
+                          </p>
+                        </th>
+                        <th
+                          className="compare-rm-border-l"
+                          colSpan={this.props.planList.length}
+                        />
+                      </tr>
+                      : <div />
+                    }
                   </table>
                 </div>
 
@@ -324,55 +361,55 @@ class ComparePlan extends Component {
                   <table>
                     <tr>
                       <th>
-                        <CompareImg src={ipd} />
-                        <OPDTopic>
-                          {' '}ค่ารักษาพยาบาลกรณีผู้ป่วยใน <br />
-                          (In-Patient Department : IPD){' '}
-                        </OPDTopic>
-                        <Icons
-                          onClick={this.handleToggleIPD}
-                          disabled
-                          name="caret down"
-                        />
+                        <div className="compare-title-box-l">
+                          <img className="compare-img-title" alt="" src={ipd} />
+                        </div>
+                        <div className="compare-title-box-r">
+                          <LifeTopic>
+                            ค่ารักษาพยาบาลกรณีผู้ป่วยใน
+                            (In-Patient Department : IPD)
+                          </LifeTopic>
+                          <Icons
+                            onClick={this.handleToggleIPD}
+                            disabled
+                            name="caret down"
+                          />
+                        </div>
                       </th>
                       {this.renderIPD()}
                     </tr>
                   </table>
                 </div>
-                {this.state.IPDBox
+                {
+                  this.state.IPDBox
                   ? <IPDDropBox planList={this.props.planList} />
-                  : null}
+                  : null
+                }
 
-                <div style={{ marginTop: '5%' }}>
+                <div className="compare-note-grap-head">
                   <Note>
                     * ค่าใช้จ่ายในข้อ 4.1-4.6 นับรวมจ่ายในผลประโยชน์ ค่ารักษาพยาบาลทั่วไป
                     <br />
-                    {' '}
                     ** ค่าใช้จ่ายข้อ 5 คือ จำนวนเงินสูงสุดที่จ่าย ข้อ 1-4 รวมกัน
                     สำหรับการรักษากรณี ปลูกถ่ายไขกระดูก,
                     เปลี่ยนถ่ายอวัยวะ, การฟอกไต
                     สูงสุดต่อปีกรมธรรม์
                     <br />
-                    {' '}
                     - บริการช่วยเหลือฉุกเฉินทางการแพทย์ทั่วโลก
                     เคลื่อนย้ายผู้ป่วยจากโรงพยาบาลเพื่อกลับไปพักฟื้นยังภูมิลำเนา
                     บริการเคลื่อนย้ายศพ
                     ในวงเงินสูงสุดถึง 1,000,000 บาท
                     <br />
-                    {' '}
                     - อัตราเบี้ยประกันข้างต้นนี้ มีผลบังคับใช้ตั้งแต่วันที่ XXXXXXX - XXXXXXX
                     <br />
-                    {' '}
                     - เอกสารชุดนี้ไม่ใช่สัญญาประกันภัย
                     รายละเอียดเงื่อนไขความคุ้มครองและ
                     ข้อยกเว้นที่สมบูรณ์จะระบุในกรมธรรม์ประกันภัย
                     ผู้ซื้อควรทำความเข้าใจรายละเอียดเงื่อนไขก่อนตัดสินใจทำประกันภัยทุกครั้ง
                   </Note>
                 </div>
-
               </div>
             </div>
-
           </RecComparePlan>
         </div>
       </div>

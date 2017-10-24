@@ -5,19 +5,29 @@ import styled from 'styled-components';
 import { IPDTopic, Sub, IPDDetail } from './styled';
 
 const Icons = styled(Icon) `
-  &&&{
-    position: absolute;
-    right: 2%;
-    top: 25%;
+&&&{
+  font-size: 1.2vw;
+  position: absolute;
+  right: 1vw;
+  top: 50%;
+  transform: translateY(-50%);
+  @media screen and (max-width: 1439px) {
+    top: 0.5vw !important;
+    bottom: 0 !important;
   }
+  @media screen and (min-width: 1440px) {
+    font-size: 18px;
+    right: 15px;
+  }
+}
 `;
 
 export default class IPDDropBox extends Component {
   static propTypes = {
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       lifeBox: false,
       dentalBox: false,
@@ -62,51 +72,56 @@ export default class IPDDropBox extends Component {
 
   renderFirstIPD = () => {
     const plans = this.props.planList;
-    return plans.map(() => <th>&nbsp;</th>);
+    return plans.map((plan, i) => <th key={i.toString()} />);
   }
 
   renderRbSchedulePatient = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbSchedulePatient === null ? '-' : plan.rbSchedulePatient}
-        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+        <br />
+        <Sub>ไม่จำกัดจำนวนวัน </Sub>
       </th>
     ));
   }
 
   renderRbScheduleIntensiveCarePatient = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
-        {plan.rbScheduleIntensiveCarePatient === null
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
+        {
+          plan.rbScheduleIntensiveCarePatient === null
           ? '-'
-          : plan.rbScheduleIntensiveCarePatient}
-        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+          : plan.rbScheduleIntensiveCarePatient
+        }
+        <br />
+        <Sub>ไม่จำกัดจำนวนวัน</Sub>
       </th>
     ));
   }
 
   renderRbScheduleDoctor = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleDoctor === null ? '-' : plan.rbScheduleDoctor}
-        <Sub><br /> ไม่จำกัดจำนวนวัน </Sub>
+        <br />
+        <Sub>ไม่จำกัดจำนวนวัน</Sub>
       </th>
     ));
   }
 
   renderRbScheduleSurgery = () => {
     const plans = this.props.planList;
-    const rbScheduleSurgery = plans.map(plan => {
+    const rbScheduleSurgery = plans.map((plan, i) => {
       let head;
       if (plan.rbScheduleSurgerySchedule !== null) {
-        head = <th>{plan.rbScheduleSurgerySchedule}</th>;
+        head = <th key={i.toString()}>{plan.rbScheduleSurgerySchedule}</th>;
       } else if (plan.rbScheduleSurgeryNonSchedule !== null) {
-        head = <th>{plan.rbScheduleSurgeryNonSchedule}</th>;
+        head = <th key={i.toString()}>{plan.rbScheduleSurgeryNonSchedule}</th>;
       } else {
-        head = <th>-</th>;
+        head = <th key={i.toString()}>-</th>;
       }
       return head;
     });
@@ -115,8 +130,8 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleAllService = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleService +
           plan.rbScheduleSmallSurgery +
           plan.rbScheduleAdviser +
@@ -137,11 +152,12 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleService = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleService === null ? '-' : plan.rbScheduleService}
+        <br />
         <Sub>
-          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+          คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
         </Sub>
       </th>
     ));
@@ -149,13 +165,16 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleSmallSurgery = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
-        {plan.rbScheduleSmallSurgery === null
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
+        {
+          plan.rbScheduleSmallSurgery === null
           ? '-'
-          : plan.rbScheduleSmallSurgery}
+          : plan.rbScheduleSmallSurgery
+        }
+        <br />
         <Sub>
-          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+          คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
         </Sub>
       </th>
     ));
@@ -163,8 +182,8 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleAdviser = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleAdviser === null ? '-' : plan.rbScheduleAdviser}
       </th>
     ));
@@ -172,8 +191,8 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleAmbulance = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleAmbulance === null ? '-' : plan.rbScheduleAmbulance}
       </th>
     ));
@@ -181,8 +200,8 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleAccident = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleAccident === null ? '-' : plan.rbScheduleAccident}
       </th>
     ));
@@ -190,11 +209,12 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleTreatment = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleTreatment === null ? '-' : plan.rbScheduleTreatment}
+        <br />
         <Sub>
-          <br /> คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
+          คุ้มครองค่าใช้จ่ายตามจริง ไม่เกินความคุ้มครองสูงสุด
         </Sub>
       </th>
     ));
@@ -202,8 +222,8 @@ export default class IPDDropBox extends Component {
 
   renderRbScheduleTransplant = () => {
     const plans = this.props.planList;
-    return plans.map(plan => (
-      <th>
+    return plans.map((plan, i) => (
+      <th key={i.toString()}>
         {plan.rbScheduleTransplant === null ? '-' : plan.rbScheduleTransplant}
       </th>
     ));
@@ -212,10 +232,11 @@ export default class IPDDropBox extends Component {
   render() {
     return (
       <div className="ComparePlan">
-
         <div className="CompareIPD">
           <table>
-            <tr>
+            <tr
+              className={this.state.firstIPDBox ? 'compare-rm-border-bt' : ''}
+            >
               <th>
                 <IPDTopic> 1. ค่าห้อง ค่าอาหาร และค่าบริการ </IPDTopic>
                 <Icons
@@ -226,73 +247,51 @@ export default class IPDDropBox extends Component {
               </th>
               {this.renderFirstIPD()}
             </tr>
-          </table>
-        </div>
-
-        {this.state.firstIPDBox
-          ? <div className="SubCompareIPD">
-            <table>
-              <tr>
+            {
+              this.state.firstIPDBox
+              ? <tr className="compare-rm-border-bt">
                 <th>
                   <IPDDetail>
-                    {' '}
-                    1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา
-                      {' '}
-                    <br />
-                    (สูงสุดต่อวัน)
-                    </IPDDetail>
+                    1.1 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยธรรมดา (สูงสุดต่อวัน)
+                  </IPDDetail>
                 </th>
                 {this.renderRbSchedulePatient()}
               </tr>
-
-              <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
+              : <div />
+            }
+            {
+              this.state.firstIPDBox
+              ? <tr>
                 <th>
                   <IPDDetail>
-                    {' '}
-                    1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก
-                      {' '}
-                    <br />
-                    (สูงสุดต่อวัน)
-                    </IPDDetail>
+                    1.2 ค่าห้อง ค่าอาหาร และค่าบริการพยาบาลห้องผู้ป่วยหนัก (สูงสุดต่อวัน)
+                  </IPDDetail>
                 </th>
                 {this.renderRbScheduleIntensiveCarePatient()}
               </tr>
-            </table>
-          </div>
-          : null}
-
-        <div className="CompareIPD">
-          <table>
+              : <div />
+            }
             <tr>
               <th>
                 <IPDTopic>
-                  {' '}2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน{' '}
+                  2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน
                 </IPDTopic>
               </th>
               {this.renderRbScheduleDoctor()}
             </tr>
-          </table>
-        </div>
-
-        <div className="CompareIPD">
-          <table>
             <tr>
               <th>
                 <IPDTopic>
-                  {' '}3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัด <br />
-                  และหัตถการ ตามตารางผ่าตัด{' '}
+                  3. การรักษาพยาบาลโดยการผ่าตัด ค่าแพทย์ผ่าตัดและหัตถการ ตามตารางผ่าตัด
                 </IPDTopic>
               </th>
               {this.renderRbScheduleSurgery()}
             </tr>
-          </table>
-        </div>
-
-        <div className="CompareIPD">
-          <table>
-            <tr>
+            <tr
+              className={this.state.fourthIPDBox ? 'compare-rm-border-bt' : ''}
+            >
               <th>
-                <IPDTopic> 4. ค่ารักษาพยาบาลและค่าบริการทั่วไป* </IPDTopic>
+                <IPDTopic>4. ค่ารักษาพยาบาลและค่าบริการทั่วไป*</IPDTopic>
                 <Icons
                   onClick={this.handleToggleFourthIPD}
                   disabled
@@ -301,104 +300,95 @@ export default class IPDDropBox extends Component {
               </th>
               {this.renderRbScheduleAllService()}
             </tr>
-          </table>
-        </div>
-
-        {this.state.fourthIPDBox
-          ? <div className="SubCompareIPD">
-            <table>
-              <tr>
+            {
+              this.state.fourthIPDBox
+              ? <tr className="compare-rm-border-bt">
                 <th>
                   <IPDDetail>
-                    {' '}
                     4.1 ค่ายาและสารอาหารทางเส้นเลือด ค่าบริการโลหิต
-                      {' '}
-                    <br />
-                    และส่วนประกอบของโลหิตค่าตรวจทางห้องปฏิบัติ <br />
-                    การอุปกรณ์ทางการแพทย์ ค่าห้องผ่าตัดและ <br />
-                    อุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/ <br />
-                    กิจกรรมบำบัด ค่าแพทย์วิสัญญี/พยาบาลวิสัญญี <br />
-                    คุ้มครองสูงสุดต่อครั้ง
+                    และส่วนประกอบของโลหิตค่าตรวจทางห้องปฏิบัติ
+                    การอุปกรณ์ทางการแพทย์ ค่าห้องผ่าตัดและ
+                    อุปกรณ์ ค่ายากลับบ้าน ค่ากายภาพบำบัด/กิจกรรมบำบัด
+                    ค่าแพทย์วิสัญญี/พยาบาลวิสัญญี คุ้มครองสูงสุดต่อครั้ง
                     </IPDDetail>
                 </th>
                 {this.renderRbScheduleService()}
               </tr>
-
-              <tr>
+              : <div />
+            }
+            {
+              this.state.fourthIPDBox
+              ? <tr className="compare-rm-border-bt">
                 <th>
                   <IPDDetail>
-                    {' '}
                     4.2 ค่าใช้จ่ายสำหรับหัตถการหรือการผ่าตัดเล็กต่อครั้ง
-                      {' '}
                   </IPDDetail>
                 </th>
                 {this.renderRbScheduleSmallSurgery()}
               </tr>
-
-              <tr>
+              : <div />
+            }
+            {
+              this.state.fourthIPDBox
+              ? <tr className="compare-rm-border-bt">
                 <th>
                   <IPDDetail>
-                    {' '}4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการ
-                      ผ่าตัดต่อครั้ง
+                    4.3 ค่าแพทย์ที่ปรึกษาทางการผ่าตัด กรณีไม่มีการผ่าตัดต่อครั้ง
                     </IPDDetail>
                 </th>
                 {this.renderRbScheduleAdviser()}
               </tr>
-
-              <tr>
+              : <div />
+            }
+            {
+              this.state.fourthIPDBox
+              ? <tr className="compare-rm-border-bt">
                 <th>
                   <IPDDetail> 4.4 ค่าบริการรถพยาบาลต่อครั้ง </IPDDetail>
                 </th>
                 {this.renderRbScheduleAmbulance()}
               </tr>
-
-              <tr>
+              : <div />
+            }
+            {
+              this.state.fourthIPDBox
+              ? <tr className="compare-rm-border-bt">
                 <th>
                   <IPDDetail>
-                    {' '}4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24
-                      ช.ม. หลังเกิดอุบัติเหตุต่อครั้ง
+                     4.5 ค่ารักษาพยาบาลอุบัติเหตุฉุกเฉิน ภายใน 24 ช.ม. หลังเกิดอุบัติเหตุต่อครั้ง
                     </IPDDetail>
                 </th>
                 {this.renderRbScheduleAccident()}
               </tr>
-
-              <tr style={{ borderBottom: '1px solid #9b9b9b' }}>
+              : <div />
+            }
+            {
+              this.state.fourthIPDBox
+              ? <tr>
                 <th>
                   <IPDDetail>
-                    {' '}
                     4.6 ค่าใช้จ่ายที่เกิดจากการรักษาพยาบาลต่อเนื่องภาย
-                      {' '}
-                    <br />
-                    หลังจากการออกจากโรงพยาบาลรวมถึงค่ารักษา <br />
-                    พยาบาลแบบผู้ป่วยนอก และค่ากายภาพบำบัดที่ต่อ <br />
-                    เนื่องจากผู้ป่วยใน (สูงสุดไม่เกิน 30 วัน) คุ้มครอง <br />
+                    หลังจากการออกจากโรงพยาบาลรวมถึงค่ารักษา
+                    พยาบาลแบบผู้ป่วยนอก และค่ากายภาพบำบัดที่ต่อ
+                    เนื่องจากผู้ป่วยใน (สูงสุดไม่เกิน 30 วัน) คุ้มครอง
                     สูงสุดต่อครั้ง
-                    </IPDDetail>
+                  </IPDDetail>
                 </th>
                 {this.renderRbScheduleTreatment()}
               </tr>
-            </table>
-          </div>
-          : null}
-
-        <div className="CompareIPD">
-          <table>
-            <tr>
+              : <div />
+            }
+            <tr className="border-last-tr-th">
               <th>
                 <IPDTopic>
-                  {' '}
                   5. ค่ารักษากรณี ปลูกถ่ายไขกระดูก, เปลี่ยนถ่ายอวัยวะ,
-                  {' '}
-                  <br />
-                  การฟอกไต (ไม่รวมค่าใช้จ่ายของผู้บริจาคอวัยวะ) <br />
-                  (ปีละไม่เกิน)**{' '}
+                  การฟอกไต (ไม่รวมค่าใช้จ่ายของผู้บริจาคอวัยวะ) (ปีละไม่เกิน)**
                 </IPDTopic>
               </th>
               {this.renderRbScheduleTransplant()}
             </tr>
           </table>
         </div>
-
       </div>
     );
   }

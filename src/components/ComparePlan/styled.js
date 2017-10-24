@@ -57,9 +57,15 @@ export const SubCompareTables = styled.span`
 `;
 
 export const TopicCompareTable = styled.div`
-  height: 60px;
-  padding-top: 6%;
+  height: 4.2vw;
+  line-height: 4.2vw;
   color: #323028;
+  font-size: 1.1vw;
+  @media screen and (min-width: 1440px) {
+    height: 60px;
+    line-height: 60px;
+    font-size: 15px;
+  }
 `;
 
 export const Box = styled.div`
@@ -111,18 +117,16 @@ export const IPDBoxs = styled.div`
   text-align: center;
   display: inline-block;
 `;
-export const LifeTopic = styled.span`
-  width: 249px;
-  height: 25px;
-  font-size: 14px;
+export const LifeTopic = styled.p`
+  font-size: 1vw;
   font-weight: bold;
-  line-height: 1.56;
-  letter-spacing: 0.2px;
   text-align: left;
   color: #4a4a4a;
-  position: absolute;
-  margin-left: -17%;
-  margin-top: 2.5%;
+  display: inline-block;
+  max-width: 80%;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
 `;
 export const OPDTopic = styled.span`
   width: 100%px;
@@ -138,45 +142,41 @@ export const OPDTopic = styled.span`
   margin-top: 23px;
 `;
 
-export const IPDTopic = styled.span`
-  width: 100%;
-  height: 25px;
-  font-size: 14px;
+export const IPDTopic = styled.p`
+  font-size: 1vw;
   font-weight: bold;
-  line-height: 1.56;
-  letter-spacing: 0.2px;
   text-align: left;
   color: #323028;
+  margin: 0px;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
 `;
 
-export const IPDDetail = styled.span`
-  width: 344px;
-  height: 48px;
-  font-size: 12px;
-  font-weight: 300;
-  letter-spacing: 0px;
+export const IPDDetail = styled.p`
+  font-size: 1vw;
   text-align: left;
   color: #323028;
-  position: relative;
-  left: 4%;
+  font-weight: normal;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
 `;
 
-export const Sub = styled.span`
-  width: 100%;
-  height: 18px;
-  font-size: 10px;
-  font-weight: 300;
-  letter-spacing: 0px;
-  text-align: left;
+export const Sub = styled.p`
+  font-size: 1vw;
+  font-weight: normal;
   color: #323028;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
 `;
 
-export const Note = styled.span`
-  width: 935px;
-  height: 90px;
-  font-family: Kanit;
-  font-size: 12px;
-  letter-spacing: 0px;
+export const Note = styled.p`
+  font-size: 0.9vw;
   text-align: left;
   color: #323028;
+  @media screen and (min-width: 1440px) {
+    font-size: 12px;
+  }
 `;

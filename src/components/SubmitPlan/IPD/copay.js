@@ -210,7 +210,7 @@ class CoPay extends Component {
                 <Form.Input
                   type="number"
                   style={{ width: '105px' }}
-                  label=" %ไม่เกิน"
+                  label=" % ไม่เกิน"
                   placeholder="จำนวนเงิน"
                   name="ipdCoPayMixNotExceed"
                   id="ipdCoPayMixNotExceed"
@@ -259,6 +259,7 @@ class CoPay extends Component {
                     required
                   />
                 </Form.Field>
+                ปี
               </Form.Group>
             </div>
             : <div className="submit-plan-grap-tab-on-form">
@@ -276,6 +277,7 @@ class CoPay extends Component {
                     readOnly
                   />
                 </Form.Field>
+                ปี
               </Form.Group>
             </div>}
         </div>

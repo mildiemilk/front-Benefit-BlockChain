@@ -3,3 +3,21 @@
     width: 100% !important;
   }
 }
+.menu-header {
+  //menu title
+  display: block;
+  font-family: Kanit;
+  font-size: 1.6vw;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-align: left;
+  color: #323028;
+  @media screen and (min-width: 1440px) {
+    font-size: 20px;
+  }
+}
+.custom-menu-header-grap-top {
+  padding-top: 5%;
+  margin-left: 4%;
+  margin-bottom: 2%;
+}

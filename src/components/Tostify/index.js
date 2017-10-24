@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import 'react-toastify/dist/ReactToastify.min.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const Button = styled.button`
-width: 164px;
-height: 40px;
-border-radius: 20px;
-background-color: #3a7bd5;
-padding: 1%;
-color: white;
-display:inline-block;
-float:right;
-border-color: white;
-margin-right:2.5%;
-cursor: pointer;
-border: none;
-`;
 class Tostify extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
@@ -30,16 +16,19 @@ class Tostify extends Component {
   }
   render() {
     return (
-      <div style={{ display: 'inline' }}>
-        <Button onClick={this.props.handleSubmit}>
+      <div className="choose-in-save-btn">
+        <button
+          className="submit-plan-btn-form-submit-plan btn-blue"
+          onClick={this.props.handleSubmit}
+        >
           บันทึก
-        </Button>
-        <ToastContainer
+        </button>
+        {/* <ToastContainer
           hideProgressBar={this.state.hideProgressBar}
           autoClose={1500}
           position={toast.POSITION.TOP_RIGHT}
           style={{ zIndex: '30' }}
-        />
+        /> */}
       </div>
     );
   }

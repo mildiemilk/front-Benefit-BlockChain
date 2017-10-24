@@ -18,14 +18,8 @@ import {
 import NavInsure from '../NavInsure';
 import {
   Detail,
-  Head,
-  Side,
   SideIn,
   Card,
-  HeadIn,
-  HeadList,
-  Next,
-  Check,
   Logo,
 } from './styled';
 import Timeout from './timeout';
@@ -45,7 +39,7 @@ class InsurerSelect extends Component {
   }
   constructor(props) {
     super(props);
-    const { nums } = this.props;
+    const { nums } = props;
     this.state = {
       step: 2,
       num: nums !== undefined ? nums : 0,
@@ -113,15 +107,25 @@ class InsurerSelect extends Component {
   renderList = () => {
     const { insurerList } = this.props;
     const list = insurerList.map((insurer, index) => (
-      <Card className="large-2 columns" key={index.toString()}>
-        <Check
-          type="checkbox"
-          id={index}
-          onChange={this.handleCheck}
-          checked={this.handleDefaultCheck(insurer)}
-        />
-        {insurer.companyName}
-        <Logo src={insurer.logo.link} alt="logo" />
+      <Card className="large-2 mediam-2 small-2 columns" key={index.toString()}>
+        <div className="choose-in-box-select-in choose-in-box-grap-a">
+          <div className="choose-in-in-name">
+            {insurer.companyName}
+          </div>
+          <div className="choose-ip-box-ip">
+            <input
+              className="choose-in-ip-select-in"
+              type="checkbox"
+              id={index}
+              align="middle"
+              onChange={this.handleCheck}
+              checked={this.handleDefaultCheck(insurer)}
+            />
+          </div>
+        </div>
+        <div className="choose-in-img-in-box">
+          <Logo src={insurer.logo.link} alt="logo" />
+        </div>
       </Card>
     ));
     return list;
@@ -137,40 +141,41 @@ class InsurerSelect extends Component {
       <div className="ChooseInsurer">
         <NavInsure step={this.state.step} />
         <div className="row">
-          <Detail className="large-12 columns">
+          <Detail className="large-12 mediam-12 small-12 columns">
             <div className="row">
-              <Side className="large-10 columns">
-                <Head>เลือกบริษัทประกันภัยที่ต้องการ</Head>
-              </Side>
+              <div className="menu-header custom-menu-header-grap-top"> เปรียบเทียบแผนประกันภัย </div>
             </div>
             <div className="row">
               <SideIn>
-                <HeadIn className="row">
-                  <span>
-                    {' '}จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
+                <div className="choose-in-box-select-in">
+                  <span className="choose-in-count-comp">
+                    จำนวนบริษัทประกันที่เลือก {this.state.num} บริษัท
                   </span>
                   {/* <SubmitInsure onClick={this.handleSubmit}>
                     บันทึก
                   </SubmitInsure> */}
                   <Toastify handleSubmit={this.handleSubmit} />
-                </HeadIn>
+                </div>
                 <div className="row">
                   {this.renderList()}
                 </div>
               </SideIn>
               <SideIn>
-                <HeadList>ตั้งระยะเวลาการเสนอราคาของประกัน</HeadList>
+                <span className="insure">
+                  ตั้งระยะเวลาการเสนอราคาของประกัน
+                </span>
                 <p className="insure">
                   บริษัทประกันสามารถเสนอราคาได้ภายใน
                 </p>
-                วันที่ &nbsp;<Timeout setTimeout={this.props.setTimeOut} timeout={time} />
+                <Timeout setTimeout={this.props.setTimeOut} timeout={time} />
               </SideIn>
             </div>
           </Detail>
+        </div>
+        <div className="choose-in-box-next-btn">
           <Link to="/uploadfile">
-            <Next>ต่อไป</Next>
+            <button className="submit-plan-btn-form-submit-plan btn-red">ต่อไป</button>
           </Link>
-
         </div>
       </div>
     );

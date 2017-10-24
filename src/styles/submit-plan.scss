@@ -525,7 +525,7 @@ div.submit-plan-form-create-plan > input {
     font-size: 12px;
   }
 }
-.ui.button.submit-plan-btn-form-submit-plan {
+.ui.button.submit-plan-btn-form-submit-plan, .submit-plan-btn-form-submit-plan {
   text-align: center;
   width: 11.4vw;
   height: 2.8vw;
@@ -534,6 +534,7 @@ div.submit-plan-form-create-plan > input {
   margin-left: 0.7%;
   font-size: 1.3vw;
   padding: 0px;
+  border: none;
   @media screen and (min-width: 1440px) {
     width: 164px;
     height: 40px;

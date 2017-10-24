@@ -33,7 +33,6 @@ export const Box = styled.div`
 `;
 
 export const Setting = styled.div`
-  width: 115px;
   height: 35px;
   border-radius: 6px;
   background-color: #3a7bd5;

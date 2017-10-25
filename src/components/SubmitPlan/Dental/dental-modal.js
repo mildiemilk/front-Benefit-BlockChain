@@ -10,6 +10,8 @@ const ModalContents = styled(Modal.Content)`
     max-width: 500px;
     position: relative;
     margin: 0 auto;
+    text-align: center;
+    width: 38.7vw;
   }
 `;
 
@@ -59,39 +61,25 @@ class DentalModal extends Component {
 
         <ModalContents>
           <ModalContents>
-            <p style={{ textAlign: 'center' }}>
+            <p className="submit-plan-comfirm-modal-header">
               คุณต้องการบันทึกรายละเอียดแผนของคุณหรือไม่ ?
             </p>
           </ModalContents>
           <ModalContents>
-            <p style={{ textAlign: 'center' }}>
+            <p className="submit-plan-comfirm-modal-header">
               คุณได้เปลี่ยนแปลงรายละเอียดแผนโดยไม่ได้ทำการบันทึก
             </p>
           </ModalContents>
           <ModalContents style={{ marginTop: '3%' }}>
             <div style={{ display: 'flex' }}>
               <Button
-                style={{
-                  textAlign: 'center',
-                  width: '232px',
-                  height: '40px',
-                  borderRadius: '20px',
-                  color: '#ffffff',
-                  backgroundColor: '#f7555f',
-                }}
+                className="submit-plan-btn-form-submit-plan btn-red"
                 onClick={this.handleCancel}
               >
                 ยกเลิก
               </Button>
               <Button
-                style={{
-                  textAlign: 'center',
-                  width: '232px',
-                  height: '40px',
-                  backgroundColor: '#3A7BD5',
-                  color: 'white',
-                  borderRadius: '20px',
-                }}
+                className="submit-plan-btn-form-submit-plan btn-blue"
                 onClick={this.handleSubmit}
                 type="submit"
               >

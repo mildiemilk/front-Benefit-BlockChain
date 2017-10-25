@@ -1,19 +1,132 @@
-.ChooseInsurer{
-    .insure{
-        display:inline-block;
+.ChooseInsurer {
+  .insure {
+    display: block;
+    font-size: 1.2vw;
+    color: #323028;
+    @media screen and (min-width: 1440px) {
+      font-size: 18px;
     }
-    .react-datepicker__input-container{
-        border-radius: 3px;
-        background-color: #ffffff;
-        border: solid 1px #dddddd;
+  }
+  .react-datepicker__input-container {
+    border-radius: 3px;
+    background-color: #ffffff;
+    // border: solid 1px #dddddd;
+    input {
+      width: 19.5vw;
+      font-size: 1.2vw;
+      @media screen and (min-width: 1440px) {
+        width: 280px;
+        font-size: 18px;
+      }
     }
-   input{
-        border-radius: 3px;
-        border: solid 1px #dddddd;
-        font-size: 16px;
-        color: black;
+  }
+  .rc-time-picker {
+    input {
+      width: 19.5vw;
+      font-size: 1.2vw;
+      padding: 0px;
+      height: unset;
+      @media screen and (min-width: 1440px) {
+        width: 280px;
+        font-size: 18px;
+      }
     }
-    .react-datepicker__tether-element .react-datepicker__header{
-        background-color: #3a7bd5;
-    }
+  }
+  input {
+    border-radius: 3px;
+    border: solid 1px #dddddd;
+    font-size: 16px;
+    color: black;
+  }
+  .react-datepicker__tether-element .react-datepicker__header {
+    background-color: #3a7bd5;
+  }
+}
+.choose-in-count-comp {
+  font-size: 1.2vw;
+  color: #323028;
+  width: 50%;
+  display: inline-block;
+  @media screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+.choose-in-save-btn {
+  width: 50%;
+  text-align: right;
+  display: inline-block;
+  margin-top: 1vw;
+  @media screen and (min-width: 1440px) {
+    margin-top: 15px;
+  }
+}
+.chooose-in-edit-save-btn-box {
+  width: 100%;
+  display: block;
+}
+.choose-in-box-select-in {
+  display: flex;
+}
+.choose-in-box-grap-a {
+  margin: 0.5vw;
+  @media screen and (min-width: 1440px) {
+    margin: 7px;
+  }
+}
+.choose-in-box-next-btn {
+  margin-top: 2%;
+  margin-right: 3%;
+  margin-bottom: 2%;
+  display: block;
+  text-align: right;
+  padding-right: 3%;
+  width: unset;
+  height: unset;
+}
+.choose-in-in-name {
+  font-size: 1vw;
+  color: #323028;
+  width: 80%;
+  display: inline-block;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
+}
+.choose-ip-box-ip {
+  width: 20%;
+  display: inline-block;
+  text-align: right;
+  // overflow: hidden;
+}
+.choose-in-ip-select-in {
+  width: 1.5vw;
+  height: inherit;
+  vertical-align: middle;
+  @media screen and (min-width: 1440px) {
+    width: 14px;
+  }
+}
+.choose-in-img-in-box {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  text-align: center;
+  @media screen and (min-width: 1440px) {
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+}
+.upload-file-box-center {
+  text-align: center;
+}
+.upload-file-text-r {
+  text-align: right;
+}
+.upload-file-file-name {
+  font-size: 1vw;
+  line-height: 2.8vw;
+  padding-left: 8px;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

@@ -3,15 +3,9 @@ import { Image } from 'semantic-ui-react';
 
 export const Detail = styled.div`
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  margin-top:3%;
-  padding: 30px 42px !important;
-  padding-top: 25px;
-  height: 100%;
+  padding: 1% 3%;
 `;
 export const Head = styled.div`
   font-size: 30px;
@@ -20,38 +14,33 @@ export const Head = styled.div`
 
 `;
 export const TextNormal = styled.div`
-  font-family: Kanit;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  text-align: left;
+  font-size: 1vw;
   color: #323028;
-  padding-bottom: 2%;
-  padding-top: 27px;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
 `;
 export const Inner = styled.div`
   border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  width: 100%;
-  height: 100%;
   border: solid 1px rgba(151, 151, 151, 0.66);
   margin-bottom: 15px;
   padding-bottom: 17px;
-  padding: 20px;
+  padding: 3%;
+  margin: 1% 3%;
+  @media screen and (min-width: 1440px) {
+    padding: 20px;
+  }
 `;
 export const FileuploadBox = styled.div`
   margin-bottom: 10px;
-  margin-top: 19px;
-  padding:8px;
+  height: 2.8vw;
   width: 100%;
-  height: 40px;
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   border: solid 1px rgba(155, 155, 155, 0.64);
+  @media screen and (min-width: 1440px) {
+    height: 40px;
+  }
 `;
 export const FileuploadBoxs = FileuploadBox.extend`
   margin-top: 12px;
@@ -66,20 +55,24 @@ export const Uploads = styled.div`
 `;
 export const BrowsButton = styled.label`
   border-radius: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
   background-color: #3a7bd5;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: none;
   text-align: center;
-  border-color: #3a7bd5;
-  border-style: solid;
+  border: none;
   color: #ffffff;
-  padding: 4% 20%;
   cursor: pointer;
-  margin-right: 10px;
   display: block;
-  width: 140px;
+  width: 11.4vw;
+  height: 2.8vw;
+  line-height: 2.8vw;
+  font-size: 1.3vw;
+  float: right;
+  @media screen and (min-width: 1440px) {
+    width: 164px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+  }
 `;
 export const AddBlockButton = styled.div`
   position: relative;

@@ -24,13 +24,11 @@ export const SideIn = styled.div`
   margin: 1% 4%;
 `;
 export const HeadIn = styled.div`
-    margin: 2%;
-    padding-left: 1%;
-    padidng-right: 1%;
+  margin: 2%;
+  padding-left: 1%;
+  padidng-right: 1%;
 `;
 export const Card = styled.div`
-  width: 123px !important;
-  height: 145px;
   border-radius: 8px;
   background-color: #f5f5f5;
   border: solid 1px rgba(151, 151, 151, 0.39);
@@ -86,14 +84,14 @@ export const Check = styled.input`
 `;
 
 export const Logo = styled.img`
-  width: 76.1px;
-  height: 76.1px;
+  width: 5.3vw;
+  height: 5.3vw;
   border-radius: 50%;
-  background-color: #ffffff;
-  background-color: var(--white-two);
   border: solid 1px #ebebeb;
-  margin-top: 11px;
-  margin-left: 14px;
+  @media screen and (min-width: 1440px) {
+    width: 76px;
+    height: 76px;
+  }
 `;
 export const HeadList = styled.p`
   font-weight: 900;

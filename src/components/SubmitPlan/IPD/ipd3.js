@@ -112,7 +112,9 @@ class IPD3 extends Component {
         <div className="row">
           <div className="ipd3">
             <p>ระบุรูปแบบที่ต้องการ</p>
-            <p>1. ค่าห้อง ค่าอาหาร และค่าบริการ</p>
+            <div className="large-8 mediam-8 small-8 columns">
+              1. ค่าห้อง ค่าอาหาร และค่าบริการ
+            </div>
             <div className="large-8 mediam-8 small-8 columns">
               <div className="paragraph">
                 <p>
@@ -156,11 +158,7 @@ class IPD3 extends Component {
               </Form.Group>
             </div>
             <div className="large-8 mediam-8 small-8 columns">
-              <div className="paragraph">
-                <p>
-                  2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน
-                </p>
-              </div>
+              2. ค่าแพทย์เยี่ยมไข้ สูงสุดไม่เกินวันละ 1 ครั้ง/วัน
             </div>
             <div className="large-4 mediam-4 small-4 columns">
               <Form.Group inline>

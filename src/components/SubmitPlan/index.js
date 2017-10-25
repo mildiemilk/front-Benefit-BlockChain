@@ -14,7 +14,8 @@ const ModalContents = styled(Modal.Content)`
 &&&{
   max-width: 550px;
   margin: 0 auto;
-  padding-left: 4%;
+  text-align: center;
+  width: 38.7vw;
 }
 `;
 
@@ -711,7 +712,7 @@ class SubmitPlan extends Component {
         >
           <ModalContents>
             <Modal.Header>
-              <p style={{ textAlign: 'center' }}>
+              <p className="submit-plan-comfirm-modal-header">
                 คุณจัดแผนประกันเสร็จแล้วและต้องการเลือกบริษัทประกันใช่หรือไม่ ?
               </p>
             </Modal.Header>

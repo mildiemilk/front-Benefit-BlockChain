@@ -279,7 +279,6 @@ class SettingBenefit extends Component {
             </Header>
           </HeaderSpace>
           <DivContent>
-            +++{this.state.activePlan}+++
             {!this.state.emptyPlan
               ? <AddPlanBar
                 plan={this.state.planList}
@@ -310,7 +309,6 @@ class SettingBenefit extends Component {
               health={this.state.health}
               expense={this.state.expense}
               handleSave={''}
-              width="80%"
             />
             : <Blog>
               <BlogImg onClick={this.handleAddPlan}>
@@ -330,7 +328,7 @@ class SettingBenefit extends Component {
               </BackButton>
             </Link>
           </div>
-          <div className="large-2 large-offset-5 end columns">
+          <div className="large-2 large-offset-7 end columns">
             <NextButton onClick={this.handleNext} >
               ต่อไป
             </NextButton>

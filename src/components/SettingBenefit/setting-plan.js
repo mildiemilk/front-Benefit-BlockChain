@@ -19,16 +19,15 @@ import imgHealth from '../../../assets/setbenefit/5.png';
 
 const Selects = styled(Select) `
     &&&{
-      margin: 22px 10px 0px 0px;
-      width: 94%;  
+      margin: 20px 10px 20px 0px;
+      width: 70%;
     }
 `;
 
 const Inputs = styled(Input) `
     &&&{
       height: 46px;
-      margin-top: 14px;
-      margin-left: 12px;
+      margin: 20px 10px 20px 10px;
       width: ${props => props.width};
       color: transparent;
       color: transparent;
@@ -135,8 +134,10 @@ class SettingPlan extends Component {
             </PlanContent>
             <PlanBox>
               <div className="row">
-                <div className="large-6 columns">
+                <div className="large-3 columns">
                   <PlanImg src={insurance} />
+                </div>
+                <div className="large-3 columns">
                   <PlanTopic>
                     แผนประกันภัย (Insurance)
                   </PlanTopic>
@@ -158,8 +159,10 @@ class SettingPlan extends Component {
               ? <PlanBox>
                 <div className="row">
                   <div>
-                    <div className="large-6 columns">
+                    <div className="large-2 columns">
                       <PlanImg src={imgHealth} />
+                    </div>
+                    <div className="large-4 columns">
                       <PlanTopic>
                         ค่าใช้จ่ายสุขภาพ (Health)
                       </PlanTopic>
@@ -206,8 +209,10 @@ class SettingPlan extends Component {
               ? <PlanBox>
                 <div className="row">
                   <div>
-                    <div className="large-6 columns">
+                    <div className="large-2 columns">
                       <PlanImg src={general} />
+                    </div>
+                    <div className="large-4 columns">
                       <PlanTopic>
                         ค่าใช้จ่ายทั่วไป (General Expense)
                       </PlanTopic>

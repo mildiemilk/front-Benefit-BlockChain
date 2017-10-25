@@ -115,3 +115,18 @@
     margin-bottom: 14px;
   }
 }
+.upload-file-box-center {
+  text-align: center;
+}
+.upload-file-text-r {
+  text-align: right;
+}
+.upload-file-file-name {
+  font-size: 1vw;
+  line-height: 2.8vw;
+  padding-left: 8px;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

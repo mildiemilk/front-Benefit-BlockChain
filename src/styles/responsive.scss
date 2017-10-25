@@ -21,3 +21,15 @@
   margin-left: 4%;
   margin-bottom: 2%;
 }
+.menu-add-plan-text {
+  text-align: center;
+  font-size: 1vw;
+  @media screen and (min-width: 1440px) {
+    font-size: 12px;
+  }
+}
+.custom-menu-add-plan-text-grap {
+  margin-left: 4%;
+  margin-bottom: 2%;
+  text-align: left;
+}

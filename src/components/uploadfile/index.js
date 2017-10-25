@@ -7,16 +7,10 @@ import { Icon } from 'semantic-ui-react';
 import { claimData } from '../../api/profile-company';
 import {
   Detail,
-  Head,
   Inner,
   FileuploadBox,
-  FileuploadBoxs,
-  Submit,
   BrowsButton,
   TextNormal,
-  AddBlockButton,
-  Upload,
-  Uploads,
 } from './styled';
 import NavInsure from '../NavInsure';
 
@@ -84,7 +78,7 @@ class Uploadfile extends Component {
   RenderInsideBlock = id => {
     if (this.state.claimData[id] && this.state.claimData[id] !== '') {
       return (
-        <p>
+        <p className="upload-file-file-name">
           {this.state.claimData[id].name} &nbsp;
           {(this.state.claimData[id].size / 100000).toFixed(2)} MB
           <Icon
@@ -105,26 +99,26 @@ class Uploadfile extends Component {
     const { AmountUploadBlock } = this.state;
     for (let i = 1; i < AmountUploadBlock; i += 1) {
       output.push(
-        <div className="row">
-          <div className=" large-offset-4 large-6  columns">
-            <FileuploadBoxs>
+        <div className="row" key={i.toString()}>
+          <div
+            className="large-offset-4 large-5 mediam-offset-4 mediam-5 small-offset-4 small-5 columns"
+          >
+            <FileuploadBox>
               {this.RenderInsideBlock(i)}
-            </FileuploadBoxs>
+            </FileuploadBox>
           </div>
-          <div className=" large-2 columns">
-            <Uploads>
-              <BrowsButton for="uploadfor">
-                <input
-                  id={i}
-                  style={{ display: 'none' }}
-                  name="name[]"
-                  type="file"
-                  accept=".pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                  onChange={e => this.handleUploadclaimdata(e)}
-                />
-                เลือกไฟล์
-              </BrowsButton>
-            </Uploads>
+          <div className="large-3 mediam-3 small-3 columns">
+            <BrowsButton for="uploadfor">
+              <input
+                id={i}
+                style={{ display: 'none' }}
+                name="name[]"
+                type="file"
+                accept=".pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                onChange={e => this.handleUploadclaimdata(e)}
+              />
+              เลือกไฟล์
+            </BrowsButton>
           </div>
         </div>,
       );
@@ -136,7 +130,7 @@ class Uploadfile extends Component {
     const { claimData } = this.state;
     if (claimData.length >= 1 && claimData[0] !== '') {
       return (
-        <p>
+        <p className="upload-file-file-name">
           {claimData[0].name} &nbsp;
           {(claimData[0].size / 100000).toFixed(2)} MB
           <Icon
@@ -163,27 +157,28 @@ class Uploadfile extends Component {
         <div className="ChooseInsurer">
           <NavInsure step={this.state.step} />
         </div>
-        <Detail>
-          <Head>อัพโหลดไฟล์</Head>
-          <TextNormal>
-            กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
-            (รองรับไฟล์ประเภท .pdf และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
-            <br />
-          </TextNormal>
+        <Detail className="large-12 mediam-12 small-12 columns">
+          <div className="row">
+            <div className="menu-header custom-menu-header-grap-top"> เปรียบเทียบแผนประกันภัย </div>
+            <div className="menu-add-plan-text custom-menu-add-plan-text-grap">
+              กรุณาอัพโหลดไฟล์เพื่อส่งให้บริษัทประกัน
+              (รองรับไฟล์ประเภท .pdf และ .xlsx ขนาดไฟล์สูงสุดไม่เกิน 20 MB)
+            </div>
+          </div>
           <Inner>
             <div className="row">
-              <div className="large-4 columns">
+              <div className="large-4 mediam-4 small-4 columns">
                 <TextNormal>
                   กรุณาอัพโหลด Employee Claim Data :
                 </TextNormal>
               </div>
-              <div className="large-6 columns">
+              <div className="large-5 mediam-5 small-5 columns">
                 <FileuploadBox>
                   {this.RenderListclaimData()}
                 </FileuploadBox>
               </div>
-              <div className="large-2 columns">
-                <Upload>
+              <div className="large-3 mediam-3 small-3 columns">
+                <div className="upload-file-text-r">
                   <BrowsButton for="uploadfor">
                     <input
                       id={0}
@@ -194,26 +189,28 @@ class Uploadfile extends Component {
                       onChange={e => this.handleUploadclaimdata(e)}
                     />
                     เลือกไฟล์
-                </BrowsButton>
-                </Upload>
+                  </BrowsButton>
+                </div>
               </div>
             </div>
             {this.RenderUploadRow()}
-            <AddBlockButton
-              onClick={e => this.handleAddAmountUploadBlock(e)}
-            >
-              + เพิ่มไฟล์
-            </AddBlockButton>
-          </Inner>
-          {/* <Link to="/sendrequest"> */}
-          <div className="row">
-            <div className="large-2 large-offset-10 columns">
-              <Submit onClick={this.handleNextClick}>ต่อไป</Submit>
+            <div className="upload-file-box-center">
+              <button
+                className="submit-plan-btn-form-submit-plan btn-blue"
+                onClick={e => this.handleAddAmountUploadBlock(e)}
+              >
+                + เพิ่มไฟล์
+              </button>
             </div>
-
+          </Inner>
+          <div className="choose-in-box-next-btn">
+            <button
+              className="submit-plan-btn-form-submit-plan btn-red"
+              onClick={this.handleNextClick}
+            >
+              ต่อไป
+            </button>
           </div>
-
-          {/* </Link> */}
         </Detail>
       </div>
     );

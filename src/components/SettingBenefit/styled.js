@@ -118,7 +118,6 @@ export const NextButton = styled.button`
   border-color: #46b3b8;
   border-style: solid;
   margin-top: 25px;
-  margin-left: 109px;
 `;
 
 export const SaveButton = styled.button`
@@ -150,7 +149,6 @@ export const PlanContent = styled.p`
 
 export const PlanBox = styled.div`
   width: 100%;
-  height: 76px;
   border-radius: 5px;
   background-color: #ffffff;
   border: solid 1px #c1c1c1;
@@ -159,7 +157,7 @@ export const PlanBox = styled.div`
   &::before {
     content:"";
     width: 22px;
-    height: 74px;
+    height: 100%;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background: #3a7bd5;
@@ -171,28 +169,26 @@ export const PlanImg = styled.img`
   width: 50px;
   height: 50px;
   position: absolute;
-  margin-left: 4.5%;
-  margin-top: 2.1%;
+  margin-left: 30px;
+  margin-top: 10px;
 `;
 
 export const PlanTopic = styled.span`
-  width: 250px;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.2px;
   text-align: left;
   color: #4a4a4a;
   position: absolute;
-  left: 97px;
-  top: 31px;
+  margin-left: 97px;
+  margin-top: 31px;
 `;
 
 export const ToggleBox = styled.div`
-  width: 54px;
   height: 38px;
   border-radius: 5px;
   background-color: #ececec;
-  margin-top: 18px;
+  margin-top: 20px;
   padding-top: 8px;
   padding-left: 6px;
   float: left;

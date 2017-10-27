@@ -146,6 +146,6 @@ export const InputStyle = styled(Input)`
   font-size: 14px;
   font-family: Kanit;
   margin-right: 30px;
-  width: 40%;
+  width: 40%  ;
   }
 `;

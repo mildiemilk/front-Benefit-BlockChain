@@ -36,7 +36,6 @@ export const ModalContent = styled.div`
   letter-spacing: 0.3px;
   text-align: left;
   color: #323028;
-  padding-left: 5%;
 `;
 export const ButtonStatusAppove = styled.div`
   cursor: pointer;

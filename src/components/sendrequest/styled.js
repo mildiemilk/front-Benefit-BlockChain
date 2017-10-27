@@ -4,28 +4,38 @@ export const Detail = styled.div`
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 0 1px 7px 2px rgba(0, 0, 0, 0.08);
-  padding: 6%;
-  height: 100%;
-
+  padding: 1% 3% !important;
+`;
+export const Inner = styled.div`
+border-radius: 8px;
+border: solid 1px rgba(151, 151, 151, 0.66);
+margin-bottom: 15px;
+padding-bottom: 17px;
+padding: 3%;
+margin: 1% 3%;
+@media screen and (min-width: 1440px) {
+  padding: 20px;
+}
 `;
 export const InsurerDiv = styled.div`
   margin-bottom: 0.5%;
   margin-top: 1%;
 `;
 export const Head = styled.div`
-  font-size: 30px;
-  letter-spacing: 0.4px;
-  font-weight: bold;
-  margin-bottom: 10px;
-
+  display: block;
+  font-size: 1.6vw;
+  font-weight: 500;
+  color: #323028;
+  padding-top: 5%;
+  @media screen and (min-width: 1440px) {
+    font-size: 20px;
+  }
 `;
 export const TopicHead = styled.div`
-  font-size: 15px;
-  letter-spacing: 0.4px;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 15px;
-  display: inline-block;
+  font-size: 1vw;
+  @media screen and (min-width: 1440px) {
+    font-size: 14px;
+  }
 `;
 export const Submit = styled.button`
   width: 164px;
@@ -80,28 +90,24 @@ export const TopSpace = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 122px !important;
-  height: 145px;
   border-radius: 8px;
-  float: left !important;
-  margin-right: 16px;
-  padding: 10px;
-  margin-top: 15px;
   background-color: #f5f5f5;
   border: solid 1px rgba(151, 151, 151, 0.39);
+  margin:1%;
+  margin-right: 1.5%;
+  float: left !important;
 `;
 export const DetailFile = styled.div`
   text-align: center;
-  margin-top: 13px;
+  margin-top: 1vw;
   word-wrap: break-word;
-  width: 89px;
-  margin-left: 12px;
+  font-size: 1vw;
+  @media screen and (min-width: 1440px) {
+    margin-top: 14px;
+    font-size: 14px;
+  }
 `;
 export const Edit = styled.div`
-color: #9b9b9b;
-display: inline-block;
-float: right;
-padding-top: 13px;
-padding-bottom: 15px;
-cursor: pointer;
+  color: #9b9b9b;
+  cursor: pointer;
 `;

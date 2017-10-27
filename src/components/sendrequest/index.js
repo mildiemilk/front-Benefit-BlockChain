@@ -14,12 +14,12 @@ import { getTimeout } from '../../api/choose-insurer';
 // import Postre from './postre';
 import {
   Detail,
-  Head,
   TopicHead,
   BoxIndiv,
   Time,
   InsurerDiv,
   Edit,
+  Inner,
 } from './styled';
 import { setCompleteStep, getCompleteStep, getClaimData } from '../../api/profile-company';
 import UploadFile from './upload-file';
@@ -72,27 +72,30 @@ class Sendrequest extends Component {
     }
     return (
       <div className={this.state.position}>
-        <NavInsure step={this.state.step} />
-        <Detail >
-          <div className="row">
-            <div className="large-12 columns">
-              <Head>ส่งคำขอและรอการเสนอราคา</Head>
-              {/* <TopicHead>กรุณาตรวจสอบข้อมูลของคุณ</TopicHead>
-              <Postre data={this.props} /> */}
-              <TopicHead>กรุณาตรวจสอบแผนของคุณ</TopicHead>
+        <div className="ChooseInsurer">
+          <NavInsure step={this.state.step} />
+        </div>
+        <div className="row">
+          <Detail className="large-12 mediam-12 small-12 columns">
+            <div className="menu-header custom-menu-header-grap-top">ส่งคำขอและรอการเสนอราคา</div>
+            <div className="menu-add-plan-text custom-menu-add-plan-text-grap">
+              กรุณาตรวจสอบแผนของคุณ
+            </div>
+            <Inner>
               <BoxIndiv>
                 <ModalPlanBox changePositionPage={this.changePositionPage} />
               </BoxIndiv>
               <InsurerDiv>
-                <TopicHead>
-                  รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
-                </TopicHead>
-                {' '}
-                <Link to="chooseinsurer">
-                  <Edit>
-                    <Icon name="write" />แก้ไข
-                  </Edit>
-                </Link >
+                <div className="send-req-box-flex send-req-grap-top">
+                  <TopicHead className="send-req-box-50">
+                    รายชื่อบริษัทประกันและระยะเวลาในการเสนอประกัน
+                  </TopicHead>
+                  <Link to="chooseinsurer" className="send-req-box-50 send-req-r">
+                    <Edit>
+                      <Icon name="write" />แก้ไข
+                    </Edit>
+                  </Link >
+                </div>
               </InsurerDiv>
               <BoxIndiv>
                 บริษัทประกันสามารถเสนอราคาได้ภายในวันที่
@@ -107,23 +110,21 @@ class Sendrequest extends Component {
                 <Time>{moment(timeout).format('LT')}</Time>
                 <Insurer />
               </BoxIndiv>
-              <TopicHead>อัพโหลดไฟล์</TopicHead>
+              <TopicHead className="send-req-grap-top">อัพโหลดไฟล์</TopicHead>
               <BoxIndiv>
                 <UploadFile files={this.props.files} />
               </BoxIndiv>
-            </div>
-          </div>
-        </Detail>
-        <div className="row">
-          <div className="large-offset-10 large-2 columns">
-            <ModalConfirmPassword
-              handlePost={this.handlePost}
-              handleChange={this.handleChange}
-              data={this.props.data}
-              content="ส่งคำขอ"
-              head="การส่งคำขอ"
-            />
-          </div>
+            </Inner>
+          </Detail>
+        </div>
+        <div className="choose-in-box-next-btn">
+          <ModalConfirmPassword
+            handlePost={this.handlePost}
+            handleChange={this.handleChange}
+            data={this.props.data}
+            content="ส่งคำขอ"
+            head="การส่งคำขอ"
+          />
         </div>
       </div>
     );

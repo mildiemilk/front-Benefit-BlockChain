@@ -8,7 +8,6 @@ import AllPlan from '../../SubmitPlan/all-plan';
 
 const ModalContents = styled(Modal.Content) `
   &&&{
-    width: 800px;
     position: relative;
     margin: 0 auto;
     padding: 0px 40px 0px 40px;
@@ -20,7 +19,6 @@ const ModalContentsWithBottom = ModalContents.extend`
 `;
 const ModalHeaders = styled(Modal.Header) `
   &&&{
-    width: 800px;
     position: relative;
     margin: 0 auto;
     border: none;
@@ -46,14 +44,15 @@ const CustomHead = styled.div`
   text-align: center;
   font-family: kanit;
 `;
+
 class PlanBoxModal extends Component {
   static propTypes = {
     handleCloseModal: PropTypes.func.isRequired,
     modalOpen: PropTypes.bool.isRequired,
     planList: PropTypes.arrayOf(PropTypes.object).isRequired,
   }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       closeOnEscape: false,
       closeOnRootNodeClick: true,

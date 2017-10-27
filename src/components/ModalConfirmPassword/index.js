@@ -2,47 +2,58 @@ import React, { Component } from 'react';
 import { Modal, Input } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  ModalHeader,
-  ModalContent,
-  ButtonStatusAppove,
-} from './styled';
-import { Button } from '../StyleComponent';
+// import { Input } from '../StyleComponent';
 
-const ModalContents = styled(Modal.Content) `
-  &&&{
-    position: absolute;
-    top: 10px;
-  }
-`;
-
-const Modals = styled(Modal) `
-  &&&{
-    background: transparent;
-    width: 550px !important;
-    height: 308px !important;
-    position: absolute;
-    left: 62%;
-    top: 40%;
-  }
-`;
-
+// const ModalContents = styled(Modal.Content) `
+//   &&&{
+//     position: absolute;
+//     top: 10px;
+//   }
+// `;
+// const Modals = styled(Modal) `
+//   &&&{
+//     background: transparent;
+//     width: 550px !important;
+//     height: 308px !important;
+//     position: absolute;
+//     left: 62%;
+//     top: 40%;
+//   }
+// `;
 const Inputs = styled(Input) `
   &&&{
     font-family: Kanit;
-    width: 324.6px;
-    height: 40px;
-    margin-top: 27px;
-    margin-left: 75px;
     border-radius: 3px;
     background-color: #ffffff;
     border: solid 1px #dddddd;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    @media screen and (min-width: 1440px) {
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
   }
 `;
 
-const Text = styled.div`
+// const Text = styled.div`
+//   text-align: center;
+//   margin-top: 25px;
+// `;
+const ModalContents = styled(Modal.Content)`
+&&&{
+  max-width: 550px;
+  margin: 0 auto;
   text-align: center;
-  margin-top: 25px;
+  width: 38.7vw;
+}
+`;
+
+const Modals = styled(Modal)`
+&&&{
+  background: transparent !important;
+  margin-top: -120px;
+  box-shadow: none;
+}
 `;
 
 class ModalConfirmPassword extends Component {
@@ -53,13 +64,10 @@ class ModalConfirmPassword extends Component {
     content: PropTypes.string.isRequired,
     head: PropTypes.string.isRequired,
     value: PropTypes.string,
-    margin: PropTypes.string.isRequired,
   }
-
   static defaultProps = {
     value: '',
   }
-
   constructor(props) {
     super(props);
     this.state = { modalOpen: false };
@@ -79,22 +87,25 @@ class ModalConfirmPassword extends Component {
     return (
       <Modals
         trigger={
-          <ButtonStatusAppove margin={this.props.margin} onClick={this.handleOpen}>
+          <button
+            className="submit-plan-btn-form-submit-plan btn-green"
+            onClick={this.handleOpen}
+          >
             {content}
-          </ButtonStatusAppove>
+          </button>
         }
+        className="send-req-modal-confirm-box"
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >
-
         <ModalContents>
-          <ModalHeader>
-            {' '}
-            <div>กรุณาใส่พาสเวิร์ดของคุณอีกครั้ง</div>
-            <div>เพื่อยืนยัน{head}</div>
-            {' '}
-          </ModalHeader>
-          <ModalContent>
+          <div className="send-req-detail-box">
+            <span className="submit-plan-comfirm-modal-header">
+              กรุณาใส่พาสเวิร์ดของคุณอีกครั้ง
+            </span>
+            <span className="submit-plan-comfirm-modal-header">
+              เพื่อยืนยัน{head}
+            </span>
             <Inputs
               icon="lock"
               iconPosition="left"
@@ -103,36 +114,39 @@ class ModalConfirmPassword extends Component {
               type="password"
               onChange={this.props.handleChange}
             />
-
-            {data.error
-              ? <span style={{ color: 'red' }}>
-                <br />
-                <div style={{ marginLeft: '15%', marginTop: '2%' }}>
-                  {data.message}
-                </div>
-              </span>
-              : <span />}
-
-            <Text>
+            {
+               data.error
+               ? <span style={{ color: 'red' }}>
+                 <br />
+                 <div style={{ marginLeft: '15%', marginTop: '2%' }}>
+                   {data.message}
+                 </div>
+               </span>
+               : <span />
+             }
+            <span className="submit-plan-comfirm-modal-header">
               หากยืนยัน{head}ไปแล้ว จะไม่สามารถเปลี่ยนแปลงได้
-            </Text>
-
-          </ModalContent>
-          <div className="row">
-            <div className="large-4 large-offset-2 columns">
-              <Button cancle onClick={this.handleClose}> ยกเลิก </Button>
+            </span>
+          </div>
+          <div className="send-req-btn-box-modal">
+            <div className="send-req-btn-box-l">
+              <button
+                className="submit-plan-btn-form-submit-plan btn-red"
+                onClick={this.handleClose}
+              >
+                ยกเลิก
+              </button>
             </div>
-            <div className="large-4 columns end">
-              <Button
-                value={value}
+            <div className="send-req-btn-box-r">
+              <button
+                className="submit-plan-btn-form-submit-plan btn-blue"
                 onClick={() => this.props.handlePost(value)}
               >
-                {' '}ยืนยัน{' '}
-              </Button>
+                ยืนยัน
+              </button>
             </div>
           </div>
         </ModalContents>
-
       </Modals>
     );
   }

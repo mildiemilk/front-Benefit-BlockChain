@@ -459,7 +459,7 @@
     text-align: center;
     font-size: 1vw;
     @media screen and (min-width: 1440px) {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
   .ui.input input {
@@ -551,6 +551,9 @@ div.submit-plan-form-create-plan > input {
     margin-bottom: 20px;
   }
 }
+.btn-green {
+  background-color: #2ac294 !important;
+}
 .submit-plan-btn-box-modal {
   margin-top: 10px;
   text-align: center;
@@ -562,9 +565,17 @@ div.submit-plan-form-create-plan > input {
   }
 }
 .submit-plan-comfirm-modal-header {
+  display: block;
   text-align: center;
   font-size: 1.2vw;
   @media screen and (min-width: 1440px) {
     font-size: 18px;
+  }
+}
+.send-req-detail-box {
+  display: block;
+  margin-bottom: 1vw;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 14px;
   }
 }

@@ -18,9 +18,13 @@ class Insurer extends React.Component {
 
   renderList = insurers => {
     const list = insurers.map((insurer, i) => (
-      <Card className="large-2 columns" key={i.toString()}>
-        {insurer.companyName}
-        <Logo src={insurer.logo.link} alt="logo" />
+      <Card className="large-2 mediam-2 small-2 columns" key={i.toString()}>
+        <div className="choose-in-box-grap-a choose-in-in-name">
+          {insurer.companyName}
+        </div>
+        <div className="choose-in-img-in-box">
+          <Logo src={insurer.logo.link} alt="logo" />
+        </div>
       </Card>
     ));
     return list;

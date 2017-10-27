@@ -75,7 +75,7 @@ class ModalPlanBox extends Component {
   renderList = () => {
     const { planList } = this.props;
     const lists = planList.map((element, index) => (
-      <ListBox className="large-4 columns" key={index.toString()}>
+      <ListBox className="large-4 mediam-4 small-4 columns" key={index.toString()}>
         <PlanBoxs
           changePositionPage={this.props.changePositionPage}
           id={index}

@@ -15,7 +15,6 @@ export default class PlanBoxs extends Component {
     activePlan: PropTypes.number.isRequired,
     id: PropTypes.number.isRequired,
   }
-
   constructor(props) {
     super(props);
     this.state = {};

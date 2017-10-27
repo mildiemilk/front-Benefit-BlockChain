@@ -21,8 +21,8 @@ const Modals = styled(Modal)`
 `;
 
 class ModalInsurer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { modalOpen: false };
   }
 

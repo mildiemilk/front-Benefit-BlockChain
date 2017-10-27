@@ -32,8 +32,8 @@ class Postre extends Component {
     data: PropTypes.shape.isRequired,
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -60,12 +60,12 @@ class Postre extends Component {
             <Card.Content extra>
               <CardDescription>
                 <TopSpace className="row">
-                  <div className="large-5 columns">
+                  <div className="large-5 mediam-5 small-5 columns">
                     <strong>
                       <PostreText>จำนวนพนักงานที่ต้องการแผนประกัน</PostreText>
                     </strong>
                   </div>
-                  <div className="large-7 columns">
+                  <div className="large-7 mediam-7 small-7 columns">
                     {' '}
                     <PostreText>{numberOfEmployee}</PostreText>
                     {' '}
@@ -73,34 +73,34 @@ class Postre extends Component {
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-5 columns">
+                  <div className="large-5 mediam-5 small-5 columns">
                     <strong>
                       <PostreText>รูปแบบประกันที่ต้องการ</PostreText>
                     </strong>
                   </div>
-                  <div className="large-7 columns">
+                  <div className="large-7 mediam-7 small-7 columns">
                     <PostreText>{typeOfInsurance}</PostreText>
                   </div>
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-5 columns">
+                  <div className="large-5 mediam-5 small-5 columns">
                     <strong>
                       <PostreText>อัพโหลดแผนประกันที่ใช้ในปัจจุบัน</PostreText>
                     </strong>
                   </div>
-                  <div className="large-7 columns">
+                  <div className="large-7 mediam-7 small-7 columns">
                     <PostreText>Insurance_Plan_2016.pdf</PostreText>
                   </div>
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-5 columns">
+                  <div className="large-5 mediam-5 small-5 columns">
                     <strong>
                       <PostreText>วันหมดอายุกรมธรรม์</PostreText>
                     </strong>
                   </div>
-                  <div className="large-7 columns">
+                  <div className="large-7 mediam-7 small-7 columns">
                     {' '}
                     <PostreText>{moment(date).locale('th')
                   .format('DD MMMM YYYY')}</PostreText>
@@ -108,14 +108,14 @@ class Postre extends Component {
                 </TopSpace>
 
                 <TopSpace className="row">
-                  <div className="large-5 columns">
+                  <div className="large-5 mediam-5 small-5 columns">
                     <strong>
                       <strong>
                         <PostreText>แผนประกันที่ต้องการ</PostreText>
                       </strong>
                     </strong>
                   </div>
-                  <div className="large-7 columns">
+                  <div className="large-7 mediam-7 small-7 columns">
                     <PostreText>
                       <Checkboxs
                         label="ค่ารักษาพยาบาลกรณีผู้ป่วยใน (IPD)"

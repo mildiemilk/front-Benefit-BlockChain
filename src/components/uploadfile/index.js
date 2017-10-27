@@ -19,7 +19,6 @@ class Uploadfile extends Component {
     claimData: PropTypes.func.isRequired,
     haveClaimData: PropTypes.bool.isRequired,
   }
-
   constructor(props) {
     super(props);
     this.state = {

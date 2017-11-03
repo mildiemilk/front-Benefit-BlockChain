@@ -40,6 +40,7 @@ class ClaimInsurance extends Component {
       InsuranceType: '',
       date: moment(),
       Hospital: '',
+      ICD10: '',
       AmountMoney: null,
       currency: '',
       BankName: '',
@@ -133,7 +134,10 @@ class ClaimInsurance extends Component {
   handleChangeDate = date => {
     this.setState({ date });
   }
-
+  handleTime = time => {
+    time._d.setDate(this.state.date._d.getDate());
+    this.state.date._d.setTime(time._d.getTime());
+  }
   handleButtonSubmit = () => {
     const state = this.state;
     const detail = {};
@@ -154,9 +158,10 @@ class ClaimInsurance extends Component {
       detail.currency = state.currency;
       detail.bank = state.BankName;
       detail.bankAccountNumber = state.AccountNumber;
+      detail.ICD10 = state.ICD10;
       detail.location = state.Hospital ? state.Hospital : state.HealthPlace;
       if (type === 'insurance') {
-        if (state.InsuranceType !== '' && detail.location !== '' && state.BankName !== '' && state.AccountNumber !== '') {
+        if (state.InsuranceType !== '' && detail.location !== '' && state.BankName !== '' && state.AccountNumber !== '' && state.ICD10 !== '') {
           detail.title = state.InsuranceType;
           if (state.Hospital !== '') {
             detail.location = state.Hospital;
@@ -283,6 +288,7 @@ class ClaimInsurance extends Component {
         handleUploadcliamFile={this.handleUploadcliamFile}
         ClaimFile={ClaimFile}
         handleChangeDate={this.handleChangeDate}
+        handleTime={this.handleTime}
         date={date}
         data={data}
         life={life}

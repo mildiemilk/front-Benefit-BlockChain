@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Dropdown, Form } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
+import TimePicker from 'rc-time-picker';
 import {
   TinyText,
   NewLine,
 } from './styled';
 import '../../../styles/employee-style/claim-insurance.scss';
-
+import { Option } from './option-icd10';
 // const InsuranceTypeOption = [
 //   {
 //     key: '1',
@@ -48,6 +49,7 @@ const BankOption = [
     value: 'TMB',
   },
 ];
+
 class InsuranceTemplate extends Component {
   static propTypes = {
     handleChange: PropTypes.func.isRequired,
@@ -56,6 +58,7 @@ class InsuranceTemplate extends Component {
     // handleUploadcliamFile: PropTypes.func.isRequired,
     // ClaimFile: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     handleChangeDate: PropTypes.func.isRequired,
+    handleTime: PropTypes.func.isRequired,
     // data: PropTypes.shape({}).isRequired,
     currencyOption: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     life: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -91,6 +94,13 @@ class InsuranceTemplate extends Component {
           />
         </div>
         <NewLine />
+        <TinyText>เวลาที่ระบุในใบเสร็จ</TinyText>
+        <div className="Datebox">
+          <TimePicker
+            onChange={this.props.handleTime} showSecond={false}
+          />
+        </div>
+        <NewLine />
         <TinyText>โรงพยาบาล</TinyText>
         <Form>
           <Form.Field>
@@ -103,6 +113,18 @@ class InsuranceTemplate extends Component {
             />
           </Form.Field>
         </Form>
+        <NewLine />
+        <TinyText>โรคที่รักษา</TinyText>
+        <Dropdown
+          className="moneyDropDown"
+          placeholder="โปรดระบุโรคที่แพทย์วินิจฉัย"
+          fluid
+          selection
+          search
+          name="ICD10"
+          options={Option}
+          onChange={this.props.handleChange}
+        />
         <NewLine />
         <TinyText>ผู้เคลม</TinyText>
         <Dropdown

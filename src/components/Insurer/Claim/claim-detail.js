@@ -203,17 +203,20 @@ class ClaimDetail extends Component {
                   }
                   {
                   (claim[index].status === 'approve')
-                  ? <div className="row"><div className="large-12 columns status-icon"><img src={confirm} alt="allEmployee" width="29px" height="29px" />อนุมัติ</div></div>
+                  ? <div className="row"><div className="large-12 columns status-icon">
+                    <img src={confirm} className="img-result" alt="allEmployee" width="29px" height="29px" />อนุมัติ
+                    </div>
+                  </div>
                   : ''
                   }
                   {
                   (claim[index].status === 'reject')
-                  ? <div className="row"><div className="large-12 columns status-icon"><img src={reject} alt="allEmployee" width="29px" height="29px" />ไม่อนุมัติ</div></div>
+                  ? <div className="row"><div className="large-12 columns status-icon"><img src={reject} className="img-result" alt="allEmployee" width="29px" height="29px" />ไม่อนุมัติ</div></div>
                   : ''
                   }
                 </div>
                 {(claim[index].status === 'reject')
-                ? <div className="row"><div className="large-12 columns status-icon"><Text>{claim[index].reason}</Text></div></div>
+                ? <div className="row"><div className="large-12 columns status-result"><Text>{claim[index].reason}</Text></div></div>
                 : ''
                 }
               </NavDetail>

@@ -35,7 +35,8 @@ class FormSubmitPlan extends Component {
   handleClick = () => {
     const { planName, employeeOfPlan, activePlan, planList } = this.props;
     const numberOfPlan = parseInt(employeeOfPlan, 10);
-    if (this.props.activePlan === -1) {
+    const active = parseInt(activePlan, 10);
+    if (active === -1) {
       const employeeOfPlan = numberOfPlan;
       createPlan({ planName, employeeOfPlan })
       .then(() => {

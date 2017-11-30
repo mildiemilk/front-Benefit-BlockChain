@@ -44,7 +44,7 @@ class AllCustomer extends Component {
       return (
         <div className="allStatusData">
           <HeadCompanyInfo DataCompany={customer[index]} PageName="allcustomer" />
-          <CustomerName>ลูกค้า / {customer[index].companyName}</CustomerName>
+          <CustomerName><Link to="/allcustomer">ลูกค้า</Link> / {customer[index].companyName}</CustomerName>
           <BoxDetail>
             <InSide>
               <div className="row">

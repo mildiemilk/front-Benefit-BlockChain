@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Icon } from 'semantic-ui-react';
+// import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
+import { List, IconPlan, DetailList } from './styled';
 
 class Plan extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class Plan extends Component {
           {bid.planName} <br />
           {bid.priceOfBidding}
         </DetailList>
-        <PopupView
+        {/* <PopupView
           trigger={
             <PopupList>
               <Icon name="ellipsis vertical" size="large" />
@@ -29,7 +29,7 @@ class Plan extends Component {
           on="click"
           hideOnScroll
           position="bottom center"
-        />
+        /> */}
       </List>
     ));
     return planlists;

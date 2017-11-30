@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Icon } from 'semantic-ui-react';
+// import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 // import { NextButton, grayButton } from '../../../StyleComponent';
 // import ModalInsurer from '../../ShowMasterPlan/ModalInsurer';
-import { List, IconPlan, DetailList, PopupList, PopupView } from './styled';
+import { List, IconPlan, DetailList } from './styled';
 
 class Plan extends Component {
   static propTypes = {
@@ -19,7 +19,7 @@ class Plan extends Component {
           {plan.planId.planName} <br />
           {plan.price}
         </DetailList>
-        <PopupView
+        {/* <PopupView
           trigger={
             <PopupList>
               <Icon name="ellipsis vertical" size="large" />
@@ -33,7 +33,7 @@ class Plan extends Component {
           on="click"
           hideOnScroll
           position="bottom center"
-        />
+        /> */}
       </List>
     ));
     return planlists;

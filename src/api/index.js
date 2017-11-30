@@ -13,6 +13,9 @@ import {
   editEmployee,
 } from './profile-company';
 import {
+  getData,
+} from './admin';
+import {
   chooseInsurer,
   setTimeOut,
   getTimeout,
@@ -75,4 +78,5 @@ export default {
   deleteEmployee,
   summaryInsurancePlan,
   editEmployee,
+  getData,
 };

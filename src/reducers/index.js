@@ -33,6 +33,7 @@ import {
   customerSelectPlanReducer,
   customerEmployeeReducer,
   customerFileReducer } from './Insurer/customer';
+import { ledger } from './admin';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -67,6 +68,7 @@ const rootReducer = combineReducers({
   getClaimHistoryReducer,
   claimListReducer,
   claimReducer,
+  ledger,
 });
 
 export default rootReducer;

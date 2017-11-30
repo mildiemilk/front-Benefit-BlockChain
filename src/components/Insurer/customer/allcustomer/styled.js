@@ -168,6 +168,7 @@ export const BoxDetail = styled.div`
   background-color: #ffffff;
   box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.08);
   border: solid 1px #cecece;
+  margin-top: 10px;
 `;
 export const ButtonPlan = styled.div`
   height: 40px;

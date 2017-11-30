@@ -48,6 +48,7 @@ import ClaimEmployee from './ClaimEmployee';
 import Setting from './Setting';
 import ProfileClaim from './ProfileClaim';
 import Profile from './Profile';
+import Admin from './Admin';
 
 class App extends Component {
   static propTypes = {
@@ -148,6 +149,7 @@ class App extends Component {
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
+          <Route path="/admin" component={Admin} />
           <Redirect to={{ pathname: '/login' }} />
         </Switch>
       );

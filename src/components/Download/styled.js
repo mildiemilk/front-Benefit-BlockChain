@@ -38,6 +38,10 @@ export const Head = styled.div`
 export const Side = styled.div`
   backgrond-color: #ffffff;
   width: 100%;
+  height: 187px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BackButton = styled.button`

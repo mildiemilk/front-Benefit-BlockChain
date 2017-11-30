@@ -73,7 +73,7 @@ class UploadEmployee extends Component {
                 {' '}
               </List>
             </Head>
-            <Side>
+            <div>
               <Upload>
                 อัพโหลดไฟล์ :
                 <UploadDiv>{$filePreview}</UploadDiv>
@@ -90,7 +90,7 @@ class UploadEmployee extends Component {
                   </BrowsButton>
                 </Uploads>
               </Upload>
-            </Side>
+            </div>
           </DetailIn>
         </DetailDiv>
       </div>

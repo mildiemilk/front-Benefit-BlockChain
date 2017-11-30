@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 export const DivDownload = styled.div`
   width: 40%;
-  margin-top: 19px;
-  margin-bottom: 19px;
   border-radius: 5px;
   background-color: #f0f2f4;
   box-shadow: 0 2px 4px 0 rgba(198, 198, 198, 0.5);

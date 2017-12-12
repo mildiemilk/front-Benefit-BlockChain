@@ -242,16 +242,16 @@ class ClaimInsurance extends Component {
       ClaimFile,
       EmNameoption,
     } = this.state;
-    const nameOption = [];
-    nameOption.push({
-      key: 0,
-      text: data.claimUser[0],
-      value: data.claimUser[0],
-    });
+    // const nameOption = [];
+    // nameOption.push({
+    //   key: 0,
+    //   text: data.claimUser[0],
+    //   value: data.claimUser[0],
+    // });
     if (this.state.mainState === 'general') {
       return (
         <GeneralExpenseTemplate
-          EmNameoption={nameOption}
+          EmNameoption={EmNameoption}
           handleChange={this.handleChange}
           handleUploadcliamFile={this.handleUploadcliamFile}
           ClaimFile={ClaimFile}
@@ -266,7 +266,7 @@ class ClaimInsurance extends Component {
     } else if (this.state.mainState === 'health') {
       return (
         <HealthTemplate
-          EmNameoption={nameOption}
+          EmNameoption={EmNameoption}
           handleChange={this.handleChange}
           handleUploadcliamFile={this.handleUploadcliamFile}
           ClaimFile={ClaimFile}

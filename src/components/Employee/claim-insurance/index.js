@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Modal, Dropdown, Icon } from 'semantic-ui-react';
+import { Modal, Dropdown } from 'semantic-ui-react';
 // import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 import {
@@ -10,9 +10,7 @@ import {
   SubmitButton,
   SubmitButtonLast,
   TinyText,
-  BrowsButton,
   NewLine,
-  UploadText,
 } from './styled';
 import InsuranceTemplate from './insurance-template';
 import HealthTemplate from './health-template';
@@ -150,7 +148,6 @@ class ClaimInsurance extends Component {
       && state.AmountMoney !== ''
       && state.currency !== ''
       && type !== ''
-      && files.length !== 0
     ) {
       detail.date = state.date;
       detail.name = state.ChooseEmployeeName;
@@ -302,7 +299,6 @@ class ClaimInsurance extends Component {
       MainStateOption,
       openModal,
       modalMsg,
-      ClaimFile,
       renderClaimStatus,
     } = this.state;
     const { data } = this.props;
@@ -328,7 +324,7 @@ class ClaimInsurance extends Component {
               this.rendermainState()
             }
             <NewLine />
-            <TinyText>แนบภาพใบเสร็จ (เฉพาะไฟล์ประเภท .pdf .jpg .png)</TinyText>
+            {/* <TinyText>แนบภาพใบเสร็จ (เฉพาะไฟล์ประเภท .pdf .jpg .png)</TinyText>
             <BrowsButton>
               <input
                 style={{ display: 'none' }}
@@ -355,7 +351,7 @@ class ClaimInsurance extends Component {
                   </div>
                 ))
               }
-            </UploadText>
+            </UploadText> */}
             <NewLine style={{ height: '3px' }} />
             <SubmitButton onClick={() => this.handleButtonSubmit()}> เคลม </SubmitButton>
             <Modal

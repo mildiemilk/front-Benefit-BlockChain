@@ -130,12 +130,12 @@ class ClaimDetail extends Component {
                       <div className="large-4 columns fontweight">เลขที่บัญชี </div>
                       <div className="large-7 columns">{claim[index].detail.bankAccountNumber}<br /><Divider /></div>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                       <div className="large-4 columns fontweight">หลักฐานการเคลม </div>
                       <div className="receiptDiv">
                         {this.handleViewImg(claim[index])}
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </NavDetail>
